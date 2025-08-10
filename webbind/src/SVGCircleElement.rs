@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGCircleElement {
     inner: SVGGeometryElement,
 }
+
 impl FromVal for SVGCircleElement {
     fn from_val(v: &Any) -> Self {
         SVGCircleElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGCircleElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGCircleElement {
     type Target = SVGGeometryElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGCircleElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGCircleElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGCircleElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGCircleElement> for Any {
     fn from(s: SVGCircleElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGCircleElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGCircleElement> for Any {
     fn from(s: &SVGCircleElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGCircleElement);
 
 impl SVGCircleElement {

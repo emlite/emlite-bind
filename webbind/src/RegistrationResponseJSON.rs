@@ -1,10 +1,12 @@
 use super::*;
 
+/// The RegistrationResponseJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RegistrationResponseJSON {
     inner: Any,
 }
+
 impl FromVal for RegistrationResponseJSON {
     fn from_val(v: &Any) -> Self {
         RegistrationResponseJSON { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for RegistrationResponseJSON {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RegistrationResponseJSON {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RegistrationResponseJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RegistrationResponseJSON {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RegistrationResponseJSON {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RegistrationResponseJSON> for Any {
     fn from(s: RegistrationResponseJSON) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<RegistrationResponseJSON> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RegistrationResponseJSON> for Any {
     fn from(s: &RegistrationResponseJSON) -> Any {
         s.inner.clone()
@@ -51,50 +59,60 @@ impl From<&RegistrationResponseJSON> for Any {
 }
 
 impl RegistrationResponseJSON {
+    /// Getter of the `id` attribute.
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
 
+    /// Setter of the `id` attribute.
     pub fn set_id(&mut self, value: &JsString) {
         self.inner.set("id", value);
     }
 }
 impl RegistrationResponseJSON {
+    /// Getter of the `rawId` attribute.
     pub fn raw_id(&self) -> Any {
         self.inner.get("rawId").as_::<Any>()
     }
 
+    /// Setter of the `rawId` attribute.
     pub fn set_raw_id(&mut self, value: &Any) {
         self.inner.set("rawId", value);
     }
 }
 impl RegistrationResponseJSON {
+    /// Getter of the `response` attribute.
     pub fn response(&self) -> AuthenticatorAttestationResponseJSON {
         self.inner
             .get("response")
             .as_::<AuthenticatorAttestationResponseJSON>()
     }
 
+    /// Setter of the `response` attribute.
     pub fn set_response(&mut self, value: &AuthenticatorAttestationResponseJSON) {
         self.inner.set("response", value);
     }
 }
 impl RegistrationResponseJSON {
+    /// Getter of the `authenticatorAttachment` attribute.
     pub fn authenticator_attachment(&self) -> JsString {
         self.inner.get("authenticatorAttachment").as_::<JsString>()
     }
 
+    /// Setter of the `authenticatorAttachment` attribute.
     pub fn set_authenticator_attachment(&mut self, value: &JsString) {
         self.inner.set("authenticatorAttachment", value);
     }
 }
 impl RegistrationResponseJSON {
+    /// Getter of the `clientExtensionResults` attribute.
     pub fn client_extension_results(&self) -> AuthenticationExtensionsClientOutputsJSON {
         self.inner
             .get("clientExtensionResults")
             .as_::<AuthenticationExtensionsClientOutputsJSON>()
     }
 
+    /// Setter of the `clientExtensionResults` attribute.
     pub fn set_client_extension_results(
         &mut self,
         value: &AuthenticationExtensionsClientOutputsJSON,
@@ -103,10 +121,12 @@ impl RegistrationResponseJSON {
     }
 }
 impl RegistrationResponseJSON {
+    /// Getter of the `type` attribute.
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
 
+    /// Setter of the `type` attribute.
     pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }

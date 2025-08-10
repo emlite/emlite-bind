@@ -7,6 +7,7 @@ use super::*;
 pub struct XRCPUDepthInformation {
     inner: XRDepthInformation,
 }
+
 impl FromVal for XRCPUDepthInformation {
     fn from_val(v: &Any) -> Self {
         XRCPUDepthInformation {
@@ -20,27 +21,32 @@ impl FromVal for XRCPUDepthInformation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRCPUDepthInformation {
     type Target = XRDepthInformation;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRCPUDepthInformation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRCPUDepthInformation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRCPUDepthInformation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRCPUDepthInformation> for Any {
     fn from(s: XRCPUDepthInformation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRCPUDepthInformation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRCPUDepthInformation> for Any {
     fn from(s: &XRCPUDepthInformation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRCPUDepthInformation);
 
 impl XRCPUDepthInformation {

@@ -7,6 +7,7 @@ use super::*;
 pub struct WindowClient {
     inner: Client,
 }
+
 impl FromVal for WindowClient {
     fn from_val(v: &Any) -> Self {
         WindowClient {
@@ -20,27 +21,32 @@ impl FromVal for WindowClient {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WindowClient {
     type Target = Client;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WindowClient {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WindowClient {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WindowClient {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WindowClient> for Any {
     fn from(s: WindowClient) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WindowClient> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WindowClient> for Any {
     fn from(s: &WindowClient) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WindowClient);
 
 impl WindowClient {

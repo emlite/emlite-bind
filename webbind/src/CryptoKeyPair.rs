@@ -1,10 +1,12 @@
 use super::*;
 
+/// The CryptoKeyPair dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CryptoKeyPair {
     inner: Any,
 }
+
 impl FromVal for CryptoKeyPair {
     fn from_val(v: &Any) -> Self {
         CryptoKeyPair { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for CryptoKeyPair {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CryptoKeyPair {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CryptoKeyPair {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CryptoKeyPair {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CryptoKeyPair {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CryptoKeyPair> for Any {
     fn from(s: CryptoKeyPair) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<CryptoKeyPair> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CryptoKeyPair> for Any {
     fn from(s: &CryptoKeyPair) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&CryptoKeyPair> for Any {
 }
 
 impl CryptoKeyPair {
+    /// Getter of the `publicKey` attribute.
     pub fn public_key(&self) -> CryptoKey {
         self.inner.get("publicKey").as_::<CryptoKey>()
     }
 
+    /// Setter of the `publicKey` attribute.
     pub fn set_public_key(&mut self, value: &CryptoKey) {
         self.inner.set("publicKey", value);
     }
 }
 impl CryptoKeyPair {
+    /// Getter of the `privateKey` attribute.
     pub fn private_key(&self) -> CryptoKey {
         self.inner.get("privateKey").as_::<CryptoKey>()
     }
 
+    /// Setter of the `privateKey` attribute.
     pub fn set_private_key(&mut self, value: &CryptoKey) {
         self.inner.set("privateKey", value);
     }

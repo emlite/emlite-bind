@@ -7,6 +7,7 @@ use super::*;
 pub struct Comment {
     inner: CharacterData,
 }
+
 impl FromVal for Comment {
     fn from_val(v: &Any) -> Self {
         Comment {
@@ -20,27 +21,32 @@ impl FromVal for Comment {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Comment {
     type Target = CharacterData;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Comment {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Comment {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Comment {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Comment> for Any {
     fn from(s: Comment) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Comment> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Comment> for Any {
     fn from(s: &Comment) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Comment);
 
 impl Comment {

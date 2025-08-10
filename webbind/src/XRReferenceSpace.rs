@@ -7,6 +7,7 @@ use super::*;
 pub struct XRReferenceSpace {
     inner: XRSpace,
 }
+
 impl FromVal for XRReferenceSpace {
     fn from_val(v: &Any) -> Self {
         XRReferenceSpace {
@@ -20,27 +21,32 @@ impl FromVal for XRReferenceSpace {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRReferenceSpace {
     type Target = XRSpace;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRReferenceSpace {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRReferenceSpace {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRReferenceSpace {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRReferenceSpace> for Any {
     fn from(s: XRReferenceSpace) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRReferenceSpace> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRReferenceSpace> for Any {
     fn from(s: &XRReferenceSpace) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRReferenceSpace);
 
 impl XRReferenceSpace {

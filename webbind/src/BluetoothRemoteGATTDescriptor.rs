@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothRemoteGATTDescriptor {
     inner: Any,
 }
+
 impl FromVal for BluetoothRemoteGATTDescriptor {
     fn from_val(v: &Any) -> Self {
         BluetoothRemoteGATTDescriptor {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothRemoteGATTDescriptor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothRemoteGATTDescriptor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothRemoteGATTDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothRemoteGATTDescriptor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothRemoteGATTDescriptor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothRemoteGATTDescriptor> for Any {
     fn from(s: BluetoothRemoteGATTDescriptor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothRemoteGATTDescriptor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothRemoteGATTDescriptor> for Any {
     fn from(s: &BluetoothRemoteGATTDescriptor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTDescriptor);
 
 impl BluetoothRemoteGATTDescriptor {

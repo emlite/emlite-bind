@@ -1,102 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PaymentDetailsUpdate {
-    inner: Any,
-}
-impl FromVal for PaymentDetailsUpdate {
-    fn from_val(v: &Any) -> Self {
-        PaymentDetailsUpdate { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PaymentDetailsUpdate {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PaymentDetailsUpdate {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PaymentDetailsUpdate {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PaymentDetailsUpdate {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PaymentDetailsUpdate> for Any {
-    fn from(s: PaymentDetailsUpdate) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PaymentDetailsUpdate> for Any {
-    fn from(s: &PaymentDetailsUpdate) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PaymentDetailsUpdate {
-    pub fn error(&self) -> JsString {
-        self.inner.get("error").as_::<JsString>()
-    }
-
-    pub fn set_error(&mut self, value: &JsString) {
-        self.inner.set("error", value);
-    }
-}
-impl PaymentDetailsUpdate {
-    pub fn total(&self) -> PaymentItem {
-        self.inner.get("total").as_::<PaymentItem>()
-    }
-
-    pub fn set_total(&mut self, value: &PaymentItem) {
-        self.inner.set("total", value);
-    }
-}
-impl PaymentDetailsUpdate {
-    pub fn shipping_address_errors(&self) -> AddressErrors {
-        self.inner
-            .get("shippingAddressErrors")
-            .as_::<AddressErrors>()
-    }
-
-    pub fn set_shipping_address_errors(&mut self, value: &AddressErrors) {
-        self.inner.set("shippingAddressErrors", value);
-    }
-}
-impl PaymentDetailsUpdate {
-    pub fn payer_errors(&self) -> PayerErrors {
-        self.inner.get("payerErrors").as_::<PayerErrors>()
-    }
-
-    pub fn set_payer_errors(&mut self, value: &PayerErrors) {
-        self.inner.set("payerErrors", value);
-    }
-}
-impl PaymentDetailsUpdate {
-    pub fn payment_method_errors(&self) -> Object {
-        self.inner.get("paymentMethodErrors").as_::<Object>()
-    }
-
-    pub fn set_payment_method_errors(&mut self, value: &Object) {
-        self.inner.set("paymentMethodErrors", value);
-    }
-}
 /// The PaymentRequest class.
 /// [`PaymentRequest`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -104,6 +7,7 @@ impl PaymentDetailsUpdate {
 pub struct PaymentRequest {
     inner: EventTarget,
 }
+
 impl FromVal for PaymentRequest {
     fn from_val(v: &Any) -> Self {
         PaymentRequest {
@@ -117,27 +21,32 @@ impl FromVal for PaymentRequest {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PaymentRequest {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PaymentRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PaymentRequest {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PaymentRequest {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PaymentRequest> for Any {
     fn from(s: PaymentRequest) -> Any {
         let handle = s.inner.as_handle();
@@ -145,11 +54,13 @@ impl From<PaymentRequest> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PaymentRequest> for Any {
     fn from(s: &PaymentRequest) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PaymentRequest);
 
 impl PaymentRequest {

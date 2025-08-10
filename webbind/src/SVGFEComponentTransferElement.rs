@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEComponentTransferElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEComponentTransferElement {
     fn from_val(v: &Any) -> Self {
         SVGFEComponentTransferElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEComponentTransferElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEComponentTransferElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEComponentTransferElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEComponentTransferElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEComponentTransferElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEComponentTransferElement> for Any {
     fn from(s: SVGFEComponentTransferElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEComponentTransferElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEComponentTransferElement> for Any {
     fn from(s: &SVGFEComponentTransferElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEComponentTransferElement);
 
 impl SVGFEComponentTransferElement {

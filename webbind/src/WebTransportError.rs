@@ -7,6 +7,7 @@ use super::*;
 pub struct WebTransportError {
     inner: DOMException,
 }
+
 impl FromVal for WebTransportError {
     fn from_val(v: &Any) -> Self {
         WebTransportError {
@@ -20,27 +21,32 @@ impl FromVal for WebTransportError {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebTransportError {
     type Target = DOMException;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebTransportError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebTransportError {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebTransportError {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebTransportError> for Any {
     fn from(s: WebTransportError) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WebTransportError> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebTransportError> for Any {
     fn from(s: &WebTransportError) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebTransportError);
 
 impl WebTransportError {

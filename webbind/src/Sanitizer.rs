@@ -1,120 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct SanitizerConfig {
-    inner: Any,
-}
-impl FromVal for SanitizerConfig {
-    fn from_val(v: &Any) -> Self {
-        SanitizerConfig { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for SanitizerConfig {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for SanitizerConfig {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for SanitizerConfig {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for SanitizerConfig {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<SanitizerConfig> for Any {
-    fn from(s: SanitizerConfig) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&SanitizerConfig> for Any {
-    fn from(s: &SanitizerConfig) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl SanitizerConfig {
-    pub fn elements(&self) -> TypedArray<Any> {
-        self.inner.get("elements").as_::<TypedArray<Any>>()
-    }
-
-    pub fn set_elements(&mut self, value: &TypedArray<Any>) {
-        self.inner.set("elements", value);
-    }
-}
-impl SanitizerConfig {
-    pub fn remove_elements(&self) -> TypedArray<Any> {
-        self.inner.get("removeElements").as_::<TypedArray<Any>>()
-    }
-
-    pub fn set_remove_elements(&mut self, value: &TypedArray<Any>) {
-        self.inner.set("removeElements", value);
-    }
-}
-impl SanitizerConfig {
-    pub fn replace_with_children_elements(&self) -> TypedArray<Any> {
-        self.inner
-            .get("replaceWithChildrenElements")
-            .as_::<TypedArray<Any>>()
-    }
-
-    pub fn set_replace_with_children_elements(&mut self, value: &TypedArray<Any>) {
-        self.inner.set("replaceWithChildrenElements", value);
-    }
-}
-impl SanitizerConfig {
-    pub fn attributes(&self) -> TypedArray<Any> {
-        self.inner.get("attributes").as_::<TypedArray<Any>>()
-    }
-
-    pub fn set_attributes(&mut self, value: &TypedArray<Any>) {
-        self.inner.set("attributes", value);
-    }
-}
-impl SanitizerConfig {
-    pub fn remove_attributes(&self) -> TypedArray<Any> {
-        self.inner.get("removeAttributes").as_::<TypedArray<Any>>()
-    }
-
-    pub fn set_remove_attributes(&mut self, value: &TypedArray<Any>) {
-        self.inner.set("removeAttributes", value);
-    }
-}
-impl SanitizerConfig {
-    pub fn comments(&self) -> bool {
-        self.inner.get("comments").as_::<bool>()
-    }
-
-    pub fn set_comments(&mut self, value: bool) {
-        self.inner.set("comments", value);
-    }
-}
-impl SanitizerConfig {
-    pub fn data_attributes(&self) -> bool {
-        self.inner.get("dataAttributes").as_::<bool>()
-    }
-
-    pub fn set_data_attributes(&mut self, value: bool) {
-        self.inner.set("dataAttributes", value);
-    }
-}
 /// The Sanitizer class.
 /// [`Sanitizer`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -122,6 +7,7 @@ impl SanitizerConfig {
 pub struct Sanitizer {
     inner: Any,
 }
+
 impl FromVal for Sanitizer {
     fn from_val(v: &Any) -> Self {
         Sanitizer {
@@ -135,27 +21,32 @@ impl FromVal for Sanitizer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Sanitizer {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Sanitizer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Sanitizer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Sanitizer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Sanitizer> for Any {
     fn from(s: Sanitizer) -> Any {
         let handle = s.inner.as_handle();
@@ -163,11 +54,13 @@ impl From<Sanitizer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Sanitizer> for Any {
     fn from(s: &Sanitizer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Sanitizer);
 
 impl Sanitizer {

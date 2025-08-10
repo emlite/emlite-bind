@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLOptionsCollection {
     inner: HTMLCollection,
 }
+
 impl FromVal for HTMLOptionsCollection {
     fn from_val(v: &Any) -> Self {
         HTMLOptionsCollection {
@@ -20,27 +21,32 @@ impl FromVal for HTMLOptionsCollection {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLOptionsCollection {
     type Target = HTMLCollection;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLOptionsCollection {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLOptionsCollection {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLOptionsCollection {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLOptionsCollection> for Any {
     fn from(s: HTMLOptionsCollection) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLOptionsCollection> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLOptionsCollection> for Any {
     fn from(s: &HTMLOptionsCollection) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLOptionsCollection);
 
 impl HTMLOptionsCollection {

@@ -7,6 +7,7 @@ use super::*;
 pub struct LayoutShift {
     inner: PerformanceEntry,
 }
+
 impl FromVal for LayoutShift {
     fn from_val(v: &Any) -> Self {
         LayoutShift {
@@ -20,27 +21,32 @@ impl FromVal for LayoutShift {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for LayoutShift {
     type Target = PerformanceEntry;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for LayoutShift {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for LayoutShift {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for LayoutShift {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<LayoutShift> for Any {
     fn from(s: LayoutShift) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<LayoutShift> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&LayoutShift> for Any {
     fn from(s: &LayoutShift) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(LayoutShift);
 
 impl LayoutShift {

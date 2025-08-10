@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSRotate {
     inner: CSSTransformComponent,
 }
+
 impl FromVal for CSSRotate {
     fn from_val(v: &Any) -> Self {
         CSSRotate {
@@ -20,27 +21,32 @@ impl FromVal for CSSRotate {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSRotate {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSRotate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSRotate {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSRotate {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSRotate> for Any {
     fn from(s: CSSRotate) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSRotate> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSRotate> for Any {
     fn from(s: &CSSRotate) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSRotate);
 
 impl CSSRotate {

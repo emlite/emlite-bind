@@ -7,6 +7,7 @@ use super::*;
 pub struct XRHitTestSource {
     inner: Any,
 }
+
 impl FromVal for XRHitTestSource {
     fn from_val(v: &Any) -> Self {
         XRHitTestSource {
@@ -20,27 +21,32 @@ impl FromVal for XRHitTestSource {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRHitTestSource {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRHitTestSource {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRHitTestSource {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRHitTestSource {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRHitTestSource> for Any {
     fn from(s: XRHitTestSource) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRHitTestSource> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRHitTestSource> for Any {
     fn from(s: &XRHitTestSource) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRHitTestSource);
 
 impl XRHitTestSource {

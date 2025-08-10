@@ -7,6 +7,7 @@ use super::*;
 pub struct WebGLShader {
     inner: WebGLObject,
 }
+
 impl FromVal for WebGLShader {
     fn from_val(v: &Any) -> Self {
         WebGLShader {
@@ -20,27 +21,32 @@ impl FromVal for WebGLShader {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebGLShader {
     type Target = WebGLObject;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebGLShader {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebGLShader {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebGLShader {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebGLShader> for Any {
     fn from(s: WebGLShader) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<WebGLShader> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebGLShader> for Any {
     fn from(s: &WebGLShader) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebGLShader);

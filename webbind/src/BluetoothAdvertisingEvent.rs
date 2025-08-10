@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothAdvertisingEvent {
     inner: Event,
 }
+
 impl FromVal for BluetoothAdvertisingEvent {
     fn from_val(v: &Any) -> Self {
         BluetoothAdvertisingEvent {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothAdvertisingEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothAdvertisingEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothAdvertisingEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothAdvertisingEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothAdvertisingEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothAdvertisingEvent> for Any {
     fn from(s: BluetoothAdvertisingEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothAdvertisingEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothAdvertisingEvent> for Any {
     fn from(s: &BluetoothAdvertisingEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
 impl BluetoothAdvertisingEvent {

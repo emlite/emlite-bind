@@ -7,6 +7,7 @@ use super::*;
 pub struct StorageEvent {
     inner: Event,
 }
+
 impl FromVal for StorageEvent {
     fn from_val(v: &Any) -> Self {
         StorageEvent {
@@ -20,27 +21,32 @@ impl FromVal for StorageEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for StorageEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for StorageEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for StorageEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for StorageEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<StorageEvent> for Any {
     fn from(s: StorageEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<StorageEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&StorageEvent> for Any {
     fn from(s: &StorageEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(StorageEvent);
 
 impl StorageEvent {

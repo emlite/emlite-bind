@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSNestedDeclarations {
     inner: CSSRule,
 }
+
 impl FromVal for CSSNestedDeclarations {
     fn from_val(v: &Any) -> Self {
         CSSNestedDeclarations {
@@ -20,27 +21,32 @@ impl FromVal for CSSNestedDeclarations {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSNestedDeclarations {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSNestedDeclarations {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSNestedDeclarations {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSNestedDeclarations {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSNestedDeclarations> for Any {
     fn from(s: CSSNestedDeclarations) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSNestedDeclarations> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSNestedDeclarations> for Any {
     fn from(s: &CSSNestedDeclarations) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSNestedDeclarations);
 
 impl CSSNestedDeclarations {

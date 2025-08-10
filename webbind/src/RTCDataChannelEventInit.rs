@@ -1,10 +1,12 @@
 use super::*;
 
+/// The RTCDataChannelEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCDataChannelEventInit {
     inner: Any,
 }
+
 impl FromVal for RTCDataChannelEventInit {
     fn from_val(v: &Any) -> Self {
         RTCDataChannelEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for RTCDataChannelEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCDataChannelEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCDataChannelEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCDataChannelEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCDataChannelEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCDataChannelEventInit> for Any {
     fn from(s: RTCDataChannelEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<RTCDataChannelEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCDataChannelEventInit> for Any {
     fn from(s: &RTCDataChannelEventInit) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&RTCDataChannelEventInit> for Any {
 }
 
 impl RTCDataChannelEventInit {
+    /// Getter of the `channel` attribute.
     pub fn channel(&self) -> RTCDataChannel {
         self.inner.get("channel").as_::<RTCDataChannel>()
     }
 
+    /// Setter of the `channel` attribute.
     pub fn set_channel(&mut self, value: &RTCDataChannel) {
         self.inner.set("channel", value);
     }

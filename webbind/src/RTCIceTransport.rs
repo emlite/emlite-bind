@@ -1,231 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RTCIceParameters {
-    inner: Any,
-}
-impl FromVal for RTCIceParameters {
-    fn from_val(v: &Any) -> Self {
-        RTCIceParameters { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RTCIceParameters {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RTCIceParameters {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RTCIceParameters {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RTCIceParameters {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RTCIceParameters> for Any {
-    fn from(s: RTCIceParameters) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RTCIceParameters> for Any {
-    fn from(s: &RTCIceParameters) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl RTCIceParameters {
-    pub fn username_fragment(&self) -> JsString {
-        self.inner.get("usernameFragment").as_::<JsString>()
-    }
-
-    pub fn set_username_fragment(&mut self, value: &JsString) {
-        self.inner.set("usernameFragment", value);
-    }
-}
-impl RTCIceParameters {
-    pub fn password(&self) -> JsString {
-        self.inner.get("password").as_::<JsString>()
-    }
-
-    pub fn set_password(&mut self, value: &JsString) {
-        self.inner.set("password", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RTCIceGatherOptions {
-    inner: Any,
-}
-impl FromVal for RTCIceGatherOptions {
-    fn from_val(v: &Any) -> Self {
-        RTCIceGatherOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RTCIceGatherOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RTCIceGatherOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RTCIceGatherOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RTCIceGatherOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RTCIceGatherOptions> for Any {
-    fn from(s: RTCIceGatherOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RTCIceGatherOptions> for Any {
-    fn from(s: &RTCIceGatherOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl RTCIceGatherOptions {
-    pub fn gather_policy(&self) -> RTCIceTransportPolicy {
-        self.inner
-            .get("gatherPolicy")
-            .as_::<RTCIceTransportPolicy>()
-    }
-
-    pub fn set_gather_policy(&mut self, value: &RTCIceTransportPolicy) {
-        self.inner.set("gatherPolicy", value);
-    }
-}
-impl RTCIceGatherOptions {
-    pub fn ice_servers(&self) -> TypedArray<RTCIceServer> {
-        self.inner
-            .get("iceServers")
-            .as_::<TypedArray<RTCIceServer>>()
-    }
-
-    pub fn set_ice_servers(&mut self, value: &TypedArray<RTCIceServer>) {
-        self.inner.set("iceServers", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RTCIceCandidateInit {
-    inner: Any,
-}
-impl FromVal for RTCIceCandidateInit {
-    fn from_val(v: &Any) -> Self {
-        RTCIceCandidateInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RTCIceCandidateInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RTCIceCandidateInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RTCIceCandidateInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RTCIceCandidateInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RTCIceCandidateInit> for Any {
-    fn from(s: RTCIceCandidateInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RTCIceCandidateInit> for Any {
-    fn from(s: &RTCIceCandidateInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl RTCIceCandidateInit {
-    pub fn candidate(&self) -> JsString {
-        self.inner.get("candidate").as_::<JsString>()
-    }
-
-    pub fn set_candidate(&mut self, value: &JsString) {
-        self.inner.set("candidate", value);
-    }
-}
-impl RTCIceCandidateInit {
-    pub fn sdp_mid(&self) -> JsString {
-        self.inner.get("sdpMid").as_::<JsString>()
-    }
-
-    pub fn set_sdp_mid(&mut self, value: &JsString) {
-        self.inner.set("sdpMid", value);
-    }
-}
-impl RTCIceCandidateInit {
-    pub fn sdp_m_line_index(&self) -> u16 {
-        self.inner.get("sdpMLineIndex").as_::<u16>()
-    }
-
-    pub fn set_sdp_m_line_index(&mut self, value: u16) {
-        self.inner.set("sdpMLineIndex", value);
-    }
-}
-impl RTCIceCandidateInit {
-    pub fn username_fragment(&self) -> JsString {
-        self.inner.get("usernameFragment").as_::<JsString>()
-    }
-
-    pub fn set_username_fragment(&mut self, value: &JsString) {
-        self.inner.set("usernameFragment", value);
-    }
-}
 /// The RTCIceTransport class.
 /// [`RTCIceTransport`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -233,6 +7,7 @@ impl RTCIceCandidateInit {
 pub struct RTCIceTransport {
     inner: EventTarget,
 }
+
 impl FromVal for RTCIceTransport {
     fn from_val(v: &Any) -> Self {
         RTCIceTransport {
@@ -246,27 +21,32 @@ impl FromVal for RTCIceTransport {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCIceTransport {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCIceTransport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCIceTransport {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCIceTransport {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCIceTransport> for Any {
     fn from(s: RTCIceTransport) -> Any {
         let handle = s.inner.as_handle();
@@ -274,11 +54,13 @@ impl From<RTCIceTransport> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCIceTransport> for Any {
     fn from(s: &RTCIceTransport) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCIceTransport);
 
 impl RTCIceTransport {

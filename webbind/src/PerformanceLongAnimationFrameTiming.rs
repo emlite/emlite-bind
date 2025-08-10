@@ -7,6 +7,7 @@ use super::*;
 pub struct PerformanceLongAnimationFrameTiming {
     inner: PerformanceEntry,
 }
+
 impl FromVal for PerformanceLongAnimationFrameTiming {
     fn from_val(v: &Any) -> Self {
         PerformanceLongAnimationFrameTiming {
@@ -20,27 +21,32 @@ impl FromVal for PerformanceLongAnimationFrameTiming {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PerformanceLongAnimationFrameTiming {
     type Target = PerformanceEntry;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PerformanceLongAnimationFrameTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PerformanceLongAnimationFrameTiming {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PerformanceLongAnimationFrameTiming {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PerformanceLongAnimationFrameTiming> for Any {
     fn from(s: PerformanceLongAnimationFrameTiming) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PerformanceLongAnimationFrameTiming> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PerformanceLongAnimationFrameTiming> for Any {
     fn from(s: &PerformanceLongAnimationFrameTiming) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PerformanceLongAnimationFrameTiming);
 
 impl PerformanceLongAnimationFrameTiming {

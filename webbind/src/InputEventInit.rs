@@ -1,10 +1,12 @@
 use super::*;
 
+/// The InputEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InputEventInit {
     inner: Any,
 }
+
 impl FromVal for InputEventInit {
     fn from_val(v: &Any) -> Self {
         InputEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for InputEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for InputEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for InputEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for InputEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for InputEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<InputEventInit> for Any {
     fn from(s: InputEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<InputEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&InputEventInit> for Any {
     fn from(s: &InputEventInit) -> Any {
         s.inner.clone()
@@ -51,28 +59,34 @@ impl From<&InputEventInit> for Any {
 }
 
 impl InputEventInit {
+    /// Getter of the `data` attribute.
     pub fn data(&self) -> JsString {
         self.inner.get("data").as_::<JsString>()
     }
 
+    /// Setter of the `data` attribute.
     pub fn set_data(&mut self, value: &JsString) {
         self.inner.set("data", value);
     }
 }
 impl InputEventInit {
+    /// Getter of the `isComposing` attribute.
     pub fn is_composing(&self) -> bool {
         self.inner.get("isComposing").as_::<bool>()
     }
 
+    /// Setter of the `isComposing` attribute.
     pub fn set_is_composing(&mut self, value: bool) {
         self.inner.set("isComposing", value);
     }
 }
 impl InputEventInit {
+    /// Getter of the `inputType` attribute.
     pub fn input_type(&self) -> JsString {
         self.inner.get("inputType").as_::<JsString>()
     }
 
+    /// Setter of the `inputType` attribute.
     pub fn set_input_type(&mut self, value: &JsString) {
         self.inner.set("inputType", value);
     }

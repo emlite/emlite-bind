@@ -1,10 +1,12 @@
 use super::*;
 
+/// The VideoEncoderEncodeOptionsForHevc dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoEncoderEncodeOptionsForHevc {
     inner: Any,
 }
+
 impl FromVal for VideoEncoderEncodeOptionsForHevc {
     fn from_val(v: &Any) -> Self {
         VideoEncoderEncodeOptionsForHevc { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for VideoEncoderEncodeOptionsForHevc {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for VideoEncoderEncodeOptionsForHevc {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for VideoEncoderEncodeOptionsForHevc {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for VideoEncoderEncodeOptionsForHevc {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for VideoEncoderEncodeOptionsForHevc {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<VideoEncoderEncodeOptionsForHevc> for Any {
     fn from(s: VideoEncoderEncodeOptionsForHevc) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<VideoEncoderEncodeOptionsForHevc> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&VideoEncoderEncodeOptionsForHevc> for Any {
     fn from(s: &VideoEncoderEncodeOptionsForHevc) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&VideoEncoderEncodeOptionsForHevc> for Any {
 }
 
 impl VideoEncoderEncodeOptionsForHevc {
+    /// Getter of the `quantizer` attribute.
     pub fn quantizer(&self) -> u16 {
         self.inner.get("quantizer").as_::<u16>()
     }
 
+    /// Setter of the `quantizer` attribute.
     pub fn set_quantizer(&mut self, value: u16) {
         self.inner.set("quantizer", value);
     }

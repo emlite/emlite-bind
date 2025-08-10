@@ -7,6 +7,7 @@ use super::*;
 pub struct PageSwapEvent {
     inner: Event,
 }
+
 impl FromVal for PageSwapEvent {
     fn from_val(v: &Any) -> Self {
         PageSwapEvent {
@@ -20,27 +21,32 @@ impl FromVal for PageSwapEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PageSwapEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PageSwapEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PageSwapEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PageSwapEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PageSwapEvent> for Any {
     fn from(s: PageSwapEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PageSwapEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PageSwapEvent> for Any {
     fn from(s: &PageSwapEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PageSwapEvent);
 
 impl PageSwapEvent {

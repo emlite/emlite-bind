@@ -7,6 +7,7 @@ use super::*;
 pub struct USBInTransferResult {
     inner: Any,
 }
+
 impl FromVal for USBInTransferResult {
     fn from_val(v: &Any) -> Self {
         USBInTransferResult {
@@ -20,27 +21,32 @@ impl FromVal for USBInTransferResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for USBInTransferResult {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for USBInTransferResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for USBInTransferResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for USBInTransferResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<USBInTransferResult> for Any {
     fn from(s: USBInTransferResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<USBInTransferResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&USBInTransferResult> for Any {
     fn from(s: &USBInTransferResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(USBInTransferResult);
 
 impl USBInTransferResult {

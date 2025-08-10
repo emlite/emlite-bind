@@ -7,6 +7,7 @@ use super::*;
 pub struct TextTrackCue {
     inner: EventTarget,
 }
+
 impl FromVal for TextTrackCue {
     fn from_val(v: &Any) -> Self {
         TextTrackCue {
@@ -20,27 +21,32 @@ impl FromVal for TextTrackCue {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TextTrackCue {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TextTrackCue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TextTrackCue {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TextTrackCue {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TextTrackCue> for Any {
     fn from(s: TextTrackCue) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TextTrackCue> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TextTrackCue> for Any {
     fn from(s: &TextTrackCue) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TextTrackCue);
 
 impl TextTrackCue {

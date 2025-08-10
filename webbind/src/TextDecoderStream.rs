@@ -7,6 +7,7 @@ use super::*;
 pub struct TextDecoderStream {
     inner: Any,
 }
+
 impl FromVal for TextDecoderStream {
     fn from_val(v: &Any) -> Self {
         TextDecoderStream {
@@ -20,27 +21,32 @@ impl FromVal for TextDecoderStream {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TextDecoderStream {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TextDecoderStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TextDecoderStream {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TextDecoderStream {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TextDecoderStream> for Any {
     fn from(s: TextDecoderStream) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TextDecoderStream> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TextDecoderStream> for Any {
     fn from(s: &TextDecoderStream) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TextDecoderStream);
 
 impl TextDecoderStream {

@@ -7,6 +7,7 @@ use super::*;
 pub struct MessageChannel {
     inner: Any,
 }
+
 impl FromVal for MessageChannel {
     fn from_val(v: &Any) -> Self {
         MessageChannel {
@@ -20,27 +21,32 @@ impl FromVal for MessageChannel {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MessageChannel {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MessageChannel {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MessageChannel {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MessageChannel {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MessageChannel> for Any {
     fn from(s: MessageChannel) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MessageChannel> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MessageChannel> for Any {
     fn from(s: &MessageChannel) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MessageChannel);
 
 impl MessageChannel {

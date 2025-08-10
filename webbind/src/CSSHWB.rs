@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSHWB {
     inner: CSSColorValue,
 }
+
 impl FromVal for CSSHWB {
     fn from_val(v: &Any) -> Self {
         CSSHWB {
@@ -20,27 +21,32 @@ impl FromVal for CSSHWB {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSHWB {
     type Target = CSSColorValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSHWB {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSHWB {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSHWB {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSHWB> for Any {
     fn from(s: CSSHWB) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSHWB> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSHWB> for Any {
     fn from(s: &CSSHWB) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSHWB);
 
 impl CSSHWB {

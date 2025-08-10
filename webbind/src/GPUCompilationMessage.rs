@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUCompilationMessage {
     inner: Any,
 }
+
 impl FromVal for GPUCompilationMessage {
     fn from_val(v: &Any) -> Self {
         GPUCompilationMessage {
@@ -20,27 +21,32 @@ impl FromVal for GPUCompilationMessage {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUCompilationMessage {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUCompilationMessage {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUCompilationMessage {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUCompilationMessage {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUCompilationMessage> for Any {
     fn from(s: GPUCompilationMessage) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUCompilationMessage> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUCompilationMessage> for Any {
     fn from(s: &GPUCompilationMessage) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUCompilationMessage);
 
 impl GPUCompilationMessage {

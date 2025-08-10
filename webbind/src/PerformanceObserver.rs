@@ -1,82 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PerformanceObserverInit {
-    inner: Any,
-}
-impl FromVal for PerformanceObserverInit {
-    fn from_val(v: &Any) -> Self {
-        PerformanceObserverInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PerformanceObserverInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PerformanceObserverInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PerformanceObserverInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PerformanceObserverInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PerformanceObserverInit> for Any {
-    fn from(s: PerformanceObserverInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PerformanceObserverInit> for Any {
-    fn from(s: &PerformanceObserverInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PerformanceObserverInit {
-    pub fn entry_types(&self) -> TypedArray<JsString> {
-        self.inner.get("entryTypes").as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_entry_types(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("entryTypes", value);
-    }
-}
-impl PerformanceObserverInit {
-    pub fn type_(&self) -> JsString {
-        self.inner.get("type").as_::<JsString>()
-    }
-
-    pub fn set_type_(&mut self, value: &JsString) {
-        self.inner.set("type", value);
-    }
-}
-impl PerformanceObserverInit {
-    pub fn buffered(&self) -> bool {
-        self.inner.get("buffered").as_::<bool>()
-    }
-
-    pub fn set_buffered(&mut self, value: bool) {
-        self.inner.set("buffered", value);
-    }
-}
 /// The PerformanceObserver class.
 /// [`PerformanceObserver`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -84,6 +7,7 @@ impl PerformanceObserverInit {
 pub struct PerformanceObserver {
     inner: Any,
 }
+
 impl FromVal for PerformanceObserver {
     fn from_val(v: &Any) -> Self {
         PerformanceObserver {
@@ -97,27 +21,32 @@ impl FromVal for PerformanceObserver {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PerformanceObserver {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PerformanceObserver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PerformanceObserver {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PerformanceObserver {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PerformanceObserver> for Any {
     fn from(s: PerformanceObserver) -> Any {
         let handle = s.inner.as_handle();
@@ -125,11 +54,13 @@ impl From<PerformanceObserver> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PerformanceObserver> for Any {
     fn from(s: &PerformanceObserver) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PerformanceObserver);
 
 impl PerformanceObserver {

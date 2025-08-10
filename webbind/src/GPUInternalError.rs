@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUInternalError {
     inner: GPUError,
 }
+
 impl FromVal for GPUInternalError {
     fn from_val(v: &Any) -> Self {
         GPUInternalError {
@@ -20,27 +21,32 @@ impl FromVal for GPUInternalError {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUInternalError {
     type Target = GPUError;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUInternalError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUInternalError {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUInternalError {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUInternalError> for Any {
     fn from(s: GPUInternalError) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUInternalError> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUInternalError> for Any {
     fn from(s: &GPUInternalError) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUInternalError);
 
 impl GPUInternalError {

@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaKeySystemAccess {
     inner: Any,
 }
+
 impl FromVal for MediaKeySystemAccess {
     fn from_val(v: &Any) -> Self {
         MediaKeySystemAccess {
@@ -20,27 +21,32 @@ impl FromVal for MediaKeySystemAccess {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaKeySystemAccess {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaKeySystemAccess {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaKeySystemAccess {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaKeySystemAccess {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaKeySystemAccess> for Any {
     fn from(s: MediaKeySystemAccess) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaKeySystemAccess> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaKeySystemAccess> for Any {
     fn from(s: &MediaKeySystemAccess) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaKeySystemAccess);
 
 impl MediaKeySystemAccess {

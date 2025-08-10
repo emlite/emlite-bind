@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSScale {
     inner: CSSTransformComponent,
 }
+
 impl FromVal for CSSScale {
     fn from_val(v: &Any) -> Self {
         CSSScale {
@@ -20,27 +21,32 @@ impl FromVal for CSSScale {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSScale {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSScale {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSScale {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSScale {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSScale> for Any {
     fn from(s: CSSScale) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSScale> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSScale> for Any {
     fn from(s: &CSSScale) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSScale);
 
 impl CSSScale {

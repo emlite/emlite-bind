@@ -7,6 +7,7 @@ use super::*;
 pub struct ContactAddress {
     inner: Any,
 }
+
 impl FromVal for ContactAddress {
     fn from_val(v: &Any) -> Self {
         ContactAddress {
@@ -20,27 +21,32 @@ impl FromVal for ContactAddress {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ContactAddress {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ContactAddress {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ContactAddress {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ContactAddress {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ContactAddress> for Any {
     fn from(s: ContactAddress) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ContactAddress> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ContactAddress> for Any {
     fn from(s: &ContactAddress) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ContactAddress);
 
 impl ContactAddress {

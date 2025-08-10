@@ -7,6 +7,7 @@ use super::*;
 pub struct LaunchParams {
     inner: Any,
 }
+
 impl FromVal for LaunchParams {
     fn from_val(v: &Any) -> Self {
         LaunchParams {
@@ -20,27 +21,32 @@ impl FromVal for LaunchParams {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for LaunchParams {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for LaunchParams {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for LaunchParams {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for LaunchParams {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<LaunchParams> for Any {
     fn from(s: LaunchParams) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<LaunchParams> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&LaunchParams> for Any {
     fn from(s: &LaunchParams) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(LaunchParams);
 
 impl LaunchParams {

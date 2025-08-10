@@ -1,73 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct AudioTimestamp {
-    inner: Any,
-}
-impl FromVal for AudioTimestamp {
-    fn from_val(v: &Any) -> Self {
-        AudioTimestamp { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for AudioTimestamp {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for AudioTimestamp {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for AudioTimestamp {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for AudioTimestamp {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<AudioTimestamp> for Any {
-    fn from(s: AudioTimestamp) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&AudioTimestamp> for Any {
-    fn from(s: &AudioTimestamp) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl AudioTimestamp {
-    pub fn context_time(&self) -> f64 {
-        self.inner.get("contextTime").as_::<f64>()
-    }
-
-    pub fn set_context_time(&mut self, value: f64) {
-        self.inner.set("contextTime", value);
-    }
-}
-impl AudioTimestamp {
-    pub fn performance_time(&self) -> Any {
-        self.inner.get("performanceTime").as_::<Any>()
-    }
-
-    pub fn set_performance_time(&mut self, value: &Any) {
-        self.inner.set("performanceTime", value);
-    }
-}
 /// The AudioContext class.
 /// [`AudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -75,6 +7,7 @@ impl AudioTimestamp {
 pub struct AudioContext {
     inner: BaseAudioContext,
 }
+
 impl FromVal for AudioContext {
     fn from_val(v: &Any) -> Self {
         AudioContext {
@@ -88,27 +21,32 @@ impl FromVal for AudioContext {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioContext {
     type Target = BaseAudioContext;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioContext {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioContext {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioContext> for Any {
     fn from(s: AudioContext) -> Any {
         let handle = s.inner.as_handle();
@@ -116,11 +54,13 @@ impl From<AudioContext> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioContext> for Any {
     fn from(s: &AudioContext) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AudioContext);
 
 impl AudioContext {

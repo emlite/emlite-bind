@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSOKLab {
     inner: CSSColorValue,
 }
+
 impl FromVal for CSSOKLab {
     fn from_val(v: &Any) -> Self {
         CSSOKLab {
@@ -20,27 +21,32 @@ impl FromVal for CSSOKLab {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSOKLab {
     type Target = CSSColorValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSOKLab {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSOKLab {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSOKLab {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSOKLab> for Any {
     fn from(s: CSSOKLab) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSOKLab> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSOKLab> for Any {
     fn from(s: &CSSOKLab) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSOKLab);
 
 impl CSSOKLab {

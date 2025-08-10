@@ -1,10 +1,12 @@
 use super::*;
 
+/// The EditContextInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EditContextInit {
     inner: Any,
 }
+
 impl FromVal for EditContextInit {
     fn from_val(v: &Any) -> Self {
         EditContextInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for EditContextInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EditContextInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EditContextInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EditContextInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EditContextInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EditContextInit> for Any {
     fn from(s: EditContextInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<EditContextInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EditContextInit> for Any {
     fn from(s: &EditContextInit) -> Any {
         s.inner.clone()
@@ -51,28 +59,34 @@ impl From<&EditContextInit> for Any {
 }
 
 impl EditContextInit {
+    /// Getter of the `text` attribute.
     pub fn text(&self) -> JsString {
         self.inner.get("text").as_::<JsString>()
     }
 
+    /// Setter of the `text` attribute.
     pub fn set_text(&mut self, value: &JsString) {
         self.inner.set("text", value);
     }
 }
 impl EditContextInit {
+    /// Getter of the `selectionStart` attribute.
     pub fn selection_start(&self) -> u32 {
         self.inner.get("selectionStart").as_::<u32>()
     }
 
+    /// Setter of the `selectionStart` attribute.
     pub fn set_selection_start(&mut self, value: u32) {
         self.inner.set("selectionStart", value);
     }
 }
 impl EditContextInit {
+    /// Getter of the `selectionEnd` attribute.
     pub fn selection_end(&self) -> u32 {
         self.inner.get("selectionEnd").as_::<u32>()
     }
 
+    /// Setter of the `selectionEnd` attribute.
     pub fn set_selection_end(&mut self, value: u32) {
         self.inner.set("selectionEnd", value);
     }

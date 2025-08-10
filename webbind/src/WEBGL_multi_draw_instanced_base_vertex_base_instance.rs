@@ -7,6 +7,7 @@ use super::*;
 pub struct WEBGL_multi_draw_instanced_base_vertex_base_instance {
     inner: Any,
 }
+
 impl FromVal for WEBGL_multi_draw_instanced_base_vertex_base_instance {
     fn from_val(v: &Any) -> Self {
         WEBGL_multi_draw_instanced_base_vertex_base_instance {
@@ -20,27 +21,32 @@ impl FromVal for WEBGL_multi_draw_instanced_base_vertex_base_instance {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WEBGL_multi_draw_instanced_base_vertex_base_instance {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WEBGL_multi_draw_instanced_base_vertex_base_instance {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WEBGL_multi_draw_instanced_base_vertex_base_instance {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WEBGL_multi_draw_instanced_base_vertex_base_instance {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WEBGL_multi_draw_instanced_base_vertex_base_instance> for Any {
     fn from(s: WEBGL_multi_draw_instanced_base_vertex_base_instance) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WEBGL_multi_draw_instanced_base_vertex_base_instance> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WEBGL_multi_draw_instanced_base_vertex_base_instance> for Any {
     fn from(s: &WEBGL_multi_draw_instanced_base_vertex_base_instance) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WEBGL_multi_draw_instanced_base_vertex_base_instance);
 
 impl WEBGL_multi_draw_instanced_base_vertex_base_instance {

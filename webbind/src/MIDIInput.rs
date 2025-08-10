@@ -7,6 +7,7 @@ use super::*;
 pub struct MIDIInput {
     inner: MIDIPort,
 }
+
 impl FromVal for MIDIInput {
     fn from_val(v: &Any) -> Self {
         MIDIInput {
@@ -20,27 +21,32 @@ impl FromVal for MIDIInput {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MIDIInput {
     type Target = MIDIPort;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MIDIInput {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MIDIInput {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MIDIInput {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MIDIInput> for Any {
     fn from(s: MIDIInput) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MIDIInput> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MIDIInput> for Any {
     fn from(s: &MIDIInput) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MIDIInput);
 
 impl MIDIInput {

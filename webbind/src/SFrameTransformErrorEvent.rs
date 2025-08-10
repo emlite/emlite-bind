@@ -7,6 +7,7 @@ use super::*;
 pub struct SFrameTransformErrorEvent {
     inner: Event,
 }
+
 impl FromVal for SFrameTransformErrorEvent {
     fn from_val(v: &Any) -> Self {
         SFrameTransformErrorEvent {
@@ -20,27 +21,32 @@ impl FromVal for SFrameTransformErrorEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SFrameTransformErrorEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SFrameTransformErrorEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SFrameTransformErrorEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SFrameTransformErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SFrameTransformErrorEvent> for Any {
     fn from(s: SFrameTransformErrorEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SFrameTransformErrorEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SFrameTransformErrorEvent> for Any {
     fn from(s: &SFrameTransformErrorEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SFrameTransformErrorEvent);
 
 impl SFrameTransformErrorEvent {

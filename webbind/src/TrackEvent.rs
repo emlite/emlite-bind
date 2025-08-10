@@ -7,6 +7,7 @@ use super::*;
 pub struct TrackEvent {
     inner: Event,
 }
+
 impl FromVal for TrackEvent {
     fn from_val(v: &Any) -> Self {
         TrackEvent {
@@ -20,27 +21,32 @@ impl FromVal for TrackEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TrackEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TrackEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TrackEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TrackEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TrackEvent> for Any {
     fn from(s: TrackEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TrackEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TrackEvent> for Any {
     fn from(s: &TrackEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TrackEvent);
 
 impl TrackEvent {

@@ -7,6 +7,7 @@ use super::*;
 pub struct NDEFMessage {
     inner: Any,
 }
+
 impl FromVal for NDEFMessage {
     fn from_val(v: &Any) -> Self {
         NDEFMessage {
@@ -20,27 +21,32 @@ impl FromVal for NDEFMessage {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NDEFMessage {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NDEFMessage {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NDEFMessage {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NDEFMessage {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NDEFMessage> for Any {
     fn from(s: NDEFMessage) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NDEFMessage> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NDEFMessage> for Any {
     fn from(s: &NDEFMessage) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
 impl NDEFMessage {

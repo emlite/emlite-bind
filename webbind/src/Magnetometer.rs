@@ -7,6 +7,7 @@ use super::*;
 pub struct Magnetometer {
     inner: Sensor,
 }
+
 impl FromVal for Magnetometer {
     fn from_val(v: &Any) -> Self {
         Magnetometer {
@@ -20,27 +21,32 @@ impl FromVal for Magnetometer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Magnetometer {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Magnetometer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Magnetometer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Magnetometer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Magnetometer> for Any {
     fn from(s: Magnetometer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Magnetometer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Magnetometer> for Any {
     fn from(s: &Magnetometer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Magnetometer);
 
 impl Magnetometer {

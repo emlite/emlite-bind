@@ -7,6 +7,7 @@ use super::*;
 pub struct FileSystemDirectoryReader {
     inner: Any,
 }
+
 impl FromVal for FileSystemDirectoryReader {
     fn from_val(v: &Any) -> Self {
         FileSystemDirectoryReader {
@@ -20,27 +21,32 @@ impl FromVal for FileSystemDirectoryReader {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FileSystemDirectoryReader {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FileSystemDirectoryReader {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FileSystemDirectoryReader {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FileSystemDirectoryReader {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FileSystemDirectoryReader> for Any {
     fn from(s: FileSystemDirectoryReader) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FileSystemDirectoryReader> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FileSystemDirectoryReader> for Any {
     fn from(s: &FileSystemDirectoryReader) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryReader);
 
 impl FileSystemDirectoryReader {

@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLOptGroupElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLOptGroupElement {
     fn from_val(v: &Any) -> Self {
         HTMLOptGroupElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLOptGroupElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLOptGroupElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLOptGroupElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLOptGroupElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLOptGroupElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLOptGroupElement> for Any {
     fn from(s: HTMLOptGroupElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLOptGroupElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLOptGroupElement> for Any {
     fn from(s: &HTMLOptGroupElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLOptGroupElement);
 
 impl HTMLOptGroupElement {

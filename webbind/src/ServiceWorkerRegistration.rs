@@ -1,242 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct NotificationOptions {
-    inner: Any,
-}
-impl FromVal for NotificationOptions {
-    fn from_val(v: &Any) -> Self {
-        NotificationOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for NotificationOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for NotificationOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for NotificationOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for NotificationOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<NotificationOptions> for Any {
-    fn from(s: NotificationOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&NotificationOptions> for Any {
-    fn from(s: &NotificationOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl NotificationOptions {
-    pub fn dir(&self) -> NotificationDirection {
-        self.inner.get("dir").as_::<NotificationDirection>()
-    }
-
-    pub fn set_dir(&mut self, value: &NotificationDirection) {
-        self.inner.set("dir", value);
-    }
-}
-impl NotificationOptions {
-    pub fn lang(&self) -> JsString {
-        self.inner.get("lang").as_::<JsString>()
-    }
-
-    pub fn set_lang(&mut self, value: &JsString) {
-        self.inner.set("lang", value);
-    }
-}
-impl NotificationOptions {
-    pub fn body(&self) -> JsString {
-        self.inner.get("body").as_::<JsString>()
-    }
-
-    pub fn set_body(&mut self, value: &JsString) {
-        self.inner.set("body", value);
-    }
-}
-impl NotificationOptions {
-    pub fn tag(&self) -> JsString {
-        self.inner.get("tag").as_::<JsString>()
-    }
-
-    pub fn set_tag(&mut self, value: &JsString) {
-        self.inner.set("tag", value);
-    }
-}
-impl NotificationOptions {
-    pub fn image(&self) -> JsString {
-        self.inner.get("image").as_::<JsString>()
-    }
-
-    pub fn set_image(&mut self, value: &JsString) {
-        self.inner.set("image", value);
-    }
-}
-impl NotificationOptions {
-    pub fn icon(&self) -> JsString {
-        self.inner.get("icon").as_::<JsString>()
-    }
-
-    pub fn set_icon(&mut self, value: &JsString) {
-        self.inner.set("icon", value);
-    }
-}
-impl NotificationOptions {
-    pub fn badge(&self) -> JsString {
-        self.inner.get("badge").as_::<JsString>()
-    }
-
-    pub fn set_badge(&mut self, value: &JsString) {
-        self.inner.set("badge", value);
-    }
-}
-impl NotificationOptions {
-    pub fn vibrate(&self) -> Any {
-        self.inner.get("vibrate").as_::<Any>()
-    }
-
-    pub fn set_vibrate(&mut self, value: &Any) {
-        self.inner.set("vibrate", value);
-    }
-}
-impl NotificationOptions {
-    pub fn timestamp(&self) -> Any {
-        self.inner.get("timestamp").as_::<Any>()
-    }
-
-    pub fn set_timestamp(&mut self, value: &Any) {
-        self.inner.set("timestamp", value);
-    }
-}
-impl NotificationOptions {
-    pub fn renotify(&self) -> bool {
-        self.inner.get("renotify").as_::<bool>()
-    }
-
-    pub fn set_renotify(&mut self, value: bool) {
-        self.inner.set("renotify", value);
-    }
-}
-impl NotificationOptions {
-    pub fn silent(&self) -> bool {
-        self.inner.get("silent").as_::<bool>()
-    }
-
-    pub fn set_silent(&mut self, value: bool) {
-        self.inner.set("silent", value);
-    }
-}
-impl NotificationOptions {
-    pub fn require_interaction(&self) -> bool {
-        self.inner.get("requireInteraction").as_::<bool>()
-    }
-
-    pub fn set_require_interaction(&mut self, value: bool) {
-        self.inner.set("requireInteraction", value);
-    }
-}
-impl NotificationOptions {
-    pub fn data(&self) -> Any {
-        self.inner.get("data").as_::<Any>()
-    }
-
-    pub fn set_data(&mut self, value: &Any) {
-        self.inner.set("data", value);
-    }
-}
-impl NotificationOptions {
-    pub fn actions(&self) -> TypedArray<NotificationAction> {
-        self.inner
-            .get("actions")
-            .as_::<TypedArray<NotificationAction>>()
-    }
-
-    pub fn set_actions(&mut self, value: &TypedArray<NotificationAction>) {
-        self.inner.set("actions", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GetNotificationOptions {
-    inner: Any,
-}
-impl FromVal for GetNotificationOptions {
-    fn from_val(v: &Any) -> Self {
-        GetNotificationOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GetNotificationOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GetNotificationOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GetNotificationOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GetNotificationOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GetNotificationOptions> for Any {
-    fn from(s: GetNotificationOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GetNotificationOptions> for Any {
-    fn from(s: &GetNotificationOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl GetNotificationOptions {
-    pub fn tag(&self) -> JsString {
-        self.inner.get("tag").as_::<JsString>()
-    }
-
-    pub fn set_tag(&mut self, value: &JsString) {
-        self.inner.set("tag", value);
-    }
-}
 /// The ServiceWorkerRegistration class.
 /// [`ServiceWorkerRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -244,6 +7,7 @@ impl GetNotificationOptions {
 pub struct ServiceWorkerRegistration {
     inner: EventTarget,
 }
+
 impl FromVal for ServiceWorkerRegistration {
     fn from_val(v: &Any) -> Self {
         ServiceWorkerRegistration {
@@ -257,27 +21,32 @@ impl FromVal for ServiceWorkerRegistration {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ServiceWorkerRegistration {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ServiceWorkerRegistration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ServiceWorkerRegistration {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ServiceWorkerRegistration {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ServiceWorkerRegistration> for Any {
     fn from(s: ServiceWorkerRegistration) -> Any {
         let handle = s.inner.as_handle();
@@ -285,11 +54,13 @@ impl From<ServiceWorkerRegistration> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ServiceWorkerRegistration> for Any {
     fn from(s: &ServiceWorkerRegistration) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ServiceWorkerRegistration);
 
 impl ServiceWorkerRegistration {

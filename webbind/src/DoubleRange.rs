@@ -1,10 +1,12 @@
 use super::*;
 
+/// The DoubleRange dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DoubleRange {
     inner: Any,
 }
+
 impl FromVal for DoubleRange {
     fn from_val(v: &Any) -> Self {
         DoubleRange { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for DoubleRange {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DoubleRange {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DoubleRange {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DoubleRange {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DoubleRange {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DoubleRange> for Any {
     fn from(s: DoubleRange) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<DoubleRange> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DoubleRange> for Any {
     fn from(s: &DoubleRange) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&DoubleRange> for Any {
 }
 
 impl DoubleRange {
+    /// Getter of the `max` attribute.
     pub fn max(&self) -> f64 {
         self.inner.get("max").as_::<f64>()
     }
 
+    /// Setter of the `max` attribute.
     pub fn set_max(&mut self, value: f64) {
         self.inner.set("max", value);
     }
 }
 impl DoubleRange {
+    /// Getter of the `min` attribute.
     pub fn min(&self) -> f64 {
         self.inner.get("min").as_::<f64>()
     }
 
+    /// Setter of the `min` attribute.
     pub fn set_min(&mut self, value: f64) {
         self.inner.set("min", value);
     }

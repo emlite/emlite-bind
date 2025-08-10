@@ -7,6 +7,7 @@ use super::*;
 pub struct WebGLObject {
     inner: Any,
 }
+
 impl FromVal for WebGLObject {
     fn from_val(v: &Any) -> Self {
         WebGLObject {
@@ -20,27 +21,32 @@ impl FromVal for WebGLObject {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebGLObject {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebGLObject {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebGLObject {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebGLObject {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebGLObject> for Any {
     fn from(s: WebGLObject) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WebGLObject> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebGLObject> for Any {
     fn from(s: &WebGLObject) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebGLObject);
 
 impl WebGLObject {

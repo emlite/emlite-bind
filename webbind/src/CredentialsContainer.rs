@@ -1,127 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct CredentialRequestOptions {
-    inner: Any,
-}
-impl FromVal for CredentialRequestOptions {
-    fn from_val(v: &Any) -> Self {
-        CredentialRequestOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for CredentialRequestOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for CredentialRequestOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for CredentialRequestOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for CredentialRequestOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<CredentialRequestOptions> for Any {
-    fn from(s: CredentialRequestOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&CredentialRequestOptions> for Any {
-    fn from(s: &CredentialRequestOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl CredentialRequestOptions {
-    pub fn public_key(&self) -> PublicKeyCredentialRequestOptions {
-        self.inner
-            .get("publicKey")
-            .as_::<PublicKeyCredentialRequestOptions>()
-    }
-
-    pub fn set_public_key(&mut self, value: &PublicKeyCredentialRequestOptions) {
-        self.inner.set("publicKey", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct CredentialCreationOptions {
-    inner: Any,
-}
-impl FromVal for CredentialCreationOptions {
-    fn from_val(v: &Any) -> Self {
-        CredentialCreationOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for CredentialCreationOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for CredentialCreationOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for CredentialCreationOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for CredentialCreationOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<CredentialCreationOptions> for Any {
-    fn from(s: CredentialCreationOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&CredentialCreationOptions> for Any {
-    fn from(s: &CredentialCreationOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl CredentialCreationOptions {
-    pub fn public_key(&self) -> PublicKeyCredentialCreationOptions {
-        self.inner
-            .get("publicKey")
-            .as_::<PublicKeyCredentialCreationOptions>()
-    }
-
-    pub fn set_public_key(&mut self, value: &PublicKeyCredentialCreationOptions) {
-        self.inner.set("publicKey", value);
-    }
-}
 /// The CredentialsContainer class.
 /// [`CredentialsContainer`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -129,6 +7,7 @@ impl CredentialCreationOptions {
 pub struct CredentialsContainer {
     inner: Any,
 }
+
 impl FromVal for CredentialsContainer {
     fn from_val(v: &Any) -> Self {
         CredentialsContainer {
@@ -142,27 +21,32 @@ impl FromVal for CredentialsContainer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CredentialsContainer {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CredentialsContainer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CredentialsContainer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CredentialsContainer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CredentialsContainer> for Any {
     fn from(s: CredentialsContainer) -> Any {
         let handle = s.inner.as_handle();
@@ -170,11 +54,13 @@ impl From<CredentialsContainer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CredentialsContainer> for Any {
     fn from(s: &CredentialsContainer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CredentialsContainer);
 
 impl CredentialsContainer {

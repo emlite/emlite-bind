@@ -7,6 +7,7 @@ use super::*;
 pub struct RadioNodeList {
     inner: NodeList,
 }
+
 impl FromVal for RadioNodeList {
     fn from_val(v: &Any) -> Self {
         RadioNodeList {
@@ -20,27 +21,32 @@ impl FromVal for RadioNodeList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RadioNodeList {
     type Target = NodeList;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RadioNodeList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RadioNodeList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RadioNodeList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RadioNodeList> for Any {
     fn from(s: RadioNodeList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RadioNodeList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RadioNodeList> for Any {
     fn from(s: &RadioNodeList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RadioNodeList);
 
 impl RadioNodeList {

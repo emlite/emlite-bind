@@ -7,6 +7,7 @@ use super::*;
 pub struct ProximitySensor {
     inner: Sensor,
 }
+
 impl FromVal for ProximitySensor {
     fn from_val(v: &Any) -> Self {
         ProximitySensor {
@@ -20,27 +21,32 @@ impl FromVal for ProximitySensor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ProximitySensor {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ProximitySensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ProximitySensor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ProximitySensor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ProximitySensor> for Any {
     fn from(s: ProximitySensor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ProximitySensor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ProximitySensor> for Any {
     fn from(s: &ProximitySensor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ProximitySensor);
 
 impl ProximitySensor {

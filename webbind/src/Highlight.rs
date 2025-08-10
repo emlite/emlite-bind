@@ -7,6 +7,7 @@ use super::*;
 pub struct Highlight {
     inner: Any,
 }
+
 impl FromVal for Highlight {
     fn from_val(v: &Any) -> Self {
         Highlight {
@@ -20,27 +21,32 @@ impl FromVal for Highlight {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Highlight {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Highlight {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Highlight {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Highlight {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Highlight> for Any {
     fn from(s: Highlight) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Highlight> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Highlight> for Any {
     fn from(s: &Highlight) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Highlight);
 
 impl Highlight {

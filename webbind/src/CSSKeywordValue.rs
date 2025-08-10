@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSKeywordValue {
     inner: CSSStyleValue,
 }
+
 impl FromVal for CSSKeywordValue {
     fn from_val(v: &Any) -> Self {
         CSSKeywordValue {
@@ -20,27 +21,32 @@ impl FromVal for CSSKeywordValue {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSKeywordValue {
     type Target = CSSStyleValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSKeywordValue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSKeywordValue {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSKeywordValue {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSKeywordValue> for Any {
     fn from(s: CSSKeywordValue) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSKeywordValue> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSKeywordValue> for Any {
     fn from(s: &CSSKeywordValue) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSKeywordValue);
 
 impl CSSKeywordValue {

@@ -7,6 +7,7 @@ use super::*;
 pub struct PermissionStatus {
     inner: EventTarget,
 }
+
 impl FromVal for PermissionStatus {
     fn from_val(v: &Any) -> Self {
         PermissionStatus {
@@ -20,27 +21,32 @@ impl FromVal for PermissionStatus {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PermissionStatus {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PermissionStatus {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PermissionStatus {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PermissionStatus {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PermissionStatus> for Any {
     fn from(s: PermissionStatus) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PermissionStatus> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PermissionStatus> for Any {
     fn from(s: &PermissionStatus) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PermissionStatus);
 
 impl PermissionStatus {

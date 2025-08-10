@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGAngle {
     inner: Any,
 }
+
 impl FromVal for SVGAngle {
     fn from_val(v: &Any) -> Self {
         SVGAngle {
@@ -20,27 +21,32 @@ impl FromVal for SVGAngle {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGAngle {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGAngle {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGAngle {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGAngle {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGAngle> for Any {
     fn from(s: SVGAngle) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGAngle> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGAngle> for Any {
     fn from(s: &SVGAngle) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGAngle);
 
 impl SVGAngle {

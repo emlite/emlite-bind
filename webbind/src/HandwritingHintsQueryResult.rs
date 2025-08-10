@@ -1,10 +1,12 @@
 use super::*;
 
+/// The HandwritingHintsQueryResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingHintsQueryResult {
     inner: Any,
 }
+
 impl FromVal for HandwritingHintsQueryResult {
     fn from_val(v: &Any) -> Self {
         HandwritingHintsQueryResult { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for HandwritingHintsQueryResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HandwritingHintsQueryResult {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HandwritingHintsQueryResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HandwritingHintsQueryResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HandwritingHintsQueryResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HandwritingHintsQueryResult> for Any {
     fn from(s: HandwritingHintsQueryResult) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<HandwritingHintsQueryResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HandwritingHintsQueryResult> for Any {
     fn from(s: &HandwritingHintsQueryResult) -> Any {
         s.inner.clone()
@@ -51,41 +59,49 @@ impl From<&HandwritingHintsQueryResult> for Any {
 }
 
 impl HandwritingHintsQueryResult {
+    /// Getter of the `recognitionType` attribute.
     pub fn recognition_type(&self) -> TypedArray<HandwritingRecognitionType> {
         self.inner
             .get("recognitionType")
             .as_::<TypedArray<HandwritingRecognitionType>>()
     }
 
+    /// Setter of the `recognitionType` attribute.
     pub fn set_recognition_type(&mut self, value: &TypedArray<HandwritingRecognitionType>) {
         self.inner.set("recognitionType", value);
     }
 }
 impl HandwritingHintsQueryResult {
+    /// Getter of the `inputType` attribute.
     pub fn input_type(&self) -> TypedArray<HandwritingInputType> {
         self.inner
             .get("inputType")
             .as_::<TypedArray<HandwritingInputType>>()
     }
 
+    /// Setter of the `inputType` attribute.
     pub fn set_input_type(&mut self, value: &TypedArray<HandwritingInputType>) {
         self.inner.set("inputType", value);
     }
 }
 impl HandwritingHintsQueryResult {
+    /// Getter of the `textContext` attribute.
     pub fn text_context(&self) -> bool {
         self.inner.get("textContext").as_::<bool>()
     }
 
+    /// Setter of the `textContext` attribute.
     pub fn set_text_context(&mut self, value: bool) {
         self.inner.set("textContext", value);
     }
 }
 impl HandwritingHintsQueryResult {
+    /// Getter of the `alternatives` attribute.
     pub fn alternatives(&self) -> bool {
         self.inner.get("alternatives").as_::<bool>()
     }
 
+    /// Setter of the `alternatives` attribute.
     pub fn set_alternatives(&mut self, value: bool) {
         self.inner.set("alternatives", value);
     }

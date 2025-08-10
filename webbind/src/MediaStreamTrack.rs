@@ -1,315 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct MediaTrackCapabilities {
-    inner: Any,
-}
-impl FromVal for MediaTrackCapabilities {
-    fn from_val(v: &Any) -> Self {
-        MediaTrackCapabilities { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for MediaTrackCapabilities {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for MediaTrackCapabilities {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for MediaTrackCapabilities {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for MediaTrackCapabilities {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<MediaTrackCapabilities> for Any {
-    fn from(s: MediaTrackCapabilities) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&MediaTrackCapabilities> for Any {
-    fn from(s: &MediaTrackCapabilities) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl MediaTrackCapabilities {
-    pub fn display_surface(&self) -> JsString {
-        self.inner.get("displaySurface").as_::<JsString>()
-    }
-
-    pub fn set_display_surface(&mut self, value: &JsString) {
-        self.inner.set("displaySurface", value);
-    }
-}
-impl MediaTrackCapabilities {
-    pub fn logical_surface(&self) -> bool {
-        self.inner.get("logicalSurface").as_::<bool>()
-    }
-
-    pub fn set_logical_surface(&mut self, value: bool) {
-        self.inner.set("logicalSurface", value);
-    }
-}
-impl MediaTrackCapabilities {
-    pub fn cursor(&self) -> TypedArray<JsString> {
-        self.inner.get("cursor").as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_cursor(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("cursor", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct MediaTrackConstraints {
-    inner: Any,
-}
-impl FromVal for MediaTrackConstraints {
-    fn from_val(v: &Any) -> Self {
-        MediaTrackConstraints { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for MediaTrackConstraints {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for MediaTrackConstraints {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for MediaTrackConstraints {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for MediaTrackConstraints {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<MediaTrackConstraints> for Any {
-    fn from(s: MediaTrackConstraints) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&MediaTrackConstraints> for Any {
-    fn from(s: &MediaTrackConstraints) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl MediaTrackConstraints {
-    pub fn advanced(&self) -> TypedArray<MediaTrackConstraintSet> {
-        self.inner
-            .get("advanced")
-            .as_::<TypedArray<MediaTrackConstraintSet>>()
-    }
-
-    pub fn set_advanced(&mut self, value: &TypedArray<MediaTrackConstraintSet>) {
-        self.inner.set("advanced", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct MediaTrackSettings {
-    inner: Any,
-}
-impl FromVal for MediaTrackSettings {
-    fn from_val(v: &Any) -> Self {
-        MediaTrackSettings { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for MediaTrackSettings {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for MediaTrackSettings {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for MediaTrackSettings {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for MediaTrackSettings {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<MediaTrackSettings> for Any {
-    fn from(s: MediaTrackSettings) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&MediaTrackSettings> for Any {
-    fn from(s: &MediaTrackSettings) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl MediaTrackSettings {
-    pub fn display_surface(&self) -> JsString {
-        self.inner.get("displaySurface").as_::<JsString>()
-    }
-
-    pub fn set_display_surface(&mut self, value: &JsString) {
-        self.inner.set("displaySurface", value);
-    }
-}
-impl MediaTrackSettings {
-    pub fn logical_surface(&self) -> bool {
-        self.inner.get("logicalSurface").as_::<bool>()
-    }
-
-    pub fn set_logical_surface(&mut self, value: bool) {
-        self.inner.set("logicalSurface", value);
-    }
-}
-impl MediaTrackSettings {
-    pub fn cursor(&self) -> JsString {
-        self.inner.get("cursor").as_::<JsString>()
-    }
-
-    pub fn set_cursor(&mut self, value: &JsString) {
-        self.inner.set("cursor", value);
-    }
-}
-impl MediaTrackSettings {
-    pub fn restrict_own_audio(&self) -> bool {
-        self.inner.get("restrictOwnAudio").as_::<bool>()
-    }
-
-    pub fn set_restrict_own_audio(&mut self, value: bool) {
-        self.inner.set("restrictOwnAudio", value);
-    }
-}
-impl MediaTrackSettings {
-    pub fn suppress_local_audio_playback(&self) -> bool {
-        self.inner.get("suppressLocalAudioPlayback").as_::<bool>()
-    }
-
-    pub fn set_suppress_local_audio_playback(&mut self, value: bool) {
-        self.inner.set("suppressLocalAudioPlayback", value);
-    }
-}
-impl MediaTrackSettings {
-    pub fn screen_pixel_ratio(&self) -> f64 {
-        self.inner.get("screenPixelRatio").as_::<f64>()
-    }
-
-    pub fn set_screen_pixel_ratio(&mut self, value: f64) {
-        self.inner.set("screenPixelRatio", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct CaptureHandle {
-    inner: Any,
-}
-impl FromVal for CaptureHandle {
-    fn from_val(v: &Any) -> Self {
-        CaptureHandle { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for CaptureHandle {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for CaptureHandle {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for CaptureHandle {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for CaptureHandle {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<CaptureHandle> for Any {
-    fn from(s: CaptureHandle) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&CaptureHandle> for Any {
-    fn from(s: &CaptureHandle) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl CaptureHandle {
-    pub fn origin(&self) -> JsString {
-        self.inner.get("origin").as_::<JsString>()
-    }
-
-    pub fn set_origin(&mut self, value: &JsString) {
-        self.inner.set("origin", value);
-    }
-}
-impl CaptureHandle {
-    pub fn handle(&self) -> JsString {
-        self.inner.get("handle").as_::<JsString>()
-    }
-
-    pub fn set_handle(&mut self, value: &JsString) {
-        self.inner.set("handle", value);
-    }
-}
 /// The MediaStreamTrack class.
 /// [`MediaStreamTrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -317,6 +7,7 @@ impl CaptureHandle {
 pub struct MediaStreamTrack {
     inner: EventTarget,
 }
+
 impl FromVal for MediaStreamTrack {
     fn from_val(v: &Any) -> Self {
         MediaStreamTrack {
@@ -330,27 +21,32 @@ impl FromVal for MediaStreamTrack {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaStreamTrack {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaStreamTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaStreamTrack {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaStreamTrack {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaStreamTrack> for Any {
     fn from(s: MediaStreamTrack) -> Any {
         let handle = s.inner.as_handle();
@@ -358,11 +54,13 @@ impl From<MediaStreamTrack> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaStreamTrack> for Any {
     fn from(s: &MediaStreamTrack) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaStreamTrack);
 
 impl MediaStreamTrack {

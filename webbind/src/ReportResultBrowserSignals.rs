@@ -1,10 +1,12 @@
 use super::*;
 
+/// The ReportResultBrowserSignals dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReportResultBrowserSignals {
     inner: Any,
 }
+
 impl FromVal for ReportResultBrowserSignals {
     fn from_val(v: &Any) -> Self {
         ReportResultBrowserSignals { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for ReportResultBrowserSignals {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ReportResultBrowserSignals {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ReportResultBrowserSignals {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ReportResultBrowserSignals {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ReportResultBrowserSignals {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ReportResultBrowserSignals> for Any {
     fn from(s: ReportResultBrowserSignals) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<ReportResultBrowserSignals> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ReportResultBrowserSignals> for Any {
     fn from(s: &ReportResultBrowserSignals) -> Any {
         s.inner.clone()
@@ -51,37 +59,45 @@ impl From<&ReportResultBrowserSignals> for Any {
 }
 
 impl ReportResultBrowserSignals {
+    /// Getter of the `desirability` attribute.
     pub fn desirability(&self) -> f64 {
         self.inner.get("desirability").as_::<f64>()
     }
 
+    /// Setter of the `desirability` attribute.
     pub fn set_desirability(&mut self, value: f64) {
         self.inner.set("desirability", value);
     }
 }
 impl ReportResultBrowserSignals {
+    /// Getter of the `topLevelSellerSignals` attribute.
     pub fn top_level_seller_signals(&self) -> JsString {
         self.inner.get("topLevelSellerSignals").as_::<JsString>()
     }
 
+    /// Setter of the `topLevelSellerSignals` attribute.
     pub fn set_top_level_seller_signals(&mut self, value: &JsString) {
         self.inner.set("topLevelSellerSignals", value);
     }
 }
 impl ReportResultBrowserSignals {
+    /// Getter of the `modifiedBid` attribute.
     pub fn modified_bid(&self) -> f64 {
         self.inner.get("modifiedBid").as_::<f64>()
     }
 
+    /// Setter of the `modifiedBid` attribute.
     pub fn set_modified_bid(&mut self, value: f64) {
         self.inner.set("modifiedBid", value);
     }
 }
 impl ReportResultBrowserSignals {
+    /// Getter of the `dataVersion` attribute.
     pub fn data_version(&self) -> u32 {
         self.inner.get("dataVersion").as_::<u32>()
     }
 
+    /// Setter of the `dataVersion` attribute.
     pub fn set_data_version(&mut self, value: u32) {
         self.inner.set("dataVersion", value);
     }

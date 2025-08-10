@@ -7,6 +7,7 @@ use super::*;
 pub struct Client {
     inner: Any,
 }
+
 impl FromVal for Client {
     fn from_val(v: &Any) -> Self {
         Client {
@@ -20,27 +21,32 @@ impl FromVal for Client {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Client {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Client {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Client {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Client {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Client> for Any {
     fn from(s: Client) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Client> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Client> for Any {
     fn from(s: &Client) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Client);
 
 impl Client {

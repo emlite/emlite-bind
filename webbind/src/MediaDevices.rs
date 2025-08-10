@@ -1,429 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct AudioOutputOptions {
-    inner: Any,
-}
-impl FromVal for AudioOutputOptions {
-    fn from_val(v: &Any) -> Self {
-        AudioOutputOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for AudioOutputOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for AudioOutputOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for AudioOutputOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for AudioOutputOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<AudioOutputOptions> for Any {
-    fn from(s: AudioOutputOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&AudioOutputOptions> for Any {
-    fn from(s: &AudioOutputOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl AudioOutputOptions {
-    pub fn device_id(&self) -> JsString {
-        self.inner.get("deviceId").as_::<JsString>()
-    }
-
-    pub fn set_device_id(&mut self, value: &JsString) {
-        self.inner.set("deviceId", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct CaptureHandleConfig {
-    inner: Any,
-}
-impl FromVal for CaptureHandleConfig {
-    fn from_val(v: &Any) -> Self {
-        CaptureHandleConfig { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for CaptureHandleConfig {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for CaptureHandleConfig {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for CaptureHandleConfig {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for CaptureHandleConfig {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<CaptureHandleConfig> for Any {
-    fn from(s: CaptureHandleConfig) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&CaptureHandleConfig> for Any {
-    fn from(s: &CaptureHandleConfig) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl CaptureHandleConfig {
-    pub fn expose_origin(&self) -> bool {
-        self.inner.get("exposeOrigin").as_::<bool>()
-    }
-
-    pub fn set_expose_origin(&mut self, value: bool) {
-        self.inner.set("exposeOrigin", value);
-    }
-}
-impl CaptureHandleConfig {
-    pub fn handle(&self) -> JsString {
-        self.inner.get("handle").as_::<JsString>()
-    }
-
-    pub fn set_handle(&mut self, value: &JsString) {
-        self.inner.set("handle", value);
-    }
-}
-impl CaptureHandleConfig {
-    pub fn permitted_origins(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("permittedOrigins")
-            .as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_permitted_origins(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("permittedOrigins", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct MediaTrackSupportedConstraints {
-    inner: Any,
-}
-impl FromVal for MediaTrackSupportedConstraints {
-    fn from_val(v: &Any) -> Self {
-        MediaTrackSupportedConstraints { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for MediaTrackSupportedConstraints {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for MediaTrackSupportedConstraints {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for MediaTrackSupportedConstraints {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for MediaTrackSupportedConstraints {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<MediaTrackSupportedConstraints> for Any {
-    fn from(s: MediaTrackSupportedConstraints) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&MediaTrackSupportedConstraints> for Any {
-    fn from(s: &MediaTrackSupportedConstraints) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl MediaTrackSupportedConstraints {
-    pub fn display_surface(&self) -> bool {
-        self.inner.get("displaySurface").as_::<bool>()
-    }
-
-    pub fn set_display_surface(&mut self, value: bool) {
-        self.inner.set("displaySurface", value);
-    }
-}
-impl MediaTrackSupportedConstraints {
-    pub fn logical_surface(&self) -> bool {
-        self.inner.get("logicalSurface").as_::<bool>()
-    }
-
-    pub fn set_logical_surface(&mut self, value: bool) {
-        self.inner.set("logicalSurface", value);
-    }
-}
-impl MediaTrackSupportedConstraints {
-    pub fn cursor(&self) -> bool {
-        self.inner.get("cursor").as_::<bool>()
-    }
-
-    pub fn set_cursor(&mut self, value: bool) {
-        self.inner.set("cursor", value);
-    }
-}
-impl MediaTrackSupportedConstraints {
-    pub fn restrict_own_audio(&self) -> bool {
-        self.inner.get("restrictOwnAudio").as_::<bool>()
-    }
-
-    pub fn set_restrict_own_audio(&mut self, value: bool) {
-        self.inner.set("restrictOwnAudio", value);
-    }
-}
-impl MediaTrackSupportedConstraints {
-    pub fn suppress_local_audio_playback(&self) -> bool {
-        self.inner.get("suppressLocalAudioPlayback").as_::<bool>()
-    }
-
-    pub fn set_suppress_local_audio_playback(&mut self, value: bool) {
-        self.inner.set("suppressLocalAudioPlayback", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct MediaStreamConstraints {
-    inner: Any,
-}
-impl FromVal for MediaStreamConstraints {
-    fn from_val(v: &Any) -> Self {
-        MediaStreamConstraints { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for MediaStreamConstraints {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for MediaStreamConstraints {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for MediaStreamConstraints {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for MediaStreamConstraints {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<MediaStreamConstraints> for Any {
-    fn from(s: MediaStreamConstraints) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&MediaStreamConstraints> for Any {
-    fn from(s: &MediaStreamConstraints) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl MediaStreamConstraints {
-    pub fn peer_identity(&self) -> JsString {
-        self.inner.get("peerIdentity").as_::<JsString>()
-    }
-
-    pub fn set_peer_identity(&mut self, value: &JsString) {
-        self.inner.set("peerIdentity", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct DisplayMediaStreamOptions {
-    inner: Any,
-}
-impl FromVal for DisplayMediaStreamOptions {
-    fn from_val(v: &Any) -> Self {
-        DisplayMediaStreamOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for DisplayMediaStreamOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for DisplayMediaStreamOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for DisplayMediaStreamOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for DisplayMediaStreamOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<DisplayMediaStreamOptions> for Any {
-    fn from(s: DisplayMediaStreamOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&DisplayMediaStreamOptions> for Any {
-    fn from(s: &DisplayMediaStreamOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl DisplayMediaStreamOptions {
-    pub fn video(&self) -> Any {
-        self.inner.get("video").as_::<Any>()
-    }
-
-    pub fn set_video(&mut self, value: &Any) {
-        self.inner.set("video", value);
-    }
-}
-impl DisplayMediaStreamOptions {
-    pub fn audio(&self) -> Any {
-        self.inner.get("audio").as_::<Any>()
-    }
-
-    pub fn set_audio(&mut self, value: &Any) {
-        self.inner.set("audio", value);
-    }
-}
-impl DisplayMediaStreamOptions {
-    pub fn controller(&self) -> CaptureController {
-        self.inner.get("controller").as_::<CaptureController>()
-    }
-
-    pub fn set_controller(&mut self, value: &CaptureController) {
-        self.inner.set("controller", value);
-    }
-}
-impl DisplayMediaStreamOptions {
-    pub fn self_browser_surface(&self) -> SelfCapturePreferenceEnum {
-        self.inner
-            .get("selfBrowserSurface")
-            .as_::<SelfCapturePreferenceEnum>()
-    }
-
-    pub fn set_self_browser_surface(&mut self, value: &SelfCapturePreferenceEnum) {
-        self.inner.set("selfBrowserSurface", value);
-    }
-}
-impl DisplayMediaStreamOptions {
-    pub fn system_audio(&self) -> SystemAudioPreferenceEnum {
-        self.inner
-            .get("systemAudio")
-            .as_::<SystemAudioPreferenceEnum>()
-    }
-
-    pub fn set_system_audio(&mut self, value: &SystemAudioPreferenceEnum) {
-        self.inner.set("systemAudio", value);
-    }
-}
-impl DisplayMediaStreamOptions {
-    pub fn window_audio(&self) -> WindowAudioPreferenceEnum {
-        self.inner
-            .get("windowAudio")
-            .as_::<WindowAudioPreferenceEnum>()
-    }
-
-    pub fn set_window_audio(&mut self, value: &WindowAudioPreferenceEnum) {
-        self.inner.set("windowAudio", value);
-    }
-}
-impl DisplayMediaStreamOptions {
-    pub fn surface_switching(&self) -> SurfaceSwitchingPreferenceEnum {
-        self.inner
-            .get("surfaceSwitching")
-            .as_::<SurfaceSwitchingPreferenceEnum>()
-    }
-
-    pub fn set_surface_switching(&mut self, value: &SurfaceSwitchingPreferenceEnum) {
-        self.inner.set("surfaceSwitching", value);
-    }
-}
-impl DisplayMediaStreamOptions {
-    pub fn monitor_type_surfaces(&self) -> MonitorTypeSurfacesEnum {
-        self.inner
-            .get("monitorTypeSurfaces")
-            .as_::<MonitorTypeSurfacesEnum>()
-    }
-
-    pub fn set_monitor_type_surfaces(&mut self, value: &MonitorTypeSurfacesEnum) {
-        self.inner.set("monitorTypeSurfaces", value);
-    }
-}
 /// The MediaDevices class.
 /// [`MediaDevices`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -431,6 +7,7 @@ impl DisplayMediaStreamOptions {
 pub struct MediaDevices {
     inner: EventTarget,
 }
+
 impl FromVal for MediaDevices {
     fn from_val(v: &Any) -> Self {
         MediaDevices {
@@ -444,27 +21,32 @@ impl FromVal for MediaDevices {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaDevices {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaDevices {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaDevices {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaDevices {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaDevices> for Any {
     fn from(s: MediaDevices) -> Any {
         let handle = s.inner.as_handle();
@@ -472,11 +54,13 @@ impl From<MediaDevices> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaDevices> for Any {
     fn from(s: &MediaDevices) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaDevices);
 
 impl MediaDevices {

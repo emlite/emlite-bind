@@ -1,10 +1,12 @@
 use super::*;
 
+/// The WebTransportDatagramStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportDatagramStats {
     inner: Any,
 }
+
 impl FromVal for WebTransportDatagramStats {
     fn from_val(v: &Any) -> Self {
         WebTransportDatagramStats { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for WebTransportDatagramStats {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebTransportDatagramStats {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebTransportDatagramStats {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebTransportDatagramStats {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebTransportDatagramStats {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebTransportDatagramStats> for Any {
     fn from(s: WebTransportDatagramStats) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<WebTransportDatagramStats> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebTransportDatagramStats> for Any {
     fn from(s: &WebTransportDatagramStats) -> Any {
         s.inner.clone()
@@ -51,37 +59,45 @@ impl From<&WebTransportDatagramStats> for Any {
 }
 
 impl WebTransportDatagramStats {
+    /// Getter of the `droppedIncoming` attribute.
     pub fn dropped_incoming(&self) -> u64 {
         self.inner.get("droppedIncoming").as_::<u64>()
     }
 
+    /// Setter of the `droppedIncoming` attribute.
     pub fn set_dropped_incoming(&mut self, value: u64) {
         self.inner.set("droppedIncoming", value);
     }
 }
 impl WebTransportDatagramStats {
+    /// Getter of the `expiredIncoming` attribute.
     pub fn expired_incoming(&self) -> u64 {
         self.inner.get("expiredIncoming").as_::<u64>()
     }
 
+    /// Setter of the `expiredIncoming` attribute.
     pub fn set_expired_incoming(&mut self, value: u64) {
         self.inner.set("expiredIncoming", value);
     }
 }
 impl WebTransportDatagramStats {
+    /// Getter of the `expiredOutgoing` attribute.
     pub fn expired_outgoing(&self) -> u64 {
         self.inner.get("expiredOutgoing").as_::<u64>()
     }
 
+    /// Setter of the `expiredOutgoing` attribute.
     pub fn set_expired_outgoing(&mut self, value: u64) {
         self.inner.set("expiredOutgoing", value);
     }
 }
 impl WebTransportDatagramStats {
+    /// Getter of the `lostOutgoing` attribute.
     pub fn lost_outgoing(&self) -> u64 {
         self.inner.get("lostOutgoing").as_::<u64>()
     }
 
+    /// Setter of the `lostOutgoing` attribute.
     pub fn set_lost_outgoing(&mut self, value: u64) {
         self.inner.set("lostOutgoing", value);
     }

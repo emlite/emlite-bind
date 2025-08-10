@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGViewElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGViewElement {
     fn from_val(v: &Any) -> Self {
         SVGViewElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGViewElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGViewElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGViewElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGViewElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGViewElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGViewElement> for Any {
     fn from(s: SVGViewElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGViewElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGViewElement> for Any {
     fn from(s: &SVGViewElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGViewElement);
 
 impl SVGViewElement {

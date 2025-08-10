@@ -1,10 +1,12 @@
 use super::*;
 
+/// The MediaStreamAudioSourceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaStreamAudioSourceOptions {
     inner: Any,
 }
+
 impl FromVal for MediaStreamAudioSourceOptions {
     fn from_val(v: &Any) -> Self {
         MediaStreamAudioSourceOptions { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for MediaStreamAudioSourceOptions {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaStreamAudioSourceOptions {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaStreamAudioSourceOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaStreamAudioSourceOptions {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaStreamAudioSourceOptions {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaStreamAudioSourceOptions> for Any {
     fn from(s: MediaStreamAudioSourceOptions) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<MediaStreamAudioSourceOptions> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaStreamAudioSourceOptions> for Any {
     fn from(s: &MediaStreamAudioSourceOptions) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&MediaStreamAudioSourceOptions> for Any {
 }
 
 impl MediaStreamAudioSourceOptions {
+    /// Getter of the `mediaStream` attribute.
     pub fn media_stream(&self) -> MediaStream {
         self.inner.get("mediaStream").as_::<MediaStream>()
     }
 
+    /// Setter of the `mediaStream` attribute.
     pub fn set_media_stream(&mut self, value: &MediaStream) {
         self.inner.set("mediaStream", value);
     }

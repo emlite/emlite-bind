@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSImportRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSImportRule {
     fn from_val(v: &Any) -> Self {
         CSSImportRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSImportRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSImportRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSImportRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSImportRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSImportRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSImportRule> for Any {
     fn from(s: CSSImportRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSImportRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSImportRule> for Any {
     fn from(s: &CSSImportRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSImportRule);
 
 impl CSSImportRule {

@@ -7,6 +7,7 @@ use super::*;
 pub struct PaymentManager {
     inner: Any,
 }
+
 impl FromVal for PaymentManager {
     fn from_val(v: &Any) -> Self {
         PaymentManager {
@@ -20,27 +21,32 @@ impl FromVal for PaymentManager {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PaymentManager {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PaymentManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PaymentManager {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PaymentManager {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PaymentManager> for Any {
     fn from(s: PaymentManager) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PaymentManager> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PaymentManager> for Any {
     fn from(s: &PaymentManager) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PaymentManager);
 
 impl PaymentManager {

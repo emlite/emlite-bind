@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLQuoteElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLQuoteElement {
     fn from_val(v: &Any) -> Self {
         HTMLQuoteElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLQuoteElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLQuoteElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLQuoteElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLQuoteElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLQuoteElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLQuoteElement> for Any {
     fn from(s: HTMLQuoteElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLQuoteElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLQuoteElement> for Any {
     fn from(s: &HTMLQuoteElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLQuoteElement);
 
 impl HTMLQuoteElement {

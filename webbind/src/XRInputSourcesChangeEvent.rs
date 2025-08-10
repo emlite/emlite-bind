@@ -7,6 +7,7 @@ use super::*;
 pub struct XRInputSourcesChangeEvent {
     inner: Event,
 }
+
 impl FromVal for XRInputSourcesChangeEvent {
     fn from_val(v: &Any) -> Self {
         XRInputSourcesChangeEvent {
@@ -20,27 +21,32 @@ impl FromVal for XRInputSourcesChangeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRInputSourcesChangeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRInputSourcesChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRInputSourcesChangeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRInputSourcesChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRInputSourcesChangeEvent> for Any {
     fn from(s: XRInputSourcesChangeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRInputSourcesChangeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRInputSourcesChangeEvent> for Any {
     fn from(s: &XRInputSourcesChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRInputSourcesChangeEvent);
 
 impl XRInputSourcesChangeEvent {

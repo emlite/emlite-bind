@@ -1,10 +1,12 @@
 use super::*;
 
+/// The Algorithm dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Algorithm {
     inner: Any,
 }
+
 impl FromVal for Algorithm {
     fn from_val(v: &Any) -> Self {
         Algorithm { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for Algorithm {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Algorithm {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Algorithm {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Algorithm {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Algorithm {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Algorithm> for Any {
     fn from(s: Algorithm) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<Algorithm> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Algorithm> for Any {
     fn from(s: &Algorithm) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&Algorithm> for Any {
 }
 
 impl Algorithm {
+    /// Getter of the `name` attribute.
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
 
+    /// Setter of the `name` attribute.
     pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }

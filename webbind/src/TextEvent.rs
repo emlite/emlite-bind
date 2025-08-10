@@ -7,6 +7,7 @@ use super::*;
 pub struct TextEvent {
     inner: UIEvent,
 }
+
 impl FromVal for TextEvent {
     fn from_val(v: &Any) -> Self {
         TextEvent {
@@ -20,27 +21,32 @@ impl FromVal for TextEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TextEvent {
     type Target = UIEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TextEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TextEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TextEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TextEvent> for Any {
     fn from(s: TextEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TextEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TextEvent> for Any {
     fn from(s: &TextEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TextEvent);
 
 impl TextEvent {

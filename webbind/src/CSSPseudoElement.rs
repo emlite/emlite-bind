@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSPseudoElement {
     inner: EventTarget,
 }
+
 impl FromVal for CSSPseudoElement {
     fn from_val(v: &Any) -> Self {
         CSSPseudoElement {
@@ -20,27 +21,32 @@ impl FromVal for CSSPseudoElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSPseudoElement {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSPseudoElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSPseudoElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSPseudoElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSPseudoElement> for Any {
     fn from(s: CSSPseudoElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSPseudoElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSPseudoElement> for Any {
     fn from(s: &CSSPseudoElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSPseudoElement);
 
 impl CSSPseudoElement {

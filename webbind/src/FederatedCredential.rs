@@ -7,6 +7,7 @@ use super::*;
 pub struct FederatedCredential {
     inner: Credential,
 }
+
 impl FromVal for FederatedCredential {
     fn from_val(v: &Any) -> Self {
         FederatedCredential {
@@ -20,27 +21,32 @@ impl FromVal for FederatedCredential {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FederatedCredential {
     type Target = Credential;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FederatedCredential {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FederatedCredential {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FederatedCredential {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FederatedCredential> for Any {
     fn from(s: FederatedCredential) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FederatedCredential> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FederatedCredential> for Any {
     fn from(s: &FederatedCredential) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FederatedCredential);
 
 impl FederatedCredential {

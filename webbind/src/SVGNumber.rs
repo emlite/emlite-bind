@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGNumber {
     inner: Any,
 }
+
 impl FromVal for SVGNumber {
     fn from_val(v: &Any) -> Self {
         SVGNumber {
@@ -20,27 +21,32 @@ impl FromVal for SVGNumber {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGNumber {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGNumber {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGNumber {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGNumber {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGNumber> for Any {
     fn from(s: SVGNumber) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGNumber> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGNumber> for Any {
     fn from(s: &SVGNumber) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGNumber);
 
 impl SVGNumber {

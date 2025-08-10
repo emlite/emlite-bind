@@ -7,6 +7,7 @@ use super::*;
 pub struct AbsoluteOrientationSensor {
     inner: OrientationSensor,
 }
+
 impl FromVal for AbsoluteOrientationSensor {
     fn from_val(v: &Any) -> Self {
         AbsoluteOrientationSensor {
@@ -20,27 +21,32 @@ impl FromVal for AbsoluteOrientationSensor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AbsoluteOrientationSensor {
     type Target = OrientationSensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AbsoluteOrientationSensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AbsoluteOrientationSensor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AbsoluteOrientationSensor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AbsoluteOrientationSensor> for Any {
     fn from(s: AbsoluteOrientationSensor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AbsoluteOrientationSensor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AbsoluteOrientationSensor> for Any {
     fn from(s: &AbsoluteOrientationSensor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AbsoluteOrientationSensor);
 
 impl AbsoluteOrientationSensor {

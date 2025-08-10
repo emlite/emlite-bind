@@ -1,10 +1,12 @@
 use super::*;
 
+/// The AuthenticationExtensionsPRFValues dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuthenticationExtensionsPRFValues {
     inner: Any,
 }
+
 impl FromVal for AuthenticationExtensionsPRFValues {
     fn from_val(v: &Any) -> Self {
         AuthenticationExtensionsPRFValues { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for AuthenticationExtensionsPRFValues {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AuthenticationExtensionsPRFValues {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AuthenticationExtensionsPRFValues {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AuthenticationExtensionsPRFValues {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AuthenticationExtensionsPRFValues {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AuthenticationExtensionsPRFValues> for Any {
     fn from(s: AuthenticationExtensionsPRFValues) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<AuthenticationExtensionsPRFValues> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AuthenticationExtensionsPRFValues> for Any {
     fn from(s: &AuthenticationExtensionsPRFValues) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&AuthenticationExtensionsPRFValues> for Any {
 }
 
 impl AuthenticationExtensionsPRFValues {
+    /// Getter of the `first` attribute.
     pub fn first(&self) -> Any {
         self.inner.get("first").as_::<Any>()
     }
 
+    /// Setter of the `first` attribute.
     pub fn set_first(&mut self, value: &Any) {
         self.inner.set("first", value);
     }
 }
 impl AuthenticationExtensionsPRFValues {
+    /// Getter of the `second` attribute.
     pub fn second(&self) -> Any {
         self.inner.get("second").as_::<Any>()
     }
 
+    /// Setter of the `second` attribute.
     pub fn set_second(&mut self, value: &Any) {
         self.inner.set("second", value);
     }

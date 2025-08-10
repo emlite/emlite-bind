@@ -7,6 +7,7 @@ use super::*;
 pub struct TrustedTypePolicy {
     inner: Any,
 }
+
 impl FromVal for TrustedTypePolicy {
     fn from_val(v: &Any) -> Self {
         TrustedTypePolicy {
@@ -20,27 +21,32 @@ impl FromVal for TrustedTypePolicy {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TrustedTypePolicy {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TrustedTypePolicy {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TrustedTypePolicy {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TrustedTypePolicy {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TrustedTypePolicy> for Any {
     fn from(s: TrustedTypePolicy) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TrustedTypePolicy> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TrustedTypePolicy> for Any {
     fn from(s: &TrustedTypePolicy) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicy);
 
 impl TrustedTypePolicy {

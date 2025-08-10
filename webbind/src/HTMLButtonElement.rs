@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLButtonElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLButtonElement {
     fn from_val(v: &Any) -> Self {
         HTMLButtonElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLButtonElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLButtonElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLButtonElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLButtonElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLButtonElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLButtonElement> for Any {
     fn from(s: HTMLButtonElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLButtonElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLButtonElement> for Any {
     fn from(s: &HTMLButtonElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLButtonElement);
 
 impl HTMLButtonElement {

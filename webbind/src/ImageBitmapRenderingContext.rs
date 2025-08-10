@@ -7,6 +7,7 @@ use super::*;
 pub struct ImageBitmapRenderingContext {
     inner: Any,
 }
+
 impl FromVal for ImageBitmapRenderingContext {
     fn from_val(v: &Any) -> Self {
         ImageBitmapRenderingContext {
@@ -20,27 +21,32 @@ impl FromVal for ImageBitmapRenderingContext {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ImageBitmapRenderingContext {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ImageBitmapRenderingContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ImageBitmapRenderingContext {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ImageBitmapRenderingContext {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ImageBitmapRenderingContext> for Any {
     fn from(s: ImageBitmapRenderingContext) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ImageBitmapRenderingContext> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ImageBitmapRenderingContext> for Any {
     fn from(s: &ImageBitmapRenderingContext) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ImageBitmapRenderingContext);
 
 impl ImageBitmapRenderingContext {

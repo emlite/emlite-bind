@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLMetaElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLMetaElement {
     fn from_val(v: &Any) -> Self {
         HTMLMetaElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLMetaElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLMetaElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLMetaElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLMetaElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLMetaElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLMetaElement> for Any {
     fn from(s: HTMLMetaElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLMetaElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLMetaElement> for Any {
     fn from(s: &HTMLMetaElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLMetaElement);
 
 impl HTMLMetaElement {

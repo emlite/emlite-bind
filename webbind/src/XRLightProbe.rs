@@ -7,6 +7,7 @@ use super::*;
 pub struct XRLightProbe {
     inner: EventTarget,
 }
+
 impl FromVal for XRLightProbe {
     fn from_val(v: &Any) -> Self {
         XRLightProbe {
@@ -20,27 +21,32 @@ impl FromVal for XRLightProbe {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRLightProbe {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRLightProbe {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRLightProbe {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRLightProbe {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRLightProbe> for Any {
     fn from(s: XRLightProbe) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRLightProbe> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRLightProbe> for Any {
     fn from(s: &XRLightProbe) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRLightProbe);
 
 impl XRLightProbe {

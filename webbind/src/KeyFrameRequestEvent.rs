@@ -7,6 +7,7 @@ use super::*;
 pub struct KeyFrameRequestEvent {
     inner: Event,
 }
+
 impl FromVal for KeyFrameRequestEvent {
     fn from_val(v: &Any) -> Self {
         KeyFrameRequestEvent {
@@ -20,27 +21,32 @@ impl FromVal for KeyFrameRequestEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for KeyFrameRequestEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for KeyFrameRequestEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for KeyFrameRequestEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for KeyFrameRequestEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<KeyFrameRequestEvent> for Any {
     fn from(s: KeyFrameRequestEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<KeyFrameRequestEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&KeyFrameRequestEvent> for Any {
     fn from(s: &KeyFrameRequestEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(KeyFrameRequestEvent);
 
 impl KeyFrameRequestEvent {

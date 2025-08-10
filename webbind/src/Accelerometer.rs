@@ -7,6 +7,7 @@ use super::*;
 pub struct Accelerometer {
     inner: Sensor,
 }
+
 impl FromVal for Accelerometer {
     fn from_val(v: &Any) -> Self {
         Accelerometer {
@@ -20,27 +21,32 @@ impl FromVal for Accelerometer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Accelerometer {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Accelerometer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Accelerometer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Accelerometer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Accelerometer> for Any {
     fn from(s: Accelerometer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Accelerometer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Accelerometer> for Any {
     fn from(s: &Accelerometer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Accelerometer);
 
 impl Accelerometer {

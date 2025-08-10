@@ -7,6 +7,7 @@ use super::*;
 pub struct HashChangeEvent {
     inner: Event,
 }
+
 impl FromVal for HashChangeEvent {
     fn from_val(v: &Any) -> Self {
         HashChangeEvent {
@@ -20,27 +21,32 @@ impl FromVal for HashChangeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HashChangeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HashChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HashChangeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HashChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HashChangeEvent> for Any {
     fn from(s: HashChangeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HashChangeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HashChangeEvent> for Any {
     fn from(s: &HashChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HashChangeEvent);
 
 impl HashChangeEvent {

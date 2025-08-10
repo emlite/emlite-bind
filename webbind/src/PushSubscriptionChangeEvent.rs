@@ -7,6 +7,7 @@ use super::*;
 pub struct PushSubscriptionChangeEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for PushSubscriptionChangeEvent {
     fn from_val(v: &Any) -> Self {
         PushSubscriptionChangeEvent {
@@ -20,27 +21,32 @@ impl FromVal for PushSubscriptionChangeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PushSubscriptionChangeEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PushSubscriptionChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PushSubscriptionChangeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PushSubscriptionChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PushSubscriptionChangeEvent> for Any {
     fn from(s: PushSubscriptionChangeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PushSubscriptionChangeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PushSubscriptionChangeEvent> for Any {
     fn from(s: &PushSubscriptionChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PushSubscriptionChangeEvent);
 
 impl PushSubscriptionChangeEvent {

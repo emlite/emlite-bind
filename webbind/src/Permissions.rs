@@ -7,6 +7,7 @@ use super::*;
 pub struct Permissions {
     inner: Any,
 }
+
 impl FromVal for Permissions {
     fn from_val(v: &Any) -> Self {
         Permissions {
@@ -20,27 +21,32 @@ impl FromVal for Permissions {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Permissions {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Permissions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Permissions {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Permissions {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Permissions> for Any {
     fn from(s: Permissions) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Permissions> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Permissions> for Any {
     fn from(s: &Permissions) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Permissions);
 
 impl Permissions {

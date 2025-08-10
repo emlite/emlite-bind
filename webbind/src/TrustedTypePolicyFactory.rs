@@ -1,82 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct TrustedTypePolicyOptions {
-    inner: Any,
-}
-impl FromVal for TrustedTypePolicyOptions {
-    fn from_val(v: &Any) -> Self {
-        TrustedTypePolicyOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for TrustedTypePolicyOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for TrustedTypePolicyOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for TrustedTypePolicyOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for TrustedTypePolicyOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<TrustedTypePolicyOptions> for Any {
-    fn from(s: TrustedTypePolicyOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&TrustedTypePolicyOptions> for Any {
-    fn from(s: &TrustedTypePolicyOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl TrustedTypePolicyOptions {
-    pub fn create_html(&self) -> Function {
-        self.inner.get("createHTML").as_::<Function>()
-    }
-
-    pub fn set_create_html(&mut self, value: &Function) {
-        self.inner.set("createHTML", value);
-    }
-}
-impl TrustedTypePolicyOptions {
-    pub fn create_script(&self) -> Function {
-        self.inner.get("createScript").as_::<Function>()
-    }
-
-    pub fn set_create_script(&mut self, value: &Function) {
-        self.inner.set("createScript", value);
-    }
-}
-impl TrustedTypePolicyOptions {
-    pub fn create_script_url(&self) -> Function {
-        self.inner.get("createScriptURL").as_::<Function>()
-    }
-
-    pub fn set_create_script_url(&mut self, value: &Function) {
-        self.inner.set("createScriptURL", value);
-    }
-}
 /// The TrustedTypePolicyFactory class.
 /// [`TrustedTypePolicyFactory`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -84,6 +7,7 @@ impl TrustedTypePolicyOptions {
 pub struct TrustedTypePolicyFactory {
     inner: Any,
 }
+
 impl FromVal for TrustedTypePolicyFactory {
     fn from_val(v: &Any) -> Self {
         TrustedTypePolicyFactory {
@@ -97,27 +21,32 @@ impl FromVal for TrustedTypePolicyFactory {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TrustedTypePolicyFactory {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TrustedTypePolicyFactory {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TrustedTypePolicyFactory {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TrustedTypePolicyFactory {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TrustedTypePolicyFactory> for Any {
     fn from(s: TrustedTypePolicyFactory) -> Any {
         let handle = s.inner.as_handle();
@@ -125,11 +54,13 @@ impl From<TrustedTypePolicyFactory> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TrustedTypePolicyFactory> for Any {
     fn from(s: &TrustedTypePolicyFactory) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicyFactory);
 
 impl TrustedTypePolicyFactory {

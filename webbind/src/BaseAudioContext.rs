@@ -1,64 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PeriodicWaveConstraints {
-    inner: Any,
-}
-impl FromVal for PeriodicWaveConstraints {
-    fn from_val(v: &Any) -> Self {
-        PeriodicWaveConstraints { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PeriodicWaveConstraints {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PeriodicWaveConstraints {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PeriodicWaveConstraints {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PeriodicWaveConstraints {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PeriodicWaveConstraints> for Any {
-    fn from(s: PeriodicWaveConstraints) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PeriodicWaveConstraints> for Any {
-    fn from(s: &PeriodicWaveConstraints) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PeriodicWaveConstraints {
-    pub fn disable_normalization(&self) -> bool {
-        self.inner.get("disableNormalization").as_::<bool>()
-    }
-
-    pub fn set_disable_normalization(&mut self, value: bool) {
-        self.inner.set("disableNormalization", value);
-    }
-}
 /// The BaseAudioContext class.
 /// [`BaseAudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -66,6 +7,7 @@ impl PeriodicWaveConstraints {
 pub struct BaseAudioContext {
     inner: EventTarget,
 }
+
 impl FromVal for BaseAudioContext {
     fn from_val(v: &Any) -> Self {
         BaseAudioContext {
@@ -79,27 +21,32 @@ impl FromVal for BaseAudioContext {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BaseAudioContext {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BaseAudioContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BaseAudioContext {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BaseAudioContext {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BaseAudioContext> for Any {
     fn from(s: BaseAudioContext) -> Any {
         let handle = s.inner.as_handle();
@@ -107,11 +54,13 @@ impl From<BaseAudioContext> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BaseAudioContext> for Any {
     fn from(s: &BaseAudioContext) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BaseAudioContext);
 
 impl BaseAudioContext {

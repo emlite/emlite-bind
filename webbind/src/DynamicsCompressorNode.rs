@@ -7,6 +7,7 @@ use super::*;
 pub struct DynamicsCompressorNode {
     inner: AudioNode,
 }
+
 impl FromVal for DynamicsCompressorNode {
     fn from_val(v: &Any) -> Self {
         DynamicsCompressorNode {
@@ -20,27 +21,32 @@ impl FromVal for DynamicsCompressorNode {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DynamicsCompressorNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DynamicsCompressorNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DynamicsCompressorNode {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DynamicsCompressorNode {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DynamicsCompressorNode> for Any {
     fn from(s: DynamicsCompressorNode) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DynamicsCompressorNode> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DynamicsCompressorNode> for Any {
     fn from(s: &DynamicsCompressorNode) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DynamicsCompressorNode);
 
 impl DynamicsCompressorNode {

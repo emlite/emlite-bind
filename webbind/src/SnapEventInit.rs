@@ -1,10 +1,12 @@
 use super::*;
 
+/// The SnapEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SnapEventInit {
     inner: Any,
 }
+
 impl FromVal for SnapEventInit {
     fn from_val(v: &Any) -> Self {
         SnapEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for SnapEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SnapEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SnapEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SnapEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SnapEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SnapEventInit> for Any {
     fn from(s: SnapEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<SnapEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SnapEventInit> for Any {
     fn from(s: &SnapEventInit) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&SnapEventInit> for Any {
 }
 
 impl SnapEventInit {
+    /// Getter of the `snapTargetBlock` attribute.
     pub fn snap_target_block(&self) -> Node {
         self.inner.get("snapTargetBlock").as_::<Node>()
     }
 
+    /// Setter of the `snapTargetBlock` attribute.
     pub fn set_snap_target_block(&mut self, value: &Node) {
         self.inner.set("snapTargetBlock", value);
     }
 }
 impl SnapEventInit {
+    /// Getter of the `snapTargetInline` attribute.
     pub fn snap_target_inline(&self) -> Node {
         self.inner.get("snapTargetInline").as_::<Node>()
     }
 
+    /// Setter of the `snapTargetInline` attribute.
     pub fn set_snap_target_inline(&mut self, value: &Node) {
         self.inner.set("snapTargetInline", value);
     }

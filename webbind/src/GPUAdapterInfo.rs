@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUAdapterInfo {
     inner: Any,
 }
+
 impl FromVal for GPUAdapterInfo {
     fn from_val(v: &Any) -> Self {
         GPUAdapterInfo {
@@ -20,27 +21,32 @@ impl FromVal for GPUAdapterInfo {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUAdapterInfo {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUAdapterInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUAdapterInfo {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUAdapterInfo {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUAdapterInfo> for Any {
     fn from(s: GPUAdapterInfo) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUAdapterInfo> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUAdapterInfo> for Any {
     fn from(s: &GPUAdapterInfo) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUAdapterInfo);
 
 impl GPUAdapterInfo {

@@ -7,6 +7,7 @@ use super::*;
 pub struct XRLightEstimate {
     inner: Any,
 }
+
 impl FromVal for XRLightEstimate {
     fn from_val(v: &Any) -> Self {
         XRLightEstimate {
@@ -20,27 +21,32 @@ impl FromVal for XRLightEstimate {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRLightEstimate {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRLightEstimate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRLightEstimate {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRLightEstimate {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRLightEstimate> for Any {
     fn from(s: XRLightEstimate) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRLightEstimate> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRLightEstimate> for Any {
     fn from(s: &XRLightEstimate) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRLightEstimate);
 
 impl XRLightEstimate {

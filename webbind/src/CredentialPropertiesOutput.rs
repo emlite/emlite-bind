@@ -1,10 +1,12 @@
 use super::*;
 
+/// The CredentialPropertiesOutput dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CredentialPropertiesOutput {
     inner: Any,
 }
+
 impl FromVal for CredentialPropertiesOutput {
     fn from_val(v: &Any) -> Self {
         CredentialPropertiesOutput { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for CredentialPropertiesOutput {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CredentialPropertiesOutput {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CredentialPropertiesOutput {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CredentialPropertiesOutput {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CredentialPropertiesOutput {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CredentialPropertiesOutput> for Any {
     fn from(s: CredentialPropertiesOutput) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<CredentialPropertiesOutput> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CredentialPropertiesOutput> for Any {
     fn from(s: &CredentialPropertiesOutput) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&CredentialPropertiesOutput> for Any {
 }
 
 impl CredentialPropertiesOutput {
+    /// Getter of the `rk` attribute.
     pub fn rk(&self) -> bool {
         self.inner.get("rk").as_::<bool>()
     }
 
+    /// Setter of the `rk` attribute.
     pub fn set_rk(&mut self, value: bool) {
         self.inner.set("rk", value);
     }

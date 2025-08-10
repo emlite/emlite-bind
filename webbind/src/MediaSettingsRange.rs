@@ -1,10 +1,12 @@
 use super::*;
 
+/// The MediaSettingsRange dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaSettingsRange {
     inner: Any,
 }
+
 impl FromVal for MediaSettingsRange {
     fn from_val(v: &Any) -> Self {
         MediaSettingsRange { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for MediaSettingsRange {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaSettingsRange {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaSettingsRange {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaSettingsRange {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaSettingsRange {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaSettingsRange> for Any {
     fn from(s: MediaSettingsRange) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<MediaSettingsRange> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaSettingsRange> for Any {
     fn from(s: &MediaSettingsRange) -> Any {
         s.inner.clone()
@@ -51,28 +59,34 @@ impl From<&MediaSettingsRange> for Any {
 }
 
 impl MediaSettingsRange {
+    /// Getter of the `max` attribute.
     pub fn max(&self) -> f64 {
         self.inner.get("max").as_::<f64>()
     }
 
+    /// Setter of the `max` attribute.
     pub fn set_max(&mut self, value: f64) {
         self.inner.set("max", value);
     }
 }
 impl MediaSettingsRange {
+    /// Getter of the `min` attribute.
     pub fn min(&self) -> f64 {
         self.inner.get("min").as_::<f64>()
     }
 
+    /// Setter of the `min` attribute.
     pub fn set_min(&mut self, value: f64) {
         self.inner.set("min", value);
     }
 }
 impl MediaSettingsRange {
+    /// Getter of the `step` attribute.
     pub fn step(&self) -> f64 {
         self.inner.get("step").as_::<f64>()
     }
 
+    /// Setter of the `step` attribute.
     pub fn set_step(&mut self, value: f64) {
         self.inner.set("step", value);
     }

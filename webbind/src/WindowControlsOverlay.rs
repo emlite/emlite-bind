@@ -7,6 +7,7 @@ use super::*;
 pub struct WindowControlsOverlay {
     inner: EventTarget,
 }
+
 impl FromVal for WindowControlsOverlay {
     fn from_val(v: &Any) -> Self {
         WindowControlsOverlay {
@@ -20,27 +21,32 @@ impl FromVal for WindowControlsOverlay {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WindowControlsOverlay {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WindowControlsOverlay {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WindowControlsOverlay {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WindowControlsOverlay {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WindowControlsOverlay> for Any {
     fn from(s: WindowControlsOverlay) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WindowControlsOverlay> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WindowControlsOverlay> for Any {
     fn from(s: &WindowControlsOverlay) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WindowControlsOverlay);
 
 impl WindowControlsOverlay {

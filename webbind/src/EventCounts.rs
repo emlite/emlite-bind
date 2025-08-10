@@ -7,6 +7,7 @@ use super::*;
 pub struct EventCounts {
     inner: Any,
 }
+
 impl FromVal for EventCounts {
     fn from_val(v: &Any) -> Self {
         EventCounts {
@@ -20,27 +21,32 @@ impl FromVal for EventCounts {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EventCounts {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EventCounts {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EventCounts {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EventCounts {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EventCounts> for Any {
     fn from(s: EventCounts) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<EventCounts> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EventCounts> for Any {
     fn from(s: &EventCounts) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(EventCounts);

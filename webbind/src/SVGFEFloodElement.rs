@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEFloodElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEFloodElement {
     fn from_val(v: &Any) -> Self {
         SVGFEFloodElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEFloodElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEFloodElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEFloodElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEFloodElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEFloodElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEFloodElement> for Any {
     fn from(s: SVGFEFloodElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEFloodElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEFloodElement> for Any {
     fn from(s: &SVGFEFloodElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEFloodElement);
 
 impl SVGFEFloodElement {

@@ -1,10 +1,12 @@
 use super::*;
 
+/// The RTCReceivedRtpStreamStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCReceivedRtpStreamStats {
     inner: Any,
 }
+
 impl FromVal for RTCReceivedRtpStreamStats {
     fn from_val(v: &Any) -> Self {
         RTCReceivedRtpStreamStats { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for RTCReceivedRtpStreamStats {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCReceivedRtpStreamStats {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCReceivedRtpStreamStats {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCReceivedRtpStreamStats {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCReceivedRtpStreamStats {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCReceivedRtpStreamStats> for Any {
     fn from(s: RTCReceivedRtpStreamStats) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<RTCReceivedRtpStreamStats> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCReceivedRtpStreamStats> for Any {
     fn from(s: &RTCReceivedRtpStreamStats) -> Any {
         s.inner.clone()
@@ -51,66 +59,80 @@ impl From<&RTCReceivedRtpStreamStats> for Any {
 }
 
 impl RTCReceivedRtpStreamStats {
+    /// Getter of the `packetsReceived` attribute.
     pub fn packets_received(&self) -> u64 {
         self.inner.get("packetsReceived").as_::<u64>()
     }
 
+    /// Setter of the `packetsReceived` attribute.
     pub fn set_packets_received(&mut self, value: u64) {
         self.inner.set("packetsReceived", value);
     }
 }
 impl RTCReceivedRtpStreamStats {
+    /// Getter of the `packetsReceivedWithEct1` attribute.
     pub fn packets_received_with_ect1(&self) -> u64 {
         self.inner.get("packetsReceivedWithEct1").as_::<u64>()
     }
 
+    /// Setter of the `packetsReceivedWithEct1` attribute.
     pub fn set_packets_received_with_ect1(&mut self, value: u64) {
         self.inner.set("packetsReceivedWithEct1", value);
     }
 }
 impl RTCReceivedRtpStreamStats {
+    /// Getter of the `packetsReceivedWithCe` attribute.
     pub fn packets_received_with_ce(&self) -> u64 {
         self.inner.get("packetsReceivedWithCe").as_::<u64>()
     }
 
+    /// Setter of the `packetsReceivedWithCe` attribute.
     pub fn set_packets_received_with_ce(&mut self, value: u64) {
         self.inner.set("packetsReceivedWithCe", value);
     }
 }
 impl RTCReceivedRtpStreamStats {
+    /// Getter of the `packetsReportedAsLost` attribute.
     pub fn packets_reported_as_lost(&self) -> u64 {
         self.inner.get("packetsReportedAsLost").as_::<u64>()
     }
 
+    /// Setter of the `packetsReportedAsLost` attribute.
     pub fn set_packets_reported_as_lost(&mut self, value: u64) {
         self.inner.set("packetsReportedAsLost", value);
     }
 }
 impl RTCReceivedRtpStreamStats {
+    /// Getter of the `packetsReportedAsLostButRecovered` attribute.
     pub fn packets_reported_as_lost_but_recovered(&self) -> u64 {
         self.inner
             .get("packetsReportedAsLostButRecovered")
             .as_::<u64>()
     }
 
+    /// Setter of the `packetsReportedAsLostButRecovered` attribute.
     pub fn set_packets_reported_as_lost_but_recovered(&mut self, value: u64) {
         self.inner.set("packetsReportedAsLostButRecovered", value);
     }
 }
 impl RTCReceivedRtpStreamStats {
+    /// Getter of the `packetsLost` attribute.
     pub fn packets_lost(&self) -> i64 {
         self.inner.get("packetsLost").as_::<i64>()
     }
 
+    /// Setter of the `packetsLost` attribute.
     pub fn set_packets_lost(&mut self, value: i64) {
         self.inner.set("packetsLost", value);
     }
 }
 impl RTCReceivedRtpStreamStats {
+    /// Getter of the `jitter` attribute.
     pub fn jitter(&self) -> f64 {
         self.inner.get("jitter").as_::<f64>()
     }
 
+    /// Setter of the `jitter` attribute.
     pub fn set_jitter(&mut self, value: f64) {
         self.inner.set("jitter", value);
     }

@@ -7,6 +7,7 @@ use super::*;
 pub struct PreferenceObject {
     inner: EventTarget,
 }
+
 impl FromVal for PreferenceObject {
     fn from_val(v: &Any) -> Self {
         PreferenceObject {
@@ -20,27 +21,32 @@ impl FromVal for PreferenceObject {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PreferenceObject {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PreferenceObject {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PreferenceObject {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PreferenceObject {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PreferenceObject> for Any {
     fn from(s: PreferenceObject) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PreferenceObject> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PreferenceObject> for Any {
     fn from(s: &PreferenceObject) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PreferenceObject);
 
 impl PreferenceObject {

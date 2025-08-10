@@ -7,6 +7,7 @@ use super::*;
 pub struct ChildBreakToken {
     inner: Any,
 }
+
 impl FromVal for ChildBreakToken {
     fn from_val(v: &Any) -> Self {
         ChildBreakToken {
@@ -20,27 +21,32 @@ impl FromVal for ChildBreakToken {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ChildBreakToken {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ChildBreakToken {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ChildBreakToken {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ChildBreakToken {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ChildBreakToken> for Any {
     fn from(s: ChildBreakToken) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ChildBreakToken> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ChildBreakToken> for Any {
     fn from(s: &ChildBreakToken) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ChildBreakToken);
 
 impl ChildBreakToken {

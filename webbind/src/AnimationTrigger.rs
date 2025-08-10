@@ -7,6 +7,7 @@ use super::*;
 pub struct AnimationTrigger {
     inner: Any,
 }
+
 impl FromVal for AnimationTrigger {
     fn from_val(v: &Any) -> Self {
         AnimationTrigger {
@@ -20,27 +21,32 @@ impl FromVal for AnimationTrigger {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AnimationTrigger {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AnimationTrigger {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AnimationTrigger {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AnimationTrigger {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AnimationTrigger> for Any {
     fn from(s: AnimationTrigger) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AnimationTrigger> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AnimationTrigger> for Any {
     fn from(s: &AnimationTrigger) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AnimationTrigger);
 
 impl AnimationTrigger {

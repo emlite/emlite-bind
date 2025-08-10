@@ -7,6 +7,7 @@ use super::*;
 pub struct CaptureActionEvent {
     inner: Event,
 }
+
 impl FromVal for CaptureActionEvent {
     fn from_val(v: &Any) -> Self {
         CaptureActionEvent {
@@ -20,27 +21,32 @@ impl FromVal for CaptureActionEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CaptureActionEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CaptureActionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CaptureActionEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CaptureActionEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CaptureActionEvent> for Any {
     fn from(s: CaptureActionEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CaptureActionEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CaptureActionEvent> for Any {
     fn from(s: &CaptureActionEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CaptureActionEvent);
 
 impl CaptureActionEvent {

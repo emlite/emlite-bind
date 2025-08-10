@@ -7,6 +7,7 @@ use super::*;
 pub struct NodeIterator {
     inner: Any,
 }
+
 impl FromVal for NodeIterator {
     fn from_val(v: &Any) -> Self {
         NodeIterator {
@@ -20,27 +21,32 @@ impl FromVal for NodeIterator {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NodeIterator {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NodeIterator {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NodeIterator {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NodeIterator {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NodeIterator> for Any {
     fn from(s: NodeIterator) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NodeIterator> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NodeIterator> for Any {
     fn from(s: &NodeIterator) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NodeIterator);
 
 impl NodeIterator {

@@ -7,6 +7,7 @@ use super::*;
 pub struct CreateMonitor {
     inner: EventTarget,
 }
+
 impl FromVal for CreateMonitor {
     fn from_val(v: &Any) -> Self {
         CreateMonitor {
@@ -20,27 +21,32 @@ impl FromVal for CreateMonitor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CreateMonitor {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CreateMonitor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CreateMonitor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CreateMonitor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CreateMonitor> for Any {
     fn from(s: CreateMonitor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CreateMonitor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CreateMonitor> for Any {
     fn from(s: &CreateMonitor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CreateMonitor);
 
 impl CreateMonitor {

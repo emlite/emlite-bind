@@ -7,6 +7,7 @@ use super::*;
 pub struct OES_fbo_render_mipmap {
     inner: Any,
 }
+
 impl FromVal for OES_fbo_render_mipmap {
     fn from_val(v: &Any) -> Self {
         OES_fbo_render_mipmap {
@@ -20,27 +21,32 @@ impl FromVal for OES_fbo_render_mipmap {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for OES_fbo_render_mipmap {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for OES_fbo_render_mipmap {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for OES_fbo_render_mipmap {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for OES_fbo_render_mipmap {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<OES_fbo_render_mipmap> for Any {
     fn from(s: OES_fbo_render_mipmap) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<OES_fbo_render_mipmap> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&OES_fbo_render_mipmap> for Any {
     fn from(s: &OES_fbo_render_mipmap) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(OES_fbo_render_mipmap);

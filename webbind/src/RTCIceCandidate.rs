@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCIceCandidate {
     inner: Any,
 }
+
 impl FromVal for RTCIceCandidate {
     fn from_val(v: &Any) -> Self {
         RTCIceCandidate {
@@ -20,27 +21,32 @@ impl FromVal for RTCIceCandidate {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCIceCandidate {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCIceCandidate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCIceCandidate {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCIceCandidate {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCIceCandidate> for Any {
     fn from(s: RTCIceCandidate) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCIceCandidate> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCIceCandidate> for Any {
     fn from(s: &RTCIceCandidate) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCIceCandidate);
 
 impl RTCIceCandidate {

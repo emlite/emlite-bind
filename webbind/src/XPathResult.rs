@@ -7,6 +7,7 @@ use super::*;
 pub struct XPathResult {
     inner: Any,
 }
+
 impl FromVal for XPathResult {
     fn from_val(v: &Any) -> Self {
         XPathResult {
@@ -20,27 +21,32 @@ impl FromVal for XPathResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XPathResult {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XPathResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XPathResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XPathResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XPathResult> for Any {
     fn from(s: XPathResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XPathResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XPathResult> for Any {
     fn from(s: &XPathResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XPathResult);
 
 impl XPathResult {

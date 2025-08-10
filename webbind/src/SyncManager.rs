@@ -7,6 +7,7 @@ use super::*;
 pub struct SyncManager {
     inner: Any,
 }
+
 impl FromVal for SyncManager {
     fn from_val(v: &Any) -> Self {
         SyncManager {
@@ -20,27 +21,32 @@ impl FromVal for SyncManager {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SyncManager {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SyncManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SyncManager {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SyncManager {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SyncManager> for Any {
     fn from(s: SyncManager) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SyncManager> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SyncManager> for Any {
     fn from(s: &SyncManager) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SyncManager);
 
 impl SyncManager {

@@ -7,6 +7,7 @@ use super::*;
 pub struct TrustedScriptURL {
     inner: Any,
 }
+
 impl FromVal for TrustedScriptURL {
     fn from_val(v: &Any) -> Self {
         TrustedScriptURL {
@@ -20,27 +21,32 @@ impl FromVal for TrustedScriptURL {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TrustedScriptURL {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TrustedScriptURL {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TrustedScriptURL {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TrustedScriptURL {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TrustedScriptURL> for Any {
     fn from(s: TrustedScriptURL) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TrustedScriptURL> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TrustedScriptURL> for Any {
     fn from(s: &TrustedScriptURL) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TrustedScriptURL);
 
 impl TrustedScriptURL {

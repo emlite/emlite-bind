@@ -7,6 +7,7 @@ use super::*;
 pub struct ProcessingInstruction {
     inner: CharacterData,
 }
+
 impl FromVal for ProcessingInstruction {
     fn from_val(v: &Any) -> Self {
         ProcessingInstruction {
@@ -20,27 +21,32 @@ impl FromVal for ProcessingInstruction {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ProcessingInstruction {
     type Target = CharacterData;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ProcessingInstruction {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ProcessingInstruction {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ProcessingInstruction {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ProcessingInstruction> for Any {
     fn from(s: ProcessingInstruction) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ProcessingInstruction> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ProcessingInstruction> for Any {
     fn from(s: &ProcessingInstruction) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ProcessingInstruction);
 
 impl ProcessingInstruction {

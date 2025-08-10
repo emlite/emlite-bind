@@ -1,10 +1,12 @@
 use super::*;
 
+/// The CollectedClientAdditionalPaymentData dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CollectedClientAdditionalPaymentData {
     inner: Any,
 }
+
 impl FromVal for CollectedClientAdditionalPaymentData {
     fn from_val(v: &Any) -> Self {
         CollectedClientAdditionalPaymentData { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for CollectedClientAdditionalPaymentData {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CollectedClientAdditionalPaymentData {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CollectedClientAdditionalPaymentData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CollectedClientAdditionalPaymentData {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CollectedClientAdditionalPaymentData {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CollectedClientAdditionalPaymentData> for Any {
     fn from(s: CollectedClientAdditionalPaymentData) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<CollectedClientAdditionalPaymentData> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CollectedClientAdditionalPaymentData> for Any {
     fn from(s: &CollectedClientAdditionalPaymentData) -> Any {
         s.inner.clone()
@@ -51,77 +59,93 @@ impl From<&CollectedClientAdditionalPaymentData> for Any {
 }
 
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `rpId` attribute.
     pub fn rp_id(&self) -> JsString {
         self.inner.get("rpId").as_::<JsString>()
     }
 
+    /// Setter of the `rpId` attribute.
     pub fn set_rp_id(&mut self, value: &JsString) {
         self.inner.set("rpId", value);
     }
 }
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `topOrigin` attribute.
     pub fn top_origin(&self) -> JsString {
         self.inner.get("topOrigin").as_::<JsString>()
     }
 
+    /// Setter of the `topOrigin` attribute.
     pub fn set_top_origin(&mut self, value: &JsString) {
         self.inner.set("topOrigin", value);
     }
 }
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `payeeName` attribute.
     pub fn payee_name(&self) -> JsString {
         self.inner.get("payeeName").as_::<JsString>()
     }
 
+    /// Setter of the `payeeName` attribute.
     pub fn set_payee_name(&mut self, value: &JsString) {
         self.inner.set("payeeName", value);
     }
 }
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `payeeOrigin` attribute.
     pub fn payee_origin(&self) -> JsString {
         self.inner.get("payeeOrigin").as_::<JsString>()
     }
 
+    /// Setter of the `payeeOrigin` attribute.
     pub fn set_payee_origin(&mut self, value: &JsString) {
         self.inner.set("payeeOrigin", value);
     }
 }
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `paymentEntitiesLogos` attribute.
     pub fn payment_entities_logos(&self) -> TypedArray<PaymentEntityLogo> {
         self.inner
             .get("paymentEntitiesLogos")
             .as_::<TypedArray<PaymentEntityLogo>>()
     }
 
+    /// Setter of the `paymentEntitiesLogos` attribute.
     pub fn set_payment_entities_logos(&mut self, value: &TypedArray<PaymentEntityLogo>) {
         self.inner.set("paymentEntitiesLogos", value);
     }
 }
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `total` attribute.
     pub fn total(&self) -> PaymentCurrencyAmount {
         self.inner.get("total").as_::<PaymentCurrencyAmount>()
     }
 
+    /// Setter of the `total` attribute.
     pub fn set_total(&mut self, value: &PaymentCurrencyAmount) {
         self.inner.set("total", value);
     }
 }
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `instrument` attribute.
     pub fn instrument(&self) -> PaymentCredentialInstrument {
         self.inner
             .get("instrument")
             .as_::<PaymentCredentialInstrument>()
     }
 
+    /// Setter of the `instrument` attribute.
     pub fn set_instrument(&mut self, value: &PaymentCredentialInstrument) {
         self.inner.set("instrument", value);
     }
 }
 impl CollectedClientAdditionalPaymentData {
+    /// Getter of the `browserBoundPublicKey` attribute.
     pub fn browser_bound_public_key(&self) -> JsString {
         self.inner.get("browserBoundPublicKey").as_::<JsString>()
     }
 
+    /// Setter of the `browserBoundPublicKey` attribute.
     pub fn set_browser_bound_public_key(&mut self, value: &JsString) {
         self.inner.set("browserBoundPublicKey", value);
     }

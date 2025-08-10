@@ -1,73 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct ClientQueryOptions {
-    inner: Any,
-}
-impl FromVal for ClientQueryOptions {
-    fn from_val(v: &Any) -> Self {
-        ClientQueryOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for ClientQueryOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for ClientQueryOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for ClientQueryOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for ClientQueryOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<ClientQueryOptions> for Any {
-    fn from(s: ClientQueryOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&ClientQueryOptions> for Any {
-    fn from(s: &ClientQueryOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl ClientQueryOptions {
-    pub fn include_uncontrolled(&self) -> bool {
-        self.inner.get("includeUncontrolled").as_::<bool>()
-    }
-
-    pub fn set_include_uncontrolled(&mut self, value: bool) {
-        self.inner.set("includeUncontrolled", value);
-    }
-}
-impl ClientQueryOptions {
-    pub fn type_(&self) -> ClientType {
-        self.inner.get("type").as_::<ClientType>()
-    }
-
-    pub fn set_type_(&mut self, value: &ClientType) {
-        self.inner.set("type", value);
-    }
-}
 /// The Clients class.
 /// [`Clients`](https://developer.mozilla.org/en-US/docs/Web/API/Clients)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -75,6 +7,7 @@ impl ClientQueryOptions {
 pub struct Clients {
     inner: Any,
 }
+
 impl FromVal for Clients {
     fn from_val(v: &Any) -> Self {
         Clients {
@@ -88,27 +21,32 @@ impl FromVal for Clients {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Clients {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Clients {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Clients {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Clients {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Clients> for Any {
     fn from(s: Clients) -> Any {
         let handle = s.inner.as_handle();
@@ -116,11 +54,13 @@ impl From<Clients> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Clients> for Any {
     fn from(s: &Clients) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Clients);
 
 impl Clients {

@@ -1,10 +1,12 @@
 use super::*;
 
+/// The AuthenticatorAssertionResponseJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuthenticatorAssertionResponseJSON {
     inner: Any,
 }
+
 impl FromVal for AuthenticatorAssertionResponseJSON {
     fn from_val(v: &Any) -> Self {
         AuthenticatorAssertionResponseJSON { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for AuthenticatorAssertionResponseJSON {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AuthenticatorAssertionResponseJSON {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AuthenticatorAssertionResponseJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AuthenticatorAssertionResponseJSON {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AuthenticatorAssertionResponseJSON {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AuthenticatorAssertionResponseJSON> for Any {
     fn from(s: AuthenticatorAssertionResponseJSON) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<AuthenticatorAssertionResponseJSON> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AuthenticatorAssertionResponseJSON> for Any {
     fn from(s: &AuthenticatorAssertionResponseJSON) -> Any {
         s.inner.clone()
@@ -51,37 +59,45 @@ impl From<&AuthenticatorAssertionResponseJSON> for Any {
 }
 
 impl AuthenticatorAssertionResponseJSON {
+    /// Getter of the `clientDataJSON` attribute.
     pub fn client_data_json(&self) -> Any {
         self.inner.get("clientDataJSON").as_::<Any>()
     }
 
+    /// Setter of the `clientDataJSON` attribute.
     pub fn set_client_data_json(&mut self, value: &Any) {
         self.inner.set("clientDataJSON", value);
     }
 }
 impl AuthenticatorAssertionResponseJSON {
+    /// Getter of the `authenticatorData` attribute.
     pub fn authenticator_data(&self) -> Any {
         self.inner.get("authenticatorData").as_::<Any>()
     }
 
+    /// Setter of the `authenticatorData` attribute.
     pub fn set_authenticator_data(&mut self, value: &Any) {
         self.inner.set("authenticatorData", value);
     }
 }
 impl AuthenticatorAssertionResponseJSON {
+    /// Getter of the `signature` attribute.
     pub fn signature(&self) -> Any {
         self.inner.get("signature").as_::<Any>()
     }
 
+    /// Setter of the `signature` attribute.
     pub fn set_signature(&mut self, value: &Any) {
         self.inner.set("signature", value);
     }
 }
 impl AuthenticatorAssertionResponseJSON {
+    /// Getter of the `userHandle` attribute.
     pub fn user_handle(&self) -> Any {
         self.inner.get("userHandle").as_::<Any>()
     }
 
+    /// Setter of the `userHandle` attribute.
     pub fn set_user_handle(&mut self, value: &Any) {
         self.inner.set("userHandle", value);
     }

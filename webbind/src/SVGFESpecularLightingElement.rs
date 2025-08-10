@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFESpecularLightingElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFESpecularLightingElement {
     fn from_val(v: &Any) -> Self {
         SVGFESpecularLightingElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFESpecularLightingElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFESpecularLightingElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFESpecularLightingElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFESpecularLightingElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFESpecularLightingElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFESpecularLightingElement> for Any {
     fn from(s: SVGFESpecularLightingElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFESpecularLightingElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFESpecularLightingElement> for Any {
     fn from(s: &SVGFESpecularLightingElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFESpecularLightingElement);
 
 impl SVGFESpecularLightingElement {

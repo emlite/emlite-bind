@@ -7,6 +7,7 @@ use super::*;
 pub struct History {
     inner: Any,
 }
+
 impl FromVal for History {
     fn from_val(v: &Any) -> Self {
         History {
@@ -20,27 +21,32 @@ impl FromVal for History {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for History {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for History {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for History {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for History {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<History> for Any {
     fn from(s: History) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<History> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&History> for Any {
     fn from(s: &History) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(History);
 
 impl History {

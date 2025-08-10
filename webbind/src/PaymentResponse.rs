@@ -1,150 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PaymentCompleteDetails {
-    inner: Any,
-}
-impl FromVal for PaymentCompleteDetails {
-    fn from_val(v: &Any) -> Self {
-        PaymentCompleteDetails { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PaymentCompleteDetails {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PaymentCompleteDetails {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PaymentCompleteDetails {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PaymentCompleteDetails {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PaymentCompleteDetails> for Any {
-    fn from(s: PaymentCompleteDetails) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PaymentCompleteDetails> for Any {
-    fn from(s: &PaymentCompleteDetails) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PaymentCompleteDetails {
-    pub fn data(&self) -> Object {
-        self.inner.get("data").as_::<Object>()
-    }
-
-    pub fn set_data(&mut self, value: &Object) {
-        self.inner.set("data", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PaymentValidationErrors {
-    inner: Any,
-}
-impl FromVal for PaymentValidationErrors {
-    fn from_val(v: &Any) -> Self {
-        PaymentValidationErrors { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PaymentValidationErrors {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PaymentValidationErrors {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PaymentValidationErrors {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PaymentValidationErrors {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PaymentValidationErrors> for Any {
-    fn from(s: PaymentValidationErrors) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PaymentValidationErrors> for Any {
-    fn from(s: &PaymentValidationErrors) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PaymentValidationErrors {
-    pub fn payer(&self) -> PayerErrors {
-        self.inner.get("payer").as_::<PayerErrors>()
-    }
-
-    pub fn set_payer(&mut self, value: &PayerErrors) {
-        self.inner.set("payer", value);
-    }
-}
-impl PaymentValidationErrors {
-    pub fn shipping_address(&self) -> AddressErrors {
-        self.inner.get("shippingAddress").as_::<AddressErrors>()
-    }
-
-    pub fn set_shipping_address(&mut self, value: &AddressErrors) {
-        self.inner.set("shippingAddress", value);
-    }
-}
-impl PaymentValidationErrors {
-    pub fn error(&self) -> JsString {
-        self.inner.get("error").as_::<JsString>()
-    }
-
-    pub fn set_error(&mut self, value: &JsString) {
-        self.inner.set("error", value);
-    }
-}
-impl PaymentValidationErrors {
-    pub fn payment_method(&self) -> Object {
-        self.inner.get("paymentMethod").as_::<Object>()
-    }
-
-    pub fn set_payment_method(&mut self, value: &Object) {
-        self.inner.set("paymentMethod", value);
-    }
-}
 /// The PaymentResponse class.
 /// [`PaymentResponse`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -152,6 +7,7 @@ impl PaymentValidationErrors {
 pub struct PaymentResponse {
     inner: EventTarget,
 }
+
 impl FromVal for PaymentResponse {
     fn from_val(v: &Any) -> Self {
         PaymentResponse {
@@ -165,27 +21,32 @@ impl FromVal for PaymentResponse {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PaymentResponse {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PaymentResponse {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PaymentResponse {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PaymentResponse {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PaymentResponse> for Any {
     fn from(s: PaymentResponse) -> Any {
         let handle = s.inner.as_handle();
@@ -193,11 +54,13 @@ impl From<PaymentResponse> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PaymentResponse> for Any {
     fn from(s: &PaymentResponse) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PaymentResponse);
 
 impl PaymentResponse {

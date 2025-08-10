@@ -7,6 +7,7 @@ use super::*;
 pub struct EXT_blend_minmax {
     inner: Any,
 }
+
 impl FromVal for EXT_blend_minmax {
     fn from_val(v: &Any) -> Self {
         EXT_blend_minmax {
@@ -20,27 +21,32 @@ impl FromVal for EXT_blend_minmax {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EXT_blend_minmax {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EXT_blend_minmax {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EXT_blend_minmax {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EXT_blend_minmax {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EXT_blend_minmax> for Any {
     fn from(s: EXT_blend_minmax) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<EXT_blend_minmax> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EXT_blend_minmax> for Any {
     fn from(s: &EXT_blend_minmax) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(EXT_blend_minmax);

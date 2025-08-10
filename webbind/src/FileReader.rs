@@ -7,6 +7,7 @@ use super::*;
 pub struct FileReader {
     inner: EventTarget,
 }
+
 impl FromVal for FileReader {
     fn from_val(v: &Any) -> Self {
         FileReader {
@@ -20,27 +21,32 @@ impl FromVal for FileReader {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FileReader {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FileReader {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FileReader {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FileReader {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FileReader> for Any {
     fn from(s: FileReader) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FileReader> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FileReader> for Any {
     fn from(s: &FileReader) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FileReader);
 
 impl FileReader {

@@ -7,6 +7,7 @@ use super::*;
 pub struct PushEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for PushEvent {
     fn from_val(v: &Any) -> Self {
         PushEvent {
@@ -20,27 +21,32 @@ impl FromVal for PushEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PushEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PushEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PushEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PushEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PushEvent> for Any {
     fn from(s: PushEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PushEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PushEvent> for Any {
     fn from(s: &PushEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PushEvent);
 
 impl PushEvent {

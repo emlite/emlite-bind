@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSTranslate {
     inner: CSSTransformComponent,
 }
+
 impl FromVal for CSSTranslate {
     fn from_val(v: &Any) -> Self {
         CSSTranslate {
@@ -20,27 +21,32 @@ impl FromVal for CSSTranslate {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSTranslate {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSTranslate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSTranslate {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSTranslate {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSTranslate> for Any {
     fn from(s: CSSTranslate) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSTranslate> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSTranslate> for Any {
     fn from(s: &CSSTranslate) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSTranslate);
 
 impl CSSTranslate {

@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCError {
     inner: DOMException,
 }
+
 impl FromVal for RTCError {
     fn from_val(v: &Any) -> Self {
         RTCError {
@@ -20,27 +21,32 @@ impl FromVal for RTCError {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCError {
     type Target = DOMException;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCError {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCError {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCError> for Any {
     fn from(s: RTCError) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCError> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCError> for Any {
     fn from(s: &RTCError) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCError);
 
 impl RTCError {

@@ -7,6 +7,7 @@ use super::*;
 pub struct ScreenDetailed {
     inner: Screen,
 }
+
 impl FromVal for ScreenDetailed {
     fn from_val(v: &Any) -> Self {
         ScreenDetailed {
@@ -20,27 +21,32 @@ impl FromVal for ScreenDetailed {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ScreenDetailed {
     type Target = Screen;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ScreenDetailed {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ScreenDetailed {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ScreenDetailed {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ScreenDetailed> for Any {
     fn from(s: ScreenDetailed) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ScreenDetailed> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ScreenDetailed> for Any {
     fn from(s: &ScreenDetailed) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ScreenDetailed);
 
 impl ScreenDetailed {

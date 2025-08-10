@@ -7,6 +7,7 @@ use super::*;
 pub struct VideoPlaybackQuality {
     inner: Any,
 }
+
 impl FromVal for VideoPlaybackQuality {
     fn from_val(v: &Any) -> Self {
         VideoPlaybackQuality {
@@ -20,27 +21,32 @@ impl FromVal for VideoPlaybackQuality {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for VideoPlaybackQuality {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for VideoPlaybackQuality {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for VideoPlaybackQuality {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for VideoPlaybackQuality {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<VideoPlaybackQuality> for Any {
     fn from(s: VideoPlaybackQuality) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<VideoPlaybackQuality> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&VideoPlaybackQuality> for Any {
     fn from(s: &VideoPlaybackQuality) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(VideoPlaybackQuality);
 
 impl VideoPlaybackQuality {

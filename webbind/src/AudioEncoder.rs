@@ -1,168 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct AudioEncoderConfig {
-    inner: Any,
-}
-impl FromVal for AudioEncoderConfig {
-    fn from_val(v: &Any) -> Self {
-        AudioEncoderConfig { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for AudioEncoderConfig {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for AudioEncoderConfig {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for AudioEncoderConfig {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for AudioEncoderConfig {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<AudioEncoderConfig> for Any {
-    fn from(s: AudioEncoderConfig) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&AudioEncoderConfig> for Any {
-    fn from(s: &AudioEncoderConfig) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl AudioEncoderConfig {
-    pub fn codec(&self) -> JsString {
-        self.inner.get("codec").as_::<JsString>()
-    }
-
-    pub fn set_codec(&mut self, value: &JsString) {
-        self.inner.set("codec", value);
-    }
-}
-impl AudioEncoderConfig {
-    pub fn sample_rate(&self) -> u32 {
-        self.inner.get("sampleRate").as_::<u32>()
-    }
-
-    pub fn set_sample_rate(&mut self, value: u32) {
-        self.inner.set("sampleRate", value);
-    }
-}
-impl AudioEncoderConfig {
-    pub fn number_of_channels(&self) -> u32 {
-        self.inner.get("numberOfChannels").as_::<u32>()
-    }
-
-    pub fn set_number_of_channels(&mut self, value: u32) {
-        self.inner.set("numberOfChannels", value);
-    }
-}
-impl AudioEncoderConfig {
-    pub fn bitrate(&self) -> u64 {
-        self.inner.get("bitrate").as_::<u64>()
-    }
-
-    pub fn set_bitrate(&mut self, value: u64) {
-        self.inner.set("bitrate", value);
-    }
-}
-impl AudioEncoderConfig {
-    pub fn bitrate_mode(&self) -> BitrateMode {
-        self.inner.get("bitrateMode").as_::<BitrateMode>()
-    }
-
-    pub fn set_bitrate_mode(&mut self, value: &BitrateMode) {
-        self.inner.set("bitrateMode", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct AudioEncoderSupport {
-    inner: Any,
-}
-impl FromVal for AudioEncoderSupport {
-    fn from_val(v: &Any) -> Self {
-        AudioEncoderSupport { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for AudioEncoderSupport {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for AudioEncoderSupport {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for AudioEncoderSupport {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for AudioEncoderSupport {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<AudioEncoderSupport> for Any {
-    fn from(s: AudioEncoderSupport) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&AudioEncoderSupport> for Any {
-    fn from(s: &AudioEncoderSupport) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl AudioEncoderSupport {
-    pub fn supported(&self) -> bool {
-        self.inner.get("supported").as_::<bool>()
-    }
-
-    pub fn set_supported(&mut self, value: bool) {
-        self.inner.set("supported", value);
-    }
-}
-impl AudioEncoderSupport {
-    pub fn config(&self) -> AudioEncoderConfig {
-        self.inner.get("config").as_::<AudioEncoderConfig>()
-    }
-
-    pub fn set_config(&mut self, value: &AudioEncoderConfig) {
-        self.inner.set("config", value);
-    }
-}
 /// The AudioEncoder class.
 /// [`AudioEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -170,6 +7,7 @@ impl AudioEncoderSupport {
 pub struct AudioEncoder {
     inner: EventTarget,
 }
+
 impl FromVal for AudioEncoder {
     fn from_val(v: &Any) -> Self {
         AudioEncoder {
@@ -183,27 +21,32 @@ impl FromVal for AudioEncoder {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioEncoder {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioEncoder {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioEncoder {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioEncoder> for Any {
     fn from(s: AudioEncoder) -> Any {
         let handle = s.inner.as_handle();
@@ -211,11 +54,13 @@ impl From<AudioEncoder> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioEncoder> for Any {
     fn from(s: &AudioEncoder) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AudioEncoder);
 
 impl AudioEncoder {

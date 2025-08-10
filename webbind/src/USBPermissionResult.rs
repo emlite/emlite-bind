@@ -7,6 +7,7 @@ use super::*;
 pub struct USBPermissionResult {
     inner: PermissionStatus,
 }
+
 impl FromVal for USBPermissionResult {
     fn from_val(v: &Any) -> Self {
         USBPermissionResult {
@@ -20,27 +21,32 @@ impl FromVal for USBPermissionResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for USBPermissionResult {
     type Target = PermissionStatus;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for USBPermissionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for USBPermissionResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for USBPermissionResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<USBPermissionResult> for Any {
     fn from(s: USBPermissionResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<USBPermissionResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&USBPermissionResult> for Any {
     fn from(s: &USBPermissionResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(USBPermissionResult);
 
 impl USBPermissionResult {

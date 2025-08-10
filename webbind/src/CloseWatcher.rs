@@ -7,6 +7,7 @@ use super::*;
 pub struct CloseWatcher {
     inner: EventTarget,
 }
+
 impl FromVal for CloseWatcher {
     fn from_val(v: &Any) -> Self {
         CloseWatcher {
@@ -20,27 +21,32 @@ impl FromVal for CloseWatcher {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CloseWatcher {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CloseWatcher {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CloseWatcher {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CloseWatcher {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CloseWatcher> for Any {
     fn from(s: CloseWatcher) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CloseWatcher> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CloseWatcher> for Any {
     fn from(s: &CloseWatcher) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CloseWatcher);
 
 impl CloseWatcher {

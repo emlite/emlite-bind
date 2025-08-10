@@ -7,6 +7,7 @@ use super::*;
 pub struct XMLSerializer {
     inner: Any,
 }
+
 impl FromVal for XMLSerializer {
     fn from_val(v: &Any) -> Self {
         XMLSerializer {
@@ -20,27 +21,32 @@ impl FromVal for XMLSerializer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XMLSerializer {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XMLSerializer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XMLSerializer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XMLSerializer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XMLSerializer> for Any {
     fn from(s: XMLSerializer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XMLSerializer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XMLSerializer> for Any {
     fn from(s: &XMLSerializer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XMLSerializer);
 
 impl XMLSerializer {

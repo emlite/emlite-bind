@@ -1,163 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct DOMMatrix2DInit {
-    inner: Any,
-}
-impl FromVal for DOMMatrix2DInit {
-    fn from_val(v: &Any) -> Self {
-        DOMMatrix2DInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for DOMMatrix2DInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for DOMMatrix2DInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for DOMMatrix2DInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for DOMMatrix2DInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<DOMMatrix2DInit> for Any {
-    fn from(s: DOMMatrix2DInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&DOMMatrix2DInit> for Any {
-    fn from(s: &DOMMatrix2DInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl DOMMatrix2DInit {
-    pub fn a(&self) -> f64 {
-        self.inner.get("a").as_::<f64>()
-    }
-
-    pub fn set_a(&mut self, value: f64) {
-        self.inner.set("a", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn b(&self) -> f64 {
-        self.inner.get("b").as_::<f64>()
-    }
-
-    pub fn set_b(&mut self, value: f64) {
-        self.inner.set("b", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn c(&self) -> f64 {
-        self.inner.get("c").as_::<f64>()
-    }
-
-    pub fn set_c(&mut self, value: f64) {
-        self.inner.set("c", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn d(&self) -> f64 {
-        self.inner.get("d").as_::<f64>()
-    }
-
-    pub fn set_d(&mut self, value: f64) {
-        self.inner.set("d", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn e(&self) -> f64 {
-        self.inner.get("e").as_::<f64>()
-    }
-
-    pub fn set_e(&mut self, value: f64) {
-        self.inner.set("e", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn f(&self) -> f64 {
-        self.inner.get("f").as_::<f64>()
-    }
-
-    pub fn set_f(&mut self, value: f64) {
-        self.inner.set("f", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn m11(&self) -> f64 {
-        self.inner.get("m11").as_::<f64>()
-    }
-
-    pub fn set_m11(&mut self, value: f64) {
-        self.inner.set("m11", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn m12(&self) -> f64 {
-        self.inner.get("m12").as_::<f64>()
-    }
-
-    pub fn set_m12(&mut self, value: f64) {
-        self.inner.set("m12", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn m21(&self) -> f64 {
-        self.inner.get("m21").as_::<f64>()
-    }
-
-    pub fn set_m21(&mut self, value: f64) {
-        self.inner.set("m21", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn m22(&self) -> f64 {
-        self.inner.get("m22").as_::<f64>()
-    }
-
-    pub fn set_m22(&mut self, value: f64) {
-        self.inner.set("m22", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn m41(&self) -> f64 {
-        self.inner.get("m41").as_::<f64>()
-    }
-
-    pub fn set_m41(&mut self, value: f64) {
-        self.inner.set("m41", value);
-    }
-}
-impl DOMMatrix2DInit {
-    pub fn m42(&self) -> f64 {
-        self.inner.get("m42").as_::<f64>()
-    }
-
-    pub fn set_m42(&mut self, value: f64) {
-        self.inner.set("m42", value);
-    }
-}
 /// The SVGSVGElement class.
 /// [`SVGSVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -165,6 +7,7 @@ impl DOMMatrix2DInit {
 pub struct SVGSVGElement {
     inner: SVGGraphicsElement,
 }
+
 impl FromVal for SVGSVGElement {
     fn from_val(v: &Any) -> Self {
         SVGSVGElement {
@@ -178,27 +21,32 @@ impl FromVal for SVGSVGElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGSVGElement {
     type Target = SVGGraphicsElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGSVGElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGSVGElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGSVGElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGSVGElement> for Any {
     fn from(s: SVGSVGElement) -> Any {
         let handle = s.inner.as_handle();
@@ -206,11 +54,13 @@ impl From<SVGSVGElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGSVGElement> for Any {
     fn from(s: &SVGSVGElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGSVGElement);
 
 impl SVGSVGElement {

@@ -1,10 +1,12 @@
 use super::*;
 
+/// The IdentityAssertionResponse dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityAssertionResponse {
     inner: Any,
 }
+
 impl FromVal for IdentityAssertionResponse {
     fn from_val(v: &Any) -> Self {
         IdentityAssertionResponse { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for IdentityAssertionResponse {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IdentityAssertionResponse {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IdentityAssertionResponse {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IdentityAssertionResponse {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IdentityAssertionResponse {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IdentityAssertionResponse> for Any {
     fn from(s: IdentityAssertionResponse) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<IdentityAssertionResponse> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IdentityAssertionResponse> for Any {
     fn from(s: &IdentityAssertionResponse) -> Any {
         s.inner.clone()
@@ -51,28 +59,34 @@ impl From<&IdentityAssertionResponse> for Any {
 }
 
 impl IdentityAssertionResponse {
+    /// Getter of the `token` attribute.
     pub fn token(&self) -> JsString {
         self.inner.get("token").as_::<JsString>()
     }
 
+    /// Setter of the `token` attribute.
     pub fn set_token(&mut self, value: &JsString) {
         self.inner.set("token", value);
     }
 }
 impl IdentityAssertionResponse {
+    /// Getter of the `continue_on` attribute.
     pub fn continue_on(&self) -> JsString {
         self.inner.get("continue_on").as_::<JsString>()
     }
 
+    /// Setter of the `continue_on` attribute.
     pub fn set_continue_on(&mut self, value: &JsString) {
         self.inner.set("continue_on", value);
     }
 }
 impl IdentityAssertionResponse {
+    /// Getter of the `error` attribute.
     pub fn error(&self) -> IdentityCredentialErrorInit {
         self.inner.get("error").as_::<IdentityCredentialErrorInit>()
     }
 
+    /// Setter of the `error` attribute.
     pub fn set_error(&mut self, value: &IdentityCredentialErrorInit) {
         self.inner.set("error", value);
     }

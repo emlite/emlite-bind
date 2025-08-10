@@ -7,6 +7,7 @@ use super::*;
 pub struct ScreenOrientation {
     inner: EventTarget,
 }
+
 impl FromVal for ScreenOrientation {
     fn from_val(v: &Any) -> Self {
         ScreenOrientation {
@@ -20,27 +21,32 @@ impl FromVal for ScreenOrientation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ScreenOrientation {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ScreenOrientation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ScreenOrientation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ScreenOrientation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ScreenOrientation> for Any {
     fn from(s: ScreenOrientation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ScreenOrientation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ScreenOrientation> for Any {
     fn from(s: &ScreenOrientation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ScreenOrientation);
 
 impl ScreenOrientation {

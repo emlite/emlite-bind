@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLSpanElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLSpanElement {
     fn from_val(v: &Any) -> Self {
         HTMLSpanElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLSpanElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLSpanElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLSpanElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLSpanElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLSpanElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLSpanElement> for Any {
     fn from(s: HTMLSpanElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLSpanElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLSpanElement> for Any {
     fn from(s: &HTMLSpanElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLSpanElement);
 
 impl HTMLSpanElement {

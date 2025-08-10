@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEPointLightElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEPointLightElement {
     fn from_val(v: &Any) -> Self {
         SVGFEPointLightElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEPointLightElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEPointLightElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEPointLightElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEPointLightElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEPointLightElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEPointLightElement> for Any {
     fn from(s: SVGFEPointLightElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEPointLightElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEPointLightElement> for Any {
     fn from(s: &SVGFEPointLightElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEPointLightElement);
 
 impl SVGFEPointLightElement {

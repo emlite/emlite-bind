@@ -7,6 +7,7 @@ use super::*;
 pub struct DigitalCredential {
     inner: Credential,
 }
+
 impl FromVal for DigitalCredential {
     fn from_val(v: &Any) -> Self {
         DigitalCredential {
@@ -20,27 +21,32 @@ impl FromVal for DigitalCredential {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DigitalCredential {
     type Target = Credential;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DigitalCredential {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DigitalCredential {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DigitalCredential {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DigitalCredential> for Any {
     fn from(s: DigitalCredential) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DigitalCredential> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DigitalCredential> for Any {
     fn from(s: &DigitalCredential) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DigitalCredential);
 
 impl DigitalCredential {

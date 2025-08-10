@@ -7,6 +7,7 @@ use super::*;
 pub struct ImageData {
     inner: Any,
 }
+
 impl FromVal for ImageData {
     fn from_val(v: &Any) -> Self {
         ImageData {
@@ -20,27 +21,32 @@ impl FromVal for ImageData {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ImageData {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ImageData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ImageData {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ImageData {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ImageData> for Any {
     fn from(s: ImageData) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ImageData> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ImageData> for Any {
     fn from(s: &ImageData) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ImageData);
 
 impl ImageData {

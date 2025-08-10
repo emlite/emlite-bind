@@ -7,6 +7,7 @@ use super::*;
 pub struct InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     inner: InterestGroupScriptRunnerGlobalScope,
 }
+
 impl FromVal for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     fn from_val(v: &Any) -> Self {
         InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
@@ -20,27 +21,32 @@ impl FromVal for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     type Target = InterestGroupScriptRunnerGlobalScope;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for Any {
     fn from(s: InterestGroupBiddingAndScoringScriptRunnerGlobalScope) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for Any {
     fn from(s: &InterestGroupBiddingAndScoringScriptRunnerGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(InterestGroupBiddingAndScoringScriptRunnerGlobalScope);
 
 impl InterestGroupBiddingAndScoringScriptRunnerGlobalScope {

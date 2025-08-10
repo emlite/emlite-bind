@@ -7,6 +7,7 @@ use super::*;
 pub struct XRQuadLayer {
     inner: XRCompositionLayer,
 }
+
 impl FromVal for XRQuadLayer {
     fn from_val(v: &Any) -> Self {
         XRQuadLayer {
@@ -20,27 +21,32 @@ impl FromVal for XRQuadLayer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRQuadLayer {
     type Target = XRCompositionLayer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRQuadLayer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRQuadLayer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRQuadLayer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRQuadLayer> for Any {
     fn from(s: XRQuadLayer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRQuadLayer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRQuadLayer> for Any {
     fn from(s: &XRQuadLayer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRQuadLayer);
 
 impl XRQuadLayer {

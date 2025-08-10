@@ -7,6 +7,7 @@ use super::*;
 pub struct AudioWorklet {
     inner: Worklet,
 }
+
 impl FromVal for AudioWorklet {
     fn from_val(v: &Any) -> Self {
         AudioWorklet {
@@ -20,27 +21,32 @@ impl FromVal for AudioWorklet {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioWorklet {
     type Target = Worklet;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioWorklet {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioWorklet {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioWorklet {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioWorklet> for Any {
     fn from(s: AudioWorklet) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AudioWorklet> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioWorklet> for Any {
     fn from(s: &AudioWorklet) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AudioWorklet);
 
 impl AudioWorklet {

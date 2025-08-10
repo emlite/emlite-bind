@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGAnimatedLengthList {
     inner: Any,
 }
+
 impl FromVal for SVGAnimatedLengthList {
     fn from_val(v: &Any) -> Self {
         SVGAnimatedLengthList {
@@ -20,27 +21,32 @@ impl FromVal for SVGAnimatedLengthList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGAnimatedLengthList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGAnimatedLengthList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGAnimatedLengthList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGAnimatedLengthList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGAnimatedLengthList> for Any {
     fn from(s: SVGAnimatedLengthList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGAnimatedLengthList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGAnimatedLengthList> for Any {
     fn from(s: &SVGAnimatedLengthList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGAnimatedLengthList);
 
 impl SVGAnimatedLengthList {

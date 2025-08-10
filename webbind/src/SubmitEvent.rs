@@ -7,6 +7,7 @@ use super::*;
 pub struct SubmitEvent {
     inner: Event,
 }
+
 impl FromVal for SubmitEvent {
     fn from_val(v: &Any) -> Self {
         SubmitEvent {
@@ -20,27 +21,32 @@ impl FromVal for SubmitEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SubmitEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SubmitEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SubmitEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SubmitEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SubmitEvent> for Any {
     fn from(s: SubmitEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SubmitEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SubmitEvent> for Any {
     fn from(s: &SubmitEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SubmitEvent);
 
 impl SubmitEvent {

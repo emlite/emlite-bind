@@ -7,6 +7,7 @@ use super::*;
 pub struct ExtendableCookieChangeEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for ExtendableCookieChangeEvent {
     fn from_val(v: &Any) -> Self {
         ExtendableCookieChangeEvent {
@@ -20,27 +21,32 @@ impl FromVal for ExtendableCookieChangeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ExtendableCookieChangeEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ExtendableCookieChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ExtendableCookieChangeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ExtendableCookieChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ExtendableCookieChangeEvent> for Any {
     fn from(s: ExtendableCookieChangeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ExtendableCookieChangeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ExtendableCookieChangeEvent> for Any {
     fn from(s: &ExtendableCookieChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ExtendableCookieChangeEvent);
 
 impl ExtendableCookieChangeEvent {

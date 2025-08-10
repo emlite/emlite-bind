@@ -7,6 +7,7 @@ use super::*;
 pub struct TaskController {
     inner: AbortController,
 }
+
 impl FromVal for TaskController {
     fn from_val(v: &Any) -> Self {
         TaskController {
@@ -20,27 +21,32 @@ impl FromVal for TaskController {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TaskController {
     type Target = AbortController;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TaskController {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TaskController {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TaskController {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TaskController> for Any {
     fn from(s: TaskController) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TaskController> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TaskController> for Any {
     fn from(s: &TaskController) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TaskController);
 
 impl TaskController {

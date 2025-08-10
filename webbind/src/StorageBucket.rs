@@ -7,6 +7,7 @@ use super::*;
 pub struct StorageBucket {
     inner: Any,
 }
+
 impl FromVal for StorageBucket {
     fn from_val(v: &Any) -> Self {
         StorageBucket {
@@ -20,27 +21,32 @@ impl FromVal for StorageBucket {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for StorageBucket {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for StorageBucket {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for StorageBucket {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for StorageBucket {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<StorageBucket> for Any {
     fn from(s: StorageBucket) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<StorageBucket> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&StorageBucket> for Any {
     fn from(s: &StorageBucket) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(StorageBucket);
 
 impl StorageBucket {

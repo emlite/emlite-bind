@@ -7,6 +7,7 @@ use super::*;
 pub struct AmbientLightSensor {
     inner: Sensor,
 }
+
 impl FromVal for AmbientLightSensor {
     fn from_val(v: &Any) -> Self {
         AmbientLightSensor {
@@ -20,27 +21,32 @@ impl FromVal for AmbientLightSensor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AmbientLightSensor {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AmbientLightSensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AmbientLightSensor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AmbientLightSensor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AmbientLightSensor> for Any {
     fn from(s: AmbientLightSensor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AmbientLightSensor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AmbientLightSensor> for Any {
     fn from(s: &AmbientLightSensor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AmbientLightSensor);
 
 impl AmbientLightSensor {

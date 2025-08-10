@@ -1,10 +1,12 @@
 use super::*;
 
+/// The ReadableStreamIteratorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStreamIteratorOptions {
     inner: Any,
 }
+
 impl FromVal for ReadableStreamIteratorOptions {
     fn from_val(v: &Any) -> Self {
         ReadableStreamIteratorOptions { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for ReadableStreamIteratorOptions {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ReadableStreamIteratorOptions {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ReadableStreamIteratorOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ReadableStreamIteratorOptions {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ReadableStreamIteratorOptions {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ReadableStreamIteratorOptions> for Any {
     fn from(s: ReadableStreamIteratorOptions) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<ReadableStreamIteratorOptions> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ReadableStreamIteratorOptions> for Any {
     fn from(s: &ReadableStreamIteratorOptions) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&ReadableStreamIteratorOptions> for Any {
 }
 
 impl ReadableStreamIteratorOptions {
+    /// Getter of the `preventCancel` attribute.
     pub fn prevent_cancel(&self) -> bool {
         self.inner.get("preventCancel").as_::<bool>()
     }
 
+    /// Setter of the `preventCancel` attribute.
     pub fn set_prevent_cancel(&mut self, value: bool) {
         self.inner.set("preventCancel", value);
     }

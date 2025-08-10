@@ -7,6 +7,7 @@ use super::*;
 pub struct XRRenderState {
     inner: Any,
 }
+
 impl FromVal for XRRenderState {
     fn from_val(v: &Any) -> Self {
         XRRenderState {
@@ -20,27 +21,32 @@ impl FromVal for XRRenderState {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRRenderState {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRRenderState {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRRenderState {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRRenderState {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRRenderState> for Any {
     fn from(s: XRRenderState) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRRenderState> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRRenderState> for Any {
     fn from(s: &XRRenderState) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRRenderState);
 
 impl XRRenderState {

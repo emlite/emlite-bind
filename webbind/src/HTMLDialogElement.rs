@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLDialogElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLDialogElement {
     fn from_val(v: &Any) -> Self {
         HTMLDialogElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLDialogElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLDialogElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLDialogElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLDialogElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLDialogElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLDialogElement> for Any {
     fn from(s: HTMLDialogElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLDialogElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLDialogElement> for Any {
     fn from(s: &HTMLDialogElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLDialogElement);
 
 impl HTMLDialogElement {

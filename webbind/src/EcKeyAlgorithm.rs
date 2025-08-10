@@ -1,10 +1,12 @@
 use super::*;
 
+/// The EcKeyAlgorithm dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EcKeyAlgorithm {
     inner: Any,
 }
+
 impl FromVal for EcKeyAlgorithm {
     fn from_val(v: &Any) -> Self {
         EcKeyAlgorithm { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for EcKeyAlgorithm {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EcKeyAlgorithm {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EcKeyAlgorithm {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EcKeyAlgorithm {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EcKeyAlgorithm {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EcKeyAlgorithm> for Any {
     fn from(s: EcKeyAlgorithm) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<EcKeyAlgorithm> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EcKeyAlgorithm> for Any {
     fn from(s: &EcKeyAlgorithm) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&EcKeyAlgorithm> for Any {
 }
 
 impl EcKeyAlgorithm {
+    /// Getter of the `namedCurve` attribute.
     pub fn named_curve(&self) -> Any {
         self.inner.get("namedCurve").as_::<Any>()
     }
 
+    /// Setter of the `namedCurve` attribute.
     pub fn set_named_curve(&mut self, value: &Any) {
         self.inner.set("namedCurve", value);
     }

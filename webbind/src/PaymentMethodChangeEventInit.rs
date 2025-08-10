@@ -1,10 +1,12 @@
 use super::*;
 
+/// The PaymentMethodChangeEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaymentMethodChangeEventInit {
     inner: Any,
 }
+
 impl FromVal for PaymentMethodChangeEventInit {
     fn from_val(v: &Any) -> Self {
         PaymentMethodChangeEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for PaymentMethodChangeEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PaymentMethodChangeEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PaymentMethodChangeEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PaymentMethodChangeEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PaymentMethodChangeEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PaymentMethodChangeEventInit> for Any {
     fn from(s: PaymentMethodChangeEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<PaymentMethodChangeEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PaymentMethodChangeEventInit> for Any {
     fn from(s: &PaymentMethodChangeEventInit) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&PaymentMethodChangeEventInit> for Any {
 }
 
 impl PaymentMethodChangeEventInit {
+    /// Getter of the `methodName` attribute.
     pub fn method_name(&self) -> JsString {
         self.inner.get("methodName").as_::<JsString>()
     }
 
+    /// Setter of the `methodName` attribute.
     pub fn set_method_name(&mut self, value: &JsString) {
         self.inner.set("methodName", value);
     }
 }
 impl PaymentMethodChangeEventInit {
+    /// Getter of the `methodDetails` attribute.
     pub fn method_details(&self) -> Object {
         self.inner.get("methodDetails").as_::<Object>()
     }
 
+    /// Setter of the `methodDetails` attribute.
     pub fn set_method_details(&mut self, value: &Object) {
         self.inner.set("methodDetails", value);
     }

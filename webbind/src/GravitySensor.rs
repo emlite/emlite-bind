@@ -7,6 +7,7 @@ use super::*;
 pub struct GravitySensor {
     inner: Accelerometer,
 }
+
 impl FromVal for GravitySensor {
     fn from_val(v: &Any) -> Self {
         GravitySensor {
@@ -20,27 +21,32 @@ impl FromVal for GravitySensor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GravitySensor {
     type Target = Accelerometer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GravitySensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GravitySensor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GravitySensor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GravitySensor> for Any {
     fn from(s: GravitySensor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GravitySensor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GravitySensor> for Any {
     fn from(s: &GravitySensor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GravitySensor);
 
 impl GravitySensor {

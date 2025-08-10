@@ -7,6 +7,7 @@ use super::*;
 pub struct ForDebuggingOnly {
     inner: Any,
 }
+
 impl FromVal for ForDebuggingOnly {
     fn from_val(v: &Any) -> Self {
         ForDebuggingOnly {
@@ -20,27 +21,32 @@ impl FromVal for ForDebuggingOnly {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ForDebuggingOnly {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ForDebuggingOnly {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ForDebuggingOnly {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ForDebuggingOnly {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ForDebuggingOnly> for Any {
     fn from(s: ForDebuggingOnly) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ForDebuggingOnly> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ForDebuggingOnly> for Any {
     fn from(s: &ForDebuggingOnly) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ForDebuggingOnly);
 
 impl ForDebuggingOnly {

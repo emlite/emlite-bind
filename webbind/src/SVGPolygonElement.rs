@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGPolygonElement {
     inner: SVGGeometryElement,
 }
+
 impl FromVal for SVGPolygonElement {
     fn from_val(v: &Any) -> Self {
         SVGPolygonElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGPolygonElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGPolygonElement {
     type Target = SVGGeometryElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGPolygonElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGPolygonElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGPolygonElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGPolygonElement> for Any {
     fn from(s: SVGPolygonElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGPolygonElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGPolygonElement> for Any {
     fn from(s: &SVGPolygonElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGPolygonElement);
 
 impl SVGPolygonElement {

@@ -7,6 +7,7 @@ use super::*;
 pub struct ImageTrack {
     inner: Any,
 }
+
 impl FromVal for ImageTrack {
     fn from_val(v: &Any) -> Self {
         ImageTrack {
@@ -20,27 +21,32 @@ impl FromVal for ImageTrack {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ImageTrack {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ImageTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ImageTrack {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ImageTrack {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ImageTrack> for Any {
     fn from(s: ImageTrack) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ImageTrack> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ImageTrack> for Any {
     fn from(s: &ImageTrack) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ImageTrack);
 
 impl ImageTrack {

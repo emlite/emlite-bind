@@ -7,6 +7,7 @@ use super::*;
 pub struct WorkerLocation {
     inner: Any,
 }
+
 impl FromVal for WorkerLocation {
     fn from_val(v: &Any) -> Self {
         WorkerLocation {
@@ -20,27 +21,32 @@ impl FromVal for WorkerLocation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WorkerLocation {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WorkerLocation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WorkerLocation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WorkerLocation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WorkerLocation> for Any {
     fn from(s: WorkerLocation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WorkerLocation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WorkerLocation> for Any {
     fn from(s: &WorkerLocation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WorkerLocation);
 
 impl WorkerLocation {

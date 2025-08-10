@@ -7,6 +7,7 @@ use super::*;
 pub struct InputDeviceInfo {
     inner: MediaDeviceInfo,
 }
+
 impl FromVal for InputDeviceInfo {
     fn from_val(v: &Any) -> Self {
         InputDeviceInfo {
@@ -20,27 +21,32 @@ impl FromVal for InputDeviceInfo {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for InputDeviceInfo {
     type Target = MediaDeviceInfo;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for InputDeviceInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for InputDeviceInfo {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for InputDeviceInfo {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<InputDeviceInfo> for Any {
     fn from(s: InputDeviceInfo) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<InputDeviceInfo> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&InputDeviceInfo> for Any {
     fn from(s: &InputDeviceInfo) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(InputDeviceInfo);
 
 impl InputDeviceInfo {

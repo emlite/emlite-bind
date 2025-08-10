@@ -7,6 +7,7 @@ use super::*;
 pub struct VideoTrack {
     inner: Any,
 }
+
 impl FromVal for VideoTrack {
     fn from_val(v: &Any) -> Self {
         VideoTrack {
@@ -20,27 +21,32 @@ impl FromVal for VideoTrack {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for VideoTrack {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for VideoTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for VideoTrack {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for VideoTrack {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<VideoTrack> for Any {
     fn from(s: VideoTrack) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<VideoTrack> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&VideoTrack> for Any {
     fn from(s: &VideoTrack) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(VideoTrack);
 
 impl VideoTrack {

@@ -7,6 +7,7 @@ use super::*;
 pub struct NDEFRecord {
     inner: Any,
 }
+
 impl FromVal for NDEFRecord {
     fn from_val(v: &Any) -> Self {
         NDEFRecord {
@@ -20,27 +21,32 @@ impl FromVal for NDEFRecord {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NDEFRecord {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NDEFRecord {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NDEFRecord {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NDEFRecord {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NDEFRecord> for Any {
     fn from(s: NDEFRecord) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NDEFRecord> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NDEFRecord> for Any {
     fn from(s: &NDEFRecord) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NDEFRecord);
 
 impl NDEFRecord {

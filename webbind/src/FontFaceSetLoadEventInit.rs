@@ -1,10 +1,12 @@
 use super::*;
 
+/// The FontFaceSetLoadEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontFaceSetLoadEventInit {
     inner: Any,
 }
+
 impl FromVal for FontFaceSetLoadEventInit {
     fn from_val(v: &Any) -> Self {
         FontFaceSetLoadEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for FontFaceSetLoadEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FontFaceSetLoadEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FontFaceSetLoadEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FontFaceSetLoadEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FontFaceSetLoadEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FontFaceSetLoadEventInit> for Any {
     fn from(s: FontFaceSetLoadEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<FontFaceSetLoadEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FontFaceSetLoadEventInit> for Any {
     fn from(s: &FontFaceSetLoadEventInit) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&FontFaceSetLoadEventInit> for Any {
 }
 
 impl FontFaceSetLoadEventInit {
+    /// Getter of the `fontfaces` attribute.
     pub fn fontfaces(&self) -> TypedArray<FontFace> {
         self.inner.get("fontfaces").as_::<TypedArray<FontFace>>()
     }
 
+    /// Setter of the `fontfaces` attribute.
     pub fn set_fontfaces(&mut self, value: &TypedArray<FontFace>) {
         self.inner.set("fontfaces", value);
     }

@@ -1,10 +1,12 @@
 use super::*;
 
+/// The GPUQueueDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUQueueDescriptor {
     inner: Any,
 }
+
 impl FromVal for GPUQueueDescriptor {
     fn from_val(v: &Any) -> Self {
         GPUQueueDescriptor { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for GPUQueueDescriptor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUQueueDescriptor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUQueueDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUQueueDescriptor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUQueueDescriptor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUQueueDescriptor> for Any {
     fn from(s: GPUQueueDescriptor) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<GPUQueueDescriptor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUQueueDescriptor> for Any {
     fn from(s: &GPUQueueDescriptor) -> Any {
         s.inner.clone()

@@ -7,6 +7,7 @@ use super::*;
 pub struct Table {
     inner: Any,
 }
+
 impl FromVal for Table {
     fn from_val(v: &Any) -> Self {
         Table {
@@ -20,27 +21,32 @@ impl FromVal for Table {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Table {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Table {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Table {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Table {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Table> for Any {
     fn from(s: Table) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Table> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Table> for Any {
     fn from(s: &Table) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Table);
 
 impl Table {

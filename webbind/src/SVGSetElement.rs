@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGSetElement {
     inner: SVGAnimationElement,
 }
+
 impl FromVal for SVGSetElement {
     fn from_val(v: &Any) -> Self {
         SVGSetElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGSetElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGSetElement {
     type Target = SVGAnimationElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGSetElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGSetElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGSetElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGSetElement> for Any {
     fn from(s: SVGSetElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<SVGSetElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGSetElement> for Any {
     fn from(s: &SVGSetElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGSetElement);

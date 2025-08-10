@@ -1,159 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct AttributionReportingRequestOptions {
-    inner: Any,
-}
-impl FromVal for AttributionReportingRequestOptions {
-    fn from_val(v: &Any) -> Self {
-        AttributionReportingRequestOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for AttributionReportingRequestOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for AttributionReportingRequestOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for AttributionReportingRequestOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for AttributionReportingRequestOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<AttributionReportingRequestOptions> for Any {
-    fn from(s: AttributionReportingRequestOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&AttributionReportingRequestOptions> for Any {
-    fn from(s: &AttributionReportingRequestOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl AttributionReportingRequestOptions {
-    pub fn event_source_eligible(&self) -> bool {
-        self.inner.get("eventSourceEligible").as_::<bool>()
-    }
-
-    pub fn set_event_source_eligible(&mut self, value: bool) {
-        self.inner.set("eventSourceEligible", value);
-    }
-}
-impl AttributionReportingRequestOptions {
-    pub fn trigger_eligible(&self) -> bool {
-        self.inner.get("triggerEligible").as_::<bool>()
-    }
-
-    pub fn set_trigger_eligible(&mut self, value: bool) {
-        self.inner.set("triggerEligible", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PrivateToken {
-    inner: Any,
-}
-impl FromVal for PrivateToken {
-    fn from_val(v: &Any) -> Self {
-        PrivateToken { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PrivateToken {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PrivateToken {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PrivateToken {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PrivateToken {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PrivateToken> for Any {
-    fn from(s: PrivateToken) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PrivateToken> for Any {
-    fn from(s: &PrivateToken) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PrivateToken {
-    pub fn version(&self) -> TokenVersion {
-        self.inner.get("version").as_::<TokenVersion>()
-    }
-
-    pub fn set_version(&mut self, value: &TokenVersion) {
-        self.inner.set("version", value);
-    }
-}
-impl PrivateToken {
-    pub fn operation(&self) -> OperationType {
-        self.inner.get("operation").as_::<OperationType>()
-    }
-
-    pub fn set_operation(&mut self, value: &OperationType) {
-        self.inner.set("operation", value);
-    }
-}
-impl PrivateToken {
-    pub fn refresh_policy(&self) -> RefreshPolicy {
-        self.inner.get("refreshPolicy").as_::<RefreshPolicy>()
-    }
-
-    pub fn set_refresh_policy(&mut self, value: &RefreshPolicy) {
-        self.inner.set("refreshPolicy", value);
-    }
-}
-impl PrivateToken {
-    pub fn issuers(&self) -> TypedArray<JsString> {
-        self.inner.get("issuers").as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_issuers(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("issuers", value);
-    }
-}
 /// The XMLHttpRequest class.
 /// [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -161,6 +7,7 @@ impl PrivateToken {
 pub struct XMLHttpRequest {
     inner: XMLHttpRequestEventTarget,
 }
+
 impl FromVal for XMLHttpRequest {
     fn from_val(v: &Any) -> Self {
         XMLHttpRequest {
@@ -174,27 +21,32 @@ impl FromVal for XMLHttpRequest {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XMLHttpRequest {
     type Target = XMLHttpRequestEventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XMLHttpRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XMLHttpRequest {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XMLHttpRequest {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XMLHttpRequest> for Any {
     fn from(s: XMLHttpRequest) -> Any {
         let handle = s.inner.as_handle();
@@ -202,11 +54,13 @@ impl From<XMLHttpRequest> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XMLHttpRequest> for Any {
     fn from(s: &XMLHttpRequest) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XMLHttpRequest);
 
 impl XMLHttpRequest {

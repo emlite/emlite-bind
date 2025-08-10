@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUSampler {
     inner: Any,
 }
+
 impl FromVal for GPUSampler {
     fn from_val(v: &Any) -> Self {
         GPUSampler {
@@ -20,27 +21,32 @@ impl FromVal for GPUSampler {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUSampler {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUSampler {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUSampler {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUSampler {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUSampler> for Any {
     fn from(s: GPUSampler) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUSampler> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUSampler> for Any {
     fn from(s: &GPUSampler) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUSampler);
 
 impl GPUSampler {

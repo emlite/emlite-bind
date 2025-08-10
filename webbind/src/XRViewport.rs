@@ -7,6 +7,7 @@ use super::*;
 pub struct XRViewport {
     inner: Any,
 }
+
 impl FromVal for XRViewport {
     fn from_val(v: &Any) -> Self {
         XRViewport {
@@ -20,27 +21,32 @@ impl FromVal for XRViewport {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRViewport {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRViewport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRViewport {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRViewport {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRViewport> for Any {
     fn from(s: XRViewport) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRViewport> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRViewport> for Any {
     fn from(s: &XRViewport) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRViewport);
 
 impl XRViewport {

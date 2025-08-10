@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothPermissionResult {
     inner: PermissionStatus,
 }
+
 impl FromVal for BluetoothPermissionResult {
     fn from_val(v: &Any) -> Self {
         BluetoothPermissionResult {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothPermissionResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothPermissionResult {
     type Target = PermissionStatus;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothPermissionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothPermissionResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothPermissionResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothPermissionResult> for Any {
     fn from(s: BluetoothPermissionResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothPermissionResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothPermissionResult> for Any {
     fn from(s: &BluetoothPermissionResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothPermissionResult);
 
 impl BluetoothPermissionResult {

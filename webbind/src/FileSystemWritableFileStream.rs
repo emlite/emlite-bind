@@ -7,6 +7,7 @@ use super::*;
 pub struct FileSystemWritableFileStream {
     inner: WritableStream,
 }
+
 impl FromVal for FileSystemWritableFileStream {
     fn from_val(v: &Any) -> Self {
         FileSystemWritableFileStream {
@@ -20,27 +21,32 @@ impl FromVal for FileSystemWritableFileStream {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FileSystemWritableFileStream {
     type Target = WritableStream;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FileSystemWritableFileStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FileSystemWritableFileStream {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FileSystemWritableFileStream {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FileSystemWritableFileStream> for Any {
     fn from(s: FileSystemWritableFileStream) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FileSystemWritableFileStream> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FileSystemWritableFileStream> for Any {
     fn from(s: &FileSystemWritableFileStream) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FileSystemWritableFileStream);
 
 impl FileSystemWritableFileStream {

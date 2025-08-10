@@ -7,6 +7,7 @@ use super::*;
 pub struct TransformStreamDefaultController {
     inner: Any,
 }
+
 impl FromVal for TransformStreamDefaultController {
     fn from_val(v: &Any) -> Self {
         TransformStreamDefaultController {
@@ -20,27 +21,32 @@ impl FromVal for TransformStreamDefaultController {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TransformStreamDefaultController {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TransformStreamDefaultController {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TransformStreamDefaultController {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TransformStreamDefaultController {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TransformStreamDefaultController> for Any {
     fn from(s: TransformStreamDefaultController) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TransformStreamDefaultController> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TransformStreamDefaultController> for Any {
     fn from(s: &TransformStreamDefaultController) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TransformStreamDefaultController);
 
 impl TransformStreamDefaultController {

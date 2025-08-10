@@ -7,6 +7,7 @@ use super::*;
 pub struct ValidityState {
     inner: Any,
 }
+
 impl FromVal for ValidityState {
     fn from_val(v: &Any) -> Self {
         ValidityState {
@@ -20,27 +21,32 @@ impl FromVal for ValidityState {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ValidityState {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ValidityState {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ValidityState {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ValidityState {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ValidityState> for Any {
     fn from(s: ValidityState) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ValidityState> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ValidityState> for Any {
     fn from(s: &ValidityState) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ValidityState);
 
 impl ValidityState {

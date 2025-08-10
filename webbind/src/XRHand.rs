@@ -7,6 +7,7 @@ use super::*;
 pub struct XRHand {
     inner: Any,
 }
+
 impl FromVal for XRHand {
     fn from_val(v: &Any) -> Self {
         XRHand {
@@ -20,27 +21,32 @@ impl FromVal for XRHand {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRHand {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRHand {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRHand {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRHand {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRHand> for Any {
     fn from(s: XRHand) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRHand> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRHand> for Any {
     fn from(s: &XRHand) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRHand);
 
 impl XRHand {

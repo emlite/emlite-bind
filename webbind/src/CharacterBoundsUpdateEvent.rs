@@ -7,6 +7,7 @@ use super::*;
 pub struct CharacterBoundsUpdateEvent {
     inner: Event,
 }
+
 impl FromVal for CharacterBoundsUpdateEvent {
     fn from_val(v: &Any) -> Self {
         CharacterBoundsUpdateEvent {
@@ -20,27 +21,32 @@ impl FromVal for CharacterBoundsUpdateEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CharacterBoundsUpdateEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CharacterBoundsUpdateEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CharacterBoundsUpdateEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CharacterBoundsUpdateEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CharacterBoundsUpdateEvent> for Any {
     fn from(s: CharacterBoundsUpdateEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CharacterBoundsUpdateEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CharacterBoundsUpdateEvent> for Any {
     fn from(s: &CharacterBoundsUpdateEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CharacterBoundsUpdateEvent);
 
 impl CharacterBoundsUpdateEvent {

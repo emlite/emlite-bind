@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGLengthList {
     inner: Any,
 }
+
 impl FromVal for SVGLengthList {
     fn from_val(v: &Any) -> Self {
         SVGLengthList {
@@ -20,27 +21,32 @@ impl FromVal for SVGLengthList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGLengthList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGLengthList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGLengthList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGLengthList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGLengthList> for Any {
     fn from(s: SVGLengthList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGLengthList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGLengthList> for Any {
     fn from(s: &SVGLengthList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGLengthList);
 
 impl SVGLengthList {

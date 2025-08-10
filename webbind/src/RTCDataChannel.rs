@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCDataChannel {
     inner: EventTarget,
 }
+
 impl FromVal for RTCDataChannel {
     fn from_val(v: &Any) -> Self {
         RTCDataChannel {
@@ -20,27 +21,32 @@ impl FromVal for RTCDataChannel {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCDataChannel {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCDataChannel {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCDataChannel {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCDataChannel {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCDataChannel> for Any {
     fn from(s: RTCDataChannel) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCDataChannel> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCDataChannel> for Any {
     fn from(s: &RTCDataChannel) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCDataChannel);
 
 impl RTCDataChannel {

@@ -7,6 +7,7 @@ use super::*;
 pub struct AbortController {
     inner: Any,
 }
+
 impl FromVal for AbortController {
     fn from_val(v: &Any) -> Self {
         AbortController {
@@ -20,27 +21,32 @@ impl FromVal for AbortController {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AbortController {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AbortController {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AbortController {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AbortController {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AbortController> for Any {
     fn from(s: AbortController) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AbortController> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AbortController> for Any {
     fn from(s: &AbortController) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AbortController);
 
 impl AbortController {

@@ -7,6 +7,7 @@ use super::*;
 pub struct IntersectionObserver {
     inner: Any,
 }
+
 impl FromVal for IntersectionObserver {
     fn from_val(v: &Any) -> Self {
         IntersectionObserver {
@@ -20,27 +21,32 @@ impl FromVal for IntersectionObserver {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IntersectionObserver {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IntersectionObserver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IntersectionObserver {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IntersectionObserver {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IntersectionObserver> for Any {
     fn from(s: IntersectionObserver) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IntersectionObserver> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IntersectionObserver> for Any {
     fn from(s: &IntersectionObserver) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IntersectionObserver);
 
 impl IntersectionObserver {

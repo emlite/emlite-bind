@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLAudioElement {
     inner: HTMLMediaElement,
 }
+
 impl FromVal for HTMLAudioElement {
     fn from_val(v: &Any) -> Self {
         HTMLAudioElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLAudioElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLAudioElement {
     type Target = HTMLMediaElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLAudioElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLAudioElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLAudioElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLAudioElement> for Any {
     fn from(s: HTMLAudioElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLAudioElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLAudioElement> for Any {
     fn from(s: &HTMLAudioElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLAudioElement);
 
 impl HTMLAudioElement {

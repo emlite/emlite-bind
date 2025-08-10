@@ -1,10 +1,12 @@
 use super::*;
 
+/// The GPUVertexState dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUVertexState {
     inner: Any,
 }
+
 impl FromVal for GPUVertexState {
     fn from_val(v: &Any) -> Self {
         GPUVertexState { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for GPUVertexState {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUVertexState {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUVertexState {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUVertexState {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUVertexState {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUVertexState> for Any {
     fn from(s: GPUVertexState) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<GPUVertexState> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUVertexState> for Any {
     fn from(s: &GPUVertexState) -> Any {
         s.inner.clone()
@@ -51,12 +59,14 @@ impl From<&GPUVertexState> for Any {
 }
 
 impl GPUVertexState {
+    /// Getter of the `buffers` attribute.
     pub fn buffers(&self) -> TypedArray<GPUVertexBufferLayout> {
         self.inner
             .get("buffers")
             .as_::<TypedArray<GPUVertexBufferLayout>>()
     }
 
+    /// Setter of the `buffers` attribute.
     pub fn set_buffers(&mut self, value: &TypedArray<GPUVertexBufferLayout>) {
         self.inner.set("buffers", value);
     }

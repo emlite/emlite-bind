@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSParserDeclaration {
     inner: CSSParserRule,
 }
+
 impl FromVal for CSSParserDeclaration {
     fn from_val(v: &Any) -> Self {
         CSSParserDeclaration {
@@ -20,27 +21,32 @@ impl FromVal for CSSParserDeclaration {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSParserDeclaration {
     type Target = CSSParserRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSParserDeclaration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSParserDeclaration {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSParserDeclaration {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSParserDeclaration> for Any {
     fn from(s: CSSParserDeclaration) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSParserDeclaration> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSParserDeclaration> for Any {
     fn from(s: &CSSParserDeclaration) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSParserDeclaration);
 
 impl CSSParserDeclaration {

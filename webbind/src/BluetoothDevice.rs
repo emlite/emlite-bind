@@ -1,64 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct WatchAdvertisementsOptions {
-    inner: Any,
-}
-impl FromVal for WatchAdvertisementsOptions {
-    fn from_val(v: &Any) -> Self {
-        WatchAdvertisementsOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for WatchAdvertisementsOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for WatchAdvertisementsOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for WatchAdvertisementsOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for WatchAdvertisementsOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<WatchAdvertisementsOptions> for Any {
-    fn from(s: WatchAdvertisementsOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&WatchAdvertisementsOptions> for Any {
-    fn from(s: &WatchAdvertisementsOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl WatchAdvertisementsOptions {
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
-    }
-
-    pub fn set_signal(&mut self, value: &AbortSignal) {
-        self.inner.set("signal", value);
-    }
-}
 /// The BluetoothDevice class.
 /// [`BluetoothDevice`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -66,6 +7,7 @@ impl WatchAdvertisementsOptions {
 pub struct BluetoothDevice {
     inner: EventTarget,
 }
+
 impl FromVal for BluetoothDevice {
     fn from_val(v: &Any) -> Self {
         BluetoothDevice {
@@ -79,27 +21,32 @@ impl FromVal for BluetoothDevice {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothDevice {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothDevice {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothDevice {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothDevice {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothDevice> for Any {
     fn from(s: BluetoothDevice) -> Any {
         let handle = s.inner.as_handle();
@@ -107,11 +54,13 @@ impl From<BluetoothDevice> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothDevice> for Any {
     fn from(s: &BluetoothDevice) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothDevice);
 
 impl BluetoothDevice {

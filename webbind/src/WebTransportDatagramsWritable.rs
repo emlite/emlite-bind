@@ -7,6 +7,7 @@ use super::*;
 pub struct WebTransportDatagramsWritable {
     inner: WritableStream,
 }
+
 impl FromVal for WebTransportDatagramsWritable {
     fn from_val(v: &Any) -> Self {
         WebTransportDatagramsWritable {
@@ -20,27 +21,32 @@ impl FromVal for WebTransportDatagramsWritable {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebTransportDatagramsWritable {
     type Target = WritableStream;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebTransportDatagramsWritable {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebTransportDatagramsWritable {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebTransportDatagramsWritable {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebTransportDatagramsWritable> for Any {
     fn from(s: WebTransportDatagramsWritable) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WebTransportDatagramsWritable> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebTransportDatagramsWritable> for Any {
     fn from(s: &WebTransportDatagramsWritable) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramsWritable);
 
 impl WebTransportDatagramsWritable {

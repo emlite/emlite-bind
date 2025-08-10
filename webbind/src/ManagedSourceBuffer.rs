@@ -7,6 +7,7 @@ use super::*;
 pub struct ManagedSourceBuffer {
     inner: SourceBuffer,
 }
+
 impl FromVal for ManagedSourceBuffer {
     fn from_val(v: &Any) -> Self {
         ManagedSourceBuffer {
@@ -20,27 +21,32 @@ impl FromVal for ManagedSourceBuffer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ManagedSourceBuffer {
     type Target = SourceBuffer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ManagedSourceBuffer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ManagedSourceBuffer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ManagedSourceBuffer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ManagedSourceBuffer> for Any {
     fn from(s: ManagedSourceBuffer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ManagedSourceBuffer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ManagedSourceBuffer> for Any {
     fn from(s: &ManagedSourceBuffer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ManagedSourceBuffer);
 
 impl ManagedSourceBuffer {

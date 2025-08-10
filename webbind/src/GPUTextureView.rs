@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUTextureView {
     inner: Any,
 }
+
 impl FromVal for GPUTextureView {
     fn from_val(v: &Any) -> Self {
         GPUTextureView {
@@ -20,27 +21,32 @@ impl FromVal for GPUTextureView {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUTextureView {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUTextureView {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUTextureView {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUTextureView {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUTextureView> for Any {
     fn from(s: GPUTextureView) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUTextureView> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUTextureView> for Any {
     fn from(s: &GPUTextureView) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUTextureView);
 
 impl GPUTextureView {

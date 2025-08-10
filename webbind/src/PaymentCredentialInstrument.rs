@@ -1,10 +1,12 @@
 use super::*;
 
+/// The PaymentCredentialInstrument dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaymentCredentialInstrument {
     inner: Any,
 }
+
 impl FromVal for PaymentCredentialInstrument {
     fn from_val(v: &Any) -> Self {
         PaymentCredentialInstrument { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for PaymentCredentialInstrument {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PaymentCredentialInstrument {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PaymentCredentialInstrument {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PaymentCredentialInstrument {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PaymentCredentialInstrument {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PaymentCredentialInstrument> for Any {
     fn from(s: PaymentCredentialInstrument) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<PaymentCredentialInstrument> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PaymentCredentialInstrument> for Any {
     fn from(s: &PaymentCredentialInstrument) -> Any {
         s.inner.clone()
@@ -51,37 +59,45 @@ impl From<&PaymentCredentialInstrument> for Any {
 }
 
 impl PaymentCredentialInstrument {
+    /// Getter of the `displayName` attribute.
     pub fn display_name(&self) -> JsString {
         self.inner.get("displayName").as_::<JsString>()
     }
 
+    /// Setter of the `displayName` attribute.
     pub fn set_display_name(&mut self, value: &JsString) {
         self.inner.set("displayName", value);
     }
 }
 impl PaymentCredentialInstrument {
+    /// Getter of the `icon` attribute.
     pub fn icon(&self) -> JsString {
         self.inner.get("icon").as_::<JsString>()
     }
 
+    /// Setter of the `icon` attribute.
     pub fn set_icon(&mut self, value: &JsString) {
         self.inner.set("icon", value);
     }
 }
 impl PaymentCredentialInstrument {
+    /// Getter of the `iconMustBeShown` attribute.
     pub fn icon_must_be_shown(&self) -> bool {
         self.inner.get("iconMustBeShown").as_::<bool>()
     }
 
+    /// Setter of the `iconMustBeShown` attribute.
     pub fn set_icon_must_be_shown(&mut self, value: bool) {
         self.inner.set("iconMustBeShown", value);
     }
 }
 impl PaymentCredentialInstrument {
+    /// Getter of the `details` attribute.
     pub fn details(&self) -> JsString {
         self.inner.get("details").as_::<JsString>()
     }
 
+    /// Setter of the `details` attribute.
     pub fn set_details(&mut self, value: &JsString) {
         self.inner.set("details", value);
     }

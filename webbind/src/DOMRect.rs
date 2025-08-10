@@ -7,6 +7,7 @@ use super::*;
 pub struct DOMRect {
     inner: DOMRectReadOnly,
 }
+
 impl FromVal for DOMRect {
     fn from_val(v: &Any) -> Self {
         DOMRect {
@@ -20,27 +21,32 @@ impl FromVal for DOMRect {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DOMRect {
     type Target = DOMRectReadOnly;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DOMRect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DOMRect {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DOMRect {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DOMRect> for Any {
     fn from(s: DOMRect) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DOMRect> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DOMRect> for Any {
     fn from(s: &DOMRect) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DOMRect);
 
 impl DOMRect {

@@ -7,6 +7,7 @@ use super::*;
 pub struct WorkletGroupEffect {
     inner: Any,
 }
+
 impl FromVal for WorkletGroupEffect {
     fn from_val(v: &Any) -> Self {
         WorkletGroupEffect {
@@ -20,27 +21,32 @@ impl FromVal for WorkletGroupEffect {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WorkletGroupEffect {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WorkletGroupEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WorkletGroupEffect {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WorkletGroupEffect {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WorkletGroupEffect> for Any {
     fn from(s: WorkletGroupEffect) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WorkletGroupEffect> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WorkletGroupEffect> for Any {
     fn from(s: &WorkletGroupEffect) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WorkletGroupEffect);
 
 impl WorkletGroupEffect {

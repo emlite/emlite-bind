@@ -1,10 +1,12 @@
 use super::*;
 
+/// The CSSMatrixComponentOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMatrixComponentOptions {
     inner: Any,
 }
+
 impl FromVal for CSSMatrixComponentOptions {
     fn from_val(v: &Any) -> Self {
         CSSMatrixComponentOptions { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for CSSMatrixComponentOptions {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSMatrixComponentOptions {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSMatrixComponentOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSMatrixComponentOptions {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSMatrixComponentOptions {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSMatrixComponentOptions> for Any {
     fn from(s: CSSMatrixComponentOptions) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<CSSMatrixComponentOptions> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSMatrixComponentOptions> for Any {
     fn from(s: &CSSMatrixComponentOptions) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&CSSMatrixComponentOptions> for Any {
 }
 
 impl CSSMatrixComponentOptions {
+    /// Getter of the `is2D` attribute.
     pub fn is2_d(&self) -> bool {
         self.inner.get("is2D").as_::<bool>()
     }
 
+    /// Setter of the `is2D` attribute.
     pub fn set_is2_d(&mut self, value: bool) {
         self.inner.set("is2D", value);
     }

@@ -1,10 +1,12 @@
 use super::*;
 
+/// The AuthenticationExtensionsClientOutputsJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuthenticationExtensionsClientOutputsJSON {
     inner: Any,
 }
+
 impl FromVal for AuthenticationExtensionsClientOutputsJSON {
     fn from_val(v: &Any) -> Self {
         AuthenticationExtensionsClientOutputsJSON { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for AuthenticationExtensionsClientOutputsJSON {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AuthenticationExtensionsClientOutputsJSON {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AuthenticationExtensionsClientOutputsJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AuthenticationExtensionsClientOutputsJSON {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AuthenticationExtensionsClientOutputsJSON {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AuthenticationExtensionsClientOutputsJSON> for Any {
     fn from(s: AuthenticationExtensionsClientOutputsJSON) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<AuthenticationExtensionsClientOutputsJSON> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AuthenticationExtensionsClientOutputsJSON> for Any {
     fn from(s: &AuthenticationExtensionsClientOutputsJSON) -> Any {
         s.inner.clone()
@@ -51,12 +59,14 @@ impl From<&AuthenticationExtensionsClientOutputsJSON> for Any {
 }
 
 impl AuthenticationExtensionsClientOutputsJSON {
+    /// Getter of the `largeBlob` attribute.
     pub fn large_blob(&self) -> AuthenticationExtensionsLargeBlobOutputsJSON {
         self.inner
             .get("largeBlob")
             .as_::<AuthenticationExtensionsLargeBlobOutputsJSON>()
     }
 
+    /// Setter of the `largeBlob` attribute.
     pub fn set_large_blob(&mut self, value: &AuthenticationExtensionsLargeBlobOutputsJSON) {
         self.inner.set("largeBlob", value);
     }

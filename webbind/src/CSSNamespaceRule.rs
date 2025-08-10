@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSNamespaceRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSNamespaceRule {
     fn from_val(v: &Any) -> Self {
         CSSNamespaceRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSNamespaceRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSNamespaceRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSNamespaceRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSNamespaceRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSNamespaceRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSNamespaceRule> for Any {
     fn from(s: CSSNamespaceRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSNamespaceRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSNamespaceRule> for Any {
     fn from(s: &CSSNamespaceRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSNamespaceRule);
 
 impl CSSNamespaceRule {

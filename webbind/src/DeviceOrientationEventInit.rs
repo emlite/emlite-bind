@@ -1,10 +1,12 @@
 use super::*;
 
+/// The DeviceOrientationEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DeviceOrientationEventInit {
     inner: Any,
 }
+
 impl FromVal for DeviceOrientationEventInit {
     fn from_val(v: &Any) -> Self {
         DeviceOrientationEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for DeviceOrientationEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DeviceOrientationEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DeviceOrientationEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DeviceOrientationEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DeviceOrientationEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DeviceOrientationEventInit> for Any {
     fn from(s: DeviceOrientationEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<DeviceOrientationEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DeviceOrientationEventInit> for Any {
     fn from(s: &DeviceOrientationEventInit) -> Any {
         s.inner.clone()
@@ -51,37 +59,45 @@ impl From<&DeviceOrientationEventInit> for Any {
 }
 
 impl DeviceOrientationEventInit {
+    /// Getter of the `alpha` attribute.
     pub fn alpha(&self) -> f64 {
         self.inner.get("alpha").as_::<f64>()
     }
 
+    /// Setter of the `alpha` attribute.
     pub fn set_alpha(&mut self, value: f64) {
         self.inner.set("alpha", value);
     }
 }
 impl DeviceOrientationEventInit {
+    /// Getter of the `beta` attribute.
     pub fn beta(&self) -> f64 {
         self.inner.get("beta").as_::<f64>()
     }
 
+    /// Setter of the `beta` attribute.
     pub fn set_beta(&mut self, value: f64) {
         self.inner.set("beta", value);
     }
 }
 impl DeviceOrientationEventInit {
+    /// Getter of the `gamma` attribute.
     pub fn gamma(&self) -> f64 {
         self.inner.get("gamma").as_::<f64>()
     }
 
+    /// Setter of the `gamma` attribute.
     pub fn set_gamma(&mut self, value: f64) {
         self.inner.set("gamma", value);
     }
 }
 impl DeviceOrientationEventInit {
+    /// Getter of the `absolute` attribute.
     pub fn absolute(&self) -> bool {
         self.inner.get("absolute").as_::<bool>()
     }
 
+    /// Setter of the `absolute` attribute.
     pub fn set_absolute(&mut self, value: bool) {
         self.inner.set("absolute", value);
     }

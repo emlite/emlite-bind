@@ -1,10 +1,12 @@
 use super::*;
 
+/// The PromiseRejectionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PromiseRejectionEventInit {
     inner: Any,
 }
+
 impl FromVal for PromiseRejectionEventInit {
     fn from_val(v: &Any) -> Self {
         PromiseRejectionEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for PromiseRejectionEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PromiseRejectionEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PromiseRejectionEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PromiseRejectionEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PromiseRejectionEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PromiseRejectionEventInit> for Any {
     fn from(s: PromiseRejectionEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<PromiseRejectionEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PromiseRejectionEventInit> for Any {
     fn from(s: &PromiseRejectionEventInit) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&PromiseRejectionEventInit> for Any {
 }
 
 impl PromiseRejectionEventInit {
+    /// Getter of the `promise` attribute.
     pub fn promise(&self) -> Object {
         self.inner.get("promise").as_::<Object>()
     }
 
+    /// Setter of the `promise` attribute.
     pub fn set_promise(&mut self, value: &Object) {
         self.inner.set("promise", value);
     }
 }
 impl PromiseRejectionEventInit {
+    /// Getter of the `reason` attribute.
     pub fn reason(&self) -> Any {
         self.inner.get("reason").as_::<Any>()
     }
 
+    /// Setter of the `reason` attribute.
     pub fn set_reason(&mut self, value: &Any) {
         self.inner.set("reason", value);
     }

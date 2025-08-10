@@ -7,6 +7,7 @@ use super::*;
 pub struct ScrollTimeline {
     inner: AnimationTimeline,
 }
+
 impl FromVal for ScrollTimeline {
     fn from_val(v: &Any) -> Self {
         ScrollTimeline {
@@ -20,27 +21,32 @@ impl FromVal for ScrollTimeline {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ScrollTimeline {
     type Target = AnimationTimeline;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ScrollTimeline {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ScrollTimeline {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ScrollTimeline {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ScrollTimeline> for Any {
     fn from(s: ScrollTimeline) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ScrollTimeline> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ScrollTimeline> for Any {
     fn from(s: &ScrollTimeline) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ScrollTimeline);
 
 impl ScrollTimeline {

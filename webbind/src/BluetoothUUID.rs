@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothUUID {
     inner: Any,
 }
+
 impl FromVal for BluetoothUUID {
     fn from_val(v: &Any) -> Self {
         BluetoothUUID {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothUUID {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothUUID {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothUUID {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothUUID {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothUUID {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothUUID> for Any {
     fn from(s: BluetoothUUID) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothUUID> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothUUID> for Any {
     fn from(s: &BluetoothUUID) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothUUID);
 
 impl BluetoothUUID {

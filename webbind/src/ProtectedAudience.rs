@@ -7,6 +7,7 @@ use super::*;
 pub struct ProtectedAudience {
     inner: Any,
 }
+
 impl FromVal for ProtectedAudience {
     fn from_val(v: &Any) -> Self {
         ProtectedAudience {
@@ -20,27 +21,32 @@ impl FromVal for ProtectedAudience {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ProtectedAudience {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ProtectedAudience {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ProtectedAudience {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ProtectedAudience {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ProtectedAudience> for Any {
     fn from(s: ProtectedAudience) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ProtectedAudience> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ProtectedAudience> for Any {
     fn from(s: &ProtectedAudience) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ProtectedAudience);
 
 impl ProtectedAudience {

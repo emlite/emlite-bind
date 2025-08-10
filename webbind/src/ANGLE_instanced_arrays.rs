@@ -7,6 +7,7 @@ use super::*;
 pub struct ANGLE_instanced_arrays {
     inner: Any,
 }
+
 impl FromVal for ANGLE_instanced_arrays {
     fn from_val(v: &Any) -> Self {
         ANGLE_instanced_arrays {
@@ -20,27 +21,32 @@ impl FromVal for ANGLE_instanced_arrays {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ANGLE_instanced_arrays {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ANGLE_instanced_arrays {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ANGLE_instanced_arrays {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ANGLE_instanced_arrays {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ANGLE_instanced_arrays> for Any {
     fn from(s: ANGLE_instanced_arrays) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ANGLE_instanced_arrays> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ANGLE_instanced_arrays> for Any {
     fn from(s: &ANGLE_instanced_arrays) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ANGLE_instanced_arrays);
 
 impl ANGLE_instanced_arrays {

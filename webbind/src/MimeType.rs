@@ -7,6 +7,7 @@ use super::*;
 pub struct MimeType {
     inner: Any,
 }
+
 impl FromVal for MimeType {
     fn from_val(v: &Any) -> Self {
         MimeType {
@@ -20,27 +21,32 @@ impl FromVal for MimeType {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MimeType {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MimeType {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MimeType {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MimeType {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MimeType> for Any {
     fn from(s: MimeType) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MimeType> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MimeType> for Any {
     fn from(s: &MimeType) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MimeType);
 
 impl MimeType {

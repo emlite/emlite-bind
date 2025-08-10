@@ -1,10 +1,12 @@
 use super::*;
 
+/// The MidiPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MidiPermissionDescriptor {
     inner: Any,
 }
+
 impl FromVal for MidiPermissionDescriptor {
     fn from_val(v: &Any) -> Self {
         MidiPermissionDescriptor { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for MidiPermissionDescriptor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MidiPermissionDescriptor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MidiPermissionDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MidiPermissionDescriptor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MidiPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MidiPermissionDescriptor> for Any {
     fn from(s: MidiPermissionDescriptor) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<MidiPermissionDescriptor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MidiPermissionDescriptor> for Any {
     fn from(s: &MidiPermissionDescriptor) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&MidiPermissionDescriptor> for Any {
 }
 
 impl MidiPermissionDescriptor {
+    /// Getter of the `sysex` attribute.
     pub fn sysex(&self) -> bool {
         self.inner.get("sysex").as_::<bool>()
     }
 
+    /// Setter of the `sysex` attribute.
     pub fn set_sysex(&mut self, value: bool) {
         self.inner.set("sysex", value);
     }

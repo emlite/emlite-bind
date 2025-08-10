@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGAElement {
     inner: SVGGraphicsElement,
 }
+
 impl FromVal for SVGAElement {
     fn from_val(v: &Any) -> Self {
         SVGAElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGAElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGAElement {
     type Target = SVGGraphicsElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGAElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGAElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGAElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGAElement> for Any {
     fn from(s: SVGAElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGAElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGAElement> for Any {
     fn from(s: &SVGAElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGAElement);
 
 impl SVGAElement {

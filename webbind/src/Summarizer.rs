@@ -1,258 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct SummarizerCreateOptions {
-    inner: Any,
-}
-impl FromVal for SummarizerCreateOptions {
-    fn from_val(v: &Any) -> Self {
-        SummarizerCreateOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for SummarizerCreateOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for SummarizerCreateOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for SummarizerCreateOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for SummarizerCreateOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<SummarizerCreateOptions> for Any {
-    fn from(s: SummarizerCreateOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&SummarizerCreateOptions> for Any {
-    fn from(s: &SummarizerCreateOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl SummarizerCreateOptions {
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
-    }
-
-    pub fn set_signal(&mut self, value: &AbortSignal) {
-        self.inner.set("signal", value);
-    }
-}
-impl SummarizerCreateOptions {
-    pub fn monitor(&self) -> Function {
-        self.inner.get("monitor").as_::<Function>()
-    }
-
-    pub fn set_monitor(&mut self, value: &Function) {
-        self.inner.set("monitor", value);
-    }
-}
-impl SummarizerCreateOptions {
-    pub fn shared_context(&self) -> JsString {
-        self.inner.get("sharedContext").as_::<JsString>()
-    }
-
-    pub fn set_shared_context(&mut self, value: &JsString) {
-        self.inner.set("sharedContext", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct SummarizerCreateCoreOptions {
-    inner: Any,
-}
-impl FromVal for SummarizerCreateCoreOptions {
-    fn from_val(v: &Any) -> Self {
-        SummarizerCreateCoreOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for SummarizerCreateCoreOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for SummarizerCreateCoreOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for SummarizerCreateCoreOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for SummarizerCreateCoreOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<SummarizerCreateCoreOptions> for Any {
-    fn from(s: SummarizerCreateCoreOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&SummarizerCreateCoreOptions> for Any {
-    fn from(s: &SummarizerCreateCoreOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl SummarizerCreateCoreOptions {
-    pub fn type_(&self) -> SummarizerType {
-        self.inner.get("type").as_::<SummarizerType>()
-    }
-
-    pub fn set_type_(&mut self, value: &SummarizerType) {
-        self.inner.set("type", value);
-    }
-}
-impl SummarizerCreateCoreOptions {
-    pub fn format(&self) -> SummarizerFormat {
-        self.inner.get("format").as_::<SummarizerFormat>()
-    }
-
-    pub fn set_format(&mut self, value: &SummarizerFormat) {
-        self.inner.set("format", value);
-    }
-}
-impl SummarizerCreateCoreOptions {
-    pub fn length(&self) -> SummarizerLength {
-        self.inner.get("length").as_::<SummarizerLength>()
-    }
-
-    pub fn set_length(&mut self, value: &SummarizerLength) {
-        self.inner.set("length", value);
-    }
-}
-impl SummarizerCreateCoreOptions {
-    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_expected_input_languages(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("expectedInputLanguages", value);
-    }
-}
-impl SummarizerCreateCoreOptions {
-    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedContextLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_expected_context_languages(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("expectedContextLanguages", value);
-    }
-}
-impl SummarizerCreateCoreOptions {
-    pub fn output_language(&self) -> JsString {
-        self.inner.get("outputLanguage").as_::<JsString>()
-    }
-
-    pub fn set_output_language(&mut self, value: &JsString) {
-        self.inner.set("outputLanguage", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct SummarizerSummarizeOptions {
-    inner: Any,
-}
-impl FromVal for SummarizerSummarizeOptions {
-    fn from_val(v: &Any) -> Self {
-        SummarizerSummarizeOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for SummarizerSummarizeOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for SummarizerSummarizeOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for SummarizerSummarizeOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for SummarizerSummarizeOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<SummarizerSummarizeOptions> for Any {
-    fn from(s: SummarizerSummarizeOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&SummarizerSummarizeOptions> for Any {
-    fn from(s: &SummarizerSummarizeOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl SummarizerSummarizeOptions {
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
-    }
-
-    pub fn set_signal(&mut self, value: &AbortSignal) {
-        self.inner.set("signal", value);
-    }
-}
-impl SummarizerSummarizeOptions {
-    pub fn context(&self) -> JsString {
-        self.inner.get("context").as_::<JsString>()
-    }
-
-    pub fn set_context(&mut self, value: &JsString) {
-        self.inner.set("context", value);
-    }
-}
 /// The Summarizer class.
 /// [`Summarizer`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -260,6 +7,7 @@ impl SummarizerSummarizeOptions {
 pub struct Summarizer {
     inner: Any,
 }
+
 impl FromVal for Summarizer {
     fn from_val(v: &Any) -> Self {
         Summarizer {
@@ -273,27 +21,32 @@ impl FromVal for Summarizer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Summarizer {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Summarizer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Summarizer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Summarizer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Summarizer> for Any {
     fn from(s: Summarizer) -> Any {
         let handle = s.inner.as_handle();
@@ -301,11 +54,13 @@ impl From<Summarizer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Summarizer> for Any {
     fn from(s: &Summarizer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Summarizer);
 
 impl Summarizer {

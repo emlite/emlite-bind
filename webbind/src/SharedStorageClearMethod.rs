@@ -7,6 +7,7 @@ use super::*;
 pub struct SharedStorageClearMethod {
     inner: SharedStorageModifierMethod,
 }
+
 impl FromVal for SharedStorageClearMethod {
     fn from_val(v: &Any) -> Self {
         SharedStorageClearMethod {
@@ -20,27 +21,32 @@ impl FromVal for SharedStorageClearMethod {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SharedStorageClearMethod {
     type Target = SharedStorageModifierMethod;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SharedStorageClearMethod {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SharedStorageClearMethod {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SharedStorageClearMethod {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SharedStorageClearMethod> for Any {
     fn from(s: SharedStorageClearMethod) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SharedStorageClearMethod> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SharedStorageClearMethod> for Any {
     fn from(s: &SharedStorageClearMethod) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SharedStorageClearMethod);
 
 impl SharedStorageClearMethod {

@@ -7,6 +7,7 @@ use super::*;
 pub struct DOMRectList {
     inner: Any,
 }
+
 impl FromVal for DOMRectList {
     fn from_val(v: &Any) -> Self {
         DOMRectList {
@@ -20,27 +21,32 @@ impl FromVal for DOMRectList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DOMRectList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DOMRectList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DOMRectList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DOMRectList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DOMRectList> for Any {
     fn from(s: DOMRectList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DOMRectList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DOMRectList> for Any {
     fn from(s: &DOMRectList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DOMRectList);
 
 impl DOMRectList {

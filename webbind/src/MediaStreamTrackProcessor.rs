@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaStreamTrackProcessor {
     inner: Any,
 }
+
 impl FromVal for MediaStreamTrackProcessor {
     fn from_val(v: &Any) -> Self {
         MediaStreamTrackProcessor {
@@ -20,27 +21,32 @@ impl FromVal for MediaStreamTrackProcessor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaStreamTrackProcessor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaStreamTrackProcessor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaStreamTrackProcessor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaStreamTrackProcessor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaStreamTrackProcessor> for Any {
     fn from(s: MediaStreamTrackProcessor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaStreamTrackProcessor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaStreamTrackProcessor> for Any {
     fn from(s: &MediaStreamTrackProcessor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackProcessor);
 
 impl MediaStreamTrackProcessor {

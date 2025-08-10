@@ -1,91 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RTCRtpCodec {
-    inner: Any,
-}
-impl FromVal for RTCRtpCodec {
-    fn from_val(v: &Any) -> Self {
-        RTCRtpCodec { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RTCRtpCodec {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RTCRtpCodec {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RTCRtpCodec {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RTCRtpCodec {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RTCRtpCodec> for Any {
-    fn from(s: RTCRtpCodec) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RTCRtpCodec> for Any {
-    fn from(s: &RTCRtpCodec) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl RTCRtpCodec {
-    pub fn mime_type(&self) -> JsString {
-        self.inner.get("mimeType").as_::<JsString>()
-    }
-
-    pub fn set_mime_type(&mut self, value: &JsString) {
-        self.inner.set("mimeType", value);
-    }
-}
-impl RTCRtpCodec {
-    pub fn clock_rate(&self) -> u32 {
-        self.inner.get("clockRate").as_::<u32>()
-    }
-
-    pub fn set_clock_rate(&mut self, value: u32) {
-        self.inner.set("clockRate", value);
-    }
-}
-impl RTCRtpCodec {
-    pub fn channels(&self) -> u16 {
-        self.inner.get("channels").as_::<u16>()
-    }
-
-    pub fn set_channels(&mut self, value: u16) {
-        self.inner.set("channels", value);
-    }
-}
-impl RTCRtpCodec {
-    pub fn sdp_fmtp_line(&self) -> JsString {
-        self.inner.get("sdpFmtpLine").as_::<JsString>()
-    }
-
-    pub fn set_sdp_fmtp_line(&mut self, value: &JsString) {
-        self.inner.set("sdpFmtpLine", value);
-    }
-}
 /// The RTCRtpTransceiver class.
 /// [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -93,6 +7,7 @@ impl RTCRtpCodec {
 pub struct RTCRtpTransceiver {
     inner: Any,
 }
+
 impl FromVal for RTCRtpTransceiver {
     fn from_val(v: &Any) -> Self {
         RTCRtpTransceiver {
@@ -106,27 +21,32 @@ impl FromVal for RTCRtpTransceiver {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCRtpTransceiver {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCRtpTransceiver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCRtpTransceiver {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCRtpTransceiver {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCRtpTransceiver> for Any {
     fn from(s: RTCRtpTransceiver) -> Any {
         let handle = s.inner.as_handle();
@@ -134,11 +54,13 @@ impl From<RTCRtpTransceiver> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCRtpTransceiver> for Any {
     fn from(s: &RTCRtpTransceiver) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCRtpTransceiver);
 
 impl RTCRtpTransceiver {

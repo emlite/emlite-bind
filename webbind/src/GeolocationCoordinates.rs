@@ -7,6 +7,7 @@ use super::*;
 pub struct GeolocationCoordinates {
     inner: Any,
 }
+
 impl FromVal for GeolocationCoordinates {
     fn from_val(v: &Any) -> Self {
         GeolocationCoordinates {
@@ -20,27 +21,32 @@ impl FromVal for GeolocationCoordinates {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GeolocationCoordinates {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GeolocationCoordinates {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GeolocationCoordinates {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GeolocationCoordinates {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GeolocationCoordinates> for Any {
     fn from(s: GeolocationCoordinates) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GeolocationCoordinates> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GeolocationCoordinates> for Any {
     fn from(s: &GeolocationCoordinates) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GeolocationCoordinates);
 
 impl GeolocationCoordinates {

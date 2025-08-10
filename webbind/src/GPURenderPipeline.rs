@@ -7,6 +7,7 @@ use super::*;
 pub struct GPURenderPipeline {
     inner: Any,
 }
+
 impl FromVal for GPURenderPipeline {
     fn from_val(v: &Any) -> Self {
         GPURenderPipeline {
@@ -20,27 +21,32 @@ impl FromVal for GPURenderPipeline {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPURenderPipeline {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPURenderPipeline {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPURenderPipeline {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPURenderPipeline {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPURenderPipeline> for Any {
     fn from(s: GPURenderPipeline) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPURenderPipeline> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPURenderPipeline> for Any {
     fn from(s: &GPURenderPipeline) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPURenderPipeline);
 
 impl GPURenderPipeline {

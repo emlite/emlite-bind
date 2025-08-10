@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLVideoElement {
     inner: HTMLMediaElement,
 }
+
 impl FromVal for HTMLVideoElement {
     fn from_val(v: &Any) -> Self {
         HTMLVideoElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLVideoElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLVideoElement {
     type Target = HTMLMediaElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLVideoElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLVideoElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLVideoElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLVideoElement> for Any {
     fn from(s: HTMLVideoElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLVideoElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLVideoElement> for Any {
     fn from(s: &HTMLVideoElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLVideoElement);
 
 impl HTMLVideoElement {

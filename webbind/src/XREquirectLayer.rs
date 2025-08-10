@@ -7,6 +7,7 @@ use super::*;
 pub struct XREquirectLayer {
     inner: XRCompositionLayer,
 }
+
 impl FromVal for XREquirectLayer {
     fn from_val(v: &Any) -> Self {
         XREquirectLayer {
@@ -20,27 +21,32 @@ impl FromVal for XREquirectLayer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XREquirectLayer {
     type Target = XRCompositionLayer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XREquirectLayer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XREquirectLayer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XREquirectLayer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XREquirectLayer> for Any {
     fn from(s: XREquirectLayer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XREquirectLayer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XREquirectLayer> for Any {
     fn from(s: &XREquirectLayer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XREquirectLayer);
 
 impl XREquirectLayer {

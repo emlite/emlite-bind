@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCSessionDescription {
     inner: Any,
 }
+
 impl FromVal for RTCSessionDescription {
     fn from_val(v: &Any) -> Self {
         RTCSessionDescription {
@@ -20,27 +21,32 @@ impl FromVal for RTCSessionDescription {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCSessionDescription {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCSessionDescription {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCSessionDescription {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCSessionDescription {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCSessionDescription> for Any {
     fn from(s: RTCSessionDescription) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCSessionDescription> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCSessionDescription> for Any {
     fn from(s: &RTCSessionDescription) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCSessionDescription);
 
 impl RTCSessionDescription {

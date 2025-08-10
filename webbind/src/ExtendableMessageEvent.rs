@@ -7,6 +7,7 @@ use super::*;
 pub struct ExtendableMessageEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for ExtendableMessageEvent {
     fn from_val(v: &Any) -> Self {
         ExtendableMessageEvent {
@@ -20,27 +21,32 @@ impl FromVal for ExtendableMessageEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ExtendableMessageEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ExtendableMessageEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ExtendableMessageEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ExtendableMessageEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ExtendableMessageEvent> for Any {
     fn from(s: ExtendableMessageEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ExtendableMessageEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ExtendableMessageEvent> for Any {
     fn from(s: &ExtendableMessageEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ExtendableMessageEvent);
 
 impl ExtendableMessageEvent {

@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLMenuElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLMenuElement {
     fn from_val(v: &Any) -> Self {
         HTMLMenuElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLMenuElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLMenuElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLMenuElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLMenuElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLMenuElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLMenuElement> for Any {
     fn from(s: HTMLMenuElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLMenuElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLMenuElement> for Any {
     fn from(s: &HTMLMenuElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLMenuElement);
 
 impl HTMLMenuElement {

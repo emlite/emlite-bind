@@ -1,10 +1,12 @@
 use super::*;
 
+/// The FileSystemPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemPermissionDescriptor {
     inner: Any,
 }
+
 impl FromVal for FileSystemPermissionDescriptor {
     fn from_val(v: &Any) -> Self {
         FileSystemPermissionDescriptor { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for FileSystemPermissionDescriptor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FileSystemPermissionDescriptor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FileSystemPermissionDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FileSystemPermissionDescriptor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FileSystemPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FileSystemPermissionDescriptor> for Any {
     fn from(s: FileSystemPermissionDescriptor) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<FileSystemPermissionDescriptor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FileSystemPermissionDescriptor> for Any {
     fn from(s: &FileSystemPermissionDescriptor) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&FileSystemPermissionDescriptor> for Any {
 }
 
 impl FileSystemPermissionDescriptor {
+    /// Getter of the `handle` attribute.
     pub fn handle(&self) -> FileSystemHandle {
         self.inner.get("handle").as_::<FileSystemHandle>()
     }
 
+    /// Setter of the `handle` attribute.
     pub fn set_handle(&mut self, value: &FileSystemHandle) {
         self.inner.set("handle", value);
     }
 }
 impl FileSystemPermissionDescriptor {
+    /// Getter of the `mode` attribute.
     pub fn mode(&self) -> FileSystemPermissionMode {
         self.inner.get("mode").as_::<FileSystemPermissionMode>()
     }
 
+    /// Setter of the `mode` attribute.
     pub fn set_mode(&mut self, value: &FileSystemPermissionMode) {
         self.inner.set("mode", value);
     }

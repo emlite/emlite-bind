@@ -7,6 +7,7 @@ use super::*;
 pub struct AnimationWorkletGlobalScope {
     inner: WorkletGlobalScope,
 }
+
 impl FromVal for AnimationWorkletGlobalScope {
     fn from_val(v: &Any) -> Self {
         AnimationWorkletGlobalScope {
@@ -20,27 +21,32 @@ impl FromVal for AnimationWorkletGlobalScope {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AnimationWorkletGlobalScope {
     type Target = WorkletGlobalScope;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AnimationWorkletGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AnimationWorkletGlobalScope {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AnimationWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AnimationWorkletGlobalScope> for Any {
     fn from(s: AnimationWorkletGlobalScope) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AnimationWorkletGlobalScope> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AnimationWorkletGlobalScope> for Any {
     fn from(s: &AnimationWorkletGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AnimationWorkletGlobalScope);
 
 impl AnimationWorkletGlobalScope {

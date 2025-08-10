@@ -7,6 +7,7 @@ use super::*;
 pub struct OfflineAudioCompletionEvent {
     inner: Event,
 }
+
 impl FromVal for OfflineAudioCompletionEvent {
     fn from_val(v: &Any) -> Self {
         OfflineAudioCompletionEvent {
@@ -20,27 +21,32 @@ impl FromVal for OfflineAudioCompletionEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for OfflineAudioCompletionEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for OfflineAudioCompletionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for OfflineAudioCompletionEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for OfflineAudioCompletionEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<OfflineAudioCompletionEvent> for Any {
     fn from(s: OfflineAudioCompletionEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<OfflineAudioCompletionEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&OfflineAudioCompletionEvent> for Any {
     fn from(s: &OfflineAudioCompletionEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(OfflineAudioCompletionEvent);
 
 impl OfflineAudioCompletionEvent {

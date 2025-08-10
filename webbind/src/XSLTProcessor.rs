@@ -7,6 +7,7 @@ use super::*;
 pub struct XSLTProcessor {
     inner: Any,
 }
+
 impl FromVal for XSLTProcessor {
     fn from_val(v: &Any) -> Self {
         XSLTProcessor {
@@ -20,27 +21,32 @@ impl FromVal for XSLTProcessor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XSLTProcessor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XSLTProcessor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XSLTProcessor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XSLTProcessor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XSLTProcessor> for Any {
     fn from(s: XSLTProcessor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XSLTProcessor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XSLTProcessor> for Any {
     fn from(s: &XSLTProcessor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XSLTProcessor);
 
 impl XSLTProcessor {

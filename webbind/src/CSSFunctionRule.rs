@@ -1,82 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct FunctionParameter {
-    inner: Any,
-}
-impl FromVal for FunctionParameter {
-    fn from_val(v: &Any) -> Self {
-        FunctionParameter { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for FunctionParameter {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for FunctionParameter {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for FunctionParameter {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for FunctionParameter {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<FunctionParameter> for Any {
-    fn from(s: FunctionParameter) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&FunctionParameter> for Any {
-    fn from(s: &FunctionParameter) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl FunctionParameter {
-    pub fn name(&self) -> JsString {
-        self.inner.get("name").as_::<JsString>()
-    }
-
-    pub fn set_name(&mut self, value: &JsString) {
-        self.inner.set("name", value);
-    }
-}
-impl FunctionParameter {
-    pub fn type_(&self) -> JsString {
-        self.inner.get("type").as_::<JsString>()
-    }
-
-    pub fn set_type_(&mut self, value: &JsString) {
-        self.inner.set("type", value);
-    }
-}
-impl FunctionParameter {
-    pub fn default_value(&self) -> JsString {
-        self.inner.get("defaultValue").as_::<JsString>()
-    }
-
-    pub fn set_default_value(&mut self, value: &JsString) {
-        self.inner.set("defaultValue", value);
-    }
-}
 /// The CSSFunctionRule class.
 /// [`CSSFunctionRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -84,6 +7,7 @@ impl FunctionParameter {
 pub struct CSSFunctionRule {
     inner: CSSGroupingRule,
 }
+
 impl FromVal for CSSFunctionRule {
     fn from_val(v: &Any) -> Self {
         CSSFunctionRule {
@@ -97,27 +21,32 @@ impl FromVal for CSSFunctionRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSFunctionRule {
     type Target = CSSGroupingRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSFunctionRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSFunctionRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSFunctionRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSFunctionRule> for Any {
     fn from(s: CSSFunctionRule) -> Any {
         let handle = s.inner.as_handle();
@@ -125,11 +54,13 @@ impl From<CSSFunctionRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSFunctionRule> for Any {
     fn from(s: &CSSFunctionRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSFunctionRule);
 
 impl CSSFunctionRule {

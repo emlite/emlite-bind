@@ -1,10 +1,12 @@
 use super::*;
 
+/// The AuctionAdInterestGroupSize dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuctionAdInterestGroupSize {
     inner: Any,
 }
+
 impl FromVal for AuctionAdInterestGroupSize {
     fn from_val(v: &Any) -> Self {
         AuctionAdInterestGroupSize { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for AuctionAdInterestGroupSize {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AuctionAdInterestGroupSize {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AuctionAdInterestGroupSize {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AuctionAdInterestGroupSize {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AuctionAdInterestGroupSize {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AuctionAdInterestGroupSize> for Any {
     fn from(s: AuctionAdInterestGroupSize) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<AuctionAdInterestGroupSize> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AuctionAdInterestGroupSize> for Any {
     fn from(s: &AuctionAdInterestGroupSize) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&AuctionAdInterestGroupSize> for Any {
 }
 
 impl AuctionAdInterestGroupSize {
+    /// Getter of the `width` attribute.
     pub fn width(&self) -> JsString {
         self.inner.get("width").as_::<JsString>()
     }
 
+    /// Setter of the `width` attribute.
     pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
     }
 }
 impl AuctionAdInterestGroupSize {
+    /// Getter of the `height` attribute.
     pub fn height(&self) -> JsString {
         self.inner.get("height").as_::<JsString>()
     }
 
+    /// Setter of the `height` attribute.
     pub fn set_height(&mut self, value: &JsString) {
         self.inner.set("height", value);
     }

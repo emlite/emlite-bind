@@ -7,6 +7,7 @@ use super::*;
 pub struct USBConfiguration {
     inner: Any,
 }
+
 impl FromVal for USBConfiguration {
     fn from_val(v: &Any) -> Self {
         USBConfiguration {
@@ -20,27 +21,32 @@ impl FromVal for USBConfiguration {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for USBConfiguration {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for USBConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for USBConfiguration {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for USBConfiguration {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<USBConfiguration> for Any {
     fn from(s: USBConfiguration) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<USBConfiguration> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&USBConfiguration> for Any {
     fn from(s: &USBConfiguration) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(USBConfiguration);
 
 impl USBConfiguration {

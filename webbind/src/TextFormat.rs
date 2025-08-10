@@ -7,6 +7,7 @@ use super::*;
 pub struct TextFormat {
     inner: Any,
 }
+
 impl FromVal for TextFormat {
     fn from_val(v: &Any) -> Self {
         TextFormat {
@@ -20,27 +21,32 @@ impl FromVal for TextFormat {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TextFormat {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TextFormat {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TextFormat {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TextFormat {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TextFormat> for Any {
     fn from(s: TextFormat) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TextFormat> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TextFormat> for Any {
     fn from(s: &TextFormat) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TextFormat);
 
 impl TextFormat {

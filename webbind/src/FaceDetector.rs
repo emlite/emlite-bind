@@ -1,73 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct DetectedFace {
-    inner: Any,
-}
-impl FromVal for DetectedFace {
-    fn from_val(v: &Any) -> Self {
-        DetectedFace { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for DetectedFace {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for DetectedFace {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for DetectedFace {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for DetectedFace {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<DetectedFace> for Any {
-    fn from(s: DetectedFace) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&DetectedFace> for Any {
-    fn from(s: &DetectedFace) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl DetectedFace {
-    pub fn bounding_box(&self) -> DOMRectReadOnly {
-        self.inner.get("boundingBox").as_::<DOMRectReadOnly>()
-    }
-
-    pub fn set_bounding_box(&mut self, value: &DOMRectReadOnly) {
-        self.inner.set("boundingBox", value);
-    }
-}
-impl DetectedFace {
-    pub fn landmarks(&self) -> TypedArray<Landmark> {
-        self.inner.get("landmarks").as_::<TypedArray<Landmark>>()
-    }
-
-    pub fn set_landmarks(&mut self, value: &TypedArray<Landmark>) {
-        self.inner.set("landmarks", value);
-    }
-}
 /// The FaceDetector class.
 /// [`FaceDetector`](https://developer.mozilla.org/en-US/docs/Web/API/FaceDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -75,6 +7,7 @@ impl DetectedFace {
 pub struct FaceDetector {
     inner: Any,
 }
+
 impl FromVal for FaceDetector {
     fn from_val(v: &Any) -> Self {
         FaceDetector {
@@ -88,27 +21,32 @@ impl FromVal for FaceDetector {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FaceDetector {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FaceDetector {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FaceDetector {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FaceDetector {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FaceDetector> for Any {
     fn from(s: FaceDetector) -> Any {
         let handle = s.inner.as_handle();
@@ -116,11 +54,13 @@ impl From<FaceDetector> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FaceDetector> for Any {
     fn from(s: &FaceDetector) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FaceDetector);
 
 impl FaceDetector {

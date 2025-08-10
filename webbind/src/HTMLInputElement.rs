@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLInputElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLInputElement {
     fn from_val(v: &Any) -> Self {
         HTMLInputElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLInputElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLInputElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLInputElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLInputElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLInputElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLInputElement> for Any {
     fn from(s: HTMLInputElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLInputElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLInputElement> for Any {
     fn from(s: &HTMLInputElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLInputElement);
 
 impl HTMLInputElement {

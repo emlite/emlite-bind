@@ -7,6 +7,7 @@ use super::*;
 pub struct KeyboardEvent {
     inner: UIEvent,
 }
+
 impl FromVal for KeyboardEvent {
     fn from_val(v: &Any) -> Self {
         KeyboardEvent {
@@ -20,27 +21,32 @@ impl FromVal for KeyboardEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for KeyboardEvent {
     type Target = UIEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for KeyboardEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for KeyboardEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for KeyboardEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<KeyboardEvent> for Any {
     fn from(s: KeyboardEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<KeyboardEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&KeyboardEvent> for Any {
     fn from(s: &KeyboardEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(KeyboardEvent);
 
 impl KeyboardEvent {

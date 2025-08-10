@@ -1,64 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct BackgroundSyncOptions {
-    inner: Any,
-}
-impl FromVal for BackgroundSyncOptions {
-    fn from_val(v: &Any) -> Self {
-        BackgroundSyncOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for BackgroundSyncOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for BackgroundSyncOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for BackgroundSyncOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for BackgroundSyncOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<BackgroundSyncOptions> for Any {
-    fn from(s: BackgroundSyncOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&BackgroundSyncOptions> for Any {
-    fn from(s: &BackgroundSyncOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl BackgroundSyncOptions {
-    pub fn min_interval(&self) -> u64 {
-        self.inner.get("minInterval").as_::<u64>()
-    }
-
-    pub fn set_min_interval(&mut self, value: u64) {
-        self.inner.set("minInterval", value);
-    }
-}
 /// The PeriodicSyncManager class.
 /// [`PeriodicSyncManager`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -66,6 +7,7 @@ impl BackgroundSyncOptions {
 pub struct PeriodicSyncManager {
     inner: Any,
 }
+
 impl FromVal for PeriodicSyncManager {
     fn from_val(v: &Any) -> Self {
         PeriodicSyncManager {
@@ -79,27 +21,32 @@ impl FromVal for PeriodicSyncManager {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PeriodicSyncManager {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PeriodicSyncManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PeriodicSyncManager {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PeriodicSyncManager {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PeriodicSyncManager> for Any {
     fn from(s: PeriodicSyncManager) -> Any {
         let handle = s.inner.as_handle();
@@ -107,11 +54,13 @@ impl From<PeriodicSyncManager> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PeriodicSyncManager> for Any {
     fn from(s: &PeriodicSyncManager) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PeriodicSyncManager);
 
 impl PeriodicSyncManager {

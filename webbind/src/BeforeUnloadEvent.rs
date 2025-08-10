@@ -7,6 +7,7 @@ use super::*;
 pub struct BeforeUnloadEvent {
     inner: Event,
 }
+
 impl FromVal for BeforeUnloadEvent {
     fn from_val(v: &Any) -> Self {
         BeforeUnloadEvent {
@@ -20,27 +21,32 @@ impl FromVal for BeforeUnloadEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BeforeUnloadEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BeforeUnloadEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BeforeUnloadEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BeforeUnloadEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BeforeUnloadEvent> for Any {
     fn from(s: BeforeUnloadEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BeforeUnloadEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BeforeUnloadEvent> for Any {
     fn from(s: &BeforeUnloadEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BeforeUnloadEvent);
 
 impl BeforeUnloadEvent {

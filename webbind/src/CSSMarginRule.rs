@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSMarginRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSMarginRule {
     fn from_val(v: &Any) -> Self {
         CSSMarginRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSMarginRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSMarginRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSMarginRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSMarginRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSMarginRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSMarginRule> for Any {
     fn from(s: CSSMarginRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSMarginRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSMarginRule> for Any {
     fn from(s: &CSSMarginRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSMarginRule);
 
 impl CSSMarginRule {

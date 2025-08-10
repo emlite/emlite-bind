@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUShaderModule {
     inner: Any,
 }
+
 impl FromVal for GPUShaderModule {
     fn from_val(v: &Any) -> Self {
         GPUShaderModule {
@@ -20,27 +21,32 @@ impl FromVal for GPUShaderModule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUShaderModule {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUShaderModule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUShaderModule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUShaderModule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUShaderModule> for Any {
     fn from(s: GPUShaderModule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUShaderModule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUShaderModule> for Any {
     fn from(s: &GPUShaderModule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUShaderModule);
 
 impl GPUShaderModule {

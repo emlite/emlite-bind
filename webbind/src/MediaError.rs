@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaError {
     inner: Any,
 }
+
 impl FromVal for MediaError {
     fn from_val(v: &Any) -> Self {
         MediaError {
@@ -20,27 +21,32 @@ impl FromVal for MediaError {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaError {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaError {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaError {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaError> for Any {
     fn from(s: MediaError) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaError> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaError> for Any {
     fn from(s: &MediaError) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaError);
 
 impl MediaError {

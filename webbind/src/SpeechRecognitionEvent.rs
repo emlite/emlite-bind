@@ -7,6 +7,7 @@ use super::*;
 pub struct SpeechRecognitionEvent {
     inner: Event,
 }
+
 impl FromVal for SpeechRecognitionEvent {
     fn from_val(v: &Any) -> Self {
         SpeechRecognitionEvent {
@@ -20,27 +21,32 @@ impl FromVal for SpeechRecognitionEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SpeechRecognitionEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SpeechRecognitionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SpeechRecognitionEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SpeechRecognitionEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SpeechRecognitionEvent> for Any {
     fn from(s: SpeechRecognitionEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SpeechRecognitionEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SpeechRecognitionEvent> for Any {
     fn from(s: &SpeechRecognitionEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionEvent);
 
 impl SpeechRecognitionEvent {

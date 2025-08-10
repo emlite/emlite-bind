@@ -1,143 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct MemoryMeasurement {
-    inner: Any,
-}
-impl FromVal for MemoryMeasurement {
-    fn from_val(v: &Any) -> Self {
-        MemoryMeasurement { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for MemoryMeasurement {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for MemoryMeasurement {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for MemoryMeasurement {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for MemoryMeasurement {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<MemoryMeasurement> for Any {
-    fn from(s: MemoryMeasurement) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&MemoryMeasurement> for Any {
-    fn from(s: &MemoryMeasurement) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl MemoryMeasurement {
-    pub fn bytes(&self) -> u64 {
-        self.inner.get("bytes").as_::<u64>()
-    }
-
-    pub fn set_bytes(&mut self, value: u64) {
-        self.inner.set("bytes", value);
-    }
-}
-impl MemoryMeasurement {
-    pub fn breakdown(&self) -> TypedArray<MemoryBreakdownEntry> {
-        self.inner
-            .get("breakdown")
-            .as_::<TypedArray<MemoryBreakdownEntry>>()
-    }
-
-    pub fn set_breakdown(&mut self, value: &TypedArray<MemoryBreakdownEntry>) {
-        self.inner.set("breakdown", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PerformanceMarkOptions {
-    inner: Any,
-}
-impl FromVal for PerformanceMarkOptions {
-    fn from_val(v: &Any) -> Self {
-        PerformanceMarkOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PerformanceMarkOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PerformanceMarkOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PerformanceMarkOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PerformanceMarkOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PerformanceMarkOptions> for Any {
-    fn from(s: PerformanceMarkOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PerformanceMarkOptions> for Any {
-    fn from(s: &PerformanceMarkOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PerformanceMarkOptions {
-    pub fn detail(&self) -> Any {
-        self.inner.get("detail").as_::<Any>()
-    }
-
-    pub fn set_detail(&mut self, value: &Any) {
-        self.inner.set("detail", value);
-    }
-}
-impl PerformanceMarkOptions {
-    pub fn start_time(&self) -> Any {
-        self.inner.get("startTime").as_::<Any>()
-    }
-
-    pub fn set_start_time(&mut self, value: &Any) {
-        self.inner.set("startTime", value);
-    }
-}
 /// The Performance class.
 /// [`Performance`](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -145,6 +7,7 @@ impl PerformanceMarkOptions {
 pub struct Performance {
     inner: EventTarget,
 }
+
 impl FromVal for Performance {
     fn from_val(v: &Any) -> Self {
         Performance {
@@ -158,27 +21,32 @@ impl FromVal for Performance {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Performance {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Performance {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Performance {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Performance {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Performance> for Any {
     fn from(s: Performance) -> Any {
         let handle = s.inner.as_handle();
@@ -186,11 +54,13 @@ impl From<Performance> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Performance> for Any {
     fn from(s: &Performance) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Performance);
 
 impl Performance {

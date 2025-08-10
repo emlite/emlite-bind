@@ -1,10 +1,12 @@
 use super::*;
 
+/// The TokenBinding dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TokenBinding {
     inner: Any,
 }
+
 impl FromVal for TokenBinding {
     fn from_val(v: &Any) -> Self {
         TokenBinding { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for TokenBinding {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TokenBinding {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TokenBinding {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TokenBinding {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TokenBinding {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TokenBinding> for Any {
     fn from(s: TokenBinding) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<TokenBinding> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TokenBinding> for Any {
     fn from(s: &TokenBinding) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&TokenBinding> for Any {
 }
 
 impl TokenBinding {
+    /// Getter of the `status` attribute.
     pub fn status(&self) -> JsString {
         self.inner.get("status").as_::<JsString>()
     }
 
+    /// Setter of the `status` attribute.
     pub fn set_status(&mut self, value: &JsString) {
         self.inner.set("status", value);
     }
 }
 impl TokenBinding {
+    /// Getter of the `id` attribute.
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
 
+    /// Setter of the `id` attribute.
     pub fn set_id(&mut self, value: &JsString) {
         self.inner.set("id", value);
     }

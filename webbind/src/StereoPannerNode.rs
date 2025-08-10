@@ -7,6 +7,7 @@ use super::*;
 pub struct StereoPannerNode {
     inner: AudioNode,
 }
+
 impl FromVal for StereoPannerNode {
     fn from_val(v: &Any) -> Self {
         StereoPannerNode {
@@ -20,27 +21,32 @@ impl FromVal for StereoPannerNode {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for StereoPannerNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for StereoPannerNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for StereoPannerNode {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for StereoPannerNode {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<StereoPannerNode> for Any {
     fn from(s: StereoPannerNode) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<StereoPannerNode> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&StereoPannerNode> for Any {
     fn from(s: &StereoPannerNode) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(StereoPannerNode);
 
 impl StereoPannerNode {

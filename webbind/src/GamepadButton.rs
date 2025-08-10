@@ -7,6 +7,7 @@ use super::*;
 pub struct GamepadButton {
     inner: Any,
 }
+
 impl FromVal for GamepadButton {
     fn from_val(v: &Any) -> Self {
         GamepadButton {
@@ -20,27 +21,32 @@ impl FromVal for GamepadButton {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GamepadButton {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GamepadButton {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GamepadButton {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GamepadButton {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GamepadButton> for Any {
     fn from(s: GamepadButton) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GamepadButton> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GamepadButton> for Any {
     fn from(s: &GamepadButton) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GamepadButton);
 
 impl GamepadButton {

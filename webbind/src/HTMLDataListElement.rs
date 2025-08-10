@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLDataListElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLDataListElement {
     fn from_val(v: &Any) -> Self {
         HTMLDataListElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLDataListElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLDataListElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLDataListElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLDataListElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLDataListElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLDataListElement> for Any {
     fn from(s: HTMLDataListElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLDataListElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLDataListElement> for Any {
     fn from(s: &HTMLDataListElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLDataListElement);
 
 impl HTMLDataListElement {

@@ -1,91 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GamepadTouch {
-    inner: Any,
-}
-impl FromVal for GamepadTouch {
-    fn from_val(v: &Any) -> Self {
-        GamepadTouch { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GamepadTouch {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GamepadTouch {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GamepadTouch {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GamepadTouch {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GamepadTouch> for Any {
-    fn from(s: GamepadTouch) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GamepadTouch> for Any {
-    fn from(s: &GamepadTouch) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl GamepadTouch {
-    pub fn touch_id(&self) -> u32 {
-        self.inner.get("touchId").as_::<u32>()
-    }
-
-    pub fn set_touch_id(&mut self, value: u32) {
-        self.inner.set("touchId", value);
-    }
-}
-impl GamepadTouch {
-    pub fn surface_id(&self) -> u8 {
-        self.inner.get("surfaceId").as_::<u8>()
-    }
-
-    pub fn set_surface_id(&mut self, value: u8) {
-        self.inner.set("surfaceId", value);
-    }
-}
-impl GamepadTouch {
-    pub fn position(&self) -> DOMPointReadOnly {
-        self.inner.get("position").as_::<DOMPointReadOnly>()
-    }
-
-    pub fn set_position(&mut self, value: &DOMPointReadOnly) {
-        self.inner.set("position", value);
-    }
-}
-impl GamepadTouch {
-    pub fn surface_dimensions(&self) -> DOMRectReadOnly {
-        self.inner.get("surfaceDimensions").as_::<DOMRectReadOnly>()
-    }
-
-    pub fn set_surface_dimensions(&mut self, value: &DOMRectReadOnly) {
-        self.inner.set("surfaceDimensions", value);
-    }
-}
 /// The Gamepad class.
 /// [`Gamepad`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -93,6 +7,7 @@ impl GamepadTouch {
 pub struct Gamepad {
     inner: Any,
 }
+
 impl FromVal for Gamepad {
     fn from_val(v: &Any) -> Self {
         Gamepad {
@@ -106,27 +21,32 @@ impl FromVal for Gamepad {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Gamepad {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Gamepad {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Gamepad {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Gamepad {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Gamepad> for Any {
     fn from(s: Gamepad) -> Any {
         let handle = s.inner.as_handle();
@@ -134,11 +54,13 @@ impl From<Gamepad> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Gamepad> for Any {
     fn from(s: &Gamepad) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Gamepad);
 
 impl Gamepad {

@@ -1,362 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GPURenderPassDescriptor {
-    inner: Any,
-}
-impl FromVal for GPURenderPassDescriptor {
-    fn from_val(v: &Any) -> Self {
-        GPURenderPassDescriptor { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GPURenderPassDescriptor {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GPURenderPassDescriptor {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GPURenderPassDescriptor {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GPURenderPassDescriptor {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GPURenderPassDescriptor> for Any {
-    fn from(s: GPURenderPassDescriptor) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GPURenderPassDescriptor> for Any {
-    fn from(s: &GPURenderPassDescriptor) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl GPURenderPassDescriptor {
-    pub fn color_attachments(&self) -> TypedArray<GPURenderPassColorAttachment> {
-        self.inner
-            .get("colorAttachments")
-            .as_::<TypedArray<GPURenderPassColorAttachment>>()
-    }
-
-    pub fn set_color_attachments(&mut self, value: &TypedArray<GPURenderPassColorAttachment>) {
-        self.inner.set("colorAttachments", value);
-    }
-}
-impl GPURenderPassDescriptor {
-    pub fn depth_stencil_attachment(&self) -> GPURenderPassDepthStencilAttachment {
-        self.inner
-            .get("depthStencilAttachment")
-            .as_::<GPURenderPassDepthStencilAttachment>()
-    }
-
-    pub fn set_depth_stencil_attachment(&mut self, value: &GPURenderPassDepthStencilAttachment) {
-        self.inner.set("depthStencilAttachment", value);
-    }
-}
-impl GPURenderPassDescriptor {
-    pub fn occlusion_query_set(&self) -> GPUQuerySet {
-        self.inner.get("occlusionQuerySet").as_::<GPUQuerySet>()
-    }
-
-    pub fn set_occlusion_query_set(&mut self, value: &GPUQuerySet) {
-        self.inner.set("occlusionQuerySet", value);
-    }
-}
-impl GPURenderPassDescriptor {
-    pub fn timestamp_writes(&self) -> GPURenderPassTimestampWrites {
-        self.inner
-            .get("timestampWrites")
-            .as_::<GPURenderPassTimestampWrites>()
-    }
-
-    pub fn set_timestamp_writes(&mut self, value: &GPURenderPassTimestampWrites) {
-        self.inner.set("timestampWrites", value);
-    }
-}
-impl GPURenderPassDescriptor {
-    pub fn max_draw_count(&self) -> Any {
-        self.inner.get("maxDrawCount").as_::<Any>()
-    }
-
-    pub fn set_max_draw_count(&mut self, value: &Any) {
-        self.inner.set("maxDrawCount", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GPUComputePassDescriptor {
-    inner: Any,
-}
-impl FromVal for GPUComputePassDescriptor {
-    fn from_val(v: &Any) -> Self {
-        GPUComputePassDescriptor { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GPUComputePassDescriptor {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GPUComputePassDescriptor {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GPUComputePassDescriptor {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GPUComputePassDescriptor {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GPUComputePassDescriptor> for Any {
-    fn from(s: GPUComputePassDescriptor) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GPUComputePassDescriptor> for Any {
-    fn from(s: &GPUComputePassDescriptor) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl GPUComputePassDescriptor {
-    pub fn timestamp_writes(&self) -> GPUComputePassTimestampWrites {
-        self.inner
-            .get("timestampWrites")
-            .as_::<GPUComputePassTimestampWrites>()
-    }
-
-    pub fn set_timestamp_writes(&mut self, value: &GPUComputePassTimestampWrites) {
-        self.inner.set("timestampWrites", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GPUTexelCopyBufferInfo {
-    inner: Any,
-}
-impl FromVal for GPUTexelCopyBufferInfo {
-    fn from_val(v: &Any) -> Self {
-        GPUTexelCopyBufferInfo { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GPUTexelCopyBufferInfo {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GPUTexelCopyBufferInfo {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GPUTexelCopyBufferInfo {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GPUTexelCopyBufferInfo {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GPUTexelCopyBufferInfo> for Any {
-    fn from(s: GPUTexelCopyBufferInfo) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GPUTexelCopyBufferInfo> for Any {
-    fn from(s: &GPUTexelCopyBufferInfo) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl GPUTexelCopyBufferInfo {
-    pub fn buffer(&self) -> GPUBuffer {
-        self.inner.get("buffer").as_::<GPUBuffer>()
-    }
-
-    pub fn set_buffer(&mut self, value: &GPUBuffer) {
-        self.inner.set("buffer", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GPUTexelCopyTextureInfo {
-    inner: Any,
-}
-impl FromVal for GPUTexelCopyTextureInfo {
-    fn from_val(v: &Any) -> Self {
-        GPUTexelCopyTextureInfo { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GPUTexelCopyTextureInfo {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GPUTexelCopyTextureInfo {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GPUTexelCopyTextureInfo {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GPUTexelCopyTextureInfo {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GPUTexelCopyTextureInfo> for Any {
-    fn from(s: GPUTexelCopyTextureInfo) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GPUTexelCopyTextureInfo> for Any {
-    fn from(s: &GPUTexelCopyTextureInfo) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl GPUTexelCopyTextureInfo {
-    pub fn texture(&self) -> GPUTexture {
-        self.inner.get("texture").as_::<GPUTexture>()
-    }
-
-    pub fn set_texture(&mut self, value: &GPUTexture) {
-        self.inner.set("texture", value);
-    }
-}
-impl GPUTexelCopyTextureInfo {
-    pub fn mip_level(&self) -> Any {
-        self.inner.get("mipLevel").as_::<Any>()
-    }
-
-    pub fn set_mip_level(&mut self, value: &Any) {
-        self.inner.set("mipLevel", value);
-    }
-}
-impl GPUTexelCopyTextureInfo {
-    pub fn origin(&self) -> Any {
-        self.inner.get("origin").as_::<Any>()
-    }
-
-    pub fn set_origin(&mut self, value: &Any) {
-        self.inner.set("origin", value);
-    }
-}
-impl GPUTexelCopyTextureInfo {
-    pub fn aspect(&self) -> GPUTextureAspect {
-        self.inner.get("aspect").as_::<GPUTextureAspect>()
-    }
-
-    pub fn set_aspect(&mut self, value: &GPUTextureAspect) {
-        self.inner.set("aspect", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GPUCommandBufferDescriptor {
-    inner: Any,
-}
-impl FromVal for GPUCommandBufferDescriptor {
-    fn from_val(v: &Any) -> Self {
-        GPUCommandBufferDescriptor { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GPUCommandBufferDescriptor {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GPUCommandBufferDescriptor {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GPUCommandBufferDescriptor {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GPUCommandBufferDescriptor {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GPUCommandBufferDescriptor> for Any {
-    fn from(s: GPUCommandBufferDescriptor) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GPUCommandBufferDescriptor> for Any {
-    fn from(s: &GPUCommandBufferDescriptor) -> Any {
-        s.inner.clone()
-    }
-}
-
 /// The GPUCommandEncoder class.
 /// [`GPUCommandEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -364,6 +7,7 @@ impl From<&GPUCommandBufferDescriptor> for Any {
 pub struct GPUCommandEncoder {
     inner: Any,
 }
+
 impl FromVal for GPUCommandEncoder {
     fn from_val(v: &Any) -> Self {
         GPUCommandEncoder {
@@ -377,27 +21,32 @@ impl FromVal for GPUCommandEncoder {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUCommandEncoder {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUCommandEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUCommandEncoder {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUCommandEncoder {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUCommandEncoder> for Any {
     fn from(s: GPUCommandEncoder) -> Any {
         let handle = s.inner.as_handle();
@@ -405,11 +54,13 @@ impl From<GPUCommandEncoder> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUCommandEncoder> for Any {
     fn from(s: &GPUCommandEncoder) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUCommandEncoder);
 
 impl GPUCommandEncoder {

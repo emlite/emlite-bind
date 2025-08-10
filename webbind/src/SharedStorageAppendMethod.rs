@@ -7,6 +7,7 @@ use super::*;
 pub struct SharedStorageAppendMethod {
     inner: SharedStorageModifierMethod,
 }
+
 impl FromVal for SharedStorageAppendMethod {
     fn from_val(v: &Any) -> Self {
         SharedStorageAppendMethod {
@@ -20,27 +21,32 @@ impl FromVal for SharedStorageAppendMethod {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SharedStorageAppendMethod {
     type Target = SharedStorageModifierMethod;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SharedStorageAppendMethod {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SharedStorageAppendMethod {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SharedStorageAppendMethod {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SharedStorageAppendMethod> for Any {
     fn from(s: SharedStorageAppendMethod) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SharedStorageAppendMethod> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SharedStorageAppendMethod> for Any {
     fn from(s: &SharedStorageAppendMethod) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SharedStorageAppendMethod);
 
 impl SharedStorageAppendMethod {

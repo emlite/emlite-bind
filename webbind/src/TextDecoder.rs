@@ -1,64 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct TextDecodeOptions {
-    inner: Any,
-}
-impl FromVal for TextDecodeOptions {
-    fn from_val(v: &Any) -> Self {
-        TextDecodeOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for TextDecodeOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for TextDecodeOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for TextDecodeOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for TextDecodeOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<TextDecodeOptions> for Any {
-    fn from(s: TextDecodeOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&TextDecodeOptions> for Any {
-    fn from(s: &TextDecodeOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl TextDecodeOptions {
-    pub fn stream(&self) -> bool {
-        self.inner.get("stream").as_::<bool>()
-    }
-
-    pub fn set_stream(&mut self, value: bool) {
-        self.inner.set("stream", value);
-    }
-}
 /// The TextDecoder class.
 /// [`TextDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -66,6 +7,7 @@ impl TextDecodeOptions {
 pub struct TextDecoder {
     inner: Any,
 }
+
 impl FromVal for TextDecoder {
     fn from_val(v: &Any) -> Self {
         TextDecoder {
@@ -79,27 +21,32 @@ impl FromVal for TextDecoder {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TextDecoder {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TextDecoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TextDecoder {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TextDecoder {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TextDecoder> for Any {
     fn from(s: TextDecoder) -> Any {
         let handle = s.inner.as_handle();
@@ -107,11 +54,13 @@ impl From<TextDecoder> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TextDecoder> for Any {
     fn from(s: &TextDecoder) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TextDecoder);
 
 impl TextDecoder {

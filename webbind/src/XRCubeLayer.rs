@@ -7,6 +7,7 @@ use super::*;
 pub struct XRCubeLayer {
     inner: XRCompositionLayer,
 }
+
 impl FromVal for XRCubeLayer {
     fn from_val(v: &Any) -> Self {
         XRCubeLayer {
@@ -20,27 +21,32 @@ impl FromVal for XRCubeLayer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRCubeLayer {
     type Target = XRCompositionLayer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRCubeLayer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRCubeLayer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRCubeLayer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRCubeLayer> for Any {
     fn from(s: XRCubeLayer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRCubeLayer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRCubeLayer> for Any {
     fn from(s: &XRCubeLayer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRCubeLayer);
 
 impl XRCubeLayer {

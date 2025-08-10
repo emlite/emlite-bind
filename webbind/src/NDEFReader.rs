@@ -1,191 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct NDEFScanOptions {
-    inner: Any,
-}
-impl FromVal for NDEFScanOptions {
-    fn from_val(v: &Any) -> Self {
-        NDEFScanOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for NDEFScanOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for NDEFScanOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for NDEFScanOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for NDEFScanOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<NDEFScanOptions> for Any {
-    fn from(s: NDEFScanOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&NDEFScanOptions> for Any {
-    fn from(s: &NDEFScanOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl NDEFScanOptions {
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
-    }
-
-    pub fn set_signal(&mut self, value: &AbortSignal) {
-        self.inner.set("signal", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct NDEFWriteOptions {
-    inner: Any,
-}
-impl FromVal for NDEFWriteOptions {
-    fn from_val(v: &Any) -> Self {
-        NDEFWriteOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for NDEFWriteOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for NDEFWriteOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for NDEFWriteOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for NDEFWriteOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<NDEFWriteOptions> for Any {
-    fn from(s: NDEFWriteOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&NDEFWriteOptions> for Any {
-    fn from(s: &NDEFWriteOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl NDEFWriteOptions {
-    pub fn overwrite(&self) -> bool {
-        self.inner.get("overwrite").as_::<bool>()
-    }
-
-    pub fn set_overwrite(&mut self, value: bool) {
-        self.inner.set("overwrite", value);
-    }
-}
-impl NDEFWriteOptions {
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
-    }
-
-    pub fn set_signal(&mut self, value: &AbortSignal) {
-        self.inner.set("signal", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct NDEFMakeReadOnlyOptions {
-    inner: Any,
-}
-impl FromVal for NDEFMakeReadOnlyOptions {
-    fn from_val(v: &Any) -> Self {
-        NDEFMakeReadOnlyOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for NDEFMakeReadOnlyOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for NDEFMakeReadOnlyOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for NDEFMakeReadOnlyOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for NDEFMakeReadOnlyOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<NDEFMakeReadOnlyOptions> for Any {
-    fn from(s: NDEFMakeReadOnlyOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&NDEFMakeReadOnlyOptions> for Any {
-    fn from(s: &NDEFMakeReadOnlyOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl NDEFMakeReadOnlyOptions {
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
-    }
-
-    pub fn set_signal(&mut self, value: &AbortSignal) {
-        self.inner.set("signal", value);
-    }
-}
 /// The NDEFReader class.
 /// [`NDEFReader`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -193,6 +7,7 @@ impl NDEFMakeReadOnlyOptions {
 pub struct NDEFReader {
     inner: EventTarget,
 }
+
 impl FromVal for NDEFReader {
     fn from_val(v: &Any) -> Self {
         NDEFReader {
@@ -206,27 +21,32 @@ impl FromVal for NDEFReader {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NDEFReader {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NDEFReader {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NDEFReader {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NDEFReader {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NDEFReader> for Any {
     fn from(s: NDEFReader) -> Any {
         let handle = s.inner.as_handle();
@@ -234,11 +54,13 @@ impl From<NDEFReader> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NDEFReader> for Any {
     fn from(s: &NDEFReader) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NDEFReader);
 
 impl NDEFReader {

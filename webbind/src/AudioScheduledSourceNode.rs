@@ -7,6 +7,7 @@ use super::*;
 pub struct AudioScheduledSourceNode {
     inner: AudioNode,
 }
+
 impl FromVal for AudioScheduledSourceNode {
     fn from_val(v: &Any) -> Self {
         AudioScheduledSourceNode {
@@ -20,27 +21,32 @@ impl FromVal for AudioScheduledSourceNode {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioScheduledSourceNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioScheduledSourceNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioScheduledSourceNode {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioScheduledSourceNode {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioScheduledSourceNode> for Any {
     fn from(s: AudioScheduledSourceNode) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AudioScheduledSourceNode> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioScheduledSourceNode> for Any {
     fn from(s: &AudioScheduledSourceNode) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AudioScheduledSourceNode);
 
 impl AudioScheduledSourceNode {

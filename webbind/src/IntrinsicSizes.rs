@@ -7,6 +7,7 @@ use super::*;
 pub struct IntrinsicSizes {
     inner: Any,
 }
+
 impl FromVal for IntrinsicSizes {
     fn from_val(v: &Any) -> Self {
         IntrinsicSizes {
@@ -20,27 +21,32 @@ impl FromVal for IntrinsicSizes {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IntrinsicSizes {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IntrinsicSizes {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IntrinsicSizes {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IntrinsicSizes {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IntrinsicSizes> for Any {
     fn from(s: IntrinsicSizes) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IntrinsicSizes> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IntrinsicSizes> for Any {
     fn from(s: &IntrinsicSizes) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IntrinsicSizes);
 
 impl IntrinsicSizes {

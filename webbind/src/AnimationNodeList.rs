@@ -7,6 +7,7 @@ use super::*;
 pub struct AnimationNodeList {
     inner: Any,
 }
+
 impl FromVal for AnimationNodeList {
     fn from_val(v: &Any) -> Self {
         AnimationNodeList {
@@ -20,27 +21,32 @@ impl FromVal for AnimationNodeList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AnimationNodeList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AnimationNodeList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AnimationNodeList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AnimationNodeList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AnimationNodeList> for Any {
     fn from(s: AnimationNodeList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AnimationNodeList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AnimationNodeList> for Any {
     fn from(s: &AnimationNodeList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AnimationNodeList);
 
 impl AnimationNodeList {

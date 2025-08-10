@@ -7,6 +7,7 @@ use super::*;
 pub struct MathMLElement {
     inner: Element,
 }
+
 impl FromVal for MathMLElement {
     fn from_val(v: &Any) -> Self {
         MathMLElement {
@@ -20,27 +21,32 @@ impl FromVal for MathMLElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MathMLElement {
     type Target = Element;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MathMLElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MathMLElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MathMLElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MathMLElement> for Any {
     fn from(s: MathMLElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MathMLElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MathMLElement> for Any {
     fn from(s: &MathMLElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MathMLElement);
 
 impl MathMLElement {

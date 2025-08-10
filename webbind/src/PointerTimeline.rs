@@ -7,6 +7,7 @@ use super::*;
 pub struct PointerTimeline {
     inner: AnimationTimeline,
 }
+
 impl FromVal for PointerTimeline {
     fn from_val(v: &Any) -> Self {
         PointerTimeline {
@@ -20,27 +21,32 @@ impl FromVal for PointerTimeline {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PointerTimeline {
     type Target = AnimationTimeline;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PointerTimeline {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PointerTimeline {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PointerTimeline {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PointerTimeline> for Any {
     fn from(s: PointerTimeline) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PointerTimeline> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PointerTimeline> for Any {
     fn from(s: &PointerTimeline) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PointerTimeline);
 
 impl PointerTimeline {

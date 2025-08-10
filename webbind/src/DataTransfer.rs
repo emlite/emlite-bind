@@ -7,6 +7,7 @@ use super::*;
 pub struct DataTransfer {
     inner: Any,
 }
+
 impl FromVal for DataTransfer {
     fn from_val(v: &Any) -> Self {
         DataTransfer {
@@ -20,27 +21,32 @@ impl FromVal for DataTransfer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DataTransfer {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DataTransfer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DataTransfer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DataTransfer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DataTransfer> for Any {
     fn from(s: DataTransfer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DataTransfer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DataTransfer> for Any {
     fn from(s: &DataTransfer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DataTransfer);
 
 impl DataTransfer {

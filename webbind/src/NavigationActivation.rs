@@ -7,6 +7,7 @@ use super::*;
 pub struct NavigationActivation {
     inner: Any,
 }
+
 impl FromVal for NavigationActivation {
     fn from_val(v: &Any) -> Self {
         NavigationActivation {
@@ -20,27 +21,32 @@ impl FromVal for NavigationActivation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NavigationActivation {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NavigationActivation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NavigationActivation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NavigationActivation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NavigationActivation> for Any {
     fn from(s: NavigationActivation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NavigationActivation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NavigationActivation> for Any {
     fn from(s: &NavigationActivation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NavigationActivation);
 
 impl NavigationActivation {

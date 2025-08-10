@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLMarqueeElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLMarqueeElement {
     fn from_val(v: &Any) -> Self {
         HTMLMarqueeElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLMarqueeElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLMarqueeElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLMarqueeElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLMarqueeElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLMarqueeElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLMarqueeElement> for Any {
     fn from(s: HTMLMarqueeElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLMarqueeElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLMarqueeElement> for Any {
     fn from(s: &HTMLMarqueeElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLMarqueeElement);
 
 impl HTMLMarqueeElement {

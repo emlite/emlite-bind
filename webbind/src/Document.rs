@@ -1,288 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct CaretPositionFromPointOptions {
-    inner: Any,
-}
-impl FromVal for CaretPositionFromPointOptions {
-    fn from_val(v: &Any) -> Self {
-        CaretPositionFromPointOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for CaretPositionFromPointOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for CaretPositionFromPointOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for CaretPositionFromPointOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for CaretPositionFromPointOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<CaretPositionFromPointOptions> for Any {
-    fn from(s: CaretPositionFromPointOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&CaretPositionFromPointOptions> for Any {
-    fn from(s: &CaretPositionFromPointOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl CaretPositionFromPointOptions {
-    pub fn shadow_roots(&self) -> TypedArray<ShadowRoot> {
-        self.inner
-            .get("shadowRoots")
-            .as_::<TypedArray<ShadowRoot>>()
-    }
-
-    pub fn set_shadow_roots(&mut self, value: &TypedArray<ShadowRoot>) {
-        self.inner.set("shadowRoots", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct BoxQuadOptions {
-    inner: Any,
-}
-impl FromVal for BoxQuadOptions {
-    fn from_val(v: &Any) -> Self {
-        BoxQuadOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for BoxQuadOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for BoxQuadOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for BoxQuadOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for BoxQuadOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<BoxQuadOptions> for Any {
-    fn from(s: BoxQuadOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&BoxQuadOptions> for Any {
-    fn from(s: &BoxQuadOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl BoxQuadOptions {
-    pub fn box_(&self) -> CSSBoxType {
-        self.inner.get("box").as_::<CSSBoxType>()
-    }
-
-    pub fn set_box_(&mut self, value: &CSSBoxType) {
-        self.inner.set("box", value);
-    }
-}
-impl BoxQuadOptions {
-    pub fn relative_to(&self) -> Any {
-        self.inner.get("relativeTo").as_::<Any>()
-    }
-
-    pub fn set_relative_to(&mut self, value: &Any) {
-        self.inner.set("relativeTo", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct DOMQuadInit {
-    inner: Any,
-}
-impl FromVal for DOMQuadInit {
-    fn from_val(v: &Any) -> Self {
-        DOMQuadInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for DOMQuadInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for DOMQuadInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for DOMQuadInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for DOMQuadInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<DOMQuadInit> for Any {
-    fn from(s: DOMQuadInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&DOMQuadInit> for Any {
-    fn from(s: &DOMQuadInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl DOMQuadInit {
-    pub fn p1(&self) -> DOMPointInit {
-        self.inner.get("p1").as_::<DOMPointInit>()
-    }
-
-    pub fn set_p1(&mut self, value: &DOMPointInit) {
-        self.inner.set("p1", value);
-    }
-}
-impl DOMQuadInit {
-    pub fn p2(&self) -> DOMPointInit {
-        self.inner.get("p2").as_::<DOMPointInit>()
-    }
-
-    pub fn set_p2(&mut self, value: &DOMPointInit) {
-        self.inner.set("p2", value);
-    }
-}
-impl DOMQuadInit {
-    pub fn p3(&self) -> DOMPointInit {
-        self.inner.get("p3").as_::<DOMPointInit>()
-    }
-
-    pub fn set_p3(&mut self, value: &DOMPointInit) {
-        self.inner.set("p3", value);
-    }
-}
-impl DOMQuadInit {
-    pub fn p4(&self) -> DOMPointInit {
-        self.inner.get("p4").as_::<DOMPointInit>()
-    }
-
-    pub fn set_p4(&mut self, value: &DOMPointInit) {
-        self.inner.set("p4", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct ConvertCoordinateOptions {
-    inner: Any,
-}
-impl FromVal for ConvertCoordinateOptions {
-    fn from_val(v: &Any) -> Self {
-        ConvertCoordinateOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for ConvertCoordinateOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for ConvertCoordinateOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for ConvertCoordinateOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for ConvertCoordinateOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<ConvertCoordinateOptions> for Any {
-    fn from(s: ConvertCoordinateOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&ConvertCoordinateOptions> for Any {
-    fn from(s: &ConvertCoordinateOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl ConvertCoordinateOptions {
-    pub fn from_box(&self) -> CSSBoxType {
-        self.inner.get("fromBox").as_::<CSSBoxType>()
-    }
-
-    pub fn set_from_box(&mut self, value: &CSSBoxType) {
-        self.inner.set("fromBox", value);
-    }
-}
-impl ConvertCoordinateOptions {
-    pub fn to_box(&self) -> CSSBoxType {
-        self.inner.get("toBox").as_::<CSSBoxType>()
-    }
-
-    pub fn set_to_box(&mut self, value: &CSSBoxType) {
-        self.inner.set("toBox", value);
-    }
-}
 /// The Document class.
 /// [`Document`](https://developer.mozilla.org/en-US/docs/Web/API/Document)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -290,6 +7,7 @@ impl ConvertCoordinateOptions {
 pub struct Document {
     inner: Node,
 }
+
 impl FromVal for Document {
     fn from_val(v: &Any) -> Self {
         Document {
@@ -303,27 +21,32 @@ impl FromVal for Document {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Document {
     type Target = Node;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Document {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Document {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Document {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Document> for Any {
     fn from(s: Document) -> Any {
         let handle = s.inner.as_handle();
@@ -331,11 +54,13 @@ impl From<Document> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Document> for Any {
     fn from(s: &Document) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Document);
 
 impl Document {

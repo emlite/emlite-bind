@@ -7,6 +7,7 @@ use super::*;
 pub struct XRSubImage {
     inner: Any,
 }
+
 impl FromVal for XRSubImage {
     fn from_val(v: &Any) -> Self {
         XRSubImage {
@@ -20,27 +21,32 @@ impl FromVal for XRSubImage {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRSubImage {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRSubImage {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRSubImage {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRSubImage {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRSubImage> for Any {
     fn from(s: XRSubImage) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRSubImage> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRSubImage> for Any {
     fn from(s: &XRSubImage) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRSubImage);
 
 impl XRSubImage {

@@ -7,6 +7,7 @@ use super::*;
 pub struct PresentationConnection {
     inner: EventTarget,
 }
+
 impl FromVal for PresentationConnection {
     fn from_val(v: &Any) -> Self {
         PresentationConnection {
@@ -20,27 +21,32 @@ impl FromVal for PresentationConnection {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PresentationConnection {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PresentationConnection {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PresentationConnection {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PresentationConnection {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PresentationConnection> for Any {
     fn from(s: PresentationConnection) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PresentationConnection> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PresentationConnection> for Any {
     fn from(s: &PresentationConnection) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PresentationConnection);
 
 impl PresentationConnection {

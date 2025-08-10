@@ -7,6 +7,7 @@ use super::*;
 pub struct StaticRange {
     inner: AbstractRange,
 }
+
 impl FromVal for StaticRange {
     fn from_val(v: &Any) -> Self {
         StaticRange {
@@ -20,27 +21,32 @@ impl FromVal for StaticRange {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for StaticRange {
     type Target = AbstractRange;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for StaticRange {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for StaticRange {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for StaticRange {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<StaticRange> for Any {
     fn from(s: StaticRange) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<StaticRange> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&StaticRange> for Any {
     fn from(s: &StaticRange) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(StaticRange);
 
 impl StaticRange {

@@ -7,6 +7,7 @@ use super::*;
 pub struct AuthenticatorResponse {
     inner: Any,
 }
+
 impl FromVal for AuthenticatorResponse {
     fn from_val(v: &Any) -> Self {
         AuthenticatorResponse {
@@ -20,27 +21,32 @@ impl FromVal for AuthenticatorResponse {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AuthenticatorResponse {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AuthenticatorResponse {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AuthenticatorResponse {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AuthenticatorResponse {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AuthenticatorResponse> for Any {
     fn from(s: AuthenticatorResponse) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AuthenticatorResponse> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AuthenticatorResponse> for Any {
     fn from(s: &AuthenticatorResponse) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AuthenticatorResponse);
 
 impl AuthenticatorResponse {

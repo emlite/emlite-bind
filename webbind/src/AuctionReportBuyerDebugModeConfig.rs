@@ -1,10 +1,12 @@
 use super::*;
 
+/// The AuctionReportBuyerDebugModeConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuctionReportBuyerDebugModeConfig {
     inner: Any,
 }
+
 impl FromVal for AuctionReportBuyerDebugModeConfig {
     fn from_val(v: &Any) -> Self {
         AuctionReportBuyerDebugModeConfig { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for AuctionReportBuyerDebugModeConfig {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AuctionReportBuyerDebugModeConfig {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AuctionReportBuyerDebugModeConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AuctionReportBuyerDebugModeConfig {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AuctionReportBuyerDebugModeConfig {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AuctionReportBuyerDebugModeConfig> for Any {
     fn from(s: AuctionReportBuyerDebugModeConfig) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<AuctionReportBuyerDebugModeConfig> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AuctionReportBuyerDebugModeConfig> for Any {
     fn from(s: &AuctionReportBuyerDebugModeConfig) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&AuctionReportBuyerDebugModeConfig> for Any {
 }
 
 impl AuctionReportBuyerDebugModeConfig {
+    /// Getter of the `enabled` attribute.
     pub fn enabled(&self) -> bool {
         self.inner.get("enabled").as_::<bool>()
     }
 
+    /// Setter of the `enabled` attribute.
     pub fn set_enabled(&mut self, value: bool) {
         self.inner.set("enabled", value);
     }
 }
 impl AuctionReportBuyerDebugModeConfig {
+    /// Getter of the `debugKey` attribute.
     pub fn debug_key(&self) -> i64 {
         self.inner.get("debugKey").as_::<i64>()
     }
 
+    /// Setter of the `debugKey` attribute.
     pub fn set_debug_key(&mut self, value: i64) {
         self.inner.set("debugKey", value);
     }

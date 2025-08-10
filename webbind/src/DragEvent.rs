@@ -7,6 +7,7 @@ use super::*;
 pub struct DragEvent {
     inner: MouseEvent,
 }
+
 impl FromVal for DragEvent {
     fn from_val(v: &Any) -> Self {
         DragEvent {
@@ -20,27 +21,32 @@ impl FromVal for DragEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DragEvent {
     type Target = MouseEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DragEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DragEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DragEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DragEvent> for Any {
     fn from(s: DragEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DragEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DragEvent> for Any {
     fn from(s: &DragEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DragEvent);
 
 impl DragEvent {

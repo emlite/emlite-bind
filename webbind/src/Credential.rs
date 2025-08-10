@@ -7,6 +7,7 @@ use super::*;
 pub struct Credential {
     inner: Any,
 }
+
 impl FromVal for Credential {
     fn from_val(v: &Any) -> Self {
         Credential {
@@ -20,27 +21,32 @@ impl FromVal for Credential {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Credential {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Credential {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Credential {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Credential {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Credential> for Any {
     fn from(s: Credential) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Credential> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Credential> for Any {
     fn from(s: &Credential) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Credential);
 
 impl Credential {

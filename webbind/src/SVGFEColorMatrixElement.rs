@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEColorMatrixElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEColorMatrixElement {
     fn from_val(v: &Any) -> Self {
         SVGFEColorMatrixElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEColorMatrixElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEColorMatrixElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEColorMatrixElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEColorMatrixElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEColorMatrixElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEColorMatrixElement> for Any {
     fn from(s: SVGFEColorMatrixElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEColorMatrixElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEColorMatrixElement> for Any {
     fn from(s: &SVGFEColorMatrixElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEColorMatrixElement);
 
 impl SVGFEColorMatrixElement {

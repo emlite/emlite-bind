@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCRtpScriptTransformer {
     inner: EventTarget,
 }
+
 impl FromVal for RTCRtpScriptTransformer {
     fn from_val(v: &Any) -> Self {
         RTCRtpScriptTransformer {
@@ -20,27 +21,32 @@ impl FromVal for RTCRtpScriptTransformer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCRtpScriptTransformer {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCRtpScriptTransformer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCRtpScriptTransformer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCRtpScriptTransformer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCRtpScriptTransformer> for Any {
     fn from(s: RTCRtpScriptTransformer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCRtpScriptTransformer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCRtpScriptTransformer> for Any {
     fn from(s: &RTCRtpScriptTransformer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCRtpScriptTransformer);
 
 impl RTCRtpScriptTransformer {

@@ -7,6 +7,7 @@ use super::*;
 pub struct NavigationDestination {
     inner: Any,
 }
+
 impl FromVal for NavigationDestination {
     fn from_val(v: &Any) -> Self {
         NavigationDestination {
@@ -20,27 +21,32 @@ impl FromVal for NavigationDestination {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NavigationDestination {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NavigationDestination {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NavigationDestination {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NavigationDestination {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NavigationDestination> for Any {
     fn from(s: NavigationDestination) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NavigationDestination> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NavigationDestination> for Any {
     fn from(s: &NavigationDestination) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NavigationDestination);
 
 impl NavigationDestination {

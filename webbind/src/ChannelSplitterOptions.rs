@@ -1,10 +1,12 @@
 use super::*;
 
+/// The ChannelSplitterOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ChannelSplitterOptions {
     inner: Any,
 }
+
 impl FromVal for ChannelSplitterOptions {
     fn from_val(v: &Any) -> Self {
         ChannelSplitterOptions { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for ChannelSplitterOptions {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ChannelSplitterOptions {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ChannelSplitterOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ChannelSplitterOptions {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ChannelSplitterOptions {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ChannelSplitterOptions> for Any {
     fn from(s: ChannelSplitterOptions) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<ChannelSplitterOptions> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ChannelSplitterOptions> for Any {
     fn from(s: &ChannelSplitterOptions) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&ChannelSplitterOptions> for Any {
 }
 
 impl ChannelSplitterOptions {
+    /// Getter of the `numberOfOutputs` attribute.
     pub fn number_of_outputs(&self) -> u32 {
         self.inner.get("numberOfOutputs").as_::<u32>()
     }
 
+    /// Setter of the `numberOfOutputs` attribute.
     pub fn set_number_of_outputs(&mut self, value: u32) {
         self.inner.set("numberOfOutputs", value);
     }

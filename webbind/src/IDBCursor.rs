@@ -7,6 +7,7 @@ use super::*;
 pub struct IDBCursor {
     inner: Any,
 }
+
 impl FromVal for IDBCursor {
     fn from_val(v: &Any) -> Self {
         IDBCursor {
@@ -20,27 +21,32 @@ impl FromVal for IDBCursor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IDBCursor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IDBCursor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IDBCursor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IDBCursor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IDBCursor> for Any {
     fn from(s: IDBCursor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IDBCursor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IDBCursor> for Any {
     fn from(s: &IDBCursor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IDBCursor);
 
 impl IDBCursor {

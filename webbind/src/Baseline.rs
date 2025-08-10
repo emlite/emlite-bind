@@ -7,6 +7,7 @@ use super::*;
 pub struct Baseline {
     inner: Any,
 }
+
 impl FromVal for Baseline {
     fn from_val(v: &Any) -> Self {
         Baseline {
@@ -20,27 +21,32 @@ impl FromVal for Baseline {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Baseline {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Baseline {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Baseline {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Baseline {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Baseline> for Any {
     fn from(s: Baseline) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Baseline> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Baseline> for Any {
     fn from(s: &Baseline) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Baseline);
 
 impl Baseline {

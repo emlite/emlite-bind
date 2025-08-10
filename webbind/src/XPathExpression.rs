@@ -7,6 +7,7 @@ use super::*;
 pub struct XPathExpression {
     inner: Any,
 }
+
 impl FromVal for XPathExpression {
     fn from_val(v: &Any) -> Self {
         XPathExpression {
@@ -20,27 +21,32 @@ impl FromVal for XPathExpression {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XPathExpression {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XPathExpression {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XPathExpression {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XPathExpression {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XPathExpression> for Any {
     fn from(s: XPathExpression) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XPathExpression> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XPathExpression> for Any {
     fn from(s: &XPathExpression) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XPathExpression);
 
 impl XPathExpression {

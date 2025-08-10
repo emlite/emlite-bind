@@ -1,10 +1,12 @@
 use super::*;
 
+/// The PresentationConnectionCloseEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationConnectionCloseEventInit {
     inner: Any,
 }
+
 impl FromVal for PresentationConnectionCloseEventInit {
     fn from_val(v: &Any) -> Self {
         PresentationConnectionCloseEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for PresentationConnectionCloseEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PresentationConnectionCloseEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PresentationConnectionCloseEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PresentationConnectionCloseEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PresentationConnectionCloseEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PresentationConnectionCloseEventInit> for Any {
     fn from(s: PresentationConnectionCloseEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<PresentationConnectionCloseEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PresentationConnectionCloseEventInit> for Any {
     fn from(s: &PresentationConnectionCloseEventInit) -> Any {
         s.inner.clone()
@@ -51,21 +59,25 @@ impl From<&PresentationConnectionCloseEventInit> for Any {
 }
 
 impl PresentationConnectionCloseEventInit {
+    /// Getter of the `reason` attribute.
     pub fn reason(&self) -> PresentationConnectionCloseReason {
         self.inner
             .get("reason")
             .as_::<PresentationConnectionCloseReason>()
     }
 
+    /// Setter of the `reason` attribute.
     pub fn set_reason(&mut self, value: &PresentationConnectionCloseReason) {
         self.inner.set("reason", value);
     }
 }
 impl PresentationConnectionCloseEventInit {
+    /// Getter of the `message` attribute.
     pub fn message(&self) -> JsString {
         self.inner.get("message").as_::<JsString>()
     }
 
+    /// Setter of the `message` attribute.
     pub fn set_message(&mut self, value: &JsString) {
         self.inner.set("message", value);
     }

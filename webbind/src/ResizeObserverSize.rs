@@ -7,6 +7,7 @@ use super::*;
 pub struct ResizeObserverSize {
     inner: Any,
 }
+
 impl FromVal for ResizeObserverSize {
     fn from_val(v: &Any) -> Self {
         ResizeObserverSize {
@@ -20,27 +21,32 @@ impl FromVal for ResizeObserverSize {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ResizeObserverSize {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ResizeObserverSize {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ResizeObserverSize {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ResizeObserverSize {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ResizeObserverSize> for Any {
     fn from(s: ResizeObserverSize) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ResizeObserverSize> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ResizeObserverSize> for Any {
     fn from(s: &ResizeObserverSize) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ResizeObserverSize);
 
 impl ResizeObserverSize {

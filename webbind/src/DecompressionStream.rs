@@ -7,6 +7,7 @@ use super::*;
 pub struct DecompressionStream {
     inner: Any,
 }
+
 impl FromVal for DecompressionStream {
     fn from_val(v: &Any) -> Self {
         DecompressionStream {
@@ -20,27 +21,32 @@ impl FromVal for DecompressionStream {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DecompressionStream {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DecompressionStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DecompressionStream {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DecompressionStream {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DecompressionStream> for Any {
     fn from(s: DecompressionStream) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DecompressionStream> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DecompressionStream> for Any {
     fn from(s: &DecompressionStream) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DecompressionStream);
 
 impl DecompressionStream {

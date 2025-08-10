@@ -7,6 +7,7 @@ use super::*;
 pub struct WaveShaperNode {
     inner: AudioNode,
 }
+
 impl FromVal for WaveShaperNode {
     fn from_val(v: &Any) -> Self {
         WaveShaperNode {
@@ -20,27 +21,32 @@ impl FromVal for WaveShaperNode {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WaveShaperNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WaveShaperNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WaveShaperNode {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WaveShaperNode {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WaveShaperNode> for Any {
     fn from(s: WaveShaperNode) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WaveShaperNode> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WaveShaperNode> for Any {
     fn from(s: &WaveShaperNode) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WaveShaperNode);
 
 impl WaveShaperNode {

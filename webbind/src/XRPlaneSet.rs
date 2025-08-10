@@ -7,6 +7,7 @@ use super::*;
 pub struct XRPlaneSet {
     inner: Any,
 }
+
 impl FromVal for XRPlaneSet {
     fn from_val(v: &Any) -> Self {
         XRPlaneSet {
@@ -20,27 +21,32 @@ impl FromVal for XRPlaneSet {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRPlaneSet {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRPlaneSet {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRPlaneSet {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRPlaneSet {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRPlaneSet> for Any {
     fn from(s: XRPlaneSet) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<XRPlaneSet> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRPlaneSet> for Any {
     fn from(s: &XRPlaneSet) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRPlaneSet);

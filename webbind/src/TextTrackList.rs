@@ -7,6 +7,7 @@ use super::*;
 pub struct TextTrackList {
     inner: EventTarget,
 }
+
 impl FromVal for TextTrackList {
     fn from_val(v: &Any) -> Self {
         TextTrackList {
@@ -20,27 +21,32 @@ impl FromVal for TextTrackList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TextTrackList {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TextTrackList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TextTrackList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TextTrackList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TextTrackList> for Any {
     fn from(s: TextTrackList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TextTrackList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TextTrackList> for Any {
     fn from(s: &TextTrackList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TextTrackList);
 
 impl TextTrackList {

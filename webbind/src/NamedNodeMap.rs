@@ -7,6 +7,7 @@ use super::*;
 pub struct NamedNodeMap {
     inner: Any,
 }
+
 impl FromVal for NamedNodeMap {
     fn from_val(v: &Any) -> Self {
         NamedNodeMap {
@@ -20,27 +21,32 @@ impl FromVal for NamedNodeMap {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NamedNodeMap {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NamedNodeMap {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NamedNodeMap {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NamedNodeMap {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NamedNodeMap> for Any {
     fn from(s: NamedNodeMap) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NamedNodeMap> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NamedNodeMap> for Any {
     fn from(s: &NamedNodeMap) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NamedNodeMap);
 
 impl NamedNodeMap {

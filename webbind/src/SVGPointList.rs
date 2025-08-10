@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGPointList {
     inner: Any,
 }
+
 impl FromVal for SVGPointList {
     fn from_val(v: &Any) -> Self {
         SVGPointList {
@@ -20,27 +21,32 @@ impl FromVal for SVGPointList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGPointList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGPointList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGPointList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGPointList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGPointList> for Any {
     fn from(s: SVGPointList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGPointList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGPointList> for Any {
     fn from(s: &SVGPointList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGPointList);
 
 impl SVGPointList {

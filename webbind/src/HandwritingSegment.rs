@@ -1,10 +1,12 @@
 use super::*;
 
+/// The HandwritingSegment dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingSegment {
     inner: Any,
 }
+
 impl FromVal for HandwritingSegment {
     fn from_val(v: &Any) -> Self {
         HandwritingSegment { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for HandwritingSegment {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HandwritingSegment {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HandwritingSegment {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HandwritingSegment {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HandwritingSegment {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HandwritingSegment> for Any {
     fn from(s: HandwritingSegment) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<HandwritingSegment> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HandwritingSegment> for Any {
     fn from(s: &HandwritingSegment) -> Any {
         s.inner.clone()
@@ -51,39 +59,47 @@ impl From<&HandwritingSegment> for Any {
 }
 
 impl HandwritingSegment {
+    /// Getter of the `grapheme` attribute.
     pub fn grapheme(&self) -> JsString {
         self.inner.get("grapheme").as_::<JsString>()
     }
 
+    /// Setter of the `grapheme` attribute.
     pub fn set_grapheme(&mut self, value: &JsString) {
         self.inner.set("grapheme", value);
     }
 }
 impl HandwritingSegment {
+    /// Getter of the `beginIndex` attribute.
     pub fn begin_index(&self) -> u32 {
         self.inner.get("beginIndex").as_::<u32>()
     }
 
+    /// Setter of the `beginIndex` attribute.
     pub fn set_begin_index(&mut self, value: u32) {
         self.inner.set("beginIndex", value);
     }
 }
 impl HandwritingSegment {
+    /// Getter of the `endIndex` attribute.
     pub fn end_index(&self) -> u32 {
         self.inner.get("endIndex").as_::<u32>()
     }
 
+    /// Setter of the `endIndex` attribute.
     pub fn set_end_index(&mut self, value: u32) {
         self.inner.set("endIndex", value);
     }
 }
 impl HandwritingSegment {
+    /// Getter of the `drawingSegments` attribute.
     pub fn drawing_segments(&self) -> TypedArray<HandwritingDrawingSegment> {
         self.inner
             .get("drawingSegments")
             .as_::<TypedArray<HandwritingDrawingSegment>>()
     }
 
+    /// Setter of the `drawingSegments` attribute.
     pub fn set_drawing_segments(&mut self, value: &TypedArray<HandwritingDrawingSegment>) {
         self.inner.set("drawingSegments", value);
     }

@@ -7,6 +7,7 @@ use super::*;
 pub struct Gyroscope {
     inner: Sensor,
 }
+
 impl FromVal for Gyroscope {
     fn from_val(v: &Any) -> Self {
         Gyroscope {
@@ -20,27 +21,32 @@ impl FromVal for Gyroscope {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Gyroscope {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Gyroscope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Gyroscope {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Gyroscope {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Gyroscope> for Any {
     fn from(s: Gyroscope) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Gyroscope> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Gyroscope> for Any {
     fn from(s: &Gyroscope) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Gyroscope);
 
 impl Gyroscope {

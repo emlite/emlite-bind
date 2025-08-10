@@ -1,10 +1,12 @@
 use super::*;
 
+/// The PASignalValue dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PASignalValue {
     inner: Any,
 }
+
 impl FromVal for PASignalValue {
     fn from_val(v: &Any) -> Self {
         PASignalValue { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for PASignalValue {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PASignalValue {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PASignalValue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PASignalValue {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PASignalValue {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PASignalValue> for Any {
     fn from(s: PASignalValue) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<PASignalValue> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PASignalValue> for Any {
     fn from(s: &PASignalValue) -> Any {
         s.inner.clone()
@@ -51,28 +59,34 @@ impl From<&PASignalValue> for Any {
 }
 
 impl PASignalValue {
+    /// Getter of the `baseValue` attribute.
     pub fn base_value(&self) -> JsString {
         self.inner.get("baseValue").as_::<JsString>()
     }
 
+    /// Setter of the `baseValue` attribute.
     pub fn set_base_value(&mut self, value: &JsString) {
         self.inner.set("baseValue", value);
     }
 }
 impl PASignalValue {
+    /// Getter of the `scale` attribute.
     pub fn scale(&self) -> f64 {
         self.inner.get("scale").as_::<f64>()
     }
 
+    /// Setter of the `scale` attribute.
     pub fn set_scale(&mut self, value: f64) {
         self.inner.set("scale", value);
     }
 }
 impl PASignalValue {
+    /// Getter of the `offset` attribute.
     pub fn offset(&self) -> Any {
         self.inner.get("offset").as_::<Any>()
     }
 
+    /// Setter of the `offset` attribute.
     pub fn set_offset(&mut self, value: &Any) {
         self.inner.set("offset", value);
     }

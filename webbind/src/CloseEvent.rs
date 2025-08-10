@@ -7,6 +7,7 @@ use super::*;
 pub struct CloseEvent {
     inner: Event,
 }
+
 impl FromVal for CloseEvent {
     fn from_val(v: &Any) -> Self {
         CloseEvent {
@@ -20,27 +21,32 @@ impl FromVal for CloseEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CloseEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CloseEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CloseEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CloseEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CloseEvent> for Any {
     fn from(s: CloseEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CloseEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CloseEvent> for Any {
     fn from(s: &CloseEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CloseEvent);
 
 impl CloseEvent {

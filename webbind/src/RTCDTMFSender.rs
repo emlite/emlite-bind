@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCDTMFSender {
     inner: EventTarget,
 }
+
 impl FromVal for RTCDTMFSender {
     fn from_val(v: &Any) -> Self {
         RTCDTMFSender {
@@ -20,27 +21,32 @@ impl FromVal for RTCDTMFSender {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCDTMFSender {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCDTMFSender {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCDTMFSender {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCDTMFSender {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCDTMFSender> for Any {
     fn from(s: RTCDTMFSender) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCDTMFSender> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCDTMFSender> for Any {
     fn from(s: &RTCDTMFSender) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCDTMFSender);
 
 impl RTCDTMFSender {

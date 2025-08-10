@@ -7,6 +7,7 @@ use super::*;
 pub struct FragmentResult {
     inner: Any,
 }
+
 impl FromVal for FragmentResult {
     fn from_val(v: &Any) -> Self {
         FragmentResult {
@@ -20,27 +21,32 @@ impl FromVal for FragmentResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FragmentResult {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FragmentResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FragmentResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FragmentResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FragmentResult> for Any {
     fn from(s: FragmentResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FragmentResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FragmentResult> for Any {
     fn from(s: &FragmentResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FragmentResult);
 
 impl FragmentResult {

@@ -7,6 +7,7 @@ use super::*;
 pub struct XRLayerEvent {
     inner: Event,
 }
+
 impl FromVal for XRLayerEvent {
     fn from_val(v: &Any) -> Self {
         XRLayerEvent {
@@ -20,27 +21,32 @@ impl FromVal for XRLayerEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRLayerEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRLayerEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRLayerEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRLayerEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRLayerEvent> for Any {
     fn from(s: XRLayerEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRLayerEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRLayerEvent> for Any {
     fn from(s: &XRLayerEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRLayerEvent);
 
 impl XRLayerEvent {

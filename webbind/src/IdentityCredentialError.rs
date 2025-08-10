@@ -7,6 +7,7 @@ use super::*;
 pub struct IdentityCredentialError {
     inner: DOMException,
 }
+
 impl FromVal for IdentityCredentialError {
     fn from_val(v: &Any) -> Self {
         IdentityCredentialError {
@@ -20,27 +21,32 @@ impl FromVal for IdentityCredentialError {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IdentityCredentialError {
     type Target = DOMException;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IdentityCredentialError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IdentityCredentialError {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IdentityCredentialError {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IdentityCredentialError> for Any {
     fn from(s: IdentityCredentialError) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IdentityCredentialError> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IdentityCredentialError> for Any {
     fn from(s: &IdentityCredentialError) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IdentityCredentialError);
 
 impl IdentityCredentialError {

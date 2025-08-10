@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSPageDescriptors {
     inner: CSSStyleDeclaration,
 }
+
 impl FromVal for CSSPageDescriptors {
     fn from_val(v: &Any) -> Self {
         CSSPageDescriptors {
@@ -20,27 +21,32 @@ impl FromVal for CSSPageDescriptors {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSPageDescriptors {
     type Target = CSSStyleDeclaration;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSPageDescriptors {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSPageDescriptors {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSPageDescriptors {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSPageDescriptors> for Any {
     fn from(s: CSSPageDescriptors) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSPageDescriptors> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSPageDescriptors> for Any {
     fn from(s: &CSSPageDescriptors) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSPageDescriptors);
 
 impl CSSPageDescriptors {

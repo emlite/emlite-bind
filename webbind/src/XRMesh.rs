@@ -7,6 +7,7 @@ use super::*;
 pub struct XRMesh {
     inner: Any,
 }
+
 impl FromVal for XRMesh {
     fn from_val(v: &Any) -> Self {
         XRMesh {
@@ -20,27 +21,32 @@ impl FromVal for XRMesh {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRMesh {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRMesh {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRMesh {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRMesh {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRMesh> for Any {
     fn from(s: XRMesh) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRMesh> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRMesh> for Any {
     fn from(s: &XRMesh) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRMesh);
 
 impl XRMesh {

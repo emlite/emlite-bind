@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEGaussianBlurElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEGaussianBlurElement {
     fn from_val(v: &Any) -> Self {
         SVGFEGaussianBlurElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEGaussianBlurElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEGaussianBlurElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEGaussianBlurElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEGaussianBlurElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEGaussianBlurElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEGaussianBlurElement> for Any {
     fn from(s: SVGFEGaussianBlurElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEGaussianBlurElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEGaussianBlurElement> for Any {
     fn from(s: &SVGFEGaussianBlurElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEGaussianBlurElement);
 
 impl SVGFEGaussianBlurElement {

@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaElementAudioSourceNode {
     inner: AudioNode,
 }
+
 impl FromVal for MediaElementAudioSourceNode {
     fn from_val(v: &Any) -> Self {
         MediaElementAudioSourceNode {
@@ -20,27 +21,32 @@ impl FromVal for MediaElementAudioSourceNode {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaElementAudioSourceNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaElementAudioSourceNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaElementAudioSourceNode {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaElementAudioSourceNode {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaElementAudioSourceNode> for Any {
     fn from(s: MediaElementAudioSourceNode) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaElementAudioSourceNode> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaElementAudioSourceNode> for Any {
     fn from(s: &MediaElementAudioSourceNode) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaElementAudioSourceNode);
 
 impl MediaElementAudioSourceNode {

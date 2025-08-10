@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSLayerBlockRule {
     inner: CSSGroupingRule,
 }
+
 impl FromVal for CSSLayerBlockRule {
     fn from_val(v: &Any) -> Self {
         CSSLayerBlockRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSLayerBlockRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSLayerBlockRule {
     type Target = CSSGroupingRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSLayerBlockRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSLayerBlockRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSLayerBlockRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSLayerBlockRule> for Any {
     fn from(s: CSSLayerBlockRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSLayerBlockRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSLayerBlockRule> for Any {
     fn from(s: &CSSLayerBlockRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSLayerBlockRule);
 
 impl CSSLayerBlockRule {

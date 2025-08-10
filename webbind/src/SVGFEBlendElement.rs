@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEBlendElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEBlendElement {
     fn from_val(v: &Any) -> Self {
         SVGFEBlendElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEBlendElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEBlendElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEBlendElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEBlendElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEBlendElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEBlendElement> for Any {
     fn from(s: SVGFEBlendElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEBlendElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEBlendElement> for Any {
     fn from(s: &SVGFEBlendElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEBlendElement);
 
 impl SVGFEBlendElement {

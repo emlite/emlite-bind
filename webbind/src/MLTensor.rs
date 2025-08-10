@@ -7,6 +7,7 @@ use super::*;
 pub struct MLTensor {
     inner: Any,
 }
+
 impl FromVal for MLTensor {
     fn from_val(v: &Any) -> Self {
         MLTensor {
@@ -20,27 +21,32 @@ impl FromVal for MLTensor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MLTensor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MLTensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MLTensor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MLTensor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MLTensor> for Any {
     fn from(s: MLTensor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MLTensor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MLTensor> for Any {
     fn from(s: &MLTensor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MLTensor);
 
 impl MLTensor {

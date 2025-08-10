@@ -7,6 +7,7 @@ use super::*;
 pub struct NavigationCurrentEntryChangeEvent {
     inner: Event,
 }
+
 impl FromVal for NavigationCurrentEntryChangeEvent {
     fn from_val(v: &Any) -> Self {
         NavigationCurrentEntryChangeEvent {
@@ -20,27 +21,32 @@ impl FromVal for NavigationCurrentEntryChangeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NavigationCurrentEntryChangeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NavigationCurrentEntryChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NavigationCurrentEntryChangeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NavigationCurrentEntryChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NavigationCurrentEntryChangeEvent> for Any {
     fn from(s: NavigationCurrentEntryChangeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NavigationCurrentEntryChangeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NavigationCurrentEntryChangeEvent> for Any {
     fn from(s: &NavigationCurrentEntryChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NavigationCurrentEntryChangeEvent);
 
 impl NavigationCurrentEntryChangeEvent {

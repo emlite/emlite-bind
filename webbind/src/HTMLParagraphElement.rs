@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLParagraphElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLParagraphElement {
     fn from_val(v: &Any) -> Self {
         HTMLParagraphElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLParagraphElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLParagraphElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLParagraphElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLParagraphElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLParagraphElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLParagraphElement> for Any {
     fn from(s: HTMLParagraphElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLParagraphElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLParagraphElement> for Any {
     fn from(s: &HTMLParagraphElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLParagraphElement);
 
 impl HTMLParagraphElement {

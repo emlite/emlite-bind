@@ -7,6 +7,7 @@ use super::*;
 pub struct XRWebGLDepthInformation {
     inner: XRDepthInformation,
 }
+
 impl FromVal for XRWebGLDepthInformation {
     fn from_val(v: &Any) -> Self {
         XRWebGLDepthInformation {
@@ -20,27 +21,32 @@ impl FromVal for XRWebGLDepthInformation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRWebGLDepthInformation {
     type Target = XRDepthInformation;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRWebGLDepthInformation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRWebGLDepthInformation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRWebGLDepthInformation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRWebGLDepthInformation> for Any {
     fn from(s: XRWebGLDepthInformation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRWebGLDepthInformation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRWebGLDepthInformation> for Any {
     fn from(s: &XRWebGLDepthInformation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRWebGLDepthInformation);
 
 impl XRWebGLDepthInformation {

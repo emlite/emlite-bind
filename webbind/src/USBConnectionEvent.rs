@@ -7,6 +7,7 @@ use super::*;
 pub struct USBConnectionEvent {
     inner: Event,
 }
+
 impl FromVal for USBConnectionEvent {
     fn from_val(v: &Any) -> Self {
         USBConnectionEvent {
@@ -20,27 +21,32 @@ impl FromVal for USBConnectionEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for USBConnectionEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for USBConnectionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for USBConnectionEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for USBConnectionEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<USBConnectionEvent> for Any {
     fn from(s: USBConnectionEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<USBConnectionEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&USBConnectionEvent> for Any {
     fn from(s: &USBConnectionEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(USBConnectionEvent);
 
 impl USBConnectionEvent {

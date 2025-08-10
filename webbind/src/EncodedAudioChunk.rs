@@ -7,6 +7,7 @@ use super::*;
 pub struct EncodedAudioChunk {
     inner: Any,
 }
+
 impl FromVal for EncodedAudioChunk {
     fn from_val(v: &Any) -> Self {
         EncodedAudioChunk {
@@ -20,27 +21,32 @@ impl FromVal for EncodedAudioChunk {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EncodedAudioChunk {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EncodedAudioChunk {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EncodedAudioChunk {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EncodedAudioChunk {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EncodedAudioChunk> for Any {
     fn from(s: EncodedAudioChunk) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<EncodedAudioChunk> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EncodedAudioChunk> for Any {
     fn from(s: &EncodedAudioChunk) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(EncodedAudioChunk);
 
 impl EncodedAudioChunk {

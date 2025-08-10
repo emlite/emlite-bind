@@ -7,6 +7,7 @@ use super::*;
 pub struct EncodedVideoChunk {
     inner: Any,
 }
+
 impl FromVal for EncodedVideoChunk {
     fn from_val(v: &Any) -> Self {
         EncodedVideoChunk {
@@ -20,27 +21,32 @@ impl FromVal for EncodedVideoChunk {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EncodedVideoChunk {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EncodedVideoChunk {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EncodedVideoChunk {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EncodedVideoChunk {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EncodedVideoChunk> for Any {
     fn from(s: EncodedVideoChunk) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<EncodedVideoChunk> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EncodedVideoChunk> for Any {
     fn from(s: &EncodedVideoChunk) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(EncodedVideoChunk);
 
 impl EncodedVideoChunk {

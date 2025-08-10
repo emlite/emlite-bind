@@ -7,6 +7,7 @@ use super::*;
 pub struct PerformanceEventTiming {
     inner: PerformanceEntry,
 }
+
 impl FromVal for PerformanceEventTiming {
     fn from_val(v: &Any) -> Self {
         PerformanceEventTiming {
@@ -20,27 +21,32 @@ impl FromVal for PerformanceEventTiming {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PerformanceEventTiming {
     type Target = PerformanceEntry;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PerformanceEventTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PerformanceEventTiming {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PerformanceEventTiming {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PerformanceEventTiming> for Any {
     fn from(s: PerformanceEventTiming) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PerformanceEventTiming> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PerformanceEventTiming> for Any {
     fn from(s: &PerformanceEventTiming) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PerformanceEventTiming);
 
 impl PerformanceEventTiming {

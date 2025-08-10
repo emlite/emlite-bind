@@ -7,6 +7,7 @@ use super::*;
 pub struct StyleSheetList {
     inner: Any,
 }
+
 impl FromVal for StyleSheetList {
     fn from_val(v: &Any) -> Self {
         StyleSheetList {
@@ -20,27 +21,32 @@ impl FromVal for StyleSheetList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for StyleSheetList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for StyleSheetList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for StyleSheetList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for StyleSheetList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<StyleSheetList> for Any {
     fn from(s: StyleSheetList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<StyleSheetList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&StyleSheetList> for Any {
     fn from(s: &StyleSheetList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(StyleSheetList);
 
 impl StyleSheetList {

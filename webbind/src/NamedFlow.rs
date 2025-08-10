@@ -7,6 +7,7 @@ use super::*;
 pub struct NamedFlow {
     inner: EventTarget,
 }
+
 impl FromVal for NamedFlow {
     fn from_val(v: &Any) -> Self {
         NamedFlow {
@@ -20,27 +21,32 @@ impl FromVal for NamedFlow {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NamedFlow {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NamedFlow {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NamedFlow {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NamedFlow {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NamedFlow> for Any {
     fn from(s: NamedFlow) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NamedFlow> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NamedFlow> for Any {
     fn from(s: &NamedFlow) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NamedFlow);
 
 impl NamedFlow {

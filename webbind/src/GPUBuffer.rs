@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUBuffer {
     inner: Any,
 }
+
 impl FromVal for GPUBuffer {
     fn from_val(v: &Any) -> Self {
         GPUBuffer {
@@ -20,27 +21,32 @@ impl FromVal for GPUBuffer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUBuffer {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUBuffer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUBuffer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUBuffer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUBuffer> for Any {
     fn from(s: GPUBuffer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUBuffer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUBuffer> for Any {
     fn from(s: &GPUBuffer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUBuffer);
 
 impl GPUBuffer {

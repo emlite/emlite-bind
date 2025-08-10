@@ -7,6 +7,7 @@ use super::*;
 pub struct PictureInPictureEvent {
     inner: Event,
 }
+
 impl FromVal for PictureInPictureEvent {
     fn from_val(v: &Any) -> Self {
         PictureInPictureEvent {
@@ -20,27 +21,32 @@ impl FromVal for PictureInPictureEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PictureInPictureEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PictureInPictureEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PictureInPictureEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PictureInPictureEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PictureInPictureEvent> for Any {
     fn from(s: PictureInPictureEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PictureInPictureEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PictureInPictureEvent> for Any {
     fn from(s: &PictureInPictureEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PictureInPictureEvent);
 
 impl PictureInPictureEvent {

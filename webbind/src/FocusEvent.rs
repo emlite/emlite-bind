@@ -7,6 +7,7 @@ use super::*;
 pub struct FocusEvent {
     inner: UIEvent,
 }
+
 impl FromVal for FocusEvent {
     fn from_val(v: &Any) -> Self {
         FocusEvent {
@@ -20,27 +21,32 @@ impl FromVal for FocusEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FocusEvent {
     type Target = UIEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FocusEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FocusEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FocusEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FocusEvent> for Any {
     fn from(s: FocusEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FocusEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FocusEvent> for Any {
     fn from(s: &FocusEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FocusEvent);
 
 impl FocusEvent {

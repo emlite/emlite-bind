@@ -13,6 +13,10 @@ use jsbind::prelude::*;
 pub mod angle_instanced_arrays;
 pub use angle_instanced_arrays::*;
 
+#[path = "AacEncoderConfig.rs"]
+pub mod aac_encoder_config;
+pub use aac_encoder_config::*;
+
 #[path = "AbortController.rs"]
 pub mod abort_controller;
 pub use abort_controller::*;
@@ -33,6 +37,86 @@ pub use abstract_range::*;
 pub mod accelerometer;
 pub use accelerometer::*;
 
+#[path = "AccelerometerSensorOptions.rs"]
+pub mod accelerometer_sensor_options;
+pub use accelerometer_sensor_options::*;
+
+#[path = "AdAuctionData.rs"]
+pub mod ad_auction_data;
+pub use ad_auction_data::*;
+
+#[path = "AdAuctionDataBuyerConfig.rs"]
+pub mod ad_auction_data_buyer_config;
+pub use ad_auction_data_buyer_config::*;
+
+#[path = "AdAuctionDataConfig.rs"]
+pub mod ad_auction_data_config;
+pub use ad_auction_data_config::*;
+
+#[path = "AdAuctionOneSeller.rs"]
+pub mod ad_auction_one_seller;
+pub use ad_auction_one_seller::*;
+
+#[path = "AdAuctionPerSellerData.rs"]
+pub mod ad_auction_per_seller_data;
+pub use ad_auction_per_seller_data::*;
+
+#[path = "AdRender.rs"]
+pub mod ad_render;
+pub use ad_render::*;
+
+#[path = "AddEventListenerOptions.rs"]
+pub mod add_event_listener_options;
+pub use add_event_listener_options::*;
+
+#[path = "AddressErrors.rs"]
+pub mod address_errors;
+pub use address_errors::*;
+
+#[path = "AddressInit.rs"]
+pub mod address_init;
+pub use address_init::*;
+
+#[path = "AesCbcParams.rs"]
+pub mod aes_cbc_params;
+pub use aes_cbc_params::*;
+
+#[path = "AesCtrParams.rs"]
+pub mod aes_ctr_params;
+pub use aes_ctr_params::*;
+
+#[path = "AesDerivedKeyParams.rs"]
+pub mod aes_derived_key_params;
+pub use aes_derived_key_params::*;
+
+#[path = "AesGcmParams.rs"]
+pub mod aes_gcm_params;
+pub use aes_gcm_params::*;
+
+#[path = "AesKeyAlgorithm.rs"]
+pub mod aes_key_algorithm;
+pub use aes_key_algorithm::*;
+
+#[path = "AesKeyGenParams.rs"]
+pub mod aes_key_gen_params;
+pub use aes_key_gen_params::*;
+
+#[path = "Algorithm.rs"]
+pub mod algorithm;
+pub use algorithm::*;
+
+#[path = "AllAcceptedCredentialsOptions.rs"]
+pub mod all_accepted_credentials_options;
+pub use all_accepted_credentials_options::*;
+
+#[path = "AllowedBluetoothDevice.rs"]
+pub mod allowed_bluetooth_device;
+pub use allowed_bluetooth_device::*;
+
+#[path = "AllowedUSBDevice.rs"]
+pub mod allowed_usb_device;
+pub use allowed_usb_device::*;
+
 #[path = "AmbientLightSensor.rs"]
 pub mod ambient_light_sensor;
 pub use ambient_light_sensor::*;
@@ -40,6 +124,10 @@ pub use ambient_light_sensor::*;
 #[path = "AnalyserNode.rs"]
 pub mod analyser_node;
 pub use analyser_node::*;
+
+#[path = "AnalyserOptions.rs"]
+pub mod analyser_options;
+pub use analyser_options::*;
 
 #[path = "Animation.rs"]
 pub mod animation;
@@ -53,6 +141,10 @@ pub use animation_effect::*;
 pub mod animation_event;
 pub use animation_event::*;
 
+#[path = "AnimationEventInit.rs"]
+pub mod animation_event_init;
+pub use animation_event_init::*;
+
 #[path = "AnimationNodeList.rs"]
 pub mod animation_node_list;
 pub use animation_node_list::*;
@@ -60,6 +152,10 @@ pub use animation_node_list::*;
 #[path = "AnimationPlaybackEvent.rs"]
 pub mod animation_playback_event;
 pub use animation_playback_event::*;
+
+#[path = "AnimationPlaybackEventInit.rs"]
+pub mod animation_playback_event_init;
+pub use animation_playback_event_init::*;
 
 #[path = "AnimationTimeline.rs"]
 pub mod animation_timeline;
@@ -69,9 +165,17 @@ pub use animation_timeline::*;
 pub mod animation_trigger;
 pub use animation_trigger::*;
 
+#[path = "AnimationTriggerOptions.rs"]
+pub mod animation_trigger_options;
+pub use animation_trigger_options::*;
+
 #[path = "AnimationWorkletGlobalScope.rs"]
 pub mod animation_worklet_global_scope;
 pub use animation_worklet_global_scope::*;
+
+#[path = "AssignedNodesOptions.rs"]
+pub mod assigned_nodes_options;
+pub use assigned_nodes_options::*;
 
 #[path = "Attr.rs"]
 pub mod attr;
@@ -81,29 +185,121 @@ pub use attr::*;
 pub mod attribution;
 pub use attribution::*;
 
+#[path = "AttributionAggregationService.rs"]
+pub mod attribution_aggregation_service;
+pub use attribution_aggregation_service::*;
+
 #[path = "AttributionAggregationServices.rs"]
 pub mod attribution_aggregation_services;
 pub use attribution_aggregation_services::*;
+
+#[path = "AttributionConversionOptions.rs"]
+pub mod attribution_conversion_options;
+pub use attribution_conversion_options::*;
+
+#[path = "AttributionConversionResult.rs"]
+pub mod attribution_conversion_result;
+pub use attribution_conversion_result::*;
+
+#[path = "AttributionImpressionOptions.rs"]
+pub mod attribution_impression_options;
+pub use attribution_impression_options::*;
+
+#[path = "AttributionImpressionResult.rs"]
+pub mod attribution_impression_result;
+pub use attribution_impression_result::*;
+
+#[path = "AttributionReportingRequestOptions.rs"]
+pub mod attribution_reporting_request_options;
+pub use attribution_reporting_request_options::*;
+
+#[path = "AuctionAd.rs"]
+pub mod auction_ad;
+pub use auction_ad::*;
+
+#[path = "AuctionAdConfig.rs"]
+pub mod auction_ad_config;
+pub use auction_ad_config::*;
+
+#[path = "AuctionAdInterestGroup.rs"]
+pub mod auction_ad_interest_group;
+pub use auction_ad_interest_group::*;
+
+#[path = "AuctionAdInterestGroupKey.rs"]
+pub mod auction_ad_interest_group_key;
+pub use auction_ad_interest_group_key::*;
+
+#[path = "AuctionAdInterestGroupSize.rs"]
+pub mod auction_ad_interest_group_size;
+pub use auction_ad_interest_group_size::*;
+
+#[path = "AuctionRealTimeReportingConfig.rs"]
+pub mod auction_real_time_reporting_config;
+pub use auction_real_time_reporting_config::*;
+
+#[path = "AuctionReportBuyerDebugModeConfig.rs"]
+pub mod auction_report_buyer_debug_mode_config;
+pub use auction_report_buyer_debug_mode_config::*;
+
+#[path = "AuctionReportBuyersConfig.rs"]
+pub mod auction_report_buyers_config;
+pub use auction_report_buyers_config::*;
 
 #[path = "AudioBuffer.rs"]
 pub mod audio_buffer;
 pub use audio_buffer::*;
 
+#[path = "AudioBufferOptions.rs"]
+pub mod audio_buffer_options;
+pub use audio_buffer_options::*;
+
 #[path = "AudioBufferSourceNode.rs"]
 pub mod audio_buffer_source_node;
 pub use audio_buffer_source_node::*;
+
+#[path = "AudioBufferSourceOptions.rs"]
+pub mod audio_buffer_source_options;
+pub use audio_buffer_source_options::*;
+
+#[path = "AudioConfiguration.rs"]
+pub mod audio_configuration;
+pub use audio_configuration::*;
 
 #[path = "AudioContext.rs"]
 pub mod audio_context;
 pub use audio_context::*;
 
+#[path = "AudioContextOptions.rs"]
+pub mod audio_context_options;
+pub use audio_context_options::*;
+
 #[path = "AudioData.rs"]
 pub mod audio_data;
 pub use audio_data::*;
 
+#[path = "AudioDataCopyToOptions.rs"]
+pub mod audio_data_copy_to_options;
+pub use audio_data_copy_to_options::*;
+
+#[path = "AudioDataInit.rs"]
+pub mod audio_data_init;
+pub use audio_data_init::*;
+
 #[path = "AudioDecoder.rs"]
 pub mod audio_decoder;
 pub use audio_decoder::*;
+
+#[path = "AudioDecoderConfig.rs"]
+pub mod audio_decoder_config;
+pub use audio_decoder_config::*;
+
+#[path = "AudioDecoderInit.rs"]
+pub mod audio_decoder_init;
+pub use audio_decoder_init::*;
+
+#[path = "AudioDecoderSupport.rs"]
+pub mod audio_decoder_support;
+pub use audio_decoder_support::*;
 
 #[path = "AudioDestinationNode.rs"]
 pub mod audio_destination_node;
@@ -113,6 +309,18 @@ pub use audio_destination_node::*;
 pub mod audio_encoder;
 pub use audio_encoder::*;
 
+#[path = "AudioEncoderConfig.rs"]
+pub mod audio_encoder_config;
+pub use audio_encoder_config::*;
+
+#[path = "AudioEncoderInit.rs"]
+pub mod audio_encoder_init;
+pub use audio_encoder_init::*;
+
+#[path = "AudioEncoderSupport.rs"]
+pub mod audio_encoder_support;
+pub use audio_encoder_support::*;
+
 #[path = "AudioListener.rs"]
 pub mod audio_listener;
 pub use audio_listener::*;
@@ -121,9 +329,21 @@ pub use audio_listener::*;
 pub mod audio_node;
 pub use audio_node::*;
 
+#[path = "AudioNodeOptions.rs"]
+pub mod audio_node_options;
+pub use audio_node_options::*;
+
+#[path = "AudioOutputOptions.rs"]
+pub mod audio_output_options;
+pub use audio_output_options::*;
+
 #[path = "AudioParam.rs"]
 pub mod audio_param;
 pub use audio_param::*;
+
+#[path = "AudioParamDescriptor.rs"]
+pub mod audio_param_descriptor;
+pub use audio_param_descriptor::*;
 
 #[path = "AudioParamMap.rs"]
 pub mod audio_param_map;
@@ -132,6 +352,10 @@ pub use audio_param_map::*;
 #[path = "AudioProcessingEvent.rs"]
 pub mod audio_processing_event;
 pub use audio_processing_event::*;
+
+#[path = "AudioProcessingEventInit.rs"]
+pub mod audio_processing_event_init;
+pub use audio_processing_event_init::*;
 
 #[path = "AudioScheduledSourceNode.rs"]
 pub mod audio_scheduled_source_node;
@@ -144,6 +368,14 @@ pub use audio_session::*;
 #[path = "AudioSinkInfo.rs"]
 pub mod audio_sink_info;
 pub use audio_sink_info::*;
+
+#[path = "AudioSinkOptions.rs"]
+pub mod audio_sink_options;
+pub use audio_sink_options::*;
+
+#[path = "AudioTimestamp.rs"]
+pub mod audio_timestamp;
+pub use audio_timestamp::*;
 
 #[path = "AudioTrack.rs"]
 pub mod audio_track;
@@ -165,29 +397,125 @@ pub use audio_worklet_global_scope::*;
 pub mod audio_worklet_node;
 pub use audio_worklet_node::*;
 
+#[path = "AudioWorkletNodeOptions.rs"]
+pub mod audio_worklet_node_options;
+pub use audio_worklet_node_options::*;
+
 #[path = "AudioWorkletProcessor.rs"]
 pub mod audio_worklet_processor;
 pub use audio_worklet_processor::*;
+
+#[path = "AuthenticationExtensionsClientInputs.rs"]
+pub mod authentication_extensions_client_inputs;
+pub use authentication_extensions_client_inputs::*;
+
+#[path = "AuthenticationExtensionsClientInputsJSON.rs"]
+pub mod authentication_extensions_client_inputs_json;
+pub use authentication_extensions_client_inputs_json::*;
+
+#[path = "AuthenticationExtensionsClientOutputs.rs"]
+pub mod authentication_extensions_client_outputs;
+pub use authentication_extensions_client_outputs::*;
+
+#[path = "AuthenticationExtensionsClientOutputsJSON.rs"]
+pub mod authentication_extensions_client_outputs_json;
+pub use authentication_extensions_client_outputs_json::*;
+
+#[path = "AuthenticationExtensionsLargeBlobInputs.rs"]
+pub mod authentication_extensions_large_blob_inputs;
+pub use authentication_extensions_large_blob_inputs::*;
+
+#[path = "AuthenticationExtensionsLargeBlobInputsJSON.rs"]
+pub mod authentication_extensions_large_blob_inputs_json;
+pub use authentication_extensions_large_blob_inputs_json::*;
+
+#[path = "AuthenticationExtensionsLargeBlobOutputs.rs"]
+pub mod authentication_extensions_large_blob_outputs;
+pub use authentication_extensions_large_blob_outputs::*;
+
+#[path = "AuthenticationExtensionsLargeBlobOutputsJSON.rs"]
+pub mod authentication_extensions_large_blob_outputs_json;
+pub use authentication_extensions_large_blob_outputs_json::*;
+
+#[path = "AuthenticationExtensionsPRFInputs.rs"]
+pub mod authentication_extensions_prf_inputs;
+pub use authentication_extensions_prf_inputs::*;
+
+#[path = "AuthenticationExtensionsPRFInputsJSON.rs"]
+pub mod authentication_extensions_prf_inputs_json;
+pub use authentication_extensions_prf_inputs_json::*;
+
+#[path = "AuthenticationExtensionsPRFOutputs.rs"]
+pub mod authentication_extensions_prf_outputs;
+pub use authentication_extensions_prf_outputs::*;
+
+#[path = "AuthenticationExtensionsPRFOutputsJSON.rs"]
+pub mod authentication_extensions_prf_outputs_json;
+pub use authentication_extensions_prf_outputs_json::*;
+
+#[path = "AuthenticationExtensionsPRFValues.rs"]
+pub mod authentication_extensions_prf_values;
+pub use authentication_extensions_prf_values::*;
+
+#[path = "AuthenticationExtensionsPRFValuesJSON.rs"]
+pub mod authentication_extensions_prf_values_json;
+pub use authentication_extensions_prf_values_json::*;
+
+#[path = "AuthenticationExtensionsPaymentInputs.rs"]
+pub mod authentication_extensions_payment_inputs;
+pub use authentication_extensions_payment_inputs::*;
+
+#[path = "AuthenticationExtensionsPaymentOutputs.rs"]
+pub mod authentication_extensions_payment_outputs;
+pub use authentication_extensions_payment_outputs::*;
+
+#[path = "AuthenticationResponseJSON.rs"]
+pub mod authentication_response_json;
+pub use authentication_response_json::*;
 
 #[path = "AuthenticatorAssertionResponse.rs"]
 pub mod authenticator_assertion_response;
 pub use authenticator_assertion_response::*;
 
+#[path = "AuthenticatorAssertionResponseJSON.rs"]
+pub mod authenticator_assertion_response_json;
+pub use authenticator_assertion_response_json::*;
+
 #[path = "AuthenticatorAttestationResponse.rs"]
 pub mod authenticator_attestation_response;
 pub use authenticator_attestation_response::*;
+
+#[path = "AuthenticatorAttestationResponseJSON.rs"]
+pub mod authenticator_attestation_response_json;
+pub use authenticator_attestation_response_json::*;
 
 #[path = "AuthenticatorResponse.rs"]
 pub mod authenticator_response;
 pub use authenticator_response::*;
 
+#[path = "AuthenticatorSelectionCriteria.rs"]
+pub mod authenticator_selection_criteria;
+pub use authenticator_selection_criteria::*;
+
+#[path = "AvcEncoderConfig.rs"]
+pub mod avc_encoder_config;
+pub use avc_encoder_config::*;
+
 #[path = "BackgroundFetchEvent.rs"]
 pub mod background_fetch_event;
 pub use background_fetch_event::*;
 
+#[path = "BackgroundFetchEventInit.rs"]
+pub mod background_fetch_event_init;
+pub use background_fetch_event_init::*;
+
 #[path = "BackgroundFetchManager.rs"]
 pub mod background_fetch_manager;
 pub use background_fetch_manager::*;
+
+#[path = "BackgroundFetchOptions.rs"]
+pub mod background_fetch_options;
+pub use background_fetch_options::*;
 
 #[path = "BackgroundFetchRecord.rs"]
 pub mod background_fetch_record;
@@ -197,9 +525,17 @@ pub use background_fetch_record::*;
 pub mod background_fetch_registration;
 pub use background_fetch_registration::*;
 
+#[path = "BackgroundFetchUIOptions.rs"]
+pub mod background_fetch_ui_options;
+pub use background_fetch_ui_options::*;
+
 #[path = "BackgroundFetchUpdateUIEvent.rs"]
 pub mod background_fetch_update_ui_event;
 pub use background_fetch_update_ui_event::*;
+
+#[path = "BackgroundSyncOptions.rs"]
+pub mod background_sync_options;
+pub use background_sync_options::*;
 
 #[path = "BarProp.rs"]
 pub mod bar_prop;
@@ -209,9 +545,25 @@ pub use bar_prop::*;
 pub mod barcode_detector;
 pub use barcode_detector::*;
 
+#[path = "BarcodeDetectorOptions.rs"]
+pub mod barcode_detector_options;
+pub use barcode_detector_options::*;
+
 #[path = "BaseAudioContext.rs"]
 pub mod base_audio_context;
 pub use base_audio_context::*;
+
+#[path = "BaseComputedKeyframe.rs"]
+pub mod base_computed_keyframe;
+pub use base_computed_keyframe::*;
+
+#[path = "BaseKeyframe.rs"]
+pub mod base_keyframe;
+pub use base_keyframe::*;
+
+#[path = "BasePropertyIndexedKeyframe.rs"]
+pub mod base_property_indexed_keyframe;
+pub use base_property_indexed_keyframe::*;
 
 #[path = "Baseline.rs"]
 pub mod baseline;
@@ -229,9 +581,17 @@ pub use before_install_prompt_event::*;
 pub mod before_unload_event;
 pub use before_unload_event::*;
 
+#[path = "BiddingBrowserSignals.rs"]
+pub mod bidding_browser_signals;
+pub use bidding_browser_signals::*;
+
 #[path = "BiquadFilterNode.rs"]
 pub mod biquad_filter_node;
 pub use biquad_filter_node::*;
+
+#[path = "BiquadFilterOptions.rs"]
+pub mod biquad_filter_options;
+pub use biquad_filter_options::*;
 
 #[path = "Blob.rs"]
 pub mod blob;
@@ -241,6 +601,14 @@ pub use blob::*;
 pub mod blob_event;
 pub use blob_event::*;
 
+#[path = "BlobEventInit.rs"]
+pub mod blob_event_init;
+pub use blob_event_init::*;
+
+#[path = "BlobPropertyBag.rs"]
+pub mod blob_property_bag;
+pub use blob_property_bag::*;
+
 #[path = "Bluetooth.rs"]
 pub mod bluetooth;
 pub use bluetooth::*;
@@ -249,6 +617,10 @@ pub use bluetooth::*;
 pub mod bluetooth_advertising_event;
 pub use bluetooth_advertising_event::*;
 
+#[path = "BluetoothAdvertisingEventInit.rs"]
+pub mod bluetooth_advertising_event_init;
+pub use bluetooth_advertising_event_init::*;
+
 #[path = "BluetoothCharacteristicProperties.rs"]
 pub mod bluetooth_characteristic_properties;
 pub use bluetooth_characteristic_properties::*;
@@ -256,6 +628,10 @@ pub use bluetooth_characteristic_properties::*;
 #[path = "BluetoothDataFilter.rs"]
 pub mod bluetooth_data_filter;
 pub use bluetooth_data_filter::*;
+
+#[path = "BluetoothDataFilterInit.rs"]
+pub mod bluetooth_data_filter_init;
+pub use bluetooth_data_filter_init::*;
 
 #[path = "BluetoothDevice.rs"]
 pub mod bluetooth_device;
@@ -269,6 +645,18 @@ pub use bluetooth_le_scan::*;
 pub mod bluetooth_le_scan_filter;
 pub use bluetooth_le_scan_filter::*;
 
+#[path = "BluetoothLEScanFilterInit.rs"]
+pub mod bluetooth_le_scan_filter_init;
+pub use bluetooth_le_scan_filter_init::*;
+
+#[path = "BluetoothLEScanOptions.rs"]
+pub mod bluetooth_le_scan_options;
+pub use bluetooth_le_scan_options::*;
+
+#[path = "BluetoothLEScanPermissionDescriptor.rs"]
+pub mod bluetooth_le_scan_permission_descriptor;
+pub use bluetooth_le_scan_permission_descriptor::*;
+
 #[path = "BluetoothLEScanPermissionResult.rs"]
 pub mod bluetooth_le_scan_permission_result;
 pub use bluetooth_le_scan_permission_result::*;
@@ -277,13 +665,25 @@ pub use bluetooth_le_scan_permission_result::*;
 pub mod bluetooth_manufacturer_data_filter;
 pub use bluetooth_manufacturer_data_filter::*;
 
+#[path = "BluetoothManufacturerDataFilterInit.rs"]
+pub mod bluetooth_manufacturer_data_filter_init;
+pub use bluetooth_manufacturer_data_filter_init::*;
+
 #[path = "BluetoothManufacturerDataMap.rs"]
 pub mod bluetooth_manufacturer_data_map;
 pub use bluetooth_manufacturer_data_map::*;
 
+#[path = "BluetoothPermissionDescriptor.rs"]
+pub mod bluetooth_permission_descriptor;
+pub use bluetooth_permission_descriptor::*;
+
 #[path = "BluetoothPermissionResult.rs"]
 pub mod bluetooth_permission_result;
 pub use bluetooth_permission_result::*;
+
+#[path = "BluetoothPermissionStorage.rs"]
+pub mod bluetooth_permission_storage;
+pub use bluetooth_permission_storage::*;
 
 #[path = "BluetoothRemoteGATTCharacteristic.rs"]
 pub mod bluetooth_remote_gatt_characteristic;
@@ -305,6 +705,10 @@ pub use bluetooth_remote_gatt_service::*;
 pub mod bluetooth_service_data_filter;
 pub use bluetooth_service_data_filter::*;
 
+#[path = "BluetoothServiceDataFilterInit.rs"]
+pub mod bluetooth_service_data_filter_init;
+pub use bluetooth_service_data_filter_init::*;
+
 #[path = "BluetoothServiceDataMap.rs"]
 pub mod bluetooth_service_data_map;
 pub use bluetooth_service_data_map::*;
@@ -313,13 +717,25 @@ pub use bluetooth_service_data_map::*;
 pub mod bluetooth_uuid;
 pub use bluetooth_uuid::*;
 
+#[path = "BoxQuadOptions.rs"]
+pub mod box_quad_options;
+pub use box_quad_options::*;
+
 #[path = "BreakToken.rs"]
 pub mod break_token;
 pub use break_token::*;
 
+#[path = "BreakTokenOptions.rs"]
+pub mod break_token_options;
+pub use break_token_options::*;
+
 #[path = "BroadcastChannel.rs"]
 pub mod broadcast_channel;
 pub use broadcast_channel::*;
+
+#[path = "BrowserBoundSignature.rs"]
+pub mod browser_bound_signature;
+pub use browser_bound_signature::*;
 
 #[path = "BrowserCaptureMediaStreamTrack.rs"]
 pub mod browser_capture_media_stream_track;
@@ -329,6 +745,10 @@ pub use browser_capture_media_stream_track::*;
 pub mod buffered_change_event;
 pub use buffered_change_event::*;
 
+#[path = "BufferedChangeEventInit.rs"]
+pub mod buffered_change_event_init;
+pub use buffered_change_event_init::*;
+
 #[path = "ByteLengthQueuingStrategy.rs"]
 pub mod byte_length_queuing_strategy;
 pub use byte_length_queuing_strategy::*;
@@ -336,6 +756,10 @@ pub use byte_length_queuing_strategy::*;
 #[path = "CDATASection.rs"]
 pub mod cdata_section;
 pub use cdata_section::*;
+
+#[path = "CSPViolationReportBody.rs"]
+pub mod csp_violation_report_body;
+pub use csp_violation_report_body::*;
 
 #[path = "CSS.rs"]
 pub mod css;
@@ -489,6 +913,10 @@ pub use css_math_value::*;
 pub mod css_matrix_component;
 pub use css_matrix_component::*;
 
+#[path = "CSSMatrixComponentOptions.rs"]
+pub mod css_matrix_component_options;
+pub use css_matrix_component_options::*;
+
 #[path = "CSSMediaRule.rs"]
 pub mod css_media_rule;
 pub use css_media_rule::*;
@@ -504,6 +932,10 @@ pub use css_nested_declarations::*;
 #[path = "CSSNumericArray.rs"]
 pub mod css_numeric_array;
 pub use css_numeric_array::*;
+
+#[path = "CSSNumericType.rs"]
+pub mod css_numeric_type;
+pub use css_numeric_type::*;
 
 #[path = "CSSNumericValue.rs"]
 pub mod css_numeric_value;
@@ -540,6 +972,10 @@ pub use css_parser_declaration::*;
 #[path = "CSSParserFunction.rs"]
 pub mod css_parser_function;
 pub use css_parser_function::*;
+
+#[path = "CSSParserOptions.rs"]
+pub mod css_parser_options;
+pub use css_parser_options::*;
 
 #[path = "CSSParserQualifiedRule.rs"]
 pub mod css_parser_qualified_rule;
@@ -629,6 +1065,10 @@ pub use css_style_rule::*;
 pub mod css_style_sheet;
 pub use css_style_sheet::*;
 
+#[path = "CSSStyleSheetInit.rs"]
+pub mod css_style_sheet_init;
+pub use css_style_sheet_init::*;
+
 #[path = "CSSStyleValue.rs"]
 pub mod css_style_value;
 pub use css_style_value::*;
@@ -673,9 +1113,17 @@ pub use css_view_transition_rule::*;
 pub mod cache;
 pub use cache::*;
 
+#[path = "CacheQueryOptions.rs"]
+pub mod cache_query_options;
+pub use cache_query_options::*;
+
 #[path = "CacheStorage.rs"]
 pub mod cache_storage;
 pub use cache_storage::*;
+
+#[path = "CameraDevicePermissionDescriptor.rs"]
+pub mod camera_device_permission_descriptor;
+pub use camera_device_permission_descriptor::*;
 
 #[path = "CanMakePaymentEvent.rs"]
 pub mod can_make_payment_event;
@@ -697,41 +1145,85 @@ pub use canvas_pattern::*;
 pub mod canvas_rendering_context2d;
 pub use canvas_rendering_context2d::*;
 
+#[path = "CanvasRenderingContext2DSettings.rs"]
+pub mod canvas_rendering_context2d_settings;
+pub use canvas_rendering_context2d_settings::*;
+
 #[path = "CaptureActionEvent.rs"]
 pub mod capture_action_event;
 pub use capture_action_event::*;
+
+#[path = "CaptureActionEventInit.rs"]
+pub mod capture_action_event_init;
+pub use capture_action_event_init::*;
 
 #[path = "CaptureController.rs"]
 pub mod capture_controller;
 pub use capture_controller::*;
 
+#[path = "CaptureHandle.rs"]
+pub mod capture_handle;
+pub use capture_handle::*;
+
+#[path = "CaptureHandleConfig.rs"]
+pub mod capture_handle_config;
+pub use capture_handle_config::*;
+
 #[path = "CapturedMouseEvent.rs"]
 pub mod captured_mouse_event;
 pub use captured_mouse_event::*;
+
+#[path = "CapturedMouseEventInit.rs"]
+pub mod captured_mouse_event_init;
+pub use captured_mouse_event_init::*;
 
 #[path = "CaretPosition.rs"]
 pub mod caret_position;
 pub use caret_position::*;
 
+#[path = "CaretPositionFromPointOptions.rs"]
+pub mod caret_position_from_point_options;
+pub use caret_position_from_point_options::*;
+
 #[path = "ChannelMergerNode.rs"]
 pub mod channel_merger_node;
 pub use channel_merger_node::*;
+
+#[path = "ChannelMergerOptions.rs"]
+pub mod channel_merger_options;
+pub use channel_merger_options::*;
 
 #[path = "ChannelSplitterNode.rs"]
 pub mod channel_splitter_node;
 pub use channel_splitter_node::*;
 
+#[path = "ChannelSplitterOptions.rs"]
+pub mod channel_splitter_options;
+pub use channel_splitter_options::*;
+
 #[path = "ChapterInformation.rs"]
 pub mod chapter_information;
 pub use chapter_information::*;
+
+#[path = "ChapterInformationInit.rs"]
+pub mod chapter_information_init;
+pub use chapter_information_init::*;
 
 #[path = "CharacterBoundsUpdateEvent.rs"]
 pub mod character_bounds_update_event;
 pub use character_bounds_update_event::*;
 
+#[path = "CharacterBoundsUpdateEventInit.rs"]
+pub mod character_bounds_update_event_init;
+pub use character_bounds_update_event_init::*;
+
 #[path = "CharacterData.rs"]
 pub mod character_data;
 pub use character_data::*;
+
+#[path = "CheckVisibilityOptions.rs"]
+pub mod check_visibility_options;
+pub use check_visibility_options::*;
 
 #[path = "ChildBreakToken.rs"]
 pub mod child_break_token;
@@ -740,6 +1232,10 @@ pub use child_break_token::*;
 #[path = "Client.rs"]
 pub mod client;
 pub use client::*;
+
+#[path = "ClientQueryOptions.rs"]
+pub mod client_query_options;
+pub use client_query_options::*;
 
 #[path = "Clients.rs"]
 pub mod clients;
@@ -753,21 +1249,73 @@ pub use clipboard::*;
 pub mod clipboard_event;
 pub use clipboard_event::*;
 
+#[path = "ClipboardEventInit.rs"]
+pub mod clipboard_event_init;
+pub use clipboard_event_init::*;
+
 #[path = "ClipboardItem.rs"]
 pub mod clipboard_item;
 pub use clipboard_item::*;
+
+#[path = "ClipboardItemOptions.rs"]
+pub mod clipboard_item_options;
+pub use clipboard_item_options::*;
+
+#[path = "ClipboardPermissionDescriptor.rs"]
+pub mod clipboard_permission_descriptor;
+pub use clipboard_permission_descriptor::*;
+
+#[path = "ClipboardUnsanitizedFormats.rs"]
+pub mod clipboard_unsanitized_formats;
+pub use clipboard_unsanitized_formats::*;
 
 #[path = "CloseEvent.rs"]
 pub mod close_event;
 pub use close_event::*;
 
+#[path = "CloseEventInit.rs"]
+pub mod close_event_init;
+pub use close_event_init::*;
+
 #[path = "CloseWatcher.rs"]
 pub mod close_watcher;
 pub use close_watcher::*;
 
+#[path = "CloseWatcherOptions.rs"]
+pub mod close_watcher_options;
+pub use close_watcher_options::*;
+
+#[path = "CollectedClientAdditionalPaymentData.rs"]
+pub mod collected_client_additional_payment_data;
+pub use collected_client_additional_payment_data::*;
+
+#[path = "CollectedClientAdditionalPaymentRegistrationData.rs"]
+pub mod collected_client_additional_payment_registration_data;
+pub use collected_client_additional_payment_registration_data::*;
+
+#[path = "CollectedClientData.rs"]
+pub mod collected_client_data;
+pub use collected_client_data::*;
+
+#[path = "CollectedClientPaymentData.rs"]
+pub mod collected_client_payment_data;
+pub use collected_client_payment_data::*;
+
+#[path = "ColorSelectionOptions.rs"]
+pub mod color_selection_options;
+pub use color_selection_options::*;
+
+#[path = "ColorSelectionResult.rs"]
+pub mod color_selection_result;
+pub use color_selection_result::*;
+
 #[path = "CommandEvent.rs"]
 pub mod command_event;
 pub use command_event::*;
+
+#[path = "CommandEventInit.rs"]
+pub mod command_event_init;
+pub use command_event_init::*;
 
 #[path = "Comment.rs"]
 pub mod comment;
@@ -777,21 +1325,69 @@ pub use comment::*;
 pub mod composition_event;
 pub use composition_event::*;
 
+#[path = "CompositionEventInit.rs"]
+pub mod composition_event_init;
+pub use composition_event_init::*;
+
 #[path = "CompressionStream.rs"]
 pub mod compression_stream;
 pub use compression_stream::*;
+
+#[path = "ComputedEffectTiming.rs"]
+pub mod computed_effect_timing;
+pub use computed_effect_timing::*;
 
 #[path = "ConstantSourceNode.rs"]
 pub mod constant_source_node;
 pub use constant_source_node::*;
 
+#[path = "ConstantSourceOptions.rs"]
+pub mod constant_source_options;
+pub use constant_source_options::*;
+
+#[path = "ConstrainBooleanOrDOMStringParameters.rs"]
+pub mod constrain_boolean_or_dom_string_parameters;
+pub use constrain_boolean_or_dom_string_parameters::*;
+
+#[path = "ConstrainBooleanParameters.rs"]
+pub mod constrain_boolean_parameters;
+pub use constrain_boolean_parameters::*;
+
+#[path = "ConstrainDOMStringParameters.rs"]
+pub mod constrain_dom_string_parameters;
+pub use constrain_dom_string_parameters::*;
+
+#[path = "ConstrainDoubleRange.rs"]
+pub mod constrain_double_range;
+pub use constrain_double_range::*;
+
+#[path = "ConstrainPoint2DParameters.rs"]
+pub mod constrain_point2d_parameters;
+pub use constrain_point2d_parameters::*;
+
+#[path = "ConstrainULongRange.rs"]
+pub mod constrain_u_long_range;
+pub use constrain_u_long_range::*;
+
 #[path = "ContactAddress.rs"]
 pub mod contact_address;
 pub use contact_address::*;
 
+#[path = "ContactInfo.rs"]
+pub mod contact_info;
+pub use contact_info::*;
+
 #[path = "ContactsManager.rs"]
 pub mod contacts_manager;
 pub use contacts_manager::*;
+
+#[path = "ContactsSelectOptions.rs"]
+pub mod contacts_select_options;
+pub use contacts_select_options::*;
+
+#[path = "ContentDescription.rs"]
+pub mod content_description;
+pub use content_description::*;
 
 #[path = "ContentIndex.rs"]
 pub mod content_index;
@@ -801,21 +1397,57 @@ pub use content_index::*;
 pub mod content_index_event;
 pub use content_index_event::*;
 
+#[path = "ContentIndexEventInit.rs"]
+pub mod content_index_event_init;
+pub use content_index_event_init::*;
+
 #[path = "ContentVisibilityAutoStateChangeEvent.rs"]
 pub mod content_visibility_auto_state_change_event;
 pub use content_visibility_auto_state_change_event::*;
+
+#[path = "ContentVisibilityAutoStateChangeEventInit.rs"]
+pub mod content_visibility_auto_state_change_event_init;
+pub use content_visibility_auto_state_change_event_init::*;
+
+#[path = "ConvertCoordinateOptions.rs"]
+pub mod convert_coordinate_options;
+pub use convert_coordinate_options::*;
 
 #[path = "ConvolverNode.rs"]
 pub mod convolver_node;
 pub use convolver_node::*;
 
+#[path = "ConvolverOptions.rs"]
+pub mod convolver_options;
+pub use convolver_options::*;
+
 #[path = "CookieChangeEvent.rs"]
 pub mod cookie_change_event;
 pub use cookie_change_event::*;
 
+#[path = "CookieChangeEventInit.rs"]
+pub mod cookie_change_event_init;
+pub use cookie_change_event_init::*;
+
+#[path = "CookieInit.rs"]
+pub mod cookie_init;
+pub use cookie_init::*;
+
+#[path = "CookieListItem.rs"]
+pub mod cookie_list_item;
+pub use cookie_list_item::*;
+
 #[path = "CookieStore.rs"]
 pub mod cookie_store;
 pub use cookie_store::*;
+
+#[path = "CookieStoreDeleteOptions.rs"]
+pub mod cookie_store_delete_options;
+pub use cookie_store_delete_options::*;
+
+#[path = "CookieStoreGetOptions.rs"]
+pub mod cookie_store_get_options;
+pub use cookie_store_get_options::*;
 
 #[path = "CookieStoreManager.rs"]
 pub mod cookie_store_manager;
@@ -825,6 +1457,10 @@ pub use cookie_store_manager::*;
 pub mod count_queuing_strategy;
 pub use count_queuing_strategy::*;
 
+#[path = "CrashReportBody.rs"]
+pub mod crash_report_body;
+pub use crash_report_body::*;
+
 #[path = "CreateMonitor.rs"]
 pub mod create_monitor;
 pub use create_monitor::*;
@@ -832,6 +1468,22 @@ pub use create_monitor::*;
 #[path = "Credential.rs"]
 pub mod credential;
 pub use credential::*;
+
+#[path = "CredentialCreationOptions.rs"]
+pub mod credential_creation_options;
+pub use credential_creation_options::*;
+
+#[path = "CredentialData.rs"]
+pub mod credential_data;
+pub use credential_data::*;
+
+#[path = "CredentialPropertiesOutput.rs"]
+pub mod credential_properties_output;
+pub use credential_properties_output::*;
+
+#[path = "CredentialRequestOptions.rs"]
+pub mod credential_request_options;
+pub use credential_request_options::*;
 
 #[path = "CredentialsContainer.rs"]
 pub mod credentials_container;
@@ -849,6 +1501,14 @@ pub use crypto::*;
 pub mod crypto_key;
 pub use crypto_key::*;
 
+#[path = "CryptoKeyPair.rs"]
+pub mod crypto_key_pair;
+pub use crypto_key_pair::*;
+
+#[path = "CurrentUserDetailsOptions.rs"]
+pub mod current_user_details_options;
+pub use current_user_details_options::*;
+
 #[path = "CustomElementRegistry.rs"]
 pub mod custom_element_registry;
 pub use custom_element_registry::*;
@@ -856,6 +1516,10 @@ pub use custom_element_registry::*;
 #[path = "CustomEvent.rs"]
 pub mod custom_event;
 pub use custom_event::*;
+
+#[path = "CustomEventInit.rs"]
+pub mod custom_event_init;
+pub use custom_event_init::*;
 
 #[path = "CustomStateSet.rs"]
 pub mod custom_state_set;
@@ -873,6 +1537,14 @@ pub use dom_implementation::*;
 pub mod dom_matrix;
 pub use dom_matrix::*;
 
+#[path = "DOMMatrix2DInit.rs"]
+pub mod dom_matrix2d_init;
+pub use dom_matrix2d_init::*;
+
+#[path = "DOMMatrixInit.rs"]
+pub mod dom_matrix_init;
+pub use dom_matrix_init::*;
+
 #[path = "DOMMatrixReadOnly.rs"]
 pub mod dom_matrix_read_only;
 pub use dom_matrix_read_only::*;
@@ -885,6 +1557,10 @@ pub use dom_parser::*;
 pub mod dom_point;
 pub use dom_point::*;
 
+#[path = "DOMPointInit.rs"]
+pub mod dom_point_init;
+pub use dom_point_init::*;
+
 #[path = "DOMPointReadOnly.rs"]
 pub mod dom_point_read_only;
 pub use dom_point_read_only::*;
@@ -893,9 +1569,17 @@ pub use dom_point_read_only::*;
 pub mod dom_quad;
 pub use dom_quad::*;
 
+#[path = "DOMQuadInit.rs"]
+pub mod dom_quad_init;
+pub use dom_quad_init::*;
+
 #[path = "DOMRect.rs"]
 pub mod dom_rect;
 pub use dom_rect::*;
+
+#[path = "DOMRectInit.rs"]
+pub mod dom_rect_init;
+pub use dom_rect_init::*;
 
 #[path = "DOMRectList.rs"]
 pub mod dom_rect_list;
@@ -945,13 +1629,37 @@ pub use dedicated_worker_global_scope::*;
 pub mod delay_node;
 pub use delay_node::*;
 
+#[path = "DelayOptions.rs"]
+pub mod delay_options;
+pub use delay_options::*;
+
 #[path = "DelegatedInkTrailPresenter.rs"]
 pub mod delegated_ink_trail_presenter;
 pub use delegated_ink_trail_presenter::*;
 
+#[path = "DeprecationReportBody.rs"]
+pub mod deprecation_report_body;
+pub use deprecation_report_body::*;
+
+#[path = "DetectedBarcode.rs"]
+pub mod detected_barcode;
+pub use detected_barcode::*;
+
+#[path = "DetectedFace.rs"]
+pub mod detected_face;
+pub use detected_face::*;
+
+#[path = "DetectedText.rs"]
+pub mod detected_text;
+pub use detected_text::*;
+
 #[path = "DeviceChangeEvent.rs"]
 pub mod device_change_event;
 pub use device_change_event::*;
+
+#[path = "DeviceChangeEventInit.rs"]
+pub mod device_change_event_init;
+pub use device_change_event_init::*;
 
 #[path = "DeviceMotionEvent.rs"]
 pub mod device_motion_event;
@@ -961,13 +1669,29 @@ pub use device_motion_event::*;
 pub mod device_motion_event_acceleration;
 pub use device_motion_event_acceleration::*;
 
+#[path = "DeviceMotionEventAccelerationInit.rs"]
+pub mod device_motion_event_acceleration_init;
+pub use device_motion_event_acceleration_init::*;
+
+#[path = "DeviceMotionEventInit.rs"]
+pub mod device_motion_event_init;
+pub use device_motion_event_init::*;
+
 #[path = "DeviceMotionEventRotationRate.rs"]
 pub mod device_motion_event_rotation_rate;
 pub use device_motion_event_rotation_rate::*;
 
+#[path = "DeviceMotionEventRotationRateInit.rs"]
+pub mod device_motion_event_rotation_rate_init;
+pub use device_motion_event_rotation_rate_init::*;
+
 #[path = "DeviceOrientationEvent.rs"]
 pub mod device_orientation_event;
 pub use device_orientation_event::*;
+
+#[path = "DeviceOrientationEventInit.rs"]
+pub mod device_orientation_event_init;
+pub use device_orientation_event_init::*;
 
 #[path = "DevicePosture.rs"]
 pub mod device_posture;
@@ -977,9 +1701,45 @@ pub use device_posture::*;
 pub mod digital_credential;
 pub use digital_credential::*;
 
+#[path = "DigitalCredentialCreateRequest.rs"]
+pub mod digital_credential_create_request;
+pub use digital_credential_create_request::*;
+
+#[path = "DigitalCredentialCreationOptions.rs"]
+pub mod digital_credential_creation_options;
+pub use digital_credential_creation_options::*;
+
+#[path = "DigitalCredentialGetRequest.rs"]
+pub mod digital_credential_get_request;
+pub use digital_credential_get_request::*;
+
+#[path = "DigitalCredentialRequestOptions.rs"]
+pub mod digital_credential_request_options;
+pub use digital_credential_request_options::*;
+
 #[path = "DigitalGoodsService.rs"]
 pub mod digital_goods_service;
 pub use digital_goods_service::*;
+
+#[path = "DirectFromSellerSignalsForBuyer.rs"]
+pub mod direct_from_seller_signals_for_buyer;
+pub use direct_from_seller_signals_for_buyer::*;
+
+#[path = "DirectFromSellerSignalsForSeller.rs"]
+pub mod direct_from_seller_signals_for_seller;
+pub use direct_from_seller_signals_for_seller::*;
+
+#[path = "DirectoryPickerOptions.rs"]
+pub mod directory_picker_options;
+pub use directory_picker_options::*;
+
+#[path = "DisconnectedAccount.rs"]
+pub mod disconnected_account;
+pub use disconnected_account::*;
+
+#[path = "DisplayMediaStreamOptions.rs"]
+pub mod display_media_stream_options;
+pub use display_media_stream_options::*;
 
 #[path = "Document.rs"]
 pub mod document;
@@ -997,21 +1757,45 @@ pub use document_picture_in_picture::*;
 pub mod document_picture_in_picture_event;
 pub use document_picture_in_picture_event::*;
 
+#[path = "DocumentPictureInPictureEventInit.rs"]
+pub mod document_picture_in_picture_event_init;
+pub use document_picture_in_picture_event_init::*;
+
+#[path = "DocumentPictureInPictureOptions.rs"]
+pub mod document_picture_in_picture_options;
+pub use document_picture_in_picture_options::*;
+
 #[path = "DocumentTimeline.rs"]
 pub mod document_timeline;
 pub use document_timeline::*;
+
+#[path = "DocumentTimelineOptions.rs"]
+pub mod document_timeline_options;
+pub use document_timeline_options::*;
 
 #[path = "DocumentType.rs"]
 pub mod document_type;
 pub use document_type::*;
 
+#[path = "DoubleRange.rs"]
+pub mod double_range;
+pub use double_range::*;
+
 #[path = "DragEvent.rs"]
 pub mod drag_event;
 pub use drag_event::*;
 
+#[path = "DragEventInit.rs"]
+pub mod drag_event_init;
+pub use drag_event_init::*;
+
 #[path = "DynamicsCompressorNode.rs"]
 pub mod dynamics_compressor_node;
 pub use dynamics_compressor_node::*;
+
+#[path = "DynamicsCompressorOptions.rs"]
+pub mod dynamics_compressor_options;
+pub use dynamics_compressor_options::*;
 
 #[path = "EXT_blend_minmax.rs"]
 pub mod ext_blend_minmax;
@@ -1065,13 +1849,53 @@ pub use ext_texture_filter_anisotropic::*;
 pub mod ext_texture_norm16;
 pub use ext_texture_norm16::*;
 
+#[path = "EcKeyAlgorithm.rs"]
+pub mod ec_key_algorithm;
+pub use ec_key_algorithm::*;
+
+#[path = "EcKeyGenParams.rs"]
+pub mod ec_key_gen_params;
+pub use ec_key_gen_params::*;
+
+#[path = "EcKeyImportParams.rs"]
+pub mod ec_key_import_params;
+pub use ec_key_import_params::*;
+
+#[path = "EcdhKeyDeriveParams.rs"]
+pub mod ecdh_key_derive_params;
+pub use ecdh_key_derive_params::*;
+
+#[path = "EcdsaParams.rs"]
+pub mod ecdsa_params;
+pub use ecdsa_params::*;
+
+#[path = "Ed448Params.rs"]
+pub mod ed448_params;
+pub use ed448_params::*;
+
 #[path = "EditContext.rs"]
 pub mod edit_context;
 pub use edit_context::*;
 
+#[path = "EditContextInit.rs"]
+pub mod edit_context_init;
+pub use edit_context_init::*;
+
+#[path = "EffectTiming.rs"]
+pub mod effect_timing;
+pub use effect_timing::*;
+
 #[path = "Element.rs"]
 pub mod element;
 pub use element::*;
+
+#[path = "ElementCreationOptions.rs"]
+pub mod element_creation_options;
+pub use element_creation_options::*;
+
+#[path = "ElementDefinitionOptions.rs"]
+pub mod element_definition_options;
+pub use element_definition_options::*;
 
 #[path = "ElementInternals.rs"]
 pub mod element_internals;
@@ -1081,13 +1905,33 @@ pub use element_internals::*;
 pub mod encoded_audio_chunk;
 pub use encoded_audio_chunk::*;
 
+#[path = "EncodedAudioChunkInit.rs"]
+pub mod encoded_audio_chunk_init;
+pub use encoded_audio_chunk_init::*;
+
+#[path = "EncodedAudioChunkMetadata.rs"]
+pub mod encoded_audio_chunk_metadata;
+pub use encoded_audio_chunk_metadata::*;
+
 #[path = "EncodedVideoChunk.rs"]
 pub mod encoded_video_chunk;
 pub use encoded_video_chunk::*;
 
+#[path = "EncodedVideoChunkInit.rs"]
+pub mod encoded_video_chunk_init;
+pub use encoded_video_chunk_init::*;
+
+#[path = "EncodedVideoChunkMetadata.rs"]
+pub mod encoded_video_chunk_metadata;
+pub use encoded_video_chunk_metadata::*;
+
 #[path = "ErrorEvent.rs"]
 pub mod error_event;
 pub use error_event::*;
+
+#[path = "ErrorEventInit.rs"]
+pub mod error_event_init;
+pub use error_event_init::*;
 
 #[path = "Event.rs"]
 pub mod event;
@@ -1097,9 +1941,25 @@ pub use event::*;
 pub mod event_counts;
 pub use event_counts::*;
 
+#[path = "EventInit.rs"]
+pub mod event_init;
+pub use event_init::*;
+
+#[path = "EventListenerOptions.rs"]
+pub mod event_listener_options;
+pub use event_listener_options::*;
+
+#[path = "EventModifierInit.rs"]
+pub mod event_modifier_init;
+pub use event_modifier_init::*;
+
 #[path = "EventSource.rs"]
 pub mod event_source;
 pub use event_source::*;
+
+#[path = "EventSourceInit.rs"]
+pub mod event_source_init;
+pub use event_source_init::*;
 
 #[path = "EventTarget.rs"]
 pub mod event_target;
@@ -1109,13 +1969,25 @@ pub use event_target::*;
 pub mod extendable_cookie_change_event;
 pub use extendable_cookie_change_event::*;
 
+#[path = "ExtendableCookieChangeEventInit.rs"]
+pub mod extendable_cookie_change_event_init;
+pub use extendable_cookie_change_event_init::*;
+
 #[path = "ExtendableEvent.rs"]
 pub mod extendable_event;
 pub use extendable_event::*;
 
+#[path = "ExtendableEventInit.rs"]
+pub mod extendable_event_init;
+pub use extendable_event_init::*;
+
 #[path = "ExtendableMessageEvent.rs"]
 pub mod extendable_message_event;
 pub use extendable_message_event::*;
+
+#[path = "ExtendableMessageEventInit.rs"]
+pub mod extendable_message_event_init;
+pub use extendable_message_event_init::*;
 
 #[path = "External.rs"]
 pub mod external;
@@ -1129,13 +2001,29 @@ pub use eye_dropper::*;
 pub mod face_detector;
 pub use face_detector::*;
 
+#[path = "FaceDetectorOptions.rs"]
+pub mod face_detector_options;
+pub use face_detector_options::*;
+
 #[path = "FederatedCredential.rs"]
 pub mod federated_credential;
 pub use federated_credential::*;
 
+#[path = "FederatedCredentialInit.rs"]
+pub mod federated_credential_init;
+pub use federated_credential_init::*;
+
+#[path = "FederatedCredentialRequestOptions.rs"]
+pub mod federated_credential_request_options;
+pub use federated_credential_request_options::*;
+
 #[path = "Fence.rs"]
 pub mod fence;
 pub use fence::*;
+
+#[path = "FenceEvent.rs"]
+pub mod fence_event;
+pub use fence_event::*;
 
 #[path = "FencedFrameConfig.rs"]
 pub mod fenced_frame_config;
@@ -1145,6 +2033,10 @@ pub use fenced_frame_config::*;
 pub mod fetch_event;
 pub use fetch_event::*;
 
+#[path = "FetchEventInit.rs"]
+pub mod fetch_event_init;
+pub use fetch_event_init::*;
+
 #[path = "File.rs"]
 pub mod file;
 pub use file::*;
@@ -1152,6 +2044,18 @@ pub use file::*;
 #[path = "FileList.rs"]
 pub mod file_list;
 pub use file_list::*;
+
+#[path = "FilePickerAcceptType.rs"]
+pub mod file_picker_accept_type;
+pub use file_picker_accept_type::*;
+
+#[path = "FilePickerOptions.rs"]
+pub mod file_picker_options;
+pub use file_picker_options::*;
+
+#[path = "FilePropertyBag.rs"]
+pub mod file_property_bag;
+pub use file_property_bag::*;
 
 #[path = "FileReader.rs"]
 pub mod file_reader;
@@ -1164,6 +2068,10 @@ pub use file_reader_sync::*;
 #[path = "FileSystem.rs"]
 pub mod file_system;
 pub use file_system::*;
+
+#[path = "FileSystemCreateWritableOptions.rs"]
+pub mod file_system_create_writable_options;
+pub use file_system_create_writable_options::*;
 
 #[path = "FileSystemDirectoryEntry.rs"]
 pub mod file_system_directory_entry;
@@ -1189,9 +2097,37 @@ pub use file_system_file_entry::*;
 pub mod file_system_file_handle;
 pub use file_system_file_handle::*;
 
+#[path = "FileSystemFlags.rs"]
+pub mod file_system_flags;
+pub use file_system_flags::*;
+
+#[path = "FileSystemGetDirectoryOptions.rs"]
+pub mod file_system_get_directory_options;
+pub use file_system_get_directory_options::*;
+
+#[path = "FileSystemGetFileOptions.rs"]
+pub mod file_system_get_file_options;
+pub use file_system_get_file_options::*;
+
 #[path = "FileSystemHandle.rs"]
 pub mod file_system_handle;
 pub use file_system_handle::*;
+
+#[path = "FileSystemHandlePermissionDescriptor.rs"]
+pub mod file_system_handle_permission_descriptor;
+pub use file_system_handle_permission_descriptor::*;
+
+#[path = "FileSystemPermissionDescriptor.rs"]
+pub mod file_system_permission_descriptor;
+pub use file_system_permission_descriptor::*;
+
+#[path = "FileSystemReadWriteOptions.rs"]
+pub mod file_system_read_write_options;
+pub use file_system_read_write_options::*;
+
+#[path = "FileSystemRemoveOptions.rs"]
+pub mod file_system_remove_options;
+pub use file_system_remove_options::*;
 
 #[path = "FileSystemSyncAccessHandle.rs"]
 pub mod file_system_sync_access_handle;
@@ -1201,9 +2137,25 @@ pub use file_system_sync_access_handle::*;
 pub mod file_system_writable_file_stream;
 pub use file_system_writable_file_stream::*;
 
+#[path = "FlacEncoderConfig.rs"]
+pub mod flac_encoder_config;
+pub use flac_encoder_config::*;
+
 #[path = "FocusEvent.rs"]
 pub mod focus_event;
 pub use focus_event::*;
+
+#[path = "FocusEventInit.rs"]
+pub mod focus_event_init;
+pub use focus_event_init::*;
+
+#[path = "FocusOptions.rs"]
+pub mod focus_options;
+pub use focus_options::*;
+
+#[path = "FocusableAreasOption.rs"]
+pub mod focusable_areas_option;
+pub use focusable_areas_option::*;
 
 #[path = "Font.rs"]
 pub mod font;
@@ -1216,6 +2168,10 @@ pub use font_data::*;
 #[path = "FontFace.rs"]
 pub mod font_face;
 pub use font_face::*;
+
+#[path = "FontFaceDescriptors.rs"]
+pub mod font_face_descriptors;
+pub use font_face_descriptors::*;
 
 #[path = "FontFaceFeatures.rs"]
 pub mod font_face_features;
@@ -1236,6 +2192,10 @@ pub use font_face_set::*;
 #[path = "FontFaceSetLoadEvent.rs"]
 pub mod font_face_set_load_event;
 pub use font_face_set_load_event::*;
+
+#[path = "FontFaceSetLoadEventInit.rs"]
+pub mod font_face_set_load_event_init;
+pub use font_face_set_load_event_init::*;
 
 #[path = "FontFaceVariationAxis.rs"]
 pub mod font_face_variation_axis;
@@ -1261,6 +2221,10 @@ pub use form_data::*;
 pub mod form_data_event;
 pub use form_data_event::*;
 
+#[path = "FormDataEventInit.rs"]
+pub mod form_data_event_init;
+pub use form_data_event_init::*;
+
 #[path = "FragmentDirective.rs"]
 pub mod fragment_directive;
 pub use fragment_directive::*;
@@ -1268,6 +2232,18 @@ pub use fragment_directive::*;
 #[path = "FragmentResult.rs"]
 pub mod fragment_result;
 pub use fragment_result::*;
+
+#[path = "FragmentResultOptions.rs"]
+pub mod fragment_result_options;
+pub use fragment_result_options::*;
+
+#[path = "FullscreenOptions.rs"]
+pub mod fullscreen_options;
+pub use fullscreen_options::*;
+
+#[path = "FunctionParameter.rs"]
+pub mod function_parameter;
+pub use function_parameter::*;
 
 #[path = "GPU.rs"]
 pub mod gpu;
@@ -1285,21 +2261,73 @@ pub use gpu_adapter_info::*;
 pub mod gpu_bind_group;
 pub use gpu_bind_group::*;
 
+#[path = "GPUBindGroupDescriptor.rs"]
+pub mod gpu_bind_group_descriptor;
+pub use gpu_bind_group_descriptor::*;
+
+#[path = "GPUBindGroupEntry.rs"]
+pub mod gpu_bind_group_entry;
+pub use gpu_bind_group_entry::*;
+
 #[path = "GPUBindGroupLayout.rs"]
 pub mod gpu_bind_group_layout;
 pub use gpu_bind_group_layout::*;
+
+#[path = "GPUBindGroupLayoutDescriptor.rs"]
+pub mod gpu_bind_group_layout_descriptor;
+pub use gpu_bind_group_layout_descriptor::*;
+
+#[path = "GPUBindGroupLayoutEntry.rs"]
+pub mod gpu_bind_group_layout_entry;
+pub use gpu_bind_group_layout_entry::*;
+
+#[path = "GPUBlendComponent.rs"]
+pub mod gpu_blend_component;
+pub use gpu_blend_component::*;
+
+#[path = "GPUBlendState.rs"]
+pub mod gpu_blend_state;
+pub use gpu_blend_state::*;
 
 #[path = "GPUBuffer.rs"]
 pub mod gpu_buffer;
 pub use gpu_buffer::*;
 
+#[path = "GPUBufferBinding.rs"]
+pub mod gpu_buffer_binding;
+pub use gpu_buffer_binding::*;
+
+#[path = "GPUBufferBindingLayout.rs"]
+pub mod gpu_buffer_binding_layout;
+pub use gpu_buffer_binding_layout::*;
+
+#[path = "GPUBufferDescriptor.rs"]
+pub mod gpu_buffer_descriptor;
+pub use gpu_buffer_descriptor::*;
+
 #[path = "GPUBufferUsage.rs"]
 pub mod gpu_buffer_usage;
 pub use gpu_buffer_usage::*;
 
+#[path = "GPUCanvasConfiguration.rs"]
+pub mod gpu_canvas_configuration;
+pub use gpu_canvas_configuration::*;
+
 #[path = "GPUCanvasContext.rs"]
 pub mod gpu_canvas_context;
 pub use gpu_canvas_context::*;
+
+#[path = "GPUCanvasToneMapping.rs"]
+pub mod gpu_canvas_tone_mapping;
+pub use gpu_canvas_tone_mapping::*;
+
+#[path = "GPUColorDict.rs"]
+pub mod gpu_color_dict;
+pub use gpu_color_dict::*;
+
+#[path = "GPUColorTargetState.rs"]
+pub mod gpu_color_target_state;
+pub use gpu_color_target_state::*;
 
 #[path = "GPUColorWrite.rs"]
 pub mod gpu_color_write;
@@ -1309,9 +2337,17 @@ pub use gpu_color_write::*;
 pub mod gpu_command_buffer;
 pub use gpu_command_buffer::*;
 
+#[path = "GPUCommandBufferDescriptor.rs"]
+pub mod gpu_command_buffer_descriptor;
+pub use gpu_command_buffer_descriptor::*;
+
 #[path = "GPUCommandEncoder.rs"]
 pub mod gpu_command_encoder;
 pub use gpu_command_encoder::*;
+
+#[path = "GPUCommandEncoderDescriptor.rs"]
+pub mod gpu_command_encoder_descriptor;
+pub use gpu_command_encoder_descriptor::*;
 
 #[path = "GPUCompilationInfo.rs"]
 pub mod gpu_compilation_info;
@@ -1321,17 +2357,45 @@ pub use gpu_compilation_info::*;
 pub mod gpu_compilation_message;
 pub use gpu_compilation_message::*;
 
+#[path = "GPUComputePassDescriptor.rs"]
+pub mod gpu_compute_pass_descriptor;
+pub use gpu_compute_pass_descriptor::*;
+
 #[path = "GPUComputePassEncoder.rs"]
 pub mod gpu_compute_pass_encoder;
 pub use gpu_compute_pass_encoder::*;
+
+#[path = "GPUComputePassTimestampWrites.rs"]
+pub mod gpu_compute_pass_timestamp_writes;
+pub use gpu_compute_pass_timestamp_writes::*;
 
 #[path = "GPUComputePipeline.rs"]
 pub mod gpu_compute_pipeline;
 pub use gpu_compute_pipeline::*;
 
+#[path = "GPUComputePipelineDescriptor.rs"]
+pub mod gpu_compute_pipeline_descriptor;
+pub use gpu_compute_pipeline_descriptor::*;
+
+#[path = "GPUCopyExternalImageDestInfo.rs"]
+pub mod gpu_copy_external_image_dest_info;
+pub use gpu_copy_external_image_dest_info::*;
+
+#[path = "GPUCopyExternalImageSourceInfo.rs"]
+pub mod gpu_copy_external_image_source_info;
+pub use gpu_copy_external_image_source_info::*;
+
+#[path = "GPUDepthStencilState.rs"]
+pub mod gpu_depth_stencil_state;
+pub use gpu_depth_stencil_state::*;
+
 #[path = "GPUDevice.rs"]
 pub mod gpu_device;
 pub use gpu_device::*;
+
+#[path = "GPUDeviceDescriptor.rs"]
+pub mod gpu_device_descriptor;
+pub use gpu_device_descriptor::*;
 
 #[path = "GPUDeviceLostInfo.rs"]
 pub mod gpu_device_lost_info;
@@ -1341,9 +2405,25 @@ pub use gpu_device_lost_info::*;
 pub mod gpu_error;
 pub use gpu_error::*;
 
+#[path = "GPUExtent3DDict.rs"]
+pub mod gpu_extent3d_dict;
+pub use gpu_extent3d_dict::*;
+
 #[path = "GPUExternalTexture.rs"]
 pub mod gpu_external_texture;
 pub use gpu_external_texture::*;
+
+#[path = "GPUExternalTextureBindingLayout.rs"]
+pub mod gpu_external_texture_binding_layout;
+pub use gpu_external_texture_binding_layout::*;
+
+#[path = "GPUExternalTextureDescriptor.rs"]
+pub mod gpu_external_texture_descriptor;
+pub use gpu_external_texture_descriptor::*;
+
+#[path = "GPUFragmentState.rs"]
+pub mod gpu_fragment_state;
+pub use gpu_fragment_state::*;
 
 #[path = "GPUInternalError.rs"]
 pub mod gpu_internal_error;
@@ -1353,53 +2433,157 @@ pub use gpu_internal_error::*;
 pub mod gpu_map_mode;
 pub use gpu_map_mode::*;
 
+#[path = "GPUMultisampleState.rs"]
+pub mod gpu_multisample_state;
+pub use gpu_multisample_state::*;
+
+#[path = "GPUObjectDescriptorBase.rs"]
+pub mod gpu_object_descriptor_base;
+pub use gpu_object_descriptor_base::*;
+
+#[path = "GPUOrigin2DDict.rs"]
+pub mod gpu_origin2d_dict;
+pub use gpu_origin2d_dict::*;
+
+#[path = "GPUOrigin3DDict.rs"]
+pub mod gpu_origin3d_dict;
+pub use gpu_origin3d_dict::*;
+
 #[path = "GPUOutOfMemoryError.rs"]
 pub mod gpu_out_of_memory_error;
 pub use gpu_out_of_memory_error::*;
+
+#[path = "GPUPipelineDescriptorBase.rs"]
+pub mod gpu_pipeline_descriptor_base;
+pub use gpu_pipeline_descriptor_base::*;
 
 #[path = "GPUPipelineError.rs"]
 pub mod gpu_pipeline_error;
 pub use gpu_pipeline_error::*;
 
+#[path = "GPUPipelineErrorInit.rs"]
+pub mod gpu_pipeline_error_init;
+pub use gpu_pipeline_error_init::*;
+
 #[path = "GPUPipelineLayout.rs"]
 pub mod gpu_pipeline_layout;
 pub use gpu_pipeline_layout::*;
+
+#[path = "GPUPipelineLayoutDescriptor.rs"]
+pub mod gpu_pipeline_layout_descriptor;
+pub use gpu_pipeline_layout_descriptor::*;
+
+#[path = "GPUPrimitiveState.rs"]
+pub mod gpu_primitive_state;
+pub use gpu_primitive_state::*;
+
+#[path = "GPUProgrammableStage.rs"]
+pub mod gpu_programmable_stage;
+pub use gpu_programmable_stage::*;
 
 #[path = "GPUQuerySet.rs"]
 pub mod gpu_query_set;
 pub use gpu_query_set::*;
 
+#[path = "GPUQuerySetDescriptor.rs"]
+pub mod gpu_query_set_descriptor;
+pub use gpu_query_set_descriptor::*;
+
 #[path = "GPUQueue.rs"]
 pub mod gpu_queue;
 pub use gpu_queue::*;
+
+#[path = "GPUQueueDescriptor.rs"]
+pub mod gpu_queue_descriptor;
+pub use gpu_queue_descriptor::*;
 
 #[path = "GPURenderBundle.rs"]
 pub mod gpu_render_bundle;
 pub use gpu_render_bundle::*;
 
+#[path = "GPURenderBundleDescriptor.rs"]
+pub mod gpu_render_bundle_descriptor;
+pub use gpu_render_bundle_descriptor::*;
+
 #[path = "GPURenderBundleEncoder.rs"]
 pub mod gpu_render_bundle_encoder;
 pub use gpu_render_bundle_encoder::*;
+
+#[path = "GPURenderBundleEncoderDescriptor.rs"]
+pub mod gpu_render_bundle_encoder_descriptor;
+pub use gpu_render_bundle_encoder_descriptor::*;
+
+#[path = "GPURenderPassColorAttachment.rs"]
+pub mod gpu_render_pass_color_attachment;
+pub use gpu_render_pass_color_attachment::*;
+
+#[path = "GPURenderPassDepthStencilAttachment.rs"]
+pub mod gpu_render_pass_depth_stencil_attachment;
+pub use gpu_render_pass_depth_stencil_attachment::*;
+
+#[path = "GPURenderPassDescriptor.rs"]
+pub mod gpu_render_pass_descriptor;
+pub use gpu_render_pass_descriptor::*;
 
 #[path = "GPURenderPassEncoder.rs"]
 pub mod gpu_render_pass_encoder;
 pub use gpu_render_pass_encoder::*;
 
+#[path = "GPURenderPassLayout.rs"]
+pub mod gpu_render_pass_layout;
+pub use gpu_render_pass_layout::*;
+
+#[path = "GPURenderPassTimestampWrites.rs"]
+pub mod gpu_render_pass_timestamp_writes;
+pub use gpu_render_pass_timestamp_writes::*;
+
 #[path = "GPURenderPipeline.rs"]
 pub mod gpu_render_pipeline;
 pub use gpu_render_pipeline::*;
+
+#[path = "GPURenderPipelineDescriptor.rs"]
+pub mod gpu_render_pipeline_descriptor;
+pub use gpu_render_pipeline_descriptor::*;
+
+#[path = "GPURequestAdapterOptions.rs"]
+pub mod gpu_request_adapter_options;
+pub use gpu_request_adapter_options::*;
 
 #[path = "GPUSampler.rs"]
 pub mod gpu_sampler;
 pub use gpu_sampler::*;
 
+#[path = "GPUSamplerBindingLayout.rs"]
+pub mod gpu_sampler_binding_layout;
+pub use gpu_sampler_binding_layout::*;
+
+#[path = "GPUSamplerDescriptor.rs"]
+pub mod gpu_sampler_descriptor;
+pub use gpu_sampler_descriptor::*;
+
 #[path = "GPUShaderModule.rs"]
 pub mod gpu_shader_module;
 pub use gpu_shader_module::*;
 
+#[path = "GPUShaderModuleCompilationHint.rs"]
+pub mod gpu_shader_module_compilation_hint;
+pub use gpu_shader_module_compilation_hint::*;
+
+#[path = "GPUShaderModuleDescriptor.rs"]
+pub mod gpu_shader_module_descriptor;
+pub use gpu_shader_module_descriptor::*;
+
 #[path = "GPUShaderStage.rs"]
 pub mod gpu_shader_stage;
 pub use gpu_shader_stage::*;
+
+#[path = "GPUStencilFaceState.rs"]
+pub mod gpu_stencil_face_state;
+pub use gpu_stencil_face_state::*;
+
+#[path = "GPUStorageTextureBindingLayout.rs"]
+pub mod gpu_storage_texture_binding_layout;
+pub use gpu_storage_texture_binding_layout::*;
 
 #[path = "GPUSupportedFeatures.rs"]
 pub mod gpu_supported_features;
@@ -1409,9 +2593,29 @@ pub use gpu_supported_features::*;
 pub mod gpu_supported_limits;
 pub use gpu_supported_limits::*;
 
+#[path = "GPUTexelCopyBufferInfo.rs"]
+pub mod gpu_texel_copy_buffer_info;
+pub use gpu_texel_copy_buffer_info::*;
+
+#[path = "GPUTexelCopyBufferLayout.rs"]
+pub mod gpu_texel_copy_buffer_layout;
+pub use gpu_texel_copy_buffer_layout::*;
+
+#[path = "GPUTexelCopyTextureInfo.rs"]
+pub mod gpu_texel_copy_texture_info;
+pub use gpu_texel_copy_texture_info::*;
+
 #[path = "GPUTexture.rs"]
 pub mod gpu_texture;
 pub use gpu_texture::*;
+
+#[path = "GPUTextureBindingLayout.rs"]
+pub mod gpu_texture_binding_layout;
+pub use gpu_texture_binding_layout::*;
+
+#[path = "GPUTextureDescriptor.rs"]
+pub mod gpu_texture_descriptor;
+pub use gpu_texture_descriptor::*;
 
 #[path = "GPUTextureUsage.rs"]
 pub mod gpu_texture_usage;
@@ -1421,17 +2625,41 @@ pub use gpu_texture_usage::*;
 pub mod gpu_texture_view;
 pub use gpu_texture_view::*;
 
+#[path = "GPUTextureViewDescriptor.rs"]
+pub mod gpu_texture_view_descriptor;
+pub use gpu_texture_view_descriptor::*;
+
 #[path = "GPUUncapturedErrorEvent.rs"]
 pub mod gpu_uncaptured_error_event;
 pub use gpu_uncaptured_error_event::*;
+
+#[path = "GPUUncapturedErrorEventInit.rs"]
+pub mod gpu_uncaptured_error_event_init;
+pub use gpu_uncaptured_error_event_init::*;
 
 #[path = "GPUValidationError.rs"]
 pub mod gpu_validation_error;
 pub use gpu_validation_error::*;
 
+#[path = "GPUVertexAttribute.rs"]
+pub mod gpu_vertex_attribute;
+pub use gpu_vertex_attribute::*;
+
+#[path = "GPUVertexBufferLayout.rs"]
+pub mod gpu_vertex_buffer_layout;
+pub use gpu_vertex_buffer_layout::*;
+
+#[path = "GPUVertexState.rs"]
+pub mod gpu_vertex_state;
+pub use gpu_vertex_state::*;
+
 #[path = "GainNode.rs"]
 pub mod gain_node;
 pub use gain_node::*;
+
+#[path = "GainOptions.rs"]
+pub mod gain_options;
+pub use gain_options::*;
 
 #[path = "Gamepad.rs"]
 pub mod gamepad;
@@ -1441,9 +2669,17 @@ pub use gamepad::*;
 pub mod gamepad_button;
 pub use gamepad_button::*;
 
+#[path = "GamepadEffectParameters.rs"]
+pub mod gamepad_effect_parameters;
+pub use gamepad_effect_parameters::*;
+
 #[path = "GamepadEvent.rs"]
 pub mod gamepad_event;
 pub use gamepad_event::*;
+
+#[path = "GamepadEventInit.rs"]
+pub mod gamepad_event_init;
+pub use gamepad_event_init::*;
 
 #[path = "GamepadHapticActuator.rs"]
 pub mod gamepad_haptic_actuator;
@@ -1452,6 +2688,22 @@ pub use gamepad_haptic_actuator::*;
 #[path = "GamepadPose.rs"]
 pub mod gamepad_pose;
 pub use gamepad_pose::*;
+
+#[path = "GamepadTouch.rs"]
+pub mod gamepad_touch;
+pub use gamepad_touch::*;
+
+#[path = "GenerateBidInterestGroup.rs"]
+pub mod generate_bid_interest_group;
+pub use generate_bid_interest_group::*;
+
+#[path = "GenerateBidOutput.rs"]
+pub mod generate_bid_output;
+pub use generate_bid_output::*;
+
+#[path = "GenerateTestReportParameters.rs"]
+pub mod generate_test_report_parameters;
+pub use generate_test_report_parameters::*;
 
 #[path = "Geolocation.rs"]
 pub mod geolocation;
@@ -1473,9 +2725,41 @@ pub use geolocation_position_error::*;
 pub mod geolocation_sensor;
 pub use geolocation_sensor::*;
 
+#[path = "GeolocationSensorOptions.rs"]
+pub mod geolocation_sensor_options;
+pub use geolocation_sensor_options::*;
+
+#[path = "GeolocationSensorReading.rs"]
+pub mod geolocation_sensor_reading;
+pub use geolocation_sensor_reading::*;
+
+#[path = "GetAnimationsOptions.rs"]
+pub mod get_animations_options;
+pub use get_animations_options::*;
+
+#[path = "GetComposedRangesOptions.rs"]
+pub mod get_composed_ranges_options;
+pub use get_composed_ranges_options::*;
+
+#[path = "GetHTMLOptions.rs"]
+pub mod get_html_options;
+pub use get_html_options::*;
+
+#[path = "GetNotificationOptions.rs"]
+pub mod get_notification_options;
+pub use get_notification_options::*;
+
+#[path = "GetRootNodeOptions.rs"]
+pub mod get_root_node_options;
+pub use get_root_node_options::*;
+
 #[path = "Global.rs"]
 pub mod global;
 pub use global::*;
+
+#[path = "GlobalDescriptor.rs"]
+pub mod global_descriptor;
+pub use global_descriptor::*;
 
 #[path = "GravitySensor.rs"]
 pub mod gravity_sensor;
@@ -1489,21 +2773,61 @@ pub use group_effect::*;
 pub mod gyroscope;
 pub use gyroscope::*;
 
+#[path = "GyroscopeSensorOptions.rs"]
+pub mod gyroscope_sensor_options;
+pub use gyroscope_sensor_options::*;
+
 #[path = "HID.rs"]
 pub mod hid;
 pub use hid::*;
+
+#[path = "HIDCollectionInfo.rs"]
+pub mod hid_collection_info;
+pub use hid_collection_info::*;
 
 #[path = "HIDConnectionEvent.rs"]
 pub mod hid_connection_event;
 pub use hid_connection_event::*;
 
+#[path = "HIDConnectionEventInit.rs"]
+pub mod hid_connection_event_init;
+pub use hid_connection_event_init::*;
+
 #[path = "HIDDevice.rs"]
 pub mod hid_device;
 pub use hid_device::*;
 
+#[path = "HIDDeviceFilter.rs"]
+pub mod hid_device_filter;
+pub use hid_device_filter::*;
+
+#[path = "HIDDeviceRequestOptions.rs"]
+pub mod hid_device_request_options;
+pub use hid_device_request_options::*;
+
 #[path = "HIDInputReportEvent.rs"]
 pub mod hid_input_report_event;
 pub use hid_input_report_event::*;
+
+#[path = "HIDInputReportEventInit.rs"]
+pub mod hid_input_report_event_init;
+pub use hid_input_report_event_init::*;
+
+#[path = "HIDReportInfo.rs"]
+pub mod hid_report_info;
+pub use hid_report_info::*;
+
+#[path = "HIDReportItem.rs"]
+pub mod hid_report_item;
+pub use hid_report_item::*;
+
+#[path = "HMACGetSecretInput.rs"]
+pub mod hmac_get_secret_input;
+pub use hmac_get_secret_input::*;
+
+#[path = "HMACGetSecretOutput.rs"]
+pub mod hmac_get_secret_output;
+pub use hmac_get_secret_output::*;
 
 #[path = "HTMLAllCollection.rs"]
 pub mod html_all_collection;
@@ -1522,8 +2846,8 @@ pub mod html_audio_element;
 pub use html_audio_element::*;
 
 #[path = "HTMLBRElement.rs"]
-pub mod html_br_element;
-pub use html_br_element::*;
+pub mod htmlbr_element;
+pub use htmlbr_element::*;
 
 #[path = "HTMLBaseElement.rs"]
 pub mod html_base_element;
@@ -1546,8 +2870,8 @@ pub mod html_collection;
 pub use html_collection::*;
 
 #[path = "HTMLDListElement.rs"]
-pub mod html_dlist_element;
-pub use html_dlist_element::*;
+pub mod htmld_list_element;
+pub use htmld_list_element::*;
 
 #[path = "HTMLDataElement.rs"]
 pub mod html_data_element;
@@ -1610,8 +2934,8 @@ pub mod html_frame_set_element;
 pub use html_frame_set_element::*;
 
 #[path = "HTMLHRElement.rs"]
-pub mod html_hr_element;
-pub use html_hr_element::*;
+pub mod htmlhr_element;
+pub use htmlhr_element::*;
 
 #[path = "HTMLHeadElement.rs"]
 pub mod html_head_element;
@@ -1626,8 +2950,8 @@ pub mod html_html_element;
 pub use html_html_element::*;
 
 #[path = "HTMLIFrameElement.rs"]
-pub mod html_iframe_element;
-pub use html_iframe_element::*;
+pub mod htmli_frame_element;
+pub use htmli_frame_element::*;
 
 #[path = "HTMLImageElement.rs"]
 pub mod html_image_element;
@@ -1638,8 +2962,8 @@ pub mod html_input_element;
 pub use html_input_element::*;
 
 #[path = "HTMLLIElement.rs"]
-pub mod html_li_element;
-pub use html_li_element::*;
+pub mod htmlli_element;
+pub use htmlli_element::*;
 
 #[path = "HTMLLabelElement.rs"]
 pub mod html_label_element;
@@ -1686,8 +3010,8 @@ pub mod html_model_element;
 pub use html_model_element::*;
 
 #[path = "HTMLOListElement.rs"]
-pub mod html_olist_element;
-pub use html_olist_element::*;
+pub mod htmlo_list_element;
+pub use htmlo_list_element::*;
 
 #[path = "HTMLObjectElement.rs"]
 pub mod html_object_element;
@@ -1806,8 +3130,8 @@ pub mod html_track_element;
 pub use html_track_element::*;
 
 #[path = "HTMLUListElement.rs"]
-pub mod html_ulist_element;
-pub use html_ulist_element::*;
+pub mod htmlu_list_element;
+pub use htmlu_list_element::*;
 
 #[path = "HTMLUnknownElement.rs"]
 pub mod html_unknown_element;
@@ -1821,9 +3145,41 @@ pub use html_video_element::*;
 pub mod handwriting_drawing;
 pub use handwriting_drawing::*;
 
+#[path = "HandwritingDrawingSegment.rs"]
+pub mod handwriting_drawing_segment;
+pub use handwriting_drawing_segment::*;
+
+#[path = "HandwritingHints.rs"]
+pub mod handwriting_hints;
+pub use handwriting_hints::*;
+
+#[path = "HandwritingHintsQueryResult.rs"]
+pub mod handwriting_hints_query_result;
+pub use handwriting_hints_query_result::*;
+
+#[path = "HandwritingModelConstraint.rs"]
+pub mod handwriting_model_constraint;
+pub use handwriting_model_constraint::*;
+
+#[path = "HandwritingPoint.rs"]
+pub mod handwriting_point;
+pub use handwriting_point::*;
+
+#[path = "HandwritingPrediction.rs"]
+pub mod handwriting_prediction;
+pub use handwriting_prediction::*;
+
 #[path = "HandwritingRecognizer.rs"]
 pub mod handwriting_recognizer;
 pub use handwriting_recognizer::*;
+
+#[path = "HandwritingRecognizerQueryResult.rs"]
+pub mod handwriting_recognizer_query_result;
+pub use handwriting_recognizer_query_result::*;
+
+#[path = "HandwritingSegment.rs"]
+pub mod handwriting_segment;
+pub use handwriting_segment::*;
 
 #[path = "HandwritingStroke.rs"]
 pub mod handwriting_stroke;
@@ -1833,21 +3189,53 @@ pub use handwriting_stroke::*;
 pub mod hash_change_event;
 pub use hash_change_event::*;
 
+#[path = "HashChangeEventInit.rs"]
+pub mod hash_change_event_init;
+pub use hash_change_event_init::*;
+
 #[path = "Headers.rs"]
 pub mod headers;
 pub use headers::*;
+
+#[path = "HevcEncoderConfig.rs"]
+pub mod hevc_encoder_config;
+pub use hevc_encoder_config::*;
 
 #[path = "Highlight.rs"]
 pub mod highlight;
 pub use highlight::*;
 
+#[path = "HighlightHitResult.rs"]
+pub mod highlight_hit_result;
+pub use highlight_hit_result::*;
+
 #[path = "HighlightRegistry.rs"]
 pub mod highlight_registry;
 pub use highlight_registry::*;
 
+#[path = "HighlightsFromPointOptions.rs"]
+pub mod highlights_from_point_options;
+pub use highlights_from_point_options::*;
+
 #[path = "History.rs"]
 pub mod history;
 pub use history::*;
+
+#[path = "HkdfParams.rs"]
+pub mod hkdf_params;
+pub use hkdf_params::*;
+
+#[path = "HmacImportParams.rs"]
+pub mod hmac_import_params;
+pub use hmac_import_params::*;
+
+#[path = "HmacKeyAlgorithm.rs"]
+pub mod hmac_key_algorithm;
+pub use hmac_key_algorithm::*;
+
+#[path = "HmacKeyGenParams.rs"]
+pub mod hmac_key_gen_params;
+pub use hmac_key_gen_params::*;
 
 #[path = "IDBCursor.rs"]
 pub mod idb_cursor;
@@ -1861,6 +3249,10 @@ pub use idb_cursor_with_value::*;
 pub mod idb_database;
 pub use idb_database::*;
 
+#[path = "IDBDatabaseInfo.rs"]
+pub mod idb_database_info;
+pub use idb_database_info::*;
+
 #[path = "IDBFactory.rs"]
 pub mod idb_factory;
 pub use idb_factory::*;
@@ -1869,6 +3261,10 @@ pub use idb_factory::*;
 pub mod idb_index;
 pub use idb_index::*;
 
+#[path = "IDBIndexParameters.rs"]
+pub mod idb_index_parameters;
+pub use idb_index_parameters::*;
+
 #[path = "IDBKeyRange.rs"]
 pub mod idb_key_range;
 pub use idb_key_range::*;
@@ -1876,6 +3272,10 @@ pub use idb_key_range::*;
 #[path = "IDBObjectStore.rs"]
 pub mod idb_object_store;
 pub use idb_object_store::*;
+
+#[path = "IDBObjectStoreParameters.rs"]
+pub mod idb_object_store_parameters;
+pub use idb_object_store_parameters::*;
 
 #[path = "IDBOpenDBRequest.rs"]
 pub mod idb_open_db_request;
@@ -1889,25 +3289,97 @@ pub use idb_request::*;
 pub mod idb_transaction;
 pub use idb_transaction::*;
 
+#[path = "IDBTransactionOptions.rs"]
+pub mod idb_transaction_options;
+pub use idb_transaction_options::*;
+
 #[path = "IDBVersionChangeEvent.rs"]
 pub mod idb_version_change_event;
 pub use idb_version_change_event::*;
+
+#[path = "IDBVersionChangeEventInit.rs"]
+pub mod idb_version_change_event_init;
+pub use idb_version_change_event_init::*;
 
 #[path = "IIRFilterNode.rs"]
 pub mod iir_filter_node;
 pub use iir_filter_node::*;
 
+#[path = "IIRFilterOptions.rs"]
+pub mod iir_filter_options;
+pub use iir_filter_options::*;
+
+#[path = "IdentityAssertionResponse.rs"]
+pub mod identity_assertion_response;
+pub use identity_assertion_response::*;
+
 #[path = "IdentityCredential.rs"]
 pub mod identity_credential;
 pub use identity_credential::*;
+
+#[path = "IdentityCredentialDisconnectOptions.rs"]
+pub mod identity_credential_disconnect_options;
+pub use identity_credential_disconnect_options::*;
 
 #[path = "IdentityCredentialError.rs"]
 pub mod identity_credential_error;
 pub use identity_credential_error::*;
 
+#[path = "IdentityCredentialErrorInit.rs"]
+pub mod identity_credential_error_init;
+pub use identity_credential_error_init::*;
+
+#[path = "IdentityCredentialRequestOptions.rs"]
+pub mod identity_credential_request_options;
+pub use identity_credential_request_options::*;
+
 #[path = "IdentityProvider.rs"]
 pub mod identity_provider;
 pub use identity_provider::*;
+
+#[path = "IdentityProviderAPIConfig.rs"]
+pub mod identity_provider_api_config;
+pub use identity_provider_api_config::*;
+
+#[path = "IdentityProviderAccount.rs"]
+pub mod identity_provider_account;
+pub use identity_provider_account::*;
+
+#[path = "IdentityProviderAccountList.rs"]
+pub mod identity_provider_account_list;
+pub use identity_provider_account_list::*;
+
+#[path = "IdentityProviderBranding.rs"]
+pub mod identity_provider_branding;
+pub use identity_provider_branding::*;
+
+#[path = "IdentityProviderClientMetadata.rs"]
+pub mod identity_provider_client_metadata;
+pub use identity_provider_client_metadata::*;
+
+#[path = "IdentityProviderConfig.rs"]
+pub mod identity_provider_config;
+pub use identity_provider_config::*;
+
+#[path = "IdentityProviderIcon.rs"]
+pub mod identity_provider_icon;
+pub use identity_provider_icon::*;
+
+#[path = "IdentityProviderRequestOptions.rs"]
+pub mod identity_provider_request_options;
+pub use identity_provider_request_options::*;
+
+#[path = "IdentityProviderWellKnown.rs"]
+pub mod identity_provider_well_known;
+pub use identity_provider_well_known::*;
+
+#[path = "IdentityResolveOptions.rs"]
+pub mod identity_resolve_options;
+pub use identity_resolve_options::*;
+
+#[path = "IdentityUserInfo.rs"]
+pub mod identity_user_info;
+pub use identity_user_info::*;
 
 #[path = "IdleDeadline.rs"]
 pub mod idle_deadline;
@@ -1917,13 +3389,29 @@ pub use idle_deadline::*;
 pub mod idle_detector;
 pub use idle_detector::*;
 
+#[path = "IdleOptions.rs"]
+pub mod idle_options;
+pub use idle_options::*;
+
+#[path = "IdleRequestOptions.rs"]
+pub mod idle_request_options;
+pub use idle_request_options::*;
+
 #[path = "ImageBitmap.rs"]
 pub mod image_bitmap;
 pub use image_bitmap::*;
 
+#[path = "ImageBitmapOptions.rs"]
+pub mod image_bitmap_options;
+pub use image_bitmap_options::*;
+
 #[path = "ImageBitmapRenderingContext.rs"]
 pub mod image_bitmap_rendering_context;
 pub use image_bitmap_rendering_context::*;
+
+#[path = "ImageBitmapRenderingContextSettings.rs"]
+pub mod image_bitmap_rendering_context_settings;
+pub use image_bitmap_rendering_context_settings::*;
 
 #[path = "ImageCapture.rs"]
 pub mod image_capture;
@@ -1933,9 +3421,33 @@ pub use image_capture::*;
 pub mod image_data;
 pub use image_data::*;
 
+#[path = "ImageDataSettings.rs"]
+pub mod image_data_settings;
+pub use image_data_settings::*;
+
+#[path = "ImageDecodeOptions.rs"]
+pub mod image_decode_options;
+pub use image_decode_options::*;
+
+#[path = "ImageDecodeResult.rs"]
+pub mod image_decode_result;
+pub use image_decode_result::*;
+
 #[path = "ImageDecoder.rs"]
 pub mod image_decoder;
 pub use image_decoder::*;
+
+#[path = "ImageDecoderInit.rs"]
+pub mod image_decoder_init;
+pub use image_decoder_init::*;
+
+#[path = "ImageEncodeOptions.rs"]
+pub mod image_encode_options;
+pub use image_encode_options::*;
+
+#[path = "ImageResource.rs"]
+pub mod image_resource;
+pub use image_resource::*;
 
 #[path = "ImageTrack.rs"]
 pub mod image_track;
@@ -1945,13 +3457,29 @@ pub use image_track::*;
 pub mod image_track_list;
 pub use image_track_list::*;
 
+#[path = "ImportNodeOptions.rs"]
+pub mod import_node_options;
+pub use import_node_options::*;
+
 #[path = "Ink.rs"]
 pub mod ink;
 pub use ink::*;
 
+#[path = "InkPresenterParam.rs"]
+pub mod ink_presenter_param;
+pub use ink_presenter_param::*;
+
+#[path = "InkTrailStyle.rs"]
+pub mod ink_trail_style;
+pub use ink_trail_style::*;
+
 #[path = "InputDeviceCapabilities.rs"]
 pub mod input_device_capabilities;
 pub use input_device_capabilities::*;
+
+#[path = "InputDeviceCapabilitiesInit.rs"]
+pub mod input_device_capabilities_init;
+pub use input_device_capabilities_init::*;
 
 #[path = "InputDeviceInfo.rs"]
 pub mod input_device_info;
@@ -1961,6 +3489,10 @@ pub use input_device_info::*;
 pub mod input_event;
 pub use input_event::*;
 
+#[path = "InputEventInit.rs"]
+pub mod input_event_init;
+pub use input_event_init::*;
+
 #[path = "InstallEvent.rs"]
 pub mod install_event;
 pub use install_event::*;
@@ -1968,6 +3500,10 @@ pub use install_event::*;
 #[path = "Instance.rs"]
 pub mod instance;
 pub use instance::*;
+
+#[path = "IntegrityViolationReportBody.rs"]
+pub mod integrity_violation_report_body;
+pub use integrity_violation_report_body::*;
 
 #[path = "InterestGroupBiddingAndScoringScriptRunnerGlobalScope.rs"]
 pub mod interest_group_bidding_and_scoring_script_runner_global_scope;
@@ -1997,17 +3533,53 @@ pub use intersection_observer::*;
 pub mod intersection_observer_entry;
 pub use intersection_observer_entry::*;
 
+#[path = "IntersectionObserverEntryInit.rs"]
+pub mod intersection_observer_entry_init;
+pub use intersection_observer_entry_init::*;
+
+#[path = "IntersectionObserverInit.rs"]
+pub mod intersection_observer_init;
+pub use intersection_observer_init::*;
+
+#[path = "InterventionReportBody.rs"]
+pub mod intervention_report_body;
+pub use intervention_report_body::*;
+
 #[path = "IntrinsicSizes.rs"]
 pub mod intrinsic_sizes;
 pub use intrinsic_sizes::*;
+
+#[path = "IntrinsicSizesResultOptions.rs"]
+pub mod intrinsic_sizes_result_options;
+pub use intrinsic_sizes_result_options::*;
+
+#[path = "IsInputPendingOptions.rs"]
+pub mod is_input_pending_options;
+pub use is_input_pending_options::*;
+
+#[path = "ItemDetails.rs"]
+pub mod item_details;
+pub use item_details::*;
+
+#[path = "JsonWebKey.rs"]
+pub mod json_web_key;
+pub use json_web_key::*;
 
 #[path = "KHR_parallel_shader_compile.rs"]
 pub mod khr_parallel_shader_compile;
 pub use khr_parallel_shader_compile::*;
 
+#[path = "KeyAlgorithm.rs"]
+pub mod key_algorithm;
+pub use key_algorithm::*;
+
 #[path = "KeyFrameRequestEvent.rs"]
 pub mod key_frame_request_event;
 pub use key_frame_request_event::*;
+
+#[path = "KeySystemTrackConfiguration.rs"]
+pub mod key_system_track_configuration;
+pub use key_system_track_configuration::*;
 
 #[path = "Keyboard.rs"]
 pub mod keyboard;
@@ -2017,17 +3589,49 @@ pub use keyboard::*;
 pub mod keyboard_event;
 pub use keyboard_event::*;
 
+#[path = "KeyboardEventInit.rs"]
+pub mod keyboard_event_init;
+pub use keyboard_event_init::*;
+
 #[path = "KeyboardLayoutMap.rs"]
 pub mod keyboard_layout_map;
 pub use keyboard_layout_map::*;
+
+#[path = "KeyframeAnimationOptions.rs"]
+pub mod keyframe_animation_options;
+pub use keyframe_animation_options::*;
 
 #[path = "KeyframeEffect.rs"]
 pub mod keyframe_effect;
 pub use keyframe_effect::*;
 
+#[path = "KeyframeEffectOptions.rs"]
+pub mod keyframe_effect_options;
+pub use keyframe_effect_options::*;
+
+#[path = "Landmark.rs"]
+pub mod landmark;
+pub use landmark::*;
+
+#[path = "LanguageDetectionResult.rs"]
+pub mod language_detection_result;
+pub use language_detection_result::*;
+
 #[path = "LanguageDetector.rs"]
 pub mod language_detector;
 pub use language_detector::*;
+
+#[path = "LanguageDetectorCreateCoreOptions.rs"]
+pub mod language_detector_create_core_options;
+pub use language_detector_create_core_options::*;
+
+#[path = "LanguageDetectorCreateOptions.rs"]
+pub mod language_detector_create_options;
+pub use language_detector_create_options::*;
+
+#[path = "LanguageDetectorDetectOptions.rs"]
+pub mod language_detector_detect_options;
+pub use language_detector_detect_options::*;
 
 #[path = "LargestContentfulPaint.rs"]
 pub mod largest_contentful_paint;
@@ -2049,6 +3653,10 @@ pub use layout_child::*;
 pub mod layout_constraints;
 pub use layout_constraints::*;
 
+#[path = "LayoutConstraintsOptions.rs"]
+pub mod layout_constraints_options;
+pub use layout_constraints_options::*;
+
 #[path = "LayoutEdges.rs"]
 pub mod layout_edges;
 pub use layout_edges::*;
@@ -2056,6 +3664,10 @@ pub use layout_edges::*;
 #[path = "LayoutFragment.rs"]
 pub mod layout_fragment;
 pub use layout_fragment::*;
+
+#[path = "LayoutOptions.rs"]
+pub mod layout_options;
+pub use layout_options::*;
 
 #[path = "LayoutShift.rs"]
 pub mod layout_shift;
@@ -2081,9 +3693,21 @@ pub use location::*;
 pub mod lock;
 pub use lock::*;
 
+#[path = "LockInfo.rs"]
+pub mod lock_info;
+pub use lock_info::*;
+
 #[path = "LockManager.rs"]
 pub mod lock_manager;
 pub use lock_manager::*;
+
+#[path = "LockManagerSnapshot.rs"]
+pub mod lock_manager_snapshot;
+pub use lock_manager_snapshot::*;
+
+#[path = "LockOptions.rs"]
+pub mod lock_options;
+pub use lock_options::*;
 
 #[path = "MIDIAccess.rs"]
 pub mod midi_access;
@@ -2092,6 +3716,10 @@ pub use midi_access::*;
 #[path = "MIDIConnectionEvent.rs"]
 pub mod midi_connection_event;
 pub use midi_connection_event::*;
+
+#[path = "MIDIConnectionEventInit.rs"]
+pub mod midi_connection_event_init;
+pub use midi_connection_event_init::*;
 
 #[path = "MIDIInput.rs"]
 pub mod midi_input;
@@ -2104,6 +3732,14 @@ pub use midi_input_map::*;
 #[path = "MIDIMessageEvent.rs"]
 pub mod midi_message_event;
 pub use midi_message_event::*;
+
+#[path = "MIDIMessageEventInit.rs"]
+pub mod midi_message_event_init;
+pub use midi_message_event_init::*;
+
+#[path = "MIDIOptions.rs"]
+pub mod midi_options;
+pub use midi_options::*;
 
 #[path = "MIDIOutput.rs"]
 pub mod midi_output;
@@ -2121,9 +3757,81 @@ pub use midi_port::*;
 pub mod ml;
 pub use ml::*;
 
+#[path = "MLArgMinMaxOptions.rs"]
+pub mod ml_arg_min_max_options;
+pub use ml_arg_min_max_options::*;
+
+#[path = "MLBatchNormalizationOptions.rs"]
+pub mod ml_batch_normalization_options;
+pub use ml_batch_normalization_options::*;
+
+#[path = "MLBatchNormalizationSupportLimits.rs"]
+pub mod ml_batch_normalization_support_limits;
+pub use ml_batch_normalization_support_limits::*;
+
+#[path = "MLBinarySupportLimits.rs"]
+pub mod ml_binary_support_limits;
+pub use ml_binary_support_limits::*;
+
+#[path = "MLClampOptions.rs"]
+pub mod ml_clamp_options;
+pub use ml_clamp_options::*;
+
+#[path = "MLConcatSupportLimits.rs"]
+pub mod ml_concat_support_limits;
+pub use ml_concat_support_limits::*;
+
 #[path = "MLContext.rs"]
 pub mod ml_context;
 pub use ml_context::*;
+
+#[path = "MLContextLostInfo.rs"]
+pub mod ml_context_lost_info;
+pub use ml_context_lost_info::*;
+
+#[path = "MLContextOptions.rs"]
+pub mod ml_context_options;
+pub use ml_context_options::*;
+
+#[path = "MLConv2dOptions.rs"]
+pub mod ml_conv2d_options;
+pub use ml_conv2d_options::*;
+
+#[path = "MLConv2dSupportLimits.rs"]
+pub mod ml_conv2d_support_limits;
+pub use ml_conv2d_support_limits::*;
+
+#[path = "MLConvTranspose2dOptions.rs"]
+pub mod ml_conv_transpose2d_options;
+pub use ml_conv_transpose2d_options::*;
+
+#[path = "MLCumulativeSumOptions.rs"]
+pub mod ml_cumulative_sum_options;
+pub use ml_cumulative_sum_options::*;
+
+#[path = "MLDataTypeLimits.rs"]
+pub mod ml_data_type_limits;
+pub use ml_data_type_limits::*;
+
+#[path = "MLEluOptions.rs"]
+pub mod ml_elu_options;
+pub use ml_elu_options::*;
+
+#[path = "MLGatherOptions.rs"]
+pub mod ml_gather_options;
+pub use ml_gather_options::*;
+
+#[path = "MLGatherSupportLimits.rs"]
+pub mod ml_gather_support_limits;
+pub use ml_gather_support_limits::*;
+
+#[path = "MLGemmOptions.rs"]
+pub mod ml_gemm_options;
+pub use ml_gemm_options::*;
+
+#[path = "MLGemmSupportLimits.rs"]
+pub mod ml_gemm_support_limits;
+pub use ml_gemm_support_limits::*;
 
 #[path = "MLGraph.rs"]
 pub mod ml_graph;
@@ -2133,17 +3841,169 @@ pub use ml_graph::*;
 pub mod ml_graph_builder;
 pub use ml_graph_builder::*;
 
+#[path = "MLGruCellOptions.rs"]
+pub mod ml_gru_cell_options;
+pub use ml_gru_cell_options::*;
+
+#[path = "MLGruCellSupportLimits.rs"]
+pub mod ml_gru_cell_support_limits;
+pub use ml_gru_cell_support_limits::*;
+
+#[path = "MLGruOptions.rs"]
+pub mod ml_gru_options;
+pub use ml_gru_options::*;
+
+#[path = "MLGruSupportLimits.rs"]
+pub mod ml_gru_support_limits;
+pub use ml_gru_support_limits::*;
+
+#[path = "MLHardSigmoidOptions.rs"]
+pub mod ml_hard_sigmoid_options;
+pub use ml_hard_sigmoid_options::*;
+
+#[path = "MLInstanceNormalizationOptions.rs"]
+pub mod ml_instance_normalization_options;
+pub use ml_instance_normalization_options::*;
+
+#[path = "MLLayerNormalizationOptions.rs"]
+pub mod ml_layer_normalization_options;
+pub use ml_layer_normalization_options::*;
+
+#[path = "MLLeakyReluOptions.rs"]
+pub mod ml_leaky_relu_options;
+pub use ml_leaky_relu_options::*;
+
+#[path = "MLLinearOptions.rs"]
+pub mod ml_linear_options;
+pub use ml_linear_options::*;
+
+#[path = "MLLogicalNotSupportLimits.rs"]
+pub mod ml_logical_not_support_limits;
+pub use ml_logical_not_support_limits::*;
+
+#[path = "MLLstmCellOptions.rs"]
+pub mod ml_lstm_cell_options;
+pub use ml_lstm_cell_options::*;
+
+#[path = "MLLstmCellSupportLimits.rs"]
+pub mod ml_lstm_cell_support_limits;
+pub use ml_lstm_cell_support_limits::*;
+
+#[path = "MLLstmOptions.rs"]
+pub mod ml_lstm_options;
+pub use ml_lstm_options::*;
+
+#[path = "MLLstmSupportLimits.rs"]
+pub mod ml_lstm_support_limits;
+pub use ml_lstm_support_limits::*;
+
+#[path = "MLNormalizationSupportLimits.rs"]
+pub mod ml_normalization_support_limits;
+pub use ml_normalization_support_limits::*;
+
+#[path = "MLOpSupportLimits.rs"]
+pub mod ml_op_support_limits;
+pub use ml_op_support_limits::*;
+
 #[path = "MLOperand.rs"]
 pub mod ml_operand;
 pub use ml_operand::*;
+
+#[path = "MLOperandDescriptor.rs"]
+pub mod ml_operand_descriptor;
+pub use ml_operand_descriptor::*;
+
+#[path = "MLOperatorOptions.rs"]
+pub mod ml_operator_options;
+pub use ml_operator_options::*;
+
+#[path = "MLPadOptions.rs"]
+pub mod ml_pad_options;
+pub use ml_pad_options::*;
+
+#[path = "MLPool2dOptions.rs"]
+pub mod ml_pool2d_options;
+pub use ml_pool2d_options::*;
+
+#[path = "MLPreluSupportLimits.rs"]
+pub mod ml_prelu_support_limits;
+pub use ml_prelu_support_limits::*;
+
+#[path = "MLQuantizeDequantizeLinearSupportLimits.rs"]
+pub mod ml_quantize_dequantize_linear_support_limits;
+pub use ml_quantize_dequantize_linear_support_limits::*;
+
+#[path = "MLRankRange.rs"]
+pub mod ml_rank_range;
+pub use ml_rank_range::*;
+
+#[path = "MLReduceOptions.rs"]
+pub mod ml_reduce_options;
+pub use ml_reduce_options::*;
+
+#[path = "MLResample2dOptions.rs"]
+pub mod ml_resample2d_options;
+pub use ml_resample2d_options::*;
+
+#[path = "MLReverseOptions.rs"]
+pub mod ml_reverse_options;
+pub use ml_reverse_options::*;
+
+#[path = "MLScatterOptions.rs"]
+pub mod ml_scatter_options;
+pub use ml_scatter_options::*;
+
+#[path = "MLScatterSupportLimits.rs"]
+pub mod ml_scatter_support_limits;
+pub use ml_scatter_support_limits::*;
+
+#[path = "MLSingleInputSupportLimits.rs"]
+pub mod ml_single_input_support_limits;
+pub use ml_single_input_support_limits::*;
+
+#[path = "MLSliceOptions.rs"]
+pub mod ml_slice_options;
+pub use ml_slice_options::*;
+
+#[path = "MLSplitOptions.rs"]
+pub mod ml_split_options;
+pub use ml_split_options::*;
+
+#[path = "MLSplitSupportLimits.rs"]
+pub mod ml_split_support_limits;
+pub use ml_split_support_limits::*;
 
 #[path = "MLTensor.rs"]
 pub mod ml_tensor;
 pub use ml_tensor::*;
 
+#[path = "MLTensorDescriptor.rs"]
+pub mod ml_tensor_descriptor;
+pub use ml_tensor_descriptor::*;
+
+#[path = "MLTensorLimits.rs"]
+pub mod ml_tensor_limits;
+pub use ml_tensor_limits::*;
+
+#[path = "MLTransposeOptions.rs"]
+pub mod ml_transpose_options;
+pub use ml_transpose_options::*;
+
+#[path = "MLTriangularOptions.rs"]
+pub mod ml_triangular_options;
+pub use ml_triangular_options::*;
+
+#[path = "MLWhereSupportLimits.rs"]
+pub mod ml_where_support_limits;
+pub use ml_where_support_limits::*;
+
 #[path = "Magnetometer.rs"]
 pub mod magnetometer;
 pub use magnetometer::*;
+
+#[path = "MagnetometerSensorOptions.rs"]
+pub mod magnetometer_sensor_options;
+pub use magnetometer_sensor_options::*;
 
 #[path = "ManagedMediaSource.rs"]
 pub mod managed_media_source;
@@ -2161,6 +4021,30 @@ pub use math_ml_element::*;
 pub mod media_capabilities;
 pub use media_capabilities::*;
 
+#[path = "MediaCapabilitiesDecodingInfo.rs"]
+pub mod media_capabilities_decoding_info;
+pub use media_capabilities_decoding_info::*;
+
+#[path = "MediaCapabilitiesEncodingInfo.rs"]
+pub mod media_capabilities_encoding_info;
+pub use media_capabilities_encoding_info::*;
+
+#[path = "MediaCapabilitiesInfo.rs"]
+pub mod media_capabilities_info;
+pub use media_capabilities_info::*;
+
+#[path = "MediaCapabilitiesKeySystemConfiguration.rs"]
+pub mod media_capabilities_key_system_configuration;
+pub use media_capabilities_key_system_configuration::*;
+
+#[path = "MediaConfiguration.rs"]
+pub mod media_configuration;
+pub use media_configuration::*;
+
+#[path = "MediaDecodingConfiguration.rs"]
+pub mod media_decoding_configuration;
+pub use media_decoding_configuration::*;
+
 #[path = "MediaDeviceInfo.rs"]
 pub mod media_device_info;
 pub use media_device_info::*;
@@ -2173,17 +4057,37 @@ pub use media_devices::*;
 pub mod media_element_audio_source_node;
 pub use media_element_audio_source_node::*;
 
+#[path = "MediaElementAudioSourceOptions.rs"]
+pub mod media_element_audio_source_options;
+pub use media_element_audio_source_options::*;
+
+#[path = "MediaEncodingConfiguration.rs"]
+pub mod media_encoding_configuration;
+pub use media_encoding_configuration::*;
+
 #[path = "MediaEncryptedEvent.rs"]
 pub mod media_encrypted_event;
 pub use media_encrypted_event::*;
+
+#[path = "MediaEncryptedEventInit.rs"]
+pub mod media_encrypted_event_init;
+pub use media_encrypted_event_init::*;
 
 #[path = "MediaError.rs"]
 pub mod media_error;
 pub use media_error::*;
 
+#[path = "MediaImage.rs"]
+pub mod media_image;
+pub use media_image::*;
+
 #[path = "MediaKeyMessageEvent.rs"]
 pub mod media_key_message_event;
 pub use media_key_message_event::*;
+
+#[path = "MediaKeyMessageEventInit.rs"]
+pub mod media_key_message_event_init;
+pub use media_key_message_event_init::*;
 
 #[path = "MediaKeySession.rs"]
 pub mod media_key_session;
@@ -2197,9 +4101,21 @@ pub use media_key_status_map::*;
 pub mod media_key_system_access;
 pub use media_key_system_access::*;
 
+#[path = "MediaKeySystemConfiguration.rs"]
+pub mod media_key_system_configuration;
+pub use media_key_system_configuration::*;
+
+#[path = "MediaKeySystemMediaCapability.rs"]
+pub mod media_key_system_media_capability;
+pub use media_key_system_media_capability::*;
+
 #[path = "MediaKeys.rs"]
 pub mod media_keys;
 pub use media_keys::*;
+
+#[path = "MediaKeysPolicy.rs"]
+pub mod media_keys_policy;
+pub use media_keys_policy::*;
 
 #[path = "MediaList.rs"]
 pub mod media_list;
@@ -2209,6 +4125,14 @@ pub use media_list::*;
 pub mod media_metadata;
 pub use media_metadata::*;
 
+#[path = "MediaMetadataInit.rs"]
+pub mod media_metadata_init;
+pub use media_metadata_init::*;
+
+#[path = "MediaPositionState.rs"]
+pub mod media_position_state;
+pub use media_position_state::*;
+
 #[path = "MediaQueryList.rs"]
 pub mod media_query_list;
 pub use media_query_list::*;
@@ -2217,13 +4141,29 @@ pub use media_query_list::*;
 pub mod media_query_list_event;
 pub use media_query_list_event::*;
 
+#[path = "MediaQueryListEventInit.rs"]
+pub mod media_query_list_event_init;
+pub use media_query_list_event_init::*;
+
 #[path = "MediaRecorder.rs"]
 pub mod media_recorder;
 pub use media_recorder::*;
 
+#[path = "MediaRecorderOptions.rs"]
+pub mod media_recorder_options;
+pub use media_recorder_options::*;
+
 #[path = "MediaSession.rs"]
 pub mod media_session;
 pub use media_session::*;
+
+#[path = "MediaSessionActionDetails.rs"]
+pub mod media_session_action_details;
+pub use media_session_action_details::*;
+
+#[path = "MediaSettingsRange.rs"]
+pub mod media_settings_range;
+pub use media_settings_range::*;
 
 #[path = "MediaSource.rs"]
 pub mod media_source;
@@ -2245,6 +4185,14 @@ pub use media_stream_audio_destination_node::*;
 pub mod media_stream_audio_source_node;
 pub use media_stream_audio_source_node::*;
 
+#[path = "MediaStreamAudioSourceOptions.rs"]
+pub mod media_stream_audio_source_options;
+pub use media_stream_audio_source_options::*;
+
+#[path = "MediaStreamConstraints.rs"]
+pub mod media_stream_constraints;
+pub use media_stream_constraints::*;
+
 #[path = "MediaStreamTrack.rs"]
 pub mod media_stream_track;
 pub use media_stream_track::*;
@@ -2253,17 +4201,69 @@ pub use media_stream_track::*;
 pub mod media_stream_track_audio_source_node;
 pub use media_stream_track_audio_source_node::*;
 
+#[path = "MediaStreamTrackAudioSourceOptions.rs"]
+pub mod media_stream_track_audio_source_options;
+pub use media_stream_track_audio_source_options::*;
+
 #[path = "MediaStreamTrackEvent.rs"]
 pub mod media_stream_track_event;
 pub use media_stream_track_event::*;
+
+#[path = "MediaStreamTrackEventInit.rs"]
+pub mod media_stream_track_event_init;
+pub use media_stream_track_event_init::*;
 
 #[path = "MediaStreamTrackProcessor.rs"]
 pub mod media_stream_track_processor;
 pub use media_stream_track_processor::*;
 
+#[path = "MediaStreamTrackProcessorInit.rs"]
+pub mod media_stream_track_processor_init;
+pub use media_stream_track_processor_init::*;
+
+#[path = "MediaTrackCapabilities.rs"]
+pub mod media_track_capabilities;
+pub use media_track_capabilities::*;
+
+#[path = "MediaTrackConstraintSet.rs"]
+pub mod media_track_constraint_set;
+pub use media_track_constraint_set::*;
+
+#[path = "MediaTrackConstraints.rs"]
+pub mod media_track_constraints;
+pub use media_track_constraints::*;
+
+#[path = "MediaTrackSettings.rs"]
+pub mod media_track_settings;
+pub use media_track_settings::*;
+
+#[path = "MediaTrackSupportedConstraints.rs"]
+pub mod media_track_supported_constraints;
+pub use media_track_supported_constraints::*;
+
 #[path = "Memory.rs"]
 pub mod memory;
 pub use memory::*;
+
+#[path = "MemoryAttribution.rs"]
+pub mod memory_attribution;
+pub use memory_attribution::*;
+
+#[path = "MemoryAttributionContainer.rs"]
+pub mod memory_attribution_container;
+pub use memory_attribution_container::*;
+
+#[path = "MemoryBreakdownEntry.rs"]
+pub mod memory_breakdown_entry;
+pub use memory_breakdown_entry::*;
+
+#[path = "MemoryDescriptor.rs"]
+pub mod memory_descriptor;
+pub use memory_descriptor::*;
+
+#[path = "MemoryMeasurement.rs"]
+pub mod memory_measurement;
+pub use memory_measurement::*;
 
 #[path = "MessageChannel.rs"]
 pub mod message_channel;
@@ -2273,9 +4273,17 @@ pub use message_channel::*;
 pub mod message_event;
 pub use message_event::*;
 
+#[path = "MessageEventInit.rs"]
+pub mod message_event_init;
+pub use message_event_init::*;
+
 #[path = "MessagePort.rs"]
 pub mod message_port;
 pub use message_port::*;
+
+#[path = "MidiPermissionDescriptor.rs"]
+pub mod midi_permission_descriptor;
+pub use midi_permission_descriptor::*;
 
 #[path = "MimeType.rs"]
 pub mod mime_type;
@@ -2285,25 +4293,69 @@ pub use mime_type::*;
 pub mod mime_type_array;
 pub use mime_type_array::*;
 
+#[path = "MockCameraConfiguration.rs"]
+pub mod mock_camera_configuration;
+pub use mock_camera_configuration::*;
+
+#[path = "MockCaptureDeviceConfiguration.rs"]
+pub mod mock_capture_device_configuration;
+pub use mock_capture_device_configuration::*;
+
+#[path = "MockCapturePromptResultConfiguration.rs"]
+pub mod mock_capture_prompt_result_configuration;
+pub use mock_capture_prompt_result_configuration::*;
+
+#[path = "MockMicrophoneConfiguration.rs"]
+pub mod mock_microphone_configuration;
+pub use mock_microphone_configuration::*;
+
 #[path = "Module.rs"]
 pub mod module;
 pub use module::*;
+
+#[path = "ModuleExportDescriptor.rs"]
+pub mod module_export_descriptor;
+pub use module_export_descriptor::*;
+
+#[path = "ModuleImportDescriptor.rs"]
+pub mod module_import_descriptor;
+pub use module_import_descriptor::*;
 
 #[path = "MouseEvent.rs"]
 pub mod mouse_event;
 pub use mouse_event::*;
 
+#[path = "MouseEventInit.rs"]
+pub mod mouse_event_init;
+pub use mouse_event_init::*;
+
+#[path = "MultiCacheQueryOptions.rs"]
+pub mod multi_cache_query_options;
+pub use multi_cache_query_options::*;
+
 #[path = "MutationObserver.rs"]
 pub mod mutation_observer;
 pub use mutation_observer::*;
+
+#[path = "MutationObserverInit.rs"]
+pub mod mutation_observer_init;
+pub use mutation_observer_init::*;
 
 #[path = "MutationRecord.rs"]
 pub mod mutation_record;
 pub use mutation_record::*;
 
+#[path = "NDEFMakeReadOnlyOptions.rs"]
+pub mod ndef_make_read_only_options;
+pub use ndef_make_read_only_options::*;
+
 #[path = "NDEFMessage.rs"]
 pub mod ndef_message;
 pub use ndef_message::*;
+
+#[path = "NDEFMessageInit.rs"]
+pub mod ndef_message_init;
+pub use ndef_message_init::*;
 
 #[path = "NDEFReader.rs"]
 pub mod ndef_reader;
@@ -2313,9 +4365,25 @@ pub use ndef_reader::*;
 pub mod ndef_reading_event;
 pub use ndef_reading_event::*;
 
+#[path = "NDEFReadingEventInit.rs"]
+pub mod ndef_reading_event_init;
+pub use ndef_reading_event_init::*;
+
 #[path = "NDEFRecord.rs"]
 pub mod ndef_record;
 pub use ndef_record::*;
+
+#[path = "NDEFRecordInit.rs"]
+pub mod ndef_record_init;
+pub use ndef_record_init::*;
+
+#[path = "NDEFScanOptions.rs"]
+pub mod ndef_scan_options;
+pub use ndef_scan_options::*;
+
+#[path = "NDEFWriteOptions.rs"]
+pub mod ndef_write_options;
+pub use ndef_write_options::*;
 
 #[path = "NamedFlow.rs"]
 pub mod named_flow;
@@ -2333,6 +4401,10 @@ pub use named_node_map::*;
 pub mod navigate_event;
 pub use navigate_event::*;
 
+#[path = "NavigateEventInit.rs"]
+pub mod navigate_event_init;
+pub use navigate_event_init::*;
+
 #[path = "Navigation.rs"]
 pub mod navigation;
 pub use navigation::*;
@@ -2345,6 +4417,10 @@ pub use navigation_activation::*;
 pub mod navigation_current_entry_change_event;
 pub use navigation_current_entry_change_event::*;
 
+#[path = "NavigationCurrentEntryChangeEventInit.rs"]
+pub mod navigation_current_entry_change_event_init;
+pub use navigation_current_entry_change_event_init::*;
+
 #[path = "NavigationDestination.rs"]
 pub mod navigation_destination;
 pub use navigation_destination::*;
@@ -2353,17 +4429,49 @@ pub use navigation_destination::*;
 pub mod navigation_event;
 pub use navigation_event::*;
 
+#[path = "NavigationEventInit.rs"]
+pub mod navigation_event_init;
+pub use navigation_event_init::*;
+
 #[path = "NavigationHistoryEntry.rs"]
 pub mod navigation_history_entry;
 pub use navigation_history_entry::*;
+
+#[path = "NavigationInterceptOptions.rs"]
+pub mod navigation_intercept_options;
+pub use navigation_intercept_options::*;
+
+#[path = "NavigationNavigateOptions.rs"]
+pub mod navigation_navigate_options;
+pub use navigation_navigate_options::*;
+
+#[path = "NavigationOptions.rs"]
+pub mod navigation_options;
+pub use navigation_options::*;
 
 #[path = "NavigationPreloadManager.rs"]
 pub mod navigation_preload_manager;
 pub use navigation_preload_manager::*;
 
+#[path = "NavigationPreloadState.rs"]
+pub mod navigation_preload_state;
+pub use navigation_preload_state::*;
+
+#[path = "NavigationReloadOptions.rs"]
+pub mod navigation_reload_options;
+pub use navigation_reload_options::*;
+
+#[path = "NavigationResult.rs"]
+pub mod navigation_result;
+pub use navigation_result::*;
+
 #[path = "NavigationTransition.rs"]
 pub mod navigation_transition;
 pub use navigation_transition::*;
+
+#[path = "NavigationUpdateCurrentEntryOptions.rs"]
+pub mod navigation_update_current_entry_options;
+pub use navigation_update_current_entry_options::*;
 
 #[path = "Navigator.rs"]
 pub mod navigator;
@@ -2376,6 +4484,10 @@ pub use navigator_login::*;
 #[path = "NavigatorManagedData.rs"]
 pub mod navigator_managed_data;
 pub use navigator_managed_data::*;
+
+#[path = "NavigatorUABrandVersion.rs"]
+pub mod navigator_ua_brand_version;
+pub use navigator_ua_brand_version::*;
 
 #[path = "NavigatorUAData.rs"]
 pub mod navigator_ua_data;
@@ -2409,9 +4521,21 @@ pub use not_restored_reasons::*;
 pub mod notification;
 pub use notification::*;
 
+#[path = "NotificationAction.rs"]
+pub mod notification_action;
+pub use notification_action::*;
+
 #[path = "NotificationEvent.rs"]
 pub mod notification_event;
 pub use notification_event::*;
+
+#[path = "NotificationEventInit.rs"]
+pub mod notification_event_init;
+pub use notification_event_init::*;
+
+#[path = "NotificationOptions.rs"]
+pub mod notification_options;
+pub use notification_options::*;
 
 #[path = "OES_draw_buffers_indexed.rs"]
 pub mod oes_draw_buffers_indexed;
@@ -2453,6 +4577,10 @@ pub use oes_vertex_array_object::*;
 pub mod otp_credential;
 pub use otp_credential::*;
 
+#[path = "OTPCredentialRequestOptions.rs"]
+pub mod otp_credential_request_options;
+pub use otp_credential_request_options::*;
+
 #[path = "OVR_multiview2.rs"]
 pub mod ovr_multiview2;
 pub use ovr_multiview2::*;
@@ -2461,13 +4589,29 @@ pub use ovr_multiview2::*;
 pub mod observable;
 pub use observable::*;
 
+#[path = "ObservableEventListenerOptions.rs"]
+pub mod observable_event_listener_options;
+pub use observable_event_listener_options::*;
+
+#[path = "ObservableInspector.rs"]
+pub mod observable_inspector;
+pub use observable_inspector::*;
+
 #[path = "OfflineAudioCompletionEvent.rs"]
 pub mod offline_audio_completion_event;
 pub use offline_audio_completion_event::*;
 
+#[path = "OfflineAudioCompletionEventInit.rs"]
+pub mod offline_audio_completion_event_init;
+pub use offline_audio_completion_event_init::*;
+
 #[path = "OfflineAudioContext.rs"]
 pub mod offline_audio_context;
 pub use offline_audio_context::*;
+
+#[path = "OfflineAudioContextOptions.rs"]
+pub mod offline_audio_context_options;
+pub use offline_audio_context_options::*;
 
 #[path = "OffscreenCanvas.rs"]
 pub mod offscreen_canvas;
@@ -2477,33 +4621,85 @@ pub use offscreen_canvas::*;
 pub mod offscreen_canvas_rendering_context2d;
 pub use offscreen_canvas_rendering_context2d::*;
 
+#[path = "OpenFilePickerOptions.rs"]
+pub mod open_file_picker_options;
+pub use open_file_picker_options::*;
+
+#[path = "OptionalEffectTiming.rs"]
+pub mod optional_effect_timing;
+pub use optional_effect_timing::*;
+
+#[path = "OpusEncoderConfig.rs"]
+pub mod opus_encoder_config;
+pub use opus_encoder_config::*;
+
 #[path = "OrientationSensor.rs"]
 pub mod orientation_sensor;
 pub use orientation_sensor::*;
+
+#[path = "OrientationSensorOptions.rs"]
+pub mod orientation_sensor_options;
+pub use orientation_sensor_options::*;
 
 #[path = "OscillatorNode.rs"]
 pub mod oscillator_node;
 pub use oscillator_node::*;
 
+#[path = "OscillatorOptions.rs"]
+pub mod oscillator_options;
+pub use oscillator_options::*;
+
 #[path = "OverconstrainedError.rs"]
 pub mod overconstrained_error;
 pub use overconstrained_error::*;
+
+#[path = "PADebugModeOptions.rs"]
+pub mod pa_debug_mode_options;
+pub use pa_debug_mode_options::*;
+
+#[path = "PAExtendedHistogramContribution.rs"]
+pub mod pa_extended_histogram_contribution;
+pub use pa_extended_histogram_contribution::*;
+
+#[path = "PAHistogramContribution.rs"]
+pub mod pa_histogram_contribution;
+pub use pa_histogram_contribution::*;
+
+#[path = "PASignalValue.rs"]
+pub mod pa_signal_value;
+pub use pa_signal_value::*;
 
 #[path = "PageRevealEvent.rs"]
 pub mod page_reveal_event;
 pub use page_reveal_event::*;
 
+#[path = "PageRevealEventInit.rs"]
+pub mod page_reveal_event_init;
+pub use page_reveal_event_init::*;
+
 #[path = "PageSwapEvent.rs"]
 pub mod page_swap_event;
 pub use page_swap_event::*;
+
+#[path = "PageSwapEventInit.rs"]
+pub mod page_swap_event_init;
+pub use page_swap_event_init::*;
 
 #[path = "PageTransitionEvent.rs"]
 pub mod page_transition_event;
 pub use page_transition_event::*;
 
+#[path = "PageTransitionEventInit.rs"]
+pub mod page_transition_event_init;
+pub use page_transition_event_init::*;
+
 #[path = "PaintRenderingContext2D.rs"]
 pub mod paint_rendering_context2d;
 pub use paint_rendering_context2d::*;
+
+#[path = "PaintRenderingContext2DSettings.rs"]
+pub mod paint_rendering_context2d_settings;
+pub use paint_rendering_context2d_settings::*;
 
 #[path = "PaintSize.rs"]
 pub mod paint_size;
@@ -2517,13 +4713,65 @@ pub use paint_worklet_global_scope::*;
 pub mod panner_node;
 pub use panner_node::*;
 
+#[path = "PannerOptions.rs"]
+pub mod panner_options;
+pub use panner_options::*;
+
 #[path = "PasswordCredential.rs"]
 pub mod password_credential;
 pub use password_credential::*;
 
+#[path = "PasswordCredentialData.rs"]
+pub mod password_credential_data;
+pub use password_credential_data::*;
+
 #[path = "Path2D.rs"]
 pub mod path2d;
 pub use path2d::*;
+
+#[path = "PayerErrors.rs"]
+pub mod payer_errors;
+pub use payer_errors::*;
+
+#[path = "PaymentCompleteDetails.rs"]
+pub mod payment_complete_details;
+pub use payment_complete_details::*;
+
+#[path = "PaymentCredentialInstrument.rs"]
+pub mod payment_credential_instrument;
+pub use payment_credential_instrument::*;
+
+#[path = "PaymentCurrencyAmount.rs"]
+pub mod payment_currency_amount;
+pub use payment_currency_amount::*;
+
+#[path = "PaymentDetailsBase.rs"]
+pub mod payment_details_base;
+pub use payment_details_base::*;
+
+#[path = "PaymentDetailsInit.rs"]
+pub mod payment_details_init;
+pub use payment_details_init::*;
+
+#[path = "PaymentDetailsModifier.rs"]
+pub mod payment_details_modifier;
+pub use payment_details_modifier::*;
+
+#[path = "PaymentDetailsUpdate.rs"]
+pub mod payment_details_update;
+pub use payment_details_update::*;
+
+#[path = "PaymentEntityLogo.rs"]
+pub mod payment_entity_logo;
+pub use payment_entity_logo::*;
+
+#[path = "PaymentHandlerResponse.rs"]
+pub mod payment_handler_response;
+pub use payment_handler_response::*;
+
+#[path = "PaymentItem.rs"]
+pub mod payment_item;
+pub use payment_item::*;
 
 #[path = "PaymentManager.rs"]
 pub mod payment_manager;
@@ -2533,21 +4781,57 @@ pub use payment_manager::*;
 pub mod payment_method_change_event;
 pub use payment_method_change_event::*;
 
+#[path = "PaymentMethodChangeEventInit.rs"]
+pub mod payment_method_change_event_init;
+pub use payment_method_change_event_init::*;
+
+#[path = "PaymentMethodData.rs"]
+pub mod payment_method_data;
+pub use payment_method_data::*;
+
+#[path = "PaymentOptions.rs"]
+pub mod payment_options;
+pub use payment_options::*;
+
 #[path = "PaymentRequest.rs"]
 pub mod payment_request;
 pub use payment_request::*;
+
+#[path = "PaymentRequestDetailsUpdate.rs"]
+pub mod payment_request_details_update;
+pub use payment_request_details_update::*;
 
 #[path = "PaymentRequestEvent.rs"]
 pub mod payment_request_event;
 pub use payment_request_event::*;
 
+#[path = "PaymentRequestEventInit.rs"]
+pub mod payment_request_event_init;
+pub use payment_request_event_init::*;
+
 #[path = "PaymentRequestUpdateEvent.rs"]
 pub mod payment_request_update_event;
 pub use payment_request_update_event::*;
 
+#[path = "PaymentRequestUpdateEventInit.rs"]
+pub mod payment_request_update_event_init;
+pub use payment_request_update_event_init::*;
+
 #[path = "PaymentResponse.rs"]
 pub mod payment_response;
 pub use payment_response::*;
+
+#[path = "PaymentShippingOption.rs"]
+pub mod payment_shipping_option;
+pub use payment_shipping_option::*;
+
+#[path = "PaymentValidationErrors.rs"]
+pub mod payment_validation_errors;
+pub use payment_validation_errors::*;
+
+#[path = "Pbkdf2Params.rs"]
+pub mod pbkdf2_params;
+pub use pbkdf2_params::*;
 
 #[path = "Performance.rs"]
 pub mod performance;
@@ -2577,9 +4861,17 @@ pub use performance_long_task_timing::*;
 pub mod performance_mark;
 pub use performance_mark::*;
 
+#[path = "PerformanceMarkOptions.rs"]
+pub mod performance_mark_options;
+pub use performance_mark_options::*;
+
 #[path = "PerformanceMeasure.rs"]
 pub mod performance_measure;
 pub use performance_measure::*;
+
+#[path = "PerformanceMeasureOptions.rs"]
+pub mod performance_measure_options;
+pub use performance_measure_options::*;
 
 #[path = "PerformanceNavigation.rs"]
 pub mod performance_navigation;
@@ -2593,9 +4885,17 @@ pub use performance_navigation_timing::*;
 pub mod performance_observer;
 pub use performance_observer::*;
 
+#[path = "PerformanceObserverCallbackOptions.rs"]
+pub mod performance_observer_callback_options;
+pub use performance_observer_callback_options::*;
+
 #[path = "PerformanceObserverEntryList.rs"]
 pub mod performance_observer_entry_list;
 pub use performance_observer_entry_list::*;
+
+#[path = "PerformanceObserverInit.rs"]
+pub mod performance_observer_init;
+pub use performance_observer_init::*;
 
 #[path = "PerformancePaintTiming.rs"]
 pub mod performance_paint_timing;
@@ -2621,6 +4921,10 @@ pub use performance_timing::*;
 pub mod periodic_sync_event;
 pub use periodic_sync_event::*;
 
+#[path = "PeriodicSyncEventInit.rs"]
+pub mod periodic_sync_event_init;
+pub use periodic_sync_event_init::*;
+
 #[path = "PeriodicSyncManager.rs"]
 pub mod periodic_sync_manager;
 pub use periodic_sync_manager::*;
@@ -2628,6 +4932,22 @@ pub use periodic_sync_manager::*;
 #[path = "PeriodicWave.rs"]
 pub mod periodic_wave;
 pub use periodic_wave::*;
+
+#[path = "PeriodicWaveConstraints.rs"]
+pub mod periodic_wave_constraints;
+pub use periodic_wave_constraints::*;
+
+#[path = "PeriodicWaveOptions.rs"]
+pub mod periodic_wave_options;
+pub use periodic_wave_options::*;
+
+#[path = "PermissionDescriptor.rs"]
+pub mod permission_descriptor;
+pub use permission_descriptor::*;
+
+#[path = "PermissionSetParameters.rs"]
+pub mod permission_set_parameters;
+pub use permission_set_parameters::*;
 
 #[path = "PermissionStatus.rs"]
 pub mod permission_status;
@@ -2641,13 +4961,33 @@ pub use permissions::*;
 pub mod permissions_policy;
 pub use permissions_policy::*;
 
+#[path = "PermissionsPolicyViolationReportBody.rs"]
+pub mod permissions_policy_violation_report_body;
+pub use permissions_policy_violation_report_body::*;
+
+#[path = "PhotoCapabilities.rs"]
+pub mod photo_capabilities;
+pub use photo_capabilities::*;
+
+#[path = "PhotoSettings.rs"]
+pub mod photo_settings;
+pub use photo_settings::*;
+
 #[path = "PictureInPictureEvent.rs"]
 pub mod picture_in_picture_event;
 pub use picture_in_picture_event::*;
 
+#[path = "PictureInPictureEventInit.rs"]
+pub mod picture_in_picture_event_init;
+pub use picture_in_picture_event_init::*;
+
 #[path = "PictureInPictureWindow.rs"]
 pub mod picture_in_picture_window;
 pub use picture_in_picture_window::*;
+
+#[path = "PlaneLayout.rs"]
+pub mod plane_layout;
+pub use plane_layout::*;
 
 #[path = "Plugin.rs"]
 pub mod plugin;
@@ -2657,25 +4997,57 @@ pub use plugin::*;
 pub mod plugin_array;
 pub use plugin_array::*;
 
+#[path = "Point2D.rs"]
+pub mod point2d;
+pub use point2d::*;
+
 #[path = "PointerEvent.rs"]
 pub mod pointer_event;
 pub use pointer_event::*;
+
+#[path = "PointerEventInit.rs"]
+pub mod pointer_event_init;
+pub use pointer_event_init::*;
+
+#[path = "PointerLockOptions.rs"]
+pub mod pointer_lock_options;
+pub use pointer_lock_options::*;
 
 #[path = "PointerTimeline.rs"]
 pub mod pointer_timeline;
 pub use pointer_timeline::*;
 
+#[path = "PointerTimelineOptions.rs"]
+pub mod pointer_timeline_options;
+pub use pointer_timeline_options::*;
+
 #[path = "PopStateEvent.rs"]
 pub mod pop_state_event;
 pub use pop_state_event::*;
+
+#[path = "PopStateEventInit.rs"]
+pub mod pop_state_event_init;
+pub use pop_state_event_init::*;
 
 #[path = "PortalActivateEvent.rs"]
 pub mod portal_activate_event;
 pub use portal_activate_event::*;
 
+#[path = "PortalActivateEventInit.rs"]
+pub mod portal_activate_event_init;
+pub use portal_activate_event_init::*;
+
+#[path = "PortalActivateOptions.rs"]
+pub mod portal_activate_options;
+pub use portal_activate_options::*;
+
 #[path = "PortalHost.rs"]
 pub mod portal_host;
 pub use portal_host::*;
+
+#[path = "PositionOptions.rs"]
+pub mod position_options;
+pub use position_options::*;
 
 #[path = "PreferenceManager.rs"]
 pub mod preference_manager;
@@ -2701,9 +5073,17 @@ pub use presentation_connection::*;
 pub mod presentation_connection_available_event;
 pub use presentation_connection_available_event::*;
 
+#[path = "PresentationConnectionAvailableEventInit.rs"]
+pub mod presentation_connection_available_event_init;
+pub use presentation_connection_available_event_init::*;
+
 #[path = "PresentationConnectionCloseEvent.rs"]
 pub mod presentation_connection_close_event;
 pub use presentation_connection_close_event::*;
+
+#[path = "PresentationConnectionCloseEventInit.rs"]
+pub mod presentation_connection_close_event_init;
+pub use presentation_connection_close_event_init::*;
 
 #[path = "PresentationConnectionList.rs"]
 pub mod presentation_connection_list;
@@ -2721,6 +5101,10 @@ pub use presentation_request::*;
 pub mod pressure_observer;
 pub use pressure_observer::*;
 
+#[path = "PressureObserverOptions.rs"]
+pub mod pressure_observer_options;
+pub use pressure_observer_options::*;
+
 #[path = "PressureRecord.rs"]
 pub mod pressure_record;
 pub use pressure_record::*;
@@ -2728,6 +5112,14 @@ pub use pressure_record::*;
 #[path = "PrivateAggregation.rs"]
 pub mod private_aggregation;
 pub use private_aggregation::*;
+
+#[path = "PrivateNetworkAccessPermissionDescriptor.rs"]
+pub mod private_network_access_permission_descriptor;
+pub use private_network_access_permission_descriptor::*;
+
+#[path = "PrivateToken.rs"]
+pub mod private_token;
+pub use private_token::*;
 
 #[path = "ProcessingInstruction.rs"]
 pub mod processing_instruction;
@@ -2737,17 +5129,57 @@ pub use processing_instruction::*;
 pub mod profiler;
 pub use profiler::*;
 
+#[path = "ProfilerFrame.rs"]
+pub mod profiler_frame;
+pub use profiler_frame::*;
+
+#[path = "ProfilerInitOptions.rs"]
+pub mod profiler_init_options;
+pub use profiler_init_options::*;
+
+#[path = "ProfilerSample.rs"]
+pub mod profiler_sample;
+pub use profiler_sample::*;
+
+#[path = "ProfilerStack.rs"]
+pub mod profiler_stack;
+pub use profiler_stack::*;
+
+#[path = "ProfilerTrace.rs"]
+pub mod profiler_trace;
+pub use profiler_trace::*;
+
 #[path = "ProgressEvent.rs"]
 pub mod progress_event;
 pub use progress_event::*;
+
+#[path = "ProgressEventInit.rs"]
+pub mod progress_event_init;
+pub use progress_event_init::*;
 
 #[path = "PromiseRejectionEvent.rs"]
 pub mod promise_rejection_event;
 pub use promise_rejection_event::*;
 
+#[path = "PromiseRejectionEventInit.rs"]
+pub mod promise_rejection_event_init;
+pub use promise_rejection_event_init::*;
+
+#[path = "PromptResponseObject.rs"]
+pub mod prompt_response_object;
+pub use prompt_response_object::*;
+
+#[path = "PropertyDefinition.rs"]
+pub mod property_definition;
+pub use property_definition::*;
+
 #[path = "ProtectedAudience.rs"]
 pub mod protected_audience;
 pub use protected_audience::*;
+
+#[path = "ProtectedAudiencePrivateAggregationConfig.rs"]
+pub mod protected_audience_private_aggregation_config;
+pub use protected_audience_private_aggregation_config::*;
 
 #[path = "ProtectedAudienceUtilities.rs"]
 pub mod protected_audience_utilities;
@@ -2761,9 +5193,61 @@ pub use proximity_sensor::*;
 pub mod public_key_credential;
 pub use public_key_credential::*;
 
+#[path = "PublicKeyCredentialCreationOptions.rs"]
+pub mod public_key_credential_creation_options;
+pub use public_key_credential_creation_options::*;
+
+#[path = "PublicKeyCredentialCreationOptionsJSON.rs"]
+pub mod public_key_credential_creation_options_json;
+pub use public_key_credential_creation_options_json::*;
+
+#[path = "PublicKeyCredentialDescriptor.rs"]
+pub mod public_key_credential_descriptor;
+pub use public_key_credential_descriptor::*;
+
+#[path = "PublicKeyCredentialDescriptorJSON.rs"]
+pub mod public_key_credential_descriptor_json;
+pub use public_key_credential_descriptor_json::*;
+
+#[path = "PublicKeyCredentialEntity.rs"]
+pub mod public_key_credential_entity;
+pub use public_key_credential_entity::*;
+
+#[path = "PublicKeyCredentialParameters.rs"]
+pub mod public_key_credential_parameters;
+pub use public_key_credential_parameters::*;
+
+#[path = "PublicKeyCredentialRequestOptions.rs"]
+pub mod public_key_credential_request_options;
+pub use public_key_credential_request_options::*;
+
+#[path = "PublicKeyCredentialRequestOptionsJSON.rs"]
+pub mod public_key_credential_request_options_json;
+pub use public_key_credential_request_options_json::*;
+
+#[path = "PublicKeyCredentialRpEntity.rs"]
+pub mod public_key_credential_rp_entity;
+pub use public_key_credential_rp_entity::*;
+
+#[path = "PublicKeyCredentialUserEntity.rs"]
+pub mod public_key_credential_user_entity;
+pub use public_key_credential_user_entity::*;
+
+#[path = "PublicKeyCredentialUserEntityJSON.rs"]
+pub mod public_key_credential_user_entity_json;
+pub use public_key_credential_user_entity_json::*;
+
+#[path = "PurchaseDetails.rs"]
+pub mod purchase_details;
+pub use purchase_details::*;
+
 #[path = "PushEvent.rs"]
 pub mod push_event;
 pub use push_event::*;
+
+#[path = "PushEventInit.rs"]
+pub mod push_event_init;
+pub use push_event_init::*;
 
 #[path = "PushManager.rs"]
 pub mod push_manager;
@@ -2773,6 +5257,10 @@ pub use push_manager::*;
 pub mod push_message_data;
 pub use push_message_data::*;
 
+#[path = "PushPermissionDescriptor.rs"]
+pub mod push_permission_descriptor;
+pub use push_permission_descriptor::*;
+
 #[path = "PushSubscription.rs"]
 pub mod push_subscription;
 pub use push_subscription::*;
@@ -2781,13 +5269,65 @@ pub use push_subscription::*;
 pub mod push_subscription_change_event;
 pub use push_subscription_change_event::*;
 
+#[path = "PushSubscriptionChangeEventInit.rs"]
+pub mod push_subscription_change_event_init;
+pub use push_subscription_change_event_init::*;
+
+#[path = "PushSubscriptionJSON.rs"]
+pub mod push_subscription_json;
+pub use push_subscription_json::*;
+
 #[path = "PushSubscriptionOptions.rs"]
 pub mod push_subscription_options;
 pub use push_subscription_options::*;
 
+#[path = "PushSubscriptionOptionsInit.rs"]
+pub mod push_subscription_options_init;
+pub use push_subscription_options_init::*;
+
+#[path = "QueryOptions.rs"]
+pub mod query_options;
+pub use query_options::*;
+
+#[path = "QueuingStrategy.rs"]
+pub mod queuing_strategy;
+pub use queuing_strategy::*;
+
+#[path = "QueuingStrategyInit.rs"]
+pub mod queuing_strategy_init;
+pub use queuing_strategy_init::*;
+
+#[path = "RTCAnswerOptions.rs"]
+pub mod rtc_answer_options;
+pub use rtc_answer_options::*;
+
+#[path = "RTCAudioPlayoutStats.rs"]
+pub mod rtc_audio_playout_stats;
+pub use rtc_audio_playout_stats::*;
+
+#[path = "RTCAudioSourceStats.rs"]
+pub mod rtc_audio_source_stats;
+pub use rtc_audio_source_stats::*;
+
 #[path = "RTCCertificate.rs"]
 pub mod rtc_certificate;
 pub use rtc_certificate::*;
+
+#[path = "RTCCertificateExpiration.rs"]
+pub mod rtc_certificate_expiration;
+pub use rtc_certificate_expiration::*;
+
+#[path = "RTCCertificateStats.rs"]
+pub mod rtc_certificate_stats;
+pub use rtc_certificate_stats::*;
+
+#[path = "RTCCodecStats.rs"]
+pub mod rtc_codec_stats;
+pub use rtc_codec_stats::*;
+
+#[path = "RTCConfiguration.rs"]
+pub mod rtc_configuration;
+pub use rtc_configuration::*;
 
 #[path = "RTCDTMFSender.rs"]
 pub mod rtcdtmf_sender;
@@ -2797,6 +5337,10 @@ pub use rtcdtmf_sender::*;
 pub mod rtcdtmf_tone_change_event;
 pub use rtcdtmf_tone_change_event::*;
 
+#[path = "RTCDTMFToneChangeEventInit.rs"]
+pub mod rtcdtmf_tone_change_event_init;
+pub use rtcdtmf_tone_change_event_init::*;
+
 #[path = "RTCDataChannel.rs"]
 pub mod rtc_data_channel;
 pub use rtc_data_channel::*;
@@ -2804,6 +5348,22 @@ pub use rtc_data_channel::*;
 #[path = "RTCDataChannelEvent.rs"]
 pub mod rtc_data_channel_event;
 pub use rtc_data_channel_event::*;
+
+#[path = "RTCDataChannelEventInit.rs"]
+pub mod rtc_data_channel_event_init;
+pub use rtc_data_channel_event_init::*;
+
+#[path = "RTCDataChannelInit.rs"]
+pub mod rtc_data_channel_init;
+pub use rtc_data_channel_init::*;
+
+#[path = "RTCDataChannelStats.rs"]
+pub mod rtc_data_channel_stats;
+pub use rtc_data_channel_stats::*;
+
+#[path = "RTCDtlsFingerprint.rs"]
+pub mod rtc_dtls_fingerprint;
+pub use rtc_dtls_fingerprint::*;
 
 #[path = "RTCDtlsTransport.rs"]
 pub mod rtc_dtls_transport;
@@ -2813,9 +5373,29 @@ pub use rtc_dtls_transport::*;
 pub mod rtc_encoded_audio_frame;
 pub use rtc_encoded_audio_frame::*;
 
+#[path = "RTCEncodedAudioFrameMetadata.rs"]
+pub mod rtc_encoded_audio_frame_metadata;
+pub use rtc_encoded_audio_frame_metadata::*;
+
+#[path = "RTCEncodedAudioFrameOptions.rs"]
+pub mod rtc_encoded_audio_frame_options;
+pub use rtc_encoded_audio_frame_options::*;
+
+#[path = "RTCEncodedFrameMetadata.rs"]
+pub mod rtc_encoded_frame_metadata;
+pub use rtc_encoded_frame_metadata::*;
+
 #[path = "RTCEncodedVideoFrame.rs"]
 pub mod rtc_encoded_video_frame;
 pub use rtc_encoded_video_frame::*;
+
+#[path = "RTCEncodedVideoFrameMetadata.rs"]
+pub mod rtc_encoded_video_frame_metadata;
+pub use rtc_encoded_video_frame_metadata::*;
+
+#[path = "RTCEncodedVideoFrameOptions.rs"]
+pub mod rtc_encoded_video_frame_options;
+pub use rtc_encoded_video_frame_options::*;
 
 #[path = "RTCError.rs"]
 pub mod rtc_error;
@@ -2825,13 +5405,45 @@ pub use rtc_error::*;
 pub mod rtc_error_event;
 pub use rtc_error_event::*;
 
+#[path = "RTCErrorEventInit.rs"]
+pub mod rtc_error_event_init;
+pub use rtc_error_event_init::*;
+
+#[path = "RTCErrorInit.rs"]
+pub mod rtc_error_init;
+pub use rtc_error_init::*;
+
 #[path = "RTCIceCandidate.rs"]
 pub mod rtc_ice_candidate;
 pub use rtc_ice_candidate::*;
 
+#[path = "RTCIceCandidateInit.rs"]
+pub mod rtc_ice_candidate_init;
+pub use rtc_ice_candidate_init::*;
+
 #[path = "RTCIceCandidatePair.rs"]
 pub mod rtc_ice_candidate_pair;
 pub use rtc_ice_candidate_pair::*;
+
+#[path = "RTCIceCandidatePairStats.rs"]
+pub mod rtc_ice_candidate_pair_stats;
+pub use rtc_ice_candidate_pair_stats::*;
+
+#[path = "RTCIceCandidateStats.rs"]
+pub mod rtc_ice_candidate_stats;
+pub use rtc_ice_candidate_stats::*;
+
+#[path = "RTCIceGatherOptions.rs"]
+pub mod rtc_ice_gather_options;
+pub use rtc_ice_gather_options::*;
+
+#[path = "RTCIceParameters.rs"]
+pub mod rtc_ice_parameters;
+pub use rtc_ice_parameters::*;
+
+#[path = "RTCIceServer.rs"]
+pub mod rtc_ice_server;
+pub use rtc_ice_server::*;
 
 #[path = "RTCIceTransport.rs"]
 pub mod rtc_ice_transport;
@@ -2841,13 +5453,61 @@ pub use rtc_ice_transport::*;
 pub mod rtc_identity_assertion;
 pub use rtc_identity_assertion::*;
 
+#[path = "RTCIdentityAssertionResult.rs"]
+pub mod rtc_identity_assertion_result;
+pub use rtc_identity_assertion_result::*;
+
+#[path = "RTCIdentityProvider.rs"]
+pub mod rtc_identity_provider;
+pub use rtc_identity_provider::*;
+
+#[path = "RTCIdentityProviderDetails.rs"]
+pub mod rtc_identity_provider_details;
+pub use rtc_identity_provider_details::*;
+
 #[path = "RTCIdentityProviderGlobalScope.rs"]
 pub mod rtc_identity_provider_global_scope;
 pub use rtc_identity_provider_global_scope::*;
 
+#[path = "RTCIdentityProviderOptions.rs"]
+pub mod rtc_identity_provider_options;
+pub use rtc_identity_provider_options::*;
+
 #[path = "RTCIdentityProviderRegistrar.rs"]
 pub mod rtc_identity_provider_registrar;
 pub use rtc_identity_provider_registrar::*;
+
+#[path = "RTCIdentityValidationResult.rs"]
+pub mod rtc_identity_validation_result;
+pub use rtc_identity_validation_result::*;
+
+#[path = "RTCInboundRtpStreamStats.rs"]
+pub mod rtc_inbound_rtp_stream_stats;
+pub use rtc_inbound_rtp_stream_stats::*;
+
+#[path = "RTCLocalIceCandidateInit.rs"]
+pub mod rtc_local_ice_candidate_init;
+pub use rtc_local_ice_candidate_init::*;
+
+#[path = "RTCLocalSessionDescriptionInit.rs"]
+pub mod rtc_local_session_description_init;
+pub use rtc_local_session_description_init::*;
+
+#[path = "RTCMediaSourceStats.rs"]
+pub mod rtc_media_source_stats;
+pub use rtc_media_source_stats::*;
+
+#[path = "RTCOfferAnswerOptions.rs"]
+pub mod rtc_offer_answer_options;
+pub use rtc_offer_answer_options::*;
+
+#[path = "RTCOfferOptions.rs"]
+pub mod rtc_offer_options;
+pub use rtc_offer_options::*;
+
+#[path = "RTCOutboundRtpStreamStats.rs"]
+pub mod rtc_outbound_rtp_stream_stats;
+pub use rtc_outbound_rtp_stream_stats::*;
 
 #[path = "RTCPeerConnection.rs"]
 pub mod rtc_peer_connection;
@@ -2857,9 +5517,77 @@ pub use rtc_peer_connection::*;
 pub mod rtc_peer_connection_ice_error_event;
 pub use rtc_peer_connection_ice_error_event::*;
 
+#[path = "RTCPeerConnectionIceErrorEventInit.rs"]
+pub mod rtc_peer_connection_ice_error_event_init;
+pub use rtc_peer_connection_ice_error_event_init::*;
+
 #[path = "RTCPeerConnectionIceEvent.rs"]
 pub mod rtc_peer_connection_ice_event;
 pub use rtc_peer_connection_ice_event::*;
+
+#[path = "RTCPeerConnectionIceEventInit.rs"]
+pub mod rtc_peer_connection_ice_event_init;
+pub use rtc_peer_connection_ice_event_init::*;
+
+#[path = "RTCPeerConnectionStats.rs"]
+pub mod rtc_peer_connection_stats;
+pub use rtc_peer_connection_stats::*;
+
+#[path = "RTCReceivedRtpStreamStats.rs"]
+pub mod rtc_received_rtp_stream_stats;
+pub use rtc_received_rtp_stream_stats::*;
+
+#[path = "RTCRemoteInboundRtpStreamStats.rs"]
+pub mod rtc_remote_inbound_rtp_stream_stats;
+pub use rtc_remote_inbound_rtp_stream_stats::*;
+
+#[path = "RTCRemoteOutboundRtpStreamStats.rs"]
+pub mod rtc_remote_outbound_rtp_stream_stats;
+pub use rtc_remote_outbound_rtp_stream_stats::*;
+
+#[path = "RTCRtcpParameters.rs"]
+pub mod rtc_rtcp_parameters;
+pub use rtc_rtcp_parameters::*;
+
+#[path = "RTCRtpCapabilities.rs"]
+pub mod rtc_rtp_capabilities;
+pub use rtc_rtp_capabilities::*;
+
+#[path = "RTCRtpCodec.rs"]
+pub mod rtc_rtp_codec;
+pub use rtc_rtp_codec::*;
+
+#[path = "RTCRtpCodecParameters.rs"]
+pub mod rtc_rtp_codec_parameters;
+pub use rtc_rtp_codec_parameters::*;
+
+#[path = "RTCRtpCodingParameters.rs"]
+pub mod rtc_rtp_coding_parameters;
+pub use rtc_rtp_coding_parameters::*;
+
+#[path = "RTCRtpContributingSource.rs"]
+pub mod rtc_rtp_contributing_source;
+pub use rtc_rtp_contributing_source::*;
+
+#[path = "RTCRtpEncodingParameters.rs"]
+pub mod rtc_rtp_encoding_parameters;
+pub use rtc_rtp_encoding_parameters::*;
+
+#[path = "RTCRtpHeaderExtensionCapability.rs"]
+pub mod rtc_rtp_header_extension_capability;
+pub use rtc_rtp_header_extension_capability::*;
+
+#[path = "RTCRtpHeaderExtensionParameters.rs"]
+pub mod rtc_rtp_header_extension_parameters;
+pub use rtc_rtp_header_extension_parameters::*;
+
+#[path = "RTCRtpParameters.rs"]
+pub mod rtc_rtp_parameters;
+pub use rtc_rtp_parameters::*;
+
+#[path = "RTCRtpReceiveParameters.rs"]
+pub mod rtc_rtp_receive_parameters;
+pub use rtc_rtp_receive_parameters::*;
 
 #[path = "RTCRtpReceiver.rs"]
 pub mod rtc_rtp_receiver;
@@ -2873,21 +5601,53 @@ pub use rtc_rtp_script_transform::*;
 pub mod rtc_rtp_script_transformer;
 pub use rtc_rtp_script_transformer::*;
 
+#[path = "RTCRtpSendParameters.rs"]
+pub mod rtc_rtp_send_parameters;
+pub use rtc_rtp_send_parameters::*;
+
 #[path = "RTCRtpSender.rs"]
 pub mod rtc_rtp_sender;
 pub use rtc_rtp_sender::*;
+
+#[path = "RTCRtpStreamStats.rs"]
+pub mod rtc_rtp_stream_stats;
+pub use rtc_rtp_stream_stats::*;
+
+#[path = "RTCRtpSynchronizationSource.rs"]
+pub mod rtc_rtp_synchronization_source;
+pub use rtc_rtp_synchronization_source::*;
 
 #[path = "RTCRtpTransceiver.rs"]
 pub mod rtc_rtp_transceiver;
 pub use rtc_rtp_transceiver::*;
 
+#[path = "RTCRtpTransceiverInit.rs"]
+pub mod rtc_rtp_transceiver_init;
+pub use rtc_rtp_transceiver_init::*;
+
 #[path = "RTCSctpTransport.rs"]
 pub mod rtc_sctp_transport;
 pub use rtc_sctp_transport::*;
 
+#[path = "RTCSentRtpStreamStats.rs"]
+pub mod rtc_sent_rtp_stream_stats;
+pub use rtc_sent_rtp_stream_stats::*;
+
 #[path = "RTCSessionDescription.rs"]
 pub mod rtc_session_description;
 pub use rtc_session_description::*;
+
+#[path = "RTCSessionDescriptionInit.rs"]
+pub mod rtc_session_description_init;
+pub use rtc_session_description_init::*;
+
+#[path = "RTCSetParameterOptions.rs"]
+pub mod rtc_set_parameter_options;
+pub use rtc_set_parameter_options::*;
+
+#[path = "RTCStats.rs"]
+pub mod rtc_stats;
+pub use rtc_stats::*;
 
 #[path = "RTCStatsReport.rs"]
 pub mod rtc_stats_report;
@@ -2897,9 +5657,21 @@ pub use rtc_stats_report::*;
 pub mod rtc_track_event;
 pub use rtc_track_event::*;
 
+#[path = "RTCTrackEventInit.rs"]
+pub mod rtc_track_event_init;
+pub use rtc_track_event_init::*;
+
 #[path = "RTCTransformEvent.rs"]
 pub mod rtc_transform_event;
 pub use rtc_transform_event::*;
+
+#[path = "RTCTransportStats.rs"]
+pub mod rtc_transport_stats;
+pub use rtc_transport_stats::*;
+
+#[path = "RTCVideoSourceStats.rs"]
+pub mod rtc_video_source_stats;
+pub use rtc_video_source_stats::*;
 
 #[path = "RadioNodeList.rs"]
 pub mod radio_node_list;
@@ -2908,6 +5680,10 @@ pub use radio_node_list::*;
 #[path = "Range.rs"]
 pub mod range;
 pub use range::*;
+
+#[path = "ReadOptions.rs"]
+pub mod read_options;
+pub use read_options::*;
 
 #[path = "ReadableByteStreamController.rs"]
 pub mod readable_byte_stream_controller;
@@ -2921,6 +5697,10 @@ pub use readable_stream::*;
 pub mod readable_stream_byob_reader;
 pub use readable_stream_byob_reader::*;
 
+#[path = "ReadableStreamBYOBReaderReadOptions.rs"]
+pub mod readable_stream_byob_reader_read_options;
+pub use readable_stream_byob_reader_read_options::*;
+
 #[path = "ReadableStreamBYOBRequest.rs"]
 pub mod readable_stream_byob_request;
 pub use readable_stream_byob_request::*;
@@ -2933,9 +5713,41 @@ pub use readable_stream_default_controller::*;
 pub mod readable_stream_default_reader;
 pub use readable_stream_default_reader::*;
 
+#[path = "ReadableStreamGetReaderOptions.rs"]
+pub mod readable_stream_get_reader_options;
+pub use readable_stream_get_reader_options::*;
+
+#[path = "ReadableStreamIteratorOptions.rs"]
+pub mod readable_stream_iterator_options;
+pub use readable_stream_iterator_options::*;
+
+#[path = "ReadableStreamReadResult.rs"]
+pub mod readable_stream_read_result;
+pub use readable_stream_read_result::*;
+
+#[path = "ReadableWritablePair.rs"]
+pub mod readable_writable_pair;
+pub use readable_writable_pair::*;
+
+#[path = "RealTimeContribution.rs"]
+pub mod real_time_contribution;
+pub use real_time_contribution::*;
+
 #[path = "RealTimeReporting.rs"]
 pub mod real_time_reporting;
 pub use real_time_reporting::*;
+
+#[path = "RegistrationOptions.rs"]
+pub mod registration_options;
+pub use registration_options::*;
+
+#[path = "RegistrationResponseJSON.rs"]
+pub mod registration_response_json;
+pub use registration_response_json::*;
+
+#[path = "RelatedApplication.rs"]
+pub mod related_application;
+pub use related_application::*;
 
 #[path = "RelativeOrientationSensor.rs"]
 pub mod relative_orientation_sensor;
@@ -2945,13 +5757,45 @@ pub use relative_orientation_sensor::*;
 pub mod remote_playback;
 pub use remote_playback::*;
 
+#[path = "Report.rs"]
+pub mod report;
+pub use report::*;
+
+#[path = "ReportBody.rs"]
+pub mod report_body;
+pub use report_body::*;
+
+#[path = "ReportResultBrowserSignals.rs"]
+pub mod report_result_browser_signals;
+pub use report_result_browser_signals::*;
+
+#[path = "ReportWinBrowserSignals.rs"]
+pub mod report_win_browser_signals;
+pub use report_win_browser_signals::*;
+
+#[path = "ReportingBrowserSignals.rs"]
+pub mod reporting_browser_signals;
+pub use reporting_browser_signals::*;
+
 #[path = "ReportingObserver.rs"]
 pub mod reporting_observer;
 pub use reporting_observer::*;
 
+#[path = "ReportingObserverOptions.rs"]
+pub mod reporting_observer_options;
+pub use reporting_observer_options::*;
+
 #[path = "Request.rs"]
 pub mod request;
 pub use request::*;
+
+#[path = "RequestDeviceOptions.rs"]
+pub mod request_device_options;
+pub use request_device_options::*;
+
+#[path = "RequestInit.rs"]
+pub mod request_init;
+pub use request_init::*;
 
 #[path = "ResizeObserver.rs"]
 pub mod resize_observer;
@@ -2961,6 +5805,10 @@ pub use resize_observer::*;
 pub mod resize_observer_entry;
 pub use resize_observer_entry::*;
 
+#[path = "ResizeObserverOptions.rs"]
+pub mod resize_observer_options;
+pub use resize_observer_options::*;
+
 #[path = "ResizeObserverSize.rs"]
 pub mod resize_observer_size;
 pub use resize_observer_size::*;
@@ -2968,6 +5816,10 @@ pub use resize_observer_size::*;
 #[path = "Response.rs"]
 pub mod response;
 pub use response::*;
+
+#[path = "ResponseInit.rs"]
+pub mod response_init;
+pub use response_init::*;
 
 #[path = "RestrictionTarget.rs"]
 pub mod restriction_target;
@@ -2977,6 +5829,62 @@ pub use restriction_target::*;
 pub mod rewriter;
 pub use rewriter::*;
 
+#[path = "RewriterCreateCoreOptions.rs"]
+pub mod rewriter_create_core_options;
+pub use rewriter_create_core_options::*;
+
+#[path = "RewriterCreateOptions.rs"]
+pub mod rewriter_create_options;
+pub use rewriter_create_options::*;
+
+#[path = "RewriterRewriteOptions.rs"]
+pub mod rewriter_rewrite_options;
+pub use rewriter_rewrite_options::*;
+
+#[path = "RouterCondition.rs"]
+pub mod router_condition;
+pub use router_condition::*;
+
+#[path = "RouterRule.rs"]
+pub mod router_rule;
+pub use router_rule::*;
+
+#[path = "RouterSourceDict.rs"]
+pub mod router_source_dict;
+pub use router_source_dict::*;
+
+#[path = "RsaHashedImportParams.rs"]
+pub mod rsa_hashed_import_params;
+pub use rsa_hashed_import_params::*;
+
+#[path = "RsaHashedKeyAlgorithm.rs"]
+pub mod rsa_hashed_key_algorithm;
+pub use rsa_hashed_key_algorithm::*;
+
+#[path = "RsaHashedKeyGenParams.rs"]
+pub mod rsa_hashed_key_gen_params;
+pub use rsa_hashed_key_gen_params::*;
+
+#[path = "RsaKeyAlgorithm.rs"]
+pub mod rsa_key_algorithm;
+pub use rsa_key_algorithm::*;
+
+#[path = "RsaKeyGenParams.rs"]
+pub mod rsa_key_gen_params;
+pub use rsa_key_gen_params::*;
+
+#[path = "RsaOaepParams.rs"]
+pub mod rsa_oaep_params;
+pub use rsa_oaep_params::*;
+
+#[path = "RsaOtherPrimesInfo.rs"]
+pub mod rsa_other_primes_info;
+pub use rsa_other_primes_info::*;
+
+#[path = "RsaPssParams.rs"]
+pub mod rsa_pss_params;
+pub use rsa_pss_params::*;
+
 #[path = "SFrameTransform.rs"]
 pub mod s_frame_transform;
 pub use s_frame_transform::*;
@@ -2984,6 +5892,14 @@ pub use s_frame_transform::*;
 #[path = "SFrameTransformErrorEvent.rs"]
 pub mod s_frame_transform_error_event;
 pub use s_frame_transform_error_event::*;
+
+#[path = "SFrameTransformErrorEventInit.rs"]
+pub mod s_frame_transform_error_event_init;
+pub use s_frame_transform_error_event_init::*;
+
+#[path = "SFrameTransformOptions.rs"]
+pub mod s_frame_transform_options;
+pub use s_frame_transform_options::*;
 
 #[path = "SVGAElement.rs"]
 pub mod svga_element;
@@ -3056,6 +5972,10 @@ pub use svg_animated_transform_list::*;
 #[path = "SVGAnimationElement.rs"]
 pub mod svg_animation_element;
 pub use svg_animation_element::*;
+
+#[path = "SVGBoundingBoxOptions.rs"]
+pub mod svg_bounding_box_options;
+pub use svg_bounding_box_options::*;
 
 #[path = "SVGCircleElement.rs"]
 pub mod svg_circle_element;
@@ -3257,6 +6177,10 @@ pub use svg_number::*;
 pub mod svg_number_list;
 pub use svg_number_list::*;
 
+#[path = "SVGPathDataSettings.rs"]
+pub mod svg_path_data_settings;
+pub use svg_path_data_settings::*;
+
 #[path = "SVGPathElement.rs"]
 pub mod svg_path_element;
 pub use svg_path_element::*;
@@ -3377,13 +6301,45 @@ pub use svg_view_element::*;
 pub mod sanitizer;
 pub use sanitizer::*;
 
+#[path = "SanitizerAttributeNamespace.rs"]
+pub mod sanitizer_attribute_namespace;
+pub use sanitizer_attribute_namespace::*;
+
+#[path = "SanitizerConfig.rs"]
+pub mod sanitizer_config;
+pub use sanitizer_config::*;
+
+#[path = "SanitizerElementNamespace.rs"]
+pub mod sanitizer_element_namespace;
+pub use sanitizer_element_namespace::*;
+
+#[path = "SanitizerElementNamespaceWithAttributes.rs"]
+pub mod sanitizer_element_namespace_with_attributes;
+pub use sanitizer_element_namespace_with_attributes::*;
+
+#[path = "SaveFilePickerOptions.rs"]
+pub mod save_file_picker_options;
+pub use save_file_picker_options::*;
+
 #[path = "Scheduler.rs"]
 pub mod scheduler;
 pub use scheduler::*;
 
+#[path = "SchedulerPostTaskOptions.rs"]
+pub mod scheduler_post_task_options;
+pub use scheduler_post_task_options::*;
+
 #[path = "Scheduling.rs"]
 pub mod scheduling;
 pub use scheduling::*;
+
+#[path = "ScoreAdOutput.rs"]
+pub mod score_ad_output;
+pub use score_ad_output::*;
+
+#[path = "ScoringBrowserSignals.rs"]
+pub mod scoring_browser_signals;
+pub use scoring_browser_signals::*;
 
 #[path = "Screen.rs"]
 pub mod screen;
@@ -3405,13 +6361,41 @@ pub use screen_orientation::*;
 pub mod script_processor_node;
 pub use script_processor_node::*;
 
+#[path = "ScriptingPolicyReportBody.rs"]
+pub mod scripting_policy_report_body;
+pub use scripting_policy_report_body::*;
+
+#[path = "ScrollIntoViewOptions.rs"]
+pub mod scroll_into_view_options;
+pub use scroll_into_view_options::*;
+
+#[path = "ScrollOptions.rs"]
+pub mod scroll_options;
+pub use scroll_options::*;
+
 #[path = "ScrollTimeline.rs"]
 pub mod scroll_timeline;
 pub use scroll_timeline::*;
 
+#[path = "ScrollTimelineOptions.rs"]
+pub mod scroll_timeline_options;
+pub use scroll_timeline_options::*;
+
+#[path = "ScrollToOptions.rs"]
+pub mod scroll_to_options;
+pub use scroll_to_options::*;
+
+#[path = "SecurePaymentConfirmationRequest.rs"]
+pub mod secure_payment_confirmation_request;
+pub use secure_payment_confirmation_request::*;
+
 #[path = "SecurityPolicyViolationEvent.rs"]
 pub mod security_policy_violation_event;
 pub use security_policy_violation_event::*;
+
+#[path = "SecurityPolicyViolationEventInit.rs"]
+pub mod security_policy_violation_event_init;
+pub use security_policy_violation_event_init::*;
 
 #[path = "Selection.rs"]
 pub mod selection;
@@ -3425,6 +6409,14 @@ pub use sensor::*;
 pub mod sensor_error_event;
 pub use sensor_error_event::*;
 
+#[path = "SensorErrorEventInit.rs"]
+pub mod sensor_error_event_init;
+pub use sensor_error_event_init::*;
+
+#[path = "SensorOptions.rs"]
+pub mod sensor_options;
+pub use sensor_options::*;
+
 #[path = "SequenceEffect.rs"]
 pub mod sequence_effect;
 pub use sequence_effect::*;
@@ -3433,9 +6425,33 @@ pub use sequence_effect::*;
 pub mod serial;
 pub use serial::*;
 
+#[path = "SerialInputSignals.rs"]
+pub mod serial_input_signals;
+pub use serial_input_signals::*;
+
+#[path = "SerialOptions.rs"]
+pub mod serial_options;
+pub use serial_options::*;
+
+#[path = "SerialOutputSignals.rs"]
+pub mod serial_output_signals;
+pub use serial_output_signals::*;
+
 #[path = "SerialPort.rs"]
 pub mod serial_port;
 pub use serial_port::*;
+
+#[path = "SerialPortFilter.rs"]
+pub mod serial_port_filter;
+pub use serial_port_filter::*;
+
+#[path = "SerialPortInfo.rs"]
+pub mod serial_port_info;
+pub use serial_port_info::*;
+
+#[path = "SerialPortRequestOptions.rs"]
+pub mod serial_port_request_options;
+pub use serial_port_request_options::*;
 
 #[path = "ServiceWorker.rs"]
 pub mod service_worker;
@@ -3453,6 +6469,14 @@ pub use service_worker_global_scope::*;
 pub mod service_worker_registration;
 pub use service_worker_registration::*;
 
+#[path = "SetHTMLOptions.rs"]
+pub mod set_html_options;
+pub use set_html_options::*;
+
+#[path = "SetHTMLUnsafeOptions.rs"]
+pub mod set_html_unsafe_options;
+pub use set_html_unsafe_options::*;
+
 #[path = "ShadowAnimation.rs"]
 pub mod shadow_animation;
 pub use shadow_animation::*;
@@ -3460,6 +6484,14 @@ pub use shadow_animation::*;
 #[path = "ShadowRoot.rs"]
 pub mod shadow_root;
 pub use shadow_root::*;
+
+#[path = "ShadowRootInit.rs"]
+pub mod shadow_root_init;
+pub use shadow_root_init::*;
+
+#[path = "ShareData.rs"]
+pub mod share_data;
+pub use share_data::*;
 
 #[path = "SharedStorage.rs"]
 pub mod shared_storage;
@@ -3481,9 +6513,29 @@ pub use shared_storage_delete_method::*;
 pub mod shared_storage_modifier_method;
 pub use shared_storage_modifier_method::*;
 
+#[path = "SharedStorageModifierMethodOptions.rs"]
+pub mod shared_storage_modifier_method_options;
+pub use shared_storage_modifier_method_options::*;
+
+#[path = "SharedStoragePrivateAggregationConfig.rs"]
+pub mod shared_storage_private_aggregation_config;
+pub use shared_storage_private_aggregation_config::*;
+
+#[path = "SharedStorageRunOperationMethodOptions.rs"]
+pub mod shared_storage_run_operation_method_options;
+pub use shared_storage_run_operation_method_options::*;
+
 #[path = "SharedStorageSetMethod.rs"]
 pub mod shared_storage_set_method;
 pub use shared_storage_set_method::*;
+
+#[path = "SharedStorageSetMethodOptions.rs"]
+pub mod shared_storage_set_method_options;
+pub use shared_storage_set_method_options::*;
+
+#[path = "SharedStorageUrlWithMetadata.rs"]
+pub mod shared_storage_url_with_metadata;
+pub use shared_storage_url_with_metadata::*;
 
 #[path = "SharedStorageWorklet.rs"]
 pub mod shared_storage_worklet;
@@ -3497,6 +6549,10 @@ pub use shared_storage_worklet_global_scope::*;
 pub mod shared_storage_worklet_navigator;
 pub use shared_storage_worklet_navigator::*;
 
+#[path = "SharedStorageWorkletOptions.rs"]
+pub mod shared_storage_worklet_options;
+pub use shared_storage_worklet_options::*;
+
 #[path = "SharedWorker.rs"]
 pub mod shared_worker;
 pub use shared_worker::*;
@@ -3505,9 +6561,21 @@ pub use shared_worker::*;
 pub mod shared_worker_global_scope;
 pub use shared_worker_global_scope::*;
 
+#[path = "SharedWorkerOptions.rs"]
+pub mod shared_worker_options;
+pub use shared_worker_options::*;
+
+#[path = "ShowPopoverOptions.rs"]
+pub mod show_popover_options;
+pub use show_popover_options::*;
+
 #[path = "SnapEvent.rs"]
 pub mod snap_event;
 pub use snap_event::*;
+
+#[path = "SnapEventInit.rs"]
+pub mod snap_event_init;
+pub use snap_event_init::*;
 
 #[path = "SourceBuffer.rs"]
 pub mod source_buffer;
@@ -3516,6 +6584,10 @@ pub use source_buffer::*;
 #[path = "SourceBufferList.rs"]
 pub mod source_buffer_list;
 pub use source_buffer_list::*;
+
+#[path = "SpatialNavigationSearchOptions.rs"]
+pub mod spatial_navigation_search_options;
+pub use spatial_navigation_search_options::*;
 
 #[path = "SpeechGrammar.rs"]
 pub mod speech_grammar;
@@ -3537,9 +6609,21 @@ pub use speech_recognition_alternative::*;
 pub mod speech_recognition_error_event;
 pub use speech_recognition_error_event::*;
 
+#[path = "SpeechRecognitionErrorEventInit.rs"]
+pub mod speech_recognition_error_event_init;
+pub use speech_recognition_error_event_init::*;
+
 #[path = "SpeechRecognitionEvent.rs"]
 pub mod speech_recognition_event;
 pub use speech_recognition_event::*;
+
+#[path = "SpeechRecognitionEventInit.rs"]
+pub mod speech_recognition_event_init;
+pub use speech_recognition_event_init::*;
+
+#[path = "SpeechRecognitionOptions.rs"]
+pub mod speech_recognition_options;
+pub use speech_recognition_options::*;
 
 #[path = "SpeechRecognitionPhrase.rs"]
 pub mod speech_recognition_phrase;
@@ -3565,9 +6649,17 @@ pub use speech_synthesis::*;
 pub mod speech_synthesis_error_event;
 pub use speech_synthesis_error_event::*;
 
+#[path = "SpeechSynthesisErrorEventInit.rs"]
+pub mod speech_synthesis_error_event_init;
+pub use speech_synthesis_error_event_init::*;
+
 #[path = "SpeechSynthesisEvent.rs"]
 pub mod speech_synthesis_event;
 pub use speech_synthesis_event::*;
+
+#[path = "SpeechSynthesisEventInit.rs"]
+pub mod speech_synthesis_event_init;
+pub use speech_synthesis_event_init::*;
 
 #[path = "SpeechSynthesisUtterance.rs"]
 pub mod speech_synthesis_utterance;
@@ -3577,13 +6669,25 @@ pub use speech_synthesis_utterance::*;
 pub mod speech_synthesis_voice;
 pub use speech_synthesis_voice::*;
 
+#[path = "StartViewTransitionOptions.rs"]
+pub mod start_view_transition_options;
+pub use start_view_transition_options::*;
+
 #[path = "StaticRange.rs"]
 pub mod static_range;
 pub use static_range::*;
 
+#[path = "StaticRangeInit.rs"]
+pub mod static_range_init;
+pub use static_range_init::*;
+
 #[path = "StereoPannerNode.rs"]
 pub mod stereo_panner_node;
 pub use stereo_panner_node::*;
+
+#[path = "StereoPannerOptions.rs"]
+pub mod stereo_panner_options;
+pub use stereo_panner_options::*;
 
 #[path = "Storage.rs"]
 pub mod storage;
@@ -3593,6 +6697,10 @@ pub use storage::*;
 pub mod storage_access_handle;
 pub use storage_access_handle::*;
 
+#[path = "StorageAccessTypes.rs"]
+pub mod storage_access_types;
+pub use storage_access_types::*;
+
 #[path = "StorageBucket.rs"]
 pub mod storage_bucket;
 pub use storage_bucket::*;
@@ -3601,13 +6709,37 @@ pub use storage_bucket::*;
 pub mod storage_bucket_manager;
 pub use storage_bucket_manager::*;
 
+#[path = "StorageBucketOptions.rs"]
+pub mod storage_bucket_options;
+pub use storage_bucket_options::*;
+
+#[path = "StorageEstimate.rs"]
+pub mod storage_estimate;
+pub use storage_estimate::*;
+
 #[path = "StorageEvent.rs"]
 pub mod storage_event;
 pub use storage_event::*;
 
+#[path = "StorageEventInit.rs"]
+pub mod storage_event_init;
+pub use storage_event_init::*;
+
+#[path = "StorageInterestGroup.rs"]
+pub mod storage_interest_group;
+pub use storage_interest_group::*;
+
 #[path = "StorageManager.rs"]
 pub mod storage_manager;
 pub use storage_manager::*;
+
+#[path = "StreamPipeOptions.rs"]
+pub mod stream_pipe_options;
+pub use stream_pipe_options::*;
+
+#[path = "StructuredSerializeOptions.rs"]
+pub mod structured_serialize_options;
+pub use structured_serialize_options::*;
 
 #[path = "StylePropertyMap.rs"]
 pub mod style_property_map;
@@ -3629,9 +6761,21 @@ pub use style_sheet_list::*;
 pub mod submit_event;
 pub use submit_event::*;
 
+#[path = "SubmitEventInit.rs"]
+pub mod submit_event_init;
+pub use submit_event_init::*;
+
+#[path = "SubscribeOptions.rs"]
+pub mod subscribe_options;
+pub use subscribe_options::*;
+
 #[path = "Subscriber.rs"]
 pub mod subscriber;
 pub use subscriber::*;
+
+#[path = "SubscriptionObserver.rs"]
+pub mod subscription_observer;
+pub use subscription_observer::*;
 
 #[path = "SubtleCrypto.rs"]
 pub mod subtle_crypto;
@@ -3641,9 +6785,29 @@ pub use subtle_crypto::*;
 pub mod summarizer;
 pub use summarizer::*;
 
+#[path = "SummarizerCreateCoreOptions.rs"]
+pub mod summarizer_create_core_options;
+pub use summarizer_create_core_options::*;
+
+#[path = "SummarizerCreateOptions.rs"]
+pub mod summarizer_create_options;
+pub use summarizer_create_options::*;
+
+#[path = "SummarizerSummarizeOptions.rs"]
+pub mod summarizer_summarize_options;
+pub use summarizer_summarize_options::*;
+
+#[path = "SvcOutputMetadata.rs"]
+pub mod svc_output_metadata;
+pub use svc_output_metadata::*;
+
 #[path = "SyncEvent.rs"]
 pub mod sync_event;
 pub use sync_event::*;
+
+#[path = "SyncEventInit.rs"]
+pub mod sync_event_init;
+pub use sync_event_init::*;
 
 #[path = "SyncManager.rs"]
 pub mod sync_manager;
@@ -3653,6 +6817,10 @@ pub use sync_manager::*;
 pub mod table;
 pub use table::*;
 
+#[path = "TableDescriptor.rs"]
+pub mod table_descriptor;
+pub use table_descriptor::*;
+
 #[path = "TaskAttributionTiming.rs"]
 pub mod task_attribution_timing;
 pub use task_attribution_timing::*;
@@ -3661,13 +6829,25 @@ pub use task_attribution_timing::*;
 pub mod task_controller;
 pub use task_controller::*;
 
+#[path = "TaskControllerInit.rs"]
+pub mod task_controller_init;
+pub use task_controller_init::*;
+
 #[path = "TaskPriorityChangeEvent.rs"]
 pub mod task_priority_change_event;
 pub use task_priority_change_event::*;
 
+#[path = "TaskPriorityChangeEventInit.rs"]
+pub mod task_priority_change_event_init;
+pub use task_priority_change_event_init::*;
+
 #[path = "TaskSignal.rs"]
 pub mod task_signal;
 pub use task_signal::*;
+
+#[path = "TaskSignalAnyInit.rs"]
+pub mod task_signal_any_init;
+pub use task_signal_any_init::*;
 
 #[path = "TestUtils.rs"]
 pub mod test_utils;
@@ -3677,9 +6857,17 @@ pub use test_utils::*;
 pub mod text;
 pub use text::*;
 
+#[path = "TextDecodeOptions.rs"]
+pub mod text_decode_options;
+pub use text_decode_options::*;
+
 #[path = "TextDecoder.rs"]
 pub mod text_decoder;
 pub use text_decoder::*;
+
+#[path = "TextDecoderOptions.rs"]
+pub mod text_decoder_options;
+pub use text_decoder_options::*;
 
 #[path = "TextDecoderStream.rs"]
 pub mod text_decoder_stream;
@@ -3693,6 +6881,10 @@ pub use text_detector::*;
 pub mod text_encoder;
 pub use text_encoder::*;
 
+#[path = "TextEncoderEncodeIntoResult.rs"]
+pub mod text_encoder_encode_into_result;
+pub use text_encoder_encode_into_result::*;
+
 #[path = "TextEncoderStream.rs"]
 pub mod text_encoder_stream;
 pub use text_encoder_stream::*;
@@ -3705,9 +6897,17 @@ pub use text_event::*;
 pub mod text_format;
 pub use text_format::*;
 
+#[path = "TextFormatInit.rs"]
+pub mod text_format_init;
+pub use text_format_init::*;
+
 #[path = "TextFormatUpdateEvent.rs"]
 pub mod text_format_update_event;
 pub use text_format_update_event::*;
+
+#[path = "TextFormatUpdateEventInit.rs"]
+pub mod text_format_update_event_init;
+pub use text_format_update_event_init::*;
 
 #[path = "TextMetrics.rs"]
 pub mod text_metrics;
@@ -3733,6 +6933,10 @@ pub use text_track_list::*;
 pub mod text_update_event;
 pub use text_update_event::*;
 
+#[path = "TextUpdateEventInit.rs"]
+pub mod text_update_event_init;
+pub use text_update_event_init::*;
+
 #[path = "TimeEvent.rs"]
 pub mod time_event;
 pub use time_event::*;
@@ -3741,9 +6945,29 @@ pub use time_event::*;
 pub mod time_ranges;
 pub use time_ranges::*;
 
+#[path = "TimelineRangeOffset.rs"]
+pub mod timeline_range_offset;
+pub use timeline_range_offset::*;
+
 #[path = "ToggleEvent.rs"]
 pub mod toggle_event;
 pub use toggle_event::*;
+
+#[path = "ToggleEventInit.rs"]
+pub mod toggle_event_init;
+pub use toggle_event_init::*;
+
+#[path = "TogglePopoverOptions.rs"]
+pub mod toggle_popover_options;
+pub use toggle_popover_options::*;
+
+#[path = "TokenBinding.rs"]
+pub mod token_binding;
+pub use token_binding::*;
+
+#[path = "TopLevelStorageAccessPermissionDescriptor.rs"]
+pub mod top_level_storage_access_permission_descriptor;
+pub use top_level_storage_access_permission_descriptor::*;
 
 #[path = "Touch.rs"]
 pub mod touch;
@@ -3753,6 +6977,14 @@ pub use touch::*;
 pub mod touch_event;
 pub use touch_event::*;
 
+#[path = "TouchEventInit.rs"]
+pub mod touch_event_init;
+pub use touch_event_init::*;
+
+#[path = "TouchInit.rs"]
+pub mod touch_init;
+pub use touch_init::*;
+
 #[path = "TouchList.rs"]
 pub mod touch_list;
 pub use touch_list::*;
@@ -3760,6 +6992,10 @@ pub use touch_list::*;
 #[path = "TrackEvent.rs"]
 pub mod track_event;
 pub use track_event::*;
+
+#[path = "TrackEventInit.rs"]
+pub mod track_event_init;
+pub use track_event_init::*;
 
 #[path = "TransformStream.rs"]
 pub mod transform_stream;
@@ -3769,13 +7005,33 @@ pub use transform_stream::*;
 pub mod transform_stream_default_controller;
 pub use transform_stream_default_controller::*;
 
+#[path = "Transformer.rs"]
+pub mod transformer;
+pub use transformer::*;
+
 #[path = "TransitionEvent.rs"]
 pub mod transition_event;
 pub use transition_event::*;
 
+#[path = "TransitionEventInit.rs"]
+pub mod transition_event_init;
+pub use transition_event_init::*;
+
 #[path = "Translator.rs"]
 pub mod translator;
 pub use translator::*;
+
+#[path = "TranslatorCreateCoreOptions.rs"]
+pub mod translator_create_core_options;
+pub use translator_create_core_options::*;
+
+#[path = "TranslatorCreateOptions.rs"]
+pub mod translator_create_options;
+pub use translator_create_options::*;
+
+#[path = "TranslatorTranslateOptions.rs"]
+pub mod translator_translate_options;
+pub use translator_translate_options::*;
 
 #[path = "TreeWalker.rs"]
 pub mod tree_walker;
@@ -3801,9 +7057,29 @@ pub use trusted_type_policy::*;
 pub mod trusted_type_policy_factory;
 pub use trusted_type_policy_factory::*;
 
+#[path = "TrustedTypePolicyOptions.rs"]
+pub mod trusted_type_policy_options;
+pub use trusted_type_policy_options::*;
+
+#[path = "UADataValues.rs"]
+pub mod ua_data_values;
+pub use ua_data_values::*;
+
+#[path = "UALowEntropyJSON.rs"]
+pub mod ua_low_entropy_json;
+pub use ua_low_entropy_json::*;
+
 #[path = "UIEvent.rs"]
 pub mod ui_event;
 pub use ui_event::*;
+
+#[path = "UIEventInit.rs"]
+pub mod ui_event_init;
+pub use ui_event_init::*;
+
+#[path = "ULongRange.rs"]
+pub mod u_long_range;
+pub use u_long_range::*;
 
 #[path = "URL.rs"]
 pub mod url;
@@ -3812,6 +7088,22 @@ pub use url::*;
 #[path = "URLPattern.rs"]
 pub mod url_pattern;
 pub use url_pattern::*;
+
+#[path = "URLPatternComponentResult.rs"]
+pub mod url_pattern_component_result;
+pub use url_pattern_component_result::*;
+
+#[path = "URLPatternInit.rs"]
+pub mod url_pattern_init;
+pub use url_pattern_init::*;
+
+#[path = "URLPatternOptions.rs"]
+pub mod url_pattern_options;
+pub use url_pattern_options::*;
+
+#[path = "URLPatternResult.rs"]
+pub mod url_pattern_result;
+pub use url_pattern_result::*;
 
 #[path = "URLSearchParams.rs"]
 pub mod url_search_params;
@@ -3825,6 +7117,10 @@ pub use usb::*;
 pub mod usb_alternate_interface;
 pub use usb_alternate_interface::*;
 
+#[path = "USBBlocklistEntry.rs"]
+pub mod usb_blocklist_entry;
+pub use usb_blocklist_entry::*;
+
 #[path = "USBConfiguration.rs"]
 pub mod usb_configuration;
 pub use usb_configuration::*;
@@ -3833,9 +7129,25 @@ pub use usb_configuration::*;
 pub mod usb_connection_event;
 pub use usb_connection_event::*;
 
+#[path = "USBConnectionEventInit.rs"]
+pub mod usb_connection_event_init;
+pub use usb_connection_event_init::*;
+
+#[path = "USBControlTransferParameters.rs"]
+pub mod usb_control_transfer_parameters;
+pub use usb_control_transfer_parameters::*;
+
 #[path = "USBDevice.rs"]
 pub mod usb_device;
 pub use usb_device::*;
+
+#[path = "USBDeviceFilter.rs"]
+pub mod usb_device_filter;
+pub use usb_device_filter::*;
+
+#[path = "USBDeviceRequestOptions.rs"]
+pub mod usb_device_request_options;
+pub use usb_device_request_options::*;
 
 #[path = "USBEndpoint.rs"]
 pub mod usb_endpoint;
@@ -3869,13 +7181,33 @@ pub use usb_isochronous_out_transfer_result::*;
 pub mod usb_out_transfer_result;
 pub use usb_out_transfer_result::*;
 
+#[path = "USBPermissionDescriptor.rs"]
+pub mod usb_permission_descriptor;
+pub use usb_permission_descriptor::*;
+
 #[path = "USBPermissionResult.rs"]
 pub mod usb_permission_result;
 pub use usb_permission_result::*;
 
+#[path = "USBPermissionStorage.rs"]
+pub mod usb_permission_storage;
+pub use usb_permission_storage::*;
+
 #[path = "UncalibratedMagnetometer.rs"]
 pub mod uncalibrated_magnetometer;
 pub use uncalibrated_magnetometer::*;
+
+#[path = "UnderlyingSink.rs"]
+pub mod underlying_sink;
+pub use underlying_sink::*;
+
+#[path = "UnderlyingSource.rs"]
+pub mod underlying_source;
+pub use underlying_source::*;
+
+#[path = "UnknownCredentialOptions.rs"]
+pub mod unknown_credential_options;
+pub use unknown_credential_options::*;
 
 #[path = "UserActivation.rs"]
 pub mod user_activation;
@@ -3893,25 +7225,105 @@ pub use vtt_region::*;
 pub mod validity_state;
 pub use validity_state::*;
 
+#[path = "ValidityStateFlags.rs"]
+pub mod validity_state_flags;
+pub use validity_state_flags::*;
+
 #[path = "ValueEvent.rs"]
 pub mod value_event;
 pub use value_event::*;
+
+#[path = "ValueEventInit.rs"]
+pub mod value_event_init;
+pub use value_event_init::*;
 
 #[path = "VideoColorSpace.rs"]
 pub mod video_color_space;
 pub use video_color_space::*;
 
+#[path = "VideoColorSpaceInit.rs"]
+pub mod video_color_space_init;
+pub use video_color_space_init::*;
+
+#[path = "VideoConfiguration.rs"]
+pub mod video_configuration;
+pub use video_configuration::*;
+
 #[path = "VideoDecoder.rs"]
 pub mod video_decoder;
 pub use video_decoder::*;
+
+#[path = "VideoDecoderConfig.rs"]
+pub mod video_decoder_config;
+pub use video_decoder_config::*;
+
+#[path = "VideoDecoderInit.rs"]
+pub mod video_decoder_init;
+pub use video_decoder_init::*;
+
+#[path = "VideoDecoderSupport.rs"]
+pub mod video_decoder_support;
+pub use video_decoder_support::*;
 
 #[path = "VideoEncoder.rs"]
 pub mod video_encoder;
 pub use video_encoder::*;
 
+#[path = "VideoEncoderConfig.rs"]
+pub mod video_encoder_config;
+pub use video_encoder_config::*;
+
+#[path = "VideoEncoderEncodeOptions.rs"]
+pub mod video_encoder_encode_options;
+pub use video_encoder_encode_options::*;
+
+#[path = "VideoEncoderEncodeOptionsForAv1.rs"]
+pub mod video_encoder_encode_options_for_av1;
+pub use video_encoder_encode_options_for_av1::*;
+
+#[path = "VideoEncoderEncodeOptionsForAvc.rs"]
+pub mod video_encoder_encode_options_for_avc;
+pub use video_encoder_encode_options_for_avc::*;
+
+#[path = "VideoEncoderEncodeOptionsForHevc.rs"]
+pub mod video_encoder_encode_options_for_hevc;
+pub use video_encoder_encode_options_for_hevc::*;
+
+#[path = "VideoEncoderEncodeOptionsForVp9.rs"]
+pub mod video_encoder_encode_options_for_vp9;
+pub use video_encoder_encode_options_for_vp9::*;
+
+#[path = "VideoEncoderInit.rs"]
+pub mod video_encoder_init;
+pub use video_encoder_init::*;
+
+#[path = "VideoEncoderSupport.rs"]
+pub mod video_encoder_support;
+pub use video_encoder_support::*;
+
 #[path = "VideoFrame.rs"]
 pub mod video_frame;
 pub use video_frame::*;
+
+#[path = "VideoFrameBufferInit.rs"]
+pub mod video_frame_buffer_init;
+pub use video_frame_buffer_init::*;
+
+#[path = "VideoFrameCallbackMetadata.rs"]
+pub mod video_frame_callback_metadata;
+pub use video_frame_callback_metadata::*;
+
+#[path = "VideoFrameCopyToOptions.rs"]
+pub mod video_frame_copy_to_options;
+pub use video_frame_copy_to_options::*;
+
+#[path = "VideoFrameInit.rs"]
+pub mod video_frame_init;
+pub use video_frame_init::*;
+
+#[path = "VideoFrameMetadata.rs"]
+pub mod video_frame_metadata;
+pub use video_frame_metadata::*;
 
 #[path = "VideoPlaybackQuality.rs"]
 pub mod video_playback_quality;
@@ -3932,6 +7344,10 @@ pub use video_track_list::*;
 #[path = "ViewTimeline.rs"]
 pub mod view_timeline;
 pub use view_timeline::*;
+
+#[path = "ViewTimelineOptions.rs"]
+pub mod view_timeline_options;
+pub use view_timeline_options::*;
 
 #[path = "ViewTransition.rs"]
 pub mod view_transition;
@@ -4041,13 +7457,25 @@ pub use wake_lock::*;
 pub mod wake_lock_sentinel;
 pub use wake_lock_sentinel::*;
 
+#[path = "WatchAdvertisementsOptions.rs"]
+pub mod watch_advertisements_options;
+pub use watch_advertisements_options::*;
+
 #[path = "WaveShaperNode.rs"]
 pub mod wave_shaper_node;
 pub use wave_shaper_node::*;
 
+#[path = "WaveShaperOptions.rs"]
+pub mod wave_shaper_options;
+pub use wave_shaper_options::*;
+
 #[path = "WebAssembly.rs"]
 pub mod web_assembly;
 pub use web_assembly::*;
+
+#[path = "WebAssemblyInstantiatedSource.rs"]
+pub mod web_assembly_instantiated_source;
+pub use web_assembly_instantiated_source::*;
 
 #[path = "WebGL2RenderingContext.rs"]
 pub mod web_gl2_rendering_context;
@@ -4061,9 +7489,17 @@ pub use web_gl_active_info::*;
 pub mod web_gl_buffer;
 pub use web_gl_buffer::*;
 
+#[path = "WebGLContextAttributes.rs"]
+pub mod web_gl_context_attributes;
+pub use web_gl_context_attributes::*;
+
 #[path = "WebGLContextEvent.rs"]
 pub mod web_gl_context_event;
 pub use web_gl_context_event::*;
+
+#[path = "WebGLContextEventInit.rs"]
+pub mod web_gl_context_event_init;
+pub use web_gl_context_event_init::*;
 
 #[path = "WebGLFramebuffer.rs"]
 pub mod web_gl_framebuffer;
@@ -4141,9 +7577,21 @@ pub use web_transport::*;
 pub mod web_transport_bidirectional_stream;
 pub use web_transport_bidirectional_stream::*;
 
+#[path = "WebTransportCloseInfo.rs"]
+pub mod web_transport_close_info;
+pub use web_transport_close_info::*;
+
+#[path = "WebTransportConnectionStats.rs"]
+pub mod web_transport_connection_stats;
+pub use web_transport_connection_stats::*;
+
 #[path = "WebTransportDatagramDuplexStream.rs"]
 pub mod web_transport_datagram_duplex_stream;
 pub use web_transport_datagram_duplex_stream::*;
+
+#[path = "WebTransportDatagramStats.rs"]
+pub mod web_transport_datagram_stats;
+pub use web_transport_datagram_stats::*;
 
 #[path = "WebTransportDatagramsWritable.rs"]
 pub mod web_transport_datagrams_writable;
@@ -4153,17 +7601,45 @@ pub use web_transport_datagrams_writable::*;
 pub mod web_transport_error;
 pub use web_transport_error::*;
 
+#[path = "WebTransportErrorOptions.rs"]
+pub mod web_transport_error_options;
+pub use web_transport_error_options::*;
+
+#[path = "WebTransportHash.rs"]
+pub mod web_transport_hash;
+pub use web_transport_hash::*;
+
+#[path = "WebTransportOptions.rs"]
+pub mod web_transport_options;
+pub use web_transport_options::*;
+
 #[path = "WebTransportReceiveStream.rs"]
 pub mod web_transport_receive_stream;
 pub use web_transport_receive_stream::*;
+
+#[path = "WebTransportReceiveStreamStats.rs"]
+pub mod web_transport_receive_stream_stats;
+pub use web_transport_receive_stream_stats::*;
 
 #[path = "WebTransportSendGroup.rs"]
 pub mod web_transport_send_group;
 pub use web_transport_send_group::*;
 
+#[path = "WebTransportSendOptions.rs"]
+pub mod web_transport_send_options;
+pub use web_transport_send_options::*;
+
 #[path = "WebTransportSendStream.rs"]
 pub mod web_transport_send_stream;
 pub use web_transport_send_stream::*;
+
+#[path = "WebTransportSendStreamOptions.rs"]
+pub mod web_transport_send_stream_options;
+pub use web_transport_send_stream_options::*;
+
+#[path = "WebTransportSendStreamStats.rs"]
+pub mod web_transport_send_stream_stats;
+pub use web_transport_send_stream_stats::*;
 
 #[path = "WebTransportWriter.rs"]
 pub mod web_transport_writer;
@@ -4172,6 +7648,10 @@ pub use web_transport_writer::*;
 #[path = "WheelEvent.rs"]
 pub mod wheel_event;
 pub use wheel_event::*;
+
+#[path = "WheelEventInit.rs"]
+pub mod wheel_event_init;
+pub use wheel_event_init::*;
 
 #[path = "Window.rs"]
 pub mod window;
@@ -4189,6 +7669,14 @@ pub use window_controls_overlay::*;
 pub mod window_controls_overlay_geometry_change_event;
 pub use window_controls_overlay_geometry_change_event::*;
 
+#[path = "WindowControlsOverlayGeometryChangeEventInit.rs"]
+pub mod window_controls_overlay_geometry_change_event_init;
+pub use window_controls_overlay_geometry_change_event_init::*;
+
+#[path = "WindowPostMessageOptions.rs"]
+pub mod window_post_message_options;
+pub use window_post_message_options::*;
+
 #[path = "Worker.rs"]
 pub mod worker;
 pub use worker::*;
@@ -4204,6 +7692,10 @@ pub use worker_location::*;
 #[path = "WorkerNavigator.rs"]
 pub mod worker_navigator;
 pub use worker_navigator::*;
+
+#[path = "WorkerOptions.rs"]
+pub mod worker_options;
+pub use worker_options::*;
 
 #[path = "Worklet.rs"]
 pub mod worklet;
@@ -4225,6 +7717,10 @@ pub use worklet_global_scope::*;
 pub mod worklet_group_effect;
 pub use worklet_group_effect::*;
 
+#[path = "WorkletOptions.rs"]
+pub mod worklet_options;
+pub use worklet_options::*;
+
 #[path = "WritableStream.rs"]
 pub mod writable_stream;
 pub use writable_stream::*;
@@ -4237,9 +7733,25 @@ pub use writable_stream_default_controller::*;
 pub mod writable_stream_default_writer;
 pub use writable_stream_default_writer::*;
 
+#[path = "WriteParams.rs"]
+pub mod write_params;
+pub use write_params::*;
+
 #[path = "Writer.rs"]
 pub mod writer;
 pub use writer::*;
+
+#[path = "WriterCreateCoreOptions.rs"]
+pub mod writer_create_core_options;
+pub use writer_create_core_options::*;
+
+#[path = "WriterCreateOptions.rs"]
+pub mod writer_create_options;
+pub use writer_create_options::*;
+
+#[path = "WriterWriteOptions.rs"]
+pub mod writer_write_options;
+pub use writer_write_options::*;
 
 #[path = "XMLDocument.rs"]
 pub mod xml_document;
@@ -4286,8 +7798,8 @@ pub mod xr_bounded_reference_space;
 pub use xr_bounded_reference_space::*;
 
 #[path = "XRCPUDepthInformation.rs"]
-pub mod xr_cpu_depth_information;
-pub use xr_cpu_depth_information::*;
+pub mod xrcpu_depth_information;
+pub use xrcpu_depth_information::*;
 
 #[path = "XRCamera.rs"]
 pub mod xr_camera;
@@ -4301,17 +7813,41 @@ pub use xr_composition_layer::*;
 pub mod xr_cube_layer;
 pub use xr_cube_layer::*;
 
+#[path = "XRCubeLayerInit.rs"]
+pub mod xr_cube_layer_init;
+pub use xr_cube_layer_init::*;
+
 #[path = "XRCylinderLayer.rs"]
 pub mod xr_cylinder_layer;
 pub use xr_cylinder_layer::*;
+
+#[path = "XRCylinderLayerInit.rs"]
+pub mod xr_cylinder_layer_init;
+pub use xr_cylinder_layer_init::*;
+
+#[path = "XRDOMOverlayInit.rs"]
+pub mod xrdom_overlay_init;
+pub use xrdom_overlay_init::*;
+
+#[path = "XRDOMOverlayState.rs"]
+pub mod xrdom_overlay_state;
+pub use xrdom_overlay_state::*;
 
 #[path = "XRDepthInformation.rs"]
 pub mod xr_depth_information;
 pub use xr_depth_information::*;
 
+#[path = "XRDepthStateInit.rs"]
+pub mod xr_depth_state_init;
+pub use xr_depth_state_init::*;
+
 #[path = "XREquirectLayer.rs"]
 pub mod xr_equirect_layer;
 pub use xr_equirect_layer::*;
+
+#[path = "XREquirectLayerInit.rs"]
+pub mod xr_equirect_layer_init;
+pub use xr_equirect_layer_init::*;
 
 #[path = "XRFrame.rs"]
 pub mod xr_frame;
@@ -4320,6 +7856,10 @@ pub use xr_frame::*;
 #[path = "XRHand.rs"]
 pub mod xr_hand;
 pub use xr_hand::*;
+
+#[path = "XRHitTestOptionsInit.rs"]
+pub mod xr_hit_test_options_init;
+pub use xr_hit_test_options_init::*;
 
 #[path = "XRHitTestResult.rs"]
 pub mod xr_hit_test_result;
@@ -4341,9 +7881,17 @@ pub use xr_input_source_array::*;
 pub mod xr_input_source_event;
 pub use xr_input_source_event::*;
 
+#[path = "XRInputSourceEventInit.rs"]
+pub mod xr_input_source_event_init;
+pub use xr_input_source_event_init::*;
+
 #[path = "XRInputSourcesChangeEvent.rs"]
 pub mod xr_input_sources_change_event;
 pub use xr_input_sources_change_event::*;
+
+#[path = "XRInputSourcesChangeEventInit.rs"]
+pub mod xr_input_sources_change_event_init;
+pub use xr_input_sources_change_event_init::*;
 
 #[path = "XRJointPose.rs"]
 pub mod xr_joint_pose;
@@ -4361,6 +7909,14 @@ pub use xr_layer::*;
 pub mod xr_layer_event;
 pub use xr_layer_event::*;
 
+#[path = "XRLayerEventInit.rs"]
+pub mod xr_layer_event_init;
+pub use xr_layer_event_init::*;
+
+#[path = "XRLayerInit.rs"]
+pub mod xr_layer_init;
+pub use xr_layer_init::*;
+
 #[path = "XRLightEstimate.rs"]
 pub mod xr_light_estimate;
 pub use xr_light_estimate::*;
@@ -4369,9 +7925,29 @@ pub use xr_light_estimate::*;
 pub mod xr_light_probe;
 pub use xr_light_probe::*;
 
+#[path = "XRLightProbeInit.rs"]
+pub mod xr_light_probe_init;
+pub use xr_light_probe_init::*;
+
 #[path = "XRMediaBinding.rs"]
 pub mod xr_media_binding;
 pub use xr_media_binding::*;
+
+#[path = "XRMediaCylinderLayerInit.rs"]
+pub mod xr_media_cylinder_layer_init;
+pub use xr_media_cylinder_layer_init::*;
+
+#[path = "XRMediaEquirectLayerInit.rs"]
+pub mod xr_media_equirect_layer_init;
+pub use xr_media_equirect_layer_init::*;
+
+#[path = "XRMediaLayerInit.rs"]
+pub mod xr_media_layer_init;
+pub use xr_media_layer_init::*;
+
+#[path = "XRMediaQuadLayerInit.rs"]
+pub mod xr_media_quad_layer_init;
+pub use xr_media_quad_layer_init::*;
 
 #[path = "XRMesh.rs"]
 pub mod xr_mesh;
@@ -4380,6 +7956,10 @@ pub use xr_mesh::*;
 #[path = "XRMeshSet.rs"]
 pub mod xr_mesh_set;
 pub use xr_mesh_set::*;
+
+#[path = "XRPermissionDescriptor.rs"]
+pub mod xr_permission_descriptor;
+pub use xr_permission_descriptor::*;
 
 #[path = "XRPermissionStatus.rs"]
 pub mod xr_permission_status;
@@ -4401,13 +7981,25 @@ pub use xr_pose::*;
 pub mod xr_projection_layer;
 pub use xr_projection_layer::*;
 
+#[path = "XRProjectionLayerInit.rs"]
+pub mod xr_projection_layer_init;
+pub use xr_projection_layer_init::*;
+
 #[path = "XRQuadLayer.rs"]
 pub mod xr_quad_layer;
 pub use xr_quad_layer::*;
 
+#[path = "XRQuadLayerInit.rs"]
+pub mod xr_quad_layer_init;
+pub use xr_quad_layer_init::*;
+
 #[path = "XRRay.rs"]
 pub mod xr_ray;
 pub use xr_ray::*;
+
+#[path = "XRRayDirectionInit.rs"]
+pub mod xr_ray_direction_init;
+pub use xr_ray_direction_init::*;
 
 #[path = "XRReferenceSpace.rs"]
 pub mod xr_reference_space;
@@ -4417,9 +8009,17 @@ pub use xr_reference_space::*;
 pub mod xr_reference_space_event;
 pub use xr_reference_space_event::*;
 
+#[path = "XRReferenceSpaceEventInit.rs"]
+pub mod xr_reference_space_event_init;
+pub use xr_reference_space_event_init::*;
+
 #[path = "XRRenderState.rs"]
 pub mod xr_render_state;
 pub use xr_render_state::*;
+
+#[path = "XRRenderStateInit.rs"]
+pub mod xr_render_state_init;
+pub use xr_render_state_init::*;
 
 #[path = "XRRigidTransform.rs"]
 pub mod xr_rigid_transform;
@@ -4433,6 +8033,18 @@ pub use xr_session::*;
 pub mod xr_session_event;
 pub use xr_session_event::*;
 
+#[path = "XRSessionEventInit.rs"]
+pub mod xr_session_event_init;
+pub use xr_session_event_init::*;
+
+#[path = "XRSessionInit.rs"]
+pub mod xr_session_init;
+pub use xr_session_init::*;
+
+#[path = "XRSessionSupportedPermissionDescriptor.rs"]
+pub mod xr_session_supported_permission_descriptor;
+pub use xr_session_supported_permission_descriptor::*;
+
 #[path = "XRSpace.rs"]
 pub mod xr_space;
 pub use xr_space::*;
@@ -4444,6 +8056,10 @@ pub use xr_sub_image::*;
 #[path = "XRSystem.rs"]
 pub mod xr_system;
 pub use xr_system::*;
+
+#[path = "XRTransientInputHitTestOptionsInit.rs"]
+pub mod xr_transient_input_hit_test_options_init;
+pub use xr_transient_input_hit_test_options_init::*;
 
 #[path = "XRTransientInputHitTestResult.rs"]
 pub mod xr_transient_input_hit_test_result;
@@ -4477,6 +8093,10 @@ pub use xr_web_gl_depth_information::*;
 pub mod xr_web_gl_layer;
 pub use xr_web_gl_layer::*;
 
+#[path = "XRWebGLLayerInit.rs"]
+pub mod xr_web_gl_layer_init;
+pub use xr_web_gl_layer_init::*;
+
 #[path = "XRWebGLSubImage.rs"]
 pub mod xr_web_gl_sub_image;
 pub use xr_web_gl_sub_image::*;
@@ -4484,2218 +8104,6 @@ pub use xr_web_gl_sub_image::*;
 #[path = "XSLTProcessor.rs"]
 pub mod xslt_processor;
 pub use xslt_processor::*;
-
-#[path = "CSPViolationReportBody.rs"]
-pub mod csp_violation_report_body;
-pub use csp_violation_report_body::*;
-
-#[path = "SecurityPolicyViolationEventInit.rs"]
-pub mod security_policy_violation_event_init;
-pub use security_policy_violation_event_init::*;
-
-#[path = "BlobPropertyBag.rs"]
-pub mod blob_property_bag;
-pub use blob_property_bag::*;
-
-#[path = "FilePropertyBag.rs"]
-pub mod file_property_bag;
-pub use file_property_bag::*;
-
-#[path = "IDBVersionChangeEventInit.rs"]
-pub mod idb_version_change_event_init;
-pub use idb_version_change_event_init::*;
-
-#[path = "AccelerometerSensorOptions.rs"]
-pub mod accelerometer_sensor_options;
-pub use accelerometer_sensor_options::*;
-
-#[path = "RequestInit.rs"]
-pub mod request_init;
-pub use request_init::*;
-
-#[path = "BackgroundFetchEventInit.rs"]
-pub mod background_fetch_event_init;
-pub use background_fetch_event_init::*;
-
-#[path = "SyncEventInit.rs"]
-pub mod sync_event_init;
-pub use sync_event_init::*;
-
-#[path = "CapturedMouseEventInit.rs"]
-pub mod captured_mouse_event_init;
-pub use captured_mouse_event_init::*;
-
-#[path = "ClipboardEventInit.rs"]
-pub mod clipboard_event_init;
-pub use clipboard_event_init::*;
-
-#[path = "ClipboardItemOptions.rs"]
-pub mod clipboard_item_options;
-pub use clipboard_item_options::*;
-
-#[path = "ClipboardPermissionDescriptor.rs"]
-pub mod clipboard_permission_descriptor;
-pub use clipboard_permission_descriptor::*;
-
-#[path = "ContentIndexEventInit.rs"]
-pub mod content_index_event_init;
-pub use content_index_event_init::*;
-
-#[path = "CookieChangeEventInit.rs"]
-pub mod cookie_change_event_init;
-pub use cookie_change_event_init::*;
-
-#[path = "ExtendableCookieChangeEventInit.rs"]
-pub mod extendable_cookie_change_event_init;
-pub use extendable_cookie_change_event_init::*;
-
-#[path = "CrashReportBody.rs"]
-pub mod crash_report_body;
-pub use crash_report_body::*;
-
-#[path = "CredentialData.rs"]
-pub mod credential_data;
-pub use credential_data::*;
-
-#[path = "PasswordCredentialData.rs"]
-pub mod password_credential_data;
-pub use password_credential_data::*;
-
-#[path = "FederatedCredentialRequestOptions.rs"]
-pub mod federated_credential_request_options;
-pub use federated_credential_request_options::*;
-
-#[path = "FederatedCredentialInit.rs"]
-pub mod federated_credential_init;
-pub use federated_credential_init::*;
-
-#[path = "ScriptingPolicyReportBody.rs"]
-pub mod scripting_policy_report_body;
-pub use scripting_policy_report_body::*;
-
-#[path = "AnimationEventInit.rs"]
-pub mod animation_event_init;
-pub use animation_event_init::*;
-
-#[path = "ContentVisibilityAutoStateChangeEventInit.rs"]
-pub mod content_visibility_auto_state_change_event_init;
-pub use content_visibility_auto_state_change_event_init::*;
-
-#[path = "FontFaceDescriptors.rs"]
-pub mod font_face_descriptors;
-pub use font_face_descriptors::*;
-
-#[path = "FontFaceSetLoadEventInit.rs"]
-pub mod font_face_set_load_event_init;
-pub use font_face_set_load_event_init::*;
-
-#[path = "LayoutOptions.rs"]
-pub mod layout_options;
-pub use layout_options::*;
-
-#[path = "BreakTokenOptions.rs"]
-pub mod break_token_options;
-pub use break_token_options::*;
-
-#[path = "FragmentResultOptions.rs"]
-pub mod fragment_result_options;
-pub use fragment_result_options::*;
-
-#[path = "IntrinsicSizesResultOptions.rs"]
-pub mod intrinsic_sizes_result_options;
-pub use intrinsic_sizes_result_options::*;
-
-#[path = "NavigationEventInit.rs"]
-pub mod navigation_event_init;
-pub use navigation_event_init::*;
-
-#[path = "PaintRenderingContext2DSettings.rs"]
-pub mod paint_rendering_context2d_settings;
-pub use paint_rendering_context2d_settings::*;
-
-#[path = "CSSParserOptions.rs"]
-pub mod css_parser_options;
-pub use css_parser_options::*;
-
-#[path = "PropertyDefinition.rs"]
-pub mod property_definition;
-pub use property_definition::*;
-
-#[path = "SnapEventInit.rs"]
-pub mod snap_event_init;
-pub use snap_event_init::*;
-
-#[path = "TransitionEventInit.rs"]
-pub mod transition_event_init;
-pub use transition_event_init::*;
-
-#[path = "CSSMatrixComponentOptions.rs"]
-pub mod css_matrix_component_options;
-pub use css_matrix_component_options::*;
-
-#[path = "StartViewTransitionOptions.rs"]
-pub mod start_view_transition_options;
-pub use start_view_transition_options::*;
-
-#[path = "ScrollOptions.rs"]
-pub mod scroll_options;
-pub use scroll_options::*;
-
-#[path = "ScrollToOptions.rs"]
-pub mod scroll_to_options;
-pub use scroll_to_options::*;
-
-#[path = "MediaQueryListEventInit.rs"]
-pub mod media_query_list_event_init;
-pub use media_query_list_event_init::*;
-
-#[path = "ScrollIntoViewOptions.rs"]
-pub mod scroll_into_view_options;
-pub use scroll_into_view_options::*;
-
-#[path = "CSSStyleSheetInit.rs"]
-pub mod css_style_sheet_init;
-pub use css_style_sheet_init::*;
-
-#[path = "DeprecationReportBody.rs"]
-pub mod deprecation_report_body;
-pub use deprecation_report_body::*;
-
-#[path = "DigitalCredentialRequestOptions.rs"]
-pub mod digital_credential_request_options;
-pub use digital_credential_request_options::*;
-
-#[path = "DigitalCredentialGetRequest.rs"]
-pub mod digital_credential_get_request;
-pub use digital_credential_get_request::*;
-
-#[path = "DigitalCredentialCreationOptions.rs"]
-pub mod digital_credential_creation_options;
-pub use digital_credential_creation_options::*;
-
-#[path = "DigitalCredentialCreateRequest.rs"]
-pub mod digital_credential_create_request;
-pub use digital_credential_create_request::*;
-
-#[path = "DocumentPictureInPictureEventInit.rs"]
-pub mod document_picture_in_picture_event_init;
-pub use document_picture_in_picture_event_init::*;
-
-#[path = "EventInit.rs"]
-pub mod event_init;
-pub use event_init::*;
-
-#[path = "CustomEventInit.rs"]
-pub mod custom_event_init;
-pub use custom_event_init::*;
-
-#[path = "EventListenerOptions.rs"]
-pub mod event_listener_options;
-pub use event_listener_options::*;
-
-#[path = "AddEventListenerOptions.rs"]
-pub mod add_event_listener_options;
-pub use add_event_listener_options::*;
-
-#[path = "ElementCreationOptions.rs"]
-pub mod element_creation_options;
-pub use element_creation_options::*;
-
-#[path = "ImportNodeOptions.rs"]
-pub mod import_node_options;
-pub use import_node_options::*;
-
-#[path = "StaticRangeInit.rs"]
-pub mod static_range_init;
-pub use static_range_init::*;
-
-#[path = "EditContextInit.rs"]
-pub mod edit_context_init;
-pub use edit_context_init::*;
-
-#[path = "TextUpdateEventInit.rs"]
-pub mod text_update_event_init;
-pub use text_update_event_init::*;
-
-#[path = "TextFormatInit.rs"]
-pub mod text_format_init;
-pub use text_format_init::*;
-
-#[path = "TextFormatUpdateEventInit.rs"]
-pub mod text_format_update_event_init;
-pub use text_format_update_event_init::*;
-
-#[path = "CharacterBoundsUpdateEventInit.rs"]
-pub mod character_bounds_update_event_init;
-pub use character_bounds_update_event_init::*;
-
-#[path = "TextDecoderOptions.rs"]
-pub mod text_decoder_options;
-pub use text_decoder_options::*;
-
-#[path = "MediaKeySystemMediaCapability.rs"]
-pub mod media_key_system_media_capability;
-pub use media_key_system_media_capability::*;
-
-#[path = "MediaKeyMessageEventInit.rs"]
-pub mod media_key_message_event_init;
-pub use media_key_message_event_init::*;
-
-#[path = "MediaEncryptedEventInit.rs"]
-pub mod media_encrypted_event_init;
-pub use media_encrypted_event_init::*;
-
-#[path = "DisconnectedAccount.rs"]
-pub mod disconnected_account;
-pub use disconnected_account::*;
-
-#[path = "IdentityCredentialErrorInit.rs"]
-pub mod identity_credential_error_init;
-pub use identity_credential_error_init::*;
-
-#[path = "IdentityCredentialRequestOptions.rs"]
-pub mod identity_credential_request_options;
-pub use identity_credential_request_options::*;
-
-#[path = "IdentityProviderRequestOptions.rs"]
-pub mod identity_provider_request_options;
-pub use identity_provider_request_options::*;
-
-#[path = "IdentityProviderWellKnown.rs"]
-pub mod identity_provider_well_known;
-pub use identity_provider_well_known::*;
-
-#[path = "IdentityProviderIcon.rs"]
-pub mod identity_provider_icon;
-pub use identity_provider_icon::*;
-
-#[path = "IdentityProviderBranding.rs"]
-pub mod identity_provider_branding;
-pub use identity_provider_branding::*;
-
-#[path = "IdentityProviderAPIConfig.rs"]
-pub mod identity_provider_api_config;
-pub use identity_provider_api_config::*;
-
-#[path = "IdentityProviderAccount.rs"]
-pub mod identity_provider_account;
-pub use identity_provider_account::*;
-
-#[path = "IdentityProviderAccountList.rs"]
-pub mod identity_provider_account_list;
-pub use identity_provider_account_list::*;
-
-#[path = "IdentityAssertionResponse.rs"]
-pub mod identity_assertion_response;
-pub use identity_assertion_response::*;
-
-#[path = "IdentityProviderClientMetadata.rs"]
-pub mod identity_provider_client_metadata;
-pub use identity_provider_client_metadata::*;
-
-#[path = "ResponseInit.rs"]
-pub mod response_init;
-pub use response_init::*;
-
-#[path = "AuthenticationExtensionsClientInputs.rs"]
-pub mod authentication_extensions_client_inputs;
-pub use authentication_extensions_client_inputs::*;
-
-#[path = "HMACGetSecretInput.rs"]
-pub mod hmac_get_secret_input;
-pub use hmac_get_secret_input::*;
-
-#[path = "HMACGetSecretOutput.rs"]
-pub mod hmac_get_secret_output;
-pub use hmac_get_secret_output::*;
-
-#[path = "FileSystemPermissionDescriptor.rs"]
-pub mod file_system_permission_descriptor;
-pub use file_system_permission_descriptor::*;
-
-#[path = "FilePickerAcceptType.rs"]
-pub mod file_picker_accept_type;
-pub use file_picker_accept_type::*;
-
-#[path = "FilePickerOptions.rs"]
-pub mod file_picker_options;
-pub use file_picker_options::*;
-
-#[path = "WriteParams.rs"]
-pub mod write_params;
-pub use write_params::*;
-
-#[path = "GamepadEventInit.rs"]
-pub mod gamepad_event_init;
-pub use gamepad_event_init::*;
-
-#[path = "SensorOptions.rs"]
-pub mod sensor_options;
-pub use sensor_options::*;
-
-#[path = "SensorErrorEventInit.rs"]
-pub mod sensor_error_event_init;
-pub use sensor_error_event_init::*;
-
-#[path = "GeolocationSensorOptions.rs"]
-pub mod geolocation_sensor_options;
-pub use geolocation_sensor_options::*;
-
-#[path = "GyroscopeSensorOptions.rs"]
-pub mod gyroscope_sensor_options;
-pub use gyroscope_sensor_options::*;
-
-#[path = "HandwritingHintsQueryResult.rs"]
-pub mod handwriting_hints_query_result;
-pub use handwriting_hints_query_result::*;
-
-#[path = "HandwritingSegment.rs"]
-pub mod handwriting_segment;
-pub use handwriting_segment::*;
-
-#[path = "HandwritingDrawingSegment.rs"]
-pub mod handwriting_drawing_segment;
-pub use handwriting_drawing_segment::*;
-
-#[path = "TogglePopoverOptions.rs"]
-pub mod toggle_popover_options;
-pub use toggle_popover_options::*;
-
-#[path = "TrackEventInit.rs"]
-pub mod track_event_init;
-pub use track_event_init::*;
-
-#[path = "SubmitEventInit.rs"]
-pub mod submit_event_init;
-pub use submit_event_init::*;
-
-#[path = "FormDataEventInit.rs"]
-pub mod form_data_event_init;
-pub use form_data_event_init::*;
-
-#[path = "ImageBitmapRenderingContextSettings.rs"]
-pub mod image_bitmap_rendering_context_settings;
-pub use image_bitmap_rendering_context_settings::*;
-
-#[path = "ToggleEventInit.rs"]
-pub mod toggle_event_init;
-pub use toggle_event_init::*;
-
-#[path = "CommandEventInit.rs"]
-pub mod command_event_init;
-pub use command_event_init::*;
-
-#[path = "CloseWatcherOptions.rs"]
-pub mod close_watcher_options;
-pub use close_watcher_options::*;
-
-#[path = "DragEventInit.rs"]
-pub mod drag_event_init;
-pub use drag_event_init::*;
-
-#[path = "NavigateEventInit.rs"]
-pub mod navigate_event_init;
-pub use navigate_event_init::*;
-
-#[path = "NavigationCurrentEntryChangeEventInit.rs"]
-pub mod navigation_current_entry_change_event_init;
-pub use navigation_current_entry_change_event_init::*;
-
-#[path = "PopStateEventInit.rs"]
-pub mod pop_state_event_init;
-pub use pop_state_event_init::*;
-
-#[path = "HashChangeEventInit.rs"]
-pub mod hash_change_event_init;
-pub use hash_change_event_init::*;
-
-#[path = "PageSwapEventInit.rs"]
-pub mod page_swap_event_init;
-pub use page_swap_event_init::*;
-
-#[path = "PageRevealEventInit.rs"]
-pub mod page_reveal_event_init;
-pub use page_reveal_event_init::*;
-
-#[path = "PageTransitionEventInit.rs"]
-pub mod page_transition_event_init;
-pub use page_transition_event_init::*;
-
-#[path = "ErrorEventInit.rs"]
-pub mod error_event_init;
-pub use error_event_init::*;
-
-#[path = "PromiseRejectionEventInit.rs"]
-pub mod promise_rejection_event_init;
-pub use promise_rejection_event_init::*;
-
-#[path = "ImageBitmapOptions.rs"]
-pub mod image_bitmap_options;
-pub use image_bitmap_options::*;
-
-#[path = "MessageEventInit.rs"]
-pub mod message_event_init;
-pub use message_event_init::*;
-
-#[path = "EventSourceInit.rs"]
-pub mod event_source_init;
-pub use event_source_init::*;
-
-#[path = "WorkerOptions.rs"]
-pub mod worker_options;
-pub use worker_options::*;
-
-#[path = "StorageEventInit.rs"]
-pub mod storage_event_init;
-pub use storage_event_init::*;
-
-#[path = "MediaSettingsRange.rs"]
-pub mod media_settings_range;
-pub use media_settings_range::*;
-
-#[path = "MediaTrackConstraintSet.rs"]
-pub mod media_track_constraint_set;
-pub use media_track_constraint_set::*;
-
-#[path = "ConstrainPoint2DParameters.rs"]
-pub mod constrain_point2d_parameters;
-pub use constrain_point2d_parameters::*;
-
-#[path = "Point2D.rs"]
-pub mod point2d;
-pub use point2d::*;
-
-#[path = "ImageResource.rs"]
-pub mod image_resource;
-pub use image_resource::*;
-
-#[path = "InputDeviceCapabilitiesInit.rs"]
-pub mod input_device_capabilities_init;
-pub use input_device_capabilities_init::*;
-
-#[path = "UIEventInit.rs"]
-pub mod ui_event_init;
-pub use ui_event_init::*;
-
-#[path = "InputEventInit.rs"]
-pub mod input_event_init;
-pub use input_event_init::*;
-
-#[path = "IntersectionObserverEntryInit.rs"]
-pub mod intersection_observer_entry_init;
-pub use intersection_observer_entry_init::*;
-
-#[path = "IntersectionObserverInit.rs"]
-pub mod intersection_observer_init;
-pub use intersection_observer_init::*;
-
-#[path = "InterventionReportBody.rs"]
-pub mod intervention_report_body;
-pub use intervention_report_body::*;
-
-#[path = "ProfilerSample.rs"]
-pub mod profiler_sample;
-pub use profiler_sample::*;
-
-#[path = "ProfilerStack.rs"]
-pub mod profiler_stack;
-pub use profiler_stack::*;
-
-#[path = "ProfilerFrame.rs"]
-pub mod profiler_frame;
-pub use profiler_frame::*;
-
-#[path = "ProfilerInitOptions.rs"]
-pub mod profiler_init_options;
-pub use profiler_init_options::*;
-
-#[path = "MagnetometerSensorOptions.rs"]
-pub mod magnetometer_sensor_options;
-pub use magnetometer_sensor_options::*;
-
-#[path = "MediaConfiguration.rs"]
-pub mod media_configuration;
-pub use media_configuration::*;
-
-#[path = "VideoConfiguration.rs"]
-pub mod video_configuration;
-pub use video_configuration::*;
-
-#[path = "AudioConfiguration.rs"]
-pub mod audio_configuration;
-pub use audio_configuration::*;
-
-#[path = "MediaCapabilitiesKeySystemConfiguration.rs"]
-pub mod media_capabilities_key_system_configuration;
-pub use media_capabilities_key_system_configuration::*;
-
-#[path = "KeySystemTrackConfiguration.rs"]
-pub mod key_system_track_configuration;
-pub use key_system_track_configuration::*;
-
-#[path = "MediaCapabilitiesInfo.rs"]
-pub mod media_capabilities_info;
-pub use media_capabilities_info::*;
-
-#[path = "BufferedChangeEventInit.rs"]
-pub mod buffered_change_event_init;
-pub use buffered_change_event_init::*;
-
-#[path = "MockCapturePromptResultConfiguration.rs"]
-pub mod mock_capture_prompt_result_configuration;
-pub use mock_capture_prompt_result_configuration::*;
-
-#[path = "MockCaptureDeviceConfiguration.rs"]
-pub mod mock_capture_device_configuration;
-pub use mock_capture_device_configuration::*;
-
-#[path = "MockCameraConfiguration.rs"]
-pub mod mock_camera_configuration;
-pub use mock_camera_configuration::*;
-
-#[path = "MockMicrophoneConfiguration.rs"]
-pub mod mock_microphone_configuration;
-pub use mock_microphone_configuration::*;
-
-#[path = "CaptureActionEventInit.rs"]
-pub mod capture_action_event_init;
-pub use capture_action_event_init::*;
-
-#[path = "MediaStreamTrackEventInit.rs"]
-pub mod media_stream_track_event_init;
-pub use media_stream_track_event_init::*;
-
-#[path = "DeviceChangeEventInit.rs"]
-pub mod device_change_event_init;
-pub use device_change_event_init::*;
-
-#[path = "DoubleRange.rs"]
-pub mod double_range;
-pub use double_range::*;
-
-#[path = "ConstrainDoubleRange.rs"]
-pub mod constrain_double_range;
-pub use constrain_double_range::*;
-
-#[path = "ULongRange.rs"]
-pub mod u_long_range;
-pub use u_long_range::*;
-
-#[path = "ConstrainULongRange.rs"]
-pub mod constrain_u_long_range;
-pub use constrain_u_long_range::*;
-
-#[path = "ConstrainBooleanParameters.rs"]
-pub mod constrain_boolean_parameters;
-pub use constrain_boolean_parameters::*;
-
-#[path = "ConstrainDOMStringParameters.rs"]
-pub mod constrain_dom_string_parameters;
-pub use constrain_dom_string_parameters::*;
-
-#[path = "ConstrainBooleanOrDOMStringParameters.rs"]
-pub mod constrain_boolean_or_dom_string_parameters;
-pub use constrain_boolean_or_dom_string_parameters::*;
-
-#[path = "CameraDevicePermissionDescriptor.rs"]
-pub mod camera_device_permission_descriptor;
-pub use camera_device_permission_descriptor::*;
-
-#[path = "MediaStreamTrackProcessorInit.rs"]
-pub mod media_stream_track_processor_init;
-pub use media_stream_track_processor_init::*;
-
-#[path = "MediaMetadataInit.rs"]
-pub mod media_metadata_init;
-pub use media_metadata_init::*;
-
-#[path = "ChapterInformationInit.rs"]
-pub mod chapter_information_init;
-pub use chapter_information_init::*;
-
-#[path = "MediaSessionActionDetails.rs"]
-pub mod media_session_action_details;
-pub use media_session_action_details::*;
-
-#[path = "MediaRecorderOptions.rs"]
-pub mod media_recorder_options;
-pub use media_recorder_options::*;
-
-#[path = "BlobEventInit.rs"]
-pub mod blob_event_init;
-pub use blob_event_init::*;
-
-#[path = "NotificationEventInit.rs"]
-pub mod notification_event_init;
-pub use notification_event_init::*;
-
-#[path = "SubscriptionObserver.rs"]
-pub mod subscription_observer;
-pub use subscription_observer::*;
-
-#[path = "ObservableInspector.rs"]
-pub mod observable_inspector;
-pub use observable_inspector::*;
-
-#[path = "DeviceOrientationEventInit.rs"]
-pub mod device_orientation_event_init;
-pub use device_orientation_event_init::*;
-
-#[path = "DeviceMotionEventAccelerationInit.rs"]
-pub mod device_motion_event_acceleration_init;
-pub use device_motion_event_acceleration_init::*;
-
-#[path = "DeviceMotionEventRotationRateInit.rs"]
-pub mod device_motion_event_rotation_rate_init;
-pub use device_motion_event_rotation_rate_init::*;
-
-#[path = "DeviceMotionEventInit.rs"]
-pub mod device_motion_event_init;
-pub use device_motion_event_init::*;
-
-#[path = "OrientationSensorOptions.rs"]
-pub mod orientation_sensor_options;
-pub use orientation_sensor_options::*;
-
-#[path = "PaymentRequestEventInit.rs"]
-pub mod payment_request_event_init;
-pub use payment_request_event_init::*;
-
-#[path = "PaymentCurrencyAmount.rs"]
-pub mod payment_currency_amount;
-pub use payment_currency_amount::*;
-
-#[path = "PaymentDetailsBase.rs"]
-pub mod payment_details_base;
-pub use payment_details_base::*;
-
-#[path = "PaymentDetailsInit.rs"]
-pub mod payment_details_init;
-pub use payment_details_init::*;
-
-#[path = "PaymentOptions.rs"]
-pub mod payment_options;
-pub use payment_options::*;
-
-#[path = "PaymentItem.rs"]
-pub mod payment_item;
-pub use payment_item::*;
-
-#[path = "PayerErrors.rs"]
-pub mod payer_errors;
-pub use payer_errors::*;
-
-#[path = "AddressErrors.rs"]
-pub mod address_errors;
-pub use address_errors::*;
-
-#[path = "PaymentMethodChangeEventInit.rs"]
-pub mod payment_method_change_event_init;
-pub use payment_method_change_event_init::*;
-
-#[path = "PaymentRequestUpdateEventInit.rs"]
-pub mod payment_request_update_event_init;
-pub use payment_request_update_event_init::*;
-
-#[path = "MemoryBreakdownEntry.rs"]
-pub mod memory_breakdown_entry;
-pub use memory_breakdown_entry::*;
-
-#[path = "MemoryAttribution.rs"]
-pub mod memory_attribution;
-pub use memory_attribution::*;
-
-#[path = "MemoryAttributionContainer.rs"]
-pub mod memory_attribution_container;
-pub use memory_attribution_container::*;
-
-#[path = "PerformanceObserverCallbackOptions.rs"]
-pub mod performance_observer_callback_options;
-pub use performance_observer_callback_options::*;
-
-#[path = "PeriodicSyncEventInit.rs"]
-pub mod periodic_sync_event_init;
-pub use periodic_sync_event_init::*;
-
-#[path = "PermissionsPolicyViolationReportBody.rs"]
-pub mod permissions_policy_violation_report_body;
-pub use permissions_policy_violation_report_body::*;
-
-#[path = "PermissionDescriptor.rs"]
-pub mod permission_descriptor;
-pub use permission_descriptor::*;
-
-#[path = "PermissionSetParameters.rs"]
-pub mod permission_set_parameters;
-pub use permission_set_parameters::*;
-
-#[path = "PictureInPictureEventInit.rs"]
-pub mod picture_in_picture_event_init;
-pub use picture_in_picture_event_init::*;
-
-#[path = "PointerTimelineOptions.rs"]
-pub mod pointer_timeline_options;
-pub use pointer_timeline_options::*;
-
-#[path = "PointerEventInit.rs"]
-pub mod pointer_event_init;
-pub use pointer_event_init::*;
-
-#[path = "MouseEventInit.rs"]
-pub mod mouse_event_init;
-pub use mouse_event_init::*;
-
-#[path = "PortalActivateEventInit.rs"]
-pub mod portal_activate_event_init;
-pub use portal_activate_event_init::*;
-
-#[path = "PresentationConnectionAvailableEventInit.rs"]
-pub mod presentation_connection_available_event_init;
-pub use presentation_connection_available_event_init::*;
-
-#[path = "PresentationConnectionCloseEventInit.rs"]
-pub mod presentation_connection_close_event_init;
-pub use presentation_connection_close_event_init::*;
-
-#[path = "AttributionAggregationService.rs"]
-pub mod attribution_aggregation_service;
-pub use attribution_aggregation_service::*;
-
-#[path = "PrivateNetworkAccessPermissionDescriptor.rs"]
-pub mod private_network_access_permission_descriptor;
-pub use private_network_access_permission_descriptor::*;
-
-#[path = "PushPermissionDescriptor.rs"]
-pub mod push_permission_descriptor;
-pub use push_permission_descriptor::*;
-
-#[path = "PushEventInit.rs"]
-pub mod push_event_init;
-pub use push_event_init::*;
-
-#[path = "PushSubscriptionChangeEventInit.rs"]
-pub mod push_subscription_change_event_init;
-pub use push_subscription_change_event_init::*;
-
-#[path = "ReportBody.rs"]
-pub mod report_body;
-pub use report_body::*;
-
-#[path = "Report.rs"]
-pub mod report;
-pub use report::*;
-
-#[path = "ReportingObserverOptions.rs"]
-pub mod reporting_observer_options;
-pub use reporting_observer_options::*;
-
-#[path = "GenerateTestReportParameters.rs"]
-pub mod generate_test_report_parameters;
-pub use generate_test_report_parameters::*;
-
-#[path = "TopLevelStorageAccessPermissionDescriptor.rs"]
-pub mod top_level_storage_access_permission_descriptor;
-pub use top_level_storage_access_permission_descriptor::*;
-
-#[path = "StorageAccessTypes.rs"]
-pub mod storage_access_types;
-pub use storage_access_types::*;
-
-#[path = "SharedWorkerOptions.rs"]
-pub mod shared_worker_options;
-pub use shared_worker_options::*;
-
-#[path = "SetHTMLOptions.rs"]
-pub mod set_html_options;
-pub use set_html_options::*;
-
-#[path = "SetHTMLUnsafeOptions.rs"]
-pub mod set_html_unsafe_options;
-pub use set_html_unsafe_options::*;
-
-#[path = "SanitizerElementNamespace.rs"]
-pub mod sanitizer_element_namespace;
-pub use sanitizer_element_namespace::*;
-
-#[path = "SanitizerElementNamespaceWithAttributes.rs"]
-pub mod sanitizer_element_namespace_with_attributes;
-pub use sanitizer_element_namespace_with_attributes::*;
-
-#[path = "SanitizerAttributeNamespace.rs"]
-pub mod sanitizer_attribute_namespace;
-pub use sanitizer_attribute_namespace::*;
-
-#[path = "TaskPriorityChangeEventInit.rs"]
-pub mod task_priority_change_event_init;
-pub use task_priority_change_event_init::*;
-
-#[path = "TaskControllerInit.rs"]
-pub mod task_controller_init;
-pub use task_controller_init::*;
-
-#[path = "ScrollTimelineOptions.rs"]
-pub mod scroll_timeline_options;
-pub use scroll_timeline_options::*;
-
-#[path = "ViewTimelineOptions.rs"]
-pub mod view_timeline_options;
-pub use view_timeline_options::*;
-
-#[path = "SecurePaymentConfirmationRequest.rs"]
-pub mod secure_payment_confirmation_request;
-pub use secure_payment_confirmation_request::*;
-
-#[path = "AuthenticationExtensionsPaymentInputs.rs"]
-pub mod authentication_extensions_payment_inputs;
-pub use authentication_extensions_payment_inputs::*;
-
-#[path = "AuthenticationExtensionsPaymentOutputs.rs"]
-pub mod authentication_extensions_payment_outputs;
-pub use authentication_extensions_payment_outputs::*;
-
-#[path = "BrowserBoundSignature.rs"]
-pub mod browser_bound_signature;
-pub use browser_bound_signature::*;
-
-#[path = "CollectedClientPaymentData.rs"]
-pub mod collected_client_payment_data;
-pub use collected_client_payment_data::*;
-
-#[path = "CollectedClientAdditionalPaymentData.rs"]
-pub mod collected_client_additional_payment_data;
-pub use collected_client_additional_payment_data::*;
-
-#[path = "CollectedClientAdditionalPaymentRegistrationData.rs"]
-pub mod collected_client_additional_payment_registration_data;
-pub use collected_client_additional_payment_registration_data::*;
-
-#[path = "PaymentCredentialInstrument.rs"]
-pub mod payment_credential_instrument;
-pub use payment_credential_instrument::*;
-
-#[path = "PaymentEntityLogo.rs"]
-pub mod payment_entity_logo;
-pub use payment_entity_logo::*;
-
-#[path = "SerialPortFilter.rs"]
-pub mod serial_port_filter;
-pub use serial_port_filter::*;
-
-#[path = "ExtendableEventInit.rs"]
-pub mod extendable_event_init;
-pub use extendable_event_init::*;
-
-#[path = "RouterRule.rs"]
-pub mod router_rule;
-pub use router_rule::*;
-
-#[path = "RouterCondition.rs"]
-pub mod router_condition;
-pub use router_condition::*;
-
-#[path = "RouterSourceDict.rs"]
-pub mod router_source_dict;
-pub use router_source_dict::*;
-
-#[path = "FetchEventInit.rs"]
-pub mod fetch_event_init;
-pub use fetch_event_init::*;
-
-#[path = "ExtendableMessageEventInit.rs"]
-pub mod extendable_message_event_init;
-pub use extendable_message_event_init::*;
-
-#[path = "FaceDetectorOptions.rs"]
-pub mod face_detector_options;
-pub use face_detector_options::*;
-
-#[path = "Landmark.rs"]
-pub mod landmark;
-pub use landmark::*;
-
-#[path = "BarcodeDetectorOptions.rs"]
-pub mod barcode_detector_options;
-pub use barcode_detector_options::*;
-
-#[path = "SharedStoragePrivateAggregationConfig.rs"]
-pub mod shared_storage_private_aggregation_config;
-pub use shared_storage_private_aggregation_config::*;
-
-#[path = "SpeechRecognitionErrorEventInit.rs"]
-pub mod speech_recognition_error_event_init;
-pub use speech_recognition_error_event_init::*;
-
-#[path = "SpeechRecognitionEventInit.rs"]
-pub mod speech_recognition_event_init;
-pub use speech_recognition_event_init::*;
-
-#[path = "SpeechSynthesisEventInit.rs"]
-pub mod speech_synthesis_event_init;
-pub use speech_synthesis_event_init::*;
-
-#[path = "SpeechSynthesisErrorEventInit.rs"]
-pub mod speech_synthesis_error_event_init;
-pub use speech_synthesis_error_event_init::*;
-
-#[path = "IntegrityViolationReportBody.rs"]
-pub mod integrity_violation_report_body;
-pub use integrity_violation_report_body::*;
-
-#[path = "ReadableStreamIteratorOptions.rs"]
-pub mod readable_stream_iterator_options;
-pub use readable_stream_iterator_options::*;
-
-#[path = "UnderlyingSource.rs"]
-pub mod underlying_source;
-pub use underlying_source::*;
-
-#[path = "UnderlyingSink.rs"]
-pub mod underlying_sink;
-pub use underlying_sink::*;
-
-#[path = "Transformer.rs"]
-pub mod transformer;
-pub use transformer::*;
-
-#[path = "QueuingStrategy.rs"]
-pub mod queuing_strategy;
-pub use queuing_strategy::*;
-
-#[path = "QueuingStrategyInit.rs"]
-pub mod queuing_strategy_init;
-pub use queuing_strategy_init::*;
-
-#[path = "TouchInit.rs"]
-pub mod touch_init;
-pub use touch_init::*;
-
-#[path = "TouchEventInit.rs"]
-pub mod touch_event_init;
-pub use touch_event_init::*;
-
-#[path = "AuctionAd.rs"]
-pub mod auction_ad;
-pub use auction_ad::*;
-
-#[path = "AuctionAdInterestGroupSize.rs"]
-pub mod auction_ad_interest_group_size;
-pub use auction_ad_interest_group_size::*;
-
-#[path = "GenerateBidInterestGroup.rs"]
-pub mod generate_bid_interest_group;
-pub use generate_bid_interest_group::*;
-
-#[path = "ProtectedAudiencePrivateAggregationConfig.rs"]
-pub mod protected_audience_private_aggregation_config;
-pub use protected_audience_private_aggregation_config::*;
-
-#[path = "AuctionReportBuyersConfig.rs"]
-pub mod auction_report_buyers_config;
-pub use auction_report_buyers_config::*;
-
-#[path = "AuctionReportBuyerDebugModeConfig.rs"]
-pub mod auction_report_buyer_debug_mode_config;
-pub use auction_report_buyer_debug_mode_config::*;
-
-#[path = "AuctionRealTimeReportingConfig.rs"]
-pub mod auction_real_time_reporting_config;
-pub use auction_real_time_reporting_config::*;
-
-#[path = "AdAuctionPerSellerData.rs"]
-pub mod ad_auction_per_seller_data;
-pub use ad_auction_per_seller_data::*;
-
-#[path = "AdAuctionOneSeller.rs"]
-pub mod ad_auction_one_seller;
-pub use ad_auction_one_seller::*;
-
-#[path = "AdAuctionDataBuyerConfig.rs"]
-pub mod ad_auction_data_buyer_config;
-pub use ad_auction_data_buyer_config::*;
-
-#[path = "PASignalValue.rs"]
-pub mod pa_signal_value;
-pub use pa_signal_value::*;
-
-#[path = "PAExtendedHistogramContribution.rs"]
-pub mod pa_extended_histogram_contribution;
-pub use pa_extended_histogram_contribution::*;
-
-#[path = "AdRender.rs"]
-pub mod ad_render;
-pub use ad_render::*;
-
-#[path = "GenerateBidOutput.rs"]
-pub mod generate_bid_output;
-pub use generate_bid_output::*;
-
-#[path = "BiddingBrowserSignals.rs"]
-pub mod bidding_browser_signals;
-pub use bidding_browser_signals::*;
-
-#[path = "ScoringBrowserSignals.rs"]
-pub mod scoring_browser_signals;
-pub use scoring_browser_signals::*;
-
-#[path = "ReportingBrowserSignals.rs"]
-pub mod reporting_browser_signals;
-pub use reporting_browser_signals::*;
-
-#[path = "ReportResultBrowserSignals.rs"]
-pub mod report_result_browser_signals;
-pub use report_result_browser_signals::*;
-
-#[path = "ReportWinBrowserSignals.rs"]
-pub mod report_win_browser_signals;
-pub use report_win_browser_signals::*;
-
-#[path = "DirectFromSellerSignalsForBuyer.rs"]
-pub mod direct_from_seller_signals_for_buyer;
-pub use direct_from_seller_signals_for_buyer::*;
-
-#[path = "DirectFromSellerSignalsForSeller.rs"]
-pub mod direct_from_seller_signals_for_seller;
-pub use direct_from_seller_signals_for_seller::*;
-
-#[path = "ScoreAdOutput.rs"]
-pub mod score_ad_output;
-pub use score_ad_output::*;
-
-#[path = "FocusEventInit.rs"]
-pub mod focus_event_init;
-pub use focus_event_init::*;
-
-#[path = "EventModifierInit.rs"]
-pub mod event_modifier_init;
-pub use event_modifier_init::*;
-
-#[path = "WheelEventInit.rs"]
-pub mod wheel_event_init;
-pub use wheel_event_init::*;
-
-#[path = "KeyboardEventInit.rs"]
-pub mod keyboard_event_init;
-pub use keyboard_event_init::*;
-
-#[path = "CompositionEventInit.rs"]
-pub mod composition_event_init;
-pub use composition_event_init::*;
-
-#[path = "URLPatternInit.rs"]
-pub mod url_pattern_init;
-pub use url_pattern_init::*;
-
-#[path = "URLPatternOptions.rs"]
-pub mod url_pattern_options;
-pub use url_pattern_options::*;
-
-#[path = "URLPatternComponentResult.rs"]
-pub mod url_pattern_component_result;
-pub use url_pattern_component_result::*;
-
-#[path = "PerformanceMeasureOptions.rs"]
-pub mod performance_measure_options;
-pub use performance_measure_options::*;
-
-#[path = "VideoFrameCallbackMetadata.rs"]
-pub mod video_frame_callback_metadata;
-pub use video_frame_callback_metadata::*;
-
-#[path = "WebAssemblyInstantiatedSource.rs"]
-pub mod web_assembly_instantiated_source;
-pub use web_assembly_instantiated_source::*;
-
-#[path = "MemoryDescriptor.rs"]
-pub mod memory_descriptor;
-pub use memory_descriptor::*;
-
-#[path = "TableDescriptor.rs"]
-pub mod table_descriptor;
-pub use table_descriptor::*;
-
-#[path = "GlobalDescriptor.rs"]
-pub mod global_descriptor;
-pub use global_descriptor::*;
-
-#[path = "KeyframeEffectOptions.rs"]
-pub mod keyframe_effect_options;
-pub use keyframe_effect_options::*;
-
-#[path = "TimelineRangeOffset.rs"]
-pub mod timeline_range_offset;
-pub use timeline_range_offset::*;
-
-#[path = "KeyframeAnimationOptions.rs"]
-pub mod keyframe_animation_options;
-pub use keyframe_animation_options::*;
-
-#[path = "AnimationPlaybackEventInit.rs"]
-pub mod animation_playback_event_init;
-pub use animation_playback_event_init::*;
-
-#[path = "AnimationTriggerOptions.rs"]
-pub mod animation_trigger_options;
-pub use animation_trigger_options::*;
-
-#[path = "DocumentTimelineOptions.rs"]
-pub mod document_timeline_options;
-pub use document_timeline_options::*;
-
-#[path = "BaseComputedKeyframe.rs"]
-pub mod base_computed_keyframe;
-pub use base_computed_keyframe::*;
-
-#[path = "BasePropertyIndexedKeyframe.rs"]
-pub mod base_property_indexed_keyframe;
-pub use base_property_indexed_keyframe::*;
-
-#[path = "BaseKeyframe.rs"]
-pub mod base_keyframe;
-pub use base_keyframe::*;
-
-#[path = "BluetoothLEScanPermissionDescriptor.rs"]
-pub mod bluetooth_le_scan_permission_descriptor;
-pub use bluetooth_le_scan_permission_descriptor::*;
-
-#[path = "BluetoothDataFilterInit.rs"]
-pub mod bluetooth_data_filter_init;
-pub use bluetooth_data_filter_init::*;
-
-#[path = "BluetoothManufacturerDataFilterInit.rs"]
-pub mod bluetooth_manufacturer_data_filter_init;
-pub use bluetooth_manufacturer_data_filter_init::*;
-
-#[path = "BluetoothServiceDataFilterInit.rs"]
-pub mod bluetooth_service_data_filter_init;
-pub use bluetooth_service_data_filter_init::*;
-
-#[path = "BluetoothLEScanFilterInit.rs"]
-pub mod bluetooth_le_scan_filter_init;
-pub use bluetooth_le_scan_filter_init::*;
-
-#[path = "BluetoothPermissionDescriptor.rs"]
-pub mod bluetooth_permission_descriptor;
-pub use bluetooth_permission_descriptor::*;
-
-#[path = "AllowedBluetoothDevice.rs"]
-pub mod allowed_bluetooth_device;
-pub use allowed_bluetooth_device::*;
-
-#[path = "BluetoothPermissionStorage.rs"]
-pub mod bluetooth_permission_storage;
-pub use bluetooth_permission_storage::*;
-
-#[path = "ValueEventInit.rs"]
-pub mod value_event_init;
-pub use value_event_init::*;
-
-#[path = "BluetoothAdvertisingEventInit.rs"]
-pub mod bluetooth_advertising_event_init;
-pub use bluetooth_advertising_event_init::*;
-
-#[path = "LockInfo.rs"]
-pub mod lock_info;
-pub use lock_info::*;
-
-#[path = "NDEFMessageInit.rs"]
-pub mod ndef_message_init;
-pub use ndef_message_init::*;
-
-#[path = "NDEFRecordInit.rs"]
-pub mod ndef_record_init;
-pub use ndef_record_init::*;
-
-#[path = "NDEFReadingEventInit.rs"]
-pub mod ndef_reading_event_init;
-pub use ndef_reading_event_init::*;
-
-#[path = "OTPCredentialRequestOptions.rs"]
-pub mod otp_credential_request_options;
-pub use otp_credential_request_options::*;
-
-#[path = "AudioContextOptions.rs"]
-pub mod audio_context_options;
-pub use audio_context_options::*;
-
-#[path = "AudioSinkOptions.rs"]
-pub mod audio_sink_options;
-pub use audio_sink_options::*;
-
-#[path = "OfflineAudioContextOptions.rs"]
-pub mod offline_audio_context_options;
-pub use offline_audio_context_options::*;
-
-#[path = "OfflineAudioCompletionEventInit.rs"]
-pub mod offline_audio_completion_event_init;
-pub use offline_audio_completion_event_init::*;
-
-#[path = "AudioBufferOptions.rs"]
-pub mod audio_buffer_options;
-pub use audio_buffer_options::*;
-
-#[path = "AudioNodeOptions.rs"]
-pub mod audio_node_options;
-pub use audio_node_options::*;
-
-#[path = "AnalyserOptions.rs"]
-pub mod analyser_options;
-pub use analyser_options::*;
-
-#[path = "AudioBufferSourceOptions.rs"]
-pub mod audio_buffer_source_options;
-pub use audio_buffer_source_options::*;
-
-#[path = "AudioProcessingEventInit.rs"]
-pub mod audio_processing_event_init;
-pub use audio_processing_event_init::*;
-
-#[path = "BiquadFilterOptions.rs"]
-pub mod biquad_filter_options;
-pub use biquad_filter_options::*;
-
-#[path = "ChannelMergerOptions.rs"]
-pub mod channel_merger_options;
-pub use channel_merger_options::*;
-
-#[path = "ChannelSplitterOptions.rs"]
-pub mod channel_splitter_options;
-pub use channel_splitter_options::*;
-
-#[path = "ConstantSourceOptions.rs"]
-pub mod constant_source_options;
-pub use constant_source_options::*;
-
-#[path = "ConvolverOptions.rs"]
-pub mod convolver_options;
-pub use convolver_options::*;
-
-#[path = "DelayOptions.rs"]
-pub mod delay_options;
-pub use delay_options::*;
-
-#[path = "DynamicsCompressorOptions.rs"]
-pub mod dynamics_compressor_options;
-pub use dynamics_compressor_options::*;
-
-#[path = "GainOptions.rs"]
-pub mod gain_options;
-pub use gain_options::*;
-
-#[path = "IIRFilterOptions.rs"]
-pub mod iir_filter_options;
-pub use iir_filter_options::*;
-
-#[path = "MediaElementAudioSourceOptions.rs"]
-pub mod media_element_audio_source_options;
-pub use media_element_audio_source_options::*;
-
-#[path = "MediaStreamAudioSourceOptions.rs"]
-pub mod media_stream_audio_source_options;
-pub use media_stream_audio_source_options::*;
-
-#[path = "MediaStreamTrackAudioSourceOptions.rs"]
-pub mod media_stream_track_audio_source_options;
-pub use media_stream_track_audio_source_options::*;
-
-#[path = "OscillatorOptions.rs"]
-pub mod oscillator_options;
-pub use oscillator_options::*;
-
-#[path = "PannerOptions.rs"]
-pub mod panner_options;
-pub use panner_options::*;
-
-#[path = "PeriodicWaveOptions.rs"]
-pub mod periodic_wave_options;
-pub use periodic_wave_options::*;
-
-#[path = "StereoPannerOptions.rs"]
-pub mod stereo_panner_options;
-pub use stereo_panner_options::*;
-
-#[path = "WaveShaperOptions.rs"]
-pub mod wave_shaper_options;
-pub use wave_shaper_options::*;
-
-#[path = "AudioWorkletNodeOptions.rs"]
-pub mod audio_worklet_node_options;
-pub use audio_worklet_node_options::*;
-
-#[path = "AudioParamDescriptor.rs"]
-pub mod audio_param_descriptor;
-pub use audio_param_descriptor::*;
-
-#[path = "RegistrationResponseJSON.rs"]
-pub mod registration_response_json;
-pub use registration_response_json::*;
-
-#[path = "AuthenticatorAttestationResponseJSON.rs"]
-pub mod authenticator_attestation_response_json;
-pub use authenticator_attestation_response_json::*;
-
-#[path = "AuthenticationResponseJSON.rs"]
-pub mod authentication_response_json;
-pub use authentication_response_json::*;
-
-#[path = "AuthenticatorAssertionResponseJSON.rs"]
-pub mod authenticator_assertion_response_json;
-pub use authenticator_assertion_response_json::*;
-
-#[path = "AuthenticationExtensionsClientOutputsJSON.rs"]
-pub mod authentication_extensions_client_outputs_json;
-pub use authentication_extensions_client_outputs_json::*;
-
-#[path = "PublicKeyCredentialUserEntityJSON.rs"]
-pub mod public_key_credential_user_entity_json;
-pub use public_key_credential_user_entity_json::*;
-
-#[path = "PublicKeyCredentialDescriptorJSON.rs"]
-pub mod public_key_credential_descriptor_json;
-pub use public_key_credential_descriptor_json::*;
-
-#[path = "AuthenticationExtensionsClientInputsJSON.rs"]
-pub mod authentication_extensions_client_inputs_json;
-pub use authentication_extensions_client_inputs_json::*;
-
-#[path = "PublicKeyCredentialParameters.rs"]
-pub mod public_key_credential_parameters;
-pub use public_key_credential_parameters::*;
-
-#[path = "PublicKeyCredentialEntity.rs"]
-pub mod public_key_credential_entity;
-pub use public_key_credential_entity::*;
-
-#[path = "PublicKeyCredentialRpEntity.rs"]
-pub mod public_key_credential_rp_entity;
-pub use public_key_credential_rp_entity::*;
-
-#[path = "PublicKeyCredentialUserEntity.rs"]
-pub mod public_key_credential_user_entity;
-pub use public_key_credential_user_entity::*;
-
-#[path = "AuthenticatorSelectionCriteria.rs"]
-pub mod authenticator_selection_criteria;
-pub use authenticator_selection_criteria::*;
-
-#[path = "CollectedClientData.rs"]
-pub mod collected_client_data;
-pub use collected_client_data::*;
-
-#[path = "TokenBinding.rs"]
-pub mod token_binding;
-pub use token_binding::*;
-
-#[path = "PublicKeyCredentialDescriptor.rs"]
-pub mod public_key_credential_descriptor;
-pub use public_key_credential_descriptor::*;
-
-#[path = "CredentialPropertiesOutput.rs"]
-pub mod credential_properties_output;
-pub use credential_properties_output::*;
-
-#[path = "AuthenticationExtensionsPRFValues.rs"]
-pub mod authentication_extensions_prf_values;
-pub use authentication_extensions_prf_values::*;
-
-#[path = "AuthenticationExtensionsPRFValuesJSON.rs"]
-pub mod authentication_extensions_prf_values_json;
-pub use authentication_extensions_prf_values_json::*;
-
-#[path = "AuthenticationExtensionsPRFInputs.rs"]
-pub mod authentication_extensions_prf_inputs;
-pub use authentication_extensions_prf_inputs::*;
-
-#[path = "AuthenticationExtensionsPRFInputsJSON.rs"]
-pub mod authentication_extensions_prf_inputs_json;
-pub use authentication_extensions_prf_inputs_json::*;
-
-#[path = "AuthenticationExtensionsPRFOutputs.rs"]
-pub mod authentication_extensions_prf_outputs;
-pub use authentication_extensions_prf_outputs::*;
-
-#[path = "AuthenticationExtensionsPRFOutputsJSON.rs"]
-pub mod authentication_extensions_prf_outputs_json;
-pub use authentication_extensions_prf_outputs_json::*;
-
-#[path = "AuthenticationExtensionsLargeBlobInputs.rs"]
-pub mod authentication_extensions_large_blob_inputs;
-pub use authentication_extensions_large_blob_inputs::*;
-
-#[path = "AuthenticationExtensionsLargeBlobInputsJSON.rs"]
-pub mod authentication_extensions_large_blob_inputs_json;
-pub use authentication_extensions_large_blob_inputs_json::*;
-
-#[path = "AuthenticationExtensionsLargeBlobOutputs.rs"]
-pub mod authentication_extensions_large_blob_outputs;
-pub use authentication_extensions_large_blob_outputs::*;
-
-#[path = "AuthenticationExtensionsLargeBlobOutputsJSON.rs"]
-pub mod authentication_extensions_large_blob_outputs_json;
-pub use authentication_extensions_large_blob_outputs_json::*;
-
-#[path = "AacEncoderConfig.rs"]
-pub mod aac_encoder_config;
-pub use aac_encoder_config::*;
-
-#[path = "VideoEncoderEncodeOptionsForAv1.rs"]
-pub mod video_encoder_encode_options_for_av1;
-pub use video_encoder_encode_options_for_av1::*;
-
-#[path = "AvcEncoderConfig.rs"]
-pub mod avc_encoder_config;
-pub use avc_encoder_config::*;
-
-#[path = "VideoEncoderEncodeOptionsForAvc.rs"]
-pub mod video_encoder_encode_options_for_avc;
-pub use video_encoder_encode_options_for_avc::*;
-
-#[path = "FlacEncoderConfig.rs"]
-pub mod flac_encoder_config;
-pub use flac_encoder_config::*;
-
-#[path = "HevcEncoderConfig.rs"]
-pub mod hevc_encoder_config;
-pub use hevc_encoder_config::*;
-
-#[path = "VideoEncoderEncodeOptionsForHevc.rs"]
-pub mod video_encoder_encode_options_for_hevc;
-pub use video_encoder_encode_options_for_hevc::*;
-
-#[path = "OpusEncoderConfig.rs"]
-pub mod opus_encoder_config;
-pub use opus_encoder_config::*;
-
-#[path = "VideoEncoderEncodeOptionsForVp9.rs"]
-pub mod video_encoder_encode_options_for_vp9;
-pub use video_encoder_encode_options_for_vp9::*;
-
-#[path = "AudioDecoderInit.rs"]
-pub mod audio_decoder_init;
-pub use audio_decoder_init::*;
-
-#[path = "VideoDecoderInit.rs"]
-pub mod video_decoder_init;
-pub use video_decoder_init::*;
-
-#[path = "AudioEncoderInit.rs"]
-pub mod audio_encoder_init;
-pub use audio_encoder_init::*;
-
-#[path = "EncodedAudioChunkMetadata.rs"]
-pub mod encoded_audio_chunk_metadata;
-pub use encoded_audio_chunk_metadata::*;
-
-#[path = "VideoEncoderInit.rs"]
-pub mod video_encoder_init;
-pub use video_encoder_init::*;
-
-#[path = "EncodedVideoChunkMetadata.rs"]
-pub mod encoded_video_chunk_metadata;
-pub use encoded_video_chunk_metadata::*;
-
-#[path = "SvcOutputMetadata.rs"]
-pub mod svc_output_metadata;
-pub use svc_output_metadata::*;
-
-#[path = "EncodedAudioChunkInit.rs"]
-pub mod encoded_audio_chunk_init;
-pub use encoded_audio_chunk_init::*;
-
-#[path = "EncodedVideoChunkInit.rs"]
-pub mod encoded_video_chunk_init;
-pub use encoded_video_chunk_init::*;
-
-#[path = "AudioDataInit.rs"]
-pub mod audio_data_init;
-pub use audio_data_init::*;
-
-#[path = "VideoFrameInit.rs"]
-pub mod video_frame_init;
-pub use video_frame_init::*;
-
-#[path = "VideoFrameBufferInit.rs"]
-pub mod video_frame_buffer_init;
-pub use video_frame_buffer_init::*;
-
-#[path = "ImageDecoderInit.rs"]
-pub mod image_decoder_init;
-pub use image_decoder_init::*;
-
-#[path = "Ed448Params.rs"]
-pub mod ed448_params;
-pub use ed448_params::*;
-
-#[path = "Algorithm.rs"]
-pub mod algorithm;
-pub use algorithm::*;
-
-#[path = "KeyAlgorithm.rs"]
-pub mod key_algorithm;
-pub use key_algorithm::*;
-
-#[path = "RsaOtherPrimesInfo.rs"]
-pub mod rsa_other_primes_info;
-pub use rsa_other_primes_info::*;
-
-#[path = "JsonWebKey.rs"]
-pub mod json_web_key;
-pub use json_web_key::*;
-
-#[path = "CryptoKeyPair.rs"]
-pub mod crypto_key_pair;
-pub use crypto_key_pair::*;
-
-#[path = "RsaKeyGenParams.rs"]
-pub mod rsa_key_gen_params;
-pub use rsa_key_gen_params::*;
-
-#[path = "RsaHashedKeyGenParams.rs"]
-pub mod rsa_hashed_key_gen_params;
-pub use rsa_hashed_key_gen_params::*;
-
-#[path = "RsaKeyAlgorithm.rs"]
-pub mod rsa_key_algorithm;
-pub use rsa_key_algorithm::*;
-
-#[path = "RsaHashedKeyAlgorithm.rs"]
-pub mod rsa_hashed_key_algorithm;
-pub use rsa_hashed_key_algorithm::*;
-
-#[path = "RsaHashedImportParams.rs"]
-pub mod rsa_hashed_import_params;
-pub use rsa_hashed_import_params::*;
-
-#[path = "RsaPssParams.rs"]
-pub mod rsa_pss_params;
-pub use rsa_pss_params::*;
-
-#[path = "RsaOaepParams.rs"]
-pub mod rsa_oaep_params;
-pub use rsa_oaep_params::*;
-
-#[path = "EcdsaParams.rs"]
-pub mod ecdsa_params;
-pub use ecdsa_params::*;
-
-#[path = "EcKeyGenParams.rs"]
-pub mod ec_key_gen_params;
-pub use ec_key_gen_params::*;
-
-#[path = "EcKeyAlgorithm.rs"]
-pub mod ec_key_algorithm;
-pub use ec_key_algorithm::*;
-
-#[path = "EcKeyImportParams.rs"]
-pub mod ec_key_import_params;
-pub use ec_key_import_params::*;
-
-#[path = "EcdhKeyDeriveParams.rs"]
-pub mod ecdh_key_derive_params;
-pub use ecdh_key_derive_params::*;
-
-#[path = "AesCtrParams.rs"]
-pub mod aes_ctr_params;
-pub use aes_ctr_params::*;
-
-#[path = "AesKeyAlgorithm.rs"]
-pub mod aes_key_algorithm;
-pub use aes_key_algorithm::*;
-
-#[path = "AesKeyGenParams.rs"]
-pub mod aes_key_gen_params;
-pub use aes_key_gen_params::*;
-
-#[path = "AesDerivedKeyParams.rs"]
-pub mod aes_derived_key_params;
-pub use aes_derived_key_params::*;
-
-#[path = "AesCbcParams.rs"]
-pub mod aes_cbc_params;
-pub use aes_cbc_params::*;
-
-#[path = "AesGcmParams.rs"]
-pub mod aes_gcm_params;
-pub use aes_gcm_params::*;
-
-#[path = "HmacImportParams.rs"]
-pub mod hmac_import_params;
-pub use hmac_import_params::*;
-
-#[path = "HmacKeyAlgorithm.rs"]
-pub mod hmac_key_algorithm;
-pub use hmac_key_algorithm::*;
-
-#[path = "HmacKeyGenParams.rs"]
-pub mod hmac_key_gen_params;
-pub use hmac_key_gen_params::*;
-
-#[path = "HkdfParams.rs"]
-pub mod hkdf_params;
-pub use hkdf_params::*;
-
-#[path = "Pbkdf2Params.rs"]
-pub mod pbkdf2_params;
-pub use pbkdf2_params::*;
-
-#[path = "WebGLContextAttributes.rs"]
-pub mod web_gl_context_attributes;
-pub use web_gl_context_attributes::*;
-
-#[path = "WebGLContextEventInit.rs"]
-pub mod web_gl_context_event_init;
-pub use web_gl_context_event_init::*;
-
-#[path = "GPUObjectDescriptorBase.rs"]
-pub mod gpu_object_descriptor_base;
-pub use gpu_object_descriptor_base::*;
-
-#[path = "GPUBindGroupLayoutEntry.rs"]
-pub mod gpu_bind_group_layout_entry;
-pub use gpu_bind_group_layout_entry::*;
-
-#[path = "GPUBufferBindingLayout.rs"]
-pub mod gpu_buffer_binding_layout;
-pub use gpu_buffer_binding_layout::*;
-
-#[path = "GPUSamplerBindingLayout.rs"]
-pub mod gpu_sampler_binding_layout;
-pub use gpu_sampler_binding_layout::*;
-
-#[path = "GPUTextureBindingLayout.rs"]
-pub mod gpu_texture_binding_layout;
-pub use gpu_texture_binding_layout::*;
-
-#[path = "GPUStorageTextureBindingLayout.rs"]
-pub mod gpu_storage_texture_binding_layout;
-pub use gpu_storage_texture_binding_layout::*;
-
-#[path = "GPUExternalTextureBindingLayout.rs"]
-pub mod gpu_external_texture_binding_layout;
-pub use gpu_external_texture_binding_layout::*;
-
-#[path = "GPUBindGroupEntry.rs"]
-pub mod gpu_bind_group_entry;
-pub use gpu_bind_group_entry::*;
-
-#[path = "GPUBufferBinding.rs"]
-pub mod gpu_buffer_binding;
-pub use gpu_buffer_binding::*;
-
-#[path = "GPUShaderModuleCompilationHint.rs"]
-pub mod gpu_shader_module_compilation_hint;
-pub use gpu_shader_module_compilation_hint::*;
-
-#[path = "GPUPipelineErrorInit.rs"]
-pub mod gpu_pipeline_error_init;
-pub use gpu_pipeline_error_init::*;
-
-#[path = "GPUPipelineDescriptorBase.rs"]
-pub mod gpu_pipeline_descriptor_base;
-pub use gpu_pipeline_descriptor_base::*;
-
-#[path = "GPUProgrammableStage.rs"]
-pub mod gpu_programmable_stage;
-pub use gpu_programmable_stage::*;
-
-#[path = "GPUPrimitiveState.rs"]
-pub mod gpu_primitive_state;
-pub use gpu_primitive_state::*;
-
-#[path = "GPUMultisampleState.rs"]
-pub mod gpu_multisample_state;
-pub use gpu_multisample_state::*;
-
-#[path = "GPUFragmentState.rs"]
-pub mod gpu_fragment_state;
-pub use gpu_fragment_state::*;
-
-#[path = "GPUColorTargetState.rs"]
-pub mod gpu_color_target_state;
-pub use gpu_color_target_state::*;
-
-#[path = "GPUBlendState.rs"]
-pub mod gpu_blend_state;
-pub use gpu_blend_state::*;
-
-#[path = "GPUBlendComponent.rs"]
-pub mod gpu_blend_component;
-pub use gpu_blend_component::*;
-
-#[path = "GPUDepthStencilState.rs"]
-pub mod gpu_depth_stencil_state;
-pub use gpu_depth_stencil_state::*;
-
-#[path = "GPUStencilFaceState.rs"]
-pub mod gpu_stencil_face_state;
-pub use gpu_stencil_face_state::*;
-
-#[path = "GPUVertexState.rs"]
-pub mod gpu_vertex_state;
-pub use gpu_vertex_state::*;
-
-#[path = "GPUVertexBufferLayout.rs"]
-pub mod gpu_vertex_buffer_layout;
-pub use gpu_vertex_buffer_layout::*;
-
-#[path = "GPUVertexAttribute.rs"]
-pub mod gpu_vertex_attribute;
-pub use gpu_vertex_attribute::*;
-
-#[path = "GPUComputePassTimestampWrites.rs"]
-pub mod gpu_compute_pass_timestamp_writes;
-pub use gpu_compute_pass_timestamp_writes::*;
-
-#[path = "GPURenderPassTimestampWrites.rs"]
-pub mod gpu_render_pass_timestamp_writes;
-pub use gpu_render_pass_timestamp_writes::*;
-
-#[path = "GPURenderPassColorAttachment.rs"]
-pub mod gpu_render_pass_color_attachment;
-pub use gpu_render_pass_color_attachment::*;
-
-#[path = "GPURenderPassDepthStencilAttachment.rs"]
-pub mod gpu_render_pass_depth_stencil_attachment;
-pub use gpu_render_pass_depth_stencil_attachment::*;
-
-#[path = "GPURenderPassLayout.rs"]
-pub mod gpu_render_pass_layout;
-pub use gpu_render_pass_layout::*;
-
-#[path = "GPUQueueDescriptor.rs"]
-pub mod gpu_queue_descriptor;
-pub use gpu_queue_descriptor::*;
-
-#[path = "GPUCanvasToneMapping.rs"]
-pub mod gpu_canvas_tone_mapping;
-pub use gpu_canvas_tone_mapping::*;
-
-#[path = "GPUUncapturedErrorEventInit.rs"]
-pub mod gpu_uncaptured_error_event_init;
-pub use gpu_uncaptured_error_event_init::*;
-
-#[path = "GPUColorDict.rs"]
-pub mod gpu_color_dict;
-pub use gpu_color_dict::*;
-
-#[path = "GPUOrigin2DDict.rs"]
-pub mod gpu_origin2d_dict;
-pub use gpu_origin2d_dict::*;
-
-#[path = "GPUOrigin3DDict.rs"]
-pub mod gpu_origin3d_dict;
-pub use gpu_origin3d_dict::*;
-
-#[path = "GPUExtent3DDict.rs"]
-pub mod gpu_extent3d_dict;
-pub use gpu_extent3d_dict::*;
-
-#[path = "HIDDeviceFilter.rs"]
-pub mod hid_device_filter;
-pub use hid_device_filter::*;
-
-#[path = "HIDConnectionEventInit.rs"]
-pub mod hid_connection_event_init;
-pub use hid_connection_event_init::*;
-
-#[path = "HIDInputReportEventInit.rs"]
-pub mod hid_input_report_event_init;
-pub use hid_input_report_event_init::*;
-
-#[path = "HIDReportInfo.rs"]
-pub mod hid_report_info;
-pub use hid_report_info::*;
-
-#[path = "HIDReportItem.rs"]
-pub mod hid_report_item;
-pub use hid_report_item::*;
-
-#[path = "MidiPermissionDescriptor.rs"]
-pub mod midi_permission_descriptor;
-pub use midi_permission_descriptor::*;
-
-#[path = "MIDIMessageEventInit.rs"]
-pub mod midi_message_event_init;
-pub use midi_message_event_init::*;
-
-#[path = "MIDIConnectionEventInit.rs"]
-pub mod midi_connection_event_init;
-pub use midi_connection_event_init::*;
-
-#[path = "MLContextOptions.rs"]
-pub mod ml_context_options;
-pub use ml_context_options::*;
-
-#[path = "MLDataTypeLimits.rs"]
-pub mod ml_data_type_limits;
-pub use ml_data_type_limits::*;
-
-#[path = "MLRankRange.rs"]
-pub mod ml_rank_range;
-pub use ml_rank_range::*;
-
-#[path = "MLTensorLimits.rs"]
-pub mod ml_tensor_limits;
-pub use ml_tensor_limits::*;
-
-#[path = "MLBinarySupportLimits.rs"]
-pub mod ml_binary_support_limits;
-pub use ml_binary_support_limits::*;
-
-#[path = "MLSingleInputSupportLimits.rs"]
-pub mod ml_single_input_support_limits;
-pub use ml_single_input_support_limits::*;
-
-#[path = "MLBatchNormalizationSupportLimits.rs"]
-pub mod ml_batch_normalization_support_limits;
-pub use ml_batch_normalization_support_limits::*;
-
-#[path = "MLConcatSupportLimits.rs"]
-pub mod ml_concat_support_limits;
-pub use ml_concat_support_limits::*;
-
-#[path = "MLConv2dSupportLimits.rs"]
-pub mod ml_conv2d_support_limits;
-pub use ml_conv2d_support_limits::*;
-
-#[path = "MLLogicalNotSupportLimits.rs"]
-pub mod ml_logical_not_support_limits;
-pub use ml_logical_not_support_limits::*;
-
-#[path = "MLQuantizeDequantizeLinearSupportLimits.rs"]
-pub mod ml_quantize_dequantize_linear_support_limits;
-pub use ml_quantize_dequantize_linear_support_limits::*;
-
-#[path = "MLGatherSupportLimits.rs"]
-pub mod ml_gather_support_limits;
-pub use ml_gather_support_limits::*;
-
-#[path = "MLGemmSupportLimits.rs"]
-pub mod ml_gemm_support_limits;
-pub use ml_gemm_support_limits::*;
-
-#[path = "MLGruSupportLimits.rs"]
-pub mod ml_gru_support_limits;
-pub use ml_gru_support_limits::*;
-
-#[path = "MLGruCellSupportLimits.rs"]
-pub mod ml_gru_cell_support_limits;
-pub use ml_gru_cell_support_limits::*;
-
-#[path = "MLNormalizationSupportLimits.rs"]
-pub mod ml_normalization_support_limits;
-pub use ml_normalization_support_limits::*;
-
-#[path = "MLLstmSupportLimits.rs"]
-pub mod ml_lstm_support_limits;
-pub use ml_lstm_support_limits::*;
-
-#[path = "MLLstmCellSupportLimits.rs"]
-pub mod ml_lstm_cell_support_limits;
-pub use ml_lstm_cell_support_limits::*;
-
-#[path = "MLPreluSupportLimits.rs"]
-pub mod ml_prelu_support_limits;
-pub use ml_prelu_support_limits::*;
-
-#[path = "MLScatterSupportLimits.rs"]
-pub mod ml_scatter_support_limits;
-pub use ml_scatter_support_limits::*;
-
-#[path = "MLSplitSupportLimits.rs"]
-pub mod ml_split_support_limits;
-pub use ml_split_support_limits::*;
-
-#[path = "MLWhereSupportLimits.rs"]
-pub mod ml_where_support_limits;
-pub use ml_where_support_limits::*;
-
-#[path = "SFrameTransformOptions.rs"]
-pub mod s_frame_transform_options;
-pub use s_frame_transform_options::*;
-
-#[path = "SFrameTransformErrorEventInit.rs"]
-pub mod s_frame_transform_error_event_init;
-pub use s_frame_transform_error_event_init::*;
-
-#[path = "RTCEncodedFrameMetadata.rs"]
-pub mod rtc_encoded_frame_metadata;
-pub use rtc_encoded_frame_metadata::*;
-
-#[path = "RTCEncodedVideoFrameOptions.rs"]
-pub mod rtc_encoded_video_frame_options;
-pub use rtc_encoded_video_frame_options::*;
-
-#[path = "RTCEncodedAudioFrameOptions.rs"]
-pub mod rtc_encoded_audio_frame_options;
-pub use rtc_encoded_audio_frame_options::*;
-
-#[path = "RTCIdentityAssertionResult.rs"]
-pub mod rtc_identity_assertion_result;
-pub use rtc_identity_assertion_result::*;
-
-#[path = "RTCIdentityProviderDetails.rs"]
-pub mod rtc_identity_provider_details;
-pub use rtc_identity_provider_details::*;
-
-#[path = "RTCIdentityValidationResult.rs"]
-pub mod rtc_identity_validation_result;
-pub use rtc_identity_validation_result::*;
-
-#[path = "RTCErrorInit.rs"]
-pub mod rtc_error_init;
-pub use rtc_error_init::*;
-
-#[path = "RTCRtpEncodingParameters.rs"]
-pub mod rtc_rtp_encoding_parameters;
-pub use rtc_rtp_encoding_parameters::*;
-
-#[path = "RTCRtpStreamStats.rs"]
-pub mod rtc_rtp_stream_stats;
-pub use rtc_rtp_stream_stats::*;
-
-#[path = "RTCCodecStats.rs"]
-pub mod rtc_codec_stats;
-pub use rtc_codec_stats::*;
-
-#[path = "RTCReceivedRtpStreamStats.rs"]
-pub mod rtc_received_rtp_stream_stats;
-pub use rtc_received_rtp_stream_stats::*;
-
-#[path = "RTCInboundRtpStreamStats.rs"]
-pub mod rtc_inbound_rtp_stream_stats;
-pub use rtc_inbound_rtp_stream_stats::*;
-
-#[path = "RTCRemoteInboundRtpStreamStats.rs"]
-pub mod rtc_remote_inbound_rtp_stream_stats;
-pub use rtc_remote_inbound_rtp_stream_stats::*;
-
-#[path = "RTCSentRtpStreamStats.rs"]
-pub mod rtc_sent_rtp_stream_stats;
-pub use rtc_sent_rtp_stream_stats::*;
-
-#[path = "RTCOutboundRtpStreamStats.rs"]
-pub mod rtc_outbound_rtp_stream_stats;
-pub use rtc_outbound_rtp_stream_stats::*;
-
-#[path = "RTCRemoteOutboundRtpStreamStats.rs"]
-pub mod rtc_remote_outbound_rtp_stream_stats;
-pub use rtc_remote_outbound_rtp_stream_stats::*;
-
-#[path = "RTCMediaSourceStats.rs"]
-pub mod rtc_media_source_stats;
-pub use rtc_media_source_stats::*;
-
-#[path = "RTCAudioSourceStats.rs"]
-pub mod rtc_audio_source_stats;
-pub use rtc_audio_source_stats::*;
-
-#[path = "RTCVideoSourceStats.rs"]
-pub mod rtc_video_source_stats;
-pub use rtc_video_source_stats::*;
-
-#[path = "RTCAudioPlayoutStats.rs"]
-pub mod rtc_audio_playout_stats;
-pub use rtc_audio_playout_stats::*;
-
-#[path = "RTCPeerConnectionStats.rs"]
-pub mod rtc_peer_connection_stats;
-pub use rtc_peer_connection_stats::*;
-
-#[path = "RTCDataChannelStats.rs"]
-pub mod rtc_data_channel_stats;
-pub use rtc_data_channel_stats::*;
-
-#[path = "RTCTransportStats.rs"]
-pub mod rtc_transport_stats;
-pub use rtc_transport_stats::*;
-
-#[path = "RTCIceCandidateStats.rs"]
-pub mod rtc_ice_candidate_stats;
-pub use rtc_ice_candidate_stats::*;
-
-#[path = "RTCIceCandidatePairStats.rs"]
-pub mod rtc_ice_candidate_pair_stats;
-pub use rtc_ice_candidate_pair_stats::*;
-
-#[path = "RTCCertificateStats.rs"]
-pub mod rtc_certificate_stats;
-pub use rtc_certificate_stats::*;
-
-#[path = "RTCIceServer.rs"]
-pub mod rtc_ice_server;
-pub use rtc_ice_server::*;
-
-#[path = "RTCOfferAnswerOptions.rs"]
-pub mod rtc_offer_answer_options;
-pub use rtc_offer_answer_options::*;
-
-#[path = "RTCAnswerOptions.rs"]
-pub mod rtc_answer_options;
-pub use rtc_answer_options::*;
-
-#[path = "RTCLocalIceCandidateInit.rs"]
-pub mod rtc_local_ice_candidate_init;
-pub use rtc_local_ice_candidate_init::*;
-
-#[path = "RTCPeerConnectionIceEventInit.rs"]
-pub mod rtc_peer_connection_ice_event_init;
-pub use rtc_peer_connection_ice_event_init::*;
-
-#[path = "RTCPeerConnectionIceErrorEventInit.rs"]
-pub mod rtc_peer_connection_ice_error_event_init;
-pub use rtc_peer_connection_ice_error_event_init::*;
-
-#[path = "RTCCertificateExpiration.rs"]
-pub mod rtc_certificate_expiration;
-pub use rtc_certificate_expiration::*;
-
-#[path = "RTCRtpParameters.rs"]
-pub mod rtc_rtp_parameters;
-pub use rtc_rtp_parameters::*;
-
-#[path = "RTCRtpCodingParameters.rs"]
-pub mod rtc_rtp_coding_parameters;
-pub use rtc_rtp_coding_parameters::*;
-
-#[path = "RTCRtcpParameters.rs"]
-pub mod rtc_rtcp_parameters;
-pub use rtc_rtcp_parameters::*;
-
-#[path = "RTCRtpHeaderExtensionParameters.rs"]
-pub mod rtc_rtp_header_extension_parameters;
-pub use rtc_rtp_header_extension_parameters::*;
-
-#[path = "RTCRtpCodecParameters.rs"]
-pub mod rtc_rtp_codec_parameters;
-pub use rtc_rtp_codec_parameters::*;
-
-#[path = "RTCRtpHeaderExtensionCapability.rs"]
-pub mod rtc_rtp_header_extension_capability;
-pub use rtc_rtp_header_extension_capability::*;
-
-#[path = "RTCTrackEventInit.rs"]
-pub mod rtc_track_event_init;
-pub use rtc_track_event_init::*;
-
-#[path = "RTCDataChannelEventInit.rs"]
-pub mod rtc_data_channel_event_init;
-pub use rtc_data_channel_event_init::*;
-
-#[path = "RTCDTMFToneChangeEventInit.rs"]
-pub mod rtcdtmf_tone_change_event_init;
-pub use rtcdtmf_tone_change_event_init::*;
-
-#[path = "RTCStats.rs"]
-pub mod rtc_stats;
-pub use rtc_stats::*;
-
-#[path = "RTCErrorEventInit.rs"]
-pub mod rtc_error_event_init;
-pub use rtc_error_event_init::*;
-
-#[path = "CloseEventInit.rs"]
-pub mod close_event_init;
-pub use close_event_init::*;
-
-#[path = "WebTransportHash.rs"]
-pub mod web_transport_hash;
-pub use web_transport_hash::*;
-
-#[path = "WebTransportOptions.rs"]
-pub mod web_transport_options;
-pub use web_transport_options::*;
-
-#[path = "WebTransportDatagramStats.rs"]
-pub mod web_transport_datagram_stats;
-pub use web_transport_datagram_stats::*;
-
-#[path = "WebTransportErrorOptions.rs"]
-pub mod web_transport_error_options;
-pub use web_transport_error_options::*;
-
-#[path = "USBDeviceFilter.rs"]
-pub mod usb_device_filter;
-pub use usb_device_filter::*;
-
-#[path = "USBConnectionEventInit.rs"]
-pub mod usb_connection_event_init;
-pub use usb_connection_event_init::*;
-
-#[path = "USBBlocklistEntry.rs"]
-pub mod usb_blocklist_entry;
-pub use usb_blocklist_entry::*;
-
-#[path = "USBPermissionDescriptor.rs"]
-pub mod usb_permission_descriptor;
-pub use usb_permission_descriptor::*;
-
-#[path = "AllowedUSBDevice.rs"]
-pub mod allowed_usb_device;
-pub use allowed_usb_device::*;
-
-#[path = "USBPermissionStorage.rs"]
-pub mod usb_permission_storage;
-pub use usb_permission_storage::*;
-
-#[path = "XRDepthStateInit.rs"]
-pub mod xr_depth_state_init;
-pub use xr_depth_state_init::*;
-
-#[path = "XRDOMOverlayInit.rs"]
-pub mod xrdom_overlay_init;
-pub use xrdom_overlay_init::*;
-
-#[path = "XRRayDirectionInit.rs"]
-pub mod xr_ray_direction_init;
-pub use xr_ray_direction_init::*;
-
-#[path = "XRWebGLLayerInit.rs"]
-pub mod xr_web_gl_layer_init;
-pub use xr_web_gl_layer_init::*;
-
-#[path = "XRSessionEventInit.rs"]
-pub mod xr_session_event_init;
-pub use xr_session_event_init::*;
-
-#[path = "XRInputSourceEventInit.rs"]
-pub mod xr_input_source_event_init;
-pub use xr_input_source_event_init::*;
-
-#[path = "XRInputSourcesChangeEventInit.rs"]
-pub mod xr_input_sources_change_event_init;
-pub use xr_input_sources_change_event_init::*;
-
-#[path = "XRReferenceSpaceEventInit.rs"]
-pub mod xr_reference_space_event_init;
-pub use xr_reference_space_event_init::*;
-
-#[path = "XRSessionSupportedPermissionDescriptor.rs"]
-pub mod xr_session_supported_permission_descriptor;
-pub use xr_session_supported_permission_descriptor::*;
-
-#[path = "XRPermissionDescriptor.rs"]
-pub mod xr_permission_descriptor;
-pub use xr_permission_descriptor::*;
-
-#[path = "XRLayerInit.rs"]
-pub mod xr_layer_init;
-pub use xr_layer_init::*;
-
-#[path = "XRMediaLayerInit.rs"]
-pub mod xr_media_layer_init;
-pub use xr_media_layer_init::*;
-
-#[path = "XRLayerEventInit.rs"]
-pub mod xr_layer_event_init;
-pub use xr_layer_event_init::*;
-
-#[path = "WindowControlsOverlayGeometryChangeEventInit.rs"]
-pub mod window_controls_overlay_geometry_change_event_init;
-pub use window_controls_overlay_geometry_change_event_init::*;
-
-#[path = "ProgressEventInit.rs"]
-pub mod progress_event_init;
-pub use progress_event_init::*;
 
 #[path = "console.rs"]
 pub mod console;

@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEMorphologyElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEMorphologyElement {
     fn from_val(v: &Any) -> Self {
         SVGFEMorphologyElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEMorphologyElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEMorphologyElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEMorphologyElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEMorphologyElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEMorphologyElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEMorphologyElement> for Any {
     fn from(s: SVGFEMorphologyElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEMorphologyElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEMorphologyElement> for Any {
     fn from(s: &SVGFEMorphologyElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEMorphologyElement);
 
 impl SVGFEMorphologyElement {

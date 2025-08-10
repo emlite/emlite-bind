@@ -7,6 +7,7 @@ use super::*;
 pub struct PeriodicSyncEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for PeriodicSyncEvent {
     fn from_val(v: &Any) -> Self {
         PeriodicSyncEvent {
@@ -20,27 +21,32 @@ impl FromVal for PeriodicSyncEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PeriodicSyncEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PeriodicSyncEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PeriodicSyncEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PeriodicSyncEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PeriodicSyncEvent> for Any {
     fn from(s: PeriodicSyncEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PeriodicSyncEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PeriodicSyncEvent> for Any {
     fn from(s: &PeriodicSyncEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PeriodicSyncEvent);
 
 impl PeriodicSyncEvent {

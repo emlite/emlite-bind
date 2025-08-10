@@ -7,6 +7,7 @@ use super::*;
 pub struct GroupEffect {
     inner: Any,
 }
+
 impl FromVal for GroupEffect {
     fn from_val(v: &Any) -> Self {
         GroupEffect {
@@ -20,27 +21,32 @@ impl FromVal for GroupEffect {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GroupEffect {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GroupEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GroupEffect {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GroupEffect {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GroupEffect> for Any {
     fn from(s: GroupEffect) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GroupEffect> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GroupEffect> for Any {
     fn from(s: &GroupEffect) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GroupEffect);
 
 impl GroupEffect {

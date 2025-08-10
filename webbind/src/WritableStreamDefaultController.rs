@@ -7,6 +7,7 @@ use super::*;
 pub struct WritableStreamDefaultController {
     inner: Any,
 }
+
 impl FromVal for WritableStreamDefaultController {
     fn from_val(v: &Any) -> Self {
         WritableStreamDefaultController {
@@ -20,27 +21,32 @@ impl FromVal for WritableStreamDefaultController {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WritableStreamDefaultController {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WritableStreamDefaultController {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WritableStreamDefaultController {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WritableStreamDefaultController {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WritableStreamDefaultController> for Any {
     fn from(s: WritableStreamDefaultController) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WritableStreamDefaultController> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WritableStreamDefaultController> for Any {
     fn from(s: &WritableStreamDefaultController) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WritableStreamDefaultController);
 
 impl WritableStreamDefaultController {

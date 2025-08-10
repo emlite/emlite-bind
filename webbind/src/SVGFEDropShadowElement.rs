@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEDropShadowElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEDropShadowElement {
     fn from_val(v: &Any) -> Self {
         SVGFEDropShadowElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEDropShadowElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEDropShadowElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEDropShadowElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEDropShadowElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEDropShadowElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEDropShadowElement> for Any {
     fn from(s: SVGFEDropShadowElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEDropShadowElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEDropShadowElement> for Any {
     fn from(s: &SVGFEDropShadowElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEDropShadowElement);
 
 impl SVGFEDropShadowElement {

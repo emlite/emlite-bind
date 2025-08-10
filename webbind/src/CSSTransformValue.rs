@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSTransformValue {
     inner: CSSStyleValue,
 }
+
 impl FromVal for CSSTransformValue {
     fn from_val(v: &Any) -> Self {
         CSSTransformValue {
@@ -20,27 +21,32 @@ impl FromVal for CSSTransformValue {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSTransformValue {
     type Target = CSSStyleValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSTransformValue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSTransformValue {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSTransformValue {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSTransformValue> for Any {
     fn from(s: CSSTransformValue) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSTransformValue> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSTransformValue> for Any {
     fn from(s: &CSSTransformValue) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSTransformValue);
 
 impl CSSTransformValue {

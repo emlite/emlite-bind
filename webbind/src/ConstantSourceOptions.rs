@@ -1,10 +1,12 @@
 use super::*;
 
+/// The ConstantSourceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ConstantSourceOptions {
     inner: Any,
 }
+
 impl FromVal for ConstantSourceOptions {
     fn from_val(v: &Any) -> Self {
         ConstantSourceOptions { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for ConstantSourceOptions {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ConstantSourceOptions {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ConstantSourceOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ConstantSourceOptions {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ConstantSourceOptions {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ConstantSourceOptions> for Any {
     fn from(s: ConstantSourceOptions) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<ConstantSourceOptions> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ConstantSourceOptions> for Any {
     fn from(s: &ConstantSourceOptions) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&ConstantSourceOptions> for Any {
 }
 
 impl ConstantSourceOptions {
+    /// Getter of the `offset` attribute.
     pub fn offset(&self) -> f32 {
         self.inner.get("offset").as_::<f32>()
     }
 
+    /// Setter of the `offset` attribute.
     pub fn set_offset(&mut self, value: f32) {
         self.inner.set("offset", value);
     }

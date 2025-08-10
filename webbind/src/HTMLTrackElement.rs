@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLTrackElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLTrackElement {
     fn from_val(v: &Any) -> Self {
         HTMLTrackElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLTrackElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLTrackElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLTrackElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLTrackElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLTrackElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLTrackElement> for Any {
     fn from(s: HTMLTrackElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLTrackElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLTrackElement> for Any {
     fn from(s: &HTMLTrackElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLTrackElement);
 
 impl HTMLTrackElement {

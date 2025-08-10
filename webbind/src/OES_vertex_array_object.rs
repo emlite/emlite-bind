@@ -7,6 +7,7 @@ use super::*;
 pub struct OES_vertex_array_object {
     inner: Any,
 }
+
 impl FromVal for OES_vertex_array_object {
     fn from_val(v: &Any) -> Self {
         OES_vertex_array_object {
@@ -20,27 +21,32 @@ impl FromVal for OES_vertex_array_object {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for OES_vertex_array_object {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for OES_vertex_array_object {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for OES_vertex_array_object {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for OES_vertex_array_object {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<OES_vertex_array_object> for Any {
     fn from(s: OES_vertex_array_object) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<OES_vertex_array_object> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&OES_vertex_array_object> for Any {
     fn from(s: &OES_vertex_array_object) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(OES_vertex_array_object);
 
 impl OES_vertex_array_object {

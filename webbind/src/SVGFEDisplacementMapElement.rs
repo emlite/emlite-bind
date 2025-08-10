@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFEDisplacementMapElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFEDisplacementMapElement {
     fn from_val(v: &Any) -> Self {
         SVGFEDisplacementMapElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFEDisplacementMapElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFEDisplacementMapElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFEDisplacementMapElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFEDisplacementMapElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFEDisplacementMapElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFEDisplacementMapElement> for Any {
     fn from(s: SVGFEDisplacementMapElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFEDisplacementMapElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFEDisplacementMapElement> for Any {
     fn from(s: &SVGFEDisplacementMapElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFEDisplacementMapElement);
 
 impl SVGFEDisplacementMapElement {

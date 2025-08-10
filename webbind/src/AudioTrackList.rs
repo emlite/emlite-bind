@@ -7,6 +7,7 @@ use super::*;
 pub struct AudioTrackList {
     inner: EventTarget,
 }
+
 impl FromVal for AudioTrackList {
     fn from_val(v: &Any) -> Self {
         AudioTrackList {
@@ -20,27 +21,32 @@ impl FromVal for AudioTrackList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioTrackList {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioTrackList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioTrackList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioTrackList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioTrackList> for Any {
     fn from(s: AudioTrackList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AudioTrackList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioTrackList> for Any {
     fn from(s: &AudioTrackList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AudioTrackList);
 
 impl AudioTrackList {

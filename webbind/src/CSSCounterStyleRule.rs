@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSCounterStyleRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSCounterStyleRule {
     fn from_val(v: &Any) -> Self {
         CSSCounterStyleRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSCounterStyleRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSCounterStyleRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSCounterStyleRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSCounterStyleRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSCounterStyleRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSCounterStyleRule> for Any {
     fn from(s: CSSCounterStyleRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSCounterStyleRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSCounterStyleRule> for Any {
     fn from(s: &CSSCounterStyleRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSCounterStyleRule);
 
 impl CSSCounterStyleRule {

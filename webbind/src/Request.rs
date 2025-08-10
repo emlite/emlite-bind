@@ -7,6 +7,7 @@ use super::*;
 pub struct Request {
     inner: Any,
 }
+
 impl FromVal for Request {
     fn from_val(v: &Any) -> Self {
         Request {
@@ -20,27 +21,32 @@ impl FromVal for Request {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Request {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Request {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Request {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Request {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Request> for Any {
     fn from(s: Request) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Request> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Request> for Any {
     fn from(s: &Request) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Request);
 
 impl Request {

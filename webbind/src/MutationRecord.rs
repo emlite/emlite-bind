@@ -7,6 +7,7 @@ use super::*;
 pub struct MutationRecord {
     inner: Any,
 }
+
 impl FromVal for MutationRecord {
     fn from_val(v: &Any) -> Self {
         MutationRecord {
@@ -20,27 +21,32 @@ impl FromVal for MutationRecord {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MutationRecord {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MutationRecord {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MutationRecord {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MutationRecord {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MutationRecord> for Any {
     fn from(s: MutationRecord) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MutationRecord> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MutationRecord> for Any {
     fn from(s: &MutationRecord) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MutationRecord);
 
 impl MutationRecord {

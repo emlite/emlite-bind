@@ -7,6 +7,7 @@ use super::*;
 pub struct Viewport {
     inner: Any,
 }
+
 impl FromVal for Viewport {
     fn from_val(v: &Any) -> Self {
         Viewport {
@@ -20,27 +21,32 @@ impl FromVal for Viewport {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Viewport {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Viewport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Viewport {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Viewport {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Viewport> for Any {
     fn from(s: Viewport) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Viewport> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Viewport> for Any {
     fn from(s: &Viewport) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Viewport);
 
 impl Viewport {

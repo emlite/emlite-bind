@@ -1,191 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RTCRtpReceiveParameters {
-    inner: Any,
-}
-impl FromVal for RTCRtpReceiveParameters {
-    fn from_val(v: &Any) -> Self {
-        RTCRtpReceiveParameters { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RTCRtpReceiveParameters {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RTCRtpReceiveParameters {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RTCRtpReceiveParameters {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RTCRtpReceiveParameters {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RTCRtpReceiveParameters> for Any {
-    fn from(s: RTCRtpReceiveParameters) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RTCRtpReceiveParameters> for Any {
-    fn from(s: &RTCRtpReceiveParameters) -> Any {
-        s.inner.clone()
-    }
-}
-
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RTCRtpContributingSource {
-    inner: Any,
-}
-impl FromVal for RTCRtpContributingSource {
-    fn from_val(v: &Any) -> Self {
-        RTCRtpContributingSource { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RTCRtpContributingSource {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RTCRtpContributingSource {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RTCRtpContributingSource {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RTCRtpContributingSource {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RTCRtpContributingSource> for Any {
-    fn from(s: RTCRtpContributingSource) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RTCRtpContributingSource> for Any {
-    fn from(s: &RTCRtpContributingSource) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl RTCRtpContributingSource {
-    pub fn timestamp(&self) -> Any {
-        self.inner.get("timestamp").as_::<Any>()
-    }
-
-    pub fn set_timestamp(&mut self, value: &Any) {
-        self.inner.set("timestamp", value);
-    }
-}
-impl RTCRtpContributingSource {
-    pub fn source(&self) -> u32 {
-        self.inner.get("source").as_::<u32>()
-    }
-
-    pub fn set_source(&mut self, value: u32) {
-        self.inner.set("source", value);
-    }
-}
-impl RTCRtpContributingSource {
-    pub fn audio_level(&self) -> f64 {
-        self.inner.get("audioLevel").as_::<f64>()
-    }
-
-    pub fn set_audio_level(&mut self, value: f64) {
-        self.inner.set("audioLevel", value);
-    }
-}
-impl RTCRtpContributingSource {
-    pub fn rtp_timestamp(&self) -> u32 {
-        self.inner.get("rtpTimestamp").as_::<u32>()
-    }
-
-    pub fn set_rtp_timestamp(&mut self, value: u32) {
-        self.inner.set("rtpTimestamp", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RTCRtpSynchronizationSource {
-    inner: Any,
-}
-impl FromVal for RTCRtpSynchronizationSource {
-    fn from_val(v: &Any) -> Self {
-        RTCRtpSynchronizationSource { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RTCRtpSynchronizationSource {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RTCRtpSynchronizationSource {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RTCRtpSynchronizationSource {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RTCRtpSynchronizationSource {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RTCRtpSynchronizationSource> for Any {
-    fn from(s: RTCRtpSynchronizationSource) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RTCRtpSynchronizationSource> for Any {
-    fn from(s: &RTCRtpSynchronizationSource) -> Any {
-        s.inner.clone()
-    }
-}
-
 /// The RTCRtpReceiver class.
 /// [`RTCRtpReceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -193,6 +7,7 @@ impl From<&RTCRtpSynchronizationSource> for Any {
 pub struct RTCRtpReceiver {
     inner: Any,
 }
+
 impl FromVal for RTCRtpReceiver {
     fn from_val(v: &Any) -> Self {
         RTCRtpReceiver {
@@ -206,27 +21,32 @@ impl FromVal for RTCRtpReceiver {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCRtpReceiver {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCRtpReceiver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCRtpReceiver {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCRtpReceiver {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCRtpReceiver> for Any {
     fn from(s: RTCRtpReceiver) -> Any {
         let handle = s.inner.as_handle();
@@ -234,11 +54,13 @@ impl From<RTCRtpReceiver> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCRtpReceiver> for Any {
     fn from(s: &RTCRtpReceiver) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCRtpReceiver);
 
 impl RTCRtpReceiver {

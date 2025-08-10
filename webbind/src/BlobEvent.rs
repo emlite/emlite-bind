@@ -7,6 +7,7 @@ use super::*;
 pub struct BlobEvent {
     inner: Event,
 }
+
 impl FromVal for BlobEvent {
     fn from_val(v: &Any) -> Self {
         BlobEvent {
@@ -20,27 +21,32 @@ impl FromVal for BlobEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BlobEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BlobEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BlobEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BlobEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BlobEvent> for Any {
     fn from(s: BlobEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BlobEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BlobEvent> for Any {
     fn from(s: &BlobEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BlobEvent);
 
 impl BlobEvent {

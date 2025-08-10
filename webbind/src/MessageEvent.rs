@@ -7,6 +7,7 @@ use super::*;
 pub struct MessageEvent {
     inner: Event,
 }
+
 impl FromVal for MessageEvent {
     fn from_val(v: &Any) -> Self {
         MessageEvent {
@@ -20,27 +21,32 @@ impl FromVal for MessageEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MessageEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MessageEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MessageEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MessageEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MessageEvent> for Any {
     fn from(s: MessageEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MessageEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MessageEvent> for Any {
     fn from(s: &MessageEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MessageEvent);
 
 impl MessageEvent {

@@ -7,6 +7,7 @@ use super::*;
 pub struct DeviceMotionEventRotationRate {
     inner: Any,
 }
+
 impl FromVal for DeviceMotionEventRotationRate {
     fn from_val(v: &Any) -> Self {
         DeviceMotionEventRotationRate {
@@ -20,27 +21,32 @@ impl FromVal for DeviceMotionEventRotationRate {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DeviceMotionEventRotationRate {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DeviceMotionEventRotationRate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DeviceMotionEventRotationRate {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DeviceMotionEventRotationRate {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DeviceMotionEventRotationRate> for Any {
     fn from(s: DeviceMotionEventRotationRate) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DeviceMotionEventRotationRate> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DeviceMotionEventRotationRate> for Any {
     fn from(s: &DeviceMotionEventRotationRate) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DeviceMotionEventRotationRate);
 
 impl DeviceMotionEventRotationRate {

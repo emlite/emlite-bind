@@ -1,444 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRProjectionLayerInit {
-    inner: Any,
-}
-impl FromVal for XRProjectionLayerInit {
-    fn from_val(v: &Any) -> Self {
-        XRProjectionLayerInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRProjectionLayerInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRProjectionLayerInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRProjectionLayerInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRProjectionLayerInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRProjectionLayerInit> for Any {
-    fn from(s: XRProjectionLayerInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRProjectionLayerInit> for Any {
-    fn from(s: &XRProjectionLayerInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRProjectionLayerInit {
-    pub fn texture_type(&self) -> XRTextureType {
-        self.inner.get("textureType").as_::<XRTextureType>()
-    }
-
-    pub fn set_texture_type(&mut self, value: &XRTextureType) {
-        self.inner.set("textureType", value);
-    }
-}
-impl XRProjectionLayerInit {
-    pub fn color_format(&self) -> Any {
-        self.inner.get("colorFormat").as_::<Any>()
-    }
-
-    pub fn set_color_format(&mut self, value: &Any) {
-        self.inner.set("colorFormat", value);
-    }
-}
-impl XRProjectionLayerInit {
-    pub fn depth_format(&self) -> Any {
-        self.inner.get("depthFormat").as_::<Any>()
-    }
-
-    pub fn set_depth_format(&mut self, value: &Any) {
-        self.inner.set("depthFormat", value);
-    }
-}
-impl XRProjectionLayerInit {
-    pub fn scale_factor(&self) -> f64 {
-        self.inner.get("scaleFactor").as_::<f64>()
-    }
-
-    pub fn set_scale_factor(&mut self, value: f64) {
-        self.inner.set("scaleFactor", value);
-    }
-}
-impl XRProjectionLayerInit {
-    pub fn clear_on_access(&self) -> bool {
-        self.inner.get("clearOnAccess").as_::<bool>()
-    }
-
-    pub fn set_clear_on_access(&mut self, value: bool) {
-        self.inner.set("clearOnAccess", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRQuadLayerInit {
-    inner: Any,
-}
-impl FromVal for XRQuadLayerInit {
-    fn from_val(v: &Any) -> Self {
-        XRQuadLayerInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRQuadLayerInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRQuadLayerInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRQuadLayerInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRQuadLayerInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRQuadLayerInit> for Any {
-    fn from(s: XRQuadLayerInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRQuadLayerInit> for Any {
-    fn from(s: &XRQuadLayerInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRQuadLayerInit {
-    pub fn texture_type(&self) -> XRTextureType {
-        self.inner.get("textureType").as_::<XRTextureType>()
-    }
-
-    pub fn set_texture_type(&mut self, value: &XRTextureType) {
-        self.inner.set("textureType", value);
-    }
-}
-impl XRQuadLayerInit {
-    pub fn transform(&self) -> XRRigidTransform {
-        self.inner.get("transform").as_::<XRRigidTransform>()
-    }
-
-    pub fn set_transform(&mut self, value: &XRRigidTransform) {
-        self.inner.set("transform", value);
-    }
-}
-impl XRQuadLayerInit {
-    pub fn width(&self) -> f32 {
-        self.inner.get("width").as_::<f32>()
-    }
-
-    pub fn set_width(&mut self, value: f32) {
-        self.inner.set("width", value);
-    }
-}
-impl XRQuadLayerInit {
-    pub fn height(&self) -> f32 {
-        self.inner.get("height").as_::<f32>()
-    }
-
-    pub fn set_height(&mut self, value: f32) {
-        self.inner.set("height", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRCylinderLayerInit {
-    inner: Any,
-}
-impl FromVal for XRCylinderLayerInit {
-    fn from_val(v: &Any) -> Self {
-        XRCylinderLayerInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRCylinderLayerInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRCylinderLayerInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRCylinderLayerInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRCylinderLayerInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRCylinderLayerInit> for Any {
-    fn from(s: XRCylinderLayerInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRCylinderLayerInit> for Any {
-    fn from(s: &XRCylinderLayerInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRCylinderLayerInit {
-    pub fn texture_type(&self) -> XRTextureType {
-        self.inner.get("textureType").as_::<XRTextureType>()
-    }
-
-    pub fn set_texture_type(&mut self, value: &XRTextureType) {
-        self.inner.set("textureType", value);
-    }
-}
-impl XRCylinderLayerInit {
-    pub fn transform(&self) -> XRRigidTransform {
-        self.inner.get("transform").as_::<XRRigidTransform>()
-    }
-
-    pub fn set_transform(&mut self, value: &XRRigidTransform) {
-        self.inner.set("transform", value);
-    }
-}
-impl XRCylinderLayerInit {
-    pub fn radius(&self) -> f32 {
-        self.inner.get("radius").as_::<f32>()
-    }
-
-    pub fn set_radius(&mut self, value: f32) {
-        self.inner.set("radius", value);
-    }
-}
-impl XRCylinderLayerInit {
-    pub fn central_angle(&self) -> f32 {
-        self.inner.get("centralAngle").as_::<f32>()
-    }
-
-    pub fn set_central_angle(&mut self, value: f32) {
-        self.inner.set("centralAngle", value);
-    }
-}
-impl XRCylinderLayerInit {
-    pub fn aspect_ratio(&self) -> f32 {
-        self.inner.get("aspectRatio").as_::<f32>()
-    }
-
-    pub fn set_aspect_ratio(&mut self, value: f32) {
-        self.inner.set("aspectRatio", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XREquirectLayerInit {
-    inner: Any,
-}
-impl FromVal for XREquirectLayerInit {
-    fn from_val(v: &Any) -> Self {
-        XREquirectLayerInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XREquirectLayerInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XREquirectLayerInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XREquirectLayerInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XREquirectLayerInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XREquirectLayerInit> for Any {
-    fn from(s: XREquirectLayerInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XREquirectLayerInit> for Any {
-    fn from(s: &XREquirectLayerInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XREquirectLayerInit {
-    pub fn texture_type(&self) -> XRTextureType {
-        self.inner.get("textureType").as_::<XRTextureType>()
-    }
-
-    pub fn set_texture_type(&mut self, value: &XRTextureType) {
-        self.inner.set("textureType", value);
-    }
-}
-impl XREquirectLayerInit {
-    pub fn transform(&self) -> XRRigidTransform {
-        self.inner.get("transform").as_::<XRRigidTransform>()
-    }
-
-    pub fn set_transform(&mut self, value: &XRRigidTransform) {
-        self.inner.set("transform", value);
-    }
-}
-impl XREquirectLayerInit {
-    pub fn radius(&self) -> f32 {
-        self.inner.get("radius").as_::<f32>()
-    }
-
-    pub fn set_radius(&mut self, value: f32) {
-        self.inner.set("radius", value);
-    }
-}
-impl XREquirectLayerInit {
-    pub fn central_horizontal_angle(&self) -> f32 {
-        self.inner.get("centralHorizontalAngle").as_::<f32>()
-    }
-
-    pub fn set_central_horizontal_angle(&mut self, value: f32) {
-        self.inner.set("centralHorizontalAngle", value);
-    }
-}
-impl XREquirectLayerInit {
-    pub fn upper_vertical_angle(&self) -> f32 {
-        self.inner.get("upperVerticalAngle").as_::<f32>()
-    }
-
-    pub fn set_upper_vertical_angle(&mut self, value: f32) {
-        self.inner.set("upperVerticalAngle", value);
-    }
-}
-impl XREquirectLayerInit {
-    pub fn lower_vertical_angle(&self) -> f32 {
-        self.inner.get("lowerVerticalAngle").as_::<f32>()
-    }
-
-    pub fn set_lower_vertical_angle(&mut self, value: f32) {
-        self.inner.set("lowerVerticalAngle", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRCubeLayerInit {
-    inner: Any,
-}
-impl FromVal for XRCubeLayerInit {
-    fn from_val(v: &Any) -> Self {
-        XRCubeLayerInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRCubeLayerInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRCubeLayerInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRCubeLayerInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRCubeLayerInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRCubeLayerInit> for Any {
-    fn from(s: XRCubeLayerInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRCubeLayerInit> for Any {
-    fn from(s: &XRCubeLayerInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRCubeLayerInit {
-    pub fn orientation(&self) -> DOMPointReadOnly {
-        self.inner.get("orientation").as_::<DOMPointReadOnly>()
-    }
-
-    pub fn set_orientation(&mut self, value: &DOMPointReadOnly) {
-        self.inner.set("orientation", value);
-    }
-}
 /// The XRWebGLBinding class.
 /// [`XRWebGLBinding`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -446,6 +7,7 @@ impl XRCubeLayerInit {
 pub struct XRWebGLBinding {
     inner: Any,
 }
+
 impl FromVal for XRWebGLBinding {
     fn from_val(v: &Any) -> Self {
         XRWebGLBinding {
@@ -459,27 +21,32 @@ impl FromVal for XRWebGLBinding {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRWebGLBinding {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRWebGLBinding {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRWebGLBinding {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRWebGLBinding {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRWebGLBinding> for Any {
     fn from(s: XRWebGLBinding) -> Any {
         let handle = s.inner.as_handle();
@@ -487,11 +54,13 @@ impl From<XRWebGLBinding> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRWebGLBinding> for Any {
     fn from(s: &XRWebGLBinding) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRWebGLBinding);
 
 impl XRWebGLBinding {

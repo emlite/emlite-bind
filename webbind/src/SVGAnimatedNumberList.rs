@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGAnimatedNumberList {
     inner: Any,
 }
+
 impl FromVal for SVGAnimatedNumberList {
     fn from_val(v: &Any) -> Self {
         SVGAnimatedNumberList {
@@ -20,27 +21,32 @@ impl FromVal for SVGAnimatedNumberList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGAnimatedNumberList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGAnimatedNumberList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGAnimatedNumberList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGAnimatedNumberList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGAnimatedNumberList> for Any {
     fn from(s: SVGAnimatedNumberList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGAnimatedNumberList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGAnimatedNumberList> for Any {
     fn from(s: &SVGAnimatedNumberList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGAnimatedNumberList);
 
 impl SVGAnimatedNumberList {

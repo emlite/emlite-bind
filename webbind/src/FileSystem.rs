@@ -7,6 +7,7 @@ use super::*;
 pub struct FileSystem {
     inner: Any,
 }
+
 impl FromVal for FileSystem {
     fn from_val(v: &Any) -> Self {
         FileSystem {
@@ -20,27 +21,32 @@ impl FromVal for FileSystem {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FileSystem {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FileSystem {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FileSystem {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FileSystem {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FileSystem> for Any {
     fn from(s: FileSystem) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FileSystem> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FileSystem> for Any {
     fn from(s: &FileSystem) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FileSystem);
 
 impl FileSystem {

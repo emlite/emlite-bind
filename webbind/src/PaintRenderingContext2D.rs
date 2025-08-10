@@ -7,6 +7,7 @@ use super::*;
 pub struct PaintRenderingContext2D {
     inner: Any,
 }
+
 impl FromVal for PaintRenderingContext2D {
     fn from_val(v: &Any) -> Self {
         PaintRenderingContext2D {
@@ -20,27 +21,32 @@ impl FromVal for PaintRenderingContext2D {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PaintRenderingContext2D {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PaintRenderingContext2D {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PaintRenderingContext2D {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PaintRenderingContext2D {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PaintRenderingContext2D> for Any {
     fn from(s: PaintRenderingContext2D) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PaintRenderingContext2D> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PaintRenderingContext2D> for Any {
     fn from(s: &PaintRenderingContext2D) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PaintRenderingContext2D);
 
 impl PaintRenderingContext2D {

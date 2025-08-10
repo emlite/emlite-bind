@@ -7,6 +7,7 @@ use super::*;
 pub struct OVR_multiview2 {
     inner: Any,
 }
+
 impl FromVal for OVR_multiview2 {
     fn from_val(v: &Any) -> Self {
         OVR_multiview2 {
@@ -20,27 +21,32 @@ impl FromVal for OVR_multiview2 {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for OVR_multiview2 {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for OVR_multiview2 {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for OVR_multiview2 {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for OVR_multiview2 {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<OVR_multiview2> for Any {
     fn from(s: OVR_multiview2) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<OVR_multiview2> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&OVR_multiview2> for Any {
     fn from(s: &OVR_multiview2) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(OVR_multiview2);
 
 impl OVR_multiview2 {

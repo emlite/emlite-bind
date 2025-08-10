@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLFencedFrameElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLFencedFrameElement {
     fn from_val(v: &Any) -> Self {
         HTMLFencedFrameElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLFencedFrameElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLFencedFrameElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLFencedFrameElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLFencedFrameElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLFencedFrameElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLFencedFrameElement> for Any {
     fn from(s: HTMLFencedFrameElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLFencedFrameElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLFencedFrameElement> for Any {
     fn from(s: &HTMLFencedFrameElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLFencedFrameElement);
 
 impl HTMLFencedFrameElement {

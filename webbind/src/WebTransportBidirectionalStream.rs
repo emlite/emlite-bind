@@ -7,6 +7,7 @@ use super::*;
 pub struct WebTransportBidirectionalStream {
     inner: Any,
 }
+
 impl FromVal for WebTransportBidirectionalStream {
     fn from_val(v: &Any) -> Self {
         WebTransportBidirectionalStream {
@@ -20,27 +21,32 @@ impl FromVal for WebTransportBidirectionalStream {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebTransportBidirectionalStream {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebTransportBidirectionalStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebTransportBidirectionalStream {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebTransportBidirectionalStream {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebTransportBidirectionalStream> for Any {
     fn from(s: WebTransportBidirectionalStream) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WebTransportBidirectionalStream> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebTransportBidirectionalStream> for Any {
     fn from(s: &WebTransportBidirectionalStream) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebTransportBidirectionalStream);
 
 impl WebTransportBidirectionalStream {

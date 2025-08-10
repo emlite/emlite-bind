@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSMathValue {
     inner: CSSNumericValue,
 }
+
 impl FromVal for CSSMathValue {
     fn from_val(v: &Any) -> Self {
         CSSMathValue {
@@ -20,27 +21,32 @@ impl FromVal for CSSMathValue {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSMathValue {
     type Target = CSSNumericValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSMathValue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSMathValue {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSMathValue {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSMathValue> for Any {
     fn from(s: CSSMathValue) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSMathValue> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSMathValue> for Any {
     fn from(s: &CSSMathValue) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSMathValue);
 
 impl CSSMathValue {

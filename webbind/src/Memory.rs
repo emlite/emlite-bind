@@ -7,6 +7,7 @@ use super::*;
 pub struct Memory {
     inner: Any,
 }
+
 impl FromVal for Memory {
     fn from_val(v: &Any) -> Self {
         Memory {
@@ -20,27 +21,32 @@ impl FromVal for Memory {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Memory {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Memory {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Memory {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Memory {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Memory> for Any {
     fn from(s: Memory) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Memory> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Memory> for Any {
     fn from(s: &Memory) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Memory);
 
 impl Memory {

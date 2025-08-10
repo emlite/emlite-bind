@@ -7,6 +7,7 @@ use super::*;
 pub struct WEBGL_compressed_texture_s3tc_srgb {
     inner: Any,
 }
+
 impl FromVal for WEBGL_compressed_texture_s3tc_srgb {
     fn from_val(v: &Any) -> Self {
         WEBGL_compressed_texture_s3tc_srgb {
@@ -20,27 +21,32 @@ impl FromVal for WEBGL_compressed_texture_s3tc_srgb {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WEBGL_compressed_texture_s3tc_srgb {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WEBGL_compressed_texture_s3tc_srgb {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WEBGL_compressed_texture_s3tc_srgb {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WEBGL_compressed_texture_s3tc_srgb {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WEBGL_compressed_texture_s3tc_srgb> for Any {
     fn from(s: WEBGL_compressed_texture_s3tc_srgb) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<WEBGL_compressed_texture_s3tc_srgb> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WEBGL_compressed_texture_s3tc_srgb> for Any {
     fn from(s: &WEBGL_compressed_texture_s3tc_srgb) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_s3tc_srgb);

@@ -7,6 +7,7 @@ use super::*;
 pub struct FetchEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for FetchEvent {
     fn from_val(v: &Any) -> Self {
         FetchEvent {
@@ -20,27 +21,32 @@ impl FromVal for FetchEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FetchEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FetchEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FetchEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FetchEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FetchEvent> for Any {
     fn from(s: FetchEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FetchEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FetchEvent> for Any {
     fn from(s: &FetchEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FetchEvent);
 
 impl FetchEvent {

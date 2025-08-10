@@ -7,6 +7,7 @@ use super::*;
 pub struct FontFaceSetLoadEvent {
     inner: Event,
 }
+
 impl FromVal for FontFaceSetLoadEvent {
     fn from_val(v: &Any) -> Self {
         FontFaceSetLoadEvent {
@@ -20,27 +21,32 @@ impl FromVal for FontFaceSetLoadEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FontFaceSetLoadEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FontFaceSetLoadEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FontFaceSetLoadEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FontFaceSetLoadEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FontFaceSetLoadEvent> for Any {
     fn from(s: FontFaceSetLoadEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FontFaceSetLoadEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FontFaceSetLoadEvent> for Any {
     fn from(s: &FontFaceSetLoadEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FontFaceSetLoadEvent);
 
 impl FontFaceSetLoadEvent {

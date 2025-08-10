@@ -1,10 +1,12 @@
 use super::*;
 
+/// The USBConnectionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBConnectionEventInit {
     inner: Any,
 }
+
 impl FromVal for USBConnectionEventInit {
     fn from_val(v: &Any) -> Self {
         USBConnectionEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for USBConnectionEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for USBConnectionEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for USBConnectionEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for USBConnectionEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for USBConnectionEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<USBConnectionEventInit> for Any {
     fn from(s: USBConnectionEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<USBConnectionEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&USBConnectionEventInit> for Any {
     fn from(s: &USBConnectionEventInit) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&USBConnectionEventInit> for Any {
 }
 
 impl USBConnectionEventInit {
+    /// Getter of the `device` attribute.
     pub fn device(&self) -> USBDevice {
         self.inner.get("device").as_::<USBDevice>()
     }
 
+    /// Setter of the `device` attribute.
     pub fn set_device(&mut self, value: &USBDevice) {
         self.inner.set("device", value);
     }

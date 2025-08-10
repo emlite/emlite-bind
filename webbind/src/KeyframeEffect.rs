@@ -7,6 +7,7 @@ use super::*;
 pub struct KeyframeEffect {
     inner: AnimationEffect,
 }
+
 impl FromVal for KeyframeEffect {
     fn from_val(v: &Any) -> Self {
         KeyframeEffect {
@@ -20,27 +21,32 @@ impl FromVal for KeyframeEffect {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for KeyframeEffect {
     type Target = AnimationEffect;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for KeyframeEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for KeyframeEffect {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for KeyframeEffect {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<KeyframeEffect> for Any {
     fn from(s: KeyframeEffect) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<KeyframeEffect> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&KeyframeEffect> for Any {
     fn from(s: &KeyframeEffect) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(KeyframeEffect);
 
 impl KeyframeEffect {

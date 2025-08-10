@@ -7,6 +7,7 @@ use super::*;
 pub struct XRWebGLLayer {
     inner: XRLayer,
 }
+
 impl FromVal for XRWebGLLayer {
     fn from_val(v: &Any) -> Self {
         XRWebGLLayer {
@@ -20,27 +21,32 @@ impl FromVal for XRWebGLLayer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRWebGLLayer {
     type Target = XRLayer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRWebGLLayer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRWebGLLayer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRWebGLLayer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRWebGLLayer> for Any {
     fn from(s: XRWebGLLayer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRWebGLLayer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRWebGLLayer> for Any {
     fn from(s: &XRWebGLLayer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRWebGLLayer);
 
 impl XRWebGLLayer {

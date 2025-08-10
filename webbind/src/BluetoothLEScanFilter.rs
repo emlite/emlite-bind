@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothLEScanFilter {
     inner: Any,
 }
+
 impl FromVal for BluetoothLEScanFilter {
     fn from_val(v: &Any) -> Self {
         BluetoothLEScanFilter {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothLEScanFilter {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothLEScanFilter {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothLEScanFilter {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothLEScanFilter {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothLEScanFilter {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothLEScanFilter> for Any {
     fn from(s: BluetoothLEScanFilter) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothLEScanFilter> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothLEScanFilter> for Any {
     fn from(s: &BluetoothLEScanFilter) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanFilter);
 
 impl BluetoothLEScanFilter {

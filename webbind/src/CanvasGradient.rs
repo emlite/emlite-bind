@@ -7,6 +7,7 @@ use super::*;
 pub struct CanvasGradient {
     inner: Any,
 }
+
 impl FromVal for CanvasGradient {
     fn from_val(v: &Any) -> Self {
         CanvasGradient {
@@ -20,27 +21,32 @@ impl FromVal for CanvasGradient {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CanvasGradient {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CanvasGradient {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CanvasGradient {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CanvasGradient {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CanvasGradient> for Any {
     fn from(s: CanvasGradient) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CanvasGradient> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CanvasGradient> for Any {
     fn from(s: &CanvasGradient) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CanvasGradient);
 
 impl CanvasGradient {

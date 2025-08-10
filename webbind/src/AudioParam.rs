@@ -7,6 +7,7 @@ use super::*;
 pub struct AudioParam {
     inner: Any,
 }
+
 impl FromVal for AudioParam {
     fn from_val(v: &Any) -> Self {
         AudioParam {
@@ -20,27 +21,32 @@ impl FromVal for AudioParam {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioParam {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioParam {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioParam {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioParam {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioParam> for Any {
     fn from(s: AudioParam) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AudioParam> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioParam> for Any {
     fn from(s: &AudioParam) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AudioParam);
 
 impl AudioParam {

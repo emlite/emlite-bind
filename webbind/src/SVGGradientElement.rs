@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGGradientElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGGradientElement {
     fn from_val(v: &Any) -> Self {
         SVGGradientElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGGradientElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGGradientElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGGradientElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGGradientElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGGradientElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGGradientElement> for Any {
     fn from(s: SVGGradientElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGGradientElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGGradientElement> for Any {
     fn from(s: &SVGGradientElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGGradientElement);
 
 impl SVGGradientElement {

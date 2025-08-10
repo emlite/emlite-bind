@@ -1,9 +1,9 @@
 import * as webref from "@webref/idl";
-import { clean } from "./clean.js";
 import { generate } from "./gen.js";
 
 async function main() {
   // Note: clean() disabled - new generators use writeFileSync to completely replace files
+  // This matches the wasmbind approach of file replacement rather than truncation
   // await clean();
   const specAst = await webref.parseAll();
   generate(specAst);

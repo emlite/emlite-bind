@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCPeerConnectionIceEvent {
     inner: Event,
 }
+
 impl FromVal for RTCPeerConnectionIceEvent {
     fn from_val(v: &Any) -> Self {
         RTCPeerConnectionIceEvent {
@@ -20,27 +21,32 @@ impl FromVal for RTCPeerConnectionIceEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCPeerConnectionIceEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCPeerConnectionIceEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCPeerConnectionIceEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCPeerConnectionIceEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCPeerConnectionIceEvent> for Any {
     fn from(s: RTCPeerConnectionIceEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCPeerConnectionIceEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCPeerConnectionIceEvent> for Any {
     fn from(s: &RTCPeerConnectionIceEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceEvent);
 
 impl RTCPeerConnectionIceEvent {

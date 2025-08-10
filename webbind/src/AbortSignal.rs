@@ -7,6 +7,7 @@ use super::*;
 pub struct AbortSignal {
     inner: EventTarget,
 }
+
 impl FromVal for AbortSignal {
     fn from_val(v: &Any) -> Self {
         AbortSignal {
@@ -20,27 +21,32 @@ impl FromVal for AbortSignal {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AbortSignal {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AbortSignal {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AbortSignal {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AbortSignal {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AbortSignal> for Any {
     fn from(s: AbortSignal) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AbortSignal> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AbortSignal> for Any {
     fn from(s: &AbortSignal) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AbortSignal);
 
 impl AbortSignal {

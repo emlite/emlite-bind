@@ -7,6 +7,7 @@ use super::*;
 pub struct OffscreenCanvasRenderingContext2D {
     inner: Any,
 }
+
 impl FromVal for OffscreenCanvasRenderingContext2D {
     fn from_val(v: &Any) -> Self {
         OffscreenCanvasRenderingContext2D {
@@ -20,27 +21,32 @@ impl FromVal for OffscreenCanvasRenderingContext2D {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for OffscreenCanvasRenderingContext2D {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for OffscreenCanvasRenderingContext2D {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for OffscreenCanvasRenderingContext2D {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for OffscreenCanvasRenderingContext2D {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<OffscreenCanvasRenderingContext2D> for Any {
     fn from(s: OffscreenCanvasRenderingContext2D) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<OffscreenCanvasRenderingContext2D> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&OffscreenCanvasRenderingContext2D> for Any {
     fn from(s: &OffscreenCanvasRenderingContext2D) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(OffscreenCanvasRenderingContext2D);
 
 impl OffscreenCanvasRenderingContext2D {

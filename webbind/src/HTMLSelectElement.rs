@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLSelectElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLSelectElement {
     fn from_val(v: &Any) -> Self {
         HTMLSelectElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLSelectElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLSelectElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLSelectElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLSelectElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLSelectElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLSelectElement> for Any {
     fn from(s: HTMLSelectElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLSelectElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLSelectElement> for Any {
     fn from(s: &HTMLSelectElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLSelectElement);
 
 impl HTMLSelectElement {

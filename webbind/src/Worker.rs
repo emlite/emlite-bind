@@ -7,6 +7,7 @@ use super::*;
 pub struct Worker {
     inner: EventTarget,
 }
+
 impl FromVal for Worker {
     fn from_val(v: &Any) -> Self {
         Worker {
@@ -20,27 +21,32 @@ impl FromVal for Worker {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Worker {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Worker {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Worker {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Worker {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Worker> for Any {
     fn from(s: Worker) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Worker> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Worker> for Any {
     fn from(s: &Worker) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Worker);
 
 impl Worker {

@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothRemoteGATTService {
     inner: EventTarget,
 }
+
 impl FromVal for BluetoothRemoteGATTService {
     fn from_val(v: &Any) -> Self {
         BluetoothRemoteGATTService {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothRemoteGATTService {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothRemoteGATTService {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothRemoteGATTService {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothRemoteGATTService {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothRemoteGATTService {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothRemoteGATTService> for Any {
     fn from(s: BluetoothRemoteGATTService) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothRemoteGATTService> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothRemoteGATTService> for Any {
     fn from(s: &BluetoothRemoteGATTService) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTService);
 
 impl BluetoothRemoteGATTService {

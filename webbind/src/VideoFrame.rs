@@ -1,209 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct VideoFrameMetadata {
-    inner: Any,
-}
-impl FromVal for VideoFrameMetadata {
-    fn from_val(v: &Any) -> Self {
-        VideoFrameMetadata { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for VideoFrameMetadata {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for VideoFrameMetadata {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for VideoFrameMetadata {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for VideoFrameMetadata {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<VideoFrameMetadata> for Any {
-    fn from(s: VideoFrameMetadata) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&VideoFrameMetadata> for Any {
-    fn from(s: &VideoFrameMetadata) -> Any {
-        s.inner.clone()
-    }
-}
-
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct VideoFrameCopyToOptions {
-    inner: Any,
-}
-impl FromVal for VideoFrameCopyToOptions {
-    fn from_val(v: &Any) -> Self {
-        VideoFrameCopyToOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for VideoFrameCopyToOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for VideoFrameCopyToOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for VideoFrameCopyToOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for VideoFrameCopyToOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<VideoFrameCopyToOptions> for Any {
-    fn from(s: VideoFrameCopyToOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&VideoFrameCopyToOptions> for Any {
-    fn from(s: &VideoFrameCopyToOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl VideoFrameCopyToOptions {
-    pub fn rect(&self) -> DOMRectInit {
-        self.inner.get("rect").as_::<DOMRectInit>()
-    }
-
-    pub fn set_rect(&mut self, value: &DOMRectInit) {
-        self.inner.set("rect", value);
-    }
-}
-impl VideoFrameCopyToOptions {
-    pub fn layout(&self) -> TypedArray<PlaneLayout> {
-        self.inner.get("layout").as_::<TypedArray<PlaneLayout>>()
-    }
-
-    pub fn set_layout(&mut self, value: &TypedArray<PlaneLayout>) {
-        self.inner.set("layout", value);
-    }
-}
-impl VideoFrameCopyToOptions {
-    pub fn format(&self) -> VideoPixelFormat {
-        self.inner.get("format").as_::<VideoPixelFormat>()
-    }
-
-    pub fn set_format(&mut self, value: &VideoPixelFormat) {
-        self.inner.set("format", value);
-    }
-}
-impl VideoFrameCopyToOptions {
-    pub fn color_space(&self) -> PredefinedColorSpace {
-        self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
-    }
-
-    pub fn set_color_space(&mut self, value: &PredefinedColorSpace) {
-        self.inner.set("colorSpace", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct PlaneLayout {
-    inner: Any,
-}
-impl FromVal for PlaneLayout {
-    fn from_val(v: &Any) -> Self {
-        PlaneLayout { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for PlaneLayout {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for PlaneLayout {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for PlaneLayout {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for PlaneLayout {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<PlaneLayout> for Any {
-    fn from(s: PlaneLayout) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&PlaneLayout> for Any {
-    fn from(s: &PlaneLayout) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl PlaneLayout {
-    pub fn offset(&self) -> u32 {
-        self.inner.get("offset").as_::<u32>()
-    }
-
-    pub fn set_offset(&mut self, value: u32) {
-        self.inner.set("offset", value);
-    }
-}
-impl PlaneLayout {
-    pub fn stride(&self) -> u32 {
-        self.inner.get("stride").as_::<u32>()
-    }
-
-    pub fn set_stride(&mut self, value: u32) {
-        self.inner.set("stride", value);
-    }
-}
 /// The VideoFrame class.
 /// [`VideoFrame`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -211,6 +7,7 @@ impl PlaneLayout {
 pub struct VideoFrame {
     inner: Any,
 }
+
 impl FromVal for VideoFrame {
     fn from_val(v: &Any) -> Self {
         VideoFrame {
@@ -224,27 +21,32 @@ impl FromVal for VideoFrame {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for VideoFrame {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for VideoFrame {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for VideoFrame {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for VideoFrame {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<VideoFrame> for Any {
     fn from(s: VideoFrame) -> Any {
         let handle = s.inner.as_handle();
@@ -252,11 +54,13 @@ impl From<VideoFrame> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&VideoFrame> for Any {
     fn from(s: &VideoFrame) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(VideoFrame);
 
 impl VideoFrame {

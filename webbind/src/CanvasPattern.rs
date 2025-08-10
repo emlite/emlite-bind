@@ -7,6 +7,7 @@ use super::*;
 pub struct CanvasPattern {
     inner: Any,
 }
+
 impl FromVal for CanvasPattern {
     fn from_val(v: &Any) -> Self {
         CanvasPattern {
@@ -20,27 +21,32 @@ impl FromVal for CanvasPattern {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CanvasPattern {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CanvasPattern {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CanvasPattern {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CanvasPattern {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CanvasPattern> for Any {
     fn from(s: CanvasPattern) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CanvasPattern> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CanvasPattern> for Any {
     fn from(s: &CanvasPattern) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CanvasPattern);
 
 impl CanvasPattern {

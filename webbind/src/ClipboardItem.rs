@@ -7,6 +7,7 @@ use super::*;
 pub struct ClipboardItem {
     inner: Any,
 }
+
 impl FromVal for ClipboardItem {
     fn from_val(v: &Any) -> Self {
         ClipboardItem {
@@ -20,27 +21,32 @@ impl FromVal for ClipboardItem {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ClipboardItem {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ClipboardItem {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ClipboardItem {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ClipboardItem {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ClipboardItem> for Any {
     fn from(s: ClipboardItem) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ClipboardItem> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ClipboardItem> for Any {
     fn from(s: &ClipboardItem) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ClipboardItem);
 
 impl ClipboardItem {

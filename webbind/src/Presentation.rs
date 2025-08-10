@@ -7,6 +7,7 @@ use super::*;
 pub struct Presentation {
     inner: Any,
 }
+
 impl FromVal for Presentation {
     fn from_val(v: &Any) -> Self {
         Presentation {
@@ -20,27 +21,32 @@ impl FromVal for Presentation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Presentation {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Presentation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Presentation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Presentation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Presentation> for Any {
     fn from(s: Presentation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Presentation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Presentation> for Any {
     fn from(s: &Presentation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Presentation);
 
 impl Presentation {

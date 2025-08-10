@@ -7,6 +7,7 @@ use super::*;
 pub struct HIDInputReportEvent {
     inner: Event,
 }
+
 impl FromVal for HIDInputReportEvent {
     fn from_val(v: &Any) -> Self {
         HIDInputReportEvent {
@@ -20,27 +21,32 @@ impl FromVal for HIDInputReportEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HIDInputReportEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HIDInputReportEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HIDInputReportEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HIDInputReportEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HIDInputReportEvent> for Any {
     fn from(s: HIDInputReportEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HIDInputReportEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HIDInputReportEvent> for Any {
     fn from(s: &HIDInputReportEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HIDInputReportEvent);
 
 impl HIDInputReportEvent {

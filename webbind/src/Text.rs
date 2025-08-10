@@ -7,6 +7,7 @@ use super::*;
 pub struct Text {
     inner: CharacterData,
 }
+
 impl FromVal for Text {
     fn from_val(v: &Any) -> Self {
         Text {
@@ -20,27 +21,32 @@ impl FromVal for Text {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Text {
     type Target = CharacterData;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Text {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Text {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Text {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Text> for Any {
     fn from(s: Text) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Text> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Text> for Any {
     fn from(s: &Text) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Text);
 
 impl Text {

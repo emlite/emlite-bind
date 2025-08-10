@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSSupportsRule {
     inner: CSSConditionRule,
 }
+
 impl FromVal for CSSSupportsRule {
     fn from_val(v: &Any) -> Self {
         CSSSupportsRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSSupportsRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSSupportsRule {
     type Target = CSSConditionRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSSupportsRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSSupportsRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSSupportsRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSSupportsRule> for Any {
     fn from(s: CSSSupportsRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSSupportsRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSSupportsRule> for Any {
     fn from(s: &CSSSupportsRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSSupportsRule);
 
 impl CSSSupportsRule {

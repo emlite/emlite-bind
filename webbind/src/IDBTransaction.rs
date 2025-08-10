@@ -7,6 +7,7 @@ use super::*;
 pub struct IDBTransaction {
     inner: EventTarget,
 }
+
 impl FromVal for IDBTransaction {
     fn from_val(v: &Any) -> Self {
         IDBTransaction {
@@ -20,27 +21,32 @@ impl FromVal for IDBTransaction {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IDBTransaction {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IDBTransaction {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IDBTransaction {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IDBTransaction {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IDBTransaction> for Any {
     fn from(s: IDBTransaction) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IDBTransaction> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IDBTransaction> for Any {
     fn from(s: &IDBTransaction) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IDBTransaction);
 
 impl IDBTransaction {

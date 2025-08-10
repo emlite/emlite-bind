@@ -7,6 +7,7 @@ use super::*;
 pub struct VirtualKeyboard {
     inner: EventTarget,
 }
+
 impl FromVal for VirtualKeyboard {
     fn from_val(v: &Any) -> Self {
         VirtualKeyboard {
@@ -20,27 +21,32 @@ impl FromVal for VirtualKeyboard {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for VirtualKeyboard {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for VirtualKeyboard {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for VirtualKeyboard {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for VirtualKeyboard {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<VirtualKeyboard> for Any {
     fn from(s: VirtualKeyboard) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<VirtualKeyboard> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&VirtualKeyboard> for Any {
     fn from(s: &VirtualKeyboard) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(VirtualKeyboard);
 
 impl VirtualKeyboard {

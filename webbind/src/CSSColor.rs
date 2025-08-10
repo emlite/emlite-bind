@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSColor {
     inner: CSSColorValue,
 }
+
 impl FromVal for CSSColor {
     fn from_val(v: &Any) -> Self {
         CSSColor {
@@ -20,27 +21,32 @@ impl FromVal for CSSColor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSColor {
     type Target = CSSColorValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSColor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSColor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSColor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSColor> for Any {
     fn from(s: CSSColor) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSColor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSColor> for Any {
     fn from(s: &CSSColor) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSColor);
 
 impl CSSColor {

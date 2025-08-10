@@ -7,6 +7,7 @@ use super::*;
 pub struct AbstractRange {
     inner: Any,
 }
+
 impl FromVal for AbstractRange {
     fn from_val(v: &Any) -> Self {
         AbstractRange {
@@ -20,27 +21,32 @@ impl FromVal for AbstractRange {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AbstractRange {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AbstractRange {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AbstractRange {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AbstractRange {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AbstractRange> for Any {
     fn from(s: AbstractRange) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AbstractRange> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AbstractRange> for Any {
     fn from(s: &AbstractRange) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AbstractRange);
 
 impl AbstractRange {

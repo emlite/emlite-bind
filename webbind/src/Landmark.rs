@@ -1,10 +1,12 @@
 use super::*;
 
+/// The Landmark dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Landmark {
     inner: Any,
 }
+
 impl FromVal for Landmark {
     fn from_val(v: &Any) -> Self {
         Landmark { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for Landmark {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Landmark {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Landmark {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Landmark {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Landmark {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Landmark> for Any {
     fn from(s: Landmark) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<Landmark> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Landmark> for Any {
     fn from(s: &Landmark) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&Landmark> for Any {
 }
 
 impl Landmark {
+    /// Getter of the `locations` attribute.
     pub fn locations(&self) -> TypedArray<Point2D> {
         self.inner.get("locations").as_::<TypedArray<Point2D>>()
     }
 
+    /// Setter of the `locations` attribute.
     pub fn set_locations(&mut self, value: &TypedArray<Point2D>) {
         self.inner.set("locations", value);
     }
 }
 impl Landmark {
+    /// Getter of the `type` attribute.
     pub fn type_(&self) -> LandmarkType {
         self.inner.get("type").as_::<LandmarkType>()
     }
 
+    /// Setter of the `type` attribute.
     pub fn set_type_(&mut self, value: &LandmarkType) {
         self.inner.set("type", value);
     }

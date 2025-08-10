@@ -7,6 +7,7 @@ use super::*;
 pub struct OfflineAudioContext {
     inner: BaseAudioContext,
 }
+
 impl FromVal for OfflineAudioContext {
     fn from_val(v: &Any) -> Self {
         OfflineAudioContext {
@@ -20,27 +21,32 @@ impl FromVal for OfflineAudioContext {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for OfflineAudioContext {
     type Target = BaseAudioContext;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for OfflineAudioContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for OfflineAudioContext {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for OfflineAudioContext {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<OfflineAudioContext> for Any {
     fn from(s: OfflineAudioContext) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<OfflineAudioContext> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&OfflineAudioContext> for Any {
     fn from(s: &OfflineAudioContext) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(OfflineAudioContext);
 
 impl OfflineAudioContext {

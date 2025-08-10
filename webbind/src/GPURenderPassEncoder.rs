@@ -7,6 +7,7 @@ use super::*;
 pub struct GPURenderPassEncoder {
     inner: Any,
 }
+
 impl FromVal for GPURenderPassEncoder {
     fn from_val(v: &Any) -> Self {
         GPURenderPassEncoder {
@@ -20,27 +21,32 @@ impl FromVal for GPURenderPassEncoder {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPURenderPassEncoder {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPURenderPassEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPURenderPassEncoder {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPURenderPassEncoder {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPURenderPassEncoder> for Any {
     fn from(s: GPURenderPassEncoder) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPURenderPassEncoder> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPURenderPassEncoder> for Any {
     fn from(s: &GPURenderPassEncoder) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPURenderPassEncoder);
 
 impl GPURenderPassEncoder {

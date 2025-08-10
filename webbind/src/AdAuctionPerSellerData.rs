@@ -1,10 +1,12 @@
 use super::*;
 
+/// The AdAuctionPerSellerData dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AdAuctionPerSellerData {
     inner: Any,
 }
+
 impl FromVal for AdAuctionPerSellerData {
     fn from_val(v: &Any) -> Self {
         AdAuctionPerSellerData { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for AdAuctionPerSellerData {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AdAuctionPerSellerData {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AdAuctionPerSellerData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AdAuctionPerSellerData {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AdAuctionPerSellerData {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AdAuctionPerSellerData> for Any {
     fn from(s: AdAuctionPerSellerData) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<AdAuctionPerSellerData> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AdAuctionPerSellerData> for Any {
     fn from(s: &AdAuctionPerSellerData) -> Any {
         s.inner.clone()
@@ -51,28 +59,34 @@ impl From<&AdAuctionPerSellerData> for Any {
 }
 
 impl AdAuctionPerSellerData {
+    /// Getter of the `seller` attribute.
     pub fn seller(&self) -> JsString {
         self.inner.get("seller").as_::<JsString>()
     }
 
+    /// Setter of the `seller` attribute.
     pub fn set_seller(&mut self, value: &JsString) {
         self.inner.set("seller", value);
     }
 }
 impl AdAuctionPerSellerData {
+    /// Getter of the `request` attribute.
     pub fn request(&self) -> Uint8Array {
         self.inner.get("request").as_::<Uint8Array>()
     }
 
+    /// Setter of the `request` attribute.
     pub fn set_request(&mut self, value: &Uint8Array) {
         self.inner.set("request", value);
     }
 }
 impl AdAuctionPerSellerData {
+    /// Getter of the `error` attribute.
     pub fn error(&self) -> JsString {
         self.inner.get("error").as_::<JsString>()
     }
 
+    /// Setter of the `error` attribute.
     pub fn set_error(&mut self, value: &JsString) {
         self.inner.set("error", value);
     }

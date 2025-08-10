@@ -7,6 +7,7 @@ use super::*;
 pub struct TimeEvent {
     inner: Event,
 }
+
 impl FromVal for TimeEvent {
     fn from_val(v: &Any) -> Self {
         TimeEvent {
@@ -20,27 +21,32 @@ impl FromVal for TimeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TimeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TimeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TimeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TimeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TimeEvent> for Any {
     fn from(s: TimeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TimeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TimeEvent> for Any {
     fn from(s: &TimeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TimeEvent);
 
 impl TimeEvent {

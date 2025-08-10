@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUSupportedLimits {
     inner: Any,
 }
+
 impl FromVal for GPUSupportedLimits {
     fn from_val(v: &Any) -> Self {
         GPUSupportedLimits {
@@ -20,27 +21,32 @@ impl FromVal for GPUSupportedLimits {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUSupportedLimits {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUSupportedLimits {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUSupportedLimits {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUSupportedLimits {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUSupportedLimits> for Any {
     fn from(s: GPUSupportedLimits) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUSupportedLimits> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUSupportedLimits> for Any {
     fn from(s: &GPUSupportedLimits) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUSupportedLimits);
 
 impl GPUSupportedLimits {

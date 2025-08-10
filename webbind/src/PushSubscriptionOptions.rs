@@ -7,6 +7,7 @@ use super::*;
 pub struct PushSubscriptionOptions {
     inner: Any,
 }
+
 impl FromVal for PushSubscriptionOptions {
     fn from_val(v: &Any) -> Self {
         PushSubscriptionOptions {
@@ -20,27 +21,32 @@ impl FromVal for PushSubscriptionOptions {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PushSubscriptionOptions {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PushSubscriptionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PushSubscriptionOptions {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PushSubscriptionOptions {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PushSubscriptionOptions> for Any {
     fn from(s: PushSubscriptionOptions) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PushSubscriptionOptions> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PushSubscriptionOptions> for Any {
     fn from(s: &PushSubscriptionOptions) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PushSubscriptionOptions);
 
 impl PushSubscriptionOptions {

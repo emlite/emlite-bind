@@ -1,10 +1,12 @@
 use super::*;
 
+/// The MemoryBreakdownEntry dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MemoryBreakdownEntry {
     inner: Any,
 }
+
 impl FromVal for MemoryBreakdownEntry {
     fn from_val(v: &Any) -> Self {
         MemoryBreakdownEntry { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for MemoryBreakdownEntry {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MemoryBreakdownEntry {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MemoryBreakdownEntry {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MemoryBreakdownEntry {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MemoryBreakdownEntry {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MemoryBreakdownEntry> for Any {
     fn from(s: MemoryBreakdownEntry) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<MemoryBreakdownEntry> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MemoryBreakdownEntry> for Any {
     fn from(s: &MemoryBreakdownEntry) -> Any {
         s.inner.clone()
@@ -51,30 +59,36 @@ impl From<&MemoryBreakdownEntry> for Any {
 }
 
 impl MemoryBreakdownEntry {
+    /// Getter of the `bytes` attribute.
     pub fn bytes(&self) -> u64 {
         self.inner.get("bytes").as_::<u64>()
     }
 
+    /// Setter of the `bytes` attribute.
     pub fn set_bytes(&mut self, value: u64) {
         self.inner.set("bytes", value);
     }
 }
 impl MemoryBreakdownEntry {
+    /// Getter of the `attribution` attribute.
     pub fn attribution(&self) -> TypedArray<MemoryAttribution> {
         self.inner
             .get("attribution")
             .as_::<TypedArray<MemoryAttribution>>()
     }
 
+    /// Setter of the `attribution` attribute.
     pub fn set_attribution(&mut self, value: &TypedArray<MemoryAttribution>) {
         self.inner.set("attribution", value);
     }
 }
 impl MemoryBreakdownEntry {
+    /// Getter of the `types` attribute.
     pub fn types(&self) -> TypedArray<JsString> {
         self.inner.get("types").as_::<TypedArray<JsString>>()
     }
 
+    /// Setter of the `types` attribute.
     pub fn set_types(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("types", value);
     }

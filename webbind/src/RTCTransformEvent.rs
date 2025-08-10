@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCTransformEvent {
     inner: Event,
 }
+
 impl FromVal for RTCTransformEvent {
     fn from_val(v: &Any) -> Self {
         RTCTransformEvent {
@@ -20,27 +21,32 @@ impl FromVal for RTCTransformEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCTransformEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCTransformEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCTransformEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCTransformEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCTransformEvent> for Any {
     fn from(s: RTCTransformEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCTransformEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCTransformEvent> for Any {
     fn from(s: &RTCTransformEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCTransformEvent);
 
 impl RTCTransformEvent {

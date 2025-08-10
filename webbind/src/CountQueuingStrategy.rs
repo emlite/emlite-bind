@@ -7,6 +7,7 @@ use super::*;
 pub struct CountQueuingStrategy {
     inner: Any,
 }
+
 impl FromVal for CountQueuingStrategy {
     fn from_val(v: &Any) -> Self {
         CountQueuingStrategy {
@@ -20,27 +21,32 @@ impl FromVal for CountQueuingStrategy {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CountQueuingStrategy {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CountQueuingStrategy {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CountQueuingStrategy {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CountQueuingStrategy {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CountQueuingStrategy> for Any {
     fn from(s: CountQueuingStrategy) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CountQueuingStrategy> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CountQueuingStrategy> for Any {
     fn from(s: &CountQueuingStrategy) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CountQueuingStrategy);
 
 impl CountQueuingStrategy {

@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLHeadElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLHeadElement {
     fn from_val(v: &Any) -> Self {
         HTMLHeadElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLHeadElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLHeadElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLHeadElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLHeadElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLHeadElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLHeadElement> for Any {
     fn from(s: HTMLHeadElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLHeadElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLHeadElement> for Any {
     fn from(s: &HTMLHeadElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLHeadElement);
 
 impl HTMLHeadElement {

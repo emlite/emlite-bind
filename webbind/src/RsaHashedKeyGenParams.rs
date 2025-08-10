@@ -1,10 +1,12 @@
 use super::*;
 
+/// The RsaHashedKeyGenParams dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RsaHashedKeyGenParams {
     inner: Any,
 }
+
 impl FromVal for RsaHashedKeyGenParams {
     fn from_val(v: &Any) -> Self {
         RsaHashedKeyGenParams { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for RsaHashedKeyGenParams {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RsaHashedKeyGenParams {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RsaHashedKeyGenParams {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RsaHashedKeyGenParams {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RsaHashedKeyGenParams {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RsaHashedKeyGenParams> for Any {
     fn from(s: RsaHashedKeyGenParams) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<RsaHashedKeyGenParams> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RsaHashedKeyGenParams> for Any {
     fn from(s: &RsaHashedKeyGenParams) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&RsaHashedKeyGenParams> for Any {
 }
 
 impl RsaHashedKeyGenParams {
+    /// Getter of the `hash` attribute.
     pub fn hash(&self) -> Any {
         self.inner.get("hash").as_::<Any>()
     }
 
+    /// Setter of the `hash` attribute.
     pub fn set_hash(&mut self, value: &Any) {
         self.inner.set("hash", value);
     }

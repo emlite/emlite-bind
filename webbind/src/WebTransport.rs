@@ -1,292 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct WebTransportConnectionStats {
-    inner: Any,
-}
-impl FromVal for WebTransportConnectionStats {
-    fn from_val(v: &Any) -> Self {
-        WebTransportConnectionStats { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for WebTransportConnectionStats {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for WebTransportConnectionStats {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for WebTransportConnectionStats {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for WebTransportConnectionStats {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<WebTransportConnectionStats> for Any {
-    fn from(s: WebTransportConnectionStats) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&WebTransportConnectionStats> for Any {
-    fn from(s: &WebTransportConnectionStats) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl WebTransportConnectionStats {
-    pub fn bytes_sent(&self) -> u64 {
-        self.inner.get("bytesSent").as_::<u64>()
-    }
-
-    pub fn set_bytes_sent(&mut self, value: u64) {
-        self.inner.set("bytesSent", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn packets_sent(&self) -> u64 {
-        self.inner.get("packetsSent").as_::<u64>()
-    }
-
-    pub fn set_packets_sent(&mut self, value: u64) {
-        self.inner.set("packetsSent", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn bytes_lost(&self) -> u64 {
-        self.inner.get("bytesLost").as_::<u64>()
-    }
-
-    pub fn set_bytes_lost(&mut self, value: u64) {
-        self.inner.set("bytesLost", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn packets_lost(&self) -> u64 {
-        self.inner.get("packetsLost").as_::<u64>()
-    }
-
-    pub fn set_packets_lost(&mut self, value: u64) {
-        self.inner.set("packetsLost", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn bytes_received(&self) -> u64 {
-        self.inner.get("bytesReceived").as_::<u64>()
-    }
-
-    pub fn set_bytes_received(&mut self, value: u64) {
-        self.inner.set("bytesReceived", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn packets_received(&self) -> u64 {
-        self.inner.get("packetsReceived").as_::<u64>()
-    }
-
-    pub fn set_packets_received(&mut self, value: u64) {
-        self.inner.set("packetsReceived", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn smoothed_rtt(&self) -> Any {
-        self.inner.get("smoothedRtt").as_::<Any>()
-    }
-
-    pub fn set_smoothed_rtt(&mut self, value: &Any) {
-        self.inner.set("smoothedRtt", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn rtt_variation(&self) -> Any {
-        self.inner.get("rttVariation").as_::<Any>()
-    }
-
-    pub fn set_rtt_variation(&mut self, value: &Any) {
-        self.inner.set("rttVariation", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn min_rtt(&self) -> Any {
-        self.inner.get("minRtt").as_::<Any>()
-    }
-
-    pub fn set_min_rtt(&mut self, value: &Any) {
-        self.inner.set("minRtt", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn datagrams(&self) -> WebTransportDatagramStats {
-        self.inner
-            .get("datagrams")
-            .as_::<WebTransportDatagramStats>()
-    }
-
-    pub fn set_datagrams(&mut self, value: &WebTransportDatagramStats) {
-        self.inner.set("datagrams", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn estimated_send_rate(&self) -> u64 {
-        self.inner.get("estimatedSendRate").as_::<u64>()
-    }
-
-    pub fn set_estimated_send_rate(&mut self, value: u64) {
-        self.inner.set("estimatedSendRate", value);
-    }
-}
-impl WebTransportConnectionStats {
-    pub fn at_send_capacity(&self) -> bool {
-        self.inner.get("atSendCapacity").as_::<bool>()
-    }
-
-    pub fn set_at_send_capacity(&mut self, value: bool) {
-        self.inner.set("atSendCapacity", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct WebTransportCloseInfo {
-    inner: Any,
-}
-impl FromVal for WebTransportCloseInfo {
-    fn from_val(v: &Any) -> Self {
-        WebTransportCloseInfo { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for WebTransportCloseInfo {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for WebTransportCloseInfo {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for WebTransportCloseInfo {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for WebTransportCloseInfo {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<WebTransportCloseInfo> for Any {
-    fn from(s: WebTransportCloseInfo) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&WebTransportCloseInfo> for Any {
-    fn from(s: &WebTransportCloseInfo) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl WebTransportCloseInfo {
-    pub fn close_code(&self) -> u32 {
-        self.inner.get("closeCode").as_::<u32>()
-    }
-
-    pub fn set_close_code(&mut self, value: u32) {
-        self.inner.set("closeCode", value);
-    }
-}
-impl WebTransportCloseInfo {
-    pub fn reason(&self) -> JsString {
-        self.inner.get("reason").as_::<JsString>()
-    }
-
-    pub fn set_reason(&mut self, value: &JsString) {
-        self.inner.set("reason", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct WebTransportSendStreamOptions {
-    inner: Any,
-}
-impl FromVal for WebTransportSendStreamOptions {
-    fn from_val(v: &Any) -> Self {
-        WebTransportSendStreamOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for WebTransportSendStreamOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for WebTransportSendStreamOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for WebTransportSendStreamOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for WebTransportSendStreamOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<WebTransportSendStreamOptions> for Any {
-    fn from(s: WebTransportSendStreamOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&WebTransportSendStreamOptions> for Any {
-    fn from(s: &WebTransportSendStreamOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl WebTransportSendStreamOptions {
-    pub fn wait_until_available(&self) -> bool {
-        self.inner.get("waitUntilAvailable").as_::<bool>()
-    }
-
-    pub fn set_wait_until_available(&mut self, value: bool) {
-        self.inner.set("waitUntilAvailable", value);
-    }
-}
 /// The WebTransport class.
 /// [`WebTransport`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -294,6 +7,7 @@ impl WebTransportSendStreamOptions {
 pub struct WebTransport {
     inner: Any,
 }
+
 impl FromVal for WebTransport {
     fn from_val(v: &Any) -> Self {
         WebTransport {
@@ -307,27 +21,32 @@ impl FromVal for WebTransport {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebTransport {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebTransport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebTransport {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebTransport {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebTransport> for Any {
     fn from(s: WebTransport) -> Any {
         let handle = s.inner.as_handle();
@@ -335,11 +54,13 @@ impl From<WebTransport> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebTransport> for Any {
     fn from(s: &WebTransport) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebTransport);
 
 impl WebTransport {

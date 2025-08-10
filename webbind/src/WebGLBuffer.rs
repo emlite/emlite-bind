@@ -7,6 +7,7 @@ use super::*;
 pub struct WebGLBuffer {
     inner: WebGLObject,
 }
+
 impl FromVal for WebGLBuffer {
     fn from_val(v: &Any) -> Self {
         WebGLBuffer {
@@ -20,27 +21,32 @@ impl FromVal for WebGLBuffer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebGLBuffer {
     type Target = WebGLObject;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebGLBuffer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebGLBuffer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebGLBuffer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebGLBuffer> for Any {
     fn from(s: WebGLBuffer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<WebGLBuffer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebGLBuffer> for Any {
     fn from(s: &WebGLBuffer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebGLBuffer);

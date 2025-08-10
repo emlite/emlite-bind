@@ -7,6 +7,7 @@ use super::*;
 pub struct FontMetrics {
     inner: Any,
 }
+
 impl FromVal for FontMetrics {
     fn from_val(v: &Any) -> Self {
         FontMetrics {
@@ -20,27 +21,32 @@ impl FromVal for FontMetrics {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FontMetrics {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FontMetrics {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FontMetrics {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FontMetrics {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FontMetrics> for Any {
     fn from(s: FontMetrics) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FontMetrics> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FontMetrics> for Any {
     fn from(s: &FontMetrics) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FontMetrics);
 
 impl FontMetrics {

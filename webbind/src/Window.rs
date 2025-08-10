@@ -1,379 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct WindowPostMessageOptions {
-    inner: Any,
-}
-impl FromVal for WindowPostMessageOptions {
-    fn from_val(v: &Any) -> Self {
-        WindowPostMessageOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for WindowPostMessageOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for WindowPostMessageOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for WindowPostMessageOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for WindowPostMessageOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<WindowPostMessageOptions> for Any {
-    fn from(s: WindowPostMessageOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&WindowPostMessageOptions> for Any {
-    fn from(s: &WindowPostMessageOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl WindowPostMessageOptions {
-    pub fn target_origin(&self) -> JsString {
-        self.inner.get("targetOrigin").as_::<JsString>()
-    }
-
-    pub fn set_target_origin(&mut self, value: &JsString) {
-        self.inner.set("targetOrigin", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct OpenFilePickerOptions {
-    inner: Any,
-}
-impl FromVal for OpenFilePickerOptions {
-    fn from_val(v: &Any) -> Self {
-        OpenFilePickerOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for OpenFilePickerOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for OpenFilePickerOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for OpenFilePickerOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for OpenFilePickerOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<OpenFilePickerOptions> for Any {
-    fn from(s: OpenFilePickerOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&OpenFilePickerOptions> for Any {
-    fn from(s: &OpenFilePickerOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl OpenFilePickerOptions {
-    pub fn multiple(&self) -> bool {
-        self.inner.get("multiple").as_::<bool>()
-    }
-
-    pub fn set_multiple(&mut self, value: bool) {
-        self.inner.set("multiple", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct SaveFilePickerOptions {
-    inner: Any,
-}
-impl FromVal for SaveFilePickerOptions {
-    fn from_val(v: &Any) -> Self {
-        SaveFilePickerOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for SaveFilePickerOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for SaveFilePickerOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for SaveFilePickerOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for SaveFilePickerOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<SaveFilePickerOptions> for Any {
-    fn from(s: SaveFilePickerOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&SaveFilePickerOptions> for Any {
-    fn from(s: &SaveFilePickerOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl SaveFilePickerOptions {
-    pub fn suggested_name(&self) -> JsString {
-        self.inner.get("suggestedName").as_::<JsString>()
-    }
-
-    pub fn set_suggested_name(&mut self, value: &JsString) {
-        self.inner.set("suggestedName", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct DirectoryPickerOptions {
-    inner: Any,
-}
-impl FromVal for DirectoryPickerOptions {
-    fn from_val(v: &Any) -> Self {
-        DirectoryPickerOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for DirectoryPickerOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for DirectoryPickerOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for DirectoryPickerOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for DirectoryPickerOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<DirectoryPickerOptions> for Any {
-    fn from(s: DirectoryPickerOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&DirectoryPickerOptions> for Any {
-    fn from(s: &DirectoryPickerOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl DirectoryPickerOptions {
-    pub fn id(&self) -> JsString {
-        self.inner.get("id").as_::<JsString>()
-    }
-
-    pub fn set_id(&mut self, value: &JsString) {
-        self.inner.set("id", value);
-    }
-}
-impl DirectoryPickerOptions {
-    pub fn start_in(&self) -> Any {
-        self.inner.get("startIn").as_::<Any>()
-    }
-
-    pub fn set_start_in(&mut self, value: &Any) {
-        self.inner.set("startIn", value);
-    }
-}
-impl DirectoryPickerOptions {
-    pub fn mode(&self) -> FileSystemPermissionMode {
-        self.inner.get("mode").as_::<FileSystemPermissionMode>()
-    }
-
-    pub fn set_mode(&mut self, value: &FileSystemPermissionMode) {
-        self.inner.set("mode", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct QueryOptions {
-    inner: Any,
-}
-impl FromVal for QueryOptions {
-    fn from_val(v: &Any) -> Self {
-        QueryOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for QueryOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for QueryOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for QueryOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for QueryOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<QueryOptions> for Any {
-    fn from(s: QueryOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&QueryOptions> for Any {
-    fn from(s: &QueryOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl QueryOptions {
-    pub fn postscript_names(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("postscriptNames")
-            .as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_postscript_names(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("postscriptNames", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct IdleRequestOptions {
-    inner: Any,
-}
-impl FromVal for IdleRequestOptions {
-    fn from_val(v: &Any) -> Self {
-        IdleRequestOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for IdleRequestOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for IdleRequestOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for IdleRequestOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for IdleRequestOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<IdleRequestOptions> for Any {
-    fn from(s: IdleRequestOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&IdleRequestOptions> for Any {
-    fn from(s: &IdleRequestOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl IdleRequestOptions {
-    pub fn timeout(&self) -> u32 {
-        self.inner.get("timeout").as_::<u32>()
-    }
-
-    pub fn set_timeout(&mut self, value: u32) {
-        self.inner.set("timeout", value);
-    }
-}
 /// The Window class.
 /// [`Window`](https://developer.mozilla.org/en-US/docs/Web/API/Window)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -381,6 +7,7 @@ impl IdleRequestOptions {
 pub struct Window {
     inner: EventTarget,
 }
+
 impl FromVal for Window {
     fn from_val(v: &Any) -> Self {
         Window {
@@ -394,27 +21,32 @@ impl FromVal for Window {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Window {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Window {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Window {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Window {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Window> for Any {
     fn from(s: Window) -> Any {
         let handle = s.inner.as_handle();
@@ -422,11 +54,13 @@ impl From<Window> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Window> for Any {
     fn from(s: &Window) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Window);
 
 impl Window {

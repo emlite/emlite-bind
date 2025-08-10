@@ -7,6 +7,7 @@ use super::*;
 pub struct TreeWalker {
     inner: Any,
 }
+
 impl FromVal for TreeWalker {
     fn from_val(v: &Any) -> Self {
         TreeWalker {
@@ -20,27 +21,32 @@ impl FromVal for TreeWalker {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TreeWalker {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TreeWalker {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TreeWalker {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TreeWalker {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TreeWalker> for Any {
     fn from(s: TreeWalker) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TreeWalker> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TreeWalker> for Any {
     fn from(s: &TreeWalker) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TreeWalker);
 
 impl TreeWalker {

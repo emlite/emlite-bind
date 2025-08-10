@@ -7,6 +7,7 @@ use super::*;
 pub struct ViewTransition {
     inner: Any,
 }
+
 impl FromVal for ViewTransition {
     fn from_val(v: &Any) -> Self {
         ViewTransition {
@@ -20,27 +21,32 @@ impl FromVal for ViewTransition {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ViewTransition {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ViewTransition {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ViewTransition {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ViewTransition {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ViewTransition> for Any {
     fn from(s: ViewTransition) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ViewTransition> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ViewTransition> for Any {
     fn from(s: &ViewTransition) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ViewTransition);
 
 impl ViewTransition {

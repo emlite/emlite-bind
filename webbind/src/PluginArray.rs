@@ -7,6 +7,7 @@ use super::*;
 pub struct PluginArray {
     inner: Any,
 }
+
 impl FromVal for PluginArray {
     fn from_val(v: &Any) -> Self {
         PluginArray {
@@ -20,27 +21,32 @@ impl FromVal for PluginArray {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PluginArray {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PluginArray {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PluginArray {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PluginArray {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PluginArray> for Any {
     fn from(s: PluginArray) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PluginArray> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PluginArray> for Any {
     fn from(s: &PluginArray) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PluginArray);
 
 impl PluginArray {

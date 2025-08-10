@@ -7,6 +7,7 @@ use super::*;
 pub struct SyncEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for SyncEvent {
     fn from_val(v: &Any) -> Self {
         SyncEvent {
@@ -20,27 +21,32 @@ impl FromVal for SyncEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SyncEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SyncEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SyncEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SyncEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SyncEvent> for Any {
     fn from(s: SyncEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SyncEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SyncEvent> for Any {
     fn from(s: &SyncEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SyncEvent);
 
 impl SyncEvent {

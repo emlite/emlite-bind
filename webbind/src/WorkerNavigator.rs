@@ -7,6 +7,7 @@ use super::*;
 pub struct WorkerNavigator {
     inner: Any,
 }
+
 impl FromVal for WorkerNavigator {
     fn from_val(v: &Any) -> Self {
         WorkerNavigator {
@@ -20,27 +21,32 @@ impl FromVal for WorkerNavigator {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WorkerNavigator {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WorkerNavigator {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WorkerNavigator {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WorkerNavigator {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WorkerNavigator> for Any {
     fn from(s: WorkerNavigator) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WorkerNavigator> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WorkerNavigator> for Any {
     fn from(s: &WorkerNavigator) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WorkerNavigator);
 
 impl WorkerNavigator {

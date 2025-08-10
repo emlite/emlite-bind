@@ -7,6 +7,7 @@ use super::*;
 pub struct WakeLockSentinel {
     inner: EventTarget,
 }
+
 impl FromVal for WakeLockSentinel {
     fn from_val(v: &Any) -> Self {
         WakeLockSentinel {
@@ -20,27 +21,32 @@ impl FromVal for WakeLockSentinel {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WakeLockSentinel {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WakeLockSentinel {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WakeLockSentinel {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WakeLockSentinel {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WakeLockSentinel> for Any {
     fn from(s: WakeLockSentinel) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WakeLockSentinel> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WakeLockSentinel> for Any {
     fn from(s: &WakeLockSentinel) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WakeLockSentinel);
 
 impl WakeLockSentinel {

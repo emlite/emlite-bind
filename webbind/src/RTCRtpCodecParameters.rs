@@ -1,10 +1,12 @@
 use super::*;
 
+/// The RTCRtpCodecParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCRtpCodecParameters {
     inner: Any,
 }
+
 impl FromVal for RTCRtpCodecParameters {
     fn from_val(v: &Any) -> Self {
         RTCRtpCodecParameters { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for RTCRtpCodecParameters {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCRtpCodecParameters {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCRtpCodecParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCRtpCodecParameters {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCRtpCodecParameters {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCRtpCodecParameters> for Any {
     fn from(s: RTCRtpCodecParameters) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<RTCRtpCodecParameters> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCRtpCodecParameters> for Any {
     fn from(s: &RTCRtpCodecParameters) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&RTCRtpCodecParameters> for Any {
 }
 
 impl RTCRtpCodecParameters {
+    /// Getter of the `payloadType` attribute.
     pub fn payload_type(&self) -> u8 {
         self.inner.get("payloadType").as_::<u8>()
     }
 
+    /// Setter of the `payloadType` attribute.
     pub fn set_payload_type(&mut self, value: u8) {
         self.inner.set("payloadType", value);
     }

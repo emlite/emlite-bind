@@ -1,64 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct IdentityCredentialDisconnectOptions {
-    inner: Any,
-}
-impl FromVal for IdentityCredentialDisconnectOptions {
-    fn from_val(v: &Any) -> Self {
-        IdentityCredentialDisconnectOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for IdentityCredentialDisconnectOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for IdentityCredentialDisconnectOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for IdentityCredentialDisconnectOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for IdentityCredentialDisconnectOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<IdentityCredentialDisconnectOptions> for Any {
-    fn from(s: IdentityCredentialDisconnectOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&IdentityCredentialDisconnectOptions> for Any {
-    fn from(s: &IdentityCredentialDisconnectOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl IdentityCredentialDisconnectOptions {
-    pub fn account_hint(&self) -> JsString {
-        self.inner.get("accountHint").as_::<JsString>()
-    }
-
-    pub fn set_account_hint(&mut self, value: &JsString) {
-        self.inner.set("accountHint", value);
-    }
-}
 /// The IdentityCredential class.
 /// [`IdentityCredential`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -66,6 +7,7 @@ impl IdentityCredentialDisconnectOptions {
 pub struct IdentityCredential {
     inner: Credential,
 }
+
 impl FromVal for IdentityCredential {
     fn from_val(v: &Any) -> Self {
         IdentityCredential {
@@ -79,27 +21,32 @@ impl FromVal for IdentityCredential {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IdentityCredential {
     type Target = Credential;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IdentityCredential {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IdentityCredential {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IdentityCredential {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IdentityCredential> for Any {
     fn from(s: IdentityCredential) -> Any {
         let handle = s.inner.as_handle();
@@ -107,11 +54,13 @@ impl From<IdentityCredential> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IdentityCredential> for Any {
     fn from(s: &IdentityCredential) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IdentityCredential);
 
 impl IdentityCredential {

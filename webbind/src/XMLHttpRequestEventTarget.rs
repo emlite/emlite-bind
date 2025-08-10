@@ -7,6 +7,7 @@ use super::*;
 pub struct XMLHttpRequestEventTarget {
     inner: EventTarget,
 }
+
 impl FromVal for XMLHttpRequestEventTarget {
     fn from_val(v: &Any) -> Self {
         XMLHttpRequestEventTarget {
@@ -20,27 +21,32 @@ impl FromVal for XMLHttpRequestEventTarget {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XMLHttpRequestEventTarget {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XMLHttpRequestEventTarget {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XMLHttpRequestEventTarget {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XMLHttpRequestEventTarget {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XMLHttpRequestEventTarget> for Any {
     fn from(s: XMLHttpRequestEventTarget) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XMLHttpRequestEventTarget> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XMLHttpRequestEventTarget> for Any {
     fn from(s: &XMLHttpRequestEventTarget) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XMLHttpRequestEventTarget);
 
 impl XMLHttpRequestEventTarget {

@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothLEScanPermissionResult {
     inner: PermissionStatus,
 }
+
 impl FromVal for BluetoothLEScanPermissionResult {
     fn from_val(v: &Any) -> Self {
         BluetoothLEScanPermissionResult {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothLEScanPermissionResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothLEScanPermissionResult {
     type Target = PermissionStatus;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothLEScanPermissionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothLEScanPermissionResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothLEScanPermissionResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothLEScanPermissionResult> for Any {
     fn from(s: BluetoothLEScanPermissionResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothLEScanPermissionResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothLEScanPermissionResult> for Any {
     fn from(s: &BluetoothLEScanPermissionResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanPermissionResult);
 
 impl BluetoothLEScanPermissionResult {

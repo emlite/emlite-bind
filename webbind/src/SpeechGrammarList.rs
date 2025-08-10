@@ -7,6 +7,7 @@ use super::*;
 pub struct SpeechGrammarList {
     inner: Any,
 }
+
 impl FromVal for SpeechGrammarList {
     fn from_val(v: &Any) -> Self {
         SpeechGrammarList {
@@ -20,27 +21,32 @@ impl FromVal for SpeechGrammarList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SpeechGrammarList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SpeechGrammarList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SpeechGrammarList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SpeechGrammarList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SpeechGrammarList> for Any {
     fn from(s: SpeechGrammarList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SpeechGrammarList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SpeechGrammarList> for Any {
     fn from(s: &SpeechGrammarList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SpeechGrammarList);
 
 impl SpeechGrammarList {

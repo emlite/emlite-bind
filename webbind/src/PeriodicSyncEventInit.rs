@@ -1,10 +1,12 @@
 use super::*;
 
+/// The PeriodicSyncEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PeriodicSyncEventInit {
     inner: Any,
 }
+
 impl FromVal for PeriodicSyncEventInit {
     fn from_val(v: &Any) -> Self {
         PeriodicSyncEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for PeriodicSyncEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PeriodicSyncEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PeriodicSyncEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PeriodicSyncEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PeriodicSyncEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PeriodicSyncEventInit> for Any {
     fn from(s: PeriodicSyncEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<PeriodicSyncEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PeriodicSyncEventInit> for Any {
     fn from(s: &PeriodicSyncEventInit) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&PeriodicSyncEventInit> for Any {
 }
 
 impl PeriodicSyncEventInit {
+    /// Getter of the `tag` attribute.
     pub fn tag(&self) -> JsString {
         self.inner.get("tag").as_::<JsString>()
     }
 
+    /// Setter of the `tag` attribute.
     pub fn set_tag(&mut self, value: &JsString) {
         self.inner.set("tag", value);
     }

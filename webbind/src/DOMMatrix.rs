@@ -7,6 +7,7 @@ use super::*;
 pub struct DOMMatrix {
     inner: DOMMatrixReadOnly,
 }
+
 impl FromVal for DOMMatrix {
     fn from_val(v: &Any) -> Self {
         DOMMatrix {
@@ -20,27 +21,32 @@ impl FromVal for DOMMatrix {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DOMMatrix {
     type Target = DOMMatrixReadOnly;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DOMMatrix {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DOMMatrix {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DOMMatrix {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DOMMatrix> for Any {
     fn from(s: DOMMatrix) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DOMMatrix> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DOMMatrix> for Any {
     fn from(s: &DOMMatrix) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DOMMatrix);
 
 impl DOMMatrix {

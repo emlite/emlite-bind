@@ -7,6 +7,7 @@ use super::*;
 pub struct AnimationEvent {
     inner: Event,
 }
+
 impl FromVal for AnimationEvent {
     fn from_val(v: &Any) -> Self {
         AnimationEvent {
@@ -20,27 +21,32 @@ impl FromVal for AnimationEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AnimationEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AnimationEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AnimationEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AnimationEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AnimationEvent> for Any {
     fn from(s: AnimationEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AnimationEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AnimationEvent> for Any {
     fn from(s: &AnimationEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AnimationEvent);
 
 impl AnimationEvent {

@@ -1,134 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct IDBTransactionOptions {
-    inner: Any,
-}
-impl FromVal for IDBTransactionOptions {
-    fn from_val(v: &Any) -> Self {
-        IDBTransactionOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for IDBTransactionOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for IDBTransactionOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for IDBTransactionOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for IDBTransactionOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<IDBTransactionOptions> for Any {
-    fn from(s: IDBTransactionOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&IDBTransactionOptions> for Any {
-    fn from(s: &IDBTransactionOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl IDBTransactionOptions {
-    pub fn durability(&self) -> IDBTransactionDurability {
-        self.inner
-            .get("durability")
-            .as_::<IDBTransactionDurability>()
-    }
-
-    pub fn set_durability(&mut self, value: &IDBTransactionDurability) {
-        self.inner.set("durability", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct IDBObjectStoreParameters {
-    inner: Any,
-}
-impl FromVal for IDBObjectStoreParameters {
-    fn from_val(v: &Any) -> Self {
-        IDBObjectStoreParameters { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for IDBObjectStoreParameters {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for IDBObjectStoreParameters {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for IDBObjectStoreParameters {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for IDBObjectStoreParameters {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<IDBObjectStoreParameters> for Any {
-    fn from(s: IDBObjectStoreParameters) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&IDBObjectStoreParameters> for Any {
-    fn from(s: &IDBObjectStoreParameters) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl IDBObjectStoreParameters {
-    pub fn key_path(&self) -> Any {
-        self.inner.get("keyPath").as_::<Any>()
-    }
-
-    pub fn set_key_path(&mut self, value: &Any) {
-        self.inner.set("keyPath", value);
-    }
-}
-impl IDBObjectStoreParameters {
-    pub fn auto_increment(&self) -> bool {
-        self.inner.get("autoIncrement").as_::<bool>()
-    }
-
-    pub fn set_auto_increment(&mut self, value: bool) {
-        self.inner.set("autoIncrement", value);
-    }
-}
 /// The IDBDatabase class.
 /// [`IDBDatabase`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -136,6 +7,7 @@ impl IDBObjectStoreParameters {
 pub struct IDBDatabase {
     inner: EventTarget,
 }
+
 impl FromVal for IDBDatabase {
     fn from_val(v: &Any) -> Self {
         IDBDatabase {
@@ -149,27 +21,32 @@ impl FromVal for IDBDatabase {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IDBDatabase {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IDBDatabase {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IDBDatabase {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IDBDatabase {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IDBDatabase> for Any {
     fn from(s: IDBDatabase) -> Any {
         let handle = s.inner.as_handle();
@@ -177,11 +54,13 @@ impl From<IDBDatabase> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IDBDatabase> for Any {
     fn from(s: &IDBDatabase) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IDBDatabase);
 
 impl IDBDatabase {

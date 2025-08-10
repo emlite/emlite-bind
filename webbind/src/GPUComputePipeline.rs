@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUComputePipeline {
     inner: Any,
 }
+
 impl FromVal for GPUComputePipeline {
     fn from_val(v: &Any) -> Self {
         GPUComputePipeline {
@@ -20,27 +21,32 @@ impl FromVal for GPUComputePipeline {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUComputePipeline {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUComputePipeline {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUComputePipeline {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUComputePipeline {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUComputePipeline> for Any {
     fn from(s: GPUComputePipeline) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUComputePipeline> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUComputePipeline> for Any {
     fn from(s: &GPUComputePipeline) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUComputePipeline);
 
 impl GPUComputePipeline {

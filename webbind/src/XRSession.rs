@@ -1,387 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRRenderStateInit {
-    inner: Any,
-}
-impl FromVal for XRRenderStateInit {
-    fn from_val(v: &Any) -> Self {
-        XRRenderStateInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRRenderStateInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRRenderStateInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRRenderStateInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRRenderStateInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRRenderStateInit> for Any {
-    fn from(s: XRRenderStateInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRRenderStateInit> for Any {
-    fn from(s: &XRRenderStateInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRRenderStateInit {
-    pub fn depth_near(&self) -> f64 {
-        self.inner.get("depthNear").as_::<f64>()
-    }
-
-    pub fn set_depth_near(&mut self, value: f64) {
-        self.inner.set("depthNear", value);
-    }
-}
-impl XRRenderStateInit {
-    pub fn depth_far(&self) -> f64 {
-        self.inner.get("depthFar").as_::<f64>()
-    }
-
-    pub fn set_depth_far(&mut self, value: f64) {
-        self.inner.set("depthFar", value);
-    }
-}
-impl XRRenderStateInit {
-    pub fn passthrough_fully_obscured(&self) -> bool {
-        self.inner.get("passthroughFullyObscured").as_::<bool>()
-    }
-
-    pub fn set_passthrough_fully_obscured(&mut self, value: bool) {
-        self.inner.set("passthroughFullyObscured", value);
-    }
-}
-impl XRRenderStateInit {
-    pub fn inline_vertical_field_of_view(&self) -> f64 {
-        self.inner.get("inlineVerticalFieldOfView").as_::<f64>()
-    }
-
-    pub fn set_inline_vertical_field_of_view(&mut self, value: f64) {
-        self.inner.set("inlineVerticalFieldOfView", value);
-    }
-}
-impl XRRenderStateInit {
-    pub fn base_layer(&self) -> XRWebGLLayer {
-        self.inner.get("baseLayer").as_::<XRWebGLLayer>()
-    }
-
-    pub fn set_base_layer(&mut self, value: &XRWebGLLayer) {
-        self.inner.set("baseLayer", value);
-    }
-}
-impl XRRenderStateInit {
-    pub fn layers(&self) -> TypedArray<XRLayer> {
-        self.inner.get("layers").as_::<TypedArray<XRLayer>>()
-    }
-
-    pub fn set_layers(&mut self, value: &TypedArray<XRLayer>) {
-        self.inner.set("layers", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRDOMOverlayState {
-    inner: Any,
-}
-impl FromVal for XRDOMOverlayState {
-    fn from_val(v: &Any) -> Self {
-        XRDOMOverlayState { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRDOMOverlayState {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRDOMOverlayState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRDOMOverlayState {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRDOMOverlayState {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRDOMOverlayState> for Any {
-    fn from(s: XRDOMOverlayState) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRDOMOverlayState> for Any {
-    fn from(s: &XRDOMOverlayState) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRDOMOverlayState {
-    pub fn type_(&self) -> XRDOMOverlayType {
-        self.inner.get("type").as_::<XRDOMOverlayType>()
-    }
-
-    pub fn set_type_(&mut self, value: &XRDOMOverlayType) {
-        self.inner.set("type", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRHitTestOptionsInit {
-    inner: Any,
-}
-impl FromVal for XRHitTestOptionsInit {
-    fn from_val(v: &Any) -> Self {
-        XRHitTestOptionsInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRHitTestOptionsInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRHitTestOptionsInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRHitTestOptionsInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRHitTestOptionsInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRHitTestOptionsInit> for Any {
-    fn from(s: XRHitTestOptionsInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRHitTestOptionsInit> for Any {
-    fn from(s: &XRHitTestOptionsInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRHitTestOptionsInit {
-    pub fn space(&self) -> XRSpace {
-        self.inner.get("space").as_::<XRSpace>()
-    }
-
-    pub fn set_space(&mut self, value: &XRSpace) {
-        self.inner.set("space", value);
-    }
-}
-impl XRHitTestOptionsInit {
-    pub fn entity_types(&self) -> TypedArray<XRHitTestTrackableType> {
-        self.inner
-            .get("entityTypes")
-            .as_::<TypedArray<XRHitTestTrackableType>>()
-    }
-
-    pub fn set_entity_types(&mut self, value: &TypedArray<XRHitTestTrackableType>) {
-        self.inner.set("entityTypes", value);
-    }
-}
-impl XRHitTestOptionsInit {
-    pub fn offset_ray(&self) -> XRRay {
-        self.inner.get("offsetRay").as_::<XRRay>()
-    }
-
-    pub fn set_offset_ray(&mut self, value: &XRRay) {
-        self.inner.set("offsetRay", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRTransientInputHitTestOptionsInit {
-    inner: Any,
-}
-impl FromVal for XRTransientInputHitTestOptionsInit {
-    fn from_val(v: &Any) -> Self {
-        XRTransientInputHitTestOptionsInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRTransientInputHitTestOptionsInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRTransientInputHitTestOptionsInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRTransientInputHitTestOptionsInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRTransientInputHitTestOptionsInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRTransientInputHitTestOptionsInit> for Any {
-    fn from(s: XRTransientInputHitTestOptionsInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRTransientInputHitTestOptionsInit> for Any {
-    fn from(s: &XRTransientInputHitTestOptionsInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRTransientInputHitTestOptionsInit {
-    pub fn profile(&self) -> JsString {
-        self.inner.get("profile").as_::<JsString>()
-    }
-
-    pub fn set_profile(&mut self, value: &JsString) {
-        self.inner.set("profile", value);
-    }
-}
-impl XRTransientInputHitTestOptionsInit {
-    pub fn entity_types(&self) -> TypedArray<XRHitTestTrackableType> {
-        self.inner
-            .get("entityTypes")
-            .as_::<TypedArray<XRHitTestTrackableType>>()
-    }
-
-    pub fn set_entity_types(&mut self, value: &TypedArray<XRHitTestTrackableType>) {
-        self.inner.set("entityTypes", value);
-    }
-}
-impl XRTransientInputHitTestOptionsInit {
-    pub fn offset_ray(&self) -> XRRay {
-        self.inner.get("offsetRay").as_::<XRRay>()
-    }
-
-    pub fn set_offset_ray(&mut self, value: &XRRay) {
-        self.inner.set("offsetRay", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct XRLightProbeInit {
-    inner: Any,
-}
-impl FromVal for XRLightProbeInit {
-    fn from_val(v: &Any) -> Self {
-        XRLightProbeInit { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for XRLightProbeInit {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for XRLightProbeInit {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for XRLightProbeInit {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for XRLightProbeInit {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<XRLightProbeInit> for Any {
-    fn from(s: XRLightProbeInit) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&XRLightProbeInit> for Any {
-    fn from(s: &XRLightProbeInit) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl XRLightProbeInit {
-    pub fn reflection_format(&self) -> XRReflectionFormat {
-        self.inner
-            .get("reflectionFormat")
-            .as_::<XRReflectionFormat>()
-    }
-
-    pub fn set_reflection_format(&mut self, value: &XRReflectionFormat) {
-        self.inner.set("reflectionFormat", value);
-    }
-}
 /// The XRSession class.
 /// [`XRSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -389,6 +7,7 @@ impl XRLightProbeInit {
 pub struct XRSession {
     inner: EventTarget,
 }
+
 impl FromVal for XRSession {
     fn from_val(v: &Any) -> Self {
         XRSession {
@@ -402,27 +21,32 @@ impl FromVal for XRSession {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRSession {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRSession {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRSession {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRSession {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRSession> for Any {
     fn from(s: XRSession) -> Any {
         let handle = s.inner.as_handle();
@@ -430,11 +54,13 @@ impl From<XRSession> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRSession> for Any {
     fn from(s: &XRSession) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRSession);
 
 impl XRSession {

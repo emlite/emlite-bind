@@ -7,6 +7,7 @@ use super::*;
 pub struct StylePropertyMap {
     inner: StylePropertyMapReadOnly,
 }
+
 impl FromVal for StylePropertyMap {
     fn from_val(v: &Any) -> Self {
         StylePropertyMap {
@@ -20,27 +21,32 @@ impl FromVal for StylePropertyMap {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for StylePropertyMap {
     type Target = StylePropertyMapReadOnly;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for StylePropertyMap {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for StylePropertyMap {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for StylePropertyMap {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<StylePropertyMap> for Any {
     fn from(s: StylePropertyMap) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<StylePropertyMap> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&StylePropertyMap> for Any {
     fn from(s: &StylePropertyMap) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(StylePropertyMap);
 
 impl StylePropertyMap {

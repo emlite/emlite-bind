@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGMPathElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGMPathElement {
     fn from_val(v: &Any) -> Self {
         SVGMPathElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGMPathElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGMPathElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGMPathElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGMPathElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGMPathElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGMPathElement> for Any {
     fn from(s: SVGMPathElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGMPathElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGMPathElement> for Any {
     fn from(s: &SVGMPathElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGMPathElement);
 
 impl SVGMPathElement {

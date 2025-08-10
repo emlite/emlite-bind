@@ -7,6 +7,7 @@ use super::*;
 pub struct VTTRegion {
     inner: Any,
 }
+
 impl FromVal for VTTRegion {
     fn from_val(v: &Any) -> Self {
         VTTRegion {
@@ -20,27 +21,32 @@ impl FromVal for VTTRegion {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for VTTRegion {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for VTTRegion {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for VTTRegion {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for VTTRegion {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<VTTRegion> for Any {
     fn from(s: VTTRegion) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<VTTRegion> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&VTTRegion> for Any {
     fn from(s: &VTTRegion) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(VTTRegion);
 
 impl VTTRegion {

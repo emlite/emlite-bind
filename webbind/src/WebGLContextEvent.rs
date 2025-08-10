@@ -7,6 +7,7 @@ use super::*;
 pub struct WebGLContextEvent {
     inner: Event,
 }
+
 impl FromVal for WebGLContextEvent {
     fn from_val(v: &Any) -> Self {
         WebGLContextEvent {
@@ -20,27 +21,32 @@ impl FromVal for WebGLContextEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebGLContextEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebGLContextEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebGLContextEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebGLContextEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebGLContextEvent> for Any {
     fn from(s: WebGLContextEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WebGLContextEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebGLContextEvent> for Any {
     fn from(s: &WebGLContextEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebGLContextEvent);
 
 impl WebGLContextEvent {

@@ -7,6 +7,7 @@ use super::*;
 pub struct MIDIPort {
     inner: EventTarget,
 }
+
 impl FromVal for MIDIPort {
     fn from_val(v: &Any) -> Self {
         MIDIPort {
@@ -20,27 +21,32 @@ impl FromVal for MIDIPort {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MIDIPort {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MIDIPort {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MIDIPort {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MIDIPort {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MIDIPort> for Any {
     fn from(s: MIDIPort) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MIDIPort> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MIDIPort> for Any {
     fn from(s: &MIDIPort) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MIDIPort);
 
 impl MIDIPort {

@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaRecorder {
     inner: EventTarget,
 }
+
 impl FromVal for MediaRecorder {
     fn from_val(v: &Any) -> Self {
         MediaRecorder {
@@ -20,27 +21,32 @@ impl FromVal for MediaRecorder {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaRecorder {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaRecorder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaRecorder {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaRecorder {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaRecorder> for Any {
     fn from(s: MediaRecorder) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaRecorder> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaRecorder> for Any {
     fn from(s: &MediaRecorder) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaRecorder);
 
 impl MediaRecorder {

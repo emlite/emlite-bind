@@ -7,6 +7,7 @@ use super::*;
 pub struct RemotePlayback {
     inner: EventTarget,
 }
+
 impl FromVal for RemotePlayback {
     fn from_val(v: &Any) -> Self {
         RemotePlayback {
@@ -20,27 +21,32 @@ impl FromVal for RemotePlayback {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RemotePlayback {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RemotePlayback {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RemotePlayback {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RemotePlayback {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RemotePlayback> for Any {
     fn from(s: RemotePlayback) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RemotePlayback> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RemotePlayback> for Any {
     fn from(s: &RemotePlayback) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RemotePlayback);
 
 impl RemotePlayback {

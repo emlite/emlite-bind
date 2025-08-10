@@ -7,6 +7,7 @@ use super::*;
 pub struct DOMQuad {
     inner: Any,
 }
+
 impl FromVal for DOMQuad {
     fn from_val(v: &Any) -> Self {
         DOMQuad {
@@ -20,27 +21,32 @@ impl FromVal for DOMQuad {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DOMQuad {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DOMQuad {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DOMQuad {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DOMQuad {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DOMQuad> for Any {
     fn from(s: DOMQuad) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DOMQuad> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DOMQuad> for Any {
     fn from(s: &DOMQuad) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DOMQuad);
 
 impl DOMQuad {

@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSHSL {
     inner: CSSColorValue,
 }
+
 impl FromVal for CSSHSL {
     fn from_val(v: &Any) -> Self {
         CSSHSL {
@@ -20,27 +21,32 @@ impl FromVal for CSSHSL {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSHSL {
     type Target = CSSColorValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSHSL {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSHSL {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSHSL {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSHSL> for Any {
     fn from(s: CSSHSL) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSHSL> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSHSL> for Any {
     fn from(s: &CSSHSL) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSHSL);
 
 impl CSSHSL {

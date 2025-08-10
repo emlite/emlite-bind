@@ -7,6 +7,7 @@ use super::*;
 pub struct XRCylinderLayer {
     inner: XRCompositionLayer,
 }
+
 impl FromVal for XRCylinderLayer {
     fn from_val(v: &Any) -> Self {
         XRCylinderLayer {
@@ -20,27 +21,32 @@ impl FromVal for XRCylinderLayer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRCylinderLayer {
     type Target = XRCompositionLayer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRCylinderLayer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRCylinderLayer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRCylinderLayer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRCylinderLayer> for Any {
     fn from(s: XRCylinderLayer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRCylinderLayer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRCylinderLayer> for Any {
     fn from(s: &XRCylinderLayer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRCylinderLayer);
 
 impl XRCylinderLayer {

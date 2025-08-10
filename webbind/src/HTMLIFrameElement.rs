@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLIFrameElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLIFrameElement {
     fn from_val(v: &Any) -> Self {
         HTMLIFrameElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLIFrameElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLIFrameElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLIFrameElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLIFrameElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLIFrameElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLIFrameElement> for Any {
     fn from(s: HTMLIFrameElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLIFrameElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLIFrameElement> for Any {
     fn from(s: &HTMLIFrameElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLIFrameElement);
 
 impl HTMLIFrameElement {

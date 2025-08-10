@@ -7,6 +7,7 @@ use super::*;
 pub struct Global {
     inner: Any,
 }
+
 impl FromVal for Global {
     fn from_val(v: &Any) -> Self {
         Global {
@@ -20,27 +21,32 @@ impl FromVal for Global {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Global {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Global {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Global {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Global {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Global> for Any {
     fn from(s: Global) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Global> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Global> for Any {
     fn from(s: &Global) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Global);
 
 impl Global {

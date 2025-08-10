@@ -1,82 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct CacheQueryOptions {
-    inner: Any,
-}
-impl FromVal for CacheQueryOptions {
-    fn from_val(v: &Any) -> Self {
-        CacheQueryOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for CacheQueryOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for CacheQueryOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for CacheQueryOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for CacheQueryOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<CacheQueryOptions> for Any {
-    fn from(s: CacheQueryOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&CacheQueryOptions> for Any {
-    fn from(s: &CacheQueryOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl CacheQueryOptions {
-    pub fn ignore_search(&self) -> bool {
-        self.inner.get("ignoreSearch").as_::<bool>()
-    }
-
-    pub fn set_ignore_search(&mut self, value: bool) {
-        self.inner.set("ignoreSearch", value);
-    }
-}
-impl CacheQueryOptions {
-    pub fn ignore_method(&self) -> bool {
-        self.inner.get("ignoreMethod").as_::<bool>()
-    }
-
-    pub fn set_ignore_method(&mut self, value: bool) {
-        self.inner.set("ignoreMethod", value);
-    }
-}
-impl CacheQueryOptions {
-    pub fn ignore_vary(&self) -> bool {
-        self.inner.get("ignoreVary").as_::<bool>()
-    }
-
-    pub fn set_ignore_vary(&mut self, value: bool) {
-        self.inner.set("ignoreVary", value);
-    }
-}
 /// The BackgroundFetchRegistration class.
 /// [`BackgroundFetchRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -84,6 +7,7 @@ impl CacheQueryOptions {
 pub struct BackgroundFetchRegistration {
     inner: EventTarget,
 }
+
 impl FromVal for BackgroundFetchRegistration {
     fn from_val(v: &Any) -> Self {
         BackgroundFetchRegistration {
@@ -97,27 +21,32 @@ impl FromVal for BackgroundFetchRegistration {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BackgroundFetchRegistration {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BackgroundFetchRegistration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BackgroundFetchRegistration {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BackgroundFetchRegistration {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BackgroundFetchRegistration> for Any {
     fn from(s: BackgroundFetchRegistration) -> Any {
         let handle = s.inner.as_handle();
@@ -125,11 +54,13 @@ impl From<BackgroundFetchRegistration> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BackgroundFetchRegistration> for Any {
     fn from(s: &BackgroundFetchRegistration) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BackgroundFetchRegistration);
 
 impl BackgroundFetchRegistration {

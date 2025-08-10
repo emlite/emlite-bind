@@ -7,6 +7,7 @@ use super::*;
 pub struct TouchList {
     inner: Any,
 }
+
 impl FromVal for TouchList {
     fn from_val(v: &Any) -> Self {
         TouchList {
@@ -20,27 +21,32 @@ impl FromVal for TouchList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TouchList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TouchList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TouchList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TouchList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TouchList> for Any {
     fn from(s: TouchList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TouchList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TouchList> for Any {
     fn from(s: &TouchList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TouchList);
 
 impl TouchList {

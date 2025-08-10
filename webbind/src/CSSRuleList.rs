@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSRuleList {
     inner: Any,
 }
+
 impl FromVal for CSSRuleList {
     fn from_val(v: &Any) -> Self {
         CSSRuleList {
@@ -20,27 +21,32 @@ impl FromVal for CSSRuleList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSRuleList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSRuleList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSRuleList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSRuleList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSRuleList> for Any {
     fn from(s: CSSRuleList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSRuleList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSRuleList> for Any {
     fn from(s: &CSSRuleList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSRuleList);
 
 impl CSSRuleList {

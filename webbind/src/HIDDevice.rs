@@ -1,126 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct HIDCollectionInfo {
-    inner: Any,
-}
-impl FromVal for HIDCollectionInfo {
-    fn from_val(v: &Any) -> Self {
-        HIDCollectionInfo { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for HIDCollectionInfo {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for HIDCollectionInfo {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for HIDCollectionInfo {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for HIDCollectionInfo {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<HIDCollectionInfo> for Any {
-    fn from(s: HIDCollectionInfo) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&HIDCollectionInfo> for Any {
-    fn from(s: &HIDCollectionInfo) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl HIDCollectionInfo {
-    pub fn usage_page(&self) -> u16 {
-        self.inner.get("usagePage").as_::<u16>()
-    }
-
-    pub fn set_usage_page(&mut self, value: u16) {
-        self.inner.set("usagePage", value);
-    }
-}
-impl HIDCollectionInfo {
-    pub fn usage(&self) -> u16 {
-        self.inner.get("usage").as_::<u16>()
-    }
-
-    pub fn set_usage(&mut self, value: u16) {
-        self.inner.set("usage", value);
-    }
-}
-impl HIDCollectionInfo {
-    pub fn type_(&self) -> u8 {
-        self.inner.get("type").as_::<u8>()
-    }
-
-    pub fn set_type_(&mut self, value: u8) {
-        self.inner.set("type", value);
-    }
-}
-impl HIDCollectionInfo {
-    pub fn children(&self) -> TypedArray<HIDCollectionInfo> {
-        self.inner
-            .get("children")
-            .as_::<TypedArray<HIDCollectionInfo>>()
-    }
-
-    pub fn set_children(&mut self, value: &TypedArray<HIDCollectionInfo>) {
-        self.inner.set("children", value);
-    }
-}
-impl HIDCollectionInfo {
-    pub fn input_reports(&self) -> TypedArray<HIDReportInfo> {
-        self.inner
-            .get("inputReports")
-            .as_::<TypedArray<HIDReportInfo>>()
-    }
-
-    pub fn set_input_reports(&mut self, value: &TypedArray<HIDReportInfo>) {
-        self.inner.set("inputReports", value);
-    }
-}
-impl HIDCollectionInfo {
-    pub fn output_reports(&self) -> TypedArray<HIDReportInfo> {
-        self.inner
-            .get("outputReports")
-            .as_::<TypedArray<HIDReportInfo>>()
-    }
-
-    pub fn set_output_reports(&mut self, value: &TypedArray<HIDReportInfo>) {
-        self.inner.set("outputReports", value);
-    }
-}
-impl HIDCollectionInfo {
-    pub fn feature_reports(&self) -> TypedArray<HIDReportInfo> {
-        self.inner
-            .get("featureReports")
-            .as_::<TypedArray<HIDReportInfo>>()
-    }
-
-    pub fn set_feature_reports(&mut self, value: &TypedArray<HIDReportInfo>) {
-        self.inner.set("featureReports", value);
-    }
-}
 /// The HIDDevice class.
 /// [`HIDDevice`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -128,6 +7,7 @@ impl HIDCollectionInfo {
 pub struct HIDDevice {
     inner: EventTarget,
 }
+
 impl FromVal for HIDDevice {
     fn from_val(v: &Any) -> Self {
         HIDDevice {
@@ -141,27 +21,32 @@ impl FromVal for HIDDevice {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HIDDevice {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HIDDevice {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HIDDevice {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HIDDevice {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HIDDevice> for Any {
     fn from(s: HIDDevice) -> Any {
         let handle = s.inner.as_handle();
@@ -169,11 +54,13 @@ impl From<HIDDevice> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HIDDevice> for Any {
     fn from(s: &HIDDevice) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HIDDevice);
 
 impl HIDDevice {

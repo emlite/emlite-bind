@@ -7,6 +7,7 @@ use super::*;
 pub struct ReadableStreamBYOBRequest {
     inner: Any,
 }
+
 impl FromVal for ReadableStreamBYOBRequest {
     fn from_val(v: &Any) -> Self {
         ReadableStreamBYOBRequest {
@@ -20,27 +21,32 @@ impl FromVal for ReadableStreamBYOBRequest {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ReadableStreamBYOBRequest {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ReadableStreamBYOBRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ReadableStreamBYOBRequest {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ReadableStreamBYOBRequest {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ReadableStreamBYOBRequest> for Any {
     fn from(s: ReadableStreamBYOBRequest) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ReadableStreamBYOBRequest> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ReadableStreamBYOBRequest> for Any {
     fn from(s: &ReadableStreamBYOBRequest) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ReadableStreamBYOBRequest);
 
 impl ReadableStreamBYOBRequest {

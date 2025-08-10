@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSUnparsedValue {
     inner: CSSStyleValue,
 }
+
 impl FromVal for CSSUnparsedValue {
     fn from_val(v: &Any) -> Self {
         CSSUnparsedValue {
@@ -20,27 +21,32 @@ impl FromVal for CSSUnparsedValue {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSUnparsedValue {
     type Target = CSSStyleValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSUnparsedValue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSUnparsedValue {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSUnparsedValue {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSUnparsedValue> for Any {
     fn from(s: CSSUnparsedValue) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSUnparsedValue> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSUnparsedValue> for Any {
     fn from(s: &CSSUnparsedValue) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSUnparsedValue);
 
 impl CSSUnparsedValue {

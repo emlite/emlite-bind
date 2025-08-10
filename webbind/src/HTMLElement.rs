@@ -1,64 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct ShowPopoverOptions {
-    inner: Any,
-}
-impl FromVal for ShowPopoverOptions {
-    fn from_val(v: &Any) -> Self {
-        ShowPopoverOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for ShowPopoverOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for ShowPopoverOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for ShowPopoverOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for ShowPopoverOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<ShowPopoverOptions> for Any {
-    fn from(s: ShowPopoverOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&ShowPopoverOptions> for Any {
-    fn from(s: &ShowPopoverOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl ShowPopoverOptions {
-    pub fn source(&self) -> HTMLElement {
-        self.inner.get("source").as_::<HTMLElement>()
-    }
-
-    pub fn set_source(&mut self, value: &HTMLElement) {
-        self.inner.set("source", value);
-    }
-}
 /// The HTMLElement class.
 /// [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -66,6 +7,7 @@ impl ShowPopoverOptions {
 pub struct HTMLElement {
     inner: Element,
 }
+
 impl FromVal for HTMLElement {
     fn from_val(v: &Any) -> Self {
         HTMLElement {
@@ -79,27 +21,32 @@ impl FromVal for HTMLElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLElement {
     type Target = Element;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLElement> for Any {
     fn from(s: HTMLElement) -> Any {
         let handle = s.inner.as_handle();
@@ -107,11 +54,13 @@ impl From<HTMLElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLElement> for Any {
     fn from(s: &HTMLElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLElement);
 
 impl HTMLElement {

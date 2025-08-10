@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaMetadata {
     inner: Any,
 }
+
 impl FromVal for MediaMetadata {
     fn from_val(v: &Any) -> Self {
         MediaMetadata {
@@ -20,27 +21,32 @@ impl FromVal for MediaMetadata {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaMetadata {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaMetadata {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaMetadata {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaMetadata {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaMetadata> for Any {
     fn from(s: MediaMetadata) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaMetadata> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaMetadata> for Any {
     fn from(s: &MediaMetadata) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaMetadata);
 
 impl MediaMetadata {

@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGEllipseElement {
     inner: SVGGeometryElement,
 }
+
 impl FromVal for SVGEllipseElement {
     fn from_val(v: &Any) -> Self {
         SVGEllipseElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGEllipseElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGEllipseElement {
     type Target = SVGGeometryElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGEllipseElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGEllipseElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGEllipseElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGEllipseElement> for Any {
     fn from(s: SVGEllipseElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGEllipseElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGEllipseElement> for Any {
     fn from(s: &SVGEllipseElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGEllipseElement);
 
 impl SVGEllipseElement {

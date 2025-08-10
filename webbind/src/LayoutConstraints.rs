@@ -7,6 +7,7 @@ use super::*;
 pub struct LayoutConstraints {
     inner: Any,
 }
+
 impl FromVal for LayoutConstraints {
     fn from_val(v: &Any) -> Self {
         LayoutConstraints {
@@ -20,27 +21,32 @@ impl FromVal for LayoutConstraints {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for LayoutConstraints {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for LayoutConstraints {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for LayoutConstraints {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for LayoutConstraints {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<LayoutConstraints> for Any {
     fn from(s: LayoutConstraints) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<LayoutConstraints> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&LayoutConstraints> for Any {
     fn from(s: &LayoutConstraints) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(LayoutConstraints);
 
 impl LayoutConstraints {

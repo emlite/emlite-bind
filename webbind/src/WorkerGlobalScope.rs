@@ -7,6 +7,7 @@ use super::*;
 pub struct WorkerGlobalScope {
     inner: EventTarget,
 }
+
 impl FromVal for WorkerGlobalScope {
     fn from_val(v: &Any) -> Self {
         WorkerGlobalScope {
@@ -20,27 +21,32 @@ impl FromVal for WorkerGlobalScope {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WorkerGlobalScope {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WorkerGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WorkerGlobalScope {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WorkerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WorkerGlobalScope> for Any {
     fn from(s: WorkerGlobalScope) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WorkerGlobalScope> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WorkerGlobalScope> for Any {
     fn from(s: &WorkerGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WorkerGlobalScope);
 
 impl WorkerGlobalScope {

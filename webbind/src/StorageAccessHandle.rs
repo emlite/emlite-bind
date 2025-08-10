@@ -7,6 +7,7 @@ use super::*;
 pub struct StorageAccessHandle {
     inner: Any,
 }
+
 impl FromVal for StorageAccessHandle {
     fn from_val(v: &Any) -> Self {
         StorageAccessHandle {
@@ -20,27 +21,32 @@ impl FromVal for StorageAccessHandle {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for StorageAccessHandle {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for StorageAccessHandle {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for StorageAccessHandle {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for StorageAccessHandle {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<StorageAccessHandle> for Any {
     fn from(s: StorageAccessHandle) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<StorageAccessHandle> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&StorageAccessHandle> for Any {
     fn from(s: &StorageAccessHandle) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(StorageAccessHandle);
 
 impl StorageAccessHandle {

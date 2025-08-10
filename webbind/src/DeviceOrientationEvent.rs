@@ -7,6 +7,7 @@ use super::*;
 pub struct DeviceOrientationEvent {
     inner: Event,
 }
+
 impl FromVal for DeviceOrientationEvent {
     fn from_val(v: &Any) -> Self {
         DeviceOrientationEvent {
@@ -20,27 +21,32 @@ impl FromVal for DeviceOrientationEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DeviceOrientationEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DeviceOrientationEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DeviceOrientationEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DeviceOrientationEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DeviceOrientationEvent> for Any {
     fn from(s: DeviceOrientationEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DeviceOrientationEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DeviceOrientationEvent> for Any {
     fn from(s: &DeviceOrientationEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DeviceOrientationEvent);
 
 impl DeviceOrientationEvent {

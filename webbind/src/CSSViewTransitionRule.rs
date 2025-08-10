@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSViewTransitionRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSViewTransitionRule {
     fn from_val(v: &Any) -> Self {
         CSSViewTransitionRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSViewTransitionRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSViewTransitionRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSViewTransitionRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSViewTransitionRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSViewTransitionRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSViewTransitionRule> for Any {
     fn from(s: CSSViewTransitionRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSViewTransitionRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSViewTransitionRule> for Any {
     fn from(s: &CSSViewTransitionRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSViewTransitionRule);
 
 impl CSSViewTransitionRule {

@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGForeignObjectElement {
     inner: SVGGraphicsElement,
 }
+
 impl FromVal for SVGForeignObjectElement {
     fn from_val(v: &Any) -> Self {
         SVGForeignObjectElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGForeignObjectElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGForeignObjectElement {
     type Target = SVGGraphicsElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGForeignObjectElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGForeignObjectElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGForeignObjectElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGForeignObjectElement> for Any {
     fn from(s: SVGForeignObjectElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGForeignObjectElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGForeignObjectElement> for Any {
     fn from(s: &SVGForeignObjectElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGForeignObjectElement);
 
 impl SVGForeignObjectElement {

@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaQueryList {
     inner: EventTarget,
 }
+
 impl FromVal for MediaQueryList {
     fn from_val(v: &Any) -> Self {
         MediaQueryList {
@@ -20,27 +21,32 @@ impl FromVal for MediaQueryList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaQueryList {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaQueryList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaQueryList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaQueryList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaQueryList> for Any {
     fn from(s: MediaQueryList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaQueryList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaQueryList> for Any {
     fn from(s: &MediaQueryList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaQueryList);
 
 impl MediaQueryList {

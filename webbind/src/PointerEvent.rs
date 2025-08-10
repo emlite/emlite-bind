@@ -7,6 +7,7 @@ use super::*;
 pub struct PointerEvent {
     inner: MouseEvent,
 }
+
 impl FromVal for PointerEvent {
     fn from_val(v: &Any) -> Self {
         PointerEvent {
@@ -20,27 +21,32 @@ impl FromVal for PointerEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PointerEvent {
     type Target = MouseEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PointerEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PointerEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PointerEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PointerEvent> for Any {
     fn from(s: PointerEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PointerEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PointerEvent> for Any {
     fn from(s: &PointerEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PointerEvent);
 
 impl PointerEvent {

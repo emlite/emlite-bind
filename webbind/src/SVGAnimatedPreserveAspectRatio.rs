@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGAnimatedPreserveAspectRatio {
     inner: Any,
 }
+
 impl FromVal for SVGAnimatedPreserveAspectRatio {
     fn from_val(v: &Any) -> Self {
         SVGAnimatedPreserveAspectRatio {
@@ -20,27 +21,32 @@ impl FromVal for SVGAnimatedPreserveAspectRatio {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGAnimatedPreserveAspectRatio {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGAnimatedPreserveAspectRatio {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGAnimatedPreserveAspectRatio {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGAnimatedPreserveAspectRatio {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGAnimatedPreserveAspectRatio> for Any {
     fn from(s: SVGAnimatedPreserveAspectRatio) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGAnimatedPreserveAspectRatio> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGAnimatedPreserveAspectRatio> for Any {
     fn from(s: &SVGAnimatedPreserveAspectRatio) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGAnimatedPreserveAspectRatio);
 
 impl SVGAnimatedPreserveAspectRatio {

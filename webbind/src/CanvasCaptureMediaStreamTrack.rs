@@ -7,6 +7,7 @@ use super::*;
 pub struct CanvasCaptureMediaStreamTrack {
     inner: MediaStreamTrack,
 }
+
 impl FromVal for CanvasCaptureMediaStreamTrack {
     fn from_val(v: &Any) -> Self {
         CanvasCaptureMediaStreamTrack {
@@ -20,27 +21,32 @@ impl FromVal for CanvasCaptureMediaStreamTrack {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CanvasCaptureMediaStreamTrack {
     type Target = MediaStreamTrack;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CanvasCaptureMediaStreamTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CanvasCaptureMediaStreamTrack {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CanvasCaptureMediaStreamTrack {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CanvasCaptureMediaStreamTrack> for Any {
     fn from(s: CanvasCaptureMediaStreamTrack) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CanvasCaptureMediaStreamTrack> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CanvasCaptureMediaStreamTrack> for Any {
     fn from(s: &CanvasCaptureMediaStreamTrack) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CanvasCaptureMediaStreamTrack);
 
 impl CanvasCaptureMediaStreamTrack {

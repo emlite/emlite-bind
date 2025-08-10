@@ -1,10 +1,12 @@
 use super::*;
 
+/// The NDEFMessageInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NDEFMessageInit {
     inner: Any,
 }
+
 impl FromVal for NDEFMessageInit {
     fn from_val(v: &Any) -> Self {
         NDEFMessageInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for NDEFMessageInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NDEFMessageInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NDEFMessageInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NDEFMessageInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NDEFMessageInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NDEFMessageInit> for Any {
     fn from(s: NDEFMessageInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<NDEFMessageInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NDEFMessageInit> for Any {
     fn from(s: &NDEFMessageInit) -> Any {
         s.inner.clone()
@@ -51,12 +59,14 @@ impl From<&NDEFMessageInit> for Any {
 }
 
 impl NDEFMessageInit {
+    /// Getter of the `records` attribute.
     pub fn records(&self) -> TypedArray<NDEFRecordInit> {
         self.inner
             .get("records")
             .as_::<TypedArray<NDEFRecordInit>>()
     }
 
+    /// Setter of the `records` attribute.
     pub fn set_records(&mut self, value: &TypedArray<NDEFRecordInit>) {
         self.inner.set("records", value);
     }

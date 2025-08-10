@@ -7,6 +7,7 @@ use super::*;
 pub struct CompositionEvent {
     inner: UIEvent,
 }
+
 impl FromVal for CompositionEvent {
     fn from_val(v: &Any) -> Self {
         CompositionEvent {
@@ -20,27 +21,32 @@ impl FromVal for CompositionEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CompositionEvent {
     type Target = UIEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CompositionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CompositionEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CompositionEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CompositionEvent> for Any {
     fn from(s: CompositionEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CompositionEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CompositionEvent> for Any {
     fn from(s: &CompositionEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CompositionEvent);
 
 impl CompositionEvent {

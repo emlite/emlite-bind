@@ -7,6 +7,7 @@ use super::*;
 pub struct IDBRequest {
     inner: EventTarget,
 }
+
 impl FromVal for IDBRequest {
     fn from_val(v: &Any) -> Self {
         IDBRequest {
@@ -20,27 +21,32 @@ impl FromVal for IDBRequest {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IDBRequest {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IDBRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IDBRequest {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IDBRequest {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IDBRequest> for Any {
     fn from(s: IDBRequest) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IDBRequest> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IDBRequest> for Any {
     fn from(s: &IDBRequest) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IDBRequest);
 
 impl IDBRequest {

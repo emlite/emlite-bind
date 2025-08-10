@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLCanvasElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLCanvasElement {
     fn from_val(v: &Any) -> Self {
         HTMLCanvasElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLCanvasElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLCanvasElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLCanvasElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLCanvasElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLCanvasElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLCanvasElement> for Any {
     fn from(s: HTMLCanvasElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLCanvasElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLCanvasElement> for Any {
     fn from(s: &HTMLCanvasElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLCanvasElement);
 
 impl HTMLCanvasElement {

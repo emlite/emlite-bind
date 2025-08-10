@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFilterElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFilterElement {
     fn from_val(v: &Any) -> Self {
         SVGFilterElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFilterElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFilterElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFilterElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFilterElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFilterElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFilterElement> for Any {
     fn from(s: SVGFilterElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFilterElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFilterElement> for Any {
     fn from(s: &SVGFilterElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFilterElement);
 
 impl SVGFilterElement {

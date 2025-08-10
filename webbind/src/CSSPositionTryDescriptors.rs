@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSPositionTryDescriptors {
     inner: CSSStyleDeclaration,
 }
+
 impl FromVal for CSSPositionTryDescriptors {
     fn from_val(v: &Any) -> Self {
         CSSPositionTryDescriptors {
@@ -20,27 +21,32 @@ impl FromVal for CSSPositionTryDescriptors {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSPositionTryDescriptors {
     type Target = CSSStyleDeclaration;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSPositionTryDescriptors {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSPositionTryDescriptors {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSPositionTryDescriptors {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSPositionTryDescriptors> for Any {
     fn from(s: CSSPositionTryDescriptors) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSPositionTryDescriptors> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSPositionTryDescriptors> for Any {
     fn from(s: &CSSPositionTryDescriptors) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSPositionTryDescriptors);
 
 impl CSSPositionTryDescriptors {

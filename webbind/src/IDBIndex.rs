@@ -7,6 +7,7 @@ use super::*;
 pub struct IDBIndex {
     inner: Any,
 }
+
 impl FromVal for IDBIndex {
     fn from_val(v: &Any) -> Self {
         IDBIndex {
@@ -20,27 +21,32 @@ impl FromVal for IDBIndex {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IDBIndex {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IDBIndex {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IDBIndex {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IDBIndex {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IDBIndex> for Any {
     fn from(s: IDBIndex) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IDBIndex> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IDBIndex> for Any {
     fn from(s: &IDBIndex) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IDBIndex);
 
 impl IDBIndex {

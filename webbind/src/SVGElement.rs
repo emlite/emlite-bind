@@ -1,73 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct FocusOptions {
-    inner: Any,
-}
-impl FromVal for FocusOptions {
-    fn from_val(v: &Any) -> Self {
-        FocusOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for FocusOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for FocusOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for FocusOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for FocusOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<FocusOptions> for Any {
-    fn from(s: FocusOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&FocusOptions> for Any {
-    fn from(s: &FocusOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl FocusOptions {
-    pub fn prevent_scroll(&self) -> bool {
-        self.inner.get("preventScroll").as_::<bool>()
-    }
-
-    pub fn set_prevent_scroll(&mut self, value: bool) {
-        self.inner.set("preventScroll", value);
-    }
-}
-impl FocusOptions {
-    pub fn focus_visible(&self) -> bool {
-        self.inner.get("focusVisible").as_::<bool>()
-    }
-
-    pub fn set_focus_visible(&mut self, value: bool) {
-        self.inner.set("focusVisible", value);
-    }
-}
 /// The SVGElement class.
 /// [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -75,6 +7,7 @@ impl FocusOptions {
 pub struct SVGElement {
     inner: Element,
 }
+
 impl FromVal for SVGElement {
     fn from_val(v: &Any) -> Self {
         SVGElement {
@@ -88,27 +21,32 @@ impl FromVal for SVGElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGElement {
     type Target = Element;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGElement> for Any {
     fn from(s: SVGElement) -> Any {
         let handle = s.inner.as_handle();
@@ -116,11 +54,13 @@ impl From<SVGElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGElement> for Any {
     fn from(s: &SVGElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGElement);
 
 impl SVGElement {

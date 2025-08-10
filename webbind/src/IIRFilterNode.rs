@@ -7,6 +7,7 @@ use super::*;
 pub struct IIRFilterNode {
     inner: AudioNode,
 }
+
 impl FromVal for IIRFilterNode {
     fn from_val(v: &Any) -> Self {
         IIRFilterNode {
@@ -20,27 +21,32 @@ impl FromVal for IIRFilterNode {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IIRFilterNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IIRFilterNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IIRFilterNode {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IIRFilterNode {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IIRFilterNode> for Any {
     fn from(s: IIRFilterNode) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IIRFilterNode> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IIRFilterNode> for Any {
     fn from(s: &IIRFilterNode) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IIRFilterNode);
 
 impl IIRFilterNode {

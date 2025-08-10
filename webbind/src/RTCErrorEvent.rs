@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCErrorEvent {
     inner: Event,
 }
+
 impl FromVal for RTCErrorEvent {
     fn from_val(v: &Any) -> Self {
         RTCErrorEvent {
@@ -20,27 +21,32 @@ impl FromVal for RTCErrorEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCErrorEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCErrorEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCErrorEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCErrorEvent> for Any {
     fn from(s: RTCErrorEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCErrorEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCErrorEvent> for Any {
     fn from(s: &RTCErrorEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCErrorEvent);
 
 impl RTCErrorEvent {

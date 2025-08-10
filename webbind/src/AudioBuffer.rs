@@ -7,6 +7,7 @@ use super::*;
 pub struct AudioBuffer {
     inner: Any,
 }
+
 impl FromVal for AudioBuffer {
     fn from_val(v: &Any) -> Self {
         AudioBuffer {
@@ -20,27 +21,32 @@ impl FromVal for AudioBuffer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioBuffer {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioBuffer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioBuffer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioBuffer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioBuffer> for Any {
     fn from(s: AudioBuffer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<AudioBuffer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioBuffer> for Any {
     fn from(s: &AudioBuffer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(AudioBuffer);
 
 impl AudioBuffer {

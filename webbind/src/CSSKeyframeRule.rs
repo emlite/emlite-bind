@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSKeyframeRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSKeyframeRule {
     fn from_val(v: &Any) -> Self {
         CSSKeyframeRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSKeyframeRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSKeyframeRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSKeyframeRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSKeyframeRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSKeyframeRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSKeyframeRule> for Any {
     fn from(s: CSSKeyframeRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSKeyframeRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSKeyframeRule> for Any {
     fn from(s: &CSSKeyframeRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSKeyframeRule);
 
 impl CSSKeyframeRule {

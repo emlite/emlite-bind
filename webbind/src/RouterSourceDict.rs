@@ -1,10 +1,12 @@
 use super::*;
 
+/// The RouterSourceDict dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RouterSourceDict {
     inner: Any,
 }
+
 impl FromVal for RouterSourceDict {
     fn from_val(v: &Any) -> Self {
         RouterSourceDict { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for RouterSourceDict {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RouterSourceDict {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RouterSourceDict {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RouterSourceDict {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RouterSourceDict {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RouterSourceDict> for Any {
     fn from(s: RouterSourceDict) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<RouterSourceDict> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RouterSourceDict> for Any {
     fn from(s: &RouterSourceDict) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&RouterSourceDict> for Any {
 }
 
 impl RouterSourceDict {
+    /// Getter of the `cacheName` attribute.
     pub fn cache_name(&self) -> JsString {
         self.inner.get("cacheName").as_::<JsString>()
     }
 
+    /// Setter of the `cacheName` attribute.
     pub fn set_cache_name(&mut self, value: &JsString) {
         self.inner.set("cacheName", value);
     }

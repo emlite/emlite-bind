@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSGroupingRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSGroupingRule {
     fn from_val(v: &Any) -> Self {
         CSSGroupingRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSGroupingRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSGroupingRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSGroupingRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSGroupingRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSGroupingRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSGroupingRule> for Any {
     fn from(s: CSSGroupingRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSGroupingRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSGroupingRule> for Any {
     fn from(s: &CSSGroupingRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSGroupingRule);
 
 impl CSSGroupingRule {

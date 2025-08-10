@@ -7,6 +7,7 @@ use super::*;
 pub struct PaymentRequestUpdateEvent {
     inner: Event,
 }
+
 impl FromVal for PaymentRequestUpdateEvent {
     fn from_val(v: &Any) -> Self {
         PaymentRequestUpdateEvent {
@@ -20,27 +21,32 @@ impl FromVal for PaymentRequestUpdateEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for PaymentRequestUpdateEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for PaymentRequestUpdateEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for PaymentRequestUpdateEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for PaymentRequestUpdateEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<PaymentRequestUpdateEvent> for Any {
     fn from(s: PaymentRequestUpdateEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<PaymentRequestUpdateEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&PaymentRequestUpdateEvent> for Any {
     fn from(s: &PaymentRequestUpdateEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(PaymentRequestUpdateEvent);
 
 impl PaymentRequestUpdateEvent {

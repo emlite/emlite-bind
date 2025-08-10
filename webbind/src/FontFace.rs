@@ -7,6 +7,7 @@ use super::*;
 pub struct FontFace {
     inner: Any,
 }
+
 impl FromVal for FontFace {
     fn from_val(v: &Any) -> Self {
         FontFace {
@@ -20,27 +21,32 @@ impl FromVal for FontFace {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FontFace {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FontFace {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FontFace {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FontFace {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FontFace> for Any {
     fn from(s: FontFace) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FontFace> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FontFace> for Any {
     fn from(s: &FontFace) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FontFace);
 
 impl FontFace {

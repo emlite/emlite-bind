@@ -7,6 +7,7 @@ use super::*;
 pub struct MediaList {
     inner: Any,
 }
+
 impl FromVal for MediaList {
     fn from_val(v: &Any) -> Self {
         MediaList {
@@ -20,27 +21,32 @@ impl FromVal for MediaList {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaList {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaList {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaList {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaList> for Any {
     fn from(s: MediaList) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MediaList> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaList> for Any {
     fn from(s: &MediaList) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaList);
 
 impl MediaList {

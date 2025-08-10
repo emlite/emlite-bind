@@ -7,6 +7,7 @@ use super::*;
 pub struct UserActivation {
     inner: Any,
 }
+
 impl FromVal for UserActivation {
     fn from_val(v: &Any) -> Self {
         UserActivation {
@@ -20,27 +21,32 @@ impl FromVal for UserActivation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for UserActivation {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for UserActivation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for UserActivation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for UserActivation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<UserActivation> for Any {
     fn from(s: UserActivation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<UserActivation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&UserActivation> for Any {
     fn from(s: &UserActivation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(UserActivation);
 
 impl UserActivation {

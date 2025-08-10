@@ -7,6 +7,7 @@ use super::*;
 pub struct ContentVisibilityAutoStateChangeEvent {
     inner: Event,
 }
+
 impl FromVal for ContentVisibilityAutoStateChangeEvent {
     fn from_val(v: &Any) -> Self {
         ContentVisibilityAutoStateChangeEvent {
@@ -20,27 +21,32 @@ impl FromVal for ContentVisibilityAutoStateChangeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ContentVisibilityAutoStateChangeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ContentVisibilityAutoStateChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ContentVisibilityAutoStateChangeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ContentVisibilityAutoStateChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ContentVisibilityAutoStateChangeEvent> for Any {
     fn from(s: ContentVisibilityAutoStateChangeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ContentVisibilityAutoStateChangeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ContentVisibilityAutoStateChangeEvent> for Any {
     fn from(s: &ContentVisibilityAutoStateChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ContentVisibilityAutoStateChangeEvent);
 
 impl ContentVisibilityAutoStateChangeEvent {

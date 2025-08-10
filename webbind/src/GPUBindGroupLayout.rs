@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUBindGroupLayout {
     inner: Any,
 }
+
 impl FromVal for GPUBindGroupLayout {
     fn from_val(v: &Any) -> Self {
         GPUBindGroupLayout {
@@ -20,27 +21,32 @@ impl FromVal for GPUBindGroupLayout {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUBindGroupLayout {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUBindGroupLayout {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUBindGroupLayout {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUBindGroupLayout {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUBindGroupLayout> for Any {
     fn from(s: GPUBindGroupLayout) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUBindGroupLayout> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUBindGroupLayout> for Any {
     fn from(s: &GPUBindGroupLayout) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUBindGroupLayout);
 
 impl GPUBindGroupLayout {

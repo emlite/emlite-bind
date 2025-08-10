@@ -7,6 +7,7 @@ use super::*;
 pub struct Lock {
     inner: Any,
 }
+
 impl FromVal for Lock {
     fn from_val(v: &Any) -> Self {
         Lock {
@@ -20,27 +21,32 @@ impl FromVal for Lock {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Lock {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Lock {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Lock {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Lock {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Lock> for Any {
     fn from(s: Lock) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Lock> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Lock> for Any {
     fn from(s: &Lock) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Lock);
 
 impl Lock {

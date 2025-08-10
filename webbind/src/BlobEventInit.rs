@@ -1,10 +1,12 @@
 use super::*;
 
+/// The BlobEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BlobEventInit {
     inner: Any,
 }
+
 impl FromVal for BlobEventInit {
     fn from_val(v: &Any) -> Self {
         BlobEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for BlobEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BlobEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BlobEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BlobEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BlobEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BlobEventInit> for Any {
     fn from(s: BlobEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<BlobEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BlobEventInit> for Any {
     fn from(s: &BlobEventInit) -> Any {
         s.inner.clone()
@@ -51,19 +59,23 @@ impl From<&BlobEventInit> for Any {
 }
 
 impl BlobEventInit {
+    /// Getter of the `data` attribute.
     pub fn data(&self) -> Blob {
         self.inner.get("data").as_::<Blob>()
     }
 
+    /// Setter of the `data` attribute.
     pub fn set_data(&mut self, value: &Blob) {
         self.inner.set("data", value);
     }
 }
 impl BlobEventInit {
+    /// Getter of the `timecode` attribute.
     pub fn timecode(&self) -> Any {
         self.inner.get("timecode").as_::<Any>()
     }
 
+    /// Setter of the `timecode` attribute.
     pub fn set_timecode(&mut self, value: &Any) {
         self.inner.set("timecode", value);
     }

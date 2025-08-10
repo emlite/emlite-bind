@@ -7,6 +7,7 @@ use super::*;
 pub struct CookieStoreManager {
     inner: Any,
 }
+
 impl FromVal for CookieStoreManager {
     fn from_val(v: &Any) -> Self {
         CookieStoreManager {
@@ -20,27 +21,32 @@ impl FromVal for CookieStoreManager {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CookieStoreManager {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CookieStoreManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CookieStoreManager {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CookieStoreManager {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CookieStoreManager> for Any {
     fn from(s: CookieStoreManager) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CookieStoreManager> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CookieStoreManager> for Any {
     fn from(s: &CookieStoreManager) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CookieStoreManager);
 
 impl CookieStoreManager {

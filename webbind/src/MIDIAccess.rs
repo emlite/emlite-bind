@@ -7,6 +7,7 @@ use super::*;
 pub struct MIDIAccess {
     inner: EventTarget,
 }
+
 impl FromVal for MIDIAccess {
     fn from_val(v: &Any) -> Self {
         MIDIAccess {
@@ -20,27 +21,32 @@ impl FromVal for MIDIAccess {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MIDIAccess {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MIDIAccess {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MIDIAccess {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MIDIAccess {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MIDIAccess> for Any {
     fn from(s: MIDIAccess) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<MIDIAccess> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MIDIAccess> for Any {
     fn from(s: &MIDIAccess) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MIDIAccess);
 
 impl MIDIAccess {

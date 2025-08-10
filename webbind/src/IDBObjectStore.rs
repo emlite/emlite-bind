@@ -1,73 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct IDBIndexParameters {
-    inner: Any,
-}
-impl FromVal for IDBIndexParameters {
-    fn from_val(v: &Any) -> Self {
-        IDBIndexParameters { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for IDBIndexParameters {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for IDBIndexParameters {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for IDBIndexParameters {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for IDBIndexParameters {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<IDBIndexParameters> for Any {
-    fn from(s: IDBIndexParameters) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&IDBIndexParameters> for Any {
-    fn from(s: &IDBIndexParameters) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl IDBIndexParameters {
-    pub fn unique(&self) -> bool {
-        self.inner.get("unique").as_::<bool>()
-    }
-
-    pub fn set_unique(&mut self, value: bool) {
-        self.inner.set("unique", value);
-    }
-}
-impl IDBIndexParameters {
-    pub fn multi_entry(&self) -> bool {
-        self.inner.get("multiEntry").as_::<bool>()
-    }
-
-    pub fn set_multi_entry(&mut self, value: bool) {
-        self.inner.set("multiEntry", value);
-    }
-}
 /// The IDBObjectStore class.
 /// [`IDBObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -75,6 +7,7 @@ impl IDBIndexParameters {
 pub struct IDBObjectStore {
     inner: Any,
 }
+
 impl FromVal for IDBObjectStore {
     fn from_val(v: &Any) -> Self {
         IDBObjectStore {
@@ -88,27 +21,32 @@ impl FromVal for IDBObjectStore {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IDBObjectStore {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IDBObjectStore {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IDBObjectStore {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IDBObjectStore {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IDBObjectStore> for Any {
     fn from(s: IDBObjectStore) -> Any {
         let handle = s.inner.as_handle();
@@ -116,11 +54,13 @@ impl From<IDBObjectStore> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IDBObjectStore> for Any {
     fn from(s: &IDBObjectStore) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IDBObjectStore);
 
 impl IDBObjectStore {

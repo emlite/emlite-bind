@@ -7,6 +7,7 @@ use super::*;
 pub struct GeolocationPositionError {
     inner: Any,
 }
+
 impl FromVal for GeolocationPositionError {
     fn from_val(v: &Any) -> Self {
         GeolocationPositionError {
@@ -20,27 +21,32 @@ impl FromVal for GeolocationPositionError {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GeolocationPositionError {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GeolocationPositionError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GeolocationPositionError {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GeolocationPositionError {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GeolocationPositionError> for Any {
     fn from(s: GeolocationPositionError) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GeolocationPositionError> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GeolocationPositionError> for Any {
     fn from(s: &GeolocationPositionError) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GeolocationPositionError);
 
 impl GeolocationPositionError {

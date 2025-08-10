@@ -7,6 +7,7 @@ use super::*;
 pub struct SequenceEffect {
     inner: GroupEffect,
 }
+
 impl FromVal for SequenceEffect {
     fn from_val(v: &Any) -> Self {
         SequenceEffect {
@@ -20,27 +21,32 @@ impl FromVal for SequenceEffect {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SequenceEffect {
     type Target = GroupEffect;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SequenceEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SequenceEffect {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SequenceEffect {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SequenceEffect> for Any {
     fn from(s: SequenceEffect) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SequenceEffect> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SequenceEffect> for Any {
     fn from(s: &SequenceEffect) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SequenceEffect);
 
 impl SequenceEffect {

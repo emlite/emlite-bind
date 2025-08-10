@@ -7,6 +7,7 @@ use super::*;
 pub struct NotRestoredReasonDetails {
     inner: Any,
 }
+
 impl FromVal for NotRestoredReasonDetails {
     fn from_val(v: &Any) -> Self {
         NotRestoredReasonDetails {
@@ -20,27 +21,32 @@ impl FromVal for NotRestoredReasonDetails {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for NotRestoredReasonDetails {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for NotRestoredReasonDetails {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for NotRestoredReasonDetails {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for NotRestoredReasonDetails {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<NotRestoredReasonDetails> for Any {
     fn from(s: NotRestoredReasonDetails) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<NotRestoredReasonDetails> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&NotRestoredReasonDetails> for Any {
     fn from(s: &NotRestoredReasonDetails) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(NotRestoredReasonDetails);
 
 impl NotRestoredReasonDetails {

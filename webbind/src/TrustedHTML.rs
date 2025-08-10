@@ -7,6 +7,7 @@ use super::*;
 pub struct TrustedHTML {
     inner: Any,
 }
+
 impl FromVal for TrustedHTML {
     fn from_val(v: &Any) -> Self {
         TrustedHTML {
@@ -20,27 +21,32 @@ impl FromVal for TrustedHTML {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TrustedHTML {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TrustedHTML {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TrustedHTML {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TrustedHTML {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TrustedHTML> for Any {
     fn from(s: TrustedHTML) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TrustedHTML> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TrustedHTML> for Any {
     fn from(s: &TrustedHTML) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TrustedHTML);
 
 impl TrustedHTML {

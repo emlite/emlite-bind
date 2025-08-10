@@ -7,6 +7,7 @@ use super::*;
 pub struct EditContext {
     inner: EventTarget,
 }
+
 impl FromVal for EditContext {
     fn from_val(v: &Any) -> Self {
         EditContext {
@@ -20,27 +21,32 @@ impl FromVal for EditContext {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EditContext {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EditContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EditContext {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EditContext {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EditContext> for Any {
     fn from(s: EditContext) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<EditContext> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EditContext> for Any {
     fn from(s: &EditContext) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(EditContext);
 
 impl EditContext {

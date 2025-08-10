@@ -7,6 +7,7 @@ use super::*;
 pub struct XRPermissionStatus {
     inner: PermissionStatus,
 }
+
 impl FromVal for XRPermissionStatus {
     fn from_val(v: &Any) -> Self {
         XRPermissionStatus {
@@ -20,27 +21,32 @@ impl FromVal for XRPermissionStatus {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRPermissionStatus {
     type Target = PermissionStatus;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRPermissionStatus {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRPermissionStatus {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRPermissionStatus {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRPermissionStatus> for Any {
     fn from(s: XRPermissionStatus) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRPermissionStatus> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRPermissionStatus> for Any {
     fn from(s: &XRPermissionStatus) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRPermissionStatus);
 
 impl XRPermissionStatus {

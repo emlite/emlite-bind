@@ -1,185 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct RequestDeviceOptions {
-    inner: Any,
-}
-impl FromVal for RequestDeviceOptions {
-    fn from_val(v: &Any) -> Self {
-        RequestDeviceOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for RequestDeviceOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for RequestDeviceOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for RequestDeviceOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for RequestDeviceOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<RequestDeviceOptions> for Any {
-    fn from(s: RequestDeviceOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&RequestDeviceOptions> for Any {
-    fn from(s: &RequestDeviceOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl RequestDeviceOptions {
-    pub fn filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
-        self.inner
-            .get("filters")
-            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
-    }
-
-    pub fn set_filters(&mut self, value: &TypedArray<BluetoothLEScanFilterInit>) {
-        self.inner.set("filters", value);
-    }
-}
-impl RequestDeviceOptions {
-    pub fn exclusion_filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
-        self.inner
-            .get("exclusionFilters")
-            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
-    }
-
-    pub fn set_exclusion_filters(&mut self, value: &TypedArray<BluetoothLEScanFilterInit>) {
-        self.inner.set("exclusionFilters", value);
-    }
-}
-impl RequestDeviceOptions {
-    pub fn optional_services(&self) -> TypedArray<Any> {
-        self.inner.get("optionalServices").as_::<TypedArray<Any>>()
-    }
-
-    pub fn set_optional_services(&mut self, value: &TypedArray<Any>) {
-        self.inner.set("optionalServices", value);
-    }
-}
-impl RequestDeviceOptions {
-    pub fn optional_manufacturer_data(&self) -> TypedArray<u16> {
-        self.inner
-            .get("optionalManufacturerData")
-            .as_::<TypedArray<u16>>()
-    }
-
-    pub fn set_optional_manufacturer_data(&mut self, value: TypedArray<u16>) {
-        self.inner.set("optionalManufacturerData", value);
-    }
-}
-impl RequestDeviceOptions {
-    pub fn accept_all_devices(&self) -> bool {
-        self.inner.get("acceptAllDevices").as_::<bool>()
-    }
-
-    pub fn set_accept_all_devices(&mut self, value: bool) {
-        self.inner.set("acceptAllDevices", value);
-    }
-}
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct BluetoothLEScanOptions {
-    inner: Any,
-}
-impl FromVal for BluetoothLEScanOptions {
-    fn from_val(v: &Any) -> Self {
-        BluetoothLEScanOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for BluetoothLEScanOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for BluetoothLEScanOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for BluetoothLEScanOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for BluetoothLEScanOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<BluetoothLEScanOptions> for Any {
-    fn from(s: BluetoothLEScanOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&BluetoothLEScanOptions> for Any {
-    fn from(s: &BluetoothLEScanOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl BluetoothLEScanOptions {
-    pub fn filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
-        self.inner
-            .get("filters")
-            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
-    }
-
-    pub fn set_filters(&mut self, value: &TypedArray<BluetoothLEScanFilterInit>) {
-        self.inner.set("filters", value);
-    }
-}
-impl BluetoothLEScanOptions {
-    pub fn keep_repeated_devices(&self) -> bool {
-        self.inner.get("keepRepeatedDevices").as_::<bool>()
-    }
-
-    pub fn set_keep_repeated_devices(&mut self, value: bool) {
-        self.inner.set("keepRepeatedDevices", value);
-    }
-}
-impl BluetoothLEScanOptions {
-    pub fn accept_all_advertisements(&self) -> bool {
-        self.inner.get("acceptAllAdvertisements").as_::<bool>()
-    }
-
-    pub fn set_accept_all_advertisements(&mut self, value: bool) {
-        self.inner.set("acceptAllAdvertisements", value);
-    }
-}
 /// The Bluetooth class.
 /// [`Bluetooth`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -187,6 +7,7 @@ impl BluetoothLEScanOptions {
 pub struct Bluetooth {
     inner: EventTarget,
 }
+
 impl FromVal for Bluetooth {
     fn from_val(v: &Any) -> Self {
         Bluetooth {
@@ -200,27 +21,32 @@ impl FromVal for Bluetooth {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Bluetooth {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Bluetooth {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Bluetooth {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Bluetooth {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Bluetooth> for Any {
     fn from(s: Bluetooth) -> Any {
         let handle = s.inner.as_handle();
@@ -228,11 +54,13 @@ impl From<Bluetooth> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Bluetooth> for Any {
     fn from(s: &Bluetooth) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Bluetooth);
 
 impl Bluetooth {

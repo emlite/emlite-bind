@@ -7,6 +7,7 @@ use super::*;
 pub struct TransitionEvent {
     inner: Event,
 }
+
 impl FromVal for TransitionEvent {
     fn from_val(v: &Any) -> Self {
         TransitionEvent {
@@ -20,27 +21,32 @@ impl FromVal for TransitionEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for TransitionEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for TransitionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for TransitionEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for TransitionEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<TransitionEvent> for Any {
     fn from(s: TransitionEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<TransitionEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&TransitionEvent> for Any {
     fn from(s: &TransitionEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(TransitionEvent);
 
 impl TransitionEvent {

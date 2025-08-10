@@ -7,6 +7,7 @@ use super::*;
 pub struct SpeechSynthesis {
     inner: EventTarget,
 }
+
 impl FromVal for SpeechSynthesis {
     fn from_val(v: &Any) -> Self {
         SpeechSynthesis {
@@ -20,27 +21,32 @@ impl FromVal for SpeechSynthesis {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SpeechSynthesis {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SpeechSynthesis {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SpeechSynthesis {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SpeechSynthesis {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SpeechSynthesis> for Any {
     fn from(s: SpeechSynthesis) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SpeechSynthesis> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SpeechSynthesis> for Any {
     fn from(s: &SpeechSynthesis) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SpeechSynthesis);
 
 impl SpeechSynthesis {

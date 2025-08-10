@@ -7,6 +7,7 @@ use super::*;
 pub struct HIDConnectionEvent {
     inner: Event,
 }
+
 impl FromVal for HIDConnectionEvent {
     fn from_val(v: &Any) -> Self {
         HIDConnectionEvent {
@@ -20,27 +21,32 @@ impl FromVal for HIDConnectionEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HIDConnectionEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HIDConnectionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HIDConnectionEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HIDConnectionEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HIDConnectionEvent> for Any {
     fn from(s: HIDConnectionEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HIDConnectionEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HIDConnectionEvent> for Any {
     fn from(s: &HIDConnectionEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HIDConnectionEvent);
 
 impl HIDConnectionEvent {

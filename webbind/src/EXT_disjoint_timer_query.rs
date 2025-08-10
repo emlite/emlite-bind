@@ -7,6 +7,7 @@ use super::*;
 pub struct EXT_disjoint_timer_query {
     inner: Any,
 }
+
 impl FromVal for EXT_disjoint_timer_query {
     fn from_val(v: &Any) -> Self {
         EXT_disjoint_timer_query {
@@ -20,27 +21,32 @@ impl FromVal for EXT_disjoint_timer_query {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for EXT_disjoint_timer_query {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for EXT_disjoint_timer_query {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for EXT_disjoint_timer_query {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for EXT_disjoint_timer_query {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<EXT_disjoint_timer_query> for Any {
     fn from(s: EXT_disjoint_timer_query) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<EXT_disjoint_timer_query> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&EXT_disjoint_timer_query> for Any {
     fn from(s: &EXT_disjoint_timer_query) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(EXT_disjoint_timer_query);
 
 impl EXT_disjoint_timer_query {

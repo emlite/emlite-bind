@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSStyleProperties {
     inner: CSSStyleDeclaration,
 }
+
 impl FromVal for CSSStyleProperties {
     fn from_val(v: &Any) -> Self {
         CSSStyleProperties {
@@ -20,27 +21,32 @@ impl FromVal for CSSStyleProperties {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSStyleProperties {
     type Target = CSSStyleDeclaration;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSStyleProperties {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSStyleProperties {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSStyleProperties {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSStyleProperties> for Any {
     fn from(s: CSSStyleProperties) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSStyleProperties> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSStyleProperties> for Any {
     fn from(s: &CSSStyleProperties) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSStyleProperties);
 
 impl CSSStyleProperties {

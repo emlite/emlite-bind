@@ -1,10 +1,12 @@
 use super::*;
 
+/// The XRSessionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRSessionEventInit {
     inner: Any,
 }
+
 impl FromVal for XRSessionEventInit {
     fn from_val(v: &Any) -> Self {
         XRSessionEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for XRSessionEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRSessionEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRSessionEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRSessionEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRSessionEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRSessionEventInit> for Any {
     fn from(s: XRSessionEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<XRSessionEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRSessionEventInit> for Any {
     fn from(s: &XRSessionEventInit) -> Any {
         s.inner.clone()
@@ -51,10 +59,12 @@ impl From<&XRSessionEventInit> for Any {
 }
 
 impl XRSessionEventInit {
+    /// Getter of the `session` attribute.
     pub fn session(&self) -> XRSession {
         self.inner.get("session").as_::<XRSession>()
     }
 
+    /// Setter of the `session` attribute.
     pub fn set_session(&mut self, value: &XRSession) {
         self.inner.set("session", value);
     }

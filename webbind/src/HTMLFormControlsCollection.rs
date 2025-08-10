@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLFormControlsCollection {
     inner: HTMLCollection,
 }
+
 impl FromVal for HTMLFormControlsCollection {
     fn from_val(v: &Any) -> Self {
         HTMLFormControlsCollection {
@@ -20,27 +21,32 @@ impl FromVal for HTMLFormControlsCollection {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLFormControlsCollection {
     type Target = HTMLCollection;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLFormControlsCollection {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLFormControlsCollection {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLFormControlsCollection {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLFormControlsCollection> for Any {
     fn from(s: HTMLFormControlsCollection) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLFormControlsCollection> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLFormControlsCollection> for Any {
     fn from(s: &HTMLFormControlsCollection) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLFormControlsCollection);
 
 impl HTMLFormControlsCollection {

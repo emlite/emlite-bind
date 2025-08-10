@@ -7,6 +7,7 @@ use super::*;
 pub struct RTCIdentityProviderGlobalScope {
     inner: WorkerGlobalScope,
 }
+
 impl FromVal for RTCIdentityProviderGlobalScope {
     fn from_val(v: &Any) -> Self {
         RTCIdentityProviderGlobalScope {
@@ -20,27 +21,32 @@ impl FromVal for RTCIdentityProviderGlobalScope {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCIdentityProviderGlobalScope {
     type Target = WorkerGlobalScope;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCIdentityProviderGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCIdentityProviderGlobalScope {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCIdentityProviderGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCIdentityProviderGlobalScope> for Any {
     fn from(s: RTCIdentityProviderGlobalScope) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<RTCIdentityProviderGlobalScope> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCIdentityProviderGlobalScope> for Any {
     fn from(s: &RTCIdentityProviderGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderGlobalScope);
 
 impl RTCIdentityProviderGlobalScope {

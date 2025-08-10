@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSSkewX {
     inner: CSSTransformComponent,
 }
+
 impl FromVal for CSSSkewX {
     fn from_val(v: &Any) -> Self {
         CSSSkewX {
@@ -20,27 +21,32 @@ impl FromVal for CSSSkewX {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSSkewX {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSSkewX {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSSkewX {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSSkewX {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSSkewX> for Any {
     fn from(s: CSSSkewX) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSSkewX> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSSkewX> for Any {
     fn from(s: &CSSSkewX) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSSkewX);
 
 impl CSSSkewX {

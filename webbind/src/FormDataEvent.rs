@@ -7,6 +7,7 @@ use super::*;
 pub struct FormDataEvent {
     inner: Event,
 }
+
 impl FromVal for FormDataEvent {
     fn from_val(v: &Any) -> Self {
         FormDataEvent {
@@ -20,27 +21,32 @@ impl FromVal for FormDataEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for FormDataEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for FormDataEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for FormDataEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for FormDataEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<FormDataEvent> for Any {
     fn from(s: FormDataEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<FormDataEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&FormDataEvent> for Any {
     fn from(s: &FormDataEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(FormDataEvent);
 
 impl FormDataEvent {

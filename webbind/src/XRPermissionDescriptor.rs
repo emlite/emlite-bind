@@ -1,10 +1,12 @@
 use super::*;
 
+/// The XRPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRPermissionDescriptor {
     inner: Any,
 }
+
 impl FromVal for XRPermissionDescriptor {
     fn from_val(v: &Any) -> Self {
         XRPermissionDescriptor { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for XRPermissionDescriptor {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRPermissionDescriptor {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRPermissionDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRPermissionDescriptor {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRPermissionDescriptor> for Any {
     fn from(s: XRPermissionDescriptor) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<XRPermissionDescriptor> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRPermissionDescriptor> for Any {
     fn from(s: &XRPermissionDescriptor) -> Any {
         s.inner.clone()
@@ -51,32 +59,38 @@ impl From<&XRPermissionDescriptor> for Any {
 }
 
 impl XRPermissionDescriptor {
+    /// Getter of the `mode` attribute.
     pub fn mode(&self) -> XRSessionMode {
         self.inner.get("mode").as_::<XRSessionMode>()
     }
 
+    /// Setter of the `mode` attribute.
     pub fn set_mode(&mut self, value: &XRSessionMode) {
         self.inner.set("mode", value);
     }
 }
 impl XRPermissionDescriptor {
+    /// Getter of the `requiredFeatures` attribute.
     pub fn required_features(&self) -> TypedArray<JsString> {
         self.inner
             .get("requiredFeatures")
             .as_::<TypedArray<JsString>>()
     }
 
+    /// Setter of the `requiredFeatures` attribute.
     pub fn set_required_features(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("requiredFeatures", value);
     }
 }
 impl XRPermissionDescriptor {
+    /// Getter of the `optionalFeatures` attribute.
     pub fn optional_features(&self) -> TypedArray<JsString> {
         self.inner
             .get("optionalFeatures")
             .as_::<TypedArray<JsString>>()
     }
 
+    /// Setter of the `optionalFeatures` attribute.
     pub fn set_optional_features(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("optionalFeatures", value);
     }

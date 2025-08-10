@@ -1,82 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct MediaPositionState {
-    inner: Any,
-}
-impl FromVal for MediaPositionState {
-    fn from_val(v: &Any) -> Self {
-        MediaPositionState { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for MediaPositionState {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for MediaPositionState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for MediaPositionState {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for MediaPositionState {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<MediaPositionState> for Any {
-    fn from(s: MediaPositionState) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&MediaPositionState> for Any {
-    fn from(s: &MediaPositionState) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl MediaPositionState {
-    pub fn duration(&self) -> f64 {
-        self.inner.get("duration").as_::<f64>()
-    }
-
-    pub fn set_duration(&mut self, value: f64) {
-        self.inner.set("duration", value);
-    }
-}
-impl MediaPositionState {
-    pub fn playback_rate(&self) -> f64 {
-        self.inner.get("playbackRate").as_::<f64>()
-    }
-
-    pub fn set_playback_rate(&mut self, value: f64) {
-        self.inner.set("playbackRate", value);
-    }
-}
-impl MediaPositionState {
-    pub fn position(&self) -> f64 {
-        self.inner.get("position").as_::<f64>()
-    }
-
-    pub fn set_position(&mut self, value: f64) {
-        self.inner.set("position", value);
-    }
-}
 /// The MediaSession class.
 /// [`MediaSession`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -84,6 +7,7 @@ impl MediaPositionState {
 pub struct MediaSession {
     inner: Any,
 }
+
 impl FromVal for MediaSession {
     fn from_val(v: &Any) -> Self {
         MediaSession {
@@ -97,27 +21,32 @@ impl FromVal for MediaSession {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for MediaSession {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for MediaSession {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for MediaSession {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for MediaSession {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<MediaSession> for Any {
     fn from(s: MediaSession) -> Any {
         let handle = s.inner.as_handle();
@@ -125,11 +54,13 @@ impl From<MediaSession> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&MediaSession> for Any {
     fn from(s: &MediaSession) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(MediaSession);
 
 impl MediaSession {

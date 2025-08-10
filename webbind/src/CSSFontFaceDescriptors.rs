@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSFontFaceDescriptors {
     inner: CSSStyleDeclaration,
 }
+
 impl FromVal for CSSFontFaceDescriptors {
     fn from_val(v: &Any) -> Self {
         CSSFontFaceDescriptors {
@@ -20,27 +21,32 @@ impl FromVal for CSSFontFaceDescriptors {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSFontFaceDescriptors {
     type Target = CSSStyleDeclaration;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSFontFaceDescriptors {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSFontFaceDescriptors {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSFontFaceDescriptors {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSFontFaceDescriptors> for Any {
     fn from(s: CSSFontFaceDescriptors) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSFontFaceDescriptors> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSFontFaceDescriptors> for Any {
     fn from(s: &CSSFontFaceDescriptors) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSFontFaceDescriptors);
 
 impl CSSFontFaceDescriptors {

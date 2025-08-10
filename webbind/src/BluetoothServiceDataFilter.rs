@@ -7,6 +7,7 @@ use super::*;
 pub struct BluetoothServiceDataFilter {
     inner: Any,
 }
+
 impl FromVal for BluetoothServiceDataFilter {
     fn from_val(v: &Any) -> Self {
         BluetoothServiceDataFilter {
@@ -20,27 +21,32 @@ impl FromVal for BluetoothServiceDataFilter {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BluetoothServiceDataFilter {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BluetoothServiceDataFilter {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BluetoothServiceDataFilter {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BluetoothServiceDataFilter {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BluetoothServiceDataFilter> for Any {
     fn from(s: BluetoothServiceDataFilter) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BluetoothServiceDataFilter> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BluetoothServiceDataFilter> for Any {
     fn from(s: &BluetoothServiceDataFilter) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BluetoothServiceDataFilter);
 
 impl BluetoothServiceDataFilter {

@@ -7,6 +7,7 @@ use super::*;
 pub struct Path2D {
     inner: Any,
 }
+
 impl FromVal for Path2D {
     fn from_val(v: &Any) -> Self {
         Path2D {
@@ -20,27 +21,32 @@ impl FromVal for Path2D {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Path2D {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Path2D {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Path2D {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Path2D {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Path2D> for Any {
     fn from(s: Path2D) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Path2D> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Path2D> for Any {
     fn from(s: &Path2D) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Path2D);
 
 impl Path2D {

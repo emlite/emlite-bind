@@ -7,6 +7,7 @@ use super::*;
 pub struct URL {
     inner: Any,
 }
+
 impl FromVal for URL {
     fn from_val(v: &Any) -> Self {
         URL {
@@ -20,27 +21,32 @@ impl FromVal for URL {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for URL {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for URL {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for URL {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for URL {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<URL> for Any {
     fn from(s: URL) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<URL> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&URL> for Any {
     fn from(s: &URL) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(URL);
 
 impl URL {

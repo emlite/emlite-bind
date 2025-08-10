@@ -7,6 +7,7 @@ use super::*;
 pub struct SourceBuffer {
     inner: EventTarget,
 }
+
 impl FromVal for SourceBuffer {
     fn from_val(v: &Any) -> Self {
         SourceBuffer {
@@ -20,27 +21,32 @@ impl FromVal for SourceBuffer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SourceBuffer {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SourceBuffer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SourceBuffer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SourceBuffer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SourceBuffer> for Any {
     fn from(s: SourceBuffer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SourceBuffer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SourceBuffer> for Any {
     fn from(s: &SourceBuffer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SourceBuffer);
 
 impl SourceBuffer {

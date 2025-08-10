@@ -7,6 +7,7 @@ use super::*;
 pub struct WEBGL_provoking_vertex {
     inner: Any,
 }
+
 impl FromVal for WEBGL_provoking_vertex {
     fn from_val(v: &Any) -> Self {
         WEBGL_provoking_vertex {
@@ -20,27 +21,32 @@ impl FromVal for WEBGL_provoking_vertex {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WEBGL_provoking_vertex {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WEBGL_provoking_vertex {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WEBGL_provoking_vertex {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WEBGL_provoking_vertex {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WEBGL_provoking_vertex> for Any {
     fn from(s: WEBGL_provoking_vertex) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<WEBGL_provoking_vertex> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WEBGL_provoking_vertex> for Any {
     fn from(s: &WEBGL_provoking_vertex) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WEBGL_provoking_vertex);
 
 impl WEBGL_provoking_vertex {

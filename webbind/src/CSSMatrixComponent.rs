@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSMatrixComponent {
     inner: CSSTransformComponent,
 }
+
 impl FromVal for CSSMatrixComponent {
     fn from_val(v: &Any) -> Self {
         CSSMatrixComponent {
@@ -20,27 +21,32 @@ impl FromVal for CSSMatrixComponent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSMatrixComponent {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSMatrixComponent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSMatrixComponent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSMatrixComponent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSMatrixComponent> for Any {
     fn from(s: CSSMatrixComponent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSMatrixComponent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSMatrixComponent> for Any {
     fn from(s: &CSSMatrixComponent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSMatrixComponent);
 
 impl CSSMatrixComponent {

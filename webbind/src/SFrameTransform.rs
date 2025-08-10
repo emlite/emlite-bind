@@ -7,6 +7,7 @@ use super::*;
 pub struct SFrameTransform {
     inner: EventTarget,
 }
+
 impl FromVal for SFrameTransform {
     fn from_val(v: &Any) -> Self {
         SFrameTransform {
@@ -20,27 +21,32 @@ impl FromVal for SFrameTransform {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SFrameTransform {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SFrameTransform {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SFrameTransform {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SFrameTransform {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SFrameTransform> for Any {
     fn from(s: SFrameTransform) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SFrameTransform> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SFrameTransform> for Any {
     fn from(s: &SFrameTransform) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SFrameTransform);
 
 impl SFrameTransform {

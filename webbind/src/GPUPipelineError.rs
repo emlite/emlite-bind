@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUPipelineError {
     inner: DOMException,
 }
+
 impl FromVal for GPUPipelineError {
     fn from_val(v: &Any) -> Self {
         GPUPipelineError {
@@ -20,27 +21,32 @@ impl FromVal for GPUPipelineError {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUPipelineError {
     type Target = DOMException;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUPipelineError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUPipelineError {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUPipelineError {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUPipelineError> for Any {
     fn from(s: GPUPipelineError) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUPipelineError> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUPipelineError> for Any {
     fn from(s: &GPUPipelineError) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUPipelineError);
 
 impl GPUPipelineError {

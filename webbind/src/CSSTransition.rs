@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSTransition {
     inner: Animation,
 }
+
 impl FromVal for CSSTransition {
     fn from_val(v: &Any) -> Self {
         CSSTransition {
@@ -20,27 +21,32 @@ impl FromVal for CSSTransition {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSTransition {
     type Target = Animation;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSTransition {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSTransition {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSTransition {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSTransition> for Any {
     fn from(s: CSSTransition) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSTransition> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSTransition> for Any {
     fn from(s: &CSSTransition) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSTransition);
 
 impl CSSTransition {

@@ -7,6 +7,7 @@ use super::*;
 pub struct XRJointPose {
     inner: XRPose,
 }
+
 impl FromVal for XRJointPose {
     fn from_val(v: &Any) -> Self {
         XRJointPose {
@@ -20,27 +21,32 @@ impl FromVal for XRJointPose {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRJointPose {
     type Target = XRPose;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRJointPose {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRJointPose {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRJointPose {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRJointPose> for Any {
     fn from(s: XRJointPose) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRJointPose> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRJointPose> for Any {
     fn from(s: &XRJointPose) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRJointPose);
 
 impl XRJointPose {

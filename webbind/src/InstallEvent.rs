@@ -7,6 +7,7 @@ use super::*;
 pub struct InstallEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for InstallEvent {
     fn from_val(v: &Any) -> Self {
         InstallEvent {
@@ -20,27 +21,32 @@ impl FromVal for InstallEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for InstallEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for InstallEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for InstallEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for InstallEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<InstallEvent> for Any {
     fn from(s: InstallEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<InstallEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&InstallEvent> for Any {
     fn from(s: &InstallEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(InstallEvent);
 
 impl InstallEvent {

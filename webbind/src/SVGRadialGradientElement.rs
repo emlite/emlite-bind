@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGRadialGradientElement {
     inner: SVGGradientElement,
 }
+
 impl FromVal for SVGRadialGradientElement {
     fn from_val(v: &Any) -> Self {
         SVGRadialGradientElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGRadialGradientElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGRadialGradientElement {
     type Target = SVGGradientElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGRadialGradientElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGRadialGradientElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGRadialGradientElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGRadialGradientElement> for Any {
     fn from(s: SVGRadialGradientElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGRadialGradientElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGRadialGradientElement> for Any {
     fn from(s: &SVGRadialGradientElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGRadialGradientElement);
 
 impl SVGRadialGradientElement {

@@ -7,6 +7,7 @@ use super::*;
 pub struct LayoutFragment {
     inner: Any,
 }
+
 impl FromVal for LayoutFragment {
     fn from_val(v: &Any) -> Self {
         LayoutFragment {
@@ -20,27 +21,32 @@ impl FromVal for LayoutFragment {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for LayoutFragment {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for LayoutFragment {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for LayoutFragment {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for LayoutFragment {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<LayoutFragment> for Any {
     fn from(s: LayoutFragment) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<LayoutFragment> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&LayoutFragment> for Any {
     fn from(s: &LayoutFragment) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(LayoutFragment);
 
 impl LayoutFragment {

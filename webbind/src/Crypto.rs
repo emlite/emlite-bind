@@ -7,6 +7,7 @@ use super::*;
 pub struct Crypto {
     inner: Any,
 }
+
 impl FromVal for Crypto {
     fn from_val(v: &Any) -> Self {
         Crypto {
@@ -20,27 +21,32 @@ impl FromVal for Crypto {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Crypto {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Crypto {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Crypto {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Crypto {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Crypto> for Any {
     fn from(s: Crypto) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<Crypto> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Crypto> for Any {
     fn from(s: &Crypto) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Crypto);
 
 impl Crypto {

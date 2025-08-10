@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLProgressElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLProgressElement {
     fn from_val(v: &Any) -> Self {
         HTMLProgressElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLProgressElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLProgressElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLProgressElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLProgressElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLProgressElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLProgressElement> for Any {
     fn from(s: HTMLProgressElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLProgressElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLProgressElement> for Any {
     fn from(s: &HTMLProgressElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLProgressElement);
 
 impl HTMLProgressElement {

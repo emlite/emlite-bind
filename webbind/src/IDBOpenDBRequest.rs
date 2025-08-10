@@ -7,6 +7,7 @@ use super::*;
 pub struct IDBOpenDBRequest {
     inner: IDBRequest,
 }
+
 impl FromVal for IDBOpenDBRequest {
     fn from_val(v: &Any) -> Self {
         IDBOpenDBRequest {
@@ -20,27 +21,32 @@ impl FromVal for IDBOpenDBRequest {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for IDBOpenDBRequest {
     type Target = IDBRequest;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for IDBOpenDBRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for IDBOpenDBRequest {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for IDBOpenDBRequest {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<IDBOpenDBRequest> for Any {
     fn from(s: IDBOpenDBRequest) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<IDBOpenDBRequest> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&IDBOpenDBRequest> for Any {
     fn from(s: &IDBOpenDBRequest) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(IDBOpenDBRequest);
 
 impl IDBOpenDBRequest {

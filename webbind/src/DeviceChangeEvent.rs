@@ -7,6 +7,7 @@ use super::*;
 pub struct DeviceChangeEvent {
     inner: Event,
 }
+
 impl FromVal for DeviceChangeEvent {
     fn from_val(v: &Any) -> Self {
         DeviceChangeEvent {
@@ -20,27 +21,32 @@ impl FromVal for DeviceChangeEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DeviceChangeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DeviceChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DeviceChangeEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DeviceChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DeviceChangeEvent> for Any {
     fn from(s: DeviceChangeEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DeviceChangeEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DeviceChangeEvent> for Any {
     fn from(s: &DeviceChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DeviceChangeEvent);
 
 impl DeviceChangeEvent {

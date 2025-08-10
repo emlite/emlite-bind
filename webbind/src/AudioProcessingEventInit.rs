@@ -1,10 +1,12 @@
 use super::*;
 
+/// The AudioProcessingEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioProcessingEventInit {
     inner: Any,
 }
+
 impl FromVal for AudioProcessingEventInit {
     fn from_val(v: &Any) -> Self {
         AudioProcessingEventInit { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for AudioProcessingEventInit {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for AudioProcessingEventInit {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for AudioProcessingEventInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for AudioProcessingEventInit {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for AudioProcessingEventInit {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<AudioProcessingEventInit> for Any {
     fn from(s: AudioProcessingEventInit) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<AudioProcessingEventInit> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&AudioProcessingEventInit> for Any {
     fn from(s: &AudioProcessingEventInit) -> Any {
         s.inner.clone()
@@ -51,28 +59,34 @@ impl From<&AudioProcessingEventInit> for Any {
 }
 
 impl AudioProcessingEventInit {
+    /// Getter of the `playbackTime` attribute.
     pub fn playback_time(&self) -> f64 {
         self.inner.get("playbackTime").as_::<f64>()
     }
 
+    /// Setter of the `playbackTime` attribute.
     pub fn set_playback_time(&mut self, value: f64) {
         self.inner.set("playbackTime", value);
     }
 }
 impl AudioProcessingEventInit {
+    /// Getter of the `inputBuffer` attribute.
     pub fn input_buffer(&self) -> AudioBuffer {
         self.inner.get("inputBuffer").as_::<AudioBuffer>()
     }
 
+    /// Setter of the `inputBuffer` attribute.
     pub fn set_input_buffer(&mut self, value: &AudioBuffer) {
         self.inner.set("inputBuffer", value);
     }
 }
 impl AudioProcessingEventInit {
+    /// Getter of the `outputBuffer` attribute.
     pub fn output_buffer(&self) -> AudioBuffer {
         self.inner.get("outputBuffer").as_::<AudioBuffer>()
     }
 
+    /// Setter of the `outputBuffer` attribute.
     pub fn set_output_buffer(&mut self, value: &AudioBuffer) {
         self.inner.set("outputBuffer", value);
     }

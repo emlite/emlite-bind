@@ -7,6 +7,7 @@ use super::*;
 pub struct ContentIndexEvent {
     inner: ExtendableEvent,
 }
+
 impl FromVal for ContentIndexEvent {
     fn from_val(v: &Any) -> Self {
         ContentIndexEvent {
@@ -20,27 +21,32 @@ impl FromVal for ContentIndexEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ContentIndexEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ContentIndexEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ContentIndexEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ContentIndexEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ContentIndexEvent> for Any {
     fn from(s: ContentIndexEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ContentIndexEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ContentIndexEvent> for Any {
     fn from(s: &ContentIndexEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
 impl ContentIndexEvent {

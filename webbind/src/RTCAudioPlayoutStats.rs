@@ -1,10 +1,12 @@
 use super::*;
 
+/// The RTCAudioPlayoutStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCAudioPlayoutStats {
     inner: Any,
 }
+
 impl FromVal for RTCAudioPlayoutStats {
     fn from_val(v: &Any) -> Self {
         RTCAudioPlayoutStats { inner: v.clone() }
@@ -16,27 +18,32 @@ impl FromVal for RTCAudioPlayoutStats {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for RTCAudioPlayoutStats {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for RTCAudioPlayoutStats {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for RTCAudioPlayoutStats {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for RTCAudioPlayoutStats {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<RTCAudioPlayoutStats> for Any {
     fn from(s: RTCAudioPlayoutStats) -> Any {
         let handle = s.inner.as_handle();
@@ -44,6 +51,7 @@ impl From<RTCAudioPlayoutStats> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&RTCAudioPlayoutStats> for Any {
     fn from(s: &RTCAudioPlayoutStats) -> Any {
         s.inner.clone()
@@ -51,55 +59,67 @@ impl From<&RTCAudioPlayoutStats> for Any {
 }
 
 impl RTCAudioPlayoutStats {
+    /// Getter of the `kind` attribute.
     pub fn kind(&self) -> JsString {
         self.inner.get("kind").as_::<JsString>()
     }
 
+    /// Setter of the `kind` attribute.
     pub fn set_kind(&mut self, value: &JsString) {
         self.inner.set("kind", value);
     }
 }
 impl RTCAudioPlayoutStats {
+    /// Getter of the `synthesizedSamplesDuration` attribute.
     pub fn synthesized_samples_duration(&self) -> f64 {
         self.inner.get("synthesizedSamplesDuration").as_::<f64>()
     }
 
+    /// Setter of the `synthesizedSamplesDuration` attribute.
     pub fn set_synthesized_samples_duration(&mut self, value: f64) {
         self.inner.set("synthesizedSamplesDuration", value);
     }
 }
 impl RTCAudioPlayoutStats {
+    /// Getter of the `synthesizedSamplesEvents` attribute.
     pub fn synthesized_samples_events(&self) -> u32 {
         self.inner.get("synthesizedSamplesEvents").as_::<u32>()
     }
 
+    /// Setter of the `synthesizedSamplesEvents` attribute.
     pub fn set_synthesized_samples_events(&mut self, value: u32) {
         self.inner.set("synthesizedSamplesEvents", value);
     }
 }
 impl RTCAudioPlayoutStats {
+    /// Getter of the `totalSamplesDuration` attribute.
     pub fn total_samples_duration(&self) -> f64 {
         self.inner.get("totalSamplesDuration").as_::<f64>()
     }
 
+    /// Setter of the `totalSamplesDuration` attribute.
     pub fn set_total_samples_duration(&mut self, value: f64) {
         self.inner.set("totalSamplesDuration", value);
     }
 }
 impl RTCAudioPlayoutStats {
+    /// Getter of the `totalPlayoutDelay` attribute.
     pub fn total_playout_delay(&self) -> f64 {
         self.inner.get("totalPlayoutDelay").as_::<f64>()
     }
 
+    /// Setter of the `totalPlayoutDelay` attribute.
     pub fn set_total_playout_delay(&mut self, value: f64) {
         self.inner.set("totalPlayoutDelay", value);
     }
 }
 impl RTCAudioPlayoutStats {
+    /// Getter of the `totalSamplesCount` attribute.
     pub fn total_samples_count(&self) -> u64 {
         self.inner.get("totalSamplesCount").as_::<u64>()
     }
 
+    /// Setter of the `totalSamplesCount` attribute.
     pub fn set_total_samples_count(&mut self, value: u64) {
         self.inner.set("totalSamplesCount", value);
     }

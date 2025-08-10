@@ -7,6 +7,7 @@ use super::*;
 pub struct USBIsochronousInTransferResult {
     inner: Any,
 }
+
 impl FromVal for USBIsochronousInTransferResult {
     fn from_val(v: &Any) -> Self {
         USBIsochronousInTransferResult {
@@ -20,27 +21,32 @@ impl FromVal for USBIsochronousInTransferResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for USBIsochronousInTransferResult {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for USBIsochronousInTransferResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for USBIsochronousInTransferResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for USBIsochronousInTransferResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<USBIsochronousInTransferResult> for Any {
     fn from(s: USBIsochronousInTransferResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<USBIsochronousInTransferResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&USBIsochronousInTransferResult> for Any {
     fn from(s: &USBIsochronousInTransferResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferResult);
 
 impl USBIsochronousInTransferResult {

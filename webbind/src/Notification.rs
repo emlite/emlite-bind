@@ -1,82 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct NotificationAction {
-    inner: Any,
-}
-impl FromVal for NotificationAction {
-    fn from_val(v: &Any) -> Self {
-        NotificationAction { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for NotificationAction {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for NotificationAction {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for NotificationAction {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for NotificationAction {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<NotificationAction> for Any {
-    fn from(s: NotificationAction) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&NotificationAction> for Any {
-    fn from(s: &NotificationAction) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl NotificationAction {
-    pub fn action(&self) -> JsString {
-        self.inner.get("action").as_::<JsString>()
-    }
-
-    pub fn set_action(&mut self, value: &JsString) {
-        self.inner.set("action", value);
-    }
-}
-impl NotificationAction {
-    pub fn title(&self) -> JsString {
-        self.inner.get("title").as_::<JsString>()
-    }
-
-    pub fn set_title(&mut self, value: &JsString) {
-        self.inner.set("title", value);
-    }
-}
-impl NotificationAction {
-    pub fn icon(&self) -> JsString {
-        self.inner.get("icon").as_::<JsString>()
-    }
-
-    pub fn set_icon(&mut self, value: &JsString) {
-        self.inner.set("icon", value);
-    }
-}
 /// The Notification class.
 /// [`Notification`](https://developer.mozilla.org/en-US/docs/Web/API/Notification)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -84,6 +7,7 @@ impl NotificationAction {
 pub struct Notification {
     inner: EventTarget,
 }
+
 impl FromVal for Notification {
     fn from_val(v: &Any) -> Self {
         Notification {
@@ -97,27 +21,32 @@ impl FromVal for Notification {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Notification {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Notification {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Notification {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Notification {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Notification> for Any {
     fn from(s: Notification) -> Any {
         let handle = s.inner.as_handle();
@@ -125,11 +54,13 @@ impl From<Notification> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Notification> for Any {
     fn from(s: &Notification) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Notification);
 
 impl Notification {

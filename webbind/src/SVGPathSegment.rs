@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGPathSegment {
     inner: Any,
 }
+
 impl FromVal for SVGPathSegment {
     fn from_val(v: &Any) -> Self {
         SVGPathSegment {
@@ -20,27 +21,32 @@ impl FromVal for SVGPathSegment {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGPathSegment {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGPathSegment {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGPathSegment {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGPathSegment {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGPathSegment> for Any {
     fn from(s: SVGPathSegment) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGPathSegment> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGPathSegment> for Any {
     fn from(s: &SVGPathSegment) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGPathSegment);
 
 impl SVGPathSegment {

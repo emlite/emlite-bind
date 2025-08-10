@@ -1,73 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct SpeechRecognitionOptions {
-    inner: Any,
-}
-impl FromVal for SpeechRecognitionOptions {
-    fn from_val(v: &Any) -> Self {
-        SpeechRecognitionOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for SpeechRecognitionOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for SpeechRecognitionOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for SpeechRecognitionOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for SpeechRecognitionOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<SpeechRecognitionOptions> for Any {
-    fn from(s: SpeechRecognitionOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&SpeechRecognitionOptions> for Any {
-    fn from(s: &SpeechRecognitionOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl SpeechRecognitionOptions {
-    pub fn langs(&self) -> TypedArray<JsString> {
-        self.inner.get("langs").as_::<TypedArray<JsString>>()
-    }
-
-    pub fn set_langs(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("langs", value);
-    }
-}
-impl SpeechRecognitionOptions {
-    pub fn process_locally(&self) -> bool {
-        self.inner.get("processLocally").as_::<bool>()
-    }
-
-    pub fn set_process_locally(&mut self, value: bool) {
-        self.inner.set("processLocally", value);
-    }
-}
 /// The SpeechRecognition class.
 /// [`SpeechRecognition`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -75,6 +7,7 @@ impl SpeechRecognitionOptions {
 pub struct SpeechRecognition {
     inner: EventTarget,
 }
+
 impl FromVal for SpeechRecognition {
     fn from_val(v: &Any) -> Self {
         SpeechRecognition {
@@ -88,27 +21,32 @@ impl FromVal for SpeechRecognition {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SpeechRecognition {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SpeechRecognition {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SpeechRecognition {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SpeechRecognition {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SpeechRecognition> for Any {
     fn from(s: SpeechRecognition) -> Any {
         let handle = s.inner.as_handle();
@@ -116,11 +54,13 @@ impl From<SpeechRecognition> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SpeechRecognition> for Any {
     fn from(s: &SpeechRecognition) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SpeechRecognition);
 
 impl SpeechRecognition {

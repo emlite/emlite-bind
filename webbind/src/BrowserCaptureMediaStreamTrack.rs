@@ -7,6 +7,7 @@ use super::*;
 pub struct BrowserCaptureMediaStreamTrack {
     inner: MediaStreamTrack,
 }
+
 impl FromVal for BrowserCaptureMediaStreamTrack {
     fn from_val(v: &Any) -> Self {
         BrowserCaptureMediaStreamTrack {
@@ -20,27 +21,32 @@ impl FromVal for BrowserCaptureMediaStreamTrack {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BrowserCaptureMediaStreamTrack {
     type Target = MediaStreamTrack;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BrowserCaptureMediaStreamTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BrowserCaptureMediaStreamTrack {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BrowserCaptureMediaStreamTrack {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BrowserCaptureMediaStreamTrack> for Any {
     fn from(s: BrowserCaptureMediaStreamTrack) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BrowserCaptureMediaStreamTrack> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BrowserCaptureMediaStreamTrack> for Any {
     fn from(s: &BrowserCaptureMediaStreamTrack) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BrowserCaptureMediaStreamTrack);
 
 impl BrowserCaptureMediaStreamTrack {

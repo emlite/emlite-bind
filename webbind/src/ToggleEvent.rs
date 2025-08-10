@@ -7,6 +7,7 @@ use super::*;
 pub struct ToggleEvent {
     inner: Event,
 }
+
 impl FromVal for ToggleEvent {
     fn from_val(v: &Any) -> Self {
         ToggleEvent {
@@ -20,27 +21,32 @@ impl FromVal for ToggleEvent {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for ToggleEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for ToggleEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for ToggleEvent {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for ToggleEvent {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<ToggleEvent> for Any {
     fn from(s: ToggleEvent) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<ToggleEvent> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&ToggleEvent> for Any {
     fn from(s: &ToggleEvent) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(ToggleEvent);
 
 impl ToggleEvent {

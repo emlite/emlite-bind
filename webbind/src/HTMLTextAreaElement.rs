@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLTextAreaElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLTextAreaElement {
     fn from_val(v: &Any) -> Self {
         HTMLTextAreaElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLTextAreaElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLTextAreaElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLTextAreaElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLTextAreaElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLTextAreaElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLTextAreaElement> for Any {
     fn from(s: HTMLTextAreaElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLTextAreaElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLTextAreaElement> for Any {
     fn from(s: &HTMLTextAreaElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLTextAreaElement);
 
 impl HTMLTextAreaElement {

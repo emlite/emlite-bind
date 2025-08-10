@@ -7,6 +7,7 @@ use super::*;
 pub struct WebGLFramebuffer {
     inner: WebGLObject,
 }
+
 impl FromVal for WebGLFramebuffer {
     fn from_val(v: &Any) -> Self {
         WebGLFramebuffer {
@@ -20,27 +21,32 @@ impl FromVal for WebGLFramebuffer {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebGLFramebuffer {
     type Target = WebGLObject;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebGLFramebuffer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebGLFramebuffer {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebGLFramebuffer {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebGLFramebuffer> for Any {
     fn from(s: WebGLFramebuffer) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<WebGLFramebuffer> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebGLFramebuffer> for Any {
     fn from(s: &WebGLFramebuffer) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebGLFramebuffer);

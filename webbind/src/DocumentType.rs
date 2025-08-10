@@ -7,6 +7,7 @@ use super::*;
 pub struct DocumentType {
     inner: Node,
 }
+
 impl FromVal for DocumentType {
     fn from_val(v: &Any) -> Self {
         DocumentType {
@@ -20,27 +21,32 @@ impl FromVal for DocumentType {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for DocumentType {
     type Target = Node;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for DocumentType {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for DocumentType {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for DocumentType {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<DocumentType> for Any {
     fn from(s: DocumentType) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<DocumentType> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&DocumentType> for Any {
     fn from(s: &DocumentType) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(DocumentType);
 
 impl DocumentType {

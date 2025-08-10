@@ -7,6 +7,7 @@ use super::*;
 pub struct HTMLFrameSetElement {
     inner: HTMLElement,
 }
+
 impl FromVal for HTMLFrameSetElement {
     fn from_val(v: &Any) -> Self {
         HTMLFrameSetElement {
@@ -20,27 +21,32 @@ impl FromVal for HTMLFrameSetElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for HTMLFrameSetElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for HTMLFrameSetElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for HTMLFrameSetElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for HTMLFrameSetElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<HTMLFrameSetElement> for Any {
     fn from(s: HTMLFrameSetElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<HTMLFrameSetElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&HTMLFrameSetElement> for Any {
     fn from(s: &HTMLFrameSetElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(HTMLFrameSetElement);
 
 impl HTMLFrameSetElement {

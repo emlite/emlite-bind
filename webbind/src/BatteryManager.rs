@@ -7,6 +7,7 @@ use super::*;
 pub struct BatteryManager {
     inner: EventTarget,
 }
+
 impl FromVal for BatteryManager {
     fn from_val(v: &Any) -> Self {
         BatteryManager {
@@ -20,27 +21,32 @@ impl FromVal for BatteryManager {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for BatteryManager {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for BatteryManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for BatteryManager {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for BatteryManager {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<BatteryManager> for Any {
     fn from(s: BatteryManager) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<BatteryManager> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&BatteryManager> for Any {
     fn from(s: &BatteryManager) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(BatteryManager);
 
 impl BatteryManager {

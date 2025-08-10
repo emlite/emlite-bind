@@ -7,6 +7,7 @@ use super::*;
 pub struct WebGLUniformLocation {
     inner: Any,
 }
+
 impl FromVal for WebGLUniformLocation {
     fn from_val(v: &Any) -> Self {
         WebGLUniformLocation {
@@ -20,27 +21,32 @@ impl FromVal for WebGLUniformLocation {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for WebGLUniformLocation {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for WebGLUniformLocation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for WebGLUniformLocation {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for WebGLUniformLocation {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<WebGLUniformLocation> for Any {
     fn from(s: WebGLUniformLocation) -> Any {
         let handle = s.inner.as_handle();
@@ -48,9 +54,11 @@ impl From<WebGLUniformLocation> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&WebGLUniformLocation> for Any {
     fn from(s: &WebGLUniformLocation) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(WebGLUniformLocation);

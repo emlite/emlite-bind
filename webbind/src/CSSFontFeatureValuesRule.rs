@@ -7,6 +7,7 @@ use super::*;
 pub struct CSSFontFeatureValuesRule {
     inner: CSSRule,
 }
+
 impl FromVal for CSSFontFeatureValuesRule {
     fn from_val(v: &Any) -> Self {
         CSSFontFeatureValuesRule {
@@ -20,27 +21,32 @@ impl FromVal for CSSFontFeatureValuesRule {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for CSSFontFeatureValuesRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for CSSFontFeatureValuesRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for CSSFontFeatureValuesRule {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for CSSFontFeatureValuesRule {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<CSSFontFeatureValuesRule> for Any {
     fn from(s: CSSFontFeatureValuesRule) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<CSSFontFeatureValuesRule> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&CSSFontFeatureValuesRule> for Any {
     fn from(s: &CSSFontFeatureValuesRule) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesRule);
 
 impl CSSFontFeatureValuesRule {

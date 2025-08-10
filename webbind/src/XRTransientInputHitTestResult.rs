@@ -7,6 +7,7 @@ use super::*;
 pub struct XRTransientInputHitTestResult {
     inner: Any,
 }
+
 impl FromVal for XRTransientInputHitTestResult {
     fn from_val(v: &Any) -> Self {
         XRTransientInputHitTestResult {
@@ -20,27 +21,32 @@ impl FromVal for XRTransientInputHitTestResult {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for XRTransientInputHitTestResult {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for XRTransientInputHitTestResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for XRTransientInputHitTestResult {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for XRTransientInputHitTestResult {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<XRTransientInputHitTestResult> for Any {
     fn from(s: XRTransientInputHitTestResult) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<XRTransientInputHitTestResult> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&XRTransientInputHitTestResult> for Any {
     fn from(s: &XRTransientInputHitTestResult) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(XRTransientInputHitTestResult);
 
 impl XRTransientInputHitTestResult {

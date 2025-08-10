@@ -7,6 +7,7 @@ use super::*;
 pub struct GPUPipelineLayout {
     inner: Any,
 }
+
 impl FromVal for GPUPipelineLayout {
     fn from_val(v: &Any) -> Self {
         GPUPipelineLayout {
@@ -20,27 +21,32 @@ impl FromVal for GPUPipelineLayout {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for GPUPipelineLayout {
     type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for GPUPipelineLayout {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for GPUPipelineLayout {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for GPUPipelineLayout {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<GPUPipelineLayout> for Any {
     fn from(s: GPUPipelineLayout) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<GPUPipelineLayout> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&GPUPipelineLayout> for Any {
     fn from(s: &GPUPipelineLayout) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(GPUPipelineLayout);
 
 impl GPUPipelineLayout {

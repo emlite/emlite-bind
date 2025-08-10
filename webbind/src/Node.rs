@@ -1,64 +1,5 @@
 use super::*;
 
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-#[repr(transparent)]
-pub struct GetRootNodeOptions {
-    inner: Any,
-}
-impl FromVal for GetRootNodeOptions {
-    fn from_val(v: &Any) -> Self {
-        GetRootNodeOptions { inner: v.clone() }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        self.inner.as_handle()
-    }
-}
-impl core::ops::Deref for GetRootNodeOptions {
-    type Target = Any;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl core::ops::DerefMut for GetRootNodeOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
-    }
-}
-impl AsRef<Any> for GetRootNodeOptions {
-    fn as_ref(&self) -> &Any {
-        &self.inner
-    }
-}
-impl AsMut<Any> for GetRootNodeOptions {
-    fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
-}
-impl From<GetRootNodeOptions> for Any {
-    fn from(s: GetRootNodeOptions) -> Any {
-        let handle = s.inner.as_handle();
-        core::mem::forget(s);
-        Any::take_ownership(handle)
-    }
-}
-impl From<&GetRootNodeOptions> for Any {
-    fn from(s: &GetRootNodeOptions) -> Any {
-        s.inner.clone()
-    }
-}
-
-impl GetRootNodeOptions {
-    pub fn composed(&self) -> bool {
-        self.inner.get("composed").as_::<bool>()
-    }
-
-    pub fn set_composed(&mut self, value: bool) {
-        self.inner.set("composed", value);
-    }
-}
 /// The Node class.
 /// [`Node`](https://developer.mozilla.org/en-US/docs/Web/API/Node)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -66,6 +7,7 @@ impl GetRootNodeOptions {
 pub struct Node {
     inner: EventTarget,
 }
+
 impl FromVal for Node {
     fn from_val(v: &Any) -> Self {
         Node {
@@ -79,27 +21,32 @@ impl FromVal for Node {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for Node {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for Node {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for Node {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for Node {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<Node> for Any {
     fn from(s: Node) -> Any {
         let handle = s.inner.as_handle();
@@ -107,11 +54,13 @@ impl From<Node> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&Node> for Any {
     fn from(s: &Node) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(Node);
 
 impl Node {

@@ -7,6 +7,7 @@ use super::*;
 pub struct SVGFETurbulenceElement {
     inner: SVGElement,
 }
+
 impl FromVal for SVGFETurbulenceElement {
     fn from_val(v: &Any) -> Self {
         SVGFETurbulenceElement {
@@ -20,27 +21,32 @@ impl FromVal for SVGFETurbulenceElement {
         self.inner.as_handle()
     }
 }
+
 impl core::ops::Deref for SVGFETurbulenceElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
+
 impl core::ops::DerefMut for SVGFETurbulenceElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
+
 impl AsRef<Any> for SVGFETurbulenceElement {
     fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
+
 impl AsMut<Any> for SVGFETurbulenceElement {
     fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
+
 impl From<SVGFETurbulenceElement> for Any {
     fn from(s: SVGFETurbulenceElement) -> Any {
         let handle = s.inner.as_handle();
@@ -48,11 +54,13 @@ impl From<SVGFETurbulenceElement> for Any {
         Any::take_ownership(handle)
     }
 }
+
 impl From<&SVGFETurbulenceElement> for Any {
     fn from(s: &SVGFETurbulenceElement) -> Any {
         s.inner.clone().into()
     }
 }
+
 jsbind::utils::impl_dyn_cast!(SVGFETurbulenceElement);
 
 impl SVGFETurbulenceElement {
