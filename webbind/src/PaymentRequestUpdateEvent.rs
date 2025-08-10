@@ -66,7 +66,10 @@ impl PaymentRequestUpdateEvent {
     }
 
     /// The `new PaymentRequestUpdateEvent(..)` constructor, creating a new PaymentRequestUpdateEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PaymentRequestUpdateEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &PaymentRequestUpdateEventInit,
+    ) -> PaymentRequestUpdateEvent {
         Self {
             inner: Any::global("PaymentRequestUpdateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

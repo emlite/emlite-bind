@@ -64,7 +64,7 @@ impl CaptureActionEvent {
     }
 
     /// The `new CaptureActionEvent(..)` constructor, creating a new CaptureActionEvent instance
-    pub fn new1(init: &Any) -> CaptureActionEvent {
+    pub fn new1(init: &CaptureActionEventInit) -> CaptureActionEvent {
         Self {
             inner: Any::global("CaptureActionEvent")
                 .new(&[init.into()])

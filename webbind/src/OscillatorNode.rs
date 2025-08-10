@@ -66,7 +66,7 @@ impl OscillatorNode {
     }
 
     /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> OscillatorNode {
+    pub fn new1(context: &BaseAudioContext, options: &OscillatorOptions) -> OscillatorNode {
         Self {
             inner: Any::global("OscillatorNode")
                 .new(&[context.into(), options.into()])

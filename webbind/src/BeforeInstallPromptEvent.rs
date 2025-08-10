@@ -125,7 +125,7 @@ impl BeforeInstallPromptEvent {
     }
 
     /// The `new BeforeInstallPromptEvent(..)` constructor, creating a new BeforeInstallPromptEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> BeforeInstallPromptEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &EventInit) -> BeforeInstallPromptEvent {
         Self {
             inner: Any::global("BeforeInstallPromptEvent")
                 .new(&[type_.into(), event_init_dict.into()])

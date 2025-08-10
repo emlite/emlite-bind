@@ -66,7 +66,7 @@ impl DragEvent {
     }
 
     /// The `new DragEvent(..)` constructor, creating a new DragEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> DragEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &DragEventInit) -> DragEvent {
         Self {
             inner: Any::global("DragEvent")
                 .new(&[type_.into(), event_init_dict.into()])

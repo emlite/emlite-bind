@@ -255,11 +255,13 @@ impl From<&RTCConfiguration> for Any {
 }
 
 impl RTCConfiguration {
-    pub fn ice_servers(&self) -> TypedArray<Any> {
-        self.inner.get("iceServers").as_::<TypedArray<Any>>()
+    pub fn ice_servers(&self) -> TypedArray<RTCIceServer> {
+        self.inner
+            .get("iceServers")
+            .as_::<TypedArray<RTCIceServer>>()
     }
 
-    pub fn set_ice_servers(&mut self, value: &TypedArray<Any>) {
+    pub fn set_ice_servers(&mut self, value: &TypedArray<RTCIceServer>) {
         self.inner.set("iceServers", value);
     }
 }
@@ -460,11 +462,13 @@ impl RTCRtpTransceiverInit {
     }
 }
 impl RTCRtpTransceiverInit {
-    pub fn send_encodings(&self) -> TypedArray<Any> {
-        self.inner.get("sendEncodings").as_::<TypedArray<Any>>()
+    pub fn send_encodings(&self) -> TypedArray<RTCRtpEncodingParameters> {
+        self.inner
+            .get("sendEncodings")
+            .as_::<TypedArray<RTCRtpEncodingParameters>>()
     }
 
-    pub fn set_send_encodings(&mut self, value: &TypedArray<Any>) {
+    pub fn set_send_encodings(&mut self, value: &TypedArray<RTCRtpEncodingParameters>) {
         self.inner.set("sendEncodings", value);
     }
 }
@@ -703,7 +707,7 @@ impl RTCPeerConnection {
     pub fn set_local_description(
         &self,
         description: &RTCLocalSessionDescriptionInit,
-        success_callback: &Any,
+        success_callback: &Function,
         failure_callback: &Function,
     ) -> Promise<Undefined> {
         self.inner
@@ -751,7 +755,7 @@ impl RTCPeerConnection {
     pub fn set_remote_description(
         &self,
         description: &RTCSessionDescriptionInit,
-        success_callback: &Any,
+        success_callback: &Function,
         failure_callback: &Function,
     ) -> Promise<Undefined> {
         self.inner
@@ -799,7 +803,7 @@ impl RTCPeerConnection {
     pub fn add_ice_candidate(
         &self,
         candidate: &RTCIceCandidateInit,
-        success_callback: &Any,
+        success_callback: &Function,
         failure_callback: &Function,
     ) -> Promise<Undefined> {
         self.inner

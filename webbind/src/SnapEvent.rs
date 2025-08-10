@@ -64,7 +64,7 @@ impl SnapEvent {
     }
 
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> SnapEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &SnapEventInit) -> SnapEvent {
         Self {
             inner: Any::global("SnapEvent")
                 .new(&[type_.into(), event_init_dict.into()])

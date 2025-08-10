@@ -66,7 +66,7 @@ impl InstallEvent {
     }
 
     /// The `new InstallEvent(..)` constructor, creating a new InstallEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> InstallEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &ExtendableEventInit) -> InstallEvent {
         Self {
             inner: Any::global("InstallEvent")
                 .new(&[type_.into(), event_init_dict.into()])

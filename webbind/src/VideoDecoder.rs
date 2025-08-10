@@ -276,7 +276,7 @@ jsbind::utils::impl_dyn_cast!(VideoDecoder);
 
 impl VideoDecoder {
     /// The `new VideoDecoder(..)` constructor, creating a new VideoDecoder instance
-    pub fn new(init: &Any) -> VideoDecoder {
+    pub fn new(init: &VideoDecoderInit) -> VideoDecoder {
         Self {
             inner: Any::global("VideoDecoder")
                 .new(&[init.into()])

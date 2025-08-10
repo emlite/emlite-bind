@@ -130,7 +130,7 @@ impl TextDecoder {
     }
 
     /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
-    pub fn new2(label: &JsString, options: &Any) -> TextDecoder {
+    pub fn new2(label: &JsString, options: &TextDecoderOptions) -> TextDecoder {
         Self {
             inner: Any::global("TextDecoder")
                 .new(&[label.into(), options.into()])

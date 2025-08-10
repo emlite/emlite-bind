@@ -66,7 +66,7 @@ impl PointerTimeline {
     }
 
     /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
-    pub fn new1(options: &Any) -> PointerTimeline {
+    pub fn new1(options: &PointerTimelineOptions) -> PointerTimeline {
         Self {
             inner: Any::global("PointerTimeline")
                 .new(&[options.into()])

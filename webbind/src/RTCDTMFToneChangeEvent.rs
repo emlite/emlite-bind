@@ -66,7 +66,10 @@ impl RTCDTMFToneChangeEvent {
     }
 
     /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> RTCDTMFToneChangeEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &RTCDTMFToneChangeEventInit,
+    ) -> RTCDTMFToneChangeEvent {
         Self {
             inner: Any::global("RTCDTMFToneChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

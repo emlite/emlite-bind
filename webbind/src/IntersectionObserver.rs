@@ -66,7 +66,7 @@ impl IntersectionObserver {
     }
 
     /// The `new IntersectionObserver(..)` constructor, creating a new IntersectionObserver instance
-    pub fn new1(callback: &Function, options: &Any) -> IntersectionObserver {
+    pub fn new1(callback: &Function, options: &IntersectionObserverInit) -> IntersectionObserver {
         Self {
             inner: Any::global("IntersectionObserver")
                 .new(&[callback.into(), options.into()])

@@ -261,7 +261,7 @@ jsbind::utils::impl_dyn_cast!(VideoFrame);
 
 impl VideoFrame {
     /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
-    pub fn new(data: &Any, init: &Any) -> VideoFrame {
+    pub fn new(data: &Any, init: &VideoFrameBufferInit) -> VideoFrame {
         Self {
             inner: Any::global("VideoFrame")
                 .new(&[data.into(), init.into()])

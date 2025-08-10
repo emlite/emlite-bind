@@ -66,7 +66,7 @@ impl TaskController {
     }
 
     /// The `new TaskController(..)` constructor, creating a new TaskController instance
-    pub fn new1(init: &Any) -> TaskController {
+    pub fn new1(init: &TaskControllerInit) -> TaskController {
         Self {
             inner: Any::global("TaskController")
                 .new(&[init.into()])

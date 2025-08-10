@@ -466,8 +466,8 @@ impl Window {
 impl Window {
     /// Getter of the `location` attribute.
     /// [`Window.location`](https://developer.mozilla.org/en-US/docs/Web/API/Window/location)
-    pub fn location(&self) -> Any {
-        self.inner.get("location").as_::<Any>()
+    pub fn location(&self) -> Location {
+        self.inner.get("location").as_::<Location>()
     }
 }
 impl Window {

@@ -146,20 +146,20 @@ impl PhotoCapabilities {
     }
 }
 impl PhotoCapabilities {
-    pub fn image_height(&self) -> Any {
-        self.inner.get("imageHeight").as_::<Any>()
+    pub fn image_height(&self) -> MediaSettingsRange {
+        self.inner.get("imageHeight").as_::<MediaSettingsRange>()
     }
 
-    pub fn set_image_height(&mut self, value: &Any) {
+    pub fn set_image_height(&mut self, value: &MediaSettingsRange) {
         self.inner.set("imageHeight", value);
     }
 }
 impl PhotoCapabilities {
-    pub fn image_width(&self) -> Any {
-        self.inner.get("imageWidth").as_::<Any>()
+    pub fn image_width(&self) -> MediaSettingsRange {
+        self.inner.get("imageWidth").as_::<MediaSettingsRange>()
     }
 
-    pub fn set_image_width(&mut self, value: &Any) {
+    pub fn set_image_width(&mut self, value: &MediaSettingsRange) {
         self.inner.set("imageWidth", value);
     }
 }

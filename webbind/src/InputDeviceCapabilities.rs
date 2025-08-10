@@ -64,7 +64,7 @@ impl InputDeviceCapabilities {
     }
 
     /// The `new InputDeviceCapabilities(..)` constructor, creating a new InputDeviceCapabilities instance
-    pub fn new1(device_init_dict: &Any) -> InputDeviceCapabilities {
+    pub fn new1(device_init_dict: &InputDeviceCapabilitiesInit) -> InputDeviceCapabilities {
         Self {
             inner: Any::global("InputDeviceCapabilities")
                 .new(&[device_init_dict.into()])

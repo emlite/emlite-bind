@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(StaticRange);
 
 impl StaticRange {
     /// The `new StaticRange(..)` constructor, creating a new StaticRange instance
-    pub fn new(init: &Any) -> StaticRange {
+    pub fn new(init: &StaticRangeInit) -> StaticRange {
         Self {
             inner: Any::global("StaticRange")
                 .new(&[init.into()])

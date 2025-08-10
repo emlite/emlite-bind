@@ -66,7 +66,10 @@ impl BufferedChangeEvent {
     }
 
     /// The `new BufferedChangeEvent(..)` constructor, creating a new BufferedChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> BufferedChangeEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &BufferedChangeEventInit,
+    ) -> BufferedChangeEvent {
         Self {
             inner: Any::global("BufferedChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

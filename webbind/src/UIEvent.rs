@@ -64,7 +64,7 @@ impl UIEvent {
     }
 
     /// The `new UIEvent(..)` constructor, creating a new UIEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> UIEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &UIEventInit) -> UIEvent {
         Self {
             inner: Any::global("UIEvent")
                 .new(&[type_.into(), event_init_dict.into()])

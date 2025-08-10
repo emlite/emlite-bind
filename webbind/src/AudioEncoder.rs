@@ -220,7 +220,7 @@ jsbind::utils::impl_dyn_cast!(AudioEncoder);
 
 impl AudioEncoder {
     /// The `new AudioEncoder(..)` constructor, creating a new AudioEncoder instance
-    pub fn new(init: &Any) -> AudioEncoder {
+    pub fn new(init: &AudioEncoderInit) -> AudioEncoder {
         Self {
             inner: Any::global("AudioEncoder")
                 .new(&[init.into()])

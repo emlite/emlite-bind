@@ -66,7 +66,10 @@ impl PortalActivateEvent {
     }
 
     /// The `new PortalActivateEvent(..)` constructor, creating a new PortalActivateEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PortalActivateEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &PortalActivateEventInit,
+    ) -> PortalActivateEvent {
         Self {
             inner: Any::global("PortalActivateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -64,7 +64,7 @@ impl Magnetometer {
     }
 
     /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
-    pub fn new1(sensor_options: &Any) -> Magnetometer {
+    pub fn new1(sensor_options: &MagnetometerSensorOptions) -> Magnetometer {
         Self {
             inner: Any::global("Magnetometer")
                 .new(&[sensor_options.into()])

@@ -66,7 +66,7 @@ impl InputEvent {
     }
 
     /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> InputEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &InputEventInit) -> InputEvent {
         Self {
             inner: Any::global("InputEvent")
                 .new(&[type_.into(), event_init_dict.into()])

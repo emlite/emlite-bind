@@ -66,7 +66,7 @@ impl PeriodicWave {
     }
 
     /// The `new PeriodicWave(..)` constructor, creating a new PeriodicWave instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> PeriodicWave {
+    pub fn new1(context: &BaseAudioContext, options: &PeriodicWaveOptions) -> PeriodicWave {
         Self {
             inner: Any::global("PeriodicWave")
                 .new(&[context.into(), options.into()])

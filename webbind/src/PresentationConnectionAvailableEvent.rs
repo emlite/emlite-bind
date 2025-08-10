@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(PresentationConnectionAvailableEvent);
 
 impl PresentationConnectionAvailableEvent {
     /// The `new PresentationConnectionAvailableEvent(..)` constructor, creating a new PresentationConnectionAvailableEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> PresentationConnectionAvailableEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PresentationConnectionAvailableEventInit,
+    ) -> PresentationConnectionAvailableEvent {
         Self {
             inner: Any::global("PresentationConnectionAvailableEvent")
                 .new(&[type_.into(), event_init_dict.into()])

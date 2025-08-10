@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
 impl ContentIndexEvent {
     /// The `new ContentIndexEvent(..)` constructor, creating a new ContentIndexEvent instance
-    pub fn new(type_: &JsString, init: &Any) -> ContentIndexEvent {
+    pub fn new(type_: &JsString, init: &ContentIndexEventInit) -> ContentIndexEvent {
         Self {
             inner: Any::global("ContentIndexEvent")
                 .new(&[type_.into(), init.into()])

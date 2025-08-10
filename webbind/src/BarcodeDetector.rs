@@ -78,11 +78,11 @@ impl DetectedBarcode {
     }
 }
 impl DetectedBarcode {
-    pub fn corner_points(&self) -> TypedArray<Any> {
-        self.inner.get("cornerPoints").as_::<TypedArray<Any>>()
+    pub fn corner_points(&self) -> TypedArray<Point2D> {
+        self.inner.get("cornerPoints").as_::<TypedArray<Point2D>>()
     }
 
-    pub fn set_corner_points(&mut self, value: &TypedArray<Any>) {
+    pub fn set_corner_points(&mut self, value: &TypedArray<Point2D>) {
         self.inner.set("cornerPoints", value);
     }
 }
@@ -150,7 +150,7 @@ impl BarcodeDetector {
     }
 
     /// The `new BarcodeDetector(..)` constructor, creating a new BarcodeDetector instance
-    pub fn new1(barcode_detector_options: &Any) -> BarcodeDetector {
+    pub fn new1(barcode_detector_options: &BarcodeDetectorOptions) -> BarcodeDetector {
         Self {
             inner: Any::global("BarcodeDetector")
                 .new(&[barcode_detector_options.into()])

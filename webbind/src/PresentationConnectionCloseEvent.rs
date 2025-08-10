@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(PresentationConnectionCloseEvent);
 
 impl PresentationConnectionCloseEvent {
     /// The `new PresentationConnectionCloseEvent(..)` constructor, creating a new PresentationConnectionCloseEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> PresentationConnectionCloseEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PresentationConnectionCloseEventInit,
+    ) -> PresentationConnectionCloseEvent {
         Self {
             inner: Any::global("PresentationConnectionCloseEvent")
                 .new(&[type_.into(), event_init_dict.into()])

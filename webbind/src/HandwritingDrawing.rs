@@ -60,13 +60,13 @@ impl HandwritingPrediction {
     }
 }
 impl HandwritingPrediction {
-    pub fn segmentation_result(&self) -> TypedArray<Any> {
+    pub fn segmentation_result(&self) -> TypedArray<HandwritingSegment> {
         self.inner
             .get("segmentationResult")
-            .as_::<TypedArray<Any>>()
+            .as_::<TypedArray<HandwritingSegment>>()
     }
 
-    pub fn set_segmentation_result(&mut self, value: &TypedArray<Any>) {
+    pub fn set_segmentation_result(&mut self, value: &TypedArray<HandwritingSegment>) {
         self.inner.set("segmentationResult", value);
     }
 }

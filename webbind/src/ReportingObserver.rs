@@ -66,7 +66,7 @@ impl ReportingObserver {
     }
 
     /// The `new ReportingObserver(..)` constructor, creating a new ReportingObserver instance
-    pub fn new1(callback: &Function, options: &Any) -> ReportingObserver {
+    pub fn new1(callback: &Function, options: &ReportingObserverOptions) -> ReportingObserver {
         Self {
             inner: Any::global("ReportingObserver")
                 .new(&[callback.into(), options.into()])

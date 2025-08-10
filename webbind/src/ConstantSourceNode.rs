@@ -66,7 +66,7 @@ impl ConstantSourceNode {
     }
 
     /// The `new ConstantSourceNode(..)` constructor, creating a new ConstantSourceNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> ConstantSourceNode {
+    pub fn new1(context: &BaseAudioContext, options: &ConstantSourceOptions) -> ConstantSourceNode {
         Self {
             inner: Any::global("ConstantSourceNode")
                 .new(&[context.into(), options.into()])

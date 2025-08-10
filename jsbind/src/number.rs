@@ -303,7 +303,8 @@ impl Number {
 
     /// Parses integer from string with radix
     pub fn parse_int(s: &JsString, radix: i32) -> Result<Self, JsError> {
-        let result = emlite::Val::global("parseInt").call("parseInt", &[s.clone().into(), radix.into()]);
+        let result =
+            emlite::Val::global("parseInt").call("parseInt", &[s.clone().into(), radix.into()]);
         let num = Self::from_val(&result);
         if num.is_nan() {
             Err(SyntaxError::new("Failed to parse integer from string").into())

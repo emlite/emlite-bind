@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(NDEFReadingEvent);
 
 impl NDEFReadingEvent {
     /// The `new NDEFReadingEvent(..)` constructor, creating a new NDEFReadingEvent instance
-    pub fn new(type_: &JsString, reading_event_init_dict: &Any) -> NDEFReadingEvent {
+    pub fn new(
+        type_: &JsString,
+        reading_event_init_dict: &NDEFReadingEventInit,
+    ) -> NDEFReadingEvent {
         Self {
             inner: Any::global("NDEFReadingEvent")
                 .new(&[type_.into(), reading_event_init_dict.into()])

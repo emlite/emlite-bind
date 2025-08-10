@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(SpeechSynthesisEvent);
 
 impl SpeechSynthesisEvent {
     /// The `new SpeechSynthesisEvent(..)` constructor, creating a new SpeechSynthesisEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> SpeechSynthesisEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &SpeechSynthesisEventInit,
+    ) -> SpeechSynthesisEvent {
         Self {
             inner: Any::global("SpeechSynthesisEvent")
                 .new(&[type_.into(), event_init_dict.into()])

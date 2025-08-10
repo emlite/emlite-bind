@@ -66,7 +66,7 @@ impl HashChangeEvent {
     }
 
     /// The `new HashChangeEvent(..)` constructor, creating a new HashChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> HashChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &HashChangeEventInit) -> HashChangeEvent {
         Self {
             inner: Any::global("HashChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

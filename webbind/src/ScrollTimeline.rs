@@ -66,7 +66,7 @@ impl ScrollTimeline {
     }
 
     /// The `new ScrollTimeline(..)` constructor, creating a new ScrollTimeline instance
-    pub fn new1(options: &Any) -> ScrollTimeline {
+    pub fn new1(options: &ScrollTimelineOptions) -> ScrollTimeline {
         Self {
             inner: Any::global("ScrollTimeline")
                 .new(&[options.into()])

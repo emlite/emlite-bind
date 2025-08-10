@@ -355,7 +355,7 @@ jsbind::utils::impl_dyn_cast!(VideoEncoder);
 
 impl VideoEncoder {
     /// The `new VideoEncoder(..)` constructor, creating a new VideoEncoder instance
-    pub fn new(init: &Any) -> VideoEncoder {
+    pub fn new(init: &VideoEncoderInit) -> VideoEncoder {
         Self {
             inner: Any::global("VideoEncoder")
                 .new(&[init.into()])

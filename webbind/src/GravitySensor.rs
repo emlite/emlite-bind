@@ -64,7 +64,7 @@ impl GravitySensor {
     }
 
     /// The `new GravitySensor(..)` constructor, creating a new GravitySensor instance
-    pub fn new1(options: &Any) -> GravitySensor {
+    pub fn new1(options: &AccelerometerSensorOptions) -> GravitySensor {
         Self {
             inner: Any::global("GravitySensor")
                 .new(&[options.into()])

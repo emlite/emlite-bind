@@ -64,7 +64,7 @@ impl ViewTimeline {
     }
 
     /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
-    pub fn new1(options: &Any) -> ViewTimeline {
+    pub fn new1(options: &ViewTimelineOptions) -> ViewTimeline {
         Self {
             inner: Any::global("ViewTimeline")
                 .new(&[options.into()])

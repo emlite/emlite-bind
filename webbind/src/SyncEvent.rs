@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SyncEvent);
 
 impl SyncEvent {
     /// The `new SyncEvent(..)` constructor, creating a new SyncEvent instance
-    pub fn new(type_: &JsString, init: &Any) -> SyncEvent {
+    pub fn new(type_: &JsString, init: &SyncEventInit) -> SyncEvent {
         Self {
             inner: Any::global("SyncEvent")
                 .new(&[type_.into(), init.into()])

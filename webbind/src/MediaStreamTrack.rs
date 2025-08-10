@@ -128,11 +128,13 @@ impl From<&MediaTrackConstraints> for Any {
 }
 
 impl MediaTrackConstraints {
-    pub fn advanced(&self) -> TypedArray<Any> {
-        self.inner.get("advanced").as_::<TypedArray<Any>>()
+    pub fn advanced(&self) -> TypedArray<MediaTrackConstraintSet> {
+        self.inner
+            .get("advanced")
+            .as_::<TypedArray<MediaTrackConstraintSet>>()
     }
 
-    pub fn set_advanced(&mut self, value: &TypedArray<Any>) {
+    pub fn set_advanced(&mut self, value: &TypedArray<MediaTrackConstraintSet>) {
         self.inner.set("advanced", value);
     }
 }

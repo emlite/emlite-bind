@@ -286,7 +286,7 @@ impl ReadableStream {
     }
 
     /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
-    pub fn new2(underlying_source: &Object, strategy: &Any) -> ReadableStream {
+    pub fn new2(underlying_source: &Object, strategy: &QueuingStrategy) -> ReadableStream {
         Self {
             inner: Any::global("ReadableStream")
                 .new(&[underlying_source.into(), strategy.into()])

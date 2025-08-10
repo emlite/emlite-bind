@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceErrorEvent);
 
 impl RTCPeerConnectionIceErrorEvent {
     /// The `new RTCPeerConnectionIceErrorEvent(..)` constructor, creating a new RTCPeerConnectionIceErrorEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> RTCPeerConnectionIceErrorEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &RTCPeerConnectionIceErrorEventInit,
+    ) -> RTCPeerConnectionIceErrorEvent {
         Self {
             inner: Any::global("RTCPeerConnectionIceErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])

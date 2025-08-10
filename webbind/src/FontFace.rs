@@ -66,7 +66,7 @@ impl FontFace {
     }
 
     /// The `new FontFace(..)` constructor, creating a new FontFace instance
-    pub fn new1(family: &JsString, source: &Any, descriptors: &Any) -> FontFace {
+    pub fn new1(family: &JsString, source: &Any, descriptors: &FontFaceDescriptors) -> FontFace {
         Self {
             inner: Any::global("FontFace")
                 .new(&[family.into(), source.into(), descriptors.into()])

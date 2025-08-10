@@ -66,7 +66,7 @@ impl TextUpdateEvent {
     }
 
     /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
-    pub fn new1(type_: &JsString, options: &Any) -> TextUpdateEvent {
+    pub fn new1(type_: &JsString, options: &TextUpdateEventInit) -> TextUpdateEvent {
         Self {
             inner: Any::global("TextUpdateEvent")
                 .new(&[type_.into(), options.into()])

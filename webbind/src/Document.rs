@@ -824,8 +824,8 @@ impl Document {
 impl Document {
     /// Getter of the `location` attribute.
     /// [`Document.location`](https://developer.mozilla.org/en-US/docs/Web/API/Document/location)
-    pub fn location(&self) -> Any {
-        self.inner.get("location").as_::<Any>()
+    pub fn location(&self) -> Location {
+        self.inner.get("location").as_::<Location>()
     }
 }
 impl Document {

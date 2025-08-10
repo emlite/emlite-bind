@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(HIDInputReportEvent);
 
 impl HIDInputReportEvent {
     /// The `new HIDInputReportEvent(..)` constructor, creating a new HIDInputReportEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> HIDInputReportEvent {
+    pub fn new(type_: &JsString, event_init_dict: &HIDInputReportEventInit) -> HIDInputReportEvent {
         Self {
             inner: Any::global("HIDInputReportEvent")
                 .new(&[type_.into(), event_init_dict.into()])

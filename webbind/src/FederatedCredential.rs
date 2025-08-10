@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FederatedCredential);
 
 impl FederatedCredential {
     /// The `new FederatedCredential(..)` constructor, creating a new FederatedCredential instance
-    pub fn new(data: &Any) -> FederatedCredential {
+    pub fn new(data: &FederatedCredentialInit) -> FederatedCredential {
         Self {
             inner: Any::global("FederatedCredential")
                 .new(&[data.into()])

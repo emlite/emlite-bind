@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(IIRFilterNode);
 
 impl IIRFilterNode {
     /// The `new IIRFilterNode(..)` constructor, creating a new IIRFilterNode instance
-    pub fn new(context: &BaseAudioContext, options: &Any) -> IIRFilterNode {
+    pub fn new(context: &BaseAudioContext, options: &IIRFilterOptions) -> IIRFilterNode {
         Self {
             inner: Any::global("IIRFilterNode")
                 .new(&[context.into(), options.into()])

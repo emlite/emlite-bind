@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(NotificationEvent);
 
 impl NotificationEvent {
     /// The `new NotificationEvent(..)` constructor, creating a new NotificationEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> NotificationEvent {
+    pub fn new(type_: &JsString, event_init_dict: &NotificationEventInit) -> NotificationEvent {
         Self {
             inner: Any::global("NotificationEvent")
                 .new(&[type_.into(), event_init_dict.into()])

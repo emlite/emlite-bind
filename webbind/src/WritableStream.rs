@@ -73,7 +73,7 @@ impl WritableStream {
     }
 
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
-    pub fn new2(underlying_sink: &Object, strategy: &Any) -> WritableStream {
+    pub fn new2(underlying_sink: &Object, strategy: &QueuingStrategy) -> WritableStream {
         Self {
             inner: Any::global("WritableStream")
                 .new(&[underlying_sink.into(), strategy.into()])

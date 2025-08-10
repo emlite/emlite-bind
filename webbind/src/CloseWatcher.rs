@@ -64,7 +64,7 @@ impl CloseWatcher {
     }
 
     /// The `new CloseWatcher(..)` constructor, creating a new CloseWatcher instance
-    pub fn new1(options: &Any) -> CloseWatcher {
+    pub fn new1(options: &CloseWatcherOptions) -> CloseWatcher {
         Self {
             inner: Any::global("CloseWatcher")
                 .new(&[options.into()])

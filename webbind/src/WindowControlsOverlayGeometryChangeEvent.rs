@@ -59,7 +59,7 @@ impl WindowControlsOverlayGeometryChangeEvent {
     /// The `new WindowControlsOverlayGeometryChangeEvent(..)` constructor, creating a new WindowControlsOverlayGeometryChangeEvent instance
     pub fn new(
         type_: &JsString,
-        event_init_dict: &Any,
+        event_init_dict: &WindowControlsOverlayGeometryChangeEventInit,
     ) -> WindowControlsOverlayGeometryChangeEvent {
         Self {
             inner: Any::global("WindowControlsOverlayGeometryChangeEvent")

@@ -66,7 +66,10 @@ impl AudioBufferSourceNode {
     }
 
     /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> AudioBufferSourceNode {
+    pub fn new1(
+        context: &BaseAudioContext,
+        options: &AudioBufferSourceOptions,
+    ) -> AudioBufferSourceNode {
         Self {
             inner: Any::global("AudioBufferSourceNode")
                 .new(&[context.into(), options.into()])

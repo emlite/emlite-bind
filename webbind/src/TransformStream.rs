@@ -73,7 +73,7 @@ impl TransformStream {
     }
 
     /// The `new TransformStream(..)` constructor, creating a new TransformStream instance
-    pub fn new2(transformer: &Object, writable_strategy: &Any) -> TransformStream {
+    pub fn new2(transformer: &Object, writable_strategy: &QueuingStrategy) -> TransformStream {
         Self {
             inner: Any::global("TransformStream")
                 .new(&[transformer.into(), writable_strategy.into()])
@@ -84,8 +84,8 @@ impl TransformStream {
     /// The `new TransformStream(..)` constructor, creating a new TransformStream instance
     pub fn new3(
         transformer: &Object,
-        writable_strategy: &Any,
-        readable_strategy: &Any,
+        writable_strategy: &QueuingStrategy,
+        readable_strategy: &QueuingStrategy,
     ) -> TransformStream {
         Self {
             inner: Any::global("TransformStream")

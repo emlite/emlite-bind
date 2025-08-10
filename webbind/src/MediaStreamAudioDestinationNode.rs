@@ -66,7 +66,10 @@ impl MediaStreamAudioDestinationNode {
     }
 
     /// The `new MediaStreamAudioDestinationNode(..)` constructor, creating a new MediaStreamAudioDestinationNode instance
-    pub fn new1(context: &AudioContext, options: &Any) -> MediaStreamAudioDestinationNode {
+    pub fn new1(
+        context: &AudioContext,
+        options: &AudioNodeOptions,
+    ) -> MediaStreamAudioDestinationNode {
         Self {
             inner: Any::global("MediaStreamAudioDestinationNode")
                 .new(&[context.into(), options.into()])

@@ -69,11 +69,11 @@ impl ItemDetails {
     }
 }
 impl ItemDetails {
-    pub fn price(&self) -> Any {
-        self.inner.get("price").as_::<Any>()
+    pub fn price(&self) -> PaymentCurrencyAmount {
+        self.inner.get("price").as_::<PaymentCurrencyAmount>()
     }
 
-    pub fn set_price(&mut self, value: &Any) {
+    pub fn set_price(&mut self, value: &PaymentCurrencyAmount) {
         self.inner.set("price", value);
     }
 }
@@ -123,11 +123,13 @@ impl ItemDetails {
     }
 }
 impl ItemDetails {
-    pub fn introductory_price(&self) -> Any {
-        self.inner.get("introductoryPrice").as_::<Any>()
+    pub fn introductory_price(&self) -> PaymentCurrencyAmount {
+        self.inner
+            .get("introductoryPrice")
+            .as_::<PaymentCurrencyAmount>()
     }
 
-    pub fn set_introductory_price(&mut self, value: &Any) {
+    pub fn set_introductory_price(&mut self, value: &PaymentCurrencyAmount) {
         self.inner.set("introductoryPrice", value);
     }
 }

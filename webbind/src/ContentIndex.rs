@@ -87,11 +87,11 @@ impl ContentDescription {
     }
 }
 impl ContentDescription {
-    pub fn icons(&self) -> TypedArray<Any> {
-        self.inner.get("icons").as_::<TypedArray<Any>>()
+    pub fn icons(&self) -> TypedArray<ImageResource> {
+        self.inner.get("icons").as_::<TypedArray<ImageResource>>()
     }
 
-    pub fn set_icons(&mut self, value: &TypedArray<Any>) {
+    pub fn set_icons(&mut self, value: &TypedArray<ImageResource>) {
         self.inner.set("icons", value);
     }
 }

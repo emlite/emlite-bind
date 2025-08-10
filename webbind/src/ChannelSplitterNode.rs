@@ -66,7 +66,10 @@ impl ChannelSplitterNode {
     }
 
     /// The `new ChannelSplitterNode(..)` constructor, creating a new ChannelSplitterNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> ChannelSplitterNode {
+    pub fn new1(
+        context: &BaseAudioContext,
+        options: &ChannelSplitterOptions,
+    ) -> ChannelSplitterNode {
         Self {
             inner: Any::global("ChannelSplitterNode")
                 .new(&[context.into(), options.into()])

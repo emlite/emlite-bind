@@ -75,7 +75,7 @@ impl GPUPipelineError {
     }
 
     /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
-    pub fn new2(message: &JsString, options: &Any) -> GPUPipelineError {
+    pub fn new2(message: &JsString, options: &GPUPipelineErrorInit) -> GPUPipelineError {
         Self {
             inner: Any::global("GPUPipelineError")
                 .new(&[message.into(), options.into()])

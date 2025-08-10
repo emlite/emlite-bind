@@ -66,7 +66,7 @@ impl WaveShaperNode {
     }
 
     /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> WaveShaperNode {
+    pub fn new1(context: &BaseAudioContext, options: &WaveShaperOptions) -> WaveShaperNode {
         Self {
             inner: Any::global("WaveShaperNode")
                 .new(&[context.into(), options.into()])

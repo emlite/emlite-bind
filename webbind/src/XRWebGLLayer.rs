@@ -66,7 +66,7 @@ impl XRWebGLLayer {
     }
 
     /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
-    pub fn new1(session: &XRSession, context: &Any, layer_init: &Any) -> XRWebGLLayer {
+    pub fn new1(session: &XRSession, context: &Any, layer_init: &XRWebGLLayerInit) -> XRWebGLLayer {
         Self {
             inner: Any::global("XRWebGLLayer")
                 .new(&[session.into(), context.into(), layer_init.into()])

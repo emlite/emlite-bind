@@ -66,7 +66,10 @@ impl AnimationEvent {
     }
 
     /// The `new AnimationEvent(..)` constructor, creating a new AnimationEvent instance
-    pub fn new1(type_: &JsString, animation_event_init_dict: &Any) -> AnimationEvent {
+    pub fn new1(
+        type_: &JsString,
+        animation_event_init_dict: &AnimationEventInit,
+    ) -> AnimationEvent {
         Self {
             inner: Any::global("AnimationEvent")
                 .new(&[type_.into(), animation_event_init_dict.into()])

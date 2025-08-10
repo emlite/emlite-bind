@@ -130,11 +130,13 @@ impl RTCIceGatherOptions {
     }
 }
 impl RTCIceGatherOptions {
-    pub fn ice_servers(&self) -> TypedArray<Any> {
-        self.inner.get("iceServers").as_::<TypedArray<Any>>()
+    pub fn ice_servers(&self) -> TypedArray<RTCIceServer> {
+        self.inner
+            .get("iceServers")
+            .as_::<TypedArray<RTCIceServer>>()
     }
 
-    pub fn set_ice_servers(&mut self, value: &TypedArray<Any>) {
+    pub fn set_ice_servers(&mut self, value: &TypedArray<RTCIceServer>) {
         self.inner.set("iceServers", value);
     }
 }

@@ -66,7 +66,7 @@ impl FocusEvent {
     }
 
     /// The `new FocusEvent(..)` constructor, creating a new FocusEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> FocusEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &FocusEventInit) -> FocusEvent {
         Self {
             inner: Any::global("FocusEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -66,7 +66,7 @@ impl StorageEvent {
     }
 
     /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> StorageEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &StorageEventInit) -> StorageEvent {
         Self {
             inner: Any::global("StorageEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -531,4 +531,14 @@ export function generate(specAst) {
       });
     writeSrcFile(ns.name, src);
   }
+  
+  // Generate standalone dictionaries that weren't embedded in interfaces
+  for (const [dictName, dict] of dicts) {
+    if (!dictOwner.has(dictName)) {
+      const src = ["\n"];
+      embedDict(dict, src, dictName);
+      writeSrcFile(dictName, src);
+      // console.log(`Generated standalone dictionary: ${dictName}`);
+    }
+  }
 }

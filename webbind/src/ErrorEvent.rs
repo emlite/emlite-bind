@@ -66,7 +66,7 @@ impl ErrorEvent {
     }
 
     /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ErrorEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &ErrorEventInit) -> ErrorEvent {
         Self {
             inner: Any::global("ErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])

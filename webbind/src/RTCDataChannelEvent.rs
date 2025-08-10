@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCDataChannelEvent);
 
 impl RTCDataChannelEvent {
     /// The `new RTCDataChannelEvent(..)` constructor, creating a new RTCDataChannelEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> RTCDataChannelEvent {
+    pub fn new(type_: &JsString, event_init_dict: &RTCDataChannelEventInit) -> RTCDataChannelEvent {
         Self {
             inner: Any::global("RTCDataChannelEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -66,7 +66,11 @@ impl File {
     }
 
     /// The `new File(..)` constructor, creating a new File instance
-    pub fn new1(file_bits: &TypedArray<Any>, file_name: &JsString, options: &Any) -> File {
+    pub fn new1(
+        file_bits: &TypedArray<Any>,
+        file_name: &JsString,
+        options: &FilePropertyBag,
+    ) -> File {
         Self {
             inner: Any::global("File")
                 .new(&[file_bits.into(), file_name.into(), options.into()])

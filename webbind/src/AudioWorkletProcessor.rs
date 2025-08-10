@@ -66,7 +66,7 @@ impl AudioWorkletProcessor {
 impl AudioWorkletProcessor {
     /// Getter of the `port` attribute.
     /// [`AudioWorkletProcessor.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor/port)
-    pub fn port(&self) -> Any {
-        self.inner.get("port").as_::<Any>()
+    pub fn port(&self) -> MessagePort {
+        self.inner.get("port").as_::<MessagePort>()
     }
 }

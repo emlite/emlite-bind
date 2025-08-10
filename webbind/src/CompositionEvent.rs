@@ -66,7 +66,7 @@ impl CompositionEvent {
     }
 
     /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CompositionEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &CompositionEventInit) -> CompositionEvent {
         Self {
             inner: Any::global("CompositionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

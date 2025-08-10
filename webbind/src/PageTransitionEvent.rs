@@ -66,7 +66,10 @@ impl PageTransitionEvent {
     }
 
     /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PageTransitionEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &PageTransitionEventInit,
+    ) -> PageTransitionEvent {
         Self {
             inner: Any::global("PageTransitionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

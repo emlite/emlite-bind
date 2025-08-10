@@ -66,7 +66,7 @@ impl MessageEvent {
     }
 
     /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> MessageEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &MessageEventInit) -> MessageEvent {
         Self {
             inner: Any::global("MessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -105,8 +105,8 @@ impl MessageEvent {
 impl MessageEvent {
     /// Getter of the `ports` attribute.
     /// [`MessageEvent.ports`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/ports)
-    pub fn ports(&self) -> TypedArray<Any> {
-        self.inner.get("ports").as_::<TypedArray<Any>>()
+    pub fn ports(&self) -> TypedArray<MessagePort> {
+        self.inner.get("ports").as_::<TypedArray<MessagePort>>()
     }
 }
 impl MessageEvent {
@@ -241,7 +241,7 @@ impl MessageEvent {
         origin: &JsString,
         last_event_id: &JsString,
         source: &Any,
-        ports: &TypedArray<Any>,
+        ports: &TypedArray<MessagePort>,
     ) -> Undefined {
         self.inner
             .call(

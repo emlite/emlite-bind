@@ -60,29 +60,31 @@ impl PaymentDetailsUpdate {
     }
 }
 impl PaymentDetailsUpdate {
-    pub fn total(&self) -> Any {
-        self.inner.get("total").as_::<Any>()
+    pub fn total(&self) -> PaymentItem {
+        self.inner.get("total").as_::<PaymentItem>()
     }
 
-    pub fn set_total(&mut self, value: &Any) {
+    pub fn set_total(&mut self, value: &PaymentItem) {
         self.inner.set("total", value);
     }
 }
 impl PaymentDetailsUpdate {
-    pub fn shipping_address_errors(&self) -> Any {
-        self.inner.get("shippingAddressErrors").as_::<Any>()
+    pub fn shipping_address_errors(&self) -> AddressErrors {
+        self.inner
+            .get("shippingAddressErrors")
+            .as_::<AddressErrors>()
     }
 
-    pub fn set_shipping_address_errors(&mut self, value: &Any) {
+    pub fn set_shipping_address_errors(&mut self, value: &AddressErrors) {
         self.inner.set("shippingAddressErrors", value);
     }
 }
 impl PaymentDetailsUpdate {
-    pub fn payer_errors(&self) -> Any {
-        self.inner.get("payerErrors").as_::<Any>()
+    pub fn payer_errors(&self) -> PayerErrors {
+        self.inner.get("payerErrors").as_::<PayerErrors>()
     }
 
-    pub fn set_payer_errors(&mut self, value: &Any) {
+    pub fn set_payer_errors(&mut self, value: &PayerErrors) {
         self.inner.set("payerErrors", value);
     }
 }
@@ -152,7 +154,10 @@ jsbind::utils::impl_dyn_cast!(PaymentRequest);
 
 impl PaymentRequest {
     /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
-    pub fn new0(method_data: &TypedArray<PaymentMethodData>, details: &Any) -> PaymentRequest {
+    pub fn new0(
+        method_data: &TypedArray<PaymentMethodData>,
+        details: &PaymentDetailsInit,
+    ) -> PaymentRequest {
         Self {
             inner: Any::global("PaymentRequest")
                 .new(&[method_data.into(), details.into()])
@@ -163,8 +168,8 @@ impl PaymentRequest {
     /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
     pub fn new1(
         method_data: &TypedArray<PaymentMethodData>,
-        details: &Any,
-        options: &Any,
+        details: &PaymentDetailsInit,
+        options: &PaymentOptions,
     ) -> PaymentRequest {
         Self {
             inner: Any::global("PaymentRequest")

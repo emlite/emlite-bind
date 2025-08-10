@@ -66,7 +66,7 @@ impl EventSource {
     }
 
     /// The `new EventSource(..)` constructor, creating a new EventSource instance
-    pub fn new1(url: &JsString, event_source_init_dict: &Any) -> EventSource {
+    pub fn new1(url: &JsString, event_source_init_dict: &EventSourceInit) -> EventSource {
         Self {
             inner: Any::global("EventSource")
                 .new(&[url.into(), event_source_init_dict.into()])

@@ -66,7 +66,10 @@ impl CharacterBoundsUpdateEvent {
     }
 
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
-    pub fn new1(type_: &JsString, options: &Any) -> CharacterBoundsUpdateEvent {
+    pub fn new1(
+        type_: &JsString,
+        options: &CharacterBoundsUpdateEventInit,
+    ) -> CharacterBoundsUpdateEvent {
         Self {
             inner: Any::global("CharacterBoundsUpdateEvent")
                 .new(&[type_.into(), options.into()])

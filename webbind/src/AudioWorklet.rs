@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(AudioWorklet);
 impl AudioWorklet {
     /// Getter of the `port` attribute.
     /// [`AudioWorklet.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet/port)
-    pub fn port(&self) -> Any {
-        self.inner.get("port").as_::<Any>()
+    pub fn port(&self) -> MessagePort {
+        self.inner.get("port").as_::<MessagePort>()
     }
 }

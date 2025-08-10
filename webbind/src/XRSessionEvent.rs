@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(XRSessionEvent);
 
 impl XRSessionEvent {
     /// The `new XRSessionEvent(..)` constructor, creating a new XRSessionEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> XRSessionEvent {
+    pub fn new(type_: &JsString, event_init_dict: &XRSessionEventInit) -> XRSessionEvent {
         Self {
             inner: Any::global("XRSessionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -72,7 +72,7 @@ impl DataTransferItem {
 impl DataTransferItem {
     /// The getAsString method.
     /// [`DataTransferItem.getAsString`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem/getAsString)
-    pub fn get_as_string(&self, callback: &Any) -> Undefined {
+    pub fn get_as_string(&self, callback: &Function) -> Undefined {
         self.inner
             .call("getAsString", &[callback.into()])
             .as_::<Undefined>()

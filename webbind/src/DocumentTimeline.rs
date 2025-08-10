@@ -66,7 +66,7 @@ impl DocumentTimeline {
     }
 
     /// The `new DocumentTimeline(..)` constructor, creating a new DocumentTimeline instance
-    pub fn new1(options: &Any) -> DocumentTimeline {
+    pub fn new1(options: &DocumentTimelineOptions) -> DocumentTimeline {
         Self {
             inner: Any::global("DocumentTimeline")
                 .new(&[options.into()])

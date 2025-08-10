@@ -66,7 +66,7 @@ impl WheelEvent {
     }
 
     /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> WheelEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &WheelEventInit) -> WheelEvent {
         Self {
             inner: Any::global("WheelEvent")
                 .new(&[type_.into(), event_init_dict.into()])

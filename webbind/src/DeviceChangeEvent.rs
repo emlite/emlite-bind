@@ -66,7 +66,7 @@ impl DeviceChangeEvent {
     }
 
     /// The `new DeviceChangeEvent(..)` constructor, creating a new DeviceChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> DeviceChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &DeviceChangeEventInit) -> DeviceChangeEvent {
         Self {
             inner: Any::global("DeviceChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

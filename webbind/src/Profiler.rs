@@ -60,29 +60,31 @@ impl ProfilerTrace {
     }
 }
 impl ProfilerTrace {
-    pub fn frames(&self) -> TypedArray<Any> {
-        self.inner.get("frames").as_::<TypedArray<Any>>()
+    pub fn frames(&self) -> TypedArray<ProfilerFrame> {
+        self.inner.get("frames").as_::<TypedArray<ProfilerFrame>>()
     }
 
-    pub fn set_frames(&mut self, value: &TypedArray<Any>) {
+    pub fn set_frames(&mut self, value: &TypedArray<ProfilerFrame>) {
         self.inner.set("frames", value);
     }
 }
 impl ProfilerTrace {
-    pub fn stacks(&self) -> TypedArray<Any> {
-        self.inner.get("stacks").as_::<TypedArray<Any>>()
+    pub fn stacks(&self) -> TypedArray<ProfilerStack> {
+        self.inner.get("stacks").as_::<TypedArray<ProfilerStack>>()
     }
 
-    pub fn set_stacks(&mut self, value: &TypedArray<Any>) {
+    pub fn set_stacks(&mut self, value: &TypedArray<ProfilerStack>) {
         self.inner.set("stacks", value);
     }
 }
 impl ProfilerTrace {
-    pub fn samples(&self) -> TypedArray<Any> {
-        self.inner.get("samples").as_::<TypedArray<Any>>()
+    pub fn samples(&self) -> TypedArray<ProfilerSample> {
+        self.inner
+            .get("samples")
+            .as_::<TypedArray<ProfilerSample>>()
     }
 
-    pub fn set_samples(&mut self, value: &TypedArray<Any>) {
+    pub fn set_samples(&mut self, value: &TypedArray<ProfilerSample>) {
         self.inner.set("samples", value);
     }
 }
@@ -158,7 +160,7 @@ impl Profiler {
 
 impl Profiler {
     /// The `new Profiler(..)` constructor, creating a new Profiler instance
-    pub fn new(options: &Any) -> Profiler {
+    pub fn new(options: &ProfilerInitOptions) -> Profiler {
         Self {
             inner: Any::global("Profiler")
                 .new(&[options.into()])

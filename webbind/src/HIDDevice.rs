@@ -89,29 +89,35 @@ impl HIDCollectionInfo {
     }
 }
 impl HIDCollectionInfo {
-    pub fn input_reports(&self) -> TypedArray<Any> {
-        self.inner.get("inputReports").as_::<TypedArray<Any>>()
+    pub fn input_reports(&self) -> TypedArray<HIDReportInfo> {
+        self.inner
+            .get("inputReports")
+            .as_::<TypedArray<HIDReportInfo>>()
     }
 
-    pub fn set_input_reports(&mut self, value: &TypedArray<Any>) {
+    pub fn set_input_reports(&mut self, value: &TypedArray<HIDReportInfo>) {
         self.inner.set("inputReports", value);
     }
 }
 impl HIDCollectionInfo {
-    pub fn output_reports(&self) -> TypedArray<Any> {
-        self.inner.get("outputReports").as_::<TypedArray<Any>>()
+    pub fn output_reports(&self) -> TypedArray<HIDReportInfo> {
+        self.inner
+            .get("outputReports")
+            .as_::<TypedArray<HIDReportInfo>>()
     }
 
-    pub fn set_output_reports(&mut self, value: &TypedArray<Any>) {
+    pub fn set_output_reports(&mut self, value: &TypedArray<HIDReportInfo>) {
         self.inner.set("outputReports", value);
     }
 }
 impl HIDCollectionInfo {
-    pub fn feature_reports(&self) -> TypedArray<Any> {
-        self.inner.get("featureReports").as_::<TypedArray<Any>>()
+    pub fn feature_reports(&self) -> TypedArray<HIDReportInfo> {
+        self.inner
+            .get("featureReports")
+            .as_::<TypedArray<HIDReportInfo>>()
     }
 
-    pub fn set_feature_reports(&mut self, value: &TypedArray<Any>) {
+    pub fn set_feature_reports(&mut self, value: &TypedArray<HIDReportInfo>) {
         self.inner.set("featureReports", value);
     }
 }

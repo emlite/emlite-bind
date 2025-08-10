@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ByteLengthQueuingStrategy);
 
 impl ByteLengthQueuingStrategy {
     /// The `new ByteLengthQueuingStrategy(..)` constructor, creating a new ByteLengthQueuingStrategy instance
-    pub fn new(init: &Any) -> ByteLengthQueuingStrategy {
+    pub fn new(init: &QueuingStrategyInit) -> ByteLengthQueuingStrategy {
         Self {
             inner: Any::global("ByteLengthQueuingStrategy")
                 .new(&[init.into()])

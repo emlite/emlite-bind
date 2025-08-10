@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FetchEvent);
 
 impl FetchEvent {
     /// The `new FetchEvent(..)` constructor, creating a new FetchEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> FetchEvent {
+    pub fn new(type_: &JsString, event_init_dict: &FetchEventInit) -> FetchEvent {
         Self {
             inner: Any::global("FetchEvent")
                 .new(&[type_.into(), event_init_dict.into()])

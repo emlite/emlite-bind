@@ -64,7 +64,7 @@ impl BluetoothDataFilter {
     }
 
     /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
-    pub fn new1(init: &Any) -> BluetoothDataFilter {
+    pub fn new1(init: &BluetoothDataFilterInit) -> BluetoothDataFilter {
         Self {
             inner: Any::global("BluetoothDataFilter")
                 .new(&[init.into()])

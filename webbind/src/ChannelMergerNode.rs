@@ -66,7 +66,7 @@ impl ChannelMergerNode {
     }
 
     /// The `new ChannelMergerNode(..)` constructor, creating a new ChannelMergerNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> ChannelMergerNode {
+    pub fn new1(context: &BaseAudioContext, options: &ChannelMergerOptions) -> ChannelMergerNode {
         Self {
             inner: Any::global("ChannelMergerNode")
                 .new(&[context.into(), options.into()])

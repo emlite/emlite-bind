@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(MediaStreamTrackEvent);
 
 impl MediaStreamTrackEvent {
     /// The `new MediaStreamTrackEvent(..)` constructor, creating a new MediaStreamTrackEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> MediaStreamTrackEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &MediaStreamTrackEventInit,
+    ) -> MediaStreamTrackEvent {
         Self {
             inner: Any::global("MediaStreamTrackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

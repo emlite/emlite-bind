@@ -66,7 +66,7 @@ impl GainNode {
     }
 
     /// The `new GainNode(..)` constructor, creating a new GainNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> GainNode {
+    pub fn new1(context: &BaseAudioContext, options: &GainOptions) -> GainNode {
         Self {
             inner: Any::global("GainNode")
                 .new(&[context.into(), options.into()])

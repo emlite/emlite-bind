@@ -64,7 +64,7 @@ impl AnimationTrigger {
     }
 
     /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
-    pub fn new1(options: &Any) -> AnimationTrigger {
+    pub fn new1(options: &AnimationTriggerOptions) -> AnimationTrigger {
         Self {
             inner: Any::global("AnimationTrigger")
                 .new(&[options.into()])

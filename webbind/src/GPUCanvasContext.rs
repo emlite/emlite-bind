@@ -98,11 +98,11 @@ impl GPUCanvasConfiguration {
     }
 }
 impl GPUCanvasConfiguration {
-    pub fn tone_mapping(&self) -> Any {
-        self.inner.get("toneMapping").as_::<Any>()
+    pub fn tone_mapping(&self) -> GPUCanvasToneMapping {
+        self.inner.get("toneMapping").as_::<GPUCanvasToneMapping>()
     }
 
-    pub fn set_tone_mapping(&mut self, value: &Any) {
+    pub fn set_tone_mapping(&mut self, value: &GPUCanvasToneMapping) {
         self.inner.set("toneMapping", value);
     }
 }

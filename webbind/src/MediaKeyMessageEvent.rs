@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(MediaKeyMessageEvent);
 
 impl MediaKeyMessageEvent {
     /// The `new MediaKeyMessageEvent(..)` constructor, creating a new MediaKeyMessageEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> MediaKeyMessageEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &MediaKeyMessageEventInit,
+    ) -> MediaKeyMessageEvent {
         Self {
             inner: Any::global("MediaKeyMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])

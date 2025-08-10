@@ -66,7 +66,10 @@ impl DynamicsCompressorNode {
     }
 
     /// The `new DynamicsCompressorNode(..)` constructor, creating a new DynamicsCompressorNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> DynamicsCompressorNode {
+    pub fn new1(
+        context: &BaseAudioContext,
+        options: &DynamicsCompressorOptions,
+    ) -> DynamicsCompressorNode {
         Self {
             inner: Any::global("DynamicsCompressorNode")
                 .new(&[context.into(), options.into()])

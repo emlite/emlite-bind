@@ -66,7 +66,7 @@ impl Worker {
     }
 
     /// The `new Worker(..)` constructor, creating a new Worker instance
-    pub fn new1(script_url: &Any, options: &Any) -> Worker {
+    pub fn new1(script_url: &Any, options: &WorkerOptions) -> Worker {
         Self {
             inner: Any::global("Worker")
                 .new(&[script_url.into(), options.into()])

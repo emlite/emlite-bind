@@ -245,7 +245,7 @@ impl GeolocationSensor {
     }
 
     /// The `new GeolocationSensor(..)` constructor, creating a new GeolocationSensor instance
-    pub fn new1(options: &Any) -> GeolocationSensor {
+    pub fn new1(options: &GeolocationSensorOptions) -> GeolocationSensor {
         Self {
             inner: Any::global("GeolocationSensor")
                 .new(&[options.into()])

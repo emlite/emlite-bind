@@ -137,20 +137,20 @@ impl From<&LockManagerSnapshot> for Any {
 }
 
 impl LockManagerSnapshot {
-    pub fn held(&self) -> TypedArray<Any> {
-        self.inner.get("held").as_::<TypedArray<Any>>()
+    pub fn held(&self) -> TypedArray<LockInfo> {
+        self.inner.get("held").as_::<TypedArray<LockInfo>>()
     }
 
-    pub fn set_held(&mut self, value: &TypedArray<Any>) {
+    pub fn set_held(&mut self, value: &TypedArray<LockInfo>) {
         self.inner.set("held", value);
     }
 }
 impl LockManagerSnapshot {
-    pub fn pending(&self) -> TypedArray<Any> {
-        self.inner.get("pending").as_::<TypedArray<Any>>()
+    pub fn pending(&self) -> TypedArray<LockInfo> {
+        self.inner.get("pending").as_::<TypedArray<LockInfo>>()
     }
 
-    pub fn set_pending(&mut self, value: &TypedArray<Any>) {
+    pub fn set_pending(&mut self, value: &TypedArray<LockInfo>) {
         self.inner.set("pending", value);
     }
 }

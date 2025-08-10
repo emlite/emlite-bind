@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(XRInputSourcesChangeEvent);
 
 impl XRInputSourcesChangeEvent {
     /// The `new XRInputSourcesChangeEvent(..)` constructor, creating a new XRInputSourcesChangeEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> XRInputSourcesChangeEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &XRInputSourcesChangeEventInit,
+    ) -> XRInputSourcesChangeEvent {
         Self {
             inner: Any::global("XRInputSourcesChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

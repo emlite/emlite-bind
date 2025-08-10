@@ -64,7 +64,7 @@ impl RTCIceCandidate {
     }
 
     /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
-    pub fn new1(candidate_init_dict: &Any) -> RTCIceCandidate {
+    pub fn new1(candidate_init_dict: &RTCLocalIceCandidateInit) -> RTCIceCandidate {
         Self {
             inner: Any::global("RTCIceCandidate")
                 .new(&[candidate_init_dict.into()])

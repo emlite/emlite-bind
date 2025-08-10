@@ -66,7 +66,7 @@ impl SubmitEvent {
     }
 
     /// The `new SubmitEvent(..)` constructor, creating a new SubmitEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> SubmitEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &SubmitEventInit) -> SubmitEvent {
         Self {
             inner: Any::global("SubmitEvent")
                 .new(&[type_.into(), event_init_dict.into()])

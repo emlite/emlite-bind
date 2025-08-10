@@ -132,11 +132,13 @@ impl WebTransportConnectionStats {
     }
 }
 impl WebTransportConnectionStats {
-    pub fn datagrams(&self) -> Any {
-        self.inner.get("datagrams").as_::<Any>()
+    pub fn datagrams(&self) -> WebTransportDatagramStats {
+        self.inner
+            .get("datagrams")
+            .as_::<WebTransportDatagramStats>()
     }
 
-    pub fn set_datagrams(&mut self, value: &Any) {
+    pub fn set_datagrams(&mut self, value: &WebTransportDatagramStats) {
         self.inner.set("datagrams", value);
     }
 }
@@ -349,7 +351,7 @@ impl WebTransport {
     }
 
     /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
-    pub fn new1(url: &JsString, options: &Any) -> WebTransport {
+    pub fn new1(url: &JsString, options: &WebTransportOptions) -> WebTransport {
         Self {
             inner: Any::global("WebTransport")
                 .new(&[url.into(), options.into()])

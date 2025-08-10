@@ -57,7 +57,9 @@ jsbind::utils::impl_dyn_cast!(IntersectionObserverEntry);
 
 impl IntersectionObserverEntry {
     /// The `new IntersectionObserverEntry(..)` constructor, creating a new IntersectionObserverEntry instance
-    pub fn new(intersection_observer_entry_init: &Any) -> IntersectionObserverEntry {
+    pub fn new(
+        intersection_observer_entry_init: &IntersectionObserverEntryInit,
+    ) -> IntersectionObserverEntry {
         Self {
             inner: Any::global("IntersectionObserverEntry")
                 .new(&[intersection_observer_entry_init.into()])

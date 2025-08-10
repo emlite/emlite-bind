@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(SpeechRecognitionEvent);
 
 impl SpeechRecognitionEvent {
     /// The `new SpeechRecognitionEvent(..)` constructor, creating a new SpeechRecognitionEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> SpeechRecognitionEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &SpeechRecognitionEventInit,
+    ) -> SpeechRecognitionEvent {
         Self {
             inner: Any::global("SpeechRecognitionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(MediaElementAudioSourceNode);
 
 impl MediaElementAudioSourceNode {
     /// The `new MediaElementAudioSourceNode(..)` constructor, creating a new MediaElementAudioSourceNode instance
-    pub fn new(context: &AudioContext, options: &Any) -> MediaElementAudioSourceNode {
+    pub fn new(
+        context: &AudioContext,
+        options: &MediaElementAudioSourceOptions,
+    ) -> MediaElementAudioSourceNode {
         Self {
             inner: Any::global("MediaElementAudioSourceNode")
                 .new(&[context.into(), options.into()])

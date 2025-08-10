@@ -71,7 +71,7 @@ impl Blob {
     }
 
     /// The `new Blob(..)` constructor, creating a new Blob instance
-    pub fn new2(blob_parts: &TypedArray<Any>, options: &Any) -> Blob {
+    pub fn new2(blob_parts: &TypedArray<Any>, options: &BlobPropertyBag) -> Blob {
         Self {
             inner: Any::global("Blob")
                 .new(&[blob_parts.into(), options.into()])

@@ -51,11 +51,13 @@ impl From<&AuthenticationExtensionsClientOutputs> for Any {
 }
 
 impl AuthenticationExtensionsClientOutputs {
-    pub fn large_blob(&self) -> Any {
-        self.inner.get("largeBlob").as_::<Any>()
+    pub fn large_blob(&self) -> AuthenticationExtensionsLargeBlobOutputs {
+        self.inner
+            .get("largeBlob")
+            .as_::<AuthenticationExtensionsLargeBlobOutputs>()
     }
 
-    pub fn set_large_blob(&mut self, value: &Any) {
+    pub fn set_large_blob(&mut self, value: &AuthenticationExtensionsLargeBlobOutputs) {
         self.inner.set("largeBlob", value);
     }
 }
@@ -110,20 +112,22 @@ impl From<&PublicKeyCredentialCreationOptions> for Any {
 }
 
 impl PublicKeyCredentialCreationOptions {
-    pub fn rp(&self) -> Any {
-        self.inner.get("rp").as_::<Any>()
+    pub fn rp(&self) -> PublicKeyCredentialRpEntity {
+        self.inner.get("rp").as_::<PublicKeyCredentialRpEntity>()
     }
 
-    pub fn set_rp(&mut self, value: &Any) {
+    pub fn set_rp(&mut self, value: &PublicKeyCredentialRpEntity) {
         self.inner.set("rp", value);
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn user(&self) -> Any {
-        self.inner.get("user").as_::<Any>()
+    pub fn user(&self) -> PublicKeyCredentialUserEntity {
+        self.inner
+            .get("user")
+            .as_::<PublicKeyCredentialUserEntity>()
     }
 
-    pub fn set_user(&mut self, value: &Any) {
+    pub fn set_user(&mut self, value: &PublicKeyCredentialUserEntity) {
         self.inner.set("user", value);
     }
 }
@@ -137,11 +141,13 @@ impl PublicKeyCredentialCreationOptions {
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn pub_key_cred_params(&self) -> TypedArray<Any> {
-        self.inner.get("pubKeyCredParams").as_::<TypedArray<Any>>()
+    pub fn pub_key_cred_params(&self) -> TypedArray<PublicKeyCredentialParameters> {
+        self.inner
+            .get("pubKeyCredParams")
+            .as_::<TypedArray<PublicKeyCredentialParameters>>()
     }
 
-    pub fn set_pub_key_cred_params(&mut self, value: &TypedArray<Any>) {
+    pub fn set_pub_key_cred_params(&mut self, value: &TypedArray<PublicKeyCredentialParameters>) {
         self.inner.set("pubKeyCredParams", value);
     }
 }
@@ -155,22 +161,24 @@ impl PublicKeyCredentialCreationOptions {
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn exclude_credentials(&self) -> TypedArray<Any> {
+    pub fn exclude_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptor> {
         self.inner
             .get("excludeCredentials")
-            .as_::<TypedArray<Any>>()
+            .as_::<TypedArray<PublicKeyCredentialDescriptor>>()
     }
 
-    pub fn set_exclude_credentials(&mut self, value: &TypedArray<Any>) {
+    pub fn set_exclude_credentials(&mut self, value: &TypedArray<PublicKeyCredentialDescriptor>) {
         self.inner.set("excludeCredentials", value);
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn authenticator_selection(&self) -> Any {
-        self.inner.get("authenticatorSelection").as_::<Any>()
+    pub fn authenticator_selection(&self) -> AuthenticatorSelectionCriteria {
+        self.inner
+            .get("authenticatorSelection")
+            .as_::<AuthenticatorSelectionCriteria>()
     }
 
-    pub fn set_authenticator_selection(&mut self, value: &Any) {
+    pub fn set_authenticator_selection(&mut self, value: &AuthenticatorSelectionCriteria) {
         self.inner.set("authenticatorSelection", value);
     }
 }
@@ -204,11 +212,13 @@ impl PublicKeyCredentialCreationOptions {
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn extensions(&self) -> Any {
-        self.inner.get("extensions").as_::<Any>()
+    pub fn extensions(&self) -> AuthenticationExtensionsClientInputs {
+        self.inner
+            .get("extensions")
+            .as_::<AuthenticationExtensionsClientInputs>()
     }
 
-    pub fn set_extensions(&mut self, value: &Any) {
+    pub fn set_extensions(&mut self, value: &AuthenticationExtensionsClientInputs) {
         self.inner.set("extensions", value);
     }
 }
@@ -263,20 +273,22 @@ impl From<&PublicKeyCredentialCreationOptionsJSON> for Any {
 }
 
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn rp(&self) -> Any {
-        self.inner.get("rp").as_::<Any>()
+    pub fn rp(&self) -> PublicKeyCredentialRpEntity {
+        self.inner.get("rp").as_::<PublicKeyCredentialRpEntity>()
     }
 
-    pub fn set_rp(&mut self, value: &Any) {
+    pub fn set_rp(&mut self, value: &PublicKeyCredentialRpEntity) {
         self.inner.set("rp", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn user(&self) -> Any {
-        self.inner.get("user").as_::<Any>()
+    pub fn user(&self) -> PublicKeyCredentialUserEntityJSON {
+        self.inner
+            .get("user")
+            .as_::<PublicKeyCredentialUserEntityJSON>()
     }
 
-    pub fn set_user(&mut self, value: &Any) {
+    pub fn set_user(&mut self, value: &PublicKeyCredentialUserEntityJSON) {
         self.inner.set("user", value);
     }
 }
@@ -290,11 +302,13 @@ impl PublicKeyCredentialCreationOptionsJSON {
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn pub_key_cred_params(&self) -> TypedArray<Any> {
-        self.inner.get("pubKeyCredParams").as_::<TypedArray<Any>>()
+    pub fn pub_key_cred_params(&self) -> TypedArray<PublicKeyCredentialParameters> {
+        self.inner
+            .get("pubKeyCredParams")
+            .as_::<TypedArray<PublicKeyCredentialParameters>>()
     }
 
-    pub fn set_pub_key_cred_params(&mut self, value: &TypedArray<Any>) {
+    pub fn set_pub_key_cred_params(&mut self, value: &TypedArray<PublicKeyCredentialParameters>) {
         self.inner.set("pubKeyCredParams", value);
     }
 }
@@ -308,22 +322,27 @@ impl PublicKeyCredentialCreationOptionsJSON {
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn exclude_credentials(&self) -> TypedArray<Any> {
+    pub fn exclude_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptorJSON> {
         self.inner
             .get("excludeCredentials")
-            .as_::<TypedArray<Any>>()
+            .as_::<TypedArray<PublicKeyCredentialDescriptorJSON>>()
     }
 
-    pub fn set_exclude_credentials(&mut self, value: &TypedArray<Any>) {
+    pub fn set_exclude_credentials(
+        &mut self,
+        value: &TypedArray<PublicKeyCredentialDescriptorJSON>,
+    ) {
         self.inner.set("excludeCredentials", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn authenticator_selection(&self) -> Any {
-        self.inner.get("authenticatorSelection").as_::<Any>()
+    pub fn authenticator_selection(&self) -> AuthenticatorSelectionCriteria {
+        self.inner
+            .get("authenticatorSelection")
+            .as_::<AuthenticatorSelectionCriteria>()
     }
 
-    pub fn set_authenticator_selection(&mut self, value: &Any) {
+    pub fn set_authenticator_selection(&mut self, value: &AuthenticatorSelectionCriteria) {
         self.inner.set("authenticatorSelection", value);
     }
 }
@@ -357,11 +376,13 @@ impl PublicKeyCredentialCreationOptionsJSON {
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn extensions(&self) -> Any {
-        self.inner.get("extensions").as_::<Any>()
+    pub fn extensions(&self) -> AuthenticationExtensionsClientInputsJSON {
+        self.inner
+            .get("extensions")
+            .as_::<AuthenticationExtensionsClientInputsJSON>()
     }
 
-    pub fn set_extensions(&mut self, value: &Any) {
+    pub fn set_extensions(&mut self, value: &AuthenticationExtensionsClientInputsJSON) {
         self.inner.set("extensions", value);
     }
 }
@@ -443,11 +464,13 @@ impl PublicKeyCredentialRequestOptions {
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn allow_credentials(&self) -> TypedArray<Any> {
-        self.inner.get("allowCredentials").as_::<TypedArray<Any>>()
+    pub fn allow_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptor> {
+        self.inner
+            .get("allowCredentials")
+            .as_::<TypedArray<PublicKeyCredentialDescriptor>>()
     }
 
-    pub fn set_allow_credentials(&mut self, value: &TypedArray<Any>) {
+    pub fn set_allow_credentials(&mut self, value: &TypedArray<PublicKeyCredentialDescriptor>) {
         self.inner.set("allowCredentials", value);
     }
 }
@@ -470,11 +493,13 @@ impl PublicKeyCredentialRequestOptions {
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn extensions(&self) -> Any {
-        self.inner.get("extensions").as_::<Any>()
+    pub fn extensions(&self) -> AuthenticationExtensionsClientInputs {
+        self.inner
+            .get("extensions")
+            .as_::<AuthenticationExtensionsClientInputs>()
     }
 
-    pub fn set_extensions(&mut self, value: &Any) {
+    pub fn set_extensions(&mut self, value: &AuthenticationExtensionsClientInputs) {
         self.inner.set("extensions", value);
     }
 }
@@ -556,11 +581,13 @@ impl PublicKeyCredentialRequestOptionsJSON {
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn allow_credentials(&self) -> TypedArray<Any> {
-        self.inner.get("allowCredentials").as_::<TypedArray<Any>>()
+    pub fn allow_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptorJSON> {
+        self.inner
+            .get("allowCredentials")
+            .as_::<TypedArray<PublicKeyCredentialDescriptorJSON>>()
     }
 
-    pub fn set_allow_credentials(&mut self, value: &TypedArray<Any>) {
+    pub fn set_allow_credentials(&mut self, value: &TypedArray<PublicKeyCredentialDescriptorJSON>) {
         self.inner.set("allowCredentials", value);
     }
 }
@@ -583,11 +610,13 @@ impl PublicKeyCredentialRequestOptionsJSON {
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn extensions(&self) -> Any {
-        self.inner.get("extensions").as_::<Any>()
+    pub fn extensions(&self) -> AuthenticationExtensionsClientInputsJSON {
+        self.inner
+            .get("extensions")
+            .as_::<AuthenticationExtensionsClientInputsJSON>()
     }
 
-    pub fn set_extensions(&mut self, value: &Any) {
+    pub fn set_extensions(&mut self, value: &AuthenticationExtensionsClientInputsJSON) {
         self.inner.set("extensions", value);
     }
 }

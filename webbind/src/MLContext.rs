@@ -187,11 +187,11 @@ impl From<&MLOpSupportLimits> for Any {
 }
 
 impl MLOpSupportLimits {
-    pub fn where_(&self) -> Any {
-        self.inner.get("where").as_::<Any>()
+    pub fn where_(&self) -> MLWhereSupportLimits {
+        self.inner.get("where").as_::<MLWhereSupportLimits>()
     }
 
-    pub fn set_where_(&mut self, value: &Any) {
+    pub fn set_where_(&mut self, value: &MLWhereSupportLimits) {
         self.inner.set("where", value);
     }
 }

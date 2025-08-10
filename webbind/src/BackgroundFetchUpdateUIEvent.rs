@@ -51,11 +51,11 @@ impl From<&BackgroundFetchUIOptions> for Any {
 }
 
 impl BackgroundFetchUIOptions {
-    pub fn icons(&self) -> TypedArray<Any> {
-        self.inner.get("icons").as_::<TypedArray<Any>>()
+    pub fn icons(&self) -> TypedArray<ImageResource> {
+        self.inner.get("icons").as_::<TypedArray<ImageResource>>()
     }
 
-    pub fn set_icons(&mut self, value: &TypedArray<Any>) {
+    pub fn set_icons(&mut self, value: &TypedArray<ImageResource>) {
         self.inner.set("icons", value);
     }
 }
@@ -125,7 +125,7 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchUpdateUIEvent);
 
 impl BackgroundFetchUpdateUIEvent {
     /// The `new BackgroundFetchUpdateUIEvent(..)` constructor, creating a new BackgroundFetchUpdateUIEvent instance
-    pub fn new(type_: &JsString, init: &Any) -> BackgroundFetchUpdateUIEvent {
+    pub fn new(type_: &JsString, init: &BackgroundFetchEventInit) -> BackgroundFetchUpdateUIEvent {
         Self {
             inner: Any::global("BackgroundFetchUpdateUIEvent")
                 .new(&[type_.into(), init.into()])

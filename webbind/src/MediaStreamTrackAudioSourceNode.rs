@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(MediaStreamTrackAudioSourceNode);
 
 impl MediaStreamTrackAudioSourceNode {
     /// The `new MediaStreamTrackAudioSourceNode(..)` constructor, creating a new MediaStreamTrackAudioSourceNode instance
-    pub fn new(context: &AudioContext, options: &Any) -> MediaStreamTrackAudioSourceNode {
+    pub fn new(
+        context: &AudioContext,
+        options: &MediaStreamTrackAudioSourceOptions,
+    ) -> MediaStreamTrackAudioSourceNode {
         Self {
             inner: Any::global("MediaStreamTrackAudioSourceNode")
                 .new(&[context.into(), options.into()])

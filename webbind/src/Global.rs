@@ -57,14 +57,14 @@ jsbind::utils::impl_dyn_cast!(Global);
 
 impl Global {
     /// The `new Global(..)` constructor, creating a new Global instance
-    pub fn new0(descriptor: &Any) -> Global {
+    pub fn new0(descriptor: &GlobalDescriptor) -> Global {
         Self {
             inner: Any::global("Global").new(&[descriptor.into()]).as_::<Any>(),
         }
     }
 
     /// The `new Global(..)` constructor, creating a new Global instance
-    pub fn new1(descriptor: &Any, v: &Any) -> Global {
+    pub fn new1(descriptor: &GlobalDescriptor, v: &Any) -> Global {
         Self {
             inner: Any::global("Global")
                 .new(&[descriptor.into(), v.into()])

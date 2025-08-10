@@ -66,7 +66,7 @@ impl UncalibratedMagnetometer {
     }
 
     /// The `new UncalibratedMagnetometer(..)` constructor, creating a new UncalibratedMagnetometer instance
-    pub fn new1(sensor_options: &Any) -> UncalibratedMagnetometer {
+    pub fn new1(sensor_options: &MagnetometerSensorOptions) -> UncalibratedMagnetometer {
         Self {
             inner: Any::global("UncalibratedMagnetometer")
                 .new(&[sensor_options.into()])

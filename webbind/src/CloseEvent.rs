@@ -66,7 +66,7 @@ impl CloseEvent {
     }
 
     /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CloseEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &CloseEventInit) -> CloseEvent {
         Self {
             inner: Any::global("CloseEvent")
                 .new(&[type_.into(), event_init_dict.into()])

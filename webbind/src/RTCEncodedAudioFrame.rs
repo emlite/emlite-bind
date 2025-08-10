@@ -134,7 +134,10 @@ impl RTCEncodedAudioFrame {
     }
 
     /// The `new RTCEncodedAudioFrame(..)` constructor, creating a new RTCEncodedAudioFrame instance
-    pub fn new1(original_frame: &RTCEncodedAudioFrame, options: &Any) -> RTCEncodedAudioFrame {
+    pub fn new1(
+        original_frame: &RTCEncodedAudioFrame,
+        options: &RTCEncodedAudioFrameOptions,
+    ) -> RTCEncodedAudioFrame {
         Self {
             inner: Any::global("RTCEncodedAudioFrame")
                 .new(&[original_frame.into(), options.into()])

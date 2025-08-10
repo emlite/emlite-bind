@@ -59,7 +59,7 @@ impl GPUUncapturedErrorEvent {
     /// The `new GPUUncapturedErrorEvent(..)` constructor, creating a new GPUUncapturedErrorEvent instance
     pub fn new(
         type_: &JsString,
-        gpu_uncaptured_error_event_init_dict: &Any,
+        gpu_uncaptured_error_event_init_dict: &GPUUncapturedErrorEventInit,
     ) -> GPUUncapturedErrorEvent {
         Self {
             inner: Any::global("GPUUncapturedErrorEvent")

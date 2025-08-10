@@ -66,7 +66,7 @@ impl NavigationEvent {
     }
 
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> NavigationEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &NavigationEventInit) -> NavigationEvent {
         Self {
             inner: Any::global("NavigationEvent")
                 .new(&[type_.into(), event_init_dict.into()])

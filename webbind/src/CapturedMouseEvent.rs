@@ -66,7 +66,7 @@ impl CapturedMouseEvent {
     }
 
     /// The `new CapturedMouseEvent(..)` constructor, creating a new CapturedMouseEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CapturedMouseEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &CapturedMouseEventInit) -> CapturedMouseEvent {
         Self {
             inner: Any::global("CapturedMouseEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -66,7 +66,10 @@ impl MediaQueryListEvent {
     }
 
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> MediaQueryListEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &MediaQueryListEventInit,
+    ) -> MediaQueryListEvent {
         Self {
             inner: Any::global("MediaQueryListEvent")
                 .new(&[type_.into(), event_init_dict.into()])

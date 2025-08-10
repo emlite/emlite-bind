@@ -95,7 +95,7 @@ impl AudioWorkletGlobalScope {
 impl AudioWorkletGlobalScope {
     /// Getter of the `port` attribute.
     /// [`AudioWorkletGlobalScope.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope/port)
-    pub fn port(&self) -> Any {
-        self.inner.get("port").as_::<Any>()
+    pub fn port(&self) -> MessagePort {
+        self.inner.get("port").as_::<MessagePort>()
     }
 }

@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
 impl BluetoothAdvertisingEvent {
     /// The `new BluetoothAdvertisingEvent(..)` constructor, creating a new BluetoothAdvertisingEvent instance
-    pub fn new(type_: &JsString, init: &Any) -> BluetoothAdvertisingEvent {
+    pub fn new(
+        type_: &JsString,
+        init: &BluetoothAdvertisingEventInit,
+    ) -> BluetoothAdvertisingEvent {
         Self {
             inner: Any::global("BluetoothAdvertisingEvent")
                 .new(&[type_.into(), init.into()])

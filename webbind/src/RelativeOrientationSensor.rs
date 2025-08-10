@@ -66,7 +66,7 @@ impl RelativeOrientationSensor {
     }
 
     /// The `new RelativeOrientationSensor(..)` constructor, creating a new RelativeOrientationSensor instance
-    pub fn new1(sensor_options: &Any) -> RelativeOrientationSensor {
+    pub fn new1(sensor_options: &OrientationSensorOptions) -> RelativeOrientationSensor {
         Self {
             inner: Any::global("RelativeOrientationSensor")
                 .new(&[sensor_options.into()])

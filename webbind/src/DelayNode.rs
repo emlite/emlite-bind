@@ -66,7 +66,7 @@ impl DelayNode {
     }
 
     /// The `new DelayNode(..)` constructor, creating a new DelayNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> DelayNode {
+    pub fn new1(context: &BaseAudioContext, options: &DelayOptions) -> DelayNode {
         Self {
             inner: Any::global("DelayNode")
                 .new(&[context.into(), options.into()])

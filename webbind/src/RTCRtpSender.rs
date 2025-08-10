@@ -60,11 +60,13 @@ impl RTCRtpCapabilities {
     }
 }
 impl RTCRtpCapabilities {
-    pub fn header_extensions(&self) -> TypedArray<Any> {
-        self.inner.get("headerExtensions").as_::<TypedArray<Any>>()
+    pub fn header_extensions(&self) -> TypedArray<RTCRtpHeaderExtensionCapability> {
+        self.inner
+            .get("headerExtensions")
+            .as_::<TypedArray<RTCRtpHeaderExtensionCapability>>()
     }
 
-    pub fn set_header_extensions(&mut self, value: &TypedArray<Any>) {
+    pub fn set_header_extensions(&mut self, value: &TypedArray<RTCRtpHeaderExtensionCapability>) {
         self.inner.set("headerExtensions", value);
     }
 }
@@ -128,11 +130,13 @@ impl RTCRtpSendParameters {
     }
 }
 impl RTCRtpSendParameters {
-    pub fn encodings(&self) -> TypedArray<Any> {
-        self.inner.get("encodings").as_::<TypedArray<Any>>()
+    pub fn encodings(&self) -> TypedArray<RTCRtpEncodingParameters> {
+        self.inner
+            .get("encodings")
+            .as_::<TypedArray<RTCRtpEncodingParameters>>()
     }
 
-    pub fn set_encodings(&mut self, value: &TypedArray<Any>) {
+    pub fn set_encodings(&mut self, value: &TypedArray<RTCRtpEncodingParameters>) {
         self.inner.set("encodings", value);
     }
 }

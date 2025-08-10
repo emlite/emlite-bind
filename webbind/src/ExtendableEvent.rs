@@ -66,7 +66,7 @@ impl ExtendableEvent {
     }
 
     /// The `new ExtendableEvent(..)` constructor, creating a new ExtendableEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ExtendableEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &ExtendableEventInit) -> ExtendableEvent {
         Self {
             inner: Any::global("ExtendableEvent")
                 .new(&[type_.into(), event_init_dict.into()])

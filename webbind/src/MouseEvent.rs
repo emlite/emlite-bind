@@ -66,7 +66,7 @@ impl MouseEvent {
     }
 
     /// The `new MouseEvent(..)` constructor, creating a new MouseEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> MouseEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &MouseEventInit) -> MouseEvent {
         Self {
             inner: Any::global("MouseEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -51,20 +51,24 @@ impl From<&HIDDeviceRequestOptions> for Any {
 }
 
 impl HIDDeviceRequestOptions {
-    pub fn filters(&self) -> TypedArray<Any> {
-        self.inner.get("filters").as_::<TypedArray<Any>>()
+    pub fn filters(&self) -> TypedArray<HIDDeviceFilter> {
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<HIDDeviceFilter>>()
     }
 
-    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<HIDDeviceFilter>) {
         self.inner.set("filters", value);
     }
 }
 impl HIDDeviceRequestOptions {
-    pub fn exclusion_filters(&self) -> TypedArray<Any> {
-        self.inner.get("exclusionFilters").as_::<TypedArray<Any>>()
+    pub fn exclusion_filters(&self) -> TypedArray<HIDDeviceFilter> {
+        self.inner
+            .get("exclusionFilters")
+            .as_::<TypedArray<HIDDeviceFilter>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &TypedArray<HIDDeviceFilter>) {
         self.inner.set("exclusionFilters", value);
     }
 }

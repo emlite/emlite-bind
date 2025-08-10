@@ -64,7 +64,7 @@ impl Accelerometer {
     }
 
     /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
-    pub fn new1(options: &Any) -> Accelerometer {
+    pub fn new1(options: &AccelerometerSensorOptions) -> Accelerometer {
         Self {
             inner: Any::global("Accelerometer")
                 .new(&[options.into()])

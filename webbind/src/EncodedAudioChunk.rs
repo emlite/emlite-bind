@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(EncodedAudioChunk);
 
 impl EncodedAudioChunk {
     /// The `new EncodedAudioChunk(..)` constructor, creating a new EncodedAudioChunk instance
-    pub fn new(init: &Any) -> EncodedAudioChunk {
+    pub fn new(init: &EncodedAudioChunkInit) -> EncodedAudioChunk {
         Self {
             inner: Any::global("EncodedAudioChunk")
                 .new(&[init.into()])

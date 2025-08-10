@@ -64,7 +64,7 @@ impl SFrameTransform {
     }
 
     /// The `new SFrameTransform(..)` constructor, creating a new SFrameTransform instance
-    pub fn new1(options: &Any) -> SFrameTransform {
+    pub fn new1(options: &SFrameTransformOptions) -> SFrameTransform {
         Self {
             inner: Any::global("SFrameTransform")
                 .new(&[options.into()])

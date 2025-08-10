@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(Touch);
 
 impl Touch {
     /// The `new Touch(..)` constructor, creating a new Touch instance
-    pub fn new(touch_init_dict: &Any) -> Touch {
+    pub fn new(touch_init_dict: &TouchInit) -> Touch {
         Self {
             inner: Any::global("Touch")
                 .new(&[touch_init_dict.into()])

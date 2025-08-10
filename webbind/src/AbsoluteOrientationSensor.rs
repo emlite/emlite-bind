@@ -66,7 +66,7 @@ impl AbsoluteOrientationSensor {
     }
 
     /// The `new AbsoluteOrientationSensor(..)` constructor, creating a new AbsoluteOrientationSensor instance
-    pub fn new1(sensor_options: &Any) -> AbsoluteOrientationSensor {
+    pub fn new1(sensor_options: &OrientationSensorOptions) -> AbsoluteOrientationSensor {
         Self {
             inner: Any::global("AbsoluteOrientationSensor")
                 .new(&[sensor_options.into()])

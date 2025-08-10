@@ -60,11 +60,11 @@ impl DetectedFace {
     }
 }
 impl DetectedFace {
-    pub fn landmarks(&self) -> TypedArray<Any> {
-        self.inner.get("landmarks").as_::<TypedArray<Any>>()
+    pub fn landmarks(&self) -> TypedArray<Landmark> {
+        self.inner.get("landmarks").as_::<TypedArray<Landmark>>()
     }
 
-    pub fn set_landmarks(&mut self, value: &TypedArray<Any>) {
+    pub fn set_landmarks(&mut self, value: &TypedArray<Landmark>) {
         self.inner.set("landmarks", value);
     }
 }
@@ -132,7 +132,7 @@ impl FaceDetector {
     }
 
     /// The `new FaceDetector(..)` constructor, creating a new FaceDetector instance
-    pub fn new1(face_detector_options: &Any) -> FaceDetector {
+    pub fn new1(face_detector_options: &FaceDetectorOptions) -> FaceDetector {
         Self {
             inner: Any::global("FaceDetector")
                 .new(&[face_detector_options.into()])

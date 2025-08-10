@@ -66,7 +66,7 @@ impl AnalyserNode {
     }
 
     /// The `new AnalyserNode(..)` constructor, creating a new AnalyserNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> AnalyserNode {
+    pub fn new1(context: &BaseAudioContext, options: &AnalyserOptions) -> AnalyserNode {
         Self {
             inner: Any::global("AnalyserNode")
                 .new(&[context.into(), options.into()])

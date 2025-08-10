@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(PromiseRejectionEvent);
 
 impl PromiseRejectionEvent {
     /// The `new PromiseRejectionEvent(..)` constructor, creating a new PromiseRejectionEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> PromiseRejectionEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PromiseRejectionEventInit,
+    ) -> PromiseRejectionEvent {
         Self {
             inner: Any::global("PromiseRejectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

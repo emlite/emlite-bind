@@ -134,7 +134,7 @@ impl AudioContext {
     }
 
     /// The `new AudioContext(..)` constructor, creating a new AudioContext instance
-    pub fn new1(context_options: &Any) -> AudioContext {
+    pub fn new1(context_options: &AudioContextOptions) -> AudioContext {
         Self {
             inner: Any::global("AudioContext")
                 .new(&[context_options.into()])

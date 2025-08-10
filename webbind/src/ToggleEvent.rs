@@ -66,7 +66,7 @@ impl ToggleEvent {
     }
 
     /// The `new ToggleEvent(..)` constructor, creating a new ToggleEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ToggleEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &ToggleEventInit) -> ToggleEvent {
         Self {
             inner: Any::global("ToggleEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -66,7 +66,7 @@ impl ClipboardItem {
     }
 
     /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
-    pub fn new1(items: &Record<JsString, Any>, options: &Any) -> ClipboardItem {
+    pub fn new1(items: &Record<JsString, Any>, options: &ClipboardItemOptions) -> ClipboardItem {
         Self {
             inner: Any::global("ClipboardItem")
                 .new(&[items.into(), options.into()])

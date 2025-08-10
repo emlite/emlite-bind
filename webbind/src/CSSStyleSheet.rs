@@ -64,7 +64,7 @@ impl CSSStyleSheet {
     }
 
     /// The `new CSSStyleSheet(..)` constructor, creating a new CSSStyleSheet instance
-    pub fn new1(options: &Any) -> CSSStyleSheet {
+    pub fn new1(options: &CSSStyleSheetInit) -> CSSStyleSheet {
         Self {
             inner: Any::global("CSSStyleSheet")
                 .new(&[options.into()])

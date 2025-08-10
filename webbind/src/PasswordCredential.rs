@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PasswordCredential);
 
 impl PasswordCredential {
     /// The `new PasswordCredential(..)` constructor, creating a new PasswordCredential instance
-    pub fn new(data: &Any) -> PasswordCredential {
+    pub fn new(data: &PasswordCredentialData) -> PasswordCredential {
         Self {
             inner: Any::global("PasswordCredential")
                 .new(&[data.into()])

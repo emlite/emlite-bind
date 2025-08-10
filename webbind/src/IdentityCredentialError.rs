@@ -75,7 +75,10 @@ impl IdentityCredentialError {
     }
 
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
-    pub fn new2(message: &JsString, options: &Any) -> IdentityCredentialError {
+    pub fn new2(
+        message: &JsString,
+        options: &IdentityCredentialErrorInit,
+    ) -> IdentityCredentialError {
         Self {
             inner: Any::global("IdentityCredentialError")
                 .new(&[message.into(), options.into()])

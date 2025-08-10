@@ -66,7 +66,10 @@ impl ExtendableMessageEvent {
     }
 
     /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ExtendableMessageEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &ExtendableMessageEventInit,
+    ) -> ExtendableMessageEvent {
         Self {
             inner: Any::global("ExtendableMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -105,7 +108,7 @@ impl ExtendableMessageEvent {
 impl ExtendableMessageEvent {
     /// Getter of the `ports` attribute.
     /// [`ExtendableMessageEvent.ports`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/ports)
-    pub fn ports(&self) -> TypedArray<Any> {
-        self.inner.get("ports").as_::<TypedArray<Any>>()
+    pub fn ports(&self) -> TypedArray<MessagePort> {
+        self.inner.get("ports").as_::<TypedArray<MessagePort>>()
     }
 }

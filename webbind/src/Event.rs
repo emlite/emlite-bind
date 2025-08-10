@@ -64,7 +64,7 @@ impl Event {
     }
 
     /// The `new Event(..)` constructor, creating a new Event instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> Event {
+    pub fn new1(type_: &JsString, event_init_dict: &EventInit) -> Event {
         Self {
             inner: Any::global("Event")
                 .new(&[type_.into(), event_init_dict.into()])

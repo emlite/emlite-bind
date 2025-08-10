@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(AudioBuffer);
 
 impl AudioBuffer {
     /// The `new AudioBuffer(..)` constructor, creating a new AudioBuffer instance
-    pub fn new(options: &Any) -> AudioBuffer {
+    pub fn new(options: &AudioBufferOptions) -> AudioBuffer {
         Self {
             inner: Any::global("AudioBuffer")
                 .new(&[options.into()])

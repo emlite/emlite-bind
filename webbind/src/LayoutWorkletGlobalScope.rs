@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(LayoutWorkletGlobalScope);
 impl LayoutWorkletGlobalScope {
     /// The registerLayout method.
     /// [`LayoutWorkletGlobalScope.registerLayout`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutWorkletGlobalScope/registerLayout)
-    pub fn register_layout(&self, name: &JsString, layout_ctor: &Any) -> Undefined {
+    pub fn register_layout(&self, name: &JsString, layout_ctor: &Function) -> Undefined {
         self.inner
             .call("registerLayout", &[name.into(), layout_ctor.into()])
             .as_::<Undefined>()

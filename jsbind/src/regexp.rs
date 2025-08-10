@@ -215,7 +215,7 @@ impl RegExp {
             text: text.to_string(),
             at_end: false,
         };
-        // Ensure iteration starts at index 0 
+        // Ensure iteration starts at index 0
         it.regexp.set("lastIndex", 0);
         Ok(it)
     }

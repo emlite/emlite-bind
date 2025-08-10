@@ -60,11 +60,13 @@ impl MemoryMeasurement {
     }
 }
 impl MemoryMeasurement {
-    pub fn breakdown(&self) -> TypedArray<Any> {
-        self.inner.get("breakdown").as_::<TypedArray<Any>>()
+    pub fn breakdown(&self) -> TypedArray<MemoryBreakdownEntry> {
+        self.inner
+            .get("breakdown")
+            .as_::<TypedArray<MemoryBreakdownEntry>>()
     }
 
-    pub fn set_breakdown(&mut self, value: &TypedArray<Any>) {
+    pub fn set_breakdown(&mut self, value: &TypedArray<MemoryBreakdownEntry>) {
         self.inner.set("breakdown", value);
     }
 }

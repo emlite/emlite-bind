@@ -143,7 +143,7 @@ jsbind::utils::impl_dyn_cast!(AudioData);
 
 impl AudioData {
     /// The `new AudioData(..)` constructor, creating a new AudioData instance
-    pub fn new(init: &Any) -> AudioData {
+    pub fn new(init: &AudioDataInit) -> AudioData {
         Self {
             inner: Any::global("AudioData").new(&[init.into()]).as_::<Any>(),
         }

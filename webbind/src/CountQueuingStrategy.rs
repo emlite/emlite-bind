@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CountQueuingStrategy);
 
 impl CountQueuingStrategy {
     /// The `new CountQueuingStrategy(..)` constructor, creating a new CountQueuingStrategy instance
-    pub fn new(init: &Any) -> CountQueuingStrategy {
+    pub fn new(init: &QueuingStrategyInit) -> CountQueuingStrategy {
         Self {
             inner: Any::global("CountQueuingStrategy")
                 .new(&[init.into()])

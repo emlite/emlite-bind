@@ -66,7 +66,7 @@ impl PopStateEvent {
     }
 
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PopStateEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &PopStateEventInit) -> PopStateEvent {
         Self {
             inner: Any::global("PopStateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

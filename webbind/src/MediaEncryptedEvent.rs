@@ -66,7 +66,10 @@ impl MediaEncryptedEvent {
     }
 
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> MediaEncryptedEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &MediaEncryptedEventInit,
+    ) -> MediaEncryptedEvent {
         Self {
             inner: Any::global("MediaEncryptedEvent")
                 .new(&[type_.into(), event_init_dict.into()])

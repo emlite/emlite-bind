@@ -66,7 +66,7 @@ impl TrackEvent {
     }
 
     /// The `new TrackEvent(..)` constructor, creating a new TrackEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> TrackEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &TrackEventInit) -> TrackEvent {
         Self {
             inner: Any::global("TrackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

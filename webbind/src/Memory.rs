@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(Memory);
 
 impl Memory {
     /// The `new Memory(..)` constructor, creating a new Memory instance
-    pub fn new(descriptor: &Any) -> Memory {
+    pub fn new(descriptor: &MemoryDescriptor) -> Memory {
         Self {
             inner: Any::global("Memory").new(&[descriptor.into()]).as_::<Any>(),
         }

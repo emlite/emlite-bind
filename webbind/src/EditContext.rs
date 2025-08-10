@@ -64,7 +64,7 @@ impl EditContext {
     }
 
     /// The `new EditContext(..)` constructor, creating a new EditContext instance
-    pub fn new1(options: &Any) -> EditContext {
+    pub fn new1(options: &EditContextInit) -> EditContext {
         Self {
             inner: Any::global("EditContext")
                 .new(&[options.into()])

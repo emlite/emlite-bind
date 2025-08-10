@@ -66,7 +66,7 @@ impl ProgressEvent {
     }
 
     /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ProgressEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &ProgressEventInit) -> ProgressEvent {
         Self {
             inner: Any::global("ProgressEvent")
                 .new(&[type_.into(), event_init_dict.into()])

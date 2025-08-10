@@ -60,74 +60,84 @@ impl URLPatternResult {
     }
 }
 impl URLPatternResult {
-    pub fn protocol(&self) -> Any {
-        self.inner.get("protocol").as_::<Any>()
+    pub fn protocol(&self) -> URLPatternComponentResult {
+        self.inner
+            .get("protocol")
+            .as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_protocol(&mut self, value: &Any) {
+    pub fn set_protocol(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("protocol", value);
     }
 }
 impl URLPatternResult {
-    pub fn username(&self) -> Any {
-        self.inner.get("username").as_::<Any>()
+    pub fn username(&self) -> URLPatternComponentResult {
+        self.inner
+            .get("username")
+            .as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_username(&mut self, value: &Any) {
+    pub fn set_username(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("username", value);
     }
 }
 impl URLPatternResult {
-    pub fn password(&self) -> Any {
-        self.inner.get("password").as_::<Any>()
+    pub fn password(&self) -> URLPatternComponentResult {
+        self.inner
+            .get("password")
+            .as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_password(&mut self, value: &Any) {
+    pub fn set_password(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("password", value);
     }
 }
 impl URLPatternResult {
-    pub fn hostname(&self) -> Any {
-        self.inner.get("hostname").as_::<Any>()
+    pub fn hostname(&self) -> URLPatternComponentResult {
+        self.inner
+            .get("hostname")
+            .as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_hostname(&mut self, value: &Any) {
+    pub fn set_hostname(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("hostname", value);
     }
 }
 impl URLPatternResult {
-    pub fn port(&self) -> Any {
-        self.inner.get("port").as_::<Any>()
+    pub fn port(&self) -> URLPatternComponentResult {
+        self.inner.get("port").as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_port(&mut self, value: &Any) {
+    pub fn set_port(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("port", value);
     }
 }
 impl URLPatternResult {
-    pub fn pathname(&self) -> Any {
-        self.inner.get("pathname").as_::<Any>()
+    pub fn pathname(&self) -> URLPatternComponentResult {
+        self.inner
+            .get("pathname")
+            .as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_pathname(&mut self, value: &Any) {
+    pub fn set_pathname(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("pathname", value);
     }
 }
 impl URLPatternResult {
-    pub fn search(&self) -> Any {
-        self.inner.get("search").as_::<Any>()
+    pub fn search(&self) -> URLPatternComponentResult {
+        self.inner.get("search").as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_search(&mut self, value: &Any) {
+    pub fn set_search(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("search", value);
     }
 }
 impl URLPatternResult {
-    pub fn hash(&self) -> Any {
-        self.inner.get("hash").as_::<Any>()
+    pub fn hash(&self) -> URLPatternComponentResult {
+        self.inner.get("hash").as_::<URLPatternComponentResult>()
     }
 
-    pub fn set_hash(&mut self, value: &Any) {
+    pub fn set_hash(&mut self, value: &URLPatternComponentResult) {
         self.inner.set("hash", value);
     }
 }
@@ -202,7 +212,7 @@ impl URLPattern {
     }
 
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
-    pub fn new2(input: &Any, options: &Any) -> URLPattern {
+    pub fn new2(input: &Any, options: &URLPatternOptions) -> URLPattern {
         Self {
             inner: Any::global("URLPattern")
                 .new(&[input.into(), options.into()])

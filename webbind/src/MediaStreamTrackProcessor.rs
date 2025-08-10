@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(MediaStreamTrackProcessor);
 
 impl MediaStreamTrackProcessor {
     /// The `new MediaStreamTrackProcessor(..)` constructor, creating a new MediaStreamTrackProcessor instance
-    pub fn new(init: &Any) -> MediaStreamTrackProcessor {
+    pub fn new(init: &MediaStreamTrackProcessorInit) -> MediaStreamTrackProcessor {
         Self {
             inner: Any::global("MediaStreamTrackProcessor")
                 .new(&[init.into()])

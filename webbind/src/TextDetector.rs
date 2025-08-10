@@ -69,11 +69,11 @@ impl DetectedText {
     }
 }
 impl DetectedText {
-    pub fn corner_points(&self) -> TypedArray<Any> {
-        self.inner.get("cornerPoints").as_::<TypedArray<Any>>()
+    pub fn corner_points(&self) -> TypedArray<Point2D> {
+        self.inner.get("cornerPoints").as_::<TypedArray<Point2D>>()
     }
 
-    pub fn set_corner_points(&mut self, value: &TypedArray<Any>) {
+    pub fn set_corner_points(&mut self, value: &TypedArray<Point2D>) {
         self.inner.set("cornerPoints", value);
     }
 }

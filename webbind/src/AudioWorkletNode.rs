@@ -66,7 +66,11 @@ impl AudioWorkletNode {
     }
 
     /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new1(context: &BaseAudioContext, name: &JsString, options: &Any) -> AudioWorkletNode {
+    pub fn new1(
+        context: &BaseAudioContext,
+        name: &JsString,
+        options: &AudioWorkletNodeOptions,
+    ) -> AudioWorkletNode {
         Self {
             inner: Any::global("AudioWorkletNode")
                 .new(&[context.into(), name.into(), options.into()])
@@ -84,8 +88,8 @@ impl AudioWorkletNode {
 impl AudioWorkletNode {
     /// Getter of the `port` attribute.
     /// [`AudioWorkletNode.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode/port)
-    pub fn port(&self) -> Any {
-        self.inner.get("port").as_::<Any>()
+    pub fn port(&self) -> MessagePort {
+        self.inner.get("port").as_::<MessagePort>()
     }
 }
 impl AudioWorkletNode {

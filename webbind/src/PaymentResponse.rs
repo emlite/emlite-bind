@@ -110,20 +110,20 @@ impl From<&PaymentValidationErrors> for Any {
 }
 
 impl PaymentValidationErrors {
-    pub fn payer(&self) -> Any {
-        self.inner.get("payer").as_::<Any>()
+    pub fn payer(&self) -> PayerErrors {
+        self.inner.get("payer").as_::<PayerErrors>()
     }
 
-    pub fn set_payer(&mut self, value: &Any) {
+    pub fn set_payer(&mut self, value: &PayerErrors) {
         self.inner.set("payer", value);
     }
 }
 impl PaymentValidationErrors {
-    pub fn shipping_address(&self) -> Any {
-        self.inner.get("shippingAddress").as_::<Any>()
+    pub fn shipping_address(&self) -> AddressErrors {
+        self.inner.get("shippingAddress").as_::<AddressErrors>()
     }
 
-    pub fn set_shipping_address(&mut self, value: &Any) {
+    pub fn set_shipping_address(&mut self, value: &AddressErrors) {
         self.inner.set("shippingAddress", value);
     }
 }

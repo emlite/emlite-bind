@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCError);
 
 impl RTCError {
     /// The `new RTCError(..)` constructor, creating a new RTCError instance
-    pub fn new0(init: &Any) -> RTCError {
+    pub fn new0(init: &RTCErrorInit) -> RTCError {
         Self {
             inner: Any::global("RTCError")
                 .new(&[init.into()])
@@ -66,7 +66,7 @@ impl RTCError {
     }
 
     /// The `new RTCError(..)` constructor, creating a new RTCError instance
-    pub fn new1(init: &Any, message: &JsString) -> RTCError {
+    pub fn new1(init: &RTCErrorInit, message: &JsString) -> RTCError {
         Self {
             inner: Any::global("RTCError")
                 .new(&[init.into(), message.into()])

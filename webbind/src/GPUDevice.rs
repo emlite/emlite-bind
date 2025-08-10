@@ -451,11 +451,13 @@ impl From<&GPUBindGroupLayoutDescriptor> for Any {
 }
 
 impl GPUBindGroupLayoutDescriptor {
-    pub fn entries(&self) -> TypedArray<Any> {
-        self.inner.get("entries").as_::<TypedArray<Any>>()
+    pub fn entries(&self) -> TypedArray<GPUBindGroupLayoutEntry> {
+        self.inner
+            .get("entries")
+            .as_::<TypedArray<GPUBindGroupLayoutEntry>>()
     }
 
-    pub fn set_entries(&mut self, value: &TypedArray<Any>) {
+    pub fn set_entries(&mut self, value: &TypedArray<GPUBindGroupLayoutEntry>) {
         self.inner.set("entries", value);
     }
 }
@@ -580,11 +582,13 @@ impl GPUBindGroupDescriptor {
     }
 }
 impl GPUBindGroupDescriptor {
-    pub fn entries(&self) -> TypedArray<Any> {
-        self.inner.get("entries").as_::<TypedArray<Any>>()
+    pub fn entries(&self) -> TypedArray<GPUBindGroupEntry> {
+        self.inner
+            .get("entries")
+            .as_::<TypedArray<GPUBindGroupEntry>>()
     }
 
-    pub fn set_entries(&mut self, value: &TypedArray<Any>) {
+    pub fn set_entries(&mut self, value: &TypedArray<GPUBindGroupEntry>) {
         self.inner.set("entries", value);
     }
 }
@@ -648,11 +652,13 @@ impl GPUShaderModuleDescriptor {
     }
 }
 impl GPUShaderModuleDescriptor {
-    pub fn compilation_hints(&self) -> TypedArray<Any> {
-        self.inner.get("compilationHints").as_::<TypedArray<Any>>()
+    pub fn compilation_hints(&self) -> TypedArray<GPUShaderModuleCompilationHint> {
+        self.inner
+            .get("compilationHints")
+            .as_::<TypedArray<GPUShaderModuleCompilationHint>>()
     }
 
-    pub fn set_compilation_hints(&mut self, value: &TypedArray<Any>) {
+    pub fn set_compilation_hints(&mut self, value: &TypedArray<GPUShaderModuleCompilationHint>) {
         self.inner.set("compilationHints", value);
     }
 }
@@ -707,11 +713,11 @@ impl From<&GPUComputePipelineDescriptor> for Any {
 }
 
 impl GPUComputePipelineDescriptor {
-    pub fn compute(&self) -> Any {
-        self.inner.get("compute").as_::<Any>()
+    pub fn compute(&self) -> GPUProgrammableStage {
+        self.inner.get("compute").as_::<GPUProgrammableStage>()
     }
 
-    pub fn set_compute(&mut self, value: &Any) {
+    pub fn set_compute(&mut self, value: &GPUProgrammableStage) {
         self.inner.set("compute", value);
     }
 }
@@ -766,47 +772,47 @@ impl From<&GPURenderPipelineDescriptor> for Any {
 }
 
 impl GPURenderPipelineDescriptor {
-    pub fn vertex(&self) -> Any {
-        self.inner.get("vertex").as_::<Any>()
+    pub fn vertex(&self) -> GPUVertexState {
+        self.inner.get("vertex").as_::<GPUVertexState>()
     }
 
-    pub fn set_vertex(&mut self, value: &Any) {
+    pub fn set_vertex(&mut self, value: &GPUVertexState) {
         self.inner.set("vertex", value);
     }
 }
 impl GPURenderPipelineDescriptor {
-    pub fn primitive(&self) -> Any {
-        self.inner.get("primitive").as_::<Any>()
+    pub fn primitive(&self) -> GPUPrimitiveState {
+        self.inner.get("primitive").as_::<GPUPrimitiveState>()
     }
 
-    pub fn set_primitive(&mut self, value: &Any) {
+    pub fn set_primitive(&mut self, value: &GPUPrimitiveState) {
         self.inner.set("primitive", value);
     }
 }
 impl GPURenderPipelineDescriptor {
-    pub fn depth_stencil(&self) -> Any {
-        self.inner.get("depthStencil").as_::<Any>()
+    pub fn depth_stencil(&self) -> GPUDepthStencilState {
+        self.inner.get("depthStencil").as_::<GPUDepthStencilState>()
     }
 
-    pub fn set_depth_stencil(&mut self, value: &Any) {
+    pub fn set_depth_stencil(&mut self, value: &GPUDepthStencilState) {
         self.inner.set("depthStencil", value);
     }
 }
 impl GPURenderPipelineDescriptor {
-    pub fn multisample(&self) -> Any {
-        self.inner.get("multisample").as_::<Any>()
+    pub fn multisample(&self) -> GPUMultisampleState {
+        self.inner.get("multisample").as_::<GPUMultisampleState>()
     }
 
-    pub fn set_multisample(&mut self, value: &Any) {
+    pub fn set_multisample(&mut self, value: &GPUMultisampleState) {
         self.inner.set("multisample", value);
     }
 }
 impl GPURenderPipelineDescriptor {
-    pub fn fragment(&self) -> Any {
-        self.inner.get("fragment").as_::<Any>()
+    pub fn fragment(&self) -> GPUFragmentState {
+        self.inner.get("fragment").as_::<GPUFragmentState>()
     }
 
-    pub fn set_fragment(&mut self, value: &Any) {
+    pub fn set_fragment(&mut self, value: &GPUFragmentState) {
         self.inner.set("fragment", value);
     }
 }

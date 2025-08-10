@@ -64,7 +64,7 @@ impl FragmentResult {
     }
 
     /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
-    pub fn new1(options: &Any) -> FragmentResult {
+    pub fn new1(options: &FragmentResultOptions) -> FragmentResult {
         Self {
             inner: Any::global("FragmentResult")
                 .new(&[options.into()])

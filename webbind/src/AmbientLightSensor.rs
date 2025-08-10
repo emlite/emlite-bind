@@ -64,7 +64,7 @@ impl AmbientLightSensor {
     }
 
     /// The `new AmbientLightSensor(..)` constructor, creating a new AmbientLightSensor instance
-    pub fn new1(sensor_options: &Any) -> AmbientLightSensor {
+    pub fn new1(sensor_options: &SensorOptions) -> AmbientLightSensor {
         Self {
             inner: Any::global("AmbientLightSensor")
                 .new(&[sensor_options.into()])

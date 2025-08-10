@@ -51,20 +51,24 @@ impl From<&GPURenderPassDescriptor> for Any {
 }
 
 impl GPURenderPassDescriptor {
-    pub fn color_attachments(&self) -> TypedArray<Any> {
-        self.inner.get("colorAttachments").as_::<TypedArray<Any>>()
+    pub fn color_attachments(&self) -> TypedArray<GPURenderPassColorAttachment> {
+        self.inner
+            .get("colorAttachments")
+            .as_::<TypedArray<GPURenderPassColorAttachment>>()
     }
 
-    pub fn set_color_attachments(&mut self, value: &TypedArray<Any>) {
+    pub fn set_color_attachments(&mut self, value: &TypedArray<GPURenderPassColorAttachment>) {
         self.inner.set("colorAttachments", value);
     }
 }
 impl GPURenderPassDescriptor {
-    pub fn depth_stencil_attachment(&self) -> Any {
-        self.inner.get("depthStencilAttachment").as_::<Any>()
+    pub fn depth_stencil_attachment(&self) -> GPURenderPassDepthStencilAttachment {
+        self.inner
+            .get("depthStencilAttachment")
+            .as_::<GPURenderPassDepthStencilAttachment>()
     }
 
-    pub fn set_depth_stencil_attachment(&mut self, value: &Any) {
+    pub fn set_depth_stencil_attachment(&mut self, value: &GPURenderPassDepthStencilAttachment) {
         self.inner.set("depthStencilAttachment", value);
     }
 }
@@ -78,11 +82,13 @@ impl GPURenderPassDescriptor {
     }
 }
 impl GPURenderPassDescriptor {
-    pub fn timestamp_writes(&self) -> Any {
-        self.inner.get("timestampWrites").as_::<Any>()
+    pub fn timestamp_writes(&self) -> GPURenderPassTimestampWrites {
+        self.inner
+            .get("timestampWrites")
+            .as_::<GPURenderPassTimestampWrites>()
     }
 
-    pub fn set_timestamp_writes(&mut self, value: &Any) {
+    pub fn set_timestamp_writes(&mut self, value: &GPURenderPassTimestampWrites) {
         self.inner.set("timestampWrites", value);
     }
 }
@@ -146,11 +152,13 @@ impl From<&GPUComputePassDescriptor> for Any {
 }
 
 impl GPUComputePassDescriptor {
-    pub fn timestamp_writes(&self) -> Any {
-        self.inner.get("timestampWrites").as_::<Any>()
+    pub fn timestamp_writes(&self) -> GPUComputePassTimestampWrites {
+        self.inner
+            .get("timestampWrites")
+            .as_::<GPUComputePassTimestampWrites>()
     }
 
-    pub fn set_timestamp_writes(&mut self, value: &Any) {
+    pub fn set_timestamp_writes(&mut self, value: &GPUComputePassTimestampWrites) {
         self.inner.set("timestampWrites", value);
     }
 }

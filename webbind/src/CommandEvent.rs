@@ -66,7 +66,7 @@ impl CommandEvent {
     }
 
     /// The `new CommandEvent(..)` constructor, creating a new CommandEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CommandEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &CommandEventInit) -> CommandEvent {
         Self {
             inner: Any::global("CommandEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PeriodicSyncEvent);
 
 impl PeriodicSyncEvent {
     /// The `new PeriodicSyncEvent(..)` constructor, creating a new PeriodicSyncEvent instance
-    pub fn new(type_: &JsString, init: &Any) -> PeriodicSyncEvent {
+    pub fn new(type_: &JsString, init: &PeriodicSyncEventInit) -> PeriodicSyncEvent {
         Self {
             inner: Any::global("PeriodicSyncEvent")
                 .new(&[type_.into(), init.into()])

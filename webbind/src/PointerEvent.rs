@@ -66,7 +66,7 @@ impl PointerEvent {
     }
 
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PointerEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &PointerEventInit) -> PointerEvent {
         Self {
             inner: Any::global("PointerEvent")
                 .new(&[type_.into(), event_init_dict.into()])

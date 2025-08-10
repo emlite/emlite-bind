@@ -64,7 +64,7 @@ impl Gyroscope {
     }
 
     /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
-    pub fn new1(sensor_options: &Any) -> Gyroscope {
+    pub fn new1(sensor_options: &GyroscopeSensorOptions) -> Gyroscope {
         Self {
             inner: Any::global("Gyroscope")
                 .new(&[sensor_options.into()])

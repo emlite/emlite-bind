@@ -66,7 +66,7 @@ impl LinearAccelerationSensor {
     }
 
     /// The `new LinearAccelerationSensor(..)` constructor, creating a new LinearAccelerationSensor instance
-    pub fn new1(options: &Any) -> LinearAccelerationSensor {
+    pub fn new1(options: &AccelerometerSensorOptions) -> LinearAccelerationSensor {
         Self {
             inner: Any::global("LinearAccelerationSensor")
                 .new(&[options.into()])

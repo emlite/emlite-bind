@@ -51,20 +51,24 @@ impl From<&RequestDeviceOptions> for Any {
 }
 
 impl RequestDeviceOptions {
-    pub fn filters(&self) -> TypedArray<Any> {
-        self.inner.get("filters").as_::<TypedArray<Any>>()
+    pub fn filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
     }
 
-    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<BluetoothLEScanFilterInit>) {
         self.inner.set("filters", value);
     }
 }
 impl RequestDeviceOptions {
-    pub fn exclusion_filters(&self) -> TypedArray<Any> {
-        self.inner.get("exclusionFilters").as_::<TypedArray<Any>>()
+    pub fn exclusion_filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
+        self.inner
+            .get("exclusionFilters")
+            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &TypedArray<BluetoothLEScanFilterInit>) {
         self.inner.set("exclusionFilters", value);
     }
 }
@@ -148,11 +152,13 @@ impl From<&BluetoothLEScanOptions> for Any {
 }
 
 impl BluetoothLEScanOptions {
-    pub fn filters(&self) -> TypedArray<Any> {
-        self.inner.get("filters").as_::<TypedArray<Any>>()
+    pub fn filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
     }
 
-    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<BluetoothLEScanFilterInit>) {
         self.inner.set("filters", value);
     }
 }

@@ -66,7 +66,7 @@ impl CustomEvent {
     }
 
     /// The `new CustomEvent(..)` constructor, creating a new CustomEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CustomEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &CustomEventInit) -> CustomEvent {
         Self {
             inner: Any::global("CustomEvent")
                 .new(&[type_.into(), event_init_dict.into()])

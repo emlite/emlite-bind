@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(XRReferenceSpaceEvent);
 
 impl XRReferenceSpaceEvent {
     /// The `new XRReferenceSpaceEvent(..)` constructor, creating a new XRReferenceSpaceEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> XRReferenceSpaceEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &XRReferenceSpaceEventInit,
+    ) -> XRReferenceSpaceEvent {
         Self {
             inner: Any::global("XRReferenceSpaceEvent")
                 .new(&[type_.into(), event_init_dict.into()])

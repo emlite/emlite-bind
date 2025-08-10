@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(NDEFRecord);
 
 impl NDEFRecord {
     /// The `new NDEFRecord(..)` constructor, creating a new NDEFRecord instance
-    pub fn new(record_init: &Any) -> NDEFRecord {
+    pub fn new(record_init: &NDEFRecordInit) -> NDEFRecord {
         Self {
             inner: Any::global("NDEFRecord")
                 .new(&[record_init.into()])

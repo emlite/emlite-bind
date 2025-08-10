@@ -51,11 +51,13 @@ impl From<&SerialPortRequestOptions> for Any {
 }
 
 impl SerialPortRequestOptions {
-    pub fn filters(&self) -> TypedArray<Any> {
-        self.inner.get("filters").as_::<TypedArray<Any>>()
+    pub fn filters(&self) -> TypedArray<SerialPortFilter> {
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<SerialPortFilter>>()
     }
 
-    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<SerialPortFilter>) {
         self.inner.set("filters", value);
     }
 }

@@ -241,7 +241,7 @@ impl Observable {
 impl Observable {
     /// The finally method.
     /// [`Observable.finally`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/finally)
-    pub fn finally(&self, callback: &Any) -> Observable {
+    pub fn finally(&self, callback: &Function) -> Observable {
         self.inner
             .call("finally", &[callback.into()])
             .as_::<Observable>()

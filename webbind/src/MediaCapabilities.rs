@@ -132,11 +132,16 @@ impl MediaDecodingConfiguration {
     }
 }
 impl MediaDecodingConfiguration {
-    pub fn key_system_configuration(&self) -> Any {
-        self.inner.get("keySystemConfiguration").as_::<Any>()
+    pub fn key_system_configuration(&self) -> MediaCapabilitiesKeySystemConfiguration {
+        self.inner
+            .get("keySystemConfiguration")
+            .as_::<MediaCapabilitiesKeySystemConfiguration>()
     }
 
-    pub fn set_key_system_configuration(&mut self, value: &Any) {
+    pub fn set_key_system_configuration(
+        &mut self,
+        value: &MediaCapabilitiesKeySystemConfiguration,
+    ) {
         self.inner.set("keySystemConfiguration", value);
     }
 }

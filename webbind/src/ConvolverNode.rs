@@ -66,7 +66,7 @@ impl ConvolverNode {
     }
 
     /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> ConvolverNode {
+    pub fn new1(context: &BaseAudioContext, options: &ConvolverOptions) -> ConvolverNode {
         Self {
             inner: Any::global("ConvolverNode")
                 .new(&[context.into(), options.into()])

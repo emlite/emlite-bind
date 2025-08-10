@@ -66,7 +66,7 @@ impl MediaRecorder {
     }
 
     /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
-    pub fn new1(stream: &MediaStream, options: &Any) -> MediaRecorder {
+    pub fn new1(stream: &MediaStream, options: &MediaRecorderOptions) -> MediaRecorder {
         Self {
             inner: Any::global("MediaRecorder")
                 .new(&[stream.into(), options.into()])

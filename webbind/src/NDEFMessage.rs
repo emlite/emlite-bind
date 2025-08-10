@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
 impl NDEFMessage {
     /// The `new NDEFMessage(..)` constructor, creating a new NDEFMessage instance
-    pub fn new(message_init: &Any) -> NDEFMessage {
+    pub fn new(message_init: &NDEFMessageInit) -> NDEFMessage {
         Self {
             inner: Any::global("NDEFMessage")
                 .new(&[message_init.into()])

@@ -134,7 +134,7 @@ jsbind::utils::impl_dyn_cast!(NavigateEvent);
 
 impl NavigateEvent {
     /// The `new NavigateEvent(..)` constructor, creating a new NavigateEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> NavigateEvent {
+    pub fn new(type_: &JsString, event_init_dict: &NavigateEventInit) -> NavigateEvent {
         Self {
             inner: Any::global("NavigateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

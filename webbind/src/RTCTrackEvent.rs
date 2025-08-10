@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCTrackEvent);
 
 impl RTCTrackEvent {
     /// The `new RTCTrackEvent(..)` constructor, creating a new RTCTrackEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &Any) -> RTCTrackEvent {
+    pub fn new(type_: &JsString, event_init_dict: &RTCTrackEventInit) -> RTCTrackEvent {
         Self {
             inner: Any::global("RTCTrackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

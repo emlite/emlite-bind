@@ -128,22 +128,22 @@ impl PaymentDetailsModifier {
     }
 }
 impl PaymentDetailsModifier {
-    pub fn total(&self) -> Any {
-        self.inner.get("total").as_::<Any>()
+    pub fn total(&self) -> PaymentItem {
+        self.inner.get("total").as_::<PaymentItem>()
     }
 
-    pub fn set_total(&mut self, value: &Any) {
+    pub fn set_total(&mut self, value: &PaymentItem) {
         self.inner.set("total", value);
     }
 }
 impl PaymentDetailsModifier {
-    pub fn additional_display_items(&self) -> TypedArray<Any> {
+    pub fn additional_display_items(&self) -> TypedArray<PaymentItem> {
         self.inner
             .get("additionalDisplayItems")
-            .as_::<TypedArray<Any>>()
+            .as_::<TypedArray<PaymentItem>>()
     }
 
-    pub fn set_additional_display_items(&mut self, value: &TypedArray<Any>) {
+    pub fn set_additional_display_items(&mut self, value: &TypedArray<PaymentItem>) {
         self.inner.set("additionalDisplayItems", value);
     }
 }
@@ -225,11 +225,11 @@ impl PaymentShippingOption {
     }
 }
 impl PaymentShippingOption {
-    pub fn amount(&self) -> Any {
-        self.inner.get("amount").as_::<Any>()
+    pub fn amount(&self) -> PaymentCurrencyAmount {
+        self.inner.get("amount").as_::<PaymentCurrencyAmount>()
     }
 
-    pub fn set_amount(&mut self, value: &Any) {
+    pub fn set_amount(&mut self, value: &PaymentCurrencyAmount) {
         self.inner.set("amount", value);
     }
 }
@@ -302,11 +302,11 @@ impl PaymentRequestDetailsUpdate {
     }
 }
 impl PaymentRequestDetailsUpdate {
-    pub fn total(&self) -> Any {
-        self.inner.get("total").as_::<Any>()
+    pub fn total(&self) -> PaymentCurrencyAmount {
+        self.inner.get("total").as_::<PaymentCurrencyAmount>()
     }
 
-    pub fn set_total(&mut self, value: &Any) {
+    pub fn set_total(&mut self, value: &PaymentCurrencyAmount) {
         self.inner.set("total", value);
     }
 }
@@ -342,11 +342,13 @@ impl PaymentRequestDetailsUpdate {
     }
 }
 impl PaymentRequestDetailsUpdate {
-    pub fn shipping_address_errors(&self) -> Any {
-        self.inner.get("shippingAddressErrors").as_::<Any>()
+    pub fn shipping_address_errors(&self) -> AddressErrors {
+        self.inner
+            .get("shippingAddressErrors")
+            .as_::<AddressErrors>()
     }
 
-    pub fn set_shipping_address_errors(&mut self, value: &Any) {
+    pub fn set_shipping_address_errors(&mut self, value: &AddressErrors) {
         self.inner.set("shippingAddressErrors", value);
     }
 }
@@ -669,7 +671,10 @@ impl PaymentRequestEvent {
     }
 
     /// The `new PaymentRequestEvent(..)` constructor, creating a new PaymentRequestEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PaymentRequestEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &PaymentRequestEventInit,
+    ) -> PaymentRequestEvent {
         Self {
             inner: Any::global("PaymentRequestEvent")
                 .new(&[type_.into(), event_init_dict.into()])

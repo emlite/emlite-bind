@@ -79,7 +79,7 @@ impl Subscriber {
 impl Subscriber {
     /// The addTeardown method.
     /// [`Subscriber.addTeardown`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/addTeardown)
-    pub fn add_teardown(&self, teardown: &Any) -> Undefined {
+    pub fn add_teardown(&self, teardown: &Function) -> Undefined {
         self.inner
             .call("addTeardown", &[teardown.into()])
             .as_::<Undefined>()

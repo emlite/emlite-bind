@@ -66,7 +66,7 @@ impl PageSwapEvent {
     }
 
     /// The `new PageSwapEvent(..)` constructor, creating a new PageSwapEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PageSwapEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &PageSwapEventInit) -> PageSwapEvent {
         Self {
             inner: Any::global("PageSwapEvent")
                 .new(&[type_.into(), event_init_dict.into()])

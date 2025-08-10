@@ -66,7 +66,10 @@ impl FontFaceSetLoadEvent {
     }
 
     /// The `new FontFaceSetLoadEvent(..)` constructor, creating a new FontFaceSetLoadEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> FontFaceSetLoadEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &FontFaceSetLoadEventInit,
+    ) -> FontFaceSetLoadEvent {
         Self {
             inner: Any::global("FontFaceSetLoadEvent")
                 .new(&[type_.into(), event_init_dict.into()])

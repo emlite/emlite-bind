@@ -64,7 +64,7 @@ impl ProximitySensor {
     }
 
     /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
-    pub fn new1(sensor_options: &Any) -> ProximitySensor {
+    pub fn new1(sensor_options: &SensorOptions) -> ProximitySensor {
         Self {
             inner: Any::global("ProximitySensor")
                 .new(&[sensor_options.into()])

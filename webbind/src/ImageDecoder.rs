@@ -193,7 +193,7 @@ jsbind::utils::impl_dyn_cast!(ImageDecoder);
 
 impl ImageDecoder {
     /// The `new ImageDecoder(..)` constructor, creating a new ImageDecoder instance
-    pub fn new(init: &Any) -> ImageDecoder {
+    pub fn new(init: &ImageDecoderInit) -> ImageDecoder {
         Self {
             inner: Any::global("ImageDecoder").new(&[init.into()]).as_::<Any>(),
         }

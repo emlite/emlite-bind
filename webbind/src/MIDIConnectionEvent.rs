@@ -66,7 +66,10 @@ impl MIDIConnectionEvent {
     }
 
     /// The `new MIDIConnectionEvent(..)` constructor, creating a new MIDIConnectionEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> MIDIConnectionEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &MIDIConnectionEventInit,
+    ) -> MIDIConnectionEvent {
         Self {
             inner: Any::global("MIDIConnectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

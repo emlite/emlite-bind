@@ -64,7 +64,7 @@ impl Request {
     }
 
     /// The `new Request(..)` constructor, creating a new Request instance
-    pub fn new1(input: &Any, init: &Any) -> Request {
+    pub fn new1(input: &Any, init: &RequestInit) -> Request {
         Self {
             inner: Any::global("Request")
                 .new(&[input.into(), init.into()])

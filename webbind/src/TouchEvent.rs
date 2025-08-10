@@ -66,7 +66,7 @@ impl TouchEvent {
     }
 
     /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> TouchEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &TouchEventInit) -> TouchEvent {
         Self {
             inner: Any::global("TouchEvent")
                 .new(&[type_.into(), event_init_dict.into()])

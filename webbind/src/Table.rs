@@ -57,14 +57,14 @@ jsbind::utils::impl_dyn_cast!(Table);
 
 impl Table {
     /// The `new Table(..)` constructor, creating a new Table instance
-    pub fn new0(descriptor: &Any) -> Table {
+    pub fn new0(descriptor: &TableDescriptor) -> Table {
         Self {
             inner: Any::global("Table").new(&[descriptor.into()]).as_::<Any>(),
         }
     }
 
     /// The `new Table(..)` constructor, creating a new Table instance
-    pub fn new1(descriptor: &Any, value: &Any) -> Table {
+    pub fn new1(descriptor: &TableDescriptor, value: &Any) -> Table {
         Self {
             inner: Any::global("Table")
                 .new(&[descriptor.into(), value.into()])

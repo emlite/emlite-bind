@@ -73,11 +73,11 @@ impl GPUDeviceDescriptor {
     }
 }
 impl GPUDeviceDescriptor {
-    pub fn default_queue(&self) -> Any {
-        self.inner.get("defaultQueue").as_::<Any>()
+    pub fn default_queue(&self) -> GPUQueueDescriptor {
+        self.inner.get("defaultQueue").as_::<GPUQueueDescriptor>()
     }
 
-    pub fn set_default_queue(&mut self, value: &Any) {
+    pub fn set_default_queue(&mut self, value: &GPUQueueDescriptor) {
         self.inner.set("defaultQueue", value);
     }
 }

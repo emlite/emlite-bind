@@ -66,7 +66,7 @@ impl DeviceMotionEvent {
     }
 
     /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> DeviceMotionEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &DeviceMotionEventInit) -> DeviceMotionEvent {
         Self {
             inner: Any::global("DeviceMotionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

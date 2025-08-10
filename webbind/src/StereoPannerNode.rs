@@ -66,7 +66,7 @@ impl StereoPannerNode {
     }
 
     /// The `new StereoPannerNode(..)` constructor, creating a new StereoPannerNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> StereoPannerNode {
+    pub fn new1(context: &BaseAudioContext, options: &StereoPannerOptions) -> StereoPannerNode {
         Self {
             inner: Any::global("StereoPannerNode")
                 .new(&[context.into(), options.into()])

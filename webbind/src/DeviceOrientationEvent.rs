@@ -66,7 +66,10 @@ impl DeviceOrientationEvent {
     }
 
     /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> DeviceOrientationEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &DeviceOrientationEventInit,
+    ) -> DeviceOrientationEvent {
         Self {
             inner: Any::global("DeviceOrientationEvent")
                 .new(&[type_.into(), event_init_dict.into()])

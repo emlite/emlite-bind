@@ -179,7 +179,10 @@ impl RTCEncodedVideoFrame {
     }
 
     /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
-    pub fn new1(original_frame: &RTCEncodedVideoFrame, options: &Any) -> RTCEncodedVideoFrame {
+    pub fn new1(
+        original_frame: &RTCEncodedVideoFrame,
+        options: &RTCEncodedVideoFrameOptions,
+    ) -> RTCEncodedVideoFrame {
         Self {
             inner: Any::global("RTCEncodedVideoFrame")
                 .new(&[original_frame.into(), options.into()])

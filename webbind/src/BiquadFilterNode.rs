@@ -66,7 +66,7 @@ impl BiquadFilterNode {
     }
 
     /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
-    pub fn new1(context: &BaseAudioContext, options: &Any) -> BiquadFilterNode {
+    pub fn new1(context: &BaseAudioContext, options: &BiquadFilterOptions) -> BiquadFilterNode {
         Self {
             inner: Any::global("BiquadFilterNode")
                 .new(&[context.into(), options.into()])

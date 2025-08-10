@@ -71,20 +71,24 @@ impl MediaKeySystemConfiguration {
     }
 }
 impl MediaKeySystemConfiguration {
-    pub fn audio_capabilities(&self) -> TypedArray<Any> {
-        self.inner.get("audioCapabilities").as_::<TypedArray<Any>>()
+    pub fn audio_capabilities(&self) -> TypedArray<MediaKeySystemMediaCapability> {
+        self.inner
+            .get("audioCapabilities")
+            .as_::<TypedArray<MediaKeySystemMediaCapability>>()
     }
 
-    pub fn set_audio_capabilities(&mut self, value: &TypedArray<Any>) {
+    pub fn set_audio_capabilities(&mut self, value: &TypedArray<MediaKeySystemMediaCapability>) {
         self.inner.set("audioCapabilities", value);
     }
 }
 impl MediaKeySystemConfiguration {
-    pub fn video_capabilities(&self) -> TypedArray<Any> {
-        self.inner.get("videoCapabilities").as_::<TypedArray<Any>>()
+    pub fn video_capabilities(&self) -> TypedArray<MediaKeySystemMediaCapability> {
+        self.inner
+            .get("videoCapabilities")
+            .as_::<TypedArray<MediaKeySystemMediaCapability>>()
     }
 
-    pub fn set_video_capabilities(&mut self, value: &TypedArray<Any>) {
+    pub fn set_video_capabilities(&mut self, value: &TypedArray<MediaKeySystemMediaCapability>) {
         self.inner.set("videoCapabilities", value);
     }
 }
@@ -274,11 +278,11 @@ impl HandwritingRecognizerQueryResult {
     }
 }
 impl HandwritingRecognizerQueryResult {
-    pub fn hints(&self) -> Any {
-        self.inner.get("hints").as_::<Any>()
+    pub fn hints(&self) -> HandwritingHintsQueryResult {
+        self.inner.get("hints").as_::<HandwritingHintsQueryResult>()
     }
 
-    pub fn set_hints(&mut self, value: &Any) {
+    pub fn set_hints(&mut self, value: &HandwritingHintsQueryResult) {
         self.inner.set("hints", value);
     }
 }
@@ -430,11 +434,16 @@ impl AuctionAdInterestGroup {
     }
 }
 impl AuctionAdInterestGroup {
-    pub fn private_aggregation_config(&self) -> Any {
-        self.inner.get("privateAggregationConfig").as_::<Any>()
+    pub fn private_aggregation_config(&self) -> ProtectedAudiencePrivateAggregationConfig {
+        self.inner
+            .get("privateAggregationConfig")
+            .as_::<ProtectedAudiencePrivateAggregationConfig>()
     }
 
-    pub fn set_private_aggregation_config(&mut self, value: &Any) {
+    pub fn set_private_aggregation_config(
+        &mut self,
+        value: &ProtectedAudiencePrivateAggregationConfig,
+    ) {
         self.inner.set("privateAggregationConfig", value);
     }
 }
@@ -807,24 +816,30 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn auction_report_buyers(&self) -> Record<JsString, Any> {
+    pub fn auction_report_buyers(&self) -> Record<JsString, AuctionReportBuyersConfig> {
         self.inner
             .get("auctionReportBuyers")
-            .as_::<Record<JsString, Any>>()
+            .as_::<Record<JsString, AuctionReportBuyersConfig>>()
     }
 
-    pub fn set_auction_report_buyers(&mut self, value: &Record<JsString, Any>) {
+    pub fn set_auction_report_buyers(
+        &mut self,
+        value: &Record<JsString, AuctionReportBuyersConfig>,
+    ) {
         self.inner.set("auctionReportBuyers", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn auction_report_buyer_debug_mode_config(&self) -> Any {
+    pub fn auction_report_buyer_debug_mode_config(&self) -> AuctionReportBuyerDebugModeConfig {
         self.inner
             .get("auctionReportBuyerDebugModeConfig")
-            .as_::<Any>()
+            .as_::<AuctionReportBuyerDebugModeConfig>()
     }
 
-    pub fn set_auction_report_buyer_debug_mode_config(&mut self, value: &Any) {
+    pub fn set_auction_report_buyer_debug_mode_config(
+        &mut self,
+        value: &AuctionReportBuyerDebugModeConfig,
+    ) {
         self.inner.set("auctionReportBuyerDebugModeConfig", value);
     }
 }
@@ -840,11 +855,16 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn private_aggregation_config(&self) -> Any {
-        self.inner.get("privateAggregationConfig").as_::<Any>()
+    pub fn private_aggregation_config(&self) -> ProtectedAudiencePrivateAggregationConfig {
+        self.inner
+            .get("privateAggregationConfig")
+            .as_::<ProtectedAudiencePrivateAggregationConfig>()
     }
 
-    pub fn set_private_aggregation_config(&mut self, value: &Any) {
+    pub fn set_private_aggregation_config(
+        &mut self,
+        value: &ProtectedAudiencePrivateAggregationConfig,
+    ) {
         self.inner.set("privateAggregationConfig", value);
     }
 }
@@ -892,22 +912,32 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn seller_real_time_reporting_config(&self) -> Any {
-        self.inner.get("sellerRealTimeReportingConfig").as_::<Any>()
+    pub fn seller_real_time_reporting_config(&self) -> AuctionRealTimeReportingConfig {
+        self.inner
+            .get("sellerRealTimeReportingConfig")
+            .as_::<AuctionRealTimeReportingConfig>()
     }
 
-    pub fn set_seller_real_time_reporting_config(&mut self, value: &Any) {
+    pub fn set_seller_real_time_reporting_config(
+        &mut self,
+        value: &AuctionRealTimeReportingConfig,
+    ) {
         self.inner.set("sellerRealTimeReportingConfig", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_real_time_reporting_config(&self) -> Record<JsString, Any> {
+    pub fn per_buyer_real_time_reporting_config(
+        &self,
+    ) -> Record<JsString, AuctionRealTimeReportingConfig> {
         self.inner
             .get("perBuyerRealTimeReportingConfig")
-            .as_::<Record<JsString, Any>>()
+            .as_::<Record<JsString, AuctionRealTimeReportingConfig>>()
     }
 
-    pub fn set_per_buyer_real_time_reporting_config(&mut self, value: &Record<JsString, Any>) {
+    pub fn set_per_buyer_real_time_reporting_config(
+        &mut self,
+        value: &Record<JsString, AuctionRealTimeReportingConfig>,
+    ) {
         self.inner.set("perBuyerRealTimeReportingConfig", value);
     }
 }
@@ -1029,11 +1059,13 @@ impl AdAuctionData {
     }
 }
 impl AdAuctionData {
-    pub fn requests(&self) -> TypedArray<Any> {
-        self.inner.get("requests").as_::<TypedArray<Any>>()
+    pub fn requests(&self) -> TypedArray<AdAuctionPerSellerData> {
+        self.inner
+            .get("requests")
+            .as_::<TypedArray<AdAuctionPerSellerData>>()
     }
 
-    pub fn set_requests(&mut self, value: &TypedArray<Any>) {
+    pub fn set_requests(&mut self, value: &TypedArray<AdAuctionPerSellerData>) {
         self.inner.set("requests", value);
     }
 }
@@ -1106,11 +1138,13 @@ impl AdAuctionDataConfig {
     }
 }
 impl AdAuctionDataConfig {
-    pub fn sellers(&self) -> TypedArray<Any> {
-        self.inner.get("sellers").as_::<TypedArray<Any>>()
+    pub fn sellers(&self) -> TypedArray<AdAuctionOneSeller> {
+        self.inner
+            .get("sellers")
+            .as_::<TypedArray<AdAuctionOneSeller>>()
     }
 
-    pub fn set_sellers(&mut self, value: &TypedArray<Any>) {
+    pub fn set_sellers(&mut self, value: &TypedArray<AdAuctionOneSeller>) {
         self.inner.set("sellers", value);
     }
 }
@@ -1124,13 +1158,13 @@ impl AdAuctionDataConfig {
     }
 }
 impl AdAuctionDataConfig {
-    pub fn per_buyer_config(&self) -> Record<JsString, Any> {
+    pub fn per_buyer_config(&self) -> Record<JsString, AdAuctionDataBuyerConfig> {
         self.inner
             .get("perBuyerConfig")
-            .as_::<Record<JsString, Any>>()
+            .as_::<Record<JsString, AdAuctionDataBuyerConfig>>()
     }
 
-    pub fn set_per_buyer_config(&mut self, value: &Record<JsString, Any>) {
+    pub fn set_per_buyer_config(&mut self, value: &Record<JsString, AdAuctionDataBuyerConfig>) {
         self.inner.set("perBuyerConfig", value);
     }
 }

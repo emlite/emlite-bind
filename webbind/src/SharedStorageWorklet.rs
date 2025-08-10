@@ -146,11 +146,16 @@ impl SharedStorageRunOperationMethodOptions {
     }
 }
 impl SharedStorageRunOperationMethodOptions {
-    pub fn private_aggregation_config(&self) -> Any {
-        self.inner.get("privateAggregationConfig").as_::<Any>()
+    pub fn private_aggregation_config(&self) -> SharedStoragePrivateAggregationConfig {
+        self.inner
+            .get("privateAggregationConfig")
+            .as_::<SharedStoragePrivateAggregationConfig>()
     }
 
-    pub fn set_private_aggregation_config(&mut self, value: &Any) {
+    pub fn set_private_aggregation_config(
+        &mut self,
+        value: &SharedStoragePrivateAggregationConfig,
+    ) {
         self.inner.set("privateAggregationConfig", value);
     }
 }

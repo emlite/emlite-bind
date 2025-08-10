@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(EncodedVideoChunk);
 
 impl EncodedVideoChunk {
     /// The `new EncodedVideoChunk(..)` constructor, creating a new EncodedVideoChunk instance
-    pub fn new(init: &Any) -> EncodedVideoChunk {
+    pub fn new(init: &EncodedVideoChunkInit) -> EncodedVideoChunk {
         Self {
             inner: Any::global("EncodedVideoChunk")
                 .new(&[init.into()])

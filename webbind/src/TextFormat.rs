@@ -64,7 +64,7 @@ impl TextFormat {
     }
 
     /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
-    pub fn new1(options: &Any) -> TextFormat {
+    pub fn new1(options: &TextFormatInit) -> TextFormat {
         Self {
             inner: Any::global("TextFormat")
                 .new(&[options.into()])

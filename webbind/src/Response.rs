@@ -71,7 +71,7 @@ impl Response {
     }
 
     /// The `new Response(..)` constructor, creating a new Response instance
-    pub fn new2(body: &Any, init: &Any) -> Response {
+    pub fn new2(body: &Any, init: &ResponseInit) -> Response {
         Self {
             inner: Any::global("Response")
                 .new(&[body.into(), init.into()])

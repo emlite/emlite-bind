@@ -66,7 +66,7 @@ impl PageRevealEvent {
     }
 
     /// The `new PageRevealEvent(..)` constructor, creating a new PageRevealEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PageRevealEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &PageRevealEventInit) -> PageRevealEvent {
         Self {
             inner: Any::global("PageRevealEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -66,7 +66,7 @@ impl TextFormatUpdateEvent {
     }
 
     /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
-    pub fn new1(type_: &JsString, options: &Any) -> TextFormatUpdateEvent {
+    pub fn new1(type_: &JsString, options: &TextFormatUpdateEventInit) -> TextFormatUpdateEvent {
         Self {
             inner: Any::global("TextFormatUpdateEvent")
                 .new(&[type_.into(), options.into()])

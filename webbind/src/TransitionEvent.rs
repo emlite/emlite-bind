@@ -66,7 +66,10 @@ impl TransitionEvent {
     }
 
     /// The `new TransitionEvent(..)` constructor, creating a new TransitionEvent instance
-    pub fn new1(type_: &JsString, transition_event_init_dict: &Any) -> TransitionEvent {
+    pub fn new1(
+        type_: &JsString,
+        transition_event_init_dict: &TransitionEventInit,
+    ) -> TransitionEvent {
         Self {
             inner: Any::global("TransitionEvent")
                 .new(&[type_.into(), transition_event_init_dict.into()])

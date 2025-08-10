@@ -73,7 +73,7 @@ impl TextDecoderStream {
     }
 
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new2(label: &JsString, options: &Any) -> TextDecoderStream {
+    pub fn new2(label: &JsString, options: &TextDecoderOptions) -> TextDecoderStream {
         Self {
             inner: Any::global("TextDecoderStream")
                 .new(&[label.into(), options.into()])

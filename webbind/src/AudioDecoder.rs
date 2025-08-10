@@ -211,7 +211,7 @@ jsbind::utils::impl_dyn_cast!(AudioDecoder);
 
 impl AudioDecoder {
     /// The `new AudioDecoder(..)` constructor, creating a new AudioDecoder instance
-    pub fn new(init: &Any) -> AudioDecoder {
+    pub fn new(init: &AudioDecoderInit) -> AudioDecoder {
         Self {
             inner: Any::global("AudioDecoder")
                 .new(&[init.into()])

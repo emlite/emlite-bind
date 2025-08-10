@@ -66,7 +66,10 @@ impl PaymentMethodChangeEvent {
     }
 
     /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PaymentMethodChangeEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &PaymentMethodChangeEventInit,
+    ) -> PaymentMethodChangeEvent {
         Self {
             inner: Any::global("PaymentMethodChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

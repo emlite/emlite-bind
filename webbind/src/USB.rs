@@ -51,20 +51,24 @@ impl From<&USBDeviceRequestOptions> for Any {
 }
 
 impl USBDeviceRequestOptions {
-    pub fn filters(&self) -> TypedArray<Any> {
-        self.inner.get("filters").as_::<TypedArray<Any>>()
+    pub fn filters(&self) -> TypedArray<USBDeviceFilter> {
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<USBDeviceFilter>>()
     }
 
-    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<USBDeviceFilter>) {
         self.inner.set("filters", value);
     }
 }
 impl USBDeviceRequestOptions {
-    pub fn exclusion_filters(&self) -> TypedArray<Any> {
-        self.inner.get("exclusionFilters").as_::<TypedArray<Any>>()
+    pub fn exclusion_filters(&self) -> TypedArray<USBDeviceFilter> {
+        self.inner
+            .get("exclusionFilters")
+            .as_::<TypedArray<USBDeviceFilter>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: &TypedArray<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &TypedArray<USBDeviceFilter>) {
         self.inner.set("exclusionFilters", value);
     }
 }

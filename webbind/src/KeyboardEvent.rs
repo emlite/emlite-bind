@@ -66,7 +66,7 @@ impl KeyboardEvent {
     }
 
     /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &Any) -> KeyboardEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &KeyboardEventInit) -> KeyboardEvent {
         Self {
             inner: Any::global("KeyboardEvent")
                 .new(&[type_.into(), event_init_dict.into()])

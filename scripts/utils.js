@@ -82,7 +82,6 @@ export function rust(idlType) {
   };
 
   if (missingDictFallback.has(n) || builtinNominals.has(n)) return "Any";
-  if (n.includes("EventInit")) return "Any";
 
   if (jsbindMap[n]) return jsbindMap[n];
 
