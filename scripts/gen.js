@@ -1,4 +1,4 @@
-import { parseSpecs, processInterfaces } from "./parsers/spec-parser.js";
+import { parseSpecs, processInterfaces, processNamespaces } from "./parsers/spec-parser.js";
 import { DependencyResolver } from "./parsers/dependency-resolver.js";
 import { generateEnums } from "./generators/enum-generator.js";
 import { generateNamespace } from "./generators/namespace-generator.js";
@@ -23,12 +23,15 @@ export function generate(specAst) {
   // Process interfaces (merge partials, includes, etc.)
   const processedInterfaces = processInterfaces(interfaces, mixins, includeRel);
 
+  // Process namespaces (merge partials)
+  const processedNamespaces = processNamespaces(namespaces);
+
   // Create dependency resolver to systematically handle type dependencies
   // This replaces the "not sure how to deal with these!" comments
   const resolver = new DependencyResolver(processedInterfaces, dicts, enums);
   resolver.prepare();
 
-  console.log(`Parsed ${dicts.size} dictionaries, ${processedInterfaces.size} interfaces, ${namespaces.length} namespaces`);
+  console.log(`Parsed ${dicts.size} dictionaries, ${processedInterfaces.size} interfaces, ${processedNamespaces.size} namespaces`);
 
   // Generate enums first (they're referenced by other types)
   console.log("Generating enums...");
@@ -74,9 +77,9 @@ export function generate(specAst) {
   // Generate namespaces
   console.log("Generating namespaces...");
   let namespaceCount = 0;
-  for (const ns of namespaces) {
-    const dependencies = resolver.resolveNamespaceDependencies(ns);
-    generateNamespace(ns, dependencies);
+  for (const [nsName, nsRec] of processedNamespaces) {
+    const dependencies = resolver.resolveNamespaceDependencies(nsRec);
+    generateNamespace(nsRec, dependencies);
     namespaceCount++;
   }
   console.log(`Generated ${namespaceCount} namespaces`);

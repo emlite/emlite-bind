@@ -10,7 +10,7 @@ export function parseSpecs(specAst) {
   const mixins = new Map();
   const includeRel = [];
   const dicts = new Map();
-  const namespaces = [];
+  const namespaces = new Map();
 
   for (const ast of Object.values(specAst)) {
     for (const def of ast) {
@@ -37,9 +37,15 @@ export function parseSpecs(specAst) {
         case "enum":
           enums.set(def.name, def);
           break;
-        case "namespace":
-          namespaces.push(def);
+        case "namespace": {
+          const rec = namespaces.get(def.name) || {
+            partials: [],
+          };
+          if (def.partial) rec.partials.push(def);
+          else rec.base = def;
+          namespaces.set(def.name, rec);
           break;
+        }
         case "callback":
         case "callback interface":
           callbacks.add(def.name);
@@ -101,4 +107,29 @@ export function processInterfaces(interfaces, mixins, includeRel) {
   }
 
   return interfaces;
+}
+
+/**
+ * Process namespaces by merging partial namespace definitions
+ * @param {Map} namespaces - Map of namespace names to namespace records
+ * @returns {Map} Processed namespaces with merged members
+ */
+export function processNamespaces(namespaces) {
+  for (const [name, rec] of namespaces) {
+    const mem = new Map();
+    const addM = (m) => mem.set(`${m.type}:${m.name}`, m);
+
+    if (rec.base) {
+      rec.base.members.forEach(addM);
+    }
+    rec.partials.forEach((p) => {
+      p.members.forEach(addM);
+    });
+
+    rec.members = [...mem.values()];
+    rec.name = name;
+    namespaces.set(name, rec);
+  }
+
+  return namespaces;
 }
