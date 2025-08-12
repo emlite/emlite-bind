@@ -246,14 +246,14 @@ impl Number {
         }
 
         let bigint_ctor = emlite::Val::global("BigInt");
-        let result = bigint_ctor.call("BigInt", &[self.inner.clone()]);
+        let result = bigint_ctor.invoke(&[self.inner.clone()]);
         Ok(BigInt::from_val(&result))
     }
 
     /// Creates Number from BigInt (may lose precision)
     pub fn from_bigint(bigint: &BigInt) -> Self {
         Self {
-            inner: emlite::Val::global("Number").call("Number", &[bigint.clone().into()]),
+            inner: emlite::Val::global("Number").invoke(&[bigint.clone().into()]),
         }
     }
 
@@ -281,7 +281,7 @@ impl Number {
     // Static utility methods
     /// Parses Number from string with error checking
     pub fn parse(s: &JsString) -> Result<Self, JsError> {
-        let result = emlite::Val::global("Number").call("Number", &[s.clone().into()]);
+        let result = emlite::Val::global("Number").invoke(&[s.clone().into()]);
         let num = Self::from_val(&result);
         if num.is_nan() {
             Err(SyntaxError::new("Failed to parse number from string").into())
