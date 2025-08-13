@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaStreamAudioDestinationNode class.
 /// [`MediaStreamAudioDestinationNode`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaStreamAudioDestinationNode {
 
 impl FromVal for MediaStreamAudioDestinationNode {
     fn from_val(v: &Any) -> Self {
-        MediaStreamAudioDestinationNode {
-            inner: AudioNode::from_val(v),
-        }
+        MediaStreamAudioDestinationNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaStreamAudioDestinationNode {
 
 impl AsMut<Any> for MediaStreamAudioDestinationNode {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaStreamAudioDestinationNode> for Any {
@@ -63,27 +64,23 @@ impl From<&MediaStreamAudioDestinationNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaStreamAudioDestinationNode);
 
+
+
 impl MediaStreamAudioDestinationNode {
     /// The `new MediaStreamAudioDestinationNode(..)` constructor, creating a new MediaStreamAudioDestinationNode instance
     pub fn new0(context: &AudioContext) -> MediaStreamAudioDestinationNode {
         Self {
-            inner: Any::global("MediaStreamAudioDestinationNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
+            inner: Any::global("MediaStreamAudioDestinationNode").new(&[context.into()]).as_::<AudioNode>(),
         }
     }
 
     /// The `new MediaStreamAudioDestinationNode(..)` constructor, creating a new MediaStreamAudioDestinationNode instance
-    pub fn new1(
-        context: &AudioContext,
-        options: &AudioNodeOptions,
-    ) -> MediaStreamAudioDestinationNode {
+    pub fn new1(context: &AudioContext, options: &AudioNodeOptions) -> MediaStreamAudioDestinationNode {
         Self {
-            inner: Any::global("MediaStreamAudioDestinationNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: Any::global("MediaStreamAudioDestinationNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }
 impl MediaStreamAudioDestinationNode {
     /// Getter of the `stream` attribute.
@@ -91,4 +88,5 @@ impl MediaStreamAudioDestinationNode {
     pub fn stream(&self) -> MediaStream {
         self.inner.get("stream").as_::<MediaStream>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRCPUDepthInformation class.
 /// [`XRCPUDepthInformation`](https://developer.mozilla.org/en-US/docs/Web/API/XRCPUDepthInformation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRCPUDepthInformation {
 
 impl FromVal for XRCPUDepthInformation {
     fn from_val(v: &Any) -> Self {
-        XRCPUDepthInformation {
-            inner: XRDepthInformation::from_val(v),
-        }
+        XRCPUDepthInformation { inner: XRDepthInformation::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRCPUDepthInformation {
 
 impl AsMut<Any> for XRCPUDepthInformation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRCPUDepthInformation> for Any {
@@ -63,19 +64,19 @@ impl From<&XRCPUDepthInformation> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRCPUDepthInformation);
 
+
 impl XRCPUDepthInformation {
     /// Getter of the `data` attribute.
     /// [`XRCPUDepthInformation.data`](https://developer.mozilla.org/en-US/docs/Web/API/XRCPUDepthInformation/data)
     pub fn data(&self) -> ArrayBuffer {
         self.inner.get("data").as_::<ArrayBuffer>()
     }
+
 }
 impl XRCPUDepthInformation {
     /// The getDepthInMeters method.
     /// [`XRCPUDepthInformation.getDepthInMeters`](https://developer.mozilla.org/en-US/docs/Web/API/XRCPUDepthInformation/getDepthInMeters)
     pub fn get_depth_in_meters(&self, x: f32, y: f32) -> f32 {
-        self.inner
-            .call("getDepthInMeters", &[x.into(), y.into()])
-            .as_::<f32>()
+        self.inner.call("getDepthInMeters", &[x.into(), y.into(), ]).as_::<f32>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpSynchronizationSource dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCRtpSynchronizationSource {
 
 impl AsMut<Any> for RTCRtpSynchronizationSource {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpSynchronizationSource> for Any {
@@ -57,3 +60,4 @@ impl From<&RTCRtpSynchronizationSource> for Any {
         s.inner.clone()
     }
 }
+

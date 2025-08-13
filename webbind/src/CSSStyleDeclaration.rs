@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSStyleDeclaration class.
 /// [`CSSStyleDeclaration`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSStyleDeclaration {
 
 impl FromVal for CSSStyleDeclaration {
     fn from_val(v: &Any) -> Self {
-        CSSStyleDeclaration {
-            inner: Any::from_val(v),
-        }
+        CSSStyleDeclaration { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSStyleDeclaration {
 
 impl AsMut<Any> for CSSStyleDeclaration {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSStyleDeclaration> for Any {
@@ -62,6 +63,7 @@ impl From<&CSSStyleDeclaration> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSStyleDeclaration);
+
 
 impl CSSStyleDeclaration {
     /// Getter of the `cssText` attribute.
@@ -82,63 +84,46 @@ impl CSSStyleDeclaration {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl CSSStyleDeclaration {
     /// The item method.
     /// [`CSSStyleDeclaration.item`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/item)
     pub fn item(&self, index: u32) -> JsString {
-        self.inner.call("item", &[index.into()]).as_::<JsString>()
+        self.inner.call("item", &[index.into(), ]).as_::<JsString>()
     }
 }
 impl CSSStyleDeclaration {
     /// The getPropertyValue method.
     /// [`CSSStyleDeclaration.getPropertyValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue)
     pub fn get_property_value(&self, property: &JsString) -> JsString {
-        self.inner
-            .call("getPropertyValue", &[property.into()])
-            .as_::<JsString>()
+        self.inner.call("getPropertyValue", &[property.into(), ]).as_::<JsString>()
     }
 }
 impl CSSStyleDeclaration {
     /// The getPropertyPriority method.
     /// [`CSSStyleDeclaration.getPropertyPriority`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyPriority)
     pub fn get_property_priority(&self, property: &JsString) -> JsString {
-        self.inner
-            .call("getPropertyPriority", &[property.into()])
-            .as_::<JsString>()
+        self.inner.call("getPropertyPriority", &[property.into(), ]).as_::<JsString>()
     }
 }
 impl CSSStyleDeclaration {
     /// The setProperty method.
     /// [`CSSStyleDeclaration.setProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
     pub fn set_property0(&self, property: &JsString, value: &JsString) -> Undefined {
-        self.inner
-            .call("setProperty", &[property.into(), value.into()])
-            .as_::<Undefined>()
+        self.inner.call("setProperty", &[property.into(), value.into(), ]).as_::<Undefined>()
     }
     /// The setProperty method.
     /// [`CSSStyleDeclaration.setProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
-    pub fn set_property1(
-        &self,
-        property: &JsString,
-        value: &JsString,
-        priority: &JsString,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "setProperty",
-                &[property.into(), value.into(), priority.into()],
-            )
-            .as_::<Undefined>()
+    pub fn set_property1(&self, property: &JsString, value: &JsString, priority: &JsString) -> Undefined {
+        self.inner.call("setProperty", &[property.into(), value.into(), priority.into(), ]).as_::<Undefined>()
     }
 }
 impl CSSStyleDeclaration {
     /// The removeProperty method.
     /// [`CSSStyleDeclaration.removeProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/removeProperty)
     pub fn remove_property(&self, property: &JsString) -> JsString {
-        self.inner
-            .call("removeProperty", &[property.into()])
-            .as_::<JsString>()
+        self.inner.call("removeProperty", &[property.into(), ]).as_::<JsString>()
     }
 }
 impl CSSStyleDeclaration {
@@ -147,4 +132,5 @@ impl CSSStyleDeclaration {
     pub fn parent_rule(&self) -> CSSRule {
         self.inner.get("parentRule").as_::<CSSRule>()
     }
+
 }

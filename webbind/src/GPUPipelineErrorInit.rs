@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUPipelineErrorInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUPipelineErrorInit {
 
 impl AsMut<Any> for GPUPipelineErrorInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUPipelineErrorInit> for Any {

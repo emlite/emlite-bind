@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WorkletGroupEffect class.
 /// [`WorkletGroupEffect`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletGroupEffect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WorkletGroupEffect {
 
 impl FromVal for WorkletGroupEffect {
     fn from_val(v: &Any) -> Self {
-        WorkletGroupEffect {
-            inner: Any::from_val(v),
-        }
+        WorkletGroupEffect { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WorkletGroupEffect {
 
 impl AsMut<Any> for WorkletGroupEffect {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WorkletGroupEffect> for Any {
@@ -63,12 +64,11 @@ impl From<&WorkletGroupEffect> for Any {
 
 jsbind::utils::impl_dyn_cast!(WorkletGroupEffect);
 
+
 impl WorkletGroupEffect {
     /// The getChildren method.
     /// [`WorkletGroupEffect.getChildren`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletGroupEffect/getChildren)
-    pub fn get_children(&self) -> TypedArray<WorkletAnimationEffect> {
-        self.inner
-            .call("getChildren", &[])
-            .as_::<TypedArray<WorkletAnimationEffect>>()
+    pub fn get_children(&self, ) -> TypedArray<WorkletAnimationEffect> {
+        self.inner.call("getChildren", &[]).as_::<TypedArray<WorkletAnimationEffect>>()
     }
 }

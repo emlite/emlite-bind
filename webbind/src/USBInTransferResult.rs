@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBInTransferResult class.
 /// [`USBInTransferResult`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBInTransferResult {
 
 impl FromVal for USBInTransferResult {
     fn from_val(v: &Any) -> Self {
-        USBInTransferResult {
-            inner: Any::from_val(v),
-        }
+        USBInTransferResult { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBInTransferResult {
 
 impl AsMut<Any> for USBInTransferResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBInTransferResult> for Any {
@@ -63,24 +64,23 @@ impl From<&USBInTransferResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBInTransferResult);
 
+
+
 impl USBInTransferResult {
     /// The `new USBInTransferResult(..)` constructor, creating a new USBInTransferResult instance
     pub fn new0(status: &USBTransferStatus) -> USBInTransferResult {
         Self {
-            inner: Any::global("USBInTransferResult")
-                .new(&[status.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBInTransferResult").new(&[status.into()]).as_::<Any>(),
         }
     }
 
     /// The `new USBInTransferResult(..)` constructor, creating a new USBInTransferResult instance
     pub fn new1(status: &USBTransferStatus, data: &DataView) -> USBInTransferResult {
         Self {
-            inner: Any::global("USBInTransferResult")
-                .new(&[status.into(), data.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBInTransferResult").new(&[status.into(), data.into()]).as_::<Any>(),
         }
     }
+
 }
 impl USBInTransferResult {
     /// Getter of the `data` attribute.
@@ -88,6 +88,7 @@ impl USBInTransferResult {
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
+
 }
 impl USBInTransferResult {
     /// Getter of the `status` attribute.
@@ -95,4 +96,5 @@ impl USBInTransferResult {
     pub fn status(&self) -> USBTransferStatus {
         self.inner.get("status").as_::<USBTransferStatus>()
     }
+
 }

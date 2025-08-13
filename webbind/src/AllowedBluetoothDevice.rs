@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AllowedBluetoothDevice dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for AllowedBluetoothDevice {
 
 impl AsMut<Any> for AllowedBluetoothDevice {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AllowedBluetoothDevice> for Any {
@@ -94,9 +97,7 @@ impl AllowedBluetoothDevice {
 impl AllowedBluetoothDevice {
     /// Getter of the `allowedManufacturerData` attribute.
     pub fn allowed_manufacturer_data(&self) -> TypedArray<u16> {
-        self.inner
-            .get("allowedManufacturerData")
-            .as_::<TypedArray<u16>>()
+        self.inner.get("allowedManufacturerData").as_::<TypedArray<u16>>()
     }
 
     /// Setter of the `allowedManufacturerData` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DataTransferItemList class.
 /// [`DataTransferItemList`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DataTransferItemList {
 
 impl FromVal for DataTransferItemList {
     fn from_val(v: &Any) -> Self {
-        DataTransferItemList {
-            inner: Any::from_val(v),
-        }
+        DataTransferItemList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DataTransferItemList {
 
 impl AsMut<Any> for DataTransferItemList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DataTransferItemList> for Any {
@@ -63,35 +64,33 @@ impl From<&DataTransferItemList> for Any {
 
 jsbind::utils::impl_dyn_cast!(DataTransferItemList);
 
+
 impl DataTransferItemList {
     /// Getter of the `length` attribute.
     /// [`DataTransferItemList.length`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl DataTransferItemList {
     /// The add method.
     /// [`DataTransferItemList.add`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/add)
     pub fn add(&self, data: &File) -> DataTransferItem {
-        self.inner
-            .call("add", &[data.into()])
-            .as_::<DataTransferItem>()
+        self.inner.call("add", &[data.into(), ]).as_::<DataTransferItem>()
     }
 }
 impl DataTransferItemList {
     /// The remove method.
     /// [`DataTransferItemList.remove`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/remove)
     pub fn remove(&self, index: u32) -> Undefined {
-        self.inner
-            .call("remove", &[index.into()])
-            .as_::<Undefined>()
+        self.inner.call("remove", &[index.into(), ]).as_::<Undefined>()
     }
 }
 impl DataTransferItemList {
     /// The clear method.
     /// [`DataTransferItemList.clear`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/clear)
-    pub fn clear(&self) -> Undefined {
+    pub fn clear(&self, ) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }

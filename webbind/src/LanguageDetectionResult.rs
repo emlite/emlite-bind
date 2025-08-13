@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LanguageDetectionResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for LanguageDetectionResult {
 
 impl AsMut<Any> for LanguageDetectionResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LanguageDetectionResult> for Any {

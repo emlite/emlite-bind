@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdleOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IdleOptions {
 
 impl AsMut<Any> for IdleOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdleOptions> for Any {

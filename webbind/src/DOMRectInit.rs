@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DOMRectInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DOMRectInit {
 
 impl AsMut<Any> for DOMRectInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DOMRectInit> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MockCapturePromptResultConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MockCapturePromptResultConfiguration {
 
 impl AsMut<Any> for MockCapturePromptResultConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MockCapturePromptResultConfiguration> for Any {
@@ -61,9 +64,7 @@ impl From<&MockCapturePromptResultConfiguration> for Any {
 impl MockCapturePromptResultConfiguration {
     /// Getter of the `getUserMedia` attribute.
     pub fn get_user_media(&self) -> MockCapturePromptResult {
-        self.inner
-            .get("getUserMedia")
-            .as_::<MockCapturePromptResult>()
+        self.inner.get("getUserMedia").as_::<MockCapturePromptResult>()
     }
 
     /// Setter of the `getUserMedia` attribute.
@@ -74,9 +75,7 @@ impl MockCapturePromptResultConfiguration {
 impl MockCapturePromptResultConfiguration {
     /// Getter of the `getDisplayMedia` attribute.
     pub fn get_display_media(&self) -> MockCapturePromptResult {
-        self.inner
-            .get("getDisplayMedia")
-            .as_::<MockCapturePromptResult>()
+        self.inner.get("getDisplayMedia").as_::<MockCapturePromptResult>()
     }
 
     /// Setter of the `getDisplayMedia` attribute.

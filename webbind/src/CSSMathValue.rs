@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSMathValue class.
 /// [`CSSMathValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSMathValue {
 
 impl FromVal for CSSMathValue {
     fn from_val(v: &Any) -> Self {
-        CSSMathValue {
-            inner: CSSNumericValue::from_val(v),
-        }
+        CSSMathValue { inner: CSSNumericValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSMathValue {
 
 impl AsMut<Any> for CSSMathValue {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSMathValue> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSMathValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathValue);
 
+
 impl CSSMathValue {
     /// Getter of the `operator` attribute.
     /// [`CSSMathValue.operator`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathValue/operator)
     pub fn operator(&self) -> CSSMathOperator {
         self.inner.get("operator").as_::<CSSMathOperator>()
     }
+
 }

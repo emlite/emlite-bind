@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AacEncoderConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for AacEncoderConfig {
 
 impl AsMut<Any> for AacEncoderConfig {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AacEncoderConfig> for Any {

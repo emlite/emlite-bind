@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FragmentDirective class.
 /// [`FragmentDirective`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentDirective)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FragmentDirective {
 
 impl FromVal for FragmentDirective {
     fn from_val(v: &Any) -> Self {
-        FragmentDirective {
-            inner: Any::from_val(v),
-        }
+        FragmentDirective { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FragmentDirective {
 
 impl AsMut<Any> for FragmentDirective {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FragmentDirective> for Any {
@@ -62,3 +63,5 @@ impl From<&FragmentDirective> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(FragmentDirective);
+
+

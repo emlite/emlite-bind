@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ImageResource dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ImageResource {
 
 impl AsMut<Any> for ImageResource {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ImageResource> for Any {

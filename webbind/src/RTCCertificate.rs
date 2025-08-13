@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCCertificate class.
 /// [`RTCCertificate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCCertificate {
 
 impl FromVal for RTCCertificate {
     fn from_val(v: &Any) -> Self {
-        RTCCertificate {
-            inner: Any::from_val(v),
-        }
+        RTCCertificate { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCCertificate {
 
 impl AsMut<Any> for RTCCertificate {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCCertificate> for Any {
@@ -63,19 +64,19 @@ impl From<&RTCCertificate> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCCertificate);
 
+
 impl RTCCertificate {
     /// Getter of the `expires` attribute.
     /// [`RTCCertificate.expires`](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate/expires)
     pub fn expires(&self) -> Any {
         self.inner.get("expires").as_::<Any>()
     }
+
 }
 impl RTCCertificate {
     /// The getFingerprints method.
     /// [`RTCCertificate.getFingerprints`](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate/getFingerprints)
-    pub fn get_fingerprints(&self) -> TypedArray<RTCDtlsFingerprint> {
-        self.inner
-            .call("getFingerprints", &[])
-            .as_::<TypedArray<RTCDtlsFingerprint>>()
+    pub fn get_fingerprints(&self, ) -> TypedArray<RTCDtlsFingerprint> {
+        self.inner.call("getFingerprints", &[]).as_::<TypedArray<RTCDtlsFingerprint>>()
     }
 }

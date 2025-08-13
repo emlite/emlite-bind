@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdentityCredentialError class.
 /// [`IdentityCredentialError`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct IdentityCredentialError {
 
 impl FromVal for IdentityCredentialError {
     fn from_val(v: &Any) -> Self {
-        IdentityCredentialError {
-            inner: DOMException::from_val(v),
-        }
+        IdentityCredentialError { inner: DOMException::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for IdentityCredentialError {
 
 impl AsMut<Any> for IdentityCredentialError {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdentityCredentialError> for Any {
@@ -63,36 +64,30 @@ impl From<&IdentityCredentialError> for Any {
 
 jsbind::utils::impl_dyn_cast!(IdentityCredentialError);
 
+
+
 impl IdentityCredentialError {
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
     pub fn new0() -> IdentityCredentialError {
         Self {
-            inner: Any::global("IdentityCredentialError")
-                .new(&[])
-                .as_::<DOMException>(),
+            inner: Any::global("IdentityCredentialError").new(&[]).as_::<DOMException>(),
         }
     }
 
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
     pub fn new1(message: &JsString) -> IdentityCredentialError {
         Self {
-            inner: Any::global("IdentityCredentialError")
-                .new(&[message.into()])
-                .as_::<DOMException>(),
+            inner: Any::global("IdentityCredentialError").new(&[message.into()]).as_::<DOMException>(),
         }
     }
 
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
-    pub fn new2(
-        message: &JsString,
-        options: &IdentityCredentialErrorInit,
-    ) -> IdentityCredentialError {
+    pub fn new2(message: &JsString, options: &IdentityCredentialErrorInit) -> IdentityCredentialError {
         Self {
-            inner: Any::global("IdentityCredentialError")
-                .new(&[message.into(), options.into()])
-                .as_::<DOMException>(),
+            inner: Any::global("IdentityCredentialError").new(&[message.into(), options.into()]).as_::<DOMException>(),
         }
     }
+
 }
 impl IdentityCredentialError {
     /// Getter of the `error` attribute.
@@ -100,6 +95,7 @@ impl IdentityCredentialError {
     pub fn error(&self) -> JsString {
         self.inner.get("error").as_::<JsString>()
     }
+
 }
 impl IdentityCredentialError {
     /// Getter of the `url` attribute.
@@ -107,4 +103,5 @@ impl IdentityCredentialError {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
+
 }

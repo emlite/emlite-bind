@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PerformancePaintTiming class.
 /// [`PerformancePaintTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PerformancePaintTiming {
 
 impl FromVal for PerformancePaintTiming {
     fn from_val(v: &Any) -> Self {
-        PerformancePaintTiming {
-            inner: PerformanceEntry::from_val(v),
-        }
+        PerformancePaintTiming { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PerformancePaintTiming {
 
 impl AsMut<Any> for PerformancePaintTiming {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PerformancePaintTiming> for Any {
@@ -63,10 +64,11 @@ impl From<&PerformancePaintTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformancePaintTiming);
 
+
 impl PerformancePaintTiming {
     /// The toJSON method.
     /// [`PerformancePaintTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
@@ -76,6 +78,7 @@ impl PerformancePaintTiming {
     pub fn paint_time(&self) -> Any {
         self.inner.get("paintTime").as_::<Any>()
     }
+
 }
 impl PerformancePaintTiming {
     /// Getter of the `presentationTime` attribute.
@@ -83,4 +86,5 @@ impl PerformancePaintTiming {
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
     }
+
 }

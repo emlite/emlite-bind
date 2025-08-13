@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSImageValue class.
 /// [`CSSImageValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSImageValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSImageValue {
 
 impl FromVal for CSSImageValue {
     fn from_val(v: &Any) -> Self {
-        CSSImageValue {
-            inner: CSSStyleValue::from_val(v),
-        }
+        CSSImageValue { inner: CSSStyleValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSImageValue {
 
 impl AsMut<Any> for CSSImageValue {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSImageValue> for Any {
@@ -62,3 +63,5 @@ impl From<&CSSImageValue> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSImageValue);
+
+

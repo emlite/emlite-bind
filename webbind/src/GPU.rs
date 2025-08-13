@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPU class.
 /// [`GPU`](https://developer.mozilla.org/en-US/docs/Web/API/GPU)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPU {
 
 impl FromVal for GPU {
     fn from_val(v: &Any) -> Self {
-        GPU {
-            inner: Any::from_val(v),
-        }
+        GPU { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPU {
 
 impl AsMut<Any> for GPU {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPU> for Any {
@@ -63,37 +64,31 @@ impl From<&GPU> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPU);
 
+
 impl GPU {
     /// The requestAdapter method.
     /// [`GPU.requestAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter)
-    pub fn request_adapter0(&self) -> Promise<GPUAdapter> {
-        self.inner
-            .call("requestAdapter", &[])
-            .as_::<Promise<GPUAdapter>>()
+    pub fn request_adapter0(&self, ) -> Promise<GPUAdapter> {
+        self.inner.call("requestAdapter", &[]).as_::<Promise<GPUAdapter>>()
     }
     /// The requestAdapter method.
     /// [`GPU.requestAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter)
     pub fn request_adapter1(&self, options: &GPURequestAdapterOptions) -> Promise<GPUAdapter> {
-        self.inner
-            .call("requestAdapter", &[options.into()])
-            .as_::<Promise<GPUAdapter>>()
+        self.inner.call("requestAdapter", &[options.into(), ]).as_::<Promise<GPUAdapter>>()
     }
 }
 impl GPU {
     /// The getPreferredCanvasFormat method.
     /// [`GPU.getPreferredCanvasFormat`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/getPreferredCanvasFormat)
-    pub fn get_preferred_canvas_format(&self) -> GPUTextureFormat {
-        self.inner
-            .call("getPreferredCanvasFormat", &[])
-            .as_::<GPUTextureFormat>()
+    pub fn get_preferred_canvas_format(&self, ) -> GPUTextureFormat {
+        self.inner.call("getPreferredCanvasFormat", &[]).as_::<GPUTextureFormat>()
     }
 }
 impl GPU {
     /// Getter of the `wgslLanguageFeatures` attribute.
     /// [`GPU.wgslLanguageFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/wgslLanguageFeatures)
     pub fn wgsl_language_features(&self) -> WGSLLanguageFeatures {
-        self.inner
-            .get("wgslLanguageFeatures")
-            .as_::<WGSLLanguageFeatures>()
+        self.inner.get("wgslLanguageFeatures").as_::<WGSLLanguageFeatures>()
     }
+
 }

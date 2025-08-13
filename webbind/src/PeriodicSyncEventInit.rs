@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PeriodicSyncEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PeriodicSyncEventInit {
 
 impl AsMut<Any> for PeriodicSyncEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PeriodicSyncEventInit> for Any {

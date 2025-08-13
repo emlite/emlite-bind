@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PermissionStatus class.
 /// [`PermissionStatus`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PermissionStatus {
 
 impl FromVal for PermissionStatus {
     fn from_val(v: &Any) -> Self {
-        PermissionStatus {
-            inner: EventTarget::from_val(v),
-        }
+        PermissionStatus { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PermissionStatus {
 
 impl AsMut<Any> for PermissionStatus {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PermissionStatus> for Any {
@@ -63,12 +64,14 @@ impl From<&PermissionStatus> for Any {
 
 jsbind::utils::impl_dyn_cast!(PermissionStatus);
 
+
 impl PermissionStatus {
     /// Getter of the `state` attribute.
     /// [`PermissionStatus.state`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus/state)
     pub fn state(&self) -> PermissionState {
         self.inner.get("state").as_::<PermissionState>()
     }
+
 }
 impl PermissionStatus {
     /// Getter of the `name` attribute.
@@ -76,6 +79,7 @@ impl PermissionStatus {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl PermissionStatus {
     /// Getter of the `onchange` attribute.

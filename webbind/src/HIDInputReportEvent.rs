@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HIDInputReportEvent class.
 /// [`HIDInputReportEvent`](https://developer.mozilla.org/en-US/docs/Web/API/HIDInputReportEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HIDInputReportEvent {
 
 impl FromVal for HIDInputReportEvent {
     fn from_val(v: &Any) -> Self {
-        HIDInputReportEvent {
-            inner: Event::from_val(v),
-        }
+        HIDInputReportEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HIDInputReportEvent {
 
 impl AsMut<Any> for HIDInputReportEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HIDInputReportEvent> for Any {
@@ -63,15 +64,16 @@ impl From<&HIDInputReportEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(HIDInputReportEvent);
 
+
+
 impl HIDInputReportEvent {
     /// The `new HIDInputReportEvent(..)` constructor, creating a new HIDInputReportEvent instance
     pub fn new(type_: &JsString, event_init_dict: &HIDInputReportEventInit) -> HIDInputReportEvent {
         Self {
-            inner: Any::global("HIDInputReportEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("HIDInputReportEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl HIDInputReportEvent {
     /// Getter of the `device` attribute.
@@ -79,6 +81,7 @@ impl HIDInputReportEvent {
     pub fn device(&self) -> HIDDevice {
         self.inner.get("device").as_::<HIDDevice>()
     }
+
 }
 impl HIDInputReportEvent {
     /// Getter of the `reportId` attribute.
@@ -86,6 +89,7 @@ impl HIDInputReportEvent {
     pub fn report_id(&self) -> u8 {
         self.inner.get("reportId").as_::<u8>()
     }
+
 }
 impl HIDInputReportEvent {
     /// Getter of the `data` attribute.
@@ -93,4 +97,5 @@ impl HIDInputReportEvent {
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
+
 }

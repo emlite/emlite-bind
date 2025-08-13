@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGTextElement class.
 /// [`SVGTextElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGTextElement {
 
 impl FromVal for SVGTextElement {
     fn from_val(v: &Any) -> Self {
-        SVGTextElement {
-            inner: SVGTextPositioningElement::from_val(v),
-        }
+        SVGTextElement { inner: SVGTextPositioningElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGTextElement {
 
 impl AsMut<Any> for SVGTextElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGTextElement> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGTextElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGTextElement);
+
+

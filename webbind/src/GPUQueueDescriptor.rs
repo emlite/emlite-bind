@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUQueueDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUQueueDescriptor {
 
 impl AsMut<Any> for GPUQueueDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUQueueDescriptor> for Any {
@@ -57,3 +60,4 @@ impl From<&GPUQueueDescriptor> for Any {
         s.inner.clone()
     }
 }
+

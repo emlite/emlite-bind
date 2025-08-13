@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Clients class.
 /// [`Clients`](https://developer.mozilla.org/en-US/docs/Web/API/Clients)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Clients {
 
 impl FromVal for Clients {
     fn from_val(v: &Any) -> Self {
-        Clients {
-            inner: Any::from_val(v),
-        }
+        Clients { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Clients {
 
 impl AsMut<Any> for Clients {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Clients> for Any {
@@ -63,42 +64,37 @@ impl From<&Clients> for Any {
 
 jsbind::utils::impl_dyn_cast!(Clients);
 
+
 impl Clients {
     /// The get method.
     /// [`Clients.get`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/get)
     pub fn get(&self, id: &JsString) -> Promise<Any> {
-        self.inner.call("get", &[id.into()]).as_::<Promise<Any>>()
+        self.inner.call("get", &[id.into(), ]).as_::<Promise<Any>>()
     }
 }
 impl Clients {
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
-    pub fn match_all0(&self) -> Promise<TypedArray<Client>> {
-        self.inner
-            .call("matchAll", &[])
-            .as_::<Promise<TypedArray<Client>>>()
+    pub fn match_all0(&self, ) -> Promise<TypedArray<Client>> {
+        self.inner.call("matchAll", &[]).as_::<Promise<TypedArray<Client>>>()
     }
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
     pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise<TypedArray<Client>> {
-        self.inner
-            .call("matchAll", &[options.into()])
-            .as_::<Promise<TypedArray<Client>>>()
+        self.inner.call("matchAll", &[options.into(), ]).as_::<Promise<TypedArray<Client>>>()
     }
 }
 impl Clients {
     /// The openWindow method.
     /// [`Clients.openWindow`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/openWindow)
     pub fn open_window(&self, url: &JsString) -> Promise<WindowClient> {
-        self.inner
-            .call("openWindow", &[url.into()])
-            .as_::<Promise<WindowClient>>()
+        self.inner.call("openWindow", &[url.into(), ]).as_::<Promise<WindowClient>>()
     }
 }
 impl Clients {
     /// The claim method.
     /// [`Clients.claim`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/claim)
-    pub fn claim(&self) -> Promise<Undefined> {
+    pub fn claim(&self, ) -> Promise<Undefined> {
         self.inner.call("claim", &[]).as_::<Promise<Undefined>>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGRectElement class.
 /// [`SVGRectElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGRectElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGRectElement {
 
 impl FromVal for SVGRectElement {
     fn from_val(v: &Any) -> Self {
-        SVGRectElement {
-            inner: SVGGeometryElement::from_val(v),
-        }
+        SVGRectElement { inner: SVGGeometryElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGRectElement {
 
 impl AsMut<Any> for SVGRectElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGRectElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGRectElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGRectElement);
 
+
 impl SVGRectElement {
     /// Getter of the `x` attribute.
     /// [`SVGRectElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGRectElement/x)
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRectElement {
     /// Getter of the `y` attribute.
@@ -76,6 +79,7 @@ impl SVGRectElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRectElement {
     /// Getter of the `width` attribute.
@@ -83,6 +87,7 @@ impl SVGRectElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRectElement {
     /// Getter of the `height` attribute.
@@ -90,6 +95,7 @@ impl SVGRectElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRectElement {
     /// Getter of the `rx` attribute.
@@ -97,6 +103,7 @@ impl SVGRectElement {
     pub fn rx(&self) -> SVGAnimatedLength {
         self.inner.get("rx").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRectElement {
     /// Getter of the `ry` attribute.
@@ -104,4 +111,5 @@ impl SVGRectElement {
     pub fn ry(&self) -> SVGAnimatedLength {
         self.inner.get("ry").as_::<SVGAnimatedLength>()
     }
+
 }

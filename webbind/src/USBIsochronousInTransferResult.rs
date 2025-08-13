@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBIsochronousInTransferResult class.
 /// [`USBIsochronousInTransferResult`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBIsochronousInTransferResult {
 
 impl FromVal for USBIsochronousInTransferResult {
     fn from_val(v: &Any) -> Self {
-        USBIsochronousInTransferResult {
-            inner: Any::from_val(v),
-        }
+        USBIsochronousInTransferResult { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBIsochronousInTransferResult {
 
 impl AsMut<Any> for USBIsochronousInTransferResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBIsochronousInTransferResult> for Any {
@@ -63,29 +64,23 @@ impl From<&USBIsochronousInTransferResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferResult);
 
+
+
 impl USBIsochronousInTransferResult {
     /// The `new USBIsochronousInTransferResult(..)` constructor, creating a new USBIsochronousInTransferResult instance
-    pub fn new0(
-        packets: &TypedArray<USBIsochronousInTransferPacket>,
-    ) -> USBIsochronousInTransferResult {
+    pub fn new0(packets: &TypedArray<USBIsochronousInTransferPacket>) -> USBIsochronousInTransferResult {
         Self {
-            inner: Any::global("USBIsochronousInTransferResult")
-                .new(&[packets.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBIsochronousInTransferResult").new(&[packets.into()]).as_::<Any>(),
         }
     }
 
     /// The `new USBIsochronousInTransferResult(..)` constructor, creating a new USBIsochronousInTransferResult instance
-    pub fn new1(
-        packets: &TypedArray<USBIsochronousInTransferPacket>,
-        data: &DataView,
-    ) -> USBIsochronousInTransferResult {
+    pub fn new1(packets: &TypedArray<USBIsochronousInTransferPacket>, data: &DataView) -> USBIsochronousInTransferResult {
         Self {
-            inner: Any::global("USBIsochronousInTransferResult")
-                .new(&[packets.into(), data.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBIsochronousInTransferResult").new(&[packets.into(), data.into()]).as_::<Any>(),
         }
     }
+
 }
 impl USBIsochronousInTransferResult {
     /// Getter of the `data` attribute.
@@ -93,13 +88,13 @@ impl USBIsochronousInTransferResult {
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
+
 }
 impl USBIsochronousInTransferResult {
     /// Getter of the `packets` attribute.
     /// [`USBIsochronousInTransferResult.packets`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferResult/packets)
     pub fn packets(&self) -> TypedArray<USBIsochronousInTransferPacket> {
-        self.inner
-            .get("packets")
-            .as_::<TypedArray<USBIsochronousInTransferPacket>>()
+        self.inner.get("packets").as_::<TypedArray<USBIsochronousInTransferPacket>>()
     }
+
 }

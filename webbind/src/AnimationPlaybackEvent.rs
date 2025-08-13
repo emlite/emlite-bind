@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AnimationPlaybackEvent class.
 /// [`AnimationPlaybackEvent`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationPlaybackEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AnimationPlaybackEvent {
 
 impl FromVal for AnimationPlaybackEvent {
     fn from_val(v: &Any) -> Self {
-        AnimationPlaybackEvent {
-            inner: Event::from_val(v),
-        }
+        AnimationPlaybackEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AnimationPlaybackEvent {
 
 impl AsMut<Any> for AnimationPlaybackEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AnimationPlaybackEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&AnimationPlaybackEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(AnimationPlaybackEvent);
 
+
+
 impl AnimationPlaybackEvent {
     /// The `new AnimationPlaybackEvent(..)` constructor, creating a new AnimationPlaybackEvent instance
     pub fn new0(type_: &JsString) -> AnimationPlaybackEvent {
         Self {
-            inner: Any::global("AnimationPlaybackEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("AnimationPlaybackEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new AnimationPlaybackEvent(..)` constructor, creating a new AnimationPlaybackEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &AnimationPlaybackEventInit,
-    ) -> AnimationPlaybackEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &AnimationPlaybackEventInit) -> AnimationPlaybackEvent {
         Self {
-            inner: Any::global("AnimationPlaybackEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("AnimationPlaybackEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl AnimationPlaybackEvent {
     /// Getter of the `currentTime` attribute.
@@ -91,6 +88,7 @@ impl AnimationPlaybackEvent {
     pub fn current_time(&self) -> Any {
         self.inner.get("currentTime").as_::<Any>()
     }
+
 }
 impl AnimationPlaybackEvent {
     /// Getter of the `timelineTime` attribute.
@@ -98,4 +96,5 @@ impl AnimationPlaybackEvent {
     pub fn timeline_time(&self) -> Any {
         self.inner.get("timelineTime").as_::<Any>()
     }
+
 }

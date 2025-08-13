@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WritableStreamDefaultWriter class.
 /// [`WritableStreamDefaultWriter`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WritableStreamDefaultWriter {
 
 impl FromVal for WritableStreamDefaultWriter {
     fn from_val(v: &Any) -> Self {
-        WritableStreamDefaultWriter {
-            inner: Any::from_val(v),
-        }
+        WritableStreamDefaultWriter { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WritableStreamDefaultWriter {
 
 impl AsMut<Any> for WritableStreamDefaultWriter {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WritableStreamDefaultWriter> for Any {
@@ -63,15 +64,16 @@ impl From<&WritableStreamDefaultWriter> for Any {
 
 jsbind::utils::impl_dyn_cast!(WritableStreamDefaultWriter);
 
+
+
 impl WritableStreamDefaultWriter {
     /// The `new WritableStreamDefaultWriter(..)` constructor, creating a new WritableStreamDefaultWriter instance
     pub fn new(stream: &WritableStream) -> WritableStreamDefaultWriter {
         Self {
-            inner: Any::global("WritableStreamDefaultWriter")
-                .new(&[stream.into()])
-                .as_::<Any>(),
+            inner: Any::global("WritableStreamDefaultWriter").new(&[stream.into()]).as_::<Any>(),
         }
     }
+
 }
 impl WritableStreamDefaultWriter {
     /// Getter of the `closed` attribute.
@@ -79,6 +81,7 @@ impl WritableStreamDefaultWriter {
     pub fn closed(&self) -> Promise<Undefined> {
         self.inner.get("closed").as_::<Promise<Undefined>>()
     }
+
 }
 impl WritableStreamDefaultWriter {
     /// Getter of the `desiredSize` attribute.
@@ -86,6 +89,7 @@ impl WritableStreamDefaultWriter {
     pub fn desired_size(&self) -> f64 {
         self.inner.get("desiredSize").as_::<f64>()
     }
+
 }
 impl WritableStreamDefaultWriter {
     /// Getter of the `ready` attribute.
@@ -93,46 +97,43 @@ impl WritableStreamDefaultWriter {
     pub fn ready(&self) -> Promise<Undefined> {
         self.inner.get("ready").as_::<Promise<Undefined>>()
     }
+
 }
 impl WritableStreamDefaultWriter {
     /// The abort method.
     /// [`WritableStreamDefaultWriter.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/abort)
-    pub fn abort0(&self) -> Promise<Undefined> {
+    pub fn abort0(&self, ) -> Promise<Undefined> {
         self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
     }
     /// The abort method.
     /// [`WritableStreamDefaultWriter.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/abort)
     pub fn abort1(&self, reason: &Any) -> Promise<Undefined> {
-        self.inner
-            .call("abort", &[reason.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("abort", &[reason.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl WritableStreamDefaultWriter {
     /// The close method.
     /// [`WritableStreamDefaultWriter.close`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/close)
-    pub fn close(&self) -> Promise<Undefined> {
+    pub fn close(&self, ) -> Promise<Undefined> {
         self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl WritableStreamDefaultWriter {
     /// The releaseLock method.
     /// [`WritableStreamDefaultWriter.releaseLock`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/releaseLock)
-    pub fn release_lock(&self) -> Undefined {
+    pub fn release_lock(&self, ) -> Undefined {
         self.inner.call("releaseLock", &[]).as_::<Undefined>()
     }
 }
 impl WritableStreamDefaultWriter {
     /// The write method.
     /// [`WritableStreamDefaultWriter.write`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/write)
-    pub fn write0(&self) -> Promise<Undefined> {
+    pub fn write0(&self, ) -> Promise<Undefined> {
         self.inner.call("write", &[]).as_::<Promise<Undefined>>()
     }
     /// The write method.
     /// [`WritableStreamDefaultWriter.write`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/write)
     pub fn write1(&self, chunk: &Any) -> Promise<Undefined> {
-        self.inner
-            .call("write", &[chunk.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("write", &[chunk.into(), ]).as_::<Promise<Undefined>>()
     }
 }

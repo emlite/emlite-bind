@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TextFormat class.
 /// [`TextFormat`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormat)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TextFormat {
 
 impl FromVal for TextFormat {
     fn from_val(v: &Any) -> Self {
-        TextFormat {
-            inner: Any::from_val(v),
-        }
+        TextFormat { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TextFormat {
 
 impl AsMut<Any> for TextFormat {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TextFormat> for Any {
@@ -63,6 +64,8 @@ impl From<&TextFormat> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextFormat);
 
+
+
 impl TextFormat {
     /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
     pub fn new0() -> TextFormat {
@@ -74,11 +77,10 @@ impl TextFormat {
     /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
     pub fn new1(options: &TextFormatInit) -> TextFormat {
         Self {
-            inner: Any::global("TextFormat")
-                .new(&[options.into()])
-                .as_::<Any>(),
+            inner: Any::global("TextFormat").new(&[options.into()]).as_::<Any>(),
         }
     }
+
 }
 impl TextFormat {
     /// Getter of the `rangeStart` attribute.
@@ -86,6 +88,7 @@ impl TextFormat {
     pub fn range_start(&self) -> u32 {
         self.inner.get("rangeStart").as_::<u32>()
     }
+
 }
 impl TextFormat {
     /// Getter of the `rangeEnd` attribute.
@@ -93,6 +96,7 @@ impl TextFormat {
     pub fn range_end(&self) -> u32 {
         self.inner.get("rangeEnd").as_::<u32>()
     }
+
 }
 impl TextFormat {
     /// Getter of the `underlineStyle` attribute.
@@ -100,13 +104,13 @@ impl TextFormat {
     pub fn underline_style(&self) -> UnderlineStyle {
         self.inner.get("underlineStyle").as_::<UnderlineStyle>()
     }
+
 }
 impl TextFormat {
     /// Getter of the `underlineThickness` attribute.
     /// [`TextFormat.underlineThickness`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormat/underlineThickness)
     pub fn underline_thickness(&self) -> UnderlineThickness {
-        self.inner
-            .get("underlineThickness")
-            .as_::<UnderlineThickness>()
+        self.inner.get("underlineThickness").as_::<UnderlineThickness>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NodeIterator class.
 /// [`NodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NodeIterator {
 
 impl FromVal for NodeIterator {
     fn from_val(v: &Any) -> Self {
-        NodeIterator {
-            inner: Any::from_val(v),
-        }
+        NodeIterator { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NodeIterator {
 
 impl AsMut<Any> for NodeIterator {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NodeIterator> for Any {
@@ -63,12 +64,14 @@ impl From<&NodeIterator> for Any {
 
 jsbind::utils::impl_dyn_cast!(NodeIterator);
 
+
 impl NodeIterator {
     /// Getter of the `root` attribute.
     /// [`NodeIterator.root`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator/root)
     pub fn root(&self) -> Node {
         self.inner.get("root").as_::<Node>()
     }
+
 }
 impl NodeIterator {
     /// Getter of the `referenceNode` attribute.
@@ -76,6 +79,7 @@ impl NodeIterator {
     pub fn reference_node(&self) -> Node {
         self.inner.get("referenceNode").as_::<Node>()
     }
+
 }
 impl NodeIterator {
     /// Getter of the `pointerBeforeReferenceNode` attribute.
@@ -83,6 +87,7 @@ impl NodeIterator {
     pub fn pointer_before_reference_node(&self) -> bool {
         self.inner.get("pointerBeforeReferenceNode").as_::<bool>()
     }
+
 }
 impl NodeIterator {
     /// Getter of the `whatToShow` attribute.
@@ -90,6 +95,7 @@ impl NodeIterator {
     pub fn what_to_show(&self) -> u32 {
         self.inner.get("whatToShow").as_::<u32>()
     }
+
 }
 impl NodeIterator {
     /// Getter of the `filter` attribute.
@@ -97,25 +103,26 @@ impl NodeIterator {
     pub fn filter(&self) -> Function {
         self.inner.get("filter").as_::<Function>()
     }
+
 }
 impl NodeIterator {
     /// The nextNode method.
     /// [`NodeIterator.nextNode`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator/nextNode)
-    pub fn next_node(&self) -> Node {
+    pub fn next_node(&self, ) -> Node {
         self.inner.call("nextNode", &[]).as_::<Node>()
     }
 }
 impl NodeIterator {
     /// The previousNode method.
     /// [`NodeIterator.previousNode`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator/previousNode)
-    pub fn previous_node(&self) -> Node {
+    pub fn previous_node(&self, ) -> Node {
         self.inner.call("previousNode", &[]).as_::<Node>()
     }
 }
 impl NodeIterator {
     /// The detach method.
     /// [`NodeIterator.detach`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator/detach)
-    pub fn detach(&self) -> Undefined {
+    pub fn detach(&self, ) -> Undefined {
         self.inner.call("detach", &[]).as_::<Undefined>()
     }
 }

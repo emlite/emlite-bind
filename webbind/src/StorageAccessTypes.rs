@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The StorageAccessTypes dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for StorageAccessTypes {
 
 impl AsMut<Any> for StorageAccessTypes {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<StorageAccessTypes> for Any {

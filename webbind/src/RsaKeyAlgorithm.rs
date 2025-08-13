@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RsaKeyAlgorithm dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RsaKeyAlgorithm {
 
 impl AsMut<Any> for RsaKeyAlgorithm {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RsaKeyAlgorithm> for Any {

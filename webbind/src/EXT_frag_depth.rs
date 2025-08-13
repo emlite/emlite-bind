@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EXT_frag_depth class.
 /// [`EXT_frag_depth`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_frag_depth)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct EXT_frag_depth {
 
 impl FromVal for EXT_frag_depth {
     fn from_val(v: &Any) -> Self {
-        EXT_frag_depth {
-            inner: Any::from_val(v),
-        }
+        EXT_frag_depth { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for EXT_frag_depth {
 
 impl AsMut<Any> for EXT_frag_depth {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EXT_frag_depth> for Any {
@@ -62,3 +63,5 @@ impl From<&EXT_frag_depth> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(EXT_frag_depth);
+
+

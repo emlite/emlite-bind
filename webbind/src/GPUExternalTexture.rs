@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUExternalTexture class.
 /// [`GPUExternalTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUExternalTexture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUExternalTexture {
 
 impl FromVal for GPUExternalTexture {
     fn from_val(v: &Any) -> Self {
-        GPUExternalTexture {
-            inner: Any::from_val(v),
-        }
+        GPUExternalTexture { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUExternalTexture {
 
 impl AsMut<Any> for GPUExternalTexture {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUExternalTexture> for Any {
@@ -62,6 +63,7 @@ impl From<&GPUExternalTexture> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(GPUExternalTexture);
+
 
 impl GPUExternalTexture {
     /// Getter of the `label` attribute.

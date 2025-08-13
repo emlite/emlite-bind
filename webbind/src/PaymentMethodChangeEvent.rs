@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaymentMethodChangeEvent class.
 /// [`PaymentMethodChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PaymentMethodChangeEvent {
 
 impl FromVal for PaymentMethodChangeEvent {
     fn from_val(v: &Any) -> Self {
-        PaymentMethodChangeEvent {
-            inner: PaymentRequestUpdateEvent::from_val(v),
-        }
+        PaymentMethodChangeEvent { inner: PaymentRequestUpdateEvent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PaymentMethodChangeEvent {
 
 impl AsMut<Any> for PaymentMethodChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaymentMethodChangeEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&PaymentMethodChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PaymentMethodChangeEvent);
 
+
+
 impl PaymentMethodChangeEvent {
     /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
     pub fn new0(type_: &JsString) -> PaymentMethodChangeEvent {
         Self {
-            inner: Any::global("PaymentMethodChangeEvent")
-                .new(&[type_.into()])
-                .as_::<PaymentRequestUpdateEvent>(),
+            inner: Any::global("PaymentMethodChangeEvent").new(&[type_.into()]).as_::<PaymentRequestUpdateEvent>(),
         }
     }
 
     /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &PaymentMethodChangeEventInit,
-    ) -> PaymentMethodChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &PaymentMethodChangeEventInit) -> PaymentMethodChangeEvent {
         Self {
-            inner: Any::global("PaymentMethodChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<PaymentRequestUpdateEvent>(),
+            inner: Any::global("PaymentMethodChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<PaymentRequestUpdateEvent>(),
         }
     }
+
 }
 impl PaymentMethodChangeEvent {
     /// Getter of the `methodName` attribute.
@@ -91,6 +88,7 @@ impl PaymentMethodChangeEvent {
     pub fn method_name(&self) -> JsString {
         self.inner.get("methodName").as_::<JsString>()
     }
+
 }
 impl PaymentMethodChangeEvent {
     /// Getter of the `methodDetails` attribute.
@@ -98,4 +96,5 @@ impl PaymentMethodChangeEvent {
     pub fn method_details(&self) -> Object {
         self.inner.get("methodDetails").as_::<Object>()
     }
+
 }

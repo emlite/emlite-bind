@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFEConvolveMatrixElement class.
 /// [`SVGFEConvolveMatrixElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEConvolveMatrixElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFEConvolveMatrixElement {
 
 impl FromVal for SVGFEConvolveMatrixElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEConvolveMatrixElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEConvolveMatrixElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFEConvolveMatrixElement {
 
 impl AsMut<Any> for SVGFEConvolveMatrixElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFEConvolveMatrixElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFEConvolveMatrixElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEConvolveMatrixElement);
 
+
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEConvolveMatrixElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEConvolveMatrixElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `orderX` attribute.
@@ -76,6 +79,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn order_x(&self) -> SVGAnimatedInteger {
         self.inner.get("orderX").as_::<SVGAnimatedInteger>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `orderY` attribute.
@@ -83,15 +87,15 @@ impl SVGFEConvolveMatrixElement {
     pub fn order_y(&self) -> SVGAnimatedInteger {
         self.inner.get("orderY").as_::<SVGAnimatedInteger>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `kernelMatrix` attribute.
     /// [`SVGFEConvolveMatrixElement.kernelMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEConvolveMatrixElement/kernelMatrix)
     pub fn kernel_matrix(&self) -> SVGAnimatedNumberList {
-        self.inner
-            .get("kernelMatrix")
-            .as_::<SVGAnimatedNumberList>()
+        self.inner.get("kernelMatrix").as_::<SVGAnimatedNumberList>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `divisor` attribute.
@@ -99,6 +103,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn divisor(&self) -> SVGAnimatedNumber {
         self.inner.get("divisor").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `bias` attribute.
@@ -106,6 +111,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn bias(&self) -> SVGAnimatedNumber {
         self.inner.get("bias").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `targetX` attribute.
@@ -113,6 +119,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn target_x(&self) -> SVGAnimatedInteger {
         self.inner.get("targetX").as_::<SVGAnimatedInteger>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `targetY` attribute.
@@ -120,6 +127,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn target_y(&self) -> SVGAnimatedInteger {
         self.inner.get("targetY").as_::<SVGAnimatedInteger>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `edgeMode` attribute.
@@ -127,24 +135,23 @@ impl SVGFEConvolveMatrixElement {
     pub fn edge_mode(&self) -> SVGAnimatedEnumeration {
         self.inner.get("edgeMode").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `kernelUnitLengthX` attribute.
     /// [`SVGFEConvolveMatrixElement.kernelUnitLengthX`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEConvolveMatrixElement/kernelUnitLengthX)
     pub fn kernel_unit_length_x(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("kernelUnitLengthX")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("kernelUnitLengthX").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `kernelUnitLengthY` attribute.
     /// [`SVGFEConvolveMatrixElement.kernelUnitLengthY`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEConvolveMatrixElement/kernelUnitLengthY)
     pub fn kernel_unit_length_y(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("kernelUnitLengthY")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("kernelUnitLengthY").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `preserveAlpha` attribute.
@@ -152,6 +159,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn preserve_alpha(&self) -> SVGAnimatedBoolean {
         self.inner.get("preserveAlpha").as_::<SVGAnimatedBoolean>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `x` attribute.
@@ -159,6 +167,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `y` attribute.
@@ -166,6 +175,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `width` attribute.
@@ -173,6 +183,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `height` attribute.
@@ -180,6 +191,7 @@ impl SVGFEConvolveMatrixElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEConvolveMatrixElement {
     /// Getter of the `result` attribute.
@@ -187,4 +199,5 @@ impl SVGFEConvolveMatrixElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

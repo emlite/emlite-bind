@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PointerLockOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PointerLockOptions {
 
 impl AsMut<Any> for PointerLockOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PointerLockOptions> for Any {

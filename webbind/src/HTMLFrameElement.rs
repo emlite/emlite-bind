@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLFrameElement class.
 /// [`HTMLFrameElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLFrameElement {
 
 impl FromVal for HTMLFrameElement {
     fn from_val(v: &Any) -> Self {
-        HTMLFrameElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLFrameElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLFrameElement {
 
 impl AsMut<Any> for HTMLFrameElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLFrameElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLFrameElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLFrameElement);
 
+
+
 impl HTMLFrameElement {
     /// The `new HTMLFrameElement(..)` constructor, creating a new HTMLFrameElement instance
     pub fn new() -> HTMLFrameElement {
         Self {
-            inner: Any::global("HTMLFrameElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLFrameElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLFrameElement {
     /// Getter of the `name` attribute.
@@ -157,6 +159,7 @@ impl HTMLFrameElement {
     pub fn content_document(&self) -> Document {
         self.inner.get("contentDocument").as_::<Document>()
     }
+
 }
 impl HTMLFrameElement {
     /// Getter of the `contentWindow` attribute.
@@ -164,6 +167,7 @@ impl HTMLFrameElement {
     pub fn content_window(&self) -> Any {
         self.inner.get("contentWindow").as_::<Any>()
     }
+
 }
 impl HTMLFrameElement {
     /// Getter of the `marginHeight` attribute.

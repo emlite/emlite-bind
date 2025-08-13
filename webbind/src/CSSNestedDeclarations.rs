@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSNestedDeclarations class.
 /// [`CSSNestedDeclarations`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNestedDeclarations)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSNestedDeclarations {
 
 impl FromVal for CSSNestedDeclarations {
     fn from_val(v: &Any) -> Self {
-        CSSNestedDeclarations {
-            inner: CSSRule::from_val(v),
-        }
+        CSSNestedDeclarations { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSNestedDeclarations {
 
 impl AsMut<Any> for CSSNestedDeclarations {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSNestedDeclarations> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSNestedDeclarations> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSNestedDeclarations);
 
+
 impl CSSNestedDeclarations {
     /// Getter of the `style` attribute.
     /// [`CSSNestedDeclarations.style`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNestedDeclarations/style)
     pub fn style(&self) -> CSSStyleProperties {
         self.inner.get("style").as_::<CSSStyleProperties>()
     }
+
 }

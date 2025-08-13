@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLMediaElement class.
 /// [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLMediaElement {
 
 impl FromVal for HTMLMediaElement {
     fn from_val(v: &Any) -> Self {
-        HTMLMediaElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLMediaElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLMediaElement {
 
 impl AsMut<Any> for HTMLMediaElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLMediaElement> for Any {
@@ -63,12 +64,14 @@ impl From<&HTMLMediaElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLMediaElement);
 
+
 impl HTMLMediaElement {
     /// Getter of the `error` attribute.
     /// [`HTMLMediaElement.error`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/error)
     pub fn error(&self) -> MediaError {
         self.inner.get("error").as_::<MediaError>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `src` attribute.
@@ -102,6 +105,7 @@ impl HTMLMediaElement {
     pub fn current_src(&self) -> JsString {
         self.inner.get("currentSrc").as_::<JsString>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `crossOrigin` attribute.
@@ -122,6 +126,7 @@ impl HTMLMediaElement {
     pub fn network_state(&self) -> u16 {
         self.inner.get("networkState").as_::<u16>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `preload` attribute.
@@ -142,11 +147,12 @@ impl HTMLMediaElement {
     pub fn buffered(&self) -> TimeRanges {
         self.inner.get("buffered").as_::<TimeRanges>()
     }
+
 }
 impl HTMLMediaElement {
     /// The load method.
     /// [`HTMLMediaElement.load`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/load)
-    pub fn load(&self) -> Undefined {
+    pub fn load(&self, ) -> Undefined {
         self.inner.call("load", &[]).as_::<Undefined>()
     }
 }
@@ -154,9 +160,7 @@ impl HTMLMediaElement {
     /// The canPlayType method.
     /// [`HTMLMediaElement.canPlayType`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType)
     pub fn can_play_type(&self, type_: &JsString) -> CanPlayTypeResult {
-        self.inner
-            .call("canPlayType", &[type_.into()])
-            .as_::<CanPlayTypeResult>()
+        self.inner.call("canPlayType", &[type_.into(), ]).as_::<CanPlayTypeResult>()
     }
 }
 impl HTMLMediaElement {
@@ -165,6 +169,7 @@ impl HTMLMediaElement {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `seeking` attribute.
@@ -172,6 +177,7 @@ impl HTMLMediaElement {
     pub fn seeking(&self) -> bool {
         self.inner.get("seeking").as_::<bool>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `currentTime` attribute.
@@ -190,9 +196,7 @@ impl HTMLMediaElement {
     /// The fastSeek method.
     /// [`HTMLMediaElement.fastSeek`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek)
     pub fn fast_seek(&self, time: f64) -> Undefined {
-        self.inner
-            .call("fastSeek", &[time.into()])
-            .as_::<Undefined>()
+        self.inner.call("fastSeek", &[time.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLMediaElement {
@@ -201,11 +205,12 @@ impl HTMLMediaElement {
     pub fn duration(&self) -> f64 {
         self.inner.get("duration").as_::<f64>()
     }
+
 }
 impl HTMLMediaElement {
     /// The getStartDate method.
     /// [`HTMLMediaElement.getStartDate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/getStartDate)
-    pub fn get_start_date(&self) -> Object {
+    pub fn get_start_date(&self, ) -> Object {
         self.inner.call("getStartDate", &[]).as_::<Object>()
     }
 }
@@ -215,6 +220,7 @@ impl HTMLMediaElement {
     pub fn paused(&self) -> bool {
         self.inner.get("paused").as_::<bool>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `defaultPlaybackRate` attribute.
@@ -261,6 +267,7 @@ impl HTMLMediaElement {
     pub fn played(&self) -> TimeRanges {
         self.inner.get("played").as_::<TimeRanges>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `seekable` attribute.
@@ -268,6 +275,7 @@ impl HTMLMediaElement {
     pub fn seekable(&self) -> TimeRanges {
         self.inner.get("seekable").as_::<TimeRanges>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `ended` attribute.
@@ -275,6 +283,7 @@ impl HTMLMediaElement {
     pub fn ended(&self) -> bool {
         self.inner.get("ended").as_::<bool>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `autoplay` attribute.
@@ -305,14 +314,14 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// The play method.
     /// [`HTMLMediaElement.play`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)
-    pub fn play(&self) -> Promise<Undefined> {
+    pub fn play(&self, ) -> Promise<Undefined> {
         self.inner.call("play", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl HTMLMediaElement {
     /// The pause method.
     /// [`HTMLMediaElement.pause`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)
-    pub fn pause(&self) -> Undefined {
+    pub fn pause(&self, ) -> Undefined {
         self.inner.call("pause", &[]).as_::<Undefined>()
     }
 }
@@ -374,6 +383,7 @@ impl HTMLMediaElement {
     pub fn audio_tracks(&self) -> AudioTrackList {
         self.inner.get("audioTracks").as_::<AudioTrackList>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `videoTracks` attribute.
@@ -381,6 +391,7 @@ impl HTMLMediaElement {
     pub fn video_tracks(&self) -> VideoTrackList {
         self.inner.get("videoTracks").as_::<VideoTrackList>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `textTracks` attribute.
@@ -388,36 +399,23 @@ impl HTMLMediaElement {
     pub fn text_tracks(&self) -> TextTrackList {
         self.inner.get("textTracks").as_::<TextTrackList>()
     }
+
 }
 impl HTMLMediaElement {
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
     pub fn add_text_track0(&self, kind: &TextTrackKind) -> TextTrack {
-        self.inner
-            .call("addTextTrack", &[kind.into()])
-            .as_::<TextTrack>()
+        self.inner.call("addTextTrack", &[kind.into(), ]).as_::<TextTrack>()
     }
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
     pub fn add_text_track1(&self, kind: &TextTrackKind, label: &JsString) -> TextTrack {
-        self.inner
-            .call("addTextTrack", &[kind.into(), label.into()])
-            .as_::<TextTrack>()
+        self.inner.call("addTextTrack", &[kind.into(), label.into(), ]).as_::<TextTrack>()
     }
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track2(
-        &self,
-        kind: &TextTrackKind,
-        label: &JsString,
-        language: &JsString,
-    ) -> TextTrack {
-        self.inner
-            .call(
-                "addTextTrack",
-                &[kind.into(), label.into(), language.into()],
-            )
-            .as_::<TextTrack>()
+    pub fn add_text_track2(&self, kind: &TextTrackKind, label: &JsString, language: &JsString) -> TextTrack {
+        self.inner.call("addTextTrack", &[kind.into(), label.into(), language.into(), ]).as_::<TextTrack>()
     }
 }
 impl HTMLMediaElement {
@@ -426,14 +424,13 @@ impl HTMLMediaElement {
     pub fn sink_id(&self) -> JsString {
         self.inner.get("sinkId").as_::<JsString>()
     }
+
 }
 impl HTMLMediaElement {
     /// The setSinkId method.
     /// [`HTMLMediaElement.setSinkId`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setSinkId)
     pub fn set_sink_id(&self, sink_id: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("setSinkId", &[sink_id.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("setSinkId", &[sink_id.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl HTMLMediaElement {
@@ -442,6 +439,7 @@ impl HTMLMediaElement {
     pub fn media_keys(&self) -> MediaKeys {
         self.inner.get("mediaKeys").as_::<MediaKeys>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `onencrypted` attribute.
@@ -473,15 +471,13 @@ impl HTMLMediaElement {
     /// The setMediaKeys method.
     /// [`HTMLMediaElement.setMediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setMediaKeys)
     pub fn set_media_keys(&self, media_keys: &MediaKeys) -> Promise<Undefined> {
-        self.inner
-            .call("setMediaKeys", &[media_keys.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("setMediaKeys", &[media_keys.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl HTMLMediaElement {
     /// The captureStream method.
     /// [`HTMLMediaElement.captureStream`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/captureStream)
-    pub fn capture_stream(&self) -> MediaStream {
+    pub fn capture_stream(&self, ) -> MediaStream {
         self.inner.call("captureStream", &[]).as_::<MediaStream>()
     }
 }
@@ -491,6 +487,7 @@ impl HTMLMediaElement {
     pub fn remote(&self) -> RemotePlayback {
         self.inner.get("remote").as_::<RemotePlayback>()
     }
+
 }
 impl HTMLMediaElement {
     /// Getter of the `disableRemotePlayback` attribute.

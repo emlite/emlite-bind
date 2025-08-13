@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechGrammarList class.
 /// [`SpeechGrammarList`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SpeechGrammarList {
 
 impl FromVal for SpeechGrammarList {
     fn from_val(v: &Any) -> Self {
-        SpeechGrammarList {
-            inner: Any::from_val(v),
-        }
+        SpeechGrammarList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SpeechGrammarList {
 
 impl AsMut<Any> for SpeechGrammarList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechGrammarList> for Any {
@@ -63,6 +64,8 @@ impl From<&SpeechGrammarList> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechGrammarList);
 
+
+
 impl SpeechGrammarList {
     /// The `new SpeechGrammarList(..)` constructor, creating a new SpeechGrammarList instance
     pub fn new() -> SpeechGrammarList {
@@ -70,6 +73,7 @@ impl SpeechGrammarList {
             inner: Any::global("SpeechGrammarList").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl SpeechGrammarList {
     /// Getter of the `length` attribute.
@@ -77,45 +81,36 @@ impl SpeechGrammarList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl SpeechGrammarList {
     /// The item method.
     /// [`SpeechGrammarList.item`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/item)
     pub fn item(&self, index: u32) -> SpeechGrammar {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<SpeechGrammar>()
+        self.inner.call("item", &[index.into(), ]).as_::<SpeechGrammar>()
     }
 }
 impl SpeechGrammarList {
     /// The addFromURI method.
     /// [`SpeechGrammarList.addFromURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromURI)
     pub fn add_from_uri0(&self, src: &JsString) -> Undefined {
-        self.inner
-            .call("addFromURI", &[src.into()])
-            .as_::<Undefined>()
+        self.inner.call("addFromURI", &[src.into(), ]).as_::<Undefined>()
     }
     /// The addFromURI method.
     /// [`SpeechGrammarList.addFromURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromURI)
     pub fn add_from_uri1(&self, src: &JsString, weight: f32) -> Undefined {
-        self.inner
-            .call("addFromURI", &[src.into(), weight.into()])
-            .as_::<Undefined>()
+        self.inner.call("addFromURI", &[src.into(), weight.into(), ]).as_::<Undefined>()
     }
 }
 impl SpeechGrammarList {
     /// The addFromString method.
     /// [`SpeechGrammarList.addFromString`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromString)
     pub fn add_from_string0(&self, string: &JsString) -> Undefined {
-        self.inner
-            .call("addFromString", &[string.into()])
-            .as_::<Undefined>()
+        self.inner.call("addFromString", &[string.into(), ]).as_::<Undefined>()
     }
     /// The addFromString method.
     /// [`SpeechGrammarList.addFromString`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromString)
     pub fn add_from_string1(&self, string: &JsString, weight: f32) -> Undefined {
-        self.inner
-            .call("addFromString", &[string.into(), weight.into()])
-            .as_::<Undefined>()
+        self.inner.call("addFromString", &[string.into(), weight.into(), ]).as_::<Undefined>()
     }
 }

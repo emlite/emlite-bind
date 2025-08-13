@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystem class.
 /// [`FileSystem`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystem)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileSystem {
 
 impl FromVal for FileSystem {
     fn from_val(v: &Any) -> Self {
-        FileSystem {
-            inner: Any::from_val(v),
-        }
+        FileSystem { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileSystem {
 
 impl AsMut<Any> for FileSystem {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystem> for Any {
@@ -63,12 +64,14 @@ impl From<&FileSystem> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystem);
 
+
 impl FileSystem {
     /// Getter of the `name` attribute.
     /// [`FileSystem.name`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystem/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl FileSystem {
     /// Getter of the `root` attribute.
@@ -76,4 +79,5 @@ impl FileSystem {
     pub fn root(&self) -> FileSystemDirectoryEntry {
         self.inner.get("root").as_::<FileSystemDirectoryEntry>()
     }
+
 }

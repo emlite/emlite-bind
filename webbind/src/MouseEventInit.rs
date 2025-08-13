@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MouseEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MouseEventInit {
 
 impl AsMut<Any> for MouseEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MouseEventInit> for Any {

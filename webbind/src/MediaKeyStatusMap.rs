@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaKeyStatusMap class.
 /// [`MediaKeyStatusMap`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyStatusMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaKeyStatusMap {
 
 impl FromVal for MediaKeyStatusMap {
     fn from_val(v: &Any) -> Self {
-        MediaKeyStatusMap {
-            inner: Any::from_val(v),
-        }
+        MediaKeyStatusMap { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaKeyStatusMap {
 
 impl AsMut<Any> for MediaKeyStatusMap {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaKeyStatusMap> for Any {
@@ -63,24 +64,26 @@ impl From<&MediaKeyStatusMap> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaKeyStatusMap);
 
+
 impl MediaKeyStatusMap {
     /// Getter of the `size` attribute.
     /// [`MediaKeyStatusMap.size`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyStatusMap/size)
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
+
 }
 impl MediaKeyStatusMap {
     /// The has method.
     /// [`MediaKeyStatusMap.has`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyStatusMap/has)
     pub fn has(&self, key_id: &Any) -> bool {
-        self.inner.call("has", &[key_id.into()]).as_::<bool>()
+        self.inner.call("has", &[key_id.into(), ]).as_::<bool>()
     }
 }
 impl MediaKeyStatusMap {
     /// The get method.
     /// [`MediaKeyStatusMap.get`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyStatusMap/get)
     pub fn get(&self, key_id: &Any) -> Any {
-        self.inner.call("get", &[key_id.into()]).as_::<Any>()
+        self.inner.call("get", &[key_id.into(), ]).as_::<Any>()
     }
 }

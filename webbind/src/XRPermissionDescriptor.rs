@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for XRPermissionDescriptor {
 
 impl AsMut<Any> for XRPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRPermissionDescriptor> for Any {
@@ -72,9 +75,7 @@ impl XRPermissionDescriptor {
 impl XRPermissionDescriptor {
     /// Getter of the `requiredFeatures` attribute.
     pub fn required_features(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("requiredFeatures")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("requiredFeatures").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `requiredFeatures` attribute.
@@ -85,9 +86,7 @@ impl XRPermissionDescriptor {
 impl XRPermissionDescriptor {
     /// Getter of the `optionalFeatures` attribute.
     pub fn optional_features(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("optionalFeatures")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("optionalFeatures").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `optionalFeatures` attribute.

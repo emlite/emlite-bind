@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NetworkInformation class.
 /// [`NetworkInformation`](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NetworkInformation {
 
 impl FromVal for NetworkInformation {
     fn from_val(v: &Any) -> Self {
-        NetworkInformation {
-            inner: EventTarget::from_val(v),
-        }
+        NetworkInformation { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NetworkInformation {
 
 impl AsMut<Any> for NetworkInformation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NetworkInformation> for Any {
@@ -63,21 +64,22 @@ impl From<&NetworkInformation> for Any {
 
 jsbind::utils::impl_dyn_cast!(NetworkInformation);
 
+
 impl NetworkInformation {
     /// Getter of the `type` attribute.
     /// [`NetworkInformation.type`](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/type)
     pub fn type_(&self) -> ConnectionType {
         self.inner.get("type").as_::<ConnectionType>()
     }
+
 }
 impl NetworkInformation {
     /// Getter of the `effectiveType` attribute.
     /// [`NetworkInformation.effectiveType`](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType)
     pub fn effective_type(&self) -> EffectiveConnectionType {
-        self.inner
-            .get("effectiveType")
-            .as_::<EffectiveConnectionType>()
+        self.inner.get("effectiveType").as_::<EffectiveConnectionType>()
     }
+
 }
 impl NetworkInformation {
     /// Getter of the `downlinkMax` attribute.
@@ -85,6 +87,7 @@ impl NetworkInformation {
     pub fn downlink_max(&self) -> Any {
         self.inner.get("downlinkMax").as_::<Any>()
     }
+
 }
 impl NetworkInformation {
     /// Getter of the `downlink` attribute.
@@ -92,6 +95,7 @@ impl NetworkInformation {
     pub fn downlink(&self) -> Any {
         self.inner.get("downlink").as_::<Any>()
     }
+
 }
 impl NetworkInformation {
     /// Getter of the `rtt` attribute.
@@ -99,6 +103,7 @@ impl NetworkInformation {
     pub fn rtt(&self) -> Any {
         self.inner.get("rtt").as_::<Any>()
     }
+
 }
 impl NetworkInformation {
     /// Getter of the `onchange` attribute.
@@ -119,4 +124,5 @@ impl NetworkInformation {
     pub fn save_data(&self) -> bool {
         self.inner.get("saveData").as_::<bool>()
     }
+
 }

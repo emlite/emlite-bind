@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WorkerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for WorkerOptions {
 
 impl AsMut<Any> for WorkerOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WorkerOptions> for Any {

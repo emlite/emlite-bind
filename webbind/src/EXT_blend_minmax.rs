@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EXT_blend_minmax class.
 /// [`EXT_blend_minmax`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_blend_minmax)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct EXT_blend_minmax {
 
 impl FromVal for EXT_blend_minmax {
     fn from_val(v: &Any) -> Self {
-        EXT_blend_minmax {
-            inner: Any::from_val(v),
-        }
+        EXT_blend_minmax { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for EXT_blend_minmax {
 
 impl AsMut<Any> for EXT_blend_minmax {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EXT_blend_minmax> for Any {
@@ -62,3 +63,5 @@ impl From<&EXT_blend_minmax> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(EXT_blend_minmax);
+
+

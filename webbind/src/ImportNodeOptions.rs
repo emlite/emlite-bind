@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ImportNodeOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ImportNodeOptions {
 
 impl AsMut<Any> for ImportNodeOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ImportNodeOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&ImportNodeOptions> for Any {
 impl ImportNodeOptions {
     /// Getter of the `customElementRegistry` attribute.
     pub fn custom_element_registry(&self) -> CustomElementRegistry {
-        self.inner
-            .get("customElementRegistry")
-            .as_::<CustomElementRegistry>()
+        self.inner.get("customElementRegistry").as_::<CustomElementRegistry>()
     }
 
     /// Setter of the `customElementRegistry` attribute.

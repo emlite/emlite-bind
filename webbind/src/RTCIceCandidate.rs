@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCIceCandidate class.
 /// [`RTCIceCandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCIceCandidate {
 
 impl FromVal for RTCIceCandidate {
     fn from_val(v: &Any) -> Self {
-        RTCIceCandidate {
-            inner: Any::from_val(v),
-        }
+        RTCIceCandidate { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCIceCandidate {
 
 impl AsMut<Any> for RTCIceCandidate {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCIceCandidate> for Any {
@@ -63,6 +64,8 @@ impl From<&RTCIceCandidate> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCIceCandidate);
 
+
+
 impl RTCIceCandidate {
     /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
     pub fn new0() -> RTCIceCandidate {
@@ -74,11 +77,10 @@ impl RTCIceCandidate {
     /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
     pub fn new1(candidate_init_dict: &RTCLocalIceCandidateInit) -> RTCIceCandidate {
         Self {
-            inner: Any::global("RTCIceCandidate")
-                .new(&[candidate_init_dict.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCIceCandidate").new(&[candidate_init_dict.into()]).as_::<Any>(),
         }
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `candidate` attribute.
@@ -86,6 +88,7 @@ impl RTCIceCandidate {
     pub fn candidate(&self) -> JsString {
         self.inner.get("candidate").as_::<JsString>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `sdpMid` attribute.
@@ -93,6 +96,7 @@ impl RTCIceCandidate {
     pub fn sdp_mid(&self) -> JsString {
         self.inner.get("sdpMid").as_::<JsString>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `sdpMLineIndex` attribute.
@@ -100,6 +104,7 @@ impl RTCIceCandidate {
     pub fn sdp_m_line_index(&self) -> u16 {
         self.inner.get("sdpMLineIndex").as_::<u16>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `foundation` attribute.
@@ -107,6 +112,7 @@ impl RTCIceCandidate {
     pub fn foundation(&self) -> JsString {
         self.inner.get("foundation").as_::<JsString>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `component` attribute.
@@ -114,6 +120,7 @@ impl RTCIceCandidate {
     pub fn component(&self) -> RTCIceComponent {
         self.inner.get("component").as_::<RTCIceComponent>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `priority` attribute.
@@ -121,6 +128,7 @@ impl RTCIceCandidate {
     pub fn priority(&self) -> u32 {
         self.inner.get("priority").as_::<u32>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `address` attribute.
@@ -128,6 +136,7 @@ impl RTCIceCandidate {
     pub fn address(&self) -> JsString {
         self.inner.get("address").as_::<JsString>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `protocol` attribute.
@@ -135,6 +144,7 @@ impl RTCIceCandidate {
     pub fn protocol(&self) -> RTCIceProtocol {
         self.inner.get("protocol").as_::<RTCIceProtocol>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `port` attribute.
@@ -142,6 +152,7 @@ impl RTCIceCandidate {
     pub fn port(&self) -> u16 {
         self.inner.get("port").as_::<u16>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `type` attribute.
@@ -149,6 +160,7 @@ impl RTCIceCandidate {
     pub fn type_(&self) -> RTCIceCandidateType {
         self.inner.get("type").as_::<RTCIceCandidateType>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `tcpType` attribute.
@@ -156,6 +168,7 @@ impl RTCIceCandidate {
     pub fn tcp_type(&self) -> RTCIceTcpCandidateType {
         self.inner.get("tcpType").as_::<RTCIceTcpCandidateType>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `relatedAddress` attribute.
@@ -163,6 +176,7 @@ impl RTCIceCandidate {
     pub fn related_address(&self) -> JsString {
         self.inner.get("relatedAddress").as_::<JsString>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `relatedPort` attribute.
@@ -170,6 +184,7 @@ impl RTCIceCandidate {
     pub fn related_port(&self) -> u16 {
         self.inner.get("relatedPort").as_::<u16>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `usernameFragment` attribute.
@@ -177,15 +192,15 @@ impl RTCIceCandidate {
     pub fn username_fragment(&self) -> JsString {
         self.inner.get("usernameFragment").as_::<JsString>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `relayProtocol` attribute.
     /// [`RTCIceCandidate.relayProtocol`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/relayProtocol)
     pub fn relay_protocol(&self) -> RTCIceServerTransportProtocol {
-        self.inner
-            .get("relayProtocol")
-            .as_::<RTCIceServerTransportProtocol>()
+        self.inner.get("relayProtocol").as_::<RTCIceServerTransportProtocol>()
     }
+
 }
 impl RTCIceCandidate {
     /// Getter of the `url` attribute.
@@ -193,11 +208,12 @@ impl RTCIceCandidate {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
+
 }
 impl RTCIceCandidate {
     /// The toJSON method.
     /// [`RTCIceCandidate.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/toJSON)
-    pub fn to_json(&self) -> RTCIceCandidateInit {
+    pub fn to_json(&self, ) -> RTCIceCandidateInit {
         self.inner.call("toJSON", &[]).as_::<RTCIceCandidateInit>()
     }
 }

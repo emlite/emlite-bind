@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLContextLostInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLContextLostInfo {
 
 impl AsMut<Any> for MLContextLostInfo {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLContextLostInfo> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NDEFWriteOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NDEFWriteOptions {
 
 impl AsMut<Any> for NDEFWriteOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NDEFWriteOptions> for Any {

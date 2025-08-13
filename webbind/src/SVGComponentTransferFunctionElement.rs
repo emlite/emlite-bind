@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGComponentTransferFunctionElement class.
 /// [`SVGComponentTransferFunctionElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGComponentTransferFunctionElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGComponentTransferFunctionElement {
 
 impl FromVal for SVGComponentTransferFunctionElement {
     fn from_val(v: &Any) -> Self {
-        SVGComponentTransferFunctionElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGComponentTransferFunctionElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGComponentTransferFunctionElement {
 
 impl AsMut<Any> for SVGComponentTransferFunctionElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGComponentTransferFunctionElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGComponentTransferFunctionElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGComponentTransferFunctionElement);
 
+
 impl SVGComponentTransferFunctionElement {
     /// Getter of the `type` attribute.
     /// [`SVGComponentTransferFunctionElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGComponentTransferFunctionElement/type)
     pub fn type_(&self) -> SVGAnimatedEnumeration {
         self.inner.get("type").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGComponentTransferFunctionElement {
     /// Getter of the `tableValues` attribute.
@@ -76,6 +79,7 @@ impl SVGComponentTransferFunctionElement {
     pub fn table_values(&self) -> SVGAnimatedNumberList {
         self.inner.get("tableValues").as_::<SVGAnimatedNumberList>()
     }
+
 }
 impl SVGComponentTransferFunctionElement {
     /// Getter of the `slope` attribute.
@@ -83,6 +87,7 @@ impl SVGComponentTransferFunctionElement {
     pub fn slope(&self) -> SVGAnimatedNumber {
         self.inner.get("slope").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGComponentTransferFunctionElement {
     /// Getter of the `intercept` attribute.
@@ -90,6 +95,7 @@ impl SVGComponentTransferFunctionElement {
     pub fn intercept(&self) -> SVGAnimatedNumber {
         self.inner.get("intercept").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGComponentTransferFunctionElement {
     /// Getter of the `amplitude` attribute.
@@ -97,6 +103,7 @@ impl SVGComponentTransferFunctionElement {
     pub fn amplitude(&self) -> SVGAnimatedNumber {
         self.inner.get("amplitude").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGComponentTransferFunctionElement {
     /// Getter of the `exponent` attribute.
@@ -104,6 +111,7 @@ impl SVGComponentTransferFunctionElement {
     pub fn exponent(&self) -> SVGAnimatedNumber {
         self.inner.get("exponent").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGComponentTransferFunctionElement {
     /// Getter of the `offset` attribute.
@@ -111,4 +119,5 @@ impl SVGComponentTransferFunctionElement {
     pub fn offset(&self) -> SVGAnimatedNumber {
         self.inner.get("offset").as_::<SVGAnimatedNumber>()
     }
+
 }

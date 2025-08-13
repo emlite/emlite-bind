@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OpusEncoderConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for OpusEncoderConfig {
 
 impl AsMut<Any> for OpusEncoderConfig {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OpusEncoderConfig> for Any {

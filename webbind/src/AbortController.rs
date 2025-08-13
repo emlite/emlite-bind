@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AbortController class.
 /// [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AbortController {
 
 impl FromVal for AbortController {
     fn from_val(v: &Any) -> Self {
-        AbortController {
-            inner: Any::from_val(v),
-        }
+        AbortController { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AbortController {
 
 impl AsMut<Any> for AbortController {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AbortController> for Any {
@@ -63,6 +64,8 @@ impl From<&AbortController> for Any {
 
 jsbind::utils::impl_dyn_cast!(AbortController);
 
+
+
 impl AbortController {
     /// The `new AbortController(..)` constructor, creating a new AbortController instance
     pub fn new() -> AbortController {
@@ -70,6 +73,7 @@ impl AbortController {
             inner: Any::global("AbortController").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl AbortController {
     /// Getter of the `signal` attribute.
@@ -77,18 +81,17 @@ impl AbortController {
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
+
 }
 impl AbortController {
     /// The abort method.
     /// [`AbortController.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort)
-    pub fn abort0(&self) -> Undefined {
+    pub fn abort0(&self, ) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
     /// The abort method.
     /// [`AbortController.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort)
     pub fn abort1(&self, reason: &Any) -> Undefined {
-        self.inner
-            .call("abort", &[reason.into()])
-            .as_::<Undefined>()
+        self.inner.call("abort", &[reason.into(), ]).as_::<Undefined>()
     }
 }

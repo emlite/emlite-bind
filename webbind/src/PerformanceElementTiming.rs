@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PerformanceElementTiming class.
 /// [`PerformanceElementTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PerformanceElementTiming {
 
 impl FromVal for PerformanceElementTiming {
     fn from_val(v: &Any) -> Self {
-        PerformanceElementTiming {
-            inner: PerformanceEntry::from_val(v),
-        }
+        PerformanceElementTiming { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PerformanceElementTiming {
 
 impl AsMut<Any> for PerformanceElementTiming {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PerformanceElementTiming> for Any {
@@ -63,12 +64,14 @@ impl From<&PerformanceElementTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceElementTiming);
 
+
 impl PerformanceElementTiming {
     /// Getter of the `renderTime` attribute.
     /// [`PerformanceElementTiming.renderTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/renderTime)
     pub fn render_time(&self) -> Any {
         self.inner.get("renderTime").as_::<Any>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `loadTime` attribute.
@@ -76,6 +79,7 @@ impl PerformanceElementTiming {
     pub fn load_time(&self) -> Any {
         self.inner.get("loadTime").as_::<Any>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `intersectionRect` attribute.
@@ -83,6 +87,7 @@ impl PerformanceElementTiming {
     pub fn intersection_rect(&self) -> DOMRectReadOnly {
         self.inner.get("intersectionRect").as_::<DOMRectReadOnly>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `identifier` attribute.
@@ -90,6 +95,7 @@ impl PerformanceElementTiming {
     pub fn identifier(&self) -> JsString {
         self.inner.get("identifier").as_::<JsString>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `naturalWidth` attribute.
@@ -97,6 +103,7 @@ impl PerformanceElementTiming {
     pub fn natural_width(&self) -> u32 {
         self.inner.get("naturalWidth").as_::<u32>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `naturalHeight` attribute.
@@ -104,6 +111,7 @@ impl PerformanceElementTiming {
     pub fn natural_height(&self) -> u32 {
         self.inner.get("naturalHeight").as_::<u32>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `id` attribute.
@@ -111,6 +119,7 @@ impl PerformanceElementTiming {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `element` attribute.
@@ -118,6 +127,7 @@ impl PerformanceElementTiming {
     pub fn element(&self) -> Element {
         self.inner.get("element").as_::<Element>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `url` attribute.
@@ -125,11 +135,12 @@ impl PerformanceElementTiming {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
+
 }
 impl PerformanceElementTiming {
     /// The toJSON method.
     /// [`PerformanceElementTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
@@ -139,6 +150,7 @@ impl PerformanceElementTiming {
     pub fn paint_time(&self) -> Any {
         self.inner.get("paintTime").as_::<Any>()
     }
+
 }
 impl PerformanceElementTiming {
     /// Getter of the `presentationTime` attribute.
@@ -146,4 +158,5 @@ impl PerformanceElementTiming {
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
     }
+
 }

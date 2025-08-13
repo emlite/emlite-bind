@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ProfilerStack dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ProfilerStack {
 
 impl AsMut<Any> for ProfilerStack {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ProfilerStack> for Any {

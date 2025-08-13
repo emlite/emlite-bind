@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRCubeLayer class.
 /// [`XRCubeLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRCubeLayer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRCubeLayer {
 
 impl FromVal for XRCubeLayer {
     fn from_val(v: &Any) -> Self {
-        XRCubeLayer {
-            inner: XRCompositionLayer::from_val(v),
-        }
+        XRCubeLayer { inner: XRCompositionLayer::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRCubeLayer {
 
 impl AsMut<Any> for XRCubeLayer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRCubeLayer> for Any {
@@ -62,6 +63,7 @@ impl From<&XRCubeLayer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRCubeLayer);
+
 
 impl XRCubeLayer {
     /// Getter of the `space` attribute.

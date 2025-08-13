@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioProcessingEvent class.
 /// [`AudioProcessingEvent`](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioProcessingEvent {
 
 impl FromVal for AudioProcessingEvent {
     fn from_val(v: &Any) -> Self {
-        AudioProcessingEvent {
-            inner: Event::from_val(v),
-        }
+        AudioProcessingEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioProcessingEvent {
 
 impl AsMut<Any> for AudioProcessingEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioProcessingEvent> for Any {
@@ -63,18 +64,16 @@ impl From<&AudioProcessingEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioProcessingEvent);
 
+
+
 impl AudioProcessingEvent {
     /// The `new AudioProcessingEvent(..)` constructor, creating a new AudioProcessingEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &AudioProcessingEventInit,
-    ) -> AudioProcessingEvent {
+    pub fn new(type_: &JsString, event_init_dict: &AudioProcessingEventInit) -> AudioProcessingEvent {
         Self {
-            inner: Any::global("AudioProcessingEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("AudioProcessingEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl AudioProcessingEvent {
     /// Getter of the `playbackTime` attribute.
@@ -82,6 +81,7 @@ impl AudioProcessingEvent {
     pub fn playback_time(&self) -> f64 {
         self.inner.get("playbackTime").as_::<f64>()
     }
+
 }
 impl AudioProcessingEvent {
     /// Getter of the `inputBuffer` attribute.
@@ -89,6 +89,7 @@ impl AudioProcessingEvent {
     pub fn input_buffer(&self) -> AudioBuffer {
         self.inner.get("inputBuffer").as_::<AudioBuffer>()
     }
+
 }
 impl AudioProcessingEvent {
     /// Getter of the `outputBuffer` attribute.
@@ -96,4 +97,5 @@ impl AudioProcessingEvent {
     pub fn output_buffer(&self) -> AudioBuffer {
         self.inner.get("outputBuffer").as_::<AudioBuffer>()
     }
+
 }

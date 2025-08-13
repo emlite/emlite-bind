@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WindowControlsOverlay class.
 /// [`WindowControlsOverlay`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlay)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WindowControlsOverlay {
 
 impl FromVal for WindowControlsOverlay {
     fn from_val(v: &Any) -> Self {
-        WindowControlsOverlay {
-            inner: EventTarget::from_val(v),
-        }
+        WindowControlsOverlay { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WindowControlsOverlay {
 
 impl AsMut<Any> for WindowControlsOverlay {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WindowControlsOverlay> for Any {
@@ -63,17 +64,19 @@ impl From<&WindowControlsOverlay> for Any {
 
 jsbind::utils::impl_dyn_cast!(WindowControlsOverlay);
 
+
 impl WindowControlsOverlay {
     /// Getter of the `visible` attribute.
     /// [`WindowControlsOverlay.visible`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlay/visible)
     pub fn visible(&self) -> bool {
         self.inner.get("visible").as_::<bool>()
     }
+
 }
 impl WindowControlsOverlay {
     /// The getTitlebarAreaRect method.
     /// [`WindowControlsOverlay.getTitlebarAreaRect`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlay/getTitlebarAreaRect)
-    pub fn get_titlebar_area_rect(&self) -> DOMRect {
+    pub fn get_titlebar_area_rect(&self, ) -> DOMRect {
         self.inner.call("getTitlebarAreaRect", &[]).as_::<DOMRect>()
     }
 }

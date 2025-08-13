@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SerialOutputSignals dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SerialOutputSignals {
 
 impl AsMut<Any> for SerialOutputSignals {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SerialOutputSignals> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SourceBufferList class.
 /// [`SourceBufferList`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBufferList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SourceBufferList {
 
 impl FromVal for SourceBufferList {
     fn from_val(v: &Any) -> Self {
-        SourceBufferList {
-            inner: EventTarget::from_val(v),
-        }
+        SourceBufferList { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SourceBufferList {
 
 impl AsMut<Any> for SourceBufferList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SourceBufferList> for Any {
@@ -63,12 +64,14 @@ impl From<&SourceBufferList> for Any {
 
 jsbind::utils::impl_dyn_cast!(SourceBufferList);
 
+
 impl SourceBufferList {
     /// Getter of the `length` attribute.
     /// [`SourceBufferList.length`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBufferList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl SourceBufferList {
     /// Getter of the `onaddsourcebuffer` attribute.

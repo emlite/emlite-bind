@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLTableCellElement class.
 /// [`HTMLTableCellElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLTableCellElement {
 
 impl FromVal for HTMLTableCellElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTableCellElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTableCellElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLTableCellElement {
 
 impl AsMut<Any> for HTMLTableCellElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLTableCellElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLTableCellElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTableCellElement);
 
+
+
 impl HTMLTableCellElement {
     /// The `new HTMLTableCellElement(..)` constructor, creating a new HTMLTableCellElement instance
     pub fn new() -> HTMLTableCellElement {
         Self {
-            inner: Any::global("HTMLTableCellElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLTableCellElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTableCellElement {
     /// Getter of the `colSpan` attribute.
@@ -118,6 +120,7 @@ impl HTMLTableCellElement {
     pub fn cell_index(&self) -> i32 {
         self.inner.get("cellIndex").as_::<i32>()
     }
+
 }
 impl HTMLTableCellElement {
     /// Getter of the `scope` attribute.

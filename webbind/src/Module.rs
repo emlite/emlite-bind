@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Module class.
 /// [`Module`](https://developer.mozilla.org/en-US/docs/Web/API/Module)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Module {
 
 impl FromVal for Module {
     fn from_val(v: &Any) -> Self {
-        Module {
-            inner: Any::from_val(v),
-        }
+        Module { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Module {
 
 impl AsMut<Any> for Module {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Module> for Any {
@@ -63,6 +64,8 @@ impl From<&Module> for Any {
 
 jsbind::utils::impl_dyn_cast!(Module);
 
+
+
 impl Module {
     /// The `new Module(..)` constructor, creating a new Module instance
     pub fn new(bytes: &Any) -> Module {
@@ -70,37 +73,26 @@ impl Module {
             inner: Any::global("Module").new(&[bytes.into()]).as_::<Any>(),
         }
     }
+
 }
 impl Module {
     /// The exports method.
     /// [`Module.exports`](https://developer.mozilla.org/en-US/docs/Web/API/Module/exports)
     pub fn exports(module_object: &Module) -> TypedArray<ModuleExportDescriptor> {
-        Any::global("Module")
-            .call("exports", &[module_object.into()])
-            .as_::<TypedArray<ModuleExportDescriptor>>()
+        Any::global("Module").call("exports", &[module_object.into(), ]).as_::<TypedArray<ModuleExportDescriptor>>()
     }
 }
 impl Module {
     /// The imports method.
     /// [`Module.imports`](https://developer.mozilla.org/en-US/docs/Web/API/Module/imports)
     pub fn imports(module_object: &Module) -> TypedArray<ModuleImportDescriptor> {
-        Any::global("Module")
-            .call("imports", &[module_object.into()])
-            .as_::<TypedArray<ModuleImportDescriptor>>()
+        Any::global("Module").call("imports", &[module_object.into(), ]).as_::<TypedArray<ModuleImportDescriptor>>()
     }
 }
 impl Module {
     /// The customSections method.
     /// [`Module.customSections`](https://developer.mozilla.org/en-US/docs/Web/API/Module/customSections)
-    pub fn custom_sections(
-        module_object: &Module,
-        section_name: &JsString,
-    ) -> TypedArray<ArrayBuffer> {
-        Any::global("Module")
-            .call(
-                "customSections",
-                &[module_object.into(), section_name.into()],
-            )
-            .as_::<TypedArray<ArrayBuffer>>()
+    pub fn custom_sections(module_object: &Module, section_name: &JsString) -> TypedArray<ArrayBuffer> {
+        Any::global("Module").call("customSections", &[module_object.into(), section_name.into(), ]).as_::<TypedArray<ArrayBuffer>>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FencedFrameConfig class.
 /// [`FencedFrameConfig`](https://developer.mozilla.org/en-US/docs/Web/API/FencedFrameConfig)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FencedFrameConfig {
 
 impl FromVal for FencedFrameConfig {
     fn from_val(v: &Any) -> Self {
-        FencedFrameConfig {
-            inner: Any::from_val(v),
-        }
+        FencedFrameConfig { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FencedFrameConfig {
 
 impl AsMut<Any> for FencedFrameConfig {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FencedFrameConfig> for Any {
@@ -63,22 +64,21 @@ impl From<&FencedFrameConfig> for Any {
 
 jsbind::utils::impl_dyn_cast!(FencedFrameConfig);
 
+
+
 impl FencedFrameConfig {
     /// The `new FencedFrameConfig(..)` constructor, creating a new FencedFrameConfig instance
     pub fn new(url: &JsString) -> FencedFrameConfig {
         Self {
-            inner: Any::global("FencedFrameConfig")
-                .new(&[url.into()])
-                .as_::<Any>(),
+            inner: Any::global("FencedFrameConfig").new(&[url.into()]).as_::<Any>(),
         }
     }
+
 }
 impl FencedFrameConfig {
     /// The setSharedStorageContext method.
     /// [`FencedFrameConfig.setSharedStorageContext`](https://developer.mozilla.org/en-US/docs/Web/API/FencedFrameConfig/setSharedStorageContext)
     pub fn set_shared_storage_context(&self, context_string: &JsString) -> Undefined {
-        self.inner
-            .call("setSharedStorageContext", &[context_string.into()])
-            .as_::<Undefined>()
+        self.inner.call("setSharedStorageContext", &[context_string.into(), ]).as_::<Undefined>()
     }
 }

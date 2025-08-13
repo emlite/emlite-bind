@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLAreaElement class.
 /// [`HTMLAreaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAreaElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLAreaElement {
 
 impl FromVal for HTMLAreaElement {
     fn from_val(v: &Any) -> Self {
-        HTMLAreaElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLAreaElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLAreaElement {
 
 impl AsMut<Any> for HTMLAreaElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLAreaElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLAreaElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLAreaElement);
 
+
+
 impl HTMLAreaElement {
     /// The `new HTMLAreaElement(..)` constructor, creating a new HTMLAreaElement instance
     pub fn new() -> HTMLAreaElement {
@@ -70,6 +73,7 @@ impl HTMLAreaElement {
             inner: Any::global("HTMLAreaElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLAreaElement {
     /// Getter of the `alt` attribute.
@@ -168,6 +172,7 @@ impl HTMLAreaElement {
     pub fn rel_list(&self) -> DOMTokenList {
         self.inner.get("relList").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLAreaElement {
     /// Getter of the `referrerPolicy` attribute.
@@ -227,6 +232,7 @@ impl HTMLAreaElement {
     pub fn origin(&self) -> JsString {
         self.inner.get("origin").as_::<JsString>()
     }
+
 }
 impl HTMLAreaElement {
     /// Getter of the `protocol` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCEncodedVideoFrame class.
 /// [`RTCEncodedVideoFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCEncodedVideoFrame {
 
 impl FromVal for RTCEncodedVideoFrame {
     fn from_val(v: &Any) -> Self {
-        RTCEncodedVideoFrame {
-            inner: Any::from_val(v),
-        }
+        RTCEncodedVideoFrame { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCEncodedVideoFrame {
 
 impl AsMut<Any> for RTCEncodedVideoFrame {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCEncodedVideoFrame> for Any {
@@ -63,27 +64,23 @@ impl From<&RTCEncodedVideoFrame> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCEncodedVideoFrame);
 
+
+
 impl RTCEncodedVideoFrame {
     /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
     pub fn new0(original_frame: &RTCEncodedVideoFrame) -> RTCEncodedVideoFrame {
         Self {
-            inner: Any::global("RTCEncodedVideoFrame")
-                .new(&[original_frame.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCEncodedVideoFrame").new(&[original_frame.into()]).as_::<Any>(),
         }
     }
 
     /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
-    pub fn new1(
-        original_frame: &RTCEncodedVideoFrame,
-        options: &RTCEncodedVideoFrameOptions,
-    ) -> RTCEncodedVideoFrame {
+    pub fn new1(original_frame: &RTCEncodedVideoFrame, options: &RTCEncodedVideoFrameOptions) -> RTCEncodedVideoFrame {
         Self {
-            inner: Any::global("RTCEncodedVideoFrame")
-                .new(&[original_frame.into(), options.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCEncodedVideoFrame").new(&[original_frame.into(), options.into()]).as_::<Any>(),
         }
     }
+
 }
 impl RTCEncodedVideoFrame {
     /// Getter of the `type` attribute.
@@ -91,6 +88,7 @@ impl RTCEncodedVideoFrame {
     pub fn type_(&self) -> RTCEncodedVideoFrameType {
         self.inner.get("type").as_::<RTCEncodedVideoFrameType>()
     }
+
 }
 impl RTCEncodedVideoFrame {
     /// Getter of the `data` attribute.
@@ -108,9 +106,7 @@ impl RTCEncodedVideoFrame {
 impl RTCEncodedVideoFrame {
     /// The getMetadata method.
     /// [`RTCEncodedVideoFrame.getMetadata`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/getMetadata)
-    pub fn get_metadata(&self) -> RTCEncodedVideoFrameMetadata {
-        self.inner
-            .call("getMetadata", &[])
-            .as_::<RTCEncodedVideoFrameMetadata>()
+    pub fn get_metadata(&self, ) -> RTCEncodedVideoFrameMetadata {
+        self.inner.call("getMetadata", &[]).as_::<RTCEncodedVideoFrameMetadata>()
     }
 }

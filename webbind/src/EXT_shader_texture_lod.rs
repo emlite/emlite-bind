@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EXT_shader_texture_lod class.
 /// [`EXT_shader_texture_lod`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_shader_texture_lod)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct EXT_shader_texture_lod {
 
 impl FromVal for EXT_shader_texture_lod {
     fn from_val(v: &Any) -> Self {
-        EXT_shader_texture_lod {
-            inner: Any::from_val(v),
-        }
+        EXT_shader_texture_lod { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for EXT_shader_texture_lod {
 
 impl AsMut<Any> for EXT_shader_texture_lod {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EXT_shader_texture_lod> for Any {
@@ -62,3 +63,5 @@ impl From<&EXT_shader_texture_lod> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(EXT_shader_texture_lod);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRCamera class.
 /// [`XRCamera`](https://developer.mozilla.org/en-US/docs/Web/API/XRCamera)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRCamera {
 
 impl FromVal for XRCamera {
     fn from_val(v: &Any) -> Self {
-        XRCamera {
-            inner: Any::from_val(v),
-        }
+        XRCamera { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRCamera {
 
 impl AsMut<Any> for XRCamera {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRCamera> for Any {
@@ -63,12 +64,14 @@ impl From<&XRCamera> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRCamera);
 
+
 impl XRCamera {
     /// Getter of the `width` attribute.
     /// [`XRCamera.width`](https://developer.mozilla.org/en-US/docs/Web/API/XRCamera/width)
     pub fn width(&self) -> u32 {
         self.inner.get("width").as_::<u32>()
     }
+
 }
 impl XRCamera {
     /// Getter of the `height` attribute.
@@ -76,4 +79,5 @@ impl XRCamera {
     pub fn height(&self) -> u32 {
         self.inner.get("height").as_::<u32>()
     }
+
 }

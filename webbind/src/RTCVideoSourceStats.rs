@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCVideoSourceStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCVideoSourceStats {
 
 impl AsMut<Any> for RTCVideoSourceStats {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCVideoSourceStats> for Any {

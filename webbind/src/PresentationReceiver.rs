@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PresentationReceiver class.
 /// [`PresentationReceiver`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationReceiver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PresentationReceiver {
 
 impl FromVal for PresentationReceiver {
     fn from_val(v: &Any) -> Self {
-        PresentationReceiver {
-            inner: Any::from_val(v),
-        }
+        PresentationReceiver { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PresentationReceiver {
 
 impl AsMut<Any> for PresentationReceiver {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PresentationReceiver> for Any {
@@ -63,12 +64,12 @@ impl From<&PresentationReceiver> for Any {
 
 jsbind::utils::impl_dyn_cast!(PresentationReceiver);
 
+
 impl PresentationReceiver {
     /// Getter of the `connectionList` attribute.
     /// [`PresentationReceiver.connectionList`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationReceiver/connectionList)
     pub fn connection_list(&self) -> Promise<PresentationConnectionList> {
-        self.inner
-            .get("connectionList")
-            .as_::<Promise<PresentationConnectionList>>()
+        self.inner.get("connectionList").as_::<Promise<PresentationConnectionList>>()
     }
+
 }

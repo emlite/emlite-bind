@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUComputePassEncoder class.
 /// [`GPUComputePassEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUComputePassEncoder {
 
 impl FromVal for GPUComputePassEncoder {
     fn from_val(v: &Any) -> Self {
-        GPUComputePassEncoder {
-            inner: Any::from_val(v),
-        }
+        GPUComputePassEncoder { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUComputePassEncoder {
 
 impl AsMut<Any> for GPUComputePassEncoder {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUComputePassEncoder> for Any {
@@ -63,77 +64,42 @@ impl From<&GPUComputePassEncoder> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUComputePassEncoder);
 
+
 impl GPUComputePassEncoder {
     /// The setPipeline method.
     /// [`GPUComputePassEncoder.setPipeline`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setPipeline)
     pub fn set_pipeline(&self, pipeline: &GPUComputePipeline) -> Undefined {
-        self.inner
-            .call("setPipeline", &[pipeline.into()])
-            .as_::<Undefined>()
+        self.inner.call("setPipeline", &[pipeline.into(), ]).as_::<Undefined>()
     }
 }
 impl GPUComputePassEncoder {
     /// The dispatchWorkgroups method.
     /// [`GPUComputePassEncoder.dispatchWorkgroups`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
     pub fn dispatch_workgroups0(&self, workgroup_count_x: &Any) -> Undefined {
-        self.inner
-            .call("dispatchWorkgroups", &[workgroup_count_x.into()])
-            .as_::<Undefined>()
+        self.inner.call("dispatchWorkgroups", &[workgroup_count_x.into(), ]).as_::<Undefined>()
     }
     /// The dispatchWorkgroups method.
     /// [`GPUComputePassEncoder.dispatchWorkgroups`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
-    pub fn dispatch_workgroups1(
-        &self,
-        workgroup_count_x: &Any,
-        workgroup_count_y: &Any,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "dispatchWorkgroups",
-                &[workgroup_count_x.into(), workgroup_count_y.into()],
-            )
-            .as_::<Undefined>()
+    pub fn dispatch_workgroups1(&self, workgroup_count_x: &Any, workgroup_count_y: &Any) -> Undefined {
+        self.inner.call("dispatchWorkgroups", &[workgroup_count_x.into(), workgroup_count_y.into(), ]).as_::<Undefined>()
     }
     /// The dispatchWorkgroups method.
     /// [`GPUComputePassEncoder.dispatchWorkgroups`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
-    pub fn dispatch_workgroups2(
-        &self,
-        workgroup_count_x: &Any,
-        workgroup_count_y: &Any,
-        workgroup_count_z: &Any,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "dispatchWorkgroups",
-                &[
-                    workgroup_count_x.into(),
-                    workgroup_count_y.into(),
-                    workgroup_count_z.into(),
-                ],
-            )
-            .as_::<Undefined>()
+    pub fn dispatch_workgroups2(&self, workgroup_count_x: &Any, workgroup_count_y: &Any, workgroup_count_z: &Any) -> Undefined {
+        self.inner.call("dispatchWorkgroups", &[workgroup_count_x.into(), workgroup_count_y.into(), workgroup_count_z.into(), ]).as_::<Undefined>()
     }
 }
 impl GPUComputePassEncoder {
     /// The dispatchWorkgroupsIndirect method.
     /// [`GPUComputePassEncoder.dispatchWorkgroupsIndirect`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroupsIndirect)
-    pub fn dispatch_workgroups_indirect(
-        &self,
-        indirect_buffer: &GPUBuffer,
-        indirect_offset: &Any,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "dispatchWorkgroupsIndirect",
-                &[indirect_buffer.into(), indirect_offset.into()],
-            )
-            .as_::<Undefined>()
+    pub fn dispatch_workgroups_indirect(&self, indirect_buffer: &GPUBuffer, indirect_offset: &Any) -> Undefined {
+        self.inner.call("dispatchWorkgroupsIndirect", &[indirect_buffer.into(), indirect_offset.into(), ]).as_::<Undefined>()
     }
 }
 impl GPUComputePassEncoder {
     /// The end method.
     /// [`GPUComputePassEncoder.end`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/end)
-    pub fn end(&self) -> Undefined {
+    pub fn end(&self, ) -> Undefined {
         self.inner.call("end", &[]).as_::<Undefined>()
     }
 }
@@ -154,15 +120,13 @@ impl GPUComputePassEncoder {
     /// The pushDebugGroup method.
     /// [`GPUComputePassEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/pushDebugGroup)
     pub fn push_debug_group(&self, group_label: &JsString) -> Undefined {
-        self.inner
-            .call("pushDebugGroup", &[group_label.into()])
-            .as_::<Undefined>()
+        self.inner.call("pushDebugGroup", &[group_label.into(), ]).as_::<Undefined>()
     }
 }
 impl GPUComputePassEncoder {
     /// The popDebugGroup method.
     /// [`GPUComputePassEncoder.popDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/popDebugGroup)
-    pub fn pop_debug_group(&self) -> Undefined {
+    pub fn pop_debug_group(&self, ) -> Undefined {
         self.inner.call("popDebugGroup", &[]).as_::<Undefined>()
     }
 }
@@ -170,33 +134,13 @@ impl GPUComputePassEncoder {
     /// The insertDebugMarker method.
     /// [`GPUComputePassEncoder.insertDebugMarker`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/insertDebugMarker)
     pub fn insert_debug_marker(&self, marker_label: &JsString) -> Undefined {
-        self.inner
-            .call("insertDebugMarker", &[marker_label.into()])
-            .as_::<Undefined>()
+        self.inner.call("insertDebugMarker", &[marker_label.into(), ]).as_::<Undefined>()
     }
 }
 impl GPUComputePassEncoder {
     /// The setBindGroup method.
     /// [`GPUComputePassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setBindGroup)
-    pub fn set_bind_group(
-        &self,
-        index: &Any,
-        bind_group: &GPUBindGroup,
-        dynamic_offsets_data: &Uint32Array,
-        dynamic_offsets_data_start: &Any,
-        dynamic_offsets_data_length: &Any,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "setBindGroup",
-                &[
-                    index.into(),
-                    bind_group.into(),
-                    dynamic_offsets_data.into(),
-                    dynamic_offsets_data_start.into(),
-                    dynamic_offsets_data_length.into(),
-                ],
-            )
-            .as_::<Undefined>()
+    pub fn set_bind_group(&self, index: &Any, bind_group: &GPUBindGroup, dynamic_offsets_data: &Uint32Array, dynamic_offsets_data_start: &Any, dynamic_offsets_data_length: &Any) -> Undefined {
+        self.inner.call("setBindGroup", &[index.into(), bind_group.into(), dynamic_offsets_data.into(), dynamic_offsets_data_start.into(), dynamic_offsets_data_length.into(), ]).as_::<Undefined>()
     }
 }

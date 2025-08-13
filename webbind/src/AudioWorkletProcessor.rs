@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioWorkletProcessor class.
 /// [`AudioWorkletProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioWorkletProcessor {
 
 impl FromVal for AudioWorkletProcessor {
     fn from_val(v: &Any) -> Self {
-        AudioWorkletProcessor {
-            inner: Any::from_val(v),
-        }
+        AudioWorkletProcessor { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioWorkletProcessor {
 
 impl AsMut<Any> for AudioWorkletProcessor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioWorkletProcessor> for Any {
@@ -63,6 +64,8 @@ impl From<&AudioWorkletProcessor> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioWorkletProcessor);
 
+
+
 impl AudioWorkletProcessor {
     /// The `new AudioWorkletProcessor(..)` constructor, creating a new AudioWorkletProcessor instance
     pub fn new() -> AudioWorkletProcessor {
@@ -70,6 +73,7 @@ impl AudioWorkletProcessor {
             inner: Any::global("AudioWorkletProcessor").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl AudioWorkletProcessor {
     /// Getter of the `port` attribute.
@@ -77,4 +81,5 @@ impl AudioWorkletProcessor {
     pub fn port(&self) -> MessagePort {
         self.inner.get("port").as_::<MessagePort>()
     }
+
 }

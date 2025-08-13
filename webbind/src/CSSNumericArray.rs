@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSNumericArray class.
 /// [`CSSNumericArray`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericArray)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSNumericArray {
 
 impl FromVal for CSSNumericArray {
     fn from_val(v: &Any) -> Self {
-        CSSNumericArray {
-            inner: Any::from_val(v),
-        }
+        CSSNumericArray { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSNumericArray {
 
 impl AsMut<Any> for CSSNumericArray {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSNumericArray> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSNumericArray> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSNumericArray);
 
+
 impl CSSNumericArray {
     /// Getter of the `length` attribute.
     /// [`CSSNumericArray.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericArray/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }

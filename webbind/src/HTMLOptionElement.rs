@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLOptionElement class.
 /// [`HTMLOptionElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLOptionElement {
 
 impl FromVal for HTMLOptionElement {
     fn from_val(v: &Any) -> Self {
-        HTMLOptionElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLOptionElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLOptionElement {
 
 impl AsMut<Any> for HTMLOptionElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLOptionElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLOptionElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLOptionElement);
 
+
+
 impl HTMLOptionElement {
     /// The `new HTMLOptionElement(..)` constructor, creating a new HTMLOptionElement instance
     pub fn new() -> HTMLOptionElement {
         Self {
-            inner: Any::global("HTMLOptionElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLOptionElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLOptionElement {
     /// Getter of the `disabled` attribute.
@@ -92,6 +94,7 @@ impl HTMLOptionElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLOptionElement {
     /// Getter of the `label` attribute.
@@ -164,4 +167,5 @@ impl HTMLOptionElement {
     pub fn index(&self) -> i32 {
         self.inner.get("index").as_::<i32>()
     }
+
 }

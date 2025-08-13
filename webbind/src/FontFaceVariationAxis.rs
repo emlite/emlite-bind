@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FontFaceVariationAxis class.
 /// [`FontFaceVariationAxis`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceVariationAxis)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FontFaceVariationAxis {
 
 impl FromVal for FontFaceVariationAxis {
     fn from_val(v: &Any) -> Self {
-        FontFaceVariationAxis {
-            inner: Any::from_val(v),
-        }
+        FontFaceVariationAxis { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FontFaceVariationAxis {
 
 impl AsMut<Any> for FontFaceVariationAxis {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FontFaceVariationAxis> for Any {
@@ -63,12 +64,14 @@ impl From<&FontFaceVariationAxis> for Any {
 
 jsbind::utils::impl_dyn_cast!(FontFaceVariationAxis);
 
+
 impl FontFaceVariationAxis {
     /// Getter of the `name` attribute.
     /// [`FontFaceVariationAxis.name`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceVariationAxis/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl FontFaceVariationAxis {
     /// Getter of the `axisTag` attribute.
@@ -76,6 +79,7 @@ impl FontFaceVariationAxis {
     pub fn axis_tag(&self) -> JsString {
         self.inner.get("axisTag").as_::<JsString>()
     }
+
 }
 impl FontFaceVariationAxis {
     /// Getter of the `minimumValue` attribute.
@@ -83,6 +87,7 @@ impl FontFaceVariationAxis {
     pub fn minimum_value(&self) -> f64 {
         self.inner.get("minimumValue").as_::<f64>()
     }
+
 }
 impl FontFaceVariationAxis {
     /// Getter of the `maximumValue` attribute.
@@ -90,6 +95,7 @@ impl FontFaceVariationAxis {
     pub fn maximum_value(&self) -> f64 {
         self.inner.get("maximumValue").as_::<f64>()
     }
+
 }
 impl FontFaceVariationAxis {
     /// Getter of the `defaultValue` attribute.
@@ -97,4 +103,5 @@ impl FontFaceVariationAxis {
     pub fn default_value(&self) -> f64 {
         self.inner.get("defaultValue").as_::<f64>()
     }
+
 }

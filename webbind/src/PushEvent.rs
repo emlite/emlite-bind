@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PushEvent class.
 /// [`PushEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PushEvent {
 
 impl FromVal for PushEvent {
     fn from_val(v: &Any) -> Self {
-        PushEvent {
-            inner: ExtendableEvent::from_val(v),
-        }
+        PushEvent { inner: ExtendableEvent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PushEvent {
 
 impl AsMut<Any> for PushEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PushEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&PushEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PushEvent);
 
+
+
 impl PushEvent {
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance
     pub fn new0(type_: &JsString) -> PushEvent {
         Self {
-            inner: Any::global("PushEvent")
-                .new(&[type_.into()])
-                .as_::<ExtendableEvent>(),
+            inner: Any::global("PushEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
         }
     }
 
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &PushEventInit) -> PushEvent {
         Self {
-            inner: Any::global("PushEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<ExtendableEvent>(),
+            inner: Any::global("PushEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
         }
     }
+
 }
 impl PushEvent {
     /// Getter of the `data` attribute.
@@ -88,4 +88,5 @@ impl PushEvent {
     pub fn data(&self) -> PushMessageData {
         self.inner.get("data").as_::<PushMessageData>()
     }
+
 }

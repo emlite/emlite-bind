@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAnimatedAngle class.
 /// [`SVGAnimatedAngle`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedAngle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAnimatedAngle {
 
 impl FromVal for SVGAnimatedAngle {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedAngle {
-            inner: Any::from_val(v),
-        }
+        SVGAnimatedAngle { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAnimatedAngle {
 
 impl AsMut<Any> for SVGAnimatedAngle {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAnimatedAngle> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGAnimatedAngle> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedAngle);
 
+
 impl SVGAnimatedAngle {
     /// Getter of the `baseVal` attribute.
     /// [`SVGAnimatedAngle.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedAngle/baseVal)
     pub fn base_val(&self) -> SVGAngle {
         self.inner.get("baseVal").as_::<SVGAngle>()
     }
+
 }
 impl SVGAnimatedAngle {
     /// Getter of the `animVal` attribute.
@@ -76,4 +79,5 @@ impl SVGAnimatedAngle {
     pub fn anim_val(&self) -> SVGAngle {
         self.inner.get("animVal").as_::<SVGAngle>()
     }
+
 }

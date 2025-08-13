@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileReader class.
 /// [`FileReader`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileReader {
 
 impl FromVal for FileReader {
     fn from_val(v: &Any) -> Self {
-        FileReader {
-            inner: EventTarget::from_val(v),
-        }
+        FileReader { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileReader {
 
 impl AsMut<Any> for FileReader {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileReader> for Any {
@@ -63,6 +64,8 @@ impl From<&FileReader> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileReader);
 
+
+
 impl FileReader {
     /// The `new FileReader(..)` constructor, creating a new FileReader instance
     pub fn new() -> FileReader {
@@ -70,54 +73,45 @@ impl FileReader {
             inner: Any::global("FileReader").new(&[]).as_::<EventTarget>(),
         }
     }
+
 }
 impl FileReader {
     /// The readAsArrayBuffer method.
     /// [`FileReader.readAsArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer)
     pub fn read_as_array_buffer(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsArrayBuffer", &[blob.into()])
-            .as_::<Undefined>()
+        self.inner.call("readAsArrayBuffer", &[blob.into(), ]).as_::<Undefined>()
     }
 }
 impl FileReader {
     /// The readAsBinaryString method.
     /// [`FileReader.readAsBinaryString`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString)
     pub fn read_as_binary_string(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsBinaryString", &[blob.into()])
-            .as_::<Undefined>()
+        self.inner.call("readAsBinaryString", &[blob.into(), ]).as_::<Undefined>()
     }
 }
 impl FileReader {
     /// The readAsText method.
     /// [`FileReader.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
     pub fn read_as_text0(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsText", &[blob.into()])
-            .as_::<Undefined>()
+        self.inner.call("readAsText", &[blob.into(), ]).as_::<Undefined>()
     }
     /// The readAsText method.
     /// [`FileReader.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
     pub fn read_as_text1(&self, blob: &Blob, encoding: &JsString) -> Undefined {
-        self.inner
-            .call("readAsText", &[blob.into(), encoding.into()])
-            .as_::<Undefined>()
+        self.inner.call("readAsText", &[blob.into(), encoding.into(), ]).as_::<Undefined>()
     }
 }
 impl FileReader {
     /// The readAsDataURL method.
     /// [`FileReader.readAsDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL)
     pub fn read_as_data_url(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsDataURL", &[blob.into()])
-            .as_::<Undefined>()
+        self.inner.call("readAsDataURL", &[blob.into(), ]).as_::<Undefined>()
     }
 }
 impl FileReader {
     /// The abort method.
     /// [`FileReader.abort`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/abort)
-    pub fn abort(&self) -> Undefined {
+    pub fn abort(&self, ) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
 }
@@ -127,6 +121,7 @@ impl FileReader {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
+
 }
 impl FileReader {
     /// Getter of the `result` attribute.
@@ -134,6 +129,7 @@ impl FileReader {
     pub fn result(&self) -> Any {
         self.inner.get("result").as_::<Any>()
     }
+
 }
 impl FileReader {
     /// Getter of the `error` attribute.
@@ -141,6 +137,7 @@ impl FileReader {
     pub fn error(&self) -> DOMException {
         self.inner.get("error").as_::<DOMException>()
     }
+
 }
 impl FileReader {
     /// Getter of the `onloadstart` attribute.

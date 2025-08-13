@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLGraph class.
 /// [`MLGraph`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraph)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MLGraph {
 
 impl FromVal for MLGraph {
     fn from_val(v: &Any) -> Self {
-        MLGraph {
-            inner: Any::from_val(v),
-        }
+        MLGraph { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MLGraph {
 
 impl AsMut<Any> for MLGraph {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLGraph> for Any {
@@ -63,10 +64,11 @@ impl From<&MLGraph> for Any {
 
 jsbind::utils::impl_dyn_cast!(MLGraph);
 
+
 impl MLGraph {
     /// The destroy method.
     /// [`MLGraph.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraph/destroy)
-    pub fn destroy(&self) -> Undefined {
+    pub fn destroy(&self, ) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

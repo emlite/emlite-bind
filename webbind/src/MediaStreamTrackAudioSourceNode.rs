@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaStreamTrackAudioSourceNode class.
 /// [`MediaStreamTrackAudioSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackAudioSourceNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaStreamTrackAudioSourceNode {
 
 impl FromVal for MediaStreamTrackAudioSourceNode {
     fn from_val(v: &Any) -> Self {
-        MediaStreamTrackAudioSourceNode {
-            inner: AudioNode::from_val(v),
-        }
+        MediaStreamTrackAudioSourceNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaStreamTrackAudioSourceNode {
 
 impl AsMut<Any> for MediaStreamTrackAudioSourceNode {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaStreamTrackAudioSourceNode> for Any {
@@ -63,16 +64,14 @@ impl From<&MediaStreamTrackAudioSourceNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackAudioSourceNode);
 
+
+
 impl MediaStreamTrackAudioSourceNode {
     /// The `new MediaStreamTrackAudioSourceNode(..)` constructor, creating a new MediaStreamTrackAudioSourceNode instance
-    pub fn new(
-        context: &AudioContext,
-        options: &MediaStreamTrackAudioSourceOptions,
-    ) -> MediaStreamTrackAudioSourceNode {
+    pub fn new(context: &AudioContext, options: &MediaStreamTrackAudioSourceOptions) -> MediaStreamTrackAudioSourceNode {
         Self {
-            inner: Any::global("MediaStreamTrackAudioSourceNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: Any::global("MediaStreamTrackAudioSourceNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }

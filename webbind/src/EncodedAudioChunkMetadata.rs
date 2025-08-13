@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EncodedAudioChunkMetadata dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for EncodedAudioChunkMetadata {
 
 impl AsMut<Any> for EncodedAudioChunkMetadata {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EncodedAudioChunkMetadata> for Any {

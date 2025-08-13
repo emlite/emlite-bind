@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Sensor class.
 /// [`Sensor`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Sensor {
 
 impl FromVal for Sensor {
     fn from_val(v: &Any) -> Self {
-        Sensor {
-            inner: EventTarget::from_val(v),
-        }
+        Sensor { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Sensor {
 
 impl AsMut<Any> for Sensor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Sensor> for Any {
@@ -63,12 +64,14 @@ impl From<&Sensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(Sensor);
 
+
 impl Sensor {
     /// Getter of the `activated` attribute.
     /// [`Sensor.activated`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/activated)
     pub fn activated(&self) -> bool {
         self.inner.get("activated").as_::<bool>()
     }
+
 }
 impl Sensor {
     /// Getter of the `hasReading` attribute.
@@ -76,6 +79,7 @@ impl Sensor {
     pub fn has_reading(&self) -> bool {
         self.inner.get("hasReading").as_::<bool>()
     }
+
 }
 impl Sensor {
     /// Getter of the `timestamp` attribute.
@@ -83,18 +87,19 @@ impl Sensor {
     pub fn timestamp(&self) -> Any {
         self.inner.get("timestamp").as_::<Any>()
     }
+
 }
 impl Sensor {
     /// The start method.
     /// [`Sensor.start`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/start)
-    pub fn start(&self) -> Undefined {
+    pub fn start(&self, ) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
 }
 impl Sensor {
     /// The stop method.
     /// [`Sensor.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/stop)
-    pub fn stop(&self) -> Undefined {
+    pub fn stop(&self, ) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }

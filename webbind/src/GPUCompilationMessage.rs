@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUCompilationMessage class.
 /// [`GPUCompilationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCompilationMessage)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUCompilationMessage {
 
 impl FromVal for GPUCompilationMessage {
     fn from_val(v: &Any) -> Self {
-        GPUCompilationMessage {
-            inner: Any::from_val(v),
-        }
+        GPUCompilationMessage { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUCompilationMessage {
 
 impl AsMut<Any> for GPUCompilationMessage {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUCompilationMessage> for Any {
@@ -63,12 +64,14 @@ impl From<&GPUCompilationMessage> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUCompilationMessage);
 
+
 impl GPUCompilationMessage {
     /// Getter of the `message` attribute.
     /// [`GPUCompilationMessage.message`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCompilationMessage/message)
     pub fn message(&self) -> JsString {
         self.inner.get("message").as_::<JsString>()
     }
+
 }
 impl GPUCompilationMessage {
     /// Getter of the `type` attribute.
@@ -76,6 +79,7 @@ impl GPUCompilationMessage {
     pub fn type_(&self) -> GPUCompilationMessageType {
         self.inner.get("type").as_::<GPUCompilationMessageType>()
     }
+
 }
 impl GPUCompilationMessage {
     /// Getter of the `lineNum` attribute.
@@ -83,6 +87,7 @@ impl GPUCompilationMessage {
     pub fn line_num(&self) -> u64 {
         self.inner.get("lineNum").as_::<u64>()
     }
+
 }
 impl GPUCompilationMessage {
     /// Getter of the `linePos` attribute.
@@ -90,6 +95,7 @@ impl GPUCompilationMessage {
     pub fn line_pos(&self) -> u64 {
         self.inner.get("linePos").as_::<u64>()
     }
+
 }
 impl GPUCompilationMessage {
     /// Getter of the `offset` attribute.
@@ -97,6 +103,7 @@ impl GPUCompilationMessage {
     pub fn offset(&self) -> u64 {
         self.inner.get("offset").as_::<u64>()
     }
+
 }
 impl GPUCompilationMessage {
     /// Getter of the `length` attribute.
@@ -104,4 +111,5 @@ impl GPUCompilationMessage {
     pub fn length(&self) -> u64 {
         self.inner.get("length").as_::<u64>()
     }
+
 }

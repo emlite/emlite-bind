@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DigitalCredential class.
 /// [`DigitalCredential`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DigitalCredential {
 
 impl FromVal for DigitalCredential {
     fn from_val(v: &Any) -> Self {
-        DigitalCredential {
-            inner: Credential::from_val(v),
-        }
+        DigitalCredential { inner: Credential::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DigitalCredential {
 
 impl AsMut<Any> for DigitalCredential {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DigitalCredential> for Any {
@@ -63,10 +64,11 @@ impl From<&DigitalCredential> for Any {
 
 jsbind::utils::impl_dyn_cast!(DigitalCredential);
 
+
 impl DigitalCredential {
     /// The toJSON method.
     /// [`DigitalCredential.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
@@ -76,6 +78,7 @@ impl DigitalCredential {
     pub fn protocol(&self) -> JsString {
         self.inner.get("protocol").as_::<JsString>()
     }
+
 }
 impl DigitalCredential {
     /// Getter of the `data` attribute.
@@ -83,13 +86,12 @@ impl DigitalCredential {
     pub fn data(&self) -> Object {
         self.inner.get("data").as_::<Object>()
     }
+
 }
 impl DigitalCredential {
     /// The userAgentAllowsProtocol method.
     /// [`DigitalCredential.userAgentAllowsProtocol`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/userAgentAllowsProtocol)
     pub fn user_agent_allows_protocol(protocol: &JsString) -> bool {
-        Any::global("DigitalCredential")
-            .call("userAgentAllowsProtocol", &[protocol.into()])
-            .as_::<bool>()
+        Any::global("DigitalCredential").call("userAgentAllowsProtocol", &[protocol.into(), ]).as_::<bool>()
     }
 }

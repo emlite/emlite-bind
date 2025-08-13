@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PurchaseDetails dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PurchaseDetails {
 
 impl AsMut<Any> for PurchaseDetails {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PurchaseDetails> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSMathMin class.
 /// [`CSSMathMin`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMin)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSMathMin {
 
 impl FromVal for CSSMathMin {
     fn from_val(v: &Any) -> Self {
-        CSSMathMin {
-            inner: CSSMathValue::from_val(v),
-        }
+        CSSMathMin { inner: CSSMathValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSMathMin {
 
 impl AsMut<Any> for CSSMathMin {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSMathMin> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSMathMin> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathMin);
 
+
+
 impl CSSMathMin {
     /// The `new CSSMathMin(..)` constructor, creating a new CSSMathMin instance
     pub fn new(args: &Any) -> CSSMathMin {
         Self {
-            inner: Any::global("CSSMathMin")
-                .new(&[args.into()])
-                .as_::<CSSMathValue>(),
+            inner: Any::global("CSSMathMin").new(&[args.into()]).as_::<CSSMathValue>(),
         }
     }
+
 }
 impl CSSMathMin {
     /// Getter of the `values` attribute.
@@ -79,4 +81,5 @@ impl CSSMathMin {
     pub fn values(&self) -> CSSNumericArray {
         self.inner.get("values").as_::<CSSNumericArray>()
     }
+
 }

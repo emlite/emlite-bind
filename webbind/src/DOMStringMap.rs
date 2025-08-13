@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DOMStringMap class.
 /// [`DOMStringMap`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DOMStringMap {
 
 impl FromVal for DOMStringMap {
     fn from_val(v: &Any) -> Self {
-        DOMStringMap {
-            inner: Any::from_val(v),
-        }
+        DOMStringMap { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DOMStringMap {
 
 impl AsMut<Any> for DOMStringMap {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DOMStringMap> for Any {
@@ -62,3 +63,5 @@ impl From<&DOMStringMap> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(DOMStringMap);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ImageDecoderInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ImageDecoderInit {
 
 impl AsMut<Any> for ImageDecoderInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ImageDecoderInit> for Any {
@@ -83,9 +86,7 @@ impl ImageDecoderInit {
 impl ImageDecoderInit {
     /// Getter of the `colorSpaceConversion` attribute.
     pub fn color_space_conversion(&self) -> ColorSpaceConversion {
-        self.inner
-            .get("colorSpaceConversion")
-            .as_::<ColorSpaceConversion>()
+        self.inner.get("colorSpaceConversion").as_::<ColorSpaceConversion>()
     }
 
     /// Setter of the `colorSpaceConversion` attribute.

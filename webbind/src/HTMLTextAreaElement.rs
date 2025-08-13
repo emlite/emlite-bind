@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLTextAreaElement class.
 /// [`HTMLTextAreaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLTextAreaElement {
 
 impl FromVal for HTMLTextAreaElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTextAreaElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTextAreaElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLTextAreaElement {
 
 impl AsMut<Any> for HTMLTextAreaElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLTextAreaElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLTextAreaElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTextAreaElement);
 
+
+
 impl HTMLTextAreaElement {
     /// The `new HTMLTextAreaElement(..)` constructor, creating a new HTMLTextAreaElement instance
     pub fn new() -> HTMLTextAreaElement {
         Self {
-            inner: Any::global("HTMLTextAreaElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLTextAreaElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTextAreaElement {
     /// Getter of the `autocomplete` attribute.
@@ -131,6 +133,7 @@ impl HTMLTextAreaElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLTextAreaElement {
     /// Getter of the `maxLength` attribute.
@@ -242,6 +245,7 @@ impl HTMLTextAreaElement {
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
+
 }
 impl HTMLTextAreaElement {
     /// Getter of the `defaultValue` attribute.
@@ -275,6 +279,7 @@ impl HTMLTextAreaElement {
     pub fn text_length(&self) -> u32 {
         self.inner.get("textLength").as_::<u32>()
     }
+
 }
 impl HTMLTextAreaElement {
     /// Getter of the `willValidate` attribute.
@@ -282,6 +287,7 @@ impl HTMLTextAreaElement {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
+
 }
 impl HTMLTextAreaElement {
     /// Getter of the `validity` attribute.
@@ -289,6 +295,7 @@ impl HTMLTextAreaElement {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
+
 }
 impl HTMLTextAreaElement {
     /// Getter of the `validationMessage` attribute.
@@ -296,18 +303,19 @@ impl HTMLTextAreaElement {
     pub fn validation_message(&self) -> JsString {
         self.inner.get("validationMessage").as_::<JsString>()
     }
+
 }
 impl HTMLTextAreaElement {
     /// The checkValidity method.
     /// [`HTMLTextAreaElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/checkValidity)
-    pub fn check_validity(&self) -> bool {
+    pub fn check_validity(&self, ) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
 }
 impl HTMLTextAreaElement {
     /// The reportValidity method.
     /// [`HTMLTextAreaElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/reportValidity)
-    pub fn report_validity(&self) -> bool {
+    pub fn report_validity(&self, ) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
 }
@@ -315,9 +323,7 @@ impl HTMLTextAreaElement {
     /// The setCustomValidity method.
     /// [`HTMLTextAreaElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setCustomValidity)
     pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<Undefined>()
+        self.inner.call("setCustomValidity", &[error.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLTextAreaElement {
@@ -326,11 +332,12 @@ impl HTMLTextAreaElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
+
 }
 impl HTMLTextAreaElement {
     /// The select method.
     /// [`HTMLTextAreaElement.select`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select)
-    pub fn select(&self) -> Undefined {
+    pub fn select(&self, ) -> Undefined {
         self.inner.call("select", &[]).as_::<Undefined>()
     }
 }
@@ -377,51 +384,23 @@ impl HTMLTextAreaElement {
     /// The setRangeText method.
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
     pub fn set_range_text0(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
-        self.inner
-            .call(
-                "setRangeText",
-                &[replacement.into(), start.into(), end.into()],
-            )
-            .as_::<Undefined>()
+        self.inner.call("setRangeText", &[replacement.into(), start.into(), end.into(), ]).as_::<Undefined>()
     }
     /// The setRangeText method.
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
-    pub fn set_range_text1(
-        &self,
-        replacement: &JsString,
-        start: u32,
-        end: u32,
-        selection_mode: &SelectionMode,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "setRangeText",
-                &[
-                    replacement.into(),
-                    start.into(),
-                    end.into(),
-                    selection_mode.into(),
-                ],
-            )
-            .as_::<Undefined>()
+    pub fn set_range_text1(&self, replacement: &JsString, start: u32, end: u32, selection_mode: &SelectionMode) -> Undefined {
+        self.inner.call("setRangeText", &[replacement.into(), start.into(), end.into(), selection_mode.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLTextAreaElement {
     /// The setSelectionRange method.
     /// [`HTMLTextAreaElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setSelectionRange)
     pub fn set_selection_range0(&self, start: u32, end: u32) -> Undefined {
-        self.inner
-            .call("setSelectionRange", &[start.into(), end.into()])
-            .as_::<Undefined>()
+        self.inner.call("setSelectionRange", &[start.into(), end.into(), ]).as_::<Undefined>()
     }
     /// The setSelectionRange method.
     /// [`HTMLTextAreaElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setSelectionRange)
     pub fn set_selection_range1(&self, start: u32, end: u32, direction: &JsString) -> Undefined {
-        self.inner
-            .call(
-                "setSelectionRange",
-                &[start.into(), end.into(), direction.into()],
-            )
-            .as_::<Undefined>()
+        self.inner.call("setSelectionRange", &[start.into(), end.into(), direction.into(), ]).as_::<Undefined>()
     }
 }

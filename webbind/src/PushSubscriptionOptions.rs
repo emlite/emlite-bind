@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PushSubscriptionOptions class.
 /// [`PushSubscriptionOptions`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionOptions)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PushSubscriptionOptions {
 
 impl FromVal for PushSubscriptionOptions {
     fn from_val(v: &Any) -> Self {
-        PushSubscriptionOptions {
-            inner: Any::from_val(v),
-        }
+        PushSubscriptionOptions { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PushSubscriptionOptions {
 
 impl AsMut<Any> for PushSubscriptionOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PushSubscriptionOptions> for Any {
@@ -63,12 +64,14 @@ impl From<&PushSubscriptionOptions> for Any {
 
 jsbind::utils::impl_dyn_cast!(PushSubscriptionOptions);
 
+
 impl PushSubscriptionOptions {
     /// Getter of the `userVisibleOnly` attribute.
     /// [`PushSubscriptionOptions.userVisibleOnly`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionOptions/userVisibleOnly)
     pub fn user_visible_only(&self) -> bool {
         self.inner.get("userVisibleOnly").as_::<bool>()
     }
+
 }
 impl PushSubscriptionOptions {
     /// Getter of the `applicationServerKey` attribute.
@@ -76,4 +79,5 @@ impl PushSubscriptionOptions {
     pub fn application_server_key(&self) -> ArrayBuffer {
         self.inner.get("applicationServerKey").as_::<ArrayBuffer>()
     }
+
 }

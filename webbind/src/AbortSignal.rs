@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AbortSignal class.
 /// [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AbortSignal {
 
 impl FromVal for AbortSignal {
     fn from_val(v: &Any) -> Self {
-        AbortSignal {
-            inner: EventTarget::from_val(v),
-        }
+        AbortSignal { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AbortSignal {
 
 impl AsMut<Any> for AbortSignal {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AbortSignal> for Any {
@@ -63,38 +64,31 @@ impl From<&AbortSignal> for Any {
 
 jsbind::utils::impl_dyn_cast!(AbortSignal);
 
+
 impl AbortSignal {
     /// The abort method.
     /// [`AbortSignal.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/abort)
     pub fn abort0() -> AbortSignal {
-        Any::global("AbortSignal")
-            .call("abort", &[])
-            .as_::<AbortSignal>()
+        Any::global("AbortSignal").call("abort", &[]).as_::<AbortSignal>()
     }
     /// The abort method.
     /// [`AbortSignal.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/abort)
     pub fn abort1(reason: &Any) -> AbortSignal {
-        Any::global("AbortSignal")
-            .call("abort", &[reason.into()])
-            .as_::<AbortSignal>()
+        Any::global("AbortSignal").call("abort", &[reason.into(), ]).as_::<AbortSignal>()
     }
 }
 impl AbortSignal {
     /// The timeout method.
     /// [`AbortSignal.timeout`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout)
     pub fn timeout(milliseconds: u64) -> AbortSignal {
-        Any::global("AbortSignal")
-            .call("timeout", &[milliseconds.into()])
-            .as_::<AbortSignal>()
+        Any::global("AbortSignal").call("timeout", &[milliseconds.into(), ]).as_::<AbortSignal>()
     }
 }
 impl AbortSignal {
     /// The any method.
     /// [`AbortSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/any)
     pub fn any(signals: &TypedArray<AbortSignal>) -> AbortSignal {
-        Any::global("AbortSignal")
-            .call("any", &[signals.into()])
-            .as_::<AbortSignal>()
+        Any::global("AbortSignal").call("any", &[signals.into(), ]).as_::<AbortSignal>()
     }
 }
 impl AbortSignal {
@@ -103,6 +97,7 @@ impl AbortSignal {
     pub fn aborted(&self) -> bool {
         self.inner.get("aborted").as_::<bool>()
     }
+
 }
 impl AbortSignal {
     /// Getter of the `reason` attribute.
@@ -110,11 +105,12 @@ impl AbortSignal {
     pub fn reason(&self) -> Any {
         self.inner.get("reason").as_::<Any>()
     }
+
 }
 impl AbortSignal {
     /// The throwIfAborted method.
     /// [`AbortSignal.throwIfAborted`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/throwIfAborted)
-    pub fn throw_if_aborted(&self) -> Undefined {
+    pub fn throw_if_aborted(&self, ) -> Undefined {
         self.inner.call("throwIfAborted", &[]).as_::<Undefined>()
     }
 }

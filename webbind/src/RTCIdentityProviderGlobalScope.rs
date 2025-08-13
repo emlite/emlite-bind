@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCIdentityProviderGlobalScope class.
 /// [`RTCIdentityProviderGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCIdentityProviderGlobalScope {
 
 impl FromVal for RTCIdentityProviderGlobalScope {
     fn from_val(v: &Any) -> Self {
-        RTCIdentityProviderGlobalScope {
-            inner: WorkerGlobalScope::from_val(v),
-        }
+        RTCIdentityProviderGlobalScope { inner: WorkerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCIdentityProviderGlobalScope {
 
 impl AsMut<Any> for RTCIdentityProviderGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCIdentityProviderGlobalScope> for Any {
@@ -63,12 +64,12 @@ impl From<&RTCIdentityProviderGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderGlobalScope);
 
+
 impl RTCIdentityProviderGlobalScope {
     /// Getter of the `rtcIdentityProvider` attribute.
     /// [`RTCIdentityProviderGlobalScope.rtcIdentityProvider`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderGlobalScope/rtcIdentityProvider)
     pub fn rtc_identity_provider(&self) -> RTCIdentityProviderRegistrar {
-        self.inner
-            .get("rtcIdentityProvider")
-            .as_::<RTCIdentityProviderRegistrar>()
+        self.inner.get("rtcIdentityProvider").as_::<RTCIdentityProviderRegistrar>()
     }
+
 }

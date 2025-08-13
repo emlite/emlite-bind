@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Keyboard class.
 /// [`Keyboard`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Keyboard {
 
 impl FromVal for Keyboard {
     fn from_val(v: &Any) -> Self {
-        Keyboard {
-            inner: EventTarget::from_val(v),
-        }
+        Keyboard { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Keyboard {
 
 impl AsMut<Any> for Keyboard {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Keyboard> for Any {
@@ -63,34 +64,31 @@ impl From<&Keyboard> for Any {
 
 jsbind::utils::impl_dyn_cast!(Keyboard);
 
+
 impl Keyboard {
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
-    pub fn lock0(&self) -> Promise<Undefined> {
+    pub fn lock0(&self, ) -> Promise<Undefined> {
         self.inner.call("lock", &[]).as_::<Promise<Undefined>>()
     }
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
     pub fn lock1(&self, key_codes: &TypedArray<JsString>) -> Promise<Undefined> {
-        self.inner
-            .call("lock", &[key_codes.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("lock", &[key_codes.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl Keyboard {
     /// The unlock method.
     /// [`Keyboard.unlock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/unlock)
-    pub fn unlock(&self) -> Undefined {
+    pub fn unlock(&self, ) -> Undefined {
         self.inner.call("unlock", &[]).as_::<Undefined>()
     }
 }
 impl Keyboard {
     /// The getLayoutMap method.
     /// [`Keyboard.getLayoutMap`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/getLayoutMap)
-    pub fn get_layout_map(&self) -> Promise<KeyboardLayoutMap> {
-        self.inner
-            .call("getLayoutMap", &[])
-            .as_::<Promise<KeyboardLayoutMap>>()
+    pub fn get_layout_map(&self, ) -> Promise<KeyboardLayoutMap> {
+        self.inner.call("getLayoutMap", &[]).as_::<Promise<KeyboardLayoutMap>>()
     }
 }
 impl Keyboard {

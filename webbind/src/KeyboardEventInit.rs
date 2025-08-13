@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The KeyboardEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for KeyboardEventInit {
 
 impl AsMut<Any> for KeyboardEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<KeyboardEventInit> for Any {

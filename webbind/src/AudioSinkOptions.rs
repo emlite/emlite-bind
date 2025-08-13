@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioSinkOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for AudioSinkOptions {
 
 impl AsMut<Any> for AudioSinkOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioSinkOptions> for Any {

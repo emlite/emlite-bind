@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechRecognitionEvent class.
 /// [`SpeechRecognitionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SpeechRecognitionEvent {
 
 impl FromVal for SpeechRecognitionEvent {
     fn from_val(v: &Any) -> Self {
-        SpeechRecognitionEvent {
-            inner: Event::from_val(v),
-        }
+        SpeechRecognitionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SpeechRecognitionEvent {
 
 impl AsMut<Any> for SpeechRecognitionEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechRecognitionEvent> for Any {
@@ -63,18 +64,16 @@ impl From<&SpeechRecognitionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionEvent);
 
+
+
 impl SpeechRecognitionEvent {
     /// The `new SpeechRecognitionEvent(..)` constructor, creating a new SpeechRecognitionEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &SpeechRecognitionEventInit,
-    ) -> SpeechRecognitionEvent {
+    pub fn new(type_: &JsString, event_init_dict: &SpeechRecognitionEventInit) -> SpeechRecognitionEvent {
         Self {
-            inner: Any::global("SpeechRecognitionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("SpeechRecognitionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl SpeechRecognitionEvent {
     /// Getter of the `resultIndex` attribute.
@@ -82,13 +81,13 @@ impl SpeechRecognitionEvent {
     pub fn result_index(&self) -> u32 {
         self.inner.get("resultIndex").as_::<u32>()
     }
+
 }
 impl SpeechRecognitionEvent {
     /// Getter of the `results` attribute.
     /// [`SpeechRecognitionEvent.results`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionEvent/results)
     pub fn results(&self) -> SpeechRecognitionResultList {
-        self.inner
-            .get("results")
-            .as_::<SpeechRecognitionResultList>()
+        self.inner.get("results").as_::<SpeechRecognitionResultList>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechSynthesisErrorEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SpeechSynthesisErrorEventInit {
 
 impl AsMut<Any> for SpeechSynthesisErrorEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechSynthesisErrorEventInit> for Any {

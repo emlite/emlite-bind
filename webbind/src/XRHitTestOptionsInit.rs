@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRHitTestOptionsInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for XRHitTestOptionsInit {
 
 impl AsMut<Any> for XRHitTestOptionsInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRHitTestOptionsInit> for Any {
@@ -72,9 +75,7 @@ impl XRHitTestOptionsInit {
 impl XRHitTestOptionsInit {
     /// Getter of the `entityTypes` attribute.
     pub fn entity_types(&self) -> TypedArray<XRHitTestTrackableType> {
-        self.inner
-            .get("entityTypes")
-            .as_::<TypedArray<XRHitTestTrackableType>>()
+        self.inner.get("entityTypes").as_::<TypedArray<XRHitTestTrackableType>>()
     }
 
     /// Setter of the `entityTypes` attribute.

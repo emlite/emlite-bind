@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaKeys class.
 /// [`MediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaKeys {
 
 impl FromVal for MediaKeys {
     fn from_val(v: &Any) -> Self {
-        MediaKeys {
-            inner: Any::from_val(v),
-        }
+        MediaKeys { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaKeys {
 
 impl AsMut<Any> for MediaKeys {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaKeys> for Any {
@@ -63,44 +64,35 @@ impl From<&MediaKeys> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaKeys);
 
+
 impl MediaKeys {
     /// The createSession method.
     /// [`MediaKeys.createSession`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/createSession)
-    pub fn create_session0(&self) -> MediaKeySession {
-        self.inner
-            .call("createSession", &[])
-            .as_::<MediaKeySession>()
+    pub fn create_session0(&self, ) -> MediaKeySession {
+        self.inner.call("createSession", &[]).as_::<MediaKeySession>()
     }
     /// The createSession method.
     /// [`MediaKeys.createSession`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/createSession)
     pub fn create_session1(&self, session_type: &MediaKeySessionType) -> MediaKeySession {
-        self.inner
-            .call("createSession", &[session_type.into()])
-            .as_::<MediaKeySession>()
+        self.inner.call("createSession", &[session_type.into(), ]).as_::<MediaKeySession>()
     }
 }
 impl MediaKeys {
     /// The getStatusForPolicy method.
     /// [`MediaKeys.getStatusForPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/getStatusForPolicy)
-    pub fn get_status_for_policy0(&self) -> Promise<MediaKeyStatus> {
-        self.inner
-            .call("getStatusForPolicy", &[])
-            .as_::<Promise<MediaKeyStatus>>()
+    pub fn get_status_for_policy0(&self, ) -> Promise<MediaKeyStatus> {
+        self.inner.call("getStatusForPolicy", &[]).as_::<Promise<MediaKeyStatus>>()
     }
     /// The getStatusForPolicy method.
     /// [`MediaKeys.getStatusForPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/getStatusForPolicy)
     pub fn get_status_for_policy1(&self, policy: &MediaKeysPolicy) -> Promise<MediaKeyStatus> {
-        self.inner
-            .call("getStatusForPolicy", &[policy.into()])
-            .as_::<Promise<MediaKeyStatus>>()
+        self.inner.call("getStatusForPolicy", &[policy.into(), ]).as_::<Promise<MediaKeyStatus>>()
     }
 }
 impl MediaKeys {
     /// The setServerCertificate method.
     /// [`MediaKeys.setServerCertificate`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/setServerCertificate)
     pub fn set_server_certificate(&self, server_certificate: &Any) -> Promise<bool> {
-        self.inner
-            .call("setServerCertificate", &[server_certificate.into()])
-            .as_::<Promise<bool>>()
+        self.inner.call("setServerCertificate", &[server_certificate.into(), ]).as_::<Promise<bool>>()
     }
 }

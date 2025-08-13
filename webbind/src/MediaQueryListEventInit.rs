@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaQueryListEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaQueryListEventInit {
 
 impl AsMut<Any> for MediaQueryListEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaQueryListEventInit> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLFrameSetElement class.
 /// [`HTMLFrameSetElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLFrameSetElement {
 
 impl FromVal for HTMLFrameSetElement {
     fn from_val(v: &Any) -> Self {
-        HTMLFrameSetElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLFrameSetElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLFrameSetElement {
 
 impl AsMut<Any> for HTMLFrameSetElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLFrameSetElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLFrameSetElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLFrameSetElement);
 
+
+
 impl HTMLFrameSetElement {
     /// The `new HTMLFrameSetElement(..)` constructor, creating a new HTMLFrameSetElement instance
     pub fn new() -> HTMLFrameSetElement {
         Self {
-            inner: Any::global("HTMLFrameSetElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLFrameSetElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLFrameSetElement {
     /// Getter of the `cols` attribute.

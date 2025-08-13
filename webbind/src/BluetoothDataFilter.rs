@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothDataFilter class.
 /// [`BluetoothDataFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BluetoothDataFilter {
 
 impl FromVal for BluetoothDataFilter {
     fn from_val(v: &Any) -> Self {
-        BluetoothDataFilter {
-            inner: Any::from_val(v),
-        }
+        BluetoothDataFilter { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BluetoothDataFilter {
 
 impl AsMut<Any> for BluetoothDataFilter {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothDataFilter> for Any {
@@ -63,6 +64,8 @@ impl From<&BluetoothDataFilter> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothDataFilter);
 
+
+
 impl BluetoothDataFilter {
     /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
     pub fn new0() -> BluetoothDataFilter {
@@ -74,11 +77,10 @@ impl BluetoothDataFilter {
     /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
     pub fn new1(init: &BluetoothDataFilterInit) -> BluetoothDataFilter {
         Self {
-            inner: Any::global("BluetoothDataFilter")
-                .new(&[init.into()])
-                .as_::<Any>(),
+            inner: Any::global("BluetoothDataFilter").new(&[init.into()]).as_::<Any>(),
         }
     }
+
 }
 impl BluetoothDataFilter {
     /// Getter of the `dataPrefix` attribute.
@@ -86,6 +88,7 @@ impl BluetoothDataFilter {
     pub fn data_prefix(&self) -> ArrayBuffer {
         self.inner.get("dataPrefix").as_::<ArrayBuffer>()
     }
+
 }
 impl BluetoothDataFilter {
     /// Getter of the `mask` attribute.
@@ -93,4 +96,5 @@ impl BluetoothDataFilter {
     pub fn mask(&self) -> ArrayBuffer {
         self.inner.get("mask").as_::<ArrayBuffer>()
     }
+
 }

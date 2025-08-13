@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CookieChangeEvent class.
 /// [`CookieChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CookieChangeEvent {
 
 impl FromVal for CookieChangeEvent {
     fn from_val(v: &Any) -> Self {
-        CookieChangeEvent {
-            inner: Event::from_val(v),
-        }
+        CookieChangeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CookieChangeEvent {
 
 impl AsMut<Any> for CookieChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CookieChangeEvent> for Any {
@@ -63,40 +64,37 @@ impl From<&CookieChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CookieChangeEvent);
 
+
+
 impl CookieChangeEvent {
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
     pub fn new0(type_: &JsString) -> CookieChangeEvent {
         Self {
-            inner: Any::global("CookieChangeEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("CookieChangeEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &CookieChangeEventInit) -> CookieChangeEvent {
         Self {
-            inner: Any::global("CookieChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("CookieChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl CookieChangeEvent {
     /// Getter of the `changed` attribute.
     /// [`CookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/changed)
     pub fn changed(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("changed")
-            .as_::<TypedArray<CookieListItem>>()
+        self.inner.get("changed").as_::<TypedArray<CookieListItem>>()
     }
+
 }
 impl CookieChangeEvent {
     /// Getter of the `deleted` attribute.
     /// [`CookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/deleted)
     pub fn deleted(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("deleted")
-            .as_::<TypedArray<CookieListItem>>()
+        self.inner.get("deleted").as_::<TypedArray<CookieListItem>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRSpace class.
 /// [`XRSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRSpace)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRSpace {
 
 impl FromVal for XRSpace {
     fn from_val(v: &Any) -> Self {
-        XRSpace {
-            inner: EventTarget::from_val(v),
-        }
+        XRSpace { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRSpace {
 
 impl AsMut<Any> for XRSpace {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRSpace> for Any {
@@ -62,3 +63,5 @@ impl From<&XRSpace> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRSpace);
+
+

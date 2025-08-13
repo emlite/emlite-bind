@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ReadableStreamGetReaderOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ReadableStreamGetReaderOptions {
 
 impl AsMut<Any> for ReadableStreamGetReaderOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ReadableStreamGetReaderOptions> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpTransceiverInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCRtpTransceiverInit {
 
 impl AsMut<Any> for RTCRtpTransceiverInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpTransceiverInit> for Any {
@@ -61,9 +64,7 @@ impl From<&RTCRtpTransceiverInit> for Any {
 impl RTCRtpTransceiverInit {
     /// Getter of the `direction` attribute.
     pub fn direction(&self) -> RTCRtpTransceiverDirection {
-        self.inner
-            .get("direction")
-            .as_::<RTCRtpTransceiverDirection>()
+        self.inner.get("direction").as_::<RTCRtpTransceiverDirection>()
     }
 
     /// Setter of the `direction` attribute.
@@ -85,9 +86,7 @@ impl RTCRtpTransceiverInit {
 impl RTCRtpTransceiverInit {
     /// Getter of the `sendEncodings` attribute.
     pub fn send_encodings(&self) -> TypedArray<RTCRtpEncodingParameters> {
-        self.inner
-            .get("sendEncodings")
-            .as_::<TypedArray<RTCRtpEncodingParameters>>()
+        self.inner.get("sendEncodings").as_::<TypedArray<RTCRtpEncodingParameters>>()
     }
 
     /// Setter of the `sendEncodings` attribute.

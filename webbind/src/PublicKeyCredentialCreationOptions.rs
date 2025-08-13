@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PublicKeyCredentialCreationOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PublicKeyCredentialCreationOptions {
 
 impl AsMut<Any> for PublicKeyCredentialCreationOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PublicKeyCredentialCreationOptions> for Any {
@@ -72,9 +75,7 @@ impl PublicKeyCredentialCreationOptions {
 impl PublicKeyCredentialCreationOptions {
     /// Getter of the `user` attribute.
     pub fn user(&self) -> PublicKeyCredentialUserEntity {
-        self.inner
-            .get("user")
-            .as_::<PublicKeyCredentialUserEntity>()
+        self.inner.get("user").as_::<PublicKeyCredentialUserEntity>()
     }
 
     /// Setter of the `user` attribute.
@@ -96,9 +97,7 @@ impl PublicKeyCredentialCreationOptions {
 impl PublicKeyCredentialCreationOptions {
     /// Getter of the `pubKeyCredParams` attribute.
     pub fn pub_key_cred_params(&self) -> TypedArray<PublicKeyCredentialParameters> {
-        self.inner
-            .get("pubKeyCredParams")
-            .as_::<TypedArray<PublicKeyCredentialParameters>>()
+        self.inner.get("pubKeyCredParams").as_::<TypedArray<PublicKeyCredentialParameters>>()
     }
 
     /// Setter of the `pubKeyCredParams` attribute.
@@ -120,9 +119,7 @@ impl PublicKeyCredentialCreationOptions {
 impl PublicKeyCredentialCreationOptions {
     /// Getter of the `excludeCredentials` attribute.
     pub fn exclude_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptor> {
-        self.inner
-            .get("excludeCredentials")
-            .as_::<TypedArray<PublicKeyCredentialDescriptor>>()
+        self.inner.get("excludeCredentials").as_::<TypedArray<PublicKeyCredentialDescriptor>>()
     }
 
     /// Setter of the `excludeCredentials` attribute.
@@ -133,9 +130,7 @@ impl PublicKeyCredentialCreationOptions {
 impl PublicKeyCredentialCreationOptions {
     /// Getter of the `authenticatorSelection` attribute.
     pub fn authenticator_selection(&self) -> AuthenticatorSelectionCriteria {
-        self.inner
-            .get("authenticatorSelection")
-            .as_::<AuthenticatorSelectionCriteria>()
+        self.inner.get("authenticatorSelection").as_::<AuthenticatorSelectionCriteria>()
     }
 
     /// Setter of the `authenticatorSelection` attribute.
@@ -168,9 +163,7 @@ impl PublicKeyCredentialCreationOptions {
 impl PublicKeyCredentialCreationOptions {
     /// Getter of the `attestationFormats` attribute.
     pub fn attestation_formats(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("attestationFormats")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("attestationFormats").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `attestationFormats` attribute.
@@ -181,9 +174,7 @@ impl PublicKeyCredentialCreationOptions {
 impl PublicKeyCredentialCreationOptions {
     /// Getter of the `extensions` attribute.
     pub fn extensions(&self) -> AuthenticationExtensionsClientInputs {
-        self.inner
-            .get("extensions")
-            .as_::<AuthenticationExtensionsClientInputs>()
+        self.inner.get("extensions").as_::<AuthenticationExtensionsClientInputs>()
     }
 
     /// Setter of the `extensions` attribute.

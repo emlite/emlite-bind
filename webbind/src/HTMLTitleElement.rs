@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLTitleElement class.
 /// [`HTMLTitleElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLTitleElement {
 
 impl FromVal for HTMLTitleElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTitleElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTitleElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLTitleElement {
 
 impl AsMut<Any> for HTMLTitleElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLTitleElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLTitleElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTitleElement);
 
+
+
 impl HTMLTitleElement {
     /// The `new HTMLTitleElement(..)` constructor, creating a new HTMLTitleElement instance
     pub fn new() -> HTMLTitleElement {
         Self {
-            inner: Any::global("HTMLTitleElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLTitleElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTitleElement {
     /// Getter of the `text` attribute.

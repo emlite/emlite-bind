@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WaveShaperOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for WaveShaperOptions {
 
 impl AsMut<Any> for WaveShaperOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WaveShaperOptions> for Any {

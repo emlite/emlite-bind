@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothRemoteGATTService class.
 /// [`BluetoothRemoteGATTService`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BluetoothRemoteGATTService {
 
 impl FromVal for BluetoothRemoteGATTService {
     fn from_val(v: &Any) -> Self {
-        BluetoothRemoteGATTService {
-            inner: EventTarget::from_val(v),
-        }
+        BluetoothRemoteGATTService { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BluetoothRemoteGATTService {
 
 impl AsMut<Any> for BluetoothRemoteGATTService {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothRemoteGATTService> for Any {
@@ -63,12 +64,14 @@ impl From<&BluetoothRemoteGATTService> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTService);
 
+
 impl BluetoothRemoteGATTService {
     /// Getter of the `device` attribute.
     /// [`BluetoothRemoteGATTService.device`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/device)
     pub fn device(&self) -> BluetoothDevice {
         self.inner.get("device").as_::<BluetoothDevice>()
     }
+
 }
 impl BluetoothRemoteGATTService {
     /// Getter of the `uuid` attribute.
@@ -76,6 +79,7 @@ impl BluetoothRemoteGATTService {
     pub fn uuid(&self) -> Any {
         self.inner.get("uuid").as_::<Any>()
     }
+
 }
 impl BluetoothRemoteGATTService {
     /// Getter of the `isPrimary` attribute.
@@ -83,64 +87,44 @@ impl BluetoothRemoteGATTService {
     pub fn is_primary(&self) -> bool {
         self.inner.get("isPrimary").as_::<bool>()
     }
+
 }
 impl BluetoothRemoteGATTService {
     /// The getCharacteristic method.
     /// [`BluetoothRemoteGATTService.getCharacteristic`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristic)
-    pub fn get_characteristic(
-        &self,
-        characteristic: &Any,
-    ) -> Promise<BluetoothRemoteGATTCharacteristic> {
-        self.inner
-            .call("getCharacteristic", &[characteristic.into()])
-            .as_::<Promise<BluetoothRemoteGATTCharacteristic>>()
+    pub fn get_characteristic(&self, characteristic: &Any) -> Promise<BluetoothRemoteGATTCharacteristic> {
+        self.inner.call("getCharacteristic", &[characteristic.into(), ]).as_::<Promise<BluetoothRemoteGATTCharacteristic>>()
     }
 }
 impl BluetoothRemoteGATTService {
     /// The getCharacteristics method.
     /// [`BluetoothRemoteGATTService.getCharacteristics`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristics)
-    pub fn get_characteristics0(&self) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
-        self.inner
-            .call("getCharacteristics", &[])
-            .as_::<Promise<TypedArray<BluetoothRemoteGATTCharacteristic>>>()
+    pub fn get_characteristics0(&self, ) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
+        self.inner.call("getCharacteristics", &[]).as_::<Promise<TypedArray<BluetoothRemoteGATTCharacteristic>>>()
     }
     /// The getCharacteristics method.
     /// [`BluetoothRemoteGATTService.getCharacteristics`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristics)
-    pub fn get_characteristics1(
-        &self,
-        characteristic: &Any,
-    ) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
-        self.inner
-            .call("getCharacteristics", &[characteristic.into()])
-            .as_::<Promise<TypedArray<BluetoothRemoteGATTCharacteristic>>>()
+    pub fn get_characteristics1(&self, characteristic: &Any) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
+        self.inner.call("getCharacteristics", &[characteristic.into(), ]).as_::<Promise<TypedArray<BluetoothRemoteGATTCharacteristic>>>()
     }
 }
 impl BluetoothRemoteGATTService {
     /// The getIncludedService method.
     /// [`BluetoothRemoteGATTService.getIncludedService`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getIncludedService)
     pub fn get_included_service(&self, service: &Any) -> Promise<BluetoothRemoteGATTService> {
-        self.inner
-            .call("getIncludedService", &[service.into()])
-            .as_::<Promise<BluetoothRemoteGATTService>>()
+        self.inner.call("getIncludedService", &[service.into(), ]).as_::<Promise<BluetoothRemoteGATTService>>()
     }
 }
 impl BluetoothRemoteGATTService {
     /// The getIncludedServices method.
     /// [`BluetoothRemoteGATTService.getIncludedServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getIncludedServices)
-    pub fn get_included_services0(&self) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
-        self.inner
-            .call("getIncludedServices", &[])
-            .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
+    pub fn get_included_services0(&self, ) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
+        self.inner.call("getIncludedServices", &[]).as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
     /// The getIncludedServices method.
     /// [`BluetoothRemoteGATTService.getIncludedServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getIncludedServices)
-    pub fn get_included_services1(
-        &self,
-        service: &Any,
-    ) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
-        self.inner
-            .call("getIncludedServices", &[service.into()])
-            .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
+    pub fn get_included_services1(&self, service: &Any) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
+        self.inner.call("getIncludedServices", &[service.into(), ]).as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
 }
 impl BluetoothRemoteGATTService {

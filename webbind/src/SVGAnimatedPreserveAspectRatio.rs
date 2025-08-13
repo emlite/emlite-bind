@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAnimatedPreserveAspectRatio class.
 /// [`SVGAnimatedPreserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAnimatedPreserveAspectRatio {
 
 impl FromVal for SVGAnimatedPreserveAspectRatio {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedPreserveAspectRatio {
-            inner: Any::from_val(v),
-        }
+        SVGAnimatedPreserveAspectRatio { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAnimatedPreserveAspectRatio {
 
 impl AsMut<Any> for SVGAnimatedPreserveAspectRatio {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAnimatedPreserveAspectRatio> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGAnimatedPreserveAspectRatio> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedPreserveAspectRatio);
 
+
 impl SVGAnimatedPreserveAspectRatio {
     /// Getter of the `baseVal` attribute.
     /// [`SVGAnimatedPreserveAspectRatio.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio/baseVal)
     pub fn base_val(&self) -> SVGPreserveAspectRatio {
         self.inner.get("baseVal").as_::<SVGPreserveAspectRatio>()
     }
+
 }
 impl SVGAnimatedPreserveAspectRatio {
     /// Getter of the `animVal` attribute.
@@ -76,4 +79,5 @@ impl SVGAnimatedPreserveAspectRatio {
     pub fn anim_val(&self) -> SVGPreserveAspectRatio {
         self.inner.get("animVal").as_::<SVGPreserveAspectRatio>()
     }
+
 }

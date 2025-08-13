@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ChildBreakToken class.
 /// [`ChildBreakToken`](https://developer.mozilla.org/en-US/docs/Web/API/ChildBreakToken)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ChildBreakToken {
 
 impl FromVal for ChildBreakToken {
     fn from_val(v: &Any) -> Self {
-        ChildBreakToken {
-            inner: Any::from_val(v),
-        }
+        ChildBreakToken { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ChildBreakToken {
 
 impl AsMut<Any> for ChildBreakToken {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ChildBreakToken> for Any {
@@ -63,12 +64,14 @@ impl From<&ChildBreakToken> for Any {
 
 jsbind::utils::impl_dyn_cast!(ChildBreakToken);
 
+
 impl ChildBreakToken {
     /// Getter of the `breakType` attribute.
     /// [`ChildBreakToken.breakType`](https://developer.mozilla.org/en-US/docs/Web/API/ChildBreakToken/breakType)
     pub fn break_type(&self) -> BreakType {
         self.inner.get("breakType").as_::<BreakType>()
     }
+
 }
 impl ChildBreakToken {
     /// Getter of the `child` attribute.
@@ -76,4 +79,5 @@ impl ChildBreakToken {
     pub fn child(&self) -> LayoutChild {
         self.inner.get("child").as_::<LayoutChild>()
     }
+
 }

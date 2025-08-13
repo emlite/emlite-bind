@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioParamMap class.
 /// [`AudioParamMap`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParamMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioParamMap {
 
 impl FromVal for AudioParamMap {
     fn from_val(v: &Any) -> Self {
-        AudioParamMap {
-            inner: Any::from_val(v),
-        }
+        AudioParamMap { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioParamMap {
 
 impl AsMut<Any> for AudioParamMap {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioParamMap> for Any {
@@ -62,3 +63,5 @@ impl From<&AudioParamMap> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(AudioParamMap);
+
+

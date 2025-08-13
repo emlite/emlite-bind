@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLQuantizeDequantizeLinearSupportLimits dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLQuantizeDequantizeLinearSupportLimits {
 
 impl AsMut<Any> for MLQuantizeDequantizeLinearSupportLimits {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLQuantizeDequantizeLinearSupportLimits> for Any {

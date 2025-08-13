@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Blob class.
 /// [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Blob {
 
 impl FromVal for Blob {
     fn from_val(v: &Any) -> Self {
-        Blob {
-            inner: Any::from_val(v),
-        }
+        Blob { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Blob {
 
 impl AsMut<Any> for Blob {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Blob> for Any {
@@ -62,6 +63,8 @@ impl From<&Blob> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(Blob);
+
+
 
 impl Blob {
     /// The `new Blob(..)` constructor, creating a new Blob instance
@@ -81,11 +84,10 @@ impl Blob {
     /// The `new Blob(..)` constructor, creating a new Blob instance
     pub fn new2(blob_parts: &TypedArray<Any>, options: &BlobPropertyBag) -> Blob {
         Self {
-            inner: Any::global("Blob")
-                .new(&[blob_parts.into(), options.into()])
-                .as_::<Any>(),
+            inner: Any::global("Blob").new(&[blob_parts.into(), options.into()]).as_::<Any>(),
         }
     }
+
 }
 impl Blob {
     /// Getter of the `size` attribute.
@@ -93,6 +95,7 @@ impl Blob {
     pub fn size(&self) -> u64 {
         self.inner.get("size").as_::<u64>()
     }
+
 }
 impl Blob {
     /// Getter of the `type` attribute.
@@ -100,60 +103,55 @@ impl Blob {
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
+
 }
 impl Blob {
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
-    pub fn slice0(&self) -> Blob {
+    pub fn slice0(&self, ) -> Blob {
         self.inner.call("slice", &[]).as_::<Blob>()
     }
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
     pub fn slice1(&self, start: i64) -> Blob {
-        self.inner.call("slice", &[start.into()]).as_::<Blob>()
+        self.inner.call("slice", &[start.into(), ]).as_::<Blob>()
     }
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
     pub fn slice2(&self, start: i64, end: i64) -> Blob {
-        self.inner
-            .call("slice", &[start.into(), end.into()])
-            .as_::<Blob>()
+        self.inner.call("slice", &[start.into(), end.into(), ]).as_::<Blob>()
     }
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
     pub fn slice3(&self, start: i64, end: i64, content_type: &JsString) -> Blob {
-        self.inner
-            .call("slice", &[start.into(), end.into(), content_type.into()])
-            .as_::<Blob>()
+        self.inner.call("slice", &[start.into(), end.into(), content_type.into(), ]).as_::<Blob>()
     }
 }
 impl Blob {
     /// The stream method.
     /// [`Blob.stream`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/stream)
-    pub fn stream(&self) -> ReadableStream {
+    pub fn stream(&self, ) -> ReadableStream {
         self.inner.call("stream", &[]).as_::<ReadableStream>()
     }
 }
 impl Blob {
     /// The text method.
     /// [`Blob.text`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/text)
-    pub fn text(&self) -> Promise<JsString> {
+    pub fn text(&self, ) -> Promise<JsString> {
         self.inner.call("text", &[]).as_::<Promise<JsString>>()
     }
 }
 impl Blob {
     /// The arrayBuffer method.
     /// [`Blob.arrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/arrayBuffer)
-    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
-        self.inner
-            .call("arrayBuffer", &[])
-            .as_::<Promise<ArrayBuffer>>()
+    pub fn array_buffer(&self, ) -> Promise<ArrayBuffer> {
+        self.inner.call("arrayBuffer", &[]).as_::<Promise<ArrayBuffer>>()
     }
 }
 impl Blob {
     /// The bytes method.
     /// [`Blob.bytes`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/bytes)
-    pub fn bytes(&self) -> Promise<Uint8Array> {
+    pub fn bytes(&self, ) -> Promise<Uint8Array> {
         self.inner.call("bytes", &[]).as_::<Promise<Uint8Array>>()
     }
 }

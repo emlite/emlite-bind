@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AbstractRange class.
 /// [`AbstractRange`](https://developer.mozilla.org/en-US/docs/Web/API/AbstractRange)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AbstractRange {
 
 impl FromVal for AbstractRange {
     fn from_val(v: &Any) -> Self {
-        AbstractRange {
-            inner: Any::from_val(v),
-        }
+        AbstractRange { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AbstractRange {
 
 impl AsMut<Any> for AbstractRange {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AbstractRange> for Any {
@@ -63,12 +64,14 @@ impl From<&AbstractRange> for Any {
 
 jsbind::utils::impl_dyn_cast!(AbstractRange);
 
+
 impl AbstractRange {
     /// Getter of the `startContainer` attribute.
     /// [`AbstractRange.startContainer`](https://developer.mozilla.org/en-US/docs/Web/API/AbstractRange/startContainer)
     pub fn start_container(&self) -> Node {
         self.inner.get("startContainer").as_::<Node>()
     }
+
 }
 impl AbstractRange {
     /// Getter of the `startOffset` attribute.
@@ -76,6 +79,7 @@ impl AbstractRange {
     pub fn start_offset(&self) -> u32 {
         self.inner.get("startOffset").as_::<u32>()
     }
+
 }
 impl AbstractRange {
     /// Getter of the `endContainer` attribute.
@@ -83,6 +87,7 @@ impl AbstractRange {
     pub fn end_container(&self) -> Node {
         self.inner.get("endContainer").as_::<Node>()
     }
+
 }
 impl AbstractRange {
     /// Getter of the `endOffset` attribute.
@@ -90,6 +95,7 @@ impl AbstractRange {
     pub fn end_offset(&self) -> u32 {
         self.inner.get("endOffset").as_::<u32>()
     }
+
 }
 impl AbstractRange {
     /// Getter of the `collapsed` attribute.
@@ -97,4 +103,5 @@ impl AbstractRange {
     pub fn collapsed(&self) -> bool {
         self.inner.get("collapsed").as_::<bool>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRPlane class.
 /// [`XRPlane`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRPlane {
 
 impl FromVal for XRPlane {
     fn from_val(v: &Any) -> Self {
-        XRPlane {
-            inner: Any::from_val(v),
-        }
+        XRPlane { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRPlane {
 
 impl AsMut<Any> for XRPlane {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRPlane> for Any {
@@ -63,21 +64,22 @@ impl From<&XRPlane> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRPlane);
 
+
 impl XRPlane {
     /// Getter of the `planeSpace` attribute.
     /// [`XRPlane.planeSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/planeSpace)
     pub fn plane_space(&self) -> XRSpace {
         self.inner.get("planeSpace").as_::<XRSpace>()
     }
+
 }
 impl XRPlane {
     /// Getter of the `polygon` attribute.
     /// [`XRPlane.polygon`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/polygon)
     pub fn polygon(&self) -> TypedArray<DOMPointReadOnly> {
-        self.inner
-            .get("polygon")
-            .as_::<TypedArray<DOMPointReadOnly>>()
+        self.inner.get("polygon").as_::<TypedArray<DOMPointReadOnly>>()
     }
+
 }
 impl XRPlane {
     /// Getter of the `orientation` attribute.
@@ -85,6 +87,7 @@ impl XRPlane {
     pub fn orientation(&self) -> XRPlaneOrientation {
         self.inner.get("orientation").as_::<XRPlaneOrientation>()
     }
+
 }
 impl XRPlane {
     /// Getter of the `lastChangedTime` attribute.
@@ -92,6 +95,7 @@ impl XRPlane {
     pub fn last_changed_time(&self) -> Any {
         self.inner.get("lastChangedTime").as_::<Any>()
     }
+
 }
 impl XRPlane {
     /// Getter of the `semanticLabel` attribute.
@@ -99,4 +103,5 @@ impl XRPlane {
     pub fn semantic_label(&self) -> JsString {
         self.inner.get("semanticLabel").as_::<JsString>()
     }
+
 }

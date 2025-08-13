@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DOMQuad class.
 /// [`DOMQuad`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DOMQuad {
 
 impl FromVal for DOMQuad {
     fn from_val(v: &Any) -> Self {
-        DOMQuad {
-            inner: Any::from_val(v),
-        }
+        DOMQuad { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DOMQuad {
 
 impl AsMut<Any> for DOMQuad {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DOMQuad> for Any {
@@ -62,6 +63,8 @@ impl From<&DOMQuad> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(DOMQuad);
+
+
 
 impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
@@ -81,65 +84,47 @@ impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
     pub fn new2(p1: &DOMPointInit, p2: &DOMPointInit) -> DOMQuad {
         Self {
-            inner: Any::global("DOMQuad")
-                .new(&[p1.into(), p2.into()])
-                .as_::<Any>(),
+            inner: Any::global("DOMQuad").new(&[p1.into(), p2.into()]).as_::<Any>(),
         }
     }
 
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
     pub fn new3(p1: &DOMPointInit, p2: &DOMPointInit, p3: &DOMPointInit) -> DOMQuad {
         Self {
-            inner: Any::global("DOMQuad")
-                .new(&[p1.into(), p2.into(), p3.into()])
-                .as_::<Any>(),
+            inner: Any::global("DOMQuad").new(&[p1.into(), p2.into(), p3.into()]).as_::<Any>(),
         }
     }
 
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
-    pub fn new4(
-        p1: &DOMPointInit,
-        p2: &DOMPointInit,
-        p3: &DOMPointInit,
-        p4: &DOMPointInit,
-    ) -> DOMQuad {
+    pub fn new4(p1: &DOMPointInit, p2: &DOMPointInit, p3: &DOMPointInit, p4: &DOMPointInit) -> DOMQuad {
         Self {
-            inner: Any::global("DOMQuad")
-                .new(&[p1.into(), p2.into(), p3.into(), p4.into()])
-                .as_::<Any>(),
+            inner: Any::global("DOMQuad").new(&[p1.into(), p2.into(), p3.into(), p4.into()]).as_::<Any>(),
         }
     }
+
 }
 impl DOMQuad {
     /// The fromRect method.
     /// [`DOMQuad.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromRect)
     pub fn from_rect0() -> DOMQuad {
-        Any::global("DOMQuad")
-            .call("fromRect", &[])
-            .as_::<DOMQuad>()
+        Any::global("DOMQuad").call("fromRect", &[]).as_::<DOMQuad>()
     }
     /// The fromRect method.
     /// [`DOMQuad.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromRect)
     pub fn from_rect1(other: &DOMRectInit) -> DOMQuad {
-        Any::global("DOMQuad")
-            .call("fromRect", &[other.into()])
-            .as_::<DOMQuad>()
+        Any::global("DOMQuad").call("fromRect", &[other.into(), ]).as_::<DOMQuad>()
     }
 }
 impl DOMQuad {
     /// The fromQuad method.
     /// [`DOMQuad.fromQuad`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromQuad)
     pub fn from_quad0() -> DOMQuad {
-        Any::global("DOMQuad")
-            .call("fromQuad", &[])
-            .as_::<DOMQuad>()
+        Any::global("DOMQuad").call("fromQuad", &[]).as_::<DOMQuad>()
     }
     /// The fromQuad method.
     /// [`DOMQuad.fromQuad`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromQuad)
     pub fn from_quad1(other: &DOMQuadInit) -> DOMQuad {
-        Any::global("DOMQuad")
-            .call("fromQuad", &[other.into()])
-            .as_::<DOMQuad>()
+        Any::global("DOMQuad").call("fromQuad", &[other.into(), ]).as_::<DOMQuad>()
     }
 }
 impl DOMQuad {
@@ -148,6 +133,7 @@ impl DOMQuad {
     pub fn p1(&self) -> DOMPoint {
         self.inner.get("p1").as_::<DOMPoint>()
     }
+
 }
 impl DOMQuad {
     /// Getter of the `p2` attribute.
@@ -155,6 +141,7 @@ impl DOMQuad {
     pub fn p2(&self) -> DOMPoint {
         self.inner.get("p2").as_::<DOMPoint>()
     }
+
 }
 impl DOMQuad {
     /// Getter of the `p3` attribute.
@@ -162,6 +149,7 @@ impl DOMQuad {
     pub fn p3(&self) -> DOMPoint {
         self.inner.get("p3").as_::<DOMPoint>()
     }
+
 }
 impl DOMQuad {
     /// Getter of the `p4` attribute.
@@ -169,18 +157,19 @@ impl DOMQuad {
     pub fn p4(&self) -> DOMPoint {
         self.inner.get("p4").as_::<DOMPoint>()
     }
+
 }
 impl DOMQuad {
     /// The getBounds method.
     /// [`DOMQuad.getBounds`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/getBounds)
-    pub fn get_bounds(&self) -> DOMRect {
+    pub fn get_bounds(&self, ) -> DOMRect {
         self.inner.call("getBounds", &[]).as_::<DOMRect>()
     }
 }
 impl DOMQuad {
     /// The toJSON method.
     /// [`DOMQuad.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

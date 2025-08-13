@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WorkerGlobalScope class.
 /// [`WorkerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WorkerGlobalScope {
 
 impl FromVal for WorkerGlobalScope {
     fn from_val(v: &Any) -> Self {
-        WorkerGlobalScope {
-            inner: EventTarget::from_val(v),
-        }
+        WorkerGlobalScope { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WorkerGlobalScope {
 
 impl AsMut<Any> for WorkerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WorkerGlobalScope> for Any {
@@ -63,12 +64,14 @@ impl From<&WorkerGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(WorkerGlobalScope);
 
+
 impl WorkerGlobalScope {
     /// Getter of the `self` attribute.
     /// [`WorkerGlobalScope.self`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/self)
     pub fn self_(&self) -> WorkerGlobalScope {
         self.inner.get("self").as_::<WorkerGlobalScope>()
     }
+
 }
 impl WorkerGlobalScope {
     /// Getter of the `location` attribute.
@@ -76,6 +79,7 @@ impl WorkerGlobalScope {
     pub fn location(&self) -> WorkerLocation {
         self.inner.get("location").as_::<WorkerLocation>()
     }
+
 }
 impl WorkerGlobalScope {
     /// Getter of the `navigator` attribute.
@@ -83,14 +87,13 @@ impl WorkerGlobalScope {
     pub fn navigator(&self) -> WorkerNavigator {
         self.inner.get("navigator").as_::<WorkerNavigator>()
     }
+
 }
 impl WorkerGlobalScope {
     /// The importScripts method.
     /// [`WorkerGlobalScope.importScripts`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts)
     pub fn import_scripts(&self, urls: &Any) -> Undefined {
-        self.inner
-            .call("importScripts", &[urls.into()])
-            .as_::<Undefined>()
+        self.inner.call("importScripts", &[urls.into(), ]).as_::<Undefined>()
     }
 }
 impl WorkerGlobalScope {
@@ -177,6 +180,7 @@ impl WorkerGlobalScope {
     pub fn fonts(&self) -> FontFaceSet {
         self.inner.get("fonts").as_::<FontFaceSet>()
     }
+
 }
 impl WorkerGlobalScope {
     /// Getter of the `crypto` attribute.
@@ -184,4 +188,5 @@ impl WorkerGlobalScope {
     pub fn crypto(&self) -> Crypto {
         self.inner.get("crypto").as_::<Crypto>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BackgroundFetchRegistration class.
 /// [`BackgroundFetchRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BackgroundFetchRegistration {
 
 impl FromVal for BackgroundFetchRegistration {
     fn from_val(v: &Any) -> Self {
-        BackgroundFetchRegistration {
-            inner: EventTarget::from_val(v),
-        }
+        BackgroundFetchRegistration { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BackgroundFetchRegistration {
 
 impl AsMut<Any> for BackgroundFetchRegistration {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BackgroundFetchRegistration> for Any {
@@ -63,12 +64,14 @@ impl From<&BackgroundFetchRegistration> for Any {
 
 jsbind::utils::impl_dyn_cast!(BackgroundFetchRegistration);
 
+
 impl BackgroundFetchRegistration {
     /// Getter of the `id` attribute.
     /// [`BackgroundFetchRegistration.id`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `uploadTotal` attribute.
@@ -76,6 +79,7 @@ impl BackgroundFetchRegistration {
     pub fn upload_total(&self) -> u64 {
         self.inner.get("uploadTotal").as_::<u64>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `uploaded` attribute.
@@ -83,6 +87,7 @@ impl BackgroundFetchRegistration {
     pub fn uploaded(&self) -> u64 {
         self.inner.get("uploaded").as_::<u64>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `downloadTotal` attribute.
@@ -90,6 +95,7 @@ impl BackgroundFetchRegistration {
     pub fn download_total(&self) -> u64 {
         self.inner.get("downloadTotal").as_::<u64>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `downloaded` attribute.
@@ -97,6 +103,7 @@ impl BackgroundFetchRegistration {
     pub fn downloaded(&self) -> u64 {
         self.inner.get("downloaded").as_::<u64>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `result` attribute.
@@ -104,15 +111,15 @@ impl BackgroundFetchRegistration {
     pub fn result(&self) -> BackgroundFetchResult {
         self.inner.get("result").as_::<BackgroundFetchResult>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `failureReason` attribute.
     /// [`BackgroundFetchRegistration.failureReason`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/failureReason)
     pub fn failure_reason(&self) -> BackgroundFetchFailureReason {
-        self.inner
-            .get("failureReason")
-            .as_::<BackgroundFetchFailureReason>()
+        self.inner.get("failureReason").as_::<BackgroundFetchFailureReason>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `recordsAvailable` attribute.
@@ -120,6 +127,7 @@ impl BackgroundFetchRegistration {
     pub fn records_available(&self) -> bool {
         self.inner.get("recordsAvailable").as_::<bool>()
     }
+
 }
 impl BackgroundFetchRegistration {
     /// Getter of the `onprogress` attribute.
@@ -137,7 +145,7 @@ impl BackgroundFetchRegistration {
 impl BackgroundFetchRegistration {
     /// The abort method.
     /// [`BackgroundFetchRegistration.abort`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/abort)
-    pub fn abort(&self) -> Promise<bool> {
+    pub fn abort(&self, ) -> Promise<bool> {
         self.inner.call("abort", &[]).as_::<Promise<bool>>()
     }
 }
@@ -145,46 +153,28 @@ impl BackgroundFetchRegistration {
     /// The match method.
     /// [`BackgroundFetchRegistration.match`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/match)
     pub fn match_0(&self, request: &Any) -> Promise<BackgroundFetchRecord> {
-        self.inner
-            .call("match", &[request.into()])
-            .as_::<Promise<BackgroundFetchRecord>>()
+        self.inner.call("match", &[request.into(), ]).as_::<Promise<BackgroundFetchRecord>>()
     }
     /// The match method.
     /// [`BackgroundFetchRegistration.match`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/match)
-    pub fn match_1(
-        &self,
-        request: &Any,
-        options: &CacheQueryOptions,
-    ) -> Promise<BackgroundFetchRecord> {
-        self.inner
-            .call("match", &[request.into(), options.into()])
-            .as_::<Promise<BackgroundFetchRecord>>()
+    pub fn match_1(&self, request: &Any, options: &CacheQueryOptions) -> Promise<BackgroundFetchRecord> {
+        self.inner.call("match", &[request.into(), options.into(), ]).as_::<Promise<BackgroundFetchRecord>>()
     }
 }
 impl BackgroundFetchRegistration {
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all0(&self) -> Promise<TypedArray<BackgroundFetchRecord>> {
-        self.inner
-            .call("matchAll", &[])
-            .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
+    pub fn match_all0(&self, ) -> Promise<TypedArray<BackgroundFetchRecord>> {
+        self.inner.call("matchAll", &[]).as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
     pub fn match_all1(&self, request: &Any) -> Promise<TypedArray<BackgroundFetchRecord>> {
-        self.inner
-            .call("matchAll", &[request.into()])
-            .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
+        self.inner.call("matchAll", &[request.into(), ]).as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all2(
-        &self,
-        request: &Any,
-        options: &CacheQueryOptions,
-    ) -> Promise<TypedArray<BackgroundFetchRecord>> {
-        self.inner
-            .call("matchAll", &[request.into(), options.into()])
-            .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
+    pub fn match_all2(&self, request: &Any, options: &CacheQueryOptions) -> Promise<TypedArray<BackgroundFetchRecord>> {
+        self.inner.call("matchAll", &[request.into(), options.into(), ]).as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
 }

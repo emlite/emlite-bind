@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioParamDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for AudioParamDescriptor {
 
 impl AsMut<Any> for AudioParamDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioParamDescriptor> for Any {

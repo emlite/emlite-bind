@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SharedWorkerGlobalScope class.
 /// [`SharedWorkerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SharedWorkerGlobalScope {
 
 impl FromVal for SharedWorkerGlobalScope {
     fn from_val(v: &Any) -> Self {
-        SharedWorkerGlobalScope {
-            inner: WorkerGlobalScope::from_val(v),
-        }
+        SharedWorkerGlobalScope { inner: WorkerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SharedWorkerGlobalScope {
 
 impl AsMut<Any> for SharedWorkerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SharedWorkerGlobalScope> for Any {
@@ -63,17 +64,19 @@ impl From<&SharedWorkerGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(SharedWorkerGlobalScope);
 
+
 impl SharedWorkerGlobalScope {
     /// Getter of the `name` attribute.
     /// [`SharedWorkerGlobalScope.name`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl SharedWorkerGlobalScope {
     /// The close method.
     /// [`SharedWorkerGlobalScope.close`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ShowPopoverOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ShowPopoverOptions {
 
 impl AsMut<Any> for ShowPopoverOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ShowPopoverOptions> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRInputSourceArray class.
 /// [`XRInputSourceArray`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourceArray)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRInputSourceArray {
 
 impl FromVal for XRInputSourceArray {
     fn from_val(v: &Any) -> Self {
-        XRInputSourceArray {
-            inner: Any::from_val(v),
-        }
+        XRInputSourceArray { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRInputSourceArray {
 
 impl AsMut<Any> for XRInputSourceArray {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRInputSourceArray> for Any {
@@ -63,10 +64,12 @@ impl From<&XRInputSourceArray> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRInputSourceArray);
 
+
 impl XRInputSourceArray {
     /// Getter of the `length` attribute.
     /// [`XRInputSourceArray.length`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourceArray/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystemFileEntry class.
 /// [`FileSystemFileEntry`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileSystemFileEntry {
 
 impl FromVal for FileSystemFileEntry {
     fn from_val(v: &Any) -> Self {
-        FileSystemFileEntry {
-            inner: FileSystemEntry::from_val(v),
-        }
+        FileSystemFileEntry { inner: FileSystemEntry::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileSystemFileEntry {
 
 impl AsMut<Any> for FileSystemFileEntry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystemFileEntry> for Any {
@@ -63,19 +64,16 @@ impl From<&FileSystemFileEntry> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystemFileEntry);
 
+
 impl FileSystemFileEntry {
     /// The file method.
     /// [`FileSystemFileEntry.file`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry/file)
     pub fn file0(&self, success_callback: &Function) -> Undefined {
-        self.inner
-            .call("file", &[success_callback.into()])
-            .as_::<Undefined>()
+        self.inner.call("file", &[success_callback.into(), ]).as_::<Undefined>()
     }
     /// The file method.
     /// [`FileSystemFileEntry.file`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry/file)
     pub fn file1(&self, success_callback: &Function, error_callback: &Function) -> Undefined {
-        self.inner
-            .call("file", &[success_callback.into(), error_callback.into()])
-            .as_::<Undefined>()
+        self.inner.call("file", &[success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
     }
 }

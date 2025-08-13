@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFEGaussianBlurElement class.
 /// [`SVGFEGaussianBlurElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFEGaussianBlurElement {
 
 impl FromVal for SVGFEGaussianBlurElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEGaussianBlurElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEGaussianBlurElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFEGaussianBlurElement {
 
 impl AsMut<Any> for SVGFEGaussianBlurElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFEGaussianBlurElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFEGaussianBlurElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEGaussianBlurElement);
 
+
 impl SVGFEGaussianBlurElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEGaussianBlurElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// Getter of the `stdDeviationX` attribute.
@@ -76,6 +79,7 @@ impl SVGFEGaussianBlurElement {
     pub fn std_deviation_x(&self) -> SVGAnimatedNumber {
         self.inner.get("stdDeviationX").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// Getter of the `stdDeviationY` attribute.
@@ -83,6 +87,7 @@ impl SVGFEGaussianBlurElement {
     pub fn std_deviation_y(&self) -> SVGAnimatedNumber {
         self.inner.get("stdDeviationY").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// Getter of the `edgeMode` attribute.
@@ -90,17 +95,13 @@ impl SVGFEGaussianBlurElement {
     pub fn edge_mode(&self) -> SVGAnimatedEnumeration {
         self.inner.get("edgeMode").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// The setStdDeviation method.
     /// [`SVGFEGaussianBlurElement.setStdDeviation`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement/setStdDeviation)
     pub fn set_std_deviation(&self, std_deviation_x: f32, std_deviation_y: f32) -> Undefined {
-        self.inner
-            .call(
-                "setStdDeviation",
-                &[std_deviation_x.into(), std_deviation_y.into()],
-            )
-            .as_::<Undefined>()
+        self.inner.call("setStdDeviation", &[std_deviation_x.into(), std_deviation_y.into(), ]).as_::<Undefined>()
     }
 }
 impl SVGFEGaussianBlurElement {
@@ -109,6 +110,7 @@ impl SVGFEGaussianBlurElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// Getter of the `y` attribute.
@@ -116,6 +118,7 @@ impl SVGFEGaussianBlurElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// Getter of the `width` attribute.
@@ -123,6 +126,7 @@ impl SVGFEGaussianBlurElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// Getter of the `height` attribute.
@@ -130,6 +134,7 @@ impl SVGFEGaussianBlurElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEGaussianBlurElement {
     /// Getter of the `result` attribute.
@@ -137,4 +142,5 @@ impl SVGFEGaussianBlurElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IntrinsicSizesResultOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IntrinsicSizesResultOptions {
 
 impl AsMut<Any> for IntrinsicSizesResultOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IntrinsicSizesResultOptions> for Any {

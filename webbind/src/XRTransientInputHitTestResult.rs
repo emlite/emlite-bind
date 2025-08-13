@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRTransientInputHitTestResult class.
 /// [`XRTransientInputHitTestResult`](https://developer.mozilla.org/en-US/docs/Web/API/XRTransientInputHitTestResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRTransientInputHitTestResult {
 
 impl FromVal for XRTransientInputHitTestResult {
     fn from_val(v: &Any) -> Self {
-        XRTransientInputHitTestResult {
-            inner: Any::from_val(v),
-        }
+        XRTransientInputHitTestResult { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRTransientInputHitTestResult {
 
 impl AsMut<Any> for XRTransientInputHitTestResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRTransientInputHitTestResult> for Any {
@@ -63,19 +64,20 @@ impl From<&XRTransientInputHitTestResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRTransientInputHitTestResult);
 
+
 impl XRTransientInputHitTestResult {
     /// Getter of the `inputSource` attribute.
     /// [`XRTransientInputHitTestResult.inputSource`](https://developer.mozilla.org/en-US/docs/Web/API/XRTransientInputHitTestResult/inputSource)
     pub fn input_source(&self) -> XRInputSource {
         self.inner.get("inputSource").as_::<XRInputSource>()
     }
+
 }
 impl XRTransientInputHitTestResult {
     /// Getter of the `results` attribute.
     /// [`XRTransientInputHitTestResult.results`](https://developer.mozilla.org/en-US/docs/Web/API/XRTransientInputHitTestResult/results)
     pub fn results(&self) -> TypedArray<XRHitTestResult> {
-        self.inner
-            .get("results")
-            .as_::<TypedArray<XRHitTestResult>>()
+        self.inner.get("results").as_::<TypedArray<XRHitTestResult>>()
     }
+
 }

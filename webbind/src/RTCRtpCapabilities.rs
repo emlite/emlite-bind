@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpCapabilities dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCRtpCapabilities {
 
 impl AsMut<Any> for RTCRtpCapabilities {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpCapabilities> for Any {
@@ -72,9 +75,7 @@ impl RTCRtpCapabilities {
 impl RTCRtpCapabilities {
     /// Getter of the `headerExtensions` attribute.
     pub fn header_extensions(&self) -> TypedArray<RTCRtpHeaderExtensionCapability> {
-        self.inner
-            .get("headerExtensions")
-            .as_::<TypedArray<RTCRtpHeaderExtensionCapability>>()
+        self.inner.get("headerExtensions").as_::<TypedArray<RTCRtpHeaderExtensionCapability>>()
     }
 
     /// Setter of the `headerExtensions` attribute.

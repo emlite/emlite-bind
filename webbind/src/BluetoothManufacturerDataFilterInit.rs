@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothManufacturerDataFilterInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BluetoothManufacturerDataFilterInit {
 
 impl AsMut<Any> for BluetoothManufacturerDataFilterInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothManufacturerDataFilterInit> for Any {

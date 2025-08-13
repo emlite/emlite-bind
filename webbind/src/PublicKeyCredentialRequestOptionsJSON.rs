@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PublicKeyCredentialRequestOptionsJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PublicKeyCredentialRequestOptionsJSON {
 
 impl AsMut<Any> for PublicKeyCredentialRequestOptionsJSON {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PublicKeyCredentialRequestOptionsJSON> for Any {
@@ -94,9 +97,7 @@ impl PublicKeyCredentialRequestOptionsJSON {
 impl PublicKeyCredentialRequestOptionsJSON {
     /// Getter of the `allowCredentials` attribute.
     pub fn allow_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptorJSON> {
-        self.inner
-            .get("allowCredentials")
-            .as_::<TypedArray<PublicKeyCredentialDescriptorJSON>>()
+        self.inner.get("allowCredentials").as_::<TypedArray<PublicKeyCredentialDescriptorJSON>>()
     }
 
     /// Setter of the `allowCredentials` attribute.
@@ -129,9 +130,7 @@ impl PublicKeyCredentialRequestOptionsJSON {
 impl PublicKeyCredentialRequestOptionsJSON {
     /// Getter of the `extensions` attribute.
     pub fn extensions(&self) -> AuthenticationExtensionsClientInputsJSON {
-        self.inner
-            .get("extensions")
-            .as_::<AuthenticationExtensionsClientInputsJSON>()
+        self.inner.get("extensions").as_::<AuthenticationExtensionsClientInputsJSON>()
     }
 
     /// Setter of the `extensions` attribute.

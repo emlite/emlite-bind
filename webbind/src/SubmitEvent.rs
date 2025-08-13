@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SubmitEvent class.
 /// [`SubmitEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SubmitEvent {
 
 impl FromVal for SubmitEvent {
     fn from_val(v: &Any) -> Self {
-        SubmitEvent {
-            inner: Event::from_val(v),
-        }
+        SubmitEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SubmitEvent {
 
 impl AsMut<Any> for SubmitEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SubmitEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&SubmitEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SubmitEvent);
 
+
+
 impl SubmitEvent {
     /// The `new SubmitEvent(..)` constructor, creating a new SubmitEvent instance
     pub fn new0(type_: &JsString) -> SubmitEvent {
         Self {
-            inner: Any::global("SubmitEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("SubmitEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new SubmitEvent(..)` constructor, creating a new SubmitEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &SubmitEventInit) -> SubmitEvent {
         Self {
-            inner: Any::global("SubmitEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("SubmitEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl SubmitEvent {
     /// Getter of the `submitter` attribute.
@@ -88,4 +88,5 @@ impl SubmitEvent {
     pub fn submitter(&self) -> HTMLElement {
         self.inner.get("submitter").as_::<HTMLElement>()
     }
+
 }

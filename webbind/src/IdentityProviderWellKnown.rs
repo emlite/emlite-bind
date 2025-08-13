@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdentityProviderWellKnown dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IdentityProviderWellKnown {
 
 impl AsMut<Any> for IdentityProviderWellKnown {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdentityProviderWellKnown> for Any {
@@ -61,9 +64,7 @@ impl From<&IdentityProviderWellKnown> for Any {
 impl IdentityProviderWellKnown {
     /// Getter of the `provider_urls` attribute.
     pub fn provider_urls(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("provider_urls")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("provider_urls").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `provider_urls` attribute.

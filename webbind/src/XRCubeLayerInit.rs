@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRCubeLayerInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for XRCubeLayerInit {
 
 impl AsMut<Any> for XRCubeLayerInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRCubeLayerInit> for Any {

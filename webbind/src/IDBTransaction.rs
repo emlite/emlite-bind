@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IDBTransaction class.
 /// [`IDBTransaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct IDBTransaction {
 
 impl FromVal for IDBTransaction {
     fn from_val(v: &Any) -> Self {
-        IDBTransaction {
-            inner: EventTarget::from_val(v),
-        }
+        IDBTransaction { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for IDBTransaction {
 
 impl AsMut<Any> for IDBTransaction {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IDBTransaction> for Any {
@@ -63,12 +64,14 @@ impl From<&IDBTransaction> for Any {
 
 jsbind::utils::impl_dyn_cast!(IDBTransaction);
 
+
 impl IDBTransaction {
     /// Getter of the `objectStoreNames` attribute.
     /// [`IDBTransaction.objectStoreNames`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/objectStoreNames)
     pub fn object_store_names(&self) -> DOMStringList {
         self.inner.get("objectStoreNames").as_::<DOMStringList>()
     }
+
 }
 impl IDBTransaction {
     /// Getter of the `mode` attribute.
@@ -76,15 +79,15 @@ impl IDBTransaction {
     pub fn mode(&self) -> IDBTransactionMode {
         self.inner.get("mode").as_::<IDBTransactionMode>()
     }
+
 }
 impl IDBTransaction {
     /// Getter of the `durability` attribute.
     /// [`IDBTransaction.durability`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/durability)
     pub fn durability(&self) -> IDBTransactionDurability {
-        self.inner
-            .get("durability")
-            .as_::<IDBTransactionDurability>()
+        self.inner.get("durability").as_::<IDBTransactionDurability>()
     }
+
 }
 impl IDBTransaction {
     /// Getter of the `db` attribute.
@@ -92,6 +95,7 @@ impl IDBTransaction {
     pub fn db(&self) -> IDBDatabase {
         self.inner.get("db").as_::<IDBDatabase>()
     }
+
 }
 impl IDBTransaction {
     /// Getter of the `error` attribute.
@@ -99,27 +103,26 @@ impl IDBTransaction {
     pub fn error(&self) -> DOMException {
         self.inner.get("error").as_::<DOMException>()
     }
+
 }
 impl IDBTransaction {
     /// The objectStore method.
     /// [`IDBTransaction.objectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/objectStore)
     pub fn object_store(&self, name: &JsString) -> IDBObjectStore {
-        self.inner
-            .call("objectStore", &[name.into()])
-            .as_::<IDBObjectStore>()
+        self.inner.call("objectStore", &[name.into(), ]).as_::<IDBObjectStore>()
     }
 }
 impl IDBTransaction {
     /// The commit method.
     /// [`IDBTransaction.commit`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/commit)
-    pub fn commit(&self) -> Undefined {
+    pub fn commit(&self, ) -> Undefined {
         self.inner.call("commit", &[]).as_::<Undefined>()
     }
 }
 impl IDBTransaction {
     /// The abort method.
     /// [`IDBTransaction.abort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/abort)
-    pub fn abort(&self) -> Undefined {
+    pub fn abort(&self, ) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
 }

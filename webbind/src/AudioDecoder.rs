@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioDecoder class.
 /// [`AudioDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioDecoder {
 
 impl FromVal for AudioDecoder {
     fn from_val(v: &Any) -> Self {
-        AudioDecoder {
-            inner: EventTarget::from_val(v),
-        }
+        AudioDecoder { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioDecoder {
 
 impl AsMut<Any> for AudioDecoder {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioDecoder> for Any {
@@ -63,15 +64,16 @@ impl From<&AudioDecoder> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioDecoder);
 
+
+
 impl AudioDecoder {
     /// The `new AudioDecoder(..)` constructor, creating a new AudioDecoder instance
     pub fn new(init: &AudioDecoderInit) -> AudioDecoder {
         Self {
-            inner: Any::global("AudioDecoder")
-                .new(&[init.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("AudioDecoder").new(&[init.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl AudioDecoder {
     /// Getter of the `state` attribute.
@@ -79,6 +81,7 @@ impl AudioDecoder {
     pub fn state(&self) -> CodecState {
         self.inner.get("state").as_::<CodecState>()
     }
+
 }
 impl AudioDecoder {
     /// Getter of the `decodeQueueSize` attribute.
@@ -86,6 +89,7 @@ impl AudioDecoder {
     pub fn decode_queue_size(&self) -> u32 {
         self.inner.get("decodeQueueSize").as_::<u32>()
     }
+
 }
 impl AudioDecoder {
     /// Getter of the `ondequeue` attribute.
@@ -104,38 +108,34 @@ impl AudioDecoder {
     /// The configure method.
     /// [`AudioDecoder.configure`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/configure)
     pub fn configure(&self, config: &AudioDecoderConfig) -> Undefined {
-        self.inner
-            .call("configure", &[config.into()])
-            .as_::<Undefined>()
+        self.inner.call("configure", &[config.into(), ]).as_::<Undefined>()
     }
 }
 impl AudioDecoder {
     /// The decode method.
     /// [`AudioDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/decode)
     pub fn decode(&self, chunk: &EncodedAudioChunk) -> Undefined {
-        self.inner
-            .call("decode", &[chunk.into()])
-            .as_::<Undefined>()
+        self.inner.call("decode", &[chunk.into(), ]).as_::<Undefined>()
     }
 }
 impl AudioDecoder {
     /// The flush method.
     /// [`AudioDecoder.flush`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/flush)
-    pub fn flush(&self) -> Promise<Undefined> {
+    pub fn flush(&self, ) -> Promise<Undefined> {
         self.inner.call("flush", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl AudioDecoder {
     /// The reset method.
     /// [`AudioDecoder.reset`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/reset)
-    pub fn reset(&self) -> Undefined {
+    pub fn reset(&self, ) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
 }
 impl AudioDecoder {
     /// The close method.
     /// [`AudioDecoder.close`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
@@ -143,8 +143,6 @@ impl AudioDecoder {
     /// The isConfigSupported method.
     /// [`AudioDecoder.isConfigSupported`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/isConfigSupported)
     pub fn is_config_supported(config: &AudioDecoderConfig) -> Promise<AudioDecoderSupport> {
-        Any::global("AudioDecoder")
-            .call("isConfigSupported", &[config.into()])
-            .as_::<Promise<AudioDecoderSupport>>()
+        Any::global("AudioDecoder").call("isConfigSupported", &[config.into(), ]).as_::<Promise<AudioDecoderSupport>>()
     }
 }

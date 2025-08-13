@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CompositionEvent class.
 /// [`CompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CompositionEvent {
 
 impl FromVal for CompositionEvent {
     fn from_val(v: &Any) -> Self {
-        CompositionEvent {
-            inner: UIEvent::from_val(v),
-        }
+        CompositionEvent { inner: UIEvent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CompositionEvent {
 
 impl AsMut<Any> for CompositionEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CompositionEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&CompositionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CompositionEvent);
 
+
+
 impl CompositionEvent {
     /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
     pub fn new0(type_: &JsString) -> CompositionEvent {
         Self {
-            inner: Any::global("CompositionEvent")
-                .new(&[type_.into()])
-                .as_::<UIEvent>(),
+            inner: Any::global("CompositionEvent").new(&[type_.into()]).as_::<UIEvent>(),
         }
     }
 
     /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &CompositionEventInit) -> CompositionEvent {
         Self {
-            inner: Any::global("CompositionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<UIEvent>(),
+            inner: Any::global("CompositionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<UIEvent>(),
         }
     }
+
 }
 impl CompositionEvent {
     /// Getter of the `data` attribute.
@@ -88,82 +88,32 @@ impl CompositionEvent {
     pub fn data(&self) -> JsString {
         self.inner.get("data").as_::<JsString>()
     }
+
 }
 impl CompositionEvent {
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
     pub fn init_composition_event0(&self, type_arg: &JsString) -> Undefined {
-        self.inner
-            .call("initCompositionEvent", &[type_arg.into()])
-            .as_::<Undefined>()
+        self.inner.call("initCompositionEvent", &[type_arg.into(), ]).as_::<Undefined>()
     }
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
     pub fn init_composition_event1(&self, type_arg: &JsString, bubbles_arg: bool) -> Undefined {
-        self.inner
-            .call(
-                "initCompositionEvent",
-                &[type_arg.into(), bubbles_arg.into()],
-            )
-            .as_::<Undefined>()
+        self.inner.call("initCompositionEvent", &[type_arg.into(), bubbles_arg.into(), ]).as_::<Undefined>()
     }
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event2(
-        &self,
-        type_arg: &JsString,
-        bubbles_arg: bool,
-        cancelable_arg: bool,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "initCompositionEvent",
-                &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into()],
-            )
-            .as_::<Undefined>()
+    pub fn init_composition_event2(&self, type_arg: &JsString, bubbles_arg: bool, cancelable_arg: bool) -> Undefined {
+        self.inner.call("initCompositionEvent", &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into(), ]).as_::<Undefined>()
     }
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event3(
-        &self,
-        type_arg: &JsString,
-        bubbles_arg: bool,
-        cancelable_arg: bool,
-        view_arg: &Any,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "initCompositionEvent",
-                &[
-                    type_arg.into(),
-                    bubbles_arg.into(),
-                    cancelable_arg.into(),
-                    view_arg.into(),
-                ],
-            )
-            .as_::<Undefined>()
+    pub fn init_composition_event3(&self, type_arg: &JsString, bubbles_arg: bool, cancelable_arg: bool, view_arg: &Any) -> Undefined {
+        self.inner.call("initCompositionEvent", &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into(), view_arg.into(), ]).as_::<Undefined>()
     }
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event4(
-        &self,
-        type_arg: &JsString,
-        bubbles_arg: bool,
-        cancelable_arg: bool,
-        view_arg: &Any,
-        data_arg: &JsString,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "initCompositionEvent",
-                &[
-                    type_arg.into(),
-                    bubbles_arg.into(),
-                    cancelable_arg.into(),
-                    view_arg.into(),
-                    data_arg.into(),
-                ],
-            )
-            .as_::<Undefined>()
+    pub fn init_composition_event4(&self, type_arg: &JsString, bubbles_arg: bool, cancelable_arg: bool, view_arg: &Any, data_arg: &JsString) -> Undefined {
+        self.inner.call("initCompositionEvent", &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into(), view_arg.into(), data_arg.into(), ]).as_::<Undefined>()
     }
 }

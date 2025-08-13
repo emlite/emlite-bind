@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NDEFMessageInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NDEFMessageInit {
 
 impl AsMut<Any> for NDEFMessageInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NDEFMessageInit> for Any {
@@ -61,9 +64,7 @@ impl From<&NDEFMessageInit> for Any {
 impl NDEFMessageInit {
     /// Getter of the `records` attribute.
     pub fn records(&self) -> TypedArray<NDEFRecordInit> {
-        self.inner
-            .get("records")
-            .as_::<TypedArray<NDEFRecordInit>>()
+        self.inner.get("records").as_::<TypedArray<NDEFRecordInit>>()
     }
 
     /// Setter of the `records` attribute.

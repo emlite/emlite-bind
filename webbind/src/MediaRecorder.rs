@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaRecorder class.
 /// [`MediaRecorder`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaRecorder {
 
 impl FromVal for MediaRecorder {
     fn from_val(v: &Any) -> Self {
-        MediaRecorder {
-            inner: EventTarget::from_val(v),
-        }
+        MediaRecorder { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaRecorder {
 
 impl AsMut<Any> for MediaRecorder {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaRecorder> for Any {
@@ -63,24 +64,23 @@ impl From<&MediaRecorder> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaRecorder);
 
+
+
 impl MediaRecorder {
     /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
     pub fn new0(stream: &MediaStream) -> MediaRecorder {
         Self {
-            inner: Any::global("MediaRecorder")
-                .new(&[stream.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("MediaRecorder").new(&[stream.into()]).as_::<EventTarget>(),
         }
     }
 
     /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
     pub fn new1(stream: &MediaStream, options: &MediaRecorderOptions) -> MediaRecorder {
         Self {
-            inner: Any::global("MediaRecorder")
-                .new(&[stream.into(), options.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("MediaRecorder").new(&[stream.into(), options.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl MediaRecorder {
     /// Getter of the `stream` attribute.
@@ -88,6 +88,7 @@ impl MediaRecorder {
     pub fn stream(&self) -> MediaStream {
         self.inner.get("stream").as_::<MediaStream>()
     }
+
 }
 impl MediaRecorder {
     /// Getter of the `mimeType` attribute.
@@ -95,6 +96,7 @@ impl MediaRecorder {
     pub fn mime_type(&self) -> JsString {
         self.inner.get("mimeType").as_::<JsString>()
     }
+
 }
 impl MediaRecorder {
     /// Getter of the `state` attribute.
@@ -102,6 +104,7 @@ impl MediaRecorder {
     pub fn state(&self) -> RecordingState {
         self.inner.get("state").as_::<RecordingState>()
     }
+
 }
 impl MediaRecorder {
     /// Getter of the `onstart` attribute.
@@ -187,6 +190,7 @@ impl MediaRecorder {
     pub fn video_bits_per_second(&self) -> u32 {
         self.inner.get("videoBitsPerSecond").as_::<u32>()
     }
+
 }
 impl MediaRecorder {
     /// Getter of the `audioBitsPerSecond` attribute.
@@ -194,6 +198,7 @@ impl MediaRecorder {
     pub fn audio_bits_per_second(&self) -> u32 {
         self.inner.get("audioBitsPerSecond").as_::<u32>()
     }
+
 }
 impl MediaRecorder {
     /// Getter of the `audioBitrateMode` attribute.
@@ -201,46 +206,45 @@ impl MediaRecorder {
     pub fn audio_bitrate_mode(&self) -> BitrateMode {
         self.inner.get("audioBitrateMode").as_::<BitrateMode>()
     }
+
 }
 impl MediaRecorder {
     /// The start method.
     /// [`MediaRecorder.start`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/start)
-    pub fn start0(&self) -> Undefined {
+    pub fn start0(&self, ) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
     /// The start method.
     /// [`MediaRecorder.start`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/start)
     pub fn start1(&self, timeslice: u32) -> Undefined {
-        self.inner
-            .call("start", &[timeslice.into()])
-            .as_::<Undefined>()
+        self.inner.call("start", &[timeslice.into(), ]).as_::<Undefined>()
     }
 }
 impl MediaRecorder {
     /// The stop method.
     /// [`MediaRecorder.stop`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/stop)
-    pub fn stop(&self) -> Undefined {
+    pub fn stop(&self, ) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }
 impl MediaRecorder {
     /// The pause method.
     /// [`MediaRecorder.pause`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/pause)
-    pub fn pause(&self) -> Undefined {
+    pub fn pause(&self, ) -> Undefined {
         self.inner.call("pause", &[]).as_::<Undefined>()
     }
 }
 impl MediaRecorder {
     /// The resume method.
     /// [`MediaRecorder.resume`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/resume)
-    pub fn resume(&self) -> Undefined {
+    pub fn resume(&self, ) -> Undefined {
         self.inner.call("resume", &[]).as_::<Undefined>()
     }
 }
 impl MediaRecorder {
     /// The requestData method.
     /// [`MediaRecorder.requestData`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/requestData)
-    pub fn request_data(&self) -> Undefined {
+    pub fn request_data(&self, ) -> Undefined {
         self.inner.call("requestData", &[]).as_::<Undefined>()
     }
 }
@@ -248,8 +252,6 @@ impl MediaRecorder {
     /// The isTypeSupported method.
     /// [`MediaRecorder.isTypeSupported`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/isTypeSupported)
     pub fn is_type_supported(type_: &JsString) -> bool {
-        Any::global("MediaRecorder")
-            .call("isTypeSupported", &[type_.into()])
-            .as_::<bool>()
+        Any::global("MediaRecorder").call("isTypeSupported", &[type_.into(), ]).as_::<bool>()
     }
 }

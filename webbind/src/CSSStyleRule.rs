@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSStyleRule class.
 /// [`CSSStyleRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSStyleRule {
 
 impl FromVal for CSSStyleRule {
     fn from_val(v: &Any) -> Self {
-        CSSStyleRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSStyleRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSStyleRule {
 
 impl AsMut<Any> for CSSStyleRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSStyleRule> for Any {
@@ -62,6 +63,7 @@ impl From<&CSSStyleRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSStyleRule);
+
 
 impl CSSStyleRule {
     /// Getter of the `selectorText` attribute.
@@ -82,6 +84,7 @@ impl CSSStyleRule {
     pub fn style(&self) -> CSSStyleProperties {
         self.inner.get("style").as_::<CSSStyleProperties>()
     }
+
 }
 impl CSSStyleRule {
     /// Getter of the `styleMap` attribute.
@@ -89,4 +92,5 @@ impl CSSStyleRule {
     pub fn style_map(&self) -> StylePropertyMap {
         self.inner.get("styleMap").as_::<StylePropertyMap>()
     }
+
 }

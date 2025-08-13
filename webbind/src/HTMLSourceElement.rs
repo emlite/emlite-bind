@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLSourceElement class.
 /// [`HTMLSourceElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLSourceElement {
 
 impl FromVal for HTMLSourceElement {
     fn from_val(v: &Any) -> Self {
-        HTMLSourceElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLSourceElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLSourceElement {
 
 impl AsMut<Any> for HTMLSourceElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLSourceElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLSourceElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLSourceElement);
 
+
+
 impl HTMLSourceElement {
     /// The `new HTMLSourceElement(..)` constructor, creating a new HTMLSourceElement instance
     pub fn new() -> HTMLSourceElement {
         Self {
-            inner: Any::global("HTMLSourceElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLSourceElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLSourceElement {
     /// Getter of the `src` attribute.

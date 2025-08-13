@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothPermissionStorage dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BluetoothPermissionStorage {
 
 impl AsMut<Any> for BluetoothPermissionStorage {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothPermissionStorage> for Any {
@@ -61,9 +64,7 @@ impl From<&BluetoothPermissionStorage> for Any {
 impl BluetoothPermissionStorage {
     /// Getter of the `allowedDevices` attribute.
     pub fn allowed_devices(&self) -> TypedArray<AllowedBluetoothDevice> {
-        self.inner
-            .get("allowedDevices")
-            .as_::<TypedArray<AllowedBluetoothDevice>>()
+        self.inner.get("allowedDevices").as_::<TypedArray<AllowedBluetoothDevice>>()
     }
 
     /// Setter of the `allowedDevices` attribute.

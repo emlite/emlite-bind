@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCDTMFToneChangeEvent class.
 /// [`RTCDTMFToneChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFToneChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCDTMFToneChangeEvent {
 
 impl FromVal for RTCDTMFToneChangeEvent {
     fn from_val(v: &Any) -> Self {
-        RTCDTMFToneChangeEvent {
-            inner: Event::from_val(v),
-        }
+        RTCDTMFToneChangeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCDTMFToneChangeEvent {
 
 impl AsMut<Any> for RTCDTMFToneChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCDTMFToneChangeEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&RTCDTMFToneChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCDTMFToneChangeEvent);
 
+
+
 impl RTCDTMFToneChangeEvent {
     /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
     pub fn new0(type_: &JsString) -> RTCDTMFToneChangeEvent {
         Self {
-            inner: Any::global("RTCDTMFToneChangeEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("RTCDTMFToneChangeEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &RTCDTMFToneChangeEventInit,
-    ) -> RTCDTMFToneChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &RTCDTMFToneChangeEventInit) -> RTCDTMFToneChangeEvent {
         Self {
-            inner: Any::global("RTCDTMFToneChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("RTCDTMFToneChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl RTCDTMFToneChangeEvent {
     /// Getter of the `tone` attribute.
@@ -91,4 +88,5 @@ impl RTCDTMFToneChangeEvent {
     pub fn tone(&self) -> JsString {
         self.inner.get("tone").as_::<JsString>()
     }
+
 }

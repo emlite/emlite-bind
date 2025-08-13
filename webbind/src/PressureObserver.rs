@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PressureObserver class.
 /// [`PressureObserver`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PressureObserver {
 
 impl FromVal for PressureObserver {
     fn from_val(v: &Any) -> Self {
-        PressureObserver {
-            inner: Any::from_val(v),
-        }
+        PressureObserver { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PressureObserver {
 
 impl AsMut<Any> for PressureObserver {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PressureObserver> for Any {
@@ -63,67 +64,55 @@ impl From<&PressureObserver> for Any {
 
 jsbind::utils::impl_dyn_cast!(PressureObserver);
 
+
+
 impl PressureObserver {
     /// The `new PressureObserver(..)` constructor, creating a new PressureObserver instance
     pub fn new(callback: &Function) -> PressureObserver {
         Self {
-            inner: Any::global("PressureObserver")
-                .new(&[callback.into()])
-                .as_::<Any>(),
+            inner: Any::global("PressureObserver").new(&[callback.into()]).as_::<Any>(),
         }
     }
+
 }
 impl PressureObserver {
     /// The observe method.
     /// [`PressureObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/observe)
     pub fn observe0(&self, source: &PressureSource) -> Promise<Undefined> {
-        self.inner
-            .call("observe", &[source.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("observe", &[source.into(), ]).as_::<Promise<Undefined>>()
     }
     /// The observe method.
     /// [`PressureObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/observe)
-    pub fn observe1(
-        &self,
-        source: &PressureSource,
-        options: &PressureObserverOptions,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call("observe", &[source.into(), options.into()])
-            .as_::<Promise<Undefined>>()
+    pub fn observe1(&self, source: &PressureSource, options: &PressureObserverOptions) -> Promise<Undefined> {
+        self.inner.call("observe", &[source.into(), options.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl PressureObserver {
     /// The unobserve method.
     /// [`PressureObserver.unobserve`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/unobserve)
     pub fn unobserve(&self, source: &PressureSource) -> Undefined {
-        self.inner
-            .call("unobserve", &[source.into()])
-            .as_::<Undefined>()
+        self.inner.call("unobserve", &[source.into(), ]).as_::<Undefined>()
     }
 }
 impl PressureObserver {
     /// The disconnect method.
     /// [`PressureObserver.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/disconnect)
-    pub fn disconnect(&self) -> Undefined {
+    pub fn disconnect(&self, ) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
 }
 impl PressureObserver {
     /// The takeRecords method.
     /// [`PressureObserver.takeRecords`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/takeRecords)
-    pub fn take_records(&self) -> TypedArray<PressureRecord> {
-        self.inner
-            .call("takeRecords", &[])
-            .as_::<TypedArray<PressureRecord>>()
+    pub fn take_records(&self, ) -> TypedArray<PressureRecord> {
+        self.inner.call("takeRecords", &[]).as_::<TypedArray<PressureRecord>>()
     }
 }
 impl PressureObserver {
     /// Getter of the `knownSources` static attribute.
     /// [`PressureObserver.knownSources`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/knownSources)
     pub fn known_sources() -> TypedArray<PressureSource> {
-        Any::global("PressureObserver")
-            .get("knownSources")
-            .as_::<TypedArray<PressureSource>>()
+        Any::global("PressureObserver").get("knownSources").as_::<TypedArray<PressureSource>>()
     }
+
 }

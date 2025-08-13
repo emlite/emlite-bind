@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IntrinsicSizes class.
 /// [`IntrinsicSizes`](https://developer.mozilla.org/en-US/docs/Web/API/IntrinsicSizes)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct IntrinsicSizes {
 
 impl FromVal for IntrinsicSizes {
     fn from_val(v: &Any) -> Self {
-        IntrinsicSizes {
-            inner: Any::from_val(v),
-        }
+        IntrinsicSizes { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for IntrinsicSizes {
 
 impl AsMut<Any> for IntrinsicSizes {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IntrinsicSizes> for Any {
@@ -63,12 +64,14 @@ impl From<&IntrinsicSizes> for Any {
 
 jsbind::utils::impl_dyn_cast!(IntrinsicSizes);
 
+
 impl IntrinsicSizes {
     /// Getter of the `minContentSize` attribute.
     /// [`IntrinsicSizes.minContentSize`](https://developer.mozilla.org/en-US/docs/Web/API/IntrinsicSizes/minContentSize)
     pub fn min_content_size(&self) -> f64 {
         self.inner.get("minContentSize").as_::<f64>()
     }
+
 }
 impl IntrinsicSizes {
     /// Getter of the `maxContentSize` attribute.
@@ -76,4 +79,5 @@ impl IntrinsicSizes {
     pub fn max_content_size(&self) -> f64 {
         self.inner.get("maxContentSize").as_::<f64>()
     }
+
 }

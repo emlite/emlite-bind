@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ML class.
 /// [`ML`](https://developer.mozilla.org/en-US/docs/Web/API/ML)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ML {
 
 impl FromVal for ML {
     fn from_val(v: &Any) -> Self {
-        ML {
-            inner: Any::from_val(v),
-        }
+        ML { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ML {
 
 impl AsMut<Any> for ML {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ML> for Any {
@@ -63,12 +64,11 @@ impl From<&ML> for Any {
 
 jsbind::utils::impl_dyn_cast!(ML);
 
+
 impl ML {
     /// The createContext method.
     /// [`ML.createContext`](https://developer.mozilla.org/en-US/docs/Web/API/ML/createContext)
     pub fn create_context(&self, gpu_device: &GPUDevice) -> Promise<MLContext> {
-        self.inner
-            .call("createContext", &[gpu_device.into()])
-            .as_::<Promise<MLContext>>()
+        self.inner.call("createContext", &[gpu_device.into(), ]).as_::<Promise<MLContext>>()
     }
 }

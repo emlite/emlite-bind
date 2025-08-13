@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WindowClient class.
 /// [`WindowClient`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WindowClient {
 
 impl FromVal for WindowClient {
     fn from_val(v: &Any) -> Self {
-        WindowClient {
-            inner: Client::from_val(v),
-        }
+        WindowClient { inner: Client::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WindowClient {
 
 impl AsMut<Any> for WindowClient {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WindowClient> for Any {
@@ -63,14 +64,14 @@ impl From<&WindowClient> for Any {
 
 jsbind::utils::impl_dyn_cast!(WindowClient);
 
+
 impl WindowClient {
     /// Getter of the `visibilityState` attribute.
     /// [`WindowClient.visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/visibilityState)
     pub fn visibility_state(&self) -> DocumentVisibilityState {
-        self.inner
-            .get("visibilityState")
-            .as_::<DocumentVisibilityState>()
+        self.inner.get("visibilityState").as_::<DocumentVisibilityState>()
     }
+
 }
 impl WindowClient {
     /// Getter of the `focused` attribute.
@@ -78,20 +79,20 @@ impl WindowClient {
     pub fn focused(&self) -> bool {
         self.inner.get("focused").as_::<bool>()
     }
+
 }
 impl WindowClient {
     /// Getter of the `ancestorOrigins` attribute.
     /// [`WindowClient.ancestorOrigins`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/ancestorOrigins)
     pub fn ancestor_origins(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("ancestorOrigins")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("ancestorOrigins").as_::<TypedArray<JsString>>()
     }
+
 }
 impl WindowClient {
     /// The focus method.
     /// [`WindowClient.focus`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/focus)
-    pub fn focus(&self) -> Promise<WindowClient> {
+    pub fn focus(&self, ) -> Promise<WindowClient> {
         self.inner.call("focus", &[]).as_::<Promise<WindowClient>>()
     }
 }
@@ -99,8 +100,6 @@ impl WindowClient {
     /// The navigate method.
     /// [`WindowClient.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/navigate)
     pub fn navigate(&self, url: &JsString) -> Promise<WindowClient> {
-        self.inner
-            .call("navigate", &[url.into()])
-            .as_::<Promise<WindowClient>>()
+        self.inner.call("navigate", &[url.into(), ]).as_::<Promise<WindowClient>>()
     }
 }

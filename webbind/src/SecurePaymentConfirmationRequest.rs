@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SecurePaymentConfirmationRequest dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SecurePaymentConfirmationRequest {
 
 impl AsMut<Any> for SecurePaymentConfirmationRequest {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SecurePaymentConfirmationRequest> for Any {
@@ -94,9 +97,7 @@ impl SecurePaymentConfirmationRequest {
 impl SecurePaymentConfirmationRequest {
     /// Getter of the `instrument` attribute.
     pub fn instrument(&self) -> PaymentCredentialInstrument {
-        self.inner
-            .get("instrument")
-            .as_::<PaymentCredentialInstrument>()
+        self.inner.get("instrument").as_::<PaymentCredentialInstrument>()
     }
 
     /// Setter of the `instrument` attribute.
@@ -140,9 +141,7 @@ impl SecurePaymentConfirmationRequest {
 impl SecurePaymentConfirmationRequest {
     /// Getter of the `paymentEntitiesLogos` attribute.
     pub fn payment_entities_logos(&self) -> TypedArray<PaymentEntityLogo> {
-        self.inner
-            .get("paymentEntitiesLogos")
-            .as_::<TypedArray<PaymentEntityLogo>>()
+        self.inner.get("paymentEntitiesLogos").as_::<TypedArray<PaymentEntityLogo>>()
     }
 
     /// Setter of the `paymentEntitiesLogos` attribute.
@@ -153,9 +152,7 @@ impl SecurePaymentConfirmationRequest {
 impl SecurePaymentConfirmationRequest {
     /// Getter of the `extensions` attribute.
     pub fn extensions(&self) -> AuthenticationExtensionsClientInputs {
-        self.inner
-            .get("extensions")
-            .as_::<AuthenticationExtensionsClientInputs>()
+        self.inner.get("extensions").as_::<AuthenticationExtensionsClientInputs>()
     }
 
     /// Setter of the `extensions` attribute.
@@ -166,16 +163,11 @@ impl SecurePaymentConfirmationRequest {
 impl SecurePaymentConfirmationRequest {
     /// Getter of the `browserBoundPubKeyCredParams` attribute.
     pub fn browser_bound_pub_key_cred_params(&self) -> TypedArray<PublicKeyCredentialParameters> {
-        self.inner
-            .get("browserBoundPubKeyCredParams")
-            .as_::<TypedArray<PublicKeyCredentialParameters>>()
+        self.inner.get("browserBoundPubKeyCredParams").as_::<TypedArray<PublicKeyCredentialParameters>>()
     }
 
     /// Setter of the `browserBoundPubKeyCredParams` attribute.
-    pub fn set_browser_bound_pub_key_cred_params(
-        &mut self,
-        value: &TypedArray<PublicKeyCredentialParameters>,
-    ) {
+    pub fn set_browser_bound_pub_key_cred_params(&mut self, value: &TypedArray<PublicKeyCredentialParameters>) {
         self.inner.set("browserBoundPubKeyCredParams", value);
     }
 }

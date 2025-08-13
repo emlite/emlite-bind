@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebGLShader class.
 /// [`WebGLShader`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShader)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebGLShader {
 
 impl FromVal for WebGLShader {
     fn from_val(v: &Any) -> Self {
-        WebGLShader {
-            inner: WebGLObject::from_val(v),
-        }
+        WebGLShader { inner: WebGLObject::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebGLShader {
 
 impl AsMut<Any> for WebGLShader {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebGLShader> for Any {
@@ -62,3 +63,5 @@ impl From<&WebGLShader> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLShader);
+
+

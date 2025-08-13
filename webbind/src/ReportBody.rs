@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ReportBody dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ReportBody {
 
 impl AsMut<Any> for ReportBody {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ReportBody> for Any {
@@ -57,3 +60,4 @@ impl From<&ReportBody> for Any {
         s.inner.clone()
     }
 }
+

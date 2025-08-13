@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EXT_texture_compression_bptc class.
 /// [`EXT_texture_compression_bptc`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_texture_compression_bptc)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct EXT_texture_compression_bptc {
 
 impl FromVal for EXT_texture_compression_bptc {
     fn from_val(v: &Any) -> Self {
-        EXT_texture_compression_bptc {
-            inner: Any::from_val(v),
-        }
+        EXT_texture_compression_bptc { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for EXT_texture_compression_bptc {
 
 impl AsMut<Any> for EXT_texture_compression_bptc {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EXT_texture_compression_bptc> for Any {
@@ -62,3 +63,5 @@ impl From<&EXT_texture_compression_bptc> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(EXT_texture_compression_bptc);
+
+

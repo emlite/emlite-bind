@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DigitalCredentialCreationOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DigitalCredentialCreationOptions {
 
 impl AsMut<Any> for DigitalCredentialCreationOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DigitalCredentialCreationOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&DigitalCredentialCreationOptions> for Any {
 impl DigitalCredentialCreationOptions {
     /// Getter of the `requests` attribute.
     pub fn requests(&self) -> TypedArray<DigitalCredentialCreateRequest> {
-        self.inner
-            .get("requests")
-            .as_::<TypedArray<DigitalCredentialCreateRequest>>()
+        self.inner.get("requests").as_::<TypedArray<DigitalCredentialCreateRequest>>()
     }
 
     /// Setter of the `requests` attribute.

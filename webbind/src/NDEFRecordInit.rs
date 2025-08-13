@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NDEFRecordInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NDEFRecordInit {
 
 impl AsMut<Any> for NDEFRecordInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NDEFRecordInit> for Any {

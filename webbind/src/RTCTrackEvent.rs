@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCTrackEvent class.
 /// [`RTCTrackEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCTrackEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCTrackEvent {
 
 impl FromVal for RTCTrackEvent {
     fn from_val(v: &Any) -> Self {
-        RTCTrackEvent {
-            inner: Event::from_val(v),
-        }
+        RTCTrackEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCTrackEvent {
 
 impl AsMut<Any> for RTCTrackEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCTrackEvent> for Any {
@@ -63,15 +64,16 @@ impl From<&RTCTrackEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCTrackEvent);
 
+
+
 impl RTCTrackEvent {
     /// The `new RTCTrackEvent(..)` constructor, creating a new RTCTrackEvent instance
     pub fn new(type_: &JsString, event_init_dict: &RTCTrackEventInit) -> RTCTrackEvent {
         Self {
-            inner: Any::global("RTCTrackEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("RTCTrackEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl RTCTrackEvent {
     /// Getter of the `receiver` attribute.
@@ -79,6 +81,7 @@ impl RTCTrackEvent {
     pub fn receiver(&self) -> RTCRtpReceiver {
         self.inner.get("receiver").as_::<RTCRtpReceiver>()
     }
+
 }
 impl RTCTrackEvent {
     /// Getter of the `track` attribute.
@@ -86,6 +89,7 @@ impl RTCTrackEvent {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
+
 }
 impl RTCTrackEvent {
     /// Getter of the `streams` attribute.
@@ -93,6 +97,7 @@ impl RTCTrackEvent {
     pub fn streams(&self) -> TypedArray<MediaStream> {
         self.inner.get("streams").as_::<TypedArray<MediaStream>>()
     }
+
 }
 impl RTCTrackEvent {
     /// Getter of the `transceiver` attribute.
@@ -100,4 +105,5 @@ impl RTCTrackEvent {
     pub fn transceiver(&self) -> RTCRtpTransceiver {
         self.inner.get("transceiver").as_::<RTCRtpTransceiver>()
     }
+
 }

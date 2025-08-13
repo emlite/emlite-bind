@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CommandEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CommandEventInit {
 
 impl AsMut<Any> for CommandEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CommandEventInit> for Any {

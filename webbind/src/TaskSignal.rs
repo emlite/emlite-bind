@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TaskSignal class.
 /// [`TaskSignal`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TaskSignal {
 
 impl FromVal for TaskSignal {
     fn from_val(v: &Any) -> Self {
-        TaskSignal {
-            inner: AbortSignal::from_val(v),
-        }
+        TaskSignal { inner: AbortSignal::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TaskSignal {
 
 impl AsMut<Any> for TaskSignal {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TaskSignal> for Any {
@@ -63,20 +64,17 @@ impl From<&TaskSignal> for Any {
 
 jsbind::utils::impl_dyn_cast!(TaskSignal);
 
+
 impl TaskSignal {
     /// The any method.
     /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
     pub fn any0(signals: &TypedArray<AbortSignal>) -> TaskSignal {
-        Any::global("TaskSignal")
-            .call("any", &[signals.into()])
-            .as_::<TaskSignal>()
+        Any::global("TaskSignal").call("any", &[signals.into(), ]).as_::<TaskSignal>()
     }
     /// The any method.
     /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
     pub fn any1(signals: &TypedArray<AbortSignal>, init: &TaskSignalAnyInit) -> TaskSignal {
-        Any::global("TaskSignal")
-            .call("any", &[signals.into(), init.into()])
-            .as_::<TaskSignal>()
+        Any::global("TaskSignal").call("any", &[signals.into(), init.into(), ]).as_::<TaskSignal>()
     }
 }
 impl TaskSignal {
@@ -85,6 +83,7 @@ impl TaskSignal {
     pub fn priority(&self) -> TaskPriority {
         self.inner.get("priority").as_::<TaskPriority>()
     }
+
 }
 impl TaskSignal {
     /// Getter of the `onprioritychange` attribute.

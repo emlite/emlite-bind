@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Notification class.
 /// [`Notification`](https://developer.mozilla.org/en-US/docs/Web/API/Notification)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Notification {
 
 impl FromVal for Notification {
     fn from_val(v: &Any) -> Self {
-        Notification {
-            inner: EventTarget::from_val(v),
-        }
+        Notification { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Notification {
 
 impl AsMut<Any> for Notification {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Notification> for Any {
@@ -63,48 +64,42 @@ impl From<&Notification> for Any {
 
 jsbind::utils::impl_dyn_cast!(Notification);
 
+
+
 impl Notification {
     /// The `new Notification(..)` constructor, creating a new Notification instance
     pub fn new0(title: &JsString) -> Notification {
         Self {
-            inner: Any::global("Notification")
-                .new(&[title.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("Notification").new(&[title.into()]).as_::<EventTarget>(),
         }
     }
 
     /// The `new Notification(..)` constructor, creating a new Notification instance
     pub fn new1(title: &JsString, options: &NotificationOptions) -> Notification {
         Self {
-            inner: Any::global("Notification")
-                .new(&[title.into(), options.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("Notification").new(&[title.into(), options.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl Notification {
     /// Getter of the `permission` static attribute.
     /// [`Notification.permission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/permission)
     pub fn permission() -> NotificationPermission {
-        Any::global("Notification")
-            .get("permission")
-            .as_::<NotificationPermission>()
+        Any::global("Notification").get("permission").as_::<NotificationPermission>()
     }
+
 }
 impl Notification {
     /// The requestPermission method.
     /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
     pub fn request_permission0() -> Promise<NotificationPermission> {
-        Any::global("Notification")
-            .call("requestPermission", &[])
-            .as_::<Promise<NotificationPermission>>()
+        Any::global("Notification").call("requestPermission", &[]).as_::<Promise<NotificationPermission>>()
     }
     /// The requestPermission method.
     /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
     pub fn request_permission1(deprecated_callback: &Function) -> Promise<NotificationPermission> {
-        Any::global("Notification")
-            .call("requestPermission", &[deprecated_callback.into()])
-            .as_::<Promise<NotificationPermission>>()
+        Any::global("Notification").call("requestPermission", &[deprecated_callback.into(), ]).as_::<Promise<NotificationPermission>>()
     }
 }
 impl Notification {
@@ -113,6 +108,7 @@ impl Notification {
     pub fn max_actions() -> u32 {
         Any::global("Notification").get("maxActions").as_::<u32>()
     }
+
 }
 impl Notification {
     /// Getter of the `onclick` attribute.
@@ -172,6 +168,7 @@ impl Notification {
     pub fn title(&self) -> JsString {
         self.inner.get("title").as_::<JsString>()
     }
+
 }
 impl Notification {
     /// Getter of the `dir` attribute.
@@ -179,6 +176,7 @@ impl Notification {
     pub fn dir(&self) -> NotificationDirection {
         self.inner.get("dir").as_::<NotificationDirection>()
     }
+
 }
 impl Notification {
     /// Getter of the `lang` attribute.
@@ -186,6 +184,7 @@ impl Notification {
     pub fn lang(&self) -> JsString {
         self.inner.get("lang").as_::<JsString>()
     }
+
 }
 impl Notification {
     /// Getter of the `body` attribute.
@@ -193,6 +192,7 @@ impl Notification {
     pub fn body(&self) -> JsString {
         self.inner.get("body").as_::<JsString>()
     }
+
 }
 impl Notification {
     /// Getter of the `tag` attribute.
@@ -200,6 +200,7 @@ impl Notification {
     pub fn tag(&self) -> JsString {
         self.inner.get("tag").as_::<JsString>()
     }
+
 }
 impl Notification {
     /// Getter of the `image` attribute.
@@ -207,6 +208,7 @@ impl Notification {
     pub fn image(&self) -> JsString {
         self.inner.get("image").as_::<JsString>()
     }
+
 }
 impl Notification {
     /// Getter of the `icon` attribute.
@@ -214,6 +216,7 @@ impl Notification {
     pub fn icon(&self) -> JsString {
         self.inner.get("icon").as_::<JsString>()
     }
+
 }
 impl Notification {
     /// Getter of the `badge` attribute.
@@ -221,6 +224,7 @@ impl Notification {
     pub fn badge(&self) -> JsString {
         self.inner.get("badge").as_::<JsString>()
     }
+
 }
 impl Notification {
     /// Getter of the `vibrate` attribute.
@@ -228,6 +232,7 @@ impl Notification {
     pub fn vibrate(&self) -> TypedArray<u32> {
         self.inner.get("vibrate").as_::<TypedArray<u32>>()
     }
+
 }
 impl Notification {
     /// Getter of the `timestamp` attribute.
@@ -235,6 +240,7 @@ impl Notification {
     pub fn timestamp(&self) -> Any {
         self.inner.get("timestamp").as_::<Any>()
     }
+
 }
 impl Notification {
     /// Getter of the `renotify` attribute.
@@ -242,6 +248,7 @@ impl Notification {
     pub fn renotify(&self) -> bool {
         self.inner.get("renotify").as_::<bool>()
     }
+
 }
 impl Notification {
     /// Getter of the `silent` attribute.
@@ -249,6 +256,7 @@ impl Notification {
     pub fn silent(&self) -> bool {
         self.inner.get("silent").as_::<bool>()
     }
+
 }
 impl Notification {
     /// Getter of the `requireInteraction` attribute.
@@ -256,6 +264,7 @@ impl Notification {
     pub fn require_interaction(&self) -> bool {
         self.inner.get("requireInteraction").as_::<bool>()
     }
+
 }
 impl Notification {
     /// Getter of the `data` attribute.
@@ -263,20 +272,20 @@ impl Notification {
     pub fn data(&self) -> Any {
         self.inner.get("data").as_::<Any>()
     }
+
 }
 impl Notification {
     /// Getter of the `actions` attribute.
     /// [`Notification.actions`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/actions)
     pub fn actions(&self) -> TypedArray<NotificationAction> {
-        self.inner
-            .get("actions")
-            .as_::<TypedArray<NotificationAction>>()
+        self.inner.get("actions").as_::<TypedArray<NotificationAction>>()
     }
+
 }
 impl Notification {
     /// The close method.
     /// [`Notification.close`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

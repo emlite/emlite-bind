@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DocumentPictureInPicture class.
 /// [`DocumentPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DocumentPictureInPicture {
 
 impl FromVal for DocumentPictureInPicture {
     fn from_val(v: &Any) -> Self {
-        DocumentPictureInPicture {
-            inner: EventTarget::from_val(v),
-        }
+        DocumentPictureInPicture { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DocumentPictureInPicture {
 
 impl AsMut<Any> for DocumentPictureInPicture {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DocumentPictureInPicture> for Any {
@@ -63,20 +64,17 @@ impl From<&DocumentPictureInPicture> for Any {
 
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPicture);
 
+
 impl DocumentPictureInPicture {
     /// The requestWindow method.
     /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
-    pub fn request_window0(&self) -> Promise<Window> {
-        self.inner
-            .call("requestWindow", &[])
-            .as_::<Promise<Window>>()
+    pub fn request_window0(&self, ) -> Promise<Window> {
+        self.inner.call("requestWindow", &[]).as_::<Promise<Window>>()
     }
     /// The requestWindow method.
     /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
     pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise<Window> {
-        self.inner
-            .call("requestWindow", &[options.into()])
-            .as_::<Promise<Window>>()
+        self.inner.call("requestWindow", &[options.into(), ]).as_::<Promise<Window>>()
     }
 }
 impl DocumentPictureInPicture {
@@ -85,6 +83,7 @@ impl DocumentPictureInPicture {
     pub fn window(&self) -> Window {
         self.inner.get("window").as_::<Window>()
     }
+
 }
 impl DocumentPictureInPicture {
     /// Getter of the `onenter` attribute.

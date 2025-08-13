@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSScale class.
 /// [`CSSScale`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSScale {
 
 impl FromVal for CSSScale {
     fn from_val(v: &Any) -> Self {
-        CSSScale {
-            inner: CSSTransformComponent::from_val(v),
-        }
+        CSSScale { inner: CSSTransformComponent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSScale {
 
 impl AsMut<Any> for CSSScale {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSScale> for Any {
@@ -63,24 +64,23 @@ impl From<&CSSScale> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSScale);
 
+
+
 impl CSSScale {
     /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
     pub fn new0(x: &Any, y: &Any) -> CSSScale {
         Self {
-            inner: Any::global("CSSScale")
-                .new(&[x.into(), y.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSScale").new(&[x.into(), y.into()]).as_::<CSSTransformComponent>(),
         }
     }
 
     /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
     pub fn new1(x: &Any, y: &Any, z: &Any) -> CSSScale {
         Self {
-            inner: Any::global("CSSScale")
-                .new(&[x.into(), y.into(), z.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSScale").new(&[x.into(), y.into(), z.into()]).as_::<CSSTransformComponent>(),
         }
     }
+
 }
 impl CSSScale {
     /// Getter of the `x` attribute.

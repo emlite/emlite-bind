@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The UADataValues dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for UADataValues {
 
 impl AsMut<Any> for UADataValues {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<UADataValues> for Any {
@@ -83,9 +86,7 @@ impl UADataValues {
 impl UADataValues {
     /// Getter of the `brands` attribute.
     pub fn brands(&self) -> TypedArray<NavigatorUABrandVersion> {
-        self.inner
-            .get("brands")
-            .as_::<TypedArray<NavigatorUABrandVersion>>()
+        self.inner.get("brands").as_::<TypedArray<NavigatorUABrandVersion>>()
     }
 
     /// Setter of the `brands` attribute.
@@ -107,9 +108,7 @@ impl UADataValues {
 impl UADataValues {
     /// Getter of the `fullVersionList` attribute.
     pub fn full_version_list(&self) -> TypedArray<NavigatorUABrandVersion> {
-        self.inner
-            .get("fullVersionList")
-            .as_::<TypedArray<NavigatorUABrandVersion>>()
+        self.inner.get("fullVersionList").as_::<TypedArray<NavigatorUABrandVersion>>()
     }
 
     /// Setter of the `fullVersionList` attribute.

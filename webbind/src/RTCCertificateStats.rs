@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCCertificateStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCCertificateStats {
 
 impl AsMut<Any> for RTCCertificateStats {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCCertificateStats> for Any {

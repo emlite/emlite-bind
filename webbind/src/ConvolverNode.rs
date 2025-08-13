@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ConvolverNode class.
 /// [`ConvolverNode`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ConvolverNode {
 
 impl FromVal for ConvolverNode {
     fn from_val(v: &Any) -> Self {
-        ConvolverNode {
-            inner: AudioNode::from_val(v),
-        }
+        ConvolverNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ConvolverNode {
 
 impl AsMut<Any> for ConvolverNode {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ConvolverNode> for Any {
@@ -63,24 +64,23 @@ impl From<&ConvolverNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(ConvolverNode);
 
+
+
 impl ConvolverNode {
     /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
     pub fn new0(context: &BaseAudioContext) -> ConvolverNode {
         Self {
-            inner: Any::global("ConvolverNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
+            inner: Any::global("ConvolverNode").new(&[context.into()]).as_::<AudioNode>(),
         }
     }
 
     /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
     pub fn new1(context: &BaseAudioContext, options: &ConvolverOptions) -> ConvolverNode {
         Self {
-            inner: Any::global("ConvolverNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: Any::global("ConvolverNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }
 impl ConvolverNode {
     /// Getter of the `buffer` attribute.

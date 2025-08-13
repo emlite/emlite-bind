@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FaceDetector class.
 /// [`FaceDetector`](https://developer.mozilla.org/en-US/docs/Web/API/FaceDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FaceDetector {
 
 impl FromVal for FaceDetector {
     fn from_val(v: &Any) -> Self {
-        FaceDetector {
-            inner: Any::from_val(v),
-        }
+        FaceDetector { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FaceDetector {
 
 impl AsMut<Any> for FaceDetector {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FaceDetector> for Any {
@@ -63,6 +64,8 @@ impl From<&FaceDetector> for Any {
 
 jsbind::utils::impl_dyn_cast!(FaceDetector);
 
+
+
 impl FaceDetector {
     /// The `new FaceDetector(..)` constructor, creating a new FaceDetector instance
     pub fn new0() -> FaceDetector {
@@ -74,18 +77,15 @@ impl FaceDetector {
     /// The `new FaceDetector(..)` constructor, creating a new FaceDetector instance
     pub fn new1(face_detector_options: &FaceDetectorOptions) -> FaceDetector {
         Self {
-            inner: Any::global("FaceDetector")
-                .new(&[face_detector_options.into()])
-                .as_::<Any>(),
+            inner: Any::global("FaceDetector").new(&[face_detector_options.into()]).as_::<Any>(),
         }
     }
+
 }
 impl FaceDetector {
     /// The detect method.
     /// [`FaceDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/FaceDetector/detect)
     pub fn detect(&self, image: &Any) -> Promise<TypedArray<DetectedFace>> {
-        self.inner
-            .call("detect", &[image.into()])
-            .as_::<Promise<TypedArray<DetectedFace>>>()
+        self.inner.call("detect", &[image.into(), ]).as_::<Promise<TypedArray<DetectedFace>>>()
     }
 }

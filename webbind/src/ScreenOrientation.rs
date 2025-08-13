@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ScreenOrientation class.
 /// [`ScreenOrientation`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ScreenOrientation {
 
 impl FromVal for ScreenOrientation {
     fn from_val(v: &Any) -> Self {
-        ScreenOrientation {
-            inner: EventTarget::from_val(v),
-        }
+        ScreenOrientation { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ScreenOrientation {
 
 impl AsMut<Any> for ScreenOrientation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ScreenOrientation> for Any {
@@ -63,19 +64,18 @@ impl From<&ScreenOrientation> for Any {
 
 jsbind::utils::impl_dyn_cast!(ScreenOrientation);
 
+
 impl ScreenOrientation {
     /// The lock method.
     /// [`ScreenOrientation.lock`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/lock)
     pub fn lock(&self, orientation: &OrientationLockType) -> Promise<Undefined> {
-        self.inner
-            .call("lock", &[orientation.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("lock", &[orientation.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl ScreenOrientation {
     /// The unlock method.
     /// [`ScreenOrientation.unlock`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/unlock)
-    pub fn unlock(&self) -> Undefined {
+    pub fn unlock(&self, ) -> Undefined {
         self.inner.call("unlock", &[]).as_::<Undefined>()
     }
 }
@@ -85,6 +85,7 @@ impl ScreenOrientation {
     pub fn type_(&self) -> OrientationType {
         self.inner.get("type").as_::<OrientationType>()
     }
+
 }
 impl ScreenOrientation {
     /// Getter of the `angle` attribute.
@@ -92,6 +93,7 @@ impl ScreenOrientation {
     pub fn angle(&self) -> u16 {
         self.inner.get("angle").as_::<u16>()
     }
+
 }
 impl ScreenOrientation {
     /// Getter of the `onchange` attribute.

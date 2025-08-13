@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUComputePassDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUComputePassDescriptor {
 
 impl AsMut<Any> for GPUComputePassDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUComputePassDescriptor> for Any {
@@ -61,9 +64,7 @@ impl From<&GPUComputePassDescriptor> for Any {
 impl GPUComputePassDescriptor {
     /// Getter of the `timestampWrites` attribute.
     pub fn timestamp_writes(&self) -> GPUComputePassTimestampWrites {
-        self.inner
-            .get("timestampWrites")
-            .as_::<GPUComputePassTimestampWrites>()
+        self.inner.get("timestampWrites").as_::<GPUComputePassTimestampWrites>()
     }
 
     /// Setter of the `timestampWrites` attribute.

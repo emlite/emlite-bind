@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TextEncoderEncodeIntoResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for TextEncoderEncodeIntoResult {
 
 impl AsMut<Any> for TextEncoderEncodeIntoResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TextEncoderEncodeIntoResult> for Any {

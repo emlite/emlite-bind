@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ToggleEvent class.
 /// [`ToggleEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ToggleEvent {
 
 impl FromVal for ToggleEvent {
     fn from_val(v: &Any) -> Self {
-        ToggleEvent {
-            inner: Event::from_val(v),
-        }
+        ToggleEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ToggleEvent {
 
 impl AsMut<Any> for ToggleEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ToggleEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&ToggleEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(ToggleEvent);
 
+
+
 impl ToggleEvent {
     /// The `new ToggleEvent(..)` constructor, creating a new ToggleEvent instance
     pub fn new0(type_: &JsString) -> ToggleEvent {
         Self {
-            inner: Any::global("ToggleEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("ToggleEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new ToggleEvent(..)` constructor, creating a new ToggleEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &ToggleEventInit) -> ToggleEvent {
         Self {
-            inner: Any::global("ToggleEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("ToggleEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl ToggleEvent {
     /// Getter of the `oldState` attribute.
@@ -88,6 +88,7 @@ impl ToggleEvent {
     pub fn old_state(&self) -> JsString {
         self.inner.get("oldState").as_::<JsString>()
     }
+
 }
 impl ToggleEvent {
     /// Getter of the `newState` attribute.
@@ -95,6 +96,7 @@ impl ToggleEvent {
     pub fn new_state(&self) -> JsString {
         self.inner.get("newState").as_::<JsString>()
     }
+
 }
 impl ToggleEvent {
     /// Getter of the `source` attribute.
@@ -102,4 +104,5 @@ impl ToggleEvent {
     pub fn source(&self) -> Element {
         self.inner.get("source").as_::<Element>()
     }
+
 }

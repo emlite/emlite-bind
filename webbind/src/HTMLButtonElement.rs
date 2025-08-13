@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLButtonElement class.
 /// [`HTMLButtonElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLButtonElement {
 
 impl FromVal for HTMLButtonElement {
     fn from_val(v: &Any) -> Self {
-        HTMLButtonElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLButtonElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLButtonElement {
 
 impl AsMut<Any> for HTMLButtonElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLButtonElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLButtonElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLButtonElement);
 
+
+
 impl HTMLButtonElement {
     /// The `new HTMLButtonElement(..)` constructor, creating a new HTMLButtonElement instance
     pub fn new() -> HTMLButtonElement {
         Self {
-            inner: Any::global("HTMLButtonElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLButtonElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLButtonElement {
     /// Getter of the `command` attribute.
@@ -118,6 +120,7 @@ impl HTMLButtonElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLButtonElement {
     /// Getter of the `formAction` attribute.
@@ -229,6 +232,7 @@ impl HTMLButtonElement {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
+
 }
 impl HTMLButtonElement {
     /// Getter of the `validity` attribute.
@@ -236,6 +240,7 @@ impl HTMLButtonElement {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
+
 }
 impl HTMLButtonElement {
     /// Getter of the `validationMessage` attribute.
@@ -243,18 +248,19 @@ impl HTMLButtonElement {
     pub fn validation_message(&self) -> JsString {
         self.inner.get("validationMessage").as_::<JsString>()
     }
+
 }
 impl HTMLButtonElement {
     /// The checkValidity method.
     /// [`HTMLButtonElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/checkValidity)
-    pub fn check_validity(&self) -> bool {
+    pub fn check_validity(&self, ) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
 }
 impl HTMLButtonElement {
     /// The reportValidity method.
     /// [`HTMLButtonElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/reportValidity)
-    pub fn report_validity(&self) -> bool {
+    pub fn report_validity(&self, ) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
 }
@@ -262,9 +268,7 @@ impl HTMLButtonElement {
     /// The setCustomValidity method.
     /// [`HTMLButtonElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/setCustomValidity)
     pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<Undefined>()
+        self.inner.call("setCustomValidity", &[error.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLButtonElement {
@@ -273,6 +277,7 @@ impl HTMLButtonElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
+
 }
 impl HTMLButtonElement {
     /// Getter of the `popoverTargetElement` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSSkew class.
 /// [`CSSSkew`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkew)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSSkew {
 
 impl FromVal for CSSSkew {
     fn from_val(v: &Any) -> Self {
-        CSSSkew {
-            inner: CSSTransformComponent::from_val(v),
-        }
+        CSSSkew { inner: CSSTransformComponent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSSkew {
 
 impl AsMut<Any> for CSSSkew {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSSkew> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSSkew> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSSkew);
 
+
+
 impl CSSSkew {
     /// The `new CSSSkew(..)` constructor, creating a new CSSSkew instance
     pub fn new(ax: &CSSNumericValue, ay: &CSSNumericValue) -> CSSSkew {
         Self {
-            inner: Any::global("CSSSkew")
-                .new(&[ax.into(), ay.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSSkew").new(&[ax.into(), ay.into()]).as_::<CSSTransformComponent>(),
         }
     }
+
 }
 impl CSSSkew {
     /// Getter of the `ax` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothPermissionResult class.
 /// [`BluetoothPermissionResult`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothPermissionResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BluetoothPermissionResult {
 
 impl FromVal for BluetoothPermissionResult {
     fn from_val(v: &Any) -> Self {
-        BluetoothPermissionResult {
-            inner: PermissionStatus::from_val(v),
-        }
+        BluetoothPermissionResult { inner: PermissionStatus::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BluetoothPermissionResult {
 
 impl AsMut<Any> for BluetoothPermissionResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothPermissionResult> for Any {
@@ -63,13 +64,12 @@ impl From<&BluetoothPermissionResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothPermissionResult);
 
+
 impl BluetoothPermissionResult {
     /// Getter of the `devices` attribute.
     /// [`BluetoothPermissionResult.devices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothPermissionResult/devices)
     pub fn devices(&self) -> TypedArray<BluetoothDevice> {
-        self.inner
-            .get("devices")
-            .as_::<TypedArray<BluetoothDevice>>()
+        self.inner.get("devices").as_::<TypedArray<BluetoothDevice>>()
     }
 
     /// Setter of the `devices` attribute.

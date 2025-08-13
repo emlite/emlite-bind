@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IDBDatabaseInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IDBDatabaseInfo {
 
 impl AsMut<Any> for IDBDatabaseInfo {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IDBDatabaseInfo> for Any {

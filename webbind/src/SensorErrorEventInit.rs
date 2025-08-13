@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SensorErrorEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SensorErrorEventInit {
 
 impl AsMut<Any> for SensorErrorEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SensorErrorEventInit> for Any {

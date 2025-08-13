@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLBRElement class.
 /// [`HTMLBRElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBRElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLBRElement {
 
 impl FromVal for HTMLBRElement {
     fn from_val(v: &Any) -> Self {
-        HTMLBRElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLBRElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLBRElement {
 
 impl AsMut<Any> for HTMLBRElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLBRElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLBRElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLBRElement);
 
+
+
 impl HTMLBRElement {
     /// The `new HTMLBRElement(..)` constructor, creating a new HTMLBRElement instance
     pub fn new() -> HTMLBRElement {
@@ -70,6 +73,7 @@ impl HTMLBRElement {
             inner: Any::global("HTMLBRElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLBRElement {
     /// Getter of the `clear` attribute.

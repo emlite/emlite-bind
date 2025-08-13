@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSRuleList class.
 /// [`CSSRuleList`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSRuleList {
 
 impl FromVal for CSSRuleList {
     fn from_val(v: &Any) -> Self {
-        CSSRuleList {
-            inner: Any::from_val(v),
-        }
+        CSSRuleList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSRuleList {
 
 impl AsMut<Any> for CSSRuleList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSRuleList> for Any {
@@ -63,11 +64,12 @@ impl From<&CSSRuleList> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSRuleList);
 
+
 impl CSSRuleList {
     /// The item method.
     /// [`CSSRuleList.item`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList/item)
     pub fn item(&self, index: u32) -> CSSRule {
-        self.inner.call("item", &[index.into()]).as_::<CSSRule>()
+        self.inner.call("item", &[index.into(), ]).as_::<CSSRule>()
     }
 }
 impl CSSRuleList {
@@ -76,4 +78,5 @@ impl CSSRuleList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ScrollOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ScrollOptions {
 
 impl AsMut<Any> for ScrollOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ScrollOptions> for Any {

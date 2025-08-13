@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCReceivedRtpStreamStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCReceivedRtpStreamStats {
 
 impl AsMut<Any> for RTCReceivedRtpStreamStats {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCReceivedRtpStreamStats> for Any {
@@ -105,9 +108,7 @@ impl RTCReceivedRtpStreamStats {
 impl RTCReceivedRtpStreamStats {
     /// Getter of the `packetsReportedAsLostButRecovered` attribute.
     pub fn packets_reported_as_lost_but_recovered(&self) -> u64 {
-        self.inner
-            .get("packetsReportedAsLostButRecovered")
-            .as_::<u64>()
+        self.inner.get("packetsReportedAsLostButRecovered").as_::<u64>()
     }
 
     /// Setter of the `packetsReportedAsLostButRecovered` attribute.

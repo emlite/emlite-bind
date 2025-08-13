@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioScheduledSourceNode class.
 /// [`AudioScheduledSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioScheduledSourceNode {
 
 impl FromVal for AudioScheduledSourceNode {
     fn from_val(v: &Any) -> Self {
-        AudioScheduledSourceNode {
-            inner: AudioNode::from_val(v),
-        }
+        AudioScheduledSourceNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioScheduledSourceNode {
 
 impl AsMut<Any> for AudioScheduledSourceNode {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioScheduledSourceNode> for Any {
@@ -63,6 +64,7 @@ impl From<&AudioScheduledSourceNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioScheduledSourceNode);
 
+
 impl AudioScheduledSourceNode {
     /// Getter of the `onended` attribute.
     /// [`AudioScheduledSourceNode.onended`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/onended)
@@ -79,24 +81,24 @@ impl AudioScheduledSourceNode {
 impl AudioScheduledSourceNode {
     /// The start method.
     /// [`AudioScheduledSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/start)
-    pub fn start0(&self) -> Undefined {
+    pub fn start0(&self, ) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
     /// The start method.
     /// [`AudioScheduledSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/start)
     pub fn start1(&self, when: f64) -> Undefined {
-        self.inner.call("start", &[when.into()]).as_::<Undefined>()
+        self.inner.call("start", &[when.into(), ]).as_::<Undefined>()
     }
 }
 impl AudioScheduledSourceNode {
     /// The stop method.
     /// [`AudioScheduledSourceNode.stop`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/stop)
-    pub fn stop0(&self) -> Undefined {
+    pub fn stop0(&self, ) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
     /// The stop method.
     /// [`AudioScheduledSourceNode.stop`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/stop)
     pub fn stop1(&self, when: f64) -> Undefined {
-        self.inner.call("stop", &[when.into()]).as_::<Undefined>()
+        self.inner.call("stop", &[when.into(), ]).as_::<Undefined>()
     }
 }

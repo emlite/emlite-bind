@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WEBGL_blend_equation_advanced_coherent class.
 /// [`WEBGL_blend_equation_advanced_coherent`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_blend_equation_advanced_coherent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WEBGL_blend_equation_advanced_coherent {
 
 impl FromVal for WEBGL_blend_equation_advanced_coherent {
     fn from_val(v: &Any) -> Self {
-        WEBGL_blend_equation_advanced_coherent {
-            inner: Any::from_val(v),
-        }
+        WEBGL_blend_equation_advanced_coherent { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WEBGL_blend_equation_advanced_coherent {
 
 impl AsMut<Any> for WEBGL_blend_equation_advanced_coherent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WEBGL_blend_equation_advanced_coherent> for Any {
@@ -62,3 +63,5 @@ impl From<&WEBGL_blend_equation_advanced_coherent> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WEBGL_blend_equation_advanced_coherent);
+
+

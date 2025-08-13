@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ScoreAdOutput dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ScoreAdOutput {
 
 impl AsMut<Any> for ScoreAdOutput {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ScoreAdOutput> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CaptureHandle dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CaptureHandle {
 
 impl AsMut<Any> for CaptureHandle {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CaptureHandle> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ServiceWorkerGlobalScope class.
 /// [`ServiceWorkerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ServiceWorkerGlobalScope {
 
 impl FromVal for ServiceWorkerGlobalScope {
     fn from_val(v: &Any) -> Self {
-        ServiceWorkerGlobalScope {
-            inner: WorkerGlobalScope::from_val(v),
-        }
+        ServiceWorkerGlobalScope { inner: WorkerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ServiceWorkerGlobalScope {
 
 impl AsMut<Any> for ServiceWorkerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ServiceWorkerGlobalScope> for Any {
@@ -63,21 +64,22 @@ impl From<&ServiceWorkerGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(ServiceWorkerGlobalScope);
 
+
 impl ServiceWorkerGlobalScope {
     /// Getter of the `clients` attribute.
     /// [`ServiceWorkerGlobalScope.clients`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/clients)
     pub fn clients(&self) -> Clients {
         self.inner.get("clients").as_::<Clients>()
     }
+
 }
 impl ServiceWorkerGlobalScope {
     /// Getter of the `registration` attribute.
     /// [`ServiceWorkerGlobalScope.registration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/registration)
     pub fn registration(&self) -> ServiceWorkerRegistration {
-        self.inner
-            .get("registration")
-            .as_::<ServiceWorkerRegistration>()
+        self.inner.get("registration").as_::<ServiceWorkerRegistration>()
     }
+
 }
 impl ServiceWorkerGlobalScope {
     /// Getter of the `serviceWorker` attribute.
@@ -85,14 +87,13 @@ impl ServiceWorkerGlobalScope {
     pub fn service_worker(&self) -> ServiceWorker {
         self.inner.get("serviceWorker").as_::<ServiceWorker>()
     }
+
 }
 impl ServiceWorkerGlobalScope {
     /// The skipWaiting method.
     /// [`ServiceWorkerGlobalScope.skipWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting)
-    pub fn skip_waiting(&self) -> Promise<Undefined> {
-        self.inner
-            .call("skipWaiting", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn skip_waiting(&self, ) -> Promise<Undefined> {
+        self.inner.call("skipWaiting", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl ServiceWorkerGlobalScope {
@@ -244,6 +245,7 @@ impl ServiceWorkerGlobalScope {
     pub fn cookie_store(&self) -> CookieStore {
         self.inner.get("cookieStore").as_::<CookieStore>()
     }
+
 }
 impl ServiceWorkerGlobalScope {
     /// Getter of the `oncookiechange` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DeprecationReportBody dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DeprecationReportBody {
 
 impl AsMut<Any> for DeprecationReportBody {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DeprecationReportBody> for Any {

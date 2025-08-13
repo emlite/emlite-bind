@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBAlternateInterface class.
 /// [`USBAlternateInterface`](https://developer.mozilla.org/en-US/docs/Web/API/USBAlternateInterface)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBAlternateInterface {
 
 impl FromVal for USBAlternateInterface {
     fn from_val(v: &Any) -> Self {
-        USBAlternateInterface {
-            inner: Any::from_val(v),
-        }
+        USBAlternateInterface { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBAlternateInterface {
 
 impl AsMut<Any> for USBAlternateInterface {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBAlternateInterface> for Any {
@@ -63,15 +64,16 @@ impl From<&USBAlternateInterface> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBAlternateInterface);
 
+
+
 impl USBAlternateInterface {
     /// The `new USBAlternateInterface(..)` constructor, creating a new USBAlternateInterface instance
     pub fn new(device_interface: &USBInterface, alternate_setting: u8) -> USBAlternateInterface {
         Self {
-            inner: Any::global("USBAlternateInterface")
-                .new(&[device_interface.into(), alternate_setting.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBAlternateInterface").new(&[device_interface.into(), alternate_setting.into()]).as_::<Any>(),
         }
     }
+
 }
 impl USBAlternateInterface {
     /// Getter of the `alternateSetting` attribute.
@@ -79,6 +81,7 @@ impl USBAlternateInterface {
     pub fn alternate_setting(&self) -> u8 {
         self.inner.get("alternateSetting").as_::<u8>()
     }
+
 }
 impl USBAlternateInterface {
     /// Getter of the `interfaceClass` attribute.
@@ -86,6 +89,7 @@ impl USBAlternateInterface {
     pub fn interface_class(&self) -> u8 {
         self.inner.get("interfaceClass").as_::<u8>()
     }
+
 }
 impl USBAlternateInterface {
     /// Getter of the `interfaceSubclass` attribute.
@@ -93,6 +97,7 @@ impl USBAlternateInterface {
     pub fn interface_subclass(&self) -> u8 {
         self.inner.get("interfaceSubclass").as_::<u8>()
     }
+
 }
 impl USBAlternateInterface {
     /// Getter of the `interfaceProtocol` attribute.
@@ -100,6 +105,7 @@ impl USBAlternateInterface {
     pub fn interface_protocol(&self) -> u8 {
         self.inner.get("interfaceProtocol").as_::<u8>()
     }
+
 }
 impl USBAlternateInterface {
     /// Getter of the `interfaceName` attribute.
@@ -107,6 +113,7 @@ impl USBAlternateInterface {
     pub fn interface_name(&self) -> JsString {
         self.inner.get("interfaceName").as_::<JsString>()
     }
+
 }
 impl USBAlternateInterface {
     /// Getter of the `endpoints` attribute.
@@ -114,4 +121,5 @@ impl USBAlternateInterface {
     pub fn endpoints(&self) -> TypedArray<USBEndpoint> {
         self.inner.get("endpoints").as_::<TypedArray<USBEndpoint>>()
     }
+
 }

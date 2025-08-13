@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCError class.
 /// [`RTCError`](https://developer.mozilla.org/en-US/docs/Web/API/RTCError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCError {
 
 impl FromVal for RTCError {
     fn from_val(v: &Any) -> Self {
-        RTCError {
-            inner: DOMException::from_val(v),
-        }
+        RTCError { inner: DOMException::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCError {
 
 impl AsMut<Any> for RTCError {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCError> for Any {
@@ -63,24 +64,23 @@ impl From<&RTCError> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCError);
 
+
+
 impl RTCError {
     /// The `new RTCError(..)` constructor, creating a new RTCError instance
     pub fn new0(init: &RTCErrorInit) -> RTCError {
         Self {
-            inner: Any::global("RTCError")
-                .new(&[init.into()])
-                .as_::<DOMException>(),
+            inner: Any::global("RTCError").new(&[init.into()]).as_::<DOMException>(),
         }
     }
 
     /// The `new RTCError(..)` constructor, creating a new RTCError instance
     pub fn new1(init: &RTCErrorInit, message: &JsString) -> RTCError {
         Self {
-            inner: Any::global("RTCError")
-                .new(&[init.into(), message.into()])
-                .as_::<DOMException>(),
+            inner: Any::global("RTCError").new(&[init.into(), message.into()]).as_::<DOMException>(),
         }
     }
+
 }
 impl RTCError {
     /// Getter of the `errorDetail` attribute.
@@ -88,6 +88,7 @@ impl RTCError {
     pub fn error_detail(&self) -> RTCErrorDetailType {
         self.inner.get("errorDetail").as_::<RTCErrorDetailType>()
     }
+
 }
 impl RTCError {
     /// Getter of the `sdpLineNumber` attribute.
@@ -95,6 +96,7 @@ impl RTCError {
     pub fn sdp_line_number(&self) -> i32 {
         self.inner.get("sdpLineNumber").as_::<i32>()
     }
+
 }
 impl RTCError {
     /// Getter of the `sctpCauseCode` attribute.
@@ -102,6 +104,7 @@ impl RTCError {
     pub fn sctp_cause_code(&self) -> i32 {
         self.inner.get("sctpCauseCode").as_::<i32>()
     }
+
 }
 impl RTCError {
     /// Getter of the `receivedAlert` attribute.
@@ -109,6 +112,7 @@ impl RTCError {
     pub fn received_alert(&self) -> u32 {
         self.inner.get("receivedAlert").as_::<u32>()
     }
+
 }
 impl RTCError {
     /// Getter of the `sentAlert` attribute.
@@ -116,6 +120,7 @@ impl RTCError {
     pub fn sent_alert(&self) -> u32 {
         self.inner.get("sentAlert").as_::<u32>()
     }
+
 }
 impl RTCError {
     /// Getter of the `httpRequestStatusCode` attribute.
@@ -123,4 +128,5 @@ impl RTCError {
     pub fn http_request_status_code(&self) -> i32 {
         self.inner.get("httpRequestStatusCode").as_::<i32>()
     }
+
 }

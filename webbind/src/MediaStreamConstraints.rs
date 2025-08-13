@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaStreamConstraints dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaStreamConstraints {
 
 impl AsMut<Any> for MediaStreamConstraints {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaStreamConstraints> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DocumentTimeline class.
 /// [`DocumentTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DocumentTimeline {
 
 impl FromVal for DocumentTimeline {
     fn from_val(v: &Any) -> Self {
-        DocumentTimeline {
-            inner: AnimationTimeline::from_val(v),
-        }
+        DocumentTimeline { inner: AnimationTimeline::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DocumentTimeline {
 
 impl AsMut<Any> for DocumentTimeline {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DocumentTimeline> for Any {
@@ -63,22 +64,21 @@ impl From<&DocumentTimeline> for Any {
 
 jsbind::utils::impl_dyn_cast!(DocumentTimeline);
 
+
+
 impl DocumentTimeline {
     /// The `new DocumentTimeline(..)` constructor, creating a new DocumentTimeline instance
     pub fn new0() -> DocumentTimeline {
         Self {
-            inner: Any::global("DocumentTimeline")
-                .new(&[])
-                .as_::<AnimationTimeline>(),
+            inner: Any::global("DocumentTimeline").new(&[]).as_::<AnimationTimeline>(),
         }
     }
 
     /// The `new DocumentTimeline(..)` constructor, creating a new DocumentTimeline instance
     pub fn new1(options: &DocumentTimelineOptions) -> DocumentTimeline {
         Self {
-            inner: Any::global("DocumentTimeline")
-                .new(&[options.into()])
-                .as_::<AnimationTimeline>(),
+            inner: Any::global("DocumentTimeline").new(&[options.into()]).as_::<AnimationTimeline>(),
         }
     }
+
 }

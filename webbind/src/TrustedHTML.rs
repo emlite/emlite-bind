@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TrustedHTML class.
 /// [`TrustedHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TrustedHTML {
 
 impl FromVal for TrustedHTML {
     fn from_val(v: &Any) -> Self {
-        TrustedHTML {
-            inner: Any::from_val(v),
-        }
+        TrustedHTML { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TrustedHTML {
 
 impl AsMut<Any> for TrustedHTML {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TrustedHTML> for Any {
@@ -63,10 +64,11 @@ impl From<&TrustedHTML> for Any {
 
 jsbind::utils::impl_dyn_cast!(TrustedHTML);
 
+
 impl TrustedHTML {
     /// The toJSON method.
     /// [`TrustedHTML.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML/toJSON)
-    pub fn to_json(&self) -> JsString {
+    pub fn to_json(&self, ) -> JsString {
         self.inner.call("toJSON", &[]).as_::<JsString>()
     }
 }

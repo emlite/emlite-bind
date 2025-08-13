@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NavigationEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NavigationEventInit {
 
 impl AsMut<Any> for NavigationEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NavigationEventInit> for Any {

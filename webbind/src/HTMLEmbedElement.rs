@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLEmbedElement class.
 /// [`HTMLEmbedElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLEmbedElement {
 
 impl FromVal for HTMLEmbedElement {
     fn from_val(v: &Any) -> Self {
-        HTMLEmbedElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLEmbedElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLEmbedElement {
 
 impl AsMut<Any> for HTMLEmbedElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLEmbedElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLEmbedElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLEmbedElement);
 
+
+
 impl HTMLEmbedElement {
     /// The `new HTMLEmbedElement(..)` constructor, creating a new HTMLEmbedElement instance
     pub fn new() -> HTMLEmbedElement {
         Self {
-            inner: Any::global("HTMLEmbedElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLEmbedElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLEmbedElement {
     /// Getter of the `src` attribute.
@@ -128,7 +130,7 @@ impl HTMLEmbedElement {
 impl HTMLEmbedElement {
     /// The getSVGDocument method.
     /// [`HTMLEmbedElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/getSVGDocument)
-    pub fn get_svg_document(&self) -> Document {
+    pub fn get_svg_document(&self, ) -> Document {
         self.inner.call("getSVGDocument", &[]).as_::<Document>()
     }
 }

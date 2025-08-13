@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XREquirectLayer class.
 /// [`XREquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XREquirectLayer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XREquirectLayer {
 
 impl FromVal for XREquirectLayer {
     fn from_val(v: &Any) -> Self {
-        XREquirectLayer {
-            inner: XRCompositionLayer::from_val(v),
-        }
+        XREquirectLayer { inner: XRCompositionLayer::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XREquirectLayer {
 
 impl AsMut<Any> for XREquirectLayer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XREquirectLayer> for Any {
@@ -62,6 +63,7 @@ impl From<&XREquirectLayer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XREquirectLayer);
+
 
 impl XREquirectLayer {
     /// Getter of the `space` attribute.

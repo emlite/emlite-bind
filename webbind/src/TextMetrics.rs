@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TextMetrics class.
 /// [`TextMetrics`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TextMetrics {
 
 impl FromVal for TextMetrics {
     fn from_val(v: &Any) -> Self {
-        TextMetrics {
-            inner: Any::from_val(v),
-        }
+        TextMetrics { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TextMetrics {
 
 impl AsMut<Any> for TextMetrics {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TextMetrics> for Any {
@@ -63,12 +64,14 @@ impl From<&TextMetrics> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextMetrics);
 
+
 impl TextMetrics {
     /// Getter of the `width` attribute.
     /// [`TextMetrics.width`](https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics/width)
     pub fn width(&self) -> f64 {
         self.inner.get("width").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `actualBoundingBoxLeft` attribute.
@@ -76,6 +79,7 @@ impl TextMetrics {
     pub fn actual_bounding_box_left(&self) -> f64 {
         self.inner.get("actualBoundingBoxLeft").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `actualBoundingBoxRight` attribute.
@@ -83,6 +87,7 @@ impl TextMetrics {
     pub fn actual_bounding_box_right(&self) -> f64 {
         self.inner.get("actualBoundingBoxRight").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `fontBoundingBoxAscent` attribute.
@@ -90,6 +95,7 @@ impl TextMetrics {
     pub fn font_bounding_box_ascent(&self) -> f64 {
         self.inner.get("fontBoundingBoxAscent").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `fontBoundingBoxDescent` attribute.
@@ -97,6 +103,7 @@ impl TextMetrics {
     pub fn font_bounding_box_descent(&self) -> f64 {
         self.inner.get("fontBoundingBoxDescent").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `actualBoundingBoxAscent` attribute.
@@ -104,6 +111,7 @@ impl TextMetrics {
     pub fn actual_bounding_box_ascent(&self) -> f64 {
         self.inner.get("actualBoundingBoxAscent").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `actualBoundingBoxDescent` attribute.
@@ -111,6 +119,7 @@ impl TextMetrics {
     pub fn actual_bounding_box_descent(&self) -> f64 {
         self.inner.get("actualBoundingBoxDescent").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `emHeightAscent` attribute.
@@ -118,6 +127,7 @@ impl TextMetrics {
     pub fn em_height_ascent(&self) -> f64 {
         self.inner.get("emHeightAscent").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `emHeightDescent` attribute.
@@ -125,6 +135,7 @@ impl TextMetrics {
     pub fn em_height_descent(&self) -> f64 {
         self.inner.get("emHeightDescent").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `hangingBaseline` attribute.
@@ -132,6 +143,7 @@ impl TextMetrics {
     pub fn hanging_baseline(&self) -> f64 {
         self.inner.get("hangingBaseline").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `alphabeticBaseline` attribute.
@@ -139,6 +151,7 @@ impl TextMetrics {
     pub fn alphabetic_baseline(&self) -> f64 {
         self.inner.get("alphabeticBaseline").as_::<f64>()
     }
+
 }
 impl TextMetrics {
     /// Getter of the `ideographicBaseline` attribute.
@@ -146,4 +159,5 @@ impl TextMetrics {
     pub fn ideographic_baseline(&self) -> f64 {
         self.inner.get("ideographicBaseline").as_::<f64>()
     }
+
 }

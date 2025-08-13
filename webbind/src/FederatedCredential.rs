@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FederatedCredential class.
 /// [`FederatedCredential`](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FederatedCredential {
 
 impl FromVal for FederatedCredential {
     fn from_val(v: &Any) -> Self {
-        FederatedCredential {
-            inner: Credential::from_val(v),
-        }
+        FederatedCredential { inner: Credential::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FederatedCredential {
 
 impl AsMut<Any> for FederatedCredential {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FederatedCredential> for Any {
@@ -63,15 +64,16 @@ impl From<&FederatedCredential> for Any {
 
 jsbind::utils::impl_dyn_cast!(FederatedCredential);
 
+
+
 impl FederatedCredential {
     /// The `new FederatedCredential(..)` constructor, creating a new FederatedCredential instance
     pub fn new(data: &FederatedCredentialInit) -> FederatedCredential {
         Self {
-            inner: Any::global("FederatedCredential")
-                .new(&[data.into()])
-                .as_::<Credential>(),
+            inner: Any::global("FederatedCredential").new(&[data.into()]).as_::<Credential>(),
         }
     }
+
 }
 impl FederatedCredential {
     /// Getter of the `provider` attribute.
@@ -79,6 +81,7 @@ impl FederatedCredential {
     pub fn provider(&self) -> JsString {
         self.inner.get("provider").as_::<JsString>()
     }
+
 }
 impl FederatedCredential {
     /// Getter of the `protocol` attribute.
@@ -86,6 +89,7 @@ impl FederatedCredential {
     pub fn protocol(&self) -> JsString {
         self.inner.get("protocol").as_::<JsString>()
     }
+
 }
 impl FederatedCredential {
     /// Getter of the `name` attribute.
@@ -93,6 +97,7 @@ impl FederatedCredential {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl FederatedCredential {
     /// Getter of the `iconURL` attribute.
@@ -100,4 +105,5 @@ impl FederatedCredential {
     pub fn icon_url(&self) -> JsString {
         self.inner.get("iconURL").as_::<JsString>()
     }
+
 }

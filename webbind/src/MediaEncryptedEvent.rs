@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaEncryptedEvent class.
 /// [`MediaEncryptedEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaEncryptedEvent {
 
 impl FromVal for MediaEncryptedEvent {
     fn from_val(v: &Any) -> Self {
-        MediaEncryptedEvent {
-            inner: Event::from_val(v),
-        }
+        MediaEncryptedEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaEncryptedEvent {
 
 impl AsMut<Any> for MediaEncryptedEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaEncryptedEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&MediaEncryptedEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaEncryptedEvent);
 
+
+
 impl MediaEncryptedEvent {
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
     pub fn new0(type_: &JsString) -> MediaEncryptedEvent {
         Self {
-            inner: Any::global("MediaEncryptedEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("MediaEncryptedEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &MediaEncryptedEventInit,
-    ) -> MediaEncryptedEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &MediaEncryptedEventInit) -> MediaEncryptedEvent {
         Self {
-            inner: Any::global("MediaEncryptedEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("MediaEncryptedEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl MediaEncryptedEvent {
     /// Getter of the `initDataType` attribute.
@@ -91,6 +88,7 @@ impl MediaEncryptedEvent {
     pub fn init_data_type(&self) -> JsString {
         self.inner.get("initDataType").as_::<JsString>()
     }
+
 }
 impl MediaEncryptedEvent {
     /// Getter of the `initData` attribute.
@@ -98,4 +96,5 @@ impl MediaEncryptedEvent {
     pub fn init_data(&self) -> ArrayBuffer {
         self.inner.get("initData").as_::<ArrayBuffer>()
     }
+
 }

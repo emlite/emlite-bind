@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RequestDeviceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RequestDeviceOptions {
 
 impl AsMut<Any> for RequestDeviceOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RequestDeviceOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&RequestDeviceOptions> for Any {
 impl RequestDeviceOptions {
     /// Getter of the `filters` attribute.
     pub fn filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
-        self.inner
-            .get("filters")
-            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
+        self.inner.get("filters").as_::<TypedArray<BluetoothLEScanFilterInit>>()
     }
 
     /// Setter of the `filters` attribute.
@@ -74,9 +75,7 @@ impl RequestDeviceOptions {
 impl RequestDeviceOptions {
     /// Getter of the `exclusionFilters` attribute.
     pub fn exclusion_filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
-        self.inner
-            .get("exclusionFilters")
-            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
+        self.inner.get("exclusionFilters").as_::<TypedArray<BluetoothLEScanFilterInit>>()
     }
 
     /// Setter of the `exclusionFilters` attribute.
@@ -98,9 +97,7 @@ impl RequestDeviceOptions {
 impl RequestDeviceOptions {
     /// Getter of the `optionalManufacturerData` attribute.
     pub fn optional_manufacturer_data(&self) -> TypedArray<u16> {
-        self.inner
-            .get("optionalManufacturerData")
-            .as_::<TypedArray<u16>>()
+        self.inner.get("optionalManufacturerData").as_::<TypedArray<u16>>()
     }
 
     /// Setter of the `optionalManufacturerData` attribute.

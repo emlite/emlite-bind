@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUValidationError class.
 /// [`GPUValidationError`](https://developer.mozilla.org/en-US/docs/Web/API/GPUValidationError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUValidationError {
 
 impl FromVal for GPUValidationError {
     fn from_val(v: &Any) -> Self {
-        GPUValidationError {
-            inner: GPUError::from_val(v),
-        }
+        GPUValidationError { inner: GPUError::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUValidationError {
 
 impl AsMut<Any> for GPUValidationError {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUValidationError> for Any {
@@ -63,13 +64,14 @@ impl From<&GPUValidationError> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUValidationError);
 
+
+
 impl GPUValidationError {
     /// The `new GPUValidationError(..)` constructor, creating a new GPUValidationError instance
     pub fn new(message: &JsString) -> GPUValidationError {
         Self {
-            inner: Any::global("GPUValidationError")
-                .new(&[message.into()])
-                .as_::<GPUError>(),
+            inner: Any::global("GPUValidationError").new(&[message.into()]).as_::<GPUError>(),
         }
     }
+
 }

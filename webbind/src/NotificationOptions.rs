@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NotificationOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NotificationOptions {
 
 impl AsMut<Any> for NotificationOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NotificationOptions> for Any {
@@ -204,9 +207,7 @@ impl NotificationOptions {
 impl NotificationOptions {
     /// Getter of the `actions` attribute.
     pub fn actions(&self) -> TypedArray<NotificationAction> {
-        self.inner
-            .get("actions")
-            .as_::<TypedArray<NotificationAction>>()
+        self.inner.get("actions").as_::<TypedArray<NotificationAction>>()
     }
 
     /// Setter of the `actions` attribute.

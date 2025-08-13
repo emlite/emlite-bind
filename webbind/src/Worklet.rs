@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Worklet class.
 /// [`Worklet`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Worklet {
 
 impl FromVal for Worklet {
     fn from_val(v: &Any) -> Self {
-        Worklet {
-            inner: Any::from_val(v),
-        }
+        Worklet { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Worklet {
 
 impl AsMut<Any> for Worklet {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Worklet> for Any {
@@ -63,23 +64,16 @@ impl From<&Worklet> for Any {
 
 jsbind::utils::impl_dyn_cast!(Worklet);
 
+
 impl Worklet {
     /// The addModule method.
     /// [`Worklet.addModule`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet/addModule)
     pub fn add_module0(&self, module_url: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("addModule", &[module_url.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("addModule", &[module_url.into(), ]).as_::<Promise<Undefined>>()
     }
     /// The addModule method.
     /// [`Worklet.addModule`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet/addModule)
-    pub fn add_module1(
-        &self,
-        module_url: &JsString,
-        options: &WorkletOptions,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call("addModule", &[module_url.into(), options.into()])
-            .as_::<Promise<Undefined>>()
+    pub fn add_module1(&self, module_url: &JsString, options: &WorkletOptions) -> Promise<Undefined> {
+        self.inner.call("addModule", &[module_url.into(), options.into(), ]).as_::<Promise<Undefined>>()
     }
 }

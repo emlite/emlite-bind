@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBIsochronousInTransferPacket class.
 /// [`USBIsochronousInTransferPacket`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferPacket)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBIsochronousInTransferPacket {
 
 impl FromVal for USBIsochronousInTransferPacket {
     fn from_val(v: &Any) -> Self {
-        USBIsochronousInTransferPacket {
-            inner: Any::from_val(v),
-        }
+        USBIsochronousInTransferPacket { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBIsochronousInTransferPacket {
 
 impl AsMut<Any> for USBIsochronousInTransferPacket {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBIsochronousInTransferPacket> for Any {
@@ -63,24 +64,23 @@ impl From<&USBIsochronousInTransferPacket> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferPacket);
 
+
+
 impl USBIsochronousInTransferPacket {
     /// The `new USBIsochronousInTransferPacket(..)` constructor, creating a new USBIsochronousInTransferPacket instance
     pub fn new0(status: &USBTransferStatus) -> USBIsochronousInTransferPacket {
         Self {
-            inner: Any::global("USBIsochronousInTransferPacket")
-                .new(&[status.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBIsochronousInTransferPacket").new(&[status.into()]).as_::<Any>(),
         }
     }
 
     /// The `new USBIsochronousInTransferPacket(..)` constructor, creating a new USBIsochronousInTransferPacket instance
     pub fn new1(status: &USBTransferStatus, data: &DataView) -> USBIsochronousInTransferPacket {
         Self {
-            inner: Any::global("USBIsochronousInTransferPacket")
-                .new(&[status.into(), data.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBIsochronousInTransferPacket").new(&[status.into(), data.into()]).as_::<Any>(),
         }
     }
+
 }
 impl USBIsochronousInTransferPacket {
     /// Getter of the `data` attribute.
@@ -88,6 +88,7 @@ impl USBIsochronousInTransferPacket {
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
+
 }
 impl USBIsochronousInTransferPacket {
     /// Getter of the `status` attribute.
@@ -95,4 +96,5 @@ impl USBIsochronousInTransferPacket {
     pub fn status(&self) -> USBTransferStatus {
         self.inner.get("status").as_::<USBTransferStatus>()
     }
+
 }

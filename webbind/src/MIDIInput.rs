@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MIDIInput class.
 /// [`MIDIInput`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIInput)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MIDIInput {
 
 impl FromVal for MIDIInput {
     fn from_val(v: &Any) -> Self {
-        MIDIInput {
-            inner: MIDIPort::from_val(v),
-        }
+        MIDIInput { inner: MIDIPort::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MIDIInput {
 
 impl AsMut<Any> for MIDIInput {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MIDIInput> for Any {
@@ -62,6 +63,7 @@ impl From<&MIDIInput> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(MIDIInput);
+
 
 impl MIDIInput {
     /// Getter of the `onmidimessage` attribute.

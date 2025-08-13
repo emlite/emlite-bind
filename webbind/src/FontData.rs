@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FontData class.
 /// [`FontData`](https://developer.mozilla.org/en-US/docs/Web/API/FontData)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FontData {
 
 impl FromVal for FontData {
     fn from_val(v: &Any) -> Self {
-        FontData {
-            inner: Any::from_val(v),
-        }
+        FontData { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FontData {
 
 impl AsMut<Any> for FontData {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FontData> for Any {
@@ -63,10 +64,11 @@ impl From<&FontData> for Any {
 
 jsbind::utils::impl_dyn_cast!(FontData);
 
+
 impl FontData {
     /// The blob method.
     /// [`FontData.blob`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/blob)
-    pub fn blob(&self) -> Promise<Blob> {
+    pub fn blob(&self, ) -> Promise<Blob> {
         self.inner.call("blob", &[]).as_::<Promise<Blob>>()
     }
 }
@@ -76,6 +78,7 @@ impl FontData {
     pub fn postscript_name(&self) -> JsString {
         self.inner.get("postscriptName").as_::<JsString>()
     }
+
 }
 impl FontData {
     /// Getter of the `fullName` attribute.
@@ -83,6 +86,7 @@ impl FontData {
     pub fn full_name(&self) -> JsString {
         self.inner.get("fullName").as_::<JsString>()
     }
+
 }
 impl FontData {
     /// Getter of the `family` attribute.
@@ -90,6 +94,7 @@ impl FontData {
     pub fn family(&self) -> JsString {
         self.inner.get("family").as_::<JsString>()
     }
+
 }
 impl FontData {
     /// Getter of the `style` attribute.
@@ -97,4 +102,5 @@ impl FontData {
     pub fn style(&self) -> JsString {
         self.inner.get("style").as_::<JsString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PromptResponseObject dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PromptResponseObject {
 
 impl AsMut<Any> for PromptResponseObject {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PromptResponseObject> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioEncoderSupport dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for AudioEncoderSupport {
 
 impl AsMut<Any> for AudioEncoderSupport {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioEncoderSupport> for Any {

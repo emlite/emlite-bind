@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SnapEvent class.
 /// [`SnapEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SnapEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SnapEvent {
 
 impl FromVal for SnapEvent {
     fn from_val(v: &Any) -> Self {
-        SnapEvent {
-            inner: Event::from_val(v),
-        }
+        SnapEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SnapEvent {
 
 impl AsMut<Any> for SnapEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SnapEvent> for Any {
@@ -63,6 +64,8 @@ impl From<&SnapEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SnapEvent);
 
+
+
 impl SnapEvent {
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
     pub fn new0(type_: &JsString) -> SnapEvent {
@@ -74,11 +77,10 @@ impl SnapEvent {
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &SnapEventInit) -> SnapEvent {
         Self {
-            inner: Any::global("SnapEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("SnapEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl SnapEvent {
     /// Getter of the `snapTargetBlock` attribute.
@@ -86,6 +88,7 @@ impl SnapEvent {
     pub fn snap_target_block(&self) -> Node {
         self.inner.get("snapTargetBlock").as_::<Node>()
     }
+
 }
 impl SnapEvent {
     /// Getter of the `snapTargetInline` attribute.
@@ -93,4 +96,5 @@ impl SnapEvent {
     pub fn snap_target_inline(&self) -> Node {
         self.inner.get("snapTargetInline").as_::<Node>()
     }
+
 }

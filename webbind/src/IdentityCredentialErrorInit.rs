@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdentityCredentialErrorInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IdentityCredentialErrorInit {
 
 impl AsMut<Any> for IdentityCredentialErrorInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdentityCredentialErrorInit> for Any {

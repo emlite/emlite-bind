@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaQueryListEvent class.
 /// [`MediaQueryListEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaQueryListEvent {
 
 impl FromVal for MediaQueryListEvent {
     fn from_val(v: &Any) -> Self {
-        MediaQueryListEvent {
-            inner: Event::from_val(v),
-        }
+        MediaQueryListEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaQueryListEvent {
 
 impl AsMut<Any> for MediaQueryListEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaQueryListEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&MediaQueryListEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaQueryListEvent);
 
+
+
 impl MediaQueryListEvent {
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
     pub fn new0(type_: &JsString) -> MediaQueryListEvent {
         Self {
-            inner: Any::global("MediaQueryListEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("MediaQueryListEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &MediaQueryListEventInit,
-    ) -> MediaQueryListEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &MediaQueryListEventInit) -> MediaQueryListEvent {
         Self {
-            inner: Any::global("MediaQueryListEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("MediaQueryListEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl MediaQueryListEvent {
     /// Getter of the `media` attribute.
@@ -91,6 +88,7 @@ impl MediaQueryListEvent {
     pub fn media(&self) -> JsString {
         self.inner.get("media").as_::<JsString>()
     }
+
 }
 impl MediaQueryListEvent {
     /// Getter of the `matches` attribute.
@@ -98,4 +96,5 @@ impl MediaQueryListEvent {
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
+
 }

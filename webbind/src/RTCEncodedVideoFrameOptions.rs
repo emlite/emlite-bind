@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCEncodedVideoFrameOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCEncodedVideoFrameOptions {
 
 impl AsMut<Any> for RTCEncodedVideoFrameOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCEncodedVideoFrameOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&RTCEncodedVideoFrameOptions> for Any {
 impl RTCEncodedVideoFrameOptions {
     /// Getter of the `metadata` attribute.
     pub fn metadata(&self) -> RTCEncodedVideoFrameMetadata {
-        self.inner
-            .get("metadata")
-            .as_::<RTCEncodedVideoFrameMetadata>()
+        self.inner.get("metadata").as_::<RTCEncodedVideoFrameMetadata>()
     }
 
     /// Setter of the `metadata` attribute.

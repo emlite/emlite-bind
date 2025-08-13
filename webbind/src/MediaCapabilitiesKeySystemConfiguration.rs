@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaCapabilitiesKeySystemConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaCapabilitiesKeySystemConfiguration {
 
 impl AsMut<Any> for MediaCapabilitiesKeySystemConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaCapabilitiesKeySystemConfiguration> for Any {
@@ -83,9 +86,7 @@ impl MediaCapabilitiesKeySystemConfiguration {
 impl MediaCapabilitiesKeySystemConfiguration {
     /// Getter of the `distinctiveIdentifier` attribute.
     pub fn distinctive_identifier(&self) -> MediaKeysRequirement {
-        self.inner
-            .get("distinctiveIdentifier")
-            .as_::<MediaKeysRequirement>()
+        self.inner.get("distinctiveIdentifier").as_::<MediaKeysRequirement>()
     }
 
     /// Setter of the `distinctiveIdentifier` attribute.
@@ -96,9 +97,7 @@ impl MediaCapabilitiesKeySystemConfiguration {
 impl MediaCapabilitiesKeySystemConfiguration {
     /// Getter of the `persistentState` attribute.
     pub fn persistent_state(&self) -> MediaKeysRequirement {
-        self.inner
-            .get("persistentState")
-            .as_::<MediaKeysRequirement>()
+        self.inner.get("persistentState").as_::<MediaKeysRequirement>()
     }
 
     /// Setter of the `persistentState` attribute.

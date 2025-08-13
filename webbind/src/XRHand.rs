@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRHand class.
 /// [`XRHand`](https://developer.mozilla.org/en-US/docs/Web/API/XRHand)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRHand {
 
 impl FromVal for XRHand {
     fn from_val(v: &Any) -> Self {
-        XRHand {
-            inner: Any::from_val(v),
-        }
+        XRHand { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRHand {
 
 impl AsMut<Any> for XRHand {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRHand> for Any {
@@ -63,17 +64,19 @@ impl From<&XRHand> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRHand);
 
+
 impl XRHand {
     /// Getter of the `size` attribute.
     /// [`XRHand.size`](https://developer.mozilla.org/en-US/docs/Web/API/XRHand/size)
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
+
 }
 impl XRHand {
     /// The get method.
     /// [`XRHand.get`](https://developer.mozilla.org/en-US/docs/Web/API/XRHand/get)
     pub fn get(&self, key: &XRHandJoint) -> XRJointSpace {
-        self.inner.call("get", &[key.into()]).as_::<XRJointSpace>()
+        self.inner.call("get", &[key.into(), ]).as_::<XRJointSpace>()
     }
 }

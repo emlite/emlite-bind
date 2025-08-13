@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The VideoDecoder class.
 /// [`VideoDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct VideoDecoder {
 
 impl FromVal for VideoDecoder {
     fn from_val(v: &Any) -> Self {
-        VideoDecoder {
-            inner: EventTarget::from_val(v),
-        }
+        VideoDecoder { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for VideoDecoder {
 
 impl AsMut<Any> for VideoDecoder {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<VideoDecoder> for Any {
@@ -63,15 +64,16 @@ impl From<&VideoDecoder> for Any {
 
 jsbind::utils::impl_dyn_cast!(VideoDecoder);
 
+
+
 impl VideoDecoder {
     /// The `new VideoDecoder(..)` constructor, creating a new VideoDecoder instance
     pub fn new(init: &VideoDecoderInit) -> VideoDecoder {
         Self {
-            inner: Any::global("VideoDecoder")
-                .new(&[init.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("VideoDecoder").new(&[init.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl VideoDecoder {
     /// Getter of the `state` attribute.
@@ -79,6 +81,7 @@ impl VideoDecoder {
     pub fn state(&self) -> CodecState {
         self.inner.get("state").as_::<CodecState>()
     }
+
 }
 impl VideoDecoder {
     /// Getter of the `decodeQueueSize` attribute.
@@ -86,6 +89,7 @@ impl VideoDecoder {
     pub fn decode_queue_size(&self) -> u32 {
         self.inner.get("decodeQueueSize").as_::<u32>()
     }
+
 }
 impl VideoDecoder {
     /// Getter of the `ondequeue` attribute.
@@ -104,38 +108,34 @@ impl VideoDecoder {
     /// The configure method.
     /// [`VideoDecoder.configure`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/configure)
     pub fn configure(&self, config: &VideoDecoderConfig) -> Undefined {
-        self.inner
-            .call("configure", &[config.into()])
-            .as_::<Undefined>()
+        self.inner.call("configure", &[config.into(), ]).as_::<Undefined>()
     }
 }
 impl VideoDecoder {
     /// The decode method.
     /// [`VideoDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/decode)
     pub fn decode(&self, chunk: &EncodedVideoChunk) -> Undefined {
-        self.inner
-            .call("decode", &[chunk.into()])
-            .as_::<Undefined>()
+        self.inner.call("decode", &[chunk.into(), ]).as_::<Undefined>()
     }
 }
 impl VideoDecoder {
     /// The flush method.
     /// [`VideoDecoder.flush`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/flush)
-    pub fn flush(&self) -> Promise<Undefined> {
+    pub fn flush(&self, ) -> Promise<Undefined> {
         self.inner.call("flush", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl VideoDecoder {
     /// The reset method.
     /// [`VideoDecoder.reset`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/reset)
-    pub fn reset(&self) -> Undefined {
+    pub fn reset(&self, ) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
 }
 impl VideoDecoder {
     /// The close method.
     /// [`VideoDecoder.close`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
@@ -143,8 +143,6 @@ impl VideoDecoder {
     /// The isConfigSupported method.
     /// [`VideoDecoder.isConfigSupported`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/isConfigSupported)
     pub fn is_config_supported(config: &VideoDecoderConfig) -> Promise<VideoDecoderSupport> {
-        Any::global("VideoDecoder")
-            .call("isConfigSupported", &[config.into()])
-            .as_::<Promise<VideoDecoderSupport>>()
+        Any::global("VideoDecoder").call("isConfigSupported", &[config.into(), ]).as_::<Promise<VideoDecoderSupport>>()
     }
 }

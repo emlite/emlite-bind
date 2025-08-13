@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaymentRequestEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PaymentRequestEventInit {
 
 impl AsMut<Any> for PaymentRequestEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaymentRequestEventInit> for Any {
@@ -94,9 +97,7 @@ impl PaymentRequestEventInit {
 impl PaymentRequestEventInit {
     /// Getter of the `methodData` attribute.
     pub fn method_data(&self) -> TypedArray<PaymentMethodData> {
-        self.inner
-            .get("methodData")
-            .as_::<TypedArray<PaymentMethodData>>()
+        self.inner.get("methodData").as_::<TypedArray<PaymentMethodData>>()
     }
 
     /// Setter of the `methodData` attribute.
@@ -118,9 +119,7 @@ impl PaymentRequestEventInit {
 impl PaymentRequestEventInit {
     /// Getter of the `modifiers` attribute.
     pub fn modifiers(&self) -> TypedArray<PaymentDetailsModifier> {
-        self.inner
-            .get("modifiers")
-            .as_::<TypedArray<PaymentDetailsModifier>>()
+        self.inner.get("modifiers").as_::<TypedArray<PaymentDetailsModifier>>()
     }
 
     /// Setter of the `modifiers` attribute.
@@ -142,9 +141,7 @@ impl PaymentRequestEventInit {
 impl PaymentRequestEventInit {
     /// Getter of the `shippingOptions` attribute.
     pub fn shipping_options(&self) -> TypedArray<PaymentShippingOption> {
-        self.inner
-            .get("shippingOptions")
-            .as_::<TypedArray<PaymentShippingOption>>()
+        self.inner.get("shippingOptions").as_::<TypedArray<PaymentShippingOption>>()
     }
 
     /// Setter of the `shippingOptions` attribute.

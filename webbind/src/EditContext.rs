@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EditContext class.
 /// [`EditContext`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct EditContext {
 
 impl FromVal for EditContext {
     fn from_val(v: &Any) -> Self {
-        EditContext {
-            inner: EventTarget::from_val(v),
-        }
+        EditContext { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for EditContext {
 
 impl AsMut<Any> for EditContext {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EditContext> for Any {
@@ -63,6 +64,8 @@ impl From<&EditContext> for Any {
 
 jsbind::utils::impl_dyn_cast!(EditContext);
 
+
+
 impl EditContext {
     /// The `new EditContext(..)` constructor, creating a new EditContext instance
     pub fn new0() -> EditContext {
@@ -74,74 +77,51 @@ impl EditContext {
     /// The `new EditContext(..)` constructor, creating a new EditContext instance
     pub fn new1(options: &EditContextInit) -> EditContext {
         Self {
-            inner: Any::global("EditContext")
-                .new(&[options.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("EditContext").new(&[options.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl EditContext {
     /// The updateText method.
     /// [`EditContext.updateText`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateText)
     pub fn update_text(&self, range_start: u32, range_end: u32, text: &JsString) -> Undefined {
-        self.inner
-            .call(
-                "updateText",
-                &[range_start.into(), range_end.into(), text.into()],
-            )
-            .as_::<Undefined>()
+        self.inner.call("updateText", &[range_start.into(), range_end.into(), text.into(), ]).as_::<Undefined>()
     }
 }
 impl EditContext {
     /// The updateSelection method.
     /// [`EditContext.updateSelection`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateSelection)
     pub fn update_selection(&self, start: u32, end: u32) -> Undefined {
-        self.inner
-            .call("updateSelection", &[start.into(), end.into()])
-            .as_::<Undefined>()
+        self.inner.call("updateSelection", &[start.into(), end.into(), ]).as_::<Undefined>()
     }
 }
 impl EditContext {
     /// The updateControlBounds method.
     /// [`EditContext.updateControlBounds`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateControlBounds)
     pub fn update_control_bounds(&self, control_bounds: &DOMRect) -> Undefined {
-        self.inner
-            .call("updateControlBounds", &[control_bounds.into()])
-            .as_::<Undefined>()
+        self.inner.call("updateControlBounds", &[control_bounds.into(), ]).as_::<Undefined>()
     }
 }
 impl EditContext {
     /// The updateSelectionBounds method.
     /// [`EditContext.updateSelectionBounds`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateSelectionBounds)
     pub fn update_selection_bounds(&self, selection_bounds: &DOMRect) -> Undefined {
-        self.inner
-            .call("updateSelectionBounds", &[selection_bounds.into()])
-            .as_::<Undefined>()
+        self.inner.call("updateSelectionBounds", &[selection_bounds.into(), ]).as_::<Undefined>()
     }
 }
 impl EditContext {
     /// The updateCharacterBounds method.
     /// [`EditContext.updateCharacterBounds`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateCharacterBounds)
-    pub fn update_character_bounds(
-        &self,
-        range_start: u32,
-        character_bounds: &TypedArray<DOMRect>,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "updateCharacterBounds",
-                &[range_start.into(), character_bounds.into()],
-            )
-            .as_::<Undefined>()
+    pub fn update_character_bounds(&self, range_start: u32, character_bounds: &TypedArray<DOMRect>) -> Undefined {
+        self.inner.call("updateCharacterBounds", &[range_start.into(), character_bounds.into(), ]).as_::<Undefined>()
     }
 }
 impl EditContext {
     /// The attachedElements method.
     /// [`EditContext.attachedElements`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/attachedElements)
-    pub fn attached_elements(&self) -> TypedArray<HTMLElement> {
-        self.inner
-            .call("attachedElements", &[])
-            .as_::<TypedArray<HTMLElement>>()
+    pub fn attached_elements(&self, ) -> TypedArray<HTMLElement> {
+        self.inner.call("attachedElements", &[]).as_::<TypedArray<HTMLElement>>()
     }
 }
 impl EditContext {
@@ -150,6 +130,7 @@ impl EditContext {
     pub fn text(&self) -> JsString {
         self.inner.get("text").as_::<JsString>()
     }
+
 }
 impl EditContext {
     /// Getter of the `selectionStart` attribute.
@@ -157,6 +138,7 @@ impl EditContext {
     pub fn selection_start(&self) -> u32 {
         self.inner.get("selectionStart").as_::<u32>()
     }
+
 }
 impl EditContext {
     /// Getter of the `selectionEnd` attribute.
@@ -164,6 +146,7 @@ impl EditContext {
     pub fn selection_end(&self) -> u32 {
         self.inner.get("selectionEnd").as_::<u32>()
     }
+
 }
 impl EditContext {
     /// Getter of the `characterBoundsRangeStart` attribute.
@@ -171,14 +154,13 @@ impl EditContext {
     pub fn character_bounds_range_start(&self) -> u32 {
         self.inner.get("characterBoundsRangeStart").as_::<u32>()
     }
+
 }
 impl EditContext {
     /// The characterBounds method.
     /// [`EditContext.characterBounds`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/characterBounds)
-    pub fn character_bounds(&self) -> TypedArray<DOMRect> {
-        self.inner
-            .call("characterBounds", &[])
-            .as_::<TypedArray<DOMRect>>()
+    pub fn character_bounds(&self, ) -> TypedArray<DOMRect> {
+        self.inner.call("characterBounds", &[]).as_::<TypedArray<DOMRect>>()
     }
 }
 impl EditContext {

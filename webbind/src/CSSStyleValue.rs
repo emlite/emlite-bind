@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSStyleValue class.
 /// [`CSSStyleValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSStyleValue {
 
 impl FromVal for CSSStyleValue {
     fn from_val(v: &Any) -> Self {
-        CSSStyleValue {
-            inner: Any::from_val(v),
-        }
+        CSSStyleValue { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSStyleValue {
 
 impl AsMut<Any> for CSSStyleValue {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSStyleValue> for Any {
@@ -63,21 +64,18 @@ impl From<&CSSStyleValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSStyleValue);
 
+
 impl CSSStyleValue {
     /// The parse method.
     /// [`CSSStyleValue.parse`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleValue/parse)
     pub fn parse(property: &JsString, css_text: &JsString) -> CSSStyleValue {
-        Any::global("CSSStyleValue")
-            .call("parse", &[property.into(), css_text.into()])
-            .as_::<CSSStyleValue>()
+        Any::global("CSSStyleValue").call("parse", &[property.into(), css_text.into(), ]).as_::<CSSStyleValue>()
     }
 }
 impl CSSStyleValue {
     /// The parseAll method.
     /// [`CSSStyleValue.parseAll`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleValue/parseAll)
     pub fn parse_all(property: &JsString, css_text: &JsString) -> TypedArray<CSSStyleValue> {
-        Any::global("CSSStyleValue")
-            .call("parseAll", &[property.into(), css_text.into()])
-            .as_::<TypedArray<CSSStyleValue>>()
+        Any::global("CSSStyleValue").call("parseAll", &[property.into(), css_text.into(), ]).as_::<TypedArray<CSSStyleValue>>()
     }
 }

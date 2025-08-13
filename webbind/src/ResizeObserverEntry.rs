@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ResizeObserverEntry class.
 /// [`ResizeObserverEntry`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ResizeObserverEntry {
 
 impl FromVal for ResizeObserverEntry {
     fn from_val(v: &Any) -> Self {
-        ResizeObserverEntry {
-            inner: Any::from_val(v),
-        }
+        ResizeObserverEntry { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ResizeObserverEntry {
 
 impl AsMut<Any> for ResizeObserverEntry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ResizeObserverEntry> for Any {
@@ -63,12 +64,14 @@ impl From<&ResizeObserverEntry> for Any {
 
 jsbind::utils::impl_dyn_cast!(ResizeObserverEntry);
 
+
 impl ResizeObserverEntry {
     /// Getter of the `target` attribute.
     /// [`ResizeObserverEntry.target`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/target)
     pub fn target(&self) -> Element {
         self.inner.get("target").as_::<Element>()
     }
+
 }
 impl ResizeObserverEntry {
     /// Getter of the `contentRect` attribute.
@@ -76,31 +79,29 @@ impl ResizeObserverEntry {
     pub fn content_rect(&self) -> DOMRectReadOnly {
         self.inner.get("contentRect").as_::<DOMRectReadOnly>()
     }
+
 }
 impl ResizeObserverEntry {
     /// Getter of the `borderBoxSize` attribute.
     /// [`ResizeObserverEntry.borderBoxSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/borderBoxSize)
     pub fn border_box_size(&self) -> TypedArray<ResizeObserverSize> {
-        self.inner
-            .get("borderBoxSize")
-            .as_::<TypedArray<ResizeObserverSize>>()
+        self.inner.get("borderBoxSize").as_::<TypedArray<ResizeObserverSize>>()
     }
+
 }
 impl ResizeObserverEntry {
     /// Getter of the `contentBoxSize` attribute.
     /// [`ResizeObserverEntry.contentBoxSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/contentBoxSize)
     pub fn content_box_size(&self) -> TypedArray<ResizeObserverSize> {
-        self.inner
-            .get("contentBoxSize")
-            .as_::<TypedArray<ResizeObserverSize>>()
+        self.inner.get("contentBoxSize").as_::<TypedArray<ResizeObserverSize>>()
     }
+
 }
 impl ResizeObserverEntry {
     /// Getter of the `devicePixelContentBoxSize` attribute.
     /// [`ResizeObserverEntry.devicePixelContentBoxSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/devicePixelContentBoxSize)
     pub fn device_pixel_content_box_size(&self) -> TypedArray<ResizeObserverSize> {
-        self.inner
-            .get("devicePixelContentBoxSize")
-            .as_::<TypedArray<ResizeObserverSize>>()
+        self.inner.get("devicePixelContentBoxSize").as_::<TypedArray<ResizeObserverSize>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLConvTranspose2dOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLConvTranspose2dOptions {
 
 impl AsMut<Any> for MLConvTranspose2dOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLConvTranspose2dOptions> for Any {
@@ -138,9 +141,7 @@ impl MLConvTranspose2dOptions {
 impl MLConvTranspose2dOptions {
     /// Getter of the `filterLayout` attribute.
     pub fn filter_layout(&self) -> MLConvTranspose2dFilterOperandLayout {
-        self.inner
-            .get("filterLayout")
-            .as_::<MLConvTranspose2dFilterOperandLayout>()
+        self.inner.get("filterLayout").as_::<MLConvTranspose2dFilterOperandLayout>()
     }
 
     /// Setter of the `filterLayout` attribute.

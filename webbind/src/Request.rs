@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Request class.
 /// [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Request {
 
 impl FromVal for Request {
     fn from_val(v: &Any) -> Self {
-        Request {
-            inner: Any::from_val(v),
-        }
+        Request { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Request {
 
 impl AsMut<Any> for Request {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Request> for Any {
@@ -63,6 +64,8 @@ impl From<&Request> for Any {
 
 jsbind::utils::impl_dyn_cast!(Request);
 
+
+
 impl Request {
     /// The `new Request(..)` constructor, creating a new Request instance
     pub fn new0(input: &Any) -> Request {
@@ -74,11 +77,10 @@ impl Request {
     /// The `new Request(..)` constructor, creating a new Request instance
     pub fn new1(input: &Any, init: &RequestInit) -> Request {
         Self {
-            inner: Any::global("Request")
-                .new(&[input.into(), init.into()])
-                .as_::<Any>(),
+            inner: Any::global("Request").new(&[input.into(), init.into()]).as_::<Any>(),
         }
     }
+
 }
 impl Request {
     /// Getter of the `method` attribute.
@@ -86,6 +88,7 @@ impl Request {
     pub fn method(&self) -> JsString {
         self.inner.get("method").as_::<JsString>()
     }
+
 }
 impl Request {
     /// Getter of the `url` attribute.
@@ -93,6 +96,7 @@ impl Request {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
+
 }
 impl Request {
     /// Getter of the `headers` attribute.
@@ -100,6 +104,7 @@ impl Request {
     pub fn headers(&self) -> Headers {
         self.inner.get("headers").as_::<Headers>()
     }
+
 }
 impl Request {
     /// Getter of the `destination` attribute.
@@ -107,6 +112,7 @@ impl Request {
     pub fn destination(&self) -> RequestDestination {
         self.inner.get("destination").as_::<RequestDestination>()
     }
+
 }
 impl Request {
     /// Getter of the `referrer` attribute.
@@ -114,6 +120,7 @@ impl Request {
     pub fn referrer(&self) -> JsString {
         self.inner.get("referrer").as_::<JsString>()
     }
+
 }
 impl Request {
     /// Getter of the `referrerPolicy` attribute.
@@ -121,6 +128,7 @@ impl Request {
     pub fn referrer_policy(&self) -> ReferrerPolicy {
         self.inner.get("referrerPolicy").as_::<ReferrerPolicy>()
     }
+
 }
 impl Request {
     /// Getter of the `mode` attribute.
@@ -128,6 +136,7 @@ impl Request {
     pub fn mode(&self) -> RequestMode {
         self.inner.get("mode").as_::<RequestMode>()
     }
+
 }
 impl Request {
     /// Getter of the `credentials` attribute.
@@ -135,6 +144,7 @@ impl Request {
     pub fn credentials(&self) -> RequestCredentials {
         self.inner.get("credentials").as_::<RequestCredentials>()
     }
+
 }
 impl Request {
     /// Getter of the `cache` attribute.
@@ -142,6 +152,7 @@ impl Request {
     pub fn cache(&self) -> RequestCache {
         self.inner.get("cache").as_::<RequestCache>()
     }
+
 }
 impl Request {
     /// Getter of the `redirect` attribute.
@@ -149,6 +160,7 @@ impl Request {
     pub fn redirect(&self) -> RequestRedirect {
         self.inner.get("redirect").as_::<RequestRedirect>()
     }
+
 }
 impl Request {
     /// Getter of the `integrity` attribute.
@@ -156,6 +168,7 @@ impl Request {
     pub fn integrity(&self) -> JsString {
         self.inner.get("integrity").as_::<JsString>()
     }
+
 }
 impl Request {
     /// Getter of the `keepalive` attribute.
@@ -163,6 +176,7 @@ impl Request {
     pub fn keepalive(&self) -> bool {
         self.inner.get("keepalive").as_::<bool>()
     }
+
 }
 impl Request {
     /// Getter of the `isReloadNavigation` attribute.
@@ -170,6 +184,7 @@ impl Request {
     pub fn is_reload_navigation(&self) -> bool {
         self.inner.get("isReloadNavigation").as_::<bool>()
     }
+
 }
 impl Request {
     /// Getter of the `isHistoryNavigation` attribute.
@@ -177,6 +192,7 @@ impl Request {
     pub fn is_history_navigation(&self) -> bool {
         self.inner.get("isHistoryNavigation").as_::<bool>()
     }
+
 }
 impl Request {
     /// Getter of the `signal` attribute.
@@ -184,6 +200,7 @@ impl Request {
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
+
 }
 impl Request {
     /// Getter of the `duplex` attribute.
@@ -191,11 +208,12 @@ impl Request {
     pub fn duplex(&self) -> RequestDuplex {
         self.inner.get("duplex").as_::<RequestDuplex>()
     }
+
 }
 impl Request {
     /// The clone method.
     /// [`Request.clone`](https://developer.mozilla.org/en-US/docs/Web/API/Request/clone)
-    pub fn clone_(&self) -> Request {
+    pub fn clone_(&self, ) -> Request {
         self.inner.call("clone", &[]).as_::<Request>()
     }
 }
@@ -205,6 +223,7 @@ impl Request {
     pub fn target_address_space(&self) -> IPAddressSpace {
         self.inner.get("targetAddressSpace").as_::<IPAddressSpace>()
     }
+
 }
 impl Request {
     /// Getter of the `body` attribute.
@@ -212,6 +231,7 @@ impl Request {
     pub fn body(&self) -> ReadableStream {
         self.inner.get("body").as_::<ReadableStream>()
     }
+
 }
 impl Request {
     /// Getter of the `bodyUsed` attribute.
@@ -219,48 +239,47 @@ impl Request {
     pub fn body_used(&self) -> bool {
         self.inner.get("bodyUsed").as_::<bool>()
     }
+
 }
 impl Request {
     /// The arrayBuffer method.
     /// [`Request.arrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Request/arrayBuffer)
-    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
-        self.inner
-            .call("arrayBuffer", &[])
-            .as_::<Promise<ArrayBuffer>>()
+    pub fn array_buffer(&self, ) -> Promise<ArrayBuffer> {
+        self.inner.call("arrayBuffer", &[]).as_::<Promise<ArrayBuffer>>()
     }
 }
 impl Request {
     /// The blob method.
     /// [`Request.blob`](https://developer.mozilla.org/en-US/docs/Web/API/Request/blob)
-    pub fn blob(&self) -> Promise<Blob> {
+    pub fn blob(&self, ) -> Promise<Blob> {
         self.inner.call("blob", &[]).as_::<Promise<Blob>>()
     }
 }
 impl Request {
     /// The bytes method.
     /// [`Request.bytes`](https://developer.mozilla.org/en-US/docs/Web/API/Request/bytes)
-    pub fn bytes(&self) -> Promise<Uint8Array> {
+    pub fn bytes(&self, ) -> Promise<Uint8Array> {
         self.inner.call("bytes", &[]).as_::<Promise<Uint8Array>>()
     }
 }
 impl Request {
     /// The formData method.
     /// [`Request.formData`](https://developer.mozilla.org/en-US/docs/Web/API/Request/formData)
-    pub fn form_data(&self) -> Promise<FormData> {
+    pub fn form_data(&self, ) -> Promise<FormData> {
         self.inner.call("formData", &[]).as_::<Promise<FormData>>()
     }
 }
 impl Request {
     /// The json method.
     /// [`Request.json`](https://developer.mozilla.org/en-US/docs/Web/API/Request/json)
-    pub fn json(&self) -> Promise<Any> {
+    pub fn json(&self, ) -> Promise<Any> {
         self.inner.call("json", &[]).as_::<Promise<Any>>()
     }
 }
 impl Request {
     /// The text method.
     /// [`Request.text`](https://developer.mozilla.org/en-US/docs/Web/API/Request/text)
-    pub fn text(&self) -> Promise<JsString> {
+    pub fn text(&self, ) -> Promise<JsString> {
         self.inner.call("text", &[]).as_::<Promise<JsString>>()
     }
 }

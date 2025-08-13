@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRInputSource class.
 /// [`XRInputSource`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRInputSource {
 
 impl FromVal for XRInputSource {
     fn from_val(v: &Any) -> Self {
-        XRInputSource {
-            inner: Any::from_val(v),
-        }
+        XRInputSource { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRInputSource {
 
 impl AsMut<Any> for XRInputSource {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRInputSource> for Any {
@@ -63,12 +64,14 @@ impl From<&XRInputSource> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRInputSource);
 
+
 impl XRInputSource {
     /// Getter of the `handedness` attribute.
     /// [`XRInputSource.handedness`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/handedness)
     pub fn handedness(&self) -> XRHandedness {
         self.inner.get("handedness").as_::<XRHandedness>()
     }
+
 }
 impl XRInputSource {
     /// Getter of the `targetRayMode` attribute.
@@ -76,6 +79,7 @@ impl XRInputSource {
     pub fn target_ray_mode(&self) -> XRTargetRayMode {
         self.inner.get("targetRayMode").as_::<XRTargetRayMode>()
     }
+
 }
 impl XRInputSource {
     /// Getter of the `targetRaySpace` attribute.
@@ -83,6 +87,7 @@ impl XRInputSource {
     pub fn target_ray_space(&self) -> XRSpace {
         self.inner.get("targetRaySpace").as_::<XRSpace>()
     }
+
 }
 impl XRInputSource {
     /// Getter of the `gripSpace` attribute.
@@ -90,6 +95,7 @@ impl XRInputSource {
     pub fn grip_space(&self) -> XRSpace {
         self.inner.get("gripSpace").as_::<XRSpace>()
     }
+
 }
 impl XRInputSource {
     /// Getter of the `profiles` attribute.
@@ -97,6 +103,7 @@ impl XRInputSource {
     pub fn profiles(&self) -> TypedArray<JsString> {
         self.inner.get("profiles").as_::<TypedArray<JsString>>()
     }
+
 }
 impl XRInputSource {
     /// Getter of the `skipRendering` attribute.
@@ -104,6 +111,7 @@ impl XRInputSource {
     pub fn skip_rendering(&self) -> bool {
         self.inner.get("skipRendering").as_::<bool>()
     }
+
 }
 impl XRInputSource {
     /// Getter of the `gamepad` attribute.
@@ -111,6 +119,7 @@ impl XRInputSource {
     pub fn gamepad(&self) -> Gamepad {
         self.inner.get("gamepad").as_::<Gamepad>()
     }
+
 }
 impl XRInputSource {
     /// Getter of the `hand` attribute.
@@ -118,4 +127,5 @@ impl XRInputSource {
     pub fn hand(&self) -> XRHand {
         self.inner.get("hand").as_::<XRHand>()
     }
+
 }

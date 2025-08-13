@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CurrentUserDetailsOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CurrentUserDetailsOptions {
 
 impl AsMut<Any> for CurrentUserDetailsOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CurrentUserDetailsOptions> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAnimationElement class.
 /// [`SVGAnimationElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAnimationElement {
 
 impl FromVal for SVGAnimationElement {
     fn from_val(v: &Any) -> Self {
-        SVGAnimationElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGAnimationElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAnimationElement {
 
 impl AsMut<Any> for SVGAnimationElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAnimationElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGAnimationElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAnimationElement);
 
+
 impl SVGAnimationElement {
     /// Getter of the `targetElement` attribute.
     /// [`SVGAnimationElement.targetElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/targetElement)
     pub fn target_element(&self) -> SVGElement {
         self.inner.get("targetElement").as_::<SVGElement>()
     }
+
 }
 impl SVGAnimationElement {
     /// Getter of the `onbegin` attribute.
@@ -112,28 +115,28 @@ impl SVGAnimationElement {
 impl SVGAnimationElement {
     /// The getStartTime method.
     /// [`SVGAnimationElement.getStartTime`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/getStartTime)
-    pub fn get_start_time(&self) -> f32 {
+    pub fn get_start_time(&self, ) -> f32 {
         self.inner.call("getStartTime", &[]).as_::<f32>()
     }
 }
 impl SVGAnimationElement {
     /// The getCurrentTime method.
     /// [`SVGAnimationElement.getCurrentTime`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/getCurrentTime)
-    pub fn get_current_time(&self) -> f32 {
+    pub fn get_current_time(&self, ) -> f32 {
         self.inner.call("getCurrentTime", &[]).as_::<f32>()
     }
 }
 impl SVGAnimationElement {
     /// The getSimpleDuration method.
     /// [`SVGAnimationElement.getSimpleDuration`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/getSimpleDuration)
-    pub fn get_simple_duration(&self) -> f32 {
+    pub fn get_simple_duration(&self, ) -> f32 {
         self.inner.call("getSimpleDuration", &[]).as_::<f32>()
     }
 }
 impl SVGAnimationElement {
     /// The beginElement method.
     /// [`SVGAnimationElement.beginElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/beginElement)
-    pub fn begin_element(&self) -> Undefined {
+    pub fn begin_element(&self, ) -> Undefined {
         self.inner.call("beginElement", &[]).as_::<Undefined>()
     }
 }
@@ -141,15 +144,13 @@ impl SVGAnimationElement {
     /// The beginElementAt method.
     /// [`SVGAnimationElement.beginElementAt`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/beginElementAt)
     pub fn begin_element_at(&self, offset: f32) -> Undefined {
-        self.inner
-            .call("beginElementAt", &[offset.into()])
-            .as_::<Undefined>()
+        self.inner.call("beginElementAt", &[offset.into(), ]).as_::<Undefined>()
     }
 }
 impl SVGAnimationElement {
     /// The endElement method.
     /// [`SVGAnimationElement.endElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/endElement)
-    pub fn end_element(&self) -> Undefined {
+    pub fn end_element(&self, ) -> Undefined {
         self.inner.call("endElement", &[]).as_::<Undefined>()
     }
 }
@@ -157,9 +158,7 @@ impl SVGAnimationElement {
     /// The endElementAt method.
     /// [`SVGAnimationElement.endElementAt`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/endElementAt)
     pub fn end_element_at(&self, offset: f32) -> Undefined {
-        self.inner
-            .call("endElementAt", &[offset.into()])
-            .as_::<Undefined>()
+        self.inner.call("endElementAt", &[offset.into(), ]).as_::<Undefined>()
     }
 }
 impl SVGAnimationElement {
@@ -168,6 +167,7 @@ impl SVGAnimationElement {
     pub fn required_extensions(&self) -> SVGStringList {
         self.inner.get("requiredExtensions").as_::<SVGStringList>()
     }
+
 }
 impl SVGAnimationElement {
     /// Getter of the `systemLanguage` attribute.
@@ -175,4 +175,5 @@ impl SVGAnimationElement {
     pub fn system_language(&self) -> SVGStringList {
         self.inner.get("systemLanguage").as_::<SVGStringList>()
     }
+
 }

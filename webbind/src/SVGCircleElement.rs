@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGCircleElement class.
 /// [`SVGCircleElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGCircleElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGCircleElement {
 
 impl FromVal for SVGCircleElement {
     fn from_val(v: &Any) -> Self {
-        SVGCircleElement {
-            inner: SVGGeometryElement::from_val(v),
-        }
+        SVGCircleElement { inner: SVGGeometryElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGCircleElement {
 
 impl AsMut<Any> for SVGCircleElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGCircleElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGCircleElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGCircleElement);
 
+
 impl SVGCircleElement {
     /// Getter of the `cx` attribute.
     /// [`SVGCircleElement.cx`](https://developer.mozilla.org/en-US/docs/Web/API/SVGCircleElement/cx)
     pub fn cx(&self) -> SVGAnimatedLength {
         self.inner.get("cx").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGCircleElement {
     /// Getter of the `cy` attribute.
@@ -76,6 +79,7 @@ impl SVGCircleElement {
     pub fn cy(&self) -> SVGAnimatedLength {
         self.inner.get("cy").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGCircleElement {
     /// Getter of the `r` attribute.
@@ -83,4 +87,5 @@ impl SVGCircleElement {
     pub fn r(&self) -> SVGAnimatedLength {
         self.inner.get("r").as_::<SVGAnimatedLength>()
     }
+
 }

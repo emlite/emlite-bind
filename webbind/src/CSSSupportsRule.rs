@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSSupportsRule class.
 /// [`CSSSupportsRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSupportsRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSSupportsRule {
 
 impl FromVal for CSSSupportsRule {
     fn from_val(v: &Any) -> Self {
-        CSSSupportsRule {
-            inner: CSSConditionRule::from_val(v),
-        }
+        CSSSupportsRule { inner: CSSConditionRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSSupportsRule {
 
 impl AsMut<Any> for CSSSupportsRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSSupportsRule> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSSupportsRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSSupportsRule);
 
+
 impl CSSSupportsRule {
     /// Getter of the `matches` attribute.
     /// [`CSSSupportsRule.matches`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSupportsRule/matches)
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
+
 }

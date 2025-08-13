@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechRecognitionOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SpeechRecognitionOptions {
 
 impl AsMut<Any> for SpeechRecognitionOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechRecognitionOptions> for Any {

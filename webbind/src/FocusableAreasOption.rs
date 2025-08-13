@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FocusableAreasOption dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for FocusableAreasOption {
 
 impl AsMut<Any> for FocusableAreasOption {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FocusableAreasOption> for Any {

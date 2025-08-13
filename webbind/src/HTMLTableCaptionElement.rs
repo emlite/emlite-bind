@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLTableCaptionElement class.
 /// [`HTMLTableCaptionElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCaptionElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLTableCaptionElement {
 
 impl FromVal for HTMLTableCaptionElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTableCaptionElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTableCaptionElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLTableCaptionElement {
 
 impl AsMut<Any> for HTMLTableCaptionElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLTableCaptionElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLTableCaptionElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTableCaptionElement);
 
+
+
 impl HTMLTableCaptionElement {
     /// The `new HTMLTableCaptionElement(..)` constructor, creating a new HTMLTableCaptionElement instance
     pub fn new() -> HTMLTableCaptionElement {
         Self {
-            inner: Any::global("HTMLTableCaptionElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLTableCaptionElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTableCaptionElement {
     /// Getter of the `align` attribute.

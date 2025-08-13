@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NavigationInterceptOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NavigationInterceptOptions {
 
 impl AsMut<Any> for NavigationInterceptOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NavigationInterceptOptions> for Any {

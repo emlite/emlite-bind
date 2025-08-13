@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HandwritingHints dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for HandwritingHints {
 
 impl AsMut<Any> for HandwritingHints {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HandwritingHints> for Any {

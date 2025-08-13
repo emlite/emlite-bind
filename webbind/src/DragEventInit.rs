@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DragEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DragEventInit {
 
 impl AsMut<Any> for DragEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DragEventInit> for Any {

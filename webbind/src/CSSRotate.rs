@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSRotate class.
 /// [`CSSRotate`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRotate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSRotate {
 
 impl FromVal for CSSRotate {
     fn from_val(v: &Any) -> Self {
-        CSSRotate {
-            inner: CSSTransformComponent::from_val(v),
-        }
+        CSSRotate { inner: CSSTransformComponent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSRotate {
 
 impl AsMut<Any> for CSSRotate {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSRotate> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSRotate> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSRotate);
 
+
+
 impl CSSRotate {
     /// The `new CSSRotate(..)` constructor, creating a new CSSRotate instance
     pub fn new(x: &Any, y: &Any, z: &Any, angle: &CSSNumericValue) -> CSSRotate {
         Self {
-            inner: Any::global("CSSRotate")
-                .new(&[x.into(), y.into(), z.into(), angle.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSRotate").new(&[x.into(), y.into(), z.into(), angle.into()]).as_::<CSSTransformComponent>(),
         }
     }
+
 }
 impl CSSRotate {
     /// Getter of the `x` attribute.

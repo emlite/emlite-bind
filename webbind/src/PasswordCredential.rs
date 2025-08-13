@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PasswordCredential class.
 /// [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PasswordCredential {
 
 impl FromVal for PasswordCredential {
     fn from_val(v: &Any) -> Self {
-        PasswordCredential {
-            inner: Credential::from_val(v),
-        }
+        PasswordCredential { inner: Credential::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PasswordCredential {
 
 impl AsMut<Any> for PasswordCredential {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PasswordCredential> for Any {
@@ -63,15 +64,16 @@ impl From<&PasswordCredential> for Any {
 
 jsbind::utils::impl_dyn_cast!(PasswordCredential);
 
+
+
 impl PasswordCredential {
     /// The `new PasswordCredential(..)` constructor, creating a new PasswordCredential instance
     pub fn new(data: &PasswordCredentialData) -> PasswordCredential {
         Self {
-            inner: Any::global("PasswordCredential")
-                .new(&[data.into()])
-                .as_::<Credential>(),
+            inner: Any::global("PasswordCredential").new(&[data.into()]).as_::<Credential>(),
         }
     }
+
 }
 impl PasswordCredential {
     /// Getter of the `password` attribute.
@@ -79,6 +81,7 @@ impl PasswordCredential {
     pub fn password(&self) -> JsString {
         self.inner.get("password").as_::<JsString>()
     }
+
 }
 impl PasswordCredential {
     /// Getter of the `name` attribute.
@@ -86,6 +89,7 @@ impl PasswordCredential {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl PasswordCredential {
     /// Getter of the `iconURL` attribute.
@@ -93,4 +97,5 @@ impl PasswordCredential {
     pub fn icon_url(&self) -> JsString {
         self.inner.get("iconURL").as_::<JsString>()
     }
+
 }

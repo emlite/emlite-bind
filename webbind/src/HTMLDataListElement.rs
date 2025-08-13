@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLDataListElement class.
 /// [`HTMLDataListElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataListElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLDataListElement {
 
 impl FromVal for HTMLDataListElement {
     fn from_val(v: &Any) -> Self {
-        HTMLDataListElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLDataListElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLDataListElement {
 
 impl AsMut<Any> for HTMLDataListElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLDataListElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLDataListElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLDataListElement);
 
+
+
 impl HTMLDataListElement {
     /// The `new HTMLDataListElement(..)` constructor, creating a new HTMLDataListElement instance
     pub fn new() -> HTMLDataListElement {
         Self {
-            inner: Any::global("HTMLDataListElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLDataListElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLDataListElement {
     /// Getter of the `options` attribute.
@@ -79,4 +81,5 @@ impl HTMLDataListElement {
     pub fn options(&self) -> HTMLCollection {
         self.inner.get("options").as_::<HTMLCollection>()
     }
+
 }

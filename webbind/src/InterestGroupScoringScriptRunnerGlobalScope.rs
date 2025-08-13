@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The InterestGroupScoringScriptRunnerGlobalScope class.
 /// [`InterestGroupScoringScriptRunnerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupScoringScriptRunnerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct InterestGroupScoringScriptRunnerGlobalScope {
 
 impl FromVal for InterestGroupScoringScriptRunnerGlobalScope {
     fn from_val(v: &Any) -> Self {
-        InterestGroupScoringScriptRunnerGlobalScope {
-            inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v),
-        }
+        InterestGroupScoringScriptRunnerGlobalScope { inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for InterestGroupScoringScriptRunnerGlobalScope {
 
 impl AsMut<Any> for InterestGroupScoringScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<InterestGroupScoringScriptRunnerGlobalScope> for Any {
@@ -62,3 +63,5 @@ impl From<&InterestGroupScoringScriptRunnerGlobalScope> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(InterestGroupScoringScriptRunnerGlobalScope);
+
+

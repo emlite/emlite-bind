@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Instance class.
 /// [`Instance`](https://developer.mozilla.org/en-US/docs/Web/API/Instance)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Instance {
 
 impl FromVal for Instance {
     fn from_val(v: &Any) -> Self {
-        Instance {
-            inner: Any::from_val(v),
-        }
+        Instance { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Instance {
 
 impl AsMut<Any> for Instance {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Instance> for Any {
@@ -63,6 +64,8 @@ impl From<&Instance> for Any {
 
 jsbind::utils::impl_dyn_cast!(Instance);
 
+
+
 impl Instance {
     /// The `new Instance(..)` constructor, creating a new Instance instance
     pub fn new0(module: &Module) -> Instance {
@@ -74,11 +77,10 @@ impl Instance {
     /// The `new Instance(..)` constructor, creating a new Instance instance
     pub fn new1(module: &Module, import_object: &Object) -> Instance {
         Self {
-            inner: Any::global("Instance")
-                .new(&[module.into(), import_object.into()])
-                .as_::<Any>(),
+            inner: Any::global("Instance").new(&[module.into(), import_object.into()]).as_::<Any>(),
         }
     }
+
 }
 impl Instance {
     /// Getter of the `exports` attribute.
@@ -86,4 +88,5 @@ impl Instance {
     pub fn exports(&self) -> Object {
         self.inner.get("exports").as_::<Object>()
     }
+
 }

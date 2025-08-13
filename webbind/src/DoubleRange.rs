@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DoubleRange dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DoubleRange {
 
 impl AsMut<Any> for DoubleRange {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DoubleRange> for Any {

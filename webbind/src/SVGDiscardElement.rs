@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGDiscardElement class.
 /// [`SVGDiscardElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGDiscardElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGDiscardElement {
 
 impl FromVal for SVGDiscardElement {
     fn from_val(v: &Any) -> Self {
-        SVGDiscardElement {
-            inner: SVGAnimationElement::from_val(v),
-        }
+        SVGDiscardElement { inner: SVGAnimationElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGDiscardElement {
 
 impl AsMut<Any> for SVGDiscardElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGDiscardElement> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGDiscardElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGDiscardElement);
+
+

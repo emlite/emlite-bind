@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSFontPaletteValuesRule class.
 /// [`CSSFontPaletteValuesRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontPaletteValuesRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSFontPaletteValuesRule {
 
 impl FromVal for CSSFontPaletteValuesRule {
     fn from_val(v: &Any) -> Self {
-        CSSFontPaletteValuesRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSFontPaletteValuesRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSFontPaletteValuesRule {
 
 impl AsMut<Any> for CSSFontPaletteValuesRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSFontPaletteValuesRule> for Any {
@@ -63,12 +64,14 @@ impl From<&CSSFontPaletteValuesRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSFontPaletteValuesRule);
 
+
 impl CSSFontPaletteValuesRule {
     /// Getter of the `name` attribute.
     /// [`CSSFontPaletteValuesRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontPaletteValuesRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl CSSFontPaletteValuesRule {
     /// Getter of the `fontFamily` attribute.
@@ -76,6 +79,7 @@ impl CSSFontPaletteValuesRule {
     pub fn font_family(&self) -> JsString {
         self.inner.get("fontFamily").as_::<JsString>()
     }
+
 }
 impl CSSFontPaletteValuesRule {
     /// Getter of the `basePalette` attribute.
@@ -83,6 +87,7 @@ impl CSSFontPaletteValuesRule {
     pub fn base_palette(&self) -> JsString {
         self.inner.get("basePalette").as_::<JsString>()
     }
+
 }
 impl CSSFontPaletteValuesRule {
     /// Getter of the `overrideColors` attribute.
@@ -90,4 +95,5 @@ impl CSSFontPaletteValuesRule {
     pub fn override_colors(&self) -> JsString {
         self.inner.get("overrideColors").as_::<JsString>()
     }
+
 }

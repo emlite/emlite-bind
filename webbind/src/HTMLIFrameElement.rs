@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLIFrameElement class.
 /// [`HTMLIFrameElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLIFrameElement {
 
 impl FromVal for HTMLIFrameElement {
     fn from_val(v: &Any) -> Self {
-        HTMLIFrameElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLIFrameElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLIFrameElement {
 
 impl AsMut<Any> for HTMLIFrameElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLIFrameElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLIFrameElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLIFrameElement);
 
+
+
 impl HTMLIFrameElement {
     /// The `new HTMLIFrameElement(..)` constructor, creating a new HTMLIFrameElement instance
     pub fn new() -> HTMLIFrameElement {
         Self {
-            inner: Any::global("HTMLIFrameElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLIFrameElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLIFrameElement {
     /// Getter of the `src` attribute.
@@ -118,6 +120,7 @@ impl HTMLIFrameElement {
     pub fn sandbox(&self) -> DOMTokenList {
         self.inner.get("sandbox").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLIFrameElement {
     /// Getter of the `allow` attribute.
@@ -203,6 +206,7 @@ impl HTMLIFrameElement {
     pub fn content_document(&self) -> Document {
         self.inner.get("contentDocument").as_::<Document>()
     }
+
 }
 impl HTMLIFrameElement {
     /// Getter of the `contentWindow` attribute.
@@ -210,11 +214,12 @@ impl HTMLIFrameElement {
     pub fn content_window(&self) -> Any {
         self.inner.get("contentWindow").as_::<Any>()
     }
+
 }
 impl HTMLIFrameElement {
     /// The getSVGDocument method.
     /// [`HTMLIFrameElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/getSVGDocument)
-    pub fn get_svg_document(&self) -> Document {
+    pub fn get_svg_document(&self, ) -> Document {
         self.inner.call("getSVGDocument", &[]).as_::<Document>()
     }
 }
@@ -326,10 +331,9 @@ impl HTMLIFrameElement {
     /// Getter of the `permissionsPolicy` attribute.
     /// [`HTMLIFrameElement.permissionsPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/permissionsPolicy)
     pub fn permissions_policy(&self) -> PermissionsPolicy {
-        self.inner
-            .get("permissionsPolicy")
-            .as_::<PermissionsPolicy>()
+        self.inner.get("permissionsPolicy").as_::<PermissionsPolicy>()
     }
+
 }
 impl HTMLIFrameElement {
     /// Getter of the `privateToken` attribute.

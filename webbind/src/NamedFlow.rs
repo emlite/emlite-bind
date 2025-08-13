@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NamedFlow class.
 /// [`NamedFlow`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NamedFlow {
 
 impl FromVal for NamedFlow {
     fn from_val(v: &Any) -> Self {
-        NamedFlow {
-            inner: EventTarget::from_val(v),
-        }
+        NamedFlow { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NamedFlow {
 
 impl AsMut<Any> for NamedFlow {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NamedFlow> for Any {
@@ -63,12 +64,14 @@ impl From<&NamedFlow> for Any {
 
 jsbind::utils::impl_dyn_cast!(NamedFlow);
 
+
 impl NamedFlow {
     /// Getter of the `name` attribute.
     /// [`NamedFlow.name`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl NamedFlow {
     /// Getter of the `overset` attribute.
@@ -76,14 +79,13 @@ impl NamedFlow {
     pub fn overset(&self) -> bool {
         self.inner.get("overset").as_::<bool>()
     }
+
 }
 impl NamedFlow {
     /// The getRegions method.
     /// [`NamedFlow.getRegions`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getRegions)
-    pub fn get_regions(&self) -> TypedArray<Element> {
-        self.inner
-            .call("getRegions", &[])
-            .as_::<TypedArray<Element>>()
+    pub fn get_regions(&self, ) -> TypedArray<Element> {
+        self.inner.call("getRegions", &[]).as_::<TypedArray<Element>>()
     }
 }
 impl NamedFlow {
@@ -92,11 +94,12 @@ impl NamedFlow {
     pub fn first_empty_region_index(&self) -> i16 {
         self.inner.get("firstEmptyRegionIndex").as_::<i16>()
     }
+
 }
 impl NamedFlow {
     /// The getContent method.
     /// [`NamedFlow.getContent`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getContent)
-    pub fn get_content(&self) -> TypedArray<Node> {
+    pub fn get_content(&self, ) -> TypedArray<Node> {
         self.inner.call("getContent", &[]).as_::<TypedArray<Node>>()
     }
 }
@@ -104,8 +107,6 @@ impl NamedFlow {
     /// The getRegionsByContent method.
     /// [`NamedFlow.getRegionsByContent`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getRegionsByContent)
     pub fn get_regions_by_content(&self, node: &Node) -> TypedArray<Element> {
-        self.inner
-            .call("getRegionsByContent", &[node.into()])
-            .as_::<TypedArray<Element>>()
+        self.inner.call("getRegionsByContent", &[node.into(), ]).as_::<TypedArray<Element>>()
     }
 }

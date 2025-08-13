@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SetHTMLUnsafeOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SetHTMLUnsafeOptions {
 
 impl AsMut<Any> for SetHTMLUnsafeOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SetHTMLUnsafeOptions> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGSwitchElement class.
 /// [`SVGSwitchElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSwitchElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGSwitchElement {
 
 impl FromVal for SVGSwitchElement {
     fn from_val(v: &Any) -> Self {
-        SVGSwitchElement {
-            inner: SVGGraphicsElement::from_val(v),
-        }
+        SVGSwitchElement { inner: SVGGraphicsElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGSwitchElement {
 
 impl AsMut<Any> for SVGSwitchElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGSwitchElement> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGSwitchElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGSwitchElement);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCIceGatherOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCIceGatherOptions {
 
 impl AsMut<Any> for RTCIceGatherOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCIceGatherOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&RTCIceGatherOptions> for Any {
 impl RTCIceGatherOptions {
     /// Getter of the `gatherPolicy` attribute.
     pub fn gather_policy(&self) -> RTCIceTransportPolicy {
-        self.inner
-            .get("gatherPolicy")
-            .as_::<RTCIceTransportPolicy>()
+        self.inner.get("gatherPolicy").as_::<RTCIceTransportPolicy>()
     }
 
     /// Setter of the `gatherPolicy` attribute.
@@ -74,9 +75,7 @@ impl RTCIceGatherOptions {
 impl RTCIceGatherOptions {
     /// Getter of the `iceServers` attribute.
     pub fn ice_servers(&self) -> TypedArray<RTCIceServer> {
-        self.inner
-            .get("iceServers")
-            .as_::<TypedArray<RTCIceServer>>()
+        self.inner.get("iceServers").as_::<TypedArray<RTCIceServer>>()
     }
 
     /// Setter of the `iceServers` attribute.

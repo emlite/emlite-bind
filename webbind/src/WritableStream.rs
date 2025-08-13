@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WritableStream class.
 /// [`WritableStream`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WritableStream {
 
 impl FromVal for WritableStream {
     fn from_val(v: &Any) -> Self {
-        WritableStream {
-            inner: Any::from_val(v),
-        }
+        WritableStream { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WritableStream {
 
 impl AsMut<Any> for WritableStream {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WritableStream> for Any {
@@ -63,6 +64,8 @@ impl From<&WritableStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(WritableStream);
 
+
+
 impl WritableStream {
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
     pub fn new0() -> WritableStream {
@@ -74,20 +77,17 @@ impl WritableStream {
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
     pub fn new1(underlying_sink: &Object) -> WritableStream {
         Self {
-            inner: Any::global("WritableStream")
-                .new(&[underlying_sink.into()])
-                .as_::<Any>(),
+            inner: Any::global("WritableStream").new(&[underlying_sink.into()]).as_::<Any>(),
         }
     }
 
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
     pub fn new2(underlying_sink: &Object, strategy: &QueuingStrategy) -> WritableStream {
         Self {
-            inner: Any::global("WritableStream")
-                .new(&[underlying_sink.into(), strategy.into()])
-                .as_::<Any>(),
+            inner: Any::global("WritableStream").new(&[underlying_sink.into(), strategy.into()]).as_::<Any>(),
         }
     }
+
 }
 impl WritableStream {
     /// Getter of the `locked` attribute.
@@ -95,34 +95,31 @@ impl WritableStream {
     pub fn locked(&self) -> bool {
         self.inner.get("locked").as_::<bool>()
     }
+
 }
 impl WritableStream {
     /// The abort method.
     /// [`WritableStream.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/abort)
-    pub fn abort0(&self) -> Promise<Undefined> {
+    pub fn abort0(&self, ) -> Promise<Undefined> {
         self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
     }
     /// The abort method.
     /// [`WritableStream.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/abort)
     pub fn abort1(&self, reason: &Any) -> Promise<Undefined> {
-        self.inner
-            .call("abort", &[reason.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("abort", &[reason.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl WritableStream {
     /// The close method.
     /// [`WritableStream.close`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/close)
-    pub fn close(&self) -> Promise<Undefined> {
+    pub fn close(&self, ) -> Promise<Undefined> {
         self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl WritableStream {
     /// The getWriter method.
     /// [`WritableStream.getWriter`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/getWriter)
-    pub fn get_writer(&self) -> WritableStreamDefaultWriter {
-        self.inner
-            .call("getWriter", &[])
-            .as_::<WritableStreamDefaultWriter>()
+    pub fn get_writer(&self, ) -> WritableStreamDefaultWriter {
+        self.inner.call("getWriter", &[]).as_::<WritableStreamDefaultWriter>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ObservableInspector dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ObservableInspector {
 
 impl AsMut<Any> for ObservableInspector {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ObservableInspector> for Any {

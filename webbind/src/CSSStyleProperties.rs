@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSStyleProperties class.
 /// [`CSSStyleProperties`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleProperties)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSStyleProperties {
 
 impl FromVal for CSSStyleProperties {
     fn from_val(v: &Any) -> Self {
-        CSSStyleProperties {
-            inner: CSSStyleDeclaration::from_val(v),
-        }
+        CSSStyleProperties { inner: CSSStyleDeclaration::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSStyleProperties {
 
 impl AsMut<Any> for CSSStyleProperties {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSStyleProperties> for Any {
@@ -62,6 +63,7 @@ impl From<&CSSStyleProperties> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSStyleProperties);
+
 
 impl CSSStyleProperties {
     /// Getter of the `cssFloat` attribute.

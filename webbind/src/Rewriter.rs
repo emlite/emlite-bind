@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Rewriter class.
 /// [`Rewriter`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Rewriter {
 
 impl FromVal for Rewriter {
     fn from_val(v: &Any) -> Self {
-        Rewriter {
-            inner: Any::from_val(v),
-        }
+        Rewriter { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Rewriter {
 
 impl AsMut<Any> for Rewriter {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Rewriter> for Any {
@@ -63,76 +64,53 @@ impl From<&Rewriter> for Any {
 
 jsbind::utils::impl_dyn_cast!(Rewriter);
 
+
 impl Rewriter {
     /// The create method.
     /// [`Rewriter.create`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/create)
     pub fn create0() -> Promise<Rewriter> {
-        Any::global("Rewriter")
-            .call("create", &[])
-            .as_::<Promise<Rewriter>>()
+        Any::global("Rewriter").call("create", &[]).as_::<Promise<Rewriter>>()
     }
     /// The create method.
     /// [`Rewriter.create`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/create)
     pub fn create1(options: &RewriterCreateOptions) -> Promise<Rewriter> {
-        Any::global("Rewriter")
-            .call("create", &[options.into()])
-            .as_::<Promise<Rewriter>>()
+        Any::global("Rewriter").call("create", &[options.into(), ]).as_::<Promise<Rewriter>>()
     }
 }
 impl Rewriter {
     /// The availability method.
     /// [`Rewriter.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/availability)
     pub fn availability0() -> Promise<Availability> {
-        Any::global("Rewriter")
-            .call("availability", &[])
-            .as_::<Promise<Availability>>()
+        Any::global("Rewriter").call("availability", &[]).as_::<Promise<Availability>>()
     }
     /// The availability method.
     /// [`Rewriter.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/availability)
     pub fn availability1(options: &RewriterCreateCoreOptions) -> Promise<Availability> {
-        Any::global("Rewriter")
-            .call("availability", &[options.into()])
-            .as_::<Promise<Availability>>()
+        Any::global("Rewriter").call("availability", &[options.into(), ]).as_::<Promise<Availability>>()
     }
 }
 impl Rewriter {
     /// The rewrite method.
     /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
     pub fn rewrite0(&self, input: &JsString) -> Promise<JsString> {
-        self.inner
-            .call("rewrite", &[input.into()])
-            .as_::<Promise<JsString>>()
+        self.inner.call("rewrite", &[input.into(), ]).as_::<Promise<JsString>>()
     }
     /// The rewrite method.
     /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
-    pub fn rewrite1(
-        &self,
-        input: &JsString,
-        options: &RewriterRewriteOptions,
-    ) -> Promise<JsString> {
-        self.inner
-            .call("rewrite", &[input.into(), options.into()])
-            .as_::<Promise<JsString>>()
+    pub fn rewrite1(&self, input: &JsString, options: &RewriterRewriteOptions) -> Promise<JsString> {
+        self.inner.call("rewrite", &[input.into(), options.into(), ]).as_::<Promise<JsString>>()
     }
 }
 impl Rewriter {
     /// The rewriteStreaming method.
     /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
     pub fn rewrite_streaming0(&self, input: &JsString) -> ReadableStream {
-        self.inner
-            .call("rewriteStreaming", &[input.into()])
-            .as_::<ReadableStream>()
+        self.inner.call("rewriteStreaming", &[input.into(), ]).as_::<ReadableStream>()
     }
     /// The rewriteStreaming method.
     /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
-    pub fn rewrite_streaming1(
-        &self,
-        input: &JsString,
-        options: &RewriterRewriteOptions,
-    ) -> ReadableStream {
-        self.inner
-            .call("rewriteStreaming", &[input.into(), options.into()])
-            .as_::<ReadableStream>()
+    pub fn rewrite_streaming1(&self, input: &JsString, options: &RewriterRewriteOptions) -> ReadableStream {
+        self.inner.call("rewriteStreaming", &[input.into(), options.into(), ]).as_::<ReadableStream>()
     }
 }
 impl Rewriter {
@@ -141,6 +119,7 @@ impl Rewriter {
     pub fn shared_context(&self) -> JsString {
         self.inner.get("sharedContext").as_::<JsString>()
     }
+
 }
 impl Rewriter {
     /// Getter of the `tone` attribute.
@@ -148,6 +127,7 @@ impl Rewriter {
     pub fn tone(&self) -> RewriterTone {
         self.inner.get("tone").as_::<RewriterTone>()
     }
+
 }
 impl Rewriter {
     /// Getter of the `format` attribute.
@@ -155,6 +135,7 @@ impl Rewriter {
     pub fn format(&self) -> RewriterFormat {
         self.inner.get("format").as_::<RewriterFormat>()
     }
+
 }
 impl Rewriter {
     /// Getter of the `length` attribute.
@@ -162,24 +143,23 @@ impl Rewriter {
     pub fn length(&self) -> RewriterLength {
         self.inner.get("length").as_::<RewriterLength>()
     }
+
 }
 impl Rewriter {
     /// Getter of the `expectedInputLanguages` attribute.
     /// [`Rewriter.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedInputLanguages)
     pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("expectedInputLanguages").as_::<TypedArray<JsString>>()
     }
+
 }
 impl Rewriter {
     /// Getter of the `expectedContextLanguages` attribute.
     /// [`Rewriter.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedContextLanguages)
     pub fn expected_context_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedContextLanguages")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("expectedContextLanguages").as_::<TypedArray<JsString>>()
     }
+
 }
 impl Rewriter {
     /// Getter of the `outputLanguage` attribute.
@@ -187,25 +167,18 @@ impl Rewriter {
     pub fn output_language(&self) -> JsString {
         self.inner.get("outputLanguage").as_::<JsString>()
     }
+
 }
 impl Rewriter {
     /// The measureInputUsage method.
     /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
-        self.inner
-            .call("measureInputUsage", &[input.into()])
-            .as_::<Promise<f64>>()
+        self.inner.call("measureInputUsage", &[input.into(), ]).as_::<Promise<f64>>()
     }
     /// The measureInputUsage method.
     /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
-    pub fn measure_input_usage1(
-        &self,
-        input: &JsString,
-        options: &RewriterRewriteOptions,
-    ) -> Promise<f64> {
-        self.inner
-            .call("measureInputUsage", &[input.into(), options.into()])
-            .as_::<Promise<f64>>()
+    pub fn measure_input_usage1(&self, input: &JsString, options: &RewriterRewriteOptions) -> Promise<f64> {
+        self.inner.call("measureInputUsage", &[input.into(), options.into(), ]).as_::<Promise<f64>>()
     }
 }
 impl Rewriter {
@@ -214,11 +187,12 @@ impl Rewriter {
     pub fn input_quota(&self) -> f64 {
         self.inner.get("inputQuota").as_::<f64>()
     }
+
 }
 impl Rewriter {
     /// The destroy method.
     /// [`Rewriter.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/destroy)
-    pub fn destroy(&self) -> Undefined {
+    pub fn destroy(&self, ) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

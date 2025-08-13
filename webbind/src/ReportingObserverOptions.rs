@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ReportingObserverOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ReportingObserverOptions {
 
 impl AsMut<Any> for ReportingObserverOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ReportingObserverOptions> for Any {

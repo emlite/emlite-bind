@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PointerTimeline class.
 /// [`PointerTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PointerTimeline {
 
 impl FromVal for PointerTimeline {
     fn from_val(v: &Any) -> Self {
-        PointerTimeline {
-            inner: AnimationTimeline::from_val(v),
-        }
+        PointerTimeline { inner: AnimationTimeline::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PointerTimeline {
 
 impl AsMut<Any> for PointerTimeline {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PointerTimeline> for Any {
@@ -63,24 +64,23 @@ impl From<&PointerTimeline> for Any {
 
 jsbind::utils::impl_dyn_cast!(PointerTimeline);
 
+
+
 impl PointerTimeline {
     /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
     pub fn new0() -> PointerTimeline {
         Self {
-            inner: Any::global("PointerTimeline")
-                .new(&[])
-                .as_::<AnimationTimeline>(),
+            inner: Any::global("PointerTimeline").new(&[]).as_::<AnimationTimeline>(),
         }
     }
 
     /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
     pub fn new1(options: &PointerTimelineOptions) -> PointerTimeline {
         Self {
-            inner: Any::global("PointerTimeline")
-                .new(&[options.into()])
-                .as_::<AnimationTimeline>(),
+            inner: Any::global("PointerTimeline").new(&[options.into()]).as_::<AnimationTimeline>(),
         }
     }
+
 }
 impl PointerTimeline {
     /// Getter of the `source` attribute.
@@ -88,6 +88,7 @@ impl PointerTimeline {
     pub fn source(&self) -> Element {
         self.inner.get("source").as_::<Element>()
     }
+
 }
 impl PointerTimeline {
     /// Getter of the `axis` attribute.
@@ -95,4 +96,5 @@ impl PointerTimeline {
     pub fn axis(&self) -> PointerAxis {
         self.inner.get("axis").as_::<PointerAxis>()
     }
+
 }

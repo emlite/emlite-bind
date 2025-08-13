@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSColor class.
 /// [`CSSColor`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSColor {
 
 impl FromVal for CSSColor {
     fn from_val(v: &Any) -> Self {
-        CSSColor {
-            inner: CSSColorValue::from_val(v),
-        }
+        CSSColor { inner: CSSColorValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSColor {
 
 impl AsMut<Any> for CSSColor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSColor> for Any {
@@ -63,24 +64,23 @@ impl From<&CSSColor> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSColor);
 
+
+
 impl CSSColor {
     /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
     pub fn new0(color_space: &Any, channels: &TypedArray<Any>) -> CSSColor {
         Self {
-            inner: Any::global("CSSColor")
-                .new(&[color_space.into(), channels.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSColor").new(&[color_space.into(), channels.into()]).as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
     pub fn new1(color_space: &Any, channels: &TypedArray<Any>, alpha: &Any) -> CSSColor {
         Self {
-            inner: Any::global("CSSColor")
-                .new(&[color_space.into(), channels.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSColor").new(&[color_space.into(), channels.into(), alpha.into()]).as_::<CSSColorValue>(),
         }
     }
+
 }
 impl CSSColor {
     /// Getter of the `colorSpace` attribute.

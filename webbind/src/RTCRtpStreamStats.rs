@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpStreamStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCRtpStreamStats {
 
 impl AsMut<Any> for RTCRtpStreamStats {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpStreamStats> for Any {

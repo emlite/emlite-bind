@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGTitleElement class.
 /// [`SVGTitleElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTitleElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGTitleElement {
 
 impl FromVal for SVGTitleElement {
     fn from_val(v: &Any) -> Self {
-        SVGTitleElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGTitleElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGTitleElement {
 
 impl AsMut<Any> for SVGTitleElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGTitleElement> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGTitleElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGTitleElement);
+
+

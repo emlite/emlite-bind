@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Storage class.
 /// [`Storage`](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Storage {
 
 impl FromVal for Storage {
     fn from_val(v: &Any) -> Self {
-        Storage {
-            inner: Any::from_val(v),
-        }
+        Storage { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Storage {
 
 impl AsMut<Any> for Storage {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Storage> for Any {
@@ -63,49 +64,47 @@ impl From<&Storage> for Any {
 
 jsbind::utils::impl_dyn_cast!(Storage);
 
+
 impl Storage {
     /// Getter of the `length` attribute.
     /// [`Storage.length`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl Storage {
     /// The key method.
     /// [`Storage.key`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/key)
     pub fn key(&self, index: u32) -> JsString {
-        self.inner.call("key", &[index.into()]).as_::<JsString>()
+        self.inner.call("key", &[index.into(), ]).as_::<JsString>()
     }
 }
 impl Storage {
     /// The getItem method.
     /// [`Storage.getItem`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem)
     pub fn get_item(&self, key: &JsString) -> JsString {
-        self.inner.call("getItem", &[key.into()]).as_::<JsString>()
+        self.inner.call("getItem", &[key.into(), ]).as_::<JsString>()
     }
 }
 impl Storage {
     /// The setItem method.
     /// [`Storage.setItem`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem)
     pub fn set_item(&self, key: &JsString, value: &JsString) -> Undefined {
-        self.inner
-            .call("setItem", &[key.into(), value.into()])
-            .as_::<Undefined>()
+        self.inner.call("setItem", &[key.into(), value.into(), ]).as_::<Undefined>()
     }
 }
 impl Storage {
     /// The removeItem method.
     /// [`Storage.removeItem`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/removeItem)
     pub fn remove_item(&self, key: &JsString) -> Undefined {
-        self.inner
-            .call("removeItem", &[key.into()])
-            .as_::<Undefined>()
+        self.inner.call("removeItem", &[key.into(), ]).as_::<Undefined>()
     }
 }
 impl Storage {
     /// The clear method.
     /// [`Storage.clear`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/clear)
-    pub fn clear(&self) -> Undefined {
+    pub fn clear(&self, ) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }

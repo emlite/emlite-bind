@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ItemDetails dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ItemDetails {
 
 impl AsMut<Any> for ItemDetails {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ItemDetails> for Any {
@@ -149,9 +152,7 @@ impl ItemDetails {
 impl ItemDetails {
     /// Getter of the `introductoryPrice` attribute.
     pub fn introductory_price(&self) -> PaymentCurrencyAmount {
-        self.inner
-            .get("introductoryPrice")
-            .as_::<PaymentCurrencyAmount>()
+        self.inner.get("introductoryPrice").as_::<PaymentCurrencyAmount>()
     }
 
     /// Setter of the `introductoryPrice` attribute.

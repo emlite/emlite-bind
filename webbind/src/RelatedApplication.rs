@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RelatedApplication dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RelatedApplication {
 
 impl AsMut<Any> for RelatedApplication {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RelatedApplication> for Any {

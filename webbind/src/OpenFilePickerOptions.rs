@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OpenFilePickerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for OpenFilePickerOptions {
 
 impl AsMut<Any> for OpenFilePickerOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OpenFilePickerOptions> for Any {

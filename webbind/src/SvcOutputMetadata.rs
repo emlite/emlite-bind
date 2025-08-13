@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SvcOutputMetadata dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SvcOutputMetadata {
 
 impl AsMut<Any> for SvcOutputMetadata {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SvcOutputMetadata> for Any {

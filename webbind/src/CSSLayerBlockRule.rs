@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSLayerBlockRule class.
 /// [`CSSLayerBlockRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerBlockRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSLayerBlockRule {
 
 impl FromVal for CSSLayerBlockRule {
     fn from_val(v: &Any) -> Self {
-        CSSLayerBlockRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSLayerBlockRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSLayerBlockRule {
 
 impl AsMut<Any> for CSSLayerBlockRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSLayerBlockRule> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSLayerBlockRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSLayerBlockRule);
 
+
 impl CSSLayerBlockRule {
     /// Getter of the `name` attribute.
     /// [`CSSLayerBlockRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerBlockRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }

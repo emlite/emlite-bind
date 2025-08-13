@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAElement class.
 /// [`SVGAElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAElement {
 
 impl FromVal for SVGAElement {
     fn from_val(v: &Any) -> Self {
-        SVGAElement {
-            inner: SVGGraphicsElement::from_val(v),
-        }
+        SVGAElement { inner: SVGGraphicsElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAElement {
 
 impl AsMut<Any> for SVGAElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGAElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAElement);
 
+
 impl SVGAElement {
     /// Getter of the `target` attribute.
     /// [`SVGAElement.target`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAElement/target)
     pub fn target(&self) -> SVGAnimatedString {
         self.inner.get("target").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGAElement {
     /// Getter of the `download` attribute.
@@ -115,6 +118,7 @@ impl SVGAElement {
     pub fn rel_list(&self) -> DOMTokenList {
         self.inner.get("relList").as_::<DOMTokenList>()
     }
+
 }
 impl SVGAElement {
     /// Getter of the `hreflang` attribute.
@@ -174,6 +178,7 @@ impl SVGAElement {
     pub fn origin(&self) -> JsString {
         self.inner.get("origin").as_::<JsString>()
     }
+
 }
 impl SVGAElement {
     /// Getter of the `protocol` attribute.
@@ -298,4 +303,5 @@ impl SVGAElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
+
 }

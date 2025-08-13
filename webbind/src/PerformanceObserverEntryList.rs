@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PerformanceObserverEntryList class.
 /// [`PerformanceObserverEntryList`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PerformanceObserverEntryList {
 
 impl FromVal for PerformanceObserverEntryList {
     fn from_val(v: &Any) -> Self {
-        PerformanceObserverEntryList {
-            inner: Any::from_val(v),
-        }
+        PerformanceObserverEntryList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PerformanceObserverEntryList {
 
 impl AsMut<Any> for PerformanceObserverEntryList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PerformanceObserverEntryList> for Any {
@@ -63,10 +64,11 @@ impl From<&PerformanceObserverEntryList> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceObserverEntryList);
 
+
 impl PerformanceObserverEntryList {
     /// The getEntries method.
     /// [`PerformanceObserverEntryList.getEntries`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList/getEntries)
-    pub fn get_entries(&self) -> Any {
+    pub fn get_entries(&self, ) -> Any {
         self.inner.call("getEntries", &[]).as_::<Any>()
     }
 }
@@ -74,24 +76,18 @@ impl PerformanceObserverEntryList {
     /// The getEntriesByType method.
     /// [`PerformanceObserverEntryList.getEntriesByType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList/getEntriesByType)
     pub fn get_entries_by_type(&self, type_: &JsString) -> Any {
-        self.inner
-            .call("getEntriesByType", &[type_.into()])
-            .as_::<Any>()
+        self.inner.call("getEntriesByType", &[type_.into(), ]).as_::<Any>()
     }
 }
 impl PerformanceObserverEntryList {
     /// The getEntriesByName method.
     /// [`PerformanceObserverEntryList.getEntriesByName`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList/getEntriesByName)
     pub fn get_entries_by_name0(&self, name: &JsString) -> Any {
-        self.inner
-            .call("getEntriesByName", &[name.into()])
-            .as_::<Any>()
+        self.inner.call("getEntriesByName", &[name.into(), ]).as_::<Any>()
     }
     /// The getEntriesByName method.
     /// [`PerformanceObserverEntryList.getEntriesByName`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList/getEntriesByName)
     pub fn get_entries_by_name1(&self, name: &JsString, type_: &JsString) -> Any {
-        self.inner
-            .call("getEntriesByName", &[name.into(), type_.into()])
-            .as_::<Any>()
+        self.inner.call("getEntriesByName", &[name.into(), type_.into(), ]).as_::<Any>()
     }
 }

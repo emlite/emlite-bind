@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRJointSpace class.
 /// [`XRJointSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRJointSpace)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRJointSpace {
 
 impl FromVal for XRJointSpace {
     fn from_val(v: &Any) -> Self {
-        XRJointSpace {
-            inner: XRSpace::from_val(v),
-        }
+        XRJointSpace { inner: XRSpace::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRJointSpace {
 
 impl AsMut<Any> for XRJointSpace {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRJointSpace> for Any {
@@ -63,10 +64,12 @@ impl From<&XRJointSpace> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRJointSpace);
 
+
 impl XRJointSpace {
     /// Getter of the `jointName` attribute.
     /// [`XRJointSpace.jointName`](https://developer.mozilla.org/en-US/docs/Web/API/XRJointSpace/jointName)
     pub fn joint_name(&self) -> XRHandJoint {
         self.inner.get("jointName").as_::<XRHandJoint>()
     }
+
 }

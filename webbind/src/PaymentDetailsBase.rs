@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaymentDetailsBase dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PaymentDetailsBase {
 
 impl AsMut<Any> for PaymentDetailsBase {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaymentDetailsBase> for Any {
@@ -61,9 +64,7 @@ impl From<&PaymentDetailsBase> for Any {
 impl PaymentDetailsBase {
     /// Getter of the `displayItems` attribute.
     pub fn display_items(&self) -> TypedArray<PaymentItem> {
-        self.inner
-            .get("displayItems")
-            .as_::<TypedArray<PaymentItem>>()
+        self.inner.get("displayItems").as_::<TypedArray<PaymentItem>>()
     }
 
     /// Setter of the `displayItems` attribute.
@@ -74,9 +75,7 @@ impl PaymentDetailsBase {
 impl PaymentDetailsBase {
     /// Getter of the `shippingOptions` attribute.
     pub fn shipping_options(&self) -> TypedArray<PaymentShippingOption> {
-        self.inner
-            .get("shippingOptions")
-            .as_::<TypedArray<PaymentShippingOption>>()
+        self.inner.get("shippingOptions").as_::<TypedArray<PaymentShippingOption>>()
     }
 
     /// Setter of the `shippingOptions` attribute.
@@ -87,9 +86,7 @@ impl PaymentDetailsBase {
 impl PaymentDetailsBase {
     /// Getter of the `modifiers` attribute.
     pub fn modifiers(&self) -> TypedArray<PaymentDetailsModifier> {
-        self.inner
-            .get("modifiers")
-            .as_::<TypedArray<PaymentDetailsModifier>>()
+        self.inner.get("modifiers").as_::<TypedArray<PaymentDetailsModifier>>()
     }
 
     /// Setter of the `modifiers` attribute.

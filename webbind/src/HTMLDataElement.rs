@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLDataElement class.
 /// [`HTMLDataElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLDataElement {
 
 impl FromVal for HTMLDataElement {
     fn from_val(v: &Any) -> Self {
-        HTMLDataElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLDataElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLDataElement {
 
 impl AsMut<Any> for HTMLDataElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLDataElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLDataElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLDataElement);
 
+
+
 impl HTMLDataElement {
     /// The `new HTMLDataElement(..)` constructor, creating a new HTMLDataElement instance
     pub fn new() -> HTMLDataElement {
@@ -70,6 +73,7 @@ impl HTMLDataElement {
             inner: Any::global("HTMLDataElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLDataElement {
     /// Getter of the `value` attribute.

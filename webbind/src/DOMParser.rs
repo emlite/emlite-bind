@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DOMParser class.
 /// [`DOMParser`](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DOMParser {
 
 impl FromVal for DOMParser {
     fn from_val(v: &Any) -> Self {
-        DOMParser {
-            inner: Any::from_val(v),
-        }
+        DOMParser { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DOMParser {
 
 impl AsMut<Any> for DOMParser {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DOMParser> for Any {
@@ -63,6 +64,8 @@ impl From<&DOMParser> for Any {
 
 jsbind::utils::impl_dyn_cast!(DOMParser);
 
+
+
 impl DOMParser {
     /// The `new DOMParser(..)` constructor, creating a new DOMParser instance
     pub fn new() -> DOMParser {
@@ -70,13 +73,12 @@ impl DOMParser {
             inner: Any::global("DOMParser").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl DOMParser {
     /// The parseFromString method.
     /// [`DOMParser.parseFromString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString)
     pub fn parse_from_string(&self, string: &Any, type_: &DOMParserSupportedType) -> Document {
-        self.inner
-            .call("parseFromString", &[string.into(), type_.into()])
-            .as_::<Document>()
+        self.inner.call("parseFromString", &[string.into(), type_.into(), ]).as_::<Document>()
     }
 }

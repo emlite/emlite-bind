@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLBatchNormalizationSupportLimits dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLBatchNormalizationSupportLimits {
 
 impl AsMut<Any> for MLBatchNormalizationSupportLimits {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLBatchNormalizationSupportLimits> for Any {

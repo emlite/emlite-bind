@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The VideoEncoderEncodeOptionsForAvc dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for VideoEncoderEncodeOptionsForAvc {
 
 impl AsMut<Any> for VideoEncoderEncodeOptionsForAvc {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<VideoEncoderEncodeOptionsForAvc> for Any {

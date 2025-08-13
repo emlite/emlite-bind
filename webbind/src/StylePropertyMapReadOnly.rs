@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The StylePropertyMapReadOnly class.
 /// [`StylePropertyMapReadOnly`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct StylePropertyMapReadOnly {
 
 impl FromVal for StylePropertyMapReadOnly {
     fn from_val(v: &Any) -> Self {
-        StylePropertyMapReadOnly {
-            inner: Any::from_val(v),
-        }
+        StylePropertyMapReadOnly { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for StylePropertyMapReadOnly {
 
 impl AsMut<Any> for StylePropertyMapReadOnly {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<StylePropertyMapReadOnly> for Any {
@@ -63,27 +64,26 @@ impl From<&StylePropertyMapReadOnly> for Any {
 
 jsbind::utils::impl_dyn_cast!(StylePropertyMapReadOnly);
 
+
 impl StylePropertyMapReadOnly {
     /// The get method.
     /// [`StylePropertyMapReadOnly.get`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/get)
     pub fn get(&self, property: &JsString) -> Any {
-        self.inner.call("get", &[property.into()]).as_::<Any>()
+        self.inner.call("get", &[property.into(), ]).as_::<Any>()
     }
 }
 impl StylePropertyMapReadOnly {
     /// The getAll method.
     /// [`StylePropertyMapReadOnly.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/getAll)
     pub fn get_all(&self, property: &JsString) -> TypedArray<CSSStyleValue> {
-        self.inner
-            .call("getAll", &[property.into()])
-            .as_::<TypedArray<CSSStyleValue>>()
+        self.inner.call("getAll", &[property.into(), ]).as_::<TypedArray<CSSStyleValue>>()
     }
 }
 impl StylePropertyMapReadOnly {
     /// The has method.
     /// [`StylePropertyMapReadOnly.has`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/has)
     pub fn has(&self, property: &JsString) -> bool {
-        self.inner.call("has", &[property.into()]).as_::<bool>()
+        self.inner.call("has", &[property.into(), ]).as_::<bool>()
     }
 }
 impl StylePropertyMapReadOnly {
@@ -92,4 +92,5 @@ impl StylePropertyMapReadOnly {
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
+
 }

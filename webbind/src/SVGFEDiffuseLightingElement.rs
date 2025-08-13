@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFEDiffuseLightingElement class.
 /// [`SVGFEDiffuseLightingElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDiffuseLightingElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFEDiffuseLightingElement {
 
 impl FromVal for SVGFEDiffuseLightingElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEDiffuseLightingElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEDiffuseLightingElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFEDiffuseLightingElement {
 
 impl AsMut<Any> for SVGFEDiffuseLightingElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFEDiffuseLightingElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFEDiffuseLightingElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEDiffuseLightingElement);
 
+
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEDiffuseLightingElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDiffuseLightingElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `surfaceScale` attribute.
@@ -76,6 +79,7 @@ impl SVGFEDiffuseLightingElement {
     pub fn surface_scale(&self) -> SVGAnimatedNumber {
         self.inner.get("surfaceScale").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `diffuseConstant` attribute.
@@ -83,24 +87,23 @@ impl SVGFEDiffuseLightingElement {
     pub fn diffuse_constant(&self) -> SVGAnimatedNumber {
         self.inner.get("diffuseConstant").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `kernelUnitLengthX` attribute.
     /// [`SVGFEDiffuseLightingElement.kernelUnitLengthX`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDiffuseLightingElement/kernelUnitLengthX)
     pub fn kernel_unit_length_x(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("kernelUnitLengthX")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("kernelUnitLengthX").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `kernelUnitLengthY` attribute.
     /// [`SVGFEDiffuseLightingElement.kernelUnitLengthY`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDiffuseLightingElement/kernelUnitLengthY)
     pub fn kernel_unit_length_y(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("kernelUnitLengthY")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("kernelUnitLengthY").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `x` attribute.
@@ -108,6 +111,7 @@ impl SVGFEDiffuseLightingElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `y` attribute.
@@ -115,6 +119,7 @@ impl SVGFEDiffuseLightingElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `width` attribute.
@@ -122,6 +127,7 @@ impl SVGFEDiffuseLightingElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `height` attribute.
@@ -129,6 +135,7 @@ impl SVGFEDiffuseLightingElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDiffuseLightingElement {
     /// Getter of the `result` attribute.
@@ -136,4 +143,5 @@ impl SVGFEDiffuseLightingElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

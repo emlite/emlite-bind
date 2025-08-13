@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCRtpParameters {
 
 impl AsMut<Any> for RTCRtpParameters {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpParameters> for Any {
@@ -61,9 +64,7 @@ impl From<&RTCRtpParameters> for Any {
 impl RTCRtpParameters {
     /// Getter of the `headerExtensions` attribute.
     pub fn header_extensions(&self) -> TypedArray<RTCRtpHeaderExtensionParameters> {
-        self.inner
-            .get("headerExtensions")
-            .as_::<TypedArray<RTCRtpHeaderExtensionParameters>>()
+        self.inner.get("headerExtensions").as_::<TypedArray<RTCRtpHeaderExtensionParameters>>()
     }
 
     /// Setter of the `headerExtensions` attribute.
@@ -85,9 +86,7 @@ impl RTCRtpParameters {
 impl RTCRtpParameters {
     /// Getter of the `codecs` attribute.
     pub fn codecs(&self) -> TypedArray<RTCRtpCodecParameters> {
-        self.inner
-            .get("codecs")
-            .as_::<TypedArray<RTCRtpCodecParameters>>()
+        self.inner.get("codecs").as_::<TypedArray<RTCRtpCodecParameters>>()
     }
 
     /// Setter of the `codecs` attribute.

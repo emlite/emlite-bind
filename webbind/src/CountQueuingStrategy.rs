@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CountQueuingStrategy class.
 /// [`CountQueuingStrategy`](https://developer.mozilla.org/en-US/docs/Web/API/CountQueuingStrategy)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CountQueuingStrategy {
 
 impl FromVal for CountQueuingStrategy {
     fn from_val(v: &Any) -> Self {
-        CountQueuingStrategy {
-            inner: Any::from_val(v),
-        }
+        CountQueuingStrategy { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CountQueuingStrategy {
 
 impl AsMut<Any> for CountQueuingStrategy {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CountQueuingStrategy> for Any {
@@ -63,15 +64,16 @@ impl From<&CountQueuingStrategy> for Any {
 
 jsbind::utils::impl_dyn_cast!(CountQueuingStrategy);
 
+
+
 impl CountQueuingStrategy {
     /// The `new CountQueuingStrategy(..)` constructor, creating a new CountQueuingStrategy instance
     pub fn new(init: &QueuingStrategyInit) -> CountQueuingStrategy {
         Self {
-            inner: Any::global("CountQueuingStrategy")
-                .new(&[init.into()])
-                .as_::<Any>(),
+            inner: Any::global("CountQueuingStrategy").new(&[init.into()]).as_::<Any>(),
         }
     }
+
 }
 impl CountQueuingStrategy {
     /// Getter of the `highWaterMark` attribute.
@@ -79,6 +81,7 @@ impl CountQueuingStrategy {
     pub fn high_water_mark(&self) -> f64 {
         self.inner.get("highWaterMark").as_::<f64>()
     }
+
 }
 impl CountQueuingStrategy {
     /// Getter of the `size` attribute.
@@ -86,4 +89,5 @@ impl CountQueuingStrategy {
     pub fn size(&self) -> Function {
         self.inner.get("size").as_::<Function>()
     }
+
 }

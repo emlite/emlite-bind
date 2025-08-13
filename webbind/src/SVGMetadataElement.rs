@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGMetadataElement class.
 /// [`SVGMetadataElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMetadataElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGMetadataElement {
 
 impl FromVal for SVGMetadataElement {
     fn from_val(v: &Any) -> Self {
-        SVGMetadataElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGMetadataElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGMetadataElement {
 
 impl AsMut<Any> for SVGMetadataElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGMetadataElement> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGMetadataElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGMetadataElement);
+
+

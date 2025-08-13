@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WatchAdvertisementsOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for WatchAdvertisementsOptions {
 
 impl AsMut<Any> for WatchAdvertisementsOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WatchAdvertisementsOptions> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLSlotElement class.
 /// [`HTMLSlotElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLSlotElement {
 
 impl FromVal for HTMLSlotElement {
     fn from_val(v: &Any) -> Self {
-        HTMLSlotElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLSlotElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLSlotElement {
 
 impl AsMut<Any> for HTMLSlotElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLSlotElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLSlotElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLSlotElement);
 
+
+
 impl HTMLSlotElement {
     /// The `new HTMLSlotElement(..)` constructor, creating a new HTMLSlotElement instance
     pub fn new() -> HTMLSlotElement {
@@ -70,6 +73,7 @@ impl HTMLSlotElement {
             inner: Any::global("HTMLSlotElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLSlotElement {
     /// Getter of the `name` attribute.
@@ -87,41 +91,31 @@ impl HTMLSlotElement {
 impl HTMLSlotElement {
     /// The assignedNodes method.
     /// [`HTMLSlotElement.assignedNodes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedNodes)
-    pub fn assigned_nodes0(&self) -> TypedArray<Node> {
-        self.inner
-            .call("assignedNodes", &[])
-            .as_::<TypedArray<Node>>()
+    pub fn assigned_nodes0(&self, ) -> TypedArray<Node> {
+        self.inner.call("assignedNodes", &[]).as_::<TypedArray<Node>>()
     }
     /// The assignedNodes method.
     /// [`HTMLSlotElement.assignedNodes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedNodes)
     pub fn assigned_nodes1(&self, options: &AssignedNodesOptions) -> TypedArray<Node> {
-        self.inner
-            .call("assignedNodes", &[options.into()])
-            .as_::<TypedArray<Node>>()
+        self.inner.call("assignedNodes", &[options.into(), ]).as_::<TypedArray<Node>>()
     }
 }
 impl HTMLSlotElement {
     /// The assignedElements method.
     /// [`HTMLSlotElement.assignedElements`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedElements)
-    pub fn assigned_elements0(&self) -> TypedArray<Element> {
-        self.inner
-            .call("assignedElements", &[])
-            .as_::<TypedArray<Element>>()
+    pub fn assigned_elements0(&self, ) -> TypedArray<Element> {
+        self.inner.call("assignedElements", &[]).as_::<TypedArray<Element>>()
     }
     /// The assignedElements method.
     /// [`HTMLSlotElement.assignedElements`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedElements)
     pub fn assigned_elements1(&self, options: &AssignedNodesOptions) -> TypedArray<Element> {
-        self.inner
-            .call("assignedElements", &[options.into()])
-            .as_::<TypedArray<Element>>()
+        self.inner.call("assignedElements", &[options.into(), ]).as_::<TypedArray<Element>>()
     }
 }
 impl HTMLSlotElement {
     /// The assign method.
     /// [`HTMLSlotElement.assign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
     pub fn assign(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("assign", &[nodes.into()])
-            .as_::<Undefined>()
+        self.inner.call("assign", &[nodes.into(), ]).as_::<Undefined>()
     }
 }

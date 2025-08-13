@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUBindGroupDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUBindGroupDescriptor {
 
 impl AsMut<Any> for GPUBindGroupDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUBindGroupDescriptor> for Any {
@@ -72,9 +75,7 @@ impl GPUBindGroupDescriptor {
 impl GPUBindGroupDescriptor {
     /// Getter of the `entries` attribute.
     pub fn entries(&self) -> TypedArray<GPUBindGroupEntry> {
-        self.inner
-            .get("entries")
-            .as_::<TypedArray<GPUBindGroupEntry>>()
+        self.inner.get("entries").as_::<TypedArray<GPUBindGroupEntry>>()
     }
 
     /// Setter of the `entries` attribute.

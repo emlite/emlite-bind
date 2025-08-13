@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Document class.
 /// [`Document`](https://developer.mozilla.org/en-US/docs/Web/API/Document)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Document {
 
 impl FromVal for Document {
     fn from_val(v: &Any) -> Self {
-        Document {
-            inner: Node::from_val(v),
-        }
+        Document { inner: Node::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Document {
 
 impl AsMut<Any> for Document {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Document> for Any {
@@ -63,6 +64,8 @@ impl From<&Document> for Any {
 
 jsbind::utils::impl_dyn_cast!(Document);
 
+
+
 impl Document {
     /// The `new Document(..)` constructor, creating a new Document instance
     pub fn new() -> Document {
@@ -70,6 +73,7 @@ impl Document {
             inner: Any::global("Document").new(&[]).as_::<Node>(),
         }
     }
+
 }
 impl Document {
     /// Getter of the `implementation` attribute.
@@ -77,6 +81,7 @@ impl Document {
     pub fn implementation(&self) -> DOMImplementation {
         self.inner.get("implementation").as_::<DOMImplementation>()
     }
+
 }
 impl Document {
     /// Getter of the `URL` attribute.
@@ -84,6 +89,7 @@ impl Document {
     pub fn url(&self) -> JsString {
         self.inner.get("URL").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `documentURI` attribute.
@@ -91,6 +97,7 @@ impl Document {
     pub fn document_uri(&self) -> JsString {
         self.inner.get("documentURI").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `compatMode` attribute.
@@ -98,6 +105,7 @@ impl Document {
     pub fn compat_mode(&self) -> JsString {
         self.inner.get("compatMode").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `characterSet` attribute.
@@ -105,6 +113,7 @@ impl Document {
     pub fn character_set(&self) -> JsString {
         self.inner.get("characterSet").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `charset` attribute.
@@ -112,6 +121,7 @@ impl Document {
     pub fn charset(&self) -> JsString {
         self.inner.get("charset").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `inputEncoding` attribute.
@@ -119,6 +129,7 @@ impl Document {
     pub fn input_encoding(&self) -> JsString {
         self.inner.get("inputEncoding").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `contentType` attribute.
@@ -126,6 +137,7 @@ impl Document {
     pub fn content_type(&self) -> JsString {
         self.inner.get("contentType").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `doctype` attribute.
@@ -133,6 +145,7 @@ impl Document {
     pub fn doctype(&self) -> DocumentType {
         self.inner.get("doctype").as_::<DocumentType>()
     }
+
 }
 impl Document {
     /// Getter of the `documentElement` attribute.
@@ -140,188 +153,132 @@ impl Document {
     pub fn document_element(&self) -> Element {
         self.inner.get("documentElement").as_::<Element>()
     }
+
 }
 impl Document {
     /// The getElementsByTagName method.
     /// [`Document.getElementsByTagName`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName)
     pub fn get_elements_by_tag_name(&self, qualified_name: &JsString) -> HTMLCollection {
-        self.inner
-            .call("getElementsByTagName", &[qualified_name.into()])
-            .as_::<HTMLCollection>()
+        self.inner.call("getElementsByTagName", &[qualified_name.into(), ]).as_::<HTMLCollection>()
     }
 }
 impl Document {
     /// The getElementsByTagNameNS method.
     /// [`Document.getElementsByTagNameNS`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagNameNS)
-    pub fn get_elements_by_tag_name_ns(
-        &self,
-        namespace: &JsString,
-        local_name: &JsString,
-    ) -> HTMLCollection {
-        self.inner
-            .call(
-                "getElementsByTagNameNS",
-                &[namespace.into(), local_name.into()],
-            )
-            .as_::<HTMLCollection>()
+    pub fn get_elements_by_tag_name_ns(&self, namespace: &JsString, local_name: &JsString) -> HTMLCollection {
+        self.inner.call("getElementsByTagNameNS", &[namespace.into(), local_name.into(), ]).as_::<HTMLCollection>()
     }
 }
 impl Document {
     /// The getElementsByClassName method.
     /// [`Document.getElementsByClassName`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName)
     pub fn get_elements_by_class_name(&self, class_names: &JsString) -> HTMLCollection {
-        self.inner
-            .call("getElementsByClassName", &[class_names.into()])
-            .as_::<HTMLCollection>()
+        self.inner.call("getElementsByClassName", &[class_names.into(), ]).as_::<HTMLCollection>()
     }
 }
 impl Document {
     /// The createElement method.
     /// [`Document.createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
     pub fn create_element0(&self, local_name: &JsString) -> Element {
-        self.inner
-            .call("createElement", &[local_name.into()])
-            .as_::<Element>()
+        self.inner.call("createElement", &[local_name.into(), ]).as_::<Element>()
     }
     /// The createElement method.
     /// [`Document.createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
     pub fn create_element1(&self, local_name: &JsString, options: &Any) -> Element {
-        self.inner
-            .call("createElement", &[local_name.into(), options.into()])
-            .as_::<Element>()
+        self.inner.call("createElement", &[local_name.into(), options.into(), ]).as_::<Element>()
     }
 }
 impl Document {
     /// The createElementNS method.
     /// [`Document.createElementNS`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS)
     pub fn create_element_ns0(&self, namespace: &JsString, qualified_name: &JsString) -> Element {
-        self.inner
-            .call(
-                "createElementNS",
-                &[namespace.into(), qualified_name.into()],
-            )
-            .as_::<Element>()
+        self.inner.call("createElementNS", &[namespace.into(), qualified_name.into(), ]).as_::<Element>()
     }
     /// The createElementNS method.
     /// [`Document.createElementNS`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS)
-    pub fn create_element_ns1(
-        &self,
-        namespace: &JsString,
-        qualified_name: &JsString,
-        options: &Any,
-    ) -> Element {
-        self.inner
-            .call(
-                "createElementNS",
-                &[namespace.into(), qualified_name.into(), options.into()],
-            )
-            .as_::<Element>()
+    pub fn create_element_ns1(&self, namespace: &JsString, qualified_name: &JsString, options: &Any) -> Element {
+        self.inner.call("createElementNS", &[namespace.into(), qualified_name.into(), options.into(), ]).as_::<Element>()
     }
 }
 impl Document {
     /// The createDocumentFragment method.
     /// [`Document.createDocumentFragment`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment)
-    pub fn create_document_fragment(&self) -> DocumentFragment {
-        self.inner
-            .call("createDocumentFragment", &[])
-            .as_::<DocumentFragment>()
+    pub fn create_document_fragment(&self, ) -> DocumentFragment {
+        self.inner.call("createDocumentFragment", &[]).as_::<DocumentFragment>()
     }
 }
 impl Document {
     /// The createTextNode method.
     /// [`Document.createTextNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode)
     pub fn create_text_node(&self, data: &JsString) -> Text {
-        self.inner
-            .call("createTextNode", &[data.into()])
-            .as_::<Text>()
+        self.inner.call("createTextNode", &[data.into(), ]).as_::<Text>()
     }
 }
 impl Document {
     /// The createCDATASection method.
     /// [`Document.createCDATASection`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createCDATASection)
     pub fn create_cdata_section(&self, data: &JsString) -> CDATASection {
-        self.inner
-            .call("createCDATASection", &[data.into()])
-            .as_::<CDATASection>()
+        self.inner.call("createCDATASection", &[data.into(), ]).as_::<CDATASection>()
     }
 }
 impl Document {
     /// The createComment method.
     /// [`Document.createComment`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createComment)
     pub fn create_comment(&self, data: &JsString) -> Comment {
-        self.inner
-            .call("createComment", &[data.into()])
-            .as_::<Comment>()
+        self.inner.call("createComment", &[data.into(), ]).as_::<Comment>()
     }
 }
 impl Document {
     /// The createProcessingInstruction method.
     /// [`Document.createProcessingInstruction`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createProcessingInstruction)
-    pub fn create_processing_instruction(
-        &self,
-        target: &JsString,
-        data: &JsString,
-    ) -> ProcessingInstruction {
-        self.inner
-            .call("createProcessingInstruction", &[target.into(), data.into()])
-            .as_::<ProcessingInstruction>()
+    pub fn create_processing_instruction(&self, target: &JsString, data: &JsString) -> ProcessingInstruction {
+        self.inner.call("createProcessingInstruction", &[target.into(), data.into(), ]).as_::<ProcessingInstruction>()
     }
 }
 impl Document {
     /// The importNode method.
     /// [`Document.importNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
     pub fn import_node0(&self, node: &Node) -> Node {
-        self.inner.call("importNode", &[node.into()]).as_::<Node>()
+        self.inner.call("importNode", &[node.into(), ]).as_::<Node>()
     }
     /// The importNode method.
     /// [`Document.importNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
     pub fn import_node1(&self, node: &Node, options: &Any) -> Node {
-        self.inner
-            .call("importNode", &[node.into(), options.into()])
-            .as_::<Node>()
+        self.inner.call("importNode", &[node.into(), options.into(), ]).as_::<Node>()
     }
 }
 impl Document {
     /// The adoptNode method.
     /// [`Document.adoptNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/adoptNode)
     pub fn adopt_node(&self, node: &Node) -> Node {
-        self.inner.call("adoptNode", &[node.into()]).as_::<Node>()
+        self.inner.call("adoptNode", &[node.into(), ]).as_::<Node>()
     }
 }
 impl Document {
     /// The createAttribute method.
     /// [`Document.createAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttribute)
     pub fn create_attribute(&self, local_name: &JsString) -> Attr {
-        self.inner
-            .call("createAttribute", &[local_name.into()])
-            .as_::<Attr>()
+        self.inner.call("createAttribute", &[local_name.into(), ]).as_::<Attr>()
     }
 }
 impl Document {
     /// The createAttributeNS method.
     /// [`Document.createAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttributeNS)
     pub fn create_attribute_ns(&self, namespace: &JsString, qualified_name: &JsString) -> Attr {
-        self.inner
-            .call(
-                "createAttributeNS",
-                &[namespace.into(), qualified_name.into()],
-            )
-            .as_::<Attr>()
+        self.inner.call("createAttributeNS", &[namespace.into(), qualified_name.into(), ]).as_::<Attr>()
     }
 }
 impl Document {
     /// The createEvent method.
     /// [`Document.createEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createEvent)
     pub fn create_event(&self, interface: &JsString) -> Event {
-        self.inner
-            .call("createEvent", &[interface.into()])
-            .as_::<Event>()
+        self.inner.call("createEvent", &[interface.into(), ]).as_::<Event>()
     }
 }
 impl Document {
     /// The createRange method.
     /// [`Document.createRange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createRange)
-    pub fn create_range(&self) -> Range {
+    pub fn create_range(&self, ) -> Range {
         self.inner.call("createRange", &[]).as_::<Range>()
     }
 }
@@ -329,62 +286,34 @@ impl Document {
     /// The createNodeIterator method.
     /// [`Document.createNodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator)
     pub fn create_node_iterator0(&self, root: &Node) -> NodeIterator {
-        self.inner
-            .call("createNodeIterator", &[root.into()])
-            .as_::<NodeIterator>()
+        self.inner.call("createNodeIterator", &[root.into(), ]).as_::<NodeIterator>()
     }
     /// The createNodeIterator method.
     /// [`Document.createNodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator)
     pub fn create_node_iterator1(&self, root: &Node, what_to_show: u32) -> NodeIterator {
-        self.inner
-            .call("createNodeIterator", &[root.into(), what_to_show.into()])
-            .as_::<NodeIterator>()
+        self.inner.call("createNodeIterator", &[root.into(), what_to_show.into(), ]).as_::<NodeIterator>()
     }
     /// The createNodeIterator method.
     /// [`Document.createNodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator)
-    pub fn create_node_iterator2(
-        &self,
-        root: &Node,
-        what_to_show: u32,
-        filter: &Function,
-    ) -> NodeIterator {
-        self.inner
-            .call(
-                "createNodeIterator",
-                &[root.into(), what_to_show.into(), filter.into()],
-            )
-            .as_::<NodeIterator>()
+    pub fn create_node_iterator2(&self, root: &Node, what_to_show: u32, filter: &Function) -> NodeIterator {
+        self.inner.call("createNodeIterator", &[root.into(), what_to_show.into(), filter.into(), ]).as_::<NodeIterator>()
     }
 }
 impl Document {
     /// The createTreeWalker method.
     /// [`Document.createTreeWalker`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker)
     pub fn create_tree_walker0(&self, root: &Node) -> TreeWalker {
-        self.inner
-            .call("createTreeWalker", &[root.into()])
-            .as_::<TreeWalker>()
+        self.inner.call("createTreeWalker", &[root.into(), ]).as_::<TreeWalker>()
     }
     /// The createTreeWalker method.
     /// [`Document.createTreeWalker`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker)
     pub fn create_tree_walker1(&self, root: &Node, what_to_show: u32) -> TreeWalker {
-        self.inner
-            .call("createTreeWalker", &[root.into(), what_to_show.into()])
-            .as_::<TreeWalker>()
+        self.inner.call("createTreeWalker", &[root.into(), what_to_show.into(), ]).as_::<TreeWalker>()
     }
     /// The createTreeWalker method.
     /// [`Document.createTreeWalker`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker)
-    pub fn create_tree_walker2(
-        &self,
-        root: &Node,
-        what_to_show: u32,
-        filter: &Function,
-    ) -> TreeWalker {
-        self.inner
-            .call(
-                "createTreeWalker",
-                &[root.into(), what_to_show.into(), filter.into()],
-            )
-            .as_::<TreeWalker>()
+    pub fn create_tree_walker2(&self, root: &Node, what_to_show: u32, filter: &Function) -> TreeWalker {
+        self.inner.call("createTreeWalker", &[root.into(), what_to_show.into(), filter.into(), ]).as_::<TreeWalker>()
     }
 }
 impl Document {
@@ -393,6 +322,7 @@ impl Document {
     pub fn root_element(&self) -> SVGSVGElement {
         self.inner.get("rootElement").as_::<SVGSVGElement>()
     }
+
 }
 impl Document {
     /// Getter of the `namedFlows` attribute.
@@ -400,63 +330,44 @@ impl Document {
     pub fn named_flows(&self) -> NamedFlowMap {
         self.inner.get("namedFlows").as_::<NamedFlowMap>()
     }
+
 }
 impl Document {
     /// The startViewTransition method.
     /// [`Document.startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition)
-    pub fn start_view_transition0(&self) -> ViewTransition {
-        self.inner
-            .call("startViewTransition", &[])
-            .as_::<ViewTransition>()
+    pub fn start_view_transition0(&self, ) -> ViewTransition {
+        self.inner.call("startViewTransition", &[]).as_::<ViewTransition>()
     }
     /// The startViewTransition method.
     /// [`Document.startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition)
     pub fn start_view_transition1(&self, callback_options: &Any) -> ViewTransition {
-        self.inner
-            .call("startViewTransition", &[callback_options.into()])
-            .as_::<ViewTransition>()
+        self.inner.call("startViewTransition", &[callback_options.into(), ]).as_::<ViewTransition>()
     }
 }
 impl Document {
     /// The elementFromPoint method.
     /// [`Document.elementFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint)
     pub fn element_from_point(&self, x: f64, y: f64) -> Element {
-        self.inner
-            .call("elementFromPoint", &[x.into(), y.into()])
-            .as_::<Element>()
+        self.inner.call("elementFromPoint", &[x.into(), y.into(), ]).as_::<Element>()
     }
 }
 impl Document {
     /// The elementsFromPoint method.
     /// [`Document.elementsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementsFromPoint)
     pub fn elements_from_point(&self, x: f64, y: f64) -> TypedArray<Element> {
-        self.inner
-            .call("elementsFromPoint", &[x.into(), y.into()])
-            .as_::<TypedArray<Element>>()
+        self.inner.call("elementsFromPoint", &[x.into(), y.into(), ]).as_::<TypedArray<Element>>()
     }
 }
 impl Document {
     /// The caretPositionFromPoint method.
     /// [`Document.caretPositionFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/Document/caretPositionFromPoint)
     pub fn caret_position_from_point0(&self, x: f64, y: f64) -> CaretPosition {
-        self.inner
-            .call("caretPositionFromPoint", &[x.into(), y.into()])
-            .as_::<CaretPosition>()
+        self.inner.call("caretPositionFromPoint", &[x.into(), y.into(), ]).as_::<CaretPosition>()
     }
     /// The caretPositionFromPoint method.
     /// [`Document.caretPositionFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/Document/caretPositionFromPoint)
-    pub fn caret_position_from_point1(
-        &self,
-        x: f64,
-        y: f64,
-        options: &CaretPositionFromPointOptions,
-    ) -> CaretPosition {
-        self.inner
-            .call(
-                "caretPositionFromPoint",
-                &[x.into(), y.into(), options.into()],
-            )
-            .as_::<CaretPosition>()
+    pub fn caret_position_from_point1(&self, x: f64, y: f64, options: &CaretPositionFromPointOptions) -> CaretPosition {
+        self.inner.call("caretPositionFromPoint", &[x.into(), y.into(), options.into(), ]).as_::<CaretPosition>()
     }
 }
 impl Document {
@@ -465,27 +376,20 @@ impl Document {
     pub fn scrolling_element(&self) -> Element {
         self.inner.get("scrollingElement").as_::<Element>()
     }
+
 }
 impl Document {
     /// The measureElement method.
     /// [`Document.measureElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/measureElement)
     pub fn measure_element(&self, element: &Element) -> FontMetrics {
-        self.inner
-            .call("measureElement", &[element.into()])
-            .as_::<FontMetrics>()
+        self.inner.call("measureElement", &[element.into(), ]).as_::<FontMetrics>()
     }
 }
 impl Document {
     /// The measureText method.
     /// [`Document.measureText`](https://developer.mozilla.org/en-US/docs/Web/API/Document/measureText)
-    pub fn measure_text(
-        &self,
-        text: &JsString,
-        style_map: &StylePropertyMapReadOnly,
-    ) -> FontMetrics {
-        self.inner
-            .call("measureText", &[text.into(), style_map.into()])
-            .as_::<FontMetrics>()
+    pub fn measure_text(&self, text: &JsString, style_map: &StylePropertyMapReadOnly) -> FontMetrics {
+        self.inner.call("measureText", &[text.into(), style_map.into(), ]).as_::<FontMetrics>()
     }
 }
 impl Document {
@@ -494,6 +398,7 @@ impl Document {
     pub fn fullscreen_enabled(&self) -> bool {
         self.inner.get("fullscreenEnabled").as_::<bool>()
     }
+
 }
 impl Document {
     /// Getter of the `fullscreen` attribute.
@@ -501,14 +406,13 @@ impl Document {
     pub fn fullscreen(&self) -> bool {
         self.inner.get("fullscreen").as_::<bool>()
     }
+
 }
 impl Document {
     /// The exitFullscreen method.
     /// [`Document.exitFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen)
-    pub fn exit_fullscreen(&self) -> Promise<Undefined> {
-        self.inner
-            .call("exitFullscreen", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn exit_fullscreen(&self, ) -> Promise<Undefined> {
+        self.inner.call("exitFullscreen", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl Document {
@@ -541,9 +445,7 @@ impl Document {
     /// The parseHTMLUnsafe method.
     /// [`Document.parseHTMLUnsafe`](https://developer.mozilla.org/en-US/docs/Web/API/Document/parseHTMLUnsafe)
     pub fn parse_html_unsafe(html: &Any) -> Document {
-        Any::global("Document")
-            .call("parseHTMLUnsafe", &[html.into()])
-            .as_::<Document>()
+        Any::global("Document").call("parseHTMLUnsafe", &[html.into(), ]).as_::<Document>()
     }
 }
 impl Document {
@@ -552,6 +454,7 @@ impl Document {
     pub fn location(&self) -> Location {
         self.inner.get("location").as_::<Location>()
     }
+
 }
 impl Document {
     /// Getter of the `domain` attribute.
@@ -572,6 +475,7 @@ impl Document {
     pub fn referrer(&self) -> JsString {
         self.inner.get("referrer").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `cookie` attribute.
@@ -592,6 +496,7 @@ impl Document {
     pub fn last_modified(&self) -> JsString {
         self.inner.get("lastModified").as_::<JsString>()
     }
+
 }
 impl Document {
     /// Getter of the `readyState` attribute.
@@ -599,6 +504,7 @@ impl Document {
     pub fn ready_state(&self) -> DocumentReadyState {
         self.inner.get("readyState").as_::<DocumentReadyState>()
     }
+
 }
 impl Document {
     /// Getter of the `title` attribute.
@@ -645,6 +551,7 @@ impl Document {
     pub fn head(&self) -> HTMLHeadElement {
         self.inner.get("head").as_::<HTMLHeadElement>()
     }
+
 }
 impl Document {
     /// Getter of the `images` attribute.
@@ -652,6 +559,7 @@ impl Document {
     pub fn images(&self) -> HTMLCollection {
         self.inner.get("images").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `embeds` attribute.
@@ -659,6 +567,7 @@ impl Document {
     pub fn embeds(&self) -> HTMLCollection {
         self.inner.get("embeds").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `plugins` attribute.
@@ -666,6 +575,7 @@ impl Document {
     pub fn plugins(&self) -> HTMLCollection {
         self.inner.get("plugins").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `links` attribute.
@@ -673,6 +583,7 @@ impl Document {
     pub fn links(&self) -> HTMLCollection {
         self.inner.get("links").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `forms` attribute.
@@ -680,6 +591,7 @@ impl Document {
     pub fn forms(&self) -> HTMLCollection {
         self.inner.get("forms").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `scripts` attribute.
@@ -687,14 +599,13 @@ impl Document {
     pub fn scripts(&self) -> HTMLCollection {
         self.inner.get("scripts").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// The getElementsByName method.
     /// [`Document.getElementsByName`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName)
     pub fn get_elements_by_name(&self, element_name: &JsString) -> NodeList {
-        self.inner
-            .call("getElementsByName", &[element_name.into()])
-            .as_::<NodeList>()
+        self.inner.call("getElementsByName", &[element_name.into(), ]).as_::<NodeList>()
     }
 }
 impl Document {
@@ -703,20 +614,19 @@ impl Document {
     pub fn current_script(&self) -> Any {
         self.inner.get("currentScript").as_::<Any>()
     }
+
 }
 impl Document {
     /// The open method.
     /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
     pub fn open(&self, url: &JsString, name: &JsString, features: &JsString) -> Any {
-        self.inner
-            .call("open", &[url.into(), name.into(), features.into()])
-            .as_::<Any>()
+        self.inner.call("open", &[url.into(), name.into(), features.into(), ]).as_::<Any>()
     }
 }
 impl Document {
     /// The close method.
     /// [`Document.close`](https://developer.mozilla.org/en-US/docs/Web/API/Document/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
@@ -724,16 +634,14 @@ impl Document {
     /// The write method.
     /// [`Document.write`](https://developer.mozilla.org/en-US/docs/Web/API/Document/write)
     pub fn write(&self, text: &Any) -> Undefined {
-        self.inner.call("write", &[text.into()]).as_::<Undefined>()
+        self.inner.call("write", &[text.into(), ]).as_::<Undefined>()
     }
 }
 impl Document {
     /// The writeln method.
     /// [`Document.writeln`](https://developer.mozilla.org/en-US/docs/Web/API/Document/writeln)
     pub fn writeln(&self, text: &Any) -> Undefined {
-        self.inner
-            .call("writeln", &[text.into()])
-            .as_::<Undefined>()
+        self.inner.call("writeln", &[text.into(), ]).as_::<Undefined>()
     }
 }
 impl Document {
@@ -742,11 +650,12 @@ impl Document {
     pub fn default_view(&self) -> Any {
         self.inner.get("defaultView").as_::<Any>()
     }
+
 }
 impl Document {
     /// The hasFocus method.
     /// [`Document.hasFocus`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus)
-    pub fn has_focus(&self) -> bool {
+    pub fn has_focus(&self, ) -> bool {
         self.inner.call("hasFocus", &[]).as_::<bool>()
     }
 }
@@ -767,71 +676,52 @@ impl Document {
     /// The execCommand method.
     /// [`Document.execCommand`](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand)
     pub fn exec_command0(&self, command_id: &JsString) -> bool {
-        self.inner
-            .call("execCommand", &[command_id.into()])
-            .as_::<bool>()
+        self.inner.call("execCommand", &[command_id.into(), ]).as_::<bool>()
     }
     /// The execCommand method.
     /// [`Document.execCommand`](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand)
     pub fn exec_command1(&self, command_id: &JsString, show_ui: bool) -> bool {
-        self.inner
-            .call("execCommand", &[command_id.into(), show_ui.into()])
-            .as_::<bool>()
+        self.inner.call("execCommand", &[command_id.into(), show_ui.into(), ]).as_::<bool>()
     }
     /// The execCommand method.
     /// [`Document.execCommand`](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand)
     pub fn exec_command2(&self, command_id: &JsString, show_ui: bool, value: &JsString) -> bool {
-        self.inner
-            .call(
-                "execCommand",
-                &[command_id.into(), show_ui.into(), value.into()],
-            )
-            .as_::<bool>()
+        self.inner.call("execCommand", &[command_id.into(), show_ui.into(), value.into(), ]).as_::<bool>()
     }
 }
 impl Document {
     /// The queryCommandEnabled method.
     /// [`Document.queryCommandEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Document/queryCommandEnabled)
     pub fn query_command_enabled(&self, command_id: &JsString) -> bool {
-        self.inner
-            .call("queryCommandEnabled", &[command_id.into()])
-            .as_::<bool>()
+        self.inner.call("queryCommandEnabled", &[command_id.into(), ]).as_::<bool>()
     }
 }
 impl Document {
     /// The queryCommandIndeterm method.
     /// [`Document.queryCommandIndeterm`](https://developer.mozilla.org/en-US/docs/Web/API/Document/queryCommandIndeterm)
     pub fn query_command_indeterm(&self, command_id: &JsString) -> bool {
-        self.inner
-            .call("queryCommandIndeterm", &[command_id.into()])
-            .as_::<bool>()
+        self.inner.call("queryCommandIndeterm", &[command_id.into(), ]).as_::<bool>()
     }
 }
 impl Document {
     /// The queryCommandState method.
     /// [`Document.queryCommandState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/queryCommandState)
     pub fn query_command_state(&self, command_id: &JsString) -> bool {
-        self.inner
-            .call("queryCommandState", &[command_id.into()])
-            .as_::<bool>()
+        self.inner.call("queryCommandState", &[command_id.into(), ]).as_::<bool>()
     }
 }
 impl Document {
     /// The queryCommandSupported method.
     /// [`Document.queryCommandSupported`](https://developer.mozilla.org/en-US/docs/Web/API/Document/queryCommandSupported)
     pub fn query_command_supported(&self, command_id: &JsString) -> bool {
-        self.inner
-            .call("queryCommandSupported", &[command_id.into()])
-            .as_::<bool>()
+        self.inner.call("queryCommandSupported", &[command_id.into(), ]).as_::<bool>()
     }
 }
 impl Document {
     /// The queryCommandValue method.
     /// [`Document.queryCommandValue`](https://developer.mozilla.org/en-US/docs/Web/API/Document/queryCommandValue)
     pub fn query_command_value(&self, command_id: &JsString) -> JsString {
-        self.inner
-            .call("queryCommandValue", &[command_id.into()])
-            .as_::<JsString>()
+        self.inner.call("queryCommandValue", &[command_id.into(), ]).as_::<JsString>()
     }
 }
 impl Document {
@@ -840,15 +730,15 @@ impl Document {
     pub fn hidden(&self) -> bool {
         self.inner.get("hidden").as_::<bool>()
     }
+
 }
 impl Document {
     /// Getter of the `visibilityState` attribute.
     /// [`Document.visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
     pub fn visibility_state(&self) -> DocumentVisibilityState {
-        self.inner
-            .get("visibilityState")
-            .as_::<DocumentVisibilityState>()
+        self.inner.get("visibilityState").as_::<DocumentVisibilityState>()
     }
+
 }
 impl Document {
     /// Getter of the `onreadystatechange` attribute.
@@ -947,6 +837,7 @@ impl Document {
     pub fn anchors(&self) -> HTMLCollection {
         self.inner.get("anchors").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `applets` attribute.
@@ -954,25 +845,26 @@ impl Document {
     pub fn applets(&self) -> HTMLCollection {
         self.inner.get("applets").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// The clear method.
     /// [`Document.clear`](https://developer.mozilla.org/en-US/docs/Web/API/Document/clear)
-    pub fn clear(&self) -> Undefined {
+    pub fn clear(&self, ) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }
 impl Document {
     /// The captureEvents method.
     /// [`Document.captureEvents`](https://developer.mozilla.org/en-US/docs/Web/API/Document/captureEvents)
-    pub fn capture_events(&self) -> Undefined {
+    pub fn capture_events(&self, ) -> Undefined {
         self.inner.call("captureEvents", &[]).as_::<Undefined>()
     }
 }
 impl Document {
     /// The releaseEvents method.
     /// [`Document.releaseEvents`](https://developer.mozilla.org/en-US/docs/Web/API/Document/releaseEvents)
-    pub fn release_events(&self) -> Undefined {
+    pub fn release_events(&self, ) -> Undefined {
         self.inner.call("releaseEvents", &[]).as_::<Undefined>()
     }
 }
@@ -982,6 +874,7 @@ impl Document {
     pub fn all(&self) -> HTMLAllCollection {
         self.inner.get("all").as_::<HTMLAllCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `onfreeze` attribute.
@@ -1015,15 +908,15 @@ impl Document {
     pub fn was_discarded(&self) -> bool {
         self.inner.get("wasDiscarded").as_::<bool>()
     }
+
 }
 impl Document {
     /// Getter of the `permissionsPolicy` attribute.
     /// [`Document.permissionsPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Document/permissionsPolicy)
     pub fn permissions_policy(&self) -> PermissionsPolicy {
-        self.inner
-            .get("permissionsPolicy")
-            .as_::<PermissionsPolicy>()
+        self.inner.get("permissionsPolicy").as_::<PermissionsPolicy>()
     }
+
 }
 impl Document {
     /// Getter of the `pictureInPictureEnabled` attribute.
@@ -1031,14 +924,13 @@ impl Document {
     pub fn picture_in_picture_enabled(&self) -> bool {
         self.inner.get("pictureInPictureEnabled").as_::<bool>()
     }
+
 }
 impl Document {
     /// The exitPictureInPicture method.
     /// [`Document.exitPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitPictureInPicture)
-    pub fn exit_picture_in_picture(&self) -> Promise<Undefined> {
-        self.inner
-            .call("exitPictureInPicture", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn exit_picture_in_picture(&self, ) -> Promise<Undefined> {
+        self.inner.call("exitPictureInPicture", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl Document {
@@ -1070,7 +962,7 @@ impl Document {
 impl Document {
     /// The exitPointerLock method.
     /// [`Document.exitPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitPointerLock)
-    pub fn exit_pointer_lock(&self) -> Undefined {
+    pub fn exit_pointer_lock(&self, ) -> Undefined {
         self.inner.call("exitPointerLock", &[]).as_::<Undefined>()
     }
 }
@@ -1080,6 +972,7 @@ impl Document {
     pub fn prerendering(&self) -> bool {
         self.inner.get("prerendering").as_::<bool>()
     }
+
 }
 impl Document {
     /// Getter of the `onprerenderingchange` attribute.
@@ -1098,70 +991,57 @@ impl Document {
     /// The requestStorageAccessFor method.
     /// [`Document.requestStorageAccessFor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/requestStorageAccessFor)
     pub fn request_storage_access_for(&self, requested_origin: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("requestStorageAccessFor", &[requested_origin.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("requestStorageAccessFor", &[requested_origin.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl Document {
     /// The hasUnpartitionedCookieAccess method.
     /// [`Document.hasUnpartitionedCookieAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasUnpartitionedCookieAccess)
-    pub fn has_unpartitioned_cookie_access(&self) -> Promise<bool> {
-        self.inner
-            .call("hasUnpartitionedCookieAccess", &[])
-            .as_::<Promise<bool>>()
+    pub fn has_unpartitioned_cookie_access(&self, ) -> Promise<bool> {
+        self.inner.call("hasUnpartitionedCookieAccess", &[]).as_::<Promise<bool>>()
     }
 }
 impl Document {
     /// Getter of the `fragmentDirective` attribute.
     /// [`Document.fragmentDirective`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fragmentDirective)
     pub fn fragment_directive(&self) -> FragmentDirective {
-        self.inner
-            .get("fragmentDirective")
-            .as_::<FragmentDirective>()
+        self.inner.get("fragmentDirective").as_::<FragmentDirective>()
     }
+
 }
 impl Document {
     /// The getSelection method.
     /// [`Document.getSelection`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getSelection)
-    pub fn get_selection(&self) -> Selection {
+    pub fn get_selection(&self, ) -> Selection {
         self.inner.call("getSelection", &[]).as_::<Selection>()
     }
 }
 impl Document {
     /// The hasStorageAccess method.
     /// [`Document.hasStorageAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasStorageAccess)
-    pub fn has_storage_access(&self) -> Promise<bool> {
-        self.inner
-            .call("hasStorageAccess", &[])
-            .as_::<Promise<bool>>()
+    pub fn has_storage_access(&self, ) -> Promise<bool> {
+        self.inner.call("hasStorageAccess", &[]).as_::<Promise<bool>>()
     }
 }
 impl Document {
     /// The requestStorageAccess method.
     /// [`Document.requestStorageAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Document/requestStorageAccess)
-    pub fn request_storage_access(&self) -> Promise<Undefined> {
-        self.inner
-            .call("requestStorageAccess", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn request_storage_access(&self, ) -> Promise<Undefined> {
+        self.inner.call("requestStorageAccess", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl Document {
     /// The hasPrivateToken method.
     /// [`Document.hasPrivateToken`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasPrivateToken)
     pub fn has_private_token(&self, issuer: &JsString) -> Promise<bool> {
-        self.inner
-            .call("hasPrivateToken", &[issuer.into()])
-            .as_::<Promise<bool>>()
+        self.inner.call("hasPrivateToken", &[issuer.into(), ]).as_::<Promise<bool>>()
     }
 }
 impl Document {
     /// The hasRedemptionRecord method.
     /// [`Document.hasRedemptionRecord`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasRedemptionRecord)
     pub fn has_redemption_record(&self, issuer: &JsString) -> Promise<bool> {
-        self.inner
-            .call("hasRedemptionRecord", &[issuer.into()])
-            .as_::<Promise<bool>>()
+        self.inner.call("hasRedemptionRecord", &[issuer.into(), ]).as_::<Promise<bool>>()
     }
 }
 impl Document {
@@ -1170,6 +1050,7 @@ impl Document {
     pub fn timeline(&self) -> DocumentTimeline {
         self.inner.get("timeline").as_::<DocumentTimeline>()
     }
+
 }
 impl Document {
     /// Getter of the `fonts` attribute.
@@ -1177,111 +1058,68 @@ impl Document {
     pub fn fonts(&self) -> FontFaceSet {
         self.inner.get("fonts").as_::<FontFaceSet>()
     }
+
 }
 impl Document {
     /// The getBoxQuads method.
     /// [`Document.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getBoxQuads)
-    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
-        self.inner
-            .call("getBoxQuads", &[])
-            .as_::<TypedArray<DOMQuad>>()
+    pub fn get_box_quads0(&self, ) -> TypedArray<DOMQuad> {
+        self.inner.call("getBoxQuads", &[]).as_::<TypedArray<DOMQuad>>()
     }
     /// The getBoxQuads method.
     /// [`Document.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getBoxQuads)
     pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
-        self.inner
-            .call("getBoxQuads", &[options.into()])
-            .as_::<TypedArray<DOMQuad>>()
+        self.inner.call("getBoxQuads", &[options.into(), ]).as_::<TypedArray<DOMQuad>>()
     }
 }
 impl Document {
     /// The convertQuadFromNode method.
     /// [`Document.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertQuadFromNode)
     pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
-        self.inner
-            .call("convertQuadFromNode", &[quad.into(), from.into()])
-            .as_::<DOMQuad>()
+        self.inner.call("convertQuadFromNode", &[quad.into(), from.into(), ]).as_::<DOMQuad>()
     }
     /// The convertQuadFromNode method.
     /// [`Document.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertQuadFromNode)
-    pub fn convert_quad_from_node1(
-        &self,
-        quad: &DOMQuadInit,
-        from: &Any,
-        options: &ConvertCoordinateOptions,
-    ) -> DOMQuad {
-        self.inner
-            .call(
-                "convertQuadFromNode",
-                &[quad.into(), from.into(), options.into()],
-            )
-            .as_::<DOMQuad>()
+    pub fn convert_quad_from_node1(&self, quad: &DOMQuadInit, from: &Any, options: &ConvertCoordinateOptions) -> DOMQuad {
+        self.inner.call("convertQuadFromNode", &[quad.into(), from.into(), options.into(), ]).as_::<DOMQuad>()
     }
 }
 impl Document {
     /// The convertRectFromNode method.
     /// [`Document.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertRectFromNode)
     pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
-        self.inner
-            .call("convertRectFromNode", &[rect.into(), from.into()])
-            .as_::<DOMQuad>()
+        self.inner.call("convertRectFromNode", &[rect.into(), from.into(), ]).as_::<DOMQuad>()
     }
     /// The convertRectFromNode method.
     /// [`Document.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertRectFromNode)
-    pub fn convert_rect_from_node1(
-        &self,
-        rect: &DOMRectReadOnly,
-        from: &Any,
-        options: &ConvertCoordinateOptions,
-    ) -> DOMQuad {
-        self.inner
-            .call(
-                "convertRectFromNode",
-                &[rect.into(), from.into(), options.into()],
-            )
-            .as_::<DOMQuad>()
+    pub fn convert_rect_from_node1(&self, rect: &DOMRectReadOnly, from: &Any, options: &ConvertCoordinateOptions) -> DOMQuad {
+        self.inner.call("convertRectFromNode", &[rect.into(), from.into(), options.into(), ]).as_::<DOMQuad>()
     }
 }
 impl Document {
     /// The convertPointFromNode method.
     /// [`Document.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertPointFromNode)
     pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
-        self.inner
-            .call("convertPointFromNode", &[point.into(), from.into()])
-            .as_::<DOMPoint>()
+        self.inner.call("convertPointFromNode", &[point.into(), from.into(), ]).as_::<DOMPoint>()
     }
     /// The convertPointFromNode method.
     /// [`Document.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertPointFromNode)
-    pub fn convert_point_from_node1(
-        &self,
-        point: &DOMPointInit,
-        from: &Any,
-        options: &ConvertCoordinateOptions,
-    ) -> DOMPoint {
-        self.inner
-            .call(
-                "convertPointFromNode",
-                &[point.into(), from.into(), options.into()],
-            )
-            .as_::<DOMPoint>()
+    pub fn convert_point_from_node1(&self, point: &DOMPointInit, from: &Any, options: &ConvertCoordinateOptions) -> DOMPoint {
+        self.inner.call("convertPointFromNode", &[point.into(), from.into(), options.into(), ]).as_::<DOMPoint>()
     }
 }
 impl Document {
     /// The getElementById method.
     /// [`Document.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
     pub fn get_element_by_id(&self, element_id: &JsString) -> Element {
-        self.inner
-            .call("getElementById", &[element_id.into()])
-            .as_::<Element>()
+        self.inner.call("getElementById", &[element_id.into(), ]).as_::<Element>()
     }
 }
 impl Document {
     /// The getAnimations method.
     /// [`Document.getAnimations`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getAnimations)
-    pub fn get_animations(&self) -> TypedArray<Animation> {
-        self.inner
-            .call("getAnimations", &[])
-            .as_::<TypedArray<Animation>>()
+    pub fn get_animations(&self, ) -> TypedArray<Animation> {
+        self.inner.call("getAnimations", &[]).as_::<TypedArray<Animation>>()
     }
 }
 impl Document {
@@ -1290,6 +1128,7 @@ impl Document {
     pub fn children(&self) -> HTMLCollection {
         self.inner.get("children").as_::<HTMLCollection>()
     }
+
 }
 impl Document {
     /// Getter of the `firstElementChild` attribute.
@@ -1297,6 +1136,7 @@ impl Document {
     pub fn first_element_child(&self) -> Element {
         self.inner.get("firstElementChild").as_::<Element>()
     }
+
 }
 impl Document {
     /// Getter of the `lastElementChild` attribute.
@@ -1304,6 +1144,7 @@ impl Document {
     pub fn last_element_child(&self) -> Element {
         self.inner.get("lastElementChild").as_::<Element>()
     }
+
 }
 impl Document {
     /// Getter of the `childElementCount` attribute.
@@ -1311,156 +1152,89 @@ impl Document {
     pub fn child_element_count(&self) -> u32 {
         self.inner.get("childElementCount").as_::<u32>()
     }
+
 }
 impl Document {
     /// The prepend method.
     /// [`Document.prepend`](https://developer.mozilla.org/en-US/docs/Web/API/Document/prepend)
     pub fn prepend(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("prepend", &[nodes.into()])
-            .as_::<Undefined>()
+        self.inner.call("prepend", &[nodes.into(), ]).as_::<Undefined>()
     }
 }
 impl Document {
     /// The append method.
     /// [`Document.append`](https://developer.mozilla.org/en-US/docs/Web/API/Document/append)
     pub fn append(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("append", &[nodes.into()])
-            .as_::<Undefined>()
+        self.inner.call("append", &[nodes.into(), ]).as_::<Undefined>()
     }
 }
 impl Document {
     /// The replaceChildren method.
     /// [`Document.replaceChildren`](https://developer.mozilla.org/en-US/docs/Web/API/Document/replaceChildren)
     pub fn replace_children(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("replaceChildren", &[nodes.into()])
-            .as_::<Undefined>()
+        self.inner.call("replaceChildren", &[nodes.into(), ]).as_::<Undefined>()
     }
 }
 impl Document {
     /// The moveBefore method.
     /// [`Document.moveBefore`](https://developer.mozilla.org/en-US/docs/Web/API/Document/moveBefore)
     pub fn move_before(&self, node: &Node, child: &Node) -> Undefined {
-        self.inner
-            .call("moveBefore", &[node.into(), child.into()])
-            .as_::<Undefined>()
+        self.inner.call("moveBefore", &[node.into(), child.into(), ]).as_::<Undefined>()
     }
 }
 impl Document {
     /// The querySelector method.
     /// [`Document.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
     pub fn query_selector(&self, selectors: &JsString) -> Element {
-        self.inner
-            .call("querySelector", &[selectors.into()])
-            .as_::<Element>()
+        self.inner.call("querySelector", &[selectors.into(), ]).as_::<Element>()
     }
 }
 impl Document {
     /// The querySelectorAll method.
     /// [`Document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
     pub fn query_selector_all(&self, selectors: &JsString) -> NodeList {
-        self.inner
-            .call("querySelectorAll", &[selectors.into()])
-            .as_::<NodeList>()
+        self.inner.call("querySelectorAll", &[selectors.into(), ]).as_::<NodeList>()
     }
 }
 impl Document {
     /// The createExpression method.
     /// [`Document.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createExpression)
     pub fn create_expression0(&self, expression: &JsString) -> XPathExpression {
-        self.inner
-            .call("createExpression", &[expression.into()])
-            .as_::<XPathExpression>()
+        self.inner.call("createExpression", &[expression.into(), ]).as_::<XPathExpression>()
     }
     /// The createExpression method.
     /// [`Document.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createExpression)
-    pub fn create_expression1(
-        &self,
-        expression: &JsString,
-        resolver: &Function,
-    ) -> XPathExpression {
-        self.inner
-            .call("createExpression", &[expression.into(), resolver.into()])
-            .as_::<XPathExpression>()
+    pub fn create_expression1(&self, expression: &JsString, resolver: &Function) -> XPathExpression {
+        self.inner.call("createExpression", &[expression.into(), resolver.into(), ]).as_::<XPathExpression>()
     }
 }
 impl Document {
     /// The createNSResolver method.
     /// [`Document.createNSResolver`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createNSResolver)
     pub fn create_ns_resolver(&self, node_resolver: &Node) -> Node {
-        self.inner
-            .call("createNSResolver", &[node_resolver.into()])
-            .as_::<Node>()
+        self.inner.call("createNSResolver", &[node_resolver.into(), ]).as_::<Node>()
     }
 }
 impl Document {
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
     pub fn evaluate0(&self, expression: &JsString, context_node: &Node) -> XPathResult {
-        self.inner
-            .call("evaluate", &[expression.into(), context_node.into()])
-            .as_::<XPathResult>()
+        self.inner.call("evaluate", &[expression.into(), context_node.into(), ]).as_::<XPathResult>()
     }
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
-    pub fn evaluate1(
-        &self,
-        expression: &JsString,
-        context_node: &Node,
-        resolver: &Function,
-    ) -> XPathResult {
-        self.inner
-            .call(
-                "evaluate",
-                &[expression.into(), context_node.into(), resolver.into()],
-            )
-            .as_::<XPathResult>()
+    pub fn evaluate1(&self, expression: &JsString, context_node: &Node, resolver: &Function) -> XPathResult {
+        self.inner.call("evaluate", &[expression.into(), context_node.into(), resolver.into(), ]).as_::<XPathResult>()
     }
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
-    pub fn evaluate2(
-        &self,
-        expression: &JsString,
-        context_node: &Node,
-        resolver: &Function,
-        type_: u16,
-    ) -> XPathResult {
-        self.inner
-            .call(
-                "evaluate",
-                &[
-                    expression.into(),
-                    context_node.into(),
-                    resolver.into(),
-                    type_.into(),
-                ],
-            )
-            .as_::<XPathResult>()
+    pub fn evaluate2(&self, expression: &JsString, context_node: &Node, resolver: &Function, type_: u16) -> XPathResult {
+        self.inner.call("evaluate", &[expression.into(), context_node.into(), resolver.into(), type_.into(), ]).as_::<XPathResult>()
     }
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
-    pub fn evaluate3(
-        &self,
-        expression: &JsString,
-        context_node: &Node,
-        resolver: &Function,
-        type_: u16,
-        result: &XPathResult,
-    ) -> XPathResult {
-        self.inner
-            .call(
-                "evaluate",
-                &[
-                    expression.into(),
-                    context_node.into(),
-                    resolver.into(),
-                    type_.into(),
-                    result.into(),
-                ],
-            )
-            .as_::<XPathResult>()
+    pub fn evaluate3(&self, expression: &JsString, context_node: &Node, resolver: &Function, type_: u16, result: &XPathResult) -> XPathResult {
+        self.inner.call("evaluate", &[expression.into(), context_node.into(), resolver.into(), type_.into(), result.into(), ]).as_::<XPathResult>()
     }
 }
 impl Document {

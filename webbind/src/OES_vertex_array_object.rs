@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OES_vertex_array_object class.
 /// [`OES_vertex_array_object`](https://developer.mozilla.org/en-US/docs/Web/API/OES_vertex_array_object)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct OES_vertex_array_object {
 
 impl FromVal for OES_vertex_array_object {
     fn from_val(v: &Any) -> Self {
-        OES_vertex_array_object {
-            inner: Any::from_val(v),
-        }
+        OES_vertex_array_object { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for OES_vertex_array_object {
 
 impl AsMut<Any> for OES_vertex_array_object {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OES_vertex_array_object> for Any {
@@ -63,39 +64,32 @@ impl From<&OES_vertex_array_object> for Any {
 
 jsbind::utils::impl_dyn_cast!(OES_vertex_array_object);
 
+
 impl OES_vertex_array_object {
     /// The createVertexArrayOES method.
     /// [`OES_vertex_array_object.createVertexArrayOES`](https://developer.mozilla.org/en-US/docs/Web/API/OES_vertex_array_object/createVertexArrayOES)
-    pub fn create_vertex_array_oes(&self) -> WebGLVertexArrayObjectOES {
-        self.inner
-            .call("createVertexArrayOES", &[])
-            .as_::<WebGLVertexArrayObjectOES>()
+    pub fn create_vertex_array_oes(&self, ) -> WebGLVertexArrayObjectOES {
+        self.inner.call("createVertexArrayOES", &[]).as_::<WebGLVertexArrayObjectOES>()
     }
 }
 impl OES_vertex_array_object {
     /// The deleteVertexArrayOES method.
     /// [`OES_vertex_array_object.deleteVertexArrayOES`](https://developer.mozilla.org/en-US/docs/Web/API/OES_vertex_array_object/deleteVertexArrayOES)
     pub fn delete_vertex_array_oes(&self, array_object: &WebGLVertexArrayObjectOES) -> Undefined {
-        self.inner
-            .call("deleteVertexArrayOES", &[array_object.into()])
-            .as_::<Undefined>()
+        self.inner.call("deleteVertexArrayOES", &[array_object.into(), ]).as_::<Undefined>()
     }
 }
 impl OES_vertex_array_object {
     /// The isVertexArrayOES method.
     /// [`OES_vertex_array_object.isVertexArrayOES`](https://developer.mozilla.org/en-US/docs/Web/API/OES_vertex_array_object/isVertexArrayOES)
     pub fn is_vertex_array_oes(&self, array_object: &WebGLVertexArrayObjectOES) -> Any {
-        self.inner
-            .call("isVertexArrayOES", &[array_object.into()])
-            .as_::<Any>()
+        self.inner.call("isVertexArrayOES", &[array_object.into(), ]).as_::<Any>()
     }
 }
 impl OES_vertex_array_object {
     /// The bindVertexArrayOES method.
     /// [`OES_vertex_array_object.bindVertexArrayOES`](https://developer.mozilla.org/en-US/docs/Web/API/OES_vertex_array_object/bindVertexArrayOES)
     pub fn bind_vertex_array_oes(&self, array_object: &WebGLVertexArrayObjectOES) -> Undefined {
-        self.inner
-            .call("bindVertexArrayOES", &[array_object.into()])
-            .as_::<Undefined>()
+        self.inner.call("bindVertexArrayOES", &[array_object.into(), ]).as_::<Undefined>()
     }
 }

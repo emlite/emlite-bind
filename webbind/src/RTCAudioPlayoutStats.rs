@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCAudioPlayoutStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCAudioPlayoutStats {
 
 impl AsMut<Any> for RTCAudioPlayoutStats {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCAudioPlayoutStats> for Any {

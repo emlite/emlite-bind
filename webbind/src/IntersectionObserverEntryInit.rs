@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IntersectionObserverEntryInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IntersectionObserverEntryInit {
 
 impl AsMut<Any> for IntersectionObserverEntryInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IntersectionObserverEntryInit> for Any {

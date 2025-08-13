@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLTimeElement class.
 /// [`HTMLTimeElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLTimeElement {
 
 impl FromVal for HTMLTimeElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTimeElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTimeElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLTimeElement {
 
 impl AsMut<Any> for HTMLTimeElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLTimeElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLTimeElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTimeElement);
 
+
+
 impl HTMLTimeElement {
     /// The `new HTMLTimeElement(..)` constructor, creating a new HTMLTimeElement instance
     pub fn new() -> HTMLTimeElement {
@@ -70,6 +73,7 @@ impl HTMLTimeElement {
             inner: Any::global("HTMLTimeElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTimeElement {
     /// Getter of the `dateTime` attribute.

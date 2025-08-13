@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSColorValue class.
 /// [`CSSColorValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSColorValue {
 
 impl FromVal for CSSColorValue {
     fn from_val(v: &Any) -> Self {
-        CSSColorValue {
-            inner: CSSStyleValue::from_val(v),
-        }
+        CSSColorValue { inner: CSSStyleValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSColorValue {
 
 impl AsMut<Any> for CSSColorValue {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSColorValue> for Any {
@@ -63,12 +64,11 @@ impl From<&CSSColorValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSColorValue);
 
+
 impl CSSColorValue {
     /// The parse method.
     /// [`CSSColorValue.parse`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorValue/parse)
     pub fn parse(css_text: &JsString) -> Any {
-        Any::global("CSSColorValue")
-            .call("parse", &[css_text.into()])
-            .as_::<Any>()
+        Any::global("CSSColorValue").call("parse", &[css_text.into(), ]).as_::<Any>()
     }
 }

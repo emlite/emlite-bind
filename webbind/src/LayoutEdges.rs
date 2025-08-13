@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LayoutEdges class.
 /// [`LayoutEdges`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutEdges)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct LayoutEdges {
 
 impl FromVal for LayoutEdges {
     fn from_val(v: &Any) -> Self {
-        LayoutEdges {
-            inner: Any::from_val(v),
-        }
+        LayoutEdges { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for LayoutEdges {
 
 impl AsMut<Any> for LayoutEdges {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LayoutEdges> for Any {
@@ -63,12 +64,14 @@ impl From<&LayoutEdges> for Any {
 
 jsbind::utils::impl_dyn_cast!(LayoutEdges);
 
+
 impl LayoutEdges {
     /// Getter of the `inlineStart` attribute.
     /// [`LayoutEdges.inlineStart`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutEdges/inlineStart)
     pub fn inline_start(&self) -> f64 {
         self.inner.get("inlineStart").as_::<f64>()
     }
+
 }
 impl LayoutEdges {
     /// Getter of the `inlineEnd` attribute.
@@ -76,6 +79,7 @@ impl LayoutEdges {
     pub fn inline_end(&self) -> f64 {
         self.inner.get("inlineEnd").as_::<f64>()
     }
+
 }
 impl LayoutEdges {
     /// Getter of the `blockStart` attribute.
@@ -83,6 +87,7 @@ impl LayoutEdges {
     pub fn block_start(&self) -> f64 {
         self.inner.get("blockStart").as_::<f64>()
     }
+
 }
 impl LayoutEdges {
     /// Getter of the `blockEnd` attribute.
@@ -90,6 +95,7 @@ impl LayoutEdges {
     pub fn block_end(&self) -> f64 {
         self.inner.get("blockEnd").as_::<f64>()
     }
+
 }
 impl LayoutEdges {
     /// Getter of the `inline` attribute.
@@ -97,6 +103,7 @@ impl LayoutEdges {
     pub fn inline(&self) -> f64 {
         self.inner.get("inline").as_::<f64>()
     }
+
 }
 impl LayoutEdges {
     /// Getter of the `block` attribute.
@@ -104,4 +111,5 @@ impl LayoutEdges {
     pub fn block(&self) -> f64 {
         self.inner.get("block").as_::<f64>()
     }
+
 }

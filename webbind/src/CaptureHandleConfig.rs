@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CaptureHandleConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CaptureHandleConfig {
 
 impl AsMut<Any> for CaptureHandleConfig {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CaptureHandleConfig> for Any {
@@ -83,9 +86,7 @@ impl CaptureHandleConfig {
 impl CaptureHandleConfig {
     /// Getter of the `permittedOrigins` attribute.
     pub fn permitted_origins(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("permittedOrigins")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("permittedOrigins").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `permittedOrigins` attribute.

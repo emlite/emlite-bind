@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PeriodicWaveOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PeriodicWaveOptions {
 
 impl AsMut<Any> for PeriodicWaveOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PeriodicWaveOptions> for Any {

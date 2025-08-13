@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLQuoteElement class.
 /// [`HTMLQuoteElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLQuoteElement {
 
 impl FromVal for HTMLQuoteElement {
     fn from_val(v: &Any) -> Self {
-        HTMLQuoteElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLQuoteElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLQuoteElement {
 
 impl AsMut<Any> for HTMLQuoteElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLQuoteElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLQuoteElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLQuoteElement);
 
+
+
 impl HTMLQuoteElement {
     /// The `new HTMLQuoteElement(..)` constructor, creating a new HTMLQuoteElement instance
     pub fn new() -> HTMLQuoteElement {
         Self {
-            inner: Any::global("HTMLQuoteElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLQuoteElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLQuoteElement {
     /// Getter of the `cite` attribute.

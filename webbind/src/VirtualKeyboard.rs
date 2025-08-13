@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The VirtualKeyboard class.
 /// [`VirtualKeyboard`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct VirtualKeyboard {
 
 impl FromVal for VirtualKeyboard {
     fn from_val(v: &Any) -> Self {
-        VirtualKeyboard {
-            inner: EventTarget::from_val(v),
-        }
+        VirtualKeyboard { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for VirtualKeyboard {
 
 impl AsMut<Any> for VirtualKeyboard {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<VirtualKeyboard> for Any {
@@ -63,17 +64,18 @@ impl From<&VirtualKeyboard> for Any {
 
 jsbind::utils::impl_dyn_cast!(VirtualKeyboard);
 
+
 impl VirtualKeyboard {
     /// The show method.
     /// [`VirtualKeyboard.show`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/show)
-    pub fn show(&self) -> Undefined {
+    pub fn show(&self, ) -> Undefined {
         self.inner.call("show", &[]).as_::<Undefined>()
     }
 }
 impl VirtualKeyboard {
     /// The hide method.
     /// [`VirtualKeyboard.hide`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/hide)
-    pub fn hide(&self) -> Undefined {
+    pub fn hide(&self, ) -> Undefined {
         self.inner.call("hide", &[]).as_::<Undefined>()
     }
 }
@@ -83,6 +85,7 @@ impl VirtualKeyboard {
     pub fn bounding_rect(&self) -> DOMRect {
         self.inner.get("boundingRect").as_::<DOMRect>()
     }
+
 }
 impl VirtualKeyboard {
     /// Getter of the `overlaysContent` attribute.

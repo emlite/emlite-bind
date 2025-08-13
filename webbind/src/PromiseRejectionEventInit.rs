@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PromiseRejectionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PromiseRejectionEventInit {
 
 impl AsMut<Any> for PromiseRejectionEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PromiseRejectionEventInit> for Any {

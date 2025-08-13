@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TextDetector class.
 /// [`TextDetector`](https://developer.mozilla.org/en-US/docs/Web/API/TextDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TextDetector {
 
 impl FromVal for TextDetector {
     fn from_val(v: &Any) -> Self {
-        TextDetector {
-            inner: Any::from_val(v),
-        }
+        TextDetector { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TextDetector {
 
 impl AsMut<Any> for TextDetector {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TextDetector> for Any {
@@ -63,6 +64,8 @@ impl From<&TextDetector> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextDetector);
 
+
+
 impl TextDetector {
     /// The `new TextDetector(..)` constructor, creating a new TextDetector instance
     pub fn new() -> TextDetector {
@@ -70,13 +73,12 @@ impl TextDetector {
             inner: Any::global("TextDetector").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl TextDetector {
     /// The detect method.
     /// [`TextDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/TextDetector/detect)
     pub fn detect(&self, image: &Any) -> Promise<TypedArray<DetectedText>> {
-        self.inner
-            .call("detect", &[image.into()])
-            .as_::<Promise<TypedArray<DetectedText>>>()
+        self.inner.call("detect", &[image.into(), ]).as_::<Promise<TypedArray<DetectedText>>>()
     }
 }

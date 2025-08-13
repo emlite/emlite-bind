@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DisplayMediaStreamOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DisplayMediaStreamOptions {
 
 impl AsMut<Any> for DisplayMediaStreamOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DisplayMediaStreamOptions> for Any {
@@ -94,9 +97,7 @@ impl DisplayMediaStreamOptions {
 impl DisplayMediaStreamOptions {
     /// Getter of the `selfBrowserSurface` attribute.
     pub fn self_browser_surface(&self) -> SelfCapturePreferenceEnum {
-        self.inner
-            .get("selfBrowserSurface")
-            .as_::<SelfCapturePreferenceEnum>()
+        self.inner.get("selfBrowserSurface").as_::<SelfCapturePreferenceEnum>()
     }
 
     /// Setter of the `selfBrowserSurface` attribute.
@@ -107,9 +108,7 @@ impl DisplayMediaStreamOptions {
 impl DisplayMediaStreamOptions {
     /// Getter of the `systemAudio` attribute.
     pub fn system_audio(&self) -> SystemAudioPreferenceEnum {
-        self.inner
-            .get("systemAudio")
-            .as_::<SystemAudioPreferenceEnum>()
+        self.inner.get("systemAudio").as_::<SystemAudioPreferenceEnum>()
     }
 
     /// Setter of the `systemAudio` attribute.
@@ -120,9 +119,7 @@ impl DisplayMediaStreamOptions {
 impl DisplayMediaStreamOptions {
     /// Getter of the `windowAudio` attribute.
     pub fn window_audio(&self) -> WindowAudioPreferenceEnum {
-        self.inner
-            .get("windowAudio")
-            .as_::<WindowAudioPreferenceEnum>()
+        self.inner.get("windowAudio").as_::<WindowAudioPreferenceEnum>()
     }
 
     /// Setter of the `windowAudio` attribute.
@@ -133,9 +130,7 @@ impl DisplayMediaStreamOptions {
 impl DisplayMediaStreamOptions {
     /// Getter of the `surfaceSwitching` attribute.
     pub fn surface_switching(&self) -> SurfaceSwitchingPreferenceEnum {
-        self.inner
-            .get("surfaceSwitching")
-            .as_::<SurfaceSwitchingPreferenceEnum>()
+        self.inner.get("surfaceSwitching").as_::<SurfaceSwitchingPreferenceEnum>()
     }
 
     /// Setter of the `surfaceSwitching` attribute.
@@ -146,9 +141,7 @@ impl DisplayMediaStreamOptions {
 impl DisplayMediaStreamOptions {
     /// Getter of the `monitorTypeSurfaces` attribute.
     pub fn monitor_type_surfaces(&self) -> MonitorTypeSurfacesEnum {
-        self.inner
-            .get("monitorTypeSurfaces")
-            .as_::<MonitorTypeSurfacesEnum>()
+        self.inner.get("monitorTypeSurfaces").as_::<MonitorTypeSurfacesEnum>()
     }
 
     /// Setter of the `monitorTypeSurfaces` attribute.

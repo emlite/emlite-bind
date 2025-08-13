@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaymentRequestUpdateEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PaymentRequestUpdateEventInit {
 
 impl AsMut<Any> for PaymentRequestUpdateEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaymentRequestUpdateEventInit> for Any {
@@ -57,3 +60,4 @@ impl From<&PaymentRequestUpdateEventInit> for Any {
         s.inner.clone()
     }
 }
+

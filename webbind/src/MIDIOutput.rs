@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MIDIOutput class.
 /// [`MIDIOutput`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutput)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MIDIOutput {
 
 impl FromVal for MIDIOutput {
     fn from_val(v: &Any) -> Self {
-        MIDIOutput {
-            inner: MIDIPort::from_val(v),
-        }
+        MIDIOutput { inner: MIDIPort::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MIDIOutput {
 
 impl AsMut<Any> for MIDIOutput {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MIDIOutput> for Any {
@@ -63,24 +64,23 @@ impl From<&MIDIOutput> for Any {
 
 jsbind::utils::impl_dyn_cast!(MIDIOutput);
 
+
 impl MIDIOutput {
     /// The send method.
     /// [`MIDIOutput.send`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutput/send)
     pub fn send0(&self, data: TypedArray<u8>) -> Undefined {
-        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+        self.inner.call("send", &[data.into(), ]).as_::<Undefined>()
     }
     /// The send method.
     /// [`MIDIOutput.send`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutput/send)
     pub fn send1(&self, data: TypedArray<u8>, timestamp: &Any) -> Undefined {
-        self.inner
-            .call("send", &[data.into(), timestamp.into()])
-            .as_::<Undefined>()
+        self.inner.call("send", &[data.into(), timestamp.into(), ]).as_::<Undefined>()
     }
 }
 impl MIDIOutput {
     /// The clear method.
     /// [`MIDIOutput.clear`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutput/clear)
-    pub fn clear(&self) -> Undefined {
+    pub fn clear(&self, ) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUDeviceDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUDeviceDescriptor {
 
 impl AsMut<Any> for GPUDeviceDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUDeviceDescriptor> for Any {
@@ -61,9 +64,7 @@ impl From<&GPUDeviceDescriptor> for Any {
 impl GPUDeviceDescriptor {
     /// Getter of the `requiredFeatures` attribute.
     pub fn required_features(&self) -> TypedArray<GPUFeatureName> {
-        self.inner
-            .get("requiredFeatures")
-            .as_::<TypedArray<GPUFeatureName>>()
+        self.inner.get("requiredFeatures").as_::<TypedArray<GPUFeatureName>>()
     }
 
     /// Setter of the `requiredFeatures` attribute.
@@ -74,9 +75,7 @@ impl GPUDeviceDescriptor {
 impl GPUDeviceDescriptor {
     /// Getter of the `requiredLimits` attribute.
     pub fn required_limits(&self) -> Record<JsString, Any> {
-        self.inner
-            .get("requiredLimits")
-            .as_::<Record<JsString, Any>>()
+        self.inner.get("requiredLimits").as_::<Record<JsString, Any>>()
     }
 
     /// Setter of the `requiredLimits` attribute.

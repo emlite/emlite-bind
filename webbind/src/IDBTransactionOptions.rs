@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IDBTransactionOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IDBTransactionOptions {
 
 impl AsMut<Any> for IDBTransactionOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IDBTransactionOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&IDBTransactionOptions> for Any {
 impl IDBTransactionOptions {
     /// Getter of the `durability` attribute.
     pub fn durability(&self) -> IDBTransactionDurability {
-        self.inner
-            .get("durability")
-            .as_::<IDBTransactionDurability>()
+        self.inner.get("durability").as_::<IDBTransactionDurability>()
     }
 
     /// Setter of the `durability` attribute.

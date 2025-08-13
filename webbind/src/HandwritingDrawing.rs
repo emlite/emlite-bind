@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HandwritingDrawing class.
 /// [`HandwritingDrawing`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HandwritingDrawing {
 
 impl FromVal for HandwritingDrawing {
     fn from_val(v: &Any) -> Self {
-        HandwritingDrawing {
-            inner: Any::from_val(v),
-        }
+        HandwritingDrawing { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HandwritingDrawing {
 
 impl AsMut<Any> for HandwritingDrawing {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HandwritingDrawing> for Any {
@@ -63,46 +64,39 @@ impl From<&HandwritingDrawing> for Any {
 
 jsbind::utils::impl_dyn_cast!(HandwritingDrawing);
 
+
 impl HandwritingDrawing {
     /// The addStroke method.
     /// [`HandwritingDrawing.addStroke`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/addStroke)
     pub fn add_stroke(&self, stroke: &HandwritingStroke) -> Undefined {
-        self.inner
-            .call("addStroke", &[stroke.into()])
-            .as_::<Undefined>()
+        self.inner.call("addStroke", &[stroke.into(), ]).as_::<Undefined>()
     }
 }
 impl HandwritingDrawing {
     /// The removeStroke method.
     /// [`HandwritingDrawing.removeStroke`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/removeStroke)
     pub fn remove_stroke(&self, stroke: &HandwritingStroke) -> Undefined {
-        self.inner
-            .call("removeStroke", &[stroke.into()])
-            .as_::<Undefined>()
+        self.inner.call("removeStroke", &[stroke.into(), ]).as_::<Undefined>()
     }
 }
 impl HandwritingDrawing {
     /// The clear method.
     /// [`HandwritingDrawing.clear`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/clear)
-    pub fn clear(&self) -> Undefined {
+    pub fn clear(&self, ) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }
 impl HandwritingDrawing {
     /// The getStrokes method.
     /// [`HandwritingDrawing.getStrokes`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/getStrokes)
-    pub fn get_strokes(&self) -> TypedArray<HandwritingStroke> {
-        self.inner
-            .call("getStrokes", &[])
-            .as_::<TypedArray<HandwritingStroke>>()
+    pub fn get_strokes(&self, ) -> TypedArray<HandwritingStroke> {
+        self.inner.call("getStrokes", &[]).as_::<TypedArray<HandwritingStroke>>()
     }
 }
 impl HandwritingDrawing {
     /// The getPrediction method.
     /// [`HandwritingDrawing.getPrediction`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/getPrediction)
-    pub fn get_prediction(&self) -> Promise<TypedArray<HandwritingPrediction>> {
-        self.inner
-            .call("getPrediction", &[])
-            .as_::<Promise<TypedArray<HandwritingPrediction>>>()
+    pub fn get_prediction(&self, ) -> Promise<TypedArray<HandwritingPrediction>> {
+        self.inner.call("getPrediction", &[]).as_::<Promise<TypedArray<HandwritingPrediction>>>()
     }
 }

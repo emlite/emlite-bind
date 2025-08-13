@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GamepadButton class.
 /// [`GamepadButton`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadButton)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GamepadButton {
 
 impl FromVal for GamepadButton {
     fn from_val(v: &Any) -> Self {
-        GamepadButton {
-            inner: Any::from_val(v),
-        }
+        GamepadButton { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GamepadButton {
 
 impl AsMut<Any> for GamepadButton {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GamepadButton> for Any {
@@ -63,12 +64,14 @@ impl From<&GamepadButton> for Any {
 
 jsbind::utils::impl_dyn_cast!(GamepadButton);
 
+
 impl GamepadButton {
     /// Getter of the `pressed` attribute.
     /// [`GamepadButton.pressed`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadButton/pressed)
     pub fn pressed(&self) -> bool {
         self.inner.get("pressed").as_::<bool>()
     }
+
 }
 impl GamepadButton {
     /// Getter of the `touched` attribute.
@@ -76,6 +79,7 @@ impl GamepadButton {
     pub fn touched(&self) -> bool {
         self.inner.get("touched").as_::<bool>()
     }
+
 }
 impl GamepadButton {
     /// Getter of the `value` attribute.
@@ -83,4 +87,5 @@ impl GamepadButton {
     pub fn value(&self) -> f64 {
         self.inner.get("value").as_::<f64>()
     }
+
 }

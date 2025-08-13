@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GeolocationPositionError class.
 /// [`GeolocationPositionError`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GeolocationPositionError {
 
 impl FromVal for GeolocationPositionError {
     fn from_val(v: &Any) -> Self {
-        GeolocationPositionError {
-            inner: Any::from_val(v),
-        }
+        GeolocationPositionError { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GeolocationPositionError {
 
 impl AsMut<Any> for GeolocationPositionError {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GeolocationPositionError> for Any {
@@ -63,12 +64,14 @@ impl From<&GeolocationPositionError> for Any {
 
 jsbind::utils::impl_dyn_cast!(GeolocationPositionError);
 
+
 impl GeolocationPositionError {
     /// Getter of the `code` attribute.
     /// [`GeolocationPositionError.code`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError/code)
     pub fn code(&self) -> u16 {
         self.inner.get("code").as_::<u16>()
     }
+
 }
 impl GeolocationPositionError {
     /// Getter of the `message` attribute.
@@ -76,4 +79,5 @@ impl GeolocationPositionError {
     pub fn message(&self) -> JsString {
         self.inner.get("message").as_::<JsString>()
     }
+
 }

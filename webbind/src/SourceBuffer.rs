@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SourceBuffer class.
 /// [`SourceBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SourceBuffer {
 
 impl FromVal for SourceBuffer {
     fn from_val(v: &Any) -> Self {
-        SourceBuffer {
-            inner: EventTarget::from_val(v),
-        }
+        SourceBuffer { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SourceBuffer {
 
 impl AsMut<Any> for SourceBuffer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SourceBuffer> for Any {
@@ -62,6 +63,7 @@ impl From<&SourceBuffer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SourceBuffer);
+
 
 impl SourceBuffer {
     /// Getter of the `mode` attribute.
@@ -82,6 +84,7 @@ impl SourceBuffer {
     pub fn updating(&self) -> bool {
         self.inner.get("updating").as_::<bool>()
     }
+
 }
 impl SourceBuffer {
     /// Getter of the `buffered` attribute.
@@ -89,6 +92,7 @@ impl SourceBuffer {
     pub fn buffered(&self) -> TimeRanges {
         self.inner.get("buffered").as_::<TimeRanges>()
     }
+
 }
 impl SourceBuffer {
     /// Getter of the `timestampOffset` attribute.
@@ -109,6 +113,7 @@ impl SourceBuffer {
     pub fn audio_tracks(&self) -> AudioTrackList {
         self.inner.get("audioTracks").as_::<AudioTrackList>()
     }
+
 }
 impl SourceBuffer {
     /// Getter of the `videoTracks` attribute.
@@ -116,6 +121,7 @@ impl SourceBuffer {
     pub fn video_tracks(&self) -> VideoTrackList {
         self.inner.get("videoTracks").as_::<VideoTrackList>()
     }
+
 }
 impl SourceBuffer {
     /// Getter of the `textTracks` attribute.
@@ -123,6 +129,7 @@ impl SourceBuffer {
     pub fn text_tracks(&self) -> TextTrackList {
         self.inner.get("textTracks").as_::<TextTrackList>()
     }
+
 }
 impl SourceBuffer {
     /// Getter of the `appendWindowStart` attribute.
@@ -219,15 +226,13 @@ impl SourceBuffer {
     /// The appendBuffer method.
     /// [`SourceBuffer.appendBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer/appendBuffer)
     pub fn append_buffer(&self, data: &Any) -> Undefined {
-        self.inner
-            .call("appendBuffer", &[data.into()])
-            .as_::<Undefined>()
+        self.inner.call("appendBuffer", &[data.into(), ]).as_::<Undefined>()
     }
 }
 impl SourceBuffer {
     /// The abort method.
     /// [`SourceBuffer.abort`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer/abort)
-    pub fn abort(&self) -> Undefined {
+    pub fn abort(&self, ) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
 }
@@ -235,17 +240,13 @@ impl SourceBuffer {
     /// The changeType method.
     /// [`SourceBuffer.changeType`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer/changeType)
     pub fn change_type(&self, type_: &JsString) -> Undefined {
-        self.inner
-            .call("changeType", &[type_.into()])
-            .as_::<Undefined>()
+        self.inner.call("changeType", &[type_.into(), ]).as_::<Undefined>()
     }
 }
 impl SourceBuffer {
     /// The remove method.
     /// [`SourceBuffer.remove`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer/remove)
     pub fn remove(&self, start: f64, end: f64) -> Undefined {
-        self.inner
-            .call("remove", &[start.into(), end.into()])
-            .as_::<Undefined>()
+        self.inner.call("remove", &[start.into(), end.into(), ]).as_::<Undefined>()
     }
 }

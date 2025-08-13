@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSMathProduct class.
 /// [`CSSMathProduct`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathProduct)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSMathProduct {
 
 impl FromVal for CSSMathProduct {
     fn from_val(v: &Any) -> Self {
-        CSSMathProduct {
-            inner: CSSMathValue::from_val(v),
-        }
+        CSSMathProduct { inner: CSSMathValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSMathProduct {
 
 impl AsMut<Any> for CSSMathProduct {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSMathProduct> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSMathProduct> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathProduct);
 
+
+
 impl CSSMathProduct {
     /// The `new CSSMathProduct(..)` constructor, creating a new CSSMathProduct instance
     pub fn new(args: &Any) -> CSSMathProduct {
         Self {
-            inner: Any::global("CSSMathProduct")
-                .new(&[args.into()])
-                .as_::<CSSMathValue>(),
+            inner: Any::global("CSSMathProduct").new(&[args.into()]).as_::<CSSMathValue>(),
         }
     }
+
 }
 impl CSSMathProduct {
     /// Getter of the `values` attribute.
@@ -79,4 +81,5 @@ impl CSSMathProduct {
     pub fn values(&self) -> CSSNumericArray {
         self.inner.get("values").as_::<CSSNumericArray>()
     }
+
 }

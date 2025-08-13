@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AmbientLightSensor class.
 /// [`AmbientLightSensor`](https://developer.mozilla.org/en-US/docs/Web/API/AmbientLightSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AmbientLightSensor {
 
 impl FromVal for AmbientLightSensor {
     fn from_val(v: &Any) -> Self {
-        AmbientLightSensor {
-            inner: Sensor::from_val(v),
-        }
+        AmbientLightSensor { inner: Sensor::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AmbientLightSensor {
 
 impl AsMut<Any> for AmbientLightSensor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AmbientLightSensor> for Any {
@@ -63,6 +64,8 @@ impl From<&AmbientLightSensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(AmbientLightSensor);
 
+
+
 impl AmbientLightSensor {
     /// The `new AmbientLightSensor(..)` constructor, creating a new AmbientLightSensor instance
     pub fn new0() -> AmbientLightSensor {
@@ -74,11 +77,10 @@ impl AmbientLightSensor {
     /// The `new AmbientLightSensor(..)` constructor, creating a new AmbientLightSensor instance
     pub fn new1(sensor_options: &SensorOptions) -> AmbientLightSensor {
         Self {
-            inner: Any::global("AmbientLightSensor")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
+            inner: Any::global("AmbientLightSensor").new(&[sensor_options.into()]).as_::<Sensor>(),
         }
     }
+
 }
 impl AmbientLightSensor {
     /// Getter of the `illuminance` attribute.
@@ -86,4 +88,5 @@ impl AmbientLightSensor {
     pub fn illuminance(&self) -> f64 {
         self.inner.get("illuminance").as_::<f64>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AnimationNodeList class.
 /// [`AnimationNodeList`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationNodeList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AnimationNodeList {
 
 impl FromVal for AnimationNodeList {
     fn from_val(v: &Any) -> Self {
-        AnimationNodeList {
-            inner: Any::from_val(v),
-        }
+        AnimationNodeList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AnimationNodeList {
 
 impl AsMut<Any> for AnimationNodeList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AnimationNodeList> for Any {
@@ -63,19 +64,19 @@ impl From<&AnimationNodeList> for Any {
 
 jsbind::utils::impl_dyn_cast!(AnimationNodeList);
 
+
 impl AnimationNodeList {
     /// Getter of the `length` attribute.
     /// [`AnimationNodeList.length`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationNodeList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl AnimationNodeList {
     /// The item method.
     /// [`AnimationNodeList.item`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationNodeList/item)
     pub fn item(&self, index: u32) -> AnimationEffect {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<AnimationEffect>()
+        self.inner.call("item", &[index.into(), ]).as_::<AnimationEffect>()
     }
 }

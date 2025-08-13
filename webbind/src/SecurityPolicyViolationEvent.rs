@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SecurityPolicyViolationEvent class.
 /// [`SecurityPolicyViolationEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SecurityPolicyViolationEvent {
 
 impl FromVal for SecurityPolicyViolationEvent {
     fn from_val(v: &Any) -> Self {
-        SecurityPolicyViolationEvent {
-            inner: Event::from_val(v),
-        }
+        SecurityPolicyViolationEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SecurityPolicyViolationEvent {
 
 impl AsMut<Any> for SecurityPolicyViolationEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SecurityPolicyViolationEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&SecurityPolicyViolationEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SecurityPolicyViolationEvent);
 
+
+
 impl SecurityPolicyViolationEvent {
     /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
     pub fn new0(type_: &JsString) -> SecurityPolicyViolationEvent {
         Self {
-            inner: Any::global("SecurityPolicyViolationEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("SecurityPolicyViolationEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &SecurityPolicyViolationEventInit,
-    ) -> SecurityPolicyViolationEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &SecurityPolicyViolationEventInit) -> SecurityPolicyViolationEvent {
         Self {
-            inner: Any::global("SecurityPolicyViolationEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("SecurityPolicyViolationEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `documentURI` attribute.
@@ -91,6 +88,7 @@ impl SecurityPolicyViolationEvent {
     pub fn document_uri(&self) -> JsString {
         self.inner.get("documentURI").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `referrer` attribute.
@@ -98,6 +96,7 @@ impl SecurityPolicyViolationEvent {
     pub fn referrer(&self) -> JsString {
         self.inner.get("referrer").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `blockedURI` attribute.
@@ -105,6 +104,7 @@ impl SecurityPolicyViolationEvent {
     pub fn blocked_uri(&self) -> JsString {
         self.inner.get("blockedURI").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `effectiveDirective` attribute.
@@ -112,6 +112,7 @@ impl SecurityPolicyViolationEvent {
     pub fn effective_directive(&self) -> JsString {
         self.inner.get("effectiveDirective").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `violatedDirective` attribute.
@@ -119,6 +120,7 @@ impl SecurityPolicyViolationEvent {
     pub fn violated_directive(&self) -> JsString {
         self.inner.get("violatedDirective").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `originalPolicy` attribute.
@@ -126,6 +128,7 @@ impl SecurityPolicyViolationEvent {
     pub fn original_policy(&self) -> JsString {
         self.inner.get("originalPolicy").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `sourceFile` attribute.
@@ -133,6 +136,7 @@ impl SecurityPolicyViolationEvent {
     pub fn source_file(&self) -> JsString {
         self.inner.get("sourceFile").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `sample` attribute.
@@ -140,15 +144,15 @@ impl SecurityPolicyViolationEvent {
     pub fn sample(&self) -> JsString {
         self.inner.get("sample").as_::<JsString>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `disposition` attribute.
     /// [`SecurityPolicyViolationEvent.disposition`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/disposition)
     pub fn disposition(&self) -> SecurityPolicyViolationEventDisposition {
-        self.inner
-            .get("disposition")
-            .as_::<SecurityPolicyViolationEventDisposition>()
+        self.inner.get("disposition").as_::<SecurityPolicyViolationEventDisposition>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `statusCode` attribute.
@@ -156,6 +160,7 @@ impl SecurityPolicyViolationEvent {
     pub fn status_code(&self) -> u16 {
         self.inner.get("statusCode").as_::<u16>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `lineNumber` attribute.
@@ -163,6 +168,7 @@ impl SecurityPolicyViolationEvent {
     pub fn line_number(&self) -> u32 {
         self.inner.get("lineNumber").as_::<u32>()
     }
+
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `columnNumber` attribute.
@@ -170,4 +176,5 @@ impl SecurityPolicyViolationEvent {
     pub fn column_number(&self) -> u32 {
         self.inner.get("columnNumber").as_::<u32>()
     }
+
 }

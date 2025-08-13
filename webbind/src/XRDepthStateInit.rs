@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRDepthStateInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for XRDepthStateInit {
 
 impl AsMut<Any> for XRDepthStateInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRDepthStateInit> for Any {
@@ -61,9 +64,7 @@ impl From<&XRDepthStateInit> for Any {
 impl XRDepthStateInit {
     /// Getter of the `usagePreference` attribute.
     pub fn usage_preference(&self) -> TypedArray<XRDepthUsage> {
-        self.inner
-            .get("usagePreference")
-            .as_::<TypedArray<XRDepthUsage>>()
+        self.inner.get("usagePreference").as_::<TypedArray<XRDepthUsage>>()
     }
 
     /// Setter of the `usagePreference` attribute.
@@ -74,9 +75,7 @@ impl XRDepthStateInit {
 impl XRDepthStateInit {
     /// Getter of the `dataFormatPreference` attribute.
     pub fn data_format_preference(&self) -> TypedArray<XRDepthDataFormat> {
-        self.inner
-            .get("dataFormatPreference")
-            .as_::<TypedArray<XRDepthDataFormat>>()
+        self.inner.get("dataFormatPreference").as_::<TypedArray<XRDepthDataFormat>>()
     }
 
     /// Setter of the `dataFormatPreference` attribute.
@@ -87,9 +86,7 @@ impl XRDepthStateInit {
 impl XRDepthStateInit {
     /// Getter of the `depthTypeRequest` attribute.
     pub fn depth_type_request(&self) -> TypedArray<XRDepthType> {
-        self.inner
-            .get("depthTypeRequest")
-            .as_::<TypedArray<XRDepthType>>()
+        self.inner.get("depthTypeRequest").as_::<TypedArray<XRDepthType>>()
     }
 
     /// Setter of the `depthTypeRequest` attribute.

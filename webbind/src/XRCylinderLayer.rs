@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRCylinderLayer class.
 /// [`XRCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRCylinderLayer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRCylinderLayer {
 
 impl FromVal for XRCylinderLayer {
     fn from_val(v: &Any) -> Self {
-        XRCylinderLayer {
-            inner: XRCompositionLayer::from_val(v),
-        }
+        XRCylinderLayer { inner: XRCompositionLayer::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRCylinderLayer {
 
 impl AsMut<Any> for XRCylinderLayer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRCylinderLayer> for Any {
@@ -62,6 +63,7 @@ impl From<&XRCylinderLayer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRCylinderLayer);
+
 
 impl XRCylinderLayer {
     /// Getter of the `space` attribute.

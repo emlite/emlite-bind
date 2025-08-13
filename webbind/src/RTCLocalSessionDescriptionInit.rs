@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCLocalSessionDescriptionInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCLocalSessionDescriptionInit {
 
 impl AsMut<Any> for RTCLocalSessionDescriptionInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCLocalSessionDescriptionInit> for Any {

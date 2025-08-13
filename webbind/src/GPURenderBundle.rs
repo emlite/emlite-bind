@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPURenderBundle class.
 /// [`GPURenderBundle`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPURenderBundle {
 
 impl FromVal for GPURenderBundle {
     fn from_val(v: &Any) -> Self {
-        GPURenderBundle {
-            inner: Any::from_val(v),
-        }
+        GPURenderBundle { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPURenderBundle {
 
 impl AsMut<Any> for GPURenderBundle {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPURenderBundle> for Any {
@@ -62,6 +63,7 @@ impl From<&GPURenderBundle> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(GPURenderBundle);
+
 
 impl GPURenderBundle {
     /// Getter of the `label` attribute.

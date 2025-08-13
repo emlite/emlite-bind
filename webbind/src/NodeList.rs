@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NodeList class.
 /// [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NodeList {
 
 impl FromVal for NodeList {
     fn from_val(v: &Any) -> Self {
-        NodeList {
-            inner: Any::from_val(v),
-        }
+        NodeList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NodeList {
 
 impl AsMut<Any> for NodeList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NodeList> for Any {
@@ -63,11 +64,12 @@ impl From<&NodeList> for Any {
 
 jsbind::utils::impl_dyn_cast!(NodeList);
 
+
 impl NodeList {
     /// The item method.
     /// [`NodeList.item`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/item)
     pub fn item(&self, index: u32) -> Node {
-        self.inner.call("item", &[index.into()]).as_::<Node>()
+        self.inner.call("item", &[index.into(), ]).as_::<Node>()
     }
 }
 impl NodeList {
@@ -76,4 +78,5 @@ impl NodeList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }

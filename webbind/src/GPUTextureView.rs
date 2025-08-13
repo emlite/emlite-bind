@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUTextureView class.
 /// [`GPUTextureView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTextureView)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUTextureView {
 
 impl FromVal for GPUTextureView {
     fn from_val(v: &Any) -> Self {
-        GPUTextureView {
-            inner: Any::from_val(v),
-        }
+        GPUTextureView { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUTextureView {
 
 impl AsMut<Any> for GPUTextureView {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUTextureView> for Any {
@@ -62,6 +63,7 @@ impl From<&GPUTextureView> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(GPUTextureView);
+
 
 impl GPUTextureView {
     /// Getter of the `label` attribute.

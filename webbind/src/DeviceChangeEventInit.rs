@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DeviceChangeEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DeviceChangeEventInit {
 
 impl AsMut<Any> for DeviceChangeEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DeviceChangeEventInit> for Any {
@@ -61,9 +64,7 @@ impl From<&DeviceChangeEventInit> for Any {
 impl DeviceChangeEventInit {
     /// Getter of the `devices` attribute.
     pub fn devices(&self) -> TypedArray<MediaDeviceInfo> {
-        self.inner
-            .get("devices")
-            .as_::<TypedArray<MediaDeviceInfo>>()
+        self.inner.get("devices").as_::<TypedArray<MediaDeviceInfo>>()
     }
 
     /// Setter of the `devices` attribute.

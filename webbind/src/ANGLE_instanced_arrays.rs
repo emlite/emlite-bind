@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ANGLE_instanced_arrays class.
 /// [`ANGLE_instanced_arrays`](https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ANGLE_instanced_arrays {
 
 impl FromVal for ANGLE_instanced_arrays {
     fn from_val(v: &Any) -> Self {
-        ANGLE_instanced_arrays {
-            inner: Any::from_val(v),
-        }
+        ANGLE_instanced_arrays { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ANGLE_instanced_arrays {
 
 impl AsMut<Any> for ANGLE_instanced_arrays {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ANGLE_instanced_arrays> for Any {
@@ -63,55 +64,25 @@ impl From<&ANGLE_instanced_arrays> for Any {
 
 jsbind::utils::impl_dyn_cast!(ANGLE_instanced_arrays);
 
+
 impl ANGLE_instanced_arrays {
     /// The drawArraysInstancedANGLE method.
     /// [`ANGLE_instanced_arrays.drawArraysInstancedANGLE`](https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays/drawArraysInstancedANGLE)
-    pub fn draw_arrays_instanced_angle(
-        &self,
-        mode: &Any,
-        first: &Any,
-        count: &Any,
-        primcount: &Any,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "drawArraysInstancedANGLE",
-                &[mode.into(), first.into(), count.into(), primcount.into()],
-            )
-            .as_::<Undefined>()
+    pub fn draw_arrays_instanced_angle(&self, mode: &Any, first: &Any, count: &Any, primcount: &Any) -> Undefined {
+        self.inner.call("drawArraysInstancedANGLE", &[mode.into(), first.into(), count.into(), primcount.into(), ]).as_::<Undefined>()
     }
 }
 impl ANGLE_instanced_arrays {
     /// The drawElementsInstancedANGLE method.
     /// [`ANGLE_instanced_arrays.drawElementsInstancedANGLE`](https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays/drawElementsInstancedANGLE)
-    pub fn draw_elements_instanced_angle(
-        &self,
-        mode: &Any,
-        count: &Any,
-        type_: &Any,
-        offset: &Any,
-        primcount: &Any,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "drawElementsInstancedANGLE",
-                &[
-                    mode.into(),
-                    count.into(),
-                    type_.into(),
-                    offset.into(),
-                    primcount.into(),
-                ],
-            )
-            .as_::<Undefined>()
+    pub fn draw_elements_instanced_angle(&self, mode: &Any, count: &Any, type_: &Any, offset: &Any, primcount: &Any) -> Undefined {
+        self.inner.call("drawElementsInstancedANGLE", &[mode.into(), count.into(), type_.into(), offset.into(), primcount.into(), ]).as_::<Undefined>()
     }
 }
 impl ANGLE_instanced_arrays {
     /// The vertexAttribDivisorANGLE method.
     /// [`ANGLE_instanced_arrays.vertexAttribDivisorANGLE`](https://developer.mozilla.org/en-US/docs/Web/API/ANGLE_instanced_arrays/vertexAttribDivisorANGLE)
     pub fn vertex_attrib_divisor_angle(&self, index: &Any, divisor: &Any) -> Undefined {
-        self.inner
-            .call("vertexAttribDivisorANGLE", &[index.into(), divisor.into()])
-            .as_::<Undefined>()
+        self.inner.call("vertexAttribDivisorANGLE", &[index.into(), divisor.into(), ]).as_::<Undefined>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRLayerEvent class.
 /// [`XRLayerEvent`](https://developer.mozilla.org/en-US/docs/Web/API/XRLayerEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRLayerEvent {
 
 impl FromVal for XRLayerEvent {
     fn from_val(v: &Any) -> Self {
-        XRLayerEvent {
-            inner: Event::from_val(v),
-        }
+        XRLayerEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRLayerEvent {
 
 impl AsMut<Any> for XRLayerEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRLayerEvent> for Any {
@@ -63,15 +64,16 @@ impl From<&XRLayerEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRLayerEvent);
 
+
+
 impl XRLayerEvent {
     /// The `new XRLayerEvent(..)` constructor, creating a new XRLayerEvent instance
     pub fn new(type_: &JsString, event_init_dict: &XRLayerEventInit) -> XRLayerEvent {
         Self {
-            inner: Any::global("XRLayerEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("XRLayerEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl XRLayerEvent {
     /// Getter of the `layer` attribute.
@@ -79,4 +81,5 @@ impl XRLayerEvent {
     pub fn layer(&self) -> XRLayer {
         self.inner.get("layer").as_::<XRLayer>()
     }
+
 }

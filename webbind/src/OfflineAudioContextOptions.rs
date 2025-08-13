@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OfflineAudioContextOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for OfflineAudioContextOptions {
 
 impl AsMut<Any> for OfflineAudioContextOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OfflineAudioContextOptions> for Any {

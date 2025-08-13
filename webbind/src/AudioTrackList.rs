@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioTrackList class.
 /// [`AudioTrackList`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioTrackList {
 
 impl FromVal for AudioTrackList {
     fn from_val(v: &Any) -> Self {
-        AudioTrackList {
-            inner: EventTarget::from_val(v),
-        }
+        AudioTrackList { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioTrackList {
 
 impl AsMut<Any> for AudioTrackList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioTrackList> for Any {
@@ -63,20 +64,20 @@ impl From<&AudioTrackList> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioTrackList);
 
+
 impl AudioTrackList {
     /// Getter of the `length` attribute.
     /// [`AudioTrackList.length`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl AudioTrackList {
     /// The getTrackById method.
     /// [`AudioTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList/getTrackById)
     pub fn get_track_by_id(&self, id: &JsString) -> AudioTrack {
-        self.inner
-            .call("getTrackById", &[id.into()])
-            .as_::<AudioTrack>()
+        self.inner.call("getTrackById", &[id.into(), ]).as_::<AudioTrack>()
     }
 }
 impl AudioTrackList {

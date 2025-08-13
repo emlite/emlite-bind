@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EventSource class.
 /// [`EventSource`](https://developer.mozilla.org/en-US/docs/Web/API/EventSource)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct EventSource {
 
 impl FromVal for EventSource {
     fn from_val(v: &Any) -> Self {
-        EventSource {
-            inner: EventTarget::from_val(v),
-        }
+        EventSource { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for EventSource {
 
 impl AsMut<Any> for EventSource {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EventSource> for Any {
@@ -63,24 +64,23 @@ impl From<&EventSource> for Any {
 
 jsbind::utils::impl_dyn_cast!(EventSource);
 
+
+
 impl EventSource {
     /// The `new EventSource(..)` constructor, creating a new EventSource instance
     pub fn new0(url: &JsString) -> EventSource {
         Self {
-            inner: Any::global("EventSource")
-                .new(&[url.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("EventSource").new(&[url.into()]).as_::<EventTarget>(),
         }
     }
 
     /// The `new EventSource(..)` constructor, creating a new EventSource instance
     pub fn new1(url: &JsString, event_source_init_dict: &EventSourceInit) -> EventSource {
         Self {
-            inner: Any::global("EventSource")
-                .new(&[url.into(), event_source_init_dict.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("EventSource").new(&[url.into(), event_source_init_dict.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl EventSource {
     /// Getter of the `url` attribute.
@@ -88,6 +88,7 @@ impl EventSource {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
+
 }
 impl EventSource {
     /// Getter of the `withCredentials` attribute.
@@ -95,6 +96,7 @@ impl EventSource {
     pub fn with_credentials(&self) -> bool {
         self.inner.get("withCredentials").as_::<bool>()
     }
+
 }
 impl EventSource {
     /// Getter of the `readyState` attribute.
@@ -102,6 +104,7 @@ impl EventSource {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
+
 }
 impl EventSource {
     /// Getter of the `onopen` attribute.
@@ -145,7 +148,7 @@ impl EventSource {
 impl EventSource {
     /// The close method.
     /// [`EventSource.close`](https://developer.mozilla.org/en-US/docs/Web/API/EventSource/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

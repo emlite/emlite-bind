@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TextFormatInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for TextFormatInit {
 
 impl AsMut<Any> for TextFormatInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TextFormatInit> for Any {
@@ -94,9 +97,7 @@ impl TextFormatInit {
 impl TextFormatInit {
     /// Getter of the `underlineThickness` attribute.
     pub fn underline_thickness(&self) -> UnderlineThickness {
-        self.inner
-            .get("underlineThickness")
-            .as_::<UnderlineThickness>()
+        self.inner.get("underlineThickness").as_::<UnderlineThickness>()
     }
 
     /// Setter of the `underlineThickness` attribute.

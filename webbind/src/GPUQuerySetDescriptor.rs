@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUQuerySetDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUQuerySetDescriptor {
 
 impl AsMut<Any> for GPUQuerySetDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUQuerySetDescriptor> for Any {

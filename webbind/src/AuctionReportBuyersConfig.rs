@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AuctionReportBuyersConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for AuctionReportBuyersConfig {
 
 impl AsMut<Any> for AuctionReportBuyersConfig {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AuctionReportBuyersConfig> for Any {

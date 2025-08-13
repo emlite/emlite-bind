@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ProcessingInstruction class.
 /// [`ProcessingInstruction`](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ProcessingInstruction {
 
 impl FromVal for ProcessingInstruction {
     fn from_val(v: &Any) -> Self {
-        ProcessingInstruction {
-            inner: CharacterData::from_val(v),
-        }
+        ProcessingInstruction { inner: CharacterData::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ProcessingInstruction {
 
 impl AsMut<Any> for ProcessingInstruction {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ProcessingInstruction> for Any {
@@ -63,12 +64,14 @@ impl From<&ProcessingInstruction> for Any {
 
 jsbind::utils::impl_dyn_cast!(ProcessingInstruction);
 
+
 impl ProcessingInstruction {
     /// Getter of the `target` attribute.
     /// [`ProcessingInstruction.target`](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction/target)
     pub fn target(&self) -> JsString {
         self.inner.get("target").as_::<JsString>()
     }
+
 }
 impl ProcessingInstruction {
     /// Getter of the `sheet` attribute.
@@ -76,4 +79,5 @@ impl ProcessingInstruction {
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
     }
+
 }

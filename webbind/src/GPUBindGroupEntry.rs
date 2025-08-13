@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUBindGroupEntry dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUBindGroupEntry {
 
 impl AsMut<Any> for GPUBindGroupEntry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUBindGroupEntry> for Any {

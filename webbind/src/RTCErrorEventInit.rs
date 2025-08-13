@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCErrorEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCErrorEventInit {
 
 impl AsMut<Any> for RTCErrorEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCErrorEventInit> for Any {

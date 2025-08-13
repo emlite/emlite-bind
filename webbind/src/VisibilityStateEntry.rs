@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The VisibilityStateEntry class.
 /// [`VisibilityStateEntry`](https://developer.mozilla.org/en-US/docs/Web/API/VisibilityStateEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct VisibilityStateEntry {
 
 impl FromVal for VisibilityStateEntry {
     fn from_val(v: &Any) -> Self {
-        VisibilityStateEntry {
-            inner: PerformanceEntry::from_val(v),
-        }
+        VisibilityStateEntry { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for VisibilityStateEntry {
 
 impl AsMut<Any> for VisibilityStateEntry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<VisibilityStateEntry> for Any {
@@ -63,12 +64,14 @@ impl From<&VisibilityStateEntry> for Any {
 
 jsbind::utils::impl_dyn_cast!(VisibilityStateEntry);
 
+
 impl VisibilityStateEntry {
     /// Getter of the `name` attribute.
     /// [`VisibilityStateEntry.name`](https://developer.mozilla.org/en-US/docs/Web/API/VisibilityStateEntry/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl VisibilityStateEntry {
     /// Getter of the `entryType` attribute.
@@ -76,6 +79,7 @@ impl VisibilityStateEntry {
     pub fn entry_type(&self) -> JsString {
         self.inner.get("entryType").as_::<JsString>()
     }
+
 }
 impl VisibilityStateEntry {
     /// Getter of the `startTime` attribute.
@@ -83,6 +87,7 @@ impl VisibilityStateEntry {
     pub fn start_time(&self) -> Any {
         self.inner.get("startTime").as_::<Any>()
     }
+
 }
 impl VisibilityStateEntry {
     /// Getter of the `duration` attribute.
@@ -90,4 +95,5 @@ impl VisibilityStateEntry {
     pub fn duration(&self) -> u32 {
         self.inner.get("duration").as_::<u32>()
     }
+
 }

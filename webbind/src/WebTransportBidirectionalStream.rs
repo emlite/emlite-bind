@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebTransportBidirectionalStream class.
 /// [`WebTransportBidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportBidirectionalStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebTransportBidirectionalStream {
 
 impl FromVal for WebTransportBidirectionalStream {
     fn from_val(v: &Any) -> Self {
-        WebTransportBidirectionalStream {
-            inner: Any::from_val(v),
-        }
+        WebTransportBidirectionalStream { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebTransportBidirectionalStream {
 
 impl AsMut<Any> for WebTransportBidirectionalStream {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebTransportBidirectionalStream> for Any {
@@ -63,14 +64,14 @@ impl From<&WebTransportBidirectionalStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebTransportBidirectionalStream);
 
+
 impl WebTransportBidirectionalStream {
     /// Getter of the `readable` attribute.
     /// [`WebTransportBidirectionalStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportBidirectionalStream/readable)
     pub fn readable(&self) -> WebTransportReceiveStream {
-        self.inner
-            .get("readable")
-            .as_::<WebTransportReceiveStream>()
+        self.inner.get("readable").as_::<WebTransportReceiveStream>()
     }
+
 }
 impl WebTransportBidirectionalStream {
     /// Getter of the `writable` attribute.
@@ -78,4 +79,5 @@ impl WebTransportBidirectionalStream {
     pub fn writable(&self) -> WebTransportSendStream {
         self.inner.get("writable").as_::<WebTransportSendStream>()
     }
+
 }

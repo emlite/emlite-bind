@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRWebGLDepthInformation class.
 /// [`XRWebGLDepthInformation`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLDepthInformation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRWebGLDepthInformation {
 
 impl FromVal for XRWebGLDepthInformation {
     fn from_val(v: &Any) -> Self {
-        XRWebGLDepthInformation {
-            inner: XRDepthInformation::from_val(v),
-        }
+        XRWebGLDepthInformation { inner: XRDepthInformation::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRWebGLDepthInformation {
 
 impl AsMut<Any> for XRWebGLDepthInformation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRWebGLDepthInformation> for Any {
@@ -63,12 +64,14 @@ impl From<&XRWebGLDepthInformation> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRWebGLDepthInformation);
 
+
 impl XRWebGLDepthInformation {
     /// Getter of the `texture` attribute.
     /// [`XRWebGLDepthInformation.texture`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLDepthInformation/texture)
     pub fn texture(&self) -> WebGLTexture {
         self.inner.get("texture").as_::<WebGLTexture>()
     }
+
 }
 impl XRWebGLDepthInformation {
     /// Getter of the `textureType` attribute.
@@ -76,6 +79,7 @@ impl XRWebGLDepthInformation {
     pub fn texture_type(&self) -> XRTextureType {
         self.inner.get("textureType").as_::<XRTextureType>()
     }
+
 }
 impl XRWebGLDepthInformation {
     /// Getter of the `imageIndex` attribute.
@@ -83,4 +87,5 @@ impl XRWebGLDepthInformation {
     pub fn image_index(&self) -> u32 {
         self.inner.get("imageIndex").as_::<u32>()
     }
+
 }

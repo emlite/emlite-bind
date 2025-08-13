@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRWebGLSubImage class.
 /// [`XRWebGLSubImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLSubImage)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRWebGLSubImage {
 
 impl FromVal for XRWebGLSubImage {
     fn from_val(v: &Any) -> Self {
-        XRWebGLSubImage {
-            inner: XRSubImage::from_val(v),
-        }
+        XRWebGLSubImage { inner: XRSubImage::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRWebGLSubImage {
 
 impl AsMut<Any> for XRWebGLSubImage {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRWebGLSubImage> for Any {
@@ -63,12 +64,14 @@ impl From<&XRWebGLSubImage> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRWebGLSubImage);
 
+
 impl XRWebGLSubImage {
     /// Getter of the `colorTexture` attribute.
     /// [`XRWebGLSubImage.colorTexture`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLSubImage/colorTexture)
     pub fn color_texture(&self) -> WebGLTexture {
         self.inner.get("colorTexture").as_::<WebGLTexture>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `depthStencilTexture` attribute.
@@ -76,6 +79,7 @@ impl XRWebGLSubImage {
     pub fn depth_stencil_texture(&self) -> WebGLTexture {
         self.inner.get("depthStencilTexture").as_::<WebGLTexture>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `motionVectorTexture` attribute.
@@ -83,6 +87,7 @@ impl XRWebGLSubImage {
     pub fn motion_vector_texture(&self) -> WebGLTexture {
         self.inner.get("motionVectorTexture").as_::<WebGLTexture>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `imageIndex` attribute.
@@ -90,6 +95,7 @@ impl XRWebGLSubImage {
     pub fn image_index(&self) -> u32 {
         self.inner.get("imageIndex").as_::<u32>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `colorTextureWidth` attribute.
@@ -97,6 +103,7 @@ impl XRWebGLSubImage {
     pub fn color_texture_width(&self) -> u32 {
         self.inner.get("colorTextureWidth").as_::<u32>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `colorTextureHeight` attribute.
@@ -104,6 +111,7 @@ impl XRWebGLSubImage {
     pub fn color_texture_height(&self) -> u32 {
         self.inner.get("colorTextureHeight").as_::<u32>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `depthStencilTextureWidth` attribute.
@@ -111,6 +119,7 @@ impl XRWebGLSubImage {
     pub fn depth_stencil_texture_width(&self) -> u32 {
         self.inner.get("depthStencilTextureWidth").as_::<u32>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `depthStencilTextureHeight` attribute.
@@ -118,6 +127,7 @@ impl XRWebGLSubImage {
     pub fn depth_stencil_texture_height(&self) -> u32 {
         self.inner.get("depthStencilTextureHeight").as_::<u32>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `motionVectorTextureWidth` attribute.
@@ -125,6 +135,7 @@ impl XRWebGLSubImage {
     pub fn motion_vector_texture_width(&self) -> u32 {
         self.inner.get("motionVectorTextureWidth").as_::<u32>()
     }
+
 }
 impl XRWebGLSubImage {
     /// Getter of the `motionVectorTextureHeight` attribute.
@@ -132,4 +143,5 @@ impl XRWebGLSubImage {
     pub fn motion_vector_texture_height(&self) -> u32 {
         self.inner.get("motionVectorTextureHeight").as_::<u32>()
     }
+
 }

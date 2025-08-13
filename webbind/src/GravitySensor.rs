@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GravitySensor class.
 /// [`GravitySensor`](https://developer.mozilla.org/en-US/docs/Web/API/GravitySensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GravitySensor {
 
 impl FromVal for GravitySensor {
     fn from_val(v: &Any) -> Self {
-        GravitySensor {
-            inner: Accelerometer::from_val(v),
-        }
+        GravitySensor { inner: Accelerometer::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GravitySensor {
 
 impl AsMut<Any> for GravitySensor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GravitySensor> for Any {
@@ -63,6 +64,8 @@ impl From<&GravitySensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(GravitySensor);
 
+
+
 impl GravitySensor {
     /// The `new GravitySensor(..)` constructor, creating a new GravitySensor instance
     pub fn new0() -> GravitySensor {
@@ -74,9 +77,8 @@ impl GravitySensor {
     /// The `new GravitySensor(..)` constructor, creating a new GravitySensor instance
     pub fn new1(options: &AccelerometerSensorOptions) -> GravitySensor {
         Self {
-            inner: Any::global("GravitySensor")
-                .new(&[options.into()])
-                .as_::<Accelerometer>(),
+            inner: Any::global("GravitySensor").new(&[options.into()]).as_::<Accelerometer>(),
         }
     }
+
 }

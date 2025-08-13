@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUSupportedFeatures class.
 /// [`GPUSupportedFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/GPUSupportedFeatures)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUSupportedFeatures {
 
 impl FromVal for GPUSupportedFeatures {
     fn from_val(v: &Any) -> Self {
-        GPUSupportedFeatures {
-            inner: Any::from_val(v),
-        }
+        GPUSupportedFeatures { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUSupportedFeatures {
 
 impl AsMut<Any> for GPUSupportedFeatures {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUSupportedFeatures> for Any {
@@ -62,3 +63,5 @@ impl From<&GPUSupportedFeatures> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(GPUSupportedFeatures);
+
+

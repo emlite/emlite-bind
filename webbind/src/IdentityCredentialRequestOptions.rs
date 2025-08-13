@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdentityCredentialRequestOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IdentityCredentialRequestOptions {
 
 impl AsMut<Any> for IdentityCredentialRequestOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdentityCredentialRequestOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&IdentityCredentialRequestOptions> for Any {
 impl IdentityCredentialRequestOptions {
     /// Getter of the `providers` attribute.
     pub fn providers(&self) -> TypedArray<IdentityProviderRequestOptions> {
-        self.inner
-            .get("providers")
-            .as_::<TypedArray<IdentityProviderRequestOptions>>()
+        self.inner.get("providers").as_::<TypedArray<IdentityProviderRequestOptions>>()
     }
 
     /// Setter of the `providers` attribute.
@@ -74,9 +75,7 @@ impl IdentityCredentialRequestOptions {
 impl IdentityCredentialRequestOptions {
     /// Getter of the `context` attribute.
     pub fn context(&self) -> IdentityCredentialRequestOptionsContext {
-        self.inner
-            .get("context")
-            .as_::<IdentityCredentialRequestOptionsContext>()
+        self.inner.get("context").as_::<IdentityCredentialRequestOptionsContext>()
     }
 
     /// Setter of the `context` attribute.
@@ -87,9 +86,7 @@ impl IdentityCredentialRequestOptions {
 impl IdentityCredentialRequestOptions {
     /// Getter of the `mode` attribute.
     pub fn mode(&self) -> IdentityCredentialRequestOptionsMode {
-        self.inner
-            .get("mode")
-            .as_::<IdentityCredentialRequestOptionsMode>()
+        self.inner.get("mode").as_::<IdentityCredentialRequestOptionsMode>()
     }
 
     /// Setter of the `mode` attribute.

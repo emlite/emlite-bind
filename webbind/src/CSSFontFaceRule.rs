@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSFontFaceRule class.
 /// [`CSSFontFaceRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFaceRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSFontFaceRule {
 
 impl FromVal for CSSFontFaceRule {
     fn from_val(v: &Any) -> Self {
-        CSSFontFaceRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSFontFaceRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSFontFaceRule {
 
 impl AsMut<Any> for CSSFontFaceRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSFontFaceRule> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSFontFaceRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSFontFaceRule);
 
+
 impl CSSFontFaceRule {
     /// Getter of the `style` attribute.
     /// [`CSSFontFaceRule.style`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFaceRule/style)
     pub fn style(&self) -> CSSFontFaceDescriptors {
         self.inner.get("style").as_::<CSSFontFaceDescriptors>()
     }
+
 }

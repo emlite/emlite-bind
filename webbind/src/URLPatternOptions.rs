@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The URLPatternOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for URLPatternOptions {
 
 impl AsMut<Any> for URLPatternOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<URLPatternOptions> for Any {

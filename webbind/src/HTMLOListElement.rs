@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLOListElement class.
 /// [`HTMLOListElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOListElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLOListElement {
 
 impl FromVal for HTMLOListElement {
     fn from_val(v: &Any) -> Self {
-        HTMLOListElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLOListElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLOListElement {
 
 impl AsMut<Any> for HTMLOListElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLOListElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLOListElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLOListElement);
 
+
+
 impl HTMLOListElement {
     /// The `new HTMLOListElement(..)` constructor, creating a new HTMLOListElement instance
     pub fn new() -> HTMLOListElement {
         Self {
-            inner: Any::global("HTMLOListElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLOListElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLOListElement {
     /// Getter of the `reversed` attribute.

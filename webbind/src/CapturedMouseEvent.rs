@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CapturedMouseEvent class.
 /// [`CapturedMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CapturedMouseEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CapturedMouseEvent {
 
 impl FromVal for CapturedMouseEvent {
     fn from_val(v: &Any) -> Self {
-        CapturedMouseEvent {
-            inner: Event::from_val(v),
-        }
+        CapturedMouseEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CapturedMouseEvent {
 
 impl AsMut<Any> for CapturedMouseEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CapturedMouseEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&CapturedMouseEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CapturedMouseEvent);
 
+
+
 impl CapturedMouseEvent {
     /// The `new CapturedMouseEvent(..)` constructor, creating a new CapturedMouseEvent instance
     pub fn new0(type_: &JsString) -> CapturedMouseEvent {
         Self {
-            inner: Any::global("CapturedMouseEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("CapturedMouseEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new CapturedMouseEvent(..)` constructor, creating a new CapturedMouseEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &CapturedMouseEventInit) -> CapturedMouseEvent {
         Self {
-            inner: Any::global("CapturedMouseEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("CapturedMouseEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl CapturedMouseEvent {
     /// Getter of the `surfaceX` attribute.
@@ -88,6 +88,7 @@ impl CapturedMouseEvent {
     pub fn surface_x(&self) -> i32 {
         self.inner.get("surfaceX").as_::<i32>()
     }
+
 }
 impl CapturedMouseEvent {
     /// Getter of the `surfaceY` attribute.
@@ -95,4 +96,5 @@ impl CapturedMouseEvent {
     pub fn surface_y(&self) -> i32 {
         self.inner.get("surfaceY").as_::<i32>()
     }
+
 }

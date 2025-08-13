@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSCounterStyleRule class.
 /// [`CSSCounterStyleRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSCounterStyleRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSCounterStyleRule {
 
 impl FromVal for CSSCounterStyleRule {
     fn from_val(v: &Any) -> Self {
-        CSSCounterStyleRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSCounterStyleRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSCounterStyleRule {
 
 impl AsMut<Any> for CSSCounterStyleRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSCounterStyleRule> for Any {
@@ -62,6 +63,7 @@ impl From<&CSSCounterStyleRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSCounterStyleRule);
+
 
 impl CSSCounterStyleRule {
     /// Getter of the `name` attribute.

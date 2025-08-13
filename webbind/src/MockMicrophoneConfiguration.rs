@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MockMicrophoneConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MockMicrophoneConfiguration {
 
 impl AsMut<Any> for MockMicrophoneConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MockMicrophoneConfiguration> for Any {

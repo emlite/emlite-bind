@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FenceEvent dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for FenceEvent {
 
 impl AsMut<Any> for FenceEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FenceEvent> for Any {
@@ -83,9 +86,7 @@ impl FenceEvent {
 impl FenceEvent {
     /// Getter of the `destination` attribute.
     pub fn destination(&self) -> TypedArray<FenceReportingDestination> {
-        self.inner
-            .get("destination")
-            .as_::<TypedArray<FenceReportingDestination>>()
+        self.inner.get("destination").as_::<TypedArray<FenceReportingDestination>>()
     }
 
     /// Setter of the `destination` attribute.

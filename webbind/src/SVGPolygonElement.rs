@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGPolygonElement class.
 /// [`SVGPolygonElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolygonElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGPolygonElement {
 
 impl FromVal for SVGPolygonElement {
     fn from_val(v: &Any) -> Self {
-        SVGPolygonElement {
-            inner: SVGGeometryElement::from_val(v),
-        }
+        SVGPolygonElement { inner: SVGGeometryElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGPolygonElement {
 
 impl AsMut<Any> for SVGPolygonElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGPolygonElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGPolygonElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGPolygonElement);
 
+
 impl SVGPolygonElement {
     /// Getter of the `points` attribute.
     /// [`SVGPolygonElement.points`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolygonElement/points)
     pub fn points(&self) -> SVGPointList {
         self.inner.get("points").as_::<SVGPointList>()
     }
+
 }
 impl SVGPolygonElement {
     /// Getter of the `animatedPoints` attribute.
@@ -76,4 +79,5 @@ impl SVGPolygonElement {
     pub fn animated_points(&self) -> SVGPointList {
         self.inner.get("animatedPoints").as_::<SVGPointList>()
     }
+
 }

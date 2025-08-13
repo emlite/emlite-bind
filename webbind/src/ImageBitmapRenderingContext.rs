@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ImageBitmapRenderingContext class.
 /// [`ImageBitmapRenderingContext`](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmapRenderingContext)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ImageBitmapRenderingContext {
 
 impl FromVal for ImageBitmapRenderingContext {
     fn from_val(v: &Any) -> Self {
-        ImageBitmapRenderingContext {
-            inner: Any::from_val(v),
-        }
+        ImageBitmapRenderingContext { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ImageBitmapRenderingContext {
 
 impl AsMut<Any> for ImageBitmapRenderingContext {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ImageBitmapRenderingContext> for Any {
@@ -63,19 +64,19 @@ impl From<&ImageBitmapRenderingContext> for Any {
 
 jsbind::utils::impl_dyn_cast!(ImageBitmapRenderingContext);
 
+
 impl ImageBitmapRenderingContext {
     /// Getter of the `canvas` attribute.
     /// [`ImageBitmapRenderingContext.canvas`](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmapRenderingContext/canvas)
     pub fn canvas(&self) -> Any {
         self.inner.get("canvas").as_::<Any>()
     }
+
 }
 impl ImageBitmapRenderingContext {
     /// The transferFromImageBitmap method.
     /// [`ImageBitmapRenderingContext.transferFromImageBitmap`](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmapRenderingContext/transferFromImageBitmap)
     pub fn transfer_from_image_bitmap(&self, bitmap: &ImageBitmap) -> Undefined {
-        self.inner
-            .call("transferFromImageBitmap", &[bitmap.into()])
-            .as_::<Undefined>()
+        self.inner.call("transferFromImageBitmap", &[bitmap.into(), ]).as_::<Undefined>()
     }
 }

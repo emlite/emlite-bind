@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RouterCondition dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RouterCondition {
 
 impl AsMut<Any> for RouterCondition {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RouterCondition> for Any {
@@ -94,9 +97,7 @@ impl RouterCondition {
 impl RouterCondition {
     /// Getter of the `requestDestination` attribute.
     pub fn request_destination(&self) -> RequestDestination {
-        self.inner
-            .get("requestDestination")
-            .as_::<RequestDestination>()
+        self.inner.get("requestDestination").as_::<RequestDestination>()
     }
 
     /// Setter of the `requestDestination` attribute.

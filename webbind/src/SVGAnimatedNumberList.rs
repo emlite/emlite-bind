@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAnimatedNumberList class.
 /// [`SVGAnimatedNumberList`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAnimatedNumberList {
 
 impl FromVal for SVGAnimatedNumberList {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedNumberList {
-            inner: Any::from_val(v),
-        }
+        SVGAnimatedNumberList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAnimatedNumberList {
 
 impl AsMut<Any> for SVGAnimatedNumberList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAnimatedNumberList> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGAnimatedNumberList> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedNumberList);
 
+
 impl SVGAnimatedNumberList {
     /// Getter of the `baseVal` attribute.
     /// [`SVGAnimatedNumberList.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList/baseVal)
     pub fn base_val(&self) -> SVGNumberList {
         self.inner.get("baseVal").as_::<SVGNumberList>()
     }
+
 }
 impl SVGAnimatedNumberList {
     /// Getter of the `animVal` attribute.
@@ -76,4 +79,5 @@ impl SVGAnimatedNumberList {
     pub fn anim_val(&self) -> SVGNumberList {
         self.inner.get("animVal").as_::<SVGNumberList>()
     }
+
 }

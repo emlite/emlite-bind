@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRView class.
 /// [`XRView`](https://developer.mozilla.org/en-US/docs/Web/API/XRView)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRView {
 
 impl FromVal for XRView {
     fn from_val(v: &Any) -> Self {
-        XRView {
-            inner: Any::from_val(v),
-        }
+        XRView { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRView {
 
 impl AsMut<Any> for XRView {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRView> for Any {
@@ -63,12 +64,14 @@ impl From<&XRView> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRView);
 
+
 impl XRView {
     /// Getter of the `eye` attribute.
     /// [`XRView.eye`](https://developer.mozilla.org/en-US/docs/Web/API/XRView/eye)
     pub fn eye(&self) -> XREye {
         self.inner.get("eye").as_::<XREye>()
     }
+
 }
 impl XRView {
     /// Getter of the `recommendedViewportScale` attribute.
@@ -76,14 +79,13 @@ impl XRView {
     pub fn recommended_viewport_scale(&self) -> f64 {
         self.inner.get("recommendedViewportScale").as_::<f64>()
     }
+
 }
 impl XRView {
     /// The requestViewportScale method.
     /// [`XRView.requestViewportScale`](https://developer.mozilla.org/en-US/docs/Web/API/XRView/requestViewportScale)
     pub fn request_viewport_scale(&self, scale: f64) -> Undefined {
-        self.inner
-            .call("requestViewportScale", &[scale.into()])
-            .as_::<Undefined>()
+        self.inner.call("requestViewportScale", &[scale.into(), ]).as_::<Undefined>()
     }
 }
 impl XRView {
@@ -92,6 +94,7 @@ impl XRView {
     pub fn camera(&self) -> XRCamera {
         self.inner.get("camera").as_::<XRCamera>()
     }
+
 }
 impl XRView {
     /// Getter of the `isFirstPersonObserver` attribute.
@@ -99,6 +102,7 @@ impl XRView {
     pub fn is_first_person_observer(&self) -> bool {
         self.inner.get("isFirstPersonObserver").as_::<bool>()
     }
+
 }
 impl XRView {
     /// Getter of the `projectionMatrix` attribute.
@@ -106,6 +110,7 @@ impl XRView {
     pub fn projection_matrix(&self) -> Float32Array {
         self.inner.get("projectionMatrix").as_::<Float32Array>()
     }
+
 }
 impl XRView {
     /// Getter of the `transform` attribute.
@@ -113,4 +118,5 @@ impl XRView {
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
+
 }

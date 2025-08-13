@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SharedWorkerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SharedWorkerOptions {
 
 impl AsMut<Any> for SharedWorkerOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SharedWorkerOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&SharedWorkerOptions> for Any {
 impl SharedWorkerOptions {
     /// Getter of the `sameSiteCookies` attribute.
     pub fn same_site_cookies(&self) -> SameSiteCookiesType {
-        self.inner
-            .get("sameSiteCookies")
-            .as_::<SameSiteCookiesType>()
+        self.inner.get("sameSiteCookies").as_::<SameSiteCookiesType>()
     }
 
     /// Setter of the `sameSiteCookies` attribute.

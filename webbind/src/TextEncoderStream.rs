@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TextEncoderStream class.
 /// [`TextEncoderStream`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TextEncoderStream {
 
 impl FromVal for TextEncoderStream {
     fn from_val(v: &Any) -> Self {
-        TextEncoderStream {
-            inner: Any::from_val(v),
-        }
+        TextEncoderStream { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TextEncoderStream {
 
 impl AsMut<Any> for TextEncoderStream {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TextEncoderStream> for Any {
@@ -63,6 +64,8 @@ impl From<&TextEncoderStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextEncoderStream);
 
+
+
 impl TextEncoderStream {
     /// The `new TextEncoderStream(..)` constructor, creating a new TextEncoderStream instance
     pub fn new() -> TextEncoderStream {
@@ -70,6 +73,7 @@ impl TextEncoderStream {
             inner: Any::global("TextEncoderStream").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl TextEncoderStream {
     /// Getter of the `encoding` attribute.
@@ -77,6 +81,7 @@ impl TextEncoderStream {
     pub fn encoding(&self) -> JsString {
         self.inner.get("encoding").as_::<JsString>()
     }
+
 }
 impl TextEncoderStream {
     /// Getter of the `readable` attribute.
@@ -84,6 +89,7 @@ impl TextEncoderStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
+
 }
 impl TextEncoderStream {
     /// Getter of the `writable` attribute.
@@ -91,4 +97,5 @@ impl TextEncoderStream {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
+
 }

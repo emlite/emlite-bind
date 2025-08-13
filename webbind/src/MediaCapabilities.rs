@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaCapabilities class.
 /// [`MediaCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaCapabilities {
 
 impl FromVal for MediaCapabilities {
     fn from_val(v: &Any) -> Self {
-        MediaCapabilities {
-            inner: Any::from_val(v),
-        }
+        MediaCapabilities { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaCapabilities {
 
 impl AsMut<Any> for MediaCapabilities {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaCapabilities> for Any {
@@ -63,27 +64,18 @@ impl From<&MediaCapabilities> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaCapabilities);
 
+
 impl MediaCapabilities {
     /// The decodingInfo method.
     /// [`MediaCapabilities.decodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities/decodingInfo)
-    pub fn decoding_info(
-        &self,
-        configuration: &MediaDecodingConfiguration,
-    ) -> Promise<MediaCapabilitiesDecodingInfo> {
-        self.inner
-            .call("decodingInfo", &[configuration.into()])
-            .as_::<Promise<MediaCapabilitiesDecodingInfo>>()
+    pub fn decoding_info(&self, configuration: &MediaDecodingConfiguration) -> Promise<MediaCapabilitiesDecodingInfo> {
+        self.inner.call("decodingInfo", &[configuration.into(), ]).as_::<Promise<MediaCapabilitiesDecodingInfo>>()
     }
 }
 impl MediaCapabilities {
     /// The encodingInfo method.
     /// [`MediaCapabilities.encodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities/encodingInfo)
-    pub fn encoding_info(
-        &self,
-        configuration: &MediaEncodingConfiguration,
-    ) -> Promise<MediaCapabilitiesEncodingInfo> {
-        self.inner
-            .call("encodingInfo", &[configuration.into()])
-            .as_::<Promise<MediaCapabilitiesEncodingInfo>>()
+    pub fn encoding_info(&self, configuration: &MediaEncodingConfiguration) -> Promise<MediaCapabilitiesEncodingInfo> {
+        self.inner.call("encodingInfo", &[configuration.into(), ]).as_::<Promise<MediaCapabilitiesEncodingInfo>>()
     }
 }

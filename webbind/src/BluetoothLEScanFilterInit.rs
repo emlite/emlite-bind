@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothLEScanFilterInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BluetoothLEScanFilterInit {
 
 impl AsMut<Any> for BluetoothLEScanFilterInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothLEScanFilterInit> for Any {
@@ -94,25 +97,18 @@ impl BluetoothLEScanFilterInit {
 impl BluetoothLEScanFilterInit {
     /// Getter of the `manufacturerData` attribute.
     pub fn manufacturer_data(&self) -> TypedArray<BluetoothManufacturerDataFilterInit> {
-        self.inner
-            .get("manufacturerData")
-            .as_::<TypedArray<BluetoothManufacturerDataFilterInit>>()
+        self.inner.get("manufacturerData").as_::<TypedArray<BluetoothManufacturerDataFilterInit>>()
     }
 
     /// Setter of the `manufacturerData` attribute.
-    pub fn set_manufacturer_data(
-        &mut self,
-        value: &TypedArray<BluetoothManufacturerDataFilterInit>,
-    ) {
+    pub fn set_manufacturer_data(&mut self, value: &TypedArray<BluetoothManufacturerDataFilterInit>) {
         self.inner.set("manufacturerData", value);
     }
 }
 impl BluetoothLEScanFilterInit {
     /// Getter of the `serviceData` attribute.
     pub fn service_data(&self) -> TypedArray<BluetoothServiceDataFilterInit> {
-        self.inner
-            .get("serviceData")
-            .as_::<TypedArray<BluetoothServiceDataFilterInit>>()
+        self.inner.get("serviceData").as_::<TypedArray<BluetoothServiceDataFilterInit>>()
     }
 
     /// Setter of the `serviceData` attribute.

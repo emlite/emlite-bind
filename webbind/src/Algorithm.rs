@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Algorithm dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for Algorithm {
 
 impl AsMut<Any> for Algorithm {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Algorithm> for Any {

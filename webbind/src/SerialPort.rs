@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SerialPort class.
 /// [`SerialPort`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SerialPort {
 
 impl FromVal for SerialPort {
     fn from_val(v: &Any) -> Self {
-        SerialPort {
-            inner: EventTarget::from_val(v),
-        }
+        SerialPort { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SerialPort {
 
 impl AsMut<Any> for SerialPort {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SerialPort> for Any {
@@ -62,6 +63,7 @@ impl From<&SerialPort> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SerialPort);
+
 
 impl SerialPort {
     /// Getter of the `onconnect` attribute.
@@ -95,6 +97,7 @@ impl SerialPort {
     pub fn connected(&self) -> bool {
         self.inner.get("connected").as_::<bool>()
     }
+
 }
 impl SerialPort {
     /// Getter of the `readable` attribute.
@@ -102,6 +105,7 @@ impl SerialPort {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
+
 }
 impl SerialPort {
     /// Getter of the `writable` attribute.
@@ -109,11 +113,12 @@ impl SerialPort {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
+
 }
 impl SerialPort {
     /// The getInfo method.
     /// [`SerialPort.getInfo`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/getInfo)
-    pub fn get_info(&self) -> SerialPortInfo {
+    pub fn get_info(&self, ) -> SerialPortInfo {
         self.inner.call("getInfo", &[]).as_::<SerialPortInfo>()
     }
 }
@@ -121,47 +126,39 @@ impl SerialPort {
     /// The open method.
     /// [`SerialPort.open`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/open)
     pub fn open(&self, options: &SerialOptions) -> Promise<Undefined> {
-        self.inner
-            .call("open", &[options.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("open", &[options.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl SerialPort {
     /// The setSignals method.
     /// [`SerialPort.setSignals`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/setSignals)
-    pub fn set_signals0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("setSignals", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn set_signals0(&self, ) -> Promise<Undefined> {
+        self.inner.call("setSignals", &[]).as_::<Promise<Undefined>>()
     }
     /// The setSignals method.
     /// [`SerialPort.setSignals`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/setSignals)
     pub fn set_signals1(&self, signals: &SerialOutputSignals) -> Promise<Undefined> {
-        self.inner
-            .call("setSignals", &[signals.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("setSignals", &[signals.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl SerialPort {
     /// The getSignals method.
     /// [`SerialPort.getSignals`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/getSignals)
-    pub fn get_signals(&self) -> Promise<SerialInputSignals> {
-        self.inner
-            .call("getSignals", &[])
-            .as_::<Promise<SerialInputSignals>>()
+    pub fn get_signals(&self, ) -> Promise<SerialInputSignals> {
+        self.inner.call("getSignals", &[]).as_::<Promise<SerialInputSignals>>()
     }
 }
 impl SerialPort {
     /// The close method.
     /// [`SerialPort.close`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/close)
-    pub fn close(&self) -> Promise<Undefined> {
+    pub fn close(&self, ) -> Promise<Undefined> {
         self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl SerialPort {
     /// The forget method.
     /// [`SerialPort.forget`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/forget)
-    pub fn forget(&self) -> Promise<Undefined> {
+    pub fn forget(&self, ) -> Promise<Undefined> {
         self.inner.call("forget", &[]).as_::<Promise<Undefined>>()
     }
 }

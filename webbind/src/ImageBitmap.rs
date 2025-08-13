@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ImageBitmap class.
 /// [`ImageBitmap`](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ImageBitmap {
 
 impl FromVal for ImageBitmap {
     fn from_val(v: &Any) -> Self {
-        ImageBitmap {
-            inner: Any::from_val(v),
-        }
+        ImageBitmap { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ImageBitmap {
 
 impl AsMut<Any> for ImageBitmap {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ImageBitmap> for Any {
@@ -63,12 +64,14 @@ impl From<&ImageBitmap> for Any {
 
 jsbind::utils::impl_dyn_cast!(ImageBitmap);
 
+
 impl ImageBitmap {
     /// Getter of the `width` attribute.
     /// [`ImageBitmap.width`](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap/width)
     pub fn width(&self) -> u32 {
         self.inner.get("width").as_::<u32>()
     }
+
 }
 impl ImageBitmap {
     /// Getter of the `height` attribute.
@@ -76,11 +79,12 @@ impl ImageBitmap {
     pub fn height(&self) -> u32 {
         self.inner.get("height").as_::<u32>()
     }
+
 }
 impl ImageBitmap {
     /// The close method.
     /// [`ImageBitmap.close`](https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

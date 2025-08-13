@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PerformanceEntry class.
 /// [`PerformanceEntry`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PerformanceEntry {
 
 impl FromVal for PerformanceEntry {
     fn from_val(v: &Any) -> Self {
-        PerformanceEntry {
-            inner: Any::from_val(v),
-        }
+        PerformanceEntry { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PerformanceEntry {
 
 impl AsMut<Any> for PerformanceEntry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PerformanceEntry> for Any {
@@ -63,12 +64,14 @@ impl From<&PerformanceEntry> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceEntry);
 
+
 impl PerformanceEntry {
     /// Getter of the `id` attribute.
     /// [`PerformanceEntry.id`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/id)
     pub fn id(&self) -> u64 {
         self.inner.get("id").as_::<u64>()
     }
+
 }
 impl PerformanceEntry {
     /// Getter of the `name` attribute.
@@ -76,6 +79,7 @@ impl PerformanceEntry {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl PerformanceEntry {
     /// Getter of the `entryType` attribute.
@@ -83,6 +87,7 @@ impl PerformanceEntry {
     pub fn entry_type(&self) -> JsString {
         self.inner.get("entryType").as_::<JsString>()
     }
+
 }
 impl PerformanceEntry {
     /// Getter of the `startTime` attribute.
@@ -90,6 +95,7 @@ impl PerformanceEntry {
     pub fn start_time(&self) -> Any {
         self.inner.get("startTime").as_::<Any>()
     }
+
 }
 impl PerformanceEntry {
     /// Getter of the `duration` attribute.
@@ -97,6 +103,7 @@ impl PerformanceEntry {
     pub fn duration(&self) -> Any {
         self.inner.get("duration").as_::<Any>()
     }
+
 }
 impl PerformanceEntry {
     /// Getter of the `navigationId` attribute.
@@ -104,11 +111,12 @@ impl PerformanceEntry {
     pub fn navigation_id(&self) -> u64 {
         self.inner.get("navigationId").as_::<u64>()
     }
+
 }
 impl PerformanceEntry {
     /// The toJSON method.
     /// [`PerformanceEntry.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

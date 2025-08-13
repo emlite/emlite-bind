@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUOutOfMemoryError class.
 /// [`GPUOutOfMemoryError`](https://developer.mozilla.org/en-US/docs/Web/API/GPUOutOfMemoryError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUOutOfMemoryError {
 
 impl FromVal for GPUOutOfMemoryError {
     fn from_val(v: &Any) -> Self {
-        GPUOutOfMemoryError {
-            inner: GPUError::from_val(v),
-        }
+        GPUOutOfMemoryError { inner: GPUError::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUOutOfMemoryError {
 
 impl AsMut<Any> for GPUOutOfMemoryError {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUOutOfMemoryError> for Any {
@@ -63,13 +64,14 @@ impl From<&GPUOutOfMemoryError> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUOutOfMemoryError);
 
+
+
 impl GPUOutOfMemoryError {
     /// The `new GPUOutOfMemoryError(..)` constructor, creating a new GPUOutOfMemoryError instance
     pub fn new(message: &JsString) -> GPUOutOfMemoryError {
         Self {
-            inner: Any::global("GPUOutOfMemoryError")
-                .new(&[message.into()])
-                .as_::<GPUError>(),
+            inner: Any::global("GPUOutOfMemoryError").new(&[message.into()]).as_::<GPUError>(),
         }
     }
+
 }

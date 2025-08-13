@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SFrameTransform class.
 /// [`SFrameTransform`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SFrameTransform {
 
 impl FromVal for SFrameTransform {
     fn from_val(v: &Any) -> Self {
-        SFrameTransform {
-            inner: EventTarget::from_val(v),
-        }
+        SFrameTransform { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SFrameTransform {
 
 impl AsMut<Any> for SFrameTransform {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SFrameTransform> for Any {
@@ -63,6 +64,8 @@ impl From<&SFrameTransform> for Any {
 
 jsbind::utils::impl_dyn_cast!(SFrameTransform);
 
+
+
 impl SFrameTransform {
     /// The `new SFrameTransform(..)` constructor, creating a new SFrameTransform instance
     pub fn new0() -> SFrameTransform {
@@ -74,26 +77,21 @@ impl SFrameTransform {
     /// The `new SFrameTransform(..)` constructor, creating a new SFrameTransform instance
     pub fn new1(options: &SFrameTransformOptions) -> SFrameTransform {
         Self {
-            inner: Any::global("SFrameTransform")
-                .new(&[options.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("SFrameTransform").new(&[options.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl SFrameTransform {
     /// The setEncryptionKey method.
     /// [`SFrameTransform.setEncryptionKey`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/setEncryptionKey)
     pub fn set_encryption_key0(&self, key: &CryptoKey) -> Promise<Undefined> {
-        self.inner
-            .call("setEncryptionKey", &[key.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("setEncryptionKey", &[key.into(), ]).as_::<Promise<Undefined>>()
     }
     /// The setEncryptionKey method.
     /// [`SFrameTransform.setEncryptionKey`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/setEncryptionKey)
     pub fn set_encryption_key1(&self, key: &CryptoKey, key_id: &Any) -> Promise<Undefined> {
-        self.inner
-            .call("setEncryptionKey", &[key.into(), key_id.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("setEncryptionKey", &[key.into(), key_id.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl SFrameTransform {
@@ -115,6 +113,7 @@ impl SFrameTransform {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
+
 }
 impl SFrameTransform {
     /// Getter of the `writable` attribute.
@@ -122,4 +121,5 @@ impl SFrameTransform {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
+
 }

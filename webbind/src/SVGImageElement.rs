@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGImageElement class.
 /// [`SVGImageElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGImageElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGImageElement {
 
 impl FromVal for SVGImageElement {
     fn from_val(v: &Any) -> Self {
-        SVGImageElement {
-            inner: SVGGraphicsElement::from_val(v),
-        }
+        SVGImageElement { inner: SVGGraphicsElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGImageElement {
 
 impl AsMut<Any> for SVGImageElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGImageElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGImageElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGImageElement);
 
+
 impl SVGImageElement {
     /// Getter of the `x` attribute.
     /// [`SVGImageElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGImageElement/x)
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGImageElement {
     /// Getter of the `y` attribute.
@@ -76,6 +79,7 @@ impl SVGImageElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGImageElement {
     /// Getter of the `width` attribute.
@@ -83,6 +87,7 @@ impl SVGImageElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGImageElement {
     /// Getter of the `height` attribute.
@@ -90,15 +95,15 @@ impl SVGImageElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGImageElement {
     /// Getter of the `preserveAspectRatio` attribute.
     /// [`SVGImageElement.preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGImageElement/preserveAspectRatio)
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner
-            .get("preserveAspectRatio")
-            .as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
     }
+
 }
 impl SVGImageElement {
     /// Getter of the `crossOrigin` attribute.
@@ -119,4 +124,5 @@ impl SVGImageElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
+
 }

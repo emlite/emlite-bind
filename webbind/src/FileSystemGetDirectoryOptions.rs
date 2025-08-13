@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystemGetDirectoryOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for FileSystemGetDirectoryOptions {
 
 impl AsMut<Any> for FileSystemGetDirectoryOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystemGetDirectoryOptions> for Any {

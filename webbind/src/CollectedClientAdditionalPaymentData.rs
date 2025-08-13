@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CollectedClientAdditionalPaymentData dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CollectedClientAdditionalPaymentData {
 
 impl AsMut<Any> for CollectedClientAdditionalPaymentData {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CollectedClientAdditionalPaymentData> for Any {
@@ -105,9 +108,7 @@ impl CollectedClientAdditionalPaymentData {
 impl CollectedClientAdditionalPaymentData {
     /// Getter of the `paymentEntitiesLogos` attribute.
     pub fn payment_entities_logos(&self) -> TypedArray<PaymentEntityLogo> {
-        self.inner
-            .get("paymentEntitiesLogos")
-            .as_::<TypedArray<PaymentEntityLogo>>()
+        self.inner.get("paymentEntitiesLogos").as_::<TypedArray<PaymentEntityLogo>>()
     }
 
     /// Setter of the `paymentEntitiesLogos` attribute.
@@ -129,9 +130,7 @@ impl CollectedClientAdditionalPaymentData {
 impl CollectedClientAdditionalPaymentData {
     /// Getter of the `instrument` attribute.
     pub fn instrument(&self) -> PaymentCredentialInstrument {
-        self.inner
-            .get("instrument")
-            .as_::<PaymentCredentialInstrument>()
+        self.inner.get("instrument").as_::<PaymentCredentialInstrument>()
     }
 
     /// Setter of the `instrument` attribute.

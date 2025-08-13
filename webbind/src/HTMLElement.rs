@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLElement class.
 /// [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLElement {
 
 impl FromVal for HTMLElement {
     fn from_val(v: &Any) -> Self {
-        HTMLElement {
-            inner: Element::from_val(v),
-        }
+        HTMLElement { inner: Element::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLElement {
 
 impl AsMut<Any> for HTMLElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLElement);
 
+
+
 impl HTMLElement {
     /// The `new HTMLElement(..)` constructor, creating a new HTMLElement instance
     pub fn new() -> HTMLElement {
@@ -70,6 +73,7 @@ impl HTMLElement {
             inner: Any::global("HTMLElement").new(&[]).as_::<Element>(),
         }
     }
+
 }
 impl HTMLElement {
     /// Getter of the `title` attribute.
@@ -152,7 +156,7 @@ impl HTMLElement {
 impl HTMLElement {
     /// The click method.
     /// [`HTMLElement.click`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click)
-    pub fn click(&self) -> Undefined {
+    pub fn click(&self, ) -> Undefined {
         self.inner.call("click", &[]).as_::<Undefined>()
     }
 }
@@ -175,6 +179,7 @@ impl HTMLElement {
     pub fn access_key_label(&self) -> JsString {
         self.inner.get("accessKeyLabel").as_::<JsString>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `draggable` attribute.
@@ -270,45 +275,39 @@ impl HTMLElement {
 impl HTMLElement {
     /// The attachInternals method.
     /// [`HTMLElement.attachInternals`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/attachInternals)
-    pub fn attach_internals(&self) -> ElementInternals {
-        self.inner
-            .call("attachInternals", &[])
-            .as_::<ElementInternals>()
+    pub fn attach_internals(&self, ) -> ElementInternals {
+        self.inner.call("attachInternals", &[]).as_::<ElementInternals>()
     }
 }
 impl HTMLElement {
     /// The showPopover method.
     /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
-    pub fn show_popover0(&self) -> Undefined {
+    pub fn show_popover0(&self, ) -> Undefined {
         self.inner.call("showPopover", &[]).as_::<Undefined>()
     }
     /// The showPopover method.
     /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
     pub fn show_popover1(&self, options: &ShowPopoverOptions) -> Undefined {
-        self.inner
-            .call("showPopover", &[options.into()])
-            .as_::<Undefined>()
+        self.inner.call("showPopover", &[options.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLElement {
     /// The hidePopover method.
     /// [`HTMLElement.hidePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidePopover)
-    pub fn hide_popover(&self) -> Undefined {
+    pub fn hide_popover(&self, ) -> Undefined {
         self.inner.call("hidePopover", &[]).as_::<Undefined>()
     }
 }
 impl HTMLElement {
     /// The togglePopover method.
     /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
-    pub fn toggle_popover0(&self) -> bool {
+    pub fn toggle_popover0(&self, ) -> bool {
         self.inner.call("togglePopover", &[]).as_::<bool>()
     }
     /// The togglePopover method.
     /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
     pub fn toggle_popover1(&self, options: &Any) -> bool {
-        self.inner
-            .call("togglePopover", &[options.into()])
-            .as_::<bool>()
+        self.inner.call("togglePopover", &[options.into(), ]).as_::<bool>()
     }
 }
 impl HTMLElement {
@@ -330,6 +329,7 @@ impl HTMLElement {
     pub fn scroll_parent(&self) -> Element {
         self.inner.get("scrollParent").as_::<Element>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `offsetParent` attribute.
@@ -337,6 +337,7 @@ impl HTMLElement {
     pub fn offset_parent(&self) -> Element {
         self.inner.get("offsetParent").as_::<Element>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `offsetTop` attribute.
@@ -344,6 +345,7 @@ impl HTMLElement {
     pub fn offset_top(&self) -> i32 {
         self.inner.get("offsetTop").as_::<i32>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `offsetLeft` attribute.
@@ -351,6 +353,7 @@ impl HTMLElement {
     pub fn offset_left(&self) -> i32 {
         self.inner.get("offsetLeft").as_::<i32>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `offsetWidth` attribute.
@@ -358,6 +361,7 @@ impl HTMLElement {
     pub fn offset_width(&self) -> i32 {
         self.inner.get("offsetWidth").as_::<i32>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `offsetHeight` attribute.
@@ -365,6 +369,7 @@ impl HTMLElement {
     pub fn offset_height(&self) -> i32 {
         self.inner.get("offsetHeight").as_::<i32>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `editContext` attribute.
@@ -385,6 +390,7 @@ impl HTMLElement {
     pub fn style(&self) -> CSSStyleDeclaration {
         self.inner.get("style").as_::<CSSStyleDeclaration>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `onbeforexrselect` attribute.
@@ -418,6 +424,7 @@ impl HTMLElement {
     pub fn dataset(&self) -> DOMStringMap {
         self.inner.get("dataset").as_::<DOMStringMap>()
     }
+
 }
 impl HTMLElement {
     /// Getter of the `nonce` attribute.
@@ -461,21 +468,19 @@ impl HTMLElement {
 impl HTMLElement {
     /// The focus method.
     /// [`HTMLElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)
-    pub fn focus0(&self) -> Undefined {
+    pub fn focus0(&self, ) -> Undefined {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
     /// The focus method.
     /// [`HTMLElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)
     pub fn focus1(&self, options: &FocusOptions) -> Undefined {
-        self.inner
-            .call("focus", &[options.into()])
-            .as_::<Undefined>()
+        self.inner.call("focus", &[options.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLElement {
     /// The blur method.
     /// [`HTMLElement.blur`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur)
-    pub fn blur(&self) -> Undefined {
+    pub fn blur(&self, ) -> Undefined {
         self.inner.call("blur", &[]).as_::<Undefined>()
     }
 }

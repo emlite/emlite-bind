@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The URLPatternResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for URLPatternResult {
 
 impl AsMut<Any> for URLPatternResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<URLPatternResult> for Any {
@@ -72,9 +75,7 @@ impl URLPatternResult {
 impl URLPatternResult {
     /// Getter of the `protocol` attribute.
     pub fn protocol(&self) -> URLPatternComponentResult {
-        self.inner
-            .get("protocol")
-            .as_::<URLPatternComponentResult>()
+        self.inner.get("protocol").as_::<URLPatternComponentResult>()
     }
 
     /// Setter of the `protocol` attribute.
@@ -85,9 +86,7 @@ impl URLPatternResult {
 impl URLPatternResult {
     /// Getter of the `username` attribute.
     pub fn username(&self) -> URLPatternComponentResult {
-        self.inner
-            .get("username")
-            .as_::<URLPatternComponentResult>()
+        self.inner.get("username").as_::<URLPatternComponentResult>()
     }
 
     /// Setter of the `username` attribute.
@@ -98,9 +97,7 @@ impl URLPatternResult {
 impl URLPatternResult {
     /// Getter of the `password` attribute.
     pub fn password(&self) -> URLPatternComponentResult {
-        self.inner
-            .get("password")
-            .as_::<URLPatternComponentResult>()
+        self.inner.get("password").as_::<URLPatternComponentResult>()
     }
 
     /// Setter of the `password` attribute.
@@ -111,9 +108,7 @@ impl URLPatternResult {
 impl URLPatternResult {
     /// Getter of the `hostname` attribute.
     pub fn hostname(&self) -> URLPatternComponentResult {
-        self.inner
-            .get("hostname")
-            .as_::<URLPatternComponentResult>()
+        self.inner.get("hostname").as_::<URLPatternComponentResult>()
     }
 
     /// Setter of the `hostname` attribute.
@@ -135,9 +130,7 @@ impl URLPatternResult {
 impl URLPatternResult {
     /// Getter of the `pathname` attribute.
     pub fn pathname(&self) -> URLPatternComponentResult {
-        self.inner
-            .get("pathname")
-            .as_::<URLPatternComponentResult>()
+        self.inner.get("pathname").as_::<URLPatternComponentResult>()
     }
 
     /// Setter of the `pathname` attribute.

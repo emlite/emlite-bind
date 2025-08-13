@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BiddingBrowserSignals dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BiddingBrowserSignals {
 
 impl AsMut<Any> for BiddingBrowserSignals {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BiddingBrowserSignals> for Any {
@@ -138,9 +141,7 @@ impl BiddingBrowserSignals {
 impl BiddingBrowserSignals {
     /// Getter of the `requestedSize` attribute.
     pub fn requested_size(&self) -> Record<JsString, JsString> {
-        self.inner
-            .get("requestedSize")
-            .as_::<Record<JsString, JsString>>()
+        self.inner.get("requestedSize").as_::<Record<JsString, JsString>>()
     }
 
     /// Setter of the `requestedSize` attribute.
@@ -206,9 +207,7 @@ impl BiddingBrowserSignals {
 impl BiddingBrowserSignals {
     /// Getter of the `forDebuggingOnlyInCooldownOrLockout` attribute.
     pub fn for_debugging_only_in_cooldown_or_lockout(&self) -> bool {
-        self.inner
-            .get("forDebuggingOnlyInCooldownOrLockout")
-            .as_::<bool>()
+        self.inner.get("forDebuggingOnlyInCooldownOrLockout").as_::<bool>()
     }
 
     /// Setter of the `forDebuggingOnlyInCooldownOrLockout` attribute.

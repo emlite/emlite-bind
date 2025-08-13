@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLObjectElement class.
 /// [`HTMLObjectElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLObjectElement {
 
 impl FromVal for HTMLObjectElement {
     fn from_val(v: &Any) -> Self {
-        HTMLObjectElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLObjectElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLObjectElement {
 
 impl AsMut<Any> for HTMLObjectElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLObjectElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLObjectElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLObjectElement);
 
+
+
 impl HTMLObjectElement {
     /// The `new HTMLObjectElement(..)` constructor, creating a new HTMLObjectElement instance
     pub fn new() -> HTMLObjectElement {
         Self {
-            inner: Any::global("HTMLObjectElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLObjectElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLObjectElement {
     /// Getter of the `data` attribute.
@@ -118,6 +120,7 @@ impl HTMLObjectElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLObjectElement {
     /// Getter of the `width` attribute.
@@ -151,6 +154,7 @@ impl HTMLObjectElement {
     pub fn content_document(&self) -> Document {
         self.inner.get("contentDocument").as_::<Document>()
     }
+
 }
 impl HTMLObjectElement {
     /// Getter of the `contentWindow` attribute.
@@ -158,11 +162,12 @@ impl HTMLObjectElement {
     pub fn content_window(&self) -> Any {
         self.inner.get("contentWindow").as_::<Any>()
     }
+
 }
 impl HTMLObjectElement {
     /// The getSVGDocument method.
     /// [`HTMLObjectElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/getSVGDocument)
-    pub fn get_svg_document(&self) -> Document {
+    pub fn get_svg_document(&self, ) -> Document {
         self.inner.call("getSVGDocument", &[]).as_::<Document>()
     }
 }
@@ -172,6 +177,7 @@ impl HTMLObjectElement {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
+
 }
 impl HTMLObjectElement {
     /// Getter of the `validity` attribute.
@@ -179,6 +185,7 @@ impl HTMLObjectElement {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
+
 }
 impl HTMLObjectElement {
     /// Getter of the `validationMessage` attribute.
@@ -186,18 +193,19 @@ impl HTMLObjectElement {
     pub fn validation_message(&self) -> JsString {
         self.inner.get("validationMessage").as_::<JsString>()
     }
+
 }
 impl HTMLObjectElement {
     /// The checkValidity method.
     /// [`HTMLObjectElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/checkValidity)
-    pub fn check_validity(&self) -> bool {
+    pub fn check_validity(&self, ) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
 }
 impl HTMLObjectElement {
     /// The reportValidity method.
     /// [`HTMLObjectElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/reportValidity)
-    pub fn report_validity(&self) -> bool {
+    pub fn report_validity(&self, ) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
 }
@@ -205,9 +213,7 @@ impl HTMLObjectElement {
     /// The setCustomValidity method.
     /// [`HTMLObjectElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/setCustomValidity)
     pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<Undefined>()
+        self.inner.call("setCustomValidity", &[error.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLObjectElement {

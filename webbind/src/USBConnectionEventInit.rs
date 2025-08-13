@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBConnectionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for USBConnectionEventInit {
 
 impl AsMut<Any> for USBConnectionEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBConnectionEventInit> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUShaderModuleCompilationHint dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUShaderModuleCompilationHint {
 
 impl AsMut<Any> for GPUShaderModuleCompilationHint {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUShaderModuleCompilationHint> for Any {

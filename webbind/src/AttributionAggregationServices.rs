@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AttributionAggregationServices class.
 /// [`AttributionAggregationServices`](https://developer.mozilla.org/en-US/docs/Web/API/AttributionAggregationServices)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AttributionAggregationServices {
 
 impl FromVal for AttributionAggregationServices {
     fn from_val(v: &Any) -> Self {
-        AttributionAggregationServices {
-            inner: Any::from_val(v),
-        }
+        AttributionAggregationServices { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AttributionAggregationServices {
 
 impl AsMut<Any> for AttributionAggregationServices {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AttributionAggregationServices> for Any {
@@ -62,3 +63,5 @@ impl From<&AttributionAggregationServices> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(AttributionAggregationServices);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpSender class.
 /// [`RTCRtpSender`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCRtpSender {
 
 impl FromVal for RTCRtpSender {
     fn from_val(v: &Any) -> Self {
-        RTCRtpSender {
-            inner: Any::from_val(v),
-        }
+        RTCRtpSender { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCRtpSender {
 
 impl AsMut<Any> for RTCRtpSender {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpSender> for Any {
@@ -63,12 +64,14 @@ impl From<&RTCRtpSender> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCRtpSender);
 
+
 impl RTCRtpSender {
     /// Getter of the `track` attribute.
     /// [`RTCRtpSender.track`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/track)
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
+
 }
 impl RTCRtpSender {
     /// Getter of the `transport` attribute.
@@ -76,73 +79,53 @@ impl RTCRtpSender {
     pub fn transport(&self) -> RTCDtlsTransport {
         self.inner.get("transport").as_::<RTCDtlsTransport>()
     }
+
 }
 impl RTCRtpSender {
     /// The getCapabilities method.
     /// [`RTCRtpSender.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getCapabilities)
     pub fn get_capabilities(kind: &JsString) -> RTCRtpCapabilities {
-        Any::global("RTCRtpSender")
-            .call("getCapabilities", &[kind.into()])
-            .as_::<RTCRtpCapabilities>()
+        Any::global("RTCRtpSender").call("getCapabilities", &[kind.into(), ]).as_::<RTCRtpCapabilities>()
     }
 }
 impl RTCRtpSender {
     /// The setParameters method.
     /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
     pub fn set_parameters0(&self, parameters: &RTCRtpSendParameters) -> Promise<Undefined> {
-        self.inner
-            .call("setParameters", &[parameters.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("setParameters", &[parameters.into(), ]).as_::<Promise<Undefined>>()
     }
     /// The setParameters method.
     /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
-    pub fn set_parameters1(
-        &self,
-        parameters: &RTCRtpSendParameters,
-        set_parameter_options: &RTCSetParameterOptions,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call(
-                "setParameters",
-                &[parameters.into(), set_parameter_options.into()],
-            )
-            .as_::<Promise<Undefined>>()
+    pub fn set_parameters1(&self, parameters: &RTCRtpSendParameters, set_parameter_options: &RTCSetParameterOptions) -> Promise<Undefined> {
+        self.inner.call("setParameters", &[parameters.into(), set_parameter_options.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpSender {
     /// The getParameters method.
     /// [`RTCRtpSender.getParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getParameters)
-    pub fn get_parameters(&self) -> RTCRtpSendParameters {
-        self.inner
-            .call("getParameters", &[])
-            .as_::<RTCRtpSendParameters>()
+    pub fn get_parameters(&self, ) -> RTCRtpSendParameters {
+        self.inner.call("getParameters", &[]).as_::<RTCRtpSendParameters>()
     }
 }
 impl RTCRtpSender {
     /// The replaceTrack method.
     /// [`RTCRtpSender.replaceTrack`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/replaceTrack)
     pub fn replace_track(&self, with_track: &MediaStreamTrack) -> Promise<Undefined> {
-        self.inner
-            .call("replaceTrack", &[with_track.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("replaceTrack", &[with_track.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpSender {
     /// The setStreams method.
     /// [`RTCRtpSender.setStreams`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setStreams)
     pub fn set_streams(&self, streams: &MediaStream) -> Undefined {
-        self.inner
-            .call("setStreams", &[streams.into()])
-            .as_::<Undefined>()
+        self.inner.call("setStreams", &[streams.into(), ]).as_::<Undefined>()
     }
 }
 impl RTCRtpSender {
     /// The getStats method.
     /// [`RTCRtpSender.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getStats)
-    pub fn get_stats(&self) -> Promise<RTCStatsReport> {
-        self.inner
-            .call("getStats", &[])
-            .as_::<Promise<RTCStatsReport>>()
+    pub fn get_stats(&self, ) -> Promise<RTCStatsReport> {
+        self.inner.call("getStats", &[]).as_::<Promise<RTCStatsReport>>()
     }
 }
 impl RTCRtpSender {
@@ -161,17 +144,13 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
-    pub fn generate_key_frame0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("generateKeyFrame", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn generate_key_frame0(&self, ) -> Promise<Undefined> {
+        self.inner.call("generateKeyFrame", &[]).as_::<Promise<Undefined>>()
     }
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
     pub fn generate_key_frame1(&self, rids: &TypedArray<JsString>) -> Promise<Undefined> {
-        self.inner
-            .call("generateKeyFrame", &[rids.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("generateKeyFrame", &[rids.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpSender {
@@ -180,4 +159,5 @@ impl RTCRtpSender {
     pub fn dtmf(&self) -> RTCDTMFSender {
         self.inner.get("dtmf").as_::<RTCDTMFSender>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OfflineAudioCompletionEvent class.
 /// [`OfflineAudioCompletionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioCompletionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct OfflineAudioCompletionEvent {
 
 impl FromVal for OfflineAudioCompletionEvent {
     fn from_val(v: &Any) -> Self {
-        OfflineAudioCompletionEvent {
-            inner: Event::from_val(v),
-        }
+        OfflineAudioCompletionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for OfflineAudioCompletionEvent {
 
 impl AsMut<Any> for OfflineAudioCompletionEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OfflineAudioCompletionEvent> for Any {
@@ -63,18 +64,16 @@ impl From<&OfflineAudioCompletionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(OfflineAudioCompletionEvent);
 
+
+
 impl OfflineAudioCompletionEvent {
     /// The `new OfflineAudioCompletionEvent(..)` constructor, creating a new OfflineAudioCompletionEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &OfflineAudioCompletionEventInit,
-    ) -> OfflineAudioCompletionEvent {
+    pub fn new(type_: &JsString, event_init_dict: &OfflineAudioCompletionEventInit) -> OfflineAudioCompletionEvent {
         Self {
-            inner: Any::global("OfflineAudioCompletionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("OfflineAudioCompletionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl OfflineAudioCompletionEvent {
     /// Getter of the `renderedBuffer` attribute.
@@ -82,4 +81,5 @@ impl OfflineAudioCompletionEvent {
     pub fn rendered_buffer(&self) -> AudioBuffer {
         self.inner.get("renderedBuffer").as_::<AudioBuffer>()
     }
+
 }

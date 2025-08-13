@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaStreamTrackProcessor class.
 /// [`MediaStreamTrackProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackProcessor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaStreamTrackProcessor {
 
 impl FromVal for MediaStreamTrackProcessor {
     fn from_val(v: &Any) -> Self {
-        MediaStreamTrackProcessor {
-            inner: Any::from_val(v),
-        }
+        MediaStreamTrackProcessor { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaStreamTrackProcessor {
 
 impl AsMut<Any> for MediaStreamTrackProcessor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaStreamTrackProcessor> for Any {
@@ -63,15 +64,16 @@ impl From<&MediaStreamTrackProcessor> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackProcessor);
 
+
+
 impl MediaStreamTrackProcessor {
     /// The `new MediaStreamTrackProcessor(..)` constructor, creating a new MediaStreamTrackProcessor instance
     pub fn new(init: &MediaStreamTrackProcessorInit) -> MediaStreamTrackProcessor {
         Self {
-            inner: Any::global("MediaStreamTrackProcessor")
-                .new(&[init.into()])
-                .as_::<Any>(),
+            inner: Any::global("MediaStreamTrackProcessor").new(&[init.into()]).as_::<Any>(),
         }
     }
+
 }
 impl MediaStreamTrackProcessor {
     /// Getter of the `readable` attribute.
@@ -79,4 +81,5 @@ impl MediaStreamTrackProcessor {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
+
 }

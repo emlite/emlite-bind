@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The UserActivation class.
 /// [`UserActivation`](https://developer.mozilla.org/en-US/docs/Web/API/UserActivation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct UserActivation {
 
 impl FromVal for UserActivation {
     fn from_val(v: &Any) -> Self {
-        UserActivation {
-            inner: Any::from_val(v),
-        }
+        UserActivation { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for UserActivation {
 
 impl AsMut<Any> for UserActivation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<UserActivation> for Any {
@@ -63,12 +64,14 @@ impl From<&UserActivation> for Any {
 
 jsbind::utils::impl_dyn_cast!(UserActivation);
 
+
 impl UserActivation {
     /// Getter of the `hasBeenActive` attribute.
     /// [`UserActivation.hasBeenActive`](https://developer.mozilla.org/en-US/docs/Web/API/UserActivation/hasBeenActive)
     pub fn has_been_active(&self) -> bool {
         self.inner.get("hasBeenActive").as_::<bool>()
     }
+
 }
 impl UserActivation {
     /// Getter of the `isActive` attribute.
@@ -76,4 +79,5 @@ impl UserActivation {
     pub fn is_active(&self) -> bool {
         self.inner.get("isActive").as_::<bool>()
     }
+
 }

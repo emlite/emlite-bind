@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLHeadElement class.
 /// [`HTMLHeadElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLHeadElement {
 
 impl FromVal for HTMLHeadElement {
     fn from_val(v: &Any) -> Self {
-        HTMLHeadElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLHeadElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLHeadElement {
 
 impl AsMut<Any> for HTMLHeadElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLHeadElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLHeadElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLHeadElement);
 
+
+
 impl HTMLHeadElement {
     /// The `new HTMLHeadElement(..)` constructor, creating a new HTMLHeadElement instance
     pub fn new() -> HTMLHeadElement {
@@ -70,4 +73,5 @@ impl HTMLHeadElement {
             inner: Any::global("HTMLHeadElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }

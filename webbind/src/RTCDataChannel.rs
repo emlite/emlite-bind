@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCDataChannel class.
 /// [`RTCDataChannel`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCDataChannel {
 
 impl FromVal for RTCDataChannel {
     fn from_val(v: &Any) -> Self {
-        RTCDataChannel {
-            inner: EventTarget::from_val(v),
-        }
+        RTCDataChannel { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCDataChannel {
 
 impl AsMut<Any> for RTCDataChannel {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCDataChannel> for Any {
@@ -63,12 +64,14 @@ impl From<&RTCDataChannel> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCDataChannel);
 
+
 impl RTCDataChannel {
     /// Getter of the `label` attribute.
     /// [`RTCDataChannel.label`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/label)
     pub fn label(&self) -> JsString {
         self.inner.get("label").as_::<JsString>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `ordered` attribute.
@@ -76,6 +79,7 @@ impl RTCDataChannel {
     pub fn ordered(&self) -> bool {
         self.inner.get("ordered").as_::<bool>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `maxPacketLifeTime` attribute.
@@ -83,6 +87,7 @@ impl RTCDataChannel {
     pub fn max_packet_life_time(&self) -> u16 {
         self.inner.get("maxPacketLifeTime").as_::<u16>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `maxRetransmits` attribute.
@@ -90,6 +95,7 @@ impl RTCDataChannel {
     pub fn max_retransmits(&self) -> u16 {
         self.inner.get("maxRetransmits").as_::<u16>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `protocol` attribute.
@@ -97,6 +103,7 @@ impl RTCDataChannel {
     pub fn protocol(&self) -> JsString {
         self.inner.get("protocol").as_::<JsString>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `negotiated` attribute.
@@ -104,6 +111,7 @@ impl RTCDataChannel {
     pub fn negotiated(&self) -> bool {
         self.inner.get("negotiated").as_::<bool>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `id` attribute.
@@ -111,6 +119,7 @@ impl RTCDataChannel {
     pub fn id(&self) -> u16 {
         self.inner.get("id").as_::<u16>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `readyState` attribute.
@@ -118,6 +127,7 @@ impl RTCDataChannel {
     pub fn ready_state(&self) -> RTCDataChannelState {
         self.inner.get("readyState").as_::<RTCDataChannelState>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `bufferedAmount` attribute.
@@ -125,6 +135,7 @@ impl RTCDataChannel {
     pub fn buffered_amount(&self) -> u32 {
         self.inner.get("bufferedAmount").as_::<u32>()
     }
+
 }
 impl RTCDataChannel {
     /// Getter of the `bufferedAmountLowThreshold` attribute.
@@ -207,7 +218,7 @@ impl RTCDataChannel {
 impl RTCDataChannel {
     /// The close method.
     /// [`RTCDataChannel.close`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
@@ -241,7 +252,7 @@ impl RTCDataChannel {
     /// The send method.
     /// [`RTCDataChannel.send`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/send)
     pub fn send(&self, data: &Any) -> Undefined {
-        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+        self.inner.call("send", &[data.into(), ]).as_::<Undefined>()
     }
 }
 impl RTCDataChannel {
@@ -250,4 +261,5 @@ impl RTCDataChannel {
     pub fn priority(&self) -> RTCPriorityType {
         self.inner.get("priority").as_::<RTCPriorityType>()
     }
+
 }

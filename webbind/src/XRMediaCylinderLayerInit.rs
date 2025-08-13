@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRMediaCylinderLayerInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for XRMediaCylinderLayerInit {
 
 impl AsMut<Any> for XRMediaCylinderLayerInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRMediaCylinderLayerInit> for Any {

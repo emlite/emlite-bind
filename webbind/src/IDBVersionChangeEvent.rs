@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IDBVersionChangeEvent class.
 /// [`IDBVersionChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct IDBVersionChangeEvent {
 
 impl FromVal for IDBVersionChangeEvent {
     fn from_val(v: &Any) -> Self {
-        IDBVersionChangeEvent {
-            inner: Event::from_val(v),
-        }
+        IDBVersionChangeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for IDBVersionChangeEvent {
 
 impl AsMut<Any> for IDBVersionChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IDBVersionChangeEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&IDBVersionChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(IDBVersionChangeEvent);
 
+
+
 impl IDBVersionChangeEvent {
     /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
     pub fn new0(type_: &JsString) -> IDBVersionChangeEvent {
         Self {
-            inner: Any::global("IDBVersionChangeEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("IDBVersionChangeEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &IDBVersionChangeEventInit,
-    ) -> IDBVersionChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &IDBVersionChangeEventInit) -> IDBVersionChangeEvent {
         Self {
-            inner: Any::global("IDBVersionChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("IDBVersionChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl IDBVersionChangeEvent {
     /// Getter of the `oldVersion` attribute.
@@ -91,6 +88,7 @@ impl IDBVersionChangeEvent {
     pub fn old_version(&self) -> u64 {
         self.inner.get("oldVersion").as_::<u64>()
     }
+
 }
 impl IDBVersionChangeEvent {
     /// Getter of the `newVersion` attribute.
@@ -98,4 +96,5 @@ impl IDBVersionChangeEvent {
     pub fn new_version(&self) -> u64 {
         self.inner.get("newVersion").as_::<u64>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLVideoElement class.
 /// [`HTMLVideoElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLVideoElement {
 
 impl FromVal for HTMLVideoElement {
     fn from_val(v: &Any) -> Self {
-        HTMLVideoElement {
-            inner: HTMLMediaElement::from_val(v),
-        }
+        HTMLVideoElement { inner: HTMLMediaElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLVideoElement {
 
 impl AsMut<Any> for HTMLVideoElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLVideoElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLVideoElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLVideoElement);
 
+
+
 impl HTMLVideoElement {
     /// The `new HTMLVideoElement(..)` constructor, creating a new HTMLVideoElement instance
     pub fn new() -> HTMLVideoElement {
         Self {
-            inner: Any::global("HTMLVideoElement")
-                .new(&[])
-                .as_::<HTMLMediaElement>(),
+            inner: Any::global("HTMLVideoElement").new(&[]).as_::<HTMLMediaElement>(),
         }
     }
+
 }
 impl HTMLVideoElement {
     /// Getter of the `width` attribute.
@@ -105,6 +107,7 @@ impl HTMLVideoElement {
     pub fn video_width(&self) -> u32 {
         self.inner.get("videoWidth").as_::<u32>()
     }
+
 }
 impl HTMLVideoElement {
     /// Getter of the `videoHeight` attribute.
@@ -112,6 +115,7 @@ impl HTMLVideoElement {
     pub fn video_height(&self) -> u32 {
         self.inner.get("videoHeight").as_::<u32>()
     }
+
 }
 impl HTMLVideoElement {
     /// Getter of the `poster` attribute.
@@ -142,19 +146,15 @@ impl HTMLVideoElement {
 impl HTMLVideoElement {
     /// The getVideoPlaybackQuality method.
     /// [`HTMLVideoElement.getVideoPlaybackQuality`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/getVideoPlaybackQuality)
-    pub fn get_video_playback_quality(&self) -> VideoPlaybackQuality {
-        self.inner
-            .call("getVideoPlaybackQuality", &[])
-            .as_::<VideoPlaybackQuality>()
+    pub fn get_video_playback_quality(&self, ) -> VideoPlaybackQuality {
+        self.inner.call("getVideoPlaybackQuality", &[]).as_::<VideoPlaybackQuality>()
     }
 }
 impl HTMLVideoElement {
     /// The requestPictureInPicture method.
     /// [`HTMLVideoElement.requestPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestPictureInPicture)
-    pub fn request_picture_in_picture(&self) -> Promise<PictureInPictureWindow> {
-        self.inner
-            .call("requestPictureInPicture", &[])
-            .as_::<Promise<PictureInPictureWindow>>()
+    pub fn request_picture_in_picture(&self, ) -> Promise<PictureInPictureWindow> {
+        self.inner.call("requestPictureInPicture", &[]).as_::<Promise<PictureInPictureWindow>>()
     }
 }
 impl HTMLVideoElement {
@@ -200,17 +200,13 @@ impl HTMLVideoElement {
     /// The requestVideoFrameCallback method.
     /// [`HTMLVideoElement.requestVideoFrameCallback`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback)
     pub fn request_video_frame_callback(&self, callback: &Function) -> u32 {
-        self.inner
-            .call("requestVideoFrameCallback", &[callback.into()])
-            .as_::<u32>()
+        self.inner.call("requestVideoFrameCallback", &[callback.into(), ]).as_::<u32>()
     }
 }
 impl HTMLVideoElement {
     /// The cancelVideoFrameCallback method.
     /// [`HTMLVideoElement.cancelVideoFrameCallback`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/cancelVideoFrameCallback)
     pub fn cancel_video_frame_callback(&self, handle: u32) -> Undefined {
-        self.inner
-            .call("cancelVideoFrameCallback", &[handle.into()])
-            .as_::<Undefined>()
+        self.inner.call("cancelVideoFrameCallback", &[handle.into(), ]).as_::<Undefined>()
     }
 }

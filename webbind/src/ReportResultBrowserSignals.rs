@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ReportResultBrowserSignals dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ReportResultBrowserSignals {
 
 impl AsMut<Any> for ReportResultBrowserSignals {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ReportResultBrowserSignals> for Any {

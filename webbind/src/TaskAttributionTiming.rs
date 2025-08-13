@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TaskAttributionTiming class.
 /// [`TaskAttributionTiming`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TaskAttributionTiming {
 
 impl FromVal for TaskAttributionTiming {
     fn from_val(v: &Any) -> Self {
-        TaskAttributionTiming {
-            inner: PerformanceEntry::from_val(v),
-        }
+        TaskAttributionTiming { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TaskAttributionTiming {
 
 impl AsMut<Any> for TaskAttributionTiming {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TaskAttributionTiming> for Any {
@@ -63,12 +64,14 @@ impl From<&TaskAttributionTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(TaskAttributionTiming);
 
+
 impl TaskAttributionTiming {
     /// Getter of the `startTime` attribute.
     /// [`TaskAttributionTiming.startTime`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/startTime)
     pub fn start_time(&self) -> Any {
         self.inner.get("startTime").as_::<Any>()
     }
+
 }
 impl TaskAttributionTiming {
     /// Getter of the `duration` attribute.
@@ -76,6 +79,7 @@ impl TaskAttributionTiming {
     pub fn duration(&self) -> Any {
         self.inner.get("duration").as_::<Any>()
     }
+
 }
 impl TaskAttributionTiming {
     /// Getter of the `name` attribute.
@@ -83,6 +87,7 @@ impl TaskAttributionTiming {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl TaskAttributionTiming {
     /// Getter of the `entryType` attribute.
@@ -90,6 +95,7 @@ impl TaskAttributionTiming {
     pub fn entry_type(&self) -> JsString {
         self.inner.get("entryType").as_::<JsString>()
     }
+
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerType` attribute.
@@ -97,6 +103,7 @@ impl TaskAttributionTiming {
     pub fn container_type(&self) -> JsString {
         self.inner.get("containerType").as_::<JsString>()
     }
+
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerSrc` attribute.
@@ -104,6 +111,7 @@ impl TaskAttributionTiming {
     pub fn container_src(&self) -> JsString {
         self.inner.get("containerSrc").as_::<JsString>()
     }
+
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerId` attribute.
@@ -111,6 +119,7 @@ impl TaskAttributionTiming {
     pub fn container_id(&self) -> JsString {
         self.inner.get("containerId").as_::<JsString>()
     }
+
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerName` attribute.
@@ -118,11 +127,12 @@ impl TaskAttributionTiming {
     pub fn container_name(&self) -> JsString {
         self.inner.get("containerName").as_::<JsString>()
     }
+
 }
 impl TaskAttributionTiming {
     /// The toJSON method.
     /// [`TaskAttributionTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

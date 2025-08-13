@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The StaticRangeInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for StaticRangeInit {
 
 impl AsMut<Any> for StaticRangeInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<StaticRangeInit> for Any {

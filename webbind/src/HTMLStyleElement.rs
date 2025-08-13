@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLStyleElement class.
 /// [`HTMLStyleElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLStyleElement {
 
 impl FromVal for HTMLStyleElement {
     fn from_val(v: &Any) -> Self {
-        HTMLStyleElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLStyleElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLStyleElement {
 
 impl AsMut<Any> for HTMLStyleElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLStyleElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLStyleElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLStyleElement);
 
+
+
 impl HTMLStyleElement {
     /// The `new HTMLStyleElement(..)` constructor, creating a new HTMLStyleElement instance
     pub fn new() -> HTMLStyleElement {
         Self {
-            inner: Any::global("HTMLStyleElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLStyleElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLStyleElement {
     /// Getter of the `disabled` attribute.
@@ -105,6 +107,7 @@ impl HTMLStyleElement {
     pub fn blocking(&self) -> DOMTokenList {
         self.inner.get("blocking").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLStyleElement {
     /// Getter of the `type` attribute.
@@ -125,4 +128,5 @@ impl HTMLStyleElement {
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
     }
+
 }

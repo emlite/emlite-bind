@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCTransformEvent class.
 /// [`RTCTransformEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCTransformEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCTransformEvent {
 
 impl FromVal for RTCTransformEvent {
     fn from_val(v: &Any) -> Self {
-        RTCTransformEvent {
-            inner: Event::from_val(v),
-        }
+        RTCTransformEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCTransformEvent {
 
 impl AsMut<Any> for RTCTransformEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCTransformEvent> for Any {
@@ -63,12 +64,12 @@ impl From<&RTCTransformEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCTransformEvent);
 
+
 impl RTCTransformEvent {
     /// Getter of the `transformer` attribute.
     /// [`RTCTransformEvent.transformer`](https://developer.mozilla.org/en-US/docs/Web/API/RTCTransformEvent/transformer)
     pub fn transformer(&self) -> RTCRtpScriptTransformer {
-        self.inner
-            .get("transformer")
-            .as_::<RTCRtpScriptTransformer>()
+        self.inner.get("transformer").as_::<RTCRtpScriptTransformer>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AnimationEvent class.
 /// [`AnimationEvent`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AnimationEvent {
 
 impl FromVal for AnimationEvent {
     fn from_val(v: &Any) -> Self {
-        AnimationEvent {
-            inner: Event::from_val(v),
-        }
+        AnimationEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AnimationEvent {
 
 impl AsMut<Any> for AnimationEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AnimationEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&AnimationEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(AnimationEvent);
 
+
+
 impl AnimationEvent {
     /// The `new AnimationEvent(..)` constructor, creating a new AnimationEvent instance
     pub fn new0(type_: &JsString) -> AnimationEvent {
         Self {
-            inner: Any::global("AnimationEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("AnimationEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new AnimationEvent(..)` constructor, creating a new AnimationEvent instance
-    pub fn new1(
-        type_: &JsString,
-        animation_event_init_dict: &AnimationEventInit,
-    ) -> AnimationEvent {
+    pub fn new1(type_: &JsString, animation_event_init_dict: &AnimationEventInit) -> AnimationEvent {
         Self {
-            inner: Any::global("AnimationEvent")
-                .new(&[type_.into(), animation_event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("AnimationEvent").new(&[type_.into(), animation_event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl AnimationEvent {
     /// Getter of the `animationName` attribute.
@@ -91,6 +88,7 @@ impl AnimationEvent {
     pub fn animation_name(&self) -> JsString {
         self.inner.get("animationName").as_::<JsString>()
     }
+
 }
 impl AnimationEvent {
     /// Getter of the `elapsedTime` attribute.
@@ -98,6 +96,7 @@ impl AnimationEvent {
     pub fn elapsed_time(&self) -> f64 {
         self.inner.get("elapsedTime").as_::<f64>()
     }
+
 }
 impl AnimationEvent {
     /// Getter of the `pseudoElement` attribute.
@@ -105,4 +104,5 @@ impl AnimationEvent {
     pub fn pseudo_element(&self) -> JsString {
         self.inner.get("pseudoElement").as_::<JsString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HIDDeviceRequestOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for HIDDeviceRequestOptions {
 
 impl AsMut<Any> for HIDDeviceRequestOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HIDDeviceRequestOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&HIDDeviceRequestOptions> for Any {
 impl HIDDeviceRequestOptions {
     /// Getter of the `filters` attribute.
     pub fn filters(&self) -> TypedArray<HIDDeviceFilter> {
-        self.inner
-            .get("filters")
-            .as_::<TypedArray<HIDDeviceFilter>>()
+        self.inner.get("filters").as_::<TypedArray<HIDDeviceFilter>>()
     }
 
     /// Setter of the `filters` attribute.
@@ -74,9 +75,7 @@ impl HIDDeviceRequestOptions {
 impl HIDDeviceRequestOptions {
     /// Getter of the `exclusionFilters` attribute.
     pub fn exclusion_filters(&self) -> TypedArray<HIDDeviceFilter> {
-        self.inner
-            .get("exclusionFilters")
-            .as_::<TypedArray<HIDDeviceFilter>>()
+        self.inner.get("exclusionFilters").as_::<TypedArray<HIDDeviceFilter>>()
     }
 
     /// Setter of the `exclusionFilters` attribute.

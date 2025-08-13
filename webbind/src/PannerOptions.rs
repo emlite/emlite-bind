@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PannerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PannerOptions {
 
 impl AsMut<Any> for PannerOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PannerOptions> for Any {

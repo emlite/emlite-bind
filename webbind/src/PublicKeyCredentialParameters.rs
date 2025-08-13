@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PublicKeyCredentialParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PublicKeyCredentialParameters {
 
 impl AsMut<Any> for PublicKeyCredentialParameters {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PublicKeyCredentialParameters> for Any {

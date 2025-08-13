@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PasswordCredentialData dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PasswordCredentialData {
 
 impl AsMut<Any> for PasswordCredentialData {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PasswordCredentialData> for Any {

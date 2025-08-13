@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRJointPose class.
 /// [`XRJointPose`](https://developer.mozilla.org/en-US/docs/Web/API/XRJointPose)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRJointPose {
 
 impl FromVal for XRJointPose {
     fn from_val(v: &Any) -> Self {
-        XRJointPose {
-            inner: XRPose::from_val(v),
-        }
+        XRJointPose { inner: XRPose::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRJointPose {
 
 impl AsMut<Any> for XRJointPose {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRJointPose> for Any {
@@ -63,10 +64,12 @@ impl From<&XRJointPose> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRJointPose);
 
+
 impl XRJointPose {
     /// Getter of the `radius` attribute.
     /// [`XRJointPose.radius`](https://developer.mozilla.org/en-US/docs/Web/API/XRJointPose/radius)
     pub fn radius(&self) -> f32 {
         self.inner.get("radius").as_::<f32>()
     }
+
 }

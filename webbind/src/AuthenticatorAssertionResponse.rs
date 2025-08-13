@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AuthenticatorAssertionResponse class.
 /// [`AuthenticatorAssertionResponse`](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAssertionResponse)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AuthenticatorAssertionResponse {
 
 impl FromVal for AuthenticatorAssertionResponse {
     fn from_val(v: &Any) -> Self {
-        AuthenticatorAssertionResponse {
-            inner: AuthenticatorResponse::from_val(v),
-        }
+        AuthenticatorAssertionResponse { inner: AuthenticatorResponse::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AuthenticatorAssertionResponse {
 
 impl AsMut<Any> for AuthenticatorAssertionResponse {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AuthenticatorAssertionResponse> for Any {
@@ -63,12 +64,14 @@ impl From<&AuthenticatorAssertionResponse> for Any {
 
 jsbind::utils::impl_dyn_cast!(AuthenticatorAssertionResponse);
 
+
 impl AuthenticatorAssertionResponse {
     /// Getter of the `authenticatorData` attribute.
     /// [`AuthenticatorAssertionResponse.authenticatorData`](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAssertionResponse/authenticatorData)
     pub fn authenticator_data(&self) -> ArrayBuffer {
         self.inner.get("authenticatorData").as_::<ArrayBuffer>()
     }
+
 }
 impl AuthenticatorAssertionResponse {
     /// Getter of the `signature` attribute.
@@ -76,6 +79,7 @@ impl AuthenticatorAssertionResponse {
     pub fn signature(&self) -> ArrayBuffer {
         self.inner.get("signature").as_::<ArrayBuffer>()
     }
+
 }
 impl AuthenticatorAssertionResponse {
     /// Getter of the `userHandle` attribute.
@@ -83,4 +87,5 @@ impl AuthenticatorAssertionResponse {
     pub fn user_handle(&self) -> ArrayBuffer {
         self.inner.get("userHandle").as_::<ArrayBuffer>()
     }
+
 }

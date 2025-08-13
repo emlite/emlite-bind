@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ImageBitmapOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ImageBitmapOptions {
 
 impl AsMut<Any> for ImageBitmapOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ImageBitmapOptions> for Any {
@@ -83,9 +86,7 @@ impl ImageBitmapOptions {
 impl ImageBitmapOptions {
     /// Getter of the `colorSpaceConversion` attribute.
     pub fn color_space_conversion(&self) -> ColorSpaceConversion {
-        self.inner
-            .get("colorSpaceConversion")
-            .as_::<ColorSpaceConversion>()
+        self.inner.get("colorSpaceConversion").as_::<ColorSpaceConversion>()
     }
 
     /// Setter of the `colorSpaceConversion` attribute.

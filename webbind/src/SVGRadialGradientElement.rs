@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGRadialGradientElement class.
 /// [`SVGRadialGradientElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGRadialGradientElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGRadialGradientElement {
 
 impl FromVal for SVGRadialGradientElement {
     fn from_val(v: &Any) -> Self {
-        SVGRadialGradientElement {
-            inner: SVGGradientElement::from_val(v),
-        }
+        SVGRadialGradientElement { inner: SVGGradientElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGRadialGradientElement {
 
 impl AsMut<Any> for SVGRadialGradientElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGRadialGradientElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGRadialGradientElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGRadialGradientElement);
 
+
 impl SVGRadialGradientElement {
     /// Getter of the `cx` attribute.
     /// [`SVGRadialGradientElement.cx`](https://developer.mozilla.org/en-US/docs/Web/API/SVGRadialGradientElement/cx)
     pub fn cx(&self) -> SVGAnimatedLength {
         self.inner.get("cx").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRadialGradientElement {
     /// Getter of the `cy` attribute.
@@ -76,6 +79,7 @@ impl SVGRadialGradientElement {
     pub fn cy(&self) -> SVGAnimatedLength {
         self.inner.get("cy").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRadialGradientElement {
     /// Getter of the `r` attribute.
@@ -83,6 +87,7 @@ impl SVGRadialGradientElement {
     pub fn r(&self) -> SVGAnimatedLength {
         self.inner.get("r").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRadialGradientElement {
     /// Getter of the `fx` attribute.
@@ -90,6 +95,7 @@ impl SVGRadialGradientElement {
     pub fn fx(&self) -> SVGAnimatedLength {
         self.inner.get("fx").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRadialGradientElement {
     /// Getter of the `fy` attribute.
@@ -97,6 +103,7 @@ impl SVGRadialGradientElement {
     pub fn fy(&self) -> SVGAnimatedLength {
         self.inner.get("fy").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGRadialGradientElement {
     /// Getter of the `fr` attribute.
@@ -104,4 +111,5 @@ impl SVGRadialGradientElement {
     pub fn fr(&self) -> SVGAnimatedLength {
         self.inner.get("fr").as_::<SVGAnimatedLength>()
     }
+
 }

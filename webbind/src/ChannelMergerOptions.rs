@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ChannelMergerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ChannelMergerOptions {
 
 impl AsMut<Any> for ChannelMergerOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ChannelMergerOptions> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCEncodedAudioFrame class.
 /// [`RTCEncodedAudioFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCEncodedAudioFrame {
 
 impl FromVal for RTCEncodedAudioFrame {
     fn from_val(v: &Any) -> Self {
-        RTCEncodedAudioFrame {
-            inner: Any::from_val(v),
-        }
+        RTCEncodedAudioFrame { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCEncodedAudioFrame {
 
 impl AsMut<Any> for RTCEncodedAudioFrame {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCEncodedAudioFrame> for Any {
@@ -63,27 +64,23 @@ impl From<&RTCEncodedAudioFrame> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCEncodedAudioFrame);
 
+
+
 impl RTCEncodedAudioFrame {
     /// The `new RTCEncodedAudioFrame(..)` constructor, creating a new RTCEncodedAudioFrame instance
     pub fn new0(original_frame: &RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {
         Self {
-            inner: Any::global("RTCEncodedAudioFrame")
-                .new(&[original_frame.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCEncodedAudioFrame").new(&[original_frame.into()]).as_::<Any>(),
         }
     }
 
     /// The `new RTCEncodedAudioFrame(..)` constructor, creating a new RTCEncodedAudioFrame instance
-    pub fn new1(
-        original_frame: &RTCEncodedAudioFrame,
-        options: &RTCEncodedAudioFrameOptions,
-    ) -> RTCEncodedAudioFrame {
+    pub fn new1(original_frame: &RTCEncodedAudioFrame, options: &RTCEncodedAudioFrameOptions) -> RTCEncodedAudioFrame {
         Self {
-            inner: Any::global("RTCEncodedAudioFrame")
-                .new(&[original_frame.into(), options.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCEncodedAudioFrame").new(&[original_frame.into(), options.into()]).as_::<Any>(),
         }
     }
+
 }
 impl RTCEncodedAudioFrame {
     /// Getter of the `data` attribute.
@@ -101,9 +98,7 @@ impl RTCEncodedAudioFrame {
 impl RTCEncodedAudioFrame {
     /// The getMetadata method.
     /// [`RTCEncodedAudioFrame.getMetadata`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame/getMetadata)
-    pub fn get_metadata(&self) -> RTCEncodedAudioFrameMetadata {
-        self.inner
-            .call("getMetadata", &[])
-            .as_::<RTCEncodedAudioFrameMetadata>()
+    pub fn get_metadata(&self, ) -> RTCEncodedAudioFrameMetadata {
+        self.inner.call("getMetadata", &[]).as_::<RTCEncodedAudioFrameMetadata>()
     }
 }

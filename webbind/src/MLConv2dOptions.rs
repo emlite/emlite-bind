@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLConv2dOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLConv2dOptions {
 
 impl AsMut<Any> for MLConv2dOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLConv2dOptions> for Any {
@@ -116,9 +119,7 @@ impl MLConv2dOptions {
 impl MLConv2dOptions {
     /// Getter of the `filterLayout` attribute.
     pub fn filter_layout(&self) -> MLConv2dFilterOperandLayout {
-        self.inner
-            .get("filterLayout")
-            .as_::<MLConv2dFilterOperandLayout>()
+        self.inner.get("filterLayout").as_::<MLConv2dFilterOperandLayout>()
     }
 
     /// Setter of the `filterLayout` attribute.

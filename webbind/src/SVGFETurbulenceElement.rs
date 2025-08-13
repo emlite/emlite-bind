@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFETurbulenceElement class.
 /// [`SVGFETurbulenceElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFETurbulenceElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFETurbulenceElement {
 
 impl FromVal for SVGFETurbulenceElement {
     fn from_val(v: &Any) -> Self {
-        SVGFETurbulenceElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFETurbulenceElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFETurbulenceElement {
 
 impl AsMut<Any> for SVGFETurbulenceElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFETurbulenceElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFETurbulenceElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFETurbulenceElement);
 
+
 impl SVGFETurbulenceElement {
     /// Getter of the `baseFrequencyX` attribute.
     /// [`SVGFETurbulenceElement.baseFrequencyX`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFETurbulenceElement/baseFrequencyX)
     pub fn base_frequency_x(&self) -> SVGAnimatedNumber {
         self.inner.get("baseFrequencyX").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `baseFrequencyY` attribute.
@@ -76,6 +79,7 @@ impl SVGFETurbulenceElement {
     pub fn base_frequency_y(&self) -> SVGAnimatedNumber {
         self.inner.get("baseFrequencyY").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `numOctaves` attribute.
@@ -83,6 +87,7 @@ impl SVGFETurbulenceElement {
     pub fn num_octaves(&self) -> SVGAnimatedInteger {
         self.inner.get("numOctaves").as_::<SVGAnimatedInteger>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `seed` attribute.
@@ -90,15 +95,15 @@ impl SVGFETurbulenceElement {
     pub fn seed(&self) -> SVGAnimatedNumber {
         self.inner.get("seed").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `stitchTiles` attribute.
     /// [`SVGFETurbulenceElement.stitchTiles`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFETurbulenceElement/stitchTiles)
     pub fn stitch_tiles(&self) -> SVGAnimatedEnumeration {
-        self.inner
-            .get("stitchTiles")
-            .as_::<SVGAnimatedEnumeration>()
+        self.inner.get("stitchTiles").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `type` attribute.
@@ -106,6 +111,7 @@ impl SVGFETurbulenceElement {
     pub fn type_(&self) -> SVGAnimatedEnumeration {
         self.inner.get("type").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `x` attribute.
@@ -113,6 +119,7 @@ impl SVGFETurbulenceElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `y` attribute.
@@ -120,6 +127,7 @@ impl SVGFETurbulenceElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `width` attribute.
@@ -127,6 +135,7 @@ impl SVGFETurbulenceElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `height` attribute.
@@ -134,6 +143,7 @@ impl SVGFETurbulenceElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETurbulenceElement {
     /// Getter of the `result` attribute.
@@ -141,4 +151,5 @@ impl SVGFETurbulenceElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

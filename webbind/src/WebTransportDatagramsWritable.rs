@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebTransportDatagramsWritable class.
 /// [`WebTransportDatagramsWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramsWritable)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebTransportDatagramsWritable {
 
 impl FromVal for WebTransportDatagramsWritable {
     fn from_val(v: &Any) -> Self {
-        WebTransportDatagramsWritable {
-            inner: WritableStream::from_val(v),
-        }
+        WebTransportDatagramsWritable { inner: WritableStream::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebTransportDatagramsWritable {
 
 impl AsMut<Any> for WebTransportDatagramsWritable {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebTransportDatagramsWritable> for Any {
@@ -62,6 +63,7 @@ impl From<&WebTransportDatagramsWritable> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramsWritable);
+
 
 impl WebTransportDatagramsWritable {
     /// Getter of the `sendGroup` attribute.

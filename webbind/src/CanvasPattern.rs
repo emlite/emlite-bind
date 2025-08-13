@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CanvasPattern class.
 /// [`CanvasPattern`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CanvasPattern {
 
 impl FromVal for CanvasPattern {
     fn from_val(v: &Any) -> Self {
-        CanvasPattern {
-            inner: Any::from_val(v),
-        }
+        CanvasPattern { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CanvasPattern {
 
 impl AsMut<Any> for CanvasPattern {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CanvasPattern> for Any {
@@ -63,17 +64,16 @@ impl From<&CanvasPattern> for Any {
 
 jsbind::utils::impl_dyn_cast!(CanvasPattern);
 
+
 impl CanvasPattern {
     /// The setTransform method.
     /// [`CanvasPattern.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern/setTransform)
-    pub fn set_transform0(&self) -> Undefined {
+    pub fn set_transform0(&self, ) -> Undefined {
         self.inner.call("setTransform", &[]).as_::<Undefined>()
     }
     /// The setTransform method.
     /// [`CanvasPattern.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern/setTransform)
     pub fn set_transform1(&self, transform: &DOMMatrix2DInit) -> Undefined {
-        self.inner
-            .call("setTransform", &[transform.into()])
-            .as_::<Undefined>()
+        self.inner.call("setTransform", &[transform.into(), ]).as_::<Undefined>()
     }
 }

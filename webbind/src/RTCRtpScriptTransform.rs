@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpScriptTransform class.
 /// [`RTCRtpScriptTransform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCRtpScriptTransform {
 
 impl FromVal for RTCRtpScriptTransform {
     fn from_val(v: &Any) -> Self {
-        RTCRtpScriptTransform {
-            inner: Any::from_val(v),
-        }
+        RTCRtpScriptTransform { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCRtpScriptTransform {
 
 impl AsMut<Any> for RTCRtpScriptTransform {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpScriptTransform> for Any {
@@ -63,35 +64,28 @@ impl From<&RTCRtpScriptTransform> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCRtpScriptTransform);
 
+
+
 impl RTCRtpScriptTransform {
     /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
     pub fn new0(worker: &Worker) -> RTCRtpScriptTransform {
         Self {
-            inner: Any::global("RTCRtpScriptTransform")
-                .new(&[worker.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCRtpScriptTransform").new(&[worker.into()]).as_::<Any>(),
         }
     }
 
     /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
     pub fn new1(worker: &Worker, options: &Any) -> RTCRtpScriptTransform {
         Self {
-            inner: Any::global("RTCRtpScriptTransform")
-                .new(&[worker.into(), options.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCRtpScriptTransform").new(&[worker.into(), options.into()]).as_::<Any>(),
         }
     }
 
     /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
-    pub fn new2(
-        worker: &Worker,
-        options: &Any,
-        transfer: &TypedArray<Object>,
-    ) -> RTCRtpScriptTransform {
+    pub fn new2(worker: &Worker, options: &Any, transfer: &TypedArray<Object>) -> RTCRtpScriptTransform {
         Self {
-            inner: Any::global("RTCRtpScriptTransform")
-                .new(&[worker.into(), options.into(), transfer.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCRtpScriptTransform").new(&[worker.into(), options.into(), transfer.into()]).as_::<Any>(),
         }
     }
+
 }

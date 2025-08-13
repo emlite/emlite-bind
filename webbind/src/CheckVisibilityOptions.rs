@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CheckVisibilityOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CheckVisibilityOptions {
 
 impl AsMut<Any> for CheckVisibilityOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CheckVisibilityOptions> for Any {

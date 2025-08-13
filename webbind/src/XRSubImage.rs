@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRSubImage class.
 /// [`XRSubImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRSubImage)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRSubImage {
 
 impl FromVal for XRSubImage {
     fn from_val(v: &Any) -> Self {
-        XRSubImage {
-            inner: Any::from_val(v),
-        }
+        XRSubImage { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRSubImage {
 
 impl AsMut<Any> for XRSubImage {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRSubImage> for Any {
@@ -63,10 +64,12 @@ impl From<&XRSubImage> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRSubImage);
 
+
 impl XRSubImage {
     /// Getter of the `viewport` attribute.
     /// [`XRSubImage.viewport`](https://developer.mozilla.org/en-US/docs/Web/API/XRSubImage/viewport)
     pub fn viewport(&self) -> XRViewport {
         self.inner.get("viewport").as_::<XRViewport>()
     }
+
 }

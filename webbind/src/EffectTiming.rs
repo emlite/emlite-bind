@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EffectTiming dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for EffectTiming {
 
 impl AsMut<Any> for EffectTiming {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EffectTiming> for Any {

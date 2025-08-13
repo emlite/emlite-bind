@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGStringList class.
 /// [`SVGStringList`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGStringList {
 
 impl FromVal for SVGStringList {
     fn from_val(v: &Any) -> Self {
-        SVGStringList {
-            inner: Any::from_val(v),
-        }
+        SVGStringList { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGStringList {
 
 impl AsMut<Any> for SVGStringList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGStringList> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGStringList> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGStringList);
 
+
 impl SVGStringList {
     /// Getter of the `length` attribute.
     /// [`SVGStringList.length`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl SVGStringList {
     /// Getter of the `numberOfItems` attribute.
@@ -76,11 +79,12 @@ impl SVGStringList {
     pub fn number_of_items(&self) -> u32 {
         self.inner.get("numberOfItems").as_::<u32>()
     }
+
 }
 impl SVGStringList {
     /// The clear method.
     /// [`SVGStringList.clear`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/clear)
-    pub fn clear(&self) -> Undefined {
+    pub fn clear(&self, ) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }
@@ -88,53 +92,41 @@ impl SVGStringList {
     /// The initialize method.
     /// [`SVGStringList.initialize`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/initialize)
     pub fn initialize(&self, new_item: &JsString) -> JsString {
-        self.inner
-            .call("initialize", &[new_item.into()])
-            .as_::<JsString>()
+        self.inner.call("initialize", &[new_item.into(), ]).as_::<JsString>()
     }
 }
 impl SVGStringList {
     /// The getItem method.
     /// [`SVGStringList.getItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/getItem)
     pub fn get_item(&self, index: u32) -> JsString {
-        self.inner
-            .call("getItem", &[index.into()])
-            .as_::<JsString>()
+        self.inner.call("getItem", &[index.into(), ]).as_::<JsString>()
     }
 }
 impl SVGStringList {
     /// The insertItemBefore method.
     /// [`SVGStringList.insertItemBefore`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/insertItemBefore)
     pub fn insert_item_before(&self, new_item: &JsString, index: u32) -> JsString {
-        self.inner
-            .call("insertItemBefore", &[new_item.into(), index.into()])
-            .as_::<JsString>()
+        self.inner.call("insertItemBefore", &[new_item.into(), index.into(), ]).as_::<JsString>()
     }
 }
 impl SVGStringList {
     /// The replaceItem method.
     /// [`SVGStringList.replaceItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/replaceItem)
     pub fn replace_item(&self, new_item: &JsString, index: u32) -> JsString {
-        self.inner
-            .call("replaceItem", &[new_item.into(), index.into()])
-            .as_::<JsString>()
+        self.inner.call("replaceItem", &[new_item.into(), index.into(), ]).as_::<JsString>()
     }
 }
 impl SVGStringList {
     /// The removeItem method.
     /// [`SVGStringList.removeItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/removeItem)
     pub fn remove_item(&self, index: u32) -> JsString {
-        self.inner
-            .call("removeItem", &[index.into()])
-            .as_::<JsString>()
+        self.inner.call("removeItem", &[index.into(), ]).as_::<JsString>()
     }
 }
 impl SVGStringList {
     /// The appendItem method.
     /// [`SVGStringList.appendItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/appendItem)
     pub fn append_item(&self, new_item: &JsString) -> JsString {
-        self.inner
-            .call("appendItem", &[new_item.into()])
-            .as_::<JsString>()
+        self.inner.call("appendItem", &[new_item.into(), ]).as_::<JsString>()
     }
 }

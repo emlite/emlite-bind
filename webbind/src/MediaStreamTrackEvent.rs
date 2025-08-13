@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaStreamTrackEvent class.
 /// [`MediaStreamTrackEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaStreamTrackEvent {
 
 impl FromVal for MediaStreamTrackEvent {
     fn from_val(v: &Any) -> Self {
-        MediaStreamTrackEvent {
-            inner: Event::from_val(v),
-        }
+        MediaStreamTrackEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaStreamTrackEvent {
 
 impl AsMut<Any> for MediaStreamTrackEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaStreamTrackEvent> for Any {
@@ -63,18 +64,16 @@ impl From<&MediaStreamTrackEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackEvent);
 
+
+
 impl MediaStreamTrackEvent {
     /// The `new MediaStreamTrackEvent(..)` constructor, creating a new MediaStreamTrackEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &MediaStreamTrackEventInit,
-    ) -> MediaStreamTrackEvent {
+    pub fn new(type_: &JsString, event_init_dict: &MediaStreamTrackEventInit) -> MediaStreamTrackEvent {
         Self {
-            inner: Any::global("MediaStreamTrackEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("MediaStreamTrackEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl MediaStreamTrackEvent {
     /// Getter of the `track` attribute.
@@ -82,4 +81,5 @@ impl MediaStreamTrackEvent {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
+
 }

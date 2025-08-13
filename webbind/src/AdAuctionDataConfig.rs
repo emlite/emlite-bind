@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AdAuctionDataConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for AdAuctionDataConfig {
 
 impl AsMut<Any> for AdAuctionDataConfig {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AdAuctionDataConfig> for Any {
@@ -83,9 +86,7 @@ impl AdAuctionDataConfig {
 impl AdAuctionDataConfig {
     /// Getter of the `sellers` attribute.
     pub fn sellers(&self) -> TypedArray<AdAuctionOneSeller> {
-        self.inner
-            .get("sellers")
-            .as_::<TypedArray<AdAuctionOneSeller>>()
+        self.inner.get("sellers").as_::<TypedArray<AdAuctionOneSeller>>()
     }
 
     /// Setter of the `sellers` attribute.
@@ -107,9 +108,7 @@ impl AdAuctionDataConfig {
 impl AdAuctionDataConfig {
     /// Getter of the `perBuyerConfig` attribute.
     pub fn per_buyer_config(&self) -> Record<JsString, AdAuctionDataBuyerConfig> {
-        self.inner
-            .get("perBuyerConfig")
-            .as_::<Record<JsString, AdAuctionDataBuyerConfig>>()
+        self.inner.get("perBuyerConfig").as_::<Record<JsString, AdAuctionDataBuyerConfig>>()
     }
 
     /// Setter of the `perBuyerConfig` attribute.

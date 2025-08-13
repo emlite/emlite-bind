@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaStreamTrack class.
 /// [`MediaStreamTrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaStreamTrack {
 
 impl FromVal for MediaStreamTrack {
     fn from_val(v: &Any) -> Self {
-        MediaStreamTrack {
-            inner: EventTarget::from_val(v),
-        }
+        MediaStreamTrack { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaStreamTrack {
 
 impl AsMut<Any> for MediaStreamTrack {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaStreamTrack> for Any {
@@ -63,12 +64,14 @@ impl From<&MediaStreamTrack> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaStreamTrack);
 
+
 impl MediaStreamTrack {
     /// Getter of the `kind` attribute.
     /// [`MediaStreamTrack.kind`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/kind)
     pub fn kind(&self) -> JsString {
         self.inner.get("kind").as_::<JsString>()
     }
+
 }
 impl MediaStreamTrack {
     /// Getter of the `id` attribute.
@@ -76,6 +79,7 @@ impl MediaStreamTrack {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
+
 }
 impl MediaStreamTrack {
     /// Getter of the `label` attribute.
@@ -83,6 +87,7 @@ impl MediaStreamTrack {
     pub fn label(&self) -> JsString {
         self.inner.get("label").as_::<JsString>()
     }
+
 }
 impl MediaStreamTrack {
     /// Getter of the `enabled` attribute.
@@ -103,6 +108,7 @@ impl MediaStreamTrack {
     pub fn muted(&self) -> bool {
         self.inner.get("muted").as_::<bool>()
     }
+
 }
 impl MediaStreamTrack {
     /// Getter of the `onmute` attribute.
@@ -136,6 +142,7 @@ impl MediaStreamTrack {
     pub fn ready_state(&self) -> MediaStreamTrackState {
         self.inner.get("readyState").as_::<MediaStreamTrackState>()
     }
+
 }
 impl MediaStreamTrack {
     /// Getter of the `onended` attribute.
@@ -153,67 +160,55 @@ impl MediaStreamTrack {
 impl MediaStreamTrack {
     /// The clone method.
     /// [`MediaStreamTrack.clone`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/clone)
-    pub fn clone_(&self) -> MediaStreamTrack {
+    pub fn clone_(&self, ) -> MediaStreamTrack {
         self.inner.call("clone", &[]).as_::<MediaStreamTrack>()
     }
 }
 impl MediaStreamTrack {
     /// The stop method.
     /// [`MediaStreamTrack.stop`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/stop)
-    pub fn stop(&self) -> Undefined {
+    pub fn stop(&self, ) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }
 impl MediaStreamTrack {
     /// The getCapabilities method.
     /// [`MediaStreamTrack.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getCapabilities)
-    pub fn get_capabilities(&self) -> MediaTrackCapabilities {
-        self.inner
-            .call("getCapabilities", &[])
-            .as_::<MediaTrackCapabilities>()
+    pub fn get_capabilities(&self, ) -> MediaTrackCapabilities {
+        self.inner.call("getCapabilities", &[]).as_::<MediaTrackCapabilities>()
     }
 }
 impl MediaStreamTrack {
     /// The getConstraints method.
     /// [`MediaStreamTrack.getConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getConstraints)
-    pub fn get_constraints(&self) -> MediaTrackConstraints {
-        self.inner
-            .call("getConstraints", &[])
-            .as_::<MediaTrackConstraints>()
+    pub fn get_constraints(&self, ) -> MediaTrackConstraints {
+        self.inner.call("getConstraints", &[]).as_::<MediaTrackConstraints>()
     }
 }
 impl MediaStreamTrack {
     /// The getSettings method.
     /// [`MediaStreamTrack.getSettings`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getSettings)
-    pub fn get_settings(&self) -> MediaTrackSettings {
-        self.inner
-            .call("getSettings", &[])
-            .as_::<MediaTrackSettings>()
+    pub fn get_settings(&self, ) -> MediaTrackSettings {
+        self.inner.call("getSettings", &[]).as_::<MediaTrackSettings>()
     }
 }
 impl MediaStreamTrack {
     /// The applyConstraints method.
     /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
-    pub fn apply_constraints0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("applyConstraints", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn apply_constraints0(&self, ) -> Promise<Undefined> {
+        self.inner.call("applyConstraints", &[]).as_::<Promise<Undefined>>()
     }
     /// The applyConstraints method.
     /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
     pub fn apply_constraints1(&self, constraints: &MediaTrackConstraints) -> Promise<Undefined> {
-        self.inner
-            .call("applyConstraints", &[constraints.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("applyConstraints", &[constraints.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl MediaStreamTrack {
     /// The getCaptureHandle method.
     /// [`MediaStreamTrack.getCaptureHandle`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getCaptureHandle)
-    pub fn get_capture_handle(&self) -> CaptureHandle {
-        self.inner
-            .call("getCaptureHandle", &[])
-            .as_::<CaptureHandle>()
+    pub fn get_capture_handle(&self, ) -> CaptureHandle {
+        self.inner.call("getCaptureHandle", &[]).as_::<CaptureHandle>()
     }
 }
 impl MediaStreamTrack {
@@ -232,19 +227,15 @@ impl MediaStreamTrack {
 impl MediaStreamTrack {
     /// The getSupportedCaptureActions method.
     /// [`MediaStreamTrack.getSupportedCaptureActions`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getSupportedCaptureActions)
-    pub fn get_supported_capture_actions(&self) -> TypedArray<JsString> {
-        self.inner
-            .call("getSupportedCaptureActions", &[])
-            .as_::<TypedArray<JsString>>()
+    pub fn get_supported_capture_actions(&self, ) -> TypedArray<JsString> {
+        self.inner.call("getSupportedCaptureActions", &[]).as_::<TypedArray<JsString>>()
     }
 }
 impl MediaStreamTrack {
     /// The sendCaptureAction method.
     /// [`MediaStreamTrack.sendCaptureAction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/sendCaptureAction)
     pub fn send_capture_action(&self, action: &CaptureAction) -> Promise<Undefined> {
-        self.inner
-            .call("sendCaptureAction", &[action.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("sendCaptureAction", &[action.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl MediaStreamTrack {
@@ -266,6 +257,7 @@ impl MediaStreamTrack {
     pub fn isolated(&self) -> bool {
         self.inner.get("isolated").as_::<bool>()
     }
+
 }
 impl MediaStreamTrack {
     /// Getter of the `onisolationchange` attribute.

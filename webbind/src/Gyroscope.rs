@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Gyroscope class.
 /// [`Gyroscope`](https://developer.mozilla.org/en-US/docs/Web/API/Gyroscope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Gyroscope {
 
 impl FromVal for Gyroscope {
     fn from_val(v: &Any) -> Self {
-        Gyroscope {
-            inner: Sensor::from_val(v),
-        }
+        Gyroscope { inner: Sensor::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Gyroscope {
 
 impl AsMut<Any> for Gyroscope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Gyroscope> for Any {
@@ -63,6 +64,8 @@ impl From<&Gyroscope> for Any {
 
 jsbind::utils::impl_dyn_cast!(Gyroscope);
 
+
+
 impl Gyroscope {
     /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
     pub fn new0() -> Gyroscope {
@@ -74,11 +77,10 @@ impl Gyroscope {
     /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
     pub fn new1(sensor_options: &GyroscopeSensorOptions) -> Gyroscope {
         Self {
-            inner: Any::global("Gyroscope")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
+            inner: Any::global("Gyroscope").new(&[sensor_options.into()]).as_::<Sensor>(),
         }
     }
+
 }
 impl Gyroscope {
     /// Getter of the `x` attribute.
@@ -86,6 +88,7 @@ impl Gyroscope {
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
+
 }
 impl Gyroscope {
     /// Getter of the `y` attribute.
@@ -93,6 +96,7 @@ impl Gyroscope {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
+
 }
 impl Gyroscope {
     /// Getter of the `z` attribute.
@@ -100,4 +104,5 @@ impl Gyroscope {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
+
 }

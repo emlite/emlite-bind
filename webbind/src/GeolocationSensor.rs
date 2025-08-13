@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GeolocationSensor class.
 /// [`GeolocationSensor`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GeolocationSensor {
 
 impl FromVal for GeolocationSensor {
     fn from_val(v: &Any) -> Self {
-        GeolocationSensor {
-            inner: Sensor::from_val(v),
-        }
+        GeolocationSensor { inner: Sensor::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GeolocationSensor {
 
 impl AsMut<Any> for GeolocationSensor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GeolocationSensor> for Any {
@@ -63,6 +64,8 @@ impl From<&GeolocationSensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(GeolocationSensor);
 
+
+
 impl GeolocationSensor {
     /// The `new GeolocationSensor(..)` constructor, creating a new GeolocationSensor instance
     pub fn new0() -> GeolocationSensor {
@@ -74,26 +77,21 @@ impl GeolocationSensor {
     /// The `new GeolocationSensor(..)` constructor, creating a new GeolocationSensor instance
     pub fn new1(options: &GeolocationSensorOptions) -> GeolocationSensor {
         Self {
-            inner: Any::global("GeolocationSensor")
-                .new(&[options.into()])
-                .as_::<Sensor>(),
+            inner: Any::global("GeolocationSensor").new(&[options.into()]).as_::<Sensor>(),
         }
     }
+
 }
 impl GeolocationSensor {
     /// The read method.
     /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
     pub fn read0() -> Promise<GeolocationSensorReading> {
-        Any::global("GeolocationSensor")
-            .call("read", &[])
-            .as_::<Promise<GeolocationSensorReading>>()
+        Any::global("GeolocationSensor").call("read", &[]).as_::<Promise<GeolocationSensorReading>>()
     }
     /// The read method.
     /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
     pub fn read1(read_options: &ReadOptions) -> Promise<GeolocationSensorReading> {
-        Any::global("GeolocationSensor")
-            .call("read", &[read_options.into()])
-            .as_::<Promise<GeolocationSensorReading>>()
+        Any::global("GeolocationSensor").call("read", &[read_options.into(), ]).as_::<Promise<GeolocationSensorReading>>()
     }
 }
 impl GeolocationSensor {
@@ -102,6 +100,7 @@ impl GeolocationSensor {
     pub fn latitude(&self) -> f64 {
         self.inner.get("latitude").as_::<f64>()
     }
+
 }
 impl GeolocationSensor {
     /// Getter of the `longitude` attribute.
@@ -109,6 +108,7 @@ impl GeolocationSensor {
     pub fn longitude(&self) -> f64 {
         self.inner.get("longitude").as_::<f64>()
     }
+
 }
 impl GeolocationSensor {
     /// Getter of the `altitude` attribute.
@@ -116,6 +116,7 @@ impl GeolocationSensor {
     pub fn altitude(&self) -> f64 {
         self.inner.get("altitude").as_::<f64>()
     }
+
 }
 impl GeolocationSensor {
     /// Getter of the `accuracy` attribute.
@@ -123,6 +124,7 @@ impl GeolocationSensor {
     pub fn accuracy(&self) -> f64 {
         self.inner.get("accuracy").as_::<f64>()
     }
+
 }
 impl GeolocationSensor {
     /// Getter of the `altitudeAccuracy` attribute.
@@ -130,6 +132,7 @@ impl GeolocationSensor {
     pub fn altitude_accuracy(&self) -> f64 {
         self.inner.get("altitudeAccuracy").as_::<f64>()
     }
+
 }
 impl GeolocationSensor {
     /// Getter of the `heading` attribute.
@@ -137,6 +140,7 @@ impl GeolocationSensor {
     pub fn heading(&self) -> f64 {
         self.inner.get("heading").as_::<f64>()
     }
+
 }
 impl GeolocationSensor {
     /// Getter of the `speed` attribute.
@@ -144,4 +148,5 @@ impl GeolocationSensor {
     pub fn speed(&self) -> f64 {
         self.inner.get("speed").as_::<f64>()
     }
+
 }

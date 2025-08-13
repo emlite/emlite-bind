@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechSynthesisEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SpeechSynthesisEventInit {
 
 impl AsMut<Any> for SpeechSynthesisEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechSynthesisEventInit> for Any {
@@ -61,9 +64,7 @@ impl From<&SpeechSynthesisEventInit> for Any {
 impl SpeechSynthesisEventInit {
     /// Getter of the `utterance` attribute.
     pub fn utterance(&self) -> SpeechSynthesisUtterance {
-        self.inner
-            .get("utterance")
-            .as_::<SpeechSynthesisUtterance>()
+        self.inner.get("utterance").as_::<SpeechSynthesisUtterance>()
     }
 
     /// Setter of the `utterance` attribute.

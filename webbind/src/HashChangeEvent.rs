@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HashChangeEvent class.
 /// [`HashChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HashChangeEvent {
 
 impl FromVal for HashChangeEvent {
     fn from_val(v: &Any) -> Self {
-        HashChangeEvent {
-            inner: Event::from_val(v),
-        }
+        HashChangeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HashChangeEvent {
 
 impl AsMut<Any> for HashChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HashChangeEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&HashChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(HashChangeEvent);
 
+
+
 impl HashChangeEvent {
     /// The `new HashChangeEvent(..)` constructor, creating a new HashChangeEvent instance
     pub fn new0(type_: &JsString) -> HashChangeEvent {
         Self {
-            inner: Any::global("HashChangeEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("HashChangeEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new HashChangeEvent(..)` constructor, creating a new HashChangeEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &HashChangeEventInit) -> HashChangeEvent {
         Self {
-            inner: Any::global("HashChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("HashChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl HashChangeEvent {
     /// Getter of the `oldURL` attribute.
@@ -88,6 +88,7 @@ impl HashChangeEvent {
     pub fn old_url(&self) -> JsString {
         self.inner.get("oldURL").as_::<JsString>()
     }
+
 }
 impl HashChangeEvent {
     /// Getter of the `newURL` attribute.
@@ -95,4 +96,5 @@ impl HashChangeEvent {
     pub fn new_url(&self) -> JsString {
         self.inner.get("newURL").as_::<JsString>()
     }
+
 }

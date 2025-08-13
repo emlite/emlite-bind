@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The InterestGroupBiddingScriptRunnerGlobalScope class.
 /// [`InterestGroupBiddingScriptRunnerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct InterestGroupBiddingScriptRunnerGlobalScope {
 
 impl FromVal for InterestGroupBiddingScriptRunnerGlobalScope {
     fn from_val(v: &Any) -> Self {
-        InterestGroupBiddingScriptRunnerGlobalScope {
-            inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v),
-        }
+        InterestGroupBiddingScriptRunnerGlobalScope { inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for InterestGroupBiddingScriptRunnerGlobalScope {
 
 impl AsMut<Any> for InterestGroupBiddingScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<InterestGroupBiddingScriptRunnerGlobalScope> for Any {
@@ -63,42 +64,35 @@ impl From<&InterestGroupBiddingScriptRunnerGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(InterestGroupBiddingScriptRunnerGlobalScope);
 
+
 impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setBid method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setBid`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setBid)
-    pub fn set_bid0(&self) -> bool {
+    pub fn set_bid0(&self, ) -> bool {
         self.inner.call("setBid", &[]).as_::<bool>()
     }
     /// The setBid method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setBid`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setBid)
     pub fn set_bid1(&self, one_or_many_bids: &Any) -> bool {
-        self.inner
-            .call("setBid", &[one_or_many_bids.into()])
-            .as_::<bool>()
+        self.inner.call("setBid", &[one_or_many_bids.into(), ]).as_::<bool>()
     }
 }
 impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setPriority method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setPriority`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setPriority)
     pub fn set_priority(&self, priority: f64) -> Undefined {
-        self.inner
-            .call("setPriority", &[priority.into()])
-            .as_::<Undefined>()
+        self.inner.call("setPriority", &[priority.into(), ]).as_::<Undefined>()
     }
 }
 impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setPrioritySignalsOverride method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setPrioritySignalsOverride`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setPrioritySignalsOverride)
     pub fn set_priority_signals_override0(&self, key: &JsString) -> Undefined {
-        self.inner
-            .call("setPrioritySignalsOverride", &[key.into()])
-            .as_::<Undefined>()
+        self.inner.call("setPrioritySignalsOverride", &[key.into(), ]).as_::<Undefined>()
     }
     /// The setPrioritySignalsOverride method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setPrioritySignalsOverride`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setPrioritySignalsOverride)
     pub fn set_priority_signals_override1(&self, key: &JsString, priority: f64) -> Undefined {
-        self.inner
-            .call("setPrioritySignalsOverride", &[key.into(), priority.into()])
-            .as_::<Undefined>()
+        self.inner.call("setPrioritySignalsOverride", &[key.into(), priority.into(), ]).as_::<Undefined>()
     }
 }

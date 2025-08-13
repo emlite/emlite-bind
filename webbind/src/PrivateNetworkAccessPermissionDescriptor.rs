@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PrivateNetworkAccessPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PrivateNetworkAccessPermissionDescriptor {
 
 impl AsMut<Any> for PrivateNetworkAccessPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PrivateNetworkAccessPermissionDescriptor> for Any {

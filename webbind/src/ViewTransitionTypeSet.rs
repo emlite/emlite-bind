@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ViewTransitionTypeSet class.
 /// [`ViewTransitionTypeSet`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransitionTypeSet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ViewTransitionTypeSet {
 
 impl FromVal for ViewTransitionTypeSet {
     fn from_val(v: &Any) -> Self {
-        ViewTransitionTypeSet {
-            inner: Any::from_val(v),
-        }
+        ViewTransitionTypeSet { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ViewTransitionTypeSet {
 
 impl AsMut<Any> for ViewTransitionTypeSet {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ViewTransitionTypeSet> for Any {
@@ -62,3 +63,5 @@ impl From<&ViewTransitionTypeSet> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(ViewTransitionTypeSet);
+
+

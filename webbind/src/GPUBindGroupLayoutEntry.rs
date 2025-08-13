@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUBindGroupLayoutEntry dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUBindGroupLayoutEntry {
 
 impl AsMut<Any> for GPUBindGroupLayoutEntry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUBindGroupLayoutEntry> for Any {
@@ -116,9 +119,7 @@ impl GPUBindGroupLayoutEntry {
 impl GPUBindGroupLayoutEntry {
     /// Getter of the `storageTexture` attribute.
     pub fn storage_texture(&self) -> GPUStorageTextureBindingLayout {
-        self.inner
-            .get("storageTexture")
-            .as_::<GPUStorageTextureBindingLayout>()
+        self.inner.get("storageTexture").as_::<GPUStorageTextureBindingLayout>()
     }
 
     /// Setter of the `storageTexture` attribute.
@@ -129,9 +130,7 @@ impl GPUBindGroupLayoutEntry {
 impl GPUBindGroupLayoutEntry {
     /// Getter of the `externalTexture` attribute.
     pub fn external_texture(&self) -> GPUExternalTextureBindingLayout {
-        self.inner
-            .get("externalTexture")
-            .as_::<GPUExternalTextureBindingLayout>()
+        self.inner.get("externalTexture").as_::<GPUExternalTextureBindingLayout>()
     }
 
     /// Setter of the `externalTexture` attribute.

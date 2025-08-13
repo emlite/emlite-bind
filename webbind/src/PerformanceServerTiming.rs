@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PerformanceServerTiming class.
 /// [`PerformanceServerTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PerformanceServerTiming {
 
 impl FromVal for PerformanceServerTiming {
     fn from_val(v: &Any) -> Self {
-        PerformanceServerTiming {
-            inner: Any::from_val(v),
-        }
+        PerformanceServerTiming { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PerformanceServerTiming {
 
 impl AsMut<Any> for PerformanceServerTiming {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PerformanceServerTiming> for Any {
@@ -63,12 +64,14 @@ impl From<&PerformanceServerTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceServerTiming);
 
+
 impl PerformanceServerTiming {
     /// Getter of the `name` attribute.
     /// [`PerformanceServerTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl PerformanceServerTiming {
     /// Getter of the `duration` attribute.
@@ -76,6 +79,7 @@ impl PerformanceServerTiming {
     pub fn duration(&self) -> Any {
         self.inner.get("duration").as_::<Any>()
     }
+
 }
 impl PerformanceServerTiming {
     /// Getter of the `description` attribute.
@@ -83,11 +87,12 @@ impl PerformanceServerTiming {
     pub fn description(&self) -> JsString {
         self.inner.get("description").as_::<JsString>()
     }
+
 }
 impl PerformanceServerTiming {
     /// The toJSON method.
     /// [`PerformanceServerTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLOptGroupElement class.
 /// [`HTMLOptGroupElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptGroupElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLOptGroupElement {
 
 impl FromVal for HTMLOptGroupElement {
     fn from_val(v: &Any) -> Self {
-        HTMLOptGroupElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLOptGroupElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLOptGroupElement {
 
 impl AsMut<Any> for HTMLOptGroupElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLOptGroupElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLOptGroupElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLOptGroupElement);
 
+
+
 impl HTMLOptGroupElement {
     /// The `new HTMLOptGroupElement(..)` constructor, creating a new HTMLOptGroupElement instance
     pub fn new() -> HTMLOptGroupElement {
         Self {
-            inner: Any::global("HTMLOptGroupElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLOptGroupElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLOptGroupElement {
     /// Getter of the `disabled` attribute.

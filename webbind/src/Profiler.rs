@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Profiler class.
 /// [`Profiler`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Profiler {
 
 impl FromVal for Profiler {
     fn from_val(v: &Any) -> Self {
-        Profiler {
-            inner: EventTarget::from_val(v),
-        }
+        Profiler { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Profiler {
 
 impl AsMut<Any> for Profiler {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Profiler> for Any {
@@ -63,12 +64,14 @@ impl From<&Profiler> for Any {
 
 jsbind::utils::impl_dyn_cast!(Profiler);
 
+
 impl Profiler {
     /// Getter of the `sampleInterval` attribute.
     /// [`Profiler.sampleInterval`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler/sampleInterval)
     pub fn sample_interval(&self) -> Any {
         self.inner.get("sampleInterval").as_::<Any>()
     }
+
 }
 impl Profiler {
     /// Getter of the `stopped` attribute.
@@ -76,22 +79,22 @@ impl Profiler {
     pub fn stopped(&self) -> bool {
         self.inner.get("stopped").as_::<bool>()
     }
+
 }
 
 impl Profiler {
     /// The `new Profiler(..)` constructor, creating a new Profiler instance
     pub fn new(options: &ProfilerInitOptions) -> Profiler {
         Self {
-            inner: Any::global("Profiler")
-                .new(&[options.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("Profiler").new(&[options.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl Profiler {
     /// The stop method.
     /// [`Profiler.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler/stop)
-    pub fn stop(&self) -> Promise<ProfilerTrace> {
+    pub fn stop(&self, ) -> Promise<ProfilerTrace> {
         self.inner.call("stop", &[]).as_::<Promise<ProfilerTrace>>()
     }
 }

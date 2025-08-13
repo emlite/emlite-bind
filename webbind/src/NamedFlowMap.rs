@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NamedFlowMap class.
 /// [`NamedFlowMap`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlowMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NamedFlowMap {
 
 impl FromVal for NamedFlowMap {
     fn from_val(v: &Any) -> Self {
-        NamedFlowMap {
-            inner: Any::from_val(v),
-        }
+        NamedFlowMap { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NamedFlowMap {
 
 impl AsMut<Any> for NamedFlowMap {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NamedFlowMap> for Any {
@@ -62,3 +63,5 @@ impl From<&NamedFlowMap> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(NamedFlowMap);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ScriptProcessorNode class.
 /// [`ScriptProcessorNode`](https://developer.mozilla.org/en-US/docs/Web/API/ScriptProcessorNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ScriptProcessorNode {
 
 impl FromVal for ScriptProcessorNode {
     fn from_val(v: &Any) -> Self {
-        ScriptProcessorNode {
-            inner: AudioNode::from_val(v),
-        }
+        ScriptProcessorNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ScriptProcessorNode {
 
 impl AsMut<Any> for ScriptProcessorNode {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ScriptProcessorNode> for Any {
@@ -62,6 +63,7 @@ impl From<&ScriptProcessorNode> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(ScriptProcessorNode);
+
 
 impl ScriptProcessorNode {
     /// Getter of the `onaudioprocess` attribute.
@@ -82,4 +84,5 @@ impl ScriptProcessorNode {
     pub fn buffer_size(&self) -> i32 {
         self.inner.get("bufferSize").as_::<i32>()
     }
+
 }

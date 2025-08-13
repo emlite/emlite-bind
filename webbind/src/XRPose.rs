@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRPose class.
 /// [`XRPose`](https://developer.mozilla.org/en-US/docs/Web/API/XRPose)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRPose {
 
 impl FromVal for XRPose {
     fn from_val(v: &Any) -> Self {
-        XRPose {
-            inner: Any::from_val(v),
-        }
+        XRPose { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRPose {
 
 impl AsMut<Any> for XRPose {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRPose> for Any {
@@ -63,12 +64,14 @@ impl From<&XRPose> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRPose);
 
+
 impl XRPose {
     /// Getter of the `transform` attribute.
     /// [`XRPose.transform`](https://developer.mozilla.org/en-US/docs/Web/API/XRPose/transform)
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
+
 }
 impl XRPose {
     /// Getter of the `linearVelocity` attribute.
@@ -76,6 +79,7 @@ impl XRPose {
     pub fn linear_velocity(&self) -> DOMPointReadOnly {
         self.inner.get("linearVelocity").as_::<DOMPointReadOnly>()
     }
+
 }
 impl XRPose {
     /// Getter of the `angularVelocity` attribute.
@@ -83,6 +87,7 @@ impl XRPose {
     pub fn angular_velocity(&self) -> DOMPointReadOnly {
         self.inner.get("angularVelocity").as_::<DOMPointReadOnly>()
     }
+
 }
 impl XRPose {
     /// Getter of the `emulatedPosition` attribute.
@@ -90,4 +95,5 @@ impl XRPose {
     pub fn emulated_position(&self) -> bool {
         self.inner.get("emulatedPosition").as_::<bool>()
     }
+
 }

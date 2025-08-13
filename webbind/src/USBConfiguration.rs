@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBConfiguration class.
 /// [`USBConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/USBConfiguration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBConfiguration {
 
 impl FromVal for USBConfiguration {
     fn from_val(v: &Any) -> Self {
-        USBConfiguration {
-            inner: Any::from_val(v),
-        }
+        USBConfiguration { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBConfiguration {
 
 impl AsMut<Any> for USBConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBConfiguration> for Any {
@@ -63,15 +64,16 @@ impl From<&USBConfiguration> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBConfiguration);
 
+
+
 impl USBConfiguration {
     /// The `new USBConfiguration(..)` constructor, creating a new USBConfiguration instance
     pub fn new(device: &USBDevice, configuration_value: u8) -> USBConfiguration {
         Self {
-            inner: Any::global("USBConfiguration")
-                .new(&[device.into(), configuration_value.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBConfiguration").new(&[device.into(), configuration_value.into()]).as_::<Any>(),
         }
     }
+
 }
 impl USBConfiguration {
     /// Getter of the `configurationValue` attribute.
@@ -79,6 +81,7 @@ impl USBConfiguration {
     pub fn configuration_value(&self) -> u8 {
         self.inner.get("configurationValue").as_::<u8>()
     }
+
 }
 impl USBConfiguration {
     /// Getter of the `configurationName` attribute.
@@ -86,13 +89,13 @@ impl USBConfiguration {
     pub fn configuration_name(&self) -> JsString {
         self.inner.get("configurationName").as_::<JsString>()
     }
+
 }
 impl USBConfiguration {
     /// Getter of the `interfaces` attribute.
     /// [`USBConfiguration.interfaces`](https://developer.mozilla.org/en-US/docs/Web/API/USBConfiguration/interfaces)
     pub fn interfaces(&self) -> TypedArray<USBInterface> {
-        self.inner
-            .get("interfaces")
-            .as_::<TypedArray<USBInterface>>()
+        self.inner.get("interfaces").as_::<TypedArray<USBInterface>>()
     }
+
 }

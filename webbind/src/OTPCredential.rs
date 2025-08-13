@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OTPCredential class.
 /// [`OTPCredential`](https://developer.mozilla.org/en-US/docs/Web/API/OTPCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct OTPCredential {
 
 impl FromVal for OTPCredential {
     fn from_val(v: &Any) -> Self {
-        OTPCredential {
-            inner: Credential::from_val(v),
-        }
+        OTPCredential { inner: Credential::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for OTPCredential {
 
 impl AsMut<Any> for OTPCredential {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OTPCredential> for Any {
@@ -63,10 +64,12 @@ impl From<&OTPCredential> for Any {
 
 jsbind::utils::impl_dyn_cast!(OTPCredential);
 
+
 impl OTPCredential {
     /// Getter of the `code` attribute.
     /// [`OTPCredential.code`](https://developer.mozilla.org/en-US/docs/Web/API/OTPCredential/code)
     pub fn code(&self) -> JsString {
         self.inner.get("code").as_::<JsString>()
     }
+
 }

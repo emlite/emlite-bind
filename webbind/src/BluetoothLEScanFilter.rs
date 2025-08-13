@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothLEScanFilter class.
 /// [`BluetoothLEScanFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BluetoothLEScanFilter {
 
 impl FromVal for BluetoothLEScanFilter {
     fn from_val(v: &Any) -> Self {
-        BluetoothLEScanFilter {
-            inner: Any::from_val(v),
-        }
+        BluetoothLEScanFilter { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BluetoothLEScanFilter {
 
 impl AsMut<Any> for BluetoothLEScanFilter {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothLEScanFilter> for Any {
@@ -63,6 +64,8 @@ impl From<&BluetoothLEScanFilter> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanFilter);
 
+
+
 impl BluetoothLEScanFilter {
     /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
     pub fn new0() -> BluetoothLEScanFilter {
@@ -74,11 +77,10 @@ impl BluetoothLEScanFilter {
     /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
     pub fn new1(init: &BluetoothLEScanFilterInit) -> BluetoothLEScanFilter {
         Self {
-            inner: Any::global("BluetoothLEScanFilter")
-                .new(&[init.into()])
-                .as_::<Any>(),
+            inner: Any::global("BluetoothLEScanFilter").new(&[init.into()]).as_::<Any>(),
         }
     }
+
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `name` attribute.
@@ -86,6 +88,7 @@ impl BluetoothLEScanFilter {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `namePrefix` attribute.
@@ -93,6 +96,7 @@ impl BluetoothLEScanFilter {
     pub fn name_prefix(&self) -> JsString {
         self.inner.get("namePrefix").as_::<JsString>()
     }
+
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `services` attribute.
@@ -100,22 +104,21 @@ impl BluetoothLEScanFilter {
     pub fn services(&self) -> TypedArray<Any> {
         self.inner.get("services").as_::<TypedArray<Any>>()
     }
+
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `manufacturerData` attribute.
     /// [`BluetoothLEScanFilter.manufacturerData`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/manufacturerData)
     pub fn manufacturer_data(&self) -> BluetoothManufacturerDataFilter {
-        self.inner
-            .get("manufacturerData")
-            .as_::<BluetoothManufacturerDataFilter>()
+        self.inner.get("manufacturerData").as_::<BluetoothManufacturerDataFilter>()
     }
+
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `serviceData` attribute.
     /// [`BluetoothLEScanFilter.serviceData`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/serviceData)
     pub fn service_data(&self) -> BluetoothServiceDataFilter {
-        self.inner
-            .get("serviceData")
-            .as_::<BluetoothServiceDataFilter>()
+        self.inner.get("serviceData").as_::<BluetoothServiceDataFilter>()
     }
+
 }

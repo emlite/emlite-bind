@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioBufferSourceNode class.
 /// [`AudioBufferSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioBufferSourceNode {
 
 impl FromVal for AudioBufferSourceNode {
     fn from_val(v: &Any) -> Self {
-        AudioBufferSourceNode {
-            inner: AudioScheduledSourceNode::from_val(v),
-        }
+        AudioBufferSourceNode { inner: AudioScheduledSourceNode::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioBufferSourceNode {
 
 impl AsMut<Any> for AudioBufferSourceNode {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioBufferSourceNode> for Any {
@@ -63,27 +64,23 @@ impl From<&AudioBufferSourceNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioBufferSourceNode);
 
+
+
 impl AudioBufferSourceNode {
     /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
     pub fn new0(context: &BaseAudioContext) -> AudioBufferSourceNode {
         Self {
-            inner: Any::global("AudioBufferSourceNode")
-                .new(&[context.into()])
-                .as_::<AudioScheduledSourceNode>(),
+            inner: Any::global("AudioBufferSourceNode").new(&[context.into()]).as_::<AudioScheduledSourceNode>(),
         }
     }
 
     /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
-    pub fn new1(
-        context: &BaseAudioContext,
-        options: &AudioBufferSourceOptions,
-    ) -> AudioBufferSourceNode {
+    pub fn new1(context: &BaseAudioContext, options: &AudioBufferSourceOptions) -> AudioBufferSourceNode {
         Self {
-            inner: Any::global("AudioBufferSourceNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioScheduledSourceNode>(),
+            inner: Any::global("AudioBufferSourceNode").new(&[context.into(), options.into()]).as_::<AudioScheduledSourceNode>(),
         }
     }
+
 }
 impl AudioBufferSourceNode {
     /// Getter of the `buffer` attribute.
@@ -104,6 +101,7 @@ impl AudioBufferSourceNode {
     pub fn playback_rate(&self) -> AudioParam {
         self.inner.get("playbackRate").as_::<AudioParam>()
     }
+
 }
 impl AudioBufferSourceNode {
     /// Getter of the `detune` attribute.
@@ -111,6 +109,7 @@ impl AudioBufferSourceNode {
     pub fn detune(&self) -> AudioParam {
         self.inner.get("detune").as_::<AudioParam>()
     }
+
 }
 impl AudioBufferSourceNode {
     /// Getter of the `loop` attribute.
@@ -154,26 +153,22 @@ impl AudioBufferSourceNode {
 impl AudioBufferSourceNode {
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
-    pub fn start0(&self) -> Undefined {
+    pub fn start0(&self, ) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
     pub fn start1(&self, when: f64) -> Undefined {
-        self.inner.call("start", &[when.into()]).as_::<Undefined>()
+        self.inner.call("start", &[when.into(), ]).as_::<Undefined>()
     }
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
     pub fn start2(&self, when: f64, offset: f64) -> Undefined {
-        self.inner
-            .call("start", &[when.into(), offset.into()])
-            .as_::<Undefined>()
+        self.inner.call("start", &[when.into(), offset.into(), ]).as_::<Undefined>()
     }
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
     pub fn start3(&self, when: f64, offset: f64, duration: f64) -> Undefined {
-        self.inner
-            .call("start", &[when.into(), offset.into(), duration.into()])
-            .as_::<Undefined>()
+        self.inner.call("start", &[when.into(), offset.into(), duration.into(), ]).as_::<Undefined>()
     }
 }

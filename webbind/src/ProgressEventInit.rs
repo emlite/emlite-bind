@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ProgressEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ProgressEventInit {
 
 impl AsMut<Any> for ProgressEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ProgressEventInit> for Any {

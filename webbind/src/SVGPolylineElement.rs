@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGPolylineElement class.
 /// [`SVGPolylineElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolylineElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGPolylineElement {
 
 impl FromVal for SVGPolylineElement {
     fn from_val(v: &Any) -> Self {
-        SVGPolylineElement {
-            inner: SVGGeometryElement::from_val(v),
-        }
+        SVGPolylineElement { inner: SVGGeometryElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGPolylineElement {
 
 impl AsMut<Any> for SVGPolylineElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGPolylineElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGPolylineElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGPolylineElement);
 
+
 impl SVGPolylineElement {
     /// Getter of the `points` attribute.
     /// [`SVGPolylineElement.points`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPolylineElement/points)
     pub fn points(&self) -> SVGPointList {
         self.inner.get("points").as_::<SVGPointList>()
     }
+
 }
 impl SVGPolylineElement {
     /// Getter of the `animatedPoints` attribute.
@@ -76,4 +79,5 @@ impl SVGPolylineElement {
     pub fn animated_points(&self) -> SVGPointList {
         self.inner.get("animatedPoints").as_::<SVGPointList>()
     }
+
 }

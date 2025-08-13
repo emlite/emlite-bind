@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRMeshSet class.
 /// [`XRMeshSet`](https://developer.mozilla.org/en-US/docs/Web/API/XRMeshSet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRMeshSet {
 
 impl FromVal for XRMeshSet {
     fn from_val(v: &Any) -> Self {
-        XRMeshSet {
-            inner: Any::from_val(v),
-        }
+        XRMeshSet { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRMeshSet {
 
 impl AsMut<Any> for XRMeshSet {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRMeshSet> for Any {
@@ -62,3 +63,5 @@ impl From<&XRMeshSet> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRMeshSet);
+
+

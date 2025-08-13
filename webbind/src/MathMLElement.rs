@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MathMLElement class.
 /// [`MathMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MathMLElement {
 
 impl FromVal for MathMLElement {
     fn from_val(v: &Any) -> Self {
-        MathMLElement {
-            inner: Element::from_val(v),
-        }
+        MathMLElement { inner: Element::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MathMLElement {
 
 impl AsMut<Any> for MathMLElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MathMLElement> for Any {
@@ -63,12 +64,14 @@ impl From<&MathMLElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(MathMLElement);
 
+
 impl MathMLElement {
     /// Getter of the `style` attribute.
     /// [`MathMLElement.style`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement/style)
     pub fn style(&self) -> CSSStyleDeclaration {
         self.inner.get("style").as_::<CSSStyleDeclaration>()
     }
+
 }
 impl MathMLElement {
     /// Getter of the `onbeforexrselect` attribute.
@@ -89,6 +92,7 @@ impl MathMLElement {
     pub fn dataset(&self) -> DOMStringMap {
         self.inner.get("dataset").as_::<DOMStringMap>()
     }
+
 }
 impl MathMLElement {
     /// Getter of the `nonce` attribute.
@@ -132,21 +136,19 @@ impl MathMLElement {
 impl MathMLElement {
     /// The focus method.
     /// [`MathMLElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement/focus)
-    pub fn focus0(&self) -> Undefined {
+    pub fn focus0(&self, ) -> Undefined {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
     /// The focus method.
     /// [`MathMLElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement/focus)
     pub fn focus1(&self, options: &FocusOptions) -> Undefined {
-        self.inner
-            .call("focus", &[options.into()])
-            .as_::<Undefined>()
+        self.inner.call("focus", &[options.into(), ]).as_::<Undefined>()
     }
 }
 impl MathMLElement {
     /// The blur method.
     /// [`MathMLElement.blur`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement/blur)
-    pub fn blur(&self) -> Undefined {
+    pub fn blur(&self, ) -> Undefined {
         self.inner.call("blur", &[]).as_::<Undefined>()
     }
 }

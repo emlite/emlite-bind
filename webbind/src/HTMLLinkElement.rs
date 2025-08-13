@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLLinkElement class.
 /// [`HTMLLinkElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLinkElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLLinkElement {
 
 impl FromVal for HTMLLinkElement {
     fn from_val(v: &Any) -> Self {
-        HTMLLinkElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLLinkElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLLinkElement {
 
 impl AsMut<Any> for HTMLLinkElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLLinkElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLLinkElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLLinkElement);
 
+
+
 impl HTMLLinkElement {
     /// The `new HTMLLinkElement(..)` constructor, creating a new HTMLLinkElement instance
     pub fn new() -> HTMLLinkElement {
@@ -70,6 +73,7 @@ impl HTMLLinkElement {
             inner: Any::global("HTMLLinkElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLLinkElement {
     /// Getter of the `href` attribute.
@@ -129,6 +133,7 @@ impl HTMLLinkElement {
     pub fn rel_list(&self) -> DOMTokenList {
         self.inner.get("relList").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLLinkElement {
     /// Getter of the `media` attribute.
@@ -188,6 +193,7 @@ impl HTMLLinkElement {
     pub fn sizes(&self) -> DOMTokenList {
         self.inner.get("sizes").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLLinkElement {
     /// Getter of the `imageSrcset` attribute.
@@ -234,6 +240,7 @@ impl HTMLLinkElement {
     pub fn blocking(&self) -> DOMTokenList {
         self.inner.get("blocking").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLLinkElement {
     /// Getter of the `disabled` attribute.
@@ -306,4 +313,5 @@ impl HTMLLinkElement {
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
     }
+
 }

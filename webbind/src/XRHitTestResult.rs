@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRHitTestResult class.
 /// [`XRHitTestResult`](https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRHitTestResult {
 
 impl FromVal for XRHitTestResult {
     fn from_val(v: &Any) -> Self {
-        XRHitTestResult {
-            inner: Any::from_val(v),
-        }
+        XRHitTestResult { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRHitTestResult {
 
 impl AsMut<Any> for XRHitTestResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRHitTestResult> for Any {
@@ -63,21 +64,18 @@ impl From<&XRHitTestResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRHitTestResult);
 
+
 impl XRHitTestResult {
     /// The getPose method.
     /// [`XRHitTestResult.getPose`](https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/getPose)
     pub fn get_pose(&self, base_space: &XRSpace) -> XRPose {
-        self.inner
-            .call("getPose", &[base_space.into()])
-            .as_::<XRPose>()
+        self.inner.call("getPose", &[base_space.into(), ]).as_::<XRPose>()
     }
 }
 impl XRHitTestResult {
     /// The createAnchor method.
     /// [`XRHitTestResult.createAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/createAnchor)
-    pub fn create_anchor(&self) -> Promise<XRAnchor> {
-        self.inner
-            .call("createAnchor", &[])
-            .as_::<Promise<XRAnchor>>()
+    pub fn create_anchor(&self, ) -> Promise<XRAnchor> {
+        self.inner.call("createAnchor", &[]).as_::<Promise<XRAnchor>>()
     }
 }

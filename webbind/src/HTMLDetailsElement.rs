@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLDetailsElement class.
 /// [`HTMLDetailsElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLDetailsElement {
 
 impl FromVal for HTMLDetailsElement {
     fn from_val(v: &Any) -> Self {
-        HTMLDetailsElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLDetailsElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLDetailsElement {
 
 impl AsMut<Any> for HTMLDetailsElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLDetailsElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLDetailsElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLDetailsElement);
 
+
+
 impl HTMLDetailsElement {
     /// The `new HTMLDetailsElement(..)` constructor, creating a new HTMLDetailsElement instance
     pub fn new() -> HTMLDetailsElement {
         Self {
-            inner: Any::global("HTMLDetailsElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLDetailsElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLDetailsElement {
     /// Getter of the `name` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBInterface class.
 /// [`USBInterface`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBInterface {
 
 impl FromVal for USBInterface {
     fn from_val(v: &Any) -> Self {
-        USBInterface {
-            inner: Any::from_val(v),
-        }
+        USBInterface { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBInterface {
 
 impl AsMut<Any> for USBInterface {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBInterface> for Any {
@@ -63,15 +64,16 @@ impl From<&USBInterface> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBInterface);
 
+
+
 impl USBInterface {
     /// The `new USBInterface(..)` constructor, creating a new USBInterface instance
     pub fn new(configuration: &USBConfiguration, interface_number: u8) -> USBInterface {
         Self {
-            inner: Any::global("USBInterface")
-                .new(&[configuration.into(), interface_number.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBInterface").new(&[configuration.into(), interface_number.into()]).as_::<Any>(),
         }
     }
+
 }
 impl USBInterface {
     /// Getter of the `interfaceNumber` attribute.
@@ -79,6 +81,7 @@ impl USBInterface {
     pub fn interface_number(&self) -> u8 {
         self.inner.get("interfaceNumber").as_::<u8>()
     }
+
 }
 impl USBInterface {
     /// Getter of the `alternate` attribute.
@@ -86,15 +89,15 @@ impl USBInterface {
     pub fn alternate(&self) -> USBAlternateInterface {
         self.inner.get("alternate").as_::<USBAlternateInterface>()
     }
+
 }
 impl USBInterface {
     /// Getter of the `alternates` attribute.
     /// [`USBInterface.alternates`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/alternates)
     pub fn alternates(&self) -> TypedArray<USBAlternateInterface> {
-        self.inner
-            .get("alternates")
-            .as_::<TypedArray<USBAlternateInterface>>()
+        self.inner.get("alternates").as_::<TypedArray<USBAlternateInterface>>()
     }
+
 }
 impl USBInterface {
     /// Getter of the `claimed` attribute.
@@ -102,4 +105,5 @@ impl USBInterface {
     pub fn claimed(&self) -> bool {
         self.inner.get("claimed").as_::<bool>()
     }
+
 }

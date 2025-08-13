@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothLEScanOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BluetoothLEScanOptions {
 
 impl AsMut<Any> for BluetoothLEScanOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothLEScanOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&BluetoothLEScanOptions> for Any {
 impl BluetoothLEScanOptions {
     /// Getter of the `filters` attribute.
     pub fn filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
-        self.inner
-            .get("filters")
-            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
+        self.inner.get("filters").as_::<TypedArray<BluetoothLEScanFilterInit>>()
     }
 
     /// Setter of the `filters` attribute.

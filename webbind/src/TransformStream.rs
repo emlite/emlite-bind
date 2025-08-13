@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TransformStream class.
 /// [`TransformStream`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TransformStream {
 
 impl FromVal for TransformStream {
     fn from_val(v: &Any) -> Self {
-        TransformStream {
-            inner: Any::from_val(v),
-        }
+        TransformStream { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TransformStream {
 
 impl AsMut<Any> for TransformStream {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TransformStream> for Any {
@@ -63,6 +64,8 @@ impl From<&TransformStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(TransformStream);
 
+
+
 impl TransformStream {
     /// The `new TransformStream(..)` constructor, creating a new TransformStream instance
     pub fn new0() -> TransformStream {
@@ -74,37 +77,24 @@ impl TransformStream {
     /// The `new TransformStream(..)` constructor, creating a new TransformStream instance
     pub fn new1(transformer: &Object) -> TransformStream {
         Self {
-            inner: Any::global("TransformStream")
-                .new(&[transformer.into()])
-                .as_::<Any>(),
+            inner: Any::global("TransformStream").new(&[transformer.into()]).as_::<Any>(),
         }
     }
 
     /// The `new TransformStream(..)` constructor, creating a new TransformStream instance
     pub fn new2(transformer: &Object, writable_strategy: &QueuingStrategy) -> TransformStream {
         Self {
-            inner: Any::global("TransformStream")
-                .new(&[transformer.into(), writable_strategy.into()])
-                .as_::<Any>(),
+            inner: Any::global("TransformStream").new(&[transformer.into(), writable_strategy.into()]).as_::<Any>(),
         }
     }
 
     /// The `new TransformStream(..)` constructor, creating a new TransformStream instance
-    pub fn new3(
-        transformer: &Object,
-        writable_strategy: &QueuingStrategy,
-        readable_strategy: &QueuingStrategy,
-    ) -> TransformStream {
+    pub fn new3(transformer: &Object, writable_strategy: &QueuingStrategy, readable_strategy: &QueuingStrategy) -> TransformStream {
         Self {
-            inner: Any::global("TransformStream")
-                .new(&[
-                    transformer.into(),
-                    writable_strategy.into(),
-                    readable_strategy.into(),
-                ])
-                .as_::<Any>(),
+            inner: Any::global("TransformStream").new(&[transformer.into(), writable_strategy.into(), readable_strategy.into()]).as_::<Any>(),
         }
     }
+
 }
 impl TransformStream {
     /// Getter of the `readable` attribute.
@@ -112,6 +102,7 @@ impl TransformStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
+
 }
 impl TransformStream {
     /// Getter of the `writable` attribute.
@@ -119,4 +110,5 @@ impl TransformStream {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAnimatedInteger class.
 /// [`SVGAnimatedInteger`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedInteger)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAnimatedInteger {
 
 impl FromVal for SVGAnimatedInteger {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedInteger {
-            inner: Any::from_val(v),
-        }
+        SVGAnimatedInteger { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAnimatedInteger {
 
 impl AsMut<Any> for SVGAnimatedInteger {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAnimatedInteger> for Any {
@@ -62,6 +63,7 @@ impl From<&SVGAnimatedInteger> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedInteger);
+
 
 impl SVGAnimatedInteger {
     /// Getter of the `baseVal` attribute.
@@ -82,4 +84,5 @@ impl SVGAnimatedInteger {
     pub fn anim_val(&self) -> i32 {
         self.inner.get("animVal").as_::<i32>()
     }
+
 }

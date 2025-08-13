@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BarProp class.
 /// [`BarProp`](https://developer.mozilla.org/en-US/docs/Web/API/BarProp)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BarProp {
 
 impl FromVal for BarProp {
     fn from_val(v: &Any) -> Self {
-        BarProp {
-            inner: Any::from_val(v),
-        }
+        BarProp { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BarProp {
 
 impl AsMut<Any> for BarProp {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BarProp> for Any {
@@ -63,10 +64,12 @@ impl From<&BarProp> for Any {
 
 jsbind::utils::impl_dyn_cast!(BarProp);
 
+
 impl BarProp {
     /// Getter of the `visible` attribute.
     /// [`BarProp.visible`](https://developer.mozilla.org/en-US/docs/Web/API/BarProp/visible)
     pub fn visible(&self) -> bool {
         self.inner.get("visible").as_::<bool>()
     }
+
 }

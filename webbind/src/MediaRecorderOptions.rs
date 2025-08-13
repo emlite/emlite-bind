@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaRecorderOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaRecorderOptions {
 
 impl AsMut<Any> for MediaRecorderOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaRecorderOptions> for Any {

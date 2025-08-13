@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AbsoluteOrientationSensor class.
 /// [`AbsoluteOrientationSensor`](https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AbsoluteOrientationSensor {
 
 impl FromVal for AbsoluteOrientationSensor {
     fn from_val(v: &Any) -> Self {
-        AbsoluteOrientationSensor {
-            inner: OrientationSensor::from_val(v),
-        }
+        AbsoluteOrientationSensor { inner: OrientationSensor::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AbsoluteOrientationSensor {
 
 impl AsMut<Any> for AbsoluteOrientationSensor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AbsoluteOrientationSensor> for Any {
@@ -63,22 +64,21 @@ impl From<&AbsoluteOrientationSensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(AbsoluteOrientationSensor);
 
+
+
 impl AbsoluteOrientationSensor {
     /// The `new AbsoluteOrientationSensor(..)` constructor, creating a new AbsoluteOrientationSensor instance
     pub fn new0() -> AbsoluteOrientationSensor {
         Self {
-            inner: Any::global("AbsoluteOrientationSensor")
-                .new(&[])
-                .as_::<OrientationSensor>(),
+            inner: Any::global("AbsoluteOrientationSensor").new(&[]).as_::<OrientationSensor>(),
         }
     }
 
     /// The `new AbsoluteOrientationSensor(..)` constructor, creating a new AbsoluteOrientationSensor instance
     pub fn new1(sensor_options: &OrientationSensorOptions) -> AbsoluteOrientationSensor {
         Self {
-            inner: Any::global("AbsoluteOrientationSensor")
-                .new(&[sensor_options.into()])
-                .as_::<OrientationSensor>(),
+            inner: Any::global("AbsoluteOrientationSensor").new(&[sensor_options.into()]).as_::<OrientationSensor>(),
         }
     }
+
 }

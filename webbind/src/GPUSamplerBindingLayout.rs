@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUSamplerBindingLayout dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUSamplerBindingLayout {
 
 impl AsMut<Any> for GPUSamplerBindingLayout {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUSamplerBindingLayout> for Any {

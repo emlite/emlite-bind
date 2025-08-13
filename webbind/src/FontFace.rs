@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FontFace class.
 /// [`FontFace`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FontFace {
 
 impl FromVal for FontFace {
     fn from_val(v: &Any) -> Self {
-        FontFace {
-            inner: Any::from_val(v),
-        }
+        FontFace { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FontFace {
 
 impl AsMut<Any> for FontFace {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FontFace> for Any {
@@ -63,24 +64,23 @@ impl From<&FontFace> for Any {
 
 jsbind::utils::impl_dyn_cast!(FontFace);
 
+
+
 impl FontFace {
     /// The `new FontFace(..)` constructor, creating a new FontFace instance
     pub fn new0(family: &JsString, source: &Any) -> FontFace {
         Self {
-            inner: Any::global("FontFace")
-                .new(&[family.into(), source.into()])
-                .as_::<Any>(),
+            inner: Any::global("FontFace").new(&[family.into(), source.into()]).as_::<Any>(),
         }
     }
 
     /// The `new FontFace(..)` constructor, creating a new FontFace instance
     pub fn new1(family: &JsString, source: &Any, descriptors: &FontFaceDescriptors) -> FontFace {
         Self {
-            inner: Any::global("FontFace")
-                .new(&[family.into(), source.into(), descriptors.into()])
-                .as_::<Any>(),
+            inner: Any::global("FontFace").new(&[family.into(), source.into(), descriptors.into()]).as_::<Any>(),
         }
     }
+
 }
 impl FontFace {
     /// Getter of the `family` attribute.
@@ -231,11 +231,12 @@ impl FontFace {
     pub fn status(&self) -> FontFaceLoadStatus {
         self.inner.get("status").as_::<FontFaceLoadStatus>()
     }
+
 }
 impl FontFace {
     /// The load method.
     /// [`FontFace.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/load)
-    pub fn load(&self) -> Promise<FontFace> {
+    pub fn load(&self, ) -> Promise<FontFace> {
         self.inner.call("load", &[]).as_::<Promise<FontFace>>()
     }
 }
@@ -245,6 +246,7 @@ impl FontFace {
     pub fn loaded(&self) -> Promise<FontFace> {
         self.inner.get("loaded").as_::<Promise<FontFace>>()
     }
+
 }
 impl FontFace {
     /// Getter of the `features` attribute.
@@ -252,6 +254,7 @@ impl FontFace {
     pub fn features(&self) -> FontFaceFeatures {
         self.inner.get("features").as_::<FontFaceFeatures>()
     }
+
 }
 impl FontFace {
     /// Getter of the `variations` attribute.
@@ -259,6 +262,7 @@ impl FontFace {
     pub fn variations(&self) -> FontFaceVariations {
         self.inner.get("variations").as_::<FontFaceVariations>()
     }
+
 }
 impl FontFace {
     /// Getter of the `palettes` attribute.
@@ -266,4 +270,5 @@ impl FontFace {
     pub fn palettes(&self) -> FontFacePalettes {
         self.inner.get("palettes").as_::<FontFacePalettes>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The VideoFrameBufferInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for VideoFrameBufferInit {
 
 impl AsMut<Any> for VideoFrameBufferInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<VideoFrameBufferInit> for Any {

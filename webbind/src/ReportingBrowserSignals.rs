@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ReportingBrowserSignals dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ReportingBrowserSignals {
 
 impl AsMut<Any> for ReportingBrowserSignals {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ReportingBrowserSignals> for Any {
@@ -127,9 +130,7 @@ impl ReportingBrowserSignals {
 impl ReportingBrowserSignals {
     /// Getter of the `highestScoringOtherBidCurrency` attribute.
     pub fn highest_scoring_other_bid_currency(&self) -> JsString {
-        self.inner
-            .get("highestScoringOtherBidCurrency")
-            .as_::<JsString>()
+        self.inner.get("highestScoringOtherBidCurrency").as_::<JsString>()
     }
 
     /// Setter of the `highestScoringOtherBidCurrency` attribute.
@@ -162,9 +163,7 @@ impl ReportingBrowserSignals {
 impl ReportingBrowserSignals {
     /// Getter of the `buyerAndSellerReportingId` attribute.
     pub fn buyer_and_seller_reporting_id(&self) -> JsString {
-        self.inner
-            .get("buyerAndSellerReportingId")
-            .as_::<JsString>()
+        self.inner.get("buyerAndSellerReportingId").as_::<JsString>()
     }
 
     /// Setter of the `buyerAndSellerReportingId` attribute.
@@ -175,9 +174,7 @@ impl ReportingBrowserSignals {
 impl ReportingBrowserSignals {
     /// Getter of the `selectedBuyerAndSellerReportingId` attribute.
     pub fn selected_buyer_and_seller_reporting_id(&self) -> JsString {
-        self.inner
-            .get("selectedBuyerAndSellerReportingId")
-            .as_::<JsString>()
+        self.inner.get("selectedBuyerAndSellerReportingId").as_::<JsString>()
     }
 
     /// Setter of the `selectedBuyerAndSellerReportingId` attribute.

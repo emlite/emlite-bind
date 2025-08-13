@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSScopeRule class.
 /// [`CSSScopeRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScopeRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSScopeRule {
 
 impl FromVal for CSSScopeRule {
     fn from_val(v: &Any) -> Self {
-        CSSScopeRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSScopeRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSScopeRule {
 
 impl AsMut<Any> for CSSScopeRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSScopeRule> for Any {
@@ -63,12 +64,14 @@ impl From<&CSSScopeRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSScopeRule);
 
+
 impl CSSScopeRule {
     /// Getter of the `start` attribute.
     /// [`CSSScopeRule.start`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScopeRule/start)
     pub fn start(&self) -> JsString {
         self.inner.get("start").as_::<JsString>()
     }
+
 }
 impl CSSScopeRule {
     /// Getter of the `end` attribute.
@@ -76,4 +79,5 @@ impl CSSScopeRule {
     pub fn end(&self) -> JsString {
         self.inner.get("end").as_::<JsString>()
     }
+
 }

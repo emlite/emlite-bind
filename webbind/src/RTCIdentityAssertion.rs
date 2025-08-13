@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCIdentityAssertion class.
 /// [`RTCIdentityAssertion`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCIdentityAssertion {
 
 impl FromVal for RTCIdentityAssertion {
     fn from_val(v: &Any) -> Self {
-        RTCIdentityAssertion {
-            inner: Any::from_val(v),
-        }
+        RTCIdentityAssertion { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCIdentityAssertion {
 
 impl AsMut<Any> for RTCIdentityAssertion {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCIdentityAssertion> for Any {
@@ -63,15 +64,16 @@ impl From<&RTCIdentityAssertion> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCIdentityAssertion);
 
+
+
 impl RTCIdentityAssertion {
     /// The `new RTCIdentityAssertion(..)` constructor, creating a new RTCIdentityAssertion instance
     pub fn new(idp: &JsString, name: &JsString) -> RTCIdentityAssertion {
         Self {
-            inner: Any::global("RTCIdentityAssertion")
-                .new(&[idp.into(), name.into()])
-                .as_::<Any>(),
+            inner: Any::global("RTCIdentityAssertion").new(&[idp.into(), name.into()]).as_::<Any>(),
         }
     }
+
 }
 impl RTCIdentityAssertion {
     /// Getter of the `idp` attribute.

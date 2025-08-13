@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Credential class.
 /// [`Credential`](https://developer.mozilla.org/en-US/docs/Web/API/Credential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Credential {
 
 impl FromVal for Credential {
     fn from_val(v: &Any) -> Self {
-        Credential {
-            inner: Any::from_val(v),
-        }
+        Credential { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Credential {
 
 impl AsMut<Any> for Credential {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Credential> for Any {
@@ -63,12 +64,14 @@ impl From<&Credential> for Any {
 
 jsbind::utils::impl_dyn_cast!(Credential);
 
+
 impl Credential {
     /// Getter of the `id` attribute.
     /// [`Credential.id`](https://developer.mozilla.org/en-US/docs/Web/API/Credential/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
+
 }
 impl Credential {
     /// Getter of the `type` attribute.
@@ -76,22 +79,19 @@ impl Credential {
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
+
 }
 impl Credential {
     /// The isConditionalMediationAvailable method.
     /// [`Credential.isConditionalMediationAvailable`](https://developer.mozilla.org/en-US/docs/Web/API/Credential/isConditionalMediationAvailable)
     pub fn is_conditional_mediation_available() -> Promise<bool> {
-        Any::global("Credential")
-            .call("isConditionalMediationAvailable", &[])
-            .as_::<Promise<bool>>()
+        Any::global("Credential").call("isConditionalMediationAvailable", &[]).as_::<Promise<bool>>()
     }
 }
 impl Credential {
     /// The willRequestConditionalCreation method.
     /// [`Credential.willRequestConditionalCreation`](https://developer.mozilla.org/en-US/docs/Web/API/Credential/willRequestConditionalCreation)
     pub fn will_request_conditional_creation() -> Promise<Undefined> {
-        Any::global("Credential")
-            .call("willRequestConditionalCreation", &[])
-            .as_::<Promise<Undefined>>()
+        Any::global("Credential").call("willRequestConditionalCreation", &[]).as_::<Promise<Undefined>>()
     }
 }

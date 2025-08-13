@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSParserBlock class.
 /// [`CSSParserBlock`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserBlock)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSParserBlock {
 
 impl FromVal for CSSParserBlock {
     fn from_val(v: &Any) -> Self {
-        CSSParserBlock {
-            inner: CSSParserValue::from_val(v),
-        }
+        CSSParserBlock { inner: CSSParserValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSParserBlock {
 
 impl AsMut<Any> for CSSParserBlock {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSParserBlock> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSParserBlock> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSParserBlock);
 
+
+
 impl CSSParserBlock {
     /// The `new CSSParserBlock(..)` constructor, creating a new CSSParserBlock instance
     pub fn new(name: &JsString, body: &TypedArray<CSSParserValue>) -> CSSParserBlock {
         Self {
-            inner: Any::global("CSSParserBlock")
-                .new(&[name.into(), body.into()])
-                .as_::<CSSParserValue>(),
+            inner: Any::global("CSSParserBlock").new(&[name.into(), body.into()]).as_::<CSSParserValue>(),
         }
     }
+
 }
 impl CSSParserBlock {
     /// Getter of the `name` attribute.
@@ -79,6 +81,7 @@ impl CSSParserBlock {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl CSSParserBlock {
     /// Getter of the `body` attribute.
@@ -86,4 +89,5 @@ impl CSSParserBlock {
     pub fn body(&self) -> TypedArray<CSSParserValue> {
         self.inner.get("body").as_::<TypedArray<CSSParserValue>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebGLContextAttributes dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for WebGLContextAttributes {
 
 impl AsMut<Any> for WebGLContextAttributes {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebGLContextAttributes> for Any {

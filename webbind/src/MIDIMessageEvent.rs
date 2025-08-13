@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MIDIMessageEvent class.
 /// [`MIDIMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIMessageEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MIDIMessageEvent {
 
 impl FromVal for MIDIMessageEvent {
     fn from_val(v: &Any) -> Self {
-        MIDIMessageEvent {
-            inner: Event::from_val(v),
-        }
+        MIDIMessageEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MIDIMessageEvent {
 
 impl AsMut<Any> for MIDIMessageEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MIDIMessageEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&MIDIMessageEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(MIDIMessageEvent);
 
+
+
 impl MIDIMessageEvent {
     /// The `new MIDIMessageEvent(..)` constructor, creating a new MIDIMessageEvent instance
     pub fn new0(type_: &JsString) -> MIDIMessageEvent {
         Self {
-            inner: Any::global("MIDIMessageEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("MIDIMessageEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new MIDIMessageEvent(..)` constructor, creating a new MIDIMessageEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &MIDIMessageEventInit) -> MIDIMessageEvent {
         Self {
-            inner: Any::global("MIDIMessageEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("MIDIMessageEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl MIDIMessageEvent {
     /// Getter of the `data` attribute.
@@ -88,4 +88,5 @@ impl MIDIMessageEvent {
     pub fn data(&self) -> Uint8Array {
         self.inner.get("data").as_::<Uint8Array>()
     }
+
 }

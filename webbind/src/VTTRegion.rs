@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The VTTRegion class.
 /// [`VTTRegion`](https://developer.mozilla.org/en-US/docs/Web/API/VTTRegion)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct VTTRegion {
 
 impl FromVal for VTTRegion {
     fn from_val(v: &Any) -> Self {
-        VTTRegion {
-            inner: Any::from_val(v),
-        }
+        VTTRegion { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for VTTRegion {
 
 impl AsMut<Any> for VTTRegion {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<VTTRegion> for Any {
@@ -63,6 +64,8 @@ impl From<&VTTRegion> for Any {
 
 jsbind::utils::impl_dyn_cast!(VTTRegion);
 
+
+
 impl VTTRegion {
     /// The `new VTTRegion(..)` constructor, creating a new VTTRegion instance
     pub fn new() -> VTTRegion {
@@ -70,6 +73,7 @@ impl VTTRegion {
             inner: Any::global("VTTRegion").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl VTTRegion {
     /// Getter of the `id` attribute.

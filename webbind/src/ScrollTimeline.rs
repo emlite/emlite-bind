@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ScrollTimeline class.
 /// [`ScrollTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ScrollTimeline {
 
 impl FromVal for ScrollTimeline {
     fn from_val(v: &Any) -> Self {
-        ScrollTimeline {
-            inner: AnimationTimeline::from_val(v),
-        }
+        ScrollTimeline { inner: AnimationTimeline::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ScrollTimeline {
 
 impl AsMut<Any> for ScrollTimeline {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ScrollTimeline> for Any {
@@ -63,24 +64,23 @@ impl From<&ScrollTimeline> for Any {
 
 jsbind::utils::impl_dyn_cast!(ScrollTimeline);
 
+
+
 impl ScrollTimeline {
     /// The `new ScrollTimeline(..)` constructor, creating a new ScrollTimeline instance
     pub fn new0() -> ScrollTimeline {
         Self {
-            inner: Any::global("ScrollTimeline")
-                .new(&[])
-                .as_::<AnimationTimeline>(),
+            inner: Any::global("ScrollTimeline").new(&[]).as_::<AnimationTimeline>(),
         }
     }
 
     /// The `new ScrollTimeline(..)` constructor, creating a new ScrollTimeline instance
     pub fn new1(options: &ScrollTimelineOptions) -> ScrollTimeline {
         Self {
-            inner: Any::global("ScrollTimeline")
-                .new(&[options.into()])
-                .as_::<AnimationTimeline>(),
+            inner: Any::global("ScrollTimeline").new(&[options.into()]).as_::<AnimationTimeline>(),
         }
     }
+
 }
 impl ScrollTimeline {
     /// Getter of the `source` attribute.
@@ -88,6 +88,7 @@ impl ScrollTimeline {
     pub fn source(&self) -> Element {
         self.inner.get("source").as_::<Element>()
     }
+
 }
 impl ScrollTimeline {
     /// Getter of the `axis` attribute.
@@ -95,4 +96,5 @@ impl ScrollTimeline {
     pub fn axis(&self) -> ScrollAxis {
         self.inner.get("axis").as_::<ScrollAxis>()
     }
+
 }

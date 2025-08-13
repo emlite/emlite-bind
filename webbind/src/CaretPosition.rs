@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CaretPosition class.
 /// [`CaretPosition`](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CaretPosition {
 
 impl FromVal for CaretPosition {
     fn from_val(v: &Any) -> Self {
-        CaretPosition {
-            inner: Any::from_val(v),
-        }
+        CaretPosition { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CaretPosition {
 
 impl AsMut<Any> for CaretPosition {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CaretPosition> for Any {
@@ -63,12 +64,14 @@ impl From<&CaretPosition> for Any {
 
 jsbind::utils::impl_dyn_cast!(CaretPosition);
 
+
 impl CaretPosition {
     /// Getter of the `offsetNode` attribute.
     /// [`CaretPosition.offsetNode`](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition/offsetNode)
     pub fn offset_node(&self) -> Node {
         self.inner.get("offsetNode").as_::<Node>()
     }
+
 }
 impl CaretPosition {
     /// Getter of the `offset` attribute.
@@ -76,11 +79,12 @@ impl CaretPosition {
     pub fn offset(&self) -> u32 {
         self.inner.get("offset").as_::<u32>()
     }
+
 }
 impl CaretPosition {
     /// The getClientRect method.
     /// [`CaretPosition.getClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition/getClientRect)
-    pub fn get_client_rect(&self) -> DOMRect {
+    pub fn get_client_rect(&self, ) -> DOMRect {
         self.inner.call("getClientRect", &[]).as_::<DOMRect>()
     }
 }

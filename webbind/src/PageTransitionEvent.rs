@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PageTransitionEvent class.
 /// [`PageTransitionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PageTransitionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PageTransitionEvent {
 
 impl FromVal for PageTransitionEvent {
     fn from_val(v: &Any) -> Self {
-        PageTransitionEvent {
-            inner: Event::from_val(v),
-        }
+        PageTransitionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PageTransitionEvent {
 
 impl AsMut<Any> for PageTransitionEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PageTransitionEvent> for Any {
@@ -63,27 +64,23 @@ impl From<&PageTransitionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PageTransitionEvent);
 
+
+
 impl PageTransitionEvent {
     /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
     pub fn new0(type_: &JsString) -> PageTransitionEvent {
         Self {
-            inner: Any::global("PageTransitionEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("PageTransitionEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &PageTransitionEventInit,
-    ) -> PageTransitionEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &PageTransitionEventInit) -> PageTransitionEvent {
         Self {
-            inner: Any::global("PageTransitionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("PageTransitionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl PageTransitionEvent {
     /// Getter of the `persisted` attribute.
@@ -91,4 +88,5 @@ impl PageTransitionEvent {
     pub fn persisted(&self) -> bool {
         self.inner.get("persisted").as_::<bool>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLCumulativeSumOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLCumulativeSumOptions {
 
 impl AsMut<Any> for MLCumulativeSumOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLCumulativeSumOptions> for Any {

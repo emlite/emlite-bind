@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRSessionInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for XRSessionInit {
 
 impl AsMut<Any> for XRSessionInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRSessionInit> for Any {
@@ -61,9 +64,7 @@ impl From<&XRSessionInit> for Any {
 impl XRSessionInit {
     /// Getter of the `requiredFeatures` attribute.
     pub fn required_features(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("requiredFeatures")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("requiredFeatures").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `requiredFeatures` attribute.
@@ -74,9 +75,7 @@ impl XRSessionInit {
 impl XRSessionInit {
     /// Getter of the `optionalFeatures` attribute.
     pub fn optional_features(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("optionalFeatures")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("optionalFeatures").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `optionalFeatures` attribute.

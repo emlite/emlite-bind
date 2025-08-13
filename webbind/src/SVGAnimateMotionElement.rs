@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAnimateMotionElement class.
 /// [`SVGAnimateMotionElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimateMotionElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAnimateMotionElement {
 
 impl FromVal for SVGAnimateMotionElement {
     fn from_val(v: &Any) -> Self {
-        SVGAnimateMotionElement {
-            inner: SVGAnimationElement::from_val(v),
-        }
+        SVGAnimateMotionElement { inner: SVGAnimationElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAnimateMotionElement {
 
 impl AsMut<Any> for SVGAnimateMotionElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAnimateMotionElement> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGAnimateMotionElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGAnimateMotionElement);
+
+

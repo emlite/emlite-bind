@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OES_element_index_uint class.
 /// [`OES_element_index_uint`](https://developer.mozilla.org/en-US/docs/Web/API/OES_element_index_uint)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct OES_element_index_uint {
 
 impl FromVal for OES_element_index_uint {
     fn from_val(v: &Any) -> Self {
-        OES_element_index_uint {
-            inner: Any::from_val(v),
-        }
+        OES_element_index_uint { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for OES_element_index_uint {
 
 impl AsMut<Any> for OES_element_index_uint {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OES_element_index_uint> for Any {
@@ -62,3 +63,5 @@ impl From<&OES_element_index_uint> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(OES_element_index_uint);
+
+

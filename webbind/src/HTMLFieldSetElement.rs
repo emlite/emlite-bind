@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLFieldSetElement class.
 /// [`HTMLFieldSetElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLFieldSetElement {
 
 impl FromVal for HTMLFieldSetElement {
     fn from_val(v: &Any) -> Self {
-        HTMLFieldSetElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLFieldSetElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLFieldSetElement {
 
 impl AsMut<Any> for HTMLFieldSetElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLFieldSetElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLFieldSetElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLFieldSetElement);
 
+
+
 impl HTMLFieldSetElement {
     /// The `new HTMLFieldSetElement(..)` constructor, creating a new HTMLFieldSetElement instance
     pub fn new() -> HTMLFieldSetElement {
         Self {
-            inner: Any::global("HTMLFieldSetElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLFieldSetElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLFieldSetElement {
     /// Getter of the `disabled` attribute.
@@ -92,6 +94,7 @@ impl HTMLFieldSetElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLFieldSetElement {
     /// Getter of the `name` attribute.
@@ -112,6 +115,7 @@ impl HTMLFieldSetElement {
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
+
 }
 impl HTMLFieldSetElement {
     /// Getter of the `elements` attribute.
@@ -119,6 +123,7 @@ impl HTMLFieldSetElement {
     pub fn elements(&self) -> HTMLCollection {
         self.inner.get("elements").as_::<HTMLCollection>()
     }
+
 }
 impl HTMLFieldSetElement {
     /// Getter of the `willValidate` attribute.
@@ -126,6 +131,7 @@ impl HTMLFieldSetElement {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
+
 }
 impl HTMLFieldSetElement {
     /// Getter of the `validity` attribute.
@@ -133,6 +139,7 @@ impl HTMLFieldSetElement {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
+
 }
 impl HTMLFieldSetElement {
     /// Getter of the `validationMessage` attribute.
@@ -140,18 +147,19 @@ impl HTMLFieldSetElement {
     pub fn validation_message(&self) -> JsString {
         self.inner.get("validationMessage").as_::<JsString>()
     }
+
 }
 impl HTMLFieldSetElement {
     /// The checkValidity method.
     /// [`HTMLFieldSetElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/checkValidity)
-    pub fn check_validity(&self) -> bool {
+    pub fn check_validity(&self, ) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
 }
 impl HTMLFieldSetElement {
     /// The reportValidity method.
     /// [`HTMLFieldSetElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/reportValidity)
-    pub fn report_validity(&self) -> bool {
+    pub fn report_validity(&self, ) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
 }
@@ -159,8 +167,6 @@ impl HTMLFieldSetElement {
     /// The setCustomValidity method.
     /// [`HTMLFieldSetElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/setCustomValidity)
     pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<Undefined>()
+        self.inner.call("setCustomValidity", &[error.into(), ]).as_::<Undefined>()
     }
 }

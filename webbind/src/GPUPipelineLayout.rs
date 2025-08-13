@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUPipelineLayout class.
 /// [`GPUPipelineLayout`](https://developer.mozilla.org/en-US/docs/Web/API/GPUPipelineLayout)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUPipelineLayout {
 
 impl FromVal for GPUPipelineLayout {
     fn from_val(v: &Any) -> Self {
-        GPUPipelineLayout {
-            inner: Any::from_val(v),
-        }
+        GPUPipelineLayout { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUPipelineLayout {
 
 impl AsMut<Any> for GPUPipelineLayout {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUPipelineLayout> for Any {
@@ -62,6 +63,7 @@ impl From<&GPUPipelineLayout> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(GPUPipelineLayout);
+
 
 impl GPUPipelineLayout {
     /// Getter of the `label` attribute.

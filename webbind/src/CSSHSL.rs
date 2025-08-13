@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSHSL class.
 /// [`CSSHSL`](https://developer.mozilla.org/en-US/docs/Web/API/CSSHSL)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSHSL {
 
 impl FromVal for CSSHSL {
     fn from_val(v: &Any) -> Self {
-        CSSHSL {
-            inner: CSSColorValue::from_val(v),
-        }
+        CSSHSL { inner: CSSColorValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSHSL {
 
 impl AsMut<Any> for CSSHSL {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSHSL> for Any {
@@ -63,24 +64,23 @@ impl From<&CSSHSL> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSHSL);
 
+
+
 impl CSSHSL {
     /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
     pub fn new0(h: &Any, s: &Any, l: &Any) -> CSSHSL {
         Self {
-            inner: Any::global("CSSHSL")
-                .new(&[h.into(), s.into(), l.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSHSL").new(&[h.into(), s.into(), l.into()]).as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
     pub fn new1(h: &Any, s: &Any, l: &Any, alpha: &Any) -> CSSHSL {
         Self {
-            inner: Any::global("CSSHSL")
-                .new(&[h.into(), s.into(), l.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSHSL").new(&[h.into(), s.into(), l.into(), alpha.into()]).as_::<CSSColorValue>(),
         }
     }
+
 }
 impl CSSHSL {
     /// Getter of the `h` attribute.

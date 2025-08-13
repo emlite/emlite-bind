@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechSynthesisUtterance class.
 /// [`SpeechSynthesisUtterance`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SpeechSynthesisUtterance {
 
 impl FromVal for SpeechSynthesisUtterance {
     fn from_val(v: &Any) -> Self {
-        SpeechSynthesisUtterance {
-            inner: EventTarget::from_val(v),
-        }
+        SpeechSynthesisUtterance { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SpeechSynthesisUtterance {
 
 impl AsMut<Any> for SpeechSynthesisUtterance {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechSynthesisUtterance> for Any {
@@ -63,24 +64,23 @@ impl From<&SpeechSynthesisUtterance> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisUtterance);
 
+
+
 impl SpeechSynthesisUtterance {
     /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
     pub fn new0() -> SpeechSynthesisUtterance {
         Self {
-            inner: Any::global("SpeechSynthesisUtterance")
-                .new(&[])
-                .as_::<EventTarget>(),
+            inner: Any::global("SpeechSynthesisUtterance").new(&[]).as_::<EventTarget>(),
         }
     }
 
     /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
     pub fn new1(text: &JsString) -> SpeechSynthesisUtterance {
         Self {
-            inner: Any::global("SpeechSynthesisUtterance")
-                .new(&[text.into()])
-                .as_::<EventTarget>(),
+            inner: Any::global("SpeechSynthesisUtterance").new(&[text.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl SpeechSynthesisUtterance {
     /// Getter of the `text` attribute.

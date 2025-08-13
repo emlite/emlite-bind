@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCDTMFSender class.
 /// [`RTCDTMFSender`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCDTMFSender {
 
 impl FromVal for RTCDTMFSender {
     fn from_val(v: &Any) -> Self {
-        RTCDTMFSender {
-            inner: EventTarget::from_val(v),
-        }
+        RTCDTMFSender { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCDTMFSender {
 
 impl AsMut<Any> for RTCDTMFSender {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCDTMFSender> for Any {
@@ -63,30 +64,22 @@ impl From<&RTCDTMFSender> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCDTMFSender);
 
+
 impl RTCDTMFSender {
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
     pub fn insert_dtmf0(&self, tones: &JsString) -> Undefined {
-        self.inner
-            .call("insertDTMF", &[tones.into()])
-            .as_::<Undefined>()
+        self.inner.call("insertDTMF", &[tones.into(), ]).as_::<Undefined>()
     }
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
     pub fn insert_dtmf1(&self, tones: &JsString, duration: u32) -> Undefined {
-        self.inner
-            .call("insertDTMF", &[tones.into(), duration.into()])
-            .as_::<Undefined>()
+        self.inner.call("insertDTMF", &[tones.into(), duration.into(), ]).as_::<Undefined>()
     }
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
     pub fn insert_dtmf2(&self, tones: &JsString, duration: u32, inter_tone_gap: u32) -> Undefined {
-        self.inner
-            .call(
-                "insertDTMF",
-                &[tones.into(), duration.into(), inter_tone_gap.into()],
-            )
-            .as_::<Undefined>()
+        self.inner.call("insertDTMF", &[tones.into(), duration.into(), inter_tone_gap.into(), ]).as_::<Undefined>()
     }
 }
 impl RTCDTMFSender {
@@ -108,6 +101,7 @@ impl RTCDTMFSender {
     pub fn can_insert_dtmf(&self) -> bool {
         self.inner.get("canInsertDTMF").as_::<bool>()
     }
+
 }
 impl RTCDTMFSender {
     /// Getter of the `toneBuffer` attribute.
@@ -115,4 +109,5 @@ impl RTCDTMFSender {
     pub fn tone_buffer(&self) -> JsString {
         self.inner.get("toneBuffer").as_::<JsString>()
     }
+
 }

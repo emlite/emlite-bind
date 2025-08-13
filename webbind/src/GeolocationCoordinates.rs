@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GeolocationCoordinates class.
 /// [`GeolocationCoordinates`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GeolocationCoordinates {
 
 impl FromVal for GeolocationCoordinates {
     fn from_val(v: &Any) -> Self {
-        GeolocationCoordinates {
-            inner: Any::from_val(v),
-        }
+        GeolocationCoordinates { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GeolocationCoordinates {
 
 impl AsMut<Any> for GeolocationCoordinates {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GeolocationCoordinates> for Any {
@@ -63,12 +64,14 @@ impl From<&GeolocationCoordinates> for Any {
 
 jsbind::utils::impl_dyn_cast!(GeolocationCoordinates);
 
+
 impl GeolocationCoordinates {
     /// Getter of the `accuracy` attribute.
     /// [`GeolocationCoordinates.accuracy`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates/accuracy)
     pub fn accuracy(&self) -> f64 {
         self.inner.get("accuracy").as_::<f64>()
     }
+
 }
 impl GeolocationCoordinates {
     /// Getter of the `latitude` attribute.
@@ -76,6 +79,7 @@ impl GeolocationCoordinates {
     pub fn latitude(&self) -> f64 {
         self.inner.get("latitude").as_::<f64>()
     }
+
 }
 impl GeolocationCoordinates {
     /// Getter of the `longitude` attribute.
@@ -83,6 +87,7 @@ impl GeolocationCoordinates {
     pub fn longitude(&self) -> f64 {
         self.inner.get("longitude").as_::<f64>()
     }
+
 }
 impl GeolocationCoordinates {
     /// Getter of the `altitude` attribute.
@@ -90,6 +95,7 @@ impl GeolocationCoordinates {
     pub fn altitude(&self) -> f64 {
         self.inner.get("altitude").as_::<f64>()
     }
+
 }
 impl GeolocationCoordinates {
     /// Getter of the `altitudeAccuracy` attribute.
@@ -97,6 +103,7 @@ impl GeolocationCoordinates {
     pub fn altitude_accuracy(&self) -> f64 {
         self.inner.get("altitudeAccuracy").as_::<f64>()
     }
+
 }
 impl GeolocationCoordinates {
     /// Getter of the `heading` attribute.
@@ -104,6 +111,7 @@ impl GeolocationCoordinates {
     pub fn heading(&self) -> f64 {
         self.inner.get("heading").as_::<f64>()
     }
+
 }
 impl GeolocationCoordinates {
     /// Getter of the `speed` attribute.
@@ -111,11 +119,12 @@ impl GeolocationCoordinates {
     pub fn speed(&self) -> f64 {
         self.inner.get("speed").as_::<f64>()
     }
+
 }
 impl GeolocationCoordinates {
     /// The toJSON method.
     /// [`GeolocationCoordinates.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

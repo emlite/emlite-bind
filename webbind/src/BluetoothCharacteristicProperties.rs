@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothCharacteristicProperties class.
 /// [`BluetoothCharacteristicProperties`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothCharacteristicProperties)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BluetoothCharacteristicProperties {
 
 impl FromVal for BluetoothCharacteristicProperties {
     fn from_val(v: &Any) -> Self {
-        BluetoothCharacteristicProperties {
-            inner: Any::from_val(v),
-        }
+        BluetoothCharacteristicProperties { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BluetoothCharacteristicProperties {
 
 impl AsMut<Any> for BluetoothCharacteristicProperties {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothCharacteristicProperties> for Any {
@@ -63,12 +64,14 @@ impl From<&BluetoothCharacteristicProperties> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothCharacteristicProperties);
 
+
 impl BluetoothCharacteristicProperties {
     /// Getter of the `broadcast` attribute.
     /// [`BluetoothCharacteristicProperties.broadcast`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothCharacteristicProperties/broadcast)
     pub fn broadcast(&self) -> bool {
         self.inner.get("broadcast").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `read` attribute.
@@ -76,6 +79,7 @@ impl BluetoothCharacteristicProperties {
     pub fn read(&self) -> bool {
         self.inner.get("read").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `writeWithoutResponse` attribute.
@@ -83,6 +87,7 @@ impl BluetoothCharacteristicProperties {
     pub fn write_without_response(&self) -> bool {
         self.inner.get("writeWithoutResponse").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `write` attribute.
@@ -90,6 +95,7 @@ impl BluetoothCharacteristicProperties {
     pub fn write(&self) -> bool {
         self.inner.get("write").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `notify` attribute.
@@ -97,6 +103,7 @@ impl BluetoothCharacteristicProperties {
     pub fn notify(&self) -> bool {
         self.inner.get("notify").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `indicate` attribute.
@@ -104,6 +111,7 @@ impl BluetoothCharacteristicProperties {
     pub fn indicate(&self) -> bool {
         self.inner.get("indicate").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `authenticatedSignedWrites` attribute.
@@ -111,6 +119,7 @@ impl BluetoothCharacteristicProperties {
     pub fn authenticated_signed_writes(&self) -> bool {
         self.inner.get("authenticatedSignedWrites").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `reliableWrite` attribute.
@@ -118,6 +127,7 @@ impl BluetoothCharacteristicProperties {
     pub fn reliable_write(&self) -> bool {
         self.inner.get("reliableWrite").as_::<bool>()
     }
+
 }
 impl BluetoothCharacteristicProperties {
     /// Getter of the `writableAuxiliaries` attribute.
@@ -125,4 +135,5 @@ impl BluetoothCharacteristicProperties {
     pub fn writable_auxiliaries(&self) -> bool {
         self.inner.get("writableAuxiliaries").as_::<bool>()
     }
+
 }

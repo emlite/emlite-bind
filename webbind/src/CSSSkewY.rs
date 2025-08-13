@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSSkewY class.
 /// [`CSSSkewY`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSSkewY {
 
 impl FromVal for CSSSkewY {
     fn from_val(v: &Any) -> Self {
-        CSSSkewY {
-            inner: CSSTransformComponent::from_val(v),
-        }
+        CSSSkewY { inner: CSSTransformComponent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSSkewY {
 
 impl AsMut<Any> for CSSSkewY {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSSkewY> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSSkewY> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSSkewY);
 
+
+
 impl CSSSkewY {
     /// The `new CSSSkewY(..)` constructor, creating a new CSSSkewY instance
     pub fn new(ay: &CSSNumericValue) -> CSSSkewY {
         Self {
-            inner: Any::global("CSSSkewY")
-                .new(&[ay.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSSkewY").new(&[ay.into()]).as_::<CSSTransformComponent>(),
         }
     }
+
 }
 impl CSSSkewY {
     /// Getter of the `ay` attribute.

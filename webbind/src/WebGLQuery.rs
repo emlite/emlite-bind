@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebGLQuery class.
 /// [`WebGLQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLQuery)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebGLQuery {
 
 impl FromVal for WebGLQuery {
     fn from_val(v: &Any) -> Self {
-        WebGLQuery {
-            inner: WebGLObject::from_val(v),
-        }
+        WebGLQuery { inner: WebGLObject::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebGLQuery {
 
 impl AsMut<Any> for WebGLQuery {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebGLQuery> for Any {
@@ -62,3 +63,5 @@ impl From<&WebGLQuery> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLQuery);
+
+

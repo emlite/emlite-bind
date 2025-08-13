@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Summarizer class.
 /// [`Summarizer`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Summarizer {
 
 impl FromVal for Summarizer {
     fn from_val(v: &Any) -> Self {
-        Summarizer {
-            inner: Any::from_val(v),
-        }
+        Summarizer { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Summarizer {
 
 impl AsMut<Any> for Summarizer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Summarizer> for Any {
@@ -63,76 +64,53 @@ impl From<&Summarizer> for Any {
 
 jsbind::utils::impl_dyn_cast!(Summarizer);
 
+
 impl Summarizer {
     /// The create method.
     /// [`Summarizer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/create)
     pub fn create0() -> Promise<Summarizer> {
-        Any::global("Summarizer")
-            .call("create", &[])
-            .as_::<Promise<Summarizer>>()
+        Any::global("Summarizer").call("create", &[]).as_::<Promise<Summarizer>>()
     }
     /// The create method.
     /// [`Summarizer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/create)
     pub fn create1(options: &SummarizerCreateOptions) -> Promise<Summarizer> {
-        Any::global("Summarizer")
-            .call("create", &[options.into()])
-            .as_::<Promise<Summarizer>>()
+        Any::global("Summarizer").call("create", &[options.into(), ]).as_::<Promise<Summarizer>>()
     }
 }
 impl Summarizer {
     /// The availability method.
     /// [`Summarizer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/availability)
     pub fn availability0() -> Promise<Availability> {
-        Any::global("Summarizer")
-            .call("availability", &[])
-            .as_::<Promise<Availability>>()
+        Any::global("Summarizer").call("availability", &[]).as_::<Promise<Availability>>()
     }
     /// The availability method.
     /// [`Summarizer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/availability)
     pub fn availability1(options: &SummarizerCreateCoreOptions) -> Promise<Availability> {
-        Any::global("Summarizer")
-            .call("availability", &[options.into()])
-            .as_::<Promise<Availability>>()
+        Any::global("Summarizer").call("availability", &[options.into(), ]).as_::<Promise<Availability>>()
     }
 }
 impl Summarizer {
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
     pub fn summarize0(&self, input: &JsString) -> Promise<JsString> {
-        self.inner
-            .call("summarize", &[input.into()])
-            .as_::<Promise<JsString>>()
+        self.inner.call("summarize", &[input.into(), ]).as_::<Promise<JsString>>()
     }
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
-    pub fn summarize1(
-        &self,
-        input: &JsString,
-        options: &SummarizerSummarizeOptions,
-    ) -> Promise<JsString> {
-        self.inner
-            .call("summarize", &[input.into(), options.into()])
-            .as_::<Promise<JsString>>()
+    pub fn summarize1(&self, input: &JsString, options: &SummarizerSummarizeOptions) -> Promise<JsString> {
+        self.inner.call("summarize", &[input.into(), options.into(), ]).as_::<Promise<JsString>>()
     }
 }
 impl Summarizer {
     /// The summarizeStreaming method.
     /// [`Summarizer.summarizeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarizeStreaming)
     pub fn summarize_streaming0(&self, input: &JsString) -> ReadableStream {
-        self.inner
-            .call("summarizeStreaming", &[input.into()])
-            .as_::<ReadableStream>()
+        self.inner.call("summarizeStreaming", &[input.into(), ]).as_::<ReadableStream>()
     }
     /// The summarizeStreaming method.
     /// [`Summarizer.summarizeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarizeStreaming)
-    pub fn summarize_streaming1(
-        &self,
-        input: &JsString,
-        options: &SummarizerSummarizeOptions,
-    ) -> ReadableStream {
-        self.inner
-            .call("summarizeStreaming", &[input.into(), options.into()])
-            .as_::<ReadableStream>()
+    pub fn summarize_streaming1(&self, input: &JsString, options: &SummarizerSummarizeOptions) -> ReadableStream {
+        self.inner.call("summarizeStreaming", &[input.into(), options.into(), ]).as_::<ReadableStream>()
     }
 }
 impl Summarizer {
@@ -141,6 +119,7 @@ impl Summarizer {
     pub fn shared_context(&self) -> JsString {
         self.inner.get("sharedContext").as_::<JsString>()
     }
+
 }
 impl Summarizer {
     /// Getter of the `type` attribute.
@@ -148,6 +127,7 @@ impl Summarizer {
     pub fn type_(&self) -> SummarizerType {
         self.inner.get("type").as_::<SummarizerType>()
     }
+
 }
 impl Summarizer {
     /// Getter of the `format` attribute.
@@ -155,6 +135,7 @@ impl Summarizer {
     pub fn format(&self) -> SummarizerFormat {
         self.inner.get("format").as_::<SummarizerFormat>()
     }
+
 }
 impl Summarizer {
     /// Getter of the `length` attribute.
@@ -162,24 +143,23 @@ impl Summarizer {
     pub fn length(&self) -> SummarizerLength {
         self.inner.get("length").as_::<SummarizerLength>()
     }
+
 }
 impl Summarizer {
     /// Getter of the `expectedInputLanguages` attribute.
     /// [`Summarizer.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedInputLanguages)
     pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("expectedInputLanguages").as_::<TypedArray<JsString>>()
     }
+
 }
 impl Summarizer {
     /// Getter of the `expectedContextLanguages` attribute.
     /// [`Summarizer.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedContextLanguages)
     pub fn expected_context_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedContextLanguages")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("expectedContextLanguages").as_::<TypedArray<JsString>>()
     }
+
 }
 impl Summarizer {
     /// Getter of the `outputLanguage` attribute.
@@ -187,25 +167,18 @@ impl Summarizer {
     pub fn output_language(&self) -> JsString {
         self.inner.get("outputLanguage").as_::<JsString>()
     }
+
 }
 impl Summarizer {
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
-        self.inner
-            .call("measureInputUsage", &[input.into()])
-            .as_::<Promise<f64>>()
+        self.inner.call("measureInputUsage", &[input.into(), ]).as_::<Promise<f64>>()
     }
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
-    pub fn measure_input_usage1(
-        &self,
-        input: &JsString,
-        options: &SummarizerSummarizeOptions,
-    ) -> Promise<f64> {
-        self.inner
-            .call("measureInputUsage", &[input.into(), options.into()])
-            .as_::<Promise<f64>>()
+    pub fn measure_input_usage1(&self, input: &JsString, options: &SummarizerSummarizeOptions) -> Promise<f64> {
+        self.inner.call("measureInputUsage", &[input.into(), options.into(), ]).as_::<Promise<f64>>()
     }
 }
 impl Summarizer {
@@ -214,11 +187,12 @@ impl Summarizer {
     pub fn input_quota(&self) -> f64 {
         self.inner.get("inputQuota").as_::<f64>()
     }
+
 }
 impl Summarizer {
     /// The destroy method.
     /// [`Summarizer.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/destroy)
-    pub fn destroy(&self) -> Undefined {
+    pub fn destroy(&self, ) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

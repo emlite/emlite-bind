@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUVertexBufferLayout dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUVertexBufferLayout {
 
 impl AsMut<Any> for GPUVertexBufferLayout {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUVertexBufferLayout> for Any {
@@ -83,9 +86,7 @@ impl GPUVertexBufferLayout {
 impl GPUVertexBufferLayout {
     /// Getter of the `attributes` attribute.
     pub fn attributes(&self) -> TypedArray<GPUVertexAttribute> {
-        self.inner
-            .get("attributes")
-            .as_::<TypedArray<GPUVertexAttribute>>()
+        self.inner.get("attributes").as_::<TypedArray<GPUVertexAttribute>>()
     }
 
     /// Setter of the `attributes` attribute.

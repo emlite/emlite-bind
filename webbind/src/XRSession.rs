@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRSession class.
 /// [`XRSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRSession {
 
 impl FromVal for XRSession {
     fn from_val(v: &Any) -> Self {
-        XRSession {
-            inner: EventTarget::from_val(v),
-        }
+        XRSession { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRSession {
 
 impl AsMut<Any> for XRSession {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRSession> for Any {
@@ -63,12 +64,14 @@ impl From<&XRSession> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRSession);
 
+
 impl XRSession {
     /// Getter of the `visibilityState` attribute.
     /// [`XRSession.visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/visibilityState)
     pub fn visibility_state(&self) -> XRVisibilityState {
         self.inner.get("visibilityState").as_::<XRVisibilityState>()
     }
+
 }
 impl XRSession {
     /// Getter of the `frameRate` attribute.
@@ -76,6 +79,7 @@ impl XRSession {
     pub fn frame_rate(&self) -> f32 {
         self.inner.get("frameRate").as_::<f32>()
     }
+
 }
 impl XRSession {
     /// Getter of the `supportedFrameRates` attribute.
@@ -83,6 +87,7 @@ impl XRSession {
     pub fn supported_frame_rates(&self) -> Float32Array {
         self.inner.get("supportedFrameRates").as_::<Float32Array>()
     }
+
 }
 impl XRSession {
     /// Getter of the `renderState` attribute.
@@ -90,6 +95,7 @@ impl XRSession {
     pub fn render_state(&self) -> XRRenderState {
         self.inner.get("renderState").as_::<XRRenderState>()
     }
+
 }
 impl XRSession {
     /// Getter of the `inputSources` attribute.
@@ -97,6 +103,7 @@ impl XRSession {
     pub fn input_sources(&self) -> XRInputSourceArray {
         self.inner.get("inputSources").as_::<XRInputSourceArray>()
     }
+
 }
 impl XRSession {
     /// Getter of the `trackedSources` attribute.
@@ -104,15 +111,15 @@ impl XRSession {
     pub fn tracked_sources(&self) -> XRInputSourceArray {
         self.inner.get("trackedSources").as_::<XRInputSourceArray>()
     }
+
 }
 impl XRSession {
     /// Getter of the `enabledFeatures` attribute.
     /// [`XRSession.enabledFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/enabledFeatures)
     pub fn enabled_features(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("enabledFeatures")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("enabledFeatures").as_::<TypedArray<JsString>>()
     }
+
 }
 impl XRSession {
     /// Getter of the `isSystemKeyboardSupported` attribute.
@@ -120,64 +127,52 @@ impl XRSession {
     pub fn is_system_keyboard_supported(&self) -> bool {
         self.inner.get("isSystemKeyboardSupported").as_::<bool>()
     }
+
 }
 impl XRSession {
     /// The updateRenderState method.
     /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
-    pub fn update_render_state0(&self) -> Undefined {
+    pub fn update_render_state0(&self, ) -> Undefined {
         self.inner.call("updateRenderState", &[]).as_::<Undefined>()
     }
     /// The updateRenderState method.
     /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
     pub fn update_render_state1(&self, state: &XRRenderStateInit) -> Undefined {
-        self.inner
-            .call("updateRenderState", &[state.into()])
-            .as_::<Undefined>()
+        self.inner.call("updateRenderState", &[state.into(), ]).as_::<Undefined>()
     }
 }
 impl XRSession {
     /// The updateTargetFrameRate method.
     /// [`XRSession.updateTargetFrameRate`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateTargetFrameRate)
     pub fn update_target_frame_rate(&self, rate: f32) -> Promise<Undefined> {
-        self.inner
-            .call("updateTargetFrameRate", &[rate.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("updateTargetFrameRate", &[rate.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl XRSession {
     /// The requestReferenceSpace method.
     /// [`XRSession.requestReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestReferenceSpace)
-    pub fn request_reference_space(
-        &self,
-        type_: &XRReferenceSpaceType,
-    ) -> Promise<XRReferenceSpace> {
-        self.inner
-            .call("requestReferenceSpace", &[type_.into()])
-            .as_::<Promise<XRReferenceSpace>>()
+    pub fn request_reference_space(&self, type_: &XRReferenceSpaceType) -> Promise<XRReferenceSpace> {
+        self.inner.call("requestReferenceSpace", &[type_.into(), ]).as_::<Promise<XRReferenceSpace>>()
     }
 }
 impl XRSession {
     /// The requestAnimationFrame method.
     /// [`XRSession.requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestAnimationFrame)
     pub fn request_animation_frame(&self, callback: &Function) -> u32 {
-        self.inner
-            .call("requestAnimationFrame", &[callback.into()])
-            .as_::<u32>()
+        self.inner.call("requestAnimationFrame", &[callback.into(), ]).as_::<u32>()
     }
 }
 impl XRSession {
     /// The cancelAnimationFrame method.
     /// [`XRSession.cancelAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/cancelAnimationFrame)
     pub fn cancel_animation_frame(&self, handle: u32) -> Undefined {
-        self.inner
-            .call("cancelAnimationFrame", &[handle.into()])
-            .as_::<Undefined>()
+        self.inner.call("cancelAnimationFrame", &[handle.into(), ]).as_::<Undefined>()
     }
 }
 impl XRSession {
     /// The end method.
     /// [`XRSession.end`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/end)
-    pub fn end(&self) -> Promise<Undefined> {
+    pub fn end(&self, ) -> Promise<Undefined> {
         self.inner.call("end", &[]).as_::<Promise<Undefined>>()
     }
 }
@@ -315,37 +310,31 @@ impl XRSession {
     /// Getter of the `persistentAnchors` attribute.
     /// [`XRSession.persistentAnchors`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/persistentAnchors)
     pub fn persistent_anchors(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("persistentAnchors")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("persistentAnchors").as_::<TypedArray<JsString>>()
     }
+
 }
 impl XRSession {
     /// The restorePersistentAnchor method.
     /// [`XRSession.restorePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/restorePersistentAnchor)
     pub fn restore_persistent_anchor(&self, uuid: &JsString) -> Promise<XRAnchor> {
-        self.inner
-            .call("restorePersistentAnchor", &[uuid.into()])
-            .as_::<Promise<XRAnchor>>()
+        self.inner.call("restorePersistentAnchor", &[uuid.into(), ]).as_::<Promise<XRAnchor>>()
     }
 }
 impl XRSession {
     /// The deletePersistentAnchor method.
     /// [`XRSession.deletePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/deletePersistentAnchor)
     pub fn delete_persistent_anchor(&self, uuid: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("deletePersistentAnchor", &[uuid.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("deletePersistentAnchor", &[uuid.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl XRSession {
     /// Getter of the `environmentBlendMode` attribute.
     /// [`XRSession.environmentBlendMode`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/environmentBlendMode)
     pub fn environment_blend_mode(&self) -> XREnvironmentBlendMode {
-        self.inner
-            .get("environmentBlendMode")
-            .as_::<XREnvironmentBlendMode>()
+        self.inner.get("environmentBlendMode").as_::<XREnvironmentBlendMode>()
     }
+
 }
 impl XRSession {
     /// Getter of the `interactionMode` attribute.
@@ -353,6 +342,7 @@ impl XRSession {
     pub fn interaction_mode(&self) -> XRInteractionMode {
         self.inner.get("interactionMode").as_::<XRInteractionMode>()
     }
+
 }
 impl XRSession {
     /// Getter of the `depthUsage` attribute.
@@ -360,6 +350,7 @@ impl XRSession {
     pub fn depth_usage(&self) -> XRDepthUsage {
         self.inner.get("depthUsage").as_::<XRDepthUsage>()
     }
+
 }
 impl XRSession {
     /// Getter of the `depthDataFormat` attribute.
@@ -367,6 +358,7 @@ impl XRSession {
     pub fn depth_data_format(&self) -> XRDepthDataFormat {
         self.inner.get("depthDataFormat").as_::<XRDepthDataFormat>()
     }
+
 }
 impl XRSession {
     /// Getter of the `depthType` attribute.
@@ -374,6 +366,7 @@ impl XRSession {
     pub fn depth_type(&self) -> XRDepthType {
         self.inner.get("depthType").as_::<XRDepthType>()
     }
+
 }
 impl XRSession {
     /// Getter of the `depthActive` attribute.
@@ -381,21 +374,20 @@ impl XRSession {
     pub fn depth_active(&self) -> bool {
         self.inner.get("depthActive").as_::<bool>()
     }
+
 }
 impl XRSession {
     /// The pauseDepthSensing method.
     /// [`XRSession.pauseDepthSensing`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/pauseDepthSensing)
-    pub fn pause_depth_sensing(&self) -> Undefined {
+    pub fn pause_depth_sensing(&self, ) -> Undefined {
         self.inner.call("pauseDepthSensing", &[]).as_::<Undefined>()
     }
 }
 impl XRSession {
     /// The resumeDepthSensing method.
     /// [`XRSession.resumeDepthSensing`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/resumeDepthSensing)
-    pub fn resume_depth_sensing(&self) -> Undefined {
-        self.inner
-            .call("resumeDepthSensing", &[])
-            .as_::<Undefined>()
+    pub fn resume_depth_sensing(&self, ) -> Undefined {
+        self.inner.call("resumeDepthSensing", &[]).as_::<Undefined>()
     }
 }
 impl XRSession {
@@ -404,62 +396,46 @@ impl XRSession {
     pub fn dom_overlay_state(&self) -> XRDOMOverlayState {
         self.inner.get("domOverlayState").as_::<XRDOMOverlayState>()
     }
+
 }
 impl XRSession {
     /// The requestHitTestSource method.
     /// [`XRSession.requestHitTestSource`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestHitTestSource)
-    pub fn request_hit_test_source(
-        &self,
-        options: &XRHitTestOptionsInit,
-    ) -> Promise<XRHitTestSource> {
-        self.inner
-            .call("requestHitTestSource", &[options.into()])
-            .as_::<Promise<XRHitTestSource>>()
+    pub fn request_hit_test_source(&self, options: &XRHitTestOptionsInit) -> Promise<XRHitTestSource> {
+        self.inner.call("requestHitTestSource", &[options.into(), ]).as_::<Promise<XRHitTestSource>>()
     }
 }
 impl XRSession {
     /// The requestHitTestSourceForTransientInput method.
     /// [`XRSession.requestHitTestSourceForTransientInput`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestHitTestSourceForTransientInput)
-    pub fn request_hit_test_source_for_transient_input(
-        &self,
-        options: &XRTransientInputHitTestOptionsInit,
-    ) -> Promise<XRTransientInputHitTestSource> {
-        self.inner
-            .call("requestHitTestSourceForTransientInput", &[options.into()])
-            .as_::<Promise<XRTransientInputHitTestSource>>()
+    pub fn request_hit_test_source_for_transient_input(&self, options: &XRTransientInputHitTestOptionsInit) -> Promise<XRTransientInputHitTestSource> {
+        self.inner.call("requestHitTestSourceForTransientInput", &[options.into(), ]).as_::<Promise<XRTransientInputHitTestSource>>()
     }
 }
 impl XRSession {
     /// The requestLightProbe method.
     /// [`XRSession.requestLightProbe`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestLightProbe)
-    pub fn request_light_probe0(&self) -> Promise<XRLightProbe> {
-        self.inner
-            .call("requestLightProbe", &[])
-            .as_::<Promise<XRLightProbe>>()
+    pub fn request_light_probe0(&self, ) -> Promise<XRLightProbe> {
+        self.inner.call("requestLightProbe", &[]).as_::<Promise<XRLightProbe>>()
     }
     /// The requestLightProbe method.
     /// [`XRSession.requestLightProbe`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestLightProbe)
     pub fn request_light_probe1(&self, options: &XRLightProbeInit) -> Promise<XRLightProbe> {
-        self.inner
-            .call("requestLightProbe", &[options.into()])
-            .as_::<Promise<XRLightProbe>>()
+        self.inner.call("requestLightProbe", &[options.into(), ]).as_::<Promise<XRLightProbe>>()
     }
 }
 impl XRSession {
     /// Getter of the `preferredReflectionFormat` attribute.
     /// [`XRSession.preferredReflectionFormat`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/preferredReflectionFormat)
     pub fn preferred_reflection_format(&self) -> XRReflectionFormat {
-        self.inner
-            .get("preferredReflectionFormat")
-            .as_::<XRReflectionFormat>()
+        self.inner.get("preferredReflectionFormat").as_::<XRReflectionFormat>()
     }
+
 }
 impl XRSession {
     /// The initiateRoomCapture method.
     /// [`XRSession.initiateRoomCapture`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/initiateRoomCapture)
-    pub fn initiate_room_capture(&self) -> Promise<Undefined> {
-        self.inner
-            .call("initiateRoomCapture", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn initiate_room_capture(&self, ) -> Promise<Undefined> {
+        self.inner.call("initiateRoomCapture", &[]).as_::<Promise<Undefined>>()
     }
 }

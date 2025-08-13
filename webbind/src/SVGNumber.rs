@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGNumber class.
 /// [`SVGNumber`](https://developer.mozilla.org/en-US/docs/Web/API/SVGNumber)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGNumber {
 
 impl FromVal for SVGNumber {
     fn from_val(v: &Any) -> Self {
-        SVGNumber {
-            inner: Any::from_val(v),
-        }
+        SVGNumber { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGNumber {
 
 impl AsMut<Any> for SVGNumber {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGNumber> for Any {
@@ -62,6 +63,7 @@ impl From<&SVGNumber> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGNumber);
+
 
 impl SVGNumber {
     /// Getter of the `value` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Bluetooth class.
 /// [`Bluetooth`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Bluetooth {
 
 impl FromVal for Bluetooth {
     fn from_val(v: &Any) -> Self {
-        Bluetooth {
-            inner: EventTarget::from_val(v),
-        }
+        Bluetooth { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Bluetooth {
 
 impl AsMut<Any> for Bluetooth {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Bluetooth> for Any {
@@ -63,13 +64,12 @@ impl From<&Bluetooth> for Any {
 
 jsbind::utils::impl_dyn_cast!(Bluetooth);
 
+
 impl Bluetooth {
     /// The getAvailability method.
     /// [`Bluetooth.getAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/getAvailability)
-    pub fn get_availability(&self) -> Promise<bool> {
-        self.inner
-            .call("getAvailability", &[])
-            .as_::<Promise<bool>>()
+    pub fn get_availability(&self, ) -> Promise<bool> {
+        self.inner.call("getAvailability", &[]).as_::<Promise<bool>>()
     }
 }
 impl Bluetooth {
@@ -91,46 +91,37 @@ impl Bluetooth {
     pub fn referring_device(&self) -> BluetoothDevice {
         self.inner.get("referringDevice").as_::<BluetoothDevice>()
     }
+
 }
 impl Bluetooth {
     /// The getDevices method.
     /// [`Bluetooth.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/getDevices)
-    pub fn get_devices(&self) -> Promise<TypedArray<BluetoothDevice>> {
-        self.inner
-            .call("getDevices", &[])
-            .as_::<Promise<TypedArray<BluetoothDevice>>>()
+    pub fn get_devices(&self, ) -> Promise<TypedArray<BluetoothDevice>> {
+        self.inner.call("getDevices", &[]).as_::<Promise<TypedArray<BluetoothDevice>>>()
     }
 }
 impl Bluetooth {
     /// The requestDevice method.
     /// [`Bluetooth.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice)
-    pub fn request_device0(&self) -> Promise<BluetoothDevice> {
-        self.inner
-            .call("requestDevice", &[])
-            .as_::<Promise<BluetoothDevice>>()
+    pub fn request_device0(&self, ) -> Promise<BluetoothDevice> {
+        self.inner.call("requestDevice", &[]).as_::<Promise<BluetoothDevice>>()
     }
     /// The requestDevice method.
     /// [`Bluetooth.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice)
     pub fn request_device1(&self, options: &RequestDeviceOptions) -> Promise<BluetoothDevice> {
-        self.inner
-            .call("requestDevice", &[options.into()])
-            .as_::<Promise<BluetoothDevice>>()
+        self.inner.call("requestDevice", &[options.into(), ]).as_::<Promise<BluetoothDevice>>()
     }
 }
 impl Bluetooth {
     /// The requestLEScan method.
     /// [`Bluetooth.requestLEScan`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestLEScan)
-    pub fn request_le_scan0(&self) -> Promise<BluetoothLEScan> {
-        self.inner
-            .call("requestLEScan", &[])
-            .as_::<Promise<BluetoothLEScan>>()
+    pub fn request_le_scan0(&self, ) -> Promise<BluetoothLEScan> {
+        self.inner.call("requestLEScan", &[]).as_::<Promise<BluetoothLEScan>>()
     }
     /// The requestLEScan method.
     /// [`Bluetooth.requestLEScan`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestLEScan)
     pub fn request_le_scan1(&self, options: &BluetoothLEScanOptions) -> Promise<BluetoothLEScan> {
-        self.inner
-            .call("requestLEScan", &[options.into()])
-            .as_::<Promise<BluetoothLEScan>>()
+        self.inner.call("requestLEScan", &[options.into(), ]).as_::<Promise<BluetoothLEScan>>()
     }
 }
 impl Bluetooth {

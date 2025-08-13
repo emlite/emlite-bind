@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NotificationEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NotificationEventInit {
 
 impl AsMut<Any> for NotificationEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NotificationEventInit> for Any {

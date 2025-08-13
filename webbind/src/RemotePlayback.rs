@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RemotePlayback class.
 /// [`RemotePlayback`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RemotePlayback {
 
 impl FromVal for RemotePlayback {
     fn from_val(v: &Any) -> Self {
-        RemotePlayback {
-            inner: EventTarget::from_val(v),
-        }
+        RemotePlayback { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RemotePlayback {
 
 impl AsMut<Any> for RemotePlayback {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RemotePlayback> for Any {
@@ -63,29 +64,24 @@ impl From<&RemotePlayback> for Any {
 
 jsbind::utils::impl_dyn_cast!(RemotePlayback);
 
+
 impl RemotePlayback {
     /// The watchAvailability method.
     /// [`RemotePlayback.watchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/watchAvailability)
     pub fn watch_availability(&self, callback: &Function) -> Promise<i32> {
-        self.inner
-            .call("watchAvailability", &[callback.into()])
-            .as_::<Promise<i32>>()
+        self.inner.call("watchAvailability", &[callback.into(), ]).as_::<Promise<i32>>()
     }
 }
 impl RemotePlayback {
     /// The cancelWatchAvailability method.
     /// [`RemotePlayback.cancelWatchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/cancelWatchAvailability)
-    pub fn cancel_watch_availability0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("cancelWatchAvailability", &[])
-            .as_::<Promise<Undefined>>()
+    pub fn cancel_watch_availability0(&self, ) -> Promise<Undefined> {
+        self.inner.call("cancelWatchAvailability", &[]).as_::<Promise<Undefined>>()
     }
     /// The cancelWatchAvailability method.
     /// [`RemotePlayback.cancelWatchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/cancelWatchAvailability)
     pub fn cancel_watch_availability1(&self, id: i32) -> Promise<Undefined> {
-        self.inner
-            .call("cancelWatchAvailability", &[id.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("cancelWatchAvailability", &[id.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl RemotePlayback {
@@ -94,6 +90,7 @@ impl RemotePlayback {
     pub fn state(&self) -> RemotePlaybackState {
         self.inner.get("state").as_::<RemotePlaybackState>()
     }
+
 }
 impl RemotePlayback {
     /// Getter of the `onconnecting` attribute.
@@ -137,7 +134,7 @@ impl RemotePlayback {
 impl RemotePlayback {
     /// The prompt method.
     /// [`RemotePlayback.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/prompt)
-    pub fn prompt(&self) -> Promise<Undefined> {
+    pub fn prompt(&self, ) -> Promise<Undefined> {
         self.inner.call("prompt", &[]).as_::<Promise<Undefined>>()
     }
 }

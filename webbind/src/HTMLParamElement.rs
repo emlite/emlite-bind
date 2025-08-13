@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLParamElement class.
 /// [`HTMLParamElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLParamElement {
 
 impl FromVal for HTMLParamElement {
     fn from_val(v: &Any) -> Self {
-        HTMLParamElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLParamElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLParamElement {
 
 impl AsMut<Any> for HTMLParamElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLParamElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLParamElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLParamElement);
 
+
+
 impl HTMLParamElement {
     /// The `new HTMLParamElement(..)` constructor, creating a new HTMLParamElement instance
     pub fn new() -> HTMLParamElement {
         Self {
-            inner: Any::global("HTMLParamElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLParamElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLParamElement {
     /// Getter of the `name` attribute.

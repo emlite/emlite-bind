@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUBufferBindingLayout dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUBufferBindingLayout {
 
 impl AsMut<Any> for GPUBufferBindingLayout {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUBufferBindingLayout> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUPipelineLayoutDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUPipelineLayoutDescriptor {
 
 impl AsMut<Any> for GPUPipelineLayoutDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUPipelineLayoutDescriptor> for Any {
@@ -61,9 +64,7 @@ impl From<&GPUPipelineLayoutDescriptor> for Any {
 impl GPUPipelineLayoutDescriptor {
     /// Getter of the `bindGroupLayouts` attribute.
     pub fn bind_group_layouts(&self) -> TypedArray<GPUBindGroupLayout> {
-        self.inner
-            .get("bindGroupLayouts")
-            .as_::<TypedArray<GPUBindGroupLayout>>()
+        self.inner.get("bindGroupLayouts").as_::<TypedArray<GPUBindGroupLayout>>()
     }
 
     /// Setter of the `bindGroupLayouts` attribute.

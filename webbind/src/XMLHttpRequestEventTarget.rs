@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XMLHttpRequestEventTarget class.
 /// [`XMLHttpRequestEventTarget`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestEventTarget)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XMLHttpRequestEventTarget {
 
 impl FromVal for XMLHttpRequestEventTarget {
     fn from_val(v: &Any) -> Self {
-        XMLHttpRequestEventTarget {
-            inner: EventTarget::from_val(v),
-        }
+        XMLHttpRequestEventTarget { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XMLHttpRequestEventTarget {
 
 impl AsMut<Any> for XMLHttpRequestEventTarget {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XMLHttpRequestEventTarget> for Any {
@@ -62,6 +63,7 @@ impl From<&XMLHttpRequestEventTarget> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XMLHttpRequestEventTarget);
+
 
 impl XMLHttpRequestEventTarget {
     /// Getter of the `onloadstart` attribute.

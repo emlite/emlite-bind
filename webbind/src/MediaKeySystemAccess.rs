@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaKeySystemAccess class.
 /// [`MediaKeySystemAccess`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySystemAccess)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct MediaKeySystemAccess {
 
 impl FromVal for MediaKeySystemAccess {
     fn from_val(v: &Any) -> Self {
-        MediaKeySystemAccess {
-            inner: Any::from_val(v),
-        }
+        MediaKeySystemAccess { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for MediaKeySystemAccess {
 
 impl AsMut<Any> for MediaKeySystemAccess {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaKeySystemAccess> for Any {
@@ -63,28 +64,26 @@ impl From<&MediaKeySystemAccess> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaKeySystemAccess);
 
+
 impl MediaKeySystemAccess {
     /// Getter of the `keySystem` attribute.
     /// [`MediaKeySystemAccess.keySystem`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySystemAccess/keySystem)
     pub fn key_system(&self) -> JsString {
         self.inner.get("keySystem").as_::<JsString>()
     }
+
 }
 impl MediaKeySystemAccess {
     /// The getConfiguration method.
     /// [`MediaKeySystemAccess.getConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySystemAccess/getConfiguration)
-    pub fn get_configuration(&self) -> MediaKeySystemConfiguration {
-        self.inner
-            .call("getConfiguration", &[])
-            .as_::<MediaKeySystemConfiguration>()
+    pub fn get_configuration(&self, ) -> MediaKeySystemConfiguration {
+        self.inner.call("getConfiguration", &[]).as_::<MediaKeySystemConfiguration>()
     }
 }
 impl MediaKeySystemAccess {
     /// The createMediaKeys method.
     /// [`MediaKeySystemAccess.createMediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySystemAccess/createMediaKeys)
-    pub fn create_media_keys(&self) -> Promise<MediaKeys> {
-        self.inner
-            .call("createMediaKeys", &[])
-            .as_::<Promise<MediaKeys>>()
+    pub fn create_media_keys(&self, ) -> Promise<MediaKeys> {
+        self.inner.call("createMediaKeys", &[]).as_::<Promise<MediaKeys>>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SharedStorageWorkletNavigator class.
 /// [`SharedStorageWorkletNavigator`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletNavigator)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SharedStorageWorkletNavigator {
 
 impl FromVal for SharedStorageWorkletNavigator {
     fn from_val(v: &Any) -> Self {
-        SharedStorageWorkletNavigator {
-            inner: Any::from_val(v),
-        }
+        SharedStorageWorkletNavigator { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SharedStorageWorkletNavigator {
 
 impl AsMut<Any> for SharedStorageWorkletNavigator {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SharedStorageWorkletNavigator> for Any {
@@ -63,10 +64,12 @@ impl From<&SharedStorageWorkletNavigator> for Any {
 
 jsbind::utils::impl_dyn_cast!(SharedStorageWorkletNavigator);
 
+
 impl SharedStorageWorkletNavigator {
     /// Getter of the `locks` attribute.
     /// [`SharedStorageWorkletNavigator.locks`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletNavigator/locks)
     pub fn locks(&self) -> LockManager {
         self.inner.get("locks").as_::<LockManager>()
     }
+
 }

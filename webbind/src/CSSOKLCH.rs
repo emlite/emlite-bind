@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSOKLCH class.
 /// [`CSSOKLCH`](https://developer.mozilla.org/en-US/docs/Web/API/CSSOKLCH)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSOKLCH {
 
 impl FromVal for CSSOKLCH {
     fn from_val(v: &Any) -> Self {
-        CSSOKLCH {
-            inner: CSSColorValue::from_val(v),
-        }
+        CSSOKLCH { inner: CSSColorValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSOKLCH {
 
 impl AsMut<Any> for CSSOKLCH {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSOKLCH> for Any {
@@ -63,24 +64,23 @@ impl From<&CSSOKLCH> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSOKLCH);
 
+
+
 impl CSSOKLCH {
     /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
     pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSOKLCH {
         Self {
-            inner: Any::global("CSSOKLCH")
-                .new(&[l.into(), c.into(), h.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSOKLCH").new(&[l.into(), c.into(), h.into()]).as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
     pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSOKLCH {
         Self {
-            inner: Any::global("CSSOKLCH")
-                .new(&[l.into(), c.into(), h.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSOKLCH").new(&[l.into(), c.into(), h.into(), alpha.into()]).as_::<CSSColorValue>(),
         }
     }
+
 }
 impl CSSOKLCH {
     /// Getter of the `l` attribute.

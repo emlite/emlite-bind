@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCRtpEncodingParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCRtpEncodingParameters {
 
 impl AsMut<Any> for RTCRtpEncodingParameters {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCRtpEncodingParameters> for Any {

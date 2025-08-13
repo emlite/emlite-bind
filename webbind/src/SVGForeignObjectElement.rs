@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGForeignObjectElement class.
 /// [`SVGForeignObjectElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGForeignObjectElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGForeignObjectElement {
 
 impl FromVal for SVGForeignObjectElement {
     fn from_val(v: &Any) -> Self {
-        SVGForeignObjectElement {
-            inner: SVGGraphicsElement::from_val(v),
-        }
+        SVGForeignObjectElement { inner: SVGGraphicsElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGForeignObjectElement {
 
 impl AsMut<Any> for SVGForeignObjectElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGForeignObjectElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGForeignObjectElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGForeignObjectElement);
 
+
 impl SVGForeignObjectElement {
     /// Getter of the `x` attribute.
     /// [`SVGForeignObjectElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGForeignObjectElement/x)
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGForeignObjectElement {
     /// Getter of the `y` attribute.
@@ -76,6 +79,7 @@ impl SVGForeignObjectElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGForeignObjectElement {
     /// Getter of the `width` attribute.
@@ -83,6 +87,7 @@ impl SVGForeignObjectElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGForeignObjectElement {
     /// Getter of the `height` attribute.
@@ -90,4 +95,5 @@ impl SVGForeignObjectElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }

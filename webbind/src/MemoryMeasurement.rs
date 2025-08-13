@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MemoryMeasurement dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MemoryMeasurement {
 
 impl AsMut<Any> for MemoryMeasurement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MemoryMeasurement> for Any {
@@ -72,9 +75,7 @@ impl MemoryMeasurement {
 impl MemoryMeasurement {
     /// Getter of the `breakdown` attribute.
     pub fn breakdown(&self) -> TypedArray<MemoryBreakdownEntry> {
-        self.inner
-            .get("breakdown")
-            .as_::<TypedArray<MemoryBreakdownEntry>>()
+        self.inner.get("breakdown").as_::<TypedArray<MemoryBreakdownEntry>>()
     }
 
     /// Setter of the `breakdown` attribute.

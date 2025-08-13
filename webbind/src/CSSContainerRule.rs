@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSContainerRule class.
 /// [`CSSContainerRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSContainerRule {
 
 impl FromVal for CSSContainerRule {
     fn from_val(v: &Any) -> Self {
-        CSSContainerRule {
-            inner: CSSConditionRule::from_val(v),
-        }
+        CSSContainerRule { inner: CSSConditionRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSContainerRule {
 
 impl AsMut<Any> for CSSContainerRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSContainerRule> for Any {
@@ -63,12 +64,14 @@ impl From<&CSSContainerRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSContainerRule);
 
+
 impl CSSContainerRule {
     /// Getter of the `containerName` attribute.
     /// [`CSSContainerRule.containerName`](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule/containerName)
     pub fn container_name(&self) -> JsString {
         self.inner.get("containerName").as_::<JsString>()
     }
+
 }
 impl CSSContainerRule {
     /// Getter of the `containerQuery` attribute.
@@ -76,4 +79,5 @@ impl CSSContainerRule {
     pub fn container_query(&self) -> JsString {
         self.inner.get("containerQuery").as_::<JsString>()
     }
+
 }

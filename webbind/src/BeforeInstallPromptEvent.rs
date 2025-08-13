@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BeforeInstallPromptEvent class.
 /// [`BeforeInstallPromptEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BeforeInstallPromptEvent {
 
 impl FromVal for BeforeInstallPromptEvent {
     fn from_val(v: &Any) -> Self {
-        BeforeInstallPromptEvent {
-            inner: Event::from_val(v),
-        }
+        BeforeInstallPromptEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BeforeInstallPromptEvent {
 
 impl AsMut<Any> for BeforeInstallPromptEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BeforeInstallPromptEvent> for Any {
@@ -63,31 +64,28 @@ impl From<&BeforeInstallPromptEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(BeforeInstallPromptEvent);
 
+
+
 impl BeforeInstallPromptEvent {
     /// The `new BeforeInstallPromptEvent(..)` constructor, creating a new BeforeInstallPromptEvent instance
     pub fn new0(type_: &JsString) -> BeforeInstallPromptEvent {
         Self {
-            inner: Any::global("BeforeInstallPromptEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("BeforeInstallPromptEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new BeforeInstallPromptEvent(..)` constructor, creating a new BeforeInstallPromptEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &EventInit) -> BeforeInstallPromptEvent {
         Self {
-            inner: Any::global("BeforeInstallPromptEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("BeforeInstallPromptEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl BeforeInstallPromptEvent {
     /// The prompt method.
     /// [`BeforeInstallPromptEvent.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent/prompt)
-    pub fn prompt(&self) -> Promise<PromptResponseObject> {
-        self.inner
-            .call("prompt", &[])
-            .as_::<Promise<PromptResponseObject>>()
+    pub fn prompt(&self, ) -> Promise<PromptResponseObject> {
+        self.inner.call("prompt", &[]).as_::<Promise<PromptResponseObject>>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSPerspective class.
 /// [`CSSPerspective`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPerspective)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSPerspective {
 
 impl FromVal for CSSPerspective {
     fn from_val(v: &Any) -> Self {
-        CSSPerspective {
-            inner: CSSTransformComponent::from_val(v),
-        }
+        CSSPerspective { inner: CSSTransformComponent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSPerspective {
 
 impl AsMut<Any> for CSSPerspective {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSPerspective> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSPerspective> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSPerspective);
 
+
+
 impl CSSPerspective {
     /// The `new CSSPerspective(..)` constructor, creating a new CSSPerspective instance
     pub fn new(length: &Any) -> CSSPerspective {
         Self {
-            inner: Any::global("CSSPerspective")
-                .new(&[length.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSPerspective").new(&[length.into()]).as_::<CSSTransformComponent>(),
         }
     }
+
 }
 impl CSSPerspective {
     /// Getter of the `length` attribute.

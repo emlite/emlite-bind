@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystemFileHandle class.
 /// [`FileSystemFileHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileSystemFileHandle {
 
 impl FromVal for FileSystemFileHandle {
     fn from_val(v: &Any) -> Self {
-        FileSystemFileHandle {
-            inner: FileSystemHandle::from_val(v),
-        }
+        FileSystemFileHandle { inner: FileSystemHandle::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileSystemFileHandle {
 
 impl AsMut<Any> for FileSystemFileHandle {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystemFileHandle> for Any {
@@ -63,38 +64,30 @@ impl From<&FileSystemFileHandle> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystemFileHandle);
 
+
 impl FileSystemFileHandle {
     /// The getFile method.
     /// [`FileSystemFileHandle.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/getFile)
-    pub fn get_file(&self) -> Promise<File> {
+    pub fn get_file(&self, ) -> Promise<File> {
         self.inner.call("getFile", &[]).as_::<Promise<File>>()
     }
 }
 impl FileSystemFileHandle {
     /// The createWritable method.
     /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
-    pub fn create_writable0(&self) -> Promise<FileSystemWritableFileStream> {
-        self.inner
-            .call("createWritable", &[])
-            .as_::<Promise<FileSystemWritableFileStream>>()
+    pub fn create_writable0(&self, ) -> Promise<FileSystemWritableFileStream> {
+        self.inner.call("createWritable", &[]).as_::<Promise<FileSystemWritableFileStream>>()
     }
     /// The createWritable method.
     /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
-    pub fn create_writable1(
-        &self,
-        options: &FileSystemCreateWritableOptions,
-    ) -> Promise<FileSystemWritableFileStream> {
-        self.inner
-            .call("createWritable", &[options.into()])
-            .as_::<Promise<FileSystemWritableFileStream>>()
+    pub fn create_writable1(&self, options: &FileSystemCreateWritableOptions) -> Promise<FileSystemWritableFileStream> {
+        self.inner.call("createWritable", &[options.into(), ]).as_::<Promise<FileSystemWritableFileStream>>()
     }
 }
 impl FileSystemFileHandle {
     /// The createSyncAccessHandle method.
     /// [`FileSystemFileHandle.createSyncAccessHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createSyncAccessHandle)
-    pub fn create_sync_access_handle(&self) -> Promise<FileSystemSyncAccessHandle> {
-        self.inner
-            .call("createSyncAccessHandle", &[])
-            .as_::<Promise<FileSystemSyncAccessHandle>>()
+    pub fn create_sync_access_handle(&self, ) -> Promise<FileSystemSyncAccessHandle> {
+        self.inner.call("createSyncAccessHandle", &[]).as_::<Promise<FileSystemSyncAccessHandle>>()
     }
 }

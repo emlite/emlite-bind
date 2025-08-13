@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCSessionDescriptionInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCSessionDescriptionInit {
 
 impl AsMut<Any> for RTCSessionDescriptionInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCSessionDescriptionInit> for Any {

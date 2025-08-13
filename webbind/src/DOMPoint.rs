@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DOMPoint class.
 /// [`DOMPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DOMPoint {
 
 impl FromVal for DOMPoint {
     fn from_val(v: &Any) -> Self {
-        DOMPoint {
-            inner: DOMPointReadOnly::from_val(v),
-        }
+        DOMPoint { inner: DOMPointReadOnly::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DOMPoint {
 
 impl AsMut<Any> for DOMPoint {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DOMPoint> for Any {
@@ -63,6 +64,8 @@ impl From<&DOMPoint> for Any {
 
 jsbind::utils::impl_dyn_cast!(DOMPoint);
 
+
+
 impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new0() -> DOMPoint {
@@ -74,53 +77,42 @@ impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new1(x: f64) -> DOMPoint {
         Self {
-            inner: Any::global("DOMPoint")
-                .new(&[x.into()])
-                .as_::<DOMPointReadOnly>(),
+            inner: Any::global("DOMPoint").new(&[x.into()]).as_::<DOMPointReadOnly>(),
         }
     }
 
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new2(x: f64, y: f64) -> DOMPoint {
         Self {
-            inner: Any::global("DOMPoint")
-                .new(&[x.into(), y.into()])
-                .as_::<DOMPointReadOnly>(),
+            inner: Any::global("DOMPoint").new(&[x.into(), y.into()]).as_::<DOMPointReadOnly>(),
         }
     }
 
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new3(x: f64, y: f64, z: f64) -> DOMPoint {
         Self {
-            inner: Any::global("DOMPoint")
-                .new(&[x.into(), y.into(), z.into()])
-                .as_::<DOMPointReadOnly>(),
+            inner: Any::global("DOMPoint").new(&[x.into(), y.into(), z.into()]).as_::<DOMPointReadOnly>(),
         }
     }
 
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new4(x: f64, y: f64, z: f64, w: f64) -> DOMPoint {
         Self {
-            inner: Any::global("DOMPoint")
-                .new(&[x.into(), y.into(), z.into(), w.into()])
-                .as_::<DOMPointReadOnly>(),
+            inner: Any::global("DOMPoint").new(&[x.into(), y.into(), z.into(), w.into()]).as_::<DOMPointReadOnly>(),
         }
     }
+
 }
 impl DOMPoint {
     /// The fromPoint method.
     /// [`DOMPoint.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/fromPoint)
     pub fn from_point0() -> DOMPoint {
-        Any::global("DOMPoint")
-            .call("fromPoint", &[])
-            .as_::<DOMPoint>()
+        Any::global("DOMPoint").call("fromPoint", &[]).as_::<DOMPoint>()
     }
     /// The fromPoint method.
     /// [`DOMPoint.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/fromPoint)
     pub fn from_point1(other: &DOMPointInit) -> DOMPoint {
-        Any::global("DOMPoint")
-            .call("fromPoint", &[other.into()])
-            .as_::<DOMPoint>()
+        Any::global("DOMPoint").call("fromPoint", &[other.into(), ]).as_::<DOMPoint>()
     }
 }
 impl DOMPoint {

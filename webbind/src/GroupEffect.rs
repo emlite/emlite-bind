@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GroupEffect class.
 /// [`GroupEffect`](https://developer.mozilla.org/en-US/docs/Web/API/GroupEffect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GroupEffect {
 
 impl FromVal for GroupEffect {
     fn from_val(v: &Any) -> Self {
-        GroupEffect {
-            inner: Any::from_val(v),
-        }
+        GroupEffect { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GroupEffect {
 
 impl AsMut<Any> for GroupEffect {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GroupEffect> for Any {
@@ -63,24 +64,23 @@ impl From<&GroupEffect> for Any {
 
 jsbind::utils::impl_dyn_cast!(GroupEffect);
 
+
+
 impl GroupEffect {
     /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
     pub fn new0(children: &TypedArray<AnimationEffect>) -> GroupEffect {
         Self {
-            inner: Any::global("GroupEffect")
-                .new(&[children.into()])
-                .as_::<Any>(),
+            inner: Any::global("GroupEffect").new(&[children.into()]).as_::<Any>(),
         }
     }
 
     /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
     pub fn new1(children: &TypedArray<AnimationEffect>, timing: &Any) -> GroupEffect {
         Self {
-            inner: Any::global("GroupEffect")
-                .new(&[children.into(), timing.into()])
-                .as_::<Any>(),
+            inner: Any::global("GroupEffect").new(&[children.into(), timing.into()]).as_::<Any>(),
         }
     }
+
 }
 impl GroupEffect {
     /// Getter of the `children` attribute.
@@ -88,6 +88,7 @@ impl GroupEffect {
     pub fn children(&self) -> AnimationNodeList {
         self.inner.get("children").as_::<AnimationNodeList>()
     }
+
 }
 impl GroupEffect {
     /// Getter of the `firstChild` attribute.
@@ -95,6 +96,7 @@ impl GroupEffect {
     pub fn first_child(&self) -> AnimationEffect {
         self.inner.get("firstChild").as_::<AnimationEffect>()
     }
+
 }
 impl GroupEffect {
     /// Getter of the `lastChild` attribute.
@@ -102,11 +104,12 @@ impl GroupEffect {
     pub fn last_child(&self) -> AnimationEffect {
         self.inner.get("lastChild").as_::<AnimationEffect>()
     }
+
 }
 impl GroupEffect {
     /// The clone method.
     /// [`GroupEffect.clone`](https://developer.mozilla.org/en-US/docs/Web/API/GroupEffect/clone)
-    pub fn clone_(&self) -> GroupEffect {
+    pub fn clone_(&self, ) -> GroupEffect {
         self.inner.call("clone", &[]).as_::<GroupEffect>()
     }
 }
@@ -114,17 +117,13 @@ impl GroupEffect {
     /// The prepend method.
     /// [`GroupEffect.prepend`](https://developer.mozilla.org/en-US/docs/Web/API/GroupEffect/prepend)
     pub fn prepend(&self, effects: &AnimationEffect) -> Undefined {
-        self.inner
-            .call("prepend", &[effects.into()])
-            .as_::<Undefined>()
+        self.inner.call("prepend", &[effects.into(), ]).as_::<Undefined>()
     }
 }
 impl GroupEffect {
     /// The append method.
     /// [`GroupEffect.append`](https://developer.mozilla.org/en-US/docs/Web/API/GroupEffect/append)
     pub fn append(&self, effects: &AnimationEffect) -> Undefined {
-        self.inner
-            .call("append", &[effects.into()])
-            .as_::<Undefined>()
+        self.inner.call("append", &[effects.into(), ]).as_::<Undefined>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HandwritingModelConstraint dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for HandwritingModelConstraint {
 
 impl AsMut<Any> for HandwritingModelConstraint {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HandwritingModelConstraint> for Any {

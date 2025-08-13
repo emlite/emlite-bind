@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NavigationHistoryEntry class.
 /// [`NavigationHistoryEntry`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NavigationHistoryEntry {
 
 impl FromVal for NavigationHistoryEntry {
     fn from_val(v: &Any) -> Self {
-        NavigationHistoryEntry {
-            inner: EventTarget::from_val(v),
-        }
+        NavigationHistoryEntry { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NavigationHistoryEntry {
 
 impl AsMut<Any> for NavigationHistoryEntry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NavigationHistoryEntry> for Any {
@@ -63,12 +64,14 @@ impl From<&NavigationHistoryEntry> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigationHistoryEntry);
 
+
 impl NavigationHistoryEntry {
     /// Getter of the `url` attribute.
     /// [`NavigationHistoryEntry.url`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/url)
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
+
 }
 impl NavigationHistoryEntry {
     /// Getter of the `key` attribute.
@@ -76,6 +79,7 @@ impl NavigationHistoryEntry {
     pub fn key(&self) -> JsString {
         self.inner.get("key").as_::<JsString>()
     }
+
 }
 impl NavigationHistoryEntry {
     /// Getter of the `id` attribute.
@@ -83,6 +87,7 @@ impl NavigationHistoryEntry {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
+
 }
 impl NavigationHistoryEntry {
     /// Getter of the `index` attribute.
@@ -90,6 +95,7 @@ impl NavigationHistoryEntry {
     pub fn index(&self) -> i64 {
         self.inner.get("index").as_::<i64>()
     }
+
 }
 impl NavigationHistoryEntry {
     /// Getter of the `sameDocument` attribute.
@@ -97,11 +103,12 @@ impl NavigationHistoryEntry {
     pub fn same_document(&self) -> bool {
         self.inner.get("sameDocument").as_::<bool>()
     }
+
 }
 impl NavigationHistoryEntry {
     /// The getState method.
     /// [`NavigationHistoryEntry.getState`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/getState)
-    pub fn get_state(&self) -> Any {
+    pub fn get_state(&self, ) -> Any {
         self.inner.call("getState", &[]).as_::<Any>()
     }
 }

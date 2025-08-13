@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SubscribeOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SubscribeOptions {
 
 impl AsMut<Any> for SubscribeOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SubscribeOptions> for Any {

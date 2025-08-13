@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebGLProgram class.
 /// [`WebGLProgram`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebGLProgram {
 
 impl FromVal for WebGLProgram {
     fn from_val(v: &Any) -> Self {
-        WebGLProgram {
-            inner: WebGLObject::from_val(v),
-        }
+        WebGLProgram { inner: WebGLObject::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebGLProgram {
 
 impl AsMut<Any> for WebGLProgram {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebGLProgram> for Any {
@@ -62,3 +63,5 @@ impl From<&WebGLProgram> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLProgram);
+
+

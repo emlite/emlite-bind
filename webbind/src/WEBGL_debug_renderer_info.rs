@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WEBGL_debug_renderer_info class.
 /// [`WEBGL_debug_renderer_info`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_debug_renderer_info)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WEBGL_debug_renderer_info {
 
 impl FromVal for WEBGL_debug_renderer_info {
     fn from_val(v: &Any) -> Self {
-        WEBGL_debug_renderer_info {
-            inner: Any::from_val(v),
-        }
+        WEBGL_debug_renderer_info { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WEBGL_debug_renderer_info {
 
 impl AsMut<Any> for WEBGL_debug_renderer_info {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WEBGL_debug_renderer_info> for Any {
@@ -62,3 +63,5 @@ impl From<&WEBGL_debug_renderer_info> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WEBGL_debug_renderer_info);
+
+

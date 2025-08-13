@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TextFormatUpdateEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for TextFormatUpdateEventInit {
 
 impl AsMut<Any> for TextFormatUpdateEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TextFormatUpdateEventInit> for Any {
@@ -61,9 +64,7 @@ impl From<&TextFormatUpdateEventInit> for Any {
 impl TextFormatUpdateEventInit {
     /// Getter of the `textFormats` attribute.
     pub fn text_formats(&self) -> TypedArray<TextFormat> {
-        self.inner
-            .get("textFormats")
-            .as_::<TypedArray<TextFormat>>()
+        self.inner.get("textFormats").as_::<TypedArray<TextFormat>>()
     }
 
     /// Setter of the `textFormats` attribute.

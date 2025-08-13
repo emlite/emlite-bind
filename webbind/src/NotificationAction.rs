@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NotificationAction dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for NotificationAction {
 
 impl AsMut<Any> for NotificationAction {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NotificationAction> for Any {

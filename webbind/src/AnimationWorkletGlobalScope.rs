@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AnimationWorkletGlobalScope class.
 /// [`AnimationWorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationWorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AnimationWorkletGlobalScope {
 
 impl FromVal for AnimationWorkletGlobalScope {
     fn from_val(v: &Any) -> Self {
-        AnimationWorkletGlobalScope {
-            inner: WorkletGlobalScope::from_val(v),
-        }
+        AnimationWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AnimationWorkletGlobalScope {
 
 impl AsMut<Any> for AnimationWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AnimationWorkletGlobalScope> for Any {
@@ -63,12 +64,11 @@ impl From<&AnimationWorkletGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(AnimationWorkletGlobalScope);
 
+
 impl AnimationWorkletGlobalScope {
     /// The registerAnimator method.
     /// [`AnimationWorkletGlobalScope.registerAnimator`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationWorkletGlobalScope/registerAnimator)
     pub fn register_animator(&self, name: &JsString, animator_ctor: &Function) -> Undefined {
-        self.inner
-            .call("registerAnimator", &[name.into(), animator_ctor.into()])
-            .as_::<Undefined>()
+        self.inner.call("registerAnimator", &[name.into(), animator_ctor.into(), ]).as_::<Undefined>()
     }
 }

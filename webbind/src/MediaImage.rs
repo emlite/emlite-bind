@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaImage dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaImage {
 
 impl AsMut<Any> for MediaImage {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaImage> for Any {

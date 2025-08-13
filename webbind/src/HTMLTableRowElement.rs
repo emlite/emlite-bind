@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLTableRowElement class.
 /// [`HTMLTableRowElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLTableRowElement {
 
 impl FromVal for HTMLTableRowElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTableRowElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTableRowElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLTableRowElement {
 
 impl AsMut<Any> for HTMLTableRowElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLTableRowElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLTableRowElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTableRowElement);
 
+
+
 impl HTMLTableRowElement {
     /// The `new HTMLTableRowElement(..)` constructor, creating a new HTMLTableRowElement instance
     pub fn new() -> HTMLTableRowElement {
         Self {
-            inner: Any::global("HTMLTableRowElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLTableRowElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTableRowElement {
     /// Getter of the `rowIndex` attribute.
@@ -79,6 +81,7 @@ impl HTMLTableRowElement {
     pub fn row_index(&self) -> i32 {
         self.inner.get("rowIndex").as_::<i32>()
     }
+
 }
 impl HTMLTableRowElement {
     /// Getter of the `sectionRowIndex` attribute.
@@ -86,6 +89,7 @@ impl HTMLTableRowElement {
     pub fn section_row_index(&self) -> i32 {
         self.inner.get("sectionRowIndex").as_::<i32>()
     }
+
 }
 impl HTMLTableRowElement {
     /// Getter of the `cells` attribute.
@@ -93,30 +97,25 @@ impl HTMLTableRowElement {
     pub fn cells(&self) -> HTMLCollection {
         self.inner.get("cells").as_::<HTMLCollection>()
     }
+
 }
 impl HTMLTableRowElement {
     /// The insertCell method.
     /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
-    pub fn insert_cell0(&self) -> HTMLTableCellElement {
-        self.inner
-            .call("insertCell", &[])
-            .as_::<HTMLTableCellElement>()
+    pub fn insert_cell0(&self, ) -> HTMLTableCellElement {
+        self.inner.call("insertCell", &[]).as_::<HTMLTableCellElement>()
     }
     /// The insertCell method.
     /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
     pub fn insert_cell1(&self, index: i32) -> HTMLTableCellElement {
-        self.inner
-            .call("insertCell", &[index.into()])
-            .as_::<HTMLTableCellElement>()
+        self.inner.call("insertCell", &[index.into(), ]).as_::<HTMLTableCellElement>()
     }
 }
 impl HTMLTableRowElement {
     /// The deleteCell method.
     /// [`HTMLTableRowElement.deleteCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/deleteCell)
     pub fn delete_cell(&self, index: i32) -> Undefined {
-        self.inner
-            .call("deleteCell", &[index.into()])
-            .as_::<Undefined>()
+        self.inner.call("deleteCell", &[index.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLTableRowElement {

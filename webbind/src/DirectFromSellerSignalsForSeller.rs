@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DirectFromSellerSignalsForSeller dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for DirectFromSellerSignalsForSeller {
 
 impl AsMut<Any> for DirectFromSellerSignalsForSeller {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DirectFromSellerSignalsForSeller> for Any {

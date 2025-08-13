@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLGruCellOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLGruCellOptions {
 
 impl AsMut<Any> for MLGruCellOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLGruCellOptions> for Any {
@@ -105,9 +108,7 @@ impl MLGruCellOptions {
 impl MLGruCellOptions {
     /// Getter of the `activations` attribute.
     pub fn activations(&self) -> TypedArray<MLRecurrentNetworkActivation> {
-        self.inner
-            .get("activations")
-            .as_::<TypedArray<MLRecurrentNetworkActivation>>()
+        self.inner.get("activations").as_::<TypedArray<MLRecurrentNetworkActivation>>()
     }
 
     /// Setter of the `activations` attribute.

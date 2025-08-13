@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaElementAudioSourceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaElementAudioSourceOptions {
 
 impl AsMut<Any> for MediaElementAudioSourceOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaElementAudioSourceOptions> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PresentationConnectionCloseEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PresentationConnectionCloseEventInit {
 
 impl AsMut<Any> for PresentationConnectionCloseEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PresentationConnectionCloseEventInit> for Any {
@@ -61,9 +64,7 @@ impl From<&PresentationConnectionCloseEventInit> for Any {
 impl PresentationConnectionCloseEventInit {
     /// Getter of the `reason` attribute.
     pub fn reason(&self) -> PresentationConnectionCloseReason {
-        self.inner
-            .get("reason")
-            .as_::<PresentationConnectionCloseReason>()
+        self.inner.get("reason").as_::<PresentationConnectionCloseReason>()
     }
 
     /// Setter of the `reason` attribute.

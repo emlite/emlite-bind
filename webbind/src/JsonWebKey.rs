@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The JsonWebKey dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for JsonWebKey {
 
 impl AsMut<Any> for JsonWebKey {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<JsonWebKey> for Any {
@@ -237,9 +240,7 @@ impl JsonWebKey {
 impl JsonWebKey {
     /// Getter of the `oth` attribute.
     pub fn oth(&self) -> TypedArray<RsaOtherPrimesInfo> {
-        self.inner
-            .get("oth")
-            .as_::<TypedArray<RsaOtherPrimesInfo>>()
+        self.inner.get("oth").as_::<TypedArray<RsaOtherPrimesInfo>>()
     }
 
     /// Setter of the `oth` attribute.

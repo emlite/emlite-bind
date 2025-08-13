@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechSynthesisErrorEvent class.
 /// [`SpeechSynthesisErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SpeechSynthesisErrorEvent {
 
 impl FromVal for SpeechSynthesisErrorEvent {
     fn from_val(v: &Any) -> Self {
-        SpeechSynthesisErrorEvent {
-            inner: SpeechSynthesisEvent::from_val(v),
-        }
+        SpeechSynthesisErrorEvent { inner: SpeechSynthesisEvent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SpeechSynthesisErrorEvent {
 
 impl AsMut<Any> for SpeechSynthesisErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechSynthesisErrorEvent> for Any {
@@ -63,18 +64,16 @@ impl From<&SpeechSynthesisErrorEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisErrorEvent);
 
+
+
 impl SpeechSynthesisErrorEvent {
     /// The `new SpeechSynthesisErrorEvent(..)` constructor, creating a new SpeechSynthesisErrorEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &SpeechSynthesisErrorEventInit,
-    ) -> SpeechSynthesisErrorEvent {
+    pub fn new(type_: &JsString, event_init_dict: &SpeechSynthesisErrorEventInit) -> SpeechSynthesisErrorEvent {
         Self {
-            inner: Any::global("SpeechSynthesisErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<SpeechSynthesisEvent>(),
+            inner: Any::global("SpeechSynthesisErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<SpeechSynthesisEvent>(),
         }
     }
+
 }
 impl SpeechSynthesisErrorEvent {
     /// Getter of the `error` attribute.
@@ -82,4 +81,5 @@ impl SpeechSynthesisErrorEvent {
     pub fn error(&self) -> SpeechSynthesisErrorCode {
         self.inner.get("error").as_::<SpeechSynthesisErrorCode>()
     }
+
 }

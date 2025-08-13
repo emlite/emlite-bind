@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSLCH class.
 /// [`CSSLCH`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLCH)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSLCH {
 
 impl FromVal for CSSLCH {
     fn from_val(v: &Any) -> Self {
-        CSSLCH {
-            inner: CSSColorValue::from_val(v),
-        }
+        CSSLCH { inner: CSSColorValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSLCH {
 
 impl AsMut<Any> for CSSLCH {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSLCH> for Any {
@@ -63,24 +64,23 @@ impl From<&CSSLCH> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSLCH);
 
+
+
 impl CSSLCH {
     /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
     pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSLCH {
         Self {
-            inner: Any::global("CSSLCH")
-                .new(&[l.into(), c.into(), h.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSLCH").new(&[l.into(), c.into(), h.into()]).as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
     pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSLCH {
         Self {
-            inner: Any::global("CSSLCH")
-                .new(&[l.into(), c.into(), h.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSLCH").new(&[l.into(), c.into(), h.into(), alpha.into()]).as_::<CSSColorValue>(),
         }
     }
+
 }
 impl CSSLCH {
     /// Getter of the `l` attribute.

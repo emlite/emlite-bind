@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FontFaceFeatures class.
 /// [`FontFaceFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceFeatures)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FontFaceFeatures {
 
 impl FromVal for FontFaceFeatures {
     fn from_val(v: &Any) -> Self {
-        FontFaceFeatures {
-            inner: Any::from_val(v),
-        }
+        FontFaceFeatures { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FontFaceFeatures {
 
 impl AsMut<Any> for FontFaceFeatures {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FontFaceFeatures> for Any {
@@ -62,3 +63,5 @@ impl From<&FontFaceFeatures> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(FontFaceFeatures);
+
+

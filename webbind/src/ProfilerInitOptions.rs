@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ProfilerInitOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ProfilerInitOptions {
 
 impl AsMut<Any> for ProfilerInitOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ProfilerInitOptions> for Any {

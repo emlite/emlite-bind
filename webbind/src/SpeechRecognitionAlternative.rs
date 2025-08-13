@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechRecognitionAlternative class.
 /// [`SpeechRecognitionAlternative`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionAlternative)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SpeechRecognitionAlternative {
 
 impl FromVal for SpeechRecognitionAlternative {
     fn from_val(v: &Any) -> Self {
-        SpeechRecognitionAlternative {
-            inner: Any::from_val(v),
-        }
+        SpeechRecognitionAlternative { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SpeechRecognitionAlternative {
 
 impl AsMut<Any> for SpeechRecognitionAlternative {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechRecognitionAlternative> for Any {
@@ -63,12 +64,14 @@ impl From<&SpeechRecognitionAlternative> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionAlternative);
 
+
 impl SpeechRecognitionAlternative {
     /// Getter of the `transcript` attribute.
     /// [`SpeechRecognitionAlternative.transcript`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionAlternative/transcript)
     pub fn transcript(&self) -> JsString {
         self.inner.get("transcript").as_::<JsString>()
     }
+
 }
 impl SpeechRecognitionAlternative {
     /// Getter of the `confidence` attribute.
@@ -76,4 +79,5 @@ impl SpeechRecognitionAlternative {
     pub fn confidence(&self) -> f32 {
         self.inner.get("confidence").as_::<f32>()
     }
+
 }

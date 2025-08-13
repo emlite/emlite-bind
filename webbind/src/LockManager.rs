@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LockManager class.
 /// [`LockManager`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct LockManager {
 
 impl FromVal for LockManager {
     fn from_val(v: &Any) -> Self {
-        LockManager {
-            inner: Any::from_val(v),
-        }
+        LockManager { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for LockManager {
 
 impl AsMut<Any> for LockManager {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LockManager> for Any {
@@ -63,26 +64,18 @@ impl From<&LockManager> for Any {
 
 jsbind::utils::impl_dyn_cast!(LockManager);
 
+
 impl LockManager {
     /// The request method.
     /// [`LockManager.request`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request)
-    pub fn request(
-        &self,
-        name: &JsString,
-        options: &LockOptions,
-        callback: &Function,
-    ) -> Promise<Any> {
-        self.inner
-            .call("request", &[name.into(), options.into(), callback.into()])
-            .as_::<Promise<Any>>()
+    pub fn request(&self, name: &JsString, options: &LockOptions, callback: &Function) -> Promise<Any> {
+        self.inner.call("request", &[name.into(), options.into(), callback.into(), ]).as_::<Promise<Any>>()
     }
 }
 impl LockManager {
     /// The query method.
     /// [`LockManager.query`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/query)
-    pub fn query(&self) -> Promise<LockManagerSnapshot> {
-        self.inner
-            .call("query", &[])
-            .as_::<Promise<LockManagerSnapshot>>()
+    pub fn query(&self, ) -> Promise<LockManagerSnapshot> {
+        self.inner.call("query", &[]).as_::<Promise<LockManagerSnapshot>>()
     }
 }

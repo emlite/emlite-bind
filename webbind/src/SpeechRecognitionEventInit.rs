@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechRecognitionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SpeechRecognitionEventInit {
 
 impl AsMut<Any> for SpeechRecognitionEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechRecognitionEventInit> for Any {
@@ -72,9 +75,7 @@ impl SpeechRecognitionEventInit {
 impl SpeechRecognitionEventInit {
     /// Getter of the `results` attribute.
     pub fn results(&self) -> SpeechRecognitionResultList {
-        self.inner
-            .get("results")
-            .as_::<SpeechRecognitionResultList>()
+        self.inner.get("results").as_::<SpeechRecognitionResultList>()
     }
 
     /// Setter of the `results` attribute.

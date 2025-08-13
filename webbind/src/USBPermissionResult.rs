@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBPermissionResult class.
 /// [`USBPermissionResult`](https://developer.mozilla.org/en-US/docs/Web/API/USBPermissionResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBPermissionResult {
 
 impl FromVal for USBPermissionResult {
     fn from_val(v: &Any) -> Self {
-        USBPermissionResult {
-            inner: PermissionStatus::from_val(v),
-        }
+        USBPermissionResult { inner: PermissionStatus::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBPermissionResult {
 
 impl AsMut<Any> for USBPermissionResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBPermissionResult> for Any {
@@ -62,6 +63,7 @@ impl From<&USBPermissionResult> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(USBPermissionResult);
+
 
 impl USBPermissionResult {
     /// Getter of the `devices` attribute.

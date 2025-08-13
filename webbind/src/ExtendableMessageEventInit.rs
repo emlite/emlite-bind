@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ExtendableMessageEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ExtendableMessageEventInit {
 
 impl AsMut<Any> for ExtendableMessageEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ExtendableMessageEventInit> for Any {

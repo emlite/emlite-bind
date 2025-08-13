@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FragmentResult class.
 /// [`FragmentResult`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FragmentResult {
 
 impl FromVal for FragmentResult {
     fn from_val(v: &Any) -> Self {
-        FragmentResult {
-            inner: Any::from_val(v),
-        }
+        FragmentResult { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FragmentResult {
 
 impl AsMut<Any> for FragmentResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FragmentResult> for Any {
@@ -63,6 +64,8 @@ impl From<&FragmentResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(FragmentResult);
 
+
+
 impl FragmentResult {
     /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
     pub fn new0() -> FragmentResult {
@@ -74,11 +77,10 @@ impl FragmentResult {
     /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
     pub fn new1(options: &FragmentResultOptions) -> FragmentResult {
         Self {
-            inner: Any::global("FragmentResult")
-                .new(&[options.into()])
-                .as_::<Any>(),
+            inner: Any::global("FragmentResult").new(&[options.into()]).as_::<Any>(),
         }
     }
+
 }
 impl FragmentResult {
     /// Getter of the `inlineSize` attribute.
@@ -86,6 +88,7 @@ impl FragmentResult {
     pub fn inline_size(&self) -> f64 {
         self.inner.get("inlineSize").as_::<f64>()
     }
+
 }
 impl FragmentResult {
     /// Getter of the `blockSize` attribute.
@@ -93,4 +96,5 @@ impl FragmentResult {
     pub fn block_size(&self) -> f64 {
         self.inner.get("blockSize").as_::<f64>()
     }
+
 }

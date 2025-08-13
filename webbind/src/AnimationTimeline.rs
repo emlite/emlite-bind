@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AnimationTimeline class.
 /// [`AnimationTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AnimationTimeline {
 
 impl FromVal for AnimationTimeline {
     fn from_val(v: &Any) -> Self {
-        AnimationTimeline {
-            inner: Any::from_val(v),
-        }
+        AnimationTimeline { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AnimationTimeline {
 
 impl AsMut<Any> for AnimationTimeline {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AnimationTimeline> for Any {
@@ -63,12 +64,14 @@ impl From<&AnimationTimeline> for Any {
 
 jsbind::utils::impl_dyn_cast!(AnimationTimeline);
 
+
 impl AnimationTimeline {
     /// Getter of the `currentTime` attribute.
     /// [`AnimationTimeline.currentTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTimeline/currentTime)
     pub fn current_time(&self) -> Any {
         self.inner.get("currentTime").as_::<Any>()
     }
+
 }
 impl AnimationTimeline {
     /// Getter of the `duration` attribute.
@@ -76,16 +79,17 @@ impl AnimationTimeline {
     pub fn duration(&self) -> Any {
         self.inner.get("duration").as_::<Any>()
     }
+
 }
 impl AnimationTimeline {
     /// The play method.
     /// [`AnimationTimeline.play`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTimeline/play)
-    pub fn play0(&self) -> Animation {
+    pub fn play0(&self, ) -> Animation {
         self.inner.call("play", &[]).as_::<Animation>()
     }
     /// The play method.
     /// [`AnimationTimeline.play`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTimeline/play)
     pub fn play1(&self, effect: &AnimationEffect) -> Animation {
-        self.inner.call("play", &[effect.into()]).as_::<Animation>()
+        self.inner.call("play", &[effect.into(), ]).as_::<Animation>()
     }
 }

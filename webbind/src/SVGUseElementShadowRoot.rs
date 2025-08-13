@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGUseElementShadowRoot class.
 /// [`SVGUseElementShadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/SVGUseElementShadowRoot)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGUseElementShadowRoot {
 
 impl FromVal for SVGUseElementShadowRoot {
     fn from_val(v: &Any) -> Self {
-        SVGUseElementShadowRoot {
-            inner: ShadowRoot::from_val(v),
-        }
+        SVGUseElementShadowRoot { inner: ShadowRoot::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGUseElementShadowRoot {
 
 impl AsMut<Any> for SVGUseElementShadowRoot {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGUseElementShadowRoot> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGUseElementShadowRoot> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGUseElementShadowRoot);
+
+

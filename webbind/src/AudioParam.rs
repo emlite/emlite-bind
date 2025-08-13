@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioParam class.
 /// [`AudioParam`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioParam {
 
 impl FromVal for AudioParam {
     fn from_val(v: &Any) -> Self {
-        AudioParam {
-            inner: Any::from_val(v),
-        }
+        AudioParam { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioParam {
 
 impl AsMut<Any> for AudioParam {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioParam> for Any {
@@ -62,6 +63,7 @@ impl From<&AudioParam> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(AudioParam);
+
 
 impl AudioParam {
     /// Getter of the `value` attribute.
@@ -95,6 +97,7 @@ impl AudioParam {
     pub fn default_value(&self) -> f32 {
         self.inner.get("defaultValue").as_::<f32>()
     }
+
 }
 impl AudioParam {
     /// Getter of the `minValue` attribute.
@@ -102,6 +105,7 @@ impl AudioParam {
     pub fn min_value(&self) -> f32 {
         self.inner.get("minValue").as_::<f32>()
     }
+
 }
 impl AudioParam {
     /// Getter of the `maxValue` attribute.
@@ -109,86 +113,54 @@ impl AudioParam {
     pub fn max_value(&self) -> f32 {
         self.inner.get("maxValue").as_::<f32>()
     }
+
 }
 impl AudioParam {
     /// The setValueAtTime method.
     /// [`AudioParam.setValueAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setValueAtTime)
     pub fn set_value_at_time(&self, value: f32, start_time: f64) -> AudioParam {
-        self.inner
-            .call("setValueAtTime", &[value.into(), start_time.into()])
-            .as_::<AudioParam>()
+        self.inner.call("setValueAtTime", &[value.into(), start_time.into(), ]).as_::<AudioParam>()
     }
 }
 impl AudioParam {
     /// The linearRampToValueAtTime method.
     /// [`AudioParam.linearRampToValueAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/linearRampToValueAtTime)
     pub fn linear_ramp_to_value_at_time(&self, value: f32, end_time: f64) -> AudioParam {
-        self.inner
-            .call("linearRampToValueAtTime", &[value.into(), end_time.into()])
-            .as_::<AudioParam>()
+        self.inner.call("linearRampToValueAtTime", &[value.into(), end_time.into(), ]).as_::<AudioParam>()
     }
 }
 impl AudioParam {
     /// The exponentialRampToValueAtTime method.
     /// [`AudioParam.exponentialRampToValueAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/exponentialRampToValueAtTime)
     pub fn exponential_ramp_to_value_at_time(&self, value: f32, end_time: f64) -> AudioParam {
-        self.inner
-            .call(
-                "exponentialRampToValueAtTime",
-                &[value.into(), end_time.into()],
-            )
-            .as_::<AudioParam>()
+        self.inner.call("exponentialRampToValueAtTime", &[value.into(), end_time.into(), ]).as_::<AudioParam>()
     }
 }
 impl AudioParam {
     /// The setTargetAtTime method.
     /// [`AudioParam.setTargetAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setTargetAtTime)
-    pub fn set_target_at_time(
-        &self,
-        target: f32,
-        start_time: f64,
-        time_constant: f32,
-    ) -> AudioParam {
-        self.inner
-            .call(
-                "setTargetAtTime",
-                &[target.into(), start_time.into(), time_constant.into()],
-            )
-            .as_::<AudioParam>()
+    pub fn set_target_at_time(&self, target: f32, start_time: f64, time_constant: f32) -> AudioParam {
+        self.inner.call("setTargetAtTime", &[target.into(), start_time.into(), time_constant.into(), ]).as_::<AudioParam>()
     }
 }
 impl AudioParam {
     /// The setValueCurveAtTime method.
     /// [`AudioParam.setValueCurveAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setValueCurveAtTime)
-    pub fn set_value_curve_at_time(
-        &self,
-        values: TypedArray<f32>,
-        start_time: f64,
-        duration: f64,
-    ) -> AudioParam {
-        self.inner
-            .call(
-                "setValueCurveAtTime",
-                &[values.into(), start_time.into(), duration.into()],
-            )
-            .as_::<AudioParam>()
+    pub fn set_value_curve_at_time(&self, values: TypedArray<f32>, start_time: f64, duration: f64) -> AudioParam {
+        self.inner.call("setValueCurveAtTime", &[values.into(), start_time.into(), duration.into(), ]).as_::<AudioParam>()
     }
 }
 impl AudioParam {
     /// The cancelScheduledValues method.
     /// [`AudioParam.cancelScheduledValues`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/cancelScheduledValues)
     pub fn cancel_scheduled_values(&self, cancel_time: f64) -> AudioParam {
-        self.inner
-            .call("cancelScheduledValues", &[cancel_time.into()])
-            .as_::<AudioParam>()
+        self.inner.call("cancelScheduledValues", &[cancel_time.into(), ]).as_::<AudioParam>()
     }
 }
 impl AudioParam {
     /// The cancelAndHoldAtTime method.
     /// [`AudioParam.cancelAndHoldAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/cancelAndHoldAtTime)
     pub fn cancel_and_hold_at_time(&self, cancel_time: f64) -> AudioParam {
-        self.inner
-            .call("cancelAndHoldAtTime", &[cancel_time.into()])
-            .as_::<AudioParam>()
+        self.inner.call("cancelAndHoldAtTime", &[cancel_time.into(), ]).as_::<AudioParam>()
     }
 }

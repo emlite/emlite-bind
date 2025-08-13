@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCIceServer dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCIceServer {
 
 impl AsMut<Any> for RTCIceServer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCIceServer> for Any {

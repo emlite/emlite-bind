@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUAdapterInfo class.
 /// [`GPUAdapterInfo`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapterInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUAdapterInfo {
 
 impl FromVal for GPUAdapterInfo {
     fn from_val(v: &Any) -> Self {
-        GPUAdapterInfo {
-            inner: Any::from_val(v),
-        }
+        GPUAdapterInfo { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUAdapterInfo {
 
 impl AsMut<Any> for GPUAdapterInfo {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUAdapterInfo> for Any {
@@ -63,12 +64,14 @@ impl From<&GPUAdapterInfo> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUAdapterInfo);
 
+
 impl GPUAdapterInfo {
     /// Getter of the `vendor` attribute.
     /// [`GPUAdapterInfo.vendor`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapterInfo/vendor)
     pub fn vendor(&self) -> JsString {
         self.inner.get("vendor").as_::<JsString>()
     }
+
 }
 impl GPUAdapterInfo {
     /// Getter of the `architecture` attribute.
@@ -76,6 +79,7 @@ impl GPUAdapterInfo {
     pub fn architecture(&self) -> JsString {
         self.inner.get("architecture").as_::<JsString>()
     }
+
 }
 impl GPUAdapterInfo {
     /// Getter of the `device` attribute.
@@ -83,6 +87,7 @@ impl GPUAdapterInfo {
     pub fn device(&self) -> JsString {
         self.inner.get("device").as_::<JsString>()
     }
+
 }
 impl GPUAdapterInfo {
     /// Getter of the `description` attribute.
@@ -90,6 +95,7 @@ impl GPUAdapterInfo {
     pub fn description(&self) -> JsString {
         self.inner.get("description").as_::<JsString>()
     }
+
 }
 impl GPUAdapterInfo {
     /// Getter of the `subgroupMinSize` attribute.
@@ -97,6 +103,7 @@ impl GPUAdapterInfo {
     pub fn subgroup_min_size(&self) -> u32 {
         self.inner.get("subgroupMinSize").as_::<u32>()
     }
+
 }
 impl GPUAdapterInfo {
     /// Getter of the `subgroupMaxSize` attribute.
@@ -104,6 +111,7 @@ impl GPUAdapterInfo {
     pub fn subgroup_max_size(&self) -> u32 {
         self.inner.get("subgroupMaxSize").as_::<u32>()
     }
+
 }
 impl GPUAdapterInfo {
     /// Getter of the `isFallbackAdapter` attribute.
@@ -111,4 +119,5 @@ impl GPUAdapterInfo {
     pub fn is_fallback_adapter(&self) -> bool {
         self.inner.get("isFallbackAdapter").as_::<bool>()
     }
+
 }

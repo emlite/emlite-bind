@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRSessionEvent class.
 /// [`XRSessionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/XRSessionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRSessionEvent {
 
 impl FromVal for XRSessionEvent {
     fn from_val(v: &Any) -> Self {
-        XRSessionEvent {
-            inner: Event::from_val(v),
-        }
+        XRSessionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRSessionEvent {
 
 impl AsMut<Any> for XRSessionEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRSessionEvent> for Any {
@@ -63,15 +64,16 @@ impl From<&XRSessionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRSessionEvent);
 
+
+
 impl XRSessionEvent {
     /// The `new XRSessionEvent(..)` constructor, creating a new XRSessionEvent instance
     pub fn new(type_: &JsString, event_init_dict: &XRSessionEventInit) -> XRSessionEvent {
         Self {
-            inner: Any::global("XRSessionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("XRSessionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl XRSessionEvent {
     /// Getter of the `session` attribute.
@@ -79,4 +81,5 @@ impl XRSessionEvent {
     pub fn session(&self) -> XRSession {
         self.inner.get("session").as_::<XRSession>()
     }
+
 }

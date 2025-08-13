@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BluetoothServiceDataFilter class.
 /// [`BluetoothServiceDataFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothServiceDataFilter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct BluetoothServiceDataFilter {
 
 impl FromVal for BluetoothServiceDataFilter {
     fn from_val(v: &Any) -> Self {
-        BluetoothServiceDataFilter {
-            inner: Any::from_val(v),
-        }
+        BluetoothServiceDataFilter { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for BluetoothServiceDataFilter {
 
 impl AsMut<Any> for BluetoothServiceDataFilter {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BluetoothServiceDataFilter> for Any {
@@ -63,22 +64,21 @@ impl From<&BluetoothServiceDataFilter> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothServiceDataFilter);
 
+
+
 impl BluetoothServiceDataFilter {
     /// The `new BluetoothServiceDataFilter(..)` constructor, creating a new BluetoothServiceDataFilter instance
     pub fn new0() -> BluetoothServiceDataFilter {
         Self {
-            inner: Any::global("BluetoothServiceDataFilter")
-                .new(&[])
-                .as_::<Any>(),
+            inner: Any::global("BluetoothServiceDataFilter").new(&[]).as_::<Any>(),
         }
     }
 
     /// The `new BluetoothServiceDataFilter(..)` constructor, creating a new BluetoothServiceDataFilter instance
     pub fn new1(init: &Object) -> BluetoothServiceDataFilter {
         Self {
-            inner: Any::global("BluetoothServiceDataFilter")
-                .new(&[init.into()])
-                .as_::<Any>(),
+            inner: Any::global("BluetoothServiceDataFilter").new(&[init.into()]).as_::<Any>(),
         }
     }
+
 }

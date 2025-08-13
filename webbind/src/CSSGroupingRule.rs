@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSGroupingRule class.
 /// [`CSSGroupingRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSGroupingRule {
 
 impl FromVal for CSSGroupingRule {
     fn from_val(v: &Any) -> Self {
-        CSSGroupingRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSGroupingRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSGroupingRule {
 
 impl AsMut<Any> for CSSGroupingRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSGroupingRule> for Any {
@@ -63,33 +64,31 @@ impl From<&CSSGroupingRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSGroupingRule);
 
+
 impl CSSGroupingRule {
     /// Getter of the `cssRules` attribute.
     /// [`CSSGroupingRule.cssRules`](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule/cssRules)
     pub fn css_rules(&self) -> CSSRuleList {
         self.inner.get("cssRules").as_::<CSSRuleList>()
     }
+
 }
 impl CSSGroupingRule {
     /// The insertRule method.
     /// [`CSSGroupingRule.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule/insertRule)
     pub fn insert_rule0(&self, rule: &JsString) -> u32 {
-        self.inner.call("insertRule", &[rule.into()]).as_::<u32>()
+        self.inner.call("insertRule", &[rule.into(), ]).as_::<u32>()
     }
     /// The insertRule method.
     /// [`CSSGroupingRule.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule/insertRule)
     pub fn insert_rule1(&self, rule: &JsString, index: u32) -> u32 {
-        self.inner
-            .call("insertRule", &[rule.into(), index.into()])
-            .as_::<u32>()
+        self.inner.call("insertRule", &[rule.into(), index.into(), ]).as_::<u32>()
     }
 }
 impl CSSGroupingRule {
     /// The deleteRule method.
     /// [`CSSGroupingRule.deleteRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule/deleteRule)
     pub fn delete_rule(&self, index: u32) -> Undefined {
-        self.inner
-            .call("deleteRule", &[index.into()])
-            .as_::<Undefined>()
+        self.inner.call("deleteRule", &[index.into(), ]).as_::<Undefined>()
     }
 }

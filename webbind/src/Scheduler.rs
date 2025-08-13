@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Scheduler class.
 /// [`Scheduler`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Scheduler {
 
 impl FromVal for Scheduler {
     fn from_val(v: &Any) -> Self {
-        Scheduler {
-            inner: Any::from_val(v),
-        }
+        Scheduler { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Scheduler {
 
 impl AsMut<Any> for Scheduler {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Scheduler> for Any {
@@ -63,30 +64,23 @@ impl From<&Scheduler> for Any {
 
 jsbind::utils::impl_dyn_cast!(Scheduler);
 
+
 impl Scheduler {
     /// The postTask method.
     /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
     pub fn post_task0(&self, callback: &Function) -> Promise<Any> {
-        self.inner
-            .call("postTask", &[callback.into()])
-            .as_::<Promise<Any>>()
+        self.inner.call("postTask", &[callback.into(), ]).as_::<Promise<Any>>()
     }
     /// The postTask method.
     /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
-    pub fn post_task1(
-        &self,
-        callback: &Function,
-        options: &SchedulerPostTaskOptions,
-    ) -> Promise<Any> {
-        self.inner
-            .call("postTask", &[callback.into(), options.into()])
-            .as_::<Promise<Any>>()
+    pub fn post_task1(&self, callback: &Function, options: &SchedulerPostTaskOptions) -> Promise<Any> {
+        self.inner.call("postTask", &[callback.into(), options.into(), ]).as_::<Promise<Any>>()
     }
 }
 impl Scheduler {
     /// The yield method.
     /// [`Scheduler.yield`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/yield)
-    pub fn yield_(&self) -> Promise<Undefined> {
+    pub fn yield_(&self, ) -> Promise<Undefined> {
         self.inner.call("yield", &[]).as_::<Promise<Undefined>>()
     }
 }

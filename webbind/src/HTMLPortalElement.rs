@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLPortalElement class.
 /// [`HTMLPortalElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLPortalElement {
 
 impl FromVal for HTMLPortalElement {
     fn from_val(v: &Any) -> Self {
-        HTMLPortalElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLPortalElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLPortalElement {
 
 impl AsMut<Any> for HTMLPortalElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLPortalElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLPortalElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLPortalElement);
 
+
+
 impl HTMLPortalElement {
     /// The `new HTMLPortalElement(..)` constructor, creating a new HTMLPortalElement instance
     pub fn new() -> HTMLPortalElement {
         Self {
-            inner: Any::global("HTMLPortalElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLPortalElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLPortalElement {
     /// Getter of the `src` attribute.
@@ -102,31 +104,25 @@ impl HTMLPortalElement {
 impl HTMLPortalElement {
     /// The activate method.
     /// [`HTMLPortalElement.activate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/activate)
-    pub fn activate0(&self) -> Promise<Undefined> {
+    pub fn activate0(&self, ) -> Promise<Undefined> {
         self.inner.call("activate", &[]).as_::<Promise<Undefined>>()
     }
     /// The activate method.
     /// [`HTMLPortalElement.activate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/activate)
     pub fn activate1(&self, options: &PortalActivateOptions) -> Promise<Undefined> {
-        self.inner
-            .call("activate", &[options.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("activate", &[options.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl HTMLPortalElement {
     /// The postMessage method.
     /// [`HTMLPortalElement.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/postMessage)
     pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
+        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
     }
     /// The postMessage method.
     /// [`HTMLPortalElement.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/postMessage)
     pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
+        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
     }
 }
 impl HTMLPortalElement {

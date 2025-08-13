@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRSystem class.
 /// [`XRSystem`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct XRSystem {
 
 impl FromVal for XRSystem {
     fn from_val(v: &Any) -> Self {
-        XRSystem {
-            inner: EventTarget::from_val(v),
-        }
+        XRSystem { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for XRSystem {
 
 impl AsMut<Any> for XRSystem {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRSystem> for Any {
@@ -63,33 +64,24 @@ impl From<&XRSystem> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRSystem);
 
+
 impl XRSystem {
     /// The isSessionSupported method.
     /// [`XRSystem.isSessionSupported`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/isSessionSupported)
     pub fn is_session_supported(&self, mode: &XRSessionMode) -> Promise<bool> {
-        self.inner
-            .call("isSessionSupported", &[mode.into()])
-            .as_::<Promise<bool>>()
+        self.inner.call("isSessionSupported", &[mode.into(), ]).as_::<Promise<bool>>()
     }
 }
 impl XRSystem {
     /// The requestSession method.
     /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
     pub fn request_session0(&self, mode: &XRSessionMode) -> Promise<XRSession> {
-        self.inner
-            .call("requestSession", &[mode.into()])
-            .as_::<Promise<XRSession>>()
+        self.inner.call("requestSession", &[mode.into(), ]).as_::<Promise<XRSession>>()
     }
     /// The requestSession method.
     /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
-    pub fn request_session1(
-        &self,
-        mode: &XRSessionMode,
-        options: &XRSessionInit,
-    ) -> Promise<XRSession> {
-        self.inner
-            .call("requestSession", &[mode.into(), options.into()])
-            .as_::<Promise<XRSession>>()
+    pub fn request_session1(&self, mode: &XRSessionMode, options: &XRSessionInit) -> Promise<XRSession> {
+        self.inner.call("requestSession", &[mode.into(), options.into(), ]).as_::<Promise<XRSession>>()
     }
 }
 impl XRSystem {

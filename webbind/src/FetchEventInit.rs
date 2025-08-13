@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FetchEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for FetchEventInit {
 
 impl AsMut<Any> for FetchEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FetchEventInit> for Any {

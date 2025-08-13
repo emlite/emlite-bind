@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaymentRequestUpdateEvent class.
 /// [`PaymentRequestUpdateEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestUpdateEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PaymentRequestUpdateEvent {
 
 impl FromVal for PaymentRequestUpdateEvent {
     fn from_val(v: &Any) -> Self {
-        PaymentRequestUpdateEvent {
-            inner: Event::from_val(v),
-        }
+        PaymentRequestUpdateEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PaymentRequestUpdateEvent {
 
 impl AsMut<Any> for PaymentRequestUpdateEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaymentRequestUpdateEvent> for Any {
@@ -63,34 +64,28 @@ impl From<&PaymentRequestUpdateEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PaymentRequestUpdateEvent);
 
+
+
 impl PaymentRequestUpdateEvent {
     /// The `new PaymentRequestUpdateEvent(..)` constructor, creating a new PaymentRequestUpdateEvent instance
     pub fn new0(type_: &JsString) -> PaymentRequestUpdateEvent {
         Self {
-            inner: Any::global("PaymentRequestUpdateEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("PaymentRequestUpdateEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new PaymentRequestUpdateEvent(..)` constructor, creating a new PaymentRequestUpdateEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &PaymentRequestUpdateEventInit,
-    ) -> PaymentRequestUpdateEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &PaymentRequestUpdateEventInit) -> PaymentRequestUpdateEvent {
         Self {
-            inner: Any::global("PaymentRequestUpdateEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("PaymentRequestUpdateEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl PaymentRequestUpdateEvent {
     /// The updateWith method.
     /// [`PaymentRequestUpdateEvent.updateWith`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestUpdateEvent/updateWith)
     pub fn update_with(&self, details_promise: &Promise<PaymentDetailsUpdate>) -> Undefined {
-        self.inner
-            .call("updateWith", &[details_promise.into()])
-            .as_::<Undefined>()
+        self.inner.call("updateWith", &[details_promise.into(), ]).as_::<Undefined>()
     }
 }

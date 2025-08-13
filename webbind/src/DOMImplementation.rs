@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The DOMImplementation class.
 /// [`DOMImplementation`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct DOMImplementation {
 
 impl FromVal for DOMImplementation {
     fn from_val(v: &Any) -> Self {
-        DOMImplementation {
-            inner: Any::from_val(v),
-        }
+        DOMImplementation { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for DOMImplementation {
 
 impl AsMut<Any> for DOMImplementation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<DOMImplementation> for Any {
@@ -63,65 +64,42 @@ impl From<&DOMImplementation> for Any {
 
 jsbind::utils::impl_dyn_cast!(DOMImplementation);
 
+
 impl DOMImplementation {
     /// The createDocumentType method.
     /// [`DOMImplementation.createDocumentType`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocumentType)
-    pub fn create_document_type(
-        &self,
-        name: &JsString,
-        public_id: &JsString,
-        system_id: &JsString,
-    ) -> DocumentType {
-        self.inner
-            .call(
-                "createDocumentType",
-                &[name.into(), public_id.into(), system_id.into()],
-            )
-            .as_::<DocumentType>()
+    pub fn create_document_type(&self, name: &JsString, public_id: &JsString, system_id: &JsString) -> DocumentType {
+        self.inner.call("createDocumentType", &[name.into(), public_id.into(), system_id.into(), ]).as_::<DocumentType>()
     }
 }
 impl DOMImplementation {
     /// The createDocument method.
     /// [`DOMImplementation.createDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocument)
     pub fn create_document0(&self, namespace: &JsString, qualified_name: &JsString) -> XMLDocument {
-        self.inner
-            .call("createDocument", &[namespace.into(), qualified_name.into()])
-            .as_::<XMLDocument>()
+        self.inner.call("createDocument", &[namespace.into(), qualified_name.into(), ]).as_::<XMLDocument>()
     }
     /// The createDocument method.
     /// [`DOMImplementation.createDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocument)
-    pub fn create_document1(
-        &self,
-        namespace: &JsString,
-        qualified_name: &JsString,
-        doctype: &DocumentType,
-    ) -> XMLDocument {
-        self.inner
-            .call(
-                "createDocument",
-                &[namespace.into(), qualified_name.into(), doctype.into()],
-            )
-            .as_::<XMLDocument>()
+    pub fn create_document1(&self, namespace: &JsString, qualified_name: &JsString, doctype: &DocumentType) -> XMLDocument {
+        self.inner.call("createDocument", &[namespace.into(), qualified_name.into(), doctype.into(), ]).as_::<XMLDocument>()
     }
 }
 impl DOMImplementation {
     /// The createHTMLDocument method.
     /// [`DOMImplementation.createHTMLDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
-    pub fn create_html_document0(&self) -> Document {
+    pub fn create_html_document0(&self, ) -> Document {
         self.inner.call("createHTMLDocument", &[]).as_::<Document>()
     }
     /// The createHTMLDocument method.
     /// [`DOMImplementation.createHTMLDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
     pub fn create_html_document1(&self, title: &JsString) -> Document {
-        self.inner
-            .call("createHTMLDocument", &[title.into()])
-            .as_::<Document>()
+        self.inner.call("createHTMLDocument", &[title.into(), ]).as_::<Document>()
     }
 }
 impl DOMImplementation {
     /// The hasFeature method.
     /// [`DOMImplementation.hasFeature`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/hasFeature)
-    pub fn has_feature(&self) -> bool {
+    pub fn has_feature(&self, ) -> bool {
         self.inner.call("hasFeature", &[]).as_::<bool>()
     }
 }

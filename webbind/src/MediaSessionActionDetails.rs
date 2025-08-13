@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaSessionActionDetails dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaSessionActionDetails {
 
 impl AsMut<Any> for MediaSessionActionDetails {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaSessionActionDetails> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaMetadataInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaMetadataInit {
 
 impl AsMut<Any> for MediaMetadataInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaMetadataInit> for Any {
@@ -105,9 +108,7 @@ impl MediaMetadataInit {
 impl MediaMetadataInit {
     /// Getter of the `chapterInfo` attribute.
     pub fn chapter_info(&self) -> TypedArray<ChapterInformationInit> {
-        self.inner
-            .get("chapterInfo")
-            .as_::<TypedArray<ChapterInformationInit>>()
+        self.inner.get("chapterInfo").as_::<TypedArray<ChapterInformationInit>>()
     }
 
     /// Setter of the `chapterInfo` attribute.

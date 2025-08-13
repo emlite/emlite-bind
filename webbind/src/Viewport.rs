@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Viewport class.
 /// [`Viewport`](https://developer.mozilla.org/en-US/docs/Web/API/Viewport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Viewport {
 
 impl FromVal for Viewport {
     fn from_val(v: &Any) -> Self {
-        Viewport {
-            inner: Any::from_val(v),
-        }
+        Viewport { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Viewport {
 
 impl AsMut<Any> for Viewport {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Viewport> for Any {
@@ -63,10 +64,12 @@ impl From<&Viewport> for Any {
 
 jsbind::utils::impl_dyn_cast!(Viewport);
 
+
 impl Viewport {
     /// Getter of the `segments` attribute.
     /// [`Viewport.segments`](https://developer.mozilla.org/en-US/docs/Web/API/Viewport/segments)
     pub fn segments(&self) -> TypedArray<DOMRect> {
         self.inner.get("segments").as_::<TypedArray<DOMRect>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BaseKeyframe dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BaseKeyframe {
 
 impl AsMut<Any> for BaseKeyframe {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BaseKeyframe> for Any {
@@ -83,9 +86,7 @@ impl BaseKeyframe {
 impl BaseKeyframe {
     /// Getter of the `composite` attribute.
     pub fn composite(&self) -> CompositeOperationOrAuto {
-        self.inner
-            .get("composite")
-            .as_::<CompositeOperationOrAuto>()
+        self.inner.get("composite").as_::<CompositeOperationOrAuto>()
     }
 
     /// Setter of the `composite` attribute.

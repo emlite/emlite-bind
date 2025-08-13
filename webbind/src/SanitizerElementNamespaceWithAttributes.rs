@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SanitizerElementNamespaceWithAttributes dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SanitizerElementNamespaceWithAttributes {
 
 impl AsMut<Any> for SanitizerElementNamespaceWithAttributes {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SanitizerElementNamespaceWithAttributes> for Any {

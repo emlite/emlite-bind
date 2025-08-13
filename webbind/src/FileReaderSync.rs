@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileReaderSync class.
 /// [`FileReaderSync`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileReaderSync {
 
 impl FromVal for FileReaderSync {
     fn from_val(v: &Any) -> Self {
-        FileReaderSync {
-            inner: Any::from_val(v),
-        }
+        FileReaderSync { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileReaderSync {
 
 impl AsMut<Any> for FileReaderSync {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileReaderSync> for Any {
@@ -63,6 +64,8 @@ impl From<&FileReaderSync> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileReaderSync);
 
+
+
 impl FileReaderSync {
     /// The `new FileReaderSync(..)` constructor, creating a new FileReaderSync instance
     pub fn new() -> FileReaderSync {
@@ -70,47 +73,38 @@ impl FileReaderSync {
             inner: Any::global("FileReaderSync").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl FileReaderSync {
     /// The readAsArrayBuffer method.
     /// [`FileReaderSync.readAsArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsArrayBuffer)
     pub fn read_as_array_buffer(&self, blob: &Blob) -> ArrayBuffer {
-        self.inner
-            .call("readAsArrayBuffer", &[blob.into()])
-            .as_::<ArrayBuffer>()
+        self.inner.call("readAsArrayBuffer", &[blob.into(), ]).as_::<ArrayBuffer>()
     }
 }
 impl FileReaderSync {
     /// The readAsBinaryString method.
     /// [`FileReaderSync.readAsBinaryString`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsBinaryString)
     pub fn read_as_binary_string(&self, blob: &Blob) -> JsString {
-        self.inner
-            .call("readAsBinaryString", &[blob.into()])
-            .as_::<JsString>()
+        self.inner.call("readAsBinaryString", &[blob.into(), ]).as_::<JsString>()
     }
 }
 impl FileReaderSync {
     /// The readAsText method.
     /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
     pub fn read_as_text0(&self, blob: &Blob) -> JsString {
-        self.inner
-            .call("readAsText", &[blob.into()])
-            .as_::<JsString>()
+        self.inner.call("readAsText", &[blob.into(), ]).as_::<JsString>()
     }
     /// The readAsText method.
     /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
     pub fn read_as_text1(&self, blob: &Blob, encoding: &JsString) -> JsString {
-        self.inner
-            .call("readAsText", &[blob.into(), encoding.into()])
-            .as_::<JsString>()
+        self.inner.call("readAsText", &[blob.into(), encoding.into(), ]).as_::<JsString>()
     }
 }
 impl FileReaderSync {
     /// The readAsDataURL method.
     /// [`FileReaderSync.readAsDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsDataURL)
     pub fn read_as_data_url(&self, blob: &Blob) -> JsString {
-        self.inner
-            .call("readAsDataURL", &[blob.into()])
-            .as_::<JsString>()
+        self.inner.call("readAsDataURL", &[blob.into(), ]).as_::<JsString>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUFragmentState dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUFragmentState {
 
 impl AsMut<Any> for GPUFragmentState {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUFragmentState> for Any {
@@ -61,9 +64,7 @@ impl From<&GPUFragmentState> for Any {
 impl GPUFragmentState {
     /// Getter of the `targets` attribute.
     pub fn targets(&self) -> TypedArray<GPUColorTargetState> {
-        self.inner
-            .get("targets")
-            .as_::<TypedArray<GPUColorTargetState>>()
+        self.inner.get("targets").as_::<TypedArray<GPUColorTargetState>>()
     }
 
     /// Setter of the `targets` attribute.

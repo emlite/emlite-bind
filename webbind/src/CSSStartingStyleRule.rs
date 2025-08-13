@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSStartingStyleRule class.
 /// [`CSSStartingStyleRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStartingStyleRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSStartingStyleRule {
 
 impl FromVal for CSSStartingStyleRule {
     fn from_val(v: &Any) -> Self {
-        CSSStartingStyleRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSStartingStyleRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSStartingStyleRule {
 
 impl AsMut<Any> for CSSStartingStyleRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSStartingStyleRule> for Any {
@@ -62,3 +63,5 @@ impl From<&CSSStartingStyleRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSStartingStyleRule);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AudioData class.
 /// [`AudioData`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AudioData {
 
 impl FromVal for AudioData {
     fn from_val(v: &Any) -> Self {
-        AudioData {
-            inner: Any::from_val(v),
-        }
+        AudioData { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AudioData {
 
 impl AsMut<Any> for AudioData {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AudioData> for Any {
@@ -63,6 +64,8 @@ impl From<&AudioData> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioData);
 
+
+
 impl AudioData {
     /// The `new AudioData(..)` constructor, creating a new AudioData instance
     pub fn new(init: &AudioDataInit) -> AudioData {
@@ -70,6 +73,7 @@ impl AudioData {
             inner: Any::global("AudioData").new(&[init.into()]).as_::<Any>(),
         }
     }
+
 }
 impl AudioData {
     /// Getter of the `format` attribute.
@@ -77,6 +81,7 @@ impl AudioData {
     pub fn format(&self) -> AudioSampleFormat {
         self.inner.get("format").as_::<AudioSampleFormat>()
     }
+
 }
 impl AudioData {
     /// Getter of the `sampleRate` attribute.
@@ -84,6 +89,7 @@ impl AudioData {
     pub fn sample_rate(&self) -> f32 {
         self.inner.get("sampleRate").as_::<f32>()
     }
+
 }
 impl AudioData {
     /// Getter of the `numberOfFrames` attribute.
@@ -91,6 +97,7 @@ impl AudioData {
     pub fn number_of_frames(&self) -> u32 {
         self.inner.get("numberOfFrames").as_::<u32>()
     }
+
 }
 impl AudioData {
     /// Getter of the `numberOfChannels` attribute.
@@ -98,6 +105,7 @@ impl AudioData {
     pub fn number_of_channels(&self) -> u32 {
         self.inner.get("numberOfChannels").as_::<u32>()
     }
+
 }
 impl AudioData {
     /// Getter of the `duration` attribute.
@@ -105,6 +113,7 @@ impl AudioData {
     pub fn duration(&self) -> u64 {
         self.inner.get("duration").as_::<u64>()
     }
+
 }
 impl AudioData {
     /// Getter of the `timestamp` attribute.
@@ -112,36 +121,33 @@ impl AudioData {
     pub fn timestamp(&self) -> i64 {
         self.inner.get("timestamp").as_::<i64>()
     }
+
 }
 impl AudioData {
     /// The allocationSize method.
     /// [`AudioData.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData/allocationSize)
     pub fn allocation_size(&self, options: &AudioDataCopyToOptions) -> u32 {
-        self.inner
-            .call("allocationSize", &[options.into()])
-            .as_::<u32>()
+        self.inner.call("allocationSize", &[options.into(), ]).as_::<u32>()
     }
 }
 impl AudioData {
     /// The copyTo method.
     /// [`AudioData.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData/copyTo)
     pub fn copy_to(&self, destination: &Any, options: &AudioDataCopyToOptions) -> Undefined {
-        self.inner
-            .call("copyTo", &[destination.into(), options.into()])
-            .as_::<Undefined>()
+        self.inner.call("copyTo", &[destination.into(), options.into(), ]).as_::<Undefined>()
     }
 }
 impl AudioData {
     /// The clone method.
     /// [`AudioData.clone`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData/clone)
-    pub fn clone_(&self) -> AudioData {
+    pub fn clone_(&self, ) -> AudioData {
         self.inner.call("clone", &[]).as_::<AudioData>()
     }
 }
 impl AudioData {
     /// The close method.
     /// [`AudioData.close`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

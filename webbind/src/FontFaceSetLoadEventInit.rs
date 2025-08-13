@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FontFaceSetLoadEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for FontFaceSetLoadEventInit {
 
 impl AsMut<Any> for FontFaceSetLoadEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FontFaceSetLoadEventInit> for Any {

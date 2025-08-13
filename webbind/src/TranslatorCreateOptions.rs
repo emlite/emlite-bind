@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TranslatorCreateOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for TranslatorCreateOptions {
 
 impl AsMut<Any> for TranslatorCreateOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TranslatorCreateOptions> for Any {

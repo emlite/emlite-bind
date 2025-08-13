@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSOKLab class.
 /// [`CSSOKLab`](https://developer.mozilla.org/en-US/docs/Web/API/CSSOKLab)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSOKLab {
 
 impl FromVal for CSSOKLab {
     fn from_val(v: &Any) -> Self {
-        CSSOKLab {
-            inner: CSSColorValue::from_val(v),
-        }
+        CSSOKLab { inner: CSSColorValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSOKLab {
 
 impl AsMut<Any> for CSSOKLab {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSOKLab> for Any {
@@ -63,24 +64,23 @@ impl From<&CSSOKLab> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSOKLab);
 
+
+
 impl CSSOKLab {
     /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
     pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSOKLab {
         Self {
-            inner: Any::global("CSSOKLab")
-                .new(&[l.into(), a.into(), b.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSOKLab").new(&[l.into(), a.into(), b.into()]).as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
     pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSOKLab {
         Self {
-            inner: Any::global("CSSOKLab")
-                .new(&[l.into(), a.into(), b.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
+            inner: Any::global("CSSOKLab").new(&[l.into(), a.into(), b.into(), alpha.into()]).as_::<CSSColorValue>(),
         }
     }
+
 }
 impl CSSOKLab {
     /// Getter of the `l` attribute.

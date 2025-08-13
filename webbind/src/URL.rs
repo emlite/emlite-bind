@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The URL class.
 /// [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct URL {
 
 impl FromVal for URL {
     fn from_val(v: &Any) -> Self {
-        URL {
-            inner: Any::from_val(v),
-        }
+        URL { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for URL {
 
 impl AsMut<Any> for URL {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<URL> for Any {
@@ -63,6 +64,8 @@ impl From<&URL> for Any {
 
 jsbind::utils::impl_dyn_cast!(URL);
 
+
+
 impl URL {
     /// The `new URL(..)` constructor, creating a new URL instance
     pub fn new0(url: &JsString) -> URL {
@@ -74,40 +77,33 @@ impl URL {
     /// The `new URL(..)` constructor, creating a new URL instance
     pub fn new1(url: &JsString, base: &JsString) -> URL {
         Self {
-            inner: Any::global("URL")
-                .new(&[url.into(), base.into()])
-                .as_::<Any>(),
+            inner: Any::global("URL").new(&[url.into(), base.into()]).as_::<Any>(),
         }
     }
+
 }
 impl URL {
     /// The parse method.
     /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
     pub fn parse0(url: &JsString) -> URL {
-        Any::global("URL").call("parse", &[url.into()]).as_::<URL>()
+        Any::global("URL").call("parse", &[url.into(), ]).as_::<URL>()
     }
     /// The parse method.
     /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
     pub fn parse1(url: &JsString, base: &JsString) -> URL {
-        Any::global("URL")
-            .call("parse", &[url.into(), base.into()])
-            .as_::<URL>()
+        Any::global("URL").call("parse", &[url.into(), base.into(), ]).as_::<URL>()
     }
 }
 impl URL {
     /// The canParse method.
     /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
     pub fn can_parse0(url: &JsString) -> bool {
-        Any::global("URL")
-            .call("canParse", &[url.into()])
-            .as_::<bool>()
+        Any::global("URL").call("canParse", &[url.into(), ]).as_::<bool>()
     }
     /// The canParse method.
     /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
     pub fn can_parse1(url: &JsString, base: &JsString) -> bool {
-        Any::global("URL")
-            .call("canParse", &[url.into(), base.into()])
-            .as_::<bool>()
+        Any::global("URL").call("canParse", &[url.into(), base.into(), ]).as_::<bool>()
     }
 }
 impl URL {
@@ -129,6 +125,7 @@ impl URL {
     pub fn origin(&self) -> JsString {
         self.inner.get("origin").as_::<JsString>()
     }
+
 }
 impl URL {
     /// Getter of the `protocol` attribute.
@@ -240,6 +237,7 @@ impl URL {
     pub fn search_params(&self) -> URLSearchParams {
         self.inner.get("searchParams").as_::<URLSearchParams>()
     }
+
 }
 impl URL {
     /// Getter of the `hash` attribute.
@@ -257,7 +255,7 @@ impl URL {
 impl URL {
     /// The toJSON method.
     /// [`URL.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/URL/toJSON)
-    pub fn to_json(&self) -> JsString {
+    pub fn to_json(&self, ) -> JsString {
         self.inner.call("toJSON", &[]).as_::<JsString>()
     }
 }
@@ -265,17 +263,13 @@ impl URL {
     /// The createObjectURL method.
     /// [`URL.createObjectURL`](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL)
     pub fn create_object_url(obj: &Any) -> JsString {
-        Any::global("URL")
-            .call("createObjectURL", &[obj.into()])
-            .as_::<JsString>()
+        Any::global("URL").call("createObjectURL", &[obj.into(), ]).as_::<JsString>()
     }
 }
 impl URL {
     /// The revokeObjectURL method.
     /// [`URL.revokeObjectURL`](https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL)
     pub fn revoke_object_url(url: &JsString) -> Undefined {
-        Any::global("URL")
-            .call("revokeObjectURL", &[url.into()])
-            .as_::<Undefined>()
+        Any::global("URL").call("revokeObjectURL", &[url.into(), ]).as_::<Undefined>()
     }
 }

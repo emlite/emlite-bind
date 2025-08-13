@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PressureRecord class.
 /// [`PressureRecord`](https://developer.mozilla.org/en-US/docs/Web/API/PressureRecord)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PressureRecord {
 
 impl FromVal for PressureRecord {
     fn from_val(v: &Any) -> Self {
-        PressureRecord {
-            inner: Any::from_val(v),
-        }
+        PressureRecord { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PressureRecord {
 
 impl AsMut<Any> for PressureRecord {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PressureRecord> for Any {
@@ -63,12 +64,14 @@ impl From<&PressureRecord> for Any {
 
 jsbind::utils::impl_dyn_cast!(PressureRecord);
 
+
 impl PressureRecord {
     /// Getter of the `source` attribute.
     /// [`PressureRecord.source`](https://developer.mozilla.org/en-US/docs/Web/API/PressureRecord/source)
     pub fn source(&self) -> PressureSource {
         self.inner.get("source").as_::<PressureSource>()
     }
+
 }
 impl PressureRecord {
     /// Getter of the `state` attribute.
@@ -76,6 +79,7 @@ impl PressureRecord {
     pub fn state(&self) -> PressureState {
         self.inner.get("state").as_::<PressureState>()
     }
+
 }
 impl PressureRecord {
     /// Getter of the `time` attribute.
@@ -83,11 +87,12 @@ impl PressureRecord {
     pub fn time(&self) -> Any {
         self.inner.get("time").as_::<Any>()
     }
+
 }
 impl PressureRecord {
     /// The toJSON method.
     /// [`PressureRecord.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PressureRecord/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

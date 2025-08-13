@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLPreElement class.
 /// [`HTMLPreElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLPreElement {
 
 impl FromVal for HTMLPreElement {
     fn from_val(v: &Any) -> Self {
-        HTMLPreElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLPreElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLPreElement {
 
 impl AsMut<Any> for HTMLPreElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLPreElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLPreElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLPreElement);
 
+
+
 impl HTMLPreElement {
     /// The `new HTMLPreElement(..)` constructor, creating a new HTMLPreElement instance
     pub fn new() -> HTMLPreElement {
@@ -70,6 +73,7 @@ impl HTMLPreElement {
             inner: Any::global("HTMLPreElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLPreElement {
     /// Getter of the `width` attribute.

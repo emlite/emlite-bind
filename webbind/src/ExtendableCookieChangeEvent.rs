@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ExtendableCookieChangeEvent class.
 /// [`ExtendableCookieChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ExtendableCookieChangeEvent {
 
 impl FromVal for ExtendableCookieChangeEvent {
     fn from_val(v: &Any) -> Self {
-        ExtendableCookieChangeEvent {
-            inner: ExtendableEvent::from_val(v),
-        }
+        ExtendableCookieChangeEvent { inner: ExtendableEvent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ExtendableCookieChangeEvent {
 
 impl AsMut<Any> for ExtendableCookieChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ExtendableCookieChangeEvent> for Any {
@@ -63,43 +64,37 @@ impl From<&ExtendableCookieChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(ExtendableCookieChangeEvent);
 
+
+
 impl ExtendableCookieChangeEvent {
     /// The `new ExtendableCookieChangeEvent(..)` constructor, creating a new ExtendableCookieChangeEvent instance
     pub fn new0(type_: &JsString) -> ExtendableCookieChangeEvent {
         Self {
-            inner: Any::global("ExtendableCookieChangeEvent")
-                .new(&[type_.into()])
-                .as_::<ExtendableEvent>(),
+            inner: Any::global("ExtendableCookieChangeEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
         }
     }
 
     /// The `new ExtendableCookieChangeEvent(..)` constructor, creating a new ExtendableCookieChangeEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &ExtendableCookieChangeEventInit,
-    ) -> ExtendableCookieChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &ExtendableCookieChangeEventInit) -> ExtendableCookieChangeEvent {
         Self {
-            inner: Any::global("ExtendableCookieChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<ExtendableEvent>(),
+            inner: Any::global("ExtendableCookieChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
         }
     }
+
 }
 impl ExtendableCookieChangeEvent {
     /// Getter of the `changed` attribute.
     /// [`ExtendableCookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/changed)
     pub fn changed(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("changed")
-            .as_::<TypedArray<CookieListItem>>()
+        self.inner.get("changed").as_::<TypedArray<CookieListItem>>()
     }
+
 }
 impl ExtendableCookieChangeEvent {
     /// Getter of the `deleted` attribute.
     /// [`ExtendableCookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/deleted)
     pub fn deleted(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("deleted")
-            .as_::<TypedArray<CookieListItem>>()
+        self.inner.get("deleted").as_::<TypedArray<CookieListItem>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PublicKeyCredentialCreationOptionsJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PublicKeyCredentialCreationOptionsJSON {
 
 impl AsMut<Any> for PublicKeyCredentialCreationOptionsJSON {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PublicKeyCredentialCreationOptionsJSON> for Any {
@@ -72,9 +75,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
 impl PublicKeyCredentialCreationOptionsJSON {
     /// Getter of the `user` attribute.
     pub fn user(&self) -> PublicKeyCredentialUserEntityJSON {
-        self.inner
-            .get("user")
-            .as_::<PublicKeyCredentialUserEntityJSON>()
+        self.inner.get("user").as_::<PublicKeyCredentialUserEntityJSON>()
     }
 
     /// Setter of the `user` attribute.
@@ -96,9 +97,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
 impl PublicKeyCredentialCreationOptionsJSON {
     /// Getter of the `pubKeyCredParams` attribute.
     pub fn pub_key_cred_params(&self) -> TypedArray<PublicKeyCredentialParameters> {
-        self.inner
-            .get("pubKeyCredParams")
-            .as_::<TypedArray<PublicKeyCredentialParameters>>()
+        self.inner.get("pubKeyCredParams").as_::<TypedArray<PublicKeyCredentialParameters>>()
     }
 
     /// Setter of the `pubKeyCredParams` attribute.
@@ -120,25 +119,18 @@ impl PublicKeyCredentialCreationOptionsJSON {
 impl PublicKeyCredentialCreationOptionsJSON {
     /// Getter of the `excludeCredentials` attribute.
     pub fn exclude_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptorJSON> {
-        self.inner
-            .get("excludeCredentials")
-            .as_::<TypedArray<PublicKeyCredentialDescriptorJSON>>()
+        self.inner.get("excludeCredentials").as_::<TypedArray<PublicKeyCredentialDescriptorJSON>>()
     }
 
     /// Setter of the `excludeCredentials` attribute.
-    pub fn set_exclude_credentials(
-        &mut self,
-        value: &TypedArray<PublicKeyCredentialDescriptorJSON>,
-    ) {
+    pub fn set_exclude_credentials(&mut self, value: &TypedArray<PublicKeyCredentialDescriptorJSON>) {
         self.inner.set("excludeCredentials", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
     /// Getter of the `authenticatorSelection` attribute.
     pub fn authenticator_selection(&self) -> AuthenticatorSelectionCriteria {
-        self.inner
-            .get("authenticatorSelection")
-            .as_::<AuthenticatorSelectionCriteria>()
+        self.inner.get("authenticatorSelection").as_::<AuthenticatorSelectionCriteria>()
     }
 
     /// Setter of the `authenticatorSelection` attribute.
@@ -171,9 +163,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
 impl PublicKeyCredentialCreationOptionsJSON {
     /// Getter of the `attestationFormats` attribute.
     pub fn attestation_formats(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("attestationFormats")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("attestationFormats").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `attestationFormats` attribute.
@@ -184,9 +174,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
 impl PublicKeyCredentialCreationOptionsJSON {
     /// Getter of the `extensions` attribute.
     pub fn extensions(&self) -> AuthenticationExtensionsClientInputsJSON {
-        self.inner
-            .get("extensions")
-            .as_::<AuthenticationExtensionsClientInputsJSON>()
+        self.inner.get("extensions").as_::<AuthenticationExtensionsClientInputsJSON>()
     }
 
     /// Setter of the `extensions` attribute.

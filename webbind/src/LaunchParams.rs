@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LaunchParams class.
 /// [`LaunchParams`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchParams)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct LaunchParams {
 
 impl FromVal for LaunchParams {
     fn from_val(v: &Any) -> Self {
-        LaunchParams {
-            inner: Any::from_val(v),
-        }
+        LaunchParams { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for LaunchParams {
 
 impl AsMut<Any> for LaunchParams {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LaunchParams> for Any {
@@ -63,19 +64,20 @@ impl From<&LaunchParams> for Any {
 
 jsbind::utils::impl_dyn_cast!(LaunchParams);
 
+
 impl LaunchParams {
     /// Getter of the `targetURL` attribute.
     /// [`LaunchParams.targetURL`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchParams/targetURL)
     pub fn target_url(&self) -> JsString {
         self.inner.get("targetURL").as_::<JsString>()
     }
+
 }
 impl LaunchParams {
     /// Getter of the `files` attribute.
     /// [`LaunchParams.files`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchParams/files)
     pub fn files(&self) -> TypedArray<FileSystemHandle> {
-        self.inner
-            .get("files")
-            .as_::<TypedArray<FileSystemHandle>>()
+        self.inner.get("files").as_::<TypedArray<FileSystemHandle>>()
     }
+
 }

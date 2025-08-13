@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SharedStorageClearMethod class.
 /// [`SharedStorageClearMethod`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageClearMethod)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SharedStorageClearMethod {
 
 impl FromVal for SharedStorageClearMethod {
     fn from_val(v: &Any) -> Self {
-        SharedStorageClearMethod {
-            inner: SharedStorageModifierMethod::from_val(v),
-        }
+        SharedStorageClearMethod { inner: SharedStorageModifierMethod::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SharedStorageClearMethod {
 
 impl AsMut<Any> for SharedStorageClearMethod {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SharedStorageClearMethod> for Any {
@@ -63,22 +64,21 @@ impl From<&SharedStorageClearMethod> for Any {
 
 jsbind::utils::impl_dyn_cast!(SharedStorageClearMethod);
 
+
+
 impl SharedStorageClearMethod {
     /// The `new SharedStorageClearMethod(..)` constructor, creating a new SharedStorageClearMethod instance
     pub fn new0() -> SharedStorageClearMethod {
         Self {
-            inner: Any::global("SharedStorageClearMethod")
-                .new(&[])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: Any::global("SharedStorageClearMethod").new(&[]).as_::<SharedStorageModifierMethod>(),
         }
     }
 
     /// The `new SharedStorageClearMethod(..)` constructor, creating a new SharedStorageClearMethod instance
     pub fn new1(options: &SharedStorageModifierMethodOptions) -> SharedStorageClearMethod {
         Self {
-            inner: Any::global("SharedStorageClearMethod")
-                .new(&[options.into()])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: Any::global("SharedStorageClearMethod").new(&[options.into()]).as_::<SharedStorageModifierMethod>(),
         }
     }
+
 }

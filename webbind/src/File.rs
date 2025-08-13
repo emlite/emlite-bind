@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The File class.
 /// [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct File {
 
 impl FromVal for File {
     fn from_val(v: &Any) -> Self {
-        File {
-            inner: Blob::from_val(v),
-        }
+        File { inner: Blob::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for File {
 
 impl AsMut<Any> for File {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<File> for Any {
@@ -63,28 +64,23 @@ impl From<&File> for Any {
 
 jsbind::utils::impl_dyn_cast!(File);
 
+
+
 impl File {
     /// The `new File(..)` constructor, creating a new File instance
     pub fn new0(file_bits: &TypedArray<Any>, file_name: &JsString) -> File {
         Self {
-            inner: Any::global("File")
-                .new(&[file_bits.into(), file_name.into()])
-                .as_::<Blob>(),
+            inner: Any::global("File").new(&[file_bits.into(), file_name.into()]).as_::<Blob>(),
         }
     }
 
     /// The `new File(..)` constructor, creating a new File instance
-    pub fn new1(
-        file_bits: &TypedArray<Any>,
-        file_name: &JsString,
-        options: &FilePropertyBag,
-    ) -> File {
+    pub fn new1(file_bits: &TypedArray<Any>, file_name: &JsString, options: &FilePropertyBag) -> File {
         Self {
-            inner: Any::global("File")
-                .new(&[file_bits.into(), file_name.into(), options.into()])
-                .as_::<Blob>(),
+            inner: Any::global("File").new(&[file_bits.into(), file_name.into(), options.into()]).as_::<Blob>(),
         }
     }
+
 }
 impl File {
     /// Getter of the `name` attribute.
@@ -92,6 +88,7 @@ impl File {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl File {
     /// Getter of the `lastModified` attribute.
@@ -99,6 +96,7 @@ impl File {
     pub fn last_modified(&self) -> i64 {
         self.inner.get("lastModified").as_::<i64>()
     }
+
 }
 impl File {
     /// Getter of the `webkitRelativePath` attribute.
@@ -106,4 +104,5 @@ impl File {
     pub fn webkit_relative_path(&self) -> JsString {
         self.inner.get("webkitRelativePath").as_::<JsString>()
     }
+
 }

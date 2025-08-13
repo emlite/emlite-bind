@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WindowControlsOverlayGeometryChangeEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for WindowControlsOverlayGeometryChangeEventInit {
 
 impl AsMut<Any> for WindowControlsOverlayGeometryChangeEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WindowControlsOverlayGeometryChangeEventInit> for Any {

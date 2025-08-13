@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The AuthenticatorResponse class.
 /// [`AuthenticatorResponse`](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorResponse)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct AuthenticatorResponse {
 
 impl FromVal for AuthenticatorResponse {
     fn from_val(v: &Any) -> Self {
-        AuthenticatorResponse {
-            inner: Any::from_val(v),
-        }
+        AuthenticatorResponse { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for AuthenticatorResponse {
 
 impl AsMut<Any> for AuthenticatorResponse {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<AuthenticatorResponse> for Any {
@@ -63,10 +64,12 @@ impl From<&AuthenticatorResponse> for Any {
 
 jsbind::utils::impl_dyn_cast!(AuthenticatorResponse);
 
+
 impl AuthenticatorResponse {
     /// Getter of the `clientDataJSON` attribute.
     /// [`AuthenticatorResponse.clientDataJSON`](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorResponse/clientDataJSON)
     pub fn client_data_json(&self) -> ArrayBuffer {
         self.inner.get("clientDataJSON").as_::<ArrayBuffer>()
     }
+
 }

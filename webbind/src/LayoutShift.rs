@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LayoutShift class.
 /// [`LayoutShift`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutShift)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct LayoutShift {
 
 impl FromVal for LayoutShift {
     fn from_val(v: &Any) -> Self {
-        LayoutShift {
-            inner: PerformanceEntry::from_val(v),
-        }
+        LayoutShift { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for LayoutShift {
 
 impl AsMut<Any> for LayoutShift {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LayoutShift> for Any {
@@ -63,12 +64,14 @@ impl From<&LayoutShift> for Any {
 
 jsbind::utils::impl_dyn_cast!(LayoutShift);
 
+
 impl LayoutShift {
     /// Getter of the `value` attribute.
     /// [`LayoutShift.value`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutShift/value)
     pub fn value(&self) -> f64 {
         self.inner.get("value").as_::<f64>()
     }
+
 }
 impl LayoutShift {
     /// Getter of the `hadRecentInput` attribute.
@@ -76,6 +79,7 @@ impl LayoutShift {
     pub fn had_recent_input(&self) -> bool {
         self.inner.get("hadRecentInput").as_::<bool>()
     }
+
 }
 impl LayoutShift {
     /// Getter of the `lastInputTime` attribute.
@@ -83,20 +87,20 @@ impl LayoutShift {
     pub fn last_input_time(&self) -> Any {
         self.inner.get("lastInputTime").as_::<Any>()
     }
+
 }
 impl LayoutShift {
     /// Getter of the `sources` attribute.
     /// [`LayoutShift.sources`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutShift/sources)
     pub fn sources(&self) -> TypedArray<LayoutShiftAttribution> {
-        self.inner
-            .get("sources")
-            .as_::<TypedArray<LayoutShiftAttribution>>()
+        self.inner.get("sources").as_::<TypedArray<LayoutShiftAttribution>>()
     }
+
 }
 impl LayoutShift {
     /// The toJSON method.
     /// [`LayoutShift.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutShift/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

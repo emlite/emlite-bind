@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The UncalibratedMagnetometer class.
 /// [`UncalibratedMagnetometer`](https://developer.mozilla.org/en-US/docs/Web/API/UncalibratedMagnetometer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct UncalibratedMagnetometer {
 
 impl FromVal for UncalibratedMagnetometer {
     fn from_val(v: &Any) -> Self {
-        UncalibratedMagnetometer {
-            inner: Sensor::from_val(v),
-        }
+        UncalibratedMagnetometer { inner: Sensor::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for UncalibratedMagnetometer {
 
 impl AsMut<Any> for UncalibratedMagnetometer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<UncalibratedMagnetometer> for Any {
@@ -63,24 +64,23 @@ impl From<&UncalibratedMagnetometer> for Any {
 
 jsbind::utils::impl_dyn_cast!(UncalibratedMagnetometer);
 
+
+
 impl UncalibratedMagnetometer {
     /// The `new UncalibratedMagnetometer(..)` constructor, creating a new UncalibratedMagnetometer instance
     pub fn new0() -> UncalibratedMagnetometer {
         Self {
-            inner: Any::global("UncalibratedMagnetometer")
-                .new(&[])
-                .as_::<Sensor>(),
+            inner: Any::global("UncalibratedMagnetometer").new(&[]).as_::<Sensor>(),
         }
     }
 
     /// The `new UncalibratedMagnetometer(..)` constructor, creating a new UncalibratedMagnetometer instance
     pub fn new1(sensor_options: &MagnetometerSensorOptions) -> UncalibratedMagnetometer {
         Self {
-            inner: Any::global("UncalibratedMagnetometer")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
+            inner: Any::global("UncalibratedMagnetometer").new(&[sensor_options.into()]).as_::<Sensor>(),
         }
     }
+
 }
 impl UncalibratedMagnetometer {
     /// Getter of the `x` attribute.
@@ -88,6 +88,7 @@ impl UncalibratedMagnetometer {
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
+
 }
 impl UncalibratedMagnetometer {
     /// Getter of the `y` attribute.
@@ -95,6 +96,7 @@ impl UncalibratedMagnetometer {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
+
 }
 impl UncalibratedMagnetometer {
     /// Getter of the `z` attribute.
@@ -102,6 +104,7 @@ impl UncalibratedMagnetometer {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
+
 }
 impl UncalibratedMagnetometer {
     /// Getter of the `xBias` attribute.
@@ -109,6 +112,7 @@ impl UncalibratedMagnetometer {
     pub fn x_bias(&self) -> f64 {
         self.inner.get("xBias").as_::<f64>()
     }
+
 }
 impl UncalibratedMagnetometer {
     /// Getter of the `yBias` attribute.
@@ -116,6 +120,7 @@ impl UncalibratedMagnetometer {
     pub fn y_bias(&self) -> f64 {
         self.inner.get("yBias").as_::<f64>()
     }
+
 }
 impl UncalibratedMagnetometer {
     /// Getter of the `zBias` attribute.
@@ -123,4 +128,5 @@ impl UncalibratedMagnetometer {
     pub fn z_bias(&self) -> f64 {
         self.inner.get("zBias").as_::<f64>()
     }
+
 }

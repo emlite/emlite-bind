@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NotRestoredReasonDetails class.
 /// [`NotRestoredReasonDetails`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasonDetails)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NotRestoredReasonDetails {
 
 impl FromVal for NotRestoredReasonDetails {
     fn from_val(v: &Any) -> Self {
-        NotRestoredReasonDetails {
-            inner: Any::from_val(v),
-        }
+        NotRestoredReasonDetails { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NotRestoredReasonDetails {
 
 impl AsMut<Any> for NotRestoredReasonDetails {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NotRestoredReasonDetails> for Any {
@@ -63,17 +64,19 @@ impl From<&NotRestoredReasonDetails> for Any {
 
 jsbind::utils::impl_dyn_cast!(NotRestoredReasonDetails);
 
+
 impl NotRestoredReasonDetails {
     /// Getter of the `reason` attribute.
     /// [`NotRestoredReasonDetails.reason`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasonDetails/reason)
     pub fn reason(&self) -> JsString {
         self.inner.get("reason").as_::<JsString>()
     }
+
 }
 impl NotRestoredReasonDetails {
     /// The toJSON method.
     /// [`NotRestoredReasonDetails.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasonDetails/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

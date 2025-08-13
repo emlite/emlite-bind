@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystemHandle class.
 /// [`FileSystemHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileSystemHandle {
 
 impl FromVal for FileSystemHandle {
     fn from_val(v: &Any) -> Self {
-        FileSystemHandle {
-            inner: Any::from_val(v),
-        }
+        FileSystemHandle { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileSystemHandle {
 
 impl AsMut<Any> for FileSystemHandle {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystemHandle> for Any {
@@ -63,12 +64,14 @@ impl From<&FileSystemHandle> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystemHandle);
 
+
 impl FileSystemHandle {
     /// Getter of the `kind` attribute.
     /// [`FileSystemHandle.kind`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/kind)
     pub fn kind(&self) -> FileSystemHandleKind {
         self.inner.get("kind").as_::<FileSystemHandleKind>()
     }
+
 }
 impl FileSystemHandle {
     /// Getter of the `name` attribute.
@@ -76,51 +79,36 @@ impl FileSystemHandle {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl FileSystemHandle {
     /// The isSameEntry method.
     /// [`FileSystemHandle.isSameEntry`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/isSameEntry)
     pub fn is_same_entry(&self, other: &FileSystemHandle) -> Promise<bool> {
-        self.inner
-            .call("isSameEntry", &[other.into()])
-            .as_::<Promise<bool>>()
+        self.inner.call("isSameEntry", &[other.into(), ]).as_::<Promise<bool>>()
     }
 }
 impl FileSystemHandle {
     /// The queryPermission method.
     /// [`FileSystemHandle.queryPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/queryPermission)
-    pub fn query_permission0(&self) -> Promise<PermissionState> {
-        self.inner
-            .call("queryPermission", &[])
-            .as_::<Promise<PermissionState>>()
+    pub fn query_permission0(&self, ) -> Promise<PermissionState> {
+        self.inner.call("queryPermission", &[]).as_::<Promise<PermissionState>>()
     }
     /// The queryPermission method.
     /// [`FileSystemHandle.queryPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/queryPermission)
-    pub fn query_permission1(
-        &self,
-        descriptor: &FileSystemHandlePermissionDescriptor,
-    ) -> Promise<PermissionState> {
-        self.inner
-            .call("queryPermission", &[descriptor.into()])
-            .as_::<Promise<PermissionState>>()
+    pub fn query_permission1(&self, descriptor: &FileSystemHandlePermissionDescriptor) -> Promise<PermissionState> {
+        self.inner.call("queryPermission", &[descriptor.into(), ]).as_::<Promise<PermissionState>>()
     }
 }
 impl FileSystemHandle {
     /// The requestPermission method.
     /// [`FileSystemHandle.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/requestPermission)
-    pub fn request_permission0(&self) -> Promise<PermissionState> {
-        self.inner
-            .call("requestPermission", &[])
-            .as_::<Promise<PermissionState>>()
+    pub fn request_permission0(&self, ) -> Promise<PermissionState> {
+        self.inner.call("requestPermission", &[]).as_::<Promise<PermissionState>>()
     }
     /// The requestPermission method.
     /// [`FileSystemHandle.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/requestPermission)
-    pub fn request_permission1(
-        &self,
-        descriptor: &FileSystemHandlePermissionDescriptor,
-    ) -> Promise<PermissionState> {
-        self.inner
-            .call("requestPermission", &[descriptor.into()])
-            .as_::<Promise<PermissionState>>()
+    pub fn request_permission1(&self, descriptor: &FileSystemHandlePermissionDescriptor) -> Promise<PermissionState> {
+        self.inner.call("requestPermission", &[descriptor.into(), ]).as_::<Promise<PermissionState>>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Global class.
 /// [`Global`](https://developer.mozilla.org/en-US/docs/Web/API/Global)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Global {
 
 impl FromVal for Global {
     fn from_val(v: &Any) -> Self {
-        Global {
-            inner: Any::from_val(v),
-        }
+        Global { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Global {
 
 impl AsMut<Any> for Global {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Global> for Any {
@@ -63,6 +64,8 @@ impl From<&Global> for Any {
 
 jsbind::utils::impl_dyn_cast!(Global);
 
+
+
 impl Global {
     /// The `new Global(..)` constructor, creating a new Global instance
     pub fn new0(descriptor: &GlobalDescriptor) -> Global {
@@ -74,16 +77,15 @@ impl Global {
     /// The `new Global(..)` constructor, creating a new Global instance
     pub fn new1(descriptor: &GlobalDescriptor, v: &Any) -> Global {
         Self {
-            inner: Any::global("Global")
-                .new(&[descriptor.into(), v.into()])
-                .as_::<Any>(),
+            inner: Any::global("Global").new(&[descriptor.into(), v.into()]).as_::<Any>(),
         }
     }
+
 }
 impl Global {
     /// The valueOf method.
     /// [`Global.valueOf`](https://developer.mozilla.org/en-US/docs/Web/API/Global/valueOf)
-    pub fn value_of(&self) -> Any {
+    pub fn value_of(&self, ) -> Any {
         self.inner.call("valueOf", &[]).as_::<Any>()
     }
 }

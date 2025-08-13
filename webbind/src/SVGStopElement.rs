@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGStopElement class.
 /// [`SVGStopElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStopElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGStopElement {
 
 impl FromVal for SVGStopElement {
     fn from_val(v: &Any) -> Self {
-        SVGStopElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGStopElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGStopElement {
 
 impl AsMut<Any> for SVGStopElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGStopElement> for Any {
@@ -63,10 +64,12 @@ impl From<&SVGStopElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGStopElement);
 
+
 impl SVGStopElement {
     /// Getter of the `offset` attribute.
     /// [`SVGStopElement.offset`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStopElement/offset)
     pub fn offset(&self) -> SVGAnimatedNumber {
         self.inner.get("offset").as_::<SVGAnimatedNumber>()
     }
+
 }

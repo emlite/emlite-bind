@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUBlendComponent dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUBlendComponent {
 
 impl AsMut<Any> for GPUBlendComponent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUBlendComponent> for Any {

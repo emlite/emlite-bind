@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGPreserveAspectRatio class.
 /// [`SVGPreserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPreserveAspectRatio)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGPreserveAspectRatio {
 
 impl FromVal for SVGPreserveAspectRatio {
     fn from_val(v: &Any) -> Self {
-        SVGPreserveAspectRatio {
-            inner: Any::from_val(v),
-        }
+        SVGPreserveAspectRatio { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGPreserveAspectRatio {
 
 impl AsMut<Any> for SVGPreserveAspectRatio {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGPreserveAspectRatio> for Any {
@@ -62,6 +63,7 @@ impl From<&SVGPreserveAspectRatio> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGPreserveAspectRatio);
+
 
 impl SVGPreserveAspectRatio {
     /// Getter of the `align` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaintSize class.
 /// [`PaintSize`](https://developer.mozilla.org/en-US/docs/Web/API/PaintSize)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PaintSize {
 
 impl FromVal for PaintSize {
     fn from_val(v: &Any) -> Self {
-        PaintSize {
-            inner: Any::from_val(v),
-        }
+        PaintSize { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PaintSize {
 
 impl AsMut<Any> for PaintSize {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaintSize> for Any {
@@ -63,12 +64,14 @@ impl From<&PaintSize> for Any {
 
 jsbind::utils::impl_dyn_cast!(PaintSize);
 
+
 impl PaintSize {
     /// Getter of the `width` attribute.
     /// [`PaintSize.width`](https://developer.mozilla.org/en-US/docs/Web/API/PaintSize/width)
     pub fn width(&self) -> f64 {
         self.inner.get("width").as_::<f64>()
     }
+
 }
 impl PaintSize {
     /// Getter of the `height` attribute.
@@ -76,4 +79,5 @@ impl PaintSize {
     pub fn height(&self) -> f64 {
         self.inner.get("height").as_::<f64>()
     }
+
 }

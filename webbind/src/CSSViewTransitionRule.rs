@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSViewTransitionRule class.
 /// [`CSSViewTransitionRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSViewTransitionRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSViewTransitionRule {
 
 impl FromVal for CSSViewTransitionRule {
     fn from_val(v: &Any) -> Self {
-        CSSViewTransitionRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSViewTransitionRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSViewTransitionRule {
 
 impl AsMut<Any> for CSSViewTransitionRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSViewTransitionRule> for Any {
@@ -63,12 +64,14 @@ impl From<&CSSViewTransitionRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSViewTransitionRule);
 
+
 impl CSSViewTransitionRule {
     /// Getter of the `navigation` attribute.
     /// [`CSSViewTransitionRule.navigation`](https://developer.mozilla.org/en-US/docs/Web/API/CSSViewTransitionRule/navigation)
     pub fn navigation(&self) -> JsString {
         self.inner.get("navigation").as_::<JsString>()
     }
+
 }
 impl CSSViewTransitionRule {
     /// Getter of the `types` attribute.
@@ -76,4 +79,5 @@ impl CSSViewTransitionRule {
     pub fn types(&self) -> TypedArray<JsString> {
         self.inner.get("types").as_::<TypedArray<JsString>>()
     }
+
 }

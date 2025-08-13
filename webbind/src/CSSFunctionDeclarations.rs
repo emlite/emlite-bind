@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSFunctionDeclarations class.
 /// [`CSSFunctionDeclarations`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDeclarations)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSFunctionDeclarations {
 
 impl FromVal for CSSFunctionDeclarations {
     fn from_val(v: &Any) -> Self {
-        CSSFunctionDeclarations {
-            inner: CSSRule::from_val(v),
-        }
+        CSSFunctionDeclarations { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSFunctionDeclarations {
 
 impl AsMut<Any> for CSSFunctionDeclarations {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSFunctionDeclarations> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSFunctionDeclarations> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSFunctionDeclarations);
 
+
 impl CSSFunctionDeclarations {
     /// Getter of the `style` attribute.
     /// [`CSSFunctionDeclarations.style`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDeclarations/style)
     pub fn style(&self) -> CSSFunctionDescriptors {
         self.inner.get("style").as_::<CSSFunctionDescriptors>()
     }
+
 }

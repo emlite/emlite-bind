@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CookieStoreGetOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CookieStoreGetOptions {
 
 impl AsMut<Any> for CookieStoreGetOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CookieStoreGetOptions> for Any {

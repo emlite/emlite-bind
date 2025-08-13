@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OrientationSensor class.
 /// [`OrientationSensor`](https://developer.mozilla.org/en-US/docs/Web/API/OrientationSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct OrientationSensor {
 
 impl FromVal for OrientationSensor {
     fn from_val(v: &Any) -> Self {
-        OrientationSensor {
-            inner: Sensor::from_val(v),
-        }
+        OrientationSensor { inner: Sensor::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for OrientationSensor {
 
 impl AsMut<Any> for OrientationSensor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OrientationSensor> for Any {
@@ -63,19 +64,19 @@ impl From<&OrientationSensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(OrientationSensor);
 
+
 impl OrientationSensor {
     /// Getter of the `quaternion` attribute.
     /// [`OrientationSensor.quaternion`](https://developer.mozilla.org/en-US/docs/Web/API/OrientationSensor/quaternion)
     pub fn quaternion(&self) -> TypedArray<f64> {
         self.inner.get("quaternion").as_::<TypedArray<f64>>()
     }
+
 }
 impl OrientationSensor {
     /// The populateMatrix method.
     /// [`OrientationSensor.populateMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/OrientationSensor/populateMatrix)
     pub fn populate_matrix(&self, target_matrix: &Any) -> Undefined {
-        self.inner
-            .call("populateMatrix", &[target_matrix.into()])
-            .as_::<Undefined>()
+        self.inner.call("populateMatrix", &[target_matrix.into(), ]).as_::<Undefined>()
     }
 }

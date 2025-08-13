@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LaunchQueue class.
 /// [`LaunchQueue`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchQueue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct LaunchQueue {
 
 impl FromVal for LaunchQueue {
     fn from_val(v: &Any) -> Self {
-        LaunchQueue {
-            inner: Any::from_val(v),
-        }
+        LaunchQueue { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for LaunchQueue {
 
 impl AsMut<Any> for LaunchQueue {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LaunchQueue> for Any {
@@ -63,12 +64,11 @@ impl From<&LaunchQueue> for Any {
 
 jsbind::utils::impl_dyn_cast!(LaunchQueue);
 
+
 impl LaunchQueue {
     /// The setConsumer method.
     /// [`LaunchQueue.setConsumer`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchQueue/setConsumer)
     pub fn set_consumer(&self, consumer: &Function) -> Undefined {
-        self.inner
-            .call("setConsumer", &[consumer.into()])
-            .as_::<Undefined>()
+        self.inner.call("setConsumer", &[consumer.into(), ]).as_::<Undefined>()
     }
 }

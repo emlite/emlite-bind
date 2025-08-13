@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EditContextInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for EditContextInit {
 
 impl AsMut<Any> for EditContextInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EditContextInit> for Any {

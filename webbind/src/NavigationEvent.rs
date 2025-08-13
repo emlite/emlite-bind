@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NavigationEvent class.
 /// [`NavigationEvent`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NavigationEvent {
 
 impl FromVal for NavigationEvent {
     fn from_val(v: &Any) -> Self {
-        NavigationEvent {
-            inner: UIEvent::from_val(v),
-        }
+        NavigationEvent { inner: UIEvent::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NavigationEvent {
 
 impl AsMut<Any> for NavigationEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NavigationEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&NavigationEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigationEvent);
 
+
+
 impl NavigationEvent {
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
     pub fn new0(type_: &JsString) -> NavigationEvent {
         Self {
-            inner: Any::global("NavigationEvent")
-                .new(&[type_.into()])
-                .as_::<UIEvent>(),
+            inner: Any::global("NavigationEvent").new(&[type_.into()]).as_::<UIEvent>(),
         }
     }
 
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &NavigationEventInit) -> NavigationEvent {
         Self {
-            inner: Any::global("NavigationEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<UIEvent>(),
+            inner: Any::global("NavigationEvent").new(&[type_.into(), event_init_dict.into()]).as_::<UIEvent>(),
         }
     }
+
 }
 impl NavigationEvent {
     /// Getter of the `dir` attribute.
@@ -88,6 +88,7 @@ impl NavigationEvent {
     pub fn dir(&self) -> SpatialNavigationDirection {
         self.inner.get("dir").as_::<SpatialNavigationDirection>()
     }
+
 }
 impl NavigationEvent {
     /// Getter of the `relatedTarget` attribute.
@@ -95,4 +96,5 @@ impl NavigationEvent {
     pub fn related_target(&self) -> EventTarget {
         self.inner.get("relatedTarget").as_::<EventTarget>()
     }
+
 }

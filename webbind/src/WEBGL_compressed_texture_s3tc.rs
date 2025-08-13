@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WEBGL_compressed_texture_s3tc class.
 /// [`WEBGL_compressed_texture_s3tc`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_compressed_texture_s3tc)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WEBGL_compressed_texture_s3tc {
 
 impl FromVal for WEBGL_compressed_texture_s3tc {
     fn from_val(v: &Any) -> Self {
-        WEBGL_compressed_texture_s3tc {
-            inner: Any::from_val(v),
-        }
+        WEBGL_compressed_texture_s3tc { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WEBGL_compressed_texture_s3tc {
 
 impl AsMut<Any> for WEBGL_compressed_texture_s3tc {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WEBGL_compressed_texture_s3tc> for Any {
@@ -62,3 +63,5 @@ impl From<&WEBGL_compressed_texture_s3tc> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_s3tc);
+
+

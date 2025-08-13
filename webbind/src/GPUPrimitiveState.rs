@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUPrimitiveState dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUPrimitiveState {
 
 impl AsMut<Any> for GPUPrimitiveState {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUPrimitiveState> for Any {

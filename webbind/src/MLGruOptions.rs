@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MLGruOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MLGruOptions {
 
 impl AsMut<Any> for MLGruOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MLGruOptions> for Any {
@@ -116,9 +119,7 @@ impl MLGruOptions {
 impl MLGruOptions {
     /// Getter of the `direction` attribute.
     pub fn direction(&self) -> MLRecurrentNetworkDirection {
-        self.inner
-            .get("direction")
-            .as_::<MLRecurrentNetworkDirection>()
+        self.inner.get("direction").as_::<MLRecurrentNetworkDirection>()
     }
 
     /// Setter of the `direction` attribute.
@@ -140,9 +141,7 @@ impl MLGruOptions {
 impl MLGruOptions {
     /// Getter of the `activations` attribute.
     pub fn activations(&self) -> TypedArray<MLRecurrentNetworkActivation> {
-        self.inner
-            .get("activations")
-            .as_::<TypedArray<MLRecurrentNetworkActivation>>()
+        self.inner.get("activations").as_::<TypedArray<MLRecurrentNetworkActivation>>()
     }
 
     /// Setter of the `activations` attribute.

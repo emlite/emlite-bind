@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFEDisplacementMapElement class.
 /// [`SVGFEDisplacementMapElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDisplacementMapElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFEDisplacementMapElement {
 
 impl FromVal for SVGFEDisplacementMapElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEDisplacementMapElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEDisplacementMapElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFEDisplacementMapElement {
 
 impl AsMut<Any> for SVGFEDisplacementMapElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFEDisplacementMapElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFEDisplacementMapElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEDisplacementMapElement);
 
+
 impl SVGFEDisplacementMapElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEDisplacementMapElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDisplacementMapElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `in2` attribute.
@@ -76,6 +79,7 @@ impl SVGFEDisplacementMapElement {
     pub fn in2(&self) -> SVGAnimatedString {
         self.inner.get("in2").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `scale` attribute.
@@ -83,24 +87,23 @@ impl SVGFEDisplacementMapElement {
     pub fn scale(&self) -> SVGAnimatedNumber {
         self.inner.get("scale").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `xChannelSelector` attribute.
     /// [`SVGFEDisplacementMapElement.xChannelSelector`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDisplacementMapElement/xChannelSelector)
     pub fn x_channel_selector(&self) -> SVGAnimatedEnumeration {
-        self.inner
-            .get("xChannelSelector")
-            .as_::<SVGAnimatedEnumeration>()
+        self.inner.get("xChannelSelector").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `yChannelSelector` attribute.
     /// [`SVGFEDisplacementMapElement.yChannelSelector`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDisplacementMapElement/yChannelSelector)
     pub fn y_channel_selector(&self) -> SVGAnimatedEnumeration {
-        self.inner
-            .get("yChannelSelector")
-            .as_::<SVGAnimatedEnumeration>()
+        self.inner.get("yChannelSelector").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `x` attribute.
@@ -108,6 +111,7 @@ impl SVGFEDisplacementMapElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `y` attribute.
@@ -115,6 +119,7 @@ impl SVGFEDisplacementMapElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `width` attribute.
@@ -122,6 +127,7 @@ impl SVGFEDisplacementMapElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `height` attribute.
@@ -129,6 +135,7 @@ impl SVGFEDisplacementMapElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEDisplacementMapElement {
     /// Getter of the `result` attribute.
@@ -136,4 +143,5 @@ impl SVGFEDisplacementMapElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

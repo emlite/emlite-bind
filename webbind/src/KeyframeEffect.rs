@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The KeyframeEffect class.
 /// [`KeyframeEffect`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct KeyframeEffect {
 
 impl FromVal for KeyframeEffect {
     fn from_val(v: &Any) -> Self {
-        KeyframeEffect {
-            inner: AnimationEffect::from_val(v),
-        }
+        KeyframeEffect { inner: AnimationEffect::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for KeyframeEffect {
 
 impl AsMut<Any> for KeyframeEffect {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<KeyframeEffect> for Any {
@@ -63,15 +64,16 @@ impl From<&KeyframeEffect> for Any {
 
 jsbind::utils::impl_dyn_cast!(KeyframeEffect);
 
+
+
 impl KeyframeEffect {
     /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
     pub fn new(source: &KeyframeEffect) -> KeyframeEffect {
         Self {
-            inner: Any::global("KeyframeEffect")
-                .new(&[source.into()])
-                .as_::<AnimationEffect>(),
+            inner: Any::global("KeyframeEffect").new(&[source.into()]).as_::<AnimationEffect>(),
         }
     }
+
 }
 impl KeyframeEffect {
     /// Getter of the `target` attribute.
@@ -115,28 +117,22 @@ impl KeyframeEffect {
 impl KeyframeEffect {
     /// The getKeyframes method.
     /// [`KeyframeEffect.getKeyframes`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/getKeyframes)
-    pub fn get_keyframes(&self) -> TypedArray<Object> {
-        self.inner
-            .call("getKeyframes", &[])
-            .as_::<TypedArray<Object>>()
+    pub fn get_keyframes(&self, ) -> TypedArray<Object> {
+        self.inner.call("getKeyframes", &[]).as_::<TypedArray<Object>>()
     }
 }
 impl KeyframeEffect {
     /// The setKeyframes method.
     /// [`KeyframeEffect.setKeyframes`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/setKeyframes)
     pub fn set_keyframes(&self, keyframes: &Object) -> Undefined {
-        self.inner
-            .call("setKeyframes", &[keyframes.into()])
-            .as_::<Undefined>()
+        self.inner.call("setKeyframes", &[keyframes.into(), ]).as_::<Undefined>()
     }
 }
 impl KeyframeEffect {
     /// Getter of the `iterationComposite` attribute.
     /// [`KeyframeEffect.iterationComposite`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/iterationComposite)
     pub fn iteration_composite(&self) -> IterationCompositeOperation {
-        self.inner
-            .get("iterationComposite")
-            .as_::<IterationCompositeOperation>()
+        self.inner.get("iterationComposite").as_::<IterationCompositeOperation>()
     }
 
     /// Setter of the `iterationComposite` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SequenceEffect class.
 /// [`SequenceEffect`](https://developer.mozilla.org/en-US/docs/Web/API/SequenceEffect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SequenceEffect {
 
 impl FromVal for SequenceEffect {
     fn from_val(v: &Any) -> Self {
-        SequenceEffect {
-            inner: GroupEffect::from_val(v),
-        }
+        SequenceEffect { inner: GroupEffect::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SequenceEffect {
 
 impl AsMut<Any> for SequenceEffect {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SequenceEffect> for Any {
@@ -63,29 +64,28 @@ impl From<&SequenceEffect> for Any {
 
 jsbind::utils::impl_dyn_cast!(SequenceEffect);
 
+
+
 impl SequenceEffect {
     /// The `new SequenceEffect(..)` constructor, creating a new SequenceEffect instance
     pub fn new0(children: &TypedArray<AnimationEffect>) -> SequenceEffect {
         Self {
-            inner: Any::global("SequenceEffect")
-                .new(&[children.into()])
-                .as_::<GroupEffect>(),
+            inner: Any::global("SequenceEffect").new(&[children.into()]).as_::<GroupEffect>(),
         }
     }
 
     /// The `new SequenceEffect(..)` constructor, creating a new SequenceEffect instance
     pub fn new1(children: &TypedArray<AnimationEffect>, timing: &Any) -> SequenceEffect {
         Self {
-            inner: Any::global("SequenceEffect")
-                .new(&[children.into(), timing.into()])
-                .as_::<GroupEffect>(),
+            inner: Any::global("SequenceEffect").new(&[children.into(), timing.into()]).as_::<GroupEffect>(),
         }
     }
+
 }
 impl SequenceEffect {
     /// The clone method.
     /// [`SequenceEffect.clone`](https://developer.mozilla.org/en-US/docs/Web/API/SequenceEffect/clone)
-    pub fn clone_(&self) -> SequenceEffect {
+    pub fn clone_(&self, ) -> SequenceEffect {
         self.inner.call("clone", &[]).as_::<SequenceEffect>()
     }
 }

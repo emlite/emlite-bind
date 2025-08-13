@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SensorErrorEvent class.
 /// [`SensorErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SensorErrorEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SensorErrorEvent {
 
 impl FromVal for SensorErrorEvent {
     fn from_val(v: &Any) -> Self {
-        SensorErrorEvent {
-            inner: Event::from_val(v),
-        }
+        SensorErrorEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SensorErrorEvent {
 
 impl AsMut<Any> for SensorErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SensorErrorEvent> for Any {
@@ -63,15 +64,16 @@ impl From<&SensorErrorEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SensorErrorEvent);
 
+
+
 impl SensorErrorEvent {
     /// The `new SensorErrorEvent(..)` constructor, creating a new SensorErrorEvent instance
     pub fn new(type_: &JsString, error_event_init_dict: &SensorErrorEventInit) -> SensorErrorEvent {
         Self {
-            inner: Any::global("SensorErrorEvent")
-                .new(&[type_.into(), error_event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("SensorErrorEvent").new(&[type_.into(), error_event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl SensorErrorEvent {
     /// Getter of the `error` attribute.
@@ -79,4 +81,5 @@ impl SensorErrorEvent {
     pub fn error(&self) -> DOMException {
         self.inner.get("error").as_::<DOMException>()
     }
+
 }

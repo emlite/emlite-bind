@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The XRMediaQuadLayerInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for XRMediaQuadLayerInit {
 
 impl AsMut<Any> for XRMediaQuadLayerInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<XRMediaQuadLayerInit> for Any {

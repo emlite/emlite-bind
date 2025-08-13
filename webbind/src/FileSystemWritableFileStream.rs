@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystemWritableFileStream class.
 /// [`FileSystemWritableFileStream`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileSystemWritableFileStream {
 
 impl FromVal for FileSystemWritableFileStream {
     fn from_val(v: &Any) -> Self {
-        FileSystemWritableFileStream {
-            inner: WritableStream::from_val(v),
-        }
+        FileSystemWritableFileStream { inner: WritableStream::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileSystemWritableFileStream {
 
 impl AsMut<Any> for FileSystemWritableFileStream {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystemWritableFileStream> for Any {
@@ -63,30 +64,25 @@ impl From<&FileSystemWritableFileStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystemWritableFileStream);
 
+
 impl FileSystemWritableFileStream {
     /// The write method.
     /// [`FileSystemWritableFileStream.write`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/write)
     pub fn write(&self, data: &Any) -> Promise<Undefined> {
-        self.inner
-            .call("write", &[data.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("write", &[data.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl FileSystemWritableFileStream {
     /// The seek method.
     /// [`FileSystemWritableFileStream.seek`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/seek)
     pub fn seek(&self, position: u64) -> Promise<Undefined> {
-        self.inner
-            .call("seek", &[position.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("seek", &[position.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl FileSystemWritableFileStream {
     /// The truncate method.
     /// [`FileSystemWritableFileStream.truncate`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/truncate)
     pub fn truncate(&self, size: u64) -> Promise<Undefined> {
-        self.inner
-            .call("truncate", &[size.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("truncate", &[size.into(), ]).as_::<Promise<Undefined>>()
     }
 }

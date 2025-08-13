@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HandwritingStroke class.
 /// [`HandwritingStroke`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HandwritingStroke {
 
 impl FromVal for HandwritingStroke {
     fn from_val(v: &Any) -> Self {
-        HandwritingStroke {
-            inner: Any::from_val(v),
-        }
+        HandwritingStroke { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HandwritingStroke {
 
 impl AsMut<Any> for HandwritingStroke {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HandwritingStroke> for Any {
@@ -63,6 +64,8 @@ impl From<&HandwritingStroke> for Any {
 
 jsbind::utils::impl_dyn_cast!(HandwritingStroke);
 
+
+
 impl HandwritingStroke {
     /// The `new HandwritingStroke(..)` constructor, creating a new HandwritingStroke instance
     pub fn new() -> HandwritingStroke {
@@ -70,29 +73,26 @@ impl HandwritingStroke {
             inner: Any::global("HandwritingStroke").new(&[]).as_::<Any>(),
         }
     }
+
 }
 impl HandwritingStroke {
     /// The addPoint method.
     /// [`HandwritingStroke.addPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/addPoint)
     pub fn add_point(&self, point: &HandwritingPoint) -> Undefined {
-        self.inner
-            .call("addPoint", &[point.into()])
-            .as_::<Undefined>()
+        self.inner.call("addPoint", &[point.into(), ]).as_::<Undefined>()
     }
 }
 impl HandwritingStroke {
     /// The getPoints method.
     /// [`HandwritingStroke.getPoints`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/getPoints)
-    pub fn get_points(&self) -> TypedArray<HandwritingPoint> {
-        self.inner
-            .call("getPoints", &[])
-            .as_::<TypedArray<HandwritingPoint>>()
+    pub fn get_points(&self, ) -> TypedArray<HandwritingPoint> {
+        self.inner.call("getPoints", &[]).as_::<TypedArray<HandwritingPoint>>()
     }
 }
 impl HandwritingStroke {
     /// The clear method.
     /// [`HandwritingStroke.clear`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/clear)
-    pub fn clear(&self) -> Undefined {
+    pub fn clear(&self, ) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }

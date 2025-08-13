@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BreakTokenOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BreakTokenOptions {
 
 impl AsMut<Any> for BreakTokenOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BreakTokenOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&BreakTokenOptions> for Any {
 impl BreakTokenOptions {
     /// Getter of the `childBreakTokens` attribute.
     pub fn child_break_tokens(&self) -> TypedArray<ChildBreakToken> {
-        self.inner
-            .get("childBreakTokens")
-            .as_::<TypedArray<ChildBreakToken>>()
+        self.inner.get("childBreakTokens").as_::<TypedArray<ChildBreakToken>>()
     }
 
     /// Setter of the `childBreakTokens` attribute.

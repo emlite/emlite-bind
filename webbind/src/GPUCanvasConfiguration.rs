@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUCanvasConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUCanvasConfiguration {
 
 impl AsMut<Any> for GPUCanvasConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUCanvasConfiguration> for Any {
@@ -94,9 +97,7 @@ impl GPUCanvasConfiguration {
 impl GPUCanvasConfiguration {
     /// Getter of the `viewFormats` attribute.
     pub fn view_formats(&self) -> TypedArray<GPUTextureFormat> {
-        self.inner
-            .get("viewFormats")
-            .as_::<TypedArray<GPUTextureFormat>>()
+        self.inner.get("viewFormats").as_::<TypedArray<GPUTextureFormat>>()
     }
 
     /// Setter of the `viewFormats` attribute.

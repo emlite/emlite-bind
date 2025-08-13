@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IDBOpenDBRequest class.
 /// [`IDBOpenDBRequest`](https://developer.mozilla.org/en-US/docs/Web/API/IDBOpenDBRequest)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct IDBOpenDBRequest {
 
 impl FromVal for IDBOpenDBRequest {
     fn from_val(v: &Any) -> Self {
-        IDBOpenDBRequest {
-            inner: IDBRequest::from_val(v),
-        }
+        IDBOpenDBRequest { inner: IDBRequest::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for IDBOpenDBRequest {
 
 impl AsMut<Any> for IDBOpenDBRequest {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IDBOpenDBRequest> for Any {
@@ -62,6 +63,7 @@ impl From<&IDBOpenDBRequest> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(IDBOpenDBRequest);
+
 
 impl IDBOpenDBRequest {
     /// Getter of the `onblocked` attribute.

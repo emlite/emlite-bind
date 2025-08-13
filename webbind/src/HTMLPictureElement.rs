@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLPictureElement class.
 /// [`HTMLPictureElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPictureElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLPictureElement {
 
 impl FromVal for HTMLPictureElement {
     fn from_val(v: &Any) -> Self {
-        HTMLPictureElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLPictureElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLPictureElement {
 
 impl AsMut<Any> for HTMLPictureElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLPictureElement> for Any {
@@ -63,13 +64,14 @@ impl From<&HTMLPictureElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLPictureElement);
 
+
+
 impl HTMLPictureElement {
     /// The `new HTMLPictureElement(..)` constructor, creating a new HTMLPictureElement instance
     pub fn new() -> HTMLPictureElement {
         Self {
-            inner: Any::global("HTMLPictureElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLPictureElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }

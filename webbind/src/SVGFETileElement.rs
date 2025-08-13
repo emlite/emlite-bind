@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFETileElement class.
 /// [`SVGFETileElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFETileElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFETileElement {
 
 impl FromVal for SVGFETileElement {
     fn from_val(v: &Any) -> Self {
-        SVGFETileElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFETileElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFETileElement {
 
 impl AsMut<Any> for SVGFETileElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFETileElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFETileElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFETileElement);
 
+
 impl SVGFETileElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFETileElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFETileElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFETileElement {
     /// Getter of the `x` attribute.
@@ -76,6 +79,7 @@ impl SVGFETileElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     /// Getter of the `y` attribute.
@@ -83,6 +87,7 @@ impl SVGFETileElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     /// Getter of the `width` attribute.
@@ -90,6 +95,7 @@ impl SVGFETileElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     /// Getter of the `height` attribute.
@@ -97,6 +103,7 @@ impl SVGFETileElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     /// Getter of the `result` attribute.
@@ -104,4 +111,5 @@ impl SVGFETileElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

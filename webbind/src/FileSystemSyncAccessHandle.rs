@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystemSyncAccessHandle class.
 /// [`FileSystemSyncAccessHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct FileSystemSyncAccessHandle {
 
 impl FromVal for FileSystemSyncAccessHandle {
     fn from_val(v: &Any) -> Self {
-        FileSystemSyncAccessHandle {
-            inner: Any::from_val(v),
-        }
+        FileSystemSyncAccessHandle { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for FileSystemSyncAccessHandle {
 
 impl AsMut<Any> for FileSystemSyncAccessHandle {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystemSyncAccessHandle> for Any {
@@ -63,61 +64,56 @@ impl From<&FileSystemSyncAccessHandle> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystemSyncAccessHandle);
 
+
 impl FileSystemSyncAccessHandle {
     /// The read method.
     /// [`FileSystemSyncAccessHandle.read`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/read)
     pub fn read0(&self, buffer: &Any) -> u64 {
-        self.inner.call("read", &[buffer.into()]).as_::<u64>()
+        self.inner.call("read", &[buffer.into(), ]).as_::<u64>()
     }
     /// The read method.
     /// [`FileSystemSyncAccessHandle.read`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/read)
     pub fn read1(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
-        self.inner
-            .call("read", &[buffer.into(), options.into()])
-            .as_::<u64>()
+        self.inner.call("read", &[buffer.into(), options.into(), ]).as_::<u64>()
     }
 }
 impl FileSystemSyncAccessHandle {
     /// The write method.
     /// [`FileSystemSyncAccessHandle.write`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/write)
     pub fn write0(&self, buffer: &Any) -> u64 {
-        self.inner.call("write", &[buffer.into()]).as_::<u64>()
+        self.inner.call("write", &[buffer.into(), ]).as_::<u64>()
     }
     /// The write method.
     /// [`FileSystemSyncAccessHandle.write`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/write)
     pub fn write1(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
-        self.inner
-            .call("write", &[buffer.into(), options.into()])
-            .as_::<u64>()
+        self.inner.call("write", &[buffer.into(), options.into(), ]).as_::<u64>()
     }
 }
 impl FileSystemSyncAccessHandle {
     /// The truncate method.
     /// [`FileSystemSyncAccessHandle.truncate`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/truncate)
     pub fn truncate(&self, new_size: u64) -> Undefined {
-        self.inner
-            .call("truncate", &[new_size.into()])
-            .as_::<Undefined>()
+        self.inner.call("truncate", &[new_size.into(), ]).as_::<Undefined>()
     }
 }
 impl FileSystemSyncAccessHandle {
     /// The getSize method.
     /// [`FileSystemSyncAccessHandle.getSize`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/getSize)
-    pub fn get_size(&self) -> u64 {
+    pub fn get_size(&self, ) -> u64 {
         self.inner.call("getSize", &[]).as_::<u64>()
     }
 }
 impl FileSystemSyncAccessHandle {
     /// The flush method.
     /// [`FileSystemSyncAccessHandle.flush`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/flush)
-    pub fn flush(&self) -> Undefined {
+    pub fn flush(&self, ) -> Undefined {
         self.inner.call("flush", &[]).as_::<Undefined>()
     }
 }
 impl FileSystemSyncAccessHandle {
     /// The close method.
     /// [`FileSystemSyncAccessHandle.close`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

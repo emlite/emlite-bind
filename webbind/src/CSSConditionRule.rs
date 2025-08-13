@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSConditionRule class.
 /// [`CSSConditionRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSConditionRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSConditionRule {
 
 impl FromVal for CSSConditionRule {
     fn from_val(v: &Any) -> Self {
-        CSSConditionRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSConditionRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSConditionRule {
 
 impl AsMut<Any> for CSSConditionRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSConditionRule> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSConditionRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSConditionRule);
 
+
 impl CSSConditionRule {
     /// Getter of the `conditionText` attribute.
     /// [`CSSConditionRule.conditionText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSConditionRule/conditionText)
     pub fn condition_text(&self) -> JsString {
         self.inner.get("conditionText").as_::<JsString>()
     }
+
 }

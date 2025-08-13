@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Lock class.
 /// [`Lock`](https://developer.mozilla.org/en-US/docs/Web/API/Lock)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Lock {
 
 impl FromVal for Lock {
     fn from_val(v: &Any) -> Self {
-        Lock {
-            inner: Any::from_val(v),
-        }
+        Lock { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Lock {
 
 impl AsMut<Any> for Lock {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Lock> for Any {
@@ -63,12 +64,14 @@ impl From<&Lock> for Any {
 
 jsbind::utils::impl_dyn_cast!(Lock);
 
+
 impl Lock {
     /// Getter of the `name` attribute.
     /// [`Lock.name`](https://developer.mozilla.org/en-US/docs/Web/API/Lock/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl Lock {
     /// Getter of the `mode` attribute.
@@ -76,4 +79,5 @@ impl Lock {
     pub fn mode(&self) -> LockMode {
         self.inner.get("mode").as_::<LockMode>()
     }
+
 }

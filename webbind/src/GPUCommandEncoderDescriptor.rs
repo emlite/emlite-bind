@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUCommandEncoderDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUCommandEncoderDescriptor {
 
 impl AsMut<Any> for GPUCommandEncoderDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUCommandEncoderDescriptor> for Any {
@@ -57,3 +60,4 @@ impl From<&GPUCommandEncoderDescriptor> for Any {
         s.inner.clone()
     }
 }
+

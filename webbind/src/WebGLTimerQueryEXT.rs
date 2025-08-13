@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebGLTimerQueryEXT class.
 /// [`WebGLTimerQueryEXT`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLTimerQueryEXT)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebGLTimerQueryEXT {
 
 impl FromVal for WebGLTimerQueryEXT {
     fn from_val(v: &Any) -> Self {
-        WebGLTimerQueryEXT {
-            inner: WebGLObject::from_val(v),
-        }
+        WebGLTimerQueryEXT { inner: WebGLObject::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebGLTimerQueryEXT {
 
 impl AsMut<Any> for WebGLTimerQueryEXT {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebGLTimerQueryEXT> for Any {
@@ -62,3 +63,5 @@ impl From<&WebGLTimerQueryEXT> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLTimerQueryEXT);
+
+

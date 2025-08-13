@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSUnitValue class.
 /// [`CSSUnitValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSUnitValue {
 
 impl FromVal for CSSUnitValue {
     fn from_val(v: &Any) -> Self {
-        CSSUnitValue {
-            inner: CSSNumericValue::from_val(v),
-        }
+        CSSUnitValue { inner: CSSNumericValue::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSUnitValue {
 
 impl AsMut<Any> for CSSUnitValue {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSUnitValue> for Any {
@@ -63,15 +64,16 @@ impl From<&CSSUnitValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSUnitValue);
 
+
+
 impl CSSUnitValue {
     /// The `new CSSUnitValue(..)` constructor, creating a new CSSUnitValue instance
     pub fn new(value: f64, unit: &JsString) -> CSSUnitValue {
         Self {
-            inner: Any::global("CSSUnitValue")
-                .new(&[value.into(), unit.into()])
-                .as_::<CSSNumericValue>(),
+            inner: Any::global("CSSUnitValue").new(&[value.into(), unit.into()]).as_::<CSSNumericValue>(),
         }
     }
+
 }
 impl CSSUnitValue {
     /// Getter of the `value` attribute.
@@ -92,4 +94,5 @@ impl CSSUnitValue {
     pub fn unit(&self) -> JsString {
         self.inner.get("unit").as_::<JsString>()
     }
+
 }

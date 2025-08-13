@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TaskPriorityChangeEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for TaskPriorityChangeEventInit {
 
 impl AsMut<Any> for TaskPriorityChangeEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TaskPriorityChangeEventInit> for Any {

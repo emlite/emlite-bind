@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSMediaRule class.
 /// [`CSSMediaRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMediaRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSMediaRule {
 
 impl FromVal for CSSMediaRule {
     fn from_val(v: &Any) -> Self {
-        CSSMediaRule {
-            inner: CSSConditionRule::from_val(v),
-        }
+        CSSMediaRule { inner: CSSConditionRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSMediaRule {
 
 impl AsMut<Any> for CSSMediaRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSMediaRule> for Any {
@@ -63,12 +64,14 @@ impl From<&CSSMediaRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMediaRule);
 
+
 impl CSSMediaRule {
     /// Getter of the `media` attribute.
     /// [`CSSMediaRule.media`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMediaRule/media)
     pub fn media(&self) -> MediaList {
         self.inner.get("media").as_::<MediaList>()
     }
+
 }
 impl CSSMediaRule {
     /// Getter of the `matches` attribute.
@@ -76,4 +79,5 @@ impl CSSMediaRule {
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
+
 }

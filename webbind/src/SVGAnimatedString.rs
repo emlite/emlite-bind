@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGAnimatedString class.
 /// [`SVGAnimatedString`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGAnimatedString {
 
 impl FromVal for SVGAnimatedString {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedString {
-            inner: Any::from_val(v),
-        }
+        SVGAnimatedString { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGAnimatedString {
 
 impl AsMut<Any> for SVGAnimatedString {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGAnimatedString> for Any {
@@ -62,6 +63,7 @@ impl From<&SVGAnimatedString> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedString);
+
 
 impl SVGAnimatedString {
     /// Getter of the `baseVal` attribute.
@@ -82,4 +84,5 @@ impl SVGAnimatedString {
     pub fn anim_val(&self) -> JsString {
         self.inner.get("animVal").as_::<JsString>()
     }
+
 }

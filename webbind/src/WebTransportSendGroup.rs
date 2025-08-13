@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebTransportSendGroup class.
 /// [`WebTransportSendGroup`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportSendGroup)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebTransportSendGroup {
 
 impl FromVal for WebTransportSendGroup {
     fn from_val(v: &Any) -> Self {
-        WebTransportSendGroup {
-            inner: Any::from_val(v),
-        }
+        WebTransportSendGroup { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebTransportSendGroup {
 
 impl AsMut<Any> for WebTransportSendGroup {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebTransportSendGroup> for Any {
@@ -63,12 +64,11 @@ impl From<&WebTransportSendGroup> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebTransportSendGroup);
 
+
 impl WebTransportSendGroup {
     /// The getStats method.
     /// [`WebTransportSendGroup.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportSendGroup/getStats)
-    pub fn get_stats(&self) -> Promise<WebTransportSendStreamStats> {
-        self.inner
-            .call("getStats", &[])
-            .as_::<Promise<WebTransportSendStreamStats>>()
+    pub fn get_stats(&self, ) -> Promise<WebTransportSendStreamStats> {
+        self.inner.call("getStats", &[]).as_::<Promise<WebTransportSendStreamStats>>()
     }
 }

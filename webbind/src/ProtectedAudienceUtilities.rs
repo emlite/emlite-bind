@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ProtectedAudienceUtilities class.
 /// [`ProtectedAudienceUtilities`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudienceUtilities)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ProtectedAudienceUtilities {
 
 impl FromVal for ProtectedAudienceUtilities {
     fn from_val(v: &Any) -> Self {
-        ProtectedAudienceUtilities {
-            inner: Any::from_val(v),
-        }
+        ProtectedAudienceUtilities { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ProtectedAudienceUtilities {
 
 impl AsMut<Any> for ProtectedAudienceUtilities {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ProtectedAudienceUtilities> for Any {
@@ -63,21 +64,18 @@ impl From<&ProtectedAudienceUtilities> for Any {
 
 jsbind::utils::impl_dyn_cast!(ProtectedAudienceUtilities);
 
+
 impl ProtectedAudienceUtilities {
     /// The encodeUtf8 method.
     /// [`ProtectedAudienceUtilities.encodeUtf8`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudienceUtilities/encodeUtf8)
     pub fn encode_utf8(&self, input: &JsString) -> Uint8Array {
-        self.inner
-            .call("encodeUtf8", &[input.into()])
-            .as_::<Uint8Array>()
+        self.inner.call("encodeUtf8", &[input.into(), ]).as_::<Uint8Array>()
     }
 }
 impl ProtectedAudienceUtilities {
     /// The decodeUtf8 method.
     /// [`ProtectedAudienceUtilities.decodeUtf8`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudienceUtilities/decodeUtf8)
     pub fn decode_utf8(&self, bytes: &Uint8Array) -> JsString {
-        self.inner
-            .call("decodeUtf8", &[bytes.into()])
-            .as_::<JsString>()
+        self.inner.call("decodeUtf8", &[bytes.into(), ]).as_::<JsString>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ReadableStreamDefaultReader class.
 /// [`ReadableStreamDefaultReader`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ReadableStreamDefaultReader {
 
 impl FromVal for ReadableStreamDefaultReader {
     fn from_val(v: &Any) -> Self {
-        ReadableStreamDefaultReader {
-            inner: Any::from_val(v),
-        }
+        ReadableStreamDefaultReader { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ReadableStreamDefaultReader {
 
 impl AsMut<Any> for ReadableStreamDefaultReader {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ReadableStreamDefaultReader> for Any {
@@ -63,29 +64,28 @@ impl From<&ReadableStreamDefaultReader> for Any {
 
 jsbind::utils::impl_dyn_cast!(ReadableStreamDefaultReader);
 
+
+
 impl ReadableStreamDefaultReader {
     /// The `new ReadableStreamDefaultReader(..)` constructor, creating a new ReadableStreamDefaultReader instance
     pub fn new(stream: &ReadableStream) -> ReadableStreamDefaultReader {
         Self {
-            inner: Any::global("ReadableStreamDefaultReader")
-                .new(&[stream.into()])
-                .as_::<Any>(),
+            inner: Any::global("ReadableStreamDefaultReader").new(&[stream.into()]).as_::<Any>(),
         }
     }
+
 }
 impl ReadableStreamDefaultReader {
     /// The read method.
     /// [`ReadableStreamDefaultReader.read`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/read)
-    pub fn read(&self) -> Promise<ReadableStreamReadResult> {
-        self.inner
-            .call("read", &[])
-            .as_::<Promise<ReadableStreamReadResult>>()
+    pub fn read(&self, ) -> Promise<ReadableStreamReadResult> {
+        self.inner.call("read", &[]).as_::<Promise<ReadableStreamReadResult>>()
     }
 }
 impl ReadableStreamDefaultReader {
     /// The releaseLock method.
     /// [`ReadableStreamDefaultReader.releaseLock`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock)
-    pub fn release_lock(&self) -> Undefined {
+    pub fn release_lock(&self, ) -> Undefined {
         self.inner.call("releaseLock", &[]).as_::<Undefined>()
     }
 }
@@ -95,18 +95,17 @@ impl ReadableStreamDefaultReader {
     pub fn closed(&self) -> Promise<Undefined> {
         self.inner.get("closed").as_::<Promise<Undefined>>()
     }
+
 }
 impl ReadableStreamDefaultReader {
     /// The cancel method.
     /// [`ReadableStreamDefaultReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/cancel)
-    pub fn cancel0(&self) -> Promise<Undefined> {
+    pub fn cancel0(&self, ) -> Promise<Undefined> {
         self.inner.call("cancel", &[]).as_::<Promise<Undefined>>()
     }
     /// The cancel method.
     /// [`ReadableStreamDefaultReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/cancel)
     pub fn cancel1(&self, reason: &Any) -> Promise<Undefined> {
-        self.inner
-            .call("cancel", &[reason.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("cancel", &[reason.into(), ]).as_::<Promise<Undefined>>()
     }
 }

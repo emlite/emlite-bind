@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LanguageDetectorCreateCoreOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for LanguageDetectorCreateCoreOptions {
 
 impl AsMut<Any> for LanguageDetectorCreateCoreOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LanguageDetectorCreateCoreOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&LanguageDetectorCreateCoreOptions> for Any {
 impl LanguageDetectorCreateCoreOptions {
     /// Getter of the `expectedInputLanguages` attribute.
     pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
+        self.inner.get("expectedInputLanguages").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `expectedInputLanguages` attribute.

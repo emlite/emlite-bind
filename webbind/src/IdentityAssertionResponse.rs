@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdentityAssertionResponse dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IdentityAssertionResponse {
 
 impl AsMut<Any> for IdentityAssertionResponse {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdentityAssertionResponse> for Any {

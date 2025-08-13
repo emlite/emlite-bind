@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ShadowAnimation class.
 /// [`ShadowAnimation`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowAnimation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ShadowAnimation {
 
 impl FromVal for ShadowAnimation {
     fn from_val(v: &Any) -> Self {
-        ShadowAnimation {
-            inner: Animation::from_val(v),
-        }
+        ShadowAnimation { inner: Animation::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ShadowAnimation {
 
 impl AsMut<Any> for ShadowAnimation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ShadowAnimation> for Any {
@@ -63,15 +64,16 @@ impl From<&ShadowAnimation> for Any {
 
 jsbind::utils::impl_dyn_cast!(ShadowAnimation);
 
+
+
 impl ShadowAnimation {
     /// The `new ShadowAnimation(..)` constructor, creating a new ShadowAnimation instance
     pub fn new(source: &Animation, new_target: &Any) -> ShadowAnimation {
         Self {
-            inner: Any::global("ShadowAnimation")
-                .new(&[source.into(), new_target.into()])
-                .as_::<Animation>(),
+            inner: Any::global("ShadowAnimation").new(&[source.into(), new_target.into()]).as_::<Animation>(),
         }
     }
+
 }
 impl ShadowAnimation {
     /// Getter of the `sourceAnimation` attribute.
@@ -79,4 +81,5 @@ impl ShadowAnimation {
     pub fn source_animation(&self) -> Animation {
         self.inner.get("sourceAnimation").as_::<Animation>()
     }
+
 }

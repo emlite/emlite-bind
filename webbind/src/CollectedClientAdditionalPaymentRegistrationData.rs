@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CollectedClientAdditionalPaymentRegistrationData dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CollectedClientAdditionalPaymentRegistrationData {
 
 impl AsMut<Any> for CollectedClientAdditionalPaymentRegistrationData {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CollectedClientAdditionalPaymentRegistrationData> for Any {

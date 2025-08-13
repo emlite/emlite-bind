@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CharacterBoundsUpdateEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CharacterBoundsUpdateEventInit {
 
 impl AsMut<Any> for CharacterBoundsUpdateEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CharacterBoundsUpdateEventInit> for Any {

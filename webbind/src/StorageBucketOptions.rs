@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The StorageBucketOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for StorageBucketOptions {
 
 impl AsMut<Any> for StorageBucketOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<StorageBucketOptions> for Any {

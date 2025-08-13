@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaymentDetailsUpdate dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PaymentDetailsUpdate {
 
 impl AsMut<Any> for PaymentDetailsUpdate {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaymentDetailsUpdate> for Any {
@@ -83,9 +86,7 @@ impl PaymentDetailsUpdate {
 impl PaymentDetailsUpdate {
     /// Getter of the `shippingAddressErrors` attribute.
     pub fn shipping_address_errors(&self) -> AddressErrors {
-        self.inner
-            .get("shippingAddressErrors")
-            .as_::<AddressErrors>()
+        self.inner.get("shippingAddressErrors").as_::<AddressErrors>()
     }
 
     /// Setter of the `shippingAddressErrors` attribute.

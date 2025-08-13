@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebTransportReceiveStream class.
 /// [`WebTransportReceiveStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportReceiveStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebTransportReceiveStream {
 
 impl FromVal for WebTransportReceiveStream {
     fn from_val(v: &Any) -> Self {
-        WebTransportReceiveStream {
-            inner: ReadableStream::from_val(v),
-        }
+        WebTransportReceiveStream { inner: ReadableStream::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebTransportReceiveStream {
 
 impl AsMut<Any> for WebTransportReceiveStream {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebTransportReceiveStream> for Any {
@@ -63,12 +64,11 @@ impl From<&WebTransportReceiveStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebTransportReceiveStream);
 
+
 impl WebTransportReceiveStream {
     /// The getStats method.
     /// [`WebTransportReceiveStream.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportReceiveStream/getStats)
-    pub fn get_stats(&self) -> Promise<WebTransportReceiveStreamStats> {
-        self.inner
-            .call("getStats", &[])
-            .as_::<Promise<WebTransportReceiveStreamStats>>()
+    pub fn get_stats(&self, ) -> Promise<WebTransportReceiveStreamStats> {
+        self.inner.call("getStats", &[]).as_::<Promise<WebTransportReceiveStreamStats>>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFEColorMatrixElement class.
 /// [`SVGFEColorMatrixElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEColorMatrixElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFEColorMatrixElement {
 
 impl FromVal for SVGFEColorMatrixElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEColorMatrixElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEColorMatrixElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFEColorMatrixElement {
 
 impl AsMut<Any> for SVGFEColorMatrixElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFEColorMatrixElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFEColorMatrixElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEColorMatrixElement);
 
+
 impl SVGFEColorMatrixElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEColorMatrixElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEColorMatrixElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEColorMatrixElement {
     /// Getter of the `type` attribute.
@@ -76,6 +79,7 @@ impl SVGFEColorMatrixElement {
     pub fn type_(&self) -> SVGAnimatedEnumeration {
         self.inner.get("type").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEColorMatrixElement {
     /// Getter of the `values` attribute.
@@ -83,6 +87,7 @@ impl SVGFEColorMatrixElement {
     pub fn values(&self) -> SVGAnimatedNumberList {
         self.inner.get("values").as_::<SVGAnimatedNumberList>()
     }
+
 }
 impl SVGFEColorMatrixElement {
     /// Getter of the `x` attribute.
@@ -90,6 +95,7 @@ impl SVGFEColorMatrixElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEColorMatrixElement {
     /// Getter of the `y` attribute.
@@ -97,6 +103,7 @@ impl SVGFEColorMatrixElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEColorMatrixElement {
     /// Getter of the `width` attribute.
@@ -104,6 +111,7 @@ impl SVGFEColorMatrixElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEColorMatrixElement {
     /// Getter of the `height` attribute.
@@ -111,6 +119,7 @@ impl SVGFEColorMatrixElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEColorMatrixElement {
     /// Getter of the `result` attribute.
@@ -118,4 +127,5 @@ impl SVGFEColorMatrixElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

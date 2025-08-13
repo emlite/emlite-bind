@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The TimeEvent class.
 /// [`TimeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TimeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct TimeEvent {
 
 impl FromVal for TimeEvent {
     fn from_val(v: &Any) -> Self {
-        TimeEvent {
-            inner: Event::from_val(v),
-        }
+        TimeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for TimeEvent {
 
 impl AsMut<Any> for TimeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<TimeEvent> for Any {
@@ -63,12 +64,14 @@ impl From<&TimeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(TimeEvent);
 
+
 impl TimeEvent {
     /// Getter of the `view` attribute.
     /// [`TimeEvent.view`](https://developer.mozilla.org/en-US/docs/Web/API/TimeEvent/view)
     pub fn view(&self) -> Any {
         self.inner.get("view").as_::<Any>()
     }
+
 }
 impl TimeEvent {
     /// Getter of the `detail` attribute.
@@ -76,21 +79,12 @@ impl TimeEvent {
     pub fn detail(&self) -> i32 {
         self.inner.get("detail").as_::<i32>()
     }
+
 }
 impl TimeEvent {
     /// The initTimeEvent method.
     /// [`TimeEvent.initTimeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TimeEvent/initTimeEvent)
-    pub fn init_time_event(
-        &self,
-        type_arg: &JsString,
-        view_arg: &Window,
-        detail_arg: i32,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "initTimeEvent",
-                &[type_arg.into(), view_arg.into(), detail_arg.into()],
-            )
-            .as_::<Undefined>()
+    pub fn init_time_event(&self, type_arg: &JsString, view_arg: &Window, detail_arg: i32) -> Undefined {
+        self.inner.call("initTimeEvent", &[type_arg.into(), view_arg.into(), detail_arg.into(), ]).as_::<Undefined>()
     }
 }

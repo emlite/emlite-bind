@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PresentationConnection class.
 /// [`PresentationConnection`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PresentationConnection {
 
 impl FromVal for PresentationConnection {
     fn from_val(v: &Any) -> Self {
-        PresentationConnection {
-            inner: EventTarget::from_val(v),
-        }
+        PresentationConnection { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PresentationConnection {
 
 impl AsMut<Any> for PresentationConnection {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PresentationConnection> for Any {
@@ -63,12 +64,14 @@ impl From<&PresentationConnection> for Any {
 
 jsbind::utils::impl_dyn_cast!(PresentationConnection);
 
+
 impl PresentationConnection {
     /// Getter of the `id` attribute.
     /// [`PresentationConnection.id`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
+
 }
 impl PresentationConnection {
     /// Getter of the `url` attribute.
@@ -76,6 +79,7 @@ impl PresentationConnection {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
+
 }
 impl PresentationConnection {
     /// Getter of the `state` attribute.
@@ -83,18 +87,19 @@ impl PresentationConnection {
     pub fn state(&self) -> PresentationConnectionState {
         self.inner.get("state").as_::<PresentationConnectionState>()
     }
+
 }
 impl PresentationConnection {
     /// The close method.
     /// [`PresentationConnection.close`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/close)
-    pub fn close(&self) -> Undefined {
+    pub fn close(&self, ) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
 impl PresentationConnection {
     /// The terminate method.
     /// [`PresentationConnection.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/terminate)
-    pub fn terminate(&self) -> Undefined {
+    pub fn terminate(&self, ) -> Undefined {
         self.inner.call("terminate", &[]).as_::<Undefined>()
     }
 }
@@ -167,6 +172,6 @@ impl PresentationConnection {
     /// The send method.
     /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
     pub fn send(&self, data: &Any) -> Undefined {
-        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+        self.inner.call("send", &[data.into(), ]).as_::<Undefined>()
     }
 }

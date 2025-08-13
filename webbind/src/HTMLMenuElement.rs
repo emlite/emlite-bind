@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLMenuElement class.
 /// [`HTMLMenuElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMenuElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLMenuElement {
 
 impl FromVal for HTMLMenuElement {
     fn from_val(v: &Any) -> Self {
-        HTMLMenuElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLMenuElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLMenuElement {
 
 impl AsMut<Any> for HTMLMenuElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLMenuElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLMenuElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLMenuElement);
 
+
+
 impl HTMLMenuElement {
     /// The `new HTMLMenuElement(..)` constructor, creating a new HTMLMenuElement instance
     pub fn new() -> HTMLMenuElement {
@@ -70,6 +73,7 @@ impl HTMLMenuElement {
             inner: Any::global("HTMLMenuElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLMenuElement {
     /// Getter of the `compact` attribute.

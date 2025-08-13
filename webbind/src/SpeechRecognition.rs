@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SpeechRecognition class.
 /// [`SpeechRecognition`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SpeechRecognition {
 
 impl FromVal for SpeechRecognition {
     fn from_val(v: &Any) -> Self {
-        SpeechRecognition {
-            inner: EventTarget::from_val(v),
-        }
+        SpeechRecognition { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SpeechRecognition {
 
 impl AsMut<Any> for SpeechRecognition {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SpeechRecognition> for Any {
@@ -63,15 +64,16 @@ impl From<&SpeechRecognition> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechRecognition);
 
+
+
 impl SpeechRecognition {
     /// The `new SpeechRecognition(..)` constructor, creating a new SpeechRecognition instance
     pub fn new() -> SpeechRecognition {
         Self {
-            inner: Any::global("SpeechRecognition")
-                .new(&[])
-                .as_::<EventTarget>(),
+            inner: Any::global("SpeechRecognition").new(&[]).as_::<EventTarget>(),
         }
     }
+
 }
 impl SpeechRecognition {
     /// Getter of the `grammars` attribute.
@@ -155,9 +157,7 @@ impl SpeechRecognition {
     /// Getter of the `phrases` attribute.
     /// [`SpeechRecognition.phrases`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/phrases)
     pub fn phrases(&self) -> SpeechRecognitionPhraseList {
-        self.inner
-            .get("phrases")
-            .as_::<SpeechRecognitionPhraseList>()
+        self.inner.get("phrases").as_::<SpeechRecognitionPhraseList>()
     }
 
     /// Setter of the `phrases` attribute.
@@ -170,22 +170,20 @@ impl SpeechRecognition {
     /// The start method.
     /// [`SpeechRecognition.start`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
     pub fn start(&self, audio_track: &MediaStreamTrack) -> Undefined {
-        self.inner
-            .call("start", &[audio_track.into()])
-            .as_::<Undefined>()
+        self.inner.call("start", &[audio_track.into(), ]).as_::<Undefined>()
     }
 }
 impl SpeechRecognition {
     /// The stop method.
     /// [`SpeechRecognition.stop`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/stop)
-    pub fn stop(&self) -> Undefined {
+    pub fn stop(&self, ) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }
 impl SpeechRecognition {
     /// The abort method.
     /// [`SpeechRecognition.abort`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/abort)
-    pub fn abort(&self) -> Undefined {
+    pub fn abort(&self, ) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
 }
@@ -193,18 +191,14 @@ impl SpeechRecognition {
     /// The available method.
     /// [`SpeechRecognition.available`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/available)
     pub fn available(options: &SpeechRecognitionOptions) -> Promise<AvailabilityStatus> {
-        Any::global("SpeechRecognition")
-            .call("available", &[options.into()])
-            .as_::<Promise<AvailabilityStatus>>()
+        Any::global("SpeechRecognition").call("available", &[options.into(), ]).as_::<Promise<AvailabilityStatus>>()
     }
 }
 impl SpeechRecognition {
     /// The install method.
     /// [`SpeechRecognition.install`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/install)
     pub fn install(options: &SpeechRecognitionOptions) -> Promise<bool> {
-        Any::global("SpeechRecognition")
-            .call("install", &[options.into()])
-            .as_::<Promise<bool>>()
+        Any::global("SpeechRecognition").call("install", &[options.into(), ]).as_::<Promise<bool>>()
     }
 }
 impl SpeechRecognition {

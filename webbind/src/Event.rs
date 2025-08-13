@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The Event class.
 /// [`Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct Event {
 
 impl FromVal for Event {
     fn from_val(v: &Any) -> Self {
-        Event {
-            inner: Any::from_val(v),
-        }
+        Event { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for Event {
 
 impl AsMut<Any> for Event {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<Event> for Any {
@@ -63,6 +64,8 @@ impl From<&Event> for Any {
 
 jsbind::utils::impl_dyn_cast!(Event);
 
+
+
 impl Event {
     /// The `new Event(..)` constructor, creating a new Event instance
     pub fn new0(type_: &JsString) -> Event {
@@ -74,11 +77,10 @@ impl Event {
     /// The `new Event(..)` constructor, creating a new Event instance
     pub fn new1(type_: &JsString, event_init_dict: &EventInit) -> Event {
         Self {
-            inner: Any::global("Event")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Any>(),
+            inner: Any::global("Event").new(&[type_.into(), event_init_dict.into()]).as_::<Any>(),
         }
     }
+
 }
 impl Event {
     /// Getter of the `type` attribute.
@@ -86,6 +88,7 @@ impl Event {
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
+
 }
 impl Event {
     /// Getter of the `target` attribute.
@@ -93,6 +96,7 @@ impl Event {
     pub fn target(&self) -> EventTarget {
         self.inner.get("target").as_::<EventTarget>()
     }
+
 }
 impl Event {
     /// Getter of the `srcElement` attribute.
@@ -100,6 +104,7 @@ impl Event {
     pub fn src_element(&self) -> EventTarget {
         self.inner.get("srcElement").as_::<EventTarget>()
     }
+
 }
 impl Event {
     /// Getter of the `currentTarget` attribute.
@@ -107,14 +112,13 @@ impl Event {
     pub fn current_target(&self) -> EventTarget {
         self.inner.get("currentTarget").as_::<EventTarget>()
     }
+
 }
 impl Event {
     /// The composedPath method.
     /// [`Event.composedPath`](https://developer.mozilla.org/en-US/docs/Web/API/Event/composedPath)
-    pub fn composed_path(&self) -> TypedArray<EventTarget> {
-        self.inner
-            .call("composedPath", &[])
-            .as_::<TypedArray<EventTarget>>()
+    pub fn composed_path(&self, ) -> TypedArray<EventTarget> {
+        self.inner.call("composedPath", &[]).as_::<TypedArray<EventTarget>>()
     }
 }
 impl Event {
@@ -123,11 +127,12 @@ impl Event {
     pub fn event_phase(&self) -> u16 {
         self.inner.get("eventPhase").as_::<u16>()
     }
+
 }
 impl Event {
     /// The stopPropagation method.
     /// [`Event.stopPropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
-    pub fn stop_propagation(&self) -> Undefined {
+    pub fn stop_propagation(&self, ) -> Undefined {
         self.inner.call("stopPropagation", &[]).as_::<Undefined>()
     }
 }
@@ -147,10 +152,8 @@ impl Event {
 impl Event {
     /// The stopImmediatePropagation method.
     /// [`Event.stopImmediatePropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation)
-    pub fn stop_immediate_propagation(&self) -> Undefined {
-        self.inner
-            .call("stopImmediatePropagation", &[])
-            .as_::<Undefined>()
+    pub fn stop_immediate_propagation(&self, ) -> Undefined {
+        self.inner.call("stopImmediatePropagation", &[]).as_::<Undefined>()
     }
 }
 impl Event {
@@ -159,6 +162,7 @@ impl Event {
     pub fn bubbles(&self) -> bool {
         self.inner.get("bubbles").as_::<bool>()
     }
+
 }
 impl Event {
     /// Getter of the `cancelable` attribute.
@@ -166,6 +170,7 @@ impl Event {
     pub fn cancelable(&self) -> bool {
         self.inner.get("cancelable").as_::<bool>()
     }
+
 }
 impl Event {
     /// Getter of the `returnValue` attribute.
@@ -183,7 +188,7 @@ impl Event {
 impl Event {
     /// The preventDefault method.
     /// [`Event.preventDefault`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
-    pub fn prevent_default(&self) -> Undefined {
+    pub fn prevent_default(&self, ) -> Undefined {
         self.inner.call("preventDefault", &[]).as_::<Undefined>()
     }
 }
@@ -193,6 +198,7 @@ impl Event {
     pub fn default_prevented(&self) -> bool {
         self.inner.get("defaultPrevented").as_::<bool>()
     }
+
 }
 impl Event {
     /// Getter of the `composed` attribute.
@@ -200,6 +206,7 @@ impl Event {
     pub fn composed(&self) -> bool {
         self.inner.get("composed").as_::<bool>()
     }
+
 }
 impl Event {
     /// Getter of the `isTrusted` attribute.
@@ -207,6 +214,7 @@ impl Event {
     pub fn is_trusted(&self) -> bool {
         self.inner.get("isTrusted").as_::<bool>()
     }
+
 }
 impl Event {
     /// Getter of the `timeStamp` attribute.
@@ -214,30 +222,22 @@ impl Event {
     pub fn time_stamp(&self) -> Any {
         self.inner.get("timeStamp").as_::<Any>()
     }
+
 }
 impl Event {
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
     pub fn init_event0(&self, type_: &JsString) -> Undefined {
-        self.inner
-            .call("initEvent", &[type_.into()])
-            .as_::<Undefined>()
+        self.inner.call("initEvent", &[type_.into(), ]).as_::<Undefined>()
     }
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
     pub fn init_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
-        self.inner
-            .call("initEvent", &[type_.into(), bubbles.into()])
-            .as_::<Undefined>()
+        self.inner.call("initEvent", &[type_.into(), bubbles.into(), ]).as_::<Undefined>()
     }
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
     pub fn init_event2(&self, type_: &JsString, bubbles: bool, cancelable: bool) -> Undefined {
-        self.inner
-            .call(
-                "initEvent",
-                &[type_.into(), bubbles.into(), cancelable.into()],
-            )
-            .as_::<Undefined>()
+        self.inner.call("initEvent", &[type_.into(), bubbles.into(), cancelable.into(), ]).as_::<Undefined>()
     }
 }

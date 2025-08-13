@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSAnimation class.
 /// [`CSSAnimation`](https://developer.mozilla.org/en-US/docs/Web/API/CSSAnimation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSAnimation {
 
 impl FromVal for CSSAnimation {
     fn from_val(v: &Any) -> Self {
-        CSSAnimation {
-            inner: Animation::from_val(v),
-        }
+        CSSAnimation { inner: Animation::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSAnimation {
 
 impl AsMut<Any> for CSSAnimation {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSAnimation> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSAnimation> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSAnimation);
 
+
 impl CSSAnimation {
     /// Getter of the `animationName` attribute.
     /// [`CSSAnimation.animationName`](https://developer.mozilla.org/en-US/docs/Web/API/CSSAnimation/animationName)
     pub fn animation_name(&self) -> JsString {
         self.inner.get("animationName").as_::<JsString>()
     }
+
 }

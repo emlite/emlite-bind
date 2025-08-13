@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NavigationCurrentEntryChangeEvent class.
 /// [`NavigationCurrentEntryChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationCurrentEntryChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NavigationCurrentEntryChangeEvent {
 
 impl FromVal for NavigationCurrentEntryChangeEvent {
     fn from_val(v: &Any) -> Self {
-        NavigationCurrentEntryChangeEvent {
-            inner: Event::from_val(v),
-        }
+        NavigationCurrentEntryChangeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NavigationCurrentEntryChangeEvent {
 
 impl AsMut<Any> for NavigationCurrentEntryChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NavigationCurrentEntryChangeEvent> for Any {
@@ -63,18 +64,16 @@ impl From<&NavigationCurrentEntryChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigationCurrentEntryChangeEvent);
 
+
+
 impl NavigationCurrentEntryChangeEvent {
     /// The `new NavigationCurrentEntryChangeEvent(..)` constructor, creating a new NavigationCurrentEntryChangeEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &NavigationCurrentEntryChangeEventInit,
-    ) -> NavigationCurrentEntryChangeEvent {
+    pub fn new(type_: &JsString, event_init_dict: &NavigationCurrentEntryChangeEventInit) -> NavigationCurrentEntryChangeEvent {
         Self {
-            inner: Any::global("NavigationCurrentEntryChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("NavigationCurrentEntryChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl NavigationCurrentEntryChangeEvent {
     /// Getter of the `navigationType` attribute.
@@ -82,6 +81,7 @@ impl NavigationCurrentEntryChangeEvent {
     pub fn navigation_type(&self) -> NavigationType {
         self.inner.get("navigationType").as_::<NavigationType>()
     }
+
 }
 impl NavigationCurrentEntryChangeEvent {
     /// Getter of the `from` attribute.
@@ -89,4 +89,5 @@ impl NavigationCurrentEntryChangeEvent {
     pub fn from(&self) -> NavigationHistoryEntry {
         self.inner.get("from").as_::<NavigationHistoryEntry>()
     }
+
 }

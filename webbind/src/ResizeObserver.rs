@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ResizeObserver class.
 /// [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ResizeObserver {
 
 impl FromVal for ResizeObserver {
     fn from_val(v: &Any) -> Self {
-        ResizeObserver {
-            inner: Any::from_val(v),
-        }
+        ResizeObserver { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ResizeObserver {
 
 impl AsMut<Any> for ResizeObserver {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ResizeObserver> for Any {
@@ -63,45 +64,40 @@ impl From<&ResizeObserver> for Any {
 
 jsbind::utils::impl_dyn_cast!(ResizeObserver);
 
+
+
 impl ResizeObserver {
     /// The `new ResizeObserver(..)` constructor, creating a new ResizeObserver instance
     pub fn new(callback: &Function) -> ResizeObserver {
         Self {
-            inner: Any::global("ResizeObserver")
-                .new(&[callback.into()])
-                .as_::<Any>(),
+            inner: Any::global("ResizeObserver").new(&[callback.into()]).as_::<Any>(),
         }
     }
+
 }
 impl ResizeObserver {
     /// The observe method.
     /// [`ResizeObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/observe)
     pub fn observe0(&self, target: &Element) -> Undefined {
-        self.inner
-            .call("observe", &[target.into()])
-            .as_::<Undefined>()
+        self.inner.call("observe", &[target.into(), ]).as_::<Undefined>()
     }
     /// The observe method.
     /// [`ResizeObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/observe)
     pub fn observe1(&self, target: &Element, options: &ResizeObserverOptions) -> Undefined {
-        self.inner
-            .call("observe", &[target.into(), options.into()])
-            .as_::<Undefined>()
+        self.inner.call("observe", &[target.into(), options.into(), ]).as_::<Undefined>()
     }
 }
 impl ResizeObserver {
     /// The unobserve method.
     /// [`ResizeObserver.unobserve`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/unobserve)
     pub fn unobserve(&self, target: &Element) -> Undefined {
-        self.inner
-            .call("unobserve", &[target.into()])
-            .as_::<Undefined>()
+        self.inner.call("unobserve", &[target.into(), ]).as_::<Undefined>()
     }
 }
 impl ResizeObserver {
     /// The disconnect method.
     /// [`ResizeObserver.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/disconnect)
-    pub fn disconnect(&self) -> Undefined {
+    pub fn disconnect(&self, ) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MagnetometerSensorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MagnetometerSensorOptions {
 
 impl AsMut<Any> for MagnetometerSensorOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MagnetometerSensorOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&MagnetometerSensorOptions> for Any {
 impl MagnetometerSensorOptions {
     /// Getter of the `referenceFrame` attribute.
     pub fn reference_frame(&self) -> MagnetometerLocalCoordinateSystem {
-        self.inner
-            .get("referenceFrame")
-            .as_::<MagnetometerLocalCoordinateSystem>()
+        self.inner.get("referenceFrame").as_::<MagnetometerLocalCoordinateSystem>()
     }
 
     /// Setter of the `referenceFrame` attribute.

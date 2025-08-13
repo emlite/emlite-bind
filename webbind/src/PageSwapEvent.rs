@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PageSwapEvent class.
 /// [`PageSwapEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PageSwapEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PageSwapEvent {
 
 impl FromVal for PageSwapEvent {
     fn from_val(v: &Any) -> Self {
-        PageSwapEvent {
-            inner: Event::from_val(v),
-        }
+        PageSwapEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PageSwapEvent {
 
 impl AsMut<Any> for PageSwapEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PageSwapEvent> for Any {
@@ -63,24 +64,23 @@ impl From<&PageSwapEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PageSwapEvent);
 
+
+
 impl PageSwapEvent {
     /// The `new PageSwapEvent(..)` constructor, creating a new PageSwapEvent instance
     pub fn new0(type_: &JsString) -> PageSwapEvent {
         Self {
-            inner: Any::global("PageSwapEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: Any::global("PageSwapEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new PageSwapEvent(..)` constructor, creating a new PageSwapEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &PageSwapEventInit) -> PageSwapEvent {
         Self {
-            inner: Any::global("PageSwapEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("PageSwapEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl PageSwapEvent {
     /// Getter of the `activation` attribute.
@@ -88,6 +88,7 @@ impl PageSwapEvent {
     pub fn activation(&self) -> NavigationActivation {
         self.inner.get("activation").as_::<NavigationActivation>()
     }
+
 }
 impl PageSwapEvent {
     /// Getter of the `viewTransition` attribute.
@@ -95,4 +96,5 @@ impl PageSwapEvent {
     pub fn view_transition(&self) -> ViewTransition {
         self.inner.get("viewTransition").as_::<ViewTransition>()
     }
+
 }

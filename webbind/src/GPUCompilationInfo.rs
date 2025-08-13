@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUCompilationInfo class.
 /// [`GPUCompilationInfo`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCompilationInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUCompilationInfo {
 
 impl FromVal for GPUCompilationInfo {
     fn from_val(v: &Any) -> Self {
-        GPUCompilationInfo {
-            inner: Any::from_val(v),
-        }
+        GPUCompilationInfo { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUCompilationInfo {
 
 impl AsMut<Any> for GPUCompilationInfo {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUCompilationInfo> for Any {
@@ -63,12 +64,12 @@ impl From<&GPUCompilationInfo> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUCompilationInfo);
 
+
 impl GPUCompilationInfo {
     /// Getter of the `messages` attribute.
     /// [`GPUCompilationInfo.messages`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCompilationInfo/messages)
     pub fn messages(&self) -> TypedArray<GPUCompilationMessage> {
-        self.inner
-            .get("messages")
-            .as_::<TypedArray<GPUCompilationMessage>>()
+        self.inner.get("messages").as_::<TypedArray<GPUCompilationMessage>>()
     }
+
 }

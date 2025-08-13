@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUVertexState dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for GPUVertexState {
 
 impl AsMut<Any> for GPUVertexState {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUVertexState> for Any {
@@ -61,9 +64,7 @@ impl From<&GPUVertexState> for Any {
 impl GPUVertexState {
     /// Getter of the `buffers` attribute.
     pub fn buffers(&self) -> TypedArray<GPUVertexBufferLayout> {
-        self.inner
-            .get("buffers")
-            .as_::<TypedArray<GPUVertexBufferLayout>>()
+        self.inner.get("buffers").as_::<TypedArray<GPUVertexBufferLayout>>()
     }
 
     /// Setter of the `buffers` attribute.

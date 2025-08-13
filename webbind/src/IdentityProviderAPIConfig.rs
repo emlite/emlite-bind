@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdentityProviderAPIConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IdentityProviderAPIConfig {
 
 impl AsMut<Any> for IdentityProviderAPIConfig {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdentityProviderAPIConfig> for Any {

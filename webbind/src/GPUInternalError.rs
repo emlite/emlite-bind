@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The GPUInternalError class.
 /// [`GPUInternalError`](https://developer.mozilla.org/en-US/docs/Web/API/GPUInternalError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct GPUInternalError {
 
 impl FromVal for GPUInternalError {
     fn from_val(v: &Any) -> Self {
-        GPUInternalError {
-            inner: GPUError::from_val(v),
-        }
+        GPUInternalError { inner: GPUError::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for GPUInternalError {
 
 impl AsMut<Any> for GPUInternalError {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<GPUInternalError> for Any {
@@ -63,13 +64,14 @@ impl From<&GPUInternalError> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUInternalError);
 
+
+
 impl GPUInternalError {
     /// The `new GPUInternalError(..)` constructor, creating a new GPUInternalError instance
     pub fn new(message: &JsString) -> GPUInternalError {
         Self {
-            inner: Any::global("GPUInternalError")
-                .new(&[message.into()])
-                .as_::<GPUError>(),
+            inner: Any::global("GPUInternalError").new(&[message.into()]).as_::<GPUError>(),
         }
     }
+
 }

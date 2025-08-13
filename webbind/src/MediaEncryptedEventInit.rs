@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The MediaEncryptedEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for MediaEncryptedEventInit {
 
 impl AsMut<Any> for MediaEncryptedEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<MediaEncryptedEventInit> for Any {

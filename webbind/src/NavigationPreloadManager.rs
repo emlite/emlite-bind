@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NavigationPreloadManager class.
 /// [`NavigationPreloadManager`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NavigationPreloadManager {
 
 impl FromVal for NavigationPreloadManager {
     fn from_val(v: &Any) -> Self {
-        NavigationPreloadManager {
-            inner: Any::from_val(v),
-        }
+        NavigationPreloadManager { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NavigationPreloadManager {
 
 impl AsMut<Any> for NavigationPreloadManager {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NavigationPreloadManager> for Any {
@@ -63,17 +64,18 @@ impl From<&NavigationPreloadManager> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigationPreloadManager);
 
+
 impl NavigationPreloadManager {
     /// The enable method.
     /// [`NavigationPreloadManager.enable`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager/enable)
-    pub fn enable(&self) -> Promise<Undefined> {
+    pub fn enable(&self, ) -> Promise<Undefined> {
         self.inner.call("enable", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl NavigationPreloadManager {
     /// The disable method.
     /// [`NavigationPreloadManager.disable`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager/disable)
-    pub fn disable(&self) -> Promise<Undefined> {
+    pub fn disable(&self, ) -> Promise<Undefined> {
         self.inner.call("disable", &[]).as_::<Promise<Undefined>>()
     }
 }
@@ -81,17 +83,13 @@ impl NavigationPreloadManager {
     /// The setHeaderValue method.
     /// [`NavigationPreloadManager.setHeaderValue`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager/setHeaderValue)
     pub fn set_header_value(&self, value: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("setHeaderValue", &[value.into()])
-            .as_::<Promise<Undefined>>()
+        self.inner.call("setHeaderValue", &[value.into(), ]).as_::<Promise<Undefined>>()
     }
 }
 impl NavigationPreloadManager {
     /// The getState method.
     /// [`NavigationPreloadManager.getState`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager/getState)
-    pub fn get_state(&self) -> Promise<NavigationPreloadState> {
-        self.inner
-            .call("getState", &[])
-            .as_::<Promise<NavigationPreloadState>>()
+    pub fn get_state(&self, ) -> Promise<NavigationPreloadState> {
+        self.inner.call("getState", &[]).as_::<Promise<NavigationPreloadState>>()
     }
 }

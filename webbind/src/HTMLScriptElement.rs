@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLScriptElement class.
 /// [`HTMLScriptElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLScriptElement {
 
 impl FromVal for HTMLScriptElement {
     fn from_val(v: &Any) -> Self {
-        HTMLScriptElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLScriptElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLScriptElement {
 
 impl AsMut<Any> for HTMLScriptElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLScriptElement> for Any {
@@ -63,15 +64,16 @@ impl From<&HTMLScriptElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLScriptElement);
 
+
+
 impl HTMLScriptElement {
     /// The `new HTMLScriptElement(..)` constructor, creating a new HTMLScriptElement instance
     pub fn new() -> HTMLScriptElement {
         Self {
-            inner: Any::global("HTMLScriptElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLScriptElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLScriptElement {
     /// Getter of the `type` attribute.
@@ -144,6 +146,7 @@ impl HTMLScriptElement {
     pub fn blocking(&self) -> DOMTokenList {
         self.inner.get("blocking").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLScriptElement {
     /// Getter of the `crossOrigin` attribute.
@@ -214,9 +217,7 @@ impl HTMLScriptElement {
     /// The supports method.
     /// [`HTMLScriptElement.supports`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/supports)
     pub fn supports(type_: &JsString) -> bool {
-        Any::global("HTMLScriptElement")
-            .call("supports", &[type_.into()])
-            .as_::<bool>()
+        Any::global("HTMLScriptElement").call("supports", &[type_.into(), ]).as_::<bool>()
     }
 }
 impl HTMLScriptElement {

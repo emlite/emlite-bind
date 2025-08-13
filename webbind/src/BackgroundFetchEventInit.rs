@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The BackgroundFetchEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for BackgroundFetchEventInit {
 
 impl AsMut<Any> for BackgroundFetchEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<BackgroundFetchEventInit> for Any {
@@ -61,9 +64,7 @@ impl From<&BackgroundFetchEventInit> for Any {
 impl BackgroundFetchEventInit {
     /// Getter of the `registration` attribute.
     pub fn registration(&self) -> BackgroundFetchRegistration {
-        self.inner
-            .get("registration")
-            .as_::<BackgroundFetchRegistration>()
+        self.inner.get("registration").as_::<BackgroundFetchRegistration>()
     }
 
     /// Setter of the `registration` attribute.

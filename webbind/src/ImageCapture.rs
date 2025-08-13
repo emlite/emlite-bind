@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ImageCapture class.
 /// [`ImageCapture`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct ImageCapture {
 
 impl FromVal for ImageCapture {
     fn from_val(v: &Any) -> Self {
-        ImageCapture {
-            inner: Any::from_val(v),
-        }
+        ImageCapture { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for ImageCapture {
 
 impl AsMut<Any> for ImageCapture {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ImageCapture> for Any {
@@ -63,55 +64,48 @@ impl From<&ImageCapture> for Any {
 
 jsbind::utils::impl_dyn_cast!(ImageCapture);
 
+
+
 impl ImageCapture {
     /// The `new ImageCapture(..)` constructor, creating a new ImageCapture instance
     pub fn new(video_track: &MediaStreamTrack) -> ImageCapture {
         Self {
-            inner: Any::global("ImageCapture")
-                .new(&[video_track.into()])
-                .as_::<Any>(),
+            inner: Any::global("ImageCapture").new(&[video_track.into()]).as_::<Any>(),
         }
     }
+
 }
 impl ImageCapture {
     /// The takePhoto method.
     /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
-    pub fn take_photo0(&self) -> Promise<Blob> {
+    pub fn take_photo0(&self, ) -> Promise<Blob> {
         self.inner.call("takePhoto", &[]).as_::<Promise<Blob>>()
     }
     /// The takePhoto method.
     /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
     pub fn take_photo1(&self, photo_settings: &PhotoSettings) -> Promise<Blob> {
-        self.inner
-            .call("takePhoto", &[photo_settings.into()])
-            .as_::<Promise<Blob>>()
+        self.inner.call("takePhoto", &[photo_settings.into(), ]).as_::<Promise<Blob>>()
     }
 }
 impl ImageCapture {
     /// The getPhotoCapabilities method.
     /// [`ImageCapture.getPhotoCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/getPhotoCapabilities)
-    pub fn get_photo_capabilities(&self) -> Promise<PhotoCapabilities> {
-        self.inner
-            .call("getPhotoCapabilities", &[])
-            .as_::<Promise<PhotoCapabilities>>()
+    pub fn get_photo_capabilities(&self, ) -> Promise<PhotoCapabilities> {
+        self.inner.call("getPhotoCapabilities", &[]).as_::<Promise<PhotoCapabilities>>()
     }
 }
 impl ImageCapture {
     /// The getPhotoSettings method.
     /// [`ImageCapture.getPhotoSettings`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/getPhotoSettings)
-    pub fn get_photo_settings(&self) -> Promise<PhotoSettings> {
-        self.inner
-            .call("getPhotoSettings", &[])
-            .as_::<Promise<PhotoSettings>>()
+    pub fn get_photo_settings(&self, ) -> Promise<PhotoSettings> {
+        self.inner.call("getPhotoSettings", &[]).as_::<Promise<PhotoSettings>>()
     }
 }
 impl ImageCapture {
     /// The grabFrame method.
     /// [`ImageCapture.grabFrame`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/grabFrame)
-    pub fn grab_frame(&self) -> Promise<ImageBitmap> {
-        self.inner
-            .call("grabFrame", &[])
-            .as_::<Promise<ImageBitmap>>()
+    pub fn grab_frame(&self, ) -> Promise<ImageBitmap> {
+        self.inner.call("grabFrame", &[]).as_::<Promise<ImageBitmap>>()
     }
 }
 impl ImageCapture {
@@ -120,4 +114,5 @@ impl ImageCapture {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
+
 }

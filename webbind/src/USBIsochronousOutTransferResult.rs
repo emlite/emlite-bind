@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBIsochronousOutTransferResult class.
 /// [`USBIsochronousOutTransferResult`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct USBIsochronousOutTransferResult {
 
 impl FromVal for USBIsochronousOutTransferResult {
     fn from_val(v: &Any) -> Self {
-        USBIsochronousOutTransferResult {
-            inner: Any::from_val(v),
-        }
+        USBIsochronousOutTransferResult { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for USBIsochronousOutTransferResult {
 
 impl AsMut<Any> for USBIsochronousOutTransferResult {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBIsochronousOutTransferResult> for Any {
@@ -63,24 +64,22 @@ impl From<&USBIsochronousOutTransferResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferResult);
 
+
+
 impl USBIsochronousOutTransferResult {
     /// The `new USBIsochronousOutTransferResult(..)` constructor, creating a new USBIsochronousOutTransferResult instance
-    pub fn new(
-        packets: &TypedArray<USBIsochronousOutTransferPacket>,
-    ) -> USBIsochronousOutTransferResult {
+    pub fn new(packets: &TypedArray<USBIsochronousOutTransferPacket>) -> USBIsochronousOutTransferResult {
         Self {
-            inner: Any::global("USBIsochronousOutTransferResult")
-                .new(&[packets.into()])
-                .as_::<Any>(),
+            inner: Any::global("USBIsochronousOutTransferResult").new(&[packets.into()]).as_::<Any>(),
         }
     }
+
 }
 impl USBIsochronousOutTransferResult {
     /// Getter of the `packets` attribute.
     /// [`USBIsochronousOutTransferResult.packets`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferResult/packets)
     pub fn packets(&self) -> TypedArray<USBIsochronousOutTransferPacket> {
-        self.inner
-            .get("packets")
-            .as_::<TypedArray<USBIsochronousOutTransferPacket>>()
+        self.inner.get("packets").as_::<TypedArray<USBIsochronousOutTransferPacket>>()
     }
+
 }

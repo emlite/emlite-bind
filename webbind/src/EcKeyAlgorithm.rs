@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The EcKeyAlgorithm dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for EcKeyAlgorithm {
 
 impl AsMut<Any> for EcKeyAlgorithm {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<EcKeyAlgorithm> for Any {

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The IdentityProviderAccountList dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for IdentityProviderAccountList {
 
 impl AsMut<Any> for IdentityProviderAccountList {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<IdentityProviderAccountList> for Any {
@@ -61,9 +64,7 @@ impl From<&IdentityProviderAccountList> for Any {
 impl IdentityProviderAccountList {
     /// Getter of the `accounts` attribute.
     pub fn accounts(&self) -> TypedArray<IdentityProviderAccount> {
-        self.inner
-            .get("accounts")
-            .as_::<TypedArray<IdentityProviderAccount>>()
+        self.inner.get("accounts").as_::<TypedArray<IdentityProviderAccount>>()
     }
 
     /// Setter of the `accounts` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CSSLayerStatementRule class.
 /// [`CSSLayerStatementRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerStatementRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct CSSLayerStatementRule {
 
 impl FromVal for CSSLayerStatementRule {
     fn from_val(v: &Any) -> Self {
-        CSSLayerStatementRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSLayerStatementRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for CSSLayerStatementRule {
 
 impl AsMut<Any> for CSSLayerStatementRule {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CSSLayerStatementRule> for Any {
@@ -63,10 +64,12 @@ impl From<&CSSLayerStatementRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSLayerStatementRule);
 
+
 impl CSSLayerStatementRule {
     /// Getter of the `nameList` attribute.
     /// [`CSSLayerStatementRule.nameList`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerStatementRule/nameList)
     pub fn name_list(&self) -> TypedArray<JsString> {
         self.inner.get("nameList").as_::<TypedArray<JsString>>()
     }
+
 }

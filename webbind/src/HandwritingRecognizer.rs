@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HandwritingRecognizer class.
 /// [`HandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingRecognizer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HandwritingRecognizer {
 
 impl FromVal for HandwritingRecognizer {
     fn from_val(v: &Any) -> Self {
-        HandwritingRecognizer {
-            inner: Any::from_val(v),
-        }
+        HandwritingRecognizer { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HandwritingRecognizer {
 
 impl AsMut<Any> for HandwritingRecognizer {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HandwritingRecognizer> for Any {
@@ -63,26 +64,23 @@ impl From<&HandwritingRecognizer> for Any {
 
 jsbind::utils::impl_dyn_cast!(HandwritingRecognizer);
 
+
 impl HandwritingRecognizer {
     /// The startDrawing method.
     /// [`HandwritingRecognizer.startDrawing`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingRecognizer/startDrawing)
-    pub fn start_drawing0(&self) -> HandwritingDrawing {
-        self.inner
-            .call("startDrawing", &[])
-            .as_::<HandwritingDrawing>()
+    pub fn start_drawing0(&self, ) -> HandwritingDrawing {
+        self.inner.call("startDrawing", &[]).as_::<HandwritingDrawing>()
     }
     /// The startDrawing method.
     /// [`HandwritingRecognizer.startDrawing`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingRecognizer/startDrawing)
     pub fn start_drawing1(&self, hints: &HandwritingHints) -> HandwritingDrawing {
-        self.inner
-            .call("startDrawing", &[hints.into()])
-            .as_::<HandwritingDrawing>()
+        self.inner.call("startDrawing", &[hints.into(), ]).as_::<HandwritingDrawing>()
     }
 }
 impl HandwritingRecognizer {
     /// The finish method.
     /// [`HandwritingRecognizer.finish`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingRecognizer/finish)
-    pub fn finish(&self) -> Undefined {
+    pub fn finish(&self, ) -> Undefined {
         self.inner.call("finish", &[]).as_::<Undefined>()
     }
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The WebTransportDatagramDuplexStream class.
 /// [`WebTransportDatagramDuplexStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct WebTransportDatagramDuplexStream {
 
 impl FromVal for WebTransportDatagramDuplexStream {
     fn from_val(v: &Any) -> Self {
-        WebTransportDatagramDuplexStream {
-            inner: Any::from_val(v),
-        }
+        WebTransportDatagramDuplexStream { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for WebTransportDatagramDuplexStream {
 
 impl AsMut<Any> for WebTransportDatagramDuplexStream {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<WebTransportDatagramDuplexStream> for Any {
@@ -63,23 +64,17 @@ impl From<&WebTransportDatagramDuplexStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramDuplexStream);
 
+
 impl WebTransportDatagramDuplexStream {
     /// The createWritable method.
     /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
-    pub fn create_writable0(&self) -> WebTransportDatagramsWritable {
-        self.inner
-            .call("createWritable", &[])
-            .as_::<WebTransportDatagramsWritable>()
+    pub fn create_writable0(&self, ) -> WebTransportDatagramsWritable {
+        self.inner.call("createWritable", &[]).as_::<WebTransportDatagramsWritable>()
     }
     /// The createWritable method.
     /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
-    pub fn create_writable1(
-        &self,
-        options: &WebTransportSendOptions,
-    ) -> WebTransportDatagramsWritable {
-        self.inner
-            .call("createWritable", &[options.into()])
-            .as_::<WebTransportDatagramsWritable>()
+    pub fn create_writable1(&self, options: &WebTransportSendOptions) -> WebTransportDatagramsWritable {
+        self.inner.call("createWritable", &[options.into(), ]).as_::<WebTransportDatagramsWritable>()
     }
 }
 impl WebTransportDatagramDuplexStream {
@@ -88,6 +83,7 @@ impl WebTransportDatagramDuplexStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     /// Getter of the `maxDatagramSize` attribute.
@@ -95,6 +91,7 @@ impl WebTransportDatagramDuplexStream {
     pub fn max_datagram_size(&self) -> u32 {
         self.inner.get("maxDatagramSize").as_::<u32>()
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     /// Getter of the `incomingMaxAge` attribute.

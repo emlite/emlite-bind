@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCPeerConnectionStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCPeerConnectionStats {
 
 impl AsMut<Any> for RTCPeerConnectionStats {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCPeerConnectionStats> for Any {

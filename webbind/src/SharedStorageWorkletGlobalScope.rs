@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SharedStorageWorkletGlobalScope class.
 /// [`SharedStorageWorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SharedStorageWorkletGlobalScope {
 
 impl FromVal for SharedStorageWorkletGlobalScope {
     fn from_val(v: &Any) -> Self {
-        SharedStorageWorkletGlobalScope {
-            inner: WorkletGlobalScope::from_val(v),
-        }
+        SharedStorageWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SharedStorageWorkletGlobalScope {
 
 impl AsMut<Any> for SharedStorageWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SharedStorageWorkletGlobalScope> for Any {
@@ -63,13 +64,12 @@ impl From<&SharedStorageWorkletGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(SharedStorageWorkletGlobalScope);
 
+
 impl SharedStorageWorkletGlobalScope {
     /// The register method.
     /// [`SharedStorageWorkletGlobalScope.register`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/register)
     pub fn register(&self, name: &JsString, operation_ctor: &Function) -> Undefined {
-        self.inner
-            .call("register", &[name.into(), operation_ctor.into()])
-            .as_::<Undefined>()
+        self.inner.call("register", &[name.into(), operation_ctor.into(), ]).as_::<Undefined>()
     }
 }
 impl SharedStorageWorkletGlobalScope {
@@ -78,31 +78,28 @@ impl SharedStorageWorkletGlobalScope {
     pub fn shared_storage(&self) -> SharedStorage {
         self.inner.get("sharedStorage").as_::<SharedStorage>()
     }
+
 }
 impl SharedStorageWorkletGlobalScope {
     /// Getter of the `privateAggregation` attribute.
     /// [`SharedStorageWorkletGlobalScope.privateAggregation`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/privateAggregation)
     pub fn private_aggregation(&self) -> PrivateAggregation {
-        self.inner
-            .get("privateAggregation")
-            .as_::<PrivateAggregation>()
+        self.inner.get("privateAggregation").as_::<PrivateAggregation>()
     }
+
 }
 impl SharedStorageWorkletGlobalScope {
     /// The interestGroups method.
     /// [`SharedStorageWorkletGlobalScope.interestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/interestGroups)
-    pub fn interest_groups(&self) -> Promise<TypedArray<StorageInterestGroup>> {
-        self.inner
-            .call("interestGroups", &[])
-            .as_::<Promise<TypedArray<StorageInterestGroup>>>()
+    pub fn interest_groups(&self, ) -> Promise<TypedArray<StorageInterestGroup>> {
+        self.inner.call("interestGroups", &[]).as_::<Promise<TypedArray<StorageInterestGroup>>>()
     }
 }
 impl SharedStorageWorkletGlobalScope {
     /// Getter of the `navigator` attribute.
     /// [`SharedStorageWorkletGlobalScope.navigator`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/navigator)
     pub fn navigator(&self) -> SharedStorageWorkletNavigator {
-        self.inner
-            .get("navigator")
-            .as_::<SharedStorageWorkletNavigator>()
+        self.inner.get("navigator").as_::<SharedStorageWorkletNavigator>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The USBPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for USBPermissionDescriptor {
 
 impl AsMut<Any> for USBPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<USBPermissionDescriptor> for Any {
@@ -61,9 +64,7 @@ impl From<&USBPermissionDescriptor> for Any {
 impl USBPermissionDescriptor {
     /// Getter of the `filters` attribute.
     pub fn filters(&self) -> TypedArray<USBDeviceFilter> {
-        self.inner
-            .get("filters")
-            .as_::<TypedArray<USBDeviceFilter>>()
+        self.inner.get("filters").as_::<TypedArray<USBDeviceFilter>>()
     }
 
     /// Setter of the `filters` attribute.
@@ -74,9 +75,7 @@ impl USBPermissionDescriptor {
 impl USBPermissionDescriptor {
     /// Getter of the `exclusionFilters` attribute.
     pub fn exclusion_filters(&self) -> TypedArray<USBDeviceFilter> {
-        self.inner
-            .get("exclusionFilters")
-            .as_::<TypedArray<USBDeviceFilter>>()
+        self.inner.get("exclusionFilters").as_::<TypedArray<USBDeviceFilter>>()
     }
 
     /// Setter of the `exclusionFilters` attribute.

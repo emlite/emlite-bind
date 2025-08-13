@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The OverconstrainedError class.
 /// [`OverconstrainedError`](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct OverconstrainedError {
 
 impl FromVal for OverconstrainedError {
     fn from_val(v: &Any) -> Self {
-        OverconstrainedError {
-            inner: DOMException::from_val(v),
-        }
+        OverconstrainedError { inner: DOMException::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for OverconstrainedError {
 
 impl AsMut<Any> for OverconstrainedError {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<OverconstrainedError> for Any {
@@ -63,24 +64,23 @@ impl From<&OverconstrainedError> for Any {
 
 jsbind::utils::impl_dyn_cast!(OverconstrainedError);
 
+
+
 impl OverconstrainedError {
     /// The `new OverconstrainedError(..)` constructor, creating a new OverconstrainedError instance
     pub fn new0(constraint: &JsString) -> OverconstrainedError {
         Self {
-            inner: Any::global("OverconstrainedError")
-                .new(&[constraint.into()])
-                .as_::<DOMException>(),
+            inner: Any::global("OverconstrainedError").new(&[constraint.into()]).as_::<DOMException>(),
         }
     }
 
     /// The `new OverconstrainedError(..)` constructor, creating a new OverconstrainedError instance
     pub fn new1(constraint: &JsString, message: &JsString) -> OverconstrainedError {
         Self {
-            inner: Any::global("OverconstrainedError")
-                .new(&[constraint.into(), message.into()])
-                .as_::<DOMException>(),
+            inner: Any::global("OverconstrainedError").new(&[constraint.into(), message.into()]).as_::<DOMException>(),
         }
     }
+
 }
 impl OverconstrainedError {
     /// Getter of the `constraint` attribute.
@@ -88,4 +88,5 @@ impl OverconstrainedError {
     pub fn constraint(&self) -> JsString {
         self.inner.get("constraint").as_::<JsString>()
     }
+
 }

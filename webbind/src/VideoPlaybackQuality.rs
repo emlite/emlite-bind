@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The VideoPlaybackQuality class.
 /// [`VideoPlaybackQuality`](https://developer.mozilla.org/en-US/docs/Web/API/VideoPlaybackQuality)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct VideoPlaybackQuality {
 
 impl FromVal for VideoPlaybackQuality {
     fn from_val(v: &Any) -> Self {
-        VideoPlaybackQuality {
-            inner: Any::from_val(v),
-        }
+        VideoPlaybackQuality { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for VideoPlaybackQuality {
 
 impl AsMut<Any> for VideoPlaybackQuality {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<VideoPlaybackQuality> for Any {
@@ -63,12 +64,14 @@ impl From<&VideoPlaybackQuality> for Any {
 
 jsbind::utils::impl_dyn_cast!(VideoPlaybackQuality);
 
+
 impl VideoPlaybackQuality {
     /// Getter of the `creationTime` attribute.
     /// [`VideoPlaybackQuality.creationTime`](https://developer.mozilla.org/en-US/docs/Web/API/VideoPlaybackQuality/creationTime)
     pub fn creation_time(&self) -> Any {
         self.inner.get("creationTime").as_::<Any>()
     }
+
 }
 impl VideoPlaybackQuality {
     /// Getter of the `droppedVideoFrames` attribute.
@@ -76,6 +79,7 @@ impl VideoPlaybackQuality {
     pub fn dropped_video_frames(&self) -> u32 {
         self.inner.get("droppedVideoFrames").as_::<u32>()
     }
+
 }
 impl VideoPlaybackQuality {
     /// Getter of the `totalVideoFrames` attribute.
@@ -83,6 +87,7 @@ impl VideoPlaybackQuality {
     pub fn total_video_frames(&self) -> u32 {
         self.inner.get("totalVideoFrames").as_::<u32>()
     }
+
 }
 impl VideoPlaybackQuality {
     /// Getter of the `corruptedVideoFrames` attribute.
@@ -90,4 +95,5 @@ impl VideoPlaybackQuality {
     pub fn corrupted_video_frames(&self) -> u32 {
         self.inner.get("corruptedVideoFrames").as_::<u32>()
     }
+
 }

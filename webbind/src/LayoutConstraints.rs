@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The LayoutConstraints class.
 /// [`LayoutConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutConstraints)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct LayoutConstraints {
 
 impl FromVal for LayoutConstraints {
     fn from_val(v: &Any) -> Self {
-        LayoutConstraints {
-            inner: Any::from_val(v),
-        }
+        LayoutConstraints { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for LayoutConstraints {
 
 impl AsMut<Any> for LayoutConstraints {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<LayoutConstraints> for Any {
@@ -63,12 +64,14 @@ impl From<&LayoutConstraints> for Any {
 
 jsbind::utils::impl_dyn_cast!(LayoutConstraints);
 
+
 impl LayoutConstraints {
     /// Getter of the `availableInlineSize` attribute.
     /// [`LayoutConstraints.availableInlineSize`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutConstraints/availableInlineSize)
     pub fn available_inline_size(&self) -> f64 {
         self.inner.get("availableInlineSize").as_::<f64>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `availableBlockSize` attribute.
@@ -76,6 +79,7 @@ impl LayoutConstraints {
     pub fn available_block_size(&self) -> f64 {
         self.inner.get("availableBlockSize").as_::<f64>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `fixedInlineSize` attribute.
@@ -83,6 +87,7 @@ impl LayoutConstraints {
     pub fn fixed_inline_size(&self) -> f64 {
         self.inner.get("fixedInlineSize").as_::<f64>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `fixedBlockSize` attribute.
@@ -90,6 +95,7 @@ impl LayoutConstraints {
     pub fn fixed_block_size(&self) -> f64 {
         self.inner.get("fixedBlockSize").as_::<f64>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `percentageInlineSize` attribute.
@@ -97,6 +103,7 @@ impl LayoutConstraints {
     pub fn percentage_inline_size(&self) -> f64 {
         self.inner.get("percentageInlineSize").as_::<f64>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `percentageBlockSize` attribute.
@@ -104,6 +111,7 @@ impl LayoutConstraints {
     pub fn percentage_block_size(&self) -> f64 {
         self.inner.get("percentageBlockSize").as_::<f64>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `blockFragmentationOffset` attribute.
@@ -111,15 +119,15 @@ impl LayoutConstraints {
     pub fn block_fragmentation_offset(&self) -> f64 {
         self.inner.get("blockFragmentationOffset").as_::<f64>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `blockFragmentationType` attribute.
     /// [`LayoutConstraints.blockFragmentationType`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutConstraints/blockFragmentationType)
     pub fn block_fragmentation_type(&self) -> BlockFragmentationType {
-        self.inner
-            .get("blockFragmentationType")
-            .as_::<BlockFragmentationType>()
+        self.inner.get("blockFragmentationType").as_::<BlockFragmentationType>()
     }
+
 }
 impl LayoutConstraints {
     /// Getter of the `data` attribute.
@@ -127,4 +135,5 @@ impl LayoutConstraints {
     pub fn data(&self) -> Any {
         self.inner.get("data").as_::<Any>()
     }
+
 }

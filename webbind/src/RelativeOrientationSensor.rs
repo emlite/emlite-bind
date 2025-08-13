@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RelativeOrientationSensor class.
 /// [`RelativeOrientationSensor`](https://developer.mozilla.org/en-US/docs/Web/API/RelativeOrientationSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RelativeOrientationSensor {
 
 impl FromVal for RelativeOrientationSensor {
     fn from_val(v: &Any) -> Self {
-        RelativeOrientationSensor {
-            inner: OrientationSensor::from_val(v),
-        }
+        RelativeOrientationSensor { inner: OrientationSensor::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RelativeOrientationSensor {
 
 impl AsMut<Any> for RelativeOrientationSensor {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RelativeOrientationSensor> for Any {
@@ -63,22 +64,21 @@ impl From<&RelativeOrientationSensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(RelativeOrientationSensor);
 
+
+
 impl RelativeOrientationSensor {
     /// The `new RelativeOrientationSensor(..)` constructor, creating a new RelativeOrientationSensor instance
     pub fn new0() -> RelativeOrientationSensor {
         Self {
-            inner: Any::global("RelativeOrientationSensor")
-                .new(&[])
-                .as_::<OrientationSensor>(),
+            inner: Any::global("RelativeOrientationSensor").new(&[]).as_::<OrientationSensor>(),
         }
     }
 
     /// The `new RelativeOrientationSensor(..)` constructor, creating a new RelativeOrientationSensor instance
     pub fn new1(sensor_options: &OrientationSensorOptions) -> RelativeOrientationSensor {
         Self {
-            inner: Any::global("RelativeOrientationSensor")
-                .new(&[sensor_options.into()])
-                .as_::<OrientationSensor>(),
+            inner: Any::global("RelativeOrientationSensor").new(&[sensor_options.into()]).as_::<OrientationSensor>(),
         }
     }
+
 }

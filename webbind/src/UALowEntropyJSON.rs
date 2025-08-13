@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The UALowEntropyJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for UALowEntropyJSON {
 
 impl AsMut<Any> for UALowEntropyJSON {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<UALowEntropyJSON> for Any {
@@ -61,9 +64,7 @@ impl From<&UALowEntropyJSON> for Any {
 impl UALowEntropyJSON {
     /// Getter of the `brands` attribute.
     pub fn brands(&self) -> TypedArray<NavigatorUABrandVersion> {
-        self.inner
-            .get("brands")
-            .as_::<TypedArray<NavigatorUABrandVersion>>()
+        self.inner.get("brands").as_::<TypedArray<NavigatorUABrandVersion>>()
     }
 
     /// Setter of the `brands` attribute.

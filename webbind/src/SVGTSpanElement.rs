@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGTSpanElement class.
 /// [`SVGTSpanElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTSpanElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGTSpanElement {
 
 impl FromVal for SVGTSpanElement {
     fn from_val(v: &Any) -> Self {
-        SVGTSpanElement {
-            inner: SVGTextPositioningElement::from_val(v),
-        }
+        SVGTSpanElement { inner: SVGTextPositioningElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGTSpanElement {
 
 impl AsMut<Any> for SVGTSpanElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGTSpanElement> for Any {
@@ -62,3 +63,5 @@ impl From<&SVGTSpanElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGTSpanElement);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HTMLDivElement class.
 /// [`HTMLDivElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HTMLDivElement {
 
 impl FromVal for HTMLDivElement {
     fn from_val(v: &Any) -> Self {
-        HTMLDivElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLDivElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HTMLDivElement {
 
 impl AsMut<Any> for HTMLDivElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HTMLDivElement> for Any {
@@ -63,6 +64,8 @@ impl From<&HTMLDivElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLDivElement);
 
+
+
 impl HTMLDivElement {
     /// The `new HTMLDivElement(..)` constructor, creating a new HTMLDivElement instance
     pub fn new() -> HTMLDivElement {
@@ -70,6 +73,7 @@ impl HTMLDivElement {
             inner: Any::global("HTMLDivElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLDivElement {
     /// Getter of the `align` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PictureInPictureWindow class.
 /// [`PictureInPictureWindow`](https://developer.mozilla.org/en-US/docs/Web/API/PictureInPictureWindow)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PictureInPictureWindow {
 
 impl FromVal for PictureInPictureWindow {
     fn from_val(v: &Any) -> Self {
-        PictureInPictureWindow {
-            inner: EventTarget::from_val(v),
-        }
+        PictureInPictureWindow { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PictureInPictureWindow {
 
 impl AsMut<Any> for PictureInPictureWindow {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PictureInPictureWindow> for Any {
@@ -63,12 +64,14 @@ impl From<&PictureInPictureWindow> for Any {
 
 jsbind::utils::impl_dyn_cast!(PictureInPictureWindow);
 
+
 impl PictureInPictureWindow {
     /// Getter of the `width` attribute.
     /// [`PictureInPictureWindow.width`](https://developer.mozilla.org/en-US/docs/Web/API/PictureInPictureWindow/width)
     pub fn width(&self) -> i32 {
         self.inner.get("width").as_::<i32>()
     }
+
 }
 impl PictureInPictureWindow {
     /// Getter of the `height` attribute.
@@ -76,6 +79,7 @@ impl PictureInPictureWindow {
     pub fn height(&self) -> i32 {
         self.inner.get("height").as_::<i32>()
     }
+
 }
 impl PictureInPictureWindow {
     /// Getter of the `onresize` attribute.

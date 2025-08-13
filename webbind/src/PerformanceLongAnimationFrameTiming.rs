@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PerformanceLongAnimationFrameTiming class.
 /// [`PerformanceLongAnimationFrameTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PerformanceLongAnimationFrameTiming {
 
 impl FromVal for PerformanceLongAnimationFrameTiming {
     fn from_val(v: &Any) -> Self {
-        PerformanceLongAnimationFrameTiming {
-            inner: PerformanceEntry::from_val(v),
-        }
+        PerformanceLongAnimationFrameTiming { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PerformanceLongAnimationFrameTiming {
 
 impl AsMut<Any> for PerformanceLongAnimationFrameTiming {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PerformanceLongAnimationFrameTiming> for Any {
@@ -63,12 +64,14 @@ impl From<&PerformanceLongAnimationFrameTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceLongAnimationFrameTiming);
 
+
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `startTime` attribute.
     /// [`PerformanceLongAnimationFrameTiming.startTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/startTime)
     pub fn start_time(&self) -> Any {
         self.inner.get("startTime").as_::<Any>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `duration` attribute.
@@ -76,6 +79,7 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn duration(&self) -> Any {
         self.inner.get("duration").as_::<Any>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `name` attribute.
@@ -83,6 +87,7 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `entryType` attribute.
@@ -90,6 +95,7 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn entry_type(&self) -> JsString {
         self.inner.get("entryType").as_::<JsString>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `renderStart` attribute.
@@ -97,6 +103,7 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn render_start(&self) -> Any {
         self.inner.get("renderStart").as_::<Any>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `styleAndLayoutStart` attribute.
@@ -104,6 +111,7 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn style_and_layout_start(&self) -> Any {
         self.inner.get("styleAndLayoutStart").as_::<Any>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `blockingDuration` attribute.
@@ -111,6 +119,7 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn blocking_duration(&self) -> Any {
         self.inner.get("blockingDuration").as_::<Any>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `firstUIEventTimestamp` attribute.
@@ -118,20 +127,20 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn first_ui_event_timestamp(&self) -> Any {
         self.inner.get("firstUIEventTimestamp").as_::<Any>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `scripts` attribute.
     /// [`PerformanceLongAnimationFrameTiming.scripts`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/scripts)
     pub fn scripts(&self) -> TypedArray<PerformanceScriptTiming> {
-        self.inner
-            .get("scripts")
-            .as_::<TypedArray<PerformanceScriptTiming>>()
+        self.inner.get("scripts").as_::<TypedArray<PerformanceScriptTiming>>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// The toJSON method.
     /// [`PerformanceLongAnimationFrameTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/toJSON)
-    pub fn to_json(&self) -> Object {
+    pub fn to_json(&self, ) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
@@ -141,6 +150,7 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn paint_time(&self) -> Any {
         self.inner.get("paintTime").as_::<Any>()
     }
+
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `presentationTime` attribute.
@@ -148,4 +158,5 @@ impl PerformanceLongAnimationFrameTiming {
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
     }
+
 }

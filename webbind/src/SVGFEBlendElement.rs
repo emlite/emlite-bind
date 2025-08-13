@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SVGFEBlendElement class.
 /// [`SVGFEBlendElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEBlendElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SVGFEBlendElement {
 
 impl FromVal for SVGFEBlendElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEBlendElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEBlendElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SVGFEBlendElement {
 
 impl AsMut<Any> for SVGFEBlendElement {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SVGFEBlendElement> for Any {
@@ -63,12 +64,14 @@ impl From<&SVGFEBlendElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEBlendElement);
 
+
 impl SVGFEBlendElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEBlendElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEBlendElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEBlendElement {
     /// Getter of the `in2` attribute.
@@ -76,6 +79,7 @@ impl SVGFEBlendElement {
     pub fn in2(&self) -> SVGAnimatedString {
         self.inner.get("in2").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEBlendElement {
     /// Getter of the `mode` attribute.
@@ -83,6 +87,7 @@ impl SVGFEBlendElement {
     pub fn mode(&self) -> SVGAnimatedEnumeration {
         self.inner.get("mode").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEBlendElement {
     /// Getter of the `x` attribute.
@@ -90,6 +95,7 @@ impl SVGFEBlendElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     /// Getter of the `y` attribute.
@@ -97,6 +103,7 @@ impl SVGFEBlendElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     /// Getter of the `width` attribute.
@@ -104,6 +111,7 @@ impl SVGFEBlendElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     /// Getter of the `height` attribute.
@@ -111,6 +119,7 @@ impl SVGFEBlendElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     /// Getter of the `result` attribute.
@@ -118,4 +127,5 @@ impl SVGFEBlendElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The ProfilerTrace dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for ProfilerTrace {
 
 impl AsMut<Any> for ProfilerTrace {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<ProfilerTrace> for Any {
@@ -94,9 +97,7 @@ impl ProfilerTrace {
 impl ProfilerTrace {
     /// Getter of the `samples` attribute.
     pub fn samples(&self) -> TypedArray<ProfilerSample> {
-        self.inner
-            .get("samples")
-            .as_::<TypedArray<ProfilerSample>>()
+        self.inner.get("samples").as_::<TypedArray<ProfilerSample>>()
     }
 
     /// Setter of the `samples` attribute.

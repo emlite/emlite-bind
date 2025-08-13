@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PerformanceObserverCallbackOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for PerformanceObserverCallbackOptions {
 
 impl AsMut<Any> for PerformanceObserverCallbackOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PerformanceObserverCallbackOptions> for Any {

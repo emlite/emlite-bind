@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The CredentialRequestOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for CredentialRequestOptions {
 
 impl AsMut<Any> for CredentialRequestOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<CredentialRequestOptions> for Any {
@@ -61,9 +64,7 @@ impl From<&CredentialRequestOptions> for Any {
 impl CredentialRequestOptions {
     /// Getter of the `publicKey` attribute.
     pub fn public_key(&self) -> PublicKeyCredentialRequestOptions {
-        self.inner
-            .get("publicKey")
-            .as_::<PublicKeyCredentialRequestOptions>()
+        self.inner.get("publicKey").as_::<PublicKeyCredentialRequestOptions>()
     }
 
     /// Setter of the `publicKey` attribute.

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SharedStorageAppendMethod class.
 /// [`SharedStorageAppendMethod`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageAppendMethod)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct SharedStorageAppendMethod {
 
 impl FromVal for SharedStorageAppendMethod {
     fn from_val(v: &Any) -> Self {
-        SharedStorageAppendMethod {
-            inner: SharedStorageModifierMethod::from_val(v),
-        }
+        SharedStorageAppendMethod { inner: SharedStorageModifierMethod::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for SharedStorageAppendMethod {
 
 impl AsMut<Any> for SharedStorageAppendMethod {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SharedStorageAppendMethod> for Any {
@@ -63,26 +64,21 @@ impl From<&SharedStorageAppendMethod> for Any {
 
 jsbind::utils::impl_dyn_cast!(SharedStorageAppendMethod);
 
+
+
 impl SharedStorageAppendMethod {
     /// The `new SharedStorageAppendMethod(..)` constructor, creating a new SharedStorageAppendMethod instance
     pub fn new0(key: &JsString, value: &JsString) -> SharedStorageAppendMethod {
         Self {
-            inner: Any::global("SharedStorageAppendMethod")
-                .new(&[key.into(), value.into()])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: Any::global("SharedStorageAppendMethod").new(&[key.into(), value.into()]).as_::<SharedStorageModifierMethod>(),
         }
     }
 
     /// The `new SharedStorageAppendMethod(..)` constructor, creating a new SharedStorageAppendMethod instance
-    pub fn new1(
-        key: &JsString,
-        value: &JsString,
-        options: &SharedStorageModifierMethodOptions,
-    ) -> SharedStorageAppendMethod {
+    pub fn new1(key: &JsString, value: &JsString, options: &SharedStorageModifierMethodOptions) -> SharedStorageAppendMethod {
         Self {
-            inner: Any::global("SharedStorageAppendMethod")
-                .new(&[key.into(), value.into(), options.into()])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: Any::global("SharedStorageAppendMethod").new(&[key.into(), value.into(), options.into()]).as_::<SharedStorageModifierMethod>(),
         }
     }
+
 }

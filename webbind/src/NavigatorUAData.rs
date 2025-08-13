@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The NavigatorUAData class.
 /// [`NavigatorUAData`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct NavigatorUAData {
 
 impl FromVal for NavigatorUAData {
     fn from_val(v: &Any) -> Self {
-        NavigatorUAData {
-            inner: Any::from_val(v),
-        }
+        NavigatorUAData { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for NavigatorUAData {
 
 impl AsMut<Any> for NavigatorUAData {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<NavigatorUAData> for Any {
@@ -63,14 +64,14 @@ impl From<&NavigatorUAData> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigatorUAData);
 
+
 impl NavigatorUAData {
     /// Getter of the `brands` attribute.
     /// [`NavigatorUAData.brands`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/brands)
     pub fn brands(&self) -> TypedArray<NavigatorUABrandVersion> {
-        self.inner
-            .get("brands")
-            .as_::<TypedArray<NavigatorUABrandVersion>>()
+        self.inner.get("brands").as_::<TypedArray<NavigatorUABrandVersion>>()
     }
+
 }
 impl NavigatorUAData {
     /// Getter of the `mobile` attribute.
@@ -78,6 +79,7 @@ impl NavigatorUAData {
     pub fn mobile(&self) -> bool {
         self.inner.get("mobile").as_::<bool>()
     }
+
 }
 impl NavigatorUAData {
     /// Getter of the `platform` attribute.
@@ -85,20 +87,19 @@ impl NavigatorUAData {
     pub fn platform(&self) -> JsString {
         self.inner.get("platform").as_::<JsString>()
     }
+
 }
 impl NavigatorUAData {
     /// The getHighEntropyValues method.
     /// [`NavigatorUAData.getHighEntropyValues`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/getHighEntropyValues)
     pub fn get_high_entropy_values(&self, hints: &TypedArray<JsString>) -> Promise<UADataValues> {
-        self.inner
-            .call("getHighEntropyValues", &[hints.into()])
-            .as_::<Promise<UADataValues>>()
+        self.inner.call("getHighEntropyValues", &[hints.into(), ]).as_::<Promise<UADataValues>>()
     }
 }
 impl NavigatorUAData {
     /// The toJSON method.
     /// [`NavigatorUAData.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/toJSON)
-    pub fn to_json(&self) -> UALowEntropyJSON {
+    pub fn to_json(&self, ) -> UALowEntropyJSON {
         self.inner.call("toJSON", &[]).as_::<UALowEntropyJSON>()
     }
 }

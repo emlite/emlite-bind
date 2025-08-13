@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FileSystemRemoveOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for FileSystemRemoveOptions {
 
 impl AsMut<Any> for FileSystemRemoveOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FileSystemRemoveOptions> for Any {

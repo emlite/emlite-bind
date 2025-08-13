@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The FilePickerAcceptType dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for FilePickerAcceptType {
 
 impl AsMut<Any> for FilePickerAcceptType {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<FilePickerAcceptType> for Any {

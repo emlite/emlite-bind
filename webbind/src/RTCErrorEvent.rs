@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCErrorEvent class.
 /// [`RTCErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCErrorEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct RTCErrorEvent {
 
 impl FromVal for RTCErrorEvent {
     fn from_val(v: &Any) -> Self {
-        RTCErrorEvent {
-            inner: Event::from_val(v),
-        }
+        RTCErrorEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for RTCErrorEvent {
 
 impl AsMut<Any> for RTCErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCErrorEvent> for Any {
@@ -63,15 +64,16 @@ impl From<&RTCErrorEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCErrorEvent);
 
+
+
 impl RTCErrorEvent {
     /// The `new RTCErrorEvent(..)` constructor, creating a new RTCErrorEvent instance
     pub fn new(type_: &JsString, event_init_dict: &RTCErrorEventInit) -> RTCErrorEvent {
         Self {
-            inner: Any::global("RTCErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: Any::global("RTCErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl RTCErrorEvent {
     /// Getter of the `error` attribute.
@@ -79,4 +81,5 @@ impl RTCErrorEvent {
     pub fn error(&self) -> RTCError {
         self.inner.get("error").as_::<RTCError>()
     }
+
 }

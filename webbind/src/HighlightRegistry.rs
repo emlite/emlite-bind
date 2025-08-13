@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The HighlightRegistry class.
 /// [`HighlightRegistry`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct HighlightRegistry {
 
 impl FromVal for HighlightRegistry {
     fn from_val(v: &Any) -> Self {
-        HighlightRegistry {
-            inner: Any::from_val(v),
-        }
+        HighlightRegistry { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for HighlightRegistry {
 
 impl AsMut<Any> for HighlightRegistry {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<HighlightRegistry> for Any {
@@ -63,24 +64,16 @@ impl From<&HighlightRegistry> for Any {
 
 jsbind::utils::impl_dyn_cast!(HighlightRegistry);
 
+
 impl HighlightRegistry {
     /// The highlightsFromPoint method.
     /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
     pub fn highlights_from_point0(&self, x: f32, y: f32) -> TypedArray<HighlightHitResult> {
-        self.inner
-            .call("highlightsFromPoint", &[x.into(), y.into()])
-            .as_::<TypedArray<HighlightHitResult>>()
+        self.inner.call("highlightsFromPoint", &[x.into(), y.into(), ]).as_::<TypedArray<HighlightHitResult>>()
     }
     /// The highlightsFromPoint method.
     /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
-    pub fn highlights_from_point1(
-        &self,
-        x: f32,
-        y: f32,
-        options: &HighlightsFromPointOptions,
-    ) -> TypedArray<HighlightHitResult> {
-        self.inner
-            .call("highlightsFromPoint", &[x.into(), y.into(), options.into()])
-            .as_::<TypedArray<HighlightHitResult>>()
+    pub fn highlights_from_point1(&self, x: f32, y: f32, options: &HighlightsFromPointOptions) -> TypedArray<HighlightHitResult> {
+        self.inner.call("highlightsFromPoint", &[x.into(), y.into(), options.into(), ]).as_::<TypedArray<HighlightHitResult>>()
     }
 }

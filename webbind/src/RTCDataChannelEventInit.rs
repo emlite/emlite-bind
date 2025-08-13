@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The RTCDataChannelEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for RTCDataChannelEventInit {
 
 impl AsMut<Any> for RTCDataChannelEventInit {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<RTCDataChannelEventInit> for Any {

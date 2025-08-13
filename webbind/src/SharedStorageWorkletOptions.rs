@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The SharedStorageWorkletOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -40,8 +43,8 @@ impl AsRef<Any> for SharedStorageWorkletOptions {
 
 impl AsMut<Any> for SharedStorageWorkletOptions {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<SharedStorageWorkletOptions> for Any {

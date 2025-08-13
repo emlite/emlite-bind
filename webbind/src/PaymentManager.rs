@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 /// The PaymentManager class.
 /// [`PaymentManager`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -10,9 +13,7 @@ pub struct PaymentManager {
 
 impl FromVal for PaymentManager {
     fn from_val(v: &Any) -> Self {
-        PaymentManager {
-            inner: Any::from_val(v),
-        }
+        PaymentManager { inner: Any::from_val(v) }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -43,8 +44,8 @@ impl AsRef<Any> for PaymentManager {
 
 impl AsMut<Any> for PaymentManager {
     fn as_mut(&mut self) -> &mut Any {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 
 impl From<PaymentManager> for Any {
@@ -63,6 +64,7 @@ impl From<&PaymentManager> for Any {
 
 jsbind::utils::impl_dyn_cast!(PaymentManager);
 
+
 impl PaymentManager {
     /// Getter of the `userHint` attribute.
     /// [`PaymentManager.userHint`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/userHint)
@@ -79,12 +81,7 @@ impl PaymentManager {
 impl PaymentManager {
     /// The enableDelegations method.
     /// [`PaymentManager.enableDelegations`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/enableDelegations)
-    pub fn enable_delegations(
-        &self,
-        delegations: &TypedArray<PaymentDelegation>,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call("enableDelegations", &[delegations.into()])
-            .as_::<Promise<Undefined>>()
+    pub fn enable_delegations(&self, delegations: &TypedArray<PaymentDelegation>) -> Promise<Undefined> {
+        self.inner.call("enableDelegations", &[delegations.into(), ]).as_::<Promise<Undefined>>()
     }
 }
