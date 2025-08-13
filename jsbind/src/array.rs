@@ -461,6 +461,55 @@ impl ArrayBuffer {
 bind!(ArrayBuffer);
 impl_dyn_cast!(ArrayBuffer);
 
+/// A raw, fixed‑length buffer of bytes as defined by the ECMAScript spec.
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
+pub struct SharedArrayBuffer {
+    inner: emlite::Val,
+}
+
+impl SharedArrayBuffer {
+    /// Construct a new zero‑initialised buffer of `byte_len` bytes.
+    /// Equivalent to `new SharedArrayBuffer(byte_len)` in JavaScript.
+    pub fn new(byte_len: usize) -> Self {
+        let ctor = emlite::Val::global("SharedArrayBuffer");
+        let v = ctor.new(&[byte_len.into()]);
+        Self::from_val(&v)
+    }
+
+    /// Total size of the buffer in bytes (`buffer.byteLength`).
+    #[doc(alias = "byteLength")]
+    pub fn byte_length(&self) -> usize {
+        self.inner.get("byteLength").as_::<usize>()
+    }
+
+    /// `buffer.slice(begin, end)` – creates a new `SharedArrayBuffer` that shares
+    /// memory with the original.  If `end` is `None`, the slice goes to
+    /// the end of the buffer.
+    pub fn slice(&self, begin: usize, end: Option<usize>) -> Self {
+        match end {
+            Some(e) => self.inner.call("slice", &[begin.into(), e.into()]),
+            None => self.inner.call("slice", &[begin.into()]),
+        }
+        .as_::<Self>()
+    }
+
+    /// Static `SharedArrayBuffer.isView`
+    pub fn is_view(buf: &Any) -> bool {
+        emlite::Val::global("SharedArrayBuffer")
+            .call("isView", &[buf.clone()])
+            .as_::<bool>()
+    }
+
+    /// Returns whether the SharedArrayBuffer is resizable
+    pub fn resizable(&self) -> bool {
+        self.inner.get("resizable").as_::<bool>()
+    }
+}
+
+bind!(SharedArrayBuffer);
+impl_dyn_cast!(SharedArrayBuffer);
+
 /// Explicit byte‑order flag for `DataView` getters / setters.
 ///
 /// ECMAScript treats the `littleEndian` parameter as a boolean.  We expose an
