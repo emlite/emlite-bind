@@ -11,14 +11,14 @@ use jsbind::prelude::*;
 
 macro_rules! web_feature {
     ($feature:literal, $mod_ident:ident, $path:literal, $type_ident:ident) => {
-        #[cfg(feature = $feature)]
+        // #[cfg(feature = $feature)]
         #[path = $path]
         pub mod $mod_ident;
-        #[cfg(feature = $feature)]
+        // #[cfg(feature = $feature)]
         pub use $mod_ident::*;
 
-        #[cfg(not(feature = $feature))]
-        pub type $type_ident = Any;
+        // #[cfg(not(feature = $feature))]
+        // pub type $type_ident = Any;
     };
 }
 web_feature!(
@@ -12728,7 +12728,7 @@ pub fn origin() -> jsbind::prelude::JsString {
     Any::global("origin").as_()
 }
 
-#[cfg(feature = "Performance")]
+// #[cfg(feature = "Performance")]
 pub fn performance() -> self::performance::Performance {
     Any::global("performance").as_()
 }

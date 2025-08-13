@@ -8,7 +8,7 @@
     "example": "examples"
   },
   "scripts": {
-    "cargo": "cargo build --target=wasm32-unknown-unknown --examples --release --features=HTMLButtonElement,PointerEvent,AudioContext,Document,OscillatorNode,Window,CSSStyleDeclaration,HTMLCollection,AudioScheduledSourceNode,AudioParam",
+    "cargo": "cargo build --target=wasm32-unknown-unknown --examples --release",
     "regen": "node scripts/index.js",
     "test:all": "npm run regen && npm run cargo",
     "serve": "npx http-server"
