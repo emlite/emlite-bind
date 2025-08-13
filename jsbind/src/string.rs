@@ -64,7 +64,7 @@ macro_rules! declare_string {
 
         impl AsRef<str> for $name {
             fn as_ref(&self) -> &str {
-                self.as_str().unwrap()
+                self.as_str().unwrap_or("")
             }
         }
 
@@ -153,7 +153,9 @@ macro_rules! declare_string {
             }
 
             pub fn set(&self, idx: usize, val: char) {
-                self.inner.set(idx, val as u8);
+                if idx < self.length() {
+                    self.inner.set(idx, val as u32);
+                }
             }
 
             /// [`String.prototype.at`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/at)
