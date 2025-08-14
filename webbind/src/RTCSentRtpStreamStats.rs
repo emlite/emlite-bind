@@ -83,14 +83,3 @@ impl RTCSentRtpStreamStats {
         self.inner.set("bytesSent", value);
     }
 }
-impl RTCSentRtpStreamStats {
-    /// Getter of the `packetsSentWithEct1` attribute.
-    pub fn packets_sent_with_ect1(&self) -> u64 {
-        self.inner.get("packetsSentWithEct1").as_::<u64>()
-    }
-
-    /// Setter of the `packetsSentWithEct1` attribute.
-    pub fn set_packets_sent_with_ect1(&mut self, value: u64) {
-        self.inner.set("packetsSentWithEct1", value);
-    }
-}

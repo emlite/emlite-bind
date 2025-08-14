@@ -195,6 +195,14 @@ impl Notification {
 
 }
 impl Notification {
+    /// Getter of the `navigate` attribute.
+    /// [`Notification.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/navigate)
+    pub fn navigate(&self) -> JsString {
+        self.inner.get("navigate").as_::<JsString>()
+    }
+
+}
+impl Notification {
     /// Getter of the `tag` attribute.
     /// [`Notification.tag`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/tag)
     pub fn tag(&self) -> JsString {

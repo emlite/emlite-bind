@@ -616,13 +616,13 @@ impl Window {
 impl Window {
     /// The getComputedStyle method.
     /// [`Window.getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
-    pub fn get_computed_style0(&self, elt: &Element) -> CSSStyleDeclaration {
-        self.inner.call("getComputedStyle", &[elt.into(), ]).as_::<CSSStyleDeclaration>()
+    pub fn get_computed_style0(&self, elt: &Element) -> CSSStyleProperties {
+        self.inner.call("getComputedStyle", &[elt.into(), ]).as_::<CSSStyleProperties>()
     }
     /// The getComputedStyle method.
     /// [`Window.getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
-    pub fn get_computed_style1(&self, elt: &Element, pseudo_elt: &JsString) -> CSSStyleDeclaration {
-        self.inner.call("getComputedStyle", &[elt.into(), pseudo_elt.into(), ]).as_::<CSSStyleDeclaration>()
+    pub fn get_computed_style1(&self, elt: &Element, pseudo_elt: &JsString) -> CSSStyleProperties {
+        self.inner.call("getComputedStyle", &[elt.into(), pseudo_elt.into(), ]).as_::<CSSStyleProperties>()
     }
 }
 impl Window {
@@ -655,6 +655,18 @@ impl Window {
         self.inner.get("fence").as_::<Fence>()
     }
 
+}
+impl Window {
+    /// The fetchLater method.
+    /// [`Window.fetchLater`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetchLater)
+    pub fn fetch_later0(&self, input: &Any) -> FetchLaterResult {
+        self.inner.call("fetchLater", &[input.into(), ]).as_::<FetchLaterResult>()
+    }
+    /// The fetchLater method.
+    /// [`Window.fetchLater`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetchLater)
+    pub fn fetch_later1(&self, input: &Any, init: &DeferredRequestInit) -> FetchLaterResult {
+        self.inner.call("fetchLater", &[input.into(), init.into(), ]).as_::<FetchLaterResult>()
+    }
 }
 impl Window {
     /// The showOpenFilePicker method.

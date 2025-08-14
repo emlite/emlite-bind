@@ -9,7 +9,7 @@ import { generateNamespace } from "./generators/namespace-generator.js";
 import { generateInterface } from "./generators/interface-generator.js";
 import { generateDictionary } from "./generators/dictionary-generator.js";
 import { enums, dictOwner } from "./globals.js";
-import { writeFileSync } from "fs";
+// import { writeFileSync } from "fs";
 
 /**
  * Main generation orchestrator for emlite-bind
@@ -84,6 +84,7 @@ export function generate(specAst) {
   // Generate namespaces
   console.log("Generating namespaces...");
   let namespaceCount = 0;
+  // eslint-disable-next-line no-unused-vars
   for (const [nsName, nsRec] of processedNamespaces) {
     const dependencies = resolver.resolveNamespaceDependencies(nsRec);
     generateNamespace(nsRec, dependencies);
@@ -93,54 +94,54 @@ export function generate(specAst) {
 
   // Generate features.txt with WebIDL types and their parent dependencies
   console.log("Generating features.txt...");
-  generateFeatures(processedInterfaces, dicts, processedNamespaces);
+  // generateFeatures(processedInterfaces, dicts, processedNamespaces);
 
   console.log("emlite-bind generation completed successfully!");
 }
 
-/**
- * Generate features.txt with WebIDL types and their parent dependencies
- * @param {Map} interfaces - Processed interfaces
- * @param {Map} dictionaries - Dictionary definitions
- * @param {Map} namespaces - Processed namespaces
- */
-function generateFeatures(interfaces, dictionaries, namespaces) {
-  const features = [];
+// /**
+//  * Generate features.txt with WebIDL types and their parent dependencies
+//  * @param {Map} interfaces - Processed interfaces
+//  * @param {Map} dictionaries - Dictionary definitions
+//  * @param {Map} namespaces - Processed namespaces
+//  */
+// function generateFeatures(interfaces, dictionaries, namespaces) {
+//   const features = [];
 
-  // Process interfaces
-  for (const [name, interfaceRec] of interfaces) {
-    if (!interfaceRec.base && interfaceRec.partials.length === 0) {
-      continue; // Skip interfaces that are just partial definitions
-    }
+//   // Process interfaces
+//   for (const [name, interfaceRec] of interfaces) {
+//     if (!interfaceRec.base && interfaceRec.partials.length === 0) {
+//       continue; // Skip interfaces that are just partial definitions
+//     }
 
-    const parent = interfaceRec.base?.inheritance;
-    if (parent && parent !== "emlite::Val") {
-      features.push(`${name} = ["${parent}"]`);
-    } else {
-      features.push(`${name} = []`);
-    }
-  }
+//     const parent = interfaceRec.base?.inheritance;
+//     if (parent && parent !== "emlite::Val") {
+//       features.push(`${name} = ["${parent}"]`);
+//     } else {
+//       features.push(`${name} = []`);
+//     }
+//   }
 
-  // Process dictionaries
-  for (const [name, dict] of dictionaries) {
-    const parent = dict.inheritance;
-    if (parent && parent !== "emlite::Val") {
-      features.push(`${name} = ["${parent}"]`);
-    } else {
-      features.push(`${name} = []`);
-    }
-  }
+//   // Process dictionaries
+//   for (const [name, dict] of dictionaries) {
+//     const parent = dict.inheritance;
+//     if (parent && parent !== "emlite::Val") {
+//       features.push(`${name} = ["${parent}"]`);
+//     } else {
+//       features.push(`${name} = []`);
+//     }
+//   }
 
-  // Process namespaces
-  for (const [name, namespace] of namespaces) {
-    features.push(`${name} = []`); // Namespaces don't have parents
-  }
+//   // Process namespaces
+//   for (const [name, namespace] of namespaces) {
+//     features.push(`${name} = []`); // Namespaces don't have parents
+//   }
 
-  // Sort features alphabetically
-  features.sort();
+//   // Sort features alphabetically
+//   features.sort();
 
-  // Write to features.txt
-  const output = features.join("\n") + "\n";
-  writeFileSync("features.txt", output);
-  console.log(`Generated features.txt with ${features.length} WebIDL types`);
-}
+//   // Write to features.txt
+//   const output = features.join("\n") + "\n";
+//   writeFileSync("features.txt", output);
+//   console.log(`Generated features.txt with ${features.length} WebIDL types`);
+// }

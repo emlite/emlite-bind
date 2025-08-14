@@ -187,8 +187,8 @@ impl SVGElement {
 impl SVGElement {
     /// Getter of the `style` attribute.
     /// [`SVGElement.style`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/style)
-    pub fn style(&self) -> CSSStyleDeclaration {
-        self.inner.get("style").as_::<CSSStyleDeclaration>()
+    pub fn style(&self) -> CSSStyleProperties {
+        self.inner.get("style").as_::<CSSStyleProperties>()
     }
 
 }

@@ -72,3 +72,14 @@ impl SFrameTransformOptions {
         self.inner.set("role", value);
     }
 }
+impl SFrameTransformOptions {
+    /// Getter of the `cipherSuite` attribute.
+    pub fn cipher_suite(&self) -> SFrameCipherSuite {
+        self.inner.get("cipherSuite").as_::<SFrameCipherSuite>()
+    }
+
+    /// Setter of the `cipherSuite` attribute.
+    pub fn set_cipher_suite(&mut self, value: &SFrameCipherSuite) {
+        self.inner.set("cipherSuite", value);
+    }
+}

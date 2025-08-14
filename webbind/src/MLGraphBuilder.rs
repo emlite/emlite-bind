@@ -529,6 +529,18 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
+    /// The roundEven method.
+    /// [`MLGraphBuilder.roundEven`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/roundEven)
+    pub fn round_even0(&self, input: &MLOperand) -> MLOperand {
+        self.inner.call("roundEven", &[input.into(), ]).as_::<MLOperand>()
+    }
+    /// The roundEven method.
+    /// [`MLGraphBuilder.roundEven`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/roundEven)
+    pub fn round_even1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+        self.inner.call("roundEven", &[input.into(), options.into(), ]).as_::<MLOperand>()
+    }
+}
+impl MLGraphBuilder {
     /// The sin method.
     /// [`MLGraphBuilder.sin`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sin)
     pub fn sin0(&self, input: &MLOperand) -> MLOperand {

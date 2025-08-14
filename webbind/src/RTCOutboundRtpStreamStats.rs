@@ -271,6 +271,28 @@ impl RTCOutboundRtpStreamStats {
     }
 }
 impl RTCOutboundRtpStreamStats {
+    /// Getter of the `psnrSum` attribute.
+    pub fn psnr_sum(&self) -> Record<JsString, f64> {
+        self.inner.get("psnrSum").as_::<Record<JsString, f64>>()
+    }
+
+    /// Setter of the `psnrSum` attribute.
+    pub fn set_psnr_sum(&mut self, value: Record<JsString, f64>) {
+        self.inner.set("psnrSum", value);
+    }
+}
+impl RTCOutboundRtpStreamStats {
+    /// Getter of the `psnrMeasurements` attribute.
+    pub fn psnr_measurements(&self) -> u64 {
+        self.inner.get("psnrMeasurements").as_::<u64>()
+    }
+
+    /// Setter of the `psnrMeasurements` attribute.
+    pub fn set_psnr_measurements(&mut self, value: u64) {
+        self.inner.set("psnrMeasurements", value);
+    }
+}
+impl RTCOutboundRtpStreamStats {
     /// Getter of the `totalEncodeTime` attribute.
     pub fn total_encode_time(&self) -> f64 {
         self.inner.get("totalEncodeTime").as_::<f64>()
@@ -400,5 +422,16 @@ impl RTCOutboundRtpStreamStats {
     /// Setter of the `scalabilityMode` attribute.
     pub fn set_scalability_mode(&mut self, value: &JsString) {
         self.inner.set("scalabilityMode", value);
+    }
+}
+impl RTCOutboundRtpStreamStats {
+    /// Getter of the `packetsSentWithEct1` attribute.
+    pub fn packets_sent_with_ect1(&self) -> u64 {
+        self.inner.get("packetsSentWithEct1").as_::<u64>()
+    }
+
+    /// Setter of the `packetsSentWithEct1` attribute.
+    pub fn set_packets_sent_with_ect1(&mut self, value: u64) {
+        self.inner.set("packetsSentWithEct1", value);
     }
 }

@@ -150,6 +150,17 @@ impl AttributionConversionOptions {
     }
 }
 impl AttributionConversionOptions {
+    /// Getter of the `logicOptions` attribute.
+    pub fn logic_options(&self) -> AttributionLogicOptions {
+        self.inner.get("logicOptions").as_::<AttributionLogicOptions>()
+    }
+
+    /// Setter of the `logicOptions` attribute.
+    pub fn set_logic_options(&mut self, value: &AttributionLogicOptions) {
+        self.inner.set("logicOptions", value);
+    }
+}
+impl AttributionConversionOptions {
     /// Getter of the `value` attribute.
     pub fn value(&self) -> u32 {
         self.inner.get("value").as_::<u32>()

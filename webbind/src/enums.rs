@@ -6516,14 +6516,14 @@ impl From<&PresentationConnectionCloseReason> for Any {
 
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-pub enum PrivateAttributionAggregationProtocol {
-    DAP_12_HISTOGRAM,
+pub enum AttributionAggregationProtocol {
+    DAP_15_HISTOGRAM,
     TEE_00,
 }
-impl FromVal for PrivateAttributionAggregationProtocol {
+impl FromVal for AttributionAggregationProtocol {
     fn from_val(v: &Any) -> Self {
          match v.as_::<Option<&str>>().unwrap() {
-            "dap-12-histogram" => Self::DAP_12_HISTOGRAM,
+            "dap-15-histogram" => Self::DAP_15_HISTOGRAM,
             "tee-00" => Self::TEE_00,
              _ => unreachable!(),
         }
@@ -6535,19 +6535,19 @@ impl FromVal for PrivateAttributionAggregationProtocol {
         Any::from(*self).as_handle()
     }
 }
-impl From<PrivateAttributionAggregationProtocol> for Any {
-    fn from(s: PrivateAttributionAggregationProtocol) -> Any {
+impl From<AttributionAggregationProtocol> for Any {
+    fn from(s: AttributionAggregationProtocol) -> Any {
          match s {
-            PrivateAttributionAggregationProtocol::DAP_12_HISTOGRAM => Any::from("dap-12-histogram"),
-            PrivateAttributionAggregationProtocol::TEE_00 => Any::from("tee-00"),
+            AttributionAggregationProtocol::DAP_15_HISTOGRAM => Any::from("dap-15-histogram"),
+            AttributionAggregationProtocol::TEE_00 => Any::from("tee-00"),
          }
     }
 }
-impl From<&PrivateAttributionAggregationProtocol> for Any {
-    fn from(s: &PrivateAttributionAggregationProtocol) -> Any {
+impl From<&AttributionAggregationProtocol> for Any {
+    fn from(s: &AttributionAggregationProtocol) -> Any {
          match *s {
-            PrivateAttributionAggregationProtocol::DAP_12_HISTOGRAM => Any::from("dap-12-histogram"),
-            PrivateAttributionAggregationProtocol::TEE_00 => Any::from("tee-00"),
+            AttributionAggregationProtocol::DAP_15_HISTOGRAM => Any::from("dap-15-histogram"),
+            AttributionAggregationProtocol::TEE_00 => Any::from("tee-00"),
          }
     }
 }
@@ -6555,12 +6555,12 @@ impl From<&PrivateAttributionAggregationProtocol> for Any {
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AttributionLogic {
-    LAST_TOUCH,
+    LAST_N_TOUCH,
 }
 impl FromVal for AttributionLogic {
     fn from_val(v: &Any) -> Self {
          match v.as_::<Option<&str>>().unwrap() {
-            "last-touch" => Self::LAST_TOUCH,
+            "last-n-touch" => Self::LAST_N_TOUCH,
              _ => unreachable!(),
         }
     }
@@ -6574,14 +6574,14 @@ impl FromVal for AttributionLogic {
 impl From<AttributionLogic> for Any {
     fn from(s: AttributionLogic) -> Any {
          match s {
-            AttributionLogic::LAST_TOUCH => Any::from("last-touch"),
+            AttributionLogic::LAST_N_TOUCH => Any::from("last-n-touch"),
          }
     }
 }
 impl From<&AttributionLogic> for Any {
     fn from(s: &AttributionLogic) -> Any {
          match *s {
-            AttributionLogic::LAST_TOUCH => Any::from("last-touch"),
+            AttributionLogic::LAST_N_TOUCH => Any::from("last-n-touch"),
          }
     }
 }
@@ -13860,6 +13860,56 @@ impl From<&SFrameTransformRole> for Any {
 
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SFrameCipherSuite {
+    AES_128_CTR_HMAC_SHA256_80,
+    AES_128_CTR_HMAC_SHA256_64,
+    AES_128_CTR_HMAC_SHA256_32,
+    AES_128_GCM_SHA256_128,
+    AES_256_GCM_SHA512_128,
+}
+impl FromVal for SFrameCipherSuite {
+    fn from_val(v: &Any) -> Self {
+         match v.as_::<Option<&str>>().unwrap() {
+            "AES_128_CTR_HMAC_SHA256_80" => Self::AES_128_CTR_HMAC_SHA256_80,
+            "AES_128_CTR_HMAC_SHA256_64" => Self::AES_128_CTR_HMAC_SHA256_64,
+            "AES_128_CTR_HMAC_SHA256_32" => Self::AES_128_CTR_HMAC_SHA256_32,
+            "AES_128_GCM_SHA256_128" => Self::AES_128_GCM_SHA256_128,
+            "AES_256_GCM_SHA512_128" => Self::AES_256_GCM_SHA512_128,
+             _ => unreachable!(),
+        }
+    }
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
+    }
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
+    }
+}
+impl From<SFrameCipherSuite> for Any {
+    fn from(s: SFrameCipherSuite) -> Any {
+         match s {
+            SFrameCipherSuite::AES_128_CTR_HMAC_SHA256_80 => Any::from("AES_128_CTR_HMAC_SHA256_80"),
+            SFrameCipherSuite::AES_128_CTR_HMAC_SHA256_64 => Any::from("AES_128_CTR_HMAC_SHA256_64"),
+            SFrameCipherSuite::AES_128_CTR_HMAC_SHA256_32 => Any::from("AES_128_CTR_HMAC_SHA256_32"),
+            SFrameCipherSuite::AES_128_GCM_SHA256_128 => Any::from("AES_128_GCM_SHA256_128"),
+            SFrameCipherSuite::AES_256_GCM_SHA512_128 => Any::from("AES_256_GCM_SHA512_128"),
+         }
+    }
+}
+impl From<&SFrameCipherSuite> for Any {
+    fn from(s: &SFrameCipherSuite) -> Any {
+         match *s {
+            SFrameCipherSuite::AES_128_CTR_HMAC_SHA256_80 => Any::from("AES_128_CTR_HMAC_SHA256_80"),
+            SFrameCipherSuite::AES_128_CTR_HMAC_SHA256_64 => Any::from("AES_128_CTR_HMAC_SHA256_64"),
+            SFrameCipherSuite::AES_128_CTR_HMAC_SHA256_32 => Any::from("AES_128_CTR_HMAC_SHA256_32"),
+            SFrameCipherSuite::AES_128_GCM_SHA256_128 => Any::from("AES_128_GCM_SHA256_128"),
+            SFrameCipherSuite::AES_256_GCM_SHA512_128 => Any::from("AES_256_GCM_SHA512_128"),
+         }
+    }
+}
+
+
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SFrameTransformErrorEventType {
     AUTHENTICATION,
     KEY_ID,
@@ -15354,6 +15404,40 @@ impl From<&WebTransportCongestionControl> for Any {
             WebTransportCongestionControl::DEFAULT => Any::from("default"),
             WebTransportCongestionControl::THROUGHPUT => Any::from("throughput"),
             WebTransportCongestionControl::LOW_LATENCY => Any::from("low-latency"),
+         }
+    }
+}
+
+
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DatagramsReadableMode {
+    BYTES,
+}
+impl FromVal for DatagramsReadableMode {
+    fn from_val(v: &Any) -> Self {
+         match v.as_::<Option<&str>>().unwrap() {
+            "bytes" => Self::BYTES,
+             _ => unreachable!(),
+        }
+    }
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
+    }
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
+    }
+}
+impl From<DatagramsReadableMode> for Any {
+    fn from(s: DatagramsReadableMode) -> Any {
+         match s {
+            DatagramsReadableMode::BYTES => Any::from("bytes"),
+         }
+    }
+}
+impl From<&DatagramsReadableMode> for Any {
+    fn from(s: &DatagramsReadableMode) -> Any {
+         match *s {
+            DatagramsReadableMode::BYTES => Any::from("bytes"),
          }
     }
 }

@@ -138,3 +138,14 @@ impl WebTransportOptions {
         self.inner.set("protocols", value);
     }
 }
+impl WebTransportOptions {
+    /// Getter of the `datagramsReadableMode` attribute.
+    pub fn datagrams_readable_mode(&self) -> DatagramsReadableMode {
+        self.inner.get("datagramsReadableMode").as_::<DatagramsReadableMode>()
+    }
+
+    /// Setter of the `datagramsReadableMode` attribute.
+    pub fn set_datagrams_readable_mode(&mut self, value: &DatagramsReadableMode) {
+        self.inner.set("datagramsReadableMode", value);
+    }
+}

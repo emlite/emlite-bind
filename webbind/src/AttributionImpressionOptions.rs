@@ -116,3 +116,14 @@ impl AttributionImpressionOptions {
         self.inner.set("lifetimeDays", value);
     }
 }
+impl AttributionImpressionOptions {
+    /// Getter of the `priority` attribute.
+    pub fn priority(&self) -> i32 {
+        self.inner.get("priority").as_::<i32>()
+    }
+
+    /// Setter of the `priority` attribute.
+    pub fn set_priority(&mut self, value: i32) {
+        self.inner.set("priority", value);
+    }
+}

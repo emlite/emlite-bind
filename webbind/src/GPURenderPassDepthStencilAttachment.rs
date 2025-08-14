@@ -63,12 +63,12 @@ impl From<&GPURenderPassDepthStencilAttachment> for Any {
 
 impl GPURenderPassDepthStencilAttachment {
     /// Getter of the `view` attribute.
-    pub fn view(&self) -> GPUTextureView {
-        self.inner.get("view").as_::<GPUTextureView>()
+    pub fn view(&self) -> Any {
+        self.inner.get("view").as_::<Any>()
     }
 
     /// Setter of the `view` attribute.
-    pub fn set_view(&mut self, value: &GPUTextureView) {
+    pub fn set_view(&mut self, value: &Any) {
         self.inner.set("view", value);
     }
 }

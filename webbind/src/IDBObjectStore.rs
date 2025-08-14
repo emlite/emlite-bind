@@ -170,13 +170,13 @@ impl IDBObjectStore {
     }
     /// The getAll method.
     /// [`IDBObjectStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAll)
-    pub fn get_all1(&self, query: &Any) -> IDBRequest {
-        self.inner.call("getAll", &[query.into(), ]).as_::<IDBRequest>()
+    pub fn get_all1(&self, query_or_options: &Any) -> IDBRequest {
+        self.inner.call("getAll", &[query_or_options.into(), ]).as_::<IDBRequest>()
     }
     /// The getAll method.
     /// [`IDBObjectStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAll)
-    pub fn get_all2(&self, query: &Any, count: u32) -> IDBRequest {
-        self.inner.call("getAll", &[query.into(), count.into(), ]).as_::<IDBRequest>()
+    pub fn get_all2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
+        self.inner.call("getAll", &[query_or_options.into(), count.into(), ]).as_::<IDBRequest>()
     }
 }
 impl IDBObjectStore {
@@ -187,13 +187,25 @@ impl IDBObjectStore {
     }
     /// The getAllKeys method.
     /// [`IDBObjectStore.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllKeys)
-    pub fn get_all_keys1(&self, query: &Any) -> IDBRequest {
-        self.inner.call("getAllKeys", &[query.into(), ]).as_::<IDBRequest>()
+    pub fn get_all_keys1(&self, query_or_options: &Any) -> IDBRequest {
+        self.inner.call("getAllKeys", &[query_or_options.into(), ]).as_::<IDBRequest>()
     }
     /// The getAllKeys method.
     /// [`IDBObjectStore.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllKeys)
-    pub fn get_all_keys2(&self, query: &Any, count: u32) -> IDBRequest {
-        self.inner.call("getAllKeys", &[query.into(), count.into(), ]).as_::<IDBRequest>()
+    pub fn get_all_keys2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
+        self.inner.call("getAllKeys", &[query_or_options.into(), count.into(), ]).as_::<IDBRequest>()
+    }
+}
+impl IDBObjectStore {
+    /// The getAllRecords method.
+    /// [`IDBObjectStore.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllRecords)
+    pub fn get_all_records0(&self, ) -> IDBRequest {
+        self.inner.call("getAllRecords", &[]).as_::<IDBRequest>()
+    }
+    /// The getAllRecords method.
+    /// [`IDBObjectStore.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllRecords)
+    pub fn get_all_records1(&self, options: &IDBGetAllOptions) -> IDBRequest {
+        self.inner.call("getAllRecords", &[options.into(), ]).as_::<IDBRequest>()
     }
 }
 impl IDBObjectStore {

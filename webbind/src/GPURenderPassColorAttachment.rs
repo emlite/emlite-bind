@@ -63,12 +63,12 @@ impl From<&GPURenderPassColorAttachment> for Any {
 
 impl GPURenderPassColorAttachment {
     /// Getter of the `view` attribute.
-    pub fn view(&self) -> GPUTextureView {
-        self.inner.get("view").as_::<GPUTextureView>()
+    pub fn view(&self) -> Any {
+        self.inner.get("view").as_::<Any>()
     }
 
     /// Setter of the `view` attribute.
-    pub fn set_view(&mut self, value: &GPUTextureView) {
+    pub fn set_view(&mut self, value: &Any) {
         self.inner.set("view", value);
     }
 }
@@ -85,12 +85,12 @@ impl GPURenderPassColorAttachment {
 }
 impl GPURenderPassColorAttachment {
     /// Getter of the `resolveTarget` attribute.
-    pub fn resolve_target(&self) -> GPUTextureView {
-        self.inner.get("resolveTarget").as_::<GPUTextureView>()
+    pub fn resolve_target(&self) -> Any {
+        self.inner.get("resolveTarget").as_::<Any>()
     }
 
     /// Setter of the `resolveTarget` attribute.
-    pub fn set_resolve_target(&mut self, value: &GPUTextureView) {
+    pub fn set_resolve_target(&mut self, value: &Any) {
         self.inner.set("resolveTarget", value);
     }
 }

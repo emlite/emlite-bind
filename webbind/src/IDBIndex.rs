@@ -132,13 +132,13 @@ impl IDBIndex {
     }
     /// The getAll method.
     /// [`IDBIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAll)
-    pub fn get_all1(&self, query: &Any) -> IDBRequest {
-        self.inner.call("getAll", &[query.into(), ]).as_::<IDBRequest>()
+    pub fn get_all1(&self, query_or_options: &Any) -> IDBRequest {
+        self.inner.call("getAll", &[query_or_options.into(), ]).as_::<IDBRequest>()
     }
     /// The getAll method.
     /// [`IDBIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAll)
-    pub fn get_all2(&self, query: &Any, count: u32) -> IDBRequest {
-        self.inner.call("getAll", &[query.into(), count.into(), ]).as_::<IDBRequest>()
+    pub fn get_all2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
+        self.inner.call("getAll", &[query_or_options.into(), count.into(), ]).as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
@@ -149,13 +149,25 @@ impl IDBIndex {
     }
     /// The getAllKeys method.
     /// [`IDBIndex.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllKeys)
-    pub fn get_all_keys1(&self, query: &Any) -> IDBRequest {
-        self.inner.call("getAllKeys", &[query.into(), ]).as_::<IDBRequest>()
+    pub fn get_all_keys1(&self, query_or_options: &Any) -> IDBRequest {
+        self.inner.call("getAllKeys", &[query_or_options.into(), ]).as_::<IDBRequest>()
     }
     /// The getAllKeys method.
     /// [`IDBIndex.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllKeys)
-    pub fn get_all_keys2(&self, query: &Any, count: u32) -> IDBRequest {
-        self.inner.call("getAllKeys", &[query.into(), count.into(), ]).as_::<IDBRequest>()
+    pub fn get_all_keys2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
+        self.inner.call("getAllKeys", &[query_or_options.into(), count.into(), ]).as_::<IDBRequest>()
+    }
+}
+impl IDBIndex {
+    /// The getAllRecords method.
+    /// [`IDBIndex.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllRecords)
+    pub fn get_all_records0(&self, ) -> IDBRequest {
+        self.inner.call("getAllRecords", &[]).as_::<IDBRequest>()
+    }
+    /// The getAllRecords method.
+    /// [`IDBIndex.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllRecords)
+    pub fn get_all_records1(&self, options: &IDBGetAllOptions) -> IDBRequest {
+        self.inner.call("getAllRecords", &[options.into(), ]).as_::<IDBRequest>()
     }
 }
 impl IDBIndex {

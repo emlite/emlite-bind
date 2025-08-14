@@ -156,13 +156,13 @@ impl SpeechRecognition {
 impl SpeechRecognition {
     /// Getter of the `phrases` attribute.
     /// [`SpeechRecognition.phrases`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/phrases)
-    pub fn phrases(&self) -> SpeechRecognitionPhraseList {
-        self.inner.get("phrases").as_::<SpeechRecognitionPhraseList>()
+    pub fn phrases(&self) -> TypedArray<SpeechRecognitionPhrase> {
+        self.inner.get("phrases").as_::<TypedArray<SpeechRecognitionPhrase>>()
     }
 
     /// Setter of the `phrases` attribute.
     /// [`SpeechRecognition.phrases`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/phrases)
-    pub fn set_phrases(&mut self, value: &SpeechRecognitionPhraseList) {
+    pub fn set_phrases(&mut self, value: &TypedArray<SpeechRecognitionPhrase>) {
         self.inner.set("phrases", value);
     }
 }

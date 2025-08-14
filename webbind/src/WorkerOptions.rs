@@ -62,6 +62,17 @@ impl From<&WorkerOptions> for Any {
 }
 
 impl WorkerOptions {
+    /// Getter of the `name` attribute.
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
+    }
+
+    /// Setter of the `name` attribute.
+    pub fn set_name(&mut self, value: &JsString) {
+        self.inner.set("name", value);
+    }
+}
+impl WorkerOptions {
     /// Getter of the `type` attribute.
     pub fn type_(&self) -> WorkerType {
         self.inner.get("type").as_::<WorkerType>()
@@ -81,16 +92,5 @@ impl WorkerOptions {
     /// Setter of the `credentials` attribute.
     pub fn set_credentials(&mut self, value: &RequestCredentials) {
         self.inner.set("credentials", value);
-    }
-}
-impl WorkerOptions {
-    /// Getter of the `name` attribute.
-    pub fn name(&self) -> JsString {
-        self.inner.get("name").as_::<JsString>()
-    }
-
-    /// Setter of the `name` attribute.
-    pub fn set_name(&mut self, value: &JsString) {
-        self.inner.set("name", value);
     }
 }

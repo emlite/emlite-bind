@@ -84,6 +84,17 @@ impl NotificationAction {
     }
 }
 impl NotificationAction {
+    /// Getter of the `navigate` attribute.
+    pub fn navigate(&self) -> JsString {
+        self.inner.get("navigate").as_::<JsString>()
+    }
+
+    /// Setter of the `navigate` attribute.
+    pub fn set_navigate(&mut self, value: &JsString) {
+        self.inner.set("navigate", value);
+    }
+}
+impl NotificationAction {
     /// Getter of the `icon` attribute.
     pub fn icon(&self) -> JsString {
         self.inner.get("icon").as_::<JsString>()

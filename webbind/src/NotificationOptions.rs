@@ -95,6 +95,17 @@ impl NotificationOptions {
     }
 }
 impl NotificationOptions {
+    /// Getter of the `navigate` attribute.
+    pub fn navigate(&self) -> JsString {
+        self.inner.get("navigate").as_::<JsString>()
+    }
+
+    /// Setter of the `navigate` attribute.
+    pub fn set_navigate(&mut self, value: &JsString) {
+        self.inner.set("navigate", value);
+    }
+}
+impl NotificationOptions {
     /// Getter of the `tag` attribute.
     pub fn tag(&self) -> JsString {
         self.inner.get("tag").as_::<JsString>()

@@ -68,8 +68,8 @@ jsbind::utils::impl_dyn_cast!(MathMLElement);
 impl MathMLElement {
     /// Getter of the `style` attribute.
     /// [`MathMLElement.style`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement/style)
-    pub fn style(&self) -> CSSStyleDeclaration {
-        self.inner.get("style").as_::<CSSStyleDeclaration>()
+    pub fn style(&self) -> CSSStyleProperties {
+        self.inner.get("style").as_::<CSSStyleProperties>()
     }
 
 }
