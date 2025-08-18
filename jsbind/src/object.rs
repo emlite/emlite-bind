@@ -52,6 +52,35 @@ impl Object {
     pub fn get(&self, item: &Any) -> Any {
         self.inner.get(item.clone()).as_::<Any>()
     }
+
+    /// Gets the Object constructor function
+    /// @returns emlite::Val representing the Object constructor
+    pub fn instance() -> emlite::Val {
+        emlite::Val::global("Object")
+    }
+
+    /// Creates an object with the specified prototype object and properties
+    /// @param prototype the object to use as the prototype, or null for no prototype
+    /// @returns a new object with the specified prototype
+    pub fn create(prototype: &emlite::Val) -> emlite::Val {
+        emlite::Val::global("Object").call("create", &[prototype.clone()])
+    }
+
+    /// Creates an object with the specified prototype object and properties
+    /// @param prototype the object to use as the prototype, or null for no prototype
+    /// @param properties an object whose enumerable own properties specify property descriptors
+    /// @returns a new object with the specified prototype and properties
+    pub fn create_with_properties(prototype: &emlite::Val, properties: &emlite::Val) -> emlite::Val {
+        emlite::Val::global("Object").call("create", &[prototype.clone(), properties.clone()])
+    }
+
+    /// Sets the prototype (i.e., the internal [[Prototype]] property) of a specified object
+    /// @param obj the object which is to have its prototype set
+    /// @param prototype the object's new prototype (an object or null)
+    /// @returns the specified object
+    pub fn set_prototype_of(obj: &emlite::Val, prototype: &emlite::Val) -> emlite::Val {
+        emlite::Val::global("Object").call("setPrototypeOf", &[obj.clone(), prototype.clone()])
+    }
 }
 
 impl Default for Object {

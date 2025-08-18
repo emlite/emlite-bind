@@ -403,6 +403,83 @@ pub fn queue_microtask(callback: &Function) {
     emlite::Val::global("queueMicrotask").invoke(&[callback.into()]);
 }
 
+/// Dynamically imports a module.
+///
+/// # Arguments
+/// * `specifier` - Module specifier to import
+///
+/// # Returns
+/// Promise that resolves to Result containing the module namespace object
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let import_promise = import_module("./my-module.js");
+/// // import_promise resolves to the module's exports
+/// ```
+pub fn import_module(specifier: &str) -> Promise<Result<Object, JsError>> {
+    let import_promise = emlite::Val::global("import").invoke(&[specifier.into()]);
+    Promise::take_ownership(import_promise.as_handle())
+}
+
+/// Requires a CommonJS module.
+///
+/// # Arguments
+/// * `specifier` - Module specifier to require
+///
+/// # Returns
+/// Result containing the module exports
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let exports = require_module("fs")?;
+/// // exports contains the CommonJS module exports
+/// ```
+pub fn require_module(specifier: &str) -> Result<Object, JsError> {
+    let require_fn = emlite::Val::global("require");
+    if require_fn.is_undefined() {
+        return Err(JsError::new("require is not available in this environment"));
+    }
+    
+    let module_exports = require_fn.invoke(&[specifier.into()]);
+    Ok(Object::from_val(&module_exports.as_::<Any>()))
+}
+
+/// Creates a require function using import.meta.url.
+///
+/// # Arguments
+/// * `import_meta_url` - The import.meta.url value
+///
+/// # Returns
+/// Result containing require function for CommonJS module loading
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let import_meta = Any::global("import").get("meta");
+/// let import_meta_url = import_meta.get("url");
+/// let require_fn = create_require(&import_meta_url)?;
+/// // require_fn can now be used to load CommonJS modules
+/// ```
+pub fn create_require(import_meta_url: &Any) -> Result<Function, JsError> {
+    let module_obj = emlite::Val::global("module");
+    if module_obj.is_undefined() {
+        return Err(JsError::new("module.createRequire not supported in this environment"));
+    }
+
+    let create_require_fn = module_obj.get("createRequire");
+    if create_require_fn.is_undefined() {
+        return Err(JsError::new("module.createRequire not available"));
+    }
+
+    let require_fn = create_require_fn.invoke(&[import_meta_url.clone()]);
+    Ok(Function::from_val(&require_fn.as_::<Any>()))
+}
+
 /// Options for structured cloning operations.
 #[derive(Clone, Debug)]
 pub struct JsStructuredSerializeOptions {
