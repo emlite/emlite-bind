@@ -18,10 +18,10 @@ impl<T> emlite::FromVal for Promise<T> {
             phantom: PhantomData,
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
+    fn take_ownership(v: emlite::common::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> emlite::common::Handle {
         self.inner.as_handle()
     }
 }

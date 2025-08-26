@@ -50,7 +50,7 @@ impl_dyn_cast!(TextDecoder);
 
 impl TextDecoder {
     /// `new TextDecoder(label?, options?)`
-    pub fn new(label: Option<&str>, opts: Option<&Any>) -> Self {
+    pub fn new(label: Option<String>, opts: Option<&Any>) -> Self {
         let ctor = emlite::Val::global("TextDecoder");
         match (label, opts) {
             (Some(l), Some(o)) => ctor.new(&[l.into(), o.clone()]).as_::<Self>(),

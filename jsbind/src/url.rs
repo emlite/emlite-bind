@@ -28,7 +28,7 @@ impl URL {
     /// let relative = URL::new("/path", Some("https://example.com")).unwrap();
     /// assert!(URL::new("invalid-url", None).is_err());
     /// ```
-    pub fn new(input: &str, base: Option<&str>) -> Result<Self, TypeError> {
+    pub fn new(input: &str, base: Option<String>) -> Result<Self, TypeError> {
         let ctor = emlite::Val::global("URL");
         let result = match base {
             Some(b) => ctor.new(&[input.into(), b.into()]),

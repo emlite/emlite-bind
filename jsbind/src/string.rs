@@ -1,6 +1,7 @@
 use crate::any::Any;
 use crate::utils::*;
 use alloc::string::String;
+use alloc::string::ToString;
 use alloc::vec::Vec;
 
 macro_rules! declare_string {
@@ -15,12 +16,6 @@ macro_rules! declare_string {
         bind!($name);
 
         impl From<$name> for Option<String> {
-            fn from(s: $name) -> Self {
-                s.as_::<Self>()
-            }
-        }
-
-        impl From<$name> for Option<&str> {
             fn from(s: $name) -> Self {
                 s.as_::<Self>()
             }
@@ -62,11 +57,11 @@ macro_rules! declare_string {
             }
         }
 
-        impl AsRef<str> for $name {
-            fn as_ref(&self) -> &str {
-                self.as_str().unwrap_or("")
-            }
-        }
+        // impl AsRef<str> for $name {
+        //     fn as_ref(&self) -> &str {
+        //         self.as_str().unwrap_or("")
+        //     }
+        // }
 
         impl crate::prelude::DynCast for $name {
             #[inline]
@@ -112,8 +107,8 @@ macro_rules! declare_string {
                 self.length() == 0
             }
             /// Borrow the JavaScript string as `&str` (UTF‑8 view).
-            pub fn as_str(&self) -> Option<&str> {
-                self.inner.as_::<Option<&str>>()
+            pub fn as_string(&self) -> Option<String> {
+                self.inner.as_::<Option<String>>()
             }
 
             /// Borrow the JavaScript string as `&str` (UTF‑8 view).
@@ -220,7 +215,7 @@ macro_rules! declare_string {
                 self.inner.call("matchAll", &[pat.clone()])
             }
             /// [`String.prototype.normalize`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
-            pub fn normalize(&self, form: Option<&str>) -> Self {
+            pub fn normalize(&self, form: Option<String>) -> Self {
                 match form {
                     Some(f) => self.inner.call("normalize", &[f.into()]),
                     None => self.inner.call("normalize", &[]),
@@ -228,7 +223,7 @@ macro_rules! declare_string {
                 .as_::<Self>()
             }
             /// [`String.prototype.padEnd`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd)
-            pub fn pad_end(&self, target_len: usize, pad: Option<&str>) -> Self {
+            pub fn pad_end(&self, target_len: usize, pad: Option<String>) -> Self {
                 match pad {
                     Some(p) => self.inner.call("padEnd", &[target_len.into(), p.into()]),
                     None => self.inner.call("padEnd", &[target_len.into()]),
@@ -236,7 +231,7 @@ macro_rules! declare_string {
                 .as_::<Self>()
             }
             /// [`String.prototype.padStart`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
-            pub fn pad_start(&self, target_len: usize, pad: Option<&str>) -> Self {
+            pub fn pad_start(&self, target_len: usize, pad: Option<String>) -> Self {
                 match pad {
                     Some(p) => self.inner.call("padStart", &[target_len.into(), p.into()]),
                     None => self.inner.call("padStart", &[target_len.into()]),
@@ -351,7 +346,7 @@ macro_rules! declare_string {
             /// Gets the byte length of the string in UTF-8 encoding
             /// @returns number of bytes in UTF-8 representation
             pub fn byte_len(&self) -> usize {
-                if let Some(s) = self.as_str() {
+                if let Some(s) = self.as_string() {
                     s.len()
                 } else {
                     0
@@ -367,8 +362,8 @@ macro_rules! declare_string {
 
         impl core::fmt::Display for $name {
             fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-                if let Some(s) = self.as_str() {
-                    f.write_str(s)
+                if let Some(s) = self.as_string() {
+                    f.write_str(&s)
                 } else {
                     f.write_str("undefined")
                 }
@@ -384,7 +379,7 @@ macro_rules! declare_string {
 
         impl PartialEq<str> for $name {
             fn eq(&self, other: &str) -> bool {
-                self.as_str() == Some(other)
+                self.as_string() == Some(other.to_string())
             }
         }
     };

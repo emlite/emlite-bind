@@ -16,10 +16,10 @@ macro_rules! bigint_array {
             fn from_val(v: &emlite::Val) -> Self {
                 Self { inner: v.clone() }
             }
-            fn take_ownership(h: emlite::env::Handle) -> Self {
+            fn take_ownership(h: emlite::common::Handle) -> Self {
                 Self::from_val(&emlite::Val::take_ownership(h))
             }
-            fn as_handle(&self) -> emlite::env::Handle {
+            fn as_handle(&self) -> emlite::common::Handle {
                 self.inner.as_handle()
             }
         }

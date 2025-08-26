@@ -1,7 +1,7 @@
 /// Any is just a wrapper around `emlite::Val`
 pub use emlite::Val as Any;
 
-pub type AnyHandle = emlite::env::Handle;
+pub type AnyHandle = emlite::common::Handle;
 
 impl crate::prelude::DynCast for Any {
     #[inline]

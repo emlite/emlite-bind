@@ -4,10 +4,10 @@ macro_rules! bind {
             fn from_val(v: &$crate::prelude::Any) -> Self {
                 $i { inner: v.clone() }
             }
-            fn take_ownership(v: emlite::env::Handle) -> Self {
+            fn take_ownership(v: emlite::common::Handle) -> Self {
                 Self::from_val(&$crate::prelude::Any::take_ownership(v))
             }
-            fn as_handle(&self) -> emlite::env::Handle {
+            fn as_handle(&self) -> emlite::common::Handle {
                 self.inner.as_handle()
             }
         }

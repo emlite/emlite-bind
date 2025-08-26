@@ -1,6 +1,6 @@
 [package]
 name = "webbind"
-version = "0.1.32"
+version = "0.1.33"
 edition = "2024"
 description = "Rust bindings for the web api, auto-generated from WebIDL"
 documentation = "https://docs.rs/webbind"
@@ -11,4 +11,4 @@ keywords = ["wasm", "wasi", "polyfill", "shim", "bindings"]
 categories = ["api-bindings", "wasm"]
 
 [dependencies]
-jsbind = { version = "=0.1.32", path = "../jsbind" }
+jsbind = { version = "=0.1.33", path = "../jsbind" }

@@ -23,7 +23,7 @@ export function generateEnums() {
     src.push(
       `impl FromVal for ${e.name} {`,
       `    fn from_val(v: &Any) -> Self {`,
-      `         match v.as_::<Option<&str>>().unwrap() {`
+      `         match v.as_::<Option<String>>().unwrap().as_str() {`
     );
     
     for (const v of e.values) {

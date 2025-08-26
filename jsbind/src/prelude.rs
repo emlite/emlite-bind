@@ -206,11 +206,9 @@ pub fn throw_str(s: &str) -> ! {
 #[cold]
 #[inline(never)]
 pub fn throw_val(s: Any) -> ! {
-    unsafe {
-        let handle = s.as_handle();
-        core::mem::forget(s);
-        emlite::env::emlite_val_throw(handle)
-    }
+    let handle = s.as_handle();
+    core::mem::forget(s);
+    emlite::Val::throw(emlite::Val::take_ownership(handle));
 }
 
 // Implementations copied from wasm-bindgen

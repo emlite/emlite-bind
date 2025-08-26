@@ -1,3 +1,6 @@
+[target.wasm32-wasip2]
+rustflags = ["-Clink-args=--strip-all"]
+
 [target.wasm32-wasip1]
 rustflags = ["-Clink-args=--no-entry --allow-undefined --export-dynamic --export-if-defined=main --export-table --import-memory --export-memory --strip-all"]
 

@@ -27,7 +27,7 @@ impl Symbol {
     /// let sym1 = Symbol::new(None);
     /// let sym2 = Symbol::new(Some("my symbol"));
     /// ```
-    pub fn new(description: Option<&str>) -> Self {
+    pub fn new(description: Option<String>) -> Self {
         let ctor = emlite::Val::global("Symbol");
         let val = match description {
             Some(desc) => ctor.invoke(&[desc.into()]),

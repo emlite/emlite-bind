@@ -5,7 +5,7 @@ fn main() {
     // UTF-8 string example
     let s: JsString = "Hello".into();
     Console::get().log(&[s.clone().into()]);
-    println!("UTF-8: {:?}", s.as_str());
+    println!("UTF-8: {:?}", s.as_string());
 
     // UTF-16 string example
     let utf16_data: Vec<u16> = "Hello 世界".encode_utf16().collect();
