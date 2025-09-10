@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLLegendElement class.
 /// [`HTMLLegendElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLLegendElement {
 
 impl FromVal for HTMLLegendElement {
     fn from_val(v: &Any) -> Self {
-        HTMLLegendElement { inner: HTMLElement::from_val(v) }
+        HTMLLegendElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLLegendElement {
 
 impl AsMut<Any> for HTMLLegendElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLLegendElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLLegendElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLLegendElement);
 
-
-
 impl HTMLLegendElement {
     /// The `new HTMLLegendElement(..)` constructor, creating a new HTMLLegendElement instance
     pub fn new() -> HTMLLegendElement {
         Self {
-            inner: Any::global("HTMLLegendElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLLegendElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLLegendElement {
     /// Getter of the `form` attribute.
@@ -81,7 +79,6 @@ impl HTMLLegendElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
-
 }
 impl HTMLLegendElement {
     /// Getter of the `align` attribute.

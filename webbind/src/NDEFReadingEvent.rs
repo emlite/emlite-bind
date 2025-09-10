@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NDEFReadingEvent class.
 /// [`NDEFReadingEvent`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReadingEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NDEFReadingEvent {
 
 impl FromVal for NDEFReadingEvent {
     fn from_val(v: &Any) -> Self {
-        NDEFReadingEvent { inner: Event::from_val(v) }
+        NDEFReadingEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NDEFReadingEvent {
 
 impl AsMut<Any> for NDEFReadingEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NDEFReadingEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&NDEFReadingEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(NDEFReadingEvent);
 
-
-
 impl NDEFReadingEvent {
     /// The `new NDEFReadingEvent(..)` constructor, creating a new NDEFReadingEvent instance
-    pub fn new(type_: &JsString, reading_event_init_dict: &NDEFReadingEventInit) -> NDEFReadingEvent {
+    pub fn new(
+        type_: &JsString,
+        reading_event_init_dict: &NDEFReadingEventInit,
+    ) -> NDEFReadingEvent {
         Self {
-            inner: Any::global("NDEFReadingEvent").new(&[type_.into(), reading_event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("NDEFReadingEvent")
+                .new(&[type_.into(), reading_event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl NDEFReadingEvent {
     /// Getter of the `serialNumber` attribute.
@@ -81,7 +82,6 @@ impl NDEFReadingEvent {
     pub fn serial_number(&self) -> JsString {
         self.inner.get("serialNumber").as_::<JsString>()
     }
-
 }
 impl NDEFReadingEvent {
     /// Getter of the `message` attribute.
@@ -89,5 +89,4 @@ impl NDEFReadingEvent {
     pub fn message(&self) -> NDEFMessage {
         self.inner.get("message").as_::<NDEFMessage>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Presentation class.
 /// [`Presentation`](https://developer.mozilla.org/en-US/docs/Web/API/Presentation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Presentation {
 
 impl FromVal for Presentation {
     fn from_val(v: &Any) -> Self {
-        Presentation { inner: Any::from_val(v) }
+        Presentation {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Presentation {
 
 impl AsMut<Any> for Presentation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Presentation> for Any {
@@ -64,12 +63,13 @@ impl From<&Presentation> for Any {
 
 jsbind::utils::impl_dyn_cast!(Presentation);
 
-
 impl Presentation {
     /// Getter of the `defaultRequest` attribute.
     /// [`Presentation.defaultRequest`](https://developer.mozilla.org/en-US/docs/Web/API/Presentation/defaultRequest)
     pub fn default_request(&self) -> PresentationRequest {
-        self.inner.get("defaultRequest").as_::<PresentationRequest>()
+        self.inner
+            .get("defaultRequest")
+            .as_::<PresentationRequest>()
     }
 
     /// Setter of the `defaultRequest` attribute.
@@ -84,5 +84,4 @@ impl Presentation {
     pub fn receiver(&self) -> PresentationReceiver {
         self.inner.get("receiver").as_::<PresentationReceiver>()
     }
-
 }

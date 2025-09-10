@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FragmentResultOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for FragmentResultOptions {
 
 impl AsMut<Any> for FragmentResultOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FragmentResultOptions> for Any {
@@ -97,7 +94,9 @@ impl FragmentResultOptions {
 impl FragmentResultOptions {
     /// Getter of the `childFragments` attribute.
     pub fn child_fragments(&self) -> TypedArray<LayoutFragment> {
-        self.inner.get("childFragments").as_::<TypedArray<LayoutFragment>>()
+        self.inner
+            .get("childFragments")
+            .as_::<TypedArray<LayoutFragment>>()
     }
 
     /// Setter of the `childFragments` attribute.

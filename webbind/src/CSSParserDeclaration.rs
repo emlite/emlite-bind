@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSParserDeclaration class.
 /// [`CSSParserDeclaration`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserDeclaration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSParserDeclaration {
 
 impl FromVal for CSSParserDeclaration {
     fn from_val(v: &Any) -> Self {
-        CSSParserDeclaration { inner: CSSParserRule::from_val(v) }
+        CSSParserDeclaration {
+            inner: CSSParserRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSParserDeclaration {
 
 impl AsMut<Any> for CSSParserDeclaration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSParserDeclaration> for Any {
@@ -64,23 +63,24 @@ impl From<&CSSParserDeclaration> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSParserDeclaration);
 
-
-
 impl CSSParserDeclaration {
     /// The `new CSSParserDeclaration(..)` constructor, creating a new CSSParserDeclaration instance
     pub fn new0(name: &JsString) -> CSSParserDeclaration {
         Self {
-            inner: Any::global("CSSParserDeclaration").new(&[name.into()]).as_::<CSSParserRule>(),
+            inner: Any::global("CSSParserDeclaration")
+                .new(&[name.into()])
+                .as_::<CSSParserRule>(),
         }
     }
 
     /// The `new CSSParserDeclaration(..)` constructor, creating a new CSSParserDeclaration instance
     pub fn new1(name: &JsString, body: &TypedArray<CSSParserRule>) -> CSSParserDeclaration {
         Self {
-            inner: Any::global("CSSParserDeclaration").new(&[name.into(), body.into()]).as_::<CSSParserRule>(),
+            inner: Any::global("CSSParserDeclaration")
+                .new(&[name.into(), body.into()])
+                .as_::<CSSParserRule>(),
         }
     }
-
 }
 impl CSSParserDeclaration {
     /// Getter of the `name` attribute.
@@ -88,7 +88,6 @@ impl CSSParserDeclaration {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSParserDeclaration {
     /// Getter of the `body` attribute.
@@ -96,5 +95,4 @@ impl CSSParserDeclaration {
     pub fn body(&self) -> TypedArray<CSSParserValue> {
         self.inner.get("body").as_::<TypedArray<CSSParserValue>>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportSendStream class.
 /// [`WebTransportSendStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportSendStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebTransportSendStream {
 
 impl FromVal for WebTransportSendStream {
     fn from_val(v: &Any) -> Self {
-        WebTransportSendStream { inner: WritableStream::from_val(v) }
+        WebTransportSendStream {
+            inner: WritableStream::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebTransportSendStream {
 
 impl AsMut<Any> for WebTransportSendStream {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportSendStream> for Any {
@@ -63,7 +62,6 @@ impl From<&WebTransportSendStream> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebTransportSendStream);
-
 
 impl WebTransportSendStream {
     /// Getter of the `sendGroup` attribute.
@@ -94,14 +92,18 @@ impl WebTransportSendStream {
 impl WebTransportSendStream {
     /// The getStats method.
     /// [`WebTransportSendStream.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportSendStream/getStats)
-    pub fn get_stats(&self, ) -> Promise<WebTransportSendStreamStats> {
-        self.inner.call("getStats", &[]).as_::<Promise<WebTransportSendStreamStats>>()
+    pub fn get_stats(&self) -> Promise<WebTransportSendStreamStats> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<WebTransportSendStreamStats>>()
     }
 }
 impl WebTransportSendStream {
     /// The getWriter method.
     /// [`WebTransportSendStream.getWriter`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportSendStream/getWriter)
-    pub fn get_writer(&self, ) -> WebTransportWriter {
-        self.inner.call("getWriter", &[]).as_::<WebTransportWriter>()
+    pub fn get_writer(&self) -> WebTransportWriter {
+        self.inner
+            .call("getWriter", &[])
+            .as_::<WebTransportWriter>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FontFacePalette class.
 /// [`FontFacePalette`](https://developer.mozilla.org/en-US/docs/Web/API/FontFacePalette)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FontFacePalette {
 
 impl FromVal for FontFacePalette {
     fn from_val(v: &Any) -> Self {
-        FontFacePalette { inner: Any::from_val(v) }
+        FontFacePalette {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FontFacePalette {
 
 impl AsMut<Any> for FontFacePalette {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FontFacePalette> for Any {
@@ -64,14 +63,12 @@ impl From<&FontFacePalette> for Any {
 
 jsbind::utils::impl_dyn_cast!(FontFacePalette);
 
-
 impl FontFacePalette {
     /// Getter of the `length` attribute.
     /// [`FontFacePalette.length`](https://developer.mozilla.org/en-US/docs/Web/API/FontFacePalette/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl FontFacePalette {
     /// Getter of the `usableWithLightBackground` attribute.
@@ -79,7 +76,6 @@ impl FontFacePalette {
     pub fn usable_with_light_background(&self) -> bool {
         self.inner.get("usableWithLightBackground").as_::<bool>()
     }
-
 }
 impl FontFacePalette {
     /// Getter of the `usableWithDarkBackground` attribute.
@@ -87,5 +83,4 @@ impl FontFacePalette {
     pub fn usable_with_dark_background(&self) -> bool {
         self.inner.get("usableWithDarkBackground").as_::<bool>()
     }
-
 }

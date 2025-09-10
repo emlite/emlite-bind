@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AdAuctionData dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AdAuctionData {
 
 impl AsMut<Any> for AdAuctionData {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AdAuctionData> for Any {
@@ -86,7 +83,9 @@ impl AdAuctionData {
 impl AdAuctionData {
     /// Getter of the `requests` attribute.
     pub fn requests(&self) -> TypedArray<AdAuctionPerSellerData> {
-        self.inner.get("requests").as_::<TypedArray<AdAuctionPerSellerData>>()
+        self.inner
+            .get("requests")
+            .as_::<TypedArray<AdAuctionPerSellerData>>()
     }
 
     /// Setter of the `requests` attribute.

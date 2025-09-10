@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SharedStoragePrivateAggregationConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SharedStoragePrivateAggregationConfig {
 
 impl AsMut<Any> for SharedStoragePrivateAggregationConfig {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SharedStoragePrivateAggregationConfig> for Any {
@@ -64,7 +61,9 @@ impl From<&SharedStoragePrivateAggregationConfig> for Any {
 impl SharedStoragePrivateAggregationConfig {
     /// Getter of the `aggregationCoordinatorOrigin` attribute.
     pub fn aggregation_coordinator_origin(&self) -> JsString {
-        self.inner.get("aggregationCoordinatorOrigin").as_::<JsString>()
+        self.inner
+            .get("aggregationCoordinatorOrigin")
+            .as_::<JsString>()
     }
 
     /// Setter of the `aggregationCoordinatorOrigin` attribute.

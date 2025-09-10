@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Response class.
 /// [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Response {
 
 impl FromVal for Response {
     fn from_val(v: &Any) -> Self {
-        Response { inner: Any::from_val(v) }
+        Response {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Response {
 
 impl AsMut<Any> for Response {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Response> for Any {
@@ -63,8 +62,6 @@ impl From<&Response> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(Response);
-
-
 
 impl Response {
     /// The `new Response(..)` constructor, creating a new Response instance
@@ -84,10 +81,11 @@ impl Response {
     /// The `new Response(..)` constructor, creating a new Response instance
     pub fn new2(body: &Any, init: &ResponseInit) -> Response {
         Self {
-            inner: Any::global("Response").new(&[body.into(), init.into()]).as_::<Any>(),
+            inner: Any::global("Response")
+                .new(&[body.into(), init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl Response {
     /// The error method.
@@ -100,18 +98,22 @@ impl Response {
     /// The redirect method.
     /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
     pub fn redirect0(url: &JsString) -> Response {
-        Any::global("Response").call("redirect", &[url.into(), ]).as_::<Response>()
+        Any::global("Response")
+            .call("redirect", &[url.into()])
+            .as_::<Response>()
     }
     /// The redirect method.
     /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
     pub fn redirect1(url: &JsString, status: u16) -> Response {
-        Any::global("Response").call("redirect", &[url.into(), status.into(), ]).as_::<Response>()
+        Any::global("Response")
+            .call("redirect", &[url.into(), status.into()])
+            .as_::<Response>()
     }
 }
 impl Response {
     /// The json method.
     /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
-    pub fn json(&self, ) -> Promise<Any> {
+    pub fn json(&self) -> Promise<Any> {
         self.inner.call("json", &[]).as_::<Promise<Any>>()
     }
 }
@@ -121,7 +123,6 @@ impl Response {
     pub fn type_(&self) -> ResponseType {
         self.inner.get("type").as_::<ResponseType>()
     }
-
 }
 impl Response {
     /// Getter of the `url` attribute.
@@ -129,7 +130,6 @@ impl Response {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
-
 }
 impl Response {
     /// Getter of the `redirected` attribute.
@@ -137,7 +137,6 @@ impl Response {
     pub fn redirected(&self) -> bool {
         self.inner.get("redirected").as_::<bool>()
     }
-
 }
 impl Response {
     /// Getter of the `status` attribute.
@@ -145,7 +144,6 @@ impl Response {
     pub fn status(&self) -> u16 {
         self.inner.get("status").as_::<u16>()
     }
-
 }
 impl Response {
     /// Getter of the `ok` attribute.
@@ -153,7 +151,6 @@ impl Response {
     pub fn ok(&self) -> bool {
         self.inner.get("ok").as_::<bool>()
     }
-
 }
 impl Response {
     /// Getter of the `statusText` attribute.
@@ -161,7 +158,6 @@ impl Response {
     pub fn status_text(&self) -> JsString {
         self.inner.get("statusText").as_::<JsString>()
     }
-
 }
 impl Response {
     /// Getter of the `headers` attribute.
@@ -169,12 +165,11 @@ impl Response {
     pub fn headers(&self) -> Headers {
         self.inner.get("headers").as_::<Headers>()
     }
-
 }
 impl Response {
     /// The clone method.
     /// [`Response.clone`](https://developer.mozilla.org/en-US/docs/Web/API/Response/clone)
-    pub fn clone_(&self, ) -> Response {
+    pub fn clone_(&self) -> Response {
         self.inner.call("clone", &[]).as_::<Response>()
     }
 }
@@ -184,7 +179,6 @@ impl Response {
     pub fn body(&self) -> ReadableStream {
         self.inner.get("body").as_::<ReadableStream>()
     }
-
 }
 impl Response {
     /// Getter of the `bodyUsed` attribute.
@@ -192,40 +186,41 @@ impl Response {
     pub fn body_used(&self) -> bool {
         self.inner.get("bodyUsed").as_::<bool>()
     }
-
 }
 impl Response {
     /// The arrayBuffer method.
     /// [`Response.arrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Response/arrayBuffer)
-    pub fn array_buffer(&self, ) -> Promise<ArrayBuffer> {
-        self.inner.call("arrayBuffer", &[]).as_::<Promise<ArrayBuffer>>()
+    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
+        self.inner
+            .call("arrayBuffer", &[])
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl Response {
     /// The blob method.
     /// [`Response.blob`](https://developer.mozilla.org/en-US/docs/Web/API/Response/blob)
-    pub fn blob(&self, ) -> Promise<Blob> {
+    pub fn blob(&self) -> Promise<Blob> {
         self.inner.call("blob", &[]).as_::<Promise<Blob>>()
     }
 }
 impl Response {
     /// The bytes method.
     /// [`Response.bytes`](https://developer.mozilla.org/en-US/docs/Web/API/Response/bytes)
-    pub fn bytes(&self, ) -> Promise<Uint8Array> {
+    pub fn bytes(&self) -> Promise<Uint8Array> {
         self.inner.call("bytes", &[]).as_::<Promise<Uint8Array>>()
     }
 }
 impl Response {
     /// The formData method.
     /// [`Response.formData`](https://developer.mozilla.org/en-US/docs/Web/API/Response/formData)
-    pub fn form_data(&self, ) -> Promise<FormData> {
+    pub fn form_data(&self) -> Promise<FormData> {
         self.inner.call("formData", &[]).as_::<Promise<FormData>>()
     }
 }
 impl Response {
     /// The text method.
     /// [`Response.text`](https://developer.mozilla.org/en-US/docs/Web/API/Response/text)
-    pub fn text(&self, ) -> Promise<JsString> {
+    pub fn text(&self) -> Promise<JsString> {
         self.inner.call("text", &[]).as_::<Promise<JsString>>()
     }
 }

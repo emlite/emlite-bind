@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaTrackSupportedConstraints dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaTrackSupportedConstraints {
 
 impl AsMut<Any> for MediaTrackSupportedConstraints {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaTrackSupportedConstraints> for Any {

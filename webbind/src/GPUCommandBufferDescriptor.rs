@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUCommandBufferDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUCommandBufferDescriptor {
 
 impl AsMut<Any> for GPUCommandBufferDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUCommandBufferDescriptor> for Any {
@@ -60,4 +57,3 @@ impl From<&GPUCommandBufferDescriptor> for Any {
         s.inner.clone()
     }
 }
-

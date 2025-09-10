@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CookieInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for CookieInit {
 
 impl AsMut<Any> for CookieInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CookieInit> for Any {

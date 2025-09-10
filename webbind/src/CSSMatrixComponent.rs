@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMatrixComponent class.
 /// [`CSSMatrixComponent`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMatrixComponent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSMatrixComponent {
 
 impl FromVal for CSSMatrixComponent {
     fn from_val(v: &Any) -> Self {
-        CSSMatrixComponent { inner: CSSTransformComponent::from_val(v) }
+        CSSMatrixComponent {
+            inner: CSSTransformComponent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSMatrixComponent {
 
 impl AsMut<Any> for CSSMatrixComponent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMatrixComponent> for Any {
@@ -64,23 +63,27 @@ impl From<&CSSMatrixComponent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMatrixComponent);
 
-
-
 impl CSSMatrixComponent {
     /// The `new CSSMatrixComponent(..)` constructor, creating a new CSSMatrixComponent instance
     pub fn new0(matrix: &DOMMatrixReadOnly) -> CSSMatrixComponent {
         Self {
-            inner: Any::global("CSSMatrixComponent").new(&[matrix.into()]).as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSMatrixComponent")
+                .new(&[matrix.into()])
+                .as_::<CSSTransformComponent>(),
         }
     }
 
     /// The `new CSSMatrixComponent(..)` constructor, creating a new CSSMatrixComponent instance
-    pub fn new1(matrix: &DOMMatrixReadOnly, options: &CSSMatrixComponentOptions) -> CSSMatrixComponent {
+    pub fn new1(
+        matrix: &DOMMatrixReadOnly,
+        options: &CSSMatrixComponentOptions,
+    ) -> CSSMatrixComponent {
         Self {
-            inner: Any::global("CSSMatrixComponent").new(&[matrix.into(), options.into()]).as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSMatrixComponent")
+                .new(&[matrix.into(), options.into()])
+                .as_::<CSSTransformComponent>(),
         }
     }
-
 }
 impl CSSMatrixComponent {
     /// Getter of the `matrix` attribute.

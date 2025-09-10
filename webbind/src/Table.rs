@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Table class.
 /// [`Table`](https://developer.mozilla.org/en-US/docs/Web/API/Table)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Table {
 
 impl FromVal for Table {
     fn from_val(v: &Any) -> Self {
-        Table { inner: Any::from_val(v) }
+        Table {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Table {
 
 impl AsMut<Any> for Table {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Table> for Any {
@@ -64,8 +63,6 @@ impl From<&Table> for Any {
 
 jsbind::utils::impl_dyn_cast!(Table);
 
-
-
 impl Table {
     /// The `new Table(..)` constructor, creating a new Table instance
     pub fn new0(descriptor: &TableDescriptor) -> Table {
@@ -77,40 +74,45 @@ impl Table {
     /// The `new Table(..)` constructor, creating a new Table instance
     pub fn new1(descriptor: &TableDescriptor, value: &Any) -> Table {
         Self {
-            inner: Any::global("Table").new(&[descriptor.into(), value.into()]).as_::<Any>(),
+            inner: Any::global("Table")
+                .new(&[descriptor.into(), value.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl Table {
     /// The grow method.
     /// [`Table.grow`](https://developer.mozilla.org/en-US/docs/Web/API/Table/grow)
     pub fn grow0(&self, delta: u32) -> u32 {
-        self.inner.call("grow", &[delta.into(), ]).as_::<u32>()
+        self.inner.call("grow", &[delta.into()]).as_::<u32>()
     }
     /// The grow method.
     /// [`Table.grow`](https://developer.mozilla.org/en-US/docs/Web/API/Table/grow)
     pub fn grow1(&self, delta: u32, value: &Any) -> u32 {
-        self.inner.call("grow", &[delta.into(), value.into(), ]).as_::<u32>()
+        self.inner
+            .call("grow", &[delta.into(), value.into()])
+            .as_::<u32>()
     }
 }
 impl Table {
     /// The get method.
     /// [`Table.get`](https://developer.mozilla.org/en-US/docs/Web/API/Table/get)
     pub fn get(&self, index: u32) -> Any {
-        self.inner.call("get", &[index.into(), ]).as_::<Any>()
+        self.inner.call("get", &[index.into()]).as_::<Any>()
     }
 }
 impl Table {
     /// The set method.
     /// [`Table.set`](https://developer.mozilla.org/en-US/docs/Web/API/Table/set)
     pub fn set0(&self, index: u32) -> Undefined {
-        self.inner.call("set", &[index.into(), ]).as_::<Undefined>()
+        self.inner.call("set", &[index.into()]).as_::<Undefined>()
     }
     /// The set method.
     /// [`Table.set`](https://developer.mozilla.org/en-US/docs/Web/API/Table/set)
     pub fn set1(&self, index: u32, value: &Any) -> Undefined {
-        self.inner.call("set", &[index.into(), value.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("set", &[index.into(), value.into()])
+            .as_::<Undefined>()
     }
 }
 impl Table {
@@ -119,5 +121,4 @@ impl Table {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }

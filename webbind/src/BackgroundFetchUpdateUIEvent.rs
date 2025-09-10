@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BackgroundFetchUpdateUIEvent class.
 /// [`BackgroundFetchUpdateUIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchUpdateUIEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BackgroundFetchUpdateUIEvent {
 
 impl FromVal for BackgroundFetchUpdateUIEvent {
     fn from_val(v: &Any) -> Self {
-        BackgroundFetchUpdateUIEvent { inner: BackgroundFetchEvent::from_val(v) }
+        BackgroundFetchUpdateUIEvent {
+            inner: BackgroundFetchEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BackgroundFetchUpdateUIEvent {
 
 impl AsMut<Any> for BackgroundFetchUpdateUIEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BackgroundFetchUpdateUIEvent> for Any {
@@ -64,26 +63,27 @@ impl From<&BackgroundFetchUpdateUIEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(BackgroundFetchUpdateUIEvent);
 
-
-
 impl BackgroundFetchUpdateUIEvent {
     /// The `new BackgroundFetchUpdateUIEvent(..)` constructor, creating a new BackgroundFetchUpdateUIEvent instance
     pub fn new(type_: &JsString, init: &BackgroundFetchEventInit) -> BackgroundFetchUpdateUIEvent {
         Self {
-            inner: Any::global("BackgroundFetchUpdateUIEvent").new(&[type_.into(), init.into()]).as_::<BackgroundFetchEvent>(),
+            inner: Any::global("BackgroundFetchUpdateUIEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<BackgroundFetchEvent>(),
         }
     }
-
 }
 impl BackgroundFetchUpdateUIEvent {
     /// The updateUI method.
     /// [`BackgroundFetchUpdateUIEvent.updateUI`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchUpdateUIEvent/updateUI)
-    pub fn update_ui0(&self, ) -> Promise<Undefined> {
+    pub fn update_ui0(&self) -> Promise<Undefined> {
         self.inner.call("updateUI", &[]).as_::<Promise<Undefined>>()
     }
     /// The updateUI method.
     /// [`BackgroundFetchUpdateUIEvent.updateUI`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchUpdateUIEvent/updateUI)
     pub fn update_ui1(&self, options: &BackgroundFetchUIOptions) -> Promise<Undefined> {
-        self.inner.call("updateUI", &[options.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("updateUI", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

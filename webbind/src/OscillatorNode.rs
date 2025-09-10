@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OscillatorNode class.
 /// [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct OscillatorNode {
 
 impl FromVal for OscillatorNode {
     fn from_val(v: &Any) -> Self {
-        OscillatorNode { inner: AudioScheduledSourceNode::from_val(v) }
+        OscillatorNode {
+            inner: AudioScheduledSourceNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for OscillatorNode {
 
 impl AsMut<Any> for OscillatorNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OscillatorNode> for Any {
@@ -64,23 +63,24 @@ impl From<&OscillatorNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(OscillatorNode);
 
-
-
 impl OscillatorNode {
     /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
     pub fn new0(context: &BaseAudioContext) -> OscillatorNode {
         Self {
-            inner: Any::global("OscillatorNode").new(&[context.into()]).as_::<AudioScheduledSourceNode>(),
+            inner: Any::global("OscillatorNode")
+                .new(&[context.into()])
+                .as_::<AudioScheduledSourceNode>(),
         }
     }
 
     /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
     pub fn new1(context: &BaseAudioContext, options: &OscillatorOptions) -> OscillatorNode {
         Self {
-            inner: Any::global("OscillatorNode").new(&[context.into(), options.into()]).as_::<AudioScheduledSourceNode>(),
+            inner: Any::global("OscillatorNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioScheduledSourceNode>(),
         }
     }
-
 }
 impl OscillatorNode {
     /// Getter of the `type` attribute.
@@ -101,7 +101,6 @@ impl OscillatorNode {
     pub fn frequency(&self) -> AudioParam {
         self.inner.get("frequency").as_::<AudioParam>()
     }
-
 }
 impl OscillatorNode {
     /// Getter of the `detune` attribute.
@@ -109,12 +108,13 @@ impl OscillatorNode {
     pub fn detune(&self) -> AudioParam {
         self.inner.get("detune").as_::<AudioParam>()
     }
-
 }
 impl OscillatorNode {
     /// The setPeriodicWave method.
     /// [`OscillatorNode.setPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave)
     pub fn set_periodic_wave(&self, periodic_wave: &PeriodicWave) -> Undefined {
-        self.inner.call("setPeriodicWave", &[periodic_wave.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setPeriodicWave", &[periodic_wave.into()])
+            .as_::<Undefined>()
     }
 }

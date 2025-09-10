@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GeolocationSensorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GeolocationSensorOptions {
 
 impl AsMut<Any> for GeolocationSensorOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GeolocationSensorOptions> for Any {
@@ -60,4 +57,3 @@ impl From<&GeolocationSensorOptions> for Any {
         s.inner.clone()
     }
 }
-

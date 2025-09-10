@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SecurityPolicyViolationEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SecurityPolicyViolationEventInit {
 
 impl AsMut<Any> for SecurityPolicyViolationEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SecurityPolicyViolationEventInit> for Any {
@@ -152,7 +149,9 @@ impl SecurityPolicyViolationEventInit {
 impl SecurityPolicyViolationEventInit {
     /// Getter of the `disposition` attribute.
     pub fn disposition(&self) -> SecurityPolicyViolationEventDisposition {
-        self.inner.get("disposition").as_::<SecurityPolicyViolationEventDisposition>()
+        self.inner
+            .get("disposition")
+            .as_::<SecurityPolicyViolationEventDisposition>()
     }
 
     /// Setter of the `disposition` attribute.

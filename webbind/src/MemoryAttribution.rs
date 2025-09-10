@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MemoryAttribution dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MemoryAttribution {
 
 impl AsMut<Any> for MemoryAttribution {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MemoryAttribution> for Any {
@@ -75,7 +72,9 @@ impl MemoryAttribution {
 impl MemoryAttribution {
     /// Getter of the `container` attribute.
     pub fn container(&self) -> MemoryAttributionContainer {
-        self.inner.get("container").as_::<MemoryAttributionContainer>()
+        self.inner
+            .get("container")
+            .as_::<MemoryAttributionContainer>()
     }
 
     /// Setter of the `container` attribute.

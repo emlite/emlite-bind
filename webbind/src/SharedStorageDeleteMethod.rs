@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SharedStorageDeleteMethod class.
 /// [`SharedStorageDeleteMethod`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageDeleteMethod)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SharedStorageDeleteMethod {
 
 impl FromVal for SharedStorageDeleteMethod {
     fn from_val(v: &Any) -> Self {
-        SharedStorageDeleteMethod { inner: SharedStorageModifierMethod::from_val(v) }
+        SharedStorageDeleteMethod {
+            inner: SharedStorageModifierMethod::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SharedStorageDeleteMethod {
 
 impl AsMut<Any> for SharedStorageDeleteMethod {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SharedStorageDeleteMethod> for Any {
@@ -64,21 +63,25 @@ impl From<&SharedStorageDeleteMethod> for Any {
 
 jsbind::utils::impl_dyn_cast!(SharedStorageDeleteMethod);
 
-
-
 impl SharedStorageDeleteMethod {
     /// The `new SharedStorageDeleteMethod(..)` constructor, creating a new SharedStorageDeleteMethod instance
     pub fn new0(key: &JsString) -> SharedStorageDeleteMethod {
         Self {
-            inner: Any::global("SharedStorageDeleteMethod").new(&[key.into()]).as_::<SharedStorageModifierMethod>(),
+            inner: Any::global("SharedStorageDeleteMethod")
+                .new(&[key.into()])
+                .as_::<SharedStorageModifierMethod>(),
         }
     }
 
     /// The `new SharedStorageDeleteMethod(..)` constructor, creating a new SharedStorageDeleteMethod instance
-    pub fn new1(key: &JsString, options: &SharedStorageModifierMethodOptions) -> SharedStorageDeleteMethod {
+    pub fn new1(
+        key: &JsString,
+        options: &SharedStorageModifierMethodOptions,
+    ) -> SharedStorageDeleteMethod {
         Self {
-            inner: Any::global("SharedStorageDeleteMethod").new(&[key.into(), options.into()]).as_::<SharedStorageModifierMethod>(),
+            inner: Any::global("SharedStorageDeleteMethod")
+                .new(&[key.into(), options.into()])
+                .as_::<SharedStorageModifierMethod>(),
         }
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EventCounts class.
 /// [`EventCounts`](https://developer.mozilla.org/en-US/docs/Web/API/EventCounts)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct EventCounts {
 
 impl FromVal for EventCounts {
     fn from_val(v: &Any) -> Self {
-        EventCounts { inner: Any::from_val(v) }
+        EventCounts {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for EventCounts {
 
 impl AsMut<Any> for EventCounts {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EventCounts> for Any {
@@ -63,5 +62,3 @@ impl From<&EventCounts> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(EventCounts);
-
-

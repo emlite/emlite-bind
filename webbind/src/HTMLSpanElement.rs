@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLSpanElement class.
 /// [`HTMLSpanElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSpanElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLSpanElement {
 
 impl FromVal for HTMLSpanElement {
     fn from_val(v: &Any) -> Self {
-        HTMLSpanElement { inner: HTMLElement::from_val(v) }
+        HTMLSpanElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLSpanElement {
 
 impl AsMut<Any> for HTMLSpanElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLSpanElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLSpanElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLSpanElement);
 
-
-
 impl HTMLSpanElement {
     /// The `new HTMLSpanElement(..)` constructor, creating a new HTMLSpanElement instance
     pub fn new() -> HTMLSpanElement {
@@ -73,5 +70,4 @@ impl HTMLSpanElement {
             inner: Any::global("HTMLSpanElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }

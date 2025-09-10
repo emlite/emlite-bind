@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PromiseRejectionEvent class.
 /// [`PromiseRejectionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PromiseRejectionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PromiseRejectionEvent {
 
 impl FromVal for PromiseRejectionEvent {
     fn from_val(v: &Any) -> Self {
-        PromiseRejectionEvent { inner: Event::from_val(v) }
+        PromiseRejectionEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PromiseRejectionEvent {
 
 impl AsMut<Any> for PromiseRejectionEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PromiseRejectionEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&PromiseRejectionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PromiseRejectionEvent);
 
-
-
 impl PromiseRejectionEvent {
     /// The `new PromiseRejectionEvent(..)` constructor, creating a new PromiseRejectionEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &PromiseRejectionEventInit) -> PromiseRejectionEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PromiseRejectionEventInit,
+    ) -> PromiseRejectionEvent {
         Self {
-            inner: Any::global("PromiseRejectionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("PromiseRejectionEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PromiseRejectionEvent {
     /// Getter of the `promise` attribute.
@@ -81,7 +82,6 @@ impl PromiseRejectionEvent {
     pub fn promise(&self) -> Object {
         self.inner.get("promise").as_::<Object>()
     }
-
 }
 impl PromiseRejectionEvent {
     /// Getter of the `reason` attribute.
@@ -89,5 +89,4 @@ impl PromiseRejectionEvent {
     pub fn reason(&self) -> Any {
         self.inner.get("reason").as_::<Any>()
     }
-
 }

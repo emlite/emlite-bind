@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DOMMatrix2DInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DOMMatrix2DInit {
 
 impl AsMut<Any> for DOMMatrix2DInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DOMMatrix2DInit> for Any {

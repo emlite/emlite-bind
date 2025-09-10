@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TransformStreamDefaultController class.
 /// [`TransformStreamDefaultController`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TransformStreamDefaultController {
 
 impl FromVal for TransformStreamDefaultController {
     fn from_val(v: &Any) -> Self {
-        TransformStreamDefaultController { inner: Any::from_val(v) }
+        TransformStreamDefaultController {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TransformStreamDefaultController {
 
 impl AsMut<Any> for TransformStreamDefaultController {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TransformStreamDefaultController> for Any {
@@ -64,43 +63,45 @@ impl From<&TransformStreamDefaultController> for Any {
 
 jsbind::utils::impl_dyn_cast!(TransformStreamDefaultController);
 
-
 impl TransformStreamDefaultController {
     /// Getter of the `desiredSize` attribute.
     /// [`TransformStreamDefaultController.desiredSize`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/desiredSize)
     pub fn desired_size(&self) -> f64 {
         self.inner.get("desiredSize").as_::<f64>()
     }
-
 }
 impl TransformStreamDefaultController {
     /// The enqueue method.
     /// [`TransformStreamDefaultController.enqueue`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/enqueue)
-    pub fn enqueue0(&self, ) -> Undefined {
+    pub fn enqueue0(&self) -> Undefined {
         self.inner.call("enqueue", &[]).as_::<Undefined>()
     }
     /// The enqueue method.
     /// [`TransformStreamDefaultController.enqueue`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/enqueue)
     pub fn enqueue1(&self, chunk: &Any) -> Undefined {
-        self.inner.call("enqueue", &[chunk.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("enqueue", &[chunk.into()])
+            .as_::<Undefined>()
     }
 }
 impl TransformStreamDefaultController {
     /// The error method.
     /// [`TransformStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/error)
-    pub fn error0(&self, ) -> Undefined {
+    pub fn error0(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
     /// The error method.
     /// [`TransformStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/error)
     pub fn error1(&self, reason: &Any) -> Undefined {
-        self.inner.call("error", &[reason.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("error", &[reason.into()])
+            .as_::<Undefined>()
     }
 }
 impl TransformStreamDefaultController {
     /// The terminate method.
     /// [`TransformStreamDefaultController.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/terminate)
-    pub fn terminate(&self, ) -> Undefined {
+    pub fn terminate(&self) -> Undefined {
         self.inner.call("terminate", &[]).as_::<Undefined>()
     }
 }

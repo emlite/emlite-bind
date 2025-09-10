@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ReadableStreamReadResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ReadableStreamReadResult {
 
 impl AsMut<Any> for ReadableStreamReadResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ReadableStreamReadResult> for Any {

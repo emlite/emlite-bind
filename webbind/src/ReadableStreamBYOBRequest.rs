@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ReadableStreamBYOBRequest class.
 /// [`ReadableStreamBYOBRequest`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBRequest)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ReadableStreamBYOBRequest {
 
 impl FromVal for ReadableStreamBYOBRequest {
     fn from_val(v: &Any) -> Self {
-        ReadableStreamBYOBRequest { inner: Any::from_val(v) }
+        ReadableStreamBYOBRequest {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ReadableStreamBYOBRequest {
 
 impl AsMut<Any> for ReadableStreamBYOBRequest {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ReadableStreamBYOBRequest> for Any {
@@ -64,26 +63,28 @@ impl From<&ReadableStreamBYOBRequest> for Any {
 
 jsbind::utils::impl_dyn_cast!(ReadableStreamBYOBRequest);
 
-
 impl ReadableStreamBYOBRequest {
     /// Getter of the `view` attribute.
     /// [`ReadableStreamBYOBRequest.view`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBRequest/view)
     pub fn view(&self) -> Any {
         self.inner.get("view").as_::<Any>()
     }
-
 }
 impl ReadableStreamBYOBRequest {
     /// The respond method.
     /// [`ReadableStreamBYOBRequest.respond`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBRequest/respond)
     pub fn respond(&self, bytes_written: u64) -> Undefined {
-        self.inner.call("respond", &[bytes_written.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("respond", &[bytes_written.into()])
+            .as_::<Undefined>()
     }
 }
 impl ReadableStreamBYOBRequest {
     /// The respondWithNewView method.
     /// [`ReadableStreamBYOBRequest.respondWithNewView`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBRequest/respondWithNewView)
     pub fn respond_with_new_view(&self, view: &Any) -> Undefined {
-        self.inner.call("respondWithNewView", &[view.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("respondWithNewView", &[view.into()])
+            .as_::<Undefined>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MimeType class.
 /// [`MimeType`](https://developer.mozilla.org/en-US/docs/Web/API/MimeType)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MimeType {
 
 impl FromVal for MimeType {
     fn from_val(v: &Any) -> Self {
-        MimeType { inner: Any::from_val(v) }
+        MimeType {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MimeType {
 
 impl AsMut<Any> for MimeType {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MimeType> for Any {
@@ -64,14 +63,12 @@ impl From<&MimeType> for Any {
 
 jsbind::utils::impl_dyn_cast!(MimeType);
 
-
 impl MimeType {
     /// Getter of the `type` attribute.
     /// [`MimeType.type`](https://developer.mozilla.org/en-US/docs/Web/API/MimeType/type)
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
-
 }
 impl MimeType {
     /// Getter of the `description` attribute.
@@ -79,7 +76,6 @@ impl MimeType {
     pub fn description(&self) -> JsString {
         self.inner.get("description").as_::<JsString>()
     }
-
 }
 impl MimeType {
     /// Getter of the `suffixes` attribute.
@@ -87,7 +83,6 @@ impl MimeType {
     pub fn suffixes(&self) -> JsString {
         self.inner.get("suffixes").as_::<JsString>()
     }
-
 }
 impl MimeType {
     /// Getter of the `enabledPlugin` attribute.
@@ -95,5 +90,4 @@ impl MimeType {
     pub fn enabled_plugin(&self) -> Plugin {
         self.inner.get("enabledPlugin").as_::<Plugin>()
     }
-
 }

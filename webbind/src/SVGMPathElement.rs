@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGMPathElement class.
 /// [`SVGMPathElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMPathElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGMPathElement {
 
 impl FromVal for SVGMPathElement {
     fn from_val(v: &Any) -> Self {
-        SVGMPathElement { inner: SVGElement::from_val(v) }
+        SVGMPathElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGMPathElement {
 
 impl AsMut<Any> for SVGMPathElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGMPathElement> for Any {
@@ -64,12 +63,10 @@ impl From<&SVGMPathElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGMPathElement);
 
-
 impl SVGMPathElement {
     /// Getter of the `href` attribute.
     /// [`SVGMPathElement.href`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMPathElement/href)
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

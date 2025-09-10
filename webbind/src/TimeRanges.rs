@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TimeRanges class.
 /// [`TimeRanges`](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TimeRanges {
 
 impl FromVal for TimeRanges {
     fn from_val(v: &Any) -> Self {
-        TimeRanges { inner: Any::from_val(v) }
+        TimeRanges {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TimeRanges {
 
 impl AsMut<Any> for TimeRanges {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TimeRanges> for Any {
@@ -64,26 +63,24 @@ impl From<&TimeRanges> for Any {
 
 jsbind::utils::impl_dyn_cast!(TimeRanges);
 
-
 impl TimeRanges {
     /// Getter of the `length` attribute.
     /// [`TimeRanges.length`](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl TimeRanges {
     /// The start method.
     /// [`TimeRanges.start`](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges/start)
     pub fn start(&self, index: u32) -> f64 {
-        self.inner.call("start", &[index.into(), ]).as_::<f64>()
+        self.inner.call("start", &[index.into()]).as_::<f64>()
     }
 }
 impl TimeRanges {
     /// The end method.
     /// [`TimeRanges.end`](https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges/end)
     pub fn end(&self, index: u32) -> f64 {
-        self.inner.call("end", &[index.into(), ]).as_::<f64>()
+        self.inner.call("end", &[index.into()]).as_::<f64>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PrivateAggregation class.
 /// [`PrivateAggregation`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PrivateAggregation {
 
 impl FromVal for PrivateAggregation {
     fn from_val(v: &Any) -> Self {
-        PrivateAggregation { inner: Any::from_val(v) }
+        PrivateAggregation {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PrivateAggregation {
 
 impl AsMut<Any> for PrivateAggregation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PrivateAggregation> for Any {
@@ -64,30 +63,42 @@ impl From<&PrivateAggregation> for Any {
 
 jsbind::utils::impl_dyn_cast!(PrivateAggregation);
 
-
 impl PrivateAggregation {
     /// The contributeToHistogram method.
     /// [`PrivateAggregation.contributeToHistogram`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/contributeToHistogram)
     pub fn contribute_to_histogram(&self, contribution: &PAHistogramContribution) -> Undefined {
-        self.inner.call("contributeToHistogram", &[contribution.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("contributeToHistogram", &[contribution.into()])
+            .as_::<Undefined>()
     }
 }
 impl PrivateAggregation {
     /// The contributeToHistogramOnEvent method.
     /// [`PrivateAggregation.contributeToHistogramOnEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/contributeToHistogramOnEvent)
-    pub fn contribute_to_histogram_on_event(&self, event: &JsString, contribution: &Record<JsString, Any>) -> Undefined {
-        self.inner.call("contributeToHistogramOnEvent", &[event.into(), contribution.into(), ]).as_::<Undefined>()
+    pub fn contribute_to_histogram_on_event(
+        &self,
+        event: &JsString,
+        contribution: &Record<JsString, Any>,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "contributeToHistogramOnEvent",
+                &[event.into(), contribution.into()],
+            )
+            .as_::<Undefined>()
     }
 }
 impl PrivateAggregation {
     /// The enableDebugMode method.
     /// [`PrivateAggregation.enableDebugMode`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/enableDebugMode)
-    pub fn enable_debug_mode0(&self, ) -> Undefined {
+    pub fn enable_debug_mode0(&self) -> Undefined {
         self.inner.call("enableDebugMode", &[]).as_::<Undefined>()
     }
     /// The enableDebugMode method.
     /// [`PrivateAggregation.enableDebugMode`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/enableDebugMode)
     pub fn enable_debug_mode1(&self, options: &PADebugModeOptions) -> Undefined {
-        self.inner.call("enableDebugMode", &[options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("enableDebugMode", &[options.into()])
+            .as_::<Undefined>()
     }
 }

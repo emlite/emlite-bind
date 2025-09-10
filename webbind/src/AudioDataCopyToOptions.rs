@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioDataCopyToOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AudioDataCopyToOptions {
 
 impl AsMut<Any> for AudioDataCopyToOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioDataCopyToOptions> for Any {

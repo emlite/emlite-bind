@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLAudioElement class.
 /// [`HTMLAudioElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLAudioElement {
 
 impl FromVal for HTMLAudioElement {
     fn from_val(v: &Any) -> Self {
-        HTMLAudioElement { inner: HTMLMediaElement::from_val(v) }
+        HTMLAudioElement {
+            inner: HTMLMediaElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLAudioElement {
 
 impl AsMut<Any> for HTMLAudioElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLAudioElement> for Any {
@@ -64,14 +63,13 @@ impl From<&HTMLAudioElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLAudioElement);
 
-
-
 impl HTMLAudioElement {
     /// The `new HTMLAudioElement(..)` constructor, creating a new HTMLAudioElement instance
     pub fn new() -> HTMLAudioElement {
         Self {
-            inner: Any::global("HTMLAudioElement").new(&[]).as_::<HTMLMediaElement>(),
+            inner: Any::global("HTMLAudioElement")
+                .new(&[])
+                .as_::<HTMLMediaElement>(),
         }
     }
-
 }

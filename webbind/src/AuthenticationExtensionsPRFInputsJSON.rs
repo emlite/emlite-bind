@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuthenticationExtensionsPRFInputsJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuthenticationExtensionsPRFInputsJSON {
 
 impl AsMut<Any> for AuthenticationExtensionsPRFInputsJSON {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuthenticationExtensionsPRFInputsJSON> for Any {
@@ -64,7 +61,9 @@ impl From<&AuthenticationExtensionsPRFInputsJSON> for Any {
 impl AuthenticationExtensionsPRFInputsJSON {
     /// Getter of the `eval` attribute.
     pub fn eval(&self) -> AuthenticationExtensionsPRFValuesJSON {
-        self.inner.get("eval").as_::<AuthenticationExtensionsPRFValuesJSON>()
+        self.inner
+            .get("eval")
+            .as_::<AuthenticationExtensionsPRFValuesJSON>()
     }
 
     /// Setter of the `eval` attribute.
@@ -75,11 +74,16 @@ impl AuthenticationExtensionsPRFInputsJSON {
 impl AuthenticationExtensionsPRFInputsJSON {
     /// Getter of the `evalByCredential` attribute.
     pub fn eval_by_credential(&self) -> Record<JsString, AuthenticationExtensionsPRFValuesJSON> {
-        self.inner.get("evalByCredential").as_::<Record<JsString, AuthenticationExtensionsPRFValuesJSON>>()
+        self.inner
+            .get("evalByCredential")
+            .as_::<Record<JsString, AuthenticationExtensionsPRFValuesJSON>>()
     }
 
     /// Setter of the `evalByCredential` attribute.
-    pub fn set_eval_by_credential(&mut self, value: &Record<JsString, AuthenticationExtensionsPRFValuesJSON>) {
+    pub fn set_eval_by_credential(
+        &mut self,
+        value: &Record<JsString, AuthenticationExtensionsPRFValuesJSON>,
+    ) {
         self.inner.set("evalByCredential", value);
     }
 }

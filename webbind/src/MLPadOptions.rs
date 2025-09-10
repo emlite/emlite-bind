@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLPadOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLPadOptions {
 
 impl AsMut<Any> for MLPadOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLPadOptions> for Any {

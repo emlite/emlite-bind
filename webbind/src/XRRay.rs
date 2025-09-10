@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRRay class.
 /// [`XRRay`](https://developer.mozilla.org/en-US/docs/Web/API/XRRay)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRRay {
 
 impl FromVal for XRRay {
     fn from_val(v: &Any) -> Self {
-        XRRay { inner: Any::from_val(v) }
+        XRRay {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRRay {
 
 impl AsMut<Any> for XRRay {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRRay> for Any {
@@ -64,8 +63,6 @@ impl From<&XRRay> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRRay);
 
-
-
 impl XRRay {
     /// The `new XRRay(..)` constructor, creating a new XRRay instance
     pub fn new(transform: &XRRigidTransform) -> XRRay {
@@ -73,7 +70,6 @@ impl XRRay {
             inner: Any::global("XRRay").new(&[transform.into()]).as_::<Any>(),
         }
     }
-
 }
 impl XRRay {
     /// Getter of the `origin` attribute.
@@ -81,7 +77,6 @@ impl XRRay {
     pub fn origin(&self) -> DOMPointReadOnly {
         self.inner.get("origin").as_::<DOMPointReadOnly>()
     }
-
 }
 impl XRRay {
     /// Getter of the `direction` attribute.
@@ -89,7 +84,6 @@ impl XRRay {
     pub fn direction(&self) -> DOMPointReadOnly {
         self.inner.get("direction").as_::<DOMPointReadOnly>()
     }
-
 }
 impl XRRay {
     /// Getter of the `matrix` attribute.
@@ -97,5 +91,4 @@ impl XRRay {
     pub fn matrix(&self) -> Float32Array {
         self.inner.get("matrix").as_::<Float32Array>()
     }
-
 }

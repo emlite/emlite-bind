@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGUseElement class.
 /// [`SVGUseElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGUseElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGUseElement {
 
 impl FromVal for SVGUseElement {
     fn from_val(v: &Any) -> Self {
-        SVGUseElement { inner: SVGGraphicsElement::from_val(v) }
+        SVGUseElement {
+            inner: SVGGraphicsElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGUseElement {
 
 impl AsMut<Any> for SVGUseElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGUseElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGUseElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGUseElement);
 
-
 impl SVGUseElement {
     /// Getter of the `x` attribute.
     /// [`SVGUseElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGUseElement/x)
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     /// Getter of the `y` attribute.
@@ -79,7 +76,6 @@ impl SVGUseElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     /// Getter of the `width` attribute.
@@ -87,7 +83,6 @@ impl SVGUseElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     /// Getter of the `height` attribute.
@@ -95,7 +90,6 @@ impl SVGUseElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     /// Getter of the `instanceRoot` attribute.
@@ -103,7 +97,6 @@ impl SVGUseElement {
     pub fn instance_root(&self) -> SVGElement {
         self.inner.get("instanceRoot").as_::<SVGElement>()
     }
-
 }
 impl SVGUseElement {
     /// Getter of the `animatedInstanceRoot` attribute.
@@ -111,7 +104,6 @@ impl SVGUseElement {
     pub fn animated_instance_root(&self) -> SVGElement {
         self.inner.get("animatedInstanceRoot").as_::<SVGElement>()
     }
-
 }
 impl SVGUseElement {
     /// Getter of the `href` attribute.
@@ -119,5 +111,4 @@ impl SVGUseElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

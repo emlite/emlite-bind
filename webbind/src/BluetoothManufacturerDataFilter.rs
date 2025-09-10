@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothManufacturerDataFilter class.
 /// [`BluetoothManufacturerDataFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothManufacturerDataFilter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothManufacturerDataFilter {
 
 impl FromVal for BluetoothManufacturerDataFilter {
     fn from_val(v: &Any) -> Self {
-        BluetoothManufacturerDataFilter { inner: Any::from_val(v) }
+        BluetoothManufacturerDataFilter {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothManufacturerDataFilter {
 
 impl AsMut<Any> for BluetoothManufacturerDataFilter {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothManufacturerDataFilter> for Any {
@@ -64,21 +63,22 @@ impl From<&BluetoothManufacturerDataFilter> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothManufacturerDataFilter);
 
-
-
 impl BluetoothManufacturerDataFilter {
     /// The `new BluetoothManufacturerDataFilter(..)` constructor, creating a new BluetoothManufacturerDataFilter instance
     pub fn new0() -> BluetoothManufacturerDataFilter {
         Self {
-            inner: Any::global("BluetoothManufacturerDataFilter").new(&[]).as_::<Any>(),
+            inner: Any::global("BluetoothManufacturerDataFilter")
+                .new(&[])
+                .as_::<Any>(),
         }
     }
 
     /// The `new BluetoothManufacturerDataFilter(..)` constructor, creating a new BluetoothManufacturerDataFilter instance
     pub fn new1(init: &Object) -> BluetoothManufacturerDataFilter {
         Self {
-            inner: Any::global("BluetoothManufacturerDataFilter").new(&[init.into()]).as_::<Any>(),
+            inner: Any::global("BluetoothManufacturerDataFilter")
+                .new(&[init.into()])
+                .as_::<Any>(),
         }
     }
-
 }

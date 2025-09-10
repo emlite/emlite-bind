@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRProjectionLayerInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRProjectionLayerInit {
 
 impl AsMut<Any> for XRProjectionLayerInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRProjectionLayerInit> for Any {

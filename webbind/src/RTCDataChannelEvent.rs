@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCDataChannelEvent class.
 /// [`RTCDataChannelEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannelEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCDataChannelEvent {
 
 impl FromVal for RTCDataChannelEvent {
     fn from_val(v: &Any) -> Self {
-        RTCDataChannelEvent { inner: Event::from_val(v) }
+        RTCDataChannelEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCDataChannelEvent {
 
 impl AsMut<Any> for RTCDataChannelEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCDataChannelEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&RTCDataChannelEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCDataChannelEvent);
 
-
-
 impl RTCDataChannelEvent {
     /// The `new RTCDataChannelEvent(..)` constructor, creating a new RTCDataChannelEvent instance
     pub fn new(type_: &JsString, event_init_dict: &RTCDataChannelEventInit) -> RTCDataChannelEvent {
         Self {
-            inner: Any::global("RTCDataChannelEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("RTCDataChannelEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl RTCDataChannelEvent {
     /// Getter of the `channel` attribute.
@@ -81,5 +79,4 @@ impl RTCDataChannelEvent {
     pub fn channel(&self) -> RTCDataChannel {
         self.inner.get("channel").as_::<RTCDataChannel>()
     }
-
 }

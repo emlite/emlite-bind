@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRProjectionLayer class.
 /// [`XRProjectionLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRProjectionLayer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRProjectionLayer {
 
 impl FromVal for XRProjectionLayer {
     fn from_val(v: &Any) -> Self {
-        XRProjectionLayer { inner: XRCompositionLayer::from_val(v) }
+        XRProjectionLayer {
+            inner: XRCompositionLayer::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRProjectionLayer {
 
 impl AsMut<Any> for XRProjectionLayer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRProjectionLayer> for Any {
@@ -64,14 +63,12 @@ impl From<&XRProjectionLayer> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRProjectionLayer);
 
-
 impl XRProjectionLayer {
     /// Getter of the `textureWidth` attribute.
     /// [`XRProjectionLayer.textureWidth`](https://developer.mozilla.org/en-US/docs/Web/API/XRProjectionLayer/textureWidth)
     pub fn texture_width(&self) -> u32 {
         self.inner.get("textureWidth").as_::<u32>()
     }
-
 }
 impl XRProjectionLayer {
     /// Getter of the `textureHeight` attribute.
@@ -79,7 +76,6 @@ impl XRProjectionLayer {
     pub fn texture_height(&self) -> u32 {
         self.inner.get("textureHeight").as_::<u32>()
     }
-
 }
 impl XRProjectionLayer {
     /// Getter of the `textureArrayLength` attribute.
@@ -87,7 +83,6 @@ impl XRProjectionLayer {
     pub fn texture_array_length(&self) -> u32 {
         self.inner.get("textureArrayLength").as_::<u32>()
     }
-
 }
 impl XRProjectionLayer {
     /// Getter of the `ignoreDepthValues` attribute.
@@ -95,7 +90,6 @@ impl XRProjectionLayer {
     pub fn ignore_depth_values(&self) -> bool {
         self.inner.get("ignoreDepthValues").as_::<bool>()
     }
-
 }
 impl XRProjectionLayer {
     /// Getter of the `fixedFoveation` attribute.

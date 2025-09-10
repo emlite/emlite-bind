@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EcdsaParams dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for EcdsaParams {
 
 impl AsMut<Any> for EcdsaParams {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EcdsaParams> for Any {

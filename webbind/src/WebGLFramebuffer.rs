@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLFramebuffer class.
 /// [`WebGLFramebuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLFramebuffer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLFramebuffer {
 
 impl FromVal for WebGLFramebuffer {
     fn from_val(v: &Any) -> Self {
-        WebGLFramebuffer { inner: WebGLObject::from_val(v) }
+        WebGLFramebuffer {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLFramebuffer {
 
 impl AsMut<Any> for WebGLFramebuffer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLFramebuffer> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLFramebuffer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLFramebuffer);
-
-

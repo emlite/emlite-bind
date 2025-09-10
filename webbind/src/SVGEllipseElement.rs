@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGEllipseElement class.
 /// [`SVGEllipseElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGEllipseElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGEllipseElement {
 
 impl FromVal for SVGEllipseElement {
     fn from_val(v: &Any) -> Self {
-        SVGEllipseElement { inner: SVGGeometryElement::from_val(v) }
+        SVGEllipseElement {
+            inner: SVGGeometryElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGEllipseElement {
 
 impl AsMut<Any> for SVGEllipseElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGEllipseElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGEllipseElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGEllipseElement);
 
-
 impl SVGEllipseElement {
     /// Getter of the `cx` attribute.
     /// [`SVGEllipseElement.cx`](https://developer.mozilla.org/en-US/docs/Web/API/SVGEllipseElement/cx)
     pub fn cx(&self) -> SVGAnimatedLength {
         self.inner.get("cx").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGEllipseElement {
     /// Getter of the `cy` attribute.
@@ -79,7 +76,6 @@ impl SVGEllipseElement {
     pub fn cy(&self) -> SVGAnimatedLength {
         self.inner.get("cy").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGEllipseElement {
     /// Getter of the `rx` attribute.
@@ -87,7 +83,6 @@ impl SVGEllipseElement {
     pub fn rx(&self) -> SVGAnimatedLength {
         self.inner.get("rx").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGEllipseElement {
     /// Getter of the `ry` attribute.
@@ -95,5 +90,4 @@ impl SVGEllipseElement {
     pub fn ry(&self) -> SVGAnimatedLength {
         self.inner.get("ry").as_::<SVGAnimatedLength>()
     }
-
 }

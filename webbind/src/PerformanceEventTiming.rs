@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PerformanceEventTiming class.
 /// [`PerformanceEventTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PerformanceEventTiming {
 
 impl FromVal for PerformanceEventTiming {
     fn from_val(v: &Any) -> Self {
-        PerformanceEventTiming { inner: PerformanceEntry::from_val(v) }
+        PerformanceEventTiming {
+            inner: PerformanceEntry::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PerformanceEventTiming {
 
 impl AsMut<Any> for PerformanceEventTiming {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PerformanceEventTiming> for Any {
@@ -64,14 +63,12 @@ impl From<&PerformanceEventTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceEventTiming);
 
-
 impl PerformanceEventTiming {
     /// Getter of the `processingStart` attribute.
     /// [`PerformanceEventTiming.processingStart`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming/processingStart)
     pub fn processing_start(&self) -> Any {
         self.inner.get("processingStart").as_::<Any>()
     }
-
 }
 impl PerformanceEventTiming {
     /// Getter of the `processingEnd` attribute.
@@ -79,7 +76,6 @@ impl PerformanceEventTiming {
     pub fn processing_end(&self) -> Any {
         self.inner.get("processingEnd").as_::<Any>()
     }
-
 }
 impl PerformanceEventTiming {
     /// Getter of the `cancelable` attribute.
@@ -87,7 +83,6 @@ impl PerformanceEventTiming {
     pub fn cancelable(&self) -> bool {
         self.inner.get("cancelable").as_::<bool>()
     }
-
 }
 impl PerformanceEventTiming {
     /// Getter of the `target` attribute.
@@ -95,7 +90,6 @@ impl PerformanceEventTiming {
     pub fn target(&self) -> Node {
         self.inner.get("target").as_::<Node>()
     }
-
 }
 impl PerformanceEventTiming {
     /// Getter of the `interactionId` attribute.
@@ -103,12 +97,11 @@ impl PerformanceEventTiming {
     pub fn interaction_id(&self) -> u64 {
         self.inner.get("interactionId").as_::<u64>()
     }
-
 }
 impl PerformanceEventTiming {
     /// The toJSON method.
     /// [`PerformanceEventTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming/toJSON)
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ImageTrackList class.
 /// [`ImageTrackList`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ImageTrackList {
 
 impl FromVal for ImageTrackList {
     fn from_val(v: &Any) -> Self {
-        ImageTrackList { inner: Any::from_val(v) }
+        ImageTrackList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ImageTrackList {
 
 impl AsMut<Any> for ImageTrackList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ImageTrackList> for Any {
@@ -64,14 +63,12 @@ impl From<&ImageTrackList> for Any {
 
 jsbind::utils::impl_dyn_cast!(ImageTrackList);
 
-
 impl ImageTrackList {
     /// Getter of the `ready` attribute.
     /// [`ImageTrackList.ready`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList/ready)
     pub fn ready(&self) -> Promise<Undefined> {
         self.inner.get("ready").as_::<Promise<Undefined>>()
     }
-
 }
 impl ImageTrackList {
     /// Getter of the `length` attribute.
@@ -79,7 +76,6 @@ impl ImageTrackList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl ImageTrackList {
     /// Getter of the `selectedIndex` attribute.
@@ -87,7 +83,6 @@ impl ImageTrackList {
     pub fn selected_index(&self) -> i32 {
         self.inner.get("selectedIndex").as_::<i32>()
     }
-
 }
 impl ImageTrackList {
     /// Getter of the `selectedTrack` attribute.
@@ -95,5 +90,4 @@ impl ImageTrackList {
     pub fn selected_track(&self) -> ImageTrack {
         self.inner.get("selectedTrack").as_::<ImageTrack>()
     }
-
 }

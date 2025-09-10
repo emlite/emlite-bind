@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The InterestGroupScriptRunnerGlobalScope class.
 /// [`InterestGroupScriptRunnerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupScriptRunnerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct InterestGroupScriptRunnerGlobalScope {
 
 impl FromVal for InterestGroupScriptRunnerGlobalScope {
     fn from_val(v: &Any) -> Self {
-        InterestGroupScriptRunnerGlobalScope { inner: Any::from_val(v) }
+        InterestGroupScriptRunnerGlobalScope {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for InterestGroupScriptRunnerGlobalScope {
 
 impl AsMut<Any> for InterestGroupScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<InterestGroupScriptRunnerGlobalScope> for Any {
@@ -64,20 +63,21 @@ impl From<&InterestGroupScriptRunnerGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(InterestGroupScriptRunnerGlobalScope);
 
-
 impl InterestGroupScriptRunnerGlobalScope {
     /// Getter of the `privateAggregation` attribute.
     /// [`InterestGroupScriptRunnerGlobalScope.privateAggregation`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupScriptRunnerGlobalScope/privateAggregation)
     pub fn private_aggregation(&self) -> PrivateAggregation {
-        self.inner.get("privateAggregation").as_::<PrivateAggregation>()
+        self.inner
+            .get("privateAggregation")
+            .as_::<PrivateAggregation>()
     }
-
 }
 impl InterestGroupScriptRunnerGlobalScope {
     /// Getter of the `protectedAudience` attribute.
     /// [`InterestGroupScriptRunnerGlobalScope.protectedAudience`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupScriptRunnerGlobalScope/protectedAudience)
     pub fn protected_audience(&self) -> ProtectedAudienceUtilities {
-        self.inner.get("protectedAudience").as_::<ProtectedAudienceUtilities>()
+        self.inner
+            .get("protectedAudience")
+            .as_::<ProtectedAudienceUtilities>()
     }
-
 }

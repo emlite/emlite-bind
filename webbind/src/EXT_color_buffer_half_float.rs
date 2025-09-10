@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EXT_color_buffer_half_float class.
 /// [`EXT_color_buffer_half_float`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_color_buffer_half_float)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct EXT_color_buffer_half_float {
 
 impl FromVal for EXT_color_buffer_half_float {
     fn from_val(v: &Any) -> Self {
-        EXT_color_buffer_half_float { inner: Any::from_val(v) }
+        EXT_color_buffer_half_float {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for EXT_color_buffer_half_float {
 
 impl AsMut<Any> for EXT_color_buffer_half_float {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EXT_color_buffer_half_float> for Any {
@@ -63,5 +62,3 @@ impl From<&EXT_color_buffer_half_float> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(EXT_color_buffer_half_float);
-
-

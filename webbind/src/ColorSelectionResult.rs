@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ColorSelectionResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ColorSelectionResult {
 
 impl AsMut<Any> for ColorSelectionResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ColorSelectionResult> for Any {

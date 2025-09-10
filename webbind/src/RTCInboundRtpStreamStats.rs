@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCInboundRtpStreamStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCInboundRtpStreamStats {
 
 impl AsMut<Any> for RTCInboundRtpStreamStats {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCInboundRtpStreamStats> for Any {
@@ -482,7 +479,9 @@ impl RTCInboundRtpStreamStats {
 impl RTCInboundRtpStreamStats {
     /// Getter of the `insertedSamplesForDeceleration` attribute.
     pub fn inserted_samples_for_deceleration(&self) -> u64 {
-        self.inner.get("insertedSamplesForDeceleration").as_::<u64>()
+        self.inner
+            .get("insertedSamplesForDeceleration")
+            .as_::<u64>()
     }
 
     /// Setter of the `insertedSamplesForDeceleration` attribute.
@@ -581,7 +580,9 @@ impl RTCInboundRtpStreamStats {
 impl RTCInboundRtpStreamStats {
     /// Getter of the `framesAssembledFromMultiplePackets` attribute.
     pub fn frames_assembled_from_multiple_packets(&self) -> u32 {
-        self.inner.get("framesAssembledFromMultiplePackets").as_::<u32>()
+        self.inner
+            .get("framesAssembledFromMultiplePackets")
+            .as_::<u32>()
     }
 
     /// Setter of the `framesAssembledFromMultiplePackets` attribute.
@@ -658,7 +659,9 @@ impl RTCInboundRtpStreamStats {
 impl RTCInboundRtpStreamStats {
     /// Getter of the `totalSquaredCorruptionProbability` attribute.
     pub fn total_squared_corruption_probability(&self) -> f64 {
-        self.inner.get("totalSquaredCorruptionProbability").as_::<f64>()
+        self.inner
+            .get("totalSquaredCorruptionProbability")
+            .as_::<f64>()
     }
 
     /// Setter of the `totalSquaredCorruptionProbability` attribute.

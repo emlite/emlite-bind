@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSColorProfileRule class.
 /// [`CSSColorProfileRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorProfileRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSColorProfileRule {
 
 impl FromVal for CSSColorProfileRule {
     fn from_val(v: &Any) -> Self {
-        CSSColorProfileRule { inner: CSSRule::from_val(v) }
+        CSSColorProfileRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSColorProfileRule {
 
 impl AsMut<Any> for CSSColorProfileRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSColorProfileRule> for Any {
@@ -64,14 +63,12 @@ impl From<&CSSColorProfileRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSColorProfileRule);
 
-
 impl CSSColorProfileRule {
     /// Getter of the `name` attribute.
     /// [`CSSColorProfileRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorProfileRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSColorProfileRule {
     /// Getter of the `src` attribute.
@@ -79,7 +76,6 @@ impl CSSColorProfileRule {
     pub fn src(&self) -> JsString {
         self.inner.get("src").as_::<JsString>()
     }
-
 }
 impl CSSColorProfileRule {
     /// Getter of the `renderingIntent` attribute.
@@ -87,7 +83,6 @@ impl CSSColorProfileRule {
     pub fn rendering_intent(&self) -> JsString {
         self.inner.get("renderingIntent").as_::<JsString>()
     }
-
 }
 impl CSSColorProfileRule {
     /// Getter of the `components` attribute.
@@ -95,5 +90,4 @@ impl CSSColorProfileRule {
     pub fn components(&self) -> JsString {
         self.inner.get("components").as_::<JsString>()
     }
-
 }

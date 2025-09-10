@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLSampler class.
 /// [`WebGLSampler`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLSampler)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLSampler {
 
 impl FromVal for WebGLSampler {
     fn from_val(v: &Any) -> Self {
-        WebGLSampler { inner: WebGLObject::from_val(v) }
+        WebGLSampler {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLSampler {
 
 impl AsMut<Any> for WebGLSampler {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLSampler> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLSampler> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLSampler);
-
-

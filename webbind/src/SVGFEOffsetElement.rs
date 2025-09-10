@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGFEOffsetElement class.
 /// [`SVGFEOffsetElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEOffsetElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGFEOffsetElement {
 
 impl FromVal for SVGFEOffsetElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEOffsetElement { inner: SVGElement::from_val(v) }
+        SVGFEOffsetElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGFEOffsetElement {
 
 impl AsMut<Any> for SVGFEOffsetElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGFEOffsetElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGFEOffsetElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEOffsetElement);
 
-
 impl SVGFEOffsetElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEOffsetElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEOffsetElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGFEOffsetElement {
     /// Getter of the `dx` attribute.
@@ -79,7 +76,6 @@ impl SVGFEOffsetElement {
     pub fn dx(&self) -> SVGAnimatedNumber {
         self.inner.get("dx").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEOffsetElement {
     /// Getter of the `dy` attribute.
@@ -87,7 +83,6 @@ impl SVGFEOffsetElement {
     pub fn dy(&self) -> SVGAnimatedNumber {
         self.inner.get("dy").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEOffsetElement {
     /// Getter of the `x` attribute.
@@ -95,7 +90,6 @@ impl SVGFEOffsetElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEOffsetElement {
     /// Getter of the `y` attribute.
@@ -103,7 +97,6 @@ impl SVGFEOffsetElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEOffsetElement {
     /// Getter of the `width` attribute.
@@ -111,7 +104,6 @@ impl SVGFEOffsetElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEOffsetElement {
     /// Getter of the `height` attribute.
@@ -119,7 +111,6 @@ impl SVGFEOffsetElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEOffsetElement {
     /// Getter of the `result` attribute.
@@ -127,5 +118,4 @@ impl SVGFEOffsetElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
-
 }

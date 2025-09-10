@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBVersionChangeEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IDBVersionChangeEventInit {
 
 impl AsMut<Any> for IDBVersionChangeEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBVersionChangeEventInit> for Any {

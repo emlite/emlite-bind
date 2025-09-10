@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSParserValue class.
 /// [`CSSParserValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSParserValue {
 
 impl FromVal for CSSParserValue {
     fn from_val(v: &Any) -> Self {
-        CSSParserValue { inner: Any::from_val(v) }
+        CSSParserValue {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSParserValue {
 
 impl AsMut<Any> for CSSParserValue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSParserValue> for Any {
@@ -63,5 +62,3 @@ impl From<&CSSParserValue> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSParserValue);
-
-

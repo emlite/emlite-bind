@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AdAuctionDataBuyerConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AdAuctionDataBuyerConfig {
 
 impl AsMut<Any> for AdAuctionDataBuyerConfig {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AdAuctionDataBuyerConfig> for Any {

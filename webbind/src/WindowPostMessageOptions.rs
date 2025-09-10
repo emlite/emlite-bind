@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WindowPostMessageOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WindowPostMessageOptions {
 
 impl AsMut<Any> for WindowPostMessageOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WindowPostMessageOptions> for Any {

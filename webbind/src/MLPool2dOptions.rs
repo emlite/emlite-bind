@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLPool2dOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLPool2dOptions {
 
 impl AsMut<Any> for MLPool2dOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLPool2dOptions> for Any {

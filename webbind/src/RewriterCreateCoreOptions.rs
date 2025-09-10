@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RewriterCreateCoreOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RewriterCreateCoreOptions {
 
 impl AsMut<Any> for RewriterCreateCoreOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RewriterCreateCoreOptions> for Any {
@@ -97,7 +94,9 @@ impl RewriterCreateCoreOptions {
 impl RewriterCreateCoreOptions {
     /// Getter of the `expectedInputLanguages` attribute.
     pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner.get("expectedInputLanguages").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `expectedInputLanguages` attribute.
@@ -108,7 +107,9 @@ impl RewriterCreateCoreOptions {
 impl RewriterCreateCoreOptions {
     /// Getter of the `expectedContextLanguages` attribute.
     pub fn expected_context_languages(&self) -> TypedArray<JsString> {
-        self.inner.get("expectedContextLanguages").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("expectedContextLanguages")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `expectedContextLanguages` attribute.

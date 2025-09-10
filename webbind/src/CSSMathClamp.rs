@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMathClamp class.
 /// [`CSSMathClamp`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathClamp)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSMathClamp {
 
 impl FromVal for CSSMathClamp {
     fn from_val(v: &Any) -> Self {
-        CSSMathClamp { inner: CSSMathValue::from_val(v) }
+        CSSMathClamp {
+            inner: CSSMathValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSMathClamp {
 
 impl AsMut<Any> for CSSMathClamp {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMathClamp> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSMathClamp> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathClamp);
 
-
-
 impl CSSMathClamp {
     /// The `new CSSMathClamp(..)` constructor, creating a new CSSMathClamp instance
     pub fn new(lower: &Any, value: &Any, upper: &Any) -> CSSMathClamp {
         Self {
-            inner: Any::global("CSSMathClamp").new(&[lower.into(), value.into(), upper.into()]).as_::<CSSMathValue>(),
+            inner: Any::global("CSSMathClamp")
+                .new(&[lower.into(), value.into(), upper.into()])
+                .as_::<CSSMathValue>(),
         }
     }
-
 }
 impl CSSMathClamp {
     /// Getter of the `lower` attribute.
@@ -81,7 +79,6 @@ impl CSSMathClamp {
     pub fn lower(&self) -> CSSNumericValue {
         self.inner.get("lower").as_::<CSSNumericValue>()
     }
-
 }
 impl CSSMathClamp {
     /// Getter of the `value` attribute.
@@ -89,7 +86,6 @@ impl CSSMathClamp {
     pub fn value(&self) -> CSSNumericValue {
         self.inner.get("value").as_::<CSSNumericValue>()
     }
-
 }
 impl CSSMathClamp {
     /// Getter of the `upper` attribute.
@@ -97,5 +93,4 @@ impl CSSMathClamp {
     pub fn upper(&self) -> CSSNumericValue {
         self.inner.get("upper").as_::<CSSNumericValue>()
     }
-
 }

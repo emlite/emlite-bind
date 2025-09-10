@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLTableSectionElement class.
 /// [`HTMLTableSectionElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLTableSectionElement {
 
 impl FromVal for HTMLTableSectionElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTableSectionElement { inner: HTMLElement::from_val(v) }
+        HTMLTableSectionElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLTableSectionElement {
 
 impl AsMut<Any> for HTMLTableSectionElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLTableSectionElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLTableSectionElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTableSectionElement);
 
-
-
 impl HTMLTableSectionElement {
     /// The `new HTMLTableSectionElement(..)` constructor, creating a new HTMLTableSectionElement instance
     pub fn new() -> HTMLTableSectionElement {
         Self {
-            inner: Any::global("HTMLTableSectionElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLTableSectionElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLTableSectionElement {
     /// Getter of the `rows` attribute.
@@ -81,25 +79,30 @@ impl HTMLTableSectionElement {
     pub fn rows(&self) -> HTMLCollection {
         self.inner.get("rows").as_::<HTMLCollection>()
     }
-
 }
 impl HTMLTableSectionElement {
     /// The insertRow method.
     /// [`HTMLTableSectionElement.insertRow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/insertRow)
-    pub fn insert_row0(&self, ) -> HTMLTableRowElement {
-        self.inner.call("insertRow", &[]).as_::<HTMLTableRowElement>()
+    pub fn insert_row0(&self) -> HTMLTableRowElement {
+        self.inner
+            .call("insertRow", &[])
+            .as_::<HTMLTableRowElement>()
     }
     /// The insertRow method.
     /// [`HTMLTableSectionElement.insertRow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/insertRow)
     pub fn insert_row1(&self, index: i32) -> HTMLTableRowElement {
-        self.inner.call("insertRow", &[index.into(), ]).as_::<HTMLTableRowElement>()
+        self.inner
+            .call("insertRow", &[index.into()])
+            .as_::<HTMLTableRowElement>()
     }
 }
 impl HTMLTableSectionElement {
     /// The deleteRow method.
     /// [`HTMLTableSectionElement.deleteRow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/deleteRow)
     pub fn delete_row(&self, index: i32) -> Undefined {
-        self.inner.call("deleteRow", &[index.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("deleteRow", &[index.into()])
+            .as_::<Undefined>()
     }
 }
 impl HTMLTableSectionElement {

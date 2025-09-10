@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMarginRule class.
 /// [`CSSMarginRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMarginRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSMarginRule {
 
 impl FromVal for CSSMarginRule {
     fn from_val(v: &Any) -> Self {
-        CSSMarginRule { inner: CSSRule::from_val(v) }
+        CSSMarginRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSMarginRule {
 
 impl AsMut<Any> for CSSMarginRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMarginRule> for Any {
@@ -64,14 +63,12 @@ impl From<&CSSMarginRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMarginRule);
 
-
 impl CSSMarginRule {
     /// Getter of the `name` attribute.
     /// [`CSSMarginRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMarginRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSMarginRule {
     /// Getter of the `style` attribute.
@@ -79,5 +76,4 @@ impl CSSMarginRule {
     pub fn style(&self) -> CSSStyleDeclaration {
         self.inner.get("style").as_::<CSSStyleDeclaration>()
     }
-
 }

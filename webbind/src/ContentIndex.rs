@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ContentIndex class.
 /// [`ContentIndex`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ContentIndex {
 
 impl FromVal for ContentIndex {
     fn from_val(v: &Any) -> Self {
-        ContentIndex { inner: Any::from_val(v) }
+        ContentIndex {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ContentIndex {
 
 impl AsMut<Any> for ContentIndex {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ContentIndex> for Any {
@@ -64,25 +63,30 @@ impl From<&ContentIndex> for Any {
 
 jsbind::utils::impl_dyn_cast!(ContentIndex);
 
-
 impl ContentIndex {
     /// The add method.
     /// [`ContentIndex.add`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/add)
     pub fn add(&self, description: &ContentDescription) -> Promise<Undefined> {
-        self.inner.call("add", &[description.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("add", &[description.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ContentIndex {
     /// The delete method.
     /// [`ContentIndex.delete`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/delete)
     pub fn delete(&self, id: &JsString) -> Promise<Undefined> {
-        self.inner.call("delete", &[id.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("delete", &[id.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ContentIndex {
     /// The getAll method.
     /// [`ContentIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/getAll)
-    pub fn get_all(&self, ) -> Promise<TypedArray<ContentDescription>> {
-        self.inner.call("getAll", &[]).as_::<Promise<TypedArray<ContentDescription>>>()
+    pub fn get_all(&self) -> Promise<TypedArray<ContentDescription>> {
+        self.inner
+            .call("getAll", &[])
+            .as_::<Promise<TypedArray<ContentDescription>>>()
     }
 }

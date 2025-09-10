@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRLightProbeInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRLightProbeInit {
 
 impl AsMut<Any> for XRLightProbeInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRLightProbeInit> for Any {
@@ -64,7 +61,9 @@ impl From<&XRLightProbeInit> for Any {
 impl XRLightProbeInit {
     /// Getter of the `reflectionFormat` attribute.
     pub fn reflection_format(&self) -> XRReflectionFormat {
-        self.inner.get("reflectionFormat").as_::<XRReflectionFormat>()
+        self.inner
+            .get("reflectionFormat")
+            .as_::<XRReflectionFormat>()
     }
 
     /// Setter of the `reflectionFormat` attribute.

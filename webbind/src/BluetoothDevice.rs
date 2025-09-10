@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothDevice class.
 /// [`BluetoothDevice`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothDevice {
 
 impl FromVal for BluetoothDevice {
     fn from_val(v: &Any) -> Self {
-        BluetoothDevice { inner: EventTarget::from_val(v) }
+        BluetoothDevice {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothDevice {
 
 impl AsMut<Any> for BluetoothDevice {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothDevice> for Any {
@@ -64,14 +63,12 @@ impl From<&BluetoothDevice> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothDevice);
 
-
 impl BluetoothDevice {
     /// Getter of the `id` attribute.
     /// [`BluetoothDevice.id`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl BluetoothDevice {
     /// Getter of the `name` attribute.
@@ -79,7 +76,6 @@ impl BluetoothDevice {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl BluetoothDevice {
     /// Getter of the `gatt` attribute.
@@ -87,25 +83,31 @@ impl BluetoothDevice {
     pub fn gatt(&self) -> BluetoothRemoteGATTServer {
         self.inner.get("gatt").as_::<BluetoothRemoteGATTServer>()
     }
-
 }
 impl BluetoothDevice {
     /// The forget method.
     /// [`BluetoothDevice.forget`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/forget)
-    pub fn forget(&self, ) -> Promise<Undefined> {
+    pub fn forget(&self) -> Promise<Undefined> {
         self.inner.call("forget", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl BluetoothDevice {
     /// The watchAdvertisements method.
     /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements0(&self, ) -> Promise<Undefined> {
-        self.inner.call("watchAdvertisements", &[]).as_::<Promise<Undefined>>()
+    pub fn watch_advertisements0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("watchAdvertisements", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The watchAdvertisements method.
     /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements1(&self, options: &WatchAdvertisementsOptions) -> Promise<Undefined> {
-        self.inner.call("watchAdvertisements", &[options.into(), ]).as_::<Promise<Undefined>>()
+    pub fn watch_advertisements1(
+        &self,
+        options: &WatchAdvertisementsOptions,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call("watchAdvertisements", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl BluetoothDevice {
@@ -114,7 +116,6 @@ impl BluetoothDevice {
     pub fn watching_advertisements(&self) -> bool {
         self.inner.get("watchingAdvertisements").as_::<bool>()
     }
-
 }
 impl BluetoothDevice {
     /// Getter of the `onadvertisementreceived` attribute.

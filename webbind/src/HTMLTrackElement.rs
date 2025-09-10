@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLTrackElement class.
 /// [`HTMLTrackElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLTrackElement {
 
 impl FromVal for HTMLTrackElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTrackElement { inner: HTMLElement::from_val(v) }
+        HTMLTrackElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLTrackElement {
 
 impl AsMut<Any> for HTMLTrackElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLTrackElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLTrackElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTrackElement);
 
-
-
 impl HTMLTrackElement {
     /// The `new HTMLTrackElement(..)` constructor, creating a new HTMLTrackElement instance
     pub fn new() -> HTMLTrackElement {
         Self {
-            inner: Any::global("HTMLTrackElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLTrackElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLTrackElement {
     /// Getter of the `kind` attribute.
@@ -146,7 +144,6 @@ impl HTMLTrackElement {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
-
 }
 impl HTMLTrackElement {
     /// Getter of the `track` attribute.
@@ -154,5 +151,4 @@ impl HTMLTrackElement {
     pub fn track(&self) -> TextTrack {
         self.inner.get("track").as_::<TextTrack>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuthenticationExtensionsClientInputs dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuthenticationExtensionsClientInputs {
 
 impl AsMut<Any> for AuthenticationExtensionsClientInputs {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuthenticationExtensionsClientInputs> for Any {
@@ -64,7 +61,9 @@ impl From<&AuthenticationExtensionsClientInputs> for Any {
 impl AuthenticationExtensionsClientInputs {
     /// Getter of the `largeBlob` attribute.
     pub fn large_blob(&self) -> AuthenticationExtensionsLargeBlobInputs {
-        self.inner.get("largeBlob").as_::<AuthenticationExtensionsLargeBlobInputs>()
+        self.inner
+            .get("largeBlob")
+            .as_::<AuthenticationExtensionsLargeBlobInputs>()
     }
 
     /// Setter of the `largeBlob` attribute.

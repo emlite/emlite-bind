@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ShadowRootInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ShadowRootInit {
 
 impl AsMut<Any> for ShadowRootInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ShadowRootInit> for Any {
@@ -119,7 +116,9 @@ impl ShadowRootInit {
 impl ShadowRootInit {
     /// Getter of the `customElementRegistry` attribute.
     pub fn custom_element_registry(&self) -> CustomElementRegistry {
-        self.inner.get("customElementRegistry").as_::<CustomElementRegistry>()
+        self.inner
+            .get("customElementRegistry")
+            .as_::<CustomElementRegistry>()
     }
 
     /// Setter of the `customElementRegistry` attribute.

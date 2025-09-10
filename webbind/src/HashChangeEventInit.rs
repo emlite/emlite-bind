@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HashChangeEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HashChangeEventInit {
 
 impl AsMut<Any> for HashChangeEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HashChangeEventInit> for Any {

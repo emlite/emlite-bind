@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DeviceMotionEventRotationRate class.
 /// [`DeviceMotionEventRotationRate`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventRotationRate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DeviceMotionEventRotationRate {
 
 impl FromVal for DeviceMotionEventRotationRate {
     fn from_val(v: &Any) -> Self {
-        DeviceMotionEventRotationRate { inner: Any::from_val(v) }
+        DeviceMotionEventRotationRate {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DeviceMotionEventRotationRate {
 
 impl AsMut<Any> for DeviceMotionEventRotationRate {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DeviceMotionEventRotationRate> for Any {
@@ -64,14 +63,12 @@ impl From<&DeviceMotionEventRotationRate> for Any {
 
 jsbind::utils::impl_dyn_cast!(DeviceMotionEventRotationRate);
 
-
 impl DeviceMotionEventRotationRate {
     /// Getter of the `alpha` attribute.
     /// [`DeviceMotionEventRotationRate.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventRotationRate/alpha)
     pub fn alpha(&self) -> f64 {
         self.inner.get("alpha").as_::<f64>()
     }
-
 }
 impl DeviceMotionEventRotationRate {
     /// Getter of the `beta` attribute.
@@ -79,7 +76,6 @@ impl DeviceMotionEventRotationRate {
     pub fn beta(&self) -> f64 {
         self.inner.get("beta").as_::<f64>()
     }
-
 }
 impl DeviceMotionEventRotationRate {
     /// Getter of the `gamma` attribute.
@@ -87,5 +83,4 @@ impl DeviceMotionEventRotationRate {
     pub fn gamma(&self) -> f64 {
         self.inner.get("gamma").as_::<f64>()
     }
-
 }

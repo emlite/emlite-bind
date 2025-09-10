@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The InkTrailStyle dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for InkTrailStyle {
 
 impl AsMut<Any> for InkTrailStyle {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<InkTrailStyle> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VisualViewport class.
 /// [`VisualViewport`](https://developer.mozilla.org/en-US/docs/Web/API/VisualViewport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct VisualViewport {
 
 impl FromVal for VisualViewport {
     fn from_val(v: &Any) -> Self {
-        VisualViewport { inner: EventTarget::from_val(v) }
+        VisualViewport {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for VisualViewport {
 
 impl AsMut<Any> for VisualViewport {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VisualViewport> for Any {
@@ -64,14 +63,12 @@ impl From<&VisualViewport> for Any {
 
 jsbind::utils::impl_dyn_cast!(VisualViewport);
 
-
 impl VisualViewport {
     /// Getter of the `offsetLeft` attribute.
     /// [`VisualViewport.offsetLeft`](https://developer.mozilla.org/en-US/docs/Web/API/VisualViewport/offsetLeft)
     pub fn offset_left(&self) -> f64 {
         self.inner.get("offsetLeft").as_::<f64>()
     }
-
 }
 impl VisualViewport {
     /// Getter of the `offsetTop` attribute.
@@ -79,7 +76,6 @@ impl VisualViewport {
     pub fn offset_top(&self) -> f64 {
         self.inner.get("offsetTop").as_::<f64>()
     }
-
 }
 impl VisualViewport {
     /// Getter of the `pageLeft` attribute.
@@ -87,7 +83,6 @@ impl VisualViewport {
     pub fn page_left(&self) -> f64 {
         self.inner.get("pageLeft").as_::<f64>()
     }
-
 }
 impl VisualViewport {
     /// Getter of the `pageTop` attribute.
@@ -95,7 +90,6 @@ impl VisualViewport {
     pub fn page_top(&self) -> f64 {
         self.inner.get("pageTop").as_::<f64>()
     }
-
 }
 impl VisualViewport {
     /// Getter of the `width` attribute.
@@ -103,7 +97,6 @@ impl VisualViewport {
     pub fn width(&self) -> f64 {
         self.inner.get("width").as_::<f64>()
     }
-
 }
 impl VisualViewport {
     /// Getter of the `height` attribute.
@@ -111,7 +104,6 @@ impl VisualViewport {
     pub fn height(&self) -> f64 {
         self.inner.get("height").as_::<f64>()
     }
-
 }
 impl VisualViewport {
     /// Getter of the `scale` attribute.
@@ -119,7 +111,6 @@ impl VisualViewport {
     pub fn scale(&self) -> f64 {
         self.inner.get("scale").as_::<f64>()
     }
-
 }
 impl VisualViewport {
     /// Getter of the `onresize` attribute.

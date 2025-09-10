@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGAnimatedTransformList class.
 /// [`SVGAnimatedTransformList`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedTransformList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGAnimatedTransformList {
 
 impl FromVal for SVGAnimatedTransformList {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedTransformList { inner: Any::from_val(v) }
+        SVGAnimatedTransformList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGAnimatedTransformList {
 
 impl AsMut<Any> for SVGAnimatedTransformList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGAnimatedTransformList> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGAnimatedTransformList> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedTransformList);
 
-
 impl SVGAnimatedTransformList {
     /// Getter of the `baseVal` attribute.
     /// [`SVGAnimatedTransformList.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedTransformList/baseVal)
     pub fn base_val(&self) -> SVGTransformList {
         self.inner.get("baseVal").as_::<SVGTransformList>()
     }
-
 }
 impl SVGAnimatedTransformList {
     /// Getter of the `animVal` attribute.
@@ -79,5 +76,4 @@ impl SVGAnimatedTransformList {
     pub fn anim_val(&self) -> SVGTransformList {
         self.inner.get("animVal").as_::<SVGTransformList>()
     }
-
 }

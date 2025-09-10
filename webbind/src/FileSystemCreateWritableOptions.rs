@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FileSystemCreateWritableOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for FileSystemCreateWritableOptions {
 
 impl AsMut<Any> for FileSystemCreateWritableOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FileSystemCreateWritableOptions> for Any {

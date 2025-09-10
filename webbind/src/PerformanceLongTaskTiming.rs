@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PerformanceLongTaskTiming class.
 /// [`PerformanceLongTaskTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PerformanceLongTaskTiming {
 
 impl FromVal for PerformanceLongTaskTiming {
     fn from_val(v: &Any) -> Self {
-        PerformanceLongTaskTiming { inner: PerformanceEntry::from_val(v) }
+        PerformanceLongTaskTiming {
+            inner: PerformanceEntry::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PerformanceLongTaskTiming {
 
 impl AsMut<Any> for PerformanceLongTaskTiming {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PerformanceLongTaskTiming> for Any {
@@ -64,14 +63,12 @@ impl From<&PerformanceLongTaskTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceLongTaskTiming);
 
-
 impl PerformanceLongTaskTiming {
     /// Getter of the `startTime` attribute.
     /// [`PerformanceLongTaskTiming.startTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/startTime)
     pub fn start_time(&self) -> Any {
         self.inner.get("startTime").as_::<Any>()
     }
-
 }
 impl PerformanceLongTaskTiming {
     /// Getter of the `duration` attribute.
@@ -79,7 +76,6 @@ impl PerformanceLongTaskTiming {
     pub fn duration(&self) -> Any {
         self.inner.get("duration").as_::<Any>()
     }
-
 }
 impl PerformanceLongTaskTiming {
     /// Getter of the `name` attribute.
@@ -87,7 +83,6 @@ impl PerformanceLongTaskTiming {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl PerformanceLongTaskTiming {
     /// Getter of the `entryType` attribute.
@@ -95,20 +90,20 @@ impl PerformanceLongTaskTiming {
     pub fn entry_type(&self) -> JsString {
         self.inner.get("entryType").as_::<JsString>()
     }
-
 }
 impl PerformanceLongTaskTiming {
     /// Getter of the `attribution` attribute.
     /// [`PerformanceLongTaskTiming.attribution`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/attribution)
     pub fn attribution(&self) -> TypedArray<TaskAttributionTiming> {
-        self.inner.get("attribution").as_::<TypedArray<TaskAttributionTiming>>()
+        self.inner
+            .get("attribution")
+            .as_::<TypedArray<TaskAttributionTiming>>()
     }
-
 }
 impl PerformanceLongTaskTiming {
     /// The toJSON method.
     /// [`PerformanceLongTaskTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/toJSON)
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

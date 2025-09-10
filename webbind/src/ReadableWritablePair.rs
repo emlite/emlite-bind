@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ReadableWritablePair dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ReadableWritablePair {
 
 impl AsMut<Any> for ReadableWritablePair {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ReadableWritablePair> for Any {

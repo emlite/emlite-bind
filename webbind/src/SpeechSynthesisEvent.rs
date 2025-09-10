@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SpeechSynthesisEvent class.
 /// [`SpeechSynthesisEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SpeechSynthesisEvent {
 
 impl FromVal for SpeechSynthesisEvent {
     fn from_val(v: &Any) -> Self {
-        SpeechSynthesisEvent { inner: Event::from_val(v) }
+        SpeechSynthesisEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SpeechSynthesisEvent {
 
 impl AsMut<Any> for SpeechSynthesisEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SpeechSynthesisEvent> for Any {
@@ -64,24 +63,27 @@ impl From<&SpeechSynthesisEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisEvent);
 
-
-
 impl SpeechSynthesisEvent {
     /// The `new SpeechSynthesisEvent(..)` constructor, creating a new SpeechSynthesisEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &SpeechSynthesisEventInit) -> SpeechSynthesisEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &SpeechSynthesisEventInit,
+    ) -> SpeechSynthesisEvent {
         Self {
-            inner: Any::global("SpeechSynthesisEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("SpeechSynthesisEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl SpeechSynthesisEvent {
     /// Getter of the `utterance` attribute.
     /// [`SpeechSynthesisEvent.utterance`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent/utterance)
     pub fn utterance(&self) -> SpeechSynthesisUtterance {
-        self.inner.get("utterance").as_::<SpeechSynthesisUtterance>()
+        self.inner
+            .get("utterance")
+            .as_::<SpeechSynthesisUtterance>()
     }
-
 }
 impl SpeechSynthesisEvent {
     /// Getter of the `charIndex` attribute.
@@ -89,7 +91,6 @@ impl SpeechSynthesisEvent {
     pub fn char_index(&self) -> u32 {
         self.inner.get("charIndex").as_::<u32>()
     }
-
 }
 impl SpeechSynthesisEvent {
     /// Getter of the `charLength` attribute.
@@ -97,7 +98,6 @@ impl SpeechSynthesisEvent {
     pub fn char_length(&self) -> u32 {
         self.inner.get("charLength").as_::<u32>()
     }
-
 }
 impl SpeechSynthesisEvent {
     /// Getter of the `elapsedTime` attribute.
@@ -105,7 +105,6 @@ impl SpeechSynthesisEvent {
     pub fn elapsed_time(&self) -> f32 {
         self.inner.get("elapsedTime").as_::<f32>()
     }
-
 }
 impl SpeechSynthesisEvent {
     /// Getter of the `name` attribute.
@@ -113,5 +112,4 @@ impl SpeechSynthesisEvent {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RestrictionTarget class.
 /// [`RestrictionTarget`](https://developer.mozilla.org/en-US/docs/Web/API/RestrictionTarget)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RestrictionTarget {
 
 impl FromVal for RestrictionTarget {
     fn from_val(v: &Any) -> Self {
-        RestrictionTarget { inner: Any::from_val(v) }
+        RestrictionTarget {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RestrictionTarget {
 
 impl AsMut<Any> for RestrictionTarget {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RestrictionTarget> for Any {
@@ -64,11 +63,12 @@ impl From<&RestrictionTarget> for Any {
 
 jsbind::utils::impl_dyn_cast!(RestrictionTarget);
 
-
 impl RestrictionTarget {
     /// The fromElement method.
     /// [`RestrictionTarget.fromElement`](https://developer.mozilla.org/en-US/docs/Web/API/RestrictionTarget/fromElement)
     pub fn from_element(element: &Element) -> Promise<RestrictionTarget> {
-        Any::global("RestrictionTarget").call("fromElement", &[element.into(), ]).as_::<Promise<RestrictionTarget>>()
+        Any::global("RestrictionTarget")
+            .call("fromElement", &[element.into()])
+            .as_::<Promise<RestrictionTarget>>()
     }
 }

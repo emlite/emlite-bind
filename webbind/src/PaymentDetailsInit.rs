@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PaymentDetailsInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PaymentDetailsInit {
 
 impl AsMut<Any> for PaymentDetailsInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PaymentDetailsInit> for Any {

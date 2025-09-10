@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSPageRule class.
 /// [`CSSPageRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSPageRule {
 
 impl FromVal for CSSPageRule {
     fn from_val(v: &Any) -> Self {
-        CSSPageRule { inner: CSSGroupingRule::from_val(v) }
+        CSSPageRule {
+            inner: CSSGroupingRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSPageRule {
 
 impl AsMut<Any> for CSSPageRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSPageRule> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSPageRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSPageRule);
-
 
 impl CSSPageRule {
     /// Getter of the `selectorText` attribute.
@@ -84,5 +82,4 @@ impl CSSPageRule {
     pub fn style(&self) -> CSSPageDescriptors {
         self.inner.get("style").as_::<CSSPageDescriptors>()
     }
-
 }

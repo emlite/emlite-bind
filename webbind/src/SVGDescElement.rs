@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGDescElement class.
 /// [`SVGDescElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGDescElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGDescElement {
 
 impl FromVal for SVGDescElement {
     fn from_val(v: &Any) -> Self {
-        SVGDescElement { inner: SVGElement::from_val(v) }
+        SVGDescElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGDescElement {
 
 impl AsMut<Any> for SVGDescElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGDescElement> for Any {
@@ -63,5 +62,3 @@ impl From<&SVGDescElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGDescElement);
-
-

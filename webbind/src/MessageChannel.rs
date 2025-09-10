@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MessageChannel class.
 /// [`MessageChannel`](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MessageChannel {
 
 impl FromVal for MessageChannel {
     fn from_val(v: &Any) -> Self {
-        MessageChannel { inner: Any::from_val(v) }
+        MessageChannel {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MessageChannel {
 
 impl AsMut<Any> for MessageChannel {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MessageChannel> for Any {
@@ -64,8 +63,6 @@ impl From<&MessageChannel> for Any {
 
 jsbind::utils::impl_dyn_cast!(MessageChannel);
 
-
-
 impl MessageChannel {
     /// The `new MessageChannel(..)` constructor, creating a new MessageChannel instance
     pub fn new() -> MessageChannel {
@@ -73,7 +70,6 @@ impl MessageChannel {
             inner: Any::global("MessageChannel").new(&[]).as_::<Any>(),
         }
     }
-
 }
 impl MessageChannel {
     /// Getter of the `port1` attribute.
@@ -81,7 +77,6 @@ impl MessageChannel {
     pub fn port1(&self) -> MessagePort {
         self.inner.get("port1").as_::<MessagePort>()
     }
-
 }
 impl MessageChannel {
     /// Getter of the `port2` attribute.
@@ -89,5 +84,4 @@ impl MessageChannel {
     pub fn port2(&self) -> MessagePort {
         self.inner.get("port2").as_::<MessagePort>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ErrorEvent class.
 /// [`ErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ErrorEvent {
 
 impl FromVal for ErrorEvent {
     fn from_val(v: &Any) -> Self {
-        ErrorEvent { inner: Event::from_val(v) }
+        ErrorEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ErrorEvent {
 
 impl AsMut<Any> for ErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ErrorEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&ErrorEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(ErrorEvent);
 
-
-
 impl ErrorEvent {
     /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
     pub fn new0(type_: &JsString) -> ErrorEvent {
         Self {
-            inner: Any::global("ErrorEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("ErrorEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &ErrorEventInit) -> ErrorEvent {
         Self {
-            inner: Any::global("ErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("ErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl ErrorEvent {
     /// Getter of the `message` attribute.
@@ -88,7 +88,6 @@ impl ErrorEvent {
     pub fn message(&self) -> JsString {
         self.inner.get("message").as_::<JsString>()
     }
-
 }
 impl ErrorEvent {
     /// Getter of the `filename` attribute.
@@ -96,7 +95,6 @@ impl ErrorEvent {
     pub fn filename(&self) -> JsString {
         self.inner.get("filename").as_::<JsString>()
     }
-
 }
 impl ErrorEvent {
     /// Getter of the `lineno` attribute.
@@ -104,7 +102,6 @@ impl ErrorEvent {
     pub fn lineno(&self) -> u32 {
         self.inner.get("lineno").as_::<u32>()
     }
-
 }
 impl ErrorEvent {
     /// Getter of the `colno` attribute.
@@ -112,7 +109,6 @@ impl ErrorEvent {
     pub fn colno(&self) -> u32 {
         self.inner.get("colno").as_::<u32>()
     }
-
 }
 impl ErrorEvent {
     /// Getter of the `error` attribute.
@@ -120,5 +116,4 @@ impl ErrorEvent {
     pub fn error(&self) -> Any {
         self.inner.get("error").as_::<Any>()
     }
-
 }

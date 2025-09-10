@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGLength class.
 /// [`SVGLength`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGLength {
 
 impl FromVal for SVGLength {
     fn from_val(v: &Any) -> Self {
-        SVGLength { inner: Any::from_val(v) }
+        SVGLength {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGLength {
 
 impl AsMut<Any> for SVGLength {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGLength> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGLength> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGLength);
 
-
 impl SVGLength {
     /// Getter of the `unitType` attribute.
     /// [`SVGLength.unitType`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength/unitType)
     pub fn unit_type(&self) -> u16 {
         self.inner.get("unitType").as_::<u16>()
     }
-
 }
 impl SVGLength {
     /// Getter of the `value` attribute.
@@ -115,14 +112,25 @@ impl SVGLength {
 impl SVGLength {
     /// The newValueSpecifiedUnits method.
     /// [`SVGLength.newValueSpecifiedUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength/newValueSpecifiedUnits)
-    pub fn new_value_specified_units(&self, unit_type: u16, value_in_specified_units: f32) -> Undefined {
-        self.inner.call("newValueSpecifiedUnits", &[unit_type.into(), value_in_specified_units.into(), ]).as_::<Undefined>()
+    pub fn new_value_specified_units(
+        &self,
+        unit_type: u16,
+        value_in_specified_units: f32,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "newValueSpecifiedUnits",
+                &[unit_type.into(), value_in_specified_units.into()],
+            )
+            .as_::<Undefined>()
     }
 }
 impl SVGLength {
     /// The convertToSpecifiedUnits method.
     /// [`SVGLength.convertToSpecifiedUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength/convertToSpecifiedUnits)
     pub fn convert_to_specified_units(&self, unit_type: u16) -> Undefined {
-        self.inner.call("convertToSpecifiedUnits", &[unit_type.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("convertToSpecifiedUnits", &[unit_type.into()])
+            .as_::<Undefined>()
     }
 }

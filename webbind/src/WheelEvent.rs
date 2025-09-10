@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WheelEvent class.
 /// [`WheelEvent`](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WheelEvent {
 
 impl FromVal for WheelEvent {
     fn from_val(v: &Any) -> Self {
-        WheelEvent { inner: MouseEvent::from_val(v) }
+        WheelEvent {
+            inner: MouseEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WheelEvent {
 
 impl AsMut<Any> for WheelEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WheelEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&WheelEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(WheelEvent);
 
-
-
 impl WheelEvent {
     /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
     pub fn new0(type_: &JsString) -> WheelEvent {
         Self {
-            inner: Any::global("WheelEvent").new(&[type_.into()]).as_::<MouseEvent>(),
+            inner: Any::global("WheelEvent")
+                .new(&[type_.into()])
+                .as_::<MouseEvent>(),
         }
     }
 
     /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &WheelEventInit) -> WheelEvent {
         Self {
-            inner: Any::global("WheelEvent").new(&[type_.into(), event_init_dict.into()]).as_::<MouseEvent>(),
+            inner: Any::global("WheelEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<MouseEvent>(),
         }
     }
-
 }
 impl WheelEvent {
     /// Getter of the `deltaX` attribute.
@@ -88,7 +88,6 @@ impl WheelEvent {
     pub fn delta_x(&self) -> f64 {
         self.inner.get("deltaX").as_::<f64>()
     }
-
 }
 impl WheelEvent {
     /// Getter of the `deltaY` attribute.
@@ -96,7 +95,6 @@ impl WheelEvent {
     pub fn delta_y(&self) -> f64 {
         self.inner.get("deltaY").as_::<f64>()
     }
-
 }
 impl WheelEvent {
     /// Getter of the `deltaZ` attribute.
@@ -104,7 +102,6 @@ impl WheelEvent {
     pub fn delta_z(&self) -> f64 {
         self.inner.get("deltaZ").as_::<f64>()
     }
-
 }
 impl WheelEvent {
     /// Getter of the `deltaMode` attribute.
@@ -112,5 +109,4 @@ impl WheelEvent {
     pub fn delta_mode(&self) -> u32 {
         self.inner.get("deltaMode").as_::<u32>()
     }
-
 }

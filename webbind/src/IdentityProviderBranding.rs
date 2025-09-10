@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdentityProviderBranding dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IdentityProviderBranding {
 
 impl AsMut<Any> for IdentityProviderBranding {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdentityProviderBranding> for Any {
@@ -86,7 +83,9 @@ impl IdentityProviderBranding {
 impl IdentityProviderBranding {
     /// Getter of the `icons` attribute.
     pub fn icons(&self) -> TypedArray<IdentityProviderIcon> {
-        self.inner.get("icons").as_::<TypedArray<IdentityProviderIcon>>()
+        self.inner
+            .get("icons")
+            .as_::<TypedArray<IdentityProviderIcon>>()
     }
 
     /// Setter of the `icons` attribute.

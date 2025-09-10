@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSVariableReferenceValue class.
 /// [`CSSVariableReferenceValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSVariableReferenceValue {
 
 impl FromVal for CSSVariableReferenceValue {
     fn from_val(v: &Any) -> Self {
-        CSSVariableReferenceValue { inner: Any::from_val(v) }
+        CSSVariableReferenceValue {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSVariableReferenceValue {
 
 impl AsMut<Any> for CSSVariableReferenceValue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSVariableReferenceValue> for Any {
@@ -64,23 +63,24 @@ impl From<&CSSVariableReferenceValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSVariableReferenceValue);
 
-
-
 impl CSSVariableReferenceValue {
     /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
     pub fn new0(variable: &JsString) -> CSSVariableReferenceValue {
         Self {
-            inner: Any::global("CSSVariableReferenceValue").new(&[variable.into()]).as_::<Any>(),
+            inner: Any::global("CSSVariableReferenceValue")
+                .new(&[variable.into()])
+                .as_::<Any>(),
         }
     }
 
     /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
     pub fn new1(variable: &JsString, fallback: &CSSUnparsedValue) -> CSSVariableReferenceValue {
         Self {
-            inner: Any::global("CSSVariableReferenceValue").new(&[variable.into(), fallback.into()]).as_::<Any>(),
+            inner: Any::global("CSSVariableReferenceValue")
+                .new(&[variable.into(), fallback.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl CSSVariableReferenceValue {
     /// Getter of the `variable` attribute.
@@ -101,5 +101,4 @@ impl CSSVariableReferenceValue {
     pub fn fallback(&self) -> CSSUnparsedValue {
         self.inner.get("fallback").as_::<CSSUnparsedValue>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSKeyframeRule class.
 /// [`CSSKeyframeRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframeRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSKeyframeRule {
 
 impl FromVal for CSSKeyframeRule {
     fn from_val(v: &Any) -> Self {
-        CSSKeyframeRule { inner: CSSRule::from_val(v) }
+        CSSKeyframeRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSKeyframeRule {
 
 impl AsMut<Any> for CSSKeyframeRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSKeyframeRule> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSKeyframeRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSKeyframeRule);
-
 
 impl CSSKeyframeRule {
     /// Getter of the `keyText` attribute.
@@ -84,5 +82,4 @@ impl CSSKeyframeRule {
     pub fn style(&self) -> CSSStyleProperties {
         self.inner.get("style").as_::<CSSStyleProperties>()
     }
-
 }

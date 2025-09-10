@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRMesh class.
 /// [`XRMesh`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRMesh {
 
 impl FromVal for XRMesh {
     fn from_val(v: &Any) -> Self {
-        XRMesh { inner: Any::from_val(v) }
+        XRMesh {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRMesh {
 
 impl AsMut<Any> for XRMesh {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRMesh> for Any {
@@ -64,14 +63,12 @@ impl From<&XRMesh> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRMesh);
 
-
 impl XRMesh {
     /// Getter of the `meshSpace` attribute.
     /// [`XRMesh.meshSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/meshSpace)
     pub fn mesh_space(&self) -> XRSpace {
         self.inner.get("meshSpace").as_::<XRSpace>()
     }
-
 }
 impl XRMesh {
     /// Getter of the `vertices` attribute.
@@ -79,7 +76,6 @@ impl XRMesh {
     pub fn vertices(&self) -> TypedArray<Float32Array> {
         self.inner.get("vertices").as_::<TypedArray<Float32Array>>()
     }
-
 }
 impl XRMesh {
     /// Getter of the `indices` attribute.
@@ -87,7 +83,6 @@ impl XRMesh {
     pub fn indices(&self) -> Uint32Array {
         self.inner.get("indices").as_::<Uint32Array>()
     }
-
 }
 impl XRMesh {
     /// Getter of the `lastChangedTime` attribute.
@@ -95,7 +90,6 @@ impl XRMesh {
     pub fn last_changed_time(&self) -> Any {
         self.inner.get("lastChangedTime").as_::<Any>()
     }
-
 }
 impl XRMesh {
     /// Getter of the `semanticLabel` attribute.
@@ -103,5 +97,4 @@ impl XRMesh {
     pub fn semantic_label(&self) -> JsString {
         self.inner.get("semanticLabel").as_::<JsString>()
     }
-
 }

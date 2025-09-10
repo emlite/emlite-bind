@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLUniformLocation class.
 /// [`WebGLUniformLocation`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLUniformLocation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLUniformLocation {
 
 impl FromVal for WebGLUniformLocation {
     fn from_val(v: &Any) -> Self {
-        WebGLUniformLocation { inner: Any::from_val(v) }
+        WebGLUniformLocation {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLUniformLocation {
 
 impl AsMut<Any> for WebGLUniformLocation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLUniformLocation> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLUniformLocation> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLUniformLocation);
-
-

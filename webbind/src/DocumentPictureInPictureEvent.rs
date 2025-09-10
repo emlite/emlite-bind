@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DocumentPictureInPictureEvent class.
 /// [`DocumentPictureInPictureEvent`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPictureEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DocumentPictureInPictureEvent {
 
 impl FromVal for DocumentPictureInPictureEvent {
     fn from_val(v: &Any) -> Self {
-        DocumentPictureInPictureEvent { inner: Event::from_val(v) }
+        DocumentPictureInPictureEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DocumentPictureInPictureEvent {
 
 impl AsMut<Any> for DocumentPictureInPictureEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DocumentPictureInPictureEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&DocumentPictureInPictureEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPictureEvent);
 
-
-
 impl DocumentPictureInPictureEvent {
     /// The `new DocumentPictureInPictureEvent(..)` constructor, creating a new DocumentPictureInPictureEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &DocumentPictureInPictureEventInit) -> DocumentPictureInPictureEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &DocumentPictureInPictureEventInit,
+    ) -> DocumentPictureInPictureEvent {
         Self {
-            inner: Any::global("DocumentPictureInPictureEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("DocumentPictureInPictureEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl DocumentPictureInPictureEvent {
     /// Getter of the `window` attribute.
@@ -81,5 +82,4 @@ impl DocumentPictureInPictureEvent {
     pub fn window(&self) -> Window {
         self.inner.get("window").as_::<Window>()
     }
-
 }

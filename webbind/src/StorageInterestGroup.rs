@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The StorageInterestGroup dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for StorageInterestGroup {
 
 impl AsMut<Any> for StorageInterestGroup {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<StorageInterestGroup> for Any {

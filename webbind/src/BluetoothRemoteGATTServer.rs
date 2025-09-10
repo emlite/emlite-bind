@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothRemoteGATTServer class.
 /// [`BluetoothRemoteGATTServer`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothRemoteGATTServer {
 
 impl FromVal for BluetoothRemoteGATTServer {
     fn from_val(v: &Any) -> Self {
-        BluetoothRemoteGATTServer { inner: Any::from_val(v) }
+        BluetoothRemoteGATTServer {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothRemoteGATTServer {
 
 impl AsMut<Any> for BluetoothRemoteGATTServer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothRemoteGATTServer> for Any {
@@ -64,14 +63,12 @@ impl From<&BluetoothRemoteGATTServer> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTServer);
 
-
 impl BluetoothRemoteGATTServer {
     /// Getter of the `device` attribute.
     /// [`BluetoothRemoteGATTServer.device`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/device)
     pub fn device(&self) -> BluetoothDevice {
         self.inner.get("device").as_::<BluetoothDevice>()
     }
-
 }
 impl BluetoothRemoteGATTServer {
     /// Getter of the `connected` attribute.
@@ -79,19 +76,20 @@ impl BluetoothRemoteGATTServer {
     pub fn connected(&self) -> bool {
         self.inner.get("connected").as_::<bool>()
     }
-
 }
 impl BluetoothRemoteGATTServer {
     /// The connect method.
     /// [`BluetoothRemoteGATTServer.connect`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/connect)
-    pub fn connect(&self, ) -> Promise<BluetoothRemoteGATTServer> {
-        self.inner.call("connect", &[]).as_::<Promise<BluetoothRemoteGATTServer>>()
+    pub fn connect(&self) -> Promise<BluetoothRemoteGATTServer> {
+        self.inner
+            .call("connect", &[])
+            .as_::<Promise<BluetoothRemoteGATTServer>>()
     }
 }
 impl BluetoothRemoteGATTServer {
     /// The disconnect method.
     /// [`BluetoothRemoteGATTServer.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/disconnect)
-    pub fn disconnect(&self, ) -> Undefined {
+    pub fn disconnect(&self) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
 }
@@ -99,18 +97,27 @@ impl BluetoothRemoteGATTServer {
     /// The getPrimaryService method.
     /// [`BluetoothRemoteGATTServer.getPrimaryService`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryService)
     pub fn get_primary_service(&self, service: &Any) -> Promise<BluetoothRemoteGATTService> {
-        self.inner.call("getPrimaryService", &[service.into(), ]).as_::<Promise<BluetoothRemoteGATTService>>()
+        self.inner
+            .call("getPrimaryService", &[service.into()])
+            .as_::<Promise<BluetoothRemoteGATTService>>()
     }
 }
 impl BluetoothRemoteGATTServer {
     /// The getPrimaryServices method.
     /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
-    pub fn get_primary_services0(&self, ) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
-        self.inner.call("getPrimaryServices", &[]).as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
+    pub fn get_primary_services0(&self) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
+        self.inner
+            .call("getPrimaryServices", &[])
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
     /// The getPrimaryServices method.
     /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
-    pub fn get_primary_services1(&self, service: &Any) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
-        self.inner.call("getPrimaryServices", &[service.into(), ]).as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
+    pub fn get_primary_services1(
+        &self,
+        service: &Any,
+    ) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
+        self.inner
+            .call("getPrimaryServices", &[service.into()])
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
 }

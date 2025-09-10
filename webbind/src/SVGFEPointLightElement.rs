@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGFEPointLightElement class.
 /// [`SVGFEPointLightElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEPointLightElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGFEPointLightElement {
 
 impl FromVal for SVGFEPointLightElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEPointLightElement { inner: SVGElement::from_val(v) }
+        SVGFEPointLightElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGFEPointLightElement {
 
 impl AsMut<Any> for SVGFEPointLightElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGFEPointLightElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGFEPointLightElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEPointLightElement);
 
-
 impl SVGFEPointLightElement {
     /// Getter of the `x` attribute.
     /// [`SVGFEPointLightElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEPointLightElement/x)
     pub fn x(&self) -> SVGAnimatedNumber {
         self.inner.get("x").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEPointLightElement {
     /// Getter of the `y` attribute.
@@ -79,7 +76,6 @@ impl SVGFEPointLightElement {
     pub fn y(&self) -> SVGAnimatedNumber {
         self.inner.get("y").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEPointLightElement {
     /// Getter of the `z` attribute.
@@ -87,5 +83,4 @@ impl SVGFEPointLightElement {
     pub fn z(&self) -> SVGAnimatedNumber {
         self.inner.get("z").as_::<SVGAnimatedNumber>()
     }
-
 }

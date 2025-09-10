@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PictureInPictureEvent class.
 /// [`PictureInPictureEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PictureInPictureEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PictureInPictureEvent {
 
 impl FromVal for PictureInPictureEvent {
     fn from_val(v: &Any) -> Self {
-        PictureInPictureEvent { inner: Event::from_val(v) }
+        PictureInPictureEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PictureInPictureEvent {
 
 impl AsMut<Any> for PictureInPictureEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PictureInPictureEvent> for Any {
@@ -64,22 +63,25 @@ impl From<&PictureInPictureEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PictureInPictureEvent);
 
-
-
 impl PictureInPictureEvent {
     /// The `new PictureInPictureEvent(..)` constructor, creating a new PictureInPictureEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &PictureInPictureEventInit) -> PictureInPictureEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PictureInPictureEventInit,
+    ) -> PictureInPictureEvent {
         Self {
-            inner: Any::global("PictureInPictureEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("PictureInPictureEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PictureInPictureEvent {
     /// Getter of the `pictureInPictureWindow` attribute.
     /// [`PictureInPictureEvent.pictureInPictureWindow`](https://developer.mozilla.org/en-US/docs/Web/API/PictureInPictureEvent/pictureInPictureWindow)
     pub fn picture_in_picture_window(&self) -> PictureInPictureWindow {
-        self.inner.get("pictureInPictureWindow").as_::<PictureInPictureWindow>()
+        self.inner
+            .get("pictureInPictureWindow")
+            .as_::<PictureInPictureWindow>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WEBGL_depth_texture class.
 /// [`WEBGL_depth_texture`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_depth_texture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WEBGL_depth_texture {
 
 impl FromVal for WEBGL_depth_texture {
     fn from_val(v: &Any) -> Self {
-        WEBGL_depth_texture { inner: Any::from_val(v) }
+        WEBGL_depth_texture {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WEBGL_depth_texture {
 
 impl AsMut<Any> for WEBGL_depth_texture {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WEBGL_depth_texture> for Any {
@@ -63,5 +62,3 @@ impl From<&WEBGL_depth_texture> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WEBGL_depth_texture);
-
-

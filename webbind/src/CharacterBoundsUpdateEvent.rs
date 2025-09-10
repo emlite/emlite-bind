@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CharacterBoundsUpdateEvent class.
 /// [`CharacterBoundsUpdateEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterBoundsUpdateEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CharacterBoundsUpdateEvent {
 
 impl FromVal for CharacterBoundsUpdateEvent {
     fn from_val(v: &Any) -> Self {
-        CharacterBoundsUpdateEvent { inner: Event::from_val(v) }
+        CharacterBoundsUpdateEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CharacterBoundsUpdateEvent {
 
 impl AsMut<Any> for CharacterBoundsUpdateEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CharacterBoundsUpdateEvent> for Any {
@@ -64,23 +63,27 @@ impl From<&CharacterBoundsUpdateEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CharacterBoundsUpdateEvent);
 
-
-
 impl CharacterBoundsUpdateEvent {
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
     pub fn new0(type_: &JsString) -> CharacterBoundsUpdateEvent {
         Self {
-            inner: Any::global("CharacterBoundsUpdateEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("CharacterBoundsUpdateEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
-    pub fn new1(type_: &JsString, options: &CharacterBoundsUpdateEventInit) -> CharacterBoundsUpdateEvent {
+    pub fn new1(
+        type_: &JsString,
+        options: &CharacterBoundsUpdateEventInit,
+    ) -> CharacterBoundsUpdateEvent {
         Self {
-            inner: Any::global("CharacterBoundsUpdateEvent").new(&[type_.into(), options.into()]).as_::<Event>(),
+            inner: Any::global("CharacterBoundsUpdateEvent")
+                .new(&[type_.into(), options.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl CharacterBoundsUpdateEvent {
     /// Getter of the `rangeStart` attribute.
@@ -88,7 +91,6 @@ impl CharacterBoundsUpdateEvent {
     pub fn range_start(&self) -> u32 {
         self.inner.get("rangeStart").as_::<u32>()
     }
-
 }
 impl CharacterBoundsUpdateEvent {
     /// Getter of the `rangeEnd` attribute.
@@ -96,5 +98,4 @@ impl CharacterBoundsUpdateEvent {
     pub fn range_end(&self) -> u32 {
         self.inner.get("rangeEnd").as_::<u32>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FilePropertyBag dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for FilePropertyBag {
 
 impl AsMut<Any> for FilePropertyBag {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FilePropertyBag> for Any {

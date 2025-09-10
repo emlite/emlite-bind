@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLTensor class.
 /// [`MLTensor`](https://developer.mozilla.org/en-US/docs/Web/API/MLTensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MLTensor {
 
 impl FromVal for MLTensor {
     fn from_val(v: &Any) -> Self {
-        MLTensor { inner: Any::from_val(v) }
+        MLTensor {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MLTensor {
 
 impl AsMut<Any> for MLTensor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLTensor> for Any {
@@ -64,14 +63,12 @@ impl From<&MLTensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(MLTensor);
 
-
 impl MLTensor {
     /// Getter of the `dataType` attribute.
     /// [`MLTensor.dataType`](https://developer.mozilla.org/en-US/docs/Web/API/MLTensor/dataType)
     pub fn data_type(&self) -> MLOperandDataType {
         self.inner.get("dataType").as_::<MLOperandDataType>()
     }
-
 }
 impl MLTensor {
     /// Getter of the `shape` attribute.
@@ -79,7 +76,6 @@ impl MLTensor {
     pub fn shape(&self) -> TypedArray<u32> {
         self.inner.get("shape").as_::<TypedArray<u32>>()
     }
-
 }
 impl MLTensor {
     /// Getter of the `readable` attribute.
@@ -87,7 +83,6 @@ impl MLTensor {
     pub fn readable(&self) -> bool {
         self.inner.get("readable").as_::<bool>()
     }
-
 }
 impl MLTensor {
     /// Getter of the `writable` attribute.
@@ -95,7 +90,6 @@ impl MLTensor {
     pub fn writable(&self) -> bool {
         self.inner.get("writable").as_::<bool>()
     }
-
 }
 impl MLTensor {
     /// Getter of the `constant` attribute.
@@ -103,12 +97,11 @@ impl MLTensor {
     pub fn constant(&self) -> bool {
         self.inner.get("constant").as_::<bool>()
     }
-
 }
 impl MLTensor {
     /// The destroy method.
     /// [`MLTensor.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/MLTensor/destroy)
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

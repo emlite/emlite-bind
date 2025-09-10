@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCTransportStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCTransportStats {
 
 impl AsMut<Any> for RTCTransportStats {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCTransportStats> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DOMRectList class.
 /// [`DOMRectList`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DOMRectList {
 
 impl FromVal for DOMRectList {
     fn from_val(v: &Any) -> Self {
-        DOMRectList { inner: Any::from_val(v) }
+        DOMRectList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DOMRectList {
 
 impl AsMut<Any> for DOMRectList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DOMRectList> for Any {
@@ -64,19 +63,17 @@ impl From<&DOMRectList> for Any {
 
 jsbind::utils::impl_dyn_cast!(DOMRectList);
 
-
 impl DOMRectList {
     /// Getter of the `length` attribute.
     /// [`DOMRectList.length`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl DOMRectList {
     /// The item method.
     /// [`DOMRectList.item`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectList/item)
     pub fn item(&self, index: u32) -> DOMRect {
-        self.inner.call("item", &[index.into(), ]).as_::<DOMRect>()
+        self.inner.call("item", &[index.into()]).as_::<DOMRect>()
     }
 }

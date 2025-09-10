@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PaymentRequestDetailsUpdate dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PaymentRequestDetailsUpdate {
 
 impl AsMut<Any> for PaymentRequestDetailsUpdate {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PaymentRequestDetailsUpdate> for Any {
@@ -86,7 +83,9 @@ impl PaymentRequestDetailsUpdate {
 impl PaymentRequestDetailsUpdate {
     /// Getter of the `modifiers` attribute.
     pub fn modifiers(&self) -> TypedArray<PaymentDetailsModifier> {
-        self.inner.get("modifiers").as_::<TypedArray<PaymentDetailsModifier>>()
+        self.inner
+            .get("modifiers")
+            .as_::<TypedArray<PaymentDetailsModifier>>()
     }
 
     /// Setter of the `modifiers` attribute.
@@ -97,7 +96,9 @@ impl PaymentRequestDetailsUpdate {
 impl PaymentRequestDetailsUpdate {
     /// Getter of the `shippingOptions` attribute.
     pub fn shipping_options(&self) -> TypedArray<PaymentShippingOption> {
-        self.inner.get("shippingOptions").as_::<TypedArray<PaymentShippingOption>>()
+        self.inner
+            .get("shippingOptions")
+            .as_::<TypedArray<PaymentShippingOption>>()
     }
 
     /// Setter of the `shippingOptions` attribute.
@@ -119,7 +120,9 @@ impl PaymentRequestDetailsUpdate {
 impl PaymentRequestDetailsUpdate {
     /// Getter of the `shippingAddressErrors` attribute.
     pub fn shipping_address_errors(&self) -> AddressErrors {
-        self.inner.get("shippingAddressErrors").as_::<AddressErrors>()
+        self.inner
+            .get("shippingAddressErrors")
+            .as_::<AddressErrors>()
     }
 
     /// Setter of the `shippingAddressErrors` attribute.

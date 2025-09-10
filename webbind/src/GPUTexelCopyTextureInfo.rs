@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUTexelCopyTextureInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUTexelCopyTextureInfo {
 
 impl AsMut<Any> for GPUTexelCopyTextureInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUTexelCopyTextureInfo> for Any {

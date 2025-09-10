@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TextTrack class.
 /// [`TextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TextTrack {
 
 impl FromVal for TextTrack {
     fn from_val(v: &Any) -> Self {
-        TextTrack { inner: EventTarget::from_val(v) }
+        TextTrack {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TextTrack {
 
 impl AsMut<Any> for TextTrack {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TextTrack> for Any {
@@ -64,14 +63,12 @@ impl From<&TextTrack> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextTrack);
 
-
 impl TextTrack {
     /// Getter of the `kind` attribute.
     /// [`TextTrack.kind`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/kind)
     pub fn kind(&self) -> TextTrackKind {
         self.inner.get("kind").as_::<TextTrackKind>()
     }
-
 }
 impl TextTrack {
     /// Getter of the `label` attribute.
@@ -79,7 +76,6 @@ impl TextTrack {
     pub fn label(&self) -> JsString {
         self.inner.get("label").as_::<JsString>()
     }
-
 }
 impl TextTrack {
     /// Getter of the `language` attribute.
@@ -87,7 +83,6 @@ impl TextTrack {
     pub fn language(&self) -> JsString {
         self.inner.get("language").as_::<JsString>()
     }
-
 }
 impl TextTrack {
     /// Getter of the `id` attribute.
@@ -95,15 +90,15 @@ impl TextTrack {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl TextTrack {
     /// Getter of the `inBandMetadataTrackDispatchType` attribute.
     /// [`TextTrack.inBandMetadataTrackDispatchType`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/inBandMetadataTrackDispatchType)
     pub fn in_band_metadata_track_dispatch_type(&self) -> JsString {
-        self.inner.get("inBandMetadataTrackDispatchType").as_::<JsString>()
+        self.inner
+            .get("inBandMetadataTrackDispatchType")
+            .as_::<JsString>()
     }
-
 }
 impl TextTrack {
     /// Getter of the `mode` attribute.
@@ -124,7 +119,6 @@ impl TextTrack {
     pub fn cues(&self) -> TextTrackCueList {
         self.inner.get("cues").as_::<TextTrackCueList>()
     }
-
 }
 impl TextTrack {
     /// Getter of the `activeCues` attribute.
@@ -132,20 +126,21 @@ impl TextTrack {
     pub fn active_cues(&self) -> TextTrackCueList {
         self.inner.get("activeCues").as_::<TextTrackCueList>()
     }
-
 }
 impl TextTrack {
     /// The addCue method.
     /// [`TextTrack.addCue`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/addCue)
     pub fn add_cue(&self, cue: &TextTrackCue) -> Undefined {
-        self.inner.call("addCue", &[cue.into(), ]).as_::<Undefined>()
+        self.inner.call("addCue", &[cue.into()]).as_::<Undefined>()
     }
 }
 impl TextTrack {
     /// The removeCue method.
     /// [`TextTrack.removeCue`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/removeCue)
     pub fn remove_cue(&self, cue: &TextTrackCue) -> Undefined {
-        self.inner.call("removeCue", &[cue.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("removeCue", &[cue.into()])
+            .as_::<Undefined>()
     }
 }
 impl TextTrack {
@@ -167,5 +162,4 @@ impl TextTrack {
     pub fn source_buffer(&self) -> SourceBuffer {
         self.inner.get("sourceBuffer").as_::<SourceBuffer>()
     }
-
 }

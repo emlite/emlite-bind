@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OTPCredentialRequestOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for OTPCredentialRequestOptions {
 
 impl AsMut<Any> for OTPCredentialRequestOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OTPCredentialRequestOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&OTPCredentialRequestOptions> for Any {
 impl OTPCredentialRequestOptions {
     /// Getter of the `transport` attribute.
     pub fn transport(&self) -> TypedArray<OTPCredentialTransportType> {
-        self.inner.get("transport").as_::<TypedArray<OTPCredentialTransportType>>()
+        self.inner
+            .get("transport")
+            .as_::<TypedArray<OTPCredentialTransportType>>()
     }
 
     /// Setter of the `transport` attribute.

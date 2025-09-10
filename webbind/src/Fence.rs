@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Fence class.
 /// [`Fence`](https://developer.mozilla.org/en-US/docs/Web/API/Fence)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Fence {
 
 impl FromVal for Fence {
     fn from_val(v: &Any) -> Self {
-        Fence { inner: Any::from_val(v) }
+        Fence {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Fence {
 
 impl AsMut<Any> for Fence {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Fence> for Any {
@@ -64,49 +63,60 @@ impl From<&Fence> for Any {
 
 jsbind::utils::impl_dyn_cast!(Fence);
 
-
 impl Fence {
     /// The reportEvent method.
     /// [`Fence.reportEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/reportEvent)
-    pub fn report_event0(&self, ) -> Undefined {
+    pub fn report_event0(&self) -> Undefined {
         self.inner.call("reportEvent", &[]).as_::<Undefined>()
     }
     /// The reportEvent method.
     /// [`Fence.reportEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/reportEvent)
     pub fn report_event1(&self, event: &Any) -> Undefined {
-        self.inner.call("reportEvent", &[event.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("reportEvent", &[event.into()])
+            .as_::<Undefined>()
     }
 }
 impl Fence {
     /// The setReportEventDataForAutomaticBeacons method.
     /// [`Fence.setReportEventDataForAutomaticBeacons`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/setReportEventDataForAutomaticBeacons)
-    pub fn set_report_event_data_for_automatic_beacons0(&self, ) -> Undefined {
-        self.inner.call("setReportEventDataForAutomaticBeacons", &[]).as_::<Undefined>()
+    pub fn set_report_event_data_for_automatic_beacons0(&self) -> Undefined {
+        self.inner
+            .call("setReportEventDataForAutomaticBeacons", &[])
+            .as_::<Undefined>()
     }
     /// The setReportEventDataForAutomaticBeacons method.
     /// [`Fence.setReportEventDataForAutomaticBeacons`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/setReportEventDataForAutomaticBeacons)
     pub fn set_report_event_data_for_automatic_beacons1(&self, event: &FenceEvent) -> Undefined {
-        self.inner.call("setReportEventDataForAutomaticBeacons", &[event.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setReportEventDataForAutomaticBeacons", &[event.into()])
+            .as_::<Undefined>()
     }
 }
 impl Fence {
     /// The getNestedConfigs method.
     /// [`Fence.getNestedConfigs`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/getNestedConfigs)
-    pub fn get_nested_configs(&self, ) -> TypedArray<FencedFrameConfig> {
-        self.inner.call("getNestedConfigs", &[]).as_::<TypedArray<FencedFrameConfig>>()
+    pub fn get_nested_configs(&self) -> TypedArray<FencedFrameConfig> {
+        self.inner
+            .call("getNestedConfigs", &[])
+            .as_::<TypedArray<FencedFrameConfig>>()
     }
 }
 impl Fence {
     /// The disableUntrustedNetwork method.
     /// [`Fence.disableUntrustedNetwork`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/disableUntrustedNetwork)
-    pub fn disable_untrusted_network(&self, ) -> Promise<Undefined> {
-        self.inner.call("disableUntrustedNetwork", &[]).as_::<Promise<Undefined>>()
+    pub fn disable_untrusted_network(&self) -> Promise<Undefined> {
+        self.inner
+            .call("disableUntrustedNetwork", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Fence {
     /// The notifyEvent method.
     /// [`Fence.notifyEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/notifyEvent)
     pub fn notify_event(&self, event: &Event) -> Undefined {
-        self.inner.call("notifyEvent", &[event.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("notifyEvent", &[event.into()])
+            .as_::<Undefined>()
     }
 }

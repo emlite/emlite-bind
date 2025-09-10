@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EncodedVideoChunkMetadata dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for EncodedVideoChunkMetadata {
 
 impl AsMut<Any> for EncodedVideoChunkMetadata {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EncodedVideoChunkMetadata> for Any {

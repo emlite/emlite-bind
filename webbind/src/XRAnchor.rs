@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRAnchor class.
 /// [`XRAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRAnchor {
 
 impl FromVal for XRAnchor {
     fn from_val(v: &Any) -> Self {
-        XRAnchor { inner: Any::from_val(v) }
+        XRAnchor {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRAnchor {
 
 impl AsMut<Any> for XRAnchor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRAnchor> for Any {
@@ -64,26 +63,26 @@ impl From<&XRAnchor> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRAnchor);
 
-
 impl XRAnchor {
     /// Getter of the `anchorSpace` attribute.
     /// [`XRAnchor.anchorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/anchorSpace)
     pub fn anchor_space(&self) -> XRSpace {
         self.inner.get("anchorSpace").as_::<XRSpace>()
     }
-
 }
 impl XRAnchor {
     /// The requestPersistentHandle method.
     /// [`XRAnchor.requestPersistentHandle`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/requestPersistentHandle)
-    pub fn request_persistent_handle(&self, ) -> Promise<JsString> {
-        self.inner.call("requestPersistentHandle", &[]).as_::<Promise<JsString>>()
+    pub fn request_persistent_handle(&self) -> Promise<JsString> {
+        self.inner
+            .call("requestPersistentHandle", &[])
+            .as_::<Promise<JsString>>()
     }
 }
 impl XRAnchor {
     /// The delete method.
     /// [`XRAnchor.delete`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/delete)
-    pub fn delete(&self, ) -> Undefined {
+    pub fn delete(&self) -> Undefined {
         self.inner.call("delete", &[]).as_::<Undefined>()
     }
 }

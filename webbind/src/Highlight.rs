@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Highlight class.
 /// [`Highlight`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Highlight {
 
 impl FromVal for Highlight {
     fn from_val(v: &Any) -> Self {
-        Highlight { inner: Any::from_val(v) }
+        Highlight {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Highlight {
 
 impl AsMut<Any> for Highlight {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Highlight> for Any {
@@ -64,16 +63,15 @@ impl From<&Highlight> for Any {
 
 jsbind::utils::impl_dyn_cast!(Highlight);
 
-
-
 impl Highlight {
     /// The `new Highlight(..)` constructor, creating a new Highlight instance
     pub fn new(initial_ranges: &AbstractRange) -> Highlight {
         Self {
-            inner: Any::global("Highlight").new(&[initial_ranges.into()]).as_::<Any>(),
+            inner: Any::global("Highlight")
+                .new(&[initial_ranges.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl Highlight {
     /// Getter of the `priority` attribute.

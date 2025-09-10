@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGMarkerElement class.
 /// [`SVGMarkerElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGMarkerElement {
 
 impl FromVal for SVGMarkerElement {
     fn from_val(v: &Any) -> Self {
-        SVGMarkerElement { inner: SVGElement::from_val(v) }
+        SVGMarkerElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGMarkerElement {
 
 impl AsMut<Any> for SVGMarkerElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGMarkerElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGMarkerElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGMarkerElement);
 
-
 impl SVGMarkerElement {
     /// Getter of the `refX` attribute.
     /// [`SVGMarkerElement.refX`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/refX)
     pub fn ref_x(&self) -> SVGAnimatedLength {
         self.inner.get("refX").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `refY` attribute.
@@ -79,15 +76,15 @@ impl SVGMarkerElement {
     pub fn ref_y(&self) -> SVGAnimatedLength {
         self.inner.get("refY").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `markerUnits` attribute.
     /// [`SVGMarkerElement.markerUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/markerUnits)
     pub fn marker_units(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("markerUnits").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("markerUnits")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `markerWidth` attribute.
@@ -95,7 +92,6 @@ impl SVGMarkerElement {
     pub fn marker_width(&self) -> SVGAnimatedLength {
         self.inner.get("markerWidth").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `markerHeight` attribute.
@@ -103,7 +99,6 @@ impl SVGMarkerElement {
     pub fn marker_height(&self) -> SVGAnimatedLength {
         self.inner.get("markerHeight").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `orientType` attribute.
@@ -111,7 +106,6 @@ impl SVGMarkerElement {
     pub fn orient_type(&self) -> SVGAnimatedEnumeration {
         self.inner.get("orientType").as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `orientAngle` attribute.
@@ -119,7 +113,6 @@ impl SVGMarkerElement {
     pub fn orient_angle(&self) -> SVGAnimatedAngle {
         self.inner.get("orientAngle").as_::<SVGAnimatedAngle>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `orient` attribute.
@@ -137,7 +130,7 @@ impl SVGMarkerElement {
 impl SVGMarkerElement {
     /// The setOrientToAuto method.
     /// [`SVGMarkerElement.setOrientToAuto`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/setOrientToAuto)
-    pub fn set_orient_to_auto(&self, ) -> Undefined {
+    pub fn set_orient_to_auto(&self) -> Undefined {
         self.inner.call("setOrientToAuto", &[]).as_::<Undefined>()
     }
 }
@@ -145,7 +138,9 @@ impl SVGMarkerElement {
     /// The setOrientToAngle method.
     /// [`SVGMarkerElement.setOrientToAngle`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/setOrientToAngle)
     pub fn set_orient_to_angle(&self, angle: &SVGAngle) -> Undefined {
-        self.inner.call("setOrientToAngle", &[angle.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setOrientToAngle", &[angle.into()])
+            .as_::<Undefined>()
     }
 }
 impl SVGMarkerElement {
@@ -154,13 +149,13 @@ impl SVGMarkerElement {
     pub fn view_box(&self) -> SVGAnimatedRect {
         self.inner.get("viewBox").as_::<SVGAnimatedRect>()
     }
-
 }
 impl SVGMarkerElement {
     /// Getter of the `preserveAspectRatio` attribute.
     /// [`SVGMarkerElement.preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/preserveAspectRatio)
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner
+            .get("preserveAspectRatio")
+            .as_::<SVGAnimatedPreserveAspectRatio>()
     }
-
 }

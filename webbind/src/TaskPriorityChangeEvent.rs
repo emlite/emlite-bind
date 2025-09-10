@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TaskPriorityChangeEvent class.
 /// [`TaskPriorityChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TaskPriorityChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TaskPriorityChangeEvent {
 
 impl FromVal for TaskPriorityChangeEvent {
     fn from_val(v: &Any) -> Self {
-        TaskPriorityChangeEvent { inner: Event::from_val(v) }
+        TaskPriorityChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TaskPriorityChangeEvent {
 
 impl AsMut<Any> for TaskPriorityChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TaskPriorityChangeEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&TaskPriorityChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(TaskPriorityChangeEvent);
 
-
-
 impl TaskPriorityChangeEvent {
     /// The `new TaskPriorityChangeEvent(..)` constructor, creating a new TaskPriorityChangeEvent instance
-    pub fn new(type_: &JsString, priority_change_event_init_dict: &TaskPriorityChangeEventInit) -> TaskPriorityChangeEvent {
+    pub fn new(
+        type_: &JsString,
+        priority_change_event_init_dict: &TaskPriorityChangeEventInit,
+    ) -> TaskPriorityChangeEvent {
         Self {
-            inner: Any::global("TaskPriorityChangeEvent").new(&[type_.into(), priority_change_event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("TaskPriorityChangeEvent")
+                .new(&[type_.into(), priority_change_event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl TaskPriorityChangeEvent {
     /// Getter of the `previousPriority` attribute.
@@ -81,5 +82,4 @@ impl TaskPriorityChangeEvent {
     pub fn previous_priority(&self) -> TaskPriority {
         self.inner.get("previousPriority").as_::<TaskPriority>()
     }
-
 }

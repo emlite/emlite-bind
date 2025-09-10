@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SanitizerConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SanitizerConfig {
 
 impl AsMut<Any> for SanitizerConfig {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SanitizerConfig> for Any {
@@ -86,7 +83,9 @@ impl SanitizerConfig {
 impl SanitizerConfig {
     /// Getter of the `replaceWithChildrenElements` attribute.
     pub fn replace_with_children_elements(&self) -> TypedArray<Any> {
-        self.inner.get("replaceWithChildrenElements").as_::<TypedArray<Any>>()
+        self.inner
+            .get("replaceWithChildrenElements")
+            .as_::<TypedArray<Any>>()
     }
 
     /// Setter of the `replaceWithChildrenElements` attribute.

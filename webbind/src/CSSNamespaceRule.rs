@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSNamespaceRule class.
 /// [`CSSNamespaceRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNamespaceRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSNamespaceRule {
 
 impl FromVal for CSSNamespaceRule {
     fn from_val(v: &Any) -> Self {
-        CSSNamespaceRule { inner: CSSRule::from_val(v) }
+        CSSNamespaceRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSNamespaceRule {
 
 impl AsMut<Any> for CSSNamespaceRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSNamespaceRule> for Any {
@@ -64,14 +63,12 @@ impl From<&CSSNamespaceRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSNamespaceRule);
 
-
 impl CSSNamespaceRule {
     /// Getter of the `namespaceURI` attribute.
     /// [`CSSNamespaceRule.namespaceURI`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNamespaceRule/namespaceURI)
     pub fn namespace_uri(&self) -> JsString {
         self.inner.get("namespaceURI").as_::<JsString>()
     }
-
 }
 impl CSSNamespaceRule {
     /// Getter of the `prefix` attribute.
@@ -79,5 +76,4 @@ impl CSSNamespaceRule {
     pub fn prefix(&self) -> JsString {
         self.inner.get("prefix").as_::<JsString>()
     }
-
 }

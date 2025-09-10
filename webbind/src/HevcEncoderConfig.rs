@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HevcEncoderConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HevcEncoderConfig {
 
 impl AsMut<Any> for HevcEncoderConfig {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HevcEncoderConfig> for Any {

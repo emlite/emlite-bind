@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRLightProbe class.
 /// [`XRLightProbe`](https://developer.mozilla.org/en-US/docs/Web/API/XRLightProbe)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRLightProbe {
 
 impl FromVal for XRLightProbe {
     fn from_val(v: &Any) -> Self {
-        XRLightProbe { inner: EventTarget::from_val(v) }
+        XRLightProbe {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRLightProbe {
 
 impl AsMut<Any> for XRLightProbe {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRLightProbe> for Any {
@@ -64,14 +63,12 @@ impl From<&XRLightProbe> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRLightProbe);
 
-
 impl XRLightProbe {
     /// Getter of the `probeSpace` attribute.
     /// [`XRLightProbe.probeSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRLightProbe/probeSpace)
     pub fn probe_space(&self) -> XRSpace {
         self.inner.get("probeSpace").as_::<XRSpace>()
     }
-
 }
 impl XRLightProbe {
     /// Getter of the `onreflectionchange` attribute.

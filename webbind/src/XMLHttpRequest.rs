@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XMLHttpRequest class.
 /// [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XMLHttpRequest {
 
 impl FromVal for XMLHttpRequest {
     fn from_val(v: &Any) -> Self {
-        XMLHttpRequest { inner: XMLHttpRequestEventTarget::from_val(v) }
+        XMLHttpRequest {
+            inner: XMLHttpRequestEventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XMLHttpRequest {
 
 impl AsMut<Any> for XMLHttpRequest {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XMLHttpRequest> for Any {
@@ -64,16 +63,15 @@ impl From<&XMLHttpRequest> for Any {
 
 jsbind::utils::impl_dyn_cast!(XMLHttpRequest);
 
-
-
 impl XMLHttpRequest {
     /// The `new XMLHttpRequest(..)` constructor, creating a new XMLHttpRequest instance
     pub fn new() -> XMLHttpRequest {
         Self {
-            inner: Any::global("XMLHttpRequest").new(&[]).as_::<XMLHttpRequestEventTarget>(),
+            inner: Any::global("XMLHttpRequest")
+                .new(&[])
+                .as_::<XMLHttpRequestEventTarget>(),
         }
     }
-
 }
 impl XMLHttpRequest {
     /// Getter of the `onreadystatechange` attribute.
@@ -94,30 +92,62 @@ impl XMLHttpRequest {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
-
 }
 impl XMLHttpRequest {
     /// The open method.
     /// [`XMLHttpRequest.open`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)
     pub fn open0(&self, method: &JsString, url: &JsString, async_: bool) -> Undefined {
-        self.inner.call("open", &[method.into(), url.into(), async_.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("open", &[method.into(), url.into(), async_.into()])
+            .as_::<Undefined>()
     }
     /// The open method.
     /// [`XMLHttpRequest.open`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)
-    pub fn open1(&self, method: &JsString, url: &JsString, async_: bool, username: &JsString) -> Undefined {
-        self.inner.call("open", &[method.into(), url.into(), async_.into(), username.into(), ]).as_::<Undefined>()
+    pub fn open1(
+        &self,
+        method: &JsString,
+        url: &JsString,
+        async_: bool,
+        username: &JsString,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "open",
+                &[method.into(), url.into(), async_.into(), username.into()],
+            )
+            .as_::<Undefined>()
     }
     /// The open method.
     /// [`XMLHttpRequest.open`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)
-    pub fn open2(&self, method: &JsString, url: &JsString, async_: bool, username: &JsString, password: &JsString) -> Undefined {
-        self.inner.call("open", &[method.into(), url.into(), async_.into(), username.into(), password.into(), ]).as_::<Undefined>()
+    pub fn open2(
+        &self,
+        method: &JsString,
+        url: &JsString,
+        async_: bool,
+        username: &JsString,
+        password: &JsString,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "open",
+                &[
+                    method.into(),
+                    url.into(),
+                    async_.into(),
+                    username.into(),
+                    password.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 }
 impl XMLHttpRequest {
     /// The setRequestHeader method.
     /// [`XMLHttpRequest.setRequestHeader`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/setRequestHeader)
     pub fn set_request_header(&self, name: &JsString, value: &JsString) -> Undefined {
-        self.inner.call("setRequestHeader", &[name.into(), value.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setRequestHeader", &[name.into(), value.into()])
+            .as_::<Undefined>()
     }
 }
 impl XMLHttpRequest {
@@ -152,24 +182,23 @@ impl XMLHttpRequest {
     pub fn upload(&self) -> XMLHttpRequestUpload {
         self.inner.get("upload").as_::<XMLHttpRequestUpload>()
     }
-
 }
 impl XMLHttpRequest {
     /// The send method.
     /// [`XMLHttpRequest.send`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)
-    pub fn send0(&self, ) -> Undefined {
+    pub fn send0(&self) -> Undefined {
         self.inner.call("send", &[]).as_::<Undefined>()
     }
     /// The send method.
     /// [`XMLHttpRequest.send`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)
     pub fn send1(&self, body: &Any) -> Undefined {
-        self.inner.call("send", &[body.into(), ]).as_::<Undefined>()
+        self.inner.call("send", &[body.into()]).as_::<Undefined>()
     }
 }
 impl XMLHttpRequest {
     /// The abort method.
     /// [`XMLHttpRequest.abort`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/abort)
-    pub fn abort(&self, ) -> Undefined {
+    pub fn abort(&self) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
 }
@@ -179,7 +208,6 @@ impl XMLHttpRequest {
     pub fn response_url(&self) -> JsString {
         self.inner.get("responseURL").as_::<JsString>()
     }
-
 }
 impl XMLHttpRequest {
     /// Getter of the `status` attribute.
@@ -187,7 +215,6 @@ impl XMLHttpRequest {
     pub fn status(&self) -> u16 {
         self.inner.get("status").as_::<u16>()
     }
-
 }
 impl XMLHttpRequest {
     /// Getter of the `statusText` attribute.
@@ -195,34 +222,41 @@ impl XMLHttpRequest {
     pub fn status_text(&self) -> JsString {
         self.inner.get("statusText").as_::<JsString>()
     }
-
 }
 impl XMLHttpRequest {
     /// The getResponseHeader method.
     /// [`XMLHttpRequest.getResponseHeader`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/getResponseHeader)
     pub fn get_response_header(&self, name: &JsString) -> JsString {
-        self.inner.call("getResponseHeader", &[name.into(), ]).as_::<JsString>()
+        self.inner
+            .call("getResponseHeader", &[name.into()])
+            .as_::<JsString>()
     }
 }
 impl XMLHttpRequest {
     /// The getAllResponseHeaders method.
     /// [`XMLHttpRequest.getAllResponseHeaders`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/getAllResponseHeaders)
-    pub fn get_all_response_headers(&self, ) -> JsString {
-        self.inner.call("getAllResponseHeaders", &[]).as_::<JsString>()
+    pub fn get_all_response_headers(&self) -> JsString {
+        self.inner
+            .call("getAllResponseHeaders", &[])
+            .as_::<JsString>()
     }
 }
 impl XMLHttpRequest {
     /// The overrideMimeType method.
     /// [`XMLHttpRequest.overrideMimeType`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/overrideMimeType)
     pub fn override_mime_type(&self, mime: &JsString) -> Undefined {
-        self.inner.call("overrideMimeType", &[mime.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("overrideMimeType", &[mime.into()])
+            .as_::<Undefined>()
     }
 }
 impl XMLHttpRequest {
     /// Getter of the `responseType` attribute.
     /// [`XMLHttpRequest.responseType`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType)
     pub fn response_type(&self) -> XMLHttpRequestResponseType {
-        self.inner.get("responseType").as_::<XMLHttpRequestResponseType>()
+        self.inner
+            .get("responseType")
+            .as_::<XMLHttpRequestResponseType>()
     }
 
     /// Setter of the `responseType` attribute.
@@ -237,7 +271,6 @@ impl XMLHttpRequest {
     pub fn response(&self) -> Any {
         self.inner.get("response").as_::<Any>()
     }
-
 }
 impl XMLHttpRequest {
     /// Getter of the `responseText` attribute.
@@ -245,7 +278,6 @@ impl XMLHttpRequest {
     pub fn response_text(&self) -> JsString {
         self.inner.get("responseText").as_::<JsString>()
     }
-
 }
 impl XMLHttpRequest {
     /// Getter of the `responseXML` attribute.
@@ -253,19 +285,25 @@ impl XMLHttpRequest {
     pub fn response_xml(&self) -> Document {
         self.inner.get("responseXML").as_::<Document>()
     }
-
 }
 impl XMLHttpRequest {
     /// The setAttributionReporting method.
     /// [`XMLHttpRequest.setAttributionReporting`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/setAttributionReporting)
-    pub fn set_attribution_reporting(&self, options: &AttributionReportingRequestOptions) -> Undefined {
-        self.inner.call("setAttributionReporting", &[options.into(), ]).as_::<Undefined>()
+    pub fn set_attribution_reporting(
+        &self,
+        options: &AttributionReportingRequestOptions,
+    ) -> Undefined {
+        self.inner
+            .call("setAttributionReporting", &[options.into()])
+            .as_::<Undefined>()
     }
 }
 impl XMLHttpRequest {
     /// The setPrivateToken method.
     /// [`XMLHttpRequest.setPrivateToken`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/setPrivateToken)
     pub fn set_private_token(&self, private_token: &PrivateToken) -> Undefined {
-        self.inner.call("setPrivateToken", &[private_token.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setPrivateToken", &[private_token.into()])
+            .as_::<Undefined>()
     }
 }

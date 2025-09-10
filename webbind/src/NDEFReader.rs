@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NDEFReader class.
 /// [`NDEFReader`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NDEFReader {
 
 impl FromVal for NDEFReader {
     fn from_val(v: &Any) -> Self {
-        NDEFReader { inner: EventTarget::from_val(v) }
+        NDEFReader {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NDEFReader {
 
 impl AsMut<Any> for NDEFReader {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NDEFReader> for Any {
@@ -64,8 +63,6 @@ impl From<&NDEFReader> for Any {
 
 jsbind::utils::impl_dyn_cast!(NDEFReader);
 
-
-
 impl NDEFReader {
     /// The `new NDEFReader(..)` constructor, creating a new NDEFReader instance
     pub fn new() -> NDEFReader {
@@ -73,7 +70,6 @@ impl NDEFReader {
             inner: Any::global("NDEFReader").new(&[]).as_::<EventTarget>(),
         }
     }
-
 }
 impl NDEFReader {
     /// Getter of the `onreading` attribute.
@@ -104,36 +100,46 @@ impl NDEFReader {
 impl NDEFReader {
     /// The scan method.
     /// [`NDEFReader.scan`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/scan)
-    pub fn scan0(&self, ) -> Promise<Undefined> {
+    pub fn scan0(&self) -> Promise<Undefined> {
         self.inner.call("scan", &[]).as_::<Promise<Undefined>>()
     }
     /// The scan method.
     /// [`NDEFReader.scan`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/scan)
     pub fn scan1(&self, options: &NDEFScanOptions) -> Promise<Undefined> {
-        self.inner.call("scan", &[options.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("scan", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl NDEFReader {
     /// The write method.
     /// [`NDEFReader.write`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/write)
     pub fn write0(&self, message: &Any) -> Promise<Undefined> {
-        self.inner.call("write", &[message.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("write", &[message.into()])
+            .as_::<Promise<Undefined>>()
     }
     /// The write method.
     /// [`NDEFReader.write`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/write)
     pub fn write1(&self, message: &Any, options: &NDEFWriteOptions) -> Promise<Undefined> {
-        self.inner.call("write", &[message.into(), options.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("write", &[message.into(), options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl NDEFReader {
     /// The makeReadOnly method.
     /// [`NDEFReader.makeReadOnly`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/makeReadOnly)
-    pub fn make_read_only0(&self, ) -> Promise<Undefined> {
-        self.inner.call("makeReadOnly", &[]).as_::<Promise<Undefined>>()
+    pub fn make_read_only0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("makeReadOnly", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The makeReadOnly method.
     /// [`NDEFReader.makeReadOnly`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/makeReadOnly)
     pub fn make_read_only1(&self, options: &NDEFMakeReadOnlyOptions) -> Promise<Undefined> {
-        self.inner.call("makeReadOnly", &[options.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("makeReadOnly", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

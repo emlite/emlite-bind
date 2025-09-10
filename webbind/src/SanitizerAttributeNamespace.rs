@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SanitizerAttributeNamespace dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SanitizerAttributeNamespace {
 
 impl AsMut<Any> for SanitizerAttributeNamespace {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SanitizerAttributeNamespace> for Any {

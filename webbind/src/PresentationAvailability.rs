@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PresentationAvailability class.
 /// [`PresentationAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationAvailability)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PresentationAvailability {
 
 impl FromVal for PresentationAvailability {
     fn from_val(v: &Any) -> Self {
-        PresentationAvailability { inner: EventTarget::from_val(v) }
+        PresentationAvailability {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PresentationAvailability {
 
 impl AsMut<Any> for PresentationAvailability {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PresentationAvailability> for Any {
@@ -64,14 +63,12 @@ impl From<&PresentationAvailability> for Any {
 
 jsbind::utils::impl_dyn_cast!(PresentationAvailability);
 
-
 impl PresentationAvailability {
     /// Getter of the `value` attribute.
     /// [`PresentationAvailability.value`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationAvailability/value)
     pub fn value(&self) -> bool {
         self.inner.get("value").as_::<bool>()
     }
-
 }
 impl PresentationAvailability {
     /// Getter of the `onchange` attribute.

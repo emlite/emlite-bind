@@ -1,4 +1,4 @@
-use crate::{any::Any, array::Array, function::Function};
+use crate::{any::Any, function::Function};
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
@@ -74,9 +74,9 @@ impl<T> Default for Promise<T> {
 
 impl<T> Promise<T> {
     /// JavaScript `Promise.all(iterable)`
-    pub fn all(iterable: &Array) -> Self {
+    pub fn all<V: Into<emlite::Val>>(iterable: V) -> Self {
         emlite::Val::global("Promise")
-            .call("all", &[iterable.clone().into()])
+            .call("all", &[iterable.into()])
             .as_::<Self>()
     }
     /// Equivalent to `promise.then(onFulfilled, onRejected)`.
@@ -104,16 +104,16 @@ impl<T> Promise<T> {
     }
 
     /// `Promise.resolve(value)`
-    pub fn resolve(value: &Any) -> Self {
+    pub fn resolve<V: Into<emlite::Val>>(value: V) -> Self {
         emlite::Val::global("Promise")
-            .call("resolve", &[value.clone()])
+            .call("resolve", &[value.into()])
             .as_::<Self>()
     }
 
     /// `Promise.reject(reason)`
-    pub fn reject(reason: &Any) -> Self {
+    pub fn reject<V: Into<emlite::Val>>(reason: V) -> Self {
         emlite::Val::global("Promise")
-            .call("reject", &[reason.clone()])
+            .call("reject", &[reason.into()])
             .as_::<Self>()
     }
 

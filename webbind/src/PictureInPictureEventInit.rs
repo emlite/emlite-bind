@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PictureInPictureEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PictureInPictureEventInit {
 
 impl AsMut<Any> for PictureInPictureEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PictureInPictureEventInit> for Any {
@@ -64,7 +61,9 @@ impl From<&PictureInPictureEventInit> for Any {
 impl PictureInPictureEventInit {
     /// Getter of the `pictureInPictureWindow` attribute.
     pub fn picture_in_picture_window(&self) -> PictureInPictureWindow {
-        self.inner.get("pictureInPictureWindow").as_::<PictureInPictureWindow>()
+        self.inner
+            .get("pictureInPictureWindow")
+            .as_::<PictureInPictureWindow>()
     }
 
     /// Setter of the `pictureInPictureWindow` attribute.

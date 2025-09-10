@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLFormElement class.
 /// [`HTMLFormElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLFormElement {
 
 impl FromVal for HTMLFormElement {
     fn from_val(v: &Any) -> Self {
-        HTMLFormElement { inner: HTMLElement::from_val(v) }
+        HTMLFormElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLFormElement {
 
 impl AsMut<Any> for HTMLFormElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLFormElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLFormElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLFormElement);
 
-
-
 impl HTMLFormElement {
     /// The `new HTMLFormElement(..)` constructor, creating a new HTMLFormElement instance
     pub fn new() -> HTMLFormElement {
@@ -73,7 +70,6 @@ impl HTMLFormElement {
             inner: Any::global("HTMLFormElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLFormElement {
     /// Getter of the `acceptCharset` attribute.
@@ -211,15 +207,15 @@ impl HTMLFormElement {
     pub fn rel_list(&self) -> DOMTokenList {
         self.inner.get("relList").as_::<DOMTokenList>()
     }
-
 }
 impl HTMLFormElement {
     /// Getter of the `elements` attribute.
     /// [`HTMLFormElement.elements`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements)
     pub fn elements(&self) -> HTMLFormControlsCollection {
-        self.inner.get("elements").as_::<HTMLFormControlsCollection>()
+        self.inner
+            .get("elements")
+            .as_::<HTMLFormControlsCollection>()
     }
-
 }
 impl HTMLFormElement {
     /// Getter of the `length` attribute.
@@ -227,45 +223,46 @@ impl HTMLFormElement {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl HTMLFormElement {
     /// The submit method.
     /// [`HTMLFormElement.submit`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit)
-    pub fn submit(&self, ) -> Undefined {
+    pub fn submit(&self) -> Undefined {
         self.inner.call("submit", &[]).as_::<Undefined>()
     }
 }
 impl HTMLFormElement {
     /// The requestSubmit method.
     /// [`HTMLFormElement.requestSubmit`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit)
-    pub fn request_submit0(&self, ) -> Undefined {
+    pub fn request_submit0(&self) -> Undefined {
         self.inner.call("requestSubmit", &[]).as_::<Undefined>()
     }
     /// The requestSubmit method.
     /// [`HTMLFormElement.requestSubmit`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit)
     pub fn request_submit1(&self, submitter: &HTMLElement) -> Undefined {
-        self.inner.call("requestSubmit", &[submitter.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("requestSubmit", &[submitter.into()])
+            .as_::<Undefined>()
     }
 }
 impl HTMLFormElement {
     /// The reset method.
     /// [`HTMLFormElement.reset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reset)
-    pub fn reset(&self, ) -> Undefined {
+    pub fn reset(&self) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
 }
 impl HTMLFormElement {
     /// The checkValidity method.
     /// [`HTMLFormElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/checkValidity)
-    pub fn check_validity(&self, ) -> bool {
+    pub fn check_validity(&self) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
 }
 impl HTMLFormElement {
     /// The reportValidity method.
     /// [`HTMLFormElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reportValidity)
-    pub fn report_validity(&self, ) -> bool {
+    pub fn report_validity(&self) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ContentDescription dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ContentDescription {
 
 impl AsMut<Any> for ContentDescription {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ContentDescription> for Any {

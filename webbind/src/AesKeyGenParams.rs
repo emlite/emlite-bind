@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AesKeyGenParams dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AesKeyGenParams {
 
 impl AsMut<Any> for AesKeyGenParams {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AesKeyGenParams> for Any {

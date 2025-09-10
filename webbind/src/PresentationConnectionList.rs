@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PresentationConnectionList class.
 /// [`PresentationConnectionList`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PresentationConnectionList {
 
 impl FromVal for PresentationConnectionList {
     fn from_val(v: &Any) -> Self {
-        PresentationConnectionList { inner: EventTarget::from_val(v) }
+        PresentationConnectionList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PresentationConnectionList {
 
 impl AsMut<Any> for PresentationConnectionList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PresentationConnectionList> for Any {
@@ -64,14 +63,14 @@ impl From<&PresentationConnectionList> for Any {
 
 jsbind::utils::impl_dyn_cast!(PresentationConnectionList);
 
-
 impl PresentationConnectionList {
     /// Getter of the `connections` attribute.
     /// [`PresentationConnectionList.connections`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionList/connections)
     pub fn connections(&self) -> TypedArray<PresentationConnection> {
-        self.inner.get("connections").as_::<TypedArray<PresentationConnection>>()
+        self.inner
+            .get("connections")
+            .as_::<TypedArray<PresentationConnection>>()
     }
-
 }
 impl PresentationConnectionList {
     /// Getter of the `onconnectionavailable` attribute.

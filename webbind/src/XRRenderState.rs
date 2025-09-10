@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRRenderState class.
 /// [`XRRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRRenderState)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRRenderState {
 
 impl FromVal for XRRenderState {
     fn from_val(v: &Any) -> Self {
-        XRRenderState { inner: Any::from_val(v) }
+        XRRenderState {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRRenderState {
 
 impl AsMut<Any> for XRRenderState {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRRenderState> for Any {
@@ -64,14 +63,12 @@ impl From<&XRRenderState> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRRenderState);
 
-
 impl XRRenderState {
     /// Getter of the `depthNear` attribute.
     /// [`XRRenderState.depthNear`](https://developer.mozilla.org/en-US/docs/Web/API/XRRenderState/depthNear)
     pub fn depth_near(&self) -> f64 {
         self.inner.get("depthNear").as_::<f64>()
     }
-
 }
 impl XRRenderState {
     /// Getter of the `depthFar` attribute.
@@ -79,7 +76,6 @@ impl XRRenderState {
     pub fn depth_far(&self) -> f64 {
         self.inner.get("depthFar").as_::<f64>()
     }
-
 }
 impl XRRenderState {
     /// Getter of the `passthroughFullyObscured` attribute.
@@ -87,7 +83,6 @@ impl XRRenderState {
     pub fn passthrough_fully_obscured(&self) -> bool {
         self.inner.get("passthroughFullyObscured").as_::<bool>()
     }
-
 }
 impl XRRenderState {
     /// Getter of the `inlineVerticalFieldOfView` attribute.
@@ -95,7 +90,6 @@ impl XRRenderState {
     pub fn inline_vertical_field_of_view(&self) -> f64 {
         self.inner.get("inlineVerticalFieldOfView").as_::<f64>()
     }
-
 }
 impl XRRenderState {
     /// Getter of the `baseLayer` attribute.
@@ -103,7 +97,6 @@ impl XRRenderState {
     pub fn base_layer(&self) -> XRWebGLLayer {
         self.inner.get("baseLayer").as_::<XRWebGLLayer>()
     }
-
 }
 impl XRRenderState {
     /// Getter of the `layers` attribute.
@@ -111,5 +104,4 @@ impl XRRenderState {
     pub fn layers(&self) -> TypedArray<XRLayer> {
         self.inner.get("layers").as_::<TypedArray<XRLayer>>()
     }
-
 }

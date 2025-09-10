@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BreakToken class.
 /// [`BreakToken`](https://developer.mozilla.org/en-US/docs/Web/API/BreakToken)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BreakToken {
 
 impl FromVal for BreakToken {
     fn from_val(v: &Any) -> Self {
-        BreakToken { inner: Any::from_val(v) }
+        BreakToken {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BreakToken {
 
 impl AsMut<Any> for BreakToken {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BreakToken> for Any {
@@ -64,14 +63,14 @@ impl From<&BreakToken> for Any {
 
 jsbind::utils::impl_dyn_cast!(BreakToken);
 
-
 impl BreakToken {
     /// Getter of the `childBreakTokens` attribute.
     /// [`BreakToken.childBreakTokens`](https://developer.mozilla.org/en-US/docs/Web/API/BreakToken/childBreakTokens)
     pub fn child_break_tokens(&self) -> TypedArray<ChildBreakToken> {
-        self.inner.get("childBreakTokens").as_::<TypedArray<ChildBreakToken>>()
+        self.inner
+            .get("childBreakTokens")
+            .as_::<TypedArray<ChildBreakToken>>()
     }
-
 }
 impl BreakToken {
     /// Getter of the `data` attribute.
@@ -79,5 +78,4 @@ impl BreakToken {
     pub fn data(&self) -> Any {
         self.inner.get("data").as_::<Any>()
     }
-
 }

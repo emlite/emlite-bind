@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EXT_sRGB class.
 /// [`EXT_sRGB`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_sRGB)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct EXT_sRGB {
 
 impl FromVal for EXT_sRGB {
     fn from_val(v: &Any) -> Self {
-        EXT_sRGB { inner: Any::from_val(v) }
+        EXT_sRGB {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for EXT_sRGB {
 
 impl AsMut<Any> for EXT_sRGB {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EXT_sRGB> for Any {
@@ -63,5 +62,3 @@ impl From<&EXT_sRGB> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(EXT_sRGB);
-
-

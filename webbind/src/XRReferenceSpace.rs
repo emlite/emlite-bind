@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRReferenceSpace class.
 /// [`XRReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRReferenceSpace {
 
 impl FromVal for XRReferenceSpace {
     fn from_val(v: &Any) -> Self {
-        XRReferenceSpace { inner: XRSpace::from_val(v) }
+        XRReferenceSpace {
+            inner: XRSpace::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRReferenceSpace {
 
 impl AsMut<Any> for XRReferenceSpace {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRReferenceSpace> for Any {
@@ -64,12 +63,13 @@ impl From<&XRReferenceSpace> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRReferenceSpace);
 
-
 impl XRReferenceSpace {
     /// The getOffsetReferenceSpace method.
     /// [`XRReferenceSpace.getOffsetReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/getOffsetReferenceSpace)
     pub fn get_offset_reference_space(&self, origin_offset: &XRRigidTransform) -> XRReferenceSpace {
-        self.inner.call("getOffsetReferenceSpace", &[origin_offset.into(), ]).as_::<XRReferenceSpace>()
+        self.inner
+            .call("getOffsetReferenceSpace", &[origin_offset.into()])
+            .as_::<XRReferenceSpace>()
     }
 }
 impl XRReferenceSpace {

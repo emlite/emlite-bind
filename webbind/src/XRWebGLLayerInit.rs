@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRWebGLLayerInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRWebGLLayerInit {
 
 impl AsMut<Any> for XRWebGLLayerInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRWebGLLayerInit> for Any {

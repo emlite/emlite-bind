@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PortalHost class.
 /// [`PortalHost`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PortalHost {
 
 impl FromVal for PortalHost {
     fn from_val(v: &Any) -> Self {
-        PortalHost { inner: EventTarget::from_val(v) }
+        PortalHost {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PortalHost {
 
 impl AsMut<Any> for PortalHost {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PortalHost> for Any {
@@ -64,17 +63,20 @@ impl From<&PortalHost> for Any {
 
 jsbind::utils::impl_dyn_cast!(PortalHost);
 
-
 impl PortalHost {
     /// The postMessage method.
     /// [`PortalHost.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/postMessage)
     pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
     /// The postMessage method.
     /// [`PortalHost.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/postMessage)
     pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }
 impl PortalHost {

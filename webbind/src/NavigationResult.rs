@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigationResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for NavigationResult {
 
 impl AsMut<Any> for NavigationResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigationResult> for Any {
@@ -64,7 +61,9 @@ impl From<&NavigationResult> for Any {
 impl NavigationResult {
     /// Getter of the `committed` attribute.
     pub fn committed(&self) -> Promise<NavigationHistoryEntry> {
-        self.inner.get("committed").as_::<Promise<NavigationHistoryEntry>>()
+        self.inner
+            .get("committed")
+            .as_::<Promise<NavigationHistoryEntry>>()
     }
 
     /// Setter of the `committed` attribute.
@@ -75,7 +74,9 @@ impl NavigationResult {
 impl NavigationResult {
     /// Getter of the `finished` attribute.
     pub fn finished(&self) -> Promise<NavigationHistoryEntry> {
-        self.inner.get("finished").as_::<Promise<NavigationHistoryEntry>>()
+        self.inner
+            .get("finished")
+            .as_::<Promise<NavigationHistoryEntry>>()
     }
 
     /// Setter of the `finished` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DocumentPictureInPictureOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DocumentPictureInPictureOptions {
 
 impl AsMut<Any> for DocumentPictureInPictureOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DocumentPictureInPictureOptions> for Any {

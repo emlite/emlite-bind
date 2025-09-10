@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBRecord class.
 /// [`IDBRecord`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRecord)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IDBRecord {
 
 impl FromVal for IDBRecord {
     fn from_val(v: &Any) -> Self {
-        IDBRecord { inner: Any::from_val(v) }
+        IDBRecord {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IDBRecord {
 
 impl AsMut<Any> for IDBRecord {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBRecord> for Any {
@@ -64,14 +63,12 @@ impl From<&IDBRecord> for Any {
 
 jsbind::utils::impl_dyn_cast!(IDBRecord);
 
-
 impl IDBRecord {
     /// Getter of the `key` attribute.
     /// [`IDBRecord.key`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRecord/key)
     pub fn key(&self) -> Any {
         self.inner.get("key").as_::<Any>()
     }
-
 }
 impl IDBRecord {
     /// Getter of the `primaryKey` attribute.
@@ -79,7 +76,6 @@ impl IDBRecord {
     pub fn primary_key(&self) -> Any {
         self.inner.get("primaryKey").as_::<Any>()
     }
-
 }
 impl IDBRecord {
     /// Getter of the `value` attribute.
@@ -87,5 +83,4 @@ impl IDBRecord {
     pub fn value(&self) -> Any {
         self.inner.get("value").as_::<Any>()
     }
-
 }

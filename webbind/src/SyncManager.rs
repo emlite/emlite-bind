@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SyncManager class.
 /// [`SyncManager`](https://developer.mozilla.org/en-US/docs/Web/API/SyncManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SyncManager {
 
 impl FromVal for SyncManager {
     fn from_val(v: &Any) -> Self {
-        SyncManager { inner: Any::from_val(v) }
+        SyncManager {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SyncManager {
 
 impl AsMut<Any> for SyncManager {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SyncManager> for Any {
@@ -64,18 +63,21 @@ impl From<&SyncManager> for Any {
 
 jsbind::utils::impl_dyn_cast!(SyncManager);
 
-
 impl SyncManager {
     /// The register method.
     /// [`SyncManager.register`](https://developer.mozilla.org/en-US/docs/Web/API/SyncManager/register)
     pub fn register(&self, tag: &JsString) -> Promise<Undefined> {
-        self.inner.call("register", &[tag.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("register", &[tag.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl SyncManager {
     /// The getTags method.
     /// [`SyncManager.getTags`](https://developer.mozilla.org/en-US/docs/Web/API/SyncManager/getTags)
-    pub fn get_tags(&self, ) -> Promise<TypedArray<JsString>> {
-        self.inner.call("getTags", &[]).as_::<Promise<TypedArray<JsString>>>()
+    pub fn get_tags(&self) -> Promise<TypedArray<JsString>> {
+        self.inner
+            .call("getTags", &[])
+            .as_::<Promise<TypedArray<JsString>>>()
     }
 }

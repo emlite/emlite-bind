@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ShadowRoot class.
 /// [`ShadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ShadowRoot {
 
 impl FromVal for ShadowRoot {
     fn from_val(v: &Any) -> Self {
-        ShadowRoot { inner: DocumentFragment::from_val(v) }
+        ShadowRoot {
+            inner: DocumentFragment::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ShadowRoot {
 
 impl AsMut<Any> for ShadowRoot {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ShadowRoot> for Any {
@@ -64,14 +63,12 @@ impl From<&ShadowRoot> for Any {
 
 jsbind::utils::impl_dyn_cast!(ShadowRoot);
 
-
 impl ShadowRoot {
     /// Getter of the `mode` attribute.
     /// [`ShadowRoot.mode`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/mode)
     pub fn mode(&self) -> ShadowRootMode {
         self.inner.get("mode").as_::<ShadowRootMode>()
     }
-
 }
 impl ShadowRoot {
     /// Getter of the `delegatesFocus` attribute.
@@ -79,7 +76,6 @@ impl ShadowRoot {
     pub fn delegates_focus(&self) -> bool {
         self.inner.get("delegatesFocus").as_::<bool>()
     }
-
 }
 impl ShadowRoot {
     /// Getter of the `slotAssignment` attribute.
@@ -87,7 +83,6 @@ impl ShadowRoot {
     pub fn slot_assignment(&self) -> SlotAssignmentMode {
         self.inner.get("slotAssignment").as_::<SlotAssignmentMode>()
     }
-
 }
 impl ShadowRoot {
     /// Getter of the `clonable` attribute.
@@ -95,7 +90,6 @@ impl ShadowRoot {
     pub fn clonable(&self) -> bool {
         self.inner.get("clonable").as_::<bool>()
     }
-
 }
 impl ShadowRoot {
     /// Getter of the `serializable` attribute.
@@ -103,7 +97,6 @@ impl ShadowRoot {
     pub fn serializable(&self) -> bool {
         self.inner.get("serializable").as_::<bool>()
     }
-
 }
 impl ShadowRoot {
     /// Getter of the `host` attribute.
@@ -111,7 +104,6 @@ impl ShadowRoot {
     pub fn host(&self) -> Element {
         self.inner.get("host").as_::<Element>()
     }
-
 }
 impl ShadowRoot {
     /// Getter of the `onslotchange` attribute.
@@ -130,19 +122,23 @@ impl ShadowRoot {
     /// The setHTMLUnsafe method.
     /// [`ShadowRoot.setHTMLUnsafe`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/setHTMLUnsafe)
     pub fn set_html_unsafe(&self, html: &Any) -> Undefined {
-        self.inner.call("setHTMLUnsafe", &[html.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setHTMLUnsafe", &[html.into()])
+            .as_::<Undefined>()
     }
 }
 impl ShadowRoot {
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
-    pub fn get_html0(&self, ) -> JsString {
+    pub fn get_html0(&self) -> JsString {
         self.inner.call("getHTML", &[]).as_::<JsString>()
     }
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
     pub fn get_html1(&self, options: &GetHTMLOptions) -> JsString {
-        self.inner.call("getHTML", &[options.into(), ]).as_::<JsString>()
+        self.inner
+            .call("getHTML", &[options.into()])
+            .as_::<JsString>()
     }
 }
 impl ShadowRoot {
@@ -161,7 +157,9 @@ impl ShadowRoot {
 impl ShadowRoot {
     /// The getAnimations method.
     /// [`ShadowRoot.getAnimations`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getAnimations)
-    pub fn get_animations(&self, ) -> TypedArray<Animation> {
-        self.inner.call("getAnimations", &[]).as_::<TypedArray<Animation>>()
+    pub fn get_animations(&self) -> TypedArray<Animation> {
+        self.inner
+            .call("getAnimations", &[])
+            .as_::<TypedArray<Animation>>()
     }
 }

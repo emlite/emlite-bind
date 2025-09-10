@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRTransientInputHitTestSource class.
 /// [`XRTransientInputHitTestSource`](https://developer.mozilla.org/en-US/docs/Web/API/XRTransientInputHitTestSource)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRTransientInputHitTestSource {
 
 impl FromVal for XRTransientInputHitTestSource {
     fn from_val(v: &Any) -> Self {
-        XRTransientInputHitTestSource { inner: Any::from_val(v) }
+        XRTransientInputHitTestSource {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRTransientInputHitTestSource {
 
 impl AsMut<Any> for XRTransientInputHitTestSource {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRTransientInputHitTestSource> for Any {
@@ -64,11 +63,10 @@ impl From<&XRTransientInputHitTestSource> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRTransientInputHitTestSource);
 
-
 impl XRTransientInputHitTestSource {
     /// The cancel method.
     /// [`XRTransientInputHitTestSource.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/XRTransientInputHitTestSource/cancel)
-    pub fn cancel(&self, ) -> Undefined {
+    pub fn cancel(&self) -> Undefined {
         self.inner.call("cancel", &[]).as_::<Undefined>()
     }
 }

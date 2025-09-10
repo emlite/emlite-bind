@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TextEncoder class.
 /// [`TextEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TextEncoder {
 
 impl FromVal for TextEncoder {
     fn from_val(v: &Any) -> Self {
-        TextEncoder { inner: Any::from_val(v) }
+        TextEncoder {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TextEncoder {
 
 impl AsMut<Any> for TextEncoder {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TextEncoder> for Any {
@@ -64,8 +63,6 @@ impl From<&TextEncoder> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextEncoder);
 
-
-
 impl TextEncoder {
     /// The `new TextEncoder(..)` constructor, creating a new TextEncoder instance
     pub fn new() -> TextEncoder {
@@ -73,25 +70,32 @@ impl TextEncoder {
             inner: Any::global("TextEncoder").new(&[]).as_::<Any>(),
         }
     }
-
 }
 impl TextEncoder {
     /// The encode method.
     /// [`TextEncoder.encode`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encode)
-    pub fn encode0(&self, ) -> Uint8Array {
+    pub fn encode0(&self) -> Uint8Array {
         self.inner.call("encode", &[]).as_::<Uint8Array>()
     }
     /// The encode method.
     /// [`TextEncoder.encode`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encode)
     pub fn encode1(&self, input: &JsString) -> Uint8Array {
-        self.inner.call("encode", &[input.into(), ]).as_::<Uint8Array>()
+        self.inner
+            .call("encode", &[input.into()])
+            .as_::<Uint8Array>()
     }
 }
 impl TextEncoder {
     /// The encodeInto method.
     /// [`TextEncoder.encodeInto`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encodeInto)
-    pub fn encode_into(&self, source: &JsString, destination: &Uint8Array) -> TextEncoderEncodeIntoResult {
-        self.inner.call("encodeInto", &[source.into(), destination.into(), ]).as_::<TextEncoderEncodeIntoResult>()
+    pub fn encode_into(
+        &self,
+        source: &JsString,
+        destination: &Uint8Array,
+    ) -> TextEncoderEncodeIntoResult {
+        self.inner
+            .call("encodeInto", &[source.into(), destination.into()])
+            .as_::<TextEncoderEncodeIntoResult>()
     }
 }
 impl TextEncoder {
@@ -100,5 +104,4 @@ impl TextEncoder {
     pub fn encoding(&self) -> JsString {
         self.inner.get("encoding").as_::<JsString>()
     }
-
 }

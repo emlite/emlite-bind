@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PointerEvent class.
 /// [`PointerEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PointerEvent {
 
 impl FromVal for PointerEvent {
     fn from_val(v: &Any) -> Self {
-        PointerEvent { inner: MouseEvent::from_val(v) }
+        PointerEvent {
+            inner: MouseEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PointerEvent {
 
 impl AsMut<Any> for PointerEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PointerEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&PointerEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PointerEvent);
 
-
-
 impl PointerEvent {
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
     pub fn new0(type_: &JsString) -> PointerEvent {
         Self {
-            inner: Any::global("PointerEvent").new(&[type_.into()]).as_::<MouseEvent>(),
+            inner: Any::global("PointerEvent")
+                .new(&[type_.into()])
+                .as_::<MouseEvent>(),
         }
     }
 
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &PointerEventInit) -> PointerEvent {
         Self {
-            inner: Any::global("PointerEvent").new(&[type_.into(), event_init_dict.into()]).as_::<MouseEvent>(),
+            inner: Any::global("PointerEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<MouseEvent>(),
         }
     }
-
 }
 impl PointerEvent {
     /// Getter of the `pointerId` attribute.
@@ -88,7 +88,6 @@ impl PointerEvent {
     pub fn pointer_id(&self) -> i32 {
         self.inner.get("pointerId").as_::<i32>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `width` attribute.
@@ -96,7 +95,6 @@ impl PointerEvent {
     pub fn width(&self) -> f64 {
         self.inner.get("width").as_::<f64>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `height` attribute.
@@ -104,7 +102,6 @@ impl PointerEvent {
     pub fn height(&self) -> f64 {
         self.inner.get("height").as_::<f64>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `pressure` attribute.
@@ -112,7 +109,6 @@ impl PointerEvent {
     pub fn pressure(&self) -> f32 {
         self.inner.get("pressure").as_::<f32>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `tangentialPressure` attribute.
@@ -120,7 +116,6 @@ impl PointerEvent {
     pub fn tangential_pressure(&self) -> f32 {
         self.inner.get("tangentialPressure").as_::<f32>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `tiltX` attribute.
@@ -128,7 +123,6 @@ impl PointerEvent {
     pub fn tilt_x(&self) -> i32 {
         self.inner.get("tiltX").as_::<i32>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `tiltY` attribute.
@@ -136,7 +130,6 @@ impl PointerEvent {
     pub fn tilt_y(&self) -> i32 {
         self.inner.get("tiltY").as_::<i32>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `twist` attribute.
@@ -144,7 +137,6 @@ impl PointerEvent {
     pub fn twist(&self) -> i32 {
         self.inner.get("twist").as_::<i32>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `altitudeAngle` attribute.
@@ -152,7 +144,6 @@ impl PointerEvent {
     pub fn altitude_angle(&self) -> f64 {
         self.inner.get("altitudeAngle").as_::<f64>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `azimuthAngle` attribute.
@@ -160,7 +151,6 @@ impl PointerEvent {
     pub fn azimuth_angle(&self) -> f64 {
         self.inner.get("azimuthAngle").as_::<f64>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `pointerType` attribute.
@@ -168,7 +158,6 @@ impl PointerEvent {
     pub fn pointer_type(&self) -> JsString {
         self.inner.get("pointerType").as_::<JsString>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `isPrimary` attribute.
@@ -176,7 +165,6 @@ impl PointerEvent {
     pub fn is_primary(&self) -> bool {
         self.inner.get("isPrimary").as_::<bool>()
     }
-
 }
 impl PointerEvent {
     /// Getter of the `persistentDeviceId` attribute.
@@ -184,19 +172,22 @@ impl PointerEvent {
     pub fn persistent_device_id(&self) -> i32 {
         self.inner.get("persistentDeviceId").as_::<i32>()
     }
-
 }
 impl PointerEvent {
     /// The getCoalescedEvents method.
     /// [`PointerEvent.getCoalescedEvents`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/getCoalescedEvents)
-    pub fn get_coalesced_events(&self, ) -> TypedArray<PointerEvent> {
-        self.inner.call("getCoalescedEvents", &[]).as_::<TypedArray<PointerEvent>>()
+    pub fn get_coalesced_events(&self) -> TypedArray<PointerEvent> {
+        self.inner
+            .call("getCoalescedEvents", &[])
+            .as_::<TypedArray<PointerEvent>>()
     }
 }
 impl PointerEvent {
     /// The getPredictedEvents method.
     /// [`PointerEvent.getPredictedEvents`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/getPredictedEvents)
-    pub fn get_predicted_events(&self, ) -> TypedArray<PointerEvent> {
-        self.inner.call("getPredictedEvents", &[]).as_::<TypedArray<PointerEvent>>()
+    pub fn get_predicted_events(&self) -> TypedArray<PointerEvent> {
+        self.inner
+            .call("getPredictedEvents", &[])
+            .as_::<TypedArray<PointerEvent>>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GainNode class.
 /// [`GainNode`](https://developer.mozilla.org/en-US/docs/Web/API/GainNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GainNode {
 
 impl FromVal for GainNode {
     fn from_val(v: &Any) -> Self {
-        GainNode { inner: AudioNode::from_val(v) }
+        GainNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GainNode {
 
 impl AsMut<Any> for GainNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GainNode> for Any {
@@ -64,23 +63,24 @@ impl From<&GainNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(GainNode);
 
-
-
 impl GainNode {
     /// The `new GainNode(..)` constructor, creating a new GainNode instance
     pub fn new0(context: &BaseAudioContext) -> GainNode {
         Self {
-            inner: Any::global("GainNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("GainNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new GainNode(..)` constructor, creating a new GainNode instance
     pub fn new1(context: &BaseAudioContext, options: &GainOptions) -> GainNode {
         Self {
-            inner: Any::global("GainNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("GainNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl GainNode {
     /// Getter of the `gain` attribute.
@@ -88,5 +88,4 @@ impl GainNode {
     pub fn gain(&self) -> AudioParam {
         self.inner.get("gain").as_::<AudioParam>()
     }
-
 }

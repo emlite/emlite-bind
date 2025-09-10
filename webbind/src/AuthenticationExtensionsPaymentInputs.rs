@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuthenticationExtensionsPaymentInputs dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuthenticationExtensionsPaymentInputs {
 
 impl AsMut<Any> for AuthenticationExtensionsPaymentInputs {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuthenticationExtensionsPaymentInputs> for Any {
@@ -75,11 +72,16 @@ impl AuthenticationExtensionsPaymentInputs {
 impl AuthenticationExtensionsPaymentInputs {
     /// Getter of the `browserBoundPubKeyCredParams` attribute.
     pub fn browser_bound_pub_key_cred_params(&self) -> TypedArray<PublicKeyCredentialParameters> {
-        self.inner.get("browserBoundPubKeyCredParams").as_::<TypedArray<PublicKeyCredentialParameters>>()
+        self.inner
+            .get("browserBoundPubKeyCredParams")
+            .as_::<TypedArray<PublicKeyCredentialParameters>>()
     }
 
     /// Setter of the `browserBoundPubKeyCredParams` attribute.
-    pub fn set_browser_bound_pub_key_cred_params(&mut self, value: &TypedArray<PublicKeyCredentialParameters>) {
+    pub fn set_browser_bound_pub_key_cred_params(
+        &mut self,
+        value: &TypedArray<PublicKeyCredentialParameters>,
+    ) {
         self.inner.set("browserBoundPubKeyCredParams", value);
     }
 }
@@ -130,7 +132,9 @@ impl AuthenticationExtensionsPaymentInputs {
 impl AuthenticationExtensionsPaymentInputs {
     /// Getter of the `paymentEntitiesLogos` attribute.
     pub fn payment_entities_logos(&self) -> TypedArray<PaymentEntityLogo> {
-        self.inner.get("paymentEntitiesLogos").as_::<TypedArray<PaymentEntityLogo>>()
+        self.inner
+            .get("paymentEntitiesLogos")
+            .as_::<TypedArray<PaymentEntityLogo>>()
     }
 
     /// Setter of the `paymentEntitiesLogos` attribute.
@@ -152,7 +156,9 @@ impl AuthenticationExtensionsPaymentInputs {
 impl AuthenticationExtensionsPaymentInputs {
     /// Getter of the `instrument` attribute.
     pub fn instrument(&self) -> PaymentCredentialInstrument {
-        self.inner.get("instrument").as_::<PaymentCredentialInstrument>()
+        self.inner
+            .get("instrument")
+            .as_::<PaymentCredentialInstrument>()
     }
 
     /// Setter of the `instrument` attribute.

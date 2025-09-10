@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSPageDescriptors class.
 /// [`CSSPageDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSPageDescriptors {
 
 impl FromVal for CSSPageDescriptors {
     fn from_val(v: &Any) -> Self {
-        CSSPageDescriptors { inner: CSSStyleDeclaration::from_val(v) }
+        CSSPageDescriptors {
+            inner: CSSStyleDeclaration::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSPageDescriptors {
 
 impl AsMut<Any> for CSSPageDescriptors {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSPageDescriptors> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSPageDescriptors> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSPageDescriptors);
-
 
 impl CSSPageDescriptors {
     /// Getter of the `margin` attribute.

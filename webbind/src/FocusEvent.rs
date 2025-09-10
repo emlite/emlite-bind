@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FocusEvent class.
 /// [`FocusEvent`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FocusEvent {
 
 impl FromVal for FocusEvent {
     fn from_val(v: &Any) -> Self {
-        FocusEvent { inner: UIEvent::from_val(v) }
+        FocusEvent {
+            inner: UIEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FocusEvent {
 
 impl AsMut<Any> for FocusEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FocusEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&FocusEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(FocusEvent);
 
-
-
 impl FocusEvent {
     /// The `new FocusEvent(..)` constructor, creating a new FocusEvent instance
     pub fn new0(type_: &JsString) -> FocusEvent {
         Self {
-            inner: Any::global("FocusEvent").new(&[type_.into()]).as_::<UIEvent>(),
+            inner: Any::global("FocusEvent")
+                .new(&[type_.into()])
+                .as_::<UIEvent>(),
         }
     }
 
     /// The `new FocusEvent(..)` constructor, creating a new FocusEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &FocusEventInit) -> FocusEvent {
         Self {
-            inner: Any::global("FocusEvent").new(&[type_.into(), event_init_dict.into()]).as_::<UIEvent>(),
+            inner: Any::global("FocusEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<UIEvent>(),
         }
     }
-
 }
 impl FocusEvent {
     /// Getter of the `relatedTarget` attribute.
@@ -88,5 +88,4 @@ impl FocusEvent {
     pub fn related_target(&self) -> EventTarget {
         self.inner.get("relatedTarget").as_::<EventTarget>()
     }
-
 }

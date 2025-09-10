@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGTextPathElement class.
 /// [`SVGTextPathElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPathElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGTextPathElement {
 
 impl FromVal for SVGTextPathElement {
     fn from_val(v: &Any) -> Self {
-        SVGTextPathElement { inner: SVGTextContentElement::from_val(v) }
+        SVGTextPathElement {
+            inner: SVGTextContentElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGTextPathElement {
 
 impl AsMut<Any> for SVGTextPathElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGTextPathElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGTextPathElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGTextPathElement);
 
-
 impl SVGTextPathElement {
     /// Getter of the `startOffset` attribute.
     /// [`SVGTextPathElement.startOffset`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPathElement/startOffset)
     pub fn start_offset(&self) -> SVGAnimatedLength {
         self.inner.get("startOffset").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGTextPathElement {
     /// Getter of the `method` attribute.
@@ -79,7 +76,6 @@ impl SVGTextPathElement {
     pub fn method(&self) -> SVGAnimatedEnumeration {
         self.inner.get("method").as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGTextPathElement {
     /// Getter of the `spacing` attribute.
@@ -87,7 +83,6 @@ impl SVGTextPathElement {
     pub fn spacing(&self) -> SVGAnimatedEnumeration {
         self.inner.get("spacing").as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGTextPathElement {
     /// Getter of the `href` attribute.
@@ -95,5 +90,4 @@ impl SVGTextPathElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSKeyframesRule class.
 /// [`CSSKeyframesRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSKeyframesRule {
 
 impl FromVal for CSSKeyframesRule {
     fn from_val(v: &Any) -> Self {
-        CSSKeyframesRule { inner: CSSRule::from_val(v) }
+        CSSKeyframesRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSKeyframesRule {
 
 impl AsMut<Any> for CSSKeyframesRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSKeyframesRule> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSKeyframesRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSKeyframesRule);
-
 
 impl CSSKeyframesRule {
     /// Getter of the `name` attribute.
@@ -84,7 +82,6 @@ impl CSSKeyframesRule {
     pub fn css_rules(&self) -> CSSRuleList {
         self.inner.get("cssRules").as_::<CSSRuleList>()
     }
-
 }
 impl CSSKeyframesRule {
     /// Getter of the `length` attribute.
@@ -92,26 +89,31 @@ impl CSSKeyframesRule {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl CSSKeyframesRule {
     /// The appendRule method.
     /// [`CSSKeyframesRule.appendRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/appendRule)
     pub fn append_rule(&self, rule: &JsString) -> Undefined {
-        self.inner.call("appendRule", &[rule.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("appendRule", &[rule.into()])
+            .as_::<Undefined>()
     }
 }
 impl CSSKeyframesRule {
     /// The deleteRule method.
     /// [`CSSKeyframesRule.deleteRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/deleteRule)
     pub fn delete_rule(&self, select: &JsString) -> Undefined {
-        self.inner.call("deleteRule", &[select.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("deleteRule", &[select.into()])
+            .as_::<Undefined>()
     }
 }
 impl CSSKeyframesRule {
     /// The findRule method.
     /// [`CSSKeyframesRule.findRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/findRule)
     pub fn find_rule(&self, select: &JsString) -> CSSKeyframeRule {
-        self.inner.call("findRule", &[select.into(), ]).as_::<CSSKeyframeRule>()
+        self.inner
+            .call("findRule", &[select.into()])
+            .as_::<CSSKeyframeRule>()
     }
 }

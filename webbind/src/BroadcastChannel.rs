@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BroadcastChannel class.
 /// [`BroadcastChannel`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BroadcastChannel {
 
 impl FromVal for BroadcastChannel {
     fn from_val(v: &Any) -> Self {
-        BroadcastChannel { inner: EventTarget::from_val(v) }
+        BroadcastChannel {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BroadcastChannel {
 
 impl AsMut<Any> for BroadcastChannel {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BroadcastChannel> for Any {
@@ -64,16 +63,15 @@ impl From<&BroadcastChannel> for Any {
 
 jsbind::utils::impl_dyn_cast!(BroadcastChannel);
 
-
-
 impl BroadcastChannel {
     /// The `new BroadcastChannel(..)` constructor, creating a new BroadcastChannel instance
     pub fn new(name: &JsString) -> BroadcastChannel {
         Self {
-            inner: Any::global("BroadcastChannel").new(&[name.into()]).as_::<EventTarget>(),
+            inner: Any::global("BroadcastChannel")
+                .new(&[name.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl BroadcastChannel {
     /// Getter of the `name` attribute.
@@ -81,19 +79,20 @@ impl BroadcastChannel {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl BroadcastChannel {
     /// The postMessage method.
     /// [`BroadcastChannel.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/postMessage)
     pub fn post_message(&self, message: &Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
 }
 impl BroadcastChannel {
     /// The close method.
     /// [`BroadcastChannel.close`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/close)
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

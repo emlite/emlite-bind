@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SerialPortRequestOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SerialPortRequestOptions {
 
 impl AsMut<Any> for SerialPortRequestOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SerialPortRequestOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&SerialPortRequestOptions> for Any {
 impl SerialPortRequestOptions {
     /// Getter of the `filters` attribute.
     pub fn filters(&self) -> TypedArray<SerialPortFilter> {
-        self.inner.get("filters").as_::<TypedArray<SerialPortFilter>>()
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<SerialPortFilter>>()
     }
 
     /// Setter of the `filters` attribute.
@@ -75,7 +74,9 @@ impl SerialPortRequestOptions {
 impl SerialPortRequestOptions {
     /// Getter of the `allowedBluetoothServiceClassIds` attribute.
     pub fn allowed_bluetooth_service_class_ids(&self) -> TypedArray<Any> {
-        self.inner.get("allowedBluetoothServiceClassIds").as_::<TypedArray<Any>>()
+        self.inner
+            .get("allowedBluetoothServiceClassIds")
+            .as_::<TypedArray<Any>>()
     }
 
     /// Setter of the `allowedBluetoothServiceClassIds` attribute.

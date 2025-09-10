@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRReferenceSpaceEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRReferenceSpaceEventInit {
 
 impl AsMut<Any> for XRReferenceSpaceEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRReferenceSpaceEventInit> for Any {

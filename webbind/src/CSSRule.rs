@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSRule class.
 /// [`CSSRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSRule {
 
 impl FromVal for CSSRule {
     fn from_val(v: &Any) -> Self {
-        CSSRule { inner: Any::from_val(v) }
+        CSSRule {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSRule {
 
 impl AsMut<Any> for CSSRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSRule> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSRule);
-
 
 impl CSSRule {
     /// Getter of the `cssText` attribute.
@@ -84,7 +82,6 @@ impl CSSRule {
     pub fn parent_rule(&self) -> CSSRule {
         self.inner.get("parentRule").as_::<CSSRule>()
     }
-
 }
 impl CSSRule {
     /// Getter of the `parentStyleSheet` attribute.
@@ -92,7 +89,6 @@ impl CSSRule {
     pub fn parent_style_sheet(&self) -> CSSStyleSheet {
         self.inner.get("parentStyleSheet").as_::<CSSStyleSheet>()
     }
-
 }
 impl CSSRule {
     /// Getter of the `type` attribute.
@@ -100,5 +96,4 @@ impl CSSRule {
     pub fn type_(&self) -> u16 {
         self.inner.get("type").as_::<u16>()
     }
-
 }

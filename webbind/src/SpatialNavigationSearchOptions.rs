@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SpatialNavigationSearchOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SpatialNavigationSearchOptions {
 
 impl AsMut<Any> for SpatialNavigationSearchOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SpatialNavigationSearchOptions> for Any {

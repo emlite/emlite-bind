@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AnimationPlaybackEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AnimationPlaybackEventInit {
 
 impl AsMut<Any> for AnimationPlaybackEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AnimationPlaybackEventInit> for Any {

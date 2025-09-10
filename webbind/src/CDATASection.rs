@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CDATASection class.
 /// [`CDATASection`](https://developer.mozilla.org/en-US/docs/Web/API/CDATASection)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CDATASection {
 
 impl FromVal for CDATASection {
     fn from_val(v: &Any) -> Self {
-        CDATASection { inner: Text::from_val(v) }
+        CDATASection {
+            inner: Text::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CDATASection {
 
 impl AsMut<Any> for CDATASection {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CDATASection> for Any {
@@ -63,5 +62,3 @@ impl From<&CDATASection> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CDATASection);
-
-

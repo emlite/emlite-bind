@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SpeechRecognitionPhrase class.
 /// [`SpeechRecognitionPhrase`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SpeechRecognitionPhrase {
 
 impl FromVal for SpeechRecognitionPhrase {
     fn from_val(v: &Any) -> Self {
-        SpeechRecognitionPhrase { inner: Any::from_val(v) }
+        SpeechRecognitionPhrase {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SpeechRecognitionPhrase {
 
 impl AsMut<Any> for SpeechRecognitionPhrase {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SpeechRecognitionPhrase> for Any {
@@ -64,23 +63,24 @@ impl From<&SpeechRecognitionPhrase> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionPhrase);
 
-
-
 impl SpeechRecognitionPhrase {
     /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
     pub fn new0(phrase: &JsString) -> SpeechRecognitionPhrase {
         Self {
-            inner: Any::global("SpeechRecognitionPhrase").new(&[phrase.into()]).as_::<Any>(),
+            inner: Any::global("SpeechRecognitionPhrase")
+                .new(&[phrase.into()])
+                .as_::<Any>(),
         }
     }
 
     /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
     pub fn new1(phrase: &JsString, boost: f32) -> SpeechRecognitionPhrase {
         Self {
-            inner: Any::global("SpeechRecognitionPhrase").new(&[phrase.into(), boost.into()]).as_::<Any>(),
+            inner: Any::global("SpeechRecognitionPhrase")
+                .new(&[phrase.into(), boost.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl SpeechRecognitionPhrase {
     /// Getter of the `phrase` attribute.
@@ -88,7 +88,6 @@ impl SpeechRecognitionPhrase {
     pub fn phrase(&self) -> JsString {
         self.inner.get("phrase").as_::<JsString>()
     }
-
 }
 impl SpeechRecognitionPhrase {
     /// Getter of the `boost` attribute.
@@ -96,5 +95,4 @@ impl SpeechRecognitionPhrase {
     pub fn boost(&self) -> f32 {
         self.inner.get("boost").as_::<f32>()
     }
-
 }

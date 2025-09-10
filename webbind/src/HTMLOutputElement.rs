@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLOutputElement class.
 /// [`HTMLOutputElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLOutputElement {
 
 impl FromVal for HTMLOutputElement {
     fn from_val(v: &Any) -> Self {
-        HTMLOutputElement { inner: HTMLElement::from_val(v) }
+        HTMLOutputElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLOutputElement {
 
 impl AsMut<Any> for HTMLOutputElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLOutputElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLOutputElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLOutputElement);
 
-
-
 impl HTMLOutputElement {
     /// The `new HTMLOutputElement(..)` constructor, creating a new HTMLOutputElement instance
     pub fn new() -> HTMLOutputElement {
         Self {
-            inner: Any::global("HTMLOutputElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLOutputElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLOutputElement {
     /// Getter of the `htmlFor` attribute.
@@ -81,7 +79,6 @@ impl HTMLOutputElement {
     pub fn html_for(&self) -> DOMTokenList {
         self.inner.get("htmlFor").as_::<DOMTokenList>()
     }
-
 }
 impl HTMLOutputElement {
     /// Getter of the `form` attribute.
@@ -89,7 +86,6 @@ impl HTMLOutputElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
-
 }
 impl HTMLOutputElement {
     /// Getter of the `name` attribute.
@@ -110,7 +106,6 @@ impl HTMLOutputElement {
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
-
 }
 impl HTMLOutputElement {
     /// Getter of the `defaultValue` attribute.
@@ -144,7 +139,6 @@ impl HTMLOutputElement {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
-
 }
 impl HTMLOutputElement {
     /// Getter of the `validity` attribute.
@@ -152,7 +146,6 @@ impl HTMLOutputElement {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
-
 }
 impl HTMLOutputElement {
     /// Getter of the `validationMessage` attribute.
@@ -160,19 +153,18 @@ impl HTMLOutputElement {
     pub fn validation_message(&self) -> JsString {
         self.inner.get("validationMessage").as_::<JsString>()
     }
-
 }
 impl HTMLOutputElement {
     /// The checkValidity method.
     /// [`HTMLOutputElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/checkValidity)
-    pub fn check_validity(&self, ) -> bool {
+    pub fn check_validity(&self) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
 }
 impl HTMLOutputElement {
     /// The reportValidity method.
     /// [`HTMLOutputElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/reportValidity)
-    pub fn report_validity(&self, ) -> bool {
+    pub fn report_validity(&self) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
 }
@@ -180,7 +172,9 @@ impl HTMLOutputElement {
     /// The setCustomValidity method.
     /// [`HTMLOutputElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/setCustomValidity)
     pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner.call("setCustomValidity", &[error.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setCustomValidity", &[error.into()])
+            .as_::<Undefined>()
     }
 }
 impl HTMLOutputElement {
@@ -189,5 +183,4 @@ impl HTMLOutputElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
-
 }

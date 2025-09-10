@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AttributionImpressionOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AttributionImpressionOptions {
 
 impl AsMut<Any> for AttributionImpressionOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AttributionImpressionOptions> for Any {
@@ -86,7 +83,9 @@ impl AttributionImpressionOptions {
 impl AttributionImpressionOptions {
     /// Getter of the `conversionSites` attribute.
     pub fn conversion_sites(&self) -> TypedArray<JsString> {
-        self.inner.get("conversionSites").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("conversionSites")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `conversionSites` attribute.
@@ -97,7 +96,9 @@ impl AttributionImpressionOptions {
 impl AttributionImpressionOptions {
     /// Getter of the `conversionCallers` attribute.
     pub fn conversion_callers(&self) -> TypedArray<JsString> {
-        self.inner.get("conversionCallers").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("conversionCallers")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `conversionCallers` attribute.

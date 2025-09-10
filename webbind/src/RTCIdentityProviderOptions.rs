@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCIdentityProviderOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCIdentityProviderOptions {
 
 impl AsMut<Any> for RTCIdentityProviderOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCIdentityProviderOptions> for Any {

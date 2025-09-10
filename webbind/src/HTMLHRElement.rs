@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLHRElement class.
 /// [`HTMLHRElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLHRElement {
 
 impl FromVal for HTMLHRElement {
     fn from_val(v: &Any) -> Self {
-        HTMLHRElement { inner: HTMLElement::from_val(v) }
+        HTMLHRElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLHRElement {
 
 impl AsMut<Any> for HTMLHRElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLHRElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLHRElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLHRElement);
 
-
-
 impl HTMLHRElement {
     /// The `new HTMLHRElement(..)` constructor, creating a new HTMLHRElement instance
     pub fn new() -> HTMLHRElement {
@@ -73,7 +70,6 @@ impl HTMLHRElement {
             inner: Any::global("HTMLHRElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLHRElement {
     /// Getter of the `align` attribute.

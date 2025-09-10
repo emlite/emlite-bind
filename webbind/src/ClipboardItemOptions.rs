@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ClipboardItemOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ClipboardItemOptions {
 
 impl AsMut<Any> for ClipboardItemOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ClipboardItemOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&ClipboardItemOptions> for Any {
 impl ClipboardItemOptions {
     /// Getter of the `presentationStyle` attribute.
     pub fn presentation_style(&self) -> PresentationStyle {
-        self.inner.get("presentationStyle").as_::<PresentationStyle>()
+        self.inner
+            .get("presentationStyle")
+            .as_::<PresentationStyle>()
     }
 
     /// Setter of the `presentationStyle` attribute.

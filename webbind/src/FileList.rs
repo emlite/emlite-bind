@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FileList class.
 /// [`FileList`](https://developer.mozilla.org/en-US/docs/Web/API/FileList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FileList {
 
 impl FromVal for FileList {
     fn from_val(v: &Any) -> Self {
-        FileList { inner: Any::from_val(v) }
+        FileList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FileList {
 
 impl AsMut<Any> for FileList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FileList> for Any {
@@ -64,12 +63,11 @@ impl From<&FileList> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileList);
 
-
 impl FileList {
     /// The item method.
     /// [`FileList.item`](https://developer.mozilla.org/en-US/docs/Web/API/FileList/item)
     pub fn item(&self, index: u32) -> File {
-        self.inner.call("item", &[index.into(), ]).as_::<File>()
+        self.inner.call("item", &[index.into()]).as_::<File>()
     }
 }
 impl FileList {
@@ -78,5 +76,4 @@ impl FileList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }

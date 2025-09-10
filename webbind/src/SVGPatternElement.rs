@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGPatternElement class.
 /// [`SVGPatternElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPatternElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGPatternElement {
 
 impl FromVal for SVGPatternElement {
     fn from_val(v: &Any) -> Self {
-        SVGPatternElement { inner: SVGElement::from_val(v) }
+        SVGPatternElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGPatternElement {
 
 impl AsMut<Any> for SVGPatternElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGPatternElement> for Any {
@@ -64,30 +63,32 @@ impl From<&SVGPatternElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGPatternElement);
 
-
 impl SVGPatternElement {
     /// Getter of the `patternUnits` attribute.
     /// [`SVGPatternElement.patternUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPatternElement/patternUnits)
     pub fn pattern_units(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("patternUnits").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("patternUnits")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `patternContentUnits` attribute.
     /// [`SVGPatternElement.patternContentUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPatternElement/patternContentUnits)
     pub fn pattern_content_units(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("patternContentUnits").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("patternContentUnits")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `patternTransform` attribute.
     /// [`SVGPatternElement.patternTransform`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPatternElement/patternTransform)
     pub fn pattern_transform(&self) -> SVGAnimatedTransformList {
-        self.inner.get("patternTransform").as_::<SVGAnimatedTransformList>()
+        self.inner
+            .get("patternTransform")
+            .as_::<SVGAnimatedTransformList>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `x` attribute.
@@ -95,7 +96,6 @@ impl SVGPatternElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `y` attribute.
@@ -103,7 +103,6 @@ impl SVGPatternElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `width` attribute.
@@ -111,7 +110,6 @@ impl SVGPatternElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `height` attribute.
@@ -119,7 +117,6 @@ impl SVGPatternElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `viewBox` attribute.
@@ -127,15 +124,15 @@ impl SVGPatternElement {
     pub fn view_box(&self) -> SVGAnimatedRect {
         self.inner.get("viewBox").as_::<SVGAnimatedRect>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `preserveAspectRatio` attribute.
     /// [`SVGPatternElement.preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPatternElement/preserveAspectRatio)
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner
+            .get("preserveAspectRatio")
+            .as_::<SVGAnimatedPreserveAspectRatio>()
     }
-
 }
 impl SVGPatternElement {
     /// Getter of the `href` attribute.
@@ -143,5 +140,4 @@ impl SVGPatternElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

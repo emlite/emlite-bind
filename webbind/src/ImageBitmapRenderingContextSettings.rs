@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ImageBitmapRenderingContextSettings dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ImageBitmapRenderingContextSettings {
 
 impl AsMut<Any> for ImageBitmapRenderingContextSettings {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ImageBitmapRenderingContextSettings> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DeviceOrientationEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DeviceOrientationEventInit {
 
 impl AsMut<Any> for DeviceOrientationEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DeviceOrientationEventInit> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TextDecoderStream class.
 /// [`TextDecoderStream`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TextDecoderStream {
 
 impl FromVal for TextDecoderStream {
     fn from_val(v: &Any) -> Self {
-        TextDecoderStream { inner: Any::from_val(v) }
+        TextDecoderStream {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TextDecoderStream {
 
 impl AsMut<Any> for TextDecoderStream {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TextDecoderStream> for Any {
@@ -64,8 +63,6 @@ impl From<&TextDecoderStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextDecoderStream);
 
-
-
 impl TextDecoderStream {
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
     pub fn new0() -> TextDecoderStream {
@@ -77,17 +74,20 @@ impl TextDecoderStream {
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
     pub fn new1(label: &JsString) -> TextDecoderStream {
         Self {
-            inner: Any::global("TextDecoderStream").new(&[label.into()]).as_::<Any>(),
+            inner: Any::global("TextDecoderStream")
+                .new(&[label.into()])
+                .as_::<Any>(),
         }
     }
 
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
     pub fn new2(label: &JsString, options: &TextDecoderOptions) -> TextDecoderStream {
         Self {
-            inner: Any::global("TextDecoderStream").new(&[label.into(), options.into()]).as_::<Any>(),
+            inner: Any::global("TextDecoderStream")
+                .new(&[label.into(), options.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl TextDecoderStream {
     /// Getter of the `encoding` attribute.
@@ -95,7 +95,6 @@ impl TextDecoderStream {
     pub fn encoding(&self) -> JsString {
         self.inner.get("encoding").as_::<JsString>()
     }
-
 }
 impl TextDecoderStream {
     /// Getter of the `fatal` attribute.
@@ -103,7 +102,6 @@ impl TextDecoderStream {
     pub fn fatal(&self) -> bool {
         self.inner.get("fatal").as_::<bool>()
     }
-
 }
 impl TextDecoderStream {
     /// Getter of the `ignoreBOM` attribute.
@@ -111,7 +109,6 @@ impl TextDecoderStream {
     pub fn ignore_bom(&self) -> bool {
         self.inner.get("ignoreBOM").as_::<bool>()
     }
-
 }
 impl TextDecoderStream {
     /// Getter of the `readable` attribute.
@@ -119,7 +116,6 @@ impl TextDecoderStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
-
 }
 impl TextDecoderStream {
     /// Getter of the `writable` attribute.
@@ -127,5 +123,4 @@ impl TextDecoderStream {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }

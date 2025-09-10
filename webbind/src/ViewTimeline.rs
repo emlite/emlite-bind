@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ViewTimeline class.
 /// [`ViewTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ViewTimeline {
 
 impl FromVal for ViewTimeline {
     fn from_val(v: &Any) -> Self {
-        ViewTimeline { inner: ScrollTimeline::from_val(v) }
+        ViewTimeline {
+            inner: ScrollTimeline::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ViewTimeline {
 
 impl AsMut<Any> for ViewTimeline {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ViewTimeline> for Any {
@@ -64,8 +63,6 @@ impl From<&ViewTimeline> for Any {
 
 jsbind::utils::impl_dyn_cast!(ViewTimeline);
 
-
-
 impl ViewTimeline {
     /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
     pub fn new0() -> ViewTimeline {
@@ -77,10 +74,11 @@ impl ViewTimeline {
     /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
     pub fn new1(options: &ViewTimelineOptions) -> ViewTimeline {
         Self {
-            inner: Any::global("ViewTimeline").new(&[options.into()]).as_::<ScrollTimeline>(),
+            inner: Any::global("ViewTimeline")
+                .new(&[options.into()])
+                .as_::<ScrollTimeline>(),
         }
     }
-
 }
 impl ViewTimeline {
     /// Getter of the `subject` attribute.
@@ -88,7 +86,6 @@ impl ViewTimeline {
     pub fn subject(&self) -> Element {
         self.inner.get("subject").as_::<Element>()
     }
-
 }
 impl ViewTimeline {
     /// Getter of the `startOffset` attribute.
@@ -96,7 +93,6 @@ impl ViewTimeline {
     pub fn start_offset(&self) -> CSSNumericValue {
         self.inner.get("startOffset").as_::<CSSNumericValue>()
     }
-
 }
 impl ViewTimeline {
     /// Getter of the `endOffset` attribute.
@@ -104,5 +100,4 @@ impl ViewTimeline {
     pub fn end_offset(&self) -> CSSNumericValue {
         self.inner.get("endOffset").as_::<CSSNumericValue>()
     }
-
 }

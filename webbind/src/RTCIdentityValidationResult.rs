@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCIdentityValidationResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCIdentityValidationResult {
 
 impl AsMut<Any> for RTCIdentityValidationResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCIdentityValidationResult> for Any {

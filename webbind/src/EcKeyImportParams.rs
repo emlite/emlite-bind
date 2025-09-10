@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EcKeyImportParams dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for EcKeyImportParams {
 
 impl AsMut<Any> for EcKeyImportParams {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EcKeyImportParams> for Any {

@@ -37,8 +37,8 @@ impl Object {
         self.inner.has_own_property(prop)
     }
 
-    pub fn set(&self, item: &str, val: &Any) {
-        self.inner.set(item, val.clone());
+    pub fn set<V: Into<emlite::Val>>(&self, item: &str, val: V) {
+        self.inner.set(item, val);
     }
 
     /// Returns whether a value exists in the sequence.
@@ -49,8 +49,8 @@ impl Object {
         self.inner.has(item)
     }
 
-    pub fn get(&self, item: &Any) -> Any {
-        self.inner.get(item.clone()).as_::<Any>()
+    pub fn get<T: Into<emlite::Val>>(&self, item: T) -> Any {
+        self.inner.get(item).as_::<Any>()
     }
 
     /// Gets the Object constructor function
@@ -62,24 +62,30 @@ impl Object {
     /// Creates an object with the specified prototype object and properties
     /// @param prototype the object to use as the prototype, or null for no prototype
     /// @returns a new object with the specified prototype
-    pub fn create(prototype: &emlite::Val) -> emlite::Val {
-        emlite::Val::global("Object").call("create", &[prototype.clone()])
+    pub fn create<P: Into<emlite::Val>>(prototype: P) -> emlite::Val {
+        emlite::Val::global("Object").call("create", &[prototype.into()])
     }
 
     /// Creates an object with the specified prototype object and properties
     /// @param prototype the object to use as the prototype, or null for no prototype
     /// @param properties an object whose enumerable own properties specify property descriptors
     /// @returns a new object with the specified prototype and properties
-    pub fn create_with_properties(prototype: &emlite::Val, properties: &emlite::Val) -> emlite::Val {
-        emlite::Val::global("Object").call("create", &[prototype.clone(), properties.clone()])
+    pub fn create_with_properties<P: Into<emlite::Val>, R: Into<emlite::Val>>(
+        prototype: P,
+        properties: R,
+    ) -> emlite::Val {
+        emlite::Val::global("Object").call("create", &[prototype.into(), properties.into()])
     }
 
     /// Sets the prototype (i.e., the internal [[Prototype]] property) of a specified object
     /// @param obj the object which is to have its prototype set
     /// @param prototype the object's new prototype (an object or null)
     /// @returns the specified object
-    pub fn set_prototype_of(obj: &emlite::Val, prototype: &emlite::Val) -> emlite::Val {
-        emlite::Val::global("Object").call("setPrototypeOf", &[obj.clone(), prototype.clone()])
+    pub fn set_prototype_of<O: Into<emlite::Val>, P: Into<emlite::Val>>(
+        obj: O,
+        prototype: P,
+    ) -> emlite::Val {
+        emlite::Val::global("Object").call("setPrototypeOf", &[obj.into(), prototype.into()])
     }
 }
 

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLOperand class.
 /// [`MLOperand`](https://developer.mozilla.org/en-US/docs/Web/API/MLOperand)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MLOperand {
 
 impl FromVal for MLOperand {
     fn from_val(v: &Any) -> Self {
-        MLOperand { inner: Any::from_val(v) }
+        MLOperand {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MLOperand {
 
 impl AsMut<Any> for MLOperand {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLOperand> for Any {
@@ -64,14 +63,12 @@ impl From<&MLOperand> for Any {
 
 jsbind::utils::impl_dyn_cast!(MLOperand);
 
-
 impl MLOperand {
     /// Getter of the `dataType` attribute.
     /// [`MLOperand.dataType`](https://developer.mozilla.org/en-US/docs/Web/API/MLOperand/dataType)
     pub fn data_type(&self) -> MLOperandDataType {
         self.inner.get("dataType").as_::<MLOperandDataType>()
     }
-
 }
 impl MLOperand {
     /// Getter of the `shape` attribute.
@@ -79,5 +76,4 @@ impl MLOperand {
     pub fn shape(&self) -> TypedArray<u32> {
         self.inner.get("shape").as_::<TypedArray<u32>>()
     }
-
 }

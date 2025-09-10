@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WriterCreateOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WriterCreateOptions {
 
 impl AsMut<Any> for WriterCreateOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WriterCreateOptions> for Any {

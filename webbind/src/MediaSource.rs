@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaSource class.
 /// [`MediaSource`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaSource {
 
 impl FromVal for MediaSource {
     fn from_val(v: &Any) -> Self {
-        MediaSource { inner: EventTarget::from_val(v) }
+        MediaSource {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaSource {
 
 impl AsMut<Any> for MediaSource {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaSource> for Any {
@@ -64,8 +63,6 @@ impl From<&MediaSource> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaSource);
 
-
-
 impl MediaSource {
     /// The `new MediaSource(..)` constructor, creating a new MediaSource instance
     pub fn new() -> MediaSource {
@@ -73,7 +70,6 @@ impl MediaSource {
             inner: Any::global("MediaSource").new(&[]).as_::<EventTarget>(),
         }
     }
-
 }
 impl MediaSource {
     /// Getter of the `handle` attribute.
@@ -81,7 +77,6 @@ impl MediaSource {
     pub fn handle(&self) -> MediaSourceHandle {
         self.inner.get("handle").as_::<MediaSourceHandle>()
     }
-
 }
 impl MediaSource {
     /// Getter of the `sourceBuffers` attribute.
@@ -89,15 +84,15 @@ impl MediaSource {
     pub fn source_buffers(&self) -> SourceBufferList {
         self.inner.get("sourceBuffers").as_::<SourceBufferList>()
     }
-
 }
 impl MediaSource {
     /// Getter of the `activeSourceBuffers` attribute.
     /// [`MediaSource.activeSourceBuffers`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/activeSourceBuffers)
     pub fn active_source_buffers(&self) -> SourceBufferList {
-        self.inner.get("activeSourceBuffers").as_::<SourceBufferList>()
+        self.inner
+            .get("activeSourceBuffers")
+            .as_::<SourceBufferList>()
     }
-
 }
 impl MediaSource {
     /// Getter of the `readyState` attribute.
@@ -105,7 +100,6 @@ impl MediaSource {
     pub fn ready_state(&self) -> ReadyState {
         self.inner.get("readyState").as_::<ReadyState>()
     }
-
 }
 impl MediaSource {
     /// Getter of the `duration` attribute.
@@ -163,54 +157,67 @@ impl MediaSource {
     /// Getter of the `canConstructInDedicatedWorker` static attribute.
     /// [`MediaSource.canConstructInDedicatedWorker`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/canConstructInDedicatedWorker)
     pub fn can_construct_in_dedicated_worker() -> bool {
-        Any::global("MediaSource").get("canConstructInDedicatedWorker").as_::<bool>()
+        Any::global("MediaSource")
+            .get("canConstructInDedicatedWorker")
+            .as_::<bool>()
     }
-
 }
 impl MediaSource {
     /// The addSourceBuffer method.
     /// [`MediaSource.addSourceBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/addSourceBuffer)
     pub fn add_source_buffer(&self, type_: &JsString) -> SourceBuffer {
-        self.inner.call("addSourceBuffer", &[type_.into(), ]).as_::<SourceBuffer>()
+        self.inner
+            .call("addSourceBuffer", &[type_.into()])
+            .as_::<SourceBuffer>()
     }
 }
 impl MediaSource {
     /// The removeSourceBuffer method.
     /// [`MediaSource.removeSourceBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/removeSourceBuffer)
     pub fn remove_source_buffer(&self, source_buffer: &SourceBuffer) -> Undefined {
-        self.inner.call("removeSourceBuffer", &[source_buffer.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("removeSourceBuffer", &[source_buffer.into()])
+            .as_::<Undefined>()
     }
 }
 impl MediaSource {
     /// The endOfStream method.
     /// [`MediaSource.endOfStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/endOfStream)
-    pub fn end_of_stream0(&self, ) -> Undefined {
+    pub fn end_of_stream0(&self) -> Undefined {
         self.inner.call("endOfStream", &[]).as_::<Undefined>()
     }
     /// The endOfStream method.
     /// [`MediaSource.endOfStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/endOfStream)
     pub fn end_of_stream1(&self, error: &EndOfStreamError) -> Undefined {
-        self.inner.call("endOfStream", &[error.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("endOfStream", &[error.into()])
+            .as_::<Undefined>()
     }
 }
 impl MediaSource {
     /// The setLiveSeekableRange method.
     /// [`MediaSource.setLiveSeekableRange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/setLiveSeekableRange)
     pub fn set_live_seekable_range(&self, start: f64, end: f64) -> Undefined {
-        self.inner.call("setLiveSeekableRange", &[start.into(), end.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setLiveSeekableRange", &[start.into(), end.into()])
+            .as_::<Undefined>()
     }
 }
 impl MediaSource {
     /// The clearLiveSeekableRange method.
     /// [`MediaSource.clearLiveSeekableRange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/clearLiveSeekableRange)
-    pub fn clear_live_seekable_range(&self, ) -> Undefined {
-        self.inner.call("clearLiveSeekableRange", &[]).as_::<Undefined>()
+    pub fn clear_live_seekable_range(&self) -> Undefined {
+        self.inner
+            .call("clearLiveSeekableRange", &[])
+            .as_::<Undefined>()
     }
 }
 impl MediaSource {
     /// The isTypeSupported method.
     /// [`MediaSource.isTypeSupported`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/isTypeSupported)
     pub fn is_type_supported(type_: &JsString) -> bool {
-        Any::global("MediaSource").call("isTypeSupported", &[type_.into(), ]).as_::<bool>()
+        Any::global("MediaSource")
+            .call("isTypeSupported", &[type_.into()])
+            .as_::<bool>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MemoryDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MemoryDescriptor {
 
 impl AsMut<Any> for MemoryDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MemoryDescriptor> for Any {

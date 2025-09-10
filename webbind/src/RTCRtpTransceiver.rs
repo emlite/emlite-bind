@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCRtpTransceiver class.
 /// [`RTCRtpTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCRtpTransceiver {
 
 impl FromVal for RTCRtpTransceiver {
     fn from_val(v: &Any) -> Self {
-        RTCRtpTransceiver { inner: Any::from_val(v) }
+        RTCRtpTransceiver {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCRtpTransceiver {
 
 impl AsMut<Any> for RTCRtpTransceiver {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCRtpTransceiver> for Any {
@@ -64,14 +63,12 @@ impl From<&RTCRtpTransceiver> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCRtpTransceiver);
 
-
 impl RTCRtpTransceiver {
     /// Getter of the `mid` attribute.
     /// [`RTCRtpTransceiver.mid`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver/mid)
     pub fn mid(&self) -> JsString {
         self.inner.get("mid").as_::<JsString>()
     }
-
 }
 impl RTCRtpTransceiver {
     /// Getter of the `sender` attribute.
@@ -79,7 +76,6 @@ impl RTCRtpTransceiver {
     pub fn sender(&self) -> RTCRtpSender {
         self.inner.get("sender").as_::<RTCRtpSender>()
     }
-
 }
 impl RTCRtpTransceiver {
     /// Getter of the `receiver` attribute.
@@ -87,13 +83,14 @@ impl RTCRtpTransceiver {
     pub fn receiver(&self) -> RTCRtpReceiver {
         self.inner.get("receiver").as_::<RTCRtpReceiver>()
     }
-
 }
 impl RTCRtpTransceiver {
     /// Getter of the `direction` attribute.
     /// [`RTCRtpTransceiver.direction`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver/direction)
     pub fn direction(&self) -> RTCRtpTransceiverDirection {
-        self.inner.get("direction").as_::<RTCRtpTransceiverDirection>()
+        self.inner
+            .get("direction")
+            .as_::<RTCRtpTransceiverDirection>()
     }
 
     /// Setter of the `direction` attribute.
@@ -106,14 +103,15 @@ impl RTCRtpTransceiver {
     /// Getter of the `currentDirection` attribute.
     /// [`RTCRtpTransceiver.currentDirection`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver/currentDirection)
     pub fn current_direction(&self) -> RTCRtpTransceiverDirection {
-        self.inner.get("currentDirection").as_::<RTCRtpTransceiverDirection>()
+        self.inner
+            .get("currentDirection")
+            .as_::<RTCRtpTransceiverDirection>()
     }
-
 }
 impl RTCRtpTransceiver {
     /// The stop method.
     /// [`RTCRtpTransceiver.stop`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver/stop)
-    pub fn stop(&self, ) -> Undefined {
+    pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }
@@ -121,6 +119,8 @@ impl RTCRtpTransceiver {
     /// The setCodecPreferences method.
     /// [`RTCRtpTransceiver.setCodecPreferences`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver/setCodecPreferences)
     pub fn set_codec_preferences(&self, codecs: &TypedArray<RTCRtpCodec>) -> Undefined {
-        self.inner.call("setCodecPreferences", &[codecs.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setCodecPreferences", &[codecs.into()])
+            .as_::<Undefined>()
     }
 }

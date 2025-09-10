@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLActiveInfo class.
 /// [`WebGLActiveInfo`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLActiveInfo {
 
 impl FromVal for WebGLActiveInfo {
     fn from_val(v: &Any) -> Self {
-        WebGLActiveInfo { inner: Any::from_val(v) }
+        WebGLActiveInfo {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLActiveInfo {
 
 impl AsMut<Any> for WebGLActiveInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLActiveInfo> for Any {
@@ -64,14 +63,12 @@ impl From<&WebGLActiveInfo> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebGLActiveInfo);
 
-
 impl WebGLActiveInfo {
     /// Getter of the `size` attribute.
     /// [`WebGLActiveInfo.size`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo/size)
     pub fn size(&self) -> Any {
         self.inner.get("size").as_::<Any>()
     }
-
 }
 impl WebGLActiveInfo {
     /// Getter of the `type` attribute.
@@ -79,7 +76,6 @@ impl WebGLActiveInfo {
     pub fn type_(&self) -> Any {
         self.inner.get("type").as_::<Any>()
     }
-
 }
 impl WebGLActiveInfo {
     /// Getter of the `name` attribute.
@@ -87,5 +83,4 @@ impl WebGLActiveInfo {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }

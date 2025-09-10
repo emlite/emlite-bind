@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DecompressionStream class.
 /// [`DecompressionStream`](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DecompressionStream {
 
 impl FromVal for DecompressionStream {
     fn from_val(v: &Any) -> Self {
-        DecompressionStream { inner: Any::from_val(v) }
+        DecompressionStream {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DecompressionStream {
 
 impl AsMut<Any> for DecompressionStream {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DecompressionStream> for Any {
@@ -64,16 +63,15 @@ impl From<&DecompressionStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(DecompressionStream);
 
-
-
 impl DecompressionStream {
     /// The `new DecompressionStream(..)` constructor, creating a new DecompressionStream instance
     pub fn new(format: &CompressionFormat) -> DecompressionStream {
         Self {
-            inner: Any::global("DecompressionStream").new(&[format.into()]).as_::<Any>(),
+            inner: Any::global("DecompressionStream")
+                .new(&[format.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl DecompressionStream {
     /// Getter of the `readable` attribute.
@@ -81,7 +79,6 @@ impl DecompressionStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
-
 }
 impl DecompressionStream {
     /// Getter of the `writable` attribute.
@@ -89,5 +86,4 @@ impl DecompressionStream {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }

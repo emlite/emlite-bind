@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CanvasGradient class.
 /// [`CanvasGradient`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CanvasGradient {
 
 impl FromVal for CanvasGradient {
     fn from_val(v: &Any) -> Self {
-        CanvasGradient { inner: Any::from_val(v) }
+        CanvasGradient {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CanvasGradient {
 
 impl AsMut<Any> for CanvasGradient {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CanvasGradient> for Any {
@@ -64,11 +63,12 @@ impl From<&CanvasGradient> for Any {
 
 jsbind::utils::impl_dyn_cast!(CanvasGradient);
 
-
 impl CanvasGradient {
     /// The addColorStop method.
     /// [`CanvasGradient.addColorStop`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient/addColorStop)
     pub fn add_color_stop(&self, offset: f64, color: &JsString) -> Undefined {
-        self.inner.call("addColorStop", &[offset.into(), color.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("addColorStop", &[offset.into(), color.into()])
+            .as_::<Undefined>()
     }
 }

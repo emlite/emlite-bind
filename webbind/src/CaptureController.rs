@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CaptureController class.
 /// [`CaptureController`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CaptureController {
 
 impl FromVal for CaptureController {
     fn from_val(v: &Any) -> Self {
-        CaptureController { inner: EventTarget::from_val(v) }
+        CaptureController {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CaptureController {
 
 impl AsMut<Any> for CaptureController {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CaptureController> for Any {
@@ -64,22 +63,23 @@ impl From<&CaptureController> for Any {
 
 jsbind::utils::impl_dyn_cast!(CaptureController);
 
-
-
 impl CaptureController {
     /// The `new CaptureController(..)` constructor, creating a new CaptureController instance
     pub fn new() -> CaptureController {
         Self {
-            inner: Any::global("CaptureController").new(&[]).as_::<EventTarget>(),
+            inner: Any::global("CaptureController")
+                .new(&[])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl CaptureController {
     /// The setFocusBehavior method.
     /// [`CaptureController.setFocusBehavior`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/setFocusBehavior)
     pub fn set_focus_behavior(&self, focus_behavior: &CaptureStartFocusBehavior) -> Undefined {
-        self.inner.call("setFocusBehavior", &[focus_behavior.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setFocusBehavior", &[focus_behavior.into()])
+            .as_::<Undefined>()
     }
 }
 impl CaptureController {
@@ -98,8 +98,10 @@ impl CaptureController {
 impl CaptureController {
     /// The getSupportedZoomLevels method.
     /// [`CaptureController.getSupportedZoomLevels`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/getSupportedZoomLevels)
-    pub fn get_supported_zoom_levels(&self, ) -> TypedArray<i32> {
-        self.inner.call("getSupportedZoomLevels", &[]).as_::<TypedArray<i32>>()
+    pub fn get_supported_zoom_levels(&self) -> TypedArray<i32> {
+        self.inner
+            .call("getSupportedZoomLevels", &[])
+            .as_::<TypedArray<i32>>()
     }
 }
 impl CaptureController {
@@ -108,27 +110,32 @@ impl CaptureController {
     pub fn zoom_level(&self) -> i32 {
         self.inner.get("zoomLevel").as_::<i32>()
     }
-
 }
 impl CaptureController {
     /// The increaseZoomLevel method.
     /// [`CaptureController.increaseZoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/increaseZoomLevel)
-    pub fn increase_zoom_level(&self, ) -> Promise<Undefined> {
-        self.inner.call("increaseZoomLevel", &[]).as_::<Promise<Undefined>>()
+    pub fn increase_zoom_level(&self) -> Promise<Undefined> {
+        self.inner
+            .call("increaseZoomLevel", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CaptureController {
     /// The decreaseZoomLevel method.
     /// [`CaptureController.decreaseZoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/decreaseZoomLevel)
-    pub fn decrease_zoom_level(&self, ) -> Promise<Undefined> {
-        self.inner.call("decreaseZoomLevel", &[]).as_::<Promise<Undefined>>()
+    pub fn decrease_zoom_level(&self) -> Promise<Undefined> {
+        self.inner
+            .call("decreaseZoomLevel", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CaptureController {
     /// The resetZoomLevel method.
     /// [`CaptureController.resetZoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/resetZoomLevel)
-    pub fn reset_zoom_level(&self, ) -> Promise<Undefined> {
-        self.inner.call("resetZoomLevel", &[]).as_::<Promise<Undefined>>()
+    pub fn reset_zoom_level(&self) -> Promise<Undefined> {
+        self.inner
+            .call("resetZoomLevel", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CaptureController {
@@ -148,6 +155,8 @@ impl CaptureController {
     /// The forwardWheel method.
     /// [`CaptureController.forwardWheel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/forwardWheel)
     pub fn forward_wheel(&self, element: &HTMLElement) -> Promise<Undefined> {
-        self.inner.call("forwardWheel", &[element.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("forwardWheel", &[element.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

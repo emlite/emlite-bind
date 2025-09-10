@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaElementAudioSourceNode class.
 /// [`MediaElementAudioSourceNode`](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaElementAudioSourceNode {
 
 impl FromVal for MediaElementAudioSourceNode {
     fn from_val(v: &Any) -> Self {
-        MediaElementAudioSourceNode { inner: AudioNode::from_val(v) }
+        MediaElementAudioSourceNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaElementAudioSourceNode {
 
 impl AsMut<Any> for MediaElementAudioSourceNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaElementAudioSourceNode> for Any {
@@ -64,16 +63,18 @@ impl From<&MediaElementAudioSourceNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaElementAudioSourceNode);
 
-
-
 impl MediaElementAudioSourceNode {
     /// The `new MediaElementAudioSourceNode(..)` constructor, creating a new MediaElementAudioSourceNode instance
-    pub fn new(context: &AudioContext, options: &MediaElementAudioSourceOptions) -> MediaElementAudioSourceNode {
+    pub fn new(
+        context: &AudioContext,
+        options: &MediaElementAudioSourceOptions,
+    ) -> MediaElementAudioSourceNode {
         Self {
-            inner: Any::global("MediaElementAudioSourceNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("MediaElementAudioSourceNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl MediaElementAudioSourceNode {
     /// Getter of the `mediaElement` attribute.
@@ -81,5 +82,4 @@ impl MediaElementAudioSourceNode {
     pub fn media_element(&self) -> HTMLMediaElement {
         self.inner.get("mediaElement").as_::<HTMLMediaElement>()
     }
-
 }

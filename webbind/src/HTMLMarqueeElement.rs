@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLMarqueeElement class.
 /// [`HTMLMarqueeElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLMarqueeElement {
 
 impl FromVal for HTMLMarqueeElement {
     fn from_val(v: &Any) -> Self {
-        HTMLMarqueeElement { inner: HTMLElement::from_val(v) }
+        HTMLMarqueeElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLMarqueeElement {
 
 impl AsMut<Any> for HTMLMarqueeElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLMarqueeElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLMarqueeElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLMarqueeElement);
 
-
-
 impl HTMLMarqueeElement {
     /// The `new HTMLMarqueeElement(..)` constructor, creating a new HTMLMarqueeElement instance
     pub fn new() -> HTMLMarqueeElement {
         Self {
-            inner: Any::global("HTMLMarqueeElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLMarqueeElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLMarqueeElement {
     /// Getter of the `behavior` attribute.
@@ -221,14 +219,14 @@ impl HTMLMarqueeElement {
 impl HTMLMarqueeElement {
     /// The start method.
     /// [`HTMLMarqueeElement.start`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/start)
-    pub fn start(&self, ) -> Undefined {
+    pub fn start(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
 }
 impl HTMLMarqueeElement {
     /// The stop method.
     /// [`HTMLMarqueeElement.stop`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/stop)
-    pub fn stop(&self, ) -> Undefined {
+    pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }

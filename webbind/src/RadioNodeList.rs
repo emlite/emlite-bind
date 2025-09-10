@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RadioNodeList class.
 /// [`RadioNodeList`](https://developer.mozilla.org/en-US/docs/Web/API/RadioNodeList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RadioNodeList {
 
 impl FromVal for RadioNodeList {
     fn from_val(v: &Any) -> Self {
-        RadioNodeList { inner: NodeList::from_val(v) }
+        RadioNodeList {
+            inner: NodeList::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RadioNodeList {
 
 impl AsMut<Any> for RadioNodeList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RadioNodeList> for Any {
@@ -63,7 +62,6 @@ impl From<&RadioNodeList> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(RadioNodeList);
-
 
 impl RadioNodeList {
     /// Getter of the `value` attribute.

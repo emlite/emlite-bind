@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUPipelineDescriptorBase dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUPipelineDescriptorBase {
 
 impl AsMut<Any> for GPUPipelineDescriptorBase {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUPipelineDescriptorBase> for Any {

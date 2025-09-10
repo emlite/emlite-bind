@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPURenderPassLayout dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPURenderPassLayout {
 
 impl AsMut<Any> for GPURenderPassLayout {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPURenderPassLayout> for Any {
@@ -64,7 +61,9 @@ impl From<&GPURenderPassLayout> for Any {
 impl GPURenderPassLayout {
     /// Getter of the `colorFormats` attribute.
     pub fn color_formats(&self) -> TypedArray<GPUTextureFormat> {
-        self.inner.get("colorFormats").as_::<TypedArray<GPUTextureFormat>>()
+        self.inner
+            .get("colorFormats")
+            .as_::<TypedArray<GPUTextureFormat>>()
     }
 
     /// Setter of the `colorFormats` attribute.
@@ -75,7 +74,9 @@ impl GPURenderPassLayout {
 impl GPURenderPassLayout {
     /// Getter of the `depthStencilFormat` attribute.
     pub fn depth_stencil_format(&self) -> GPUTextureFormat {
-        self.inner.get("depthStencilFormat").as_::<GPUTextureFormat>()
+        self.inner
+            .get("depthStencilFormat")
+            .as_::<GPUTextureFormat>()
     }
 
     /// Setter of the `depthStencilFormat` attribute.

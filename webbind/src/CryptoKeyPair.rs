@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CryptoKeyPair dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for CryptoKeyPair {
 
 impl AsMut<Any> for CryptoKeyPair {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CryptoKeyPair> for Any {

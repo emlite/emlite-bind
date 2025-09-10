@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XPathExpression class.
 /// [`XPathExpression`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XPathExpression {
 
 impl FromVal for XPathExpression {
     fn from_val(v: &Any) -> Self {
-        XPathExpression { inner: Any::from_val(v) }
+        XPathExpression {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XPathExpression {
 
 impl AsMut<Any> for XPathExpression {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XPathExpression> for Any {
@@ -64,21 +63,29 @@ impl From<&XPathExpression> for Any {
 
 jsbind::utils::impl_dyn_cast!(XPathExpression);
 
-
 impl XPathExpression {
     /// The evaluate method.
     /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
     pub fn evaluate0(&self, context_node: &Node) -> XPathResult {
-        self.inner.call("evaluate", &[context_node.into(), ]).as_::<XPathResult>()
+        self.inner
+            .call("evaluate", &[context_node.into()])
+            .as_::<XPathResult>()
     }
     /// The evaluate method.
     /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
     pub fn evaluate1(&self, context_node: &Node, type_: u16) -> XPathResult {
-        self.inner.call("evaluate", &[context_node.into(), type_.into(), ]).as_::<XPathResult>()
+        self.inner
+            .call("evaluate", &[context_node.into(), type_.into()])
+            .as_::<XPathResult>()
     }
     /// The evaluate method.
     /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
     pub fn evaluate2(&self, context_node: &Node, type_: u16, result: &XPathResult) -> XPathResult {
-        self.inner.call("evaluate", &[context_node.into(), type_.into(), result.into(), ]).as_::<XPathResult>()
+        self.inner
+            .call(
+                "evaluate",
+                &[context_node.into(), type_.into(), result.into()],
+            )
+            .as_::<XPathResult>()
     }
 }

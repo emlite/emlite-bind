@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ConstrainDoubleRange dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ConstrainDoubleRange {
 
 impl AsMut<Any> for ConstrainDoubleRange {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ConstrainDoubleRange> for Any {

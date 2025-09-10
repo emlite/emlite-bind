@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BeforeUnloadEvent class.
 /// [`BeforeUnloadEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BeforeUnloadEvent {
 
 impl FromVal for BeforeUnloadEvent {
     fn from_val(v: &Any) -> Self {
-        BeforeUnloadEvent { inner: Event::from_val(v) }
+        BeforeUnloadEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BeforeUnloadEvent {
 
 impl AsMut<Any> for BeforeUnloadEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BeforeUnloadEvent> for Any {
@@ -63,7 +62,6 @@ impl From<&BeforeUnloadEvent> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(BeforeUnloadEvent);
-
 
 impl BeforeUnloadEvent {
     /// Getter of the `returnValue` attribute.

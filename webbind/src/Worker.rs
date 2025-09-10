@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Worker class.
 /// [`Worker`](https://developer.mozilla.org/en-US/docs/Web/API/Worker)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Worker {
 
 impl FromVal for Worker {
     fn from_val(v: &Any) -> Self {
-        Worker { inner: EventTarget::from_val(v) }
+        Worker {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Worker {
 
 impl AsMut<Any> for Worker {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Worker> for Any {
@@ -64,28 +63,29 @@ impl From<&Worker> for Any {
 
 jsbind::utils::impl_dyn_cast!(Worker);
 
-
-
 impl Worker {
     /// The `new Worker(..)` constructor, creating a new Worker instance
     pub fn new0(script_url: &Any) -> Worker {
         Self {
-            inner: Any::global("Worker").new(&[script_url.into()]).as_::<EventTarget>(),
+            inner: Any::global("Worker")
+                .new(&[script_url.into()])
+                .as_::<EventTarget>(),
         }
     }
 
     /// The `new Worker(..)` constructor, creating a new Worker instance
     pub fn new1(script_url: &Any, options: &WorkerOptions) -> Worker {
         Self {
-            inner: Any::global("Worker").new(&[script_url.into(), options.into()]).as_::<EventTarget>(),
+            inner: Any::global("Worker")
+                .new(&[script_url.into(), options.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl Worker {
     /// The terminate method.
     /// [`Worker.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/terminate)
-    pub fn terminate(&self, ) -> Undefined {
+    pub fn terminate(&self) -> Undefined {
         self.inner.call("terminate", &[]).as_::<Undefined>()
     }
 }
@@ -93,12 +93,16 @@ impl Worker {
     /// The postMessage method.
     /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
     pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
     /// The postMessage method.
     /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
     pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }
 impl Worker {

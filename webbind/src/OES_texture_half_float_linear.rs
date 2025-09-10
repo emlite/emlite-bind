@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OES_texture_half_float_linear class.
 /// [`OES_texture_half_float_linear`](https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_half_float_linear)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct OES_texture_half_float_linear {
 
 impl FromVal for OES_texture_half_float_linear {
     fn from_val(v: &Any) -> Self {
-        OES_texture_half_float_linear { inner: Any::from_val(v) }
+        OES_texture_half_float_linear {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for OES_texture_half_float_linear {
 
 impl AsMut<Any> for OES_texture_half_float_linear {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OES_texture_half_float_linear> for Any {
@@ -63,5 +62,3 @@ impl From<&OES_texture_half_float_linear> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(OES_texture_half_float_linear);
-
-

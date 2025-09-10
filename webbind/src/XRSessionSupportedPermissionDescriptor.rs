@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRSessionSupportedPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRSessionSupportedPermissionDescriptor {
 
 impl AsMut<Any> for XRSessionSupportedPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRSessionSupportedPermissionDescriptor> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuctionAdInterestGroup dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuctionAdInterestGroup {
 
 impl AsMut<Any> for AuctionAdInterestGroup {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuctionAdInterestGroup> for Any {
@@ -75,7 +72,9 @@ impl AuctionAdInterestGroup {
 impl AuctionAdInterestGroup {
     /// Getter of the `prioritySignalsOverrides` attribute.
     pub fn priority_signals_overrides(&self) -> Record<JsString, f64> {
-        self.inner.get("prioritySignalsOverrides").as_::<Record<JsString, f64>>()
+        self.inner
+            .get("prioritySignalsOverrides")
+            .as_::<Record<JsString, f64>>()
     }
 
     /// Setter of the `prioritySignalsOverrides` attribute.
@@ -108,11 +107,16 @@ impl AuctionAdInterestGroup {
 impl AuctionAdInterestGroup {
     /// Getter of the `privateAggregationConfig` attribute.
     pub fn private_aggregation_config(&self) -> ProtectedAudiencePrivateAggregationConfig {
-        self.inner.get("privateAggregationConfig").as_::<ProtectedAudiencePrivateAggregationConfig>()
+        self.inner
+            .get("privateAggregationConfig")
+            .as_::<ProtectedAudiencePrivateAggregationConfig>()
     }
 
     /// Setter of the `privateAggregationConfig` attribute.
-    pub fn set_private_aggregation_config(&mut self, value: &ProtectedAudiencePrivateAggregationConfig) {
+    pub fn set_private_aggregation_config(
+        &mut self,
+        value: &ProtectedAudiencePrivateAggregationConfig,
+    ) {
         self.inner.set("privateAggregationConfig", value);
     }
 }

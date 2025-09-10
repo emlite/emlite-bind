@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PortalActivateEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PortalActivateEventInit {
 
 impl AsMut<Any> for PortalActivateEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PortalActivateEventInit> for Any {

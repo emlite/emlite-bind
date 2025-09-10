@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SharedStorageRunOperationMethodOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SharedStorageRunOperationMethodOptions {
 
 impl AsMut<Any> for SharedStorageRunOperationMethodOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SharedStorageRunOperationMethodOptions> for Any {
@@ -97,11 +94,16 @@ impl SharedStorageRunOperationMethodOptions {
 impl SharedStorageRunOperationMethodOptions {
     /// Getter of the `privateAggregationConfig` attribute.
     pub fn private_aggregation_config(&self) -> SharedStoragePrivateAggregationConfig {
-        self.inner.get("privateAggregationConfig").as_::<SharedStoragePrivateAggregationConfig>()
+        self.inner
+            .get("privateAggregationConfig")
+            .as_::<SharedStoragePrivateAggregationConfig>()
     }
 
     /// Setter of the `privateAggregationConfig` attribute.
-    pub fn set_private_aggregation_config(&mut self, value: &SharedStoragePrivateAggregationConfig) {
+    pub fn set_private_aggregation_config(
+        &mut self,
+        value: &SharedStoragePrivateAggregationConfig,
+    ) {
         self.inner.set("privateAggregationConfig", value);
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSParserAtRule class.
 /// [`CSSParserAtRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSParserAtRule {
 
 impl FromVal for CSSParserAtRule {
     fn from_val(v: &Any) -> Self {
-        CSSParserAtRule { inner: CSSParserRule::from_val(v) }
+        CSSParserAtRule {
+            inner: CSSParserRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSParserAtRule {
 
 impl AsMut<Any> for CSSParserAtRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSParserAtRule> for Any {
@@ -64,23 +63,28 @@ impl From<&CSSParserAtRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSParserAtRule);
 
-
-
 impl CSSParserAtRule {
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
     pub fn new0(name: &JsString, prelude: &TypedArray<Any>) -> CSSParserAtRule {
         Self {
-            inner: Any::global("CSSParserAtRule").new(&[name.into(), prelude.into()]).as_::<CSSParserRule>(),
+            inner: Any::global("CSSParserAtRule")
+                .new(&[name.into(), prelude.into()])
+                .as_::<CSSParserRule>(),
         }
     }
 
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
-    pub fn new1(name: &JsString, prelude: &TypedArray<Any>, body: &TypedArray<CSSParserRule>) -> CSSParserAtRule {
+    pub fn new1(
+        name: &JsString,
+        prelude: &TypedArray<Any>,
+        body: &TypedArray<CSSParserRule>,
+    ) -> CSSParserAtRule {
         Self {
-            inner: Any::global("CSSParserAtRule").new(&[name.into(), prelude.into(), body.into()]).as_::<CSSParserRule>(),
+            inner: Any::global("CSSParserAtRule")
+                .new(&[name.into(), prelude.into(), body.into()])
+                .as_::<CSSParserRule>(),
         }
     }
-
 }
 impl CSSParserAtRule {
     /// Getter of the `name` attribute.
@@ -88,15 +92,15 @@ impl CSSParserAtRule {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSParserAtRule {
     /// Getter of the `prelude` attribute.
     /// [`CSSParserAtRule.prelude`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/prelude)
     pub fn prelude(&self) -> TypedArray<CSSParserValue> {
-        self.inner.get("prelude").as_::<TypedArray<CSSParserValue>>()
+        self.inner
+            .get("prelude")
+            .as_::<TypedArray<CSSParserValue>>()
     }
-
 }
 impl CSSParserAtRule {
     /// Getter of the `body` attribute.
@@ -104,5 +108,4 @@ impl CSSParserAtRule {
     pub fn body(&self) -> TypedArray<CSSParserRule> {
         self.inner.get("body").as_::<TypedArray<CSSParserRule>>()
     }
-
 }

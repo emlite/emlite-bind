@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGTextPositioningElement class.
 /// [`SVGTextPositioningElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPositioningElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGTextPositioningElement {
 
 impl FromVal for SVGTextPositioningElement {
     fn from_val(v: &Any) -> Self {
-        SVGTextPositioningElement { inner: SVGTextContentElement::from_val(v) }
+        SVGTextPositioningElement {
+            inner: SVGTextContentElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGTextPositioningElement {
 
 impl AsMut<Any> for SVGTextPositioningElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGTextPositioningElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGTextPositioningElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGTextPositioningElement);
 
-
 impl SVGTextPositioningElement {
     /// Getter of the `x` attribute.
     /// [`SVGTextPositioningElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextPositioningElement/x)
     pub fn x(&self) -> SVGAnimatedLengthList {
         self.inner.get("x").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     /// Getter of the `y` attribute.
@@ -79,7 +76,6 @@ impl SVGTextPositioningElement {
     pub fn y(&self) -> SVGAnimatedLengthList {
         self.inner.get("y").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     /// Getter of the `dx` attribute.
@@ -87,7 +83,6 @@ impl SVGTextPositioningElement {
     pub fn dx(&self) -> SVGAnimatedLengthList {
         self.inner.get("dx").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     /// Getter of the `dy` attribute.
@@ -95,7 +90,6 @@ impl SVGTextPositioningElement {
     pub fn dy(&self) -> SVGAnimatedLengthList {
         self.inner.get("dy").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     /// Getter of the `rotate` attribute.
@@ -103,5 +97,4 @@ impl SVGTextPositioningElement {
     pub fn rotate(&self) -> SVGAnimatedNumberList {
         self.inner.get("rotate").as_::<SVGAnimatedNumberList>()
     }
-
 }

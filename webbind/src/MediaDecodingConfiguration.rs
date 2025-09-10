@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaDecodingConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaDecodingConfiguration {
 
 impl AsMut<Any> for MediaDecodingConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaDecodingConfiguration> for Any {
@@ -75,11 +72,16 @@ impl MediaDecodingConfiguration {
 impl MediaDecodingConfiguration {
     /// Getter of the `keySystemConfiguration` attribute.
     pub fn key_system_configuration(&self) -> MediaCapabilitiesKeySystemConfiguration {
-        self.inner.get("keySystemConfiguration").as_::<MediaCapabilitiesKeySystemConfiguration>()
+        self.inner
+            .get("keySystemConfiguration")
+            .as_::<MediaCapabilitiesKeySystemConfiguration>()
     }
 
     /// Setter of the `keySystemConfiguration` attribute.
-    pub fn set_key_system_configuration(&mut self, value: &MediaCapabilitiesKeySystemConfiguration) {
+    pub fn set_key_system_configuration(
+        &mut self,
+        value: &MediaCapabilitiesKeySystemConfiguration,
+    ) {
         self.inner.set("keySystemConfiguration", value);
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUSamplerDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUSamplerDescriptor {
 
 impl AsMut<Any> for GPUSamplerDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUSamplerDescriptor> for Any {

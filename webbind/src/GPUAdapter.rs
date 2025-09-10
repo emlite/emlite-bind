@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUAdapter class.
 /// [`GPUAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUAdapter {
 
 impl FromVal for GPUAdapter {
     fn from_val(v: &Any) -> Self {
-        GPUAdapter { inner: Any::from_val(v) }
+        GPUAdapter {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUAdapter {
 
 impl AsMut<Any> for GPUAdapter {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUAdapter> for Any {
@@ -64,14 +63,12 @@ impl From<&GPUAdapter> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUAdapter);
 
-
 impl GPUAdapter {
     /// Getter of the `features` attribute.
     /// [`GPUAdapter.features`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/features)
     pub fn features(&self) -> GPUSupportedFeatures {
         self.inner.get("features").as_::<GPUSupportedFeatures>()
     }
-
 }
 impl GPUAdapter {
     /// Getter of the `limits` attribute.
@@ -79,7 +76,6 @@ impl GPUAdapter {
     pub fn limits(&self) -> GPUSupportedLimits {
         self.inner.get("limits").as_::<GPUSupportedLimits>()
     }
-
 }
 impl GPUAdapter {
     /// Getter of the `info` attribute.
@@ -87,17 +83,20 @@ impl GPUAdapter {
     pub fn info(&self) -> GPUAdapterInfo {
         self.inner.get("info").as_::<GPUAdapterInfo>()
     }
-
 }
 impl GPUAdapter {
     /// The requestDevice method.
     /// [`GPUAdapter.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/requestDevice)
-    pub fn request_device0(&self, ) -> Promise<GPUDevice> {
-        self.inner.call("requestDevice", &[]).as_::<Promise<GPUDevice>>()
+    pub fn request_device0(&self) -> Promise<GPUDevice> {
+        self.inner
+            .call("requestDevice", &[])
+            .as_::<Promise<GPUDevice>>()
     }
     /// The requestDevice method.
     /// [`GPUAdapter.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/requestDevice)
     pub fn request_device1(&self, descriptor: &GPUDeviceDescriptor) -> Promise<GPUDevice> {
-        self.inner.call("requestDevice", &[descriptor.into(), ]).as_::<Promise<GPUDevice>>()
+        self.inner
+            .call("requestDevice", &[descriptor.into()])
+            .as_::<Promise<GPUDevice>>()
     }
 }

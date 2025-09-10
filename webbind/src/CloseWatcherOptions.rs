@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CloseWatcherOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for CloseWatcherOptions {
 
 impl AsMut<Any> for CloseWatcherOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CloseWatcherOptions> for Any {

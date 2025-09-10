@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBRequest class.
 /// [`IDBRequest`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IDBRequest {
 
 impl FromVal for IDBRequest {
     fn from_val(v: &Any) -> Self {
-        IDBRequest { inner: EventTarget::from_val(v) }
+        IDBRequest {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IDBRequest {
 
 impl AsMut<Any> for IDBRequest {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBRequest> for Any {
@@ -64,14 +63,12 @@ impl From<&IDBRequest> for Any {
 
 jsbind::utils::impl_dyn_cast!(IDBRequest);
 
-
 impl IDBRequest {
     /// Getter of the `result` attribute.
     /// [`IDBRequest.result`](https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/result)
     pub fn result(&self) -> Any {
         self.inner.get("result").as_::<Any>()
     }
-
 }
 impl IDBRequest {
     /// Getter of the `error` attribute.
@@ -79,7 +76,6 @@ impl IDBRequest {
     pub fn error(&self) -> DOMException {
         self.inner.get("error").as_::<DOMException>()
     }
-
 }
 impl IDBRequest {
     /// Getter of the `source` attribute.
@@ -87,7 +83,6 @@ impl IDBRequest {
     pub fn source(&self) -> Any {
         self.inner.get("source").as_::<Any>()
     }
-
 }
 impl IDBRequest {
     /// Getter of the `transaction` attribute.
@@ -95,7 +90,6 @@ impl IDBRequest {
     pub fn transaction(&self) -> IDBTransaction {
         self.inner.get("transaction").as_::<IDBTransaction>()
     }
-
 }
 impl IDBRequest {
     /// Getter of the `readyState` attribute.
@@ -103,7 +97,6 @@ impl IDBRequest {
     pub fn ready_state(&self) -> IDBRequestReadyState {
         self.inner.get("readyState").as_::<IDBRequestReadyState>()
     }
-
 }
 impl IDBRequest {
     /// Getter of the `onsuccess` attribute.

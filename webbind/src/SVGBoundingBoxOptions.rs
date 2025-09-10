@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGBoundingBoxOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SVGBoundingBoxOptions {
 
 impl AsMut<Any> for SVGBoundingBoxOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGBoundingBoxOptions> for Any {

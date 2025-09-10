@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WakeLock class.
 /// [`WakeLock`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WakeLock {
 
 impl FromVal for WakeLock {
     fn from_val(v: &Any) -> Self {
-        WakeLock { inner: Any::from_val(v) }
+        WakeLock {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WakeLock {
 
 impl AsMut<Any> for WakeLock {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WakeLock> for Any {
@@ -64,16 +63,19 @@ impl From<&WakeLock> for Any {
 
 jsbind::utils::impl_dyn_cast!(WakeLock);
 
-
 impl WakeLock {
     /// The request method.
     /// [`WakeLock.request`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request)
-    pub fn request0(&self, ) -> Promise<WakeLockSentinel> {
-        self.inner.call("request", &[]).as_::<Promise<WakeLockSentinel>>()
+    pub fn request0(&self) -> Promise<WakeLockSentinel> {
+        self.inner
+            .call("request", &[])
+            .as_::<Promise<WakeLockSentinel>>()
     }
     /// The request method.
     /// [`WakeLock.request`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request)
     pub fn request1(&self, type_: &WakeLockType) -> Promise<WakeLockSentinel> {
-        self.inner.call("request", &[type_.into(), ]).as_::<Promise<WakeLockSentinel>>()
+        self.inner
+            .call("request", &[type_.into()])
+            .as_::<Promise<WakeLockSentinel>>()
     }
 }

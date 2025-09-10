@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AnimationTrigger class.
 /// [`AnimationTrigger`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTrigger)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AnimationTrigger {
 
 impl FromVal for AnimationTrigger {
     fn from_val(v: &Any) -> Self {
-        AnimationTrigger { inner: Any::from_val(v) }
+        AnimationTrigger {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AnimationTrigger {
 
 impl AsMut<Any> for AnimationTrigger {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AnimationTrigger> for Any {
@@ -64,8 +63,6 @@ impl From<&AnimationTrigger> for Any {
 
 jsbind::utils::impl_dyn_cast!(AnimationTrigger);
 
-
-
 impl AnimationTrigger {
     /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
     pub fn new0() -> AnimationTrigger {
@@ -77,10 +74,11 @@ impl AnimationTrigger {
     /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
     pub fn new1(options: &AnimationTriggerOptions) -> AnimationTrigger {
         Self {
-            inner: Any::global("AnimationTrigger").new(&[options.into()]).as_::<Any>(),
+            inner: Any::global("AnimationTrigger")
+                .new(&[options.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl AnimationTrigger {
     /// Getter of the `timeline` attribute.

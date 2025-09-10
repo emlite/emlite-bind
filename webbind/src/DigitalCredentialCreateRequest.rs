@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DigitalCredentialCreateRequest dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DigitalCredentialCreateRequest {
 
 impl AsMut<Any> for DigitalCredentialCreateRequest {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DigitalCredentialCreateRequest> for Any {

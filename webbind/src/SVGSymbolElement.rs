@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGSymbolElement class.
 /// [`SVGSymbolElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSymbolElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGSymbolElement {
 
 impl FromVal for SVGSymbolElement {
     fn from_val(v: &Any) -> Self {
-        SVGSymbolElement { inner: SVGGraphicsElement::from_val(v) }
+        SVGSymbolElement {
+            inner: SVGGraphicsElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGSymbolElement {
 
 impl AsMut<Any> for SVGSymbolElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGSymbolElement> for Any {
@@ -64,20 +63,19 @@ impl From<&SVGSymbolElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGSymbolElement);
 
-
 impl SVGSymbolElement {
     /// Getter of the `viewBox` attribute.
     /// [`SVGSymbolElement.viewBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSymbolElement/viewBox)
     pub fn view_box(&self) -> SVGAnimatedRect {
         self.inner.get("viewBox").as_::<SVGAnimatedRect>()
     }
-
 }
 impl SVGSymbolElement {
     /// Getter of the `preserveAspectRatio` attribute.
     /// [`SVGSymbolElement.preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSymbolElement/preserveAspectRatio)
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner
+            .get("preserveAspectRatio")
+            .as_::<SVGAnimatedPreserveAspectRatio>()
     }
-
 }

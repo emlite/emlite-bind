@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PerformanceMark class.
 /// [`PerformanceMark`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PerformanceMark {
 
 impl FromVal for PerformanceMark {
     fn from_val(v: &Any) -> Self {
-        PerformanceMark { inner: PerformanceEntry::from_val(v) }
+        PerformanceMark {
+            inner: PerformanceEntry::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PerformanceMark {
 
 impl AsMut<Any> for PerformanceMark {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PerformanceMark> for Any {
@@ -64,23 +63,24 @@ impl From<&PerformanceMark> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceMark);
 
-
-
 impl PerformanceMark {
     /// The `new PerformanceMark(..)` constructor, creating a new PerformanceMark instance
     pub fn new0(mark_name: &JsString) -> PerformanceMark {
         Self {
-            inner: Any::global("PerformanceMark").new(&[mark_name.into()]).as_::<PerformanceEntry>(),
+            inner: Any::global("PerformanceMark")
+                .new(&[mark_name.into()])
+                .as_::<PerformanceEntry>(),
         }
     }
 
     /// The `new PerformanceMark(..)` constructor, creating a new PerformanceMark instance
     pub fn new1(mark_name: &JsString, mark_options: &PerformanceMarkOptions) -> PerformanceMark {
         Self {
-            inner: Any::global("PerformanceMark").new(&[mark_name.into(), mark_options.into()]).as_::<PerformanceEntry>(),
+            inner: Any::global("PerformanceMark")
+                .new(&[mark_name.into(), mark_options.into()])
+                .as_::<PerformanceEntry>(),
         }
     }
-
 }
 impl PerformanceMark {
     /// Getter of the `detail` attribute.
@@ -88,5 +88,4 @@ impl PerformanceMark {
     pub fn detail(&self) -> Any {
         self.inner.get("detail").as_::<Any>()
     }
-
 }

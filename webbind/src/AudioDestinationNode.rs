@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioDestinationNode class.
 /// [`AudioDestinationNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDestinationNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioDestinationNode {
 
 impl FromVal for AudioDestinationNode {
     fn from_val(v: &Any) -> Self {
-        AudioDestinationNode { inner: AudioNode::from_val(v) }
+        AudioDestinationNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioDestinationNode {
 
 impl AsMut<Any> for AudioDestinationNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioDestinationNode> for Any {
@@ -64,12 +63,10 @@ impl From<&AudioDestinationNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioDestinationNode);
 
-
 impl AudioDestinationNode {
     /// Getter of the `maxChannelCount` attribute.
     /// [`AudioDestinationNode.maxChannelCount`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDestinationNode/maxChannelCount)
     pub fn max_channel_count(&self) -> u32 {
         self.inner.get("maxChannelCount").as_::<u32>()
     }
-
 }

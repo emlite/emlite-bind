@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FileSystemDirectoryReader class.
 /// [`FileSystemDirectoryReader`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FileSystemDirectoryReader {
 
 impl FromVal for FileSystemDirectoryReader {
     fn from_val(v: &Any) -> Self {
-        FileSystemDirectoryReader { inner: Any::from_val(v) }
+        FileSystemDirectoryReader {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FileSystemDirectoryReader {
 
 impl AsMut<Any> for FileSystemDirectoryReader {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FileSystemDirectoryReader> for Any {
@@ -64,16 +63,26 @@ impl From<&FileSystemDirectoryReader> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryReader);
 
-
 impl FileSystemDirectoryReader {
     /// The readEntries method.
     /// [`FileSystemDirectoryReader.readEntries`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader/readEntries)
     pub fn read_entries0(&self, success_callback: &Function) -> Undefined {
-        self.inner.call("readEntries", &[success_callback.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("readEntries", &[success_callback.into()])
+            .as_::<Undefined>()
     }
     /// The readEntries method.
     /// [`FileSystemDirectoryReader.readEntries`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader/readEntries)
-    pub fn read_entries1(&self, success_callback: &Function, error_callback: &Function) -> Undefined {
-        self.inner.call("readEntries", &[success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
+    pub fn read_entries1(
+        &self,
+        success_callback: &Function,
+        error_callback: &Function,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "readEntries",
+                &[success_callback.into(), error_callback.into()],
+            )
+            .as_::<Undefined>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SpeechGrammar class.
 /// [`SpeechGrammar`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SpeechGrammar {
 
 impl FromVal for SpeechGrammar {
     fn from_val(v: &Any) -> Self {
-        SpeechGrammar { inner: Any::from_val(v) }
+        SpeechGrammar {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SpeechGrammar {
 
 impl AsMut<Any> for SpeechGrammar {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SpeechGrammar> for Any {
@@ -63,7 +62,6 @@ impl From<&SpeechGrammar> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SpeechGrammar);
-
 
 impl SpeechGrammar {
     /// Getter of the `src` attribute.

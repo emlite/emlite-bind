@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaMetadata class.
 /// [`MediaMetadata`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaMetadata {
 
 impl FromVal for MediaMetadata {
     fn from_val(v: &Any) -> Self {
-        MediaMetadata { inner: Any::from_val(v) }
+        MediaMetadata {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaMetadata {
 
 impl AsMut<Any> for MediaMetadata {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaMetadata> for Any {
@@ -64,8 +63,6 @@ impl From<&MediaMetadata> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaMetadata);
 
-
-
 impl MediaMetadata {
     /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
     pub fn new0() -> MediaMetadata {
@@ -77,10 +74,11 @@ impl MediaMetadata {
     /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
     pub fn new1(init: &MediaMetadataInit) -> MediaMetadata {
         Self {
-            inner: Any::global("MediaMetadata").new(&[init.into()]).as_::<Any>(),
+            inner: Any::global("MediaMetadata")
+                .new(&[init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl MediaMetadata {
     /// Getter of the `title` attribute.
@@ -138,7 +136,8 @@ impl MediaMetadata {
     /// Getter of the `chapterInfo` attribute.
     /// [`MediaMetadata.chapterInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/chapterInfo)
     pub fn chapter_info(&self) -> TypedArray<ChapterInformation> {
-        self.inner.get("chapterInfo").as_::<TypedArray<ChapterInformation>>()
+        self.inner
+            .get("chapterInfo")
+            .as_::<TypedArray<ChapterInformation>>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBDatabase class.
 /// [`IDBDatabase`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IDBDatabase {
 
 impl FromVal for IDBDatabase {
     fn from_val(v: &Any) -> Self {
-        IDBDatabase { inner: EventTarget::from_val(v) }
+        IDBDatabase {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IDBDatabase {
 
 impl AsMut<Any> for IDBDatabase {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBDatabase> for Any {
@@ -64,14 +63,12 @@ impl From<&IDBDatabase> for Any {
 
 jsbind::utils::impl_dyn_cast!(IDBDatabase);
 
-
 impl IDBDatabase {
     /// Getter of the `name` attribute.
     /// [`IDBDatabase.name`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl IDBDatabase {
     /// Getter of the `version` attribute.
@@ -79,7 +76,6 @@ impl IDBDatabase {
     pub fn version(&self) -> u64 {
         self.inner.get("version").as_::<u64>()
     }
-
 }
 impl IDBDatabase {
     /// Getter of the `objectStoreNames` attribute.
@@ -87,29 +83,42 @@ impl IDBDatabase {
     pub fn object_store_names(&self) -> DOMStringList {
         self.inner.get("objectStoreNames").as_::<DOMStringList>()
     }
-
 }
 impl IDBDatabase {
     /// The transaction method.
     /// [`IDBDatabase.transaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction)
     pub fn transaction0(&self, store_names: &Any) -> IDBTransaction {
-        self.inner.call("transaction", &[store_names.into(), ]).as_::<IDBTransaction>()
+        self.inner
+            .call("transaction", &[store_names.into()])
+            .as_::<IDBTransaction>()
     }
     /// The transaction method.
     /// [`IDBDatabase.transaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction)
     pub fn transaction1(&self, store_names: &Any, mode: &IDBTransactionMode) -> IDBTransaction {
-        self.inner.call("transaction", &[store_names.into(), mode.into(), ]).as_::<IDBTransaction>()
+        self.inner
+            .call("transaction", &[store_names.into(), mode.into()])
+            .as_::<IDBTransaction>()
     }
     /// The transaction method.
     /// [`IDBDatabase.transaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction)
-    pub fn transaction2(&self, store_names: &Any, mode: &IDBTransactionMode, options: &IDBTransactionOptions) -> IDBTransaction {
-        self.inner.call("transaction", &[store_names.into(), mode.into(), options.into(), ]).as_::<IDBTransaction>()
+    pub fn transaction2(
+        &self,
+        store_names: &Any,
+        mode: &IDBTransactionMode,
+        options: &IDBTransactionOptions,
+    ) -> IDBTransaction {
+        self.inner
+            .call(
+                "transaction",
+                &[store_names.into(), mode.into(), options.into()],
+            )
+            .as_::<IDBTransaction>()
     }
 }
 impl IDBDatabase {
     /// The close method.
     /// [`IDBDatabase.close`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/close)
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
@@ -117,19 +126,29 @@ impl IDBDatabase {
     /// The createObjectStore method.
     /// [`IDBDatabase.createObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
     pub fn create_object_store0(&self, name: &JsString) -> IDBObjectStore {
-        self.inner.call("createObjectStore", &[name.into(), ]).as_::<IDBObjectStore>()
+        self.inner
+            .call("createObjectStore", &[name.into()])
+            .as_::<IDBObjectStore>()
     }
     /// The createObjectStore method.
     /// [`IDBDatabase.createObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
-    pub fn create_object_store1(&self, name: &JsString, options: &IDBObjectStoreParameters) -> IDBObjectStore {
-        self.inner.call("createObjectStore", &[name.into(), options.into(), ]).as_::<IDBObjectStore>()
+    pub fn create_object_store1(
+        &self,
+        name: &JsString,
+        options: &IDBObjectStoreParameters,
+    ) -> IDBObjectStore {
+        self.inner
+            .call("createObjectStore", &[name.into(), options.into()])
+            .as_::<IDBObjectStore>()
     }
 }
 impl IDBDatabase {
     /// The deleteObjectStore method.
     /// [`IDBDatabase.deleteObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/deleteObjectStore)
     pub fn delete_object_store(&self, name: &JsString) -> Undefined {
-        self.inner.call("deleteObjectStore", &[name.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("deleteObjectStore", &[name.into()])
+            .as_::<Undefined>()
     }
 }
 impl IDBDatabase {

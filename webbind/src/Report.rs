@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Report dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for Report {
 
 impl AsMut<Any> for Report {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Report> for Any {

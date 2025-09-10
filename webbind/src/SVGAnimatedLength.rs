@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGAnimatedLength class.
 /// [`SVGAnimatedLength`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedLength)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGAnimatedLength {
 
 impl FromVal for SVGAnimatedLength {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedLength { inner: Any::from_val(v) }
+        SVGAnimatedLength {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGAnimatedLength {
 
 impl AsMut<Any> for SVGAnimatedLength {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGAnimatedLength> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGAnimatedLength> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedLength);
 
-
 impl SVGAnimatedLength {
     /// Getter of the `baseVal` attribute.
     /// [`SVGAnimatedLength.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedLength/baseVal)
     pub fn base_val(&self) -> SVGLength {
         self.inner.get("baseVal").as_::<SVGLength>()
     }
-
 }
 impl SVGAnimatedLength {
     /// Getter of the `animVal` attribute.
@@ -79,5 +76,4 @@ impl SVGAnimatedLength {
     pub fn anim_val(&self) -> SVGLength {
         self.inner.get("animVal").as_::<SVGLength>()
     }
-
 }

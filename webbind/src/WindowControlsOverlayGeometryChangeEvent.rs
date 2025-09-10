@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WindowControlsOverlayGeometryChangeEvent class.
 /// [`WindowControlsOverlayGeometryChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlayGeometryChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WindowControlsOverlayGeometryChangeEvent {
 
 impl FromVal for WindowControlsOverlayGeometryChangeEvent {
     fn from_val(v: &Any) -> Self {
-        WindowControlsOverlayGeometryChangeEvent { inner: Event::from_val(v) }
+        WindowControlsOverlayGeometryChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WindowControlsOverlayGeometryChangeEvent {
 
 impl AsMut<Any> for WindowControlsOverlayGeometryChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WindowControlsOverlayGeometryChangeEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&WindowControlsOverlayGeometryChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(WindowControlsOverlayGeometryChangeEvent);
 
-
-
 impl WindowControlsOverlayGeometryChangeEvent {
     /// The `new WindowControlsOverlayGeometryChangeEvent(..)` constructor, creating a new WindowControlsOverlayGeometryChangeEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &WindowControlsOverlayGeometryChangeEventInit) -> WindowControlsOverlayGeometryChangeEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &WindowControlsOverlayGeometryChangeEventInit,
+    ) -> WindowControlsOverlayGeometryChangeEvent {
         Self {
-            inner: Any::global("WindowControlsOverlayGeometryChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("WindowControlsOverlayGeometryChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl WindowControlsOverlayGeometryChangeEvent {
     /// Getter of the `titlebarAreaRect` attribute.
@@ -81,7 +82,6 @@ impl WindowControlsOverlayGeometryChangeEvent {
     pub fn titlebar_area_rect(&self) -> DOMRect {
         self.inner.get("titlebarAreaRect").as_::<DOMRect>()
     }
-
 }
 impl WindowControlsOverlayGeometryChangeEvent {
     /// Getter of the `visible` attribute.
@@ -89,5 +89,4 @@ impl WindowControlsOverlayGeometryChangeEvent {
     pub fn visible(&self) -> bool {
         self.inner.get("visible").as_::<bool>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothRemoteGATTDescriptor class.
 /// [`BluetoothRemoteGATTDescriptor`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTDescriptor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothRemoteGATTDescriptor {
 
 impl FromVal for BluetoothRemoteGATTDescriptor {
     fn from_val(v: &Any) -> Self {
-        BluetoothRemoteGATTDescriptor { inner: Any::from_val(v) }
+        BluetoothRemoteGATTDescriptor {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothRemoteGATTDescriptor {
 
 impl AsMut<Any> for BluetoothRemoteGATTDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothRemoteGATTDescriptor> for Any {
@@ -64,14 +63,14 @@ impl From<&BluetoothRemoteGATTDescriptor> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTDescriptor);
 
-
 impl BluetoothRemoteGATTDescriptor {
     /// Getter of the `characteristic` attribute.
     /// [`BluetoothRemoteGATTDescriptor.characteristic`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTDescriptor/characteristic)
     pub fn characteristic(&self) -> BluetoothRemoteGATTCharacteristic {
-        self.inner.get("characteristic").as_::<BluetoothRemoteGATTCharacteristic>()
+        self.inner
+            .get("characteristic")
+            .as_::<BluetoothRemoteGATTCharacteristic>()
     }
-
 }
 impl BluetoothRemoteGATTDescriptor {
     /// Getter of the `uuid` attribute.
@@ -79,7 +78,6 @@ impl BluetoothRemoteGATTDescriptor {
     pub fn uuid(&self) -> Any {
         self.inner.get("uuid").as_::<Any>()
     }
-
 }
 impl BluetoothRemoteGATTDescriptor {
     /// Getter of the `value` attribute.
@@ -87,12 +85,11 @@ impl BluetoothRemoteGATTDescriptor {
     pub fn value(&self) -> DataView {
         self.inner.get("value").as_::<DataView>()
     }
-
 }
 impl BluetoothRemoteGATTDescriptor {
     /// The readValue method.
     /// [`BluetoothRemoteGATTDescriptor.readValue`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTDescriptor/readValue)
-    pub fn read_value(&self, ) -> Promise<DataView> {
+    pub fn read_value(&self) -> Promise<DataView> {
         self.inner.call("readValue", &[]).as_::<Promise<DataView>>()
     }
 }
@@ -100,6 +97,8 @@ impl BluetoothRemoteGATTDescriptor {
     /// The writeValue method.
     /// [`BluetoothRemoteGATTDescriptor.writeValue`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTDescriptor/writeValue)
     pub fn write_value(&self, value: &Any) -> Promise<Undefined> {
-        self.inner.call("writeValue", &[value.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("writeValue", &[value.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

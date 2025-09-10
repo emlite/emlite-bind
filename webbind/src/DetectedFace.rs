@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DetectedFace dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DetectedFace {
 
 impl AsMut<Any> for DetectedFace {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DetectedFace> for Any {

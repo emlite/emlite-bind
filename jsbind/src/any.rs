@@ -3,6 +3,11 @@ pub use emlite::Val as Any;
 
 pub type AnyHandle = emlite::common::Handle;
 
+/// Safety notes
+/// - `unchecked_from_val_ref` and `unchecked_from_val_mut` cast the underlying
+///   `emlite::Val` pointer to `Any` without changing the lifetime. Callers must
+///   ensure the original `Val` outlives the returned reference and that aliasing
+///   rules are respected (no concurrent mutable/immutable borrows).
 impl crate::prelude::DynCast for Any {
     #[inline]
     fn instanceof(_val: &emlite::Val) -> bool {

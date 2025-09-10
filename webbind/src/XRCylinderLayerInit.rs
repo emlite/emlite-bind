@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRCylinderLayerInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRCylinderLayerInit {
 
 impl AsMut<Any> for XRCylinderLayerInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRCylinderLayerInit> for Any {

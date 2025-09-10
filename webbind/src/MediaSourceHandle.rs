@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaSourceHandle class.
 /// [`MediaSourceHandle`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSourceHandle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaSourceHandle {
 
 impl FromVal for MediaSourceHandle {
     fn from_val(v: &Any) -> Self {
-        MediaSourceHandle { inner: Any::from_val(v) }
+        MediaSourceHandle {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaSourceHandle {
 
 impl AsMut<Any> for MediaSourceHandle {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaSourceHandle> for Any {
@@ -63,5 +62,3 @@ impl From<&MediaSourceHandle> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(MediaSourceHandle);
-
-

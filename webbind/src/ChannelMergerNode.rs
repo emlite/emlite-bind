@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ChannelMergerNode class.
 /// [`ChannelMergerNode`](https://developer.mozilla.org/en-US/docs/Web/API/ChannelMergerNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ChannelMergerNode {
 
 impl FromVal for ChannelMergerNode {
     fn from_val(v: &Any) -> Self {
-        ChannelMergerNode { inner: AudioNode::from_val(v) }
+        ChannelMergerNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ChannelMergerNode {
 
 impl AsMut<Any> for ChannelMergerNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ChannelMergerNode> for Any {
@@ -64,21 +63,22 @@ impl From<&ChannelMergerNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(ChannelMergerNode);
 
-
-
 impl ChannelMergerNode {
     /// The `new ChannelMergerNode(..)` constructor, creating a new ChannelMergerNode instance
     pub fn new0(context: &BaseAudioContext) -> ChannelMergerNode {
         Self {
-            inner: Any::global("ChannelMergerNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("ChannelMergerNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new ChannelMergerNode(..)` constructor, creating a new ChannelMergerNode instance
     pub fn new1(context: &BaseAudioContext, options: &ChannelMergerOptions) -> ChannelMergerNode {
         Self {
-            inner: Any::global("ChannelMergerNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("ChannelMergerNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }

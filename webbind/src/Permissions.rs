@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Permissions class.
 /// [`Permissions`](https://developer.mozilla.org/en-US/docs/Web/API/Permissions)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Permissions {
 
 impl FromVal for Permissions {
     fn from_val(v: &Any) -> Self {
-        Permissions { inner: Any::from_val(v) }
+        Permissions {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Permissions {
 
 impl AsMut<Any> for Permissions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Permissions> for Any {
@@ -64,25 +63,30 @@ impl From<&Permissions> for Any {
 
 jsbind::utils::impl_dyn_cast!(Permissions);
 
-
 impl Permissions {
     /// The query method.
     /// [`Permissions.query`](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query)
     pub fn query(&self, permission_desc: &Object) -> Promise<PermissionStatus> {
-        self.inner.call("query", &[permission_desc.into(), ]).as_::<Promise<PermissionStatus>>()
+        self.inner
+            .call("query", &[permission_desc.into()])
+            .as_::<Promise<PermissionStatus>>()
     }
 }
 impl Permissions {
     /// The request method.
     /// [`Permissions.request`](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/request)
     pub fn request(&self, permission_desc: &Object) -> Promise<PermissionStatus> {
-        self.inner.call("request", &[permission_desc.into(), ]).as_::<Promise<PermissionStatus>>()
+        self.inner
+            .call("request", &[permission_desc.into()])
+            .as_::<Promise<PermissionStatus>>()
     }
 }
 impl Permissions {
     /// The revoke method.
     /// [`Permissions.revoke`](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/revoke)
     pub fn revoke(&self, permission_desc: &Object) -> Promise<PermissionStatus> {
-        self.inner.call("revoke", &[permission_desc.into(), ]).as_::<Promise<PermissionStatus>>()
+        self.inner
+            .call("revoke", &[permission_desc.into()])
+            .as_::<Promise<PermissionStatus>>()
     }
 }

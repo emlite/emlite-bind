@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUTextureViewDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUTextureViewDescriptor {
 
 impl AsMut<Any> for GPUTextureViewDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUTextureViewDescriptor> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLDirectoryElement class.
 /// [`HTMLDirectoryElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDirectoryElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLDirectoryElement {
 
 impl FromVal for HTMLDirectoryElement {
     fn from_val(v: &Any) -> Self {
-        HTMLDirectoryElement { inner: HTMLElement::from_val(v) }
+        HTMLDirectoryElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLDirectoryElement {
 
 impl AsMut<Any> for HTMLDirectoryElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLDirectoryElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLDirectoryElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLDirectoryElement);
 
-
-
 impl HTMLDirectoryElement {
     /// The `new HTMLDirectoryElement(..)` constructor, creating a new HTMLDirectoryElement instance
     pub fn new() -> HTMLDirectoryElement {
         Self {
-            inner: Any::global("HTMLDirectoryElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLDirectoryElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLDirectoryElement {
     /// Getter of the `compact` attribute.

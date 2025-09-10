@@ -1,3 +1,9 @@
+//! Notes on callback lifetime
+//! Callbacks created via `Closure::bind*` or `Closure::new` are exposed to JS and
+//! kept alive by handles in the runtime. There is no automatic disposal on
+//! non–WASI‑p2 targets; callbacks live until the handle map is reset or all
+//! references are dropped on the JS side. Prefer short‑lived closures when
+//! appropriate, or add manual cleanup in your app if needed.
 use crate::any::Any;
 use crate::array::Array;
 use crate::error::JsError;
@@ -28,6 +34,16 @@ impl Function {
             Some(v.as_::<Self>())
         } else {
             None
+        }
+    }
+
+    /// Fetch `globalThis[name]` as a function or return a `JsError` if missing/not callable.
+    pub fn try_global(name: &str) -> Result<Self, JsError> {
+        let v = emlite::Val::global(name);
+        if v.is_function() {
+            Ok(v.as_::<Self>())
+        } else {
+            Err(JsError::new("global is not a function"))
         }
     }
 

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSFunctionDescriptors class.
 /// [`CSSFunctionDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDescriptors)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSFunctionDescriptors {
 
 impl FromVal for CSSFunctionDescriptors {
     fn from_val(v: &Any) -> Self {
-        CSSFunctionDescriptors { inner: CSSStyleDeclaration::from_val(v) }
+        CSSFunctionDescriptors {
+            inner: CSSStyleDeclaration::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSFunctionDescriptors {
 
 impl AsMut<Any> for CSSFunctionDescriptors {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSFunctionDescriptors> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSFunctionDescriptors> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSFunctionDescriptors);
-
 
 impl CSSFunctionDescriptors {
     /// Getter of the `result` attribute.

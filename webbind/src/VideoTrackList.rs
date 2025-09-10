@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoTrackList class.
 /// [`VideoTrackList`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct VideoTrackList {
 
 impl FromVal for VideoTrackList {
     fn from_val(v: &Any) -> Self {
-        VideoTrackList { inner: EventTarget::from_val(v) }
+        VideoTrackList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for VideoTrackList {
 
 impl AsMut<Any> for VideoTrackList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoTrackList> for Any {
@@ -64,20 +63,20 @@ impl From<&VideoTrackList> for Any {
 
 jsbind::utils::impl_dyn_cast!(VideoTrackList);
 
-
 impl VideoTrackList {
     /// Getter of the `length` attribute.
     /// [`VideoTrackList.length`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl VideoTrackList {
     /// The getTrackById method.
     /// [`VideoTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/getTrackById)
     pub fn get_track_by_id(&self, id: &JsString) -> VideoTrack {
-        self.inner.call("getTrackById", &[id.into(), ]).as_::<VideoTrack>()
+        self.inner
+            .call("getTrackById", &[id.into()])
+            .as_::<VideoTrack>()
     }
 }
 impl VideoTrackList {
@@ -86,7 +85,6 @@ impl VideoTrackList {
     pub fn selected_index(&self) -> i32 {
         self.inner.get("selectedIndex").as_::<i32>()
     }
-
 }
 impl VideoTrackList {
     /// Getter of the `onchange` attribute.

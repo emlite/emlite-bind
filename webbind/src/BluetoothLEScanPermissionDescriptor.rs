@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothLEScanPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for BluetoothLEScanPermissionDescriptor {
 
 impl AsMut<Any> for BluetoothLEScanPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothLEScanPermissionDescriptor> for Any {
@@ -64,7 +61,9 @@ impl From<&BluetoothLEScanPermissionDescriptor> for Any {
 impl BluetoothLEScanPermissionDescriptor {
     /// Getter of the `filters` attribute.
     pub fn filters(&self) -> TypedArray<BluetoothLEScanFilterInit> {
-        self.inner.get("filters").as_::<TypedArray<BluetoothLEScanFilterInit>>()
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<BluetoothLEScanFilterInit>>()
     }
 
     /// Setter of the `filters` attribute.

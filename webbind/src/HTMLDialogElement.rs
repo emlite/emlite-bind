@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLDialogElement class.
 /// [`HTMLDialogElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLDialogElement {
 
 impl FromVal for HTMLDialogElement {
     fn from_val(v: &Any) -> Self {
-        HTMLDialogElement { inner: HTMLElement::from_val(v) }
+        HTMLDialogElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLDialogElement {
 
 impl AsMut<Any> for HTMLDialogElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLDialogElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLDialogElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLDialogElement);
 
-
-
 impl HTMLDialogElement {
     /// The `new HTMLDialogElement(..)` constructor, creating a new HTMLDialogElement instance
     pub fn new() -> HTMLDialogElement {
         Self {
-            inner: Any::global("HTMLDialogElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLDialogElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLDialogElement {
     /// Getter of the `open` attribute.
@@ -117,38 +115,42 @@ impl HTMLDialogElement {
 impl HTMLDialogElement {
     /// The show method.
     /// [`HTMLDialogElement.show`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/show)
-    pub fn show(&self, ) -> Undefined {
+    pub fn show(&self) -> Undefined {
         self.inner.call("show", &[]).as_::<Undefined>()
     }
 }
 impl HTMLDialogElement {
     /// The showModal method.
     /// [`HTMLDialogElement.showModal`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
-    pub fn show_modal(&self, ) -> Undefined {
+    pub fn show_modal(&self) -> Undefined {
         self.inner.call("showModal", &[]).as_::<Undefined>()
     }
 }
 impl HTMLDialogElement {
     /// The close method.
     /// [`HTMLDialogElement.close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close)
-    pub fn close0(&self, ) -> Undefined {
+    pub fn close0(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
     /// The close method.
     /// [`HTMLDialogElement.close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close)
     pub fn close1(&self, return_value: &JsString) -> Undefined {
-        self.inner.call("close", &[return_value.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("close", &[return_value.into()])
+            .as_::<Undefined>()
     }
 }
 impl HTMLDialogElement {
     /// The requestClose method.
     /// [`HTMLDialogElement.requestClose`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/requestClose)
-    pub fn request_close0(&self, ) -> Undefined {
+    pub fn request_close0(&self) -> Undefined {
         self.inner.call("requestClose", &[]).as_::<Undefined>()
     }
     /// The requestClose method.
     /// [`HTMLDialogElement.requestClose`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/requestClose)
     pub fn request_close1(&self, return_value: &JsString) -> Undefined {
-        self.inner.call("requestClose", &[return_value.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("requestClose", &[return_value.into()])
+            .as_::<Undefined>()
     }
 }

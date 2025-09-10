@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VTTCue class.
 /// [`VTTCue`](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct VTTCue {
 
 impl FromVal for VTTCue {
     fn from_val(v: &Any) -> Self {
-        VTTCue { inner: TextTrackCue::from_val(v) }
+        VTTCue {
+            inner: TextTrackCue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for VTTCue {
 
 impl AsMut<Any> for VTTCue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VTTCue> for Any {
@@ -64,16 +63,15 @@ impl From<&VTTCue> for Any {
 
 jsbind::utils::impl_dyn_cast!(VTTCue);
 
-
-
 impl VTTCue {
     /// The `new VTTCue(..)` constructor, creating a new VTTCue instance
     pub fn new(start_time: f64, end_time: f64, text: &JsString) -> VTTCue {
         Self {
-            inner: Any::global("VTTCue").new(&[start_time.into(), end_time.into(), text.into()]).as_::<TextTrackCue>(),
+            inner: Any::global("VTTCue")
+                .new(&[start_time.into(), end_time.into(), text.into()])
+                .as_::<TextTrackCue>(),
         }
     }
-
 }
 impl VTTCue {
     /// Getter of the `region` attribute.
@@ -157,7 +155,9 @@ impl VTTCue {
     /// Getter of the `positionAlign` attribute.
     /// [`VTTCue.positionAlign`](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue/positionAlign)
     pub fn position_align(&self) -> PositionAlignSetting {
-        self.inner.get("positionAlign").as_::<PositionAlignSetting>()
+        self.inner
+            .get("positionAlign")
+            .as_::<PositionAlignSetting>()
     }
 
     /// Setter of the `positionAlign` attribute.
@@ -208,7 +208,9 @@ impl VTTCue {
 impl VTTCue {
     /// The getCueAsHTML method.
     /// [`VTTCue.getCueAsHTML`](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue/getCueAsHTML)
-    pub fn get_cue_as_html(&self, ) -> DocumentFragment {
-        self.inner.call("getCueAsHTML", &[]).as_::<DocumentFragment>()
+    pub fn get_cue_as_html(&self) -> DocumentFragment {
+        self.inner
+            .call("getCueAsHTML", &[])
+            .as_::<DocumentFragment>()
     }
 }

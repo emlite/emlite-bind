@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DataTransfer class.
 /// [`DataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DataTransfer {
 
 impl FromVal for DataTransfer {
     fn from_val(v: &Any) -> Self {
-        DataTransfer { inner: Any::from_val(v) }
+        DataTransfer {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DataTransfer {
 
 impl AsMut<Any> for DataTransfer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DataTransfer> for Any {
@@ -64,8 +63,6 @@ impl From<&DataTransfer> for Any {
 
 jsbind::utils::impl_dyn_cast!(DataTransfer);
 
-
-
 impl DataTransfer {
     /// The `new DataTransfer(..)` constructor, creating a new DataTransfer instance
     pub fn new() -> DataTransfer {
@@ -73,7 +70,6 @@ impl DataTransfer {
             inner: Any::global("DataTransfer").new(&[]).as_::<Any>(),
         }
     }
-
 }
 impl DataTransfer {
     /// Getter of the `dropEffect` attribute.
@@ -107,13 +103,14 @@ impl DataTransfer {
     pub fn items(&self) -> DataTransferItemList {
         self.inner.get("items").as_::<DataTransferItemList>()
     }
-
 }
 impl DataTransfer {
     /// The setDragImage method.
     /// [`DataTransfer.setDragImage`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setDragImage)
     pub fn set_drag_image(&self, image: &Element, x: i32, y: i32) -> Undefined {
-        self.inner.call("setDragImage", &[image.into(), x.into(), y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setDragImage", &[image.into(), x.into(), y.into()])
+            .as_::<Undefined>()
     }
 }
 impl DataTransfer {
@@ -122,32 +119,37 @@ impl DataTransfer {
     pub fn types(&self) -> TypedArray<JsString> {
         self.inner.get("types").as_::<TypedArray<JsString>>()
     }
-
 }
 impl DataTransfer {
     /// The getData method.
     /// [`DataTransfer.getData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/getData)
     pub fn get_data(&self, format: &JsString) -> JsString {
-        self.inner.call("getData", &[format.into(), ]).as_::<JsString>()
+        self.inner
+            .call("getData", &[format.into()])
+            .as_::<JsString>()
     }
 }
 impl DataTransfer {
     /// The setData method.
     /// [`DataTransfer.setData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData)
     pub fn set_data(&self, format: &JsString, data: &JsString) -> Undefined {
-        self.inner.call("setData", &[format.into(), data.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setData", &[format.into(), data.into()])
+            .as_::<Undefined>()
     }
 }
 impl DataTransfer {
     /// The clearData method.
     /// [`DataTransfer.clearData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData)
-    pub fn clear_data0(&self, ) -> Undefined {
+    pub fn clear_data0(&self) -> Undefined {
         self.inner.call("clearData", &[]).as_::<Undefined>()
     }
     /// The clearData method.
     /// [`DataTransfer.clearData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData)
     pub fn clear_data1(&self, format: &JsString) -> Undefined {
-        self.inner.call("clearData", &[format.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("clearData", &[format.into()])
+            .as_::<Undefined>()
     }
 }
 impl DataTransfer {
@@ -156,5 +158,4 @@ impl DataTransfer {
     pub fn files(&self) -> FileList {
         self.inner.get("files").as_::<FileList>()
     }
-
 }

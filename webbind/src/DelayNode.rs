@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DelayNode class.
 /// [`DelayNode`](https://developer.mozilla.org/en-US/docs/Web/API/DelayNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DelayNode {
 
 impl FromVal for DelayNode {
     fn from_val(v: &Any) -> Self {
-        DelayNode { inner: AudioNode::from_val(v) }
+        DelayNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DelayNode {
 
 impl AsMut<Any> for DelayNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DelayNode> for Any {
@@ -64,23 +63,24 @@ impl From<&DelayNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(DelayNode);
 
-
-
 impl DelayNode {
     /// The `new DelayNode(..)` constructor, creating a new DelayNode instance
     pub fn new0(context: &BaseAudioContext) -> DelayNode {
         Self {
-            inner: Any::global("DelayNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("DelayNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new DelayNode(..)` constructor, creating a new DelayNode instance
     pub fn new1(context: &BaseAudioContext, options: &DelayOptions) -> DelayNode {
         Self {
-            inner: Any::global("DelayNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("DelayNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl DelayNode {
     /// Getter of the `delayTime` attribute.
@@ -88,5 +88,4 @@ impl DelayNode {
     pub fn delay_time(&self) -> AudioParam {
         self.inner.get("delayTime").as_::<AudioParam>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUOrigin3DDict dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUOrigin3DDict {
 
 impl AsMut<Any> for GPUOrigin3DDict {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUOrigin3DDict> for Any {

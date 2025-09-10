@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The USBIsochronousOutTransferPacket class.
 /// [`USBIsochronousOutTransferPacket`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct USBIsochronousOutTransferPacket {
 
 impl FromVal for USBIsochronousOutTransferPacket {
     fn from_val(v: &Any) -> Self {
-        USBIsochronousOutTransferPacket { inner: Any::from_val(v) }
+        USBIsochronousOutTransferPacket {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for USBIsochronousOutTransferPacket {
 
 impl AsMut<Any> for USBIsochronousOutTransferPacket {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<USBIsochronousOutTransferPacket> for Any {
@@ -64,23 +63,24 @@ impl From<&USBIsochronousOutTransferPacket> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferPacket);
 
-
-
 impl USBIsochronousOutTransferPacket {
     /// The `new USBIsochronousOutTransferPacket(..)` constructor, creating a new USBIsochronousOutTransferPacket instance
     pub fn new0(status: &USBTransferStatus) -> USBIsochronousOutTransferPacket {
         Self {
-            inner: Any::global("USBIsochronousOutTransferPacket").new(&[status.into()]).as_::<Any>(),
+            inner: Any::global("USBIsochronousOutTransferPacket")
+                .new(&[status.into()])
+                .as_::<Any>(),
         }
     }
 
     /// The `new USBIsochronousOutTransferPacket(..)` constructor, creating a new USBIsochronousOutTransferPacket instance
     pub fn new1(status: &USBTransferStatus, bytes_written: u32) -> USBIsochronousOutTransferPacket {
         Self {
-            inner: Any::global("USBIsochronousOutTransferPacket").new(&[status.into(), bytes_written.into()]).as_::<Any>(),
+            inner: Any::global("USBIsochronousOutTransferPacket")
+                .new(&[status.into(), bytes_written.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl USBIsochronousOutTransferPacket {
     /// Getter of the `bytesWritten` attribute.
@@ -88,7 +88,6 @@ impl USBIsochronousOutTransferPacket {
     pub fn bytes_written(&self) -> u32 {
         self.inner.get("bytesWritten").as_::<u32>()
     }
-
 }
 impl USBIsochronousOutTransferPacket {
     /// Getter of the `status` attribute.
@@ -96,5 +95,4 @@ impl USBIsochronousOutTransferPacket {
     pub fn status(&self) -> USBTransferStatus {
         self.inner.get("status").as_::<USBTransferStatus>()
     }
-
 }

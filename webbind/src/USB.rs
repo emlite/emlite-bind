@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The USB class.
 /// [`USB`](https://developer.mozilla.org/en-US/docs/Web/API/USB)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct USB {
 
 impl FromVal for USB {
     fn from_val(v: &Any) -> Self {
-        USB { inner: EventTarget::from_val(v) }
+        USB {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for USB {
 
 impl AsMut<Any> for USB {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<USB> for Any {
@@ -63,7 +62,6 @@ impl From<&USB> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(USB);
-
 
 impl USB {
     /// Getter of the `onconnect` attribute.
@@ -94,14 +92,18 @@ impl USB {
 impl USB {
     /// The getDevices method.
     /// [`USB.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/USB/getDevices)
-    pub fn get_devices(&self, ) -> Promise<TypedArray<USBDevice>> {
-        self.inner.call("getDevices", &[]).as_::<Promise<TypedArray<USBDevice>>>()
+    pub fn get_devices(&self) -> Promise<TypedArray<USBDevice>> {
+        self.inner
+            .call("getDevices", &[])
+            .as_::<Promise<TypedArray<USBDevice>>>()
     }
 }
 impl USB {
     /// The requestDevice method.
     /// [`USB.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/USB/requestDevice)
     pub fn request_device(&self, options: &USBDeviceRequestOptions) -> Promise<USBDevice> {
-        self.inner.call("requestDevice", &[options.into(), ]).as_::<Promise<USBDevice>>()
+        self.inner
+            .call("requestDevice", &[options.into()])
+            .as_::<Promise<USBDevice>>()
     }
 }

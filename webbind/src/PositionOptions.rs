@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PositionOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PositionOptions {
 
 impl AsMut<Any> for PositionOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PositionOptions> for Any {

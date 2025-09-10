@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUUncapturedErrorEvent class.
 /// [`GPUUncapturedErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/GPUUncapturedErrorEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUUncapturedErrorEvent {
 
 impl FromVal for GPUUncapturedErrorEvent {
     fn from_val(v: &Any) -> Self {
-        GPUUncapturedErrorEvent { inner: Event::from_val(v) }
+        GPUUncapturedErrorEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUUncapturedErrorEvent {
 
 impl AsMut<Any> for GPUUncapturedErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUUncapturedErrorEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&GPUUncapturedErrorEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUUncapturedErrorEvent);
 
-
-
 impl GPUUncapturedErrorEvent {
     /// The `new GPUUncapturedErrorEvent(..)` constructor, creating a new GPUUncapturedErrorEvent instance
-    pub fn new(type_: &JsString, gpu_uncaptured_error_event_init_dict: &GPUUncapturedErrorEventInit) -> GPUUncapturedErrorEvent {
+    pub fn new(
+        type_: &JsString,
+        gpu_uncaptured_error_event_init_dict: &GPUUncapturedErrorEventInit,
+    ) -> GPUUncapturedErrorEvent {
         Self {
-            inner: Any::global("GPUUncapturedErrorEvent").new(&[type_.into(), gpu_uncaptured_error_event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("GPUUncapturedErrorEvent")
+                .new(&[type_.into(), gpu_uncaptured_error_event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl GPUUncapturedErrorEvent {
     /// Getter of the `error` attribute.
@@ -81,5 +82,4 @@ impl GPUUncapturedErrorEvent {
     pub fn error(&self) -> GPUError {
         self.inner.get("error").as_::<GPUError>()
     }
-
 }

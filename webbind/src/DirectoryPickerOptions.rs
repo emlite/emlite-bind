@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DirectoryPickerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DirectoryPickerOptions {
 
 impl AsMut<Any> for DirectoryPickerOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DirectoryPickerOptions> for Any {

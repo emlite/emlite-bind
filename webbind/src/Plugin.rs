@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Plugin class.
 /// [`Plugin`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Plugin {
 
 impl FromVal for Plugin {
     fn from_val(v: &Any) -> Self {
-        Plugin { inner: Any::from_val(v) }
+        Plugin {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Plugin {
 
 impl AsMut<Any> for Plugin {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Plugin> for Any {
@@ -64,14 +63,12 @@ impl From<&Plugin> for Any {
 
 jsbind::utils::impl_dyn_cast!(Plugin);
 
-
 impl Plugin {
     /// Getter of the `name` attribute.
     /// [`Plugin.name`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl Plugin {
     /// Getter of the `description` attribute.
@@ -79,7 +76,6 @@ impl Plugin {
     pub fn description(&self) -> JsString {
         self.inner.get("description").as_::<JsString>()
     }
-
 }
 impl Plugin {
     /// Getter of the `filename` attribute.
@@ -87,7 +83,6 @@ impl Plugin {
     pub fn filename(&self) -> JsString {
         self.inner.get("filename").as_::<JsString>()
     }
-
 }
 impl Plugin {
     /// Getter of the `length` attribute.
@@ -95,19 +90,20 @@ impl Plugin {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl Plugin {
     /// The item method.
     /// [`Plugin.item`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/item)
     pub fn item(&self, index: u32) -> MimeType {
-        self.inner.call("item", &[index.into(), ]).as_::<MimeType>()
+        self.inner.call("item", &[index.into()]).as_::<MimeType>()
     }
 }
 impl Plugin {
     /// The namedItem method.
     /// [`Plugin.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/namedItem)
     pub fn named_item(&self, name: &JsString) -> MimeType {
-        self.inner.call("namedItem", &[name.into(), ]).as_::<MimeType>()
+        self.inner
+            .call("namedItem", &[name.into()])
+            .as_::<MimeType>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLTriangularOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLTriangularOptions {
 
 impl AsMut<Any> for MLTriangularOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLTriangularOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WEBGL_compressed_texture_astc class.
 /// [`WEBGL_compressed_texture_astc`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_compressed_texture_astc)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WEBGL_compressed_texture_astc {
 
 impl FromVal for WEBGL_compressed_texture_astc {
     fn from_val(v: &Any) -> Self {
-        WEBGL_compressed_texture_astc { inner: Any::from_val(v) }
+        WEBGL_compressed_texture_astc {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WEBGL_compressed_texture_astc {
 
 impl AsMut<Any> for WEBGL_compressed_texture_astc {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WEBGL_compressed_texture_astc> for Any {
@@ -64,11 +63,12 @@ impl From<&WEBGL_compressed_texture_astc> for Any {
 
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_astc);
 
-
 impl WEBGL_compressed_texture_astc {
     /// The getSupportedProfiles method.
     /// [`WEBGL_compressed_texture_astc.getSupportedProfiles`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_compressed_texture_astc/getSupportedProfiles)
-    pub fn get_supported_profiles(&self, ) -> TypedArray<JsString> {
-        self.inner.call("getSupportedProfiles", &[]).as_::<TypedArray<JsString>>()
+    pub fn get_supported_profiles(&self) -> TypedArray<JsString> {
+        self.inner
+            .call("getSupportedProfiles", &[])
+            .as_::<TypedArray<JsString>>()
     }
 }

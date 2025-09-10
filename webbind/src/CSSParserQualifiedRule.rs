@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSParserQualifiedRule class.
 /// [`CSSParserQualifiedRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserQualifiedRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSParserQualifiedRule {
 
 impl FromVal for CSSParserQualifiedRule {
     fn from_val(v: &Any) -> Self {
-        CSSParserQualifiedRule { inner: CSSParserRule::from_val(v) }
+        CSSParserQualifiedRule {
+            inner: CSSParserRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSParserQualifiedRule {
 
 impl AsMut<Any> for CSSParserQualifiedRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSParserQualifiedRule> for Any {
@@ -64,31 +63,36 @@ impl From<&CSSParserQualifiedRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSParserQualifiedRule);
 
-
-
 impl CSSParserQualifiedRule {
     /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
     pub fn new0(prelude: &TypedArray<Any>) -> CSSParserQualifiedRule {
         Self {
-            inner: Any::global("CSSParserQualifiedRule").new(&[prelude.into()]).as_::<CSSParserRule>(),
+            inner: Any::global("CSSParserQualifiedRule")
+                .new(&[prelude.into()])
+                .as_::<CSSParserRule>(),
         }
     }
 
     /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
-    pub fn new1(prelude: &TypedArray<Any>, body: &TypedArray<CSSParserRule>) -> CSSParserQualifiedRule {
+    pub fn new1(
+        prelude: &TypedArray<Any>,
+        body: &TypedArray<CSSParserRule>,
+    ) -> CSSParserQualifiedRule {
         Self {
-            inner: Any::global("CSSParserQualifiedRule").new(&[prelude.into(), body.into()]).as_::<CSSParserRule>(),
+            inner: Any::global("CSSParserQualifiedRule")
+                .new(&[prelude.into(), body.into()])
+                .as_::<CSSParserRule>(),
         }
     }
-
 }
 impl CSSParserQualifiedRule {
     /// Getter of the `prelude` attribute.
     /// [`CSSParserQualifiedRule.prelude`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserQualifiedRule/prelude)
     pub fn prelude(&self) -> TypedArray<CSSParserValue> {
-        self.inner.get("prelude").as_::<TypedArray<CSSParserValue>>()
+        self.inner
+            .get("prelude")
+            .as_::<TypedArray<CSSParserValue>>()
     }
-
 }
 impl CSSParserQualifiedRule {
     /// Getter of the `body` attribute.
@@ -96,5 +100,4 @@ impl CSSParserQualifiedRule {
     pub fn body(&self) -> TypedArray<CSSParserRule> {
         self.inner.get("body").as_::<TypedArray<CSSParserRule>>()
     }
-
 }

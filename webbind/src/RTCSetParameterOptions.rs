@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCSetParameterOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCSetParameterOptions {
 
 impl AsMut<Any> for RTCSetParameterOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCSetParameterOptions> for Any {
@@ -60,4 +57,3 @@ impl From<&RTCSetParameterOptions> for Any {
         s.inner.clone()
     }
 }
-

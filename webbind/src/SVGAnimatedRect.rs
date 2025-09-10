@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGAnimatedRect class.
 /// [`SVGAnimatedRect`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedRect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGAnimatedRect {
 
 impl FromVal for SVGAnimatedRect {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedRect { inner: Any::from_val(v) }
+        SVGAnimatedRect {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGAnimatedRect {
 
 impl AsMut<Any> for SVGAnimatedRect {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGAnimatedRect> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGAnimatedRect> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedRect);
 
-
 impl SVGAnimatedRect {
     /// Getter of the `baseVal` attribute.
     /// [`SVGAnimatedRect.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedRect/baseVal)
     pub fn base_val(&self) -> DOMRect {
         self.inner.get("baseVal").as_::<DOMRect>()
     }
-
 }
 impl SVGAnimatedRect {
     /// Getter of the `animVal` attribute.
@@ -79,5 +76,4 @@ impl SVGAnimatedRect {
     pub fn anim_val(&self) -> DOMRectReadOnly {
         self.inner.get("animVal").as_::<DOMRectReadOnly>()
     }
-
 }

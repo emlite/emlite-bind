@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportCloseInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WebTransportCloseInfo {
 
 impl AsMut<Any> for WebTransportCloseInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportCloseInfo> for Any {

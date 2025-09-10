@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CookieStore class.
 /// [`CookieStore`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CookieStore {
 
 impl FromVal for CookieStore {
     fn from_val(v: &Any) -> Self {
-        CookieStore { inner: EventTarget::from_val(v) }
+        CookieStore {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CookieStore {
 
 impl AsMut<Any> for CookieStore {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CookieStore> for Any {
@@ -64,43 +63,50 @@ impl From<&CookieStore> for Any {
 
 jsbind::utils::impl_dyn_cast!(CookieStore);
 
-
 impl CookieStore {
     /// The get method.
     /// [`CookieStore.get`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/get)
-    pub fn get0(&self, ) -> Promise<CookieListItem> {
+    pub fn get0(&self) -> Promise<CookieListItem> {
         self.inner.call("get", &[]).as_::<Promise<CookieListItem>>()
     }
     /// The get method.
     /// [`CookieStore.get`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/get)
     pub fn get1(&self, options: &CookieStoreGetOptions) -> Promise<CookieListItem> {
-        self.inner.call("get", &[options.into(), ]).as_::<Promise<CookieListItem>>()
+        self.inner
+            .call("get", &[options.into()])
+            .as_::<Promise<CookieListItem>>()
     }
 }
 impl CookieStore {
     /// The getAll method.
     /// [`CookieStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/getAll)
-    pub fn get_all0(&self, ) -> Promise<Any> {
+    pub fn get_all0(&self) -> Promise<Any> {
         self.inner.call("getAll", &[]).as_::<Promise<Any>>()
     }
     /// The getAll method.
     /// [`CookieStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/getAll)
     pub fn get_all1(&self, options: &CookieStoreGetOptions) -> Promise<Any> {
-        self.inner.call("getAll", &[options.into(), ]).as_::<Promise<Any>>()
+        self.inner
+            .call("getAll", &[options.into()])
+            .as_::<Promise<Any>>()
     }
 }
 impl CookieStore {
     /// The set method.
     /// [`CookieStore.set`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/set)
     pub fn set(&self, options: &CookieInit) -> Promise<Undefined> {
-        self.inner.call("set", &[options.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("set", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CookieStore {
     /// The delete method.
     /// [`CookieStore.delete`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/delete)
     pub fn delete(&self, options: &CookieStoreDeleteOptions) -> Promise<Undefined> {
-        self.inner.call("delete", &[options.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("delete", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CookieStore {

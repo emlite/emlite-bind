@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLBaseElement class.
 /// [`HTMLBaseElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLBaseElement {
 
 impl FromVal for HTMLBaseElement {
     fn from_val(v: &Any) -> Self {
-        HTMLBaseElement { inner: HTMLElement::from_val(v) }
+        HTMLBaseElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLBaseElement {
 
 impl AsMut<Any> for HTMLBaseElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLBaseElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLBaseElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLBaseElement);
 
-
-
 impl HTMLBaseElement {
     /// The `new HTMLBaseElement(..)` constructor, creating a new HTMLBaseElement instance
     pub fn new() -> HTMLBaseElement {
@@ -73,7 +70,6 @@ impl HTMLBaseElement {
             inner: Any::global("HTMLBaseElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLBaseElement {
     /// Getter of the `href` attribute.

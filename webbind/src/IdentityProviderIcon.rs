@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdentityProviderIcon dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IdentityProviderIcon {
 
 impl AsMut<Any> for IdentityProviderIcon {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdentityProviderIcon> for Any {

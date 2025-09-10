@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HIDReportItem dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HIDReportItem {
 
 impl AsMut<Any> for HIDReportItem {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HIDReportItem> for Any {
@@ -306,7 +303,9 @@ impl HIDReportItem {
 impl HIDReportItem {
     /// Getter of the `unitFactorLuminousIntensityExponent` attribute.
     pub fn unit_factor_luminous_intensity_exponent(&self) -> i8 {
-        self.inner.get("unitFactorLuminousIntensityExponent").as_::<i8>()
+        self.inner
+            .get("unitFactorLuminousIntensityExponent")
+            .as_::<i8>()
     }
 
     /// Setter of the `unitFactorLuminousIntensityExponent` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdentityResolveOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IdentityResolveOptions {
 
 impl AsMut<Any> for IdentityResolveOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdentityResolveOptions> for Any {

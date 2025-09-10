@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuthenticationExtensionsLargeBlobInputsJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuthenticationExtensionsLargeBlobInputsJSON {
 
 impl AsMut<Any> for AuthenticationExtensionsLargeBlobInputsJSON {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuthenticationExtensionsLargeBlobInputsJSON> for Any {

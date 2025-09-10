@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ProximitySensor class.
 /// [`ProximitySensor`](https://developer.mozilla.org/en-US/docs/Web/API/ProximitySensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ProximitySensor {
 
 impl FromVal for ProximitySensor {
     fn from_val(v: &Any) -> Self {
-        ProximitySensor { inner: Sensor::from_val(v) }
+        ProximitySensor {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ProximitySensor {
 
 impl AsMut<Any> for ProximitySensor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ProximitySensor> for Any {
@@ -64,8 +63,6 @@ impl From<&ProximitySensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(ProximitySensor);
 
-
-
 impl ProximitySensor {
     /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
     pub fn new0() -> ProximitySensor {
@@ -77,10 +74,11 @@ impl ProximitySensor {
     /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
     pub fn new1(sensor_options: &SensorOptions) -> ProximitySensor {
         Self {
-            inner: Any::global("ProximitySensor").new(&[sensor_options.into()]).as_::<Sensor>(),
+            inner: Any::global("ProximitySensor")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
         }
     }
-
 }
 impl ProximitySensor {
     /// Getter of the `distance` attribute.
@@ -88,7 +86,6 @@ impl ProximitySensor {
     pub fn distance(&self) -> f64 {
         self.inner.get("distance").as_::<f64>()
     }
-
 }
 impl ProximitySensor {
     /// Getter of the `max` attribute.
@@ -96,7 +93,6 @@ impl ProximitySensor {
     pub fn max(&self) -> f64 {
         self.inner.get("max").as_::<f64>()
     }
-
 }
 impl ProximitySensor {
     /// Getter of the `near` attribute.
@@ -104,5 +100,4 @@ impl ProximitySensor {
     pub fn near(&self) -> bool {
         self.inner.get("near").as_::<bool>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SummarizerSummarizeOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SummarizerSummarizeOptions {
 
 impl AsMut<Any> for SummarizerSummarizeOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SummarizerSummarizeOptions> for Any {

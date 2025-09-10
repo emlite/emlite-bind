@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NDEFMakeReadOnlyOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for NDEFMakeReadOnlyOptions {
 
 impl AsMut<Any> for NDEFMakeReadOnlyOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NDEFMakeReadOnlyOptions> for Any {

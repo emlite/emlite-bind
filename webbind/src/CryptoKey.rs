@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CryptoKey class.
 /// [`CryptoKey`](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CryptoKey {
 
 impl FromVal for CryptoKey {
     fn from_val(v: &Any) -> Self {
-        CryptoKey { inner: Any::from_val(v) }
+        CryptoKey {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CryptoKey {
 
 impl AsMut<Any> for CryptoKey {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CryptoKey> for Any {
@@ -64,14 +63,12 @@ impl From<&CryptoKey> for Any {
 
 jsbind::utils::impl_dyn_cast!(CryptoKey);
 
-
 impl CryptoKey {
     /// Getter of the `type` attribute.
     /// [`CryptoKey.type`](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey/type)
     pub fn type_(&self) -> KeyType {
         self.inner.get("type").as_::<KeyType>()
     }
-
 }
 impl CryptoKey {
     /// Getter of the `extractable` attribute.
@@ -79,7 +76,6 @@ impl CryptoKey {
     pub fn extractable(&self) -> bool {
         self.inner.get("extractable").as_::<bool>()
     }
-
 }
 impl CryptoKey {
     /// Getter of the `algorithm` attribute.
@@ -87,7 +83,6 @@ impl CryptoKey {
     pub fn algorithm(&self) -> Object {
         self.inner.get("algorithm").as_::<Object>()
     }
-
 }
 impl CryptoKey {
     /// Getter of the `usages` attribute.
@@ -95,5 +90,4 @@ impl CryptoKey {
     pub fn usages(&self) -> Object {
         self.inner.get("usages").as_::<Object>()
     }
-
 }

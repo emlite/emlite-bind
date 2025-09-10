@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCIceCandidatePairStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCIceCandidatePairStats {
 
 impl AsMut<Any> for RTCIceCandidatePairStats {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCIceCandidatePairStats> for Any {
@@ -97,7 +94,9 @@ impl RTCIceCandidatePairStats {
 impl RTCIceCandidatePairStats {
     /// Getter of the `state` attribute.
     pub fn state(&self) -> RTCStatsIceCandidatePairState {
-        self.inner.get("state").as_::<RTCStatsIceCandidatePairState>()
+        self.inner
+            .get("state")
+            .as_::<RTCStatsIceCandidatePairState>()
     }
 
     /// Setter of the `state` attribute.

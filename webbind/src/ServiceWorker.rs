@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ServiceWorker class.
 /// [`ServiceWorker`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ServiceWorker {
 
 impl FromVal for ServiceWorker {
     fn from_val(v: &Any) -> Self {
-        ServiceWorker { inner: EventTarget::from_val(v) }
+        ServiceWorker {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ServiceWorker {
 
 impl AsMut<Any> for ServiceWorker {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ServiceWorker> for Any {
@@ -64,14 +63,12 @@ impl From<&ServiceWorker> for Any {
 
 jsbind::utils::impl_dyn_cast!(ServiceWorker);
 
-
 impl ServiceWorker {
     /// Getter of the `scriptURL` attribute.
     /// [`ServiceWorker.scriptURL`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/scriptURL)
     pub fn script_url(&self) -> JsString {
         self.inner.get("scriptURL").as_::<JsString>()
     }
-
 }
 impl ServiceWorker {
     /// Getter of the `state` attribute.
@@ -79,18 +76,21 @@ impl ServiceWorker {
     pub fn state(&self) -> ServiceWorkerState {
         self.inner.get("state").as_::<ServiceWorkerState>()
     }
-
 }
 impl ServiceWorker {
     /// The postMessage method.
     /// [`ServiceWorker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/postMessage)
     pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
     /// The postMessage method.
     /// [`ServiceWorker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/postMessage)
     pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }
 impl ServiceWorker {

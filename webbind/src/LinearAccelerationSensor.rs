@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LinearAccelerationSensor class.
 /// [`LinearAccelerationSensor`](https://developer.mozilla.org/en-US/docs/Web/API/LinearAccelerationSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct LinearAccelerationSensor {
 
 impl FromVal for LinearAccelerationSensor {
     fn from_val(v: &Any) -> Self {
-        LinearAccelerationSensor { inner: Accelerometer::from_val(v) }
+        LinearAccelerationSensor {
+            inner: Accelerometer::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for LinearAccelerationSensor {
 
 impl AsMut<Any> for LinearAccelerationSensor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LinearAccelerationSensor> for Any {
@@ -64,21 +63,22 @@ impl From<&LinearAccelerationSensor> for Any {
 
 jsbind::utils::impl_dyn_cast!(LinearAccelerationSensor);
 
-
-
 impl LinearAccelerationSensor {
     /// The `new LinearAccelerationSensor(..)` constructor, creating a new LinearAccelerationSensor instance
     pub fn new0() -> LinearAccelerationSensor {
         Self {
-            inner: Any::global("LinearAccelerationSensor").new(&[]).as_::<Accelerometer>(),
+            inner: Any::global("LinearAccelerationSensor")
+                .new(&[])
+                .as_::<Accelerometer>(),
         }
     }
 
     /// The `new LinearAccelerationSensor(..)` constructor, creating a new LinearAccelerationSensor instance
     pub fn new1(options: &AccelerometerSensorOptions) -> LinearAccelerationSensor {
         Self {
-            inner: Any::global("LinearAccelerationSensor").new(&[options.into()]).as_::<Accelerometer>(),
+            inner: Any::global("LinearAccelerationSensor")
+                .new(&[options.into()])
+                .as_::<Accelerometer>(),
         }
     }
-
 }

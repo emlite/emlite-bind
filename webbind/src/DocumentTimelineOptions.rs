@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DocumentTimelineOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DocumentTimelineOptions {
 
 impl AsMut<Any> for DocumentTimelineOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DocumentTimelineOptions> for Any {

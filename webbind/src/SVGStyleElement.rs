@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGStyleElement class.
 /// [`SVGStyleElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGStyleElement {
 
 impl FromVal for SVGStyleElement {
     fn from_val(v: &Any) -> Self {
-        SVGStyleElement { inner: SVGElement::from_val(v) }
+        SVGStyleElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGStyleElement {
 
 impl AsMut<Any> for SVGStyleElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGStyleElement> for Any {
@@ -63,7 +62,6 @@ impl From<&SVGStyleElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGStyleElement);
-
 
 impl SVGStyleElement {
     /// Getter of the `type` attribute.
@@ -110,5 +108,4 @@ impl SVGStyleElement {
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
     }
-
 }

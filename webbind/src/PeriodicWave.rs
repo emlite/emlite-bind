@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PeriodicWave class.
 /// [`PeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicWave)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PeriodicWave {
 
 impl FromVal for PeriodicWave {
     fn from_val(v: &Any) -> Self {
-        PeriodicWave { inner: Any::from_val(v) }
+        PeriodicWave {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PeriodicWave {
 
 impl AsMut<Any> for PeriodicWave {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PeriodicWave> for Any {
@@ -64,21 +63,22 @@ impl From<&PeriodicWave> for Any {
 
 jsbind::utils::impl_dyn_cast!(PeriodicWave);
 
-
-
 impl PeriodicWave {
     /// The `new PeriodicWave(..)` constructor, creating a new PeriodicWave instance
     pub fn new0(context: &BaseAudioContext) -> PeriodicWave {
         Self {
-            inner: Any::global("PeriodicWave").new(&[context.into()]).as_::<Any>(),
+            inner: Any::global("PeriodicWave")
+                .new(&[context.into()])
+                .as_::<Any>(),
         }
     }
 
     /// The `new PeriodicWave(..)` constructor, creating a new PeriodicWave instance
     pub fn new1(context: &BaseAudioContext, options: &PeriodicWaveOptions) -> PeriodicWave {
         Self {
-            inner: Any::global("PeriodicWave").new(&[context.into(), options.into()]).as_::<Any>(),
+            inner: Any::global("PeriodicWave")
+                .new(&[context.into(), options.into()])
+                .as_::<Any>(),
         }
     }
-
 }

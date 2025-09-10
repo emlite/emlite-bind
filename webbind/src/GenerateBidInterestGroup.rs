@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GenerateBidInterestGroup dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GenerateBidInterestGroup {
 
 impl AsMut<Any> for GenerateBidInterestGroup {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GenerateBidInterestGroup> for Any {
@@ -86,7 +83,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `enableBiddingSignalsPrioritization` attribute.
     pub fn enable_bidding_signals_prioritization(&self) -> bool {
-        self.inner.get("enableBiddingSignalsPrioritization").as_::<bool>()
+        self.inner
+            .get("enableBiddingSignalsPrioritization")
+            .as_::<bool>()
     }
 
     /// Setter of the `enableBiddingSignalsPrioritization` attribute.
@@ -97,7 +96,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `priorityVector` attribute.
     pub fn priority_vector(&self) -> Record<JsString, f64> {
-        self.inner.get("priorityVector").as_::<Record<JsString, f64>>()
+        self.inner
+            .get("priorityVector")
+            .as_::<Record<JsString, f64>>()
     }
 
     /// Setter of the `priorityVector` attribute.
@@ -108,7 +109,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `sellerCapabilities` attribute.
     pub fn seller_capabilities(&self) -> Record<JsString, TypedArray<JsString>> {
-        self.inner.get("sellerCapabilities").as_::<Record<JsString, TypedArray<JsString>>>()
+        self.inner
+            .get("sellerCapabilities")
+            .as_::<Record<JsString, TypedArray<JsString>>>()
     }
 
     /// Setter of the `sellerCapabilities` attribute.
@@ -174,7 +177,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `trustedBiddingSignalsKeys` attribute.
     pub fn trusted_bidding_signals_keys(&self) -> TypedArray<JsString> {
-        self.inner.get("trustedBiddingSignalsKeys").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("trustedBiddingSignalsKeys")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `trustedBiddingSignalsKeys` attribute.
@@ -185,7 +190,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `trustedBiddingSignalsSlotSizeMode` attribute.
     pub fn trusted_bidding_signals_slot_size_mode(&self) -> JsString {
-        self.inner.get("trustedBiddingSignalsSlotSizeMode").as_::<JsString>()
+        self.inner
+            .get("trustedBiddingSignalsSlotSizeMode")
+            .as_::<JsString>()
     }
 
     /// Setter of the `trustedBiddingSignalsSlotSizeMode` attribute.
@@ -196,7 +203,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `maxTrustedBiddingSignalsURLLength` attribute.
     pub fn max_trusted_bidding_signals_url_length(&self) -> i32 {
-        self.inner.get("maxTrustedBiddingSignalsURLLength").as_::<i32>()
+        self.inner
+            .get("maxTrustedBiddingSignalsURLLength")
+            .as_::<i32>()
     }
 
     /// Setter of the `maxTrustedBiddingSignalsURLLength` attribute.
@@ -207,7 +216,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `trustedBiddingSignalsCoordinator` attribute.
     pub fn trusted_bidding_signals_coordinator(&self) -> JsString {
-        self.inner.get("trustedBiddingSignalsCoordinator").as_::<JsString>()
+        self.inner
+            .get("trustedBiddingSignalsCoordinator")
+            .as_::<JsString>()
     }
 
     /// Setter of the `trustedBiddingSignalsCoordinator` attribute.
@@ -240,7 +251,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `adComponents` attribute.
     pub fn ad_components(&self) -> TypedArray<AuctionAd> {
-        self.inner.get("adComponents").as_::<TypedArray<AuctionAd>>()
+        self.inner
+            .get("adComponents")
+            .as_::<TypedArray<AuctionAd>>()
     }
 
     /// Setter of the `adComponents` attribute.
@@ -251,7 +264,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `adSizes` attribute.
     pub fn ad_sizes(&self) -> Record<JsString, AuctionAdInterestGroupSize> {
-        self.inner.get("adSizes").as_::<Record<JsString, AuctionAdInterestGroupSize>>()
+        self.inner
+            .get("adSizes")
+            .as_::<Record<JsString, AuctionAdInterestGroupSize>>()
     }
 
     /// Setter of the `adSizes` attribute.
@@ -262,7 +277,9 @@ impl GenerateBidInterestGroup {
 impl GenerateBidInterestGroup {
     /// Getter of the `sizeGroups` attribute.
     pub fn size_groups(&self) -> Record<JsString, TypedArray<JsString>> {
-        self.inner.get("sizeGroups").as_::<Record<JsString, TypedArray<JsString>>>()
+        self.inner
+            .get("sizeGroups")
+            .as_::<Record<JsString, TypedArray<JsString>>>()
     }
 
     /// Setter of the `sizeGroups` attribute.

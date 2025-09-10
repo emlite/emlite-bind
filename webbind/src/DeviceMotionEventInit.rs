@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DeviceMotionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DeviceMotionEventInit {
 
 impl AsMut<Any> for DeviceMotionEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DeviceMotionEventInit> for Any {
@@ -64,7 +61,9 @@ impl From<&DeviceMotionEventInit> for Any {
 impl DeviceMotionEventInit {
     /// Getter of the `acceleration` attribute.
     pub fn acceleration(&self) -> DeviceMotionEventAccelerationInit {
-        self.inner.get("acceleration").as_::<DeviceMotionEventAccelerationInit>()
+        self.inner
+            .get("acceleration")
+            .as_::<DeviceMotionEventAccelerationInit>()
     }
 
     /// Setter of the `acceleration` attribute.
@@ -75,18 +74,25 @@ impl DeviceMotionEventInit {
 impl DeviceMotionEventInit {
     /// Getter of the `accelerationIncludingGravity` attribute.
     pub fn acceleration_including_gravity(&self) -> DeviceMotionEventAccelerationInit {
-        self.inner.get("accelerationIncludingGravity").as_::<DeviceMotionEventAccelerationInit>()
+        self.inner
+            .get("accelerationIncludingGravity")
+            .as_::<DeviceMotionEventAccelerationInit>()
     }
 
     /// Setter of the `accelerationIncludingGravity` attribute.
-    pub fn set_acceleration_including_gravity(&mut self, value: &DeviceMotionEventAccelerationInit) {
+    pub fn set_acceleration_including_gravity(
+        &mut self,
+        value: &DeviceMotionEventAccelerationInit,
+    ) {
         self.inner.set("accelerationIncludingGravity", value);
     }
 }
 impl DeviceMotionEventInit {
     /// Getter of the `rotationRate` attribute.
     pub fn rotation_rate(&self) -> DeviceMotionEventRotationRateInit {
-        self.inner.get("rotationRate").as_::<DeviceMotionEventRotationRateInit>()
+        self.inner
+            .get("rotationRate")
+            .as_::<DeviceMotionEventRotationRateInit>()
     }
 
     /// Setter of the `rotationRate` attribute.

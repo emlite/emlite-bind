@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLGatherOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLGatherOptions {
 
 impl AsMut<Any> for MLGatherOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLGatherOptions> for Any {

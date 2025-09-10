@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TaskController class.
 /// [`TaskController`](https://developer.mozilla.org/en-US/docs/Web/API/TaskController)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TaskController {
 
 impl FromVal for TaskController {
     fn from_val(v: &Any) -> Self {
-        TaskController { inner: AbortController::from_val(v) }
+        TaskController {
+            inner: AbortController::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TaskController {
 
 impl AsMut<Any> for TaskController {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TaskController> for Any {
@@ -64,28 +63,31 @@ impl From<&TaskController> for Any {
 
 jsbind::utils::impl_dyn_cast!(TaskController);
 
-
-
 impl TaskController {
     /// The `new TaskController(..)` constructor, creating a new TaskController instance
     pub fn new0() -> TaskController {
         Self {
-            inner: Any::global("TaskController").new(&[]).as_::<AbortController>(),
+            inner: Any::global("TaskController")
+                .new(&[])
+                .as_::<AbortController>(),
         }
     }
 
     /// The `new TaskController(..)` constructor, creating a new TaskController instance
     pub fn new1(init: &TaskControllerInit) -> TaskController {
         Self {
-            inner: Any::global("TaskController").new(&[init.into()]).as_::<AbortController>(),
+            inner: Any::global("TaskController")
+                .new(&[init.into()])
+                .as_::<AbortController>(),
         }
     }
-
 }
 impl TaskController {
     /// The setPriority method.
     /// [`TaskController.setPriority`](https://developer.mozilla.org/en-US/docs/Web/API/TaskController/setPriority)
     pub fn set_priority(&self, priority: &TaskPriority) -> Undefined {
-        self.inner.call("setPriority", &[priority.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setPriority", &[priority.into()])
+            .as_::<Undefined>()
     }
 }

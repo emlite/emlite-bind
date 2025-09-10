@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FetchLaterResult class.
 /// [`FetchLaterResult`](https://developer.mozilla.org/en-US/docs/Web/API/FetchLaterResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FetchLaterResult {
 
 impl FromVal for FetchLaterResult {
     fn from_val(v: &Any) -> Self {
-        FetchLaterResult { inner: Any::from_val(v) }
+        FetchLaterResult {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FetchLaterResult {
 
 impl AsMut<Any> for FetchLaterResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FetchLaterResult> for Any {
@@ -64,12 +63,10 @@ impl From<&FetchLaterResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(FetchLaterResult);
 
-
 impl FetchLaterResult {
     /// Getter of the `activated` attribute.
     /// [`FetchLaterResult.activated`](https://developer.mozilla.org/en-US/docs/Web/API/FetchLaterResult/activated)
     pub fn activated(&self) -> bool {
         self.inner.get("activated").as_::<bool>()
     }
-
 }

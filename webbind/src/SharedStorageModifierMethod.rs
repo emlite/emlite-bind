@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SharedStorageModifierMethod class.
 /// [`SharedStorageModifierMethod`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageModifierMethod)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SharedStorageModifierMethod {
 
 impl FromVal for SharedStorageModifierMethod {
     fn from_val(v: &Any) -> Self {
-        SharedStorageModifierMethod { inner: Any::from_val(v) }
+        SharedStorageModifierMethod {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SharedStorageModifierMethod {
 
 impl AsMut<Any> for SharedStorageModifierMethod {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SharedStorageModifierMethod> for Any {
@@ -63,5 +62,3 @@ impl From<&SharedStorageModifierMethod> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SharedStorageModifierMethod);
-
-

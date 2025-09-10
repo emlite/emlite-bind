@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUProgrammableStage dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUProgrammableStage {
 
 impl AsMut<Any> for GPUProgrammableStage {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUProgrammableStage> for Any {

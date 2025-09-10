@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSTransformValue class.
 /// [`CSSTransformValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSTransformValue {
 
 impl FromVal for CSSTransformValue {
     fn from_val(v: &Any) -> Self {
-        CSSTransformValue { inner: CSSStyleValue::from_val(v) }
+        CSSTransformValue {
+            inner: CSSStyleValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSTransformValue {
 
 impl AsMut<Any> for CSSTransformValue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSTransformValue> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSTransformValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSTransformValue);
 
-
-
 impl CSSTransformValue {
     /// The `new CSSTransformValue(..)` constructor, creating a new CSSTransformValue instance
     pub fn new(transforms: &TypedArray<CSSTransformComponent>) -> CSSTransformValue {
         Self {
-            inner: Any::global("CSSTransformValue").new(&[transforms.into()]).as_::<CSSStyleValue>(),
+            inner: Any::global("CSSTransformValue")
+                .new(&[transforms.into()])
+                .as_::<CSSStyleValue>(),
         }
     }
-
 }
 impl CSSTransformValue {
     /// Getter of the `length` attribute.
@@ -81,7 +79,6 @@ impl CSSTransformValue {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl CSSTransformValue {
     /// Getter of the `is2D` attribute.
@@ -89,12 +86,11 @@ impl CSSTransformValue {
     pub fn is2_d(&self) -> bool {
         self.inner.get("is2D").as_::<bool>()
     }
-
 }
 impl CSSTransformValue {
     /// The toMatrix method.
     /// [`CSSTransformValue.toMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformValue/toMatrix)
-    pub fn to_matrix(&self, ) -> DOMMatrix {
+    pub fn to_matrix(&self) -> DOMMatrix {
         self.inner.call("toMatrix", &[]).as_::<DOMMatrix>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PannerNode class.
 /// [`PannerNode`](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PannerNode {
 
 impl FromVal for PannerNode {
     fn from_val(v: &Any) -> Self {
-        PannerNode { inner: AudioNode::from_val(v) }
+        PannerNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PannerNode {
 
 impl AsMut<Any> for PannerNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PannerNode> for Any {
@@ -64,23 +63,24 @@ impl From<&PannerNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(PannerNode);
 
-
-
 impl PannerNode {
     /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
     pub fn new0(context: &BaseAudioContext) -> PannerNode {
         Self {
-            inner: Any::global("PannerNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("PannerNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
     pub fn new1(context: &BaseAudioContext, options: &PannerOptions) -> PannerNode {
         Self {
-            inner: Any::global("PannerNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("PannerNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl PannerNode {
     /// Getter of the `panningModel` attribute.
@@ -101,7 +101,6 @@ impl PannerNode {
     pub fn position_x(&self) -> AudioParam {
         self.inner.get("positionX").as_::<AudioParam>()
     }
-
 }
 impl PannerNode {
     /// Getter of the `positionY` attribute.
@@ -109,7 +108,6 @@ impl PannerNode {
     pub fn position_y(&self) -> AudioParam {
         self.inner.get("positionY").as_::<AudioParam>()
     }
-
 }
 impl PannerNode {
     /// Getter of the `positionZ` attribute.
@@ -117,7 +115,6 @@ impl PannerNode {
     pub fn position_z(&self) -> AudioParam {
         self.inner.get("positionZ").as_::<AudioParam>()
     }
-
 }
 impl PannerNode {
     /// Getter of the `orientationX` attribute.
@@ -125,7 +122,6 @@ impl PannerNode {
     pub fn orientation_x(&self) -> AudioParam {
         self.inner.get("orientationX").as_::<AudioParam>()
     }
-
 }
 impl PannerNode {
     /// Getter of the `orientationY` attribute.
@@ -133,7 +129,6 @@ impl PannerNode {
     pub fn orientation_y(&self) -> AudioParam {
         self.inner.get("orientationY").as_::<AudioParam>()
     }
-
 }
 impl PannerNode {
     /// Getter of the `orientationZ` attribute.
@@ -141,7 +136,6 @@ impl PannerNode {
     pub fn orientation_z(&self) -> AudioParam {
         self.inner.get("orientationZ").as_::<AudioParam>()
     }
-
 }
 impl PannerNode {
     /// Getter of the `distanceModel` attribute.
@@ -238,13 +232,17 @@ impl PannerNode {
     /// The setPosition method.
     /// [`PannerNode.setPosition`](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/setPosition)
     pub fn set_position(&self, x: f32, y: f32, z: f32) -> Undefined {
-        self.inner.call("setPosition", &[x.into(), y.into(), z.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setPosition", &[x.into(), y.into(), z.into()])
+            .as_::<Undefined>()
     }
 }
 impl PannerNode {
     /// The setOrientation method.
     /// [`PannerNode.setOrientation`](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/setOrientation)
     pub fn set_orientation(&self, x: f32, y: f32, z: f32) -> Undefined {
-        self.inner.call("setOrientation", &[x.into(), y.into(), z.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setOrientation", &[x.into(), y.into(), z.into()])
+            .as_::<Undefined>()
     }
 }

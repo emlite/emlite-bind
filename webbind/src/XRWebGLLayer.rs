@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRWebGLLayer class.
 /// [`XRWebGLLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLLayer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRWebGLLayer {
 
 impl FromVal for XRWebGLLayer {
     fn from_val(v: &Any) -> Self {
-        XRWebGLLayer { inner: XRLayer::from_val(v) }
+        XRWebGLLayer {
+            inner: XRLayer::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRWebGLLayer {
 
 impl AsMut<Any> for XRWebGLLayer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRWebGLLayer> for Any {
@@ -64,23 +63,24 @@ impl From<&XRWebGLLayer> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRWebGLLayer);
 
-
-
 impl XRWebGLLayer {
     /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
     pub fn new0(session: &XRSession, context: &Any) -> XRWebGLLayer {
         Self {
-            inner: Any::global("XRWebGLLayer").new(&[session.into(), context.into()]).as_::<XRLayer>(),
+            inner: Any::global("XRWebGLLayer")
+                .new(&[session.into(), context.into()])
+                .as_::<XRLayer>(),
         }
     }
 
     /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
     pub fn new1(session: &XRSession, context: &Any, layer_init: &XRWebGLLayerInit) -> XRWebGLLayer {
         Self {
-            inner: Any::global("XRWebGLLayer").new(&[session.into(), context.into(), layer_init.into()]).as_::<XRLayer>(),
+            inner: Any::global("XRWebGLLayer")
+                .new(&[session.into(), context.into(), layer_init.into()])
+                .as_::<XRLayer>(),
         }
     }
-
 }
 impl XRWebGLLayer {
     /// Getter of the `antialias` attribute.
@@ -88,7 +88,6 @@ impl XRWebGLLayer {
     pub fn antialias(&self) -> bool {
         self.inner.get("antialias").as_::<bool>()
     }
-
 }
 impl XRWebGLLayer {
     /// Getter of the `ignoreDepthValues` attribute.
@@ -96,7 +95,6 @@ impl XRWebGLLayer {
     pub fn ignore_depth_values(&self) -> bool {
         self.inner.get("ignoreDepthValues").as_::<bool>()
     }
-
 }
 impl XRWebGLLayer {
     /// Getter of the `fixedFoveation` attribute.
@@ -117,7 +115,6 @@ impl XRWebGLLayer {
     pub fn framebuffer(&self) -> WebGLFramebuffer {
         self.inner.get("framebuffer").as_::<WebGLFramebuffer>()
     }
-
 }
 impl XRWebGLLayer {
     /// Getter of the `framebufferWidth` attribute.
@@ -125,7 +122,6 @@ impl XRWebGLLayer {
     pub fn framebuffer_width(&self) -> u32 {
         self.inner.get("framebufferWidth").as_::<u32>()
     }
-
 }
 impl XRWebGLLayer {
     /// Getter of the `framebufferHeight` attribute.
@@ -133,19 +129,22 @@ impl XRWebGLLayer {
     pub fn framebuffer_height(&self) -> u32 {
         self.inner.get("framebufferHeight").as_::<u32>()
     }
-
 }
 impl XRWebGLLayer {
     /// The getViewport method.
     /// [`XRWebGLLayer.getViewport`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLLayer/getViewport)
     pub fn get_viewport(&self, view: &XRView) -> XRViewport {
-        self.inner.call("getViewport", &[view.into(), ]).as_::<XRViewport>()
+        self.inner
+            .call("getViewport", &[view.into()])
+            .as_::<XRViewport>()
     }
 }
 impl XRWebGLLayer {
     /// The getNativeFramebufferScaleFactor method.
     /// [`XRWebGLLayer.getNativeFramebufferScaleFactor`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLLayer/getNativeFramebufferScaleFactor)
     pub fn get_native_framebuffer_scale_factor(session: &XRSession) -> f64 {
-        Any::global("XRWebGLLayer").call("getNativeFramebufferScaleFactor", &[session.into(), ]).as_::<f64>()
+        Any::global("XRWebGLLayer")
+            .call("getNativeFramebufferScaleFactor", &[session.into()])
+            .as_::<f64>()
     }
 }

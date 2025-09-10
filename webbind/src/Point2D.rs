@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Point2D dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for Point2D {
 
 impl AsMut<Any> for Point2D {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Point2D> for Any {

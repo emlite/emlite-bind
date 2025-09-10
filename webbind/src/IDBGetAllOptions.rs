@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBGetAllOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IDBGetAllOptions {
 
 impl AsMut<Any> for IDBGetAllOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBGetAllOptions> for Any {

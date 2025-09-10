@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLMeterElement class.
 /// [`HTMLMeterElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMeterElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLMeterElement {
 
 impl FromVal for HTMLMeterElement {
     fn from_val(v: &Any) -> Self {
-        HTMLMeterElement { inner: HTMLElement::from_val(v) }
+        HTMLMeterElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLMeterElement {
 
 impl AsMut<Any> for HTMLMeterElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLMeterElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLMeterElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLMeterElement);
 
-
-
 impl HTMLMeterElement {
     /// The `new HTMLMeterElement(..)` constructor, creating a new HTMLMeterElement instance
     pub fn new() -> HTMLMeterElement {
         Self {
-            inner: Any::global("HTMLMeterElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLMeterElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLMeterElement {
     /// Getter of the `value` attribute.
@@ -159,5 +157,4 @@ impl HTMLMeterElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
-
 }

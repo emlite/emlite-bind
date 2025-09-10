@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ValidityState class.
 /// [`ValidityState`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ValidityState {
 
 impl FromVal for ValidityState {
     fn from_val(v: &Any) -> Self {
-        ValidityState { inner: Any::from_val(v) }
+        ValidityState {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ValidityState {
 
 impl AsMut<Any> for ValidityState {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ValidityState> for Any {
@@ -64,14 +63,12 @@ impl From<&ValidityState> for Any {
 
 jsbind::utils::impl_dyn_cast!(ValidityState);
 
-
 impl ValidityState {
     /// Getter of the `valueMissing` attribute.
     /// [`ValidityState.valueMissing`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/valueMissing)
     pub fn value_missing(&self) -> bool {
         self.inner.get("valueMissing").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `typeMismatch` attribute.
@@ -79,7 +76,6 @@ impl ValidityState {
     pub fn type_mismatch(&self) -> bool {
         self.inner.get("typeMismatch").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `patternMismatch` attribute.
@@ -87,7 +83,6 @@ impl ValidityState {
     pub fn pattern_mismatch(&self) -> bool {
         self.inner.get("patternMismatch").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `tooLong` attribute.
@@ -95,7 +90,6 @@ impl ValidityState {
     pub fn too_long(&self) -> bool {
         self.inner.get("tooLong").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `tooShort` attribute.
@@ -103,7 +97,6 @@ impl ValidityState {
     pub fn too_short(&self) -> bool {
         self.inner.get("tooShort").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `rangeUnderflow` attribute.
@@ -111,7 +104,6 @@ impl ValidityState {
     pub fn range_underflow(&self) -> bool {
         self.inner.get("rangeUnderflow").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `rangeOverflow` attribute.
@@ -119,7 +111,6 @@ impl ValidityState {
     pub fn range_overflow(&self) -> bool {
         self.inner.get("rangeOverflow").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `stepMismatch` attribute.
@@ -127,7 +118,6 @@ impl ValidityState {
     pub fn step_mismatch(&self) -> bool {
         self.inner.get("stepMismatch").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `badInput` attribute.
@@ -135,7 +125,6 @@ impl ValidityState {
     pub fn bad_input(&self) -> bool {
         self.inner.get("badInput").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `customError` attribute.
@@ -143,7 +132,6 @@ impl ValidityState {
     pub fn custom_error(&self) -> bool {
         self.inner.get("customError").as_::<bool>()
     }
-
 }
 impl ValidityState {
     /// Getter of the `valid` attribute.
@@ -151,5 +139,4 @@ impl ValidityState {
     pub fn valid(&self) -> bool {
         self.inner.get("valid").as_::<bool>()
     }
-
 }

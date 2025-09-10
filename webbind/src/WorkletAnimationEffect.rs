@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WorkletAnimationEffect class.
 /// [`WorkletAnimationEffect`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WorkletAnimationEffect {
 
 impl FromVal for WorkletAnimationEffect {
     fn from_val(v: &Any) -> Self {
-        WorkletAnimationEffect { inner: Any::from_val(v) }
+        WorkletAnimationEffect {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WorkletAnimationEffect {
 
 impl AsMut<Any> for WorkletAnimationEffect {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WorkletAnimationEffect> for Any {
@@ -64,19 +63,20 @@ impl From<&WorkletAnimationEffect> for Any {
 
 jsbind::utils::impl_dyn_cast!(WorkletAnimationEffect);
 
-
 impl WorkletAnimationEffect {
     /// The getTiming method.
     /// [`WorkletAnimationEffect.getTiming`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/getTiming)
-    pub fn get_timing(&self, ) -> EffectTiming {
+    pub fn get_timing(&self) -> EffectTiming {
         self.inner.call("getTiming", &[]).as_::<EffectTiming>()
     }
 }
 impl WorkletAnimationEffect {
     /// The getComputedTiming method.
     /// [`WorkletAnimationEffect.getComputedTiming`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/getComputedTiming)
-    pub fn get_computed_timing(&self, ) -> ComputedEffectTiming {
-        self.inner.call("getComputedTiming", &[]).as_::<ComputedEffectTiming>()
+    pub fn get_computed_timing(&self) -> ComputedEffectTiming {
+        self.inner
+            .call("getComputedTiming", &[])
+            .as_::<ComputedEffectTiming>()
     }
 }
 impl WorkletAnimationEffect {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TopLevelStorageAccessPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for TopLevelStorageAccessPermissionDescriptor {
 
 impl AsMut<Any> for TopLevelStorageAccessPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TopLevelStorageAccessPermissionDescriptor> for Any {

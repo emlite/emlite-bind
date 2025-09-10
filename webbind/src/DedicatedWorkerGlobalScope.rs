@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DedicatedWorkerGlobalScope class.
 /// [`DedicatedWorkerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DedicatedWorkerGlobalScope {
 
 impl FromVal for DedicatedWorkerGlobalScope {
     fn from_val(v: &Any) -> Self {
-        DedicatedWorkerGlobalScope { inner: WorkerGlobalScope::from_val(v) }
+        DedicatedWorkerGlobalScope {
+            inner: WorkerGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DedicatedWorkerGlobalScope {
 
 impl AsMut<Any> for DedicatedWorkerGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DedicatedWorkerGlobalScope> for Any {
@@ -64,31 +63,33 @@ impl From<&DedicatedWorkerGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(DedicatedWorkerGlobalScope);
 
-
 impl DedicatedWorkerGlobalScope {
     /// Getter of the `name` attribute.
     /// [`DedicatedWorkerGlobalScope.name`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl DedicatedWorkerGlobalScope {
     /// The postMessage method.
     /// [`DedicatedWorkerGlobalScope.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
     pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
     /// The postMessage method.
     /// [`DedicatedWorkerGlobalScope.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
     pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }
 impl DedicatedWorkerGlobalScope {
     /// The close method.
     /// [`DedicatedWorkerGlobalScope.close`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/close)
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
@@ -109,14 +110,18 @@ impl DedicatedWorkerGlobalScope {
     /// The requestAnimationFrame method.
     /// [`DedicatedWorkerGlobalScope.requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame)
     pub fn request_animation_frame(&self, callback: &Function) -> u32 {
-        self.inner.call("requestAnimationFrame", &[callback.into(), ]).as_::<u32>()
+        self.inner
+            .call("requestAnimationFrame", &[callback.into()])
+            .as_::<u32>()
     }
 }
 impl DedicatedWorkerGlobalScope {
     /// The cancelAnimationFrame method.
     /// [`DedicatedWorkerGlobalScope.cancelAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame)
     pub fn cancel_animation_frame(&self, handle: u32) -> Undefined {
-        self.inner.call("cancelAnimationFrame", &[handle.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("cancelAnimationFrame", &[handle.into()])
+            .as_::<Undefined>()
     }
 }
 impl DedicatedWorkerGlobalScope {

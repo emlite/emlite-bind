@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MIDIConnectionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MIDIConnectionEventInit {
 
 impl AsMut<Any> for MIDIConnectionEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MIDIConnectionEventInit> for Any {

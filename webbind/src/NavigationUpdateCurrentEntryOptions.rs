@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigationUpdateCurrentEntryOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for NavigationUpdateCurrentEntryOptions {
 
 impl AsMut<Any> for NavigationUpdateCurrentEntryOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigationUpdateCurrentEntryOptions> for Any {

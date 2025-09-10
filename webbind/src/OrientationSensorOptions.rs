@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OrientationSensorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for OrientationSensorOptions {
 
 impl AsMut<Any> for OrientationSensorOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OrientationSensorOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&OrientationSensorOptions> for Any {
 impl OrientationSensorOptions {
     /// Getter of the `referenceFrame` attribute.
     pub fn reference_frame(&self) -> OrientationSensorLocalCoordinateSystem {
-        self.inner.get("referenceFrame").as_::<OrientationSensorLocalCoordinateSystem>()
+        self.inner
+            .get("referenceFrame")
+            .as_::<OrientationSensorLocalCoordinateSystem>()
     }
 
     /// Setter of the `referenceFrame` attribute.

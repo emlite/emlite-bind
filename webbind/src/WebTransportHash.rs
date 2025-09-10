@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportHash dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WebTransportHash {
 
 impl AsMut<Any> for WebTransportHash {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportHash> for Any {

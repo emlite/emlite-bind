@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DOMPointInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DOMPointInit {
 
 impl AsMut<Any> for DOMPointInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DOMPointInit> for Any {

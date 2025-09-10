@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DeviceMotionEventAcceleration class.
 /// [`DeviceMotionEventAcceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DeviceMotionEventAcceleration {
 
 impl FromVal for DeviceMotionEventAcceleration {
     fn from_val(v: &Any) -> Self {
-        DeviceMotionEventAcceleration { inner: Any::from_val(v) }
+        DeviceMotionEventAcceleration {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DeviceMotionEventAcceleration {
 
 impl AsMut<Any> for DeviceMotionEventAcceleration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DeviceMotionEventAcceleration> for Any {
@@ -64,14 +63,12 @@ impl From<&DeviceMotionEventAcceleration> for Any {
 
 jsbind::utils::impl_dyn_cast!(DeviceMotionEventAcceleration);
 
-
 impl DeviceMotionEventAcceleration {
     /// Getter of the `x` attribute.
     /// [`DeviceMotionEventAcceleration.x`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEventAcceleration/x)
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
-
 }
 impl DeviceMotionEventAcceleration {
     /// Getter of the `y` attribute.
@@ -79,7 +76,6 @@ impl DeviceMotionEventAcceleration {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
-
 }
 impl DeviceMotionEventAcceleration {
     /// Getter of the `z` attribute.
@@ -87,5 +83,4 @@ impl DeviceMotionEventAcceleration {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
-
 }

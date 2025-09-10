@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ResizeObserverSize class.
 /// [`ResizeObserverSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverSize)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ResizeObserverSize {
 
 impl FromVal for ResizeObserverSize {
     fn from_val(v: &Any) -> Self {
-        ResizeObserverSize { inner: Any::from_val(v) }
+        ResizeObserverSize {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ResizeObserverSize {
 
 impl AsMut<Any> for ResizeObserverSize {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ResizeObserverSize> for Any {
@@ -64,14 +63,12 @@ impl From<&ResizeObserverSize> for Any {
 
 jsbind::utils::impl_dyn_cast!(ResizeObserverSize);
 
-
 impl ResizeObserverSize {
     /// Getter of the `inlineSize` attribute.
     /// [`ResizeObserverSize.inlineSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverSize/inlineSize)
     pub fn inline_size(&self) -> f64 {
         self.inner.get("inlineSize").as_::<f64>()
     }
-
 }
 impl ResizeObserverSize {
     /// Getter of the `blockSize` attribute.
@@ -79,5 +76,4 @@ impl ResizeObserverSize {
     pub fn block_size(&self) -> f64 {
         self.inner.get("blockSize").as_::<f64>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGAngle class.
 /// [`SVGAngle`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGAngle {
 
 impl FromVal for SVGAngle {
     fn from_val(v: &Any) -> Self {
-        SVGAngle { inner: Any::from_val(v) }
+        SVGAngle {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGAngle {
 
 impl AsMut<Any> for SVGAngle {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGAngle> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGAngle> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGAngle);
 
-
 impl SVGAngle {
     /// Getter of the `unitType` attribute.
     /// [`SVGAngle.unitType`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle/unitType)
     pub fn unit_type(&self) -> u16 {
         self.inner.get("unitType").as_::<u16>()
     }
-
 }
 impl SVGAngle {
     /// Getter of the `value` attribute.
@@ -115,14 +112,25 @@ impl SVGAngle {
 impl SVGAngle {
     /// The newValueSpecifiedUnits method.
     /// [`SVGAngle.newValueSpecifiedUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle/newValueSpecifiedUnits)
-    pub fn new_value_specified_units(&self, unit_type: u16, value_in_specified_units: f32) -> Undefined {
-        self.inner.call("newValueSpecifiedUnits", &[unit_type.into(), value_in_specified_units.into(), ]).as_::<Undefined>()
+    pub fn new_value_specified_units(
+        &self,
+        unit_type: u16,
+        value_in_specified_units: f32,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "newValueSpecifiedUnits",
+                &[unit_type.into(), value_in_specified_units.into()],
+            )
+            .as_::<Undefined>()
     }
 }
 impl SVGAngle {
     /// The convertToSpecifiedUnits method.
     /// [`SVGAngle.convertToSpecifiedUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAngle/convertToSpecifiedUnits)
     pub fn convert_to_specified_units(&self, unit_type: u16) -> Undefined {
-        self.inner.call("convertToSpecifiedUnits", &[unit_type.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("convertToSpecifiedUnits", &[unit_type.into()])
+            .as_::<Undefined>()
     }
 }

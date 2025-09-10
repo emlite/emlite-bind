@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The InputDeviceCapabilities class.
 /// [`InputDeviceCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/InputDeviceCapabilities)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct InputDeviceCapabilities {
 
 impl FromVal for InputDeviceCapabilities {
     fn from_val(v: &Any) -> Self {
-        InputDeviceCapabilities { inner: Any::from_val(v) }
+        InputDeviceCapabilities {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for InputDeviceCapabilities {
 
 impl AsMut<Any> for InputDeviceCapabilities {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<InputDeviceCapabilities> for Any {
@@ -64,8 +63,6 @@ impl From<&InputDeviceCapabilities> for Any {
 
 jsbind::utils::impl_dyn_cast!(InputDeviceCapabilities);
 
-
-
 impl InputDeviceCapabilities {
     /// The `new InputDeviceCapabilities(..)` constructor, creating a new InputDeviceCapabilities instance
     pub fn new0() -> InputDeviceCapabilities {
@@ -77,10 +74,11 @@ impl InputDeviceCapabilities {
     /// The `new InputDeviceCapabilities(..)` constructor, creating a new InputDeviceCapabilities instance
     pub fn new1(device_init_dict: &InputDeviceCapabilitiesInit) -> InputDeviceCapabilities {
         Self {
-            inner: Any::global("InputDeviceCapabilities").new(&[device_init_dict.into()]).as_::<Any>(),
+            inner: Any::global("InputDeviceCapabilities")
+                .new(&[device_init_dict.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl InputDeviceCapabilities {
     /// Getter of the `firesTouchEvents` attribute.
@@ -88,7 +86,6 @@ impl InputDeviceCapabilities {
     pub fn fires_touch_events(&self) -> bool {
         self.inner.get("firesTouchEvents").as_::<bool>()
     }
-
 }
 impl InputDeviceCapabilities {
     /// Getter of the `pointerMovementScrolls` attribute.
@@ -96,5 +93,4 @@ impl InputDeviceCapabilities {
     pub fn pointer_movement_scrolls(&self) -> bool {
         self.inner.get("pointerMovementScrolls").as_::<bool>()
     }
-
 }

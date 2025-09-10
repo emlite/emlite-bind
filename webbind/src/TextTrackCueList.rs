@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TextTrackCueList class.
 /// [`TextTrackCueList`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCueList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TextTrackCueList {
 
 impl FromVal for TextTrackCueList {
     fn from_val(v: &Any) -> Self {
-        TextTrackCueList { inner: Any::from_val(v) }
+        TextTrackCueList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TextTrackCueList {
 
 impl AsMut<Any> for TextTrackCueList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TextTrackCueList> for Any {
@@ -64,19 +63,19 @@ impl From<&TextTrackCueList> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextTrackCueList);
 
-
 impl TextTrackCueList {
     /// Getter of the `length` attribute.
     /// [`TextTrackCueList.length`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCueList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl TextTrackCueList {
     /// The getCueById method.
     /// [`TextTrackCueList.getCueById`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCueList/getCueById)
     pub fn get_cue_by_id(&self, id: &JsString) -> TextTrackCue {
-        self.inner.call("getCueById", &[id.into(), ]).as_::<TextTrackCue>()
+        self.inner
+            .call("getCueById", &[id.into()])
+            .as_::<TextTrackCue>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ContentVisibilityAutoStateChangeEvent class.
 /// [`ContentVisibilityAutoStateChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ContentVisibilityAutoStateChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ContentVisibilityAutoStateChangeEvent {
 
 impl FromVal for ContentVisibilityAutoStateChangeEvent {
     fn from_val(v: &Any) -> Self {
-        ContentVisibilityAutoStateChangeEvent { inner: Event::from_val(v) }
+        ContentVisibilityAutoStateChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ContentVisibilityAutoStateChangeEvent {
 
 impl AsMut<Any> for ContentVisibilityAutoStateChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ContentVisibilityAutoStateChangeEvent> for Any {
@@ -64,23 +63,27 @@ impl From<&ContentVisibilityAutoStateChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(ContentVisibilityAutoStateChangeEvent);
 
-
-
 impl ContentVisibilityAutoStateChangeEvent {
     /// The `new ContentVisibilityAutoStateChangeEvent(..)` constructor, creating a new ContentVisibilityAutoStateChangeEvent instance
     pub fn new0(type_: &JsString) -> ContentVisibilityAutoStateChangeEvent {
         Self {
-            inner: Any::global("ContentVisibilityAutoStateChangeEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("ContentVisibilityAutoStateChangeEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new ContentVisibilityAutoStateChangeEvent(..)` constructor, creating a new ContentVisibilityAutoStateChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &ContentVisibilityAutoStateChangeEventInit) -> ContentVisibilityAutoStateChangeEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &ContentVisibilityAutoStateChangeEventInit,
+    ) -> ContentVisibilityAutoStateChangeEvent {
         Self {
-            inner: Any::global("ContentVisibilityAutoStateChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("ContentVisibilityAutoStateChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl ContentVisibilityAutoStateChangeEvent {
     /// Getter of the `skipped` attribute.
@@ -88,5 +91,4 @@ impl ContentVisibilityAutoStateChangeEvent {
     pub fn skipped(&self) -> bool {
         self.inner.get("skipped").as_::<bool>()
     }
-
 }

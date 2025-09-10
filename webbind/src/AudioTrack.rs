@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioTrack class.
 /// [`AudioTrack`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioTrack {
 
 impl FromVal for AudioTrack {
     fn from_val(v: &Any) -> Self {
-        AudioTrack { inner: Any::from_val(v) }
+        AudioTrack {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioTrack {
 
 impl AsMut<Any> for AudioTrack {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioTrack> for Any {
@@ -64,14 +63,12 @@ impl From<&AudioTrack> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioTrack);
 
-
 impl AudioTrack {
     /// Getter of the `id` attribute.
     /// [`AudioTrack.id`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrack/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl AudioTrack {
     /// Getter of the `kind` attribute.
@@ -79,7 +76,6 @@ impl AudioTrack {
     pub fn kind(&self) -> JsString {
         self.inner.get("kind").as_::<JsString>()
     }
-
 }
 impl AudioTrack {
     /// Getter of the `label` attribute.
@@ -87,7 +83,6 @@ impl AudioTrack {
     pub fn label(&self) -> JsString {
         self.inner.get("label").as_::<JsString>()
     }
-
 }
 impl AudioTrack {
     /// Getter of the `language` attribute.
@@ -95,7 +90,6 @@ impl AudioTrack {
     pub fn language(&self) -> JsString {
         self.inner.get("language").as_::<JsString>()
     }
-
 }
 impl AudioTrack {
     /// Getter of the `enabled` attribute.
@@ -116,5 +110,4 @@ impl AudioTrack {
     pub fn source_buffer(&self) -> SourceBuffer {
         self.inner.get("sourceBuffer").as_::<SourceBuffer>()
     }
-
 }

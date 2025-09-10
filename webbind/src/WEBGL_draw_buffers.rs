@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WEBGL_draw_buffers class.
 /// [`WEBGL_draw_buffers`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_draw_buffers)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WEBGL_draw_buffers {
 
 impl FromVal for WEBGL_draw_buffers {
     fn from_val(v: &Any) -> Self {
-        WEBGL_draw_buffers { inner: Any::from_val(v) }
+        WEBGL_draw_buffers {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WEBGL_draw_buffers {
 
 impl AsMut<Any> for WEBGL_draw_buffers {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WEBGL_draw_buffers> for Any {
@@ -64,11 +63,12 @@ impl From<&WEBGL_draw_buffers> for Any {
 
 jsbind::utils::impl_dyn_cast!(WEBGL_draw_buffers);
 
-
 impl WEBGL_draw_buffers {
     /// The drawBuffersWEBGL method.
     /// [`WEBGL_draw_buffers.drawBuffersWEBGL`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL)
     pub fn draw_buffers_webgl(&self, buffers: &TypedArray<Any>) -> Undefined {
-        self.inner.call("drawBuffersWEBGL", &[buffers.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("drawBuffersWEBGL", &[buffers.into()])
+            .as_::<Undefined>()
     }
 }

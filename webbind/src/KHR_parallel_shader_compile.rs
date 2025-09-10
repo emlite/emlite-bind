@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The KHR_parallel_shader_compile class.
 /// [`KHR_parallel_shader_compile`](https://developer.mozilla.org/en-US/docs/Web/API/KHR_parallel_shader_compile)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct KHR_parallel_shader_compile {
 
 impl FromVal for KHR_parallel_shader_compile {
     fn from_val(v: &Any) -> Self {
-        KHR_parallel_shader_compile { inner: Any::from_val(v) }
+        KHR_parallel_shader_compile {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for KHR_parallel_shader_compile {
 
 impl AsMut<Any> for KHR_parallel_shader_compile {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<KHR_parallel_shader_compile> for Any {
@@ -63,5 +62,3 @@ impl From<&KHR_parallel_shader_compile> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(KHR_parallel_shader_compile);
-
-

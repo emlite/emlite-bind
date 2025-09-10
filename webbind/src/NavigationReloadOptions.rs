@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigationReloadOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for NavigationReloadOptions {
 
 impl AsMut<Any> for NavigationReloadOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigationReloadOptions> for Any {

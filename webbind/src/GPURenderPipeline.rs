@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPURenderPipeline class.
 /// [`GPURenderPipeline`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPipeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPURenderPipeline {
 
 impl FromVal for GPURenderPipeline {
     fn from_val(v: &Any) -> Self {
-        GPURenderPipeline { inner: Any::from_val(v) }
+        GPURenderPipeline {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPURenderPipeline {
 
 impl AsMut<Any> for GPURenderPipeline {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPURenderPipeline> for Any {
@@ -64,7 +63,6 @@ impl From<&GPURenderPipeline> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPURenderPipeline);
 
-
 impl GPURenderPipeline {
     /// Getter of the `label` attribute.
     /// [`GPURenderPipeline.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPipeline/label)
@@ -82,6 +80,8 @@ impl GPURenderPipeline {
     /// The getBindGroupLayout method.
     /// [`GPURenderPipeline.getBindGroupLayout`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPipeline/getBindGroupLayout)
     pub fn get_bind_group_layout(&self, index: u32) -> GPUBindGroupLayout {
-        self.inner.call("getBindGroupLayout", &[index.into(), ]).as_::<GPUBindGroupLayout>()
+        self.inner
+            .call("getBindGroupLayout", &[index.into()])
+            .as_::<GPUBindGroupLayout>()
     }
 }

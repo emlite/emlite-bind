@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSFontFeatureValuesRule class.
 /// [`CSSFontFeatureValuesRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSFontFeatureValuesRule {
 
 impl FromVal for CSSFontFeatureValuesRule {
     fn from_val(v: &Any) -> Self {
-        CSSFontFeatureValuesRule { inner: CSSRule::from_val(v) }
+        CSSFontFeatureValuesRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSFontFeatureValuesRule {
 
 impl AsMut<Any> for CSSFontFeatureValuesRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSFontFeatureValuesRule> for Any {
@@ -64,7 +63,6 @@ impl From<&CSSFontFeatureValuesRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesRule);
 
-
 impl CSSFontFeatureValuesRule {
     /// Getter of the `fontFamily` attribute.
     /// [`CSSFontFeatureValuesRule.fontFamily`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesRule/fontFamily)
@@ -82,9 +80,10 @@ impl CSSFontFeatureValuesRule {
     /// Getter of the `annotation` attribute.
     /// [`CSSFontFeatureValuesRule.annotation`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesRule/annotation)
     pub fn annotation(&self) -> CSSFontFeatureValuesMap {
-        self.inner.get("annotation").as_::<CSSFontFeatureValuesMap>()
+        self.inner
+            .get("annotation")
+            .as_::<CSSFontFeatureValuesMap>()
     }
-
 }
 impl CSSFontFeatureValuesRule {
     /// Getter of the `ornaments` attribute.
@@ -92,7 +91,6 @@ impl CSSFontFeatureValuesRule {
     pub fn ornaments(&self) -> CSSFontFeatureValuesMap {
         self.inner.get("ornaments").as_::<CSSFontFeatureValuesMap>()
     }
-
 }
 impl CSSFontFeatureValuesRule {
     /// Getter of the `stylistic` attribute.
@@ -100,7 +98,6 @@ impl CSSFontFeatureValuesRule {
     pub fn stylistic(&self) -> CSSFontFeatureValuesMap {
         self.inner.get("stylistic").as_::<CSSFontFeatureValuesMap>()
     }
-
 }
 impl CSSFontFeatureValuesRule {
     /// Getter of the `swash` attribute.
@@ -108,15 +105,15 @@ impl CSSFontFeatureValuesRule {
     pub fn swash(&self) -> CSSFontFeatureValuesMap {
         self.inner.get("swash").as_::<CSSFontFeatureValuesMap>()
     }
-
 }
 impl CSSFontFeatureValuesRule {
     /// Getter of the `characterVariant` attribute.
     /// [`CSSFontFeatureValuesRule.characterVariant`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesRule/characterVariant)
     pub fn character_variant(&self) -> CSSFontFeatureValuesMap {
-        self.inner.get("characterVariant").as_::<CSSFontFeatureValuesMap>()
+        self.inner
+            .get("characterVariant")
+            .as_::<CSSFontFeatureValuesMap>()
     }
-
 }
 impl CSSFontFeatureValuesRule {
     /// Getter of the `styleset` attribute.
@@ -124,13 +121,13 @@ impl CSSFontFeatureValuesRule {
     pub fn styleset(&self) -> CSSFontFeatureValuesMap {
         self.inner.get("styleset").as_::<CSSFontFeatureValuesMap>()
     }
-
 }
 impl CSSFontFeatureValuesRule {
     /// Getter of the `historicalForms` attribute.
     /// [`CSSFontFeatureValuesRule.historicalForms`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesRule/historicalForms)
     pub fn historical_forms(&self) -> CSSFontFeatureValuesMap {
-        self.inner.get("historicalForms").as_::<CSSFontFeatureValuesMap>()
+        self.inner
+            .get("historicalForms")
+            .as_::<CSSFontFeatureValuesMap>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ContentIndexEvent class.
 /// [`ContentIndexEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndexEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ContentIndexEvent {
 
 impl FromVal for ContentIndexEvent {
     fn from_val(v: &Any) -> Self {
-        ContentIndexEvent { inner: ExtendableEvent::from_val(v) }
+        ContentIndexEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ContentIndexEvent {
 
 impl AsMut<Any> for ContentIndexEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ContentIndexEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&ContentIndexEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
-
-
 impl ContentIndexEvent {
     /// The `new ContentIndexEvent(..)` constructor, creating a new ContentIndexEvent instance
     pub fn new(type_: &JsString, init: &ContentIndexEventInit) -> ContentIndexEvent {
         Self {
-            inner: Any::global("ContentIndexEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("ContentIndexEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl ContentIndexEvent {
     /// Getter of the `id` attribute.
@@ -81,5 +79,4 @@ impl ContentIndexEvent {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ImageTrack class.
 /// [`ImageTrack`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ImageTrack {
 
 impl FromVal for ImageTrack {
     fn from_val(v: &Any) -> Self {
-        ImageTrack { inner: Any::from_val(v) }
+        ImageTrack {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ImageTrack {
 
 impl AsMut<Any> for ImageTrack {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ImageTrack> for Any {
@@ -64,14 +63,12 @@ impl From<&ImageTrack> for Any {
 
 jsbind::utils::impl_dyn_cast!(ImageTrack);
 
-
 impl ImageTrack {
     /// Getter of the `animated` attribute.
     /// [`ImageTrack.animated`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrack/animated)
     pub fn animated(&self) -> bool {
         self.inner.get("animated").as_::<bool>()
     }
-
 }
 impl ImageTrack {
     /// Getter of the `frameCount` attribute.
@@ -79,7 +76,6 @@ impl ImageTrack {
     pub fn frame_count(&self) -> u32 {
         self.inner.get("frameCount").as_::<u32>()
     }
-
 }
 impl ImageTrack {
     /// Getter of the `repetitionCount` attribute.
@@ -87,7 +83,6 @@ impl ImageTrack {
     pub fn repetition_count(&self) -> f32 {
         self.inner.get("repetitionCount").as_::<f32>()
     }
-
 }
 impl ImageTrack {
     /// Getter of the `selected` attribute.

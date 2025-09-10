@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothManufacturerDataMap class.
 /// [`BluetoothManufacturerDataMap`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothManufacturerDataMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothManufacturerDataMap {
 
 impl FromVal for BluetoothManufacturerDataMap {
     fn from_val(v: &Any) -> Self {
-        BluetoothManufacturerDataMap { inner: Any::from_val(v) }
+        BluetoothManufacturerDataMap {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothManufacturerDataMap {
 
 impl AsMut<Any> for BluetoothManufacturerDataMap {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothManufacturerDataMap> for Any {
@@ -63,5 +62,3 @@ impl From<&BluetoothManufacturerDataMap> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(BluetoothManufacturerDataMap);
-
-

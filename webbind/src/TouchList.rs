@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TouchList class.
 /// [`TouchList`](https://developer.mozilla.org/en-US/docs/Web/API/TouchList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TouchList {
 
 impl FromVal for TouchList {
     fn from_val(v: &Any) -> Self {
-        TouchList { inner: Any::from_val(v) }
+        TouchList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TouchList {
 
 impl AsMut<Any> for TouchList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TouchList> for Any {
@@ -64,19 +63,17 @@ impl From<&TouchList> for Any {
 
 jsbind::utils::impl_dyn_cast!(TouchList);
 
-
 impl TouchList {
     /// Getter of the `length` attribute.
     /// [`TouchList.length`](https://developer.mozilla.org/en-US/docs/Web/API/TouchList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl TouchList {
     /// The item method.
     /// [`TouchList.item`](https://developer.mozilla.org/en-US/docs/Web/API/TouchList/item)
     pub fn item(&self, index: u32) -> Touch {
-        self.inner.call("item", &[index.into(), ]).as_::<Touch>()
+        self.inner.call("item", &[index.into()]).as_::<Touch>()
     }
 }

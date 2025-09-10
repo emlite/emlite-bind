@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The External class.
 /// [`External`](https://developer.mozilla.org/en-US/docs/Web/API/External)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct External {
 
 impl FromVal for External {
     fn from_val(v: &Any) -> Self {
-        External { inner: Any::from_val(v) }
+        External {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for External {
 
 impl AsMut<Any> for External {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<External> for Any {
@@ -64,18 +63,19 @@ impl From<&External> for Any {
 
 jsbind::utils::impl_dyn_cast!(External);
 
-
 impl External {
     /// The AddSearchProvider method.
     /// [`External.AddSearchProvider`](https://developer.mozilla.org/en-US/docs/Web/API/External/AddSearchProvider)
-    pub fn add_search_provider(&self, ) -> Undefined {
+    pub fn add_search_provider(&self) -> Undefined {
         self.inner.call("AddSearchProvider", &[]).as_::<Undefined>()
     }
 }
 impl External {
     /// The IsSearchProviderInstalled method.
     /// [`External.IsSearchProviderInstalled`](https://developer.mozilla.org/en-US/docs/Web/API/External/IsSearchProviderInstalled)
-    pub fn is_search_provider_installed(&self, ) -> Undefined {
-        self.inner.call("IsSearchProviderInstalled", &[]).as_::<Undefined>()
+    pub fn is_search_provider_installed(&self) -> Undefined {
+        self.inner
+            .call("IsSearchProviderInstalled", &[])
+            .as_::<Undefined>()
     }
 }

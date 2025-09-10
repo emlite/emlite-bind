@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothUUID class.
 /// [`BluetoothUUID`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothUUID {
 
 impl FromVal for BluetoothUUID {
     fn from_val(v: &Any) -> Self {
-        BluetoothUUID { inner: Any::from_val(v) }
+        BluetoothUUID {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothUUID {
 
 impl AsMut<Any> for BluetoothUUID {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothUUID> for Any {
@@ -64,32 +63,39 @@ impl From<&BluetoothUUID> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothUUID);
 
-
 impl BluetoothUUID {
     /// The getService method.
     /// [`BluetoothUUID.getService`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/getService)
     pub fn get_service(name: &Any) -> Any {
-        Any::global("BluetoothUUID").call("getService", &[name.into(), ]).as_::<Any>()
+        Any::global("BluetoothUUID")
+            .call("getService", &[name.into()])
+            .as_::<Any>()
     }
 }
 impl BluetoothUUID {
     /// The getCharacteristic method.
     /// [`BluetoothUUID.getCharacteristic`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/getCharacteristic)
     pub fn get_characteristic(name: &Any) -> Any {
-        Any::global("BluetoothUUID").call("getCharacteristic", &[name.into(), ]).as_::<Any>()
+        Any::global("BluetoothUUID")
+            .call("getCharacteristic", &[name.into()])
+            .as_::<Any>()
     }
 }
 impl BluetoothUUID {
     /// The getDescriptor method.
     /// [`BluetoothUUID.getDescriptor`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/getDescriptor)
     pub fn get_descriptor(name: &Any) -> Any {
-        Any::global("BluetoothUUID").call("getDescriptor", &[name.into(), ]).as_::<Any>()
+        Any::global("BluetoothUUID")
+            .call("getDescriptor", &[name.into()])
+            .as_::<Any>()
     }
 }
 impl BluetoothUUID {
     /// The canonicalUUID method.
     /// [`BluetoothUUID.canonicalUUID`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/canonicalUUID)
     pub fn canonical_uuid(alias: u32) -> Any {
-        Any::global("BluetoothUUID").call("canonicalUUID", &[alias.into(), ]).as_::<Any>()
+        Any::global("BluetoothUUID")
+            .call("canonicalUUID", &[alias.into()])
+            .as_::<Any>()
     }
 }

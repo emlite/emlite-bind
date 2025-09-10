@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothAdvertisingEvent class.
 /// [`BluetoothAdvertisingEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothAdvertisingEvent {
 
 impl FromVal for BluetoothAdvertisingEvent {
     fn from_val(v: &Any) -> Self {
-        BluetoothAdvertisingEvent { inner: Event::from_val(v) }
+        BluetoothAdvertisingEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothAdvertisingEvent {
 
 impl AsMut<Any> for BluetoothAdvertisingEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothAdvertisingEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&BluetoothAdvertisingEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
-
-
 impl BluetoothAdvertisingEvent {
     /// The `new BluetoothAdvertisingEvent(..)` constructor, creating a new BluetoothAdvertisingEvent instance
-    pub fn new(type_: &JsString, init: &BluetoothAdvertisingEventInit) -> BluetoothAdvertisingEvent {
+    pub fn new(
+        type_: &JsString,
+        init: &BluetoothAdvertisingEventInit,
+    ) -> BluetoothAdvertisingEvent {
         Self {
-            inner: Any::global("BluetoothAdvertisingEvent").new(&[type_.into(), init.into()]).as_::<Event>(),
+            inner: Any::global("BluetoothAdvertisingEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `device` attribute.
@@ -81,7 +82,6 @@ impl BluetoothAdvertisingEvent {
     pub fn device(&self) -> BluetoothDevice {
         self.inner.get("device").as_::<BluetoothDevice>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `uuids` attribute.
@@ -89,7 +89,6 @@ impl BluetoothAdvertisingEvent {
     pub fn uuids(&self) -> TypedArray<Any> {
         self.inner.get("uuids").as_::<TypedArray<Any>>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `name` attribute.
@@ -97,7 +96,6 @@ impl BluetoothAdvertisingEvent {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `appearance` attribute.
@@ -105,7 +103,6 @@ impl BluetoothAdvertisingEvent {
     pub fn appearance(&self) -> u16 {
         self.inner.get("appearance").as_::<u16>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `txPower` attribute.
@@ -113,7 +110,6 @@ impl BluetoothAdvertisingEvent {
     pub fn tx_power(&self) -> i8 {
         self.inner.get("txPower").as_::<i8>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `rssi` attribute.
@@ -121,21 +117,22 @@ impl BluetoothAdvertisingEvent {
     pub fn rssi(&self) -> i8 {
         self.inner.get("rssi").as_::<i8>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `manufacturerData` attribute.
     /// [`BluetoothAdvertisingEvent.manufacturerData`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/manufacturerData)
     pub fn manufacturer_data(&self) -> BluetoothManufacturerDataMap {
-        self.inner.get("manufacturerData").as_::<BluetoothManufacturerDataMap>()
+        self.inner
+            .get("manufacturerData")
+            .as_::<BluetoothManufacturerDataMap>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     /// Getter of the `serviceData` attribute.
     /// [`BluetoothAdvertisingEvent.serviceData`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/serviceData)
     pub fn service_data(&self) -> BluetoothServiceDataMap {
-        self.inner.get("serviceData").as_::<BluetoothServiceDataMap>()
+        self.inner
+            .get("serviceData")
+            .as_::<BluetoothServiceDataMap>()
     }
-
 }

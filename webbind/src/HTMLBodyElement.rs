@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLBodyElement class.
 /// [`HTMLBodyElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBodyElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLBodyElement {
 
 impl FromVal for HTMLBodyElement {
     fn from_val(v: &Any) -> Self {
-        HTMLBodyElement { inner: HTMLElement::from_val(v) }
+        HTMLBodyElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLBodyElement {
 
 impl AsMut<Any> for HTMLBodyElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLBodyElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLBodyElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLBodyElement);
 
-
-
 impl HTMLBodyElement {
     /// The `new HTMLBodyElement(..)` constructor, creating a new HTMLBodyElement instance
     pub fn new() -> HTMLBodyElement {
@@ -73,7 +70,6 @@ impl HTMLBodyElement {
             inner: Any::global("HTMLBodyElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLBodyElement {
     /// Getter of the `onorientationchange` attribute.

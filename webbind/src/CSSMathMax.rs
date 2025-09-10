@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMathMax class.
 /// [`CSSMathMax`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMax)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSMathMax {
 
 impl FromVal for CSSMathMax {
     fn from_val(v: &Any) -> Self {
-        CSSMathMax { inner: CSSMathValue::from_val(v) }
+        CSSMathMax {
+            inner: CSSMathValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSMathMax {
 
 impl AsMut<Any> for CSSMathMax {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMathMax> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSMathMax> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathMax);
 
-
-
 impl CSSMathMax {
     /// The `new CSSMathMax(..)` constructor, creating a new CSSMathMax instance
     pub fn new(args: &Any) -> CSSMathMax {
         Self {
-            inner: Any::global("CSSMathMax").new(&[args.into()]).as_::<CSSMathValue>(),
+            inner: Any::global("CSSMathMax")
+                .new(&[args.into()])
+                .as_::<CSSMathValue>(),
         }
     }
-
 }
 impl CSSMathMax {
     /// Getter of the `values` attribute.
@@ -81,5 +79,4 @@ impl CSSMathMax {
     pub fn values(&self) -> CSSNumericArray {
         self.inner.get("values").as_::<CSSNumericArray>()
     }
-
 }

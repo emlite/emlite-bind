@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGViewElement class.
 /// [`SVGViewElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGViewElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGViewElement {
 
 impl FromVal for SVGViewElement {
     fn from_val(v: &Any) -> Self {
-        SVGViewElement { inner: SVGElement::from_val(v) }
+        SVGViewElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGViewElement {
 
 impl AsMut<Any> for SVGViewElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGViewElement> for Any {
@@ -64,20 +63,19 @@ impl From<&SVGViewElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGViewElement);
 
-
 impl SVGViewElement {
     /// Getter of the `viewBox` attribute.
     /// [`SVGViewElement.viewBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGViewElement/viewBox)
     pub fn view_box(&self) -> SVGAnimatedRect {
         self.inner.get("viewBox").as_::<SVGAnimatedRect>()
     }
-
 }
 impl SVGViewElement {
     /// Getter of the `preserveAspectRatio` attribute.
     /// [`SVGViewElement.preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGViewElement/preserveAspectRatio)
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner
+            .get("preserveAspectRatio")
+            .as_::<SVGAnimatedPreserveAspectRatio>()
     }
-
 }

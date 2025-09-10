@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUShaderModule class.
 /// [`GPUShaderModule`](https://developer.mozilla.org/en-US/docs/Web/API/GPUShaderModule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUShaderModule {
 
 impl FromVal for GPUShaderModule {
     fn from_val(v: &Any) -> Self {
-        GPUShaderModule { inner: Any::from_val(v) }
+        GPUShaderModule {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUShaderModule {
 
 impl AsMut<Any> for GPUShaderModule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUShaderModule> for Any {
@@ -64,12 +63,13 @@ impl From<&GPUShaderModule> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUShaderModule);
 
-
 impl GPUShaderModule {
     /// The getCompilationInfo method.
     /// [`GPUShaderModule.getCompilationInfo`](https://developer.mozilla.org/en-US/docs/Web/API/GPUShaderModule/getCompilationInfo)
-    pub fn get_compilation_info(&self, ) -> Promise<GPUCompilationInfo> {
-        self.inner.call("getCompilationInfo", &[]).as_::<Promise<GPUCompilationInfo>>()
+    pub fn get_compilation_info(&self) -> Promise<GPUCompilationInfo> {
+        self.inner
+            .call("getCompilationInfo", &[])
+            .as_::<Promise<GPUCompilationInfo>>()
     }
 }
 impl GPUShaderModule {

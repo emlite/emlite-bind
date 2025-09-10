@@ -18,14 +18,18 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing the return value or a TypeError if target is not callable
-    pub fn apply(target: &Function, this_arg: &Any, arguments: &Array) -> Result<Any, TypeError> {
+    pub fn apply<TThis, TArgs>(
+        target: &Function,
+        this_arg: TThis,
+        arguments: TArgs,
+    ) -> Result<Any, TypeError>
+    where
+        TThis: Into<emlite::Val>,
+        TArgs: Into<emlite::Val>,
+    {
         let result = Self::obj().call(
             "apply",
-            &[
-                target.clone().into(),
-                this_arg.clone(),
-                arguments.clone().into(),
-            ],
+            &[target.clone().into(), this_arg.into(), arguments.into()],
         );
         result.as_::<Result<Any, TypeError>>()
     }
@@ -34,14 +38,18 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing the constructed object or a TypeError if target is not constructible
-    pub fn construct(
+    pub fn construct<TArgs, TNew>(
         target: &Function,
-        args: &Array,
-        new_target: Option<&Any>,
-    ) -> Result<Any, TypeError> {
-        let mut params: Vec<emlite::Val> = vec![target.clone().into(), args.clone().into()];
+        args: TArgs,
+        new_target: Option<TNew>,
+    ) -> Result<Any, TypeError>
+    where
+        TArgs: Into<emlite::Val>,
+        TNew: Into<emlite::Val>,
+    {
+        let mut params: Vec<emlite::Val> = vec![target.clone().into(), args.into()];
         if let Some(nt) = new_target {
-            params.push(nt.clone());
+            params.push(nt.into());
         }
         let result = Self::obj().call("construct", &params);
         result.as_::<Result<Any, TypeError>>()
@@ -51,10 +59,15 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing success boolean or TypeError if target is not an object
-    pub fn define_property(target: &Any, key: &Any, attributes: &Any) -> Result<bool, TypeError> {
+    pub fn define_property<T, K, A>(target: T, key: K, attributes: A) -> Result<bool, TypeError>
+    where
+        T: Into<emlite::Val>,
+        K: Into<emlite::Val>,
+        A: Into<emlite::Val>,
+    {
         let result = Self::obj().call(
             "defineProperty",
-            &[target.clone(), key.clone(), attributes.clone()],
+            &[target.into(), key.into(), attributes.into()],
         );
         result.as_::<Result<bool, TypeError>>()
     }
@@ -63,8 +76,12 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing success boolean or TypeError if target is not an object
-    pub fn delete_property(target: &Any, key: &Any) -> Result<bool, TypeError> {
-        let result = Self::obj().call("deleteProperty", &[target.clone(), key.clone()]);
+    pub fn delete_property<T, K>(target: T, key: K) -> Result<bool, TypeError>
+    where
+        T: Into<emlite::Val>,
+        K: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("deleteProperty", &[target.into(), key.into()]);
         result.as_::<Result<bool, TypeError>>()
     }
 
@@ -72,10 +89,15 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing the property value or TypeError if target is not an object
-    pub fn get(target: &Any, key: &Any, receiver: Option<&Any>) -> Result<Any, TypeError> {
-        let mut params = vec![target.clone(), key.clone()];
+    pub fn get<T, K, R>(target: T, key: K, receiver: Option<R>) -> Result<Any, TypeError>
+    where
+        T: Into<emlite::Val>,
+        K: Into<emlite::Val>,
+        R: Into<emlite::Val>,
+    {
+        let mut params = vec![target.into(), key.into()];
         if let Some(r) = receiver {
-            params.push(r.clone());
+            params.push(r.into());
         }
         let result = Self::obj().call("get", &params);
         result.as_::<Result<Any, TypeError>>()
@@ -85,15 +107,21 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing success boolean or TypeError if target is not an object
-    pub fn set(
-        target: &Any,
-        key: &Any,
-        value: &Any,
-        receiver: Option<&Any>,
-    ) -> Result<bool, TypeError> {
-        let mut params = vec![target.clone(), key.clone(), value.clone()];
+    pub fn set<T, K, V, R>(
+        target: T,
+        key: K,
+        value: V,
+        receiver: Option<R>,
+    ) -> Result<bool, TypeError>
+    where
+        T: Into<emlite::Val>,
+        K: Into<emlite::Val>,
+        V: Into<emlite::Val>,
+        R: Into<emlite::Val>,
+    {
+        let mut params = vec![target.into(), key.into(), value.into()];
         if let Some(r) = receiver {
-            params.push(r.clone());
+            params.push(r.into());
         }
         let result = Self::obj().call("set", &params);
         result.as_::<Result<bool, TypeError>>()
@@ -103,8 +131,12 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing the property descriptor or TypeError if target is not an object
-    pub fn get_own_property_descriptor(target: &Any, key: &Any) -> Result<Option<Any>, TypeError> {
-        let result = Self::obj().call("getOwnPropertyDescriptor", &[target.clone(), key.clone()]);
+    pub fn get_own_property_descriptor<T, K>(target: T, key: K) -> Result<Option<Any>, TypeError>
+    where
+        T: Into<emlite::Val>,
+        K: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("getOwnPropertyDescriptor", &[target.into(), key.into()]);
         if result.is_error() {
             Err(result.as_::<TypeError>())
         } else if result.is_undefined() {
@@ -118,8 +150,11 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing the prototype or TypeError if target is not an object
-    pub fn get_prototype_of(target: &Any) -> Result<Option<Any>, TypeError> {
-        let result = Self::obj().call("getPrototypeOf", &[target.clone()]);
+    pub fn get_prototype_of<T>(target: T) -> Result<Option<Any>, TypeError>
+    where
+        T: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("getPrototypeOf", &[target.into()]);
         if result.is_error() {
             Err(result.as_::<TypeError>())
         } else if result.is_null() {
@@ -133,8 +168,12 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing boolean or TypeError if target is not an object
-    pub fn has(target: &Any, key: &Any) -> Result<bool, TypeError> {
-        let result = Self::obj().call("has", &[target.clone(), key.clone()]);
+    pub fn has<T, K>(target: T, key: K) -> Result<bool, TypeError>
+    where
+        T: Into<emlite::Val>,
+        K: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("has", &[target.into(), key.into()]);
         result.as_::<Result<bool, TypeError>>()
     }
 
@@ -142,8 +181,11 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing boolean or TypeError if target is not an object
-    pub fn is_extensible(target: &Any) -> Result<bool, TypeError> {
-        let result = Self::obj().call("isExtensible", &[target.clone()]);
+    pub fn is_extensible<T>(target: T) -> Result<bool, TypeError>
+    where
+        T: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("isExtensible", &[target.into()]);
         result.as_::<Result<bool, TypeError>>()
     }
 
@@ -151,8 +193,11 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing array of keys or TypeError if target is not an object
-    pub fn own_keys(target: &Any) -> Result<Array, TypeError> {
-        let result = Self::obj().call("ownKeys", &[target.clone()]);
+    pub fn own_keys<T>(target: T) -> Result<Array, TypeError>
+    where
+        T: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("ownKeys", &[target.into()]);
         result.as_::<Result<Array, TypeError>>()
     }
 
@@ -160,8 +205,11 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing success boolean or TypeError if target is not an object
-    pub fn prevent_extensions(target: &Any) -> Result<bool, TypeError> {
-        let result = Self::obj().call("preventExtensions", &[target.clone()]);
+    pub fn prevent_extensions<T>(target: T) -> Result<bool, TypeError>
+    where
+        T: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("preventExtensions", &[target.into()]);
         result.as_::<Result<bool, TypeError>>()
     }
 
@@ -169,8 +217,12 @@ impl Reflect {
     ///
     /// # Returns
     /// Result containing success boolean or TypeError if target is not an object
-    pub fn set_prototype_of(target: &Any, proto: &Any) -> Result<bool, TypeError> {
-        let result = Self::obj().call("setPrototypeOf", &[target.clone(), proto.clone()]);
+    pub fn set_prototype_of<T, P>(target: T, proto: P) -> Result<bool, TypeError>
+    where
+        T: Into<emlite::Val>,
+        P: Into<emlite::Val>,
+    {
+        let result = Self::obj().call("setPrototypeOf", &[target.into(), proto.into()]);
         result.as_::<Result<bool, TypeError>>()
     }
 }

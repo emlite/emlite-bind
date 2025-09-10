@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoColorSpaceInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for VideoColorSpaceInit {
 
 impl AsMut<Any> for VideoColorSpaceInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoColorSpaceInit> for Any {
@@ -75,7 +72,9 @@ impl VideoColorSpaceInit {
 impl VideoColorSpaceInit {
     /// Getter of the `transfer` attribute.
     pub fn transfer(&self) -> VideoTransferCharacteristics {
-        self.inner.get("transfer").as_::<VideoTransferCharacteristics>()
+        self.inner
+            .get("transfer")
+            .as_::<VideoTransferCharacteristics>()
     }
 
     /// Setter of the `transfer` attribute.

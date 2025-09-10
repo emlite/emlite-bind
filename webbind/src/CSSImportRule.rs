@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSImportRule class.
 /// [`CSSImportRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSImportRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSImportRule {
 
 impl FromVal for CSSImportRule {
     fn from_val(v: &Any) -> Self {
-        CSSImportRule { inner: CSSRule::from_val(v) }
+        CSSImportRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSImportRule {
 
 impl AsMut<Any> for CSSImportRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSImportRule> for Any {
@@ -64,14 +63,12 @@ impl From<&CSSImportRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSImportRule);
 
-
 impl CSSImportRule {
     /// Getter of the `href` attribute.
     /// [`CSSImportRule.href`](https://developer.mozilla.org/en-US/docs/Web/API/CSSImportRule/href)
     pub fn href(&self) -> JsString {
         self.inner.get("href").as_::<JsString>()
     }
-
 }
 impl CSSImportRule {
     /// Getter of the `media` attribute.
@@ -79,7 +76,6 @@ impl CSSImportRule {
     pub fn media(&self) -> MediaList {
         self.inner.get("media").as_::<MediaList>()
     }
-
 }
 impl CSSImportRule {
     /// Getter of the `styleSheet` attribute.
@@ -87,7 +83,6 @@ impl CSSImportRule {
     pub fn style_sheet(&self) -> CSSStyleSheet {
         self.inner.get("styleSheet").as_::<CSSStyleSheet>()
     }
-
 }
 impl CSSImportRule {
     /// Getter of the `layerName` attribute.
@@ -95,7 +90,6 @@ impl CSSImportRule {
     pub fn layer_name(&self) -> JsString {
         self.inner.get("layerName").as_::<JsString>()
     }
-
 }
 impl CSSImportRule {
     /// Getter of the `supportsText` attribute.
@@ -103,5 +97,4 @@ impl CSSImportRule {
     pub fn supports_text(&self) -> JsString {
         self.inner.get("supportsText").as_::<JsString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothLEScan class.
 /// [`BluetoothLEScan`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScan)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothLEScan {
 
 impl FromVal for BluetoothLEScan {
     fn from_val(v: &Any) -> Self {
-        BluetoothLEScan { inner: Any::from_val(v) }
+        BluetoothLEScan {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothLEScan {
 
 impl AsMut<Any> for BluetoothLEScan {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothLEScan> for Any {
@@ -64,14 +63,14 @@ impl From<&BluetoothLEScan> for Any {
 
 jsbind::utils::impl_dyn_cast!(BluetoothLEScan);
 
-
 impl BluetoothLEScan {
     /// Getter of the `filters` attribute.
     /// [`BluetoothLEScan.filters`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScan/filters)
     pub fn filters(&self) -> TypedArray<BluetoothLEScanFilter> {
-        self.inner.get("filters").as_::<TypedArray<BluetoothLEScanFilter>>()
+        self.inner
+            .get("filters")
+            .as_::<TypedArray<BluetoothLEScanFilter>>()
     }
-
 }
 impl BluetoothLEScan {
     /// Getter of the `keepRepeatedDevices` attribute.
@@ -79,7 +78,6 @@ impl BluetoothLEScan {
     pub fn keep_repeated_devices(&self) -> bool {
         self.inner.get("keepRepeatedDevices").as_::<bool>()
     }
-
 }
 impl BluetoothLEScan {
     /// Getter of the `acceptAllAdvertisements` attribute.
@@ -87,7 +85,6 @@ impl BluetoothLEScan {
     pub fn accept_all_advertisements(&self) -> bool {
         self.inner.get("acceptAllAdvertisements").as_::<bool>()
     }
-
 }
 impl BluetoothLEScan {
     /// Getter of the `active` attribute.
@@ -95,12 +92,11 @@ impl BluetoothLEScan {
     pub fn active(&self) -> bool {
         self.inner.get("active").as_::<bool>()
     }
-
 }
 impl BluetoothLEScan {
     /// The stop method.
     /// [`BluetoothLEScan.stop`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScan/stop)
-    pub fn stop(&self, ) -> Undefined {
+    pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioNodeOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AudioNodeOptions {
 
 impl AsMut<Any> for AudioNodeOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioNodeOptions> for Any {
@@ -86,7 +83,9 @@ impl AudioNodeOptions {
 impl AudioNodeOptions {
     /// Getter of the `channelInterpretation` attribute.
     pub fn channel_interpretation(&self) -> ChannelInterpretation {
-        self.inner.get("channelInterpretation").as_::<ChannelInterpretation>()
+        self.inner
+            .get("channelInterpretation")
+            .as_::<ChannelInterpretation>()
     }
 
     /// Setter of the `channelInterpretation` attribute.

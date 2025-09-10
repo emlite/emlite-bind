@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaKeySystemConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaKeySystemConfiguration {
 
 impl AsMut<Any> for MediaKeySystemConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaKeySystemConfiguration> for Any {
@@ -75,7 +72,9 @@ impl MediaKeySystemConfiguration {
 impl MediaKeySystemConfiguration {
     /// Getter of the `initDataTypes` attribute.
     pub fn init_data_types(&self) -> TypedArray<JsString> {
-        self.inner.get("initDataTypes").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("initDataTypes")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `initDataTypes` attribute.
@@ -86,7 +85,9 @@ impl MediaKeySystemConfiguration {
 impl MediaKeySystemConfiguration {
     /// Getter of the `audioCapabilities` attribute.
     pub fn audio_capabilities(&self) -> TypedArray<MediaKeySystemMediaCapability> {
-        self.inner.get("audioCapabilities").as_::<TypedArray<MediaKeySystemMediaCapability>>()
+        self.inner
+            .get("audioCapabilities")
+            .as_::<TypedArray<MediaKeySystemMediaCapability>>()
     }
 
     /// Setter of the `audioCapabilities` attribute.
@@ -97,7 +98,9 @@ impl MediaKeySystemConfiguration {
 impl MediaKeySystemConfiguration {
     /// Getter of the `videoCapabilities` attribute.
     pub fn video_capabilities(&self) -> TypedArray<MediaKeySystemMediaCapability> {
-        self.inner.get("videoCapabilities").as_::<TypedArray<MediaKeySystemMediaCapability>>()
+        self.inner
+            .get("videoCapabilities")
+            .as_::<TypedArray<MediaKeySystemMediaCapability>>()
     }
 
     /// Setter of the `videoCapabilities` attribute.
@@ -108,7 +111,9 @@ impl MediaKeySystemConfiguration {
 impl MediaKeySystemConfiguration {
     /// Getter of the `distinctiveIdentifier` attribute.
     pub fn distinctive_identifier(&self) -> MediaKeysRequirement {
-        self.inner.get("distinctiveIdentifier").as_::<MediaKeysRequirement>()
+        self.inner
+            .get("distinctiveIdentifier")
+            .as_::<MediaKeysRequirement>()
     }
 
     /// Setter of the `distinctiveIdentifier` attribute.
@@ -119,7 +124,9 @@ impl MediaKeySystemConfiguration {
 impl MediaKeySystemConfiguration {
     /// Getter of the `persistentState` attribute.
     pub fn persistent_state(&self) -> MediaKeysRequirement {
-        self.inner.get("persistentState").as_::<MediaKeysRequirement>()
+        self.inner
+            .get("persistentState")
+            .as_::<MediaKeysRequirement>()
     }
 
     /// Setter of the `persistentState` attribute.

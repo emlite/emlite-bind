@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PopStateEvent class.
 /// [`PopStateEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PopStateEvent {
 
 impl FromVal for PopStateEvent {
     fn from_val(v: &Any) -> Self {
-        PopStateEvent { inner: Event::from_val(v) }
+        PopStateEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PopStateEvent {
 
 impl AsMut<Any> for PopStateEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PopStateEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&PopStateEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PopStateEvent);
 
-
-
 impl PopStateEvent {
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
     pub fn new0(type_: &JsString) -> PopStateEvent {
         Self {
-            inner: Any::global("PopStateEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("PopStateEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &PopStateEventInit) -> PopStateEvent {
         Self {
-            inner: Any::global("PopStateEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("PopStateEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PopStateEvent {
     /// Getter of the `state` attribute.
@@ -88,7 +88,6 @@ impl PopStateEvent {
     pub fn state(&self) -> Any {
         self.inner.get("state").as_::<Any>()
     }
-
 }
 impl PopStateEvent {
     /// Getter of the `hasUAVisualTransition` attribute.
@@ -96,5 +95,4 @@ impl PopStateEvent {
     pub fn has_ua_visual_transition(&self) -> bool {
         self.inner.get("hasUAVisualTransition").as_::<bool>()
     }
-
 }

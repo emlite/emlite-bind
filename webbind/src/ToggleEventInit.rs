@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ToggleEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ToggleEventInit {
 
 impl AsMut<Any> for ToggleEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ToggleEventInit> for Any {

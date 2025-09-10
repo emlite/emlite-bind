@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioWorkletNode class.
 /// [`AudioWorkletNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioWorkletNode {
 
 impl FromVal for AudioWorkletNode {
     fn from_val(v: &Any) -> Self {
-        AudioWorkletNode { inner: AudioNode::from_val(v) }
+        AudioWorkletNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioWorkletNode {
 
 impl AsMut<Any> for AudioWorkletNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioWorkletNode> for Any {
@@ -64,23 +63,28 @@ impl From<&AudioWorkletNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioWorkletNode);
 
-
-
 impl AudioWorkletNode {
     /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
     pub fn new0(context: &BaseAudioContext, name: &JsString) -> AudioWorkletNode {
         Self {
-            inner: Any::global("AudioWorkletNode").new(&[context.into(), name.into()]).as_::<AudioNode>(),
+            inner: Any::global("AudioWorkletNode")
+                .new(&[context.into(), name.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new1(context: &BaseAudioContext, name: &JsString, options: &AudioWorkletNodeOptions) -> AudioWorkletNode {
+    pub fn new1(
+        context: &BaseAudioContext,
+        name: &JsString,
+        options: &AudioWorkletNodeOptions,
+    ) -> AudioWorkletNode {
         Self {
-            inner: Any::global("AudioWorkletNode").new(&[context.into(), name.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("AudioWorkletNode")
+                .new(&[context.into(), name.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl AudioWorkletNode {
     /// Getter of the `parameters` attribute.
@@ -88,7 +92,6 @@ impl AudioWorkletNode {
     pub fn parameters(&self) -> AudioParamMap {
         self.inner.get("parameters").as_::<AudioParamMap>()
     }
-
 }
 impl AudioWorkletNode {
     /// Getter of the `port` attribute.
@@ -96,7 +99,6 @@ impl AudioWorkletNode {
     pub fn port(&self) -> MessagePort {
         self.inner.get("port").as_::<MessagePort>()
     }
-
 }
 impl AudioWorkletNode {
     /// Getter of the `onprocessorerror` attribute.

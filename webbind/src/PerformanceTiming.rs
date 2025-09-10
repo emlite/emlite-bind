@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PerformanceTiming class.
 /// [`PerformanceTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PerformanceTiming {
 
 impl FromVal for PerformanceTiming {
     fn from_val(v: &Any) -> Self {
-        PerformanceTiming { inner: Any::from_val(v) }
+        PerformanceTiming {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PerformanceTiming {
 
 impl AsMut<Any> for PerformanceTiming {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PerformanceTiming> for Any {
@@ -64,14 +63,12 @@ impl From<&PerformanceTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceTiming);
 
-
 impl PerformanceTiming {
     /// Getter of the `navigationStart` attribute.
     /// [`PerformanceTiming.navigationStart`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/navigationStart)
     pub fn navigation_start(&self) -> u64 {
         self.inner.get("navigationStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `unloadEventStart` attribute.
@@ -79,7 +76,6 @@ impl PerformanceTiming {
     pub fn unload_event_start(&self) -> u64 {
         self.inner.get("unloadEventStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `unloadEventEnd` attribute.
@@ -87,7 +83,6 @@ impl PerformanceTiming {
     pub fn unload_event_end(&self) -> u64 {
         self.inner.get("unloadEventEnd").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `redirectStart` attribute.
@@ -95,7 +90,6 @@ impl PerformanceTiming {
     pub fn redirect_start(&self) -> u64 {
         self.inner.get("redirectStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `redirectEnd` attribute.
@@ -103,7 +97,6 @@ impl PerformanceTiming {
     pub fn redirect_end(&self) -> u64 {
         self.inner.get("redirectEnd").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `fetchStart` attribute.
@@ -111,7 +104,6 @@ impl PerformanceTiming {
     pub fn fetch_start(&self) -> u64 {
         self.inner.get("fetchStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `domainLookupStart` attribute.
@@ -119,7 +111,6 @@ impl PerformanceTiming {
     pub fn domain_lookup_start(&self) -> u64 {
         self.inner.get("domainLookupStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `domainLookupEnd` attribute.
@@ -127,7 +118,6 @@ impl PerformanceTiming {
     pub fn domain_lookup_end(&self) -> u64 {
         self.inner.get("domainLookupEnd").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `connectStart` attribute.
@@ -135,7 +125,6 @@ impl PerformanceTiming {
     pub fn connect_start(&self) -> u64 {
         self.inner.get("connectStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `connectEnd` attribute.
@@ -143,7 +132,6 @@ impl PerformanceTiming {
     pub fn connect_end(&self) -> u64 {
         self.inner.get("connectEnd").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `secureConnectionStart` attribute.
@@ -151,7 +139,6 @@ impl PerformanceTiming {
     pub fn secure_connection_start(&self) -> u64 {
         self.inner.get("secureConnectionStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `requestStart` attribute.
@@ -159,7 +146,6 @@ impl PerformanceTiming {
     pub fn request_start(&self) -> u64 {
         self.inner.get("requestStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `responseStart` attribute.
@@ -167,7 +153,6 @@ impl PerformanceTiming {
     pub fn response_start(&self) -> u64 {
         self.inner.get("responseStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `responseEnd` attribute.
@@ -175,7 +160,6 @@ impl PerformanceTiming {
     pub fn response_end(&self) -> u64 {
         self.inner.get("responseEnd").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `domLoading` attribute.
@@ -183,7 +167,6 @@ impl PerformanceTiming {
     pub fn dom_loading(&self) -> u64 {
         self.inner.get("domLoading").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `domInteractive` attribute.
@@ -191,7 +174,6 @@ impl PerformanceTiming {
     pub fn dom_interactive(&self) -> u64 {
         self.inner.get("domInteractive").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `domContentLoadedEventStart` attribute.
@@ -199,7 +181,6 @@ impl PerformanceTiming {
     pub fn dom_content_loaded_event_start(&self) -> u64 {
         self.inner.get("domContentLoadedEventStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `domContentLoadedEventEnd` attribute.
@@ -207,7 +188,6 @@ impl PerformanceTiming {
     pub fn dom_content_loaded_event_end(&self) -> u64 {
         self.inner.get("domContentLoadedEventEnd").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `domComplete` attribute.
@@ -215,7 +195,6 @@ impl PerformanceTiming {
     pub fn dom_complete(&self) -> u64 {
         self.inner.get("domComplete").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `loadEventStart` attribute.
@@ -223,7 +202,6 @@ impl PerformanceTiming {
     pub fn load_event_start(&self) -> u64 {
         self.inner.get("loadEventStart").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// Getter of the `loadEventEnd` attribute.
@@ -231,12 +209,11 @@ impl PerformanceTiming {
     pub fn load_event_end(&self) -> u64 {
         self.inner.get("loadEventEnd").as_::<u64>()
     }
-
 }
 impl PerformanceTiming {
     /// The toJSON method.
     /// [`PerformanceTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/toJSON)
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

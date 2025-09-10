@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CreateMonitor class.
 /// [`CreateMonitor`](https://developer.mozilla.org/en-US/docs/Web/API/CreateMonitor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CreateMonitor {
 
 impl FromVal for CreateMonitor {
     fn from_val(v: &Any) -> Self {
-        CreateMonitor { inner: EventTarget::from_val(v) }
+        CreateMonitor {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CreateMonitor {
 
 impl AsMut<Any> for CreateMonitor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CreateMonitor> for Any {
@@ -63,7 +62,6 @@ impl From<&CreateMonitor> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CreateMonitor);
-
 
 impl CreateMonitor {
     /// Getter of the `ondownloadprogress` attribute.

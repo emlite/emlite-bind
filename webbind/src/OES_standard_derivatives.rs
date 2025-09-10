@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OES_standard_derivatives class.
 /// [`OES_standard_derivatives`](https://developer.mozilla.org/en-US/docs/Web/API/OES_standard_derivatives)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct OES_standard_derivatives {
 
 impl FromVal for OES_standard_derivatives {
     fn from_val(v: &Any) -> Self {
-        OES_standard_derivatives { inner: Any::from_val(v) }
+        OES_standard_derivatives {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for OES_standard_derivatives {
 
 impl AsMut<Any> for OES_standard_derivatives {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OES_standard_derivatives> for Any {
@@ -63,5 +62,3 @@ impl From<&OES_standard_derivatives> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(OES_standard_derivatives);
-
-

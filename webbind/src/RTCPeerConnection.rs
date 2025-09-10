@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCPeerConnection class.
 /// [`RTCPeerConnection`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCPeerConnection {
 
 impl FromVal for RTCPeerConnection {
     fn from_val(v: &Any) -> Self {
-        RTCPeerConnection { inner: EventTarget::from_val(v) }
+        RTCPeerConnection {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCPeerConnection {
 
 impl AsMut<Any> for RTCPeerConnection {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCPeerConnection> for Any {
@@ -64,110 +63,191 @@ impl From<&RTCPeerConnection> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCPeerConnection);
 
-
-
 impl RTCPeerConnection {
     /// The `new RTCPeerConnection(..)` constructor, creating a new RTCPeerConnection instance
     pub fn new0() -> RTCPeerConnection {
         Self {
-            inner: Any::global("RTCPeerConnection").new(&[]).as_::<EventTarget>(),
+            inner: Any::global("RTCPeerConnection")
+                .new(&[])
+                .as_::<EventTarget>(),
         }
     }
 
     /// The `new RTCPeerConnection(..)` constructor, creating a new RTCPeerConnection instance
     pub fn new1(configuration: &RTCConfiguration) -> RTCPeerConnection {
         Self {
-            inner: Any::global("RTCPeerConnection").new(&[configuration.into()]).as_::<EventTarget>(),
+            inner: Any::global("RTCPeerConnection")
+                .new(&[configuration.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl RTCPeerConnection {
     /// The createOffer method.
     /// [`RTCPeerConnection.createOffer`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createOffer)
-    pub fn create_offer0(&self, success_callback: &Function, failure_callback: &Function) -> Promise<Undefined> {
-        self.inner.call("createOffer", &[success_callback.into(), failure_callback.into(), ]).as_::<Promise<Undefined>>()
+    pub fn create_offer0(
+        &self,
+        success_callback: &Function,
+        failure_callback: &Function,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "createOffer",
+                &[success_callback.into(), failure_callback.into()],
+            )
+            .as_::<Promise<Undefined>>()
     }
     /// The createOffer method.
     /// [`RTCPeerConnection.createOffer`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createOffer)
-    pub fn create_offer1(&self, success_callback: &Function, failure_callback: &Function, options: &RTCOfferOptions) -> Promise<Undefined> {
-        self.inner.call("createOffer", &[success_callback.into(), failure_callback.into(), options.into(), ]).as_::<Promise<Undefined>>()
+    pub fn create_offer1(
+        &self,
+        success_callback: &Function,
+        failure_callback: &Function,
+        options: &RTCOfferOptions,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "createOffer",
+                &[
+                    success_callback.into(),
+                    failure_callback.into(),
+                    options.into(),
+                ],
+            )
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCPeerConnection {
     /// The createAnswer method.
     /// [`RTCPeerConnection.createAnswer`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createAnswer)
-    pub fn create_answer(&self, success_callback: &Function, failure_callback: &Function) -> Promise<Undefined> {
-        self.inner.call("createAnswer", &[success_callback.into(), failure_callback.into(), ]).as_::<Promise<Undefined>>()
+    pub fn create_answer(
+        &self,
+        success_callback: &Function,
+        failure_callback: &Function,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "createAnswer",
+                &[success_callback.into(), failure_callback.into()],
+            )
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCPeerConnection {
     /// The setLocalDescription method.
     /// [`RTCPeerConnection.setLocalDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setLocalDescription)
-    pub fn set_local_description(&self, description: &RTCLocalSessionDescriptionInit, success_callback: &Function, failure_callback: &Function) -> Promise<Undefined> {
-        self.inner.call("setLocalDescription", &[description.into(), success_callback.into(), failure_callback.into(), ]).as_::<Promise<Undefined>>()
+    pub fn set_local_description(
+        &self,
+        description: &RTCLocalSessionDescriptionInit,
+        success_callback: &Function,
+        failure_callback: &Function,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "setLocalDescription",
+                &[
+                    description.into(),
+                    success_callback.into(),
+                    failure_callback.into(),
+                ],
+            )
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCPeerConnection {
     /// Getter of the `localDescription` attribute.
     /// [`RTCPeerConnection.localDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/localDescription)
     pub fn local_description(&self) -> RTCSessionDescription {
-        self.inner.get("localDescription").as_::<RTCSessionDescription>()
+        self.inner
+            .get("localDescription")
+            .as_::<RTCSessionDescription>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `currentLocalDescription` attribute.
     /// [`RTCPeerConnection.currentLocalDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/currentLocalDescription)
     pub fn current_local_description(&self) -> RTCSessionDescription {
-        self.inner.get("currentLocalDescription").as_::<RTCSessionDescription>()
+        self.inner
+            .get("currentLocalDescription")
+            .as_::<RTCSessionDescription>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `pendingLocalDescription` attribute.
     /// [`RTCPeerConnection.pendingLocalDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/pendingLocalDescription)
     pub fn pending_local_description(&self) -> RTCSessionDescription {
-        self.inner.get("pendingLocalDescription").as_::<RTCSessionDescription>()
+        self.inner
+            .get("pendingLocalDescription")
+            .as_::<RTCSessionDescription>()
     }
-
 }
 impl RTCPeerConnection {
     /// The setRemoteDescription method.
     /// [`RTCPeerConnection.setRemoteDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setRemoteDescription)
-    pub fn set_remote_description(&self, description: &RTCSessionDescriptionInit, success_callback: &Function, failure_callback: &Function) -> Promise<Undefined> {
-        self.inner.call("setRemoteDescription", &[description.into(), success_callback.into(), failure_callback.into(), ]).as_::<Promise<Undefined>>()
+    pub fn set_remote_description(
+        &self,
+        description: &RTCSessionDescriptionInit,
+        success_callback: &Function,
+        failure_callback: &Function,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "setRemoteDescription",
+                &[
+                    description.into(),
+                    success_callback.into(),
+                    failure_callback.into(),
+                ],
+            )
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCPeerConnection {
     /// Getter of the `remoteDescription` attribute.
     /// [`RTCPeerConnection.remoteDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/remoteDescription)
     pub fn remote_description(&self) -> RTCSessionDescription {
-        self.inner.get("remoteDescription").as_::<RTCSessionDescription>()
+        self.inner
+            .get("remoteDescription")
+            .as_::<RTCSessionDescription>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `currentRemoteDescription` attribute.
     /// [`RTCPeerConnection.currentRemoteDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/currentRemoteDescription)
     pub fn current_remote_description(&self) -> RTCSessionDescription {
-        self.inner.get("currentRemoteDescription").as_::<RTCSessionDescription>()
+        self.inner
+            .get("currentRemoteDescription")
+            .as_::<RTCSessionDescription>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `pendingRemoteDescription` attribute.
     /// [`RTCPeerConnection.pendingRemoteDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/pendingRemoteDescription)
     pub fn pending_remote_description(&self) -> RTCSessionDescription {
-        self.inner.get("pendingRemoteDescription").as_::<RTCSessionDescription>()
+        self.inner
+            .get("pendingRemoteDescription")
+            .as_::<RTCSessionDescription>()
     }
-
 }
 impl RTCPeerConnection {
     /// The addIceCandidate method.
     /// [`RTCPeerConnection.addIceCandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addIceCandidate)
-    pub fn add_ice_candidate(&self, candidate: &RTCIceCandidateInit, success_callback: &Function, failure_callback: &Function) -> Promise<Undefined> {
-        self.inner.call("addIceCandidate", &[candidate.into(), success_callback.into(), failure_callback.into(), ]).as_::<Promise<Undefined>>()
+    pub fn add_ice_candidate(
+        &self,
+        candidate: &RTCIceCandidateInit,
+        success_callback: &Function,
+        failure_callback: &Function,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "addIceCandidate",
+                &[
+                    candidate.into(),
+                    success_callback.into(),
+                    failure_callback.into(),
+                ],
+            )
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCPeerConnection {
@@ -176,31 +256,33 @@ impl RTCPeerConnection {
     pub fn signaling_state(&self) -> RTCSignalingState {
         self.inner.get("signalingState").as_::<RTCSignalingState>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `iceGatheringState` attribute.
     /// [`RTCPeerConnection.iceGatheringState`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/iceGatheringState)
     pub fn ice_gathering_state(&self) -> RTCIceGatheringState {
-        self.inner.get("iceGatheringState").as_::<RTCIceGatheringState>()
+        self.inner
+            .get("iceGatheringState")
+            .as_::<RTCIceGatheringState>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `iceConnectionState` attribute.
     /// [`RTCPeerConnection.iceConnectionState`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/iceConnectionState)
     pub fn ice_connection_state(&self) -> RTCIceConnectionState {
-        self.inner.get("iceConnectionState").as_::<RTCIceConnectionState>()
+        self.inner
+            .get("iceConnectionState")
+            .as_::<RTCIceConnectionState>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `connectionState` attribute.
     /// [`RTCPeerConnection.connectionState`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/connectionState)
     pub fn connection_state(&self) -> RTCPeerConnectionState {
-        self.inner.get("connectionState").as_::<RTCPeerConnectionState>()
+        self.inner
+            .get("connectionState")
+            .as_::<RTCPeerConnectionState>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `canTrickleIceCandidates` attribute.
@@ -208,38 +290,41 @@ impl RTCPeerConnection {
     pub fn can_trickle_ice_candidates(&self) -> bool {
         self.inner.get("canTrickleIceCandidates").as_::<bool>()
     }
-
 }
 impl RTCPeerConnection {
     /// The restartIce method.
     /// [`RTCPeerConnection.restartIce`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/restartIce)
-    pub fn restart_ice(&self, ) -> Undefined {
+    pub fn restart_ice(&self) -> Undefined {
         self.inner.call("restartIce", &[]).as_::<Undefined>()
     }
 }
 impl RTCPeerConnection {
     /// The getConfiguration method.
     /// [`RTCPeerConnection.getConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getConfiguration)
-    pub fn get_configuration(&self, ) -> RTCConfiguration {
-        self.inner.call("getConfiguration", &[]).as_::<RTCConfiguration>()
+    pub fn get_configuration(&self) -> RTCConfiguration {
+        self.inner
+            .call("getConfiguration", &[])
+            .as_::<RTCConfiguration>()
     }
 }
 impl RTCPeerConnection {
     /// The setConfiguration method.
     /// [`RTCPeerConnection.setConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setConfiguration)
-    pub fn set_configuration0(&self, ) -> Undefined {
+    pub fn set_configuration0(&self) -> Undefined {
         self.inner.call("setConfiguration", &[]).as_::<Undefined>()
     }
     /// The setConfiguration method.
     /// [`RTCPeerConnection.setConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setConfiguration)
     pub fn set_configuration1(&self, configuration: &RTCConfiguration) -> Undefined {
-        self.inner.call("setConfiguration", &[configuration.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setConfiguration", &[configuration.into()])
+            .as_::<Undefined>()
     }
 }
 impl RTCPeerConnection {
     /// The close method.
     /// [`RTCPeerConnection.close`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/close)
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
@@ -338,28 +423,39 @@ impl RTCPeerConnection {
     /// The setIdentityProvider method.
     /// [`RTCPeerConnection.setIdentityProvider`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setIdentityProvider)
     pub fn set_identity_provider0(&self, provider: &JsString) -> Undefined {
-        self.inner.call("setIdentityProvider", &[provider.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setIdentityProvider", &[provider.into()])
+            .as_::<Undefined>()
     }
     /// The setIdentityProvider method.
     /// [`RTCPeerConnection.setIdentityProvider`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setIdentityProvider)
-    pub fn set_identity_provider1(&self, provider: &JsString, options: &RTCIdentityProviderOptions) -> Undefined {
-        self.inner.call("setIdentityProvider", &[provider.into(), options.into(), ]).as_::<Undefined>()
+    pub fn set_identity_provider1(
+        &self,
+        provider: &JsString,
+        options: &RTCIdentityProviderOptions,
+    ) -> Undefined {
+        self.inner
+            .call("setIdentityProvider", &[provider.into(), options.into()])
+            .as_::<Undefined>()
     }
 }
 impl RTCPeerConnection {
     /// The getIdentityAssertion method.
     /// [`RTCPeerConnection.getIdentityAssertion`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getIdentityAssertion)
-    pub fn get_identity_assertion(&self, ) -> Promise<JsString> {
-        self.inner.call("getIdentityAssertion", &[]).as_::<Promise<JsString>>()
+    pub fn get_identity_assertion(&self) -> Promise<JsString> {
+        self.inner
+            .call("getIdentityAssertion", &[])
+            .as_::<Promise<JsString>>()
     }
 }
 impl RTCPeerConnection {
     /// Getter of the `peerIdentity` attribute.
     /// [`RTCPeerConnection.peerIdentity`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/peerIdentity)
     pub fn peer_identity(&self) -> Promise<RTCIdentityAssertion> {
-        self.inner.get("peerIdentity").as_::<Promise<RTCIdentityAssertion>>()
+        self.inner
+            .get("peerIdentity")
+            .as_::<Promise<RTCIdentityAssertion>>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `idpLoginUrl` attribute.
@@ -367,7 +463,6 @@ impl RTCPeerConnection {
     pub fn idp_login_url(&self) -> JsString {
         self.inner.get("idpLoginUrl").as_::<JsString>()
     }
-
 }
 impl RTCPeerConnection {
     /// Getter of the `idpErrorInfo` attribute.
@@ -375,60 +470,79 @@ impl RTCPeerConnection {
     pub fn idp_error_info(&self) -> JsString {
         self.inner.get("idpErrorInfo").as_::<JsString>()
     }
-
 }
 impl RTCPeerConnection {
     /// The generateCertificate method.
     /// [`RTCPeerConnection.generateCertificate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/generateCertificate)
     pub fn generate_certificate(keygen_algorithm: &Any) -> Promise<RTCCertificate> {
-        Any::global("RTCPeerConnection").call("generateCertificate", &[keygen_algorithm.into(), ]).as_::<Promise<RTCCertificate>>()
+        Any::global("RTCPeerConnection")
+            .call("generateCertificate", &[keygen_algorithm.into()])
+            .as_::<Promise<RTCCertificate>>()
     }
 }
 impl RTCPeerConnection {
     /// The getSenders method.
     /// [`RTCPeerConnection.getSenders`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getSenders)
-    pub fn get_senders(&self, ) -> TypedArray<RTCRtpSender> {
-        self.inner.call("getSenders", &[]).as_::<TypedArray<RTCRtpSender>>()
+    pub fn get_senders(&self) -> TypedArray<RTCRtpSender> {
+        self.inner
+            .call("getSenders", &[])
+            .as_::<TypedArray<RTCRtpSender>>()
     }
 }
 impl RTCPeerConnection {
     /// The getReceivers method.
     /// [`RTCPeerConnection.getReceivers`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getReceivers)
-    pub fn get_receivers(&self, ) -> TypedArray<RTCRtpReceiver> {
-        self.inner.call("getReceivers", &[]).as_::<TypedArray<RTCRtpReceiver>>()
+    pub fn get_receivers(&self) -> TypedArray<RTCRtpReceiver> {
+        self.inner
+            .call("getReceivers", &[])
+            .as_::<TypedArray<RTCRtpReceiver>>()
     }
 }
 impl RTCPeerConnection {
     /// The getTransceivers method.
     /// [`RTCPeerConnection.getTransceivers`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getTransceivers)
-    pub fn get_transceivers(&self, ) -> TypedArray<RTCRtpTransceiver> {
-        self.inner.call("getTransceivers", &[]).as_::<TypedArray<RTCRtpTransceiver>>()
+    pub fn get_transceivers(&self) -> TypedArray<RTCRtpTransceiver> {
+        self.inner
+            .call("getTransceivers", &[])
+            .as_::<TypedArray<RTCRtpTransceiver>>()
     }
 }
 impl RTCPeerConnection {
     /// The addTrack method.
     /// [`RTCPeerConnection.addTrack`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addTrack)
     pub fn add_track(&self, track: &MediaStreamTrack, streams: &MediaStream) -> RTCRtpSender {
-        self.inner.call("addTrack", &[track.into(), streams.into(), ]).as_::<RTCRtpSender>()
+        self.inner
+            .call("addTrack", &[track.into(), streams.into()])
+            .as_::<RTCRtpSender>()
     }
 }
 impl RTCPeerConnection {
     /// The removeTrack method.
     /// [`RTCPeerConnection.removeTrack`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/removeTrack)
     pub fn remove_track(&self, sender: &RTCRtpSender) -> Undefined {
-        self.inner.call("removeTrack", &[sender.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("removeTrack", &[sender.into()])
+            .as_::<Undefined>()
     }
 }
 impl RTCPeerConnection {
     /// The addTransceiver method.
     /// [`RTCPeerConnection.addTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addTransceiver)
     pub fn add_transceiver0(&self, track_or_kind: &Any) -> RTCRtpTransceiver {
-        self.inner.call("addTransceiver", &[track_or_kind.into(), ]).as_::<RTCRtpTransceiver>()
+        self.inner
+            .call("addTransceiver", &[track_or_kind.into()])
+            .as_::<RTCRtpTransceiver>()
     }
     /// The addTransceiver method.
     /// [`RTCPeerConnection.addTransceiver`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/addTransceiver)
-    pub fn add_transceiver1(&self, track_or_kind: &Any, init: &RTCRtpTransceiverInit) -> RTCRtpTransceiver {
-        self.inner.call("addTransceiver", &[track_or_kind.into(), init.into(), ]).as_::<RTCRtpTransceiver>()
+    pub fn add_transceiver1(
+        &self,
+        track_or_kind: &Any,
+        init: &RTCRtpTransceiverInit,
+    ) -> RTCRtpTransceiver {
+        self.inner
+            .call("addTransceiver", &[track_or_kind.into(), init.into()])
+            .as_::<RTCRtpTransceiver>()
     }
 }
 impl RTCPeerConnection {
@@ -450,18 +564,28 @@ impl RTCPeerConnection {
     pub fn sctp(&self) -> RTCSctpTransport {
         self.inner.get("sctp").as_::<RTCSctpTransport>()
     }
-
 }
 impl RTCPeerConnection {
     /// The createDataChannel method.
     /// [`RTCPeerConnection.createDataChannel`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createDataChannel)
     pub fn create_data_channel0(&self, label: &JsString) -> RTCDataChannel {
-        self.inner.call("createDataChannel", &[label.into(), ]).as_::<RTCDataChannel>()
+        self.inner
+            .call("createDataChannel", &[label.into()])
+            .as_::<RTCDataChannel>()
     }
     /// The createDataChannel method.
     /// [`RTCPeerConnection.createDataChannel`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createDataChannel)
-    pub fn create_data_channel1(&self, label: &JsString, data_channel_dict: &RTCDataChannelInit) -> RTCDataChannel {
-        self.inner.call("createDataChannel", &[label.into(), data_channel_dict.into(), ]).as_::<RTCDataChannel>()
+    pub fn create_data_channel1(
+        &self,
+        label: &JsString,
+        data_channel_dict: &RTCDataChannelInit,
+    ) -> RTCDataChannel {
+        self.inner
+            .call(
+                "createDataChannel",
+                &[label.into(), data_channel_dict.into()],
+            )
+            .as_::<RTCDataChannel>()
     }
 }
 impl RTCPeerConnection {
@@ -480,12 +604,16 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     /// The getStats method.
     /// [`RTCPeerConnection.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getStats)
-    pub fn get_stats0(&self, ) -> Promise<RTCStatsReport> {
-        self.inner.call("getStats", &[]).as_::<Promise<RTCStatsReport>>()
+    pub fn get_stats0(&self) -> Promise<RTCStatsReport> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<RTCStatsReport>>()
     }
     /// The getStats method.
     /// [`RTCPeerConnection.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getStats)
     pub fn get_stats1(&self, selector: &MediaStreamTrack) -> Promise<RTCStatsReport> {
-        self.inner.call("getStats", &[selector.into(), ]).as_::<Promise<RTCStatsReport>>()
+        self.inner
+            .call("getStats", &[selector.into()])
+            .as_::<Promise<RTCStatsReport>>()
     }
 }

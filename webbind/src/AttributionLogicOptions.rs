@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AttributionLogicOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AttributionLogicOptions {
 
 impl AsMut<Any> for AttributionLogicOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AttributionLogicOptions> for Any {

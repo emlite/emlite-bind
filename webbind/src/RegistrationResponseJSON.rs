@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RegistrationResponseJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RegistrationResponseJSON {
 
 impl AsMut<Any> for RegistrationResponseJSON {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RegistrationResponseJSON> for Any {
@@ -86,7 +83,9 @@ impl RegistrationResponseJSON {
 impl RegistrationResponseJSON {
     /// Getter of the `response` attribute.
     pub fn response(&self) -> AuthenticatorAttestationResponseJSON {
-        self.inner.get("response").as_::<AuthenticatorAttestationResponseJSON>()
+        self.inner
+            .get("response")
+            .as_::<AuthenticatorAttestationResponseJSON>()
     }
 
     /// Setter of the `response` attribute.
@@ -108,11 +107,16 @@ impl RegistrationResponseJSON {
 impl RegistrationResponseJSON {
     /// Getter of the `clientExtensionResults` attribute.
     pub fn client_extension_results(&self) -> AuthenticationExtensionsClientOutputsJSON {
-        self.inner.get("clientExtensionResults").as_::<AuthenticationExtensionsClientOutputsJSON>()
+        self.inner
+            .get("clientExtensionResults")
+            .as_::<AuthenticationExtensionsClientOutputsJSON>()
     }
 
     /// Setter of the `clientExtensionResults` attribute.
-    pub fn set_client_extension_results(&mut self, value: &AuthenticationExtensionsClientOutputsJSON) {
+    pub fn set_client_extension_results(
+        &mut self,
+        value: &AuthenticationExtensionsClientOutputsJSON,
+    ) {
         self.inner.set("clientExtensionResults", value);
     }
 }

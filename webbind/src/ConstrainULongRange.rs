@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ConstrainULongRange dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ConstrainULongRange {
 
 impl AsMut<Any> for ConstrainULongRange {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ConstrainULongRange> for Any {

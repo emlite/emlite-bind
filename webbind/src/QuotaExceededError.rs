@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The QuotaExceededError class.
 /// [`QuotaExceededError`](https://developer.mozilla.org/en-US/docs/Web/API/QuotaExceededError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct QuotaExceededError {
 
 impl FromVal for QuotaExceededError {
     fn from_val(v: &Any) -> Self {
-        QuotaExceededError { inner: DOMException::from_val(v) }
+        QuotaExceededError {
+            inner: DOMException::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for QuotaExceededError {
 
 impl AsMut<Any> for QuotaExceededError {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<QuotaExceededError> for Any {
@@ -64,30 +63,33 @@ impl From<&QuotaExceededError> for Any {
 
 jsbind::utils::impl_dyn_cast!(QuotaExceededError);
 
-
-
 impl QuotaExceededError {
     /// The `new QuotaExceededError(..)` constructor, creating a new QuotaExceededError instance
     pub fn new0() -> QuotaExceededError {
         Self {
-            inner: Any::global("QuotaExceededError").new(&[]).as_::<DOMException>(),
+            inner: Any::global("QuotaExceededError")
+                .new(&[])
+                .as_::<DOMException>(),
         }
     }
 
     /// The `new QuotaExceededError(..)` constructor, creating a new QuotaExceededError instance
     pub fn new1(message: &JsString) -> QuotaExceededError {
         Self {
-            inner: Any::global("QuotaExceededError").new(&[message.into()]).as_::<DOMException>(),
+            inner: Any::global("QuotaExceededError")
+                .new(&[message.into()])
+                .as_::<DOMException>(),
         }
     }
 
     /// The `new QuotaExceededError(..)` constructor, creating a new QuotaExceededError instance
     pub fn new2(message: &JsString, options: &QuotaExceededErrorOptions) -> QuotaExceededError {
         Self {
-            inner: Any::global("QuotaExceededError").new(&[message.into(), options.into()]).as_::<DOMException>(),
+            inner: Any::global("QuotaExceededError")
+                .new(&[message.into(), options.into()])
+                .as_::<DOMException>(),
         }
     }
-
 }
 impl QuotaExceededError {
     /// Getter of the `quota` attribute.
@@ -95,7 +97,6 @@ impl QuotaExceededError {
     pub fn quota(&self) -> f64 {
         self.inner.get("quota").as_::<f64>()
     }
-
 }
 impl QuotaExceededError {
     /// Getter of the `requested` attribute.
@@ -103,5 +104,4 @@ impl QuotaExceededError {
     pub fn requested(&self) -> f64 {
         self.inner.get("requested").as_::<f64>()
     }
-
 }

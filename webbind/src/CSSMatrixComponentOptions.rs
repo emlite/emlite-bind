@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMatrixComponentOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for CSSMatrixComponentOptions {
 
 impl AsMut<Any> for CSSMatrixComponentOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMatrixComponentOptions> for Any {

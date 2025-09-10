@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SharedStorageSetMethodOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SharedStorageSetMethodOptions {
 
 impl AsMut<Any> for SharedStorageSetMethodOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SharedStorageSetMethodOptions> for Any {

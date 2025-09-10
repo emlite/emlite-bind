@@ -374,12 +374,9 @@ pub fn atob(encoded: &JsString) -> Result<JsString, JsError> {
 /// assert!(is_nan(&(0.0/0.0).into()));
 /// assert!(!is_nan(&42.into()));
 /// ```
-pub fn is_nan<T>(value: &T) -> bool
-where
-    T: AsRef<emlite::Val>,
-{
+pub fn is_nan<V: Into<emlite::Val>>(value: V) -> bool {
     emlite::Val::global("isNaN")
-        .invoke(&[value.as_ref().clone()])
+        .invoke(&[value.into()])
         .as_::<bool>()
 }
 
@@ -397,7 +394,7 @@ where
 /// });
 /// queue_microtask(&callback);
 /// ```
-pub fn queue_microtask(callback: &Function) {
+pub fn queue_microtask<C: Into<emlite::Val>>(callback: C) {
     emlite::Val::global("queueMicrotask").invoke(&[callback.into()]);
 }
 
@@ -441,7 +438,7 @@ pub fn require_module(specifier: &str) -> Result<Object, JsError> {
     if require_fn.is_undefined() {
         return Err(JsError::new("require is not available in this environment"));
     }
-    
+
     let module_exports = require_fn.invoke(&[specifier.into()]);
     Ok(Object::from_val(&module_exports.as_::<Any>()))
 }
@@ -463,10 +460,12 @@ pub fn require_module(specifier: &str) -> Result<Object, JsError> {
 /// let require_fn = create_require(&import_meta_url)?;
 /// // require_fn can now be used to load CommonJS modules
 /// ```
-pub fn create_require(import_meta_url: &Any) -> Result<Function, JsError> {
+pub fn create_require<V: Into<emlite::Val>>(import_meta_url: V) -> Result<Function, JsError> {
     let module_obj = emlite::Val::global("module");
     if module_obj.is_undefined() {
-        return Err(JsError::new("module.createRequire not supported in this environment"));
+        return Err(JsError::new(
+            "module.createRequire not supported in this environment",
+        ));
     }
 
     let create_require_fn = module_obj.get("createRequire");
@@ -474,7 +473,7 @@ pub fn create_require(import_meta_url: &Any) -> Result<Function, JsError> {
         return Err(JsError::new("module.createRequire not available"));
     }
 
-    let require_fn = create_require_fn.invoke(&[import_meta_url.clone()]);
+    let require_fn = create_require_fn.invoke(&[import_meta_url.into()]);
     Ok(Function::from_val(&require_fn.as_::<Any>()))
 }
 

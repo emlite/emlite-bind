@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUVertexAttribute dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUVertexAttribute {
 
 impl AsMut<Any> for GPUVertexAttribute {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUVertexAttribute> for Any {

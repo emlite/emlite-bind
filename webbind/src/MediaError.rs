@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaError class.
 /// [`MediaError`](https://developer.mozilla.org/en-US/docs/Web/API/MediaError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaError {
 
 impl FromVal for MediaError {
     fn from_val(v: &Any) -> Self {
-        MediaError { inner: Any::from_val(v) }
+        MediaError {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaError {
 
 impl AsMut<Any> for MediaError {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaError> for Any {
@@ -64,14 +63,12 @@ impl From<&MediaError> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaError);
 
-
 impl MediaError {
     /// Getter of the `code` attribute.
     /// [`MediaError.code`](https://developer.mozilla.org/en-US/docs/Web/API/MediaError/code)
     pub fn code(&self) -> u16 {
         self.inner.get("code").as_::<u16>()
     }
-
 }
 impl MediaError {
     /// Getter of the `message` attribute.
@@ -79,5 +76,4 @@ impl MediaError {
     pub fn message(&self) -> JsString {
         self.inner.get("message").as_::<JsString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PermissionSetParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PermissionSetParameters {
 
 impl AsMut<Any> for PermissionSetParameters {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PermissionSetParameters> for Any {

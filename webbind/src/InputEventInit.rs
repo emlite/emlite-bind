@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The InputEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for InputEventInit {
 
 impl AsMut<Any> for InputEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<InputEventInit> for Any {

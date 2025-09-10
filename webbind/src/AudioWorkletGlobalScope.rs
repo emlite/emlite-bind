@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioWorkletGlobalScope class.
 /// [`AudioWorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioWorkletGlobalScope {
 
 impl FromVal for AudioWorkletGlobalScope {
     fn from_val(v: &Any) -> Self {
-        AudioWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
+        AudioWorkletGlobalScope {
+            inner: WorkletGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioWorkletGlobalScope {
 
 impl AsMut<Any> for AudioWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioWorkletGlobalScope> for Any {
@@ -64,12 +63,13 @@ impl From<&AudioWorkletGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioWorkletGlobalScope);
 
-
 impl AudioWorkletGlobalScope {
     /// The registerProcessor method.
     /// [`AudioWorkletGlobalScope.registerProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope/registerProcessor)
     pub fn register_processor(&self, name: &JsString, processor_ctor: &Function) -> Undefined {
-        self.inner.call("registerProcessor", &[name.into(), processor_ctor.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("registerProcessor", &[name.into(), processor_ctor.into()])
+            .as_::<Undefined>()
     }
 }
 impl AudioWorkletGlobalScope {
@@ -78,7 +78,6 @@ impl AudioWorkletGlobalScope {
     pub fn current_frame(&self) -> u64 {
         self.inner.get("currentFrame").as_::<u64>()
     }
-
 }
 impl AudioWorkletGlobalScope {
     /// Getter of the `currentTime` attribute.
@@ -86,7 +85,6 @@ impl AudioWorkletGlobalScope {
     pub fn current_time(&self) -> f64 {
         self.inner.get("currentTime").as_::<f64>()
     }
-
 }
 impl AudioWorkletGlobalScope {
     /// Getter of the `sampleRate` attribute.
@@ -94,7 +92,6 @@ impl AudioWorkletGlobalScope {
     pub fn sample_rate(&self) -> f32 {
         self.inner.get("sampleRate").as_::<f32>()
     }
-
 }
 impl AudioWorkletGlobalScope {
     /// Getter of the `renderQuantumSize` attribute.
@@ -102,7 +99,6 @@ impl AudioWorkletGlobalScope {
     pub fn render_quantum_size(&self) -> u32 {
         self.inner.get("renderQuantumSize").as_::<u32>()
     }
-
 }
 impl AudioWorkletGlobalScope {
     /// Getter of the `port` attribute.
@@ -110,5 +106,4 @@ impl AudioWorkletGlobalScope {
     pub fn port(&self) -> MessagePort {
         self.inner.get("port").as_::<MessagePort>()
     }
-
 }

@@ -71,16 +71,13 @@ impl<T> AsMut<emlite::Val> for TypedArray<T> {
 }
 
 impl<T> TypedArray<T> {
-    /// Construct a new JS array from a Rust slice, pushing each element
-    /// through `Into<Val>`.
+    /// Construct a new JS array from a Rust slice.
+    /// Uses a single array build operation instead of repeated `push` calls.
     pub fn new_from_slice(slice: &[T]) -> Self
     where
         T: Clone + Into<emlite::Val>,
     {
-        let arr = emlite::Val::array();
-        for v in slice {
-            arr.call("push", &[v.clone().into()]);
-        }
+        let arr = emlite::Val::from_slice(slice);
         Self {
             inner: arr,
             phantom: PhantomData,

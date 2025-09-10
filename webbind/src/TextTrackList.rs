@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TextTrackList class.
 /// [`TextTrackList`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TextTrackList {
 
 impl FromVal for TextTrackList {
     fn from_val(v: &Any) -> Self {
-        TextTrackList { inner: EventTarget::from_val(v) }
+        TextTrackList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TextTrackList {
 
 impl AsMut<Any> for TextTrackList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TextTrackList> for Any {
@@ -64,20 +63,20 @@ impl From<&TextTrackList> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextTrackList);
 
-
 impl TextTrackList {
     /// Getter of the `length` attribute.
     /// [`TextTrackList.length`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl TextTrackList {
     /// The getTrackById method.
     /// [`TextTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/getTrackById)
     pub fn get_track_by_id(&self, id: &JsString) -> TextTrack {
-        self.inner.call("getTrackById", &[id.into(), ]).as_::<TextTrack>()
+        self.inner
+            .call("getTrackById", &[id.into()])
+            .as_::<TextTrack>()
     }
 }
 impl TextTrackList {

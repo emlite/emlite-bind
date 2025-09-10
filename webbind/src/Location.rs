@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Location class.
 /// [`Location`](https://developer.mozilla.org/en-US/docs/Web/API/Location)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Location {
 
 impl FromVal for Location {
     fn from_val(v: &Any) -> Self {
-        Location { inner: Any::from_val(v) }
+        Location {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Location {
 
 impl AsMut<Any> for Location {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Location> for Any {
@@ -63,7 +62,6 @@ impl From<&Location> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(Location);
-
 
 impl Location {
     /// Getter of the `href` attribute.
@@ -84,7 +82,6 @@ impl Location {
     pub fn origin(&self) -> JsString {
         self.inner.get("origin").as_::<JsString>()
     }
-
 }
 impl Location {
     /// Getter of the `protocol` attribute.
@@ -181,20 +178,20 @@ impl Location {
     /// The assign method.
     /// [`Location.assign`](https://developer.mozilla.org/en-US/docs/Web/API/Location/assign)
     pub fn assign(&self, url: &JsString) -> Undefined {
-        self.inner.call("assign", &[url.into(), ]).as_::<Undefined>()
+        self.inner.call("assign", &[url.into()]).as_::<Undefined>()
     }
 }
 impl Location {
     /// The replace method.
     /// [`Location.replace`](https://developer.mozilla.org/en-US/docs/Web/API/Location/replace)
     pub fn replace(&self, url: &JsString) -> Undefined {
-        self.inner.call("replace", &[url.into(), ]).as_::<Undefined>()
+        self.inner.call("replace", &[url.into()]).as_::<Undefined>()
     }
 }
 impl Location {
     /// The reload method.
     /// [`Location.reload`](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
-    pub fn reload(&self, ) -> Undefined {
+    pub fn reload(&self) -> Undefined {
         self.inner.call("reload", &[]).as_::<Undefined>()
     }
 }
@@ -204,5 +201,4 @@ impl Location {
     pub fn ancestor_origins(&self) -> DOMStringList {
         self.inner.get("ancestorOrigins").as_::<DOMStringList>()
     }
-
 }

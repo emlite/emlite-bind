@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TransitionEvent class.
 /// [`TransitionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TransitionEvent {
 
 impl FromVal for TransitionEvent {
     fn from_val(v: &Any) -> Self {
-        TransitionEvent { inner: Event::from_val(v) }
+        TransitionEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TransitionEvent {
 
 impl AsMut<Any> for TransitionEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TransitionEvent> for Any {
@@ -64,23 +63,27 @@ impl From<&TransitionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(TransitionEvent);
 
-
-
 impl TransitionEvent {
     /// The `new TransitionEvent(..)` constructor, creating a new TransitionEvent instance
     pub fn new0(type_: &JsString) -> TransitionEvent {
         Self {
-            inner: Any::global("TransitionEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("TransitionEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new TransitionEvent(..)` constructor, creating a new TransitionEvent instance
-    pub fn new1(type_: &JsString, transition_event_init_dict: &TransitionEventInit) -> TransitionEvent {
+    pub fn new1(
+        type_: &JsString,
+        transition_event_init_dict: &TransitionEventInit,
+    ) -> TransitionEvent {
         Self {
-            inner: Any::global("TransitionEvent").new(&[type_.into(), transition_event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("TransitionEvent")
+                .new(&[type_.into(), transition_event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl TransitionEvent {
     /// Getter of the `propertyName` attribute.
@@ -88,7 +91,6 @@ impl TransitionEvent {
     pub fn property_name(&self) -> JsString {
         self.inner.get("propertyName").as_::<JsString>()
     }
-
 }
 impl TransitionEvent {
     /// Getter of the `elapsedTime` attribute.
@@ -96,7 +98,6 @@ impl TransitionEvent {
     pub fn elapsed_time(&self) -> f64 {
         self.inner.get("elapsedTime").as_::<f64>()
     }
-
 }
 impl TransitionEvent {
     /// Getter of the `pseudoElement` attribute.
@@ -104,5 +105,4 @@ impl TransitionEvent {
     pub fn pseudo_element(&self) -> JsString {
         self.inner.get("pseudoElement").as_::<JsString>()
     }
-
 }

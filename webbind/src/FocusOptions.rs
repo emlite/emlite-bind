@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FocusOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for FocusOptions {
 
 impl AsMut<Any> for FocusOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FocusOptions> for Any {

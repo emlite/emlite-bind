@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PAExtendedHistogramContribution dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PAExtendedHistogramContribution {
 
 impl AsMut<Any> for PAExtendedHistogramContribution {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PAExtendedHistogramContribution> for Any {

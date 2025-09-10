@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUDepthStencilState dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUDepthStencilState {
 
 impl AsMut<Any> for GPUDepthStencilState {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUDepthStencilState> for Any {

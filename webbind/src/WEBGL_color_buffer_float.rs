@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WEBGL_color_buffer_float class.
 /// [`WEBGL_color_buffer_float`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_color_buffer_float)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WEBGL_color_buffer_float {
 
 impl FromVal for WEBGL_color_buffer_float {
     fn from_val(v: &Any) -> Self {
-        WEBGL_color_buffer_float { inner: Any::from_val(v) }
+        WEBGL_color_buffer_float {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WEBGL_color_buffer_float {
 
 impl AsMut<Any> for WEBGL_color_buffer_float {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WEBGL_color_buffer_float> for Any {
@@ -63,5 +62,3 @@ impl From<&WEBGL_color_buffer_float> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WEBGL_color_buffer_float);
-
-

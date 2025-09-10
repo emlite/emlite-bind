@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BiquadFilterNode class.
 /// [`BiquadFilterNode`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BiquadFilterNode {
 
 impl FromVal for BiquadFilterNode {
     fn from_val(v: &Any) -> Self {
-        BiquadFilterNode { inner: AudioNode::from_val(v) }
+        BiquadFilterNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BiquadFilterNode {
 
 impl AsMut<Any> for BiquadFilterNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BiquadFilterNode> for Any {
@@ -64,23 +63,24 @@ impl From<&BiquadFilterNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(BiquadFilterNode);
 
-
-
 impl BiquadFilterNode {
     /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
     pub fn new0(context: &BaseAudioContext) -> BiquadFilterNode {
         Self {
-            inner: Any::global("BiquadFilterNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("BiquadFilterNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
     pub fn new1(context: &BaseAudioContext, options: &BiquadFilterOptions) -> BiquadFilterNode {
         Self {
-            inner: Any::global("BiquadFilterNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("BiquadFilterNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl BiquadFilterNode {
     /// Getter of the `type` attribute.
@@ -101,7 +101,6 @@ impl BiquadFilterNode {
     pub fn frequency(&self) -> AudioParam {
         self.inner.get("frequency").as_::<AudioParam>()
     }
-
 }
 impl BiquadFilterNode {
     /// Getter of the `detune` attribute.
@@ -109,7 +108,6 @@ impl BiquadFilterNode {
     pub fn detune(&self) -> AudioParam {
         self.inner.get("detune").as_::<AudioParam>()
     }
-
 }
 impl BiquadFilterNode {
     /// Getter of the `Q` attribute.
@@ -117,7 +115,6 @@ impl BiquadFilterNode {
     pub fn q(&self) -> AudioParam {
         self.inner.get("Q").as_::<AudioParam>()
     }
-
 }
 impl BiquadFilterNode {
     /// Getter of the `gain` attribute.
@@ -125,12 +122,25 @@ impl BiquadFilterNode {
     pub fn gain(&self) -> AudioParam {
         self.inner.get("gain").as_::<AudioParam>()
     }
-
 }
 impl BiquadFilterNode {
     /// The getFrequencyResponse method.
     /// [`BiquadFilterNode.getFrequencyResponse`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/getFrequencyResponse)
-    pub fn get_frequency_response(&self, frequency_hz: &Float32Array, mag_response: &Float32Array, phase_response: &Float32Array) -> Undefined {
-        self.inner.call("getFrequencyResponse", &[frequency_hz.into(), mag_response.into(), phase_response.into(), ]).as_::<Undefined>()
+    pub fn get_frequency_response(
+        &self,
+        frequency_hz: &Float32Array,
+        mag_response: &Float32Array,
+        phase_response: &Float32Array,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "getFrequencyResponse",
+                &[
+                    frequency_hz.into(),
+                    mag_response.into(),
+                    phase_response.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 }

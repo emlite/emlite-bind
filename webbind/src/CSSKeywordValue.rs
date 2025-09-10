@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSKeywordValue class.
 /// [`CSSKeywordValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSKeywordValue {
 
 impl FromVal for CSSKeywordValue {
     fn from_val(v: &Any) -> Self {
-        CSSKeywordValue { inner: CSSStyleValue::from_val(v) }
+        CSSKeywordValue {
+            inner: CSSStyleValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSKeywordValue {
 
 impl AsMut<Any> for CSSKeywordValue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSKeywordValue> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSKeywordValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSKeywordValue);
 
-
-
 impl CSSKeywordValue {
     /// The `new CSSKeywordValue(..)` constructor, creating a new CSSKeywordValue instance
     pub fn new(value: &JsString) -> CSSKeywordValue {
         Self {
-            inner: Any::global("CSSKeywordValue").new(&[value.into()]).as_::<CSSStyleValue>(),
+            inner: Any::global("CSSKeywordValue")
+                .new(&[value.into()])
+                .as_::<CSSStyleValue>(),
         }
     }
-
 }
 impl CSSKeywordValue {
     /// Getter of the `value` attribute.

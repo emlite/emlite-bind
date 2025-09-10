@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BlobEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for BlobEventInit {
 
 impl AsMut<Any> for BlobEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BlobEventInit> for Any {

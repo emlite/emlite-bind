@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCDtlsFingerprint dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCDtlsFingerprint {
 
 impl AsMut<Any> for RTCDtlsFingerprint {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCDtlsFingerprint> for Any {

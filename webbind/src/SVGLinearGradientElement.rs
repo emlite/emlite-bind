@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGLinearGradientElement class.
 /// [`SVGLinearGradientElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLinearGradientElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGLinearGradientElement {
 
 impl FromVal for SVGLinearGradientElement {
     fn from_val(v: &Any) -> Self {
-        SVGLinearGradientElement { inner: SVGGradientElement::from_val(v) }
+        SVGLinearGradientElement {
+            inner: SVGGradientElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGLinearGradientElement {
 
 impl AsMut<Any> for SVGLinearGradientElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGLinearGradientElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGLinearGradientElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGLinearGradientElement);
 
-
 impl SVGLinearGradientElement {
     /// Getter of the `x1` attribute.
     /// [`SVGLinearGradientElement.x1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLinearGradientElement/x1)
     pub fn x1(&self) -> SVGAnimatedLength {
         self.inner.get("x1").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGLinearGradientElement {
     /// Getter of the `y1` attribute.
@@ -79,7 +76,6 @@ impl SVGLinearGradientElement {
     pub fn y1(&self) -> SVGAnimatedLength {
         self.inner.get("y1").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGLinearGradientElement {
     /// Getter of the `x2` attribute.
@@ -87,7 +83,6 @@ impl SVGLinearGradientElement {
     pub fn x2(&self) -> SVGAnimatedLength {
         self.inner.get("x2").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGLinearGradientElement {
     /// Getter of the `y2` attribute.
@@ -95,5 +90,4 @@ impl SVGLinearGradientElement {
     pub fn y2(&self) -> SVGAnimatedLength {
         self.inner.get("y2").as_::<SVGAnimatedLength>()
     }
-
 }

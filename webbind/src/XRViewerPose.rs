@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRViewerPose class.
 /// [`XRViewerPose`](https://developer.mozilla.org/en-US/docs/Web/API/XRViewerPose)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRViewerPose {
 
 impl FromVal for XRViewerPose {
     fn from_val(v: &Any) -> Self {
-        XRViewerPose { inner: XRPose::from_val(v) }
+        XRViewerPose {
+            inner: XRPose::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRViewerPose {
 
 impl AsMut<Any> for XRViewerPose {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRViewerPose> for Any {
@@ -64,12 +63,10 @@ impl From<&XRViewerPose> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRViewerPose);
 
-
 impl XRViewerPose {
     /// Getter of the `views` attribute.
     /// [`XRViewerPose.views`](https://developer.mozilla.org/en-US/docs/Web/API/XRViewerPose/views)
     pub fn views(&self) -> TypedArray<XRView> {
         self.inner.get("views").as_::<TypedArray<XRView>>()
     }
-
 }

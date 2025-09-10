@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGAnimatedEnumeration class.
 /// [`SVGAnimatedEnumeration`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedEnumeration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGAnimatedEnumeration {
 
 impl FromVal for SVGAnimatedEnumeration {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedEnumeration { inner: Any::from_val(v) }
+        SVGAnimatedEnumeration {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGAnimatedEnumeration {
 
 impl AsMut<Any> for SVGAnimatedEnumeration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGAnimatedEnumeration> for Any {
@@ -63,7 +62,6 @@ impl From<&SVGAnimatedEnumeration> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedEnumeration);
-
 
 impl SVGAnimatedEnumeration {
     /// Getter of the `baseVal` attribute.
@@ -84,5 +82,4 @@ impl SVGAnimatedEnumeration {
     pub fn anim_val(&self) -> u16 {
         self.inner.get("animVal").as_::<u16>()
     }
-
 }

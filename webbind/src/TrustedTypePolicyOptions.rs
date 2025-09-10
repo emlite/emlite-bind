@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TrustedTypePolicyOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for TrustedTypePolicyOptions {
 
 impl AsMut<Any> for TrustedTypePolicyOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TrustedTypePolicyOptions> for Any {

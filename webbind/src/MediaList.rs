@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaList class.
 /// [`MediaList`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaList {
 
 impl FromVal for MediaList {
     fn from_val(v: &Any) -> Self {
-        MediaList { inner: Any::from_val(v) }
+        MediaList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaList {
 
 impl AsMut<Any> for MediaList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaList> for Any {
@@ -63,7 +62,6 @@ impl From<&MediaList> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(MediaList);
-
 
 impl MediaList {
     /// Getter of the `mediaText` attribute.
@@ -84,26 +82,29 @@ impl MediaList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl MediaList {
     /// The item method.
     /// [`MediaList.item`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/item)
     pub fn item(&self, index: u32) -> JsString {
-        self.inner.call("item", &[index.into(), ]).as_::<JsString>()
+        self.inner.call("item", &[index.into()]).as_::<JsString>()
     }
 }
 impl MediaList {
     /// The appendMedium method.
     /// [`MediaList.appendMedium`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/appendMedium)
     pub fn append_medium(&self, medium: &JsString) -> Undefined {
-        self.inner.call("appendMedium", &[medium.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("appendMedium", &[medium.into()])
+            .as_::<Undefined>()
     }
 }
 impl MediaList {
     /// The deleteMedium method.
     /// [`MediaList.deleteMedium`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/deleteMedium)
     pub fn delete_medium(&self, medium: &JsString) -> Undefined {
-        self.inner.call("deleteMedium", &[medium.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("deleteMedium", &[medium.into()])
+            .as_::<Undefined>()
     }
 }

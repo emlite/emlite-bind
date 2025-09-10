@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LanguageDetectorCreateOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for LanguageDetectorCreateOptions {
 
 impl AsMut<Any> for LanguageDetectorCreateOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LanguageDetectorCreateOptions> for Any {

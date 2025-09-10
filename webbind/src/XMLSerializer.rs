@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XMLSerializer class.
 /// [`XMLSerializer`](https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XMLSerializer {
 
 impl FromVal for XMLSerializer {
     fn from_val(v: &Any) -> Self {
-        XMLSerializer { inner: Any::from_val(v) }
+        XMLSerializer {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XMLSerializer {
 
 impl AsMut<Any> for XMLSerializer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XMLSerializer> for Any {
@@ -64,8 +63,6 @@ impl From<&XMLSerializer> for Any {
 
 jsbind::utils::impl_dyn_cast!(XMLSerializer);
 
-
-
 impl XMLSerializer {
     /// The `new XMLSerializer(..)` constructor, creating a new XMLSerializer instance
     pub fn new() -> XMLSerializer {
@@ -73,12 +70,13 @@ impl XMLSerializer {
             inner: Any::global("XMLSerializer").new(&[]).as_::<Any>(),
         }
     }
-
 }
 impl XMLSerializer {
     /// The serializeToString method.
     /// [`XMLSerializer.serializeToString`](https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer/serializeToString)
     pub fn serialize_to_string(&self, root: &Node) -> JsString {
-        self.inner.call("serializeToString", &[root.into(), ]).as_::<JsString>()
+        self.inner
+            .call("serializeToString", &[root.into()])
+            .as_::<JsString>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLMapElement class.
 /// [`HTMLMapElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLMapElement {
 
 impl FromVal for HTMLMapElement {
     fn from_val(v: &Any) -> Self {
-        HTMLMapElement { inner: HTMLElement::from_val(v) }
+        HTMLMapElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLMapElement {
 
 impl AsMut<Any> for HTMLMapElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLMapElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLMapElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLMapElement);
 
-
-
 impl HTMLMapElement {
     /// The `new HTMLMapElement(..)` constructor, creating a new HTMLMapElement instance
     pub fn new() -> HTMLMapElement {
@@ -73,7 +70,6 @@ impl HTMLMapElement {
             inner: Any::global("HTMLMapElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLMapElement {
     /// Getter of the `name` attribute.
@@ -94,5 +90,4 @@ impl HTMLMapElement {
     pub fn areas(&self) -> HTMLCollection {
         self.inner.get("areas").as_::<HTMLCollection>()
     }
-
 }

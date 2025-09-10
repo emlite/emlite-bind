@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigationDestination class.
 /// [`NavigationDestination`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationDestination)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NavigationDestination {
 
 impl FromVal for NavigationDestination {
     fn from_val(v: &Any) -> Self {
-        NavigationDestination { inner: Any::from_val(v) }
+        NavigationDestination {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NavigationDestination {
 
 impl AsMut<Any> for NavigationDestination {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigationDestination> for Any {
@@ -64,14 +63,12 @@ impl From<&NavigationDestination> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigationDestination);
 
-
 impl NavigationDestination {
     /// Getter of the `url` attribute.
     /// [`NavigationDestination.url`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationDestination/url)
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
-
 }
 impl NavigationDestination {
     /// Getter of the `key` attribute.
@@ -79,7 +76,6 @@ impl NavigationDestination {
     pub fn key(&self) -> JsString {
         self.inner.get("key").as_::<JsString>()
     }
-
 }
 impl NavigationDestination {
     /// Getter of the `id` attribute.
@@ -87,7 +83,6 @@ impl NavigationDestination {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl NavigationDestination {
     /// Getter of the `index` attribute.
@@ -95,7 +90,6 @@ impl NavigationDestination {
     pub fn index(&self) -> i64 {
         self.inner.get("index").as_::<i64>()
     }
-
 }
 impl NavigationDestination {
     /// Getter of the `sameDocument` attribute.
@@ -103,12 +97,11 @@ impl NavigationDestination {
     pub fn same_document(&self) -> bool {
         self.inner.get("sameDocument").as_::<bool>()
     }
-
 }
 impl NavigationDestination {
     /// The getState method.
     /// [`NavigationDestination.getState`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationDestination/getState)
-    pub fn get_state(&self, ) -> Any {
+    pub fn get_state(&self) -> Any {
         self.inner.call("getState", &[]).as_::<Any>()
     }
 }

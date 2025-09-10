@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLFormControlsCollection class.
 /// [`HTMLFormControlsCollection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormControlsCollection)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLFormControlsCollection {
 
 impl FromVal for HTMLFormControlsCollection {
     fn from_val(v: &Any) -> Self {
-        HTMLFormControlsCollection { inner: HTMLCollection::from_val(v) }
+        HTMLFormControlsCollection {
+            inner: HTMLCollection::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLFormControlsCollection {
 
 impl AsMut<Any> for HTMLFormControlsCollection {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLFormControlsCollection> for Any {
@@ -64,11 +63,10 @@ impl From<&HTMLFormControlsCollection> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLFormControlsCollection);
 
-
 impl HTMLFormControlsCollection {
     /// The namedItem method.
     /// [`HTMLFormControlsCollection.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormControlsCollection/namedItem)
     pub fn named_item(&self, name: &JsString) -> Any {
-        self.inner.call("namedItem", &[name.into(), ]).as_::<Any>()
+        self.inner.call("namedItem", &[name.into()]).as_::<Any>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRInputSourceEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRInputSourceEventInit {
 
 impl AsMut<Any> for XRInputSourceEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRInputSourceEventInit> for Any {

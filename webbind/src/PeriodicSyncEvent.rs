@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PeriodicSyncEvent class.
 /// [`PeriodicSyncEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PeriodicSyncEvent {
 
 impl FromVal for PeriodicSyncEvent {
     fn from_val(v: &Any) -> Self {
-        PeriodicSyncEvent { inner: ExtendableEvent::from_val(v) }
+        PeriodicSyncEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PeriodicSyncEvent {
 
 impl AsMut<Any> for PeriodicSyncEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PeriodicSyncEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&PeriodicSyncEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PeriodicSyncEvent);
 
-
-
 impl PeriodicSyncEvent {
     /// The `new PeriodicSyncEvent(..)` constructor, creating a new PeriodicSyncEvent instance
     pub fn new(type_: &JsString, init: &PeriodicSyncEventInit) -> PeriodicSyncEvent {
         Self {
-            inner: Any::global("PeriodicSyncEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("PeriodicSyncEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl PeriodicSyncEvent {
     /// Getter of the `tag` attribute.
@@ -81,5 +79,4 @@ impl PeriodicSyncEvent {
     pub fn tag(&self) -> JsString {
         self.inner.get("tag").as_::<JsString>()
     }
-
 }

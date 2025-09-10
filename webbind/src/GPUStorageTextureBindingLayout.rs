@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUStorageTextureBindingLayout dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUStorageTextureBindingLayout {
 
 impl AsMut<Any> for GPUStorageTextureBindingLayout {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUStorageTextureBindingLayout> for Any {
@@ -86,7 +83,9 @@ impl GPUStorageTextureBindingLayout {
 impl GPUStorageTextureBindingLayout {
     /// Getter of the `viewDimension` attribute.
     pub fn view_dimension(&self) -> GPUTextureViewDimension {
-        self.inner.get("viewDimension").as_::<GPUTextureViewDimension>()
+        self.inner
+            .get("viewDimension")
+            .as_::<GPUTextureViewDimension>()
     }
 
     /// Setter of the `viewDimension` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaQueryList class.
 /// [`MediaQueryList`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaQueryList {
 
 impl FromVal for MediaQueryList {
     fn from_val(v: &Any) -> Self {
-        MediaQueryList { inner: EventTarget::from_val(v) }
+        MediaQueryList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaQueryList {
 
 impl AsMut<Any> for MediaQueryList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaQueryList> for Any {
@@ -64,14 +63,12 @@ impl From<&MediaQueryList> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaQueryList);
 
-
 impl MediaQueryList {
     /// Getter of the `media` attribute.
     /// [`MediaQueryList.media`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/media)
     pub fn media(&self) -> JsString {
         self.inner.get("media").as_::<JsString>()
     }
-
 }
 impl MediaQueryList {
     /// Getter of the `matches` attribute.
@@ -79,20 +76,23 @@ impl MediaQueryList {
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
-
 }
 impl MediaQueryList {
     /// The addListener method.
     /// [`MediaQueryList.addListener`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener)
     pub fn add_listener(&self, callback: &Function) -> Undefined {
-        self.inner.call("addListener", &[callback.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("addListener", &[callback.into()])
+            .as_::<Undefined>()
     }
 }
 impl MediaQueryList {
     /// The removeListener method.
     /// [`MediaQueryList.removeListener`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/removeListener)
     pub fn remove_listener(&self, callback: &Function) -> Undefined {
-        self.inner.call("removeListener", &[callback.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("removeListener", &[callback.into()])
+            .as_::<Undefined>()
     }
 }
 impl MediaQueryList {

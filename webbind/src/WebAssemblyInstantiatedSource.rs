@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebAssemblyInstantiatedSource dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WebAssemblyInstantiatedSource {
 
 impl AsMut<Any> for WebAssemblyInstantiatedSource {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebAssemblyInstantiatedSource> for Any {

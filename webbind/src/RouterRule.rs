@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RouterRule dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RouterRule {
 
 impl AsMut<Any> for RouterRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RouterRule> for Any {

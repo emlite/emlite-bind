@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Touch class.
 /// [`Touch`](https://developer.mozilla.org/en-US/docs/Web/API/Touch)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Touch {
 
 impl FromVal for Touch {
     fn from_val(v: &Any) -> Self {
-        Touch { inner: Any::from_val(v) }
+        Touch {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Touch {
 
 impl AsMut<Any> for Touch {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Touch> for Any {
@@ -64,16 +63,15 @@ impl From<&Touch> for Any {
 
 jsbind::utils::impl_dyn_cast!(Touch);
 
-
-
 impl Touch {
     /// The `new Touch(..)` constructor, creating a new Touch instance
     pub fn new(touch_init_dict: &TouchInit) -> Touch {
         Self {
-            inner: Any::global("Touch").new(&[touch_init_dict.into()]).as_::<Any>(),
+            inner: Any::global("Touch")
+                .new(&[touch_init_dict.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl Touch {
     /// Getter of the `identifier` attribute.
@@ -81,7 +79,6 @@ impl Touch {
     pub fn identifier(&self) -> i32 {
         self.inner.get("identifier").as_::<i32>()
     }
-
 }
 impl Touch {
     /// Getter of the `target` attribute.
@@ -89,7 +86,6 @@ impl Touch {
     pub fn target(&self) -> EventTarget {
         self.inner.get("target").as_::<EventTarget>()
     }
-
 }
 impl Touch {
     /// Getter of the `screenX` attribute.
@@ -97,7 +93,6 @@ impl Touch {
     pub fn screen_x(&self) -> f64 {
         self.inner.get("screenX").as_::<f64>()
     }
-
 }
 impl Touch {
     /// Getter of the `screenY` attribute.
@@ -105,7 +100,6 @@ impl Touch {
     pub fn screen_y(&self) -> f64 {
         self.inner.get("screenY").as_::<f64>()
     }
-
 }
 impl Touch {
     /// Getter of the `clientX` attribute.
@@ -113,7 +107,6 @@ impl Touch {
     pub fn client_x(&self) -> f64 {
         self.inner.get("clientX").as_::<f64>()
     }
-
 }
 impl Touch {
     /// Getter of the `clientY` attribute.
@@ -121,7 +114,6 @@ impl Touch {
     pub fn client_y(&self) -> f64 {
         self.inner.get("clientY").as_::<f64>()
     }
-
 }
 impl Touch {
     /// Getter of the `pageX` attribute.
@@ -129,7 +121,6 @@ impl Touch {
     pub fn page_x(&self) -> f64 {
         self.inner.get("pageX").as_::<f64>()
     }
-
 }
 impl Touch {
     /// Getter of the `pageY` attribute.
@@ -137,7 +128,6 @@ impl Touch {
     pub fn page_y(&self) -> f64 {
         self.inner.get("pageY").as_::<f64>()
     }
-
 }
 impl Touch {
     /// Getter of the `radiusX` attribute.
@@ -145,7 +135,6 @@ impl Touch {
     pub fn radius_x(&self) -> f32 {
         self.inner.get("radiusX").as_::<f32>()
     }
-
 }
 impl Touch {
     /// Getter of the `radiusY` attribute.
@@ -153,7 +142,6 @@ impl Touch {
     pub fn radius_y(&self) -> f32 {
         self.inner.get("radiusY").as_::<f32>()
     }
-
 }
 impl Touch {
     /// Getter of the `rotationAngle` attribute.
@@ -161,7 +149,6 @@ impl Touch {
     pub fn rotation_angle(&self) -> f32 {
         self.inner.get("rotationAngle").as_::<f32>()
     }
-
 }
 impl Touch {
     /// Getter of the `force` attribute.
@@ -169,7 +156,6 @@ impl Touch {
     pub fn force(&self) -> f32 {
         self.inner.get("force").as_::<f32>()
     }
-
 }
 impl Touch {
     /// Getter of the `altitudeAngle` attribute.
@@ -177,7 +163,6 @@ impl Touch {
     pub fn altitude_angle(&self) -> f32 {
         self.inner.get("altitudeAngle").as_::<f32>()
     }
-
 }
 impl Touch {
     /// Getter of the `azimuthAngle` attribute.
@@ -185,7 +170,6 @@ impl Touch {
     pub fn azimuth_angle(&self) -> f32 {
         self.inner.get("azimuthAngle").as_::<f32>()
     }
-
 }
 impl Touch {
     /// Getter of the `touchType` attribute.
@@ -193,5 +177,4 @@ impl Touch {
     pub fn touch_type(&self) -> TouchType {
         self.inner.get("touchType").as_::<TouchType>()
     }
-
 }

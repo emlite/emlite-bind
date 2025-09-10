@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MIDIPort class.
 /// [`MIDIPort`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MIDIPort {
 
 impl FromVal for MIDIPort {
     fn from_val(v: &Any) -> Self {
-        MIDIPort { inner: EventTarget::from_val(v) }
+        MIDIPort {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MIDIPort {
 
 impl AsMut<Any> for MIDIPort {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MIDIPort> for Any {
@@ -64,14 +63,12 @@ impl From<&MIDIPort> for Any {
 
 jsbind::utils::impl_dyn_cast!(MIDIPort);
 
-
 impl MIDIPort {
     /// Getter of the `id` attribute.
     /// [`MIDIPort.id`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl MIDIPort {
     /// Getter of the `manufacturer` attribute.
@@ -79,7 +76,6 @@ impl MIDIPort {
     pub fn manufacturer(&self) -> JsString {
         self.inner.get("manufacturer").as_::<JsString>()
     }
-
 }
 impl MIDIPort {
     /// Getter of the `name` attribute.
@@ -87,7 +83,6 @@ impl MIDIPort {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl MIDIPort {
     /// Getter of the `type` attribute.
@@ -95,7 +90,6 @@ impl MIDIPort {
     pub fn type_(&self) -> MIDIPortType {
         self.inner.get("type").as_::<MIDIPortType>()
     }
-
 }
 impl MIDIPort {
     /// Getter of the `version` attribute.
@@ -103,7 +97,6 @@ impl MIDIPort {
     pub fn version(&self) -> JsString {
         self.inner.get("version").as_::<JsString>()
     }
-
 }
 impl MIDIPort {
     /// Getter of the `state` attribute.
@@ -111,15 +104,15 @@ impl MIDIPort {
     pub fn state(&self) -> MIDIPortDeviceState {
         self.inner.get("state").as_::<MIDIPortDeviceState>()
     }
-
 }
 impl MIDIPort {
     /// Getter of the `connection` attribute.
     /// [`MIDIPort.connection`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/connection)
     pub fn connection(&self) -> MIDIPortConnectionState {
-        self.inner.get("connection").as_::<MIDIPortConnectionState>()
+        self.inner
+            .get("connection")
+            .as_::<MIDIPortConnectionState>()
     }
-
 }
 impl MIDIPort {
     /// Getter of the `onstatechange` attribute.
@@ -137,14 +130,14 @@ impl MIDIPort {
 impl MIDIPort {
     /// The open method.
     /// [`MIDIPort.open`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/open)
-    pub fn open(&self, ) -> Promise<MIDIPort> {
+    pub fn open(&self) -> Promise<MIDIPort> {
         self.inner.call("open", &[]).as_::<Promise<MIDIPort>>()
     }
 }
 impl MIDIPort {
     /// The close method.
     /// [`MIDIPort.close`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/close)
-    pub fn close(&self, ) -> Promise<MIDIPort> {
+    pub fn close(&self) -> Promise<MIDIPort> {
         self.inner.call("close", &[]).as_::<Promise<MIDIPort>>()
     }
 }

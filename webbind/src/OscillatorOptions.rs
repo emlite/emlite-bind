@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OscillatorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for OscillatorOptions {
 
 impl AsMut<Any> for OscillatorOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OscillatorOptions> for Any {

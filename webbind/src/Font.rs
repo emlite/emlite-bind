@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Font class.
 /// [`Font`](https://developer.mozilla.org/en-US/docs/Web/API/Font)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Font {
 
 impl FromVal for Font {
     fn from_val(v: &Any) -> Self {
-        Font { inner: Any::from_val(v) }
+        Font {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Font {
 
 impl AsMut<Any> for Font {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Font> for Any {
@@ -64,14 +63,12 @@ impl From<&Font> for Any {
 
 jsbind::utils::impl_dyn_cast!(Font);
 
-
 impl Font {
     /// Getter of the `name` attribute.
     /// [`Font.name`](https://developer.mozilla.org/en-US/docs/Web/API/Font/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl Font {
     /// Getter of the `glyphsRendered` attribute.
@@ -79,5 +76,4 @@ impl Font {
     pub fn glyphs_rendered(&self) -> u32 {
         self.inner.get("glyphsRendered").as_::<u32>()
     }
-
 }

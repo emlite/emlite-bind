@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BackgroundFetchEvent class.
 /// [`BackgroundFetchEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BackgroundFetchEvent {
 
 impl FromVal for BackgroundFetchEvent {
     fn from_val(v: &Any) -> Self {
-        BackgroundFetchEvent { inner: ExtendableEvent::from_val(v) }
+        BackgroundFetchEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BackgroundFetchEvent {
 
 impl AsMut<Any> for BackgroundFetchEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BackgroundFetchEvent> for Any {
@@ -64,22 +63,22 @@ impl From<&BackgroundFetchEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(BackgroundFetchEvent);
 
-
-
 impl BackgroundFetchEvent {
     /// The `new BackgroundFetchEvent(..)` constructor, creating a new BackgroundFetchEvent instance
     pub fn new(type_: &JsString, init: &BackgroundFetchEventInit) -> BackgroundFetchEvent {
         Self {
-            inner: Any::global("BackgroundFetchEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("BackgroundFetchEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl BackgroundFetchEvent {
     /// Getter of the `registration` attribute.
     /// [`BackgroundFetchEvent.registration`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchEvent/registration)
     pub fn registration(&self) -> BackgroundFetchRegistration {
-        self.inner.get("registration").as_::<BackgroundFetchRegistration>()
+        self.inner
+            .get("registration")
+            .as_::<BackgroundFetchRegistration>()
     }
-
 }

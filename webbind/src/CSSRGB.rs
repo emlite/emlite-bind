@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSRGB class.
 /// [`CSSRGB`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRGB)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSRGB {
 
 impl FromVal for CSSRGB {
     fn from_val(v: &Any) -> Self {
-        CSSRGB { inner: CSSColorValue::from_val(v) }
+        CSSRGB {
+            inner: CSSColorValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSRGB {
 
 impl AsMut<Any> for CSSRGB {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSRGB> for Any {
@@ -64,23 +63,24 @@ impl From<&CSSRGB> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSRGB);
 
-
-
 impl CSSRGB {
     /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
     pub fn new0(r: &Any, g: &Any, b: &Any) -> CSSRGB {
         Self {
-            inner: Any::global("CSSRGB").new(&[r.into(), g.into(), b.into()]).as_::<CSSColorValue>(),
+            inner: Any::global("CSSRGB")
+                .new(&[r.into(), g.into(), b.into()])
+                .as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
     pub fn new1(r: &Any, g: &Any, b: &Any, alpha: &Any) -> CSSRGB {
         Self {
-            inner: Any::global("CSSRGB").new(&[r.into(), g.into(), b.into(), alpha.into()]).as_::<CSSColorValue>(),
+            inner: Any::global("CSSRGB")
+                .new(&[r.into(), g.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
         }
     }
-
 }
 impl CSSRGB {
     /// Getter of the `r` attribute.

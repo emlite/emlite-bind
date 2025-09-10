@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSCustomMediaRule class.
 /// [`CSSCustomMediaRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSCustomMediaRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSCustomMediaRule {
 
 impl FromVal for CSSCustomMediaRule {
     fn from_val(v: &Any) -> Self {
-        CSSCustomMediaRule { inner: CSSRule::from_val(v) }
+        CSSCustomMediaRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSCustomMediaRule {
 
 impl AsMut<Any> for CSSCustomMediaRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSCustomMediaRule> for Any {
@@ -64,14 +63,12 @@ impl From<&CSSCustomMediaRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSCustomMediaRule);
 
-
 impl CSSCustomMediaRule {
     /// Getter of the `name` attribute.
     /// [`CSSCustomMediaRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSCustomMediaRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSCustomMediaRule {
     /// Getter of the `query` attribute.
@@ -79,5 +76,4 @@ impl CSSCustomMediaRule {
     pub fn query(&self) -> Any {
         self.inner.get("query").as_::<Any>()
     }
-
 }

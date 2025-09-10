@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUComputePassTimestampWrites dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUComputePassTimestampWrites {
 
 impl AsMut<Any> for GPUComputePassTimestampWrites {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUComputePassTimestampWrites> for Any {

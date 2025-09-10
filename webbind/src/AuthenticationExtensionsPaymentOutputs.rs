@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuthenticationExtensionsPaymentOutputs dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuthenticationExtensionsPaymentOutputs {
 
 impl AsMut<Any> for AuthenticationExtensionsPaymentOutputs {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuthenticationExtensionsPaymentOutputs> for Any {
@@ -64,7 +61,9 @@ impl From<&AuthenticationExtensionsPaymentOutputs> for Any {
 impl AuthenticationExtensionsPaymentOutputs {
     /// Getter of the `browserBoundSignature` attribute.
     pub fn browser_bound_signature(&self) -> BrowserBoundSignature {
-        self.inner.get("browserBoundSignature").as_::<BrowserBoundSignature>()
+        self.inner
+            .get("browserBoundSignature")
+            .as_::<BrowserBoundSignature>()
     }
 
     /// Setter of the `browserBoundSignature` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCPeerConnectionIceEvent class.
 /// [`RTCPeerConnectionIceEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCPeerConnectionIceEvent {
 
 impl FromVal for RTCPeerConnectionIceEvent {
     fn from_val(v: &Any) -> Self {
-        RTCPeerConnectionIceEvent { inner: Event::from_val(v) }
+        RTCPeerConnectionIceEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCPeerConnectionIceEvent {
 
 impl AsMut<Any> for RTCPeerConnectionIceEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCPeerConnectionIceEvent> for Any {
@@ -64,23 +63,27 @@ impl From<&RTCPeerConnectionIceEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceEvent);
 
-
-
 impl RTCPeerConnectionIceEvent {
     /// The `new RTCPeerConnectionIceEvent(..)` constructor, creating a new RTCPeerConnectionIceEvent instance
     pub fn new0(type_: &JsString) -> RTCPeerConnectionIceEvent {
         Self {
-            inner: Any::global("RTCPeerConnectionIceEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("RTCPeerConnectionIceEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new RTCPeerConnectionIceEvent(..)` constructor, creating a new RTCPeerConnectionIceEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &RTCPeerConnectionIceEventInit) -> RTCPeerConnectionIceEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &RTCPeerConnectionIceEventInit,
+    ) -> RTCPeerConnectionIceEvent {
         Self {
-            inner: Any::global("RTCPeerConnectionIceEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("RTCPeerConnectionIceEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl RTCPeerConnectionIceEvent {
     /// Getter of the `candidate` attribute.
@@ -88,7 +91,6 @@ impl RTCPeerConnectionIceEvent {
     pub fn candidate(&self) -> RTCIceCandidate {
         self.inner.get("candidate").as_::<RTCIceCandidate>()
     }
-
 }
 impl RTCPeerConnectionIceEvent {
     /// Getter of the `url` attribute.
@@ -96,5 +98,4 @@ impl RTCPeerConnectionIceEvent {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
-
 }

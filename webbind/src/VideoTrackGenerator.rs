@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoTrackGenerator class.
 /// [`VideoTrackGenerator`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct VideoTrackGenerator {
 
 impl FromVal for VideoTrackGenerator {
     fn from_val(v: &Any) -> Self {
-        VideoTrackGenerator { inner: Any::from_val(v) }
+        VideoTrackGenerator {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for VideoTrackGenerator {
 
 impl AsMut<Any> for VideoTrackGenerator {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoTrackGenerator> for Any {
@@ -64,8 +63,6 @@ impl From<&VideoTrackGenerator> for Any {
 
 jsbind::utils::impl_dyn_cast!(VideoTrackGenerator);
 
-
-
 impl VideoTrackGenerator {
     /// The `new VideoTrackGenerator(..)` constructor, creating a new VideoTrackGenerator instance
     pub fn new() -> VideoTrackGenerator {
@@ -73,7 +70,6 @@ impl VideoTrackGenerator {
             inner: Any::global("VideoTrackGenerator").new(&[]).as_::<Any>(),
         }
     }
-
 }
 impl VideoTrackGenerator {
     /// Getter of the `writable` attribute.
@@ -81,7 +77,6 @@ impl VideoTrackGenerator {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }
 impl VideoTrackGenerator {
     /// Getter of the `muted` attribute.
@@ -102,5 +97,4 @@ impl VideoTrackGenerator {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
-
 }

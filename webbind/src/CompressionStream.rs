@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CompressionStream class.
 /// [`CompressionStream`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CompressionStream {
 
 impl FromVal for CompressionStream {
     fn from_val(v: &Any) -> Self {
-        CompressionStream { inner: Any::from_val(v) }
+        CompressionStream {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CompressionStream {
 
 impl AsMut<Any> for CompressionStream {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CompressionStream> for Any {
@@ -64,16 +63,15 @@ impl From<&CompressionStream> for Any {
 
 jsbind::utils::impl_dyn_cast!(CompressionStream);
 
-
-
 impl CompressionStream {
     /// The `new CompressionStream(..)` constructor, creating a new CompressionStream instance
     pub fn new(format: &CompressionFormat) -> CompressionStream {
         Self {
-            inner: Any::global("CompressionStream").new(&[format.into()]).as_::<Any>(),
+            inner: Any::global("CompressionStream")
+                .new(&[format.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl CompressionStream {
     /// Getter of the `readable` attribute.
@@ -81,7 +79,6 @@ impl CompressionStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
-
 }
 impl CompressionStream {
     /// Getter of the `writable` attribute.
@@ -89,5 +86,4 @@ impl CompressionStream {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }

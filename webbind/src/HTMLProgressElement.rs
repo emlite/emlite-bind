@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLProgressElement class.
 /// [`HTMLProgressElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLProgressElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLProgressElement {
 
 impl FromVal for HTMLProgressElement {
     fn from_val(v: &Any) -> Self {
-        HTMLProgressElement { inner: HTMLElement::from_val(v) }
+        HTMLProgressElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLProgressElement {
 
 impl AsMut<Any> for HTMLProgressElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLProgressElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLProgressElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLProgressElement);
 
-
-
 impl HTMLProgressElement {
     /// The `new HTMLProgressElement(..)` constructor, creating a new HTMLProgressElement instance
     pub fn new() -> HTMLProgressElement {
         Self {
-            inner: Any::global("HTMLProgressElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLProgressElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLProgressElement {
     /// Getter of the `value` attribute.
@@ -107,7 +105,6 @@ impl HTMLProgressElement {
     pub fn position(&self) -> f64 {
         self.inner.get("position").as_::<f64>()
     }
-
 }
 impl HTMLProgressElement {
     /// Getter of the `labels` attribute.
@@ -115,5 +112,4 @@ impl HTMLProgressElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
-
 }

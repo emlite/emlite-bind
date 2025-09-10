@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The StylePropertyMap class.
 /// [`StylePropertyMap`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct StylePropertyMap {
 
 impl FromVal for StylePropertyMap {
     fn from_val(v: &Any) -> Self {
-        StylePropertyMap { inner: StylePropertyMapReadOnly::from_val(v) }
+        StylePropertyMap {
+            inner: StylePropertyMapReadOnly::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for StylePropertyMap {
 
 impl AsMut<Any> for StylePropertyMap {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<StylePropertyMap> for Any {
@@ -64,32 +63,37 @@ impl From<&StylePropertyMap> for Any {
 
 jsbind::utils::impl_dyn_cast!(StylePropertyMap);
 
-
 impl StylePropertyMap {
     /// The set method.
     /// [`StylePropertyMap.set`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/set)
     pub fn set(&self, property: &JsString, values: &Any) -> Undefined {
-        self.inner.call("set", &[property.into(), values.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("set", &[property.into(), values.into()])
+            .as_::<Undefined>()
     }
 }
 impl StylePropertyMap {
     /// The append method.
     /// [`StylePropertyMap.append`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/append)
     pub fn append(&self, property: &JsString, values: &Any) -> Undefined {
-        self.inner.call("append", &[property.into(), values.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("append", &[property.into(), values.into()])
+            .as_::<Undefined>()
     }
 }
 impl StylePropertyMap {
     /// The delete method.
     /// [`StylePropertyMap.delete`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/delete)
     pub fn delete(&self, property: &JsString) -> Undefined {
-        self.inner.call("delete", &[property.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("delete", &[property.into()])
+            .as_::<Undefined>()
     }
 }
 impl StylePropertyMap {
     /// The clear method.
     /// [`StylePropertyMap.clear`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/clear)
-    pub fn clear(&self, ) -> Undefined {
+    pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MutationRecord class.
 /// [`MutationRecord`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MutationRecord {
 
 impl FromVal for MutationRecord {
     fn from_val(v: &Any) -> Self {
-        MutationRecord { inner: Any::from_val(v) }
+        MutationRecord {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MutationRecord {
 
 impl AsMut<Any> for MutationRecord {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MutationRecord> for Any {
@@ -64,14 +63,12 @@ impl From<&MutationRecord> for Any {
 
 jsbind::utils::impl_dyn_cast!(MutationRecord);
 
-
 impl MutationRecord {
     /// Getter of the `type` attribute.
     /// [`MutationRecord.type`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/type)
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `target` attribute.
@@ -79,7 +76,6 @@ impl MutationRecord {
     pub fn target(&self) -> Node {
         self.inner.get("target").as_::<Node>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `addedNodes` attribute.
@@ -87,7 +83,6 @@ impl MutationRecord {
     pub fn added_nodes(&self) -> NodeList {
         self.inner.get("addedNodes").as_::<NodeList>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `removedNodes` attribute.
@@ -95,7 +90,6 @@ impl MutationRecord {
     pub fn removed_nodes(&self) -> NodeList {
         self.inner.get("removedNodes").as_::<NodeList>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `previousSibling` attribute.
@@ -103,7 +97,6 @@ impl MutationRecord {
     pub fn previous_sibling(&self) -> Node {
         self.inner.get("previousSibling").as_::<Node>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `nextSibling` attribute.
@@ -111,7 +104,6 @@ impl MutationRecord {
     pub fn next_sibling(&self) -> Node {
         self.inner.get("nextSibling").as_::<Node>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `attributeName` attribute.
@@ -119,7 +111,6 @@ impl MutationRecord {
     pub fn attribute_name(&self) -> JsString {
         self.inner.get("attributeName").as_::<JsString>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `attributeNamespace` attribute.
@@ -127,7 +118,6 @@ impl MutationRecord {
     pub fn attribute_namespace(&self) -> JsString {
         self.inner.get("attributeNamespace").as_::<JsString>()
     }
-
 }
 impl MutationRecord {
     /// Getter of the `oldValue` attribute.
@@ -135,5 +125,4 @@ impl MutationRecord {
     pub fn old_value(&self) -> JsString {
         self.inner.get("oldValue").as_::<JsString>()
     }
-
 }

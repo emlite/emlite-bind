@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EncodedAudioChunkInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for EncodedAudioChunkInit {
 
 impl AsMut<Any> for EncodedAudioChunkInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EncodedAudioChunkInit> for Any {

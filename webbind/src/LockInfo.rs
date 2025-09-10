@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LockInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for LockInfo {
 
 impl AsMut<Any> for LockInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LockInfo> for Any {

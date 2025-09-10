@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLSliceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLSliceOptions {
 
 impl AsMut<Any> for MLSliceOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLSliceOptions> for Any {

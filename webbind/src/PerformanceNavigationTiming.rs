@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PerformanceNavigationTiming class.
 /// [`PerformanceNavigationTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PerformanceNavigationTiming {
 
 impl FromVal for PerformanceNavigationTiming {
     fn from_val(v: &Any) -> Self {
-        PerformanceNavigationTiming { inner: PerformanceResourceTiming::from_val(v) }
+        PerformanceNavigationTiming {
+            inner: PerformanceResourceTiming::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PerformanceNavigationTiming {
 
 impl AsMut<Any> for PerformanceNavigationTiming {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PerformanceNavigationTiming> for Any {
@@ -64,14 +63,12 @@ impl From<&PerformanceNavigationTiming> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceNavigationTiming);
 
-
 impl PerformanceNavigationTiming {
     /// Getter of the `unloadEventStart` attribute.
     /// [`PerformanceNavigationTiming.unloadEventStart`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/unloadEventStart)
     pub fn unload_event_start(&self) -> Any {
         self.inner.get("unloadEventStart").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `unloadEventEnd` attribute.
@@ -79,7 +76,6 @@ impl PerformanceNavigationTiming {
     pub fn unload_event_end(&self) -> Any {
         self.inner.get("unloadEventEnd").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `domInteractive` attribute.
@@ -87,7 +83,6 @@ impl PerformanceNavigationTiming {
     pub fn dom_interactive(&self) -> Any {
         self.inner.get("domInteractive").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `domContentLoadedEventStart` attribute.
@@ -95,7 +90,6 @@ impl PerformanceNavigationTiming {
     pub fn dom_content_loaded_event_start(&self) -> Any {
         self.inner.get("domContentLoadedEventStart").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `domContentLoadedEventEnd` attribute.
@@ -103,7 +97,6 @@ impl PerformanceNavigationTiming {
     pub fn dom_content_loaded_event_end(&self) -> Any {
         self.inner.get("domContentLoadedEventEnd").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `domComplete` attribute.
@@ -111,7 +104,6 @@ impl PerformanceNavigationTiming {
     pub fn dom_complete(&self) -> Any {
         self.inner.get("domComplete").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `loadEventStart` attribute.
@@ -119,7 +111,6 @@ impl PerformanceNavigationTiming {
     pub fn load_event_start(&self) -> Any {
         self.inner.get("loadEventStart").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `loadEventEnd` attribute.
@@ -127,7 +118,6 @@ impl PerformanceNavigationTiming {
     pub fn load_event_end(&self) -> Any {
         self.inner.get("loadEventEnd").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `type` attribute.
@@ -135,7 +125,6 @@ impl PerformanceNavigationTiming {
     pub fn type_(&self) -> NavigationTimingType {
         self.inner.get("type").as_::<NavigationTimingType>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `redirectCount` attribute.
@@ -143,7 +132,6 @@ impl PerformanceNavigationTiming {
     pub fn redirect_count(&self) -> u16 {
         self.inner.get("redirectCount").as_::<u16>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `criticalCHRestart` attribute.
@@ -151,20 +139,20 @@ impl PerformanceNavigationTiming {
     pub fn critical_ch_restart(&self) -> Any {
         self.inner.get("criticalCHRestart").as_::<Any>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// Getter of the `notRestoredReasons` attribute.
     /// [`PerformanceNavigationTiming.notRestoredReasons`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/notRestoredReasons)
     pub fn not_restored_reasons(&self) -> NotRestoredReasons {
-        self.inner.get("notRestoredReasons").as_::<NotRestoredReasons>()
+        self.inner
+            .get("notRestoredReasons")
+            .as_::<NotRestoredReasons>()
     }
-
 }
 impl PerformanceNavigationTiming {
     /// The toJSON method.
     /// [`PerformanceNavigationTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/toJSON)
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
@@ -174,5 +162,4 @@ impl PerformanceNavigationTiming {
     pub fn activation_start(&self) -> Any {
         self.inner.get("activationStart").as_::<Any>()
     }
-
 }

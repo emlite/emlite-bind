@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PaintRenderingContext2DSettings dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PaintRenderingContext2DSettings {
 
 impl AsMut<Any> for PaintRenderingContext2DSettings {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PaintRenderingContext2DSettings> for Any {

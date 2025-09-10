@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebSocket class.
 /// [`WebSocket`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebSocket {
 
 impl FromVal for WebSocket {
     fn from_val(v: &Any) -> Self {
-        WebSocket { inner: EventTarget::from_val(v) }
+        WebSocket {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebSocket {
 
 impl AsMut<Any> for WebSocket {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebSocket> for Any {
@@ -64,23 +63,24 @@ impl From<&WebSocket> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebSocket);
 
-
-
 impl WebSocket {
     /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
     pub fn new0(url: &JsString) -> WebSocket {
         Self {
-            inner: Any::global("WebSocket").new(&[url.into()]).as_::<EventTarget>(),
+            inner: Any::global("WebSocket")
+                .new(&[url.into()])
+                .as_::<EventTarget>(),
         }
     }
 
     /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
     pub fn new1(url: &JsString, protocols: &Any) -> WebSocket {
         Self {
-            inner: Any::global("WebSocket").new(&[url.into(), protocols.into()]).as_::<EventTarget>(),
+            inner: Any::global("WebSocket")
+                .new(&[url.into(), protocols.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl WebSocket {
     /// Getter of the `url` attribute.
@@ -88,7 +88,6 @@ impl WebSocket {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
-
 }
 impl WebSocket {
     /// Getter of the `readyState` attribute.
@@ -96,7 +95,6 @@ impl WebSocket {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
-
 }
 impl WebSocket {
     /// Getter of the `bufferedAmount` attribute.
@@ -104,7 +102,6 @@ impl WebSocket {
     pub fn buffered_amount(&self) -> u64 {
         self.inner.get("bufferedAmount").as_::<u64>()
     }
-
 }
 impl WebSocket {
     /// Getter of the `onopen` attribute.
@@ -151,7 +148,6 @@ impl WebSocket {
     pub fn extensions(&self) -> JsString {
         self.inner.get("extensions").as_::<JsString>()
     }
-
 }
 impl WebSocket {
     /// Getter of the `protocol` attribute.
@@ -159,23 +155,24 @@ impl WebSocket {
     pub fn protocol(&self) -> JsString {
         self.inner.get("protocol").as_::<JsString>()
     }
-
 }
 impl WebSocket {
     /// The close method.
     /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
-    pub fn close0(&self, ) -> Undefined {
+    pub fn close0(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
     /// The close method.
     /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
     pub fn close1(&self, code: u16) -> Undefined {
-        self.inner.call("close", &[code.into(), ]).as_::<Undefined>()
+        self.inner.call("close", &[code.into()]).as_::<Undefined>()
     }
     /// The close method.
     /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
     pub fn close2(&self, code: u16, reason: &JsString) -> Undefined {
-        self.inner.call("close", &[code.into(), reason.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("close", &[code.into(), reason.into()])
+            .as_::<Undefined>()
     }
 }
 impl WebSocket {
@@ -208,6 +205,6 @@ impl WebSocket {
     /// The send method.
     /// [`WebSocket.send`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/send)
     pub fn send(&self, data: &Any) -> Undefined {
-        self.inner.call("send", &[data.into(), ]).as_::<Undefined>()
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }

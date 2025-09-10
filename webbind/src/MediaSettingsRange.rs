@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaSettingsRange dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaSettingsRange {
 
 impl AsMut<Any> for MediaSettingsRange {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaSettingsRange> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLSync class.
 /// [`WebGLSync`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLSync)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLSync {
 
 impl FromVal for WebGLSync {
     fn from_val(v: &Any) -> Self {
-        WebGLSync { inner: WebGLObject::from_val(v) }
+        WebGLSync {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLSync {
 
 impl AsMut<Any> for WebGLSync {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLSync> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLSync> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLSync);
-
-

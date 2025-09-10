@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The StorageManager class.
 /// [`StorageManager`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct StorageManager {
 
 impl FromVal for StorageManager {
     fn from_val(v: &Any) -> Self {
-        StorageManager { inner: Any::from_val(v) }
+        StorageManager {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for StorageManager {
 
 impl AsMut<Any> for StorageManager {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<StorageManager> for Any {
@@ -64,32 +63,35 @@ impl From<&StorageManager> for Any {
 
 jsbind::utils::impl_dyn_cast!(StorageManager);
 
-
 impl StorageManager {
     /// The persisted method.
     /// [`StorageManager.persisted`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persisted)
-    pub fn persisted(&self, ) -> Promise<bool> {
+    pub fn persisted(&self) -> Promise<bool> {
         self.inner.call("persisted", &[]).as_::<Promise<bool>>()
     }
 }
 impl StorageManager {
     /// The persist method.
     /// [`StorageManager.persist`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist)
-    pub fn persist(&self, ) -> Promise<bool> {
+    pub fn persist(&self) -> Promise<bool> {
         self.inner.call("persist", &[]).as_::<Promise<bool>>()
     }
 }
 impl StorageManager {
     /// The estimate method.
     /// [`StorageManager.estimate`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/estimate)
-    pub fn estimate(&self, ) -> Promise<StorageEstimate> {
-        self.inner.call("estimate", &[]).as_::<Promise<StorageEstimate>>()
+    pub fn estimate(&self) -> Promise<StorageEstimate> {
+        self.inner
+            .call("estimate", &[])
+            .as_::<Promise<StorageEstimate>>()
     }
 }
 impl StorageManager {
     /// The getDirectory method.
     /// [`StorageManager.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/getDirectory)
-    pub fn get_directory(&self, ) -> Promise<FileSystemDirectoryHandle> {
-        self.inner.call("getDirectory", &[]).as_::<Promise<FileSystemDirectoryHandle>>()
+    pub fn get_directory(&self) -> Promise<FileSystemDirectoryHandle> {
+        self.inner
+            .call("getDirectory", &[])
+            .as_::<Promise<FileSystemDirectoryHandle>>()
     }
 }

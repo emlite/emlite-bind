@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Screen class.
 /// [`Screen`](https://developer.mozilla.org/en-US/docs/Web/API/Screen)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Screen {
 
 impl FromVal for Screen {
     fn from_val(v: &Any) -> Self {
-        Screen { inner: Any::from_val(v) }
+        Screen {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Screen {
 
 impl AsMut<Any> for Screen {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Screen> for Any {
@@ -64,14 +63,12 @@ impl From<&Screen> for Any {
 
 jsbind::utils::impl_dyn_cast!(Screen);
 
-
 impl Screen {
     /// Getter of the `availWidth` attribute.
     /// [`Screen.availWidth`](https://developer.mozilla.org/en-US/docs/Web/API/Screen/availWidth)
     pub fn avail_width(&self) -> i32 {
         self.inner.get("availWidth").as_::<i32>()
     }
-
 }
 impl Screen {
     /// Getter of the `availHeight` attribute.
@@ -79,7 +76,6 @@ impl Screen {
     pub fn avail_height(&self) -> i32 {
         self.inner.get("availHeight").as_::<i32>()
     }
-
 }
 impl Screen {
     /// Getter of the `width` attribute.
@@ -87,7 +83,6 @@ impl Screen {
     pub fn width(&self) -> i32 {
         self.inner.get("width").as_::<i32>()
     }
-
 }
 impl Screen {
     /// Getter of the `height` attribute.
@@ -95,7 +90,6 @@ impl Screen {
     pub fn height(&self) -> i32 {
         self.inner.get("height").as_::<i32>()
     }
-
 }
 impl Screen {
     /// Getter of the `colorDepth` attribute.
@@ -103,7 +97,6 @@ impl Screen {
     pub fn color_depth(&self) -> u32 {
         self.inner.get("colorDepth").as_::<u32>()
     }
-
 }
 impl Screen {
     /// Getter of the `pixelDepth` attribute.
@@ -111,7 +104,6 @@ impl Screen {
     pub fn pixel_depth(&self) -> u32 {
         self.inner.get("pixelDepth").as_::<u32>()
     }
-
 }
 impl Screen {
     /// Getter of the `orientation` attribute.
@@ -119,7 +111,6 @@ impl Screen {
     pub fn orientation(&self) -> ScreenOrientation {
         self.inner.get("orientation").as_::<ScreenOrientation>()
     }
-
 }
 impl Screen {
     /// Getter of the `isExtended` attribute.
@@ -127,7 +118,6 @@ impl Screen {
     pub fn is_extended(&self) -> bool {
         self.inner.get("isExtended").as_::<bool>()
     }
-
 }
 impl Screen {
     /// Getter of the `onchange` attribute.

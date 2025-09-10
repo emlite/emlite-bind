@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLFontElement class.
 /// [`HTMLFontElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLFontElement {
 
 impl FromVal for HTMLFontElement {
     fn from_val(v: &Any) -> Self {
-        HTMLFontElement { inner: HTMLElement::from_val(v) }
+        HTMLFontElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLFontElement {
 
 impl AsMut<Any> for HTMLFontElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLFontElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLFontElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLFontElement);
 
-
-
 impl HTMLFontElement {
     /// The `new HTMLFontElement(..)` constructor, creating a new HTMLFontElement instance
     pub fn new() -> HTMLFontElement {
@@ -73,7 +70,6 @@ impl HTMLFontElement {
             inner: Any::global("HTMLFontElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLFontElement {
     /// Getter of the `color` attribute.

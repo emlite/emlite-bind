@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WheelEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WheelEventInit {
 
 impl AsMut<Any> for WheelEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WheelEventInit> for Any {

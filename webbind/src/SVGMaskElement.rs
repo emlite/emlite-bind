@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGMaskElement class.
 /// [`SVGMaskElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMaskElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGMaskElement {
 
 impl FromVal for SVGMaskElement {
     fn from_val(v: &Any) -> Self {
-        SVGMaskElement { inner: SVGElement::from_val(v) }
+        SVGMaskElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGMaskElement {
 
 impl AsMut<Any> for SVGMaskElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGMaskElement> for Any {
@@ -64,22 +63,21 @@ impl From<&SVGMaskElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGMaskElement);
 
-
 impl SVGMaskElement {
     /// Getter of the `maskUnits` attribute.
     /// [`SVGMaskElement.maskUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMaskElement/maskUnits)
     pub fn mask_units(&self) -> SVGAnimatedEnumeration {
         self.inner.get("maskUnits").as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGMaskElement {
     /// Getter of the `maskContentUnits` attribute.
     /// [`SVGMaskElement.maskContentUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMaskElement/maskContentUnits)
     pub fn mask_content_units(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("maskContentUnits").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("maskContentUnits")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGMaskElement {
     /// Getter of the `x` attribute.
@@ -87,7 +85,6 @@ impl SVGMaskElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGMaskElement {
     /// Getter of the `y` attribute.
@@ -95,7 +92,6 @@ impl SVGMaskElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGMaskElement {
     /// Getter of the `width` attribute.
@@ -103,7 +99,6 @@ impl SVGMaskElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGMaskElement {
     /// Getter of the `height` attribute.
@@ -111,5 +106,4 @@ impl SVGMaskElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ProtectedAudience class.
 /// [`ProtectedAudience`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudience)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ProtectedAudience {
 
 impl FromVal for ProtectedAudience {
     fn from_val(v: &Any) -> Self {
-        ProtectedAudience { inner: Any::from_val(v) }
+        ProtectedAudience {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ProtectedAudience {
 
 impl AsMut<Any> for ProtectedAudience {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ProtectedAudience> for Any {
@@ -64,11 +63,12 @@ impl From<&ProtectedAudience> for Any {
 
 jsbind::utils::impl_dyn_cast!(ProtectedAudience);
 
-
 impl ProtectedAudience {
     /// The queryFeatureSupport method.
     /// [`ProtectedAudience.queryFeatureSupport`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudience/queryFeatureSupport)
     pub fn query_feature_support(&self, feature: &JsString) -> Any {
-        self.inner.call("queryFeatureSupport", &[feature.into(), ]).as_::<Any>()
+        self.inner
+            .call("queryFeatureSupport", &[feature.into()])
+            .as_::<Any>()
     }
 }

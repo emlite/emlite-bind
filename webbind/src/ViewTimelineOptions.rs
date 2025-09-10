@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ViewTimelineOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ViewTimelineOptions {
 
 impl AsMut<Any> for ViewTimelineOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ViewTimelineOptions> for Any {

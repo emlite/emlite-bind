@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OES_fbo_render_mipmap class.
 /// [`OES_fbo_render_mipmap`](https://developer.mozilla.org/en-US/docs/Web/API/OES_fbo_render_mipmap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct OES_fbo_render_mipmap {
 
 impl FromVal for OES_fbo_render_mipmap {
     fn from_val(v: &Any) -> Self {
-        OES_fbo_render_mipmap { inner: Any::from_val(v) }
+        OES_fbo_render_mipmap {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for OES_fbo_render_mipmap {
 
 impl AsMut<Any> for OES_fbo_render_mipmap {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OES_fbo_render_mipmap> for Any {
@@ -63,5 +62,3 @@ impl From<&OES_fbo_render_mipmap> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(OES_fbo_render_mipmap);
-
-

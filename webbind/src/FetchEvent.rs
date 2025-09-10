@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FetchEvent class.
 /// [`FetchEvent`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FetchEvent {
 
 impl FromVal for FetchEvent {
     fn from_val(v: &Any) -> Self {
-        FetchEvent { inner: ExtendableEvent::from_val(v) }
+        FetchEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FetchEvent {
 
 impl AsMut<Any> for FetchEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FetchEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&FetchEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(FetchEvent);
 
-
-
 impl FetchEvent {
     /// The `new FetchEvent(..)` constructor, creating a new FetchEvent instance
     pub fn new(type_: &JsString, event_init_dict: &FetchEventInit) -> FetchEvent {
         Self {
-            inner: Any::global("FetchEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("FetchEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl FetchEvent {
     /// Getter of the `request` attribute.
@@ -81,7 +79,6 @@ impl FetchEvent {
     pub fn request(&self) -> Request {
         self.inner.get("request").as_::<Request>()
     }
-
 }
 impl FetchEvent {
     /// Getter of the `preloadResponse` attribute.
@@ -89,7 +86,6 @@ impl FetchEvent {
     pub fn preload_response(&self) -> Promise<Any> {
         self.inner.get("preloadResponse").as_::<Promise<Any>>()
     }
-
 }
 impl FetchEvent {
     /// Getter of the `clientId` attribute.
@@ -97,7 +93,6 @@ impl FetchEvent {
     pub fn client_id(&self) -> JsString {
         self.inner.get("clientId").as_::<JsString>()
     }
-
 }
 impl FetchEvent {
     /// Getter of the `resultingClientId` attribute.
@@ -105,7 +100,6 @@ impl FetchEvent {
     pub fn resulting_client_id(&self) -> JsString {
         self.inner.get("resultingClientId").as_::<JsString>()
     }
-
 }
 impl FetchEvent {
     /// Getter of the `replacesClientId` attribute.
@@ -113,7 +107,6 @@ impl FetchEvent {
     pub fn replaces_client_id(&self) -> JsString {
         self.inner.get("replacesClientId").as_::<JsString>()
     }
-
 }
 impl FetchEvent {
     /// Getter of the `handled` attribute.
@@ -121,12 +114,13 @@ impl FetchEvent {
     pub fn handled(&self) -> Promise<Undefined> {
         self.inner.get("handled").as_::<Promise<Undefined>>()
     }
-
 }
 impl FetchEvent {
     /// The respondWith method.
     /// [`FetchEvent.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith)
     pub fn respond_with(&self, r: &Promise<Response>) -> Undefined {
-        self.inner.call("respondWith", &[r.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("respondWith", &[r.into()])
+            .as_::<Undefined>()
     }
 }

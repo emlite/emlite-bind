@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Comment class.
 /// [`Comment`](https://developer.mozilla.org/en-US/docs/Web/API/Comment)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Comment {
 
 impl FromVal for Comment {
     fn from_val(v: &Any) -> Self {
-        Comment { inner: CharacterData::from_val(v) }
+        Comment {
+            inner: CharacterData::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Comment {
 
 impl AsMut<Any> for Comment {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Comment> for Any {
@@ -64,8 +63,6 @@ impl From<&Comment> for Any {
 
 jsbind::utils::impl_dyn_cast!(Comment);
 
-
-
 impl Comment {
     /// The `new Comment(..)` constructor, creating a new Comment instance
     pub fn new0() -> Comment {
@@ -77,8 +74,9 @@ impl Comment {
     /// The `new Comment(..)` constructor, creating a new Comment instance
     pub fn new1(data: &JsString) -> Comment {
         Self {
-            inner: Any::global("Comment").new(&[data.into()]).as_::<CharacterData>(),
+            inner: Any::global("Comment")
+                .new(&[data.into()])
+                .as_::<CharacterData>(),
         }
     }
-
 }

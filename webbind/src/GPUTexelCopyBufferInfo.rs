@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUTexelCopyBufferInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUTexelCopyBufferInfo {
 
 impl AsMut<Any> for GPUTexelCopyBufferInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUTexelCopyBufferInfo> for Any {

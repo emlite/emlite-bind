@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ProgressEvent class.
 /// [`ProgressEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ProgressEvent {
 
 impl FromVal for ProgressEvent {
     fn from_val(v: &Any) -> Self {
-        ProgressEvent { inner: Event::from_val(v) }
+        ProgressEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ProgressEvent {
 
 impl AsMut<Any> for ProgressEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ProgressEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&ProgressEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(ProgressEvent);
 
-
-
 impl ProgressEvent {
     /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
     pub fn new0(type_: &JsString) -> ProgressEvent {
         Self {
-            inner: Any::global("ProgressEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("ProgressEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &ProgressEventInit) -> ProgressEvent {
         Self {
-            inner: Any::global("ProgressEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("ProgressEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl ProgressEvent {
     /// Getter of the `lengthComputable` attribute.
@@ -88,7 +88,6 @@ impl ProgressEvent {
     pub fn length_computable(&self) -> bool {
         self.inner.get("lengthComputable").as_::<bool>()
     }
-
 }
 impl ProgressEvent {
     /// Getter of the `loaded` attribute.
@@ -96,7 +95,6 @@ impl ProgressEvent {
     pub fn loaded(&self) -> f64 {
         self.inner.get("loaded").as_::<f64>()
     }
-
 }
 impl ProgressEvent {
     /// Getter of the `total` attribute.
@@ -104,5 +102,4 @@ impl ProgressEvent {
     pub fn total(&self) -> f64 {
         self.inner.get("total").as_::<f64>()
     }
-
 }

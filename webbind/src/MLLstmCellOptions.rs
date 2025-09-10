@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLLstmCellOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLLstmCellOptions {
 
 impl AsMut<Any> for MLLstmCellOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLLstmCellOptions> for Any {
@@ -108,7 +105,9 @@ impl MLLstmCellOptions {
 impl MLLstmCellOptions {
     /// Getter of the `activations` attribute.
     pub fn activations(&self) -> TypedArray<MLRecurrentNetworkActivation> {
-        self.inner.get("activations").as_::<TypedArray<MLRecurrentNetworkActivation>>()
+        self.inner
+            .get("activations")
+            .as_::<TypedArray<MLRecurrentNetworkActivation>>()
     }
 
     /// Setter of the `activations` attribute.

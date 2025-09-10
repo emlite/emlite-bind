@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSUnparsedValue class.
 /// [`CSSUnparsedValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnparsedValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSUnparsedValue {
 
 impl FromVal for CSSUnparsedValue {
     fn from_val(v: &Any) -> Self {
-        CSSUnparsedValue { inner: CSSStyleValue::from_val(v) }
+        CSSUnparsedValue {
+            inner: CSSStyleValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSUnparsedValue {
 
 impl AsMut<Any> for CSSUnparsedValue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSUnparsedValue> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSUnparsedValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSUnparsedValue);
 
-
-
 impl CSSUnparsedValue {
     /// The `new CSSUnparsedValue(..)` constructor, creating a new CSSUnparsedValue instance
     pub fn new(members: &TypedArray<Any>) -> CSSUnparsedValue {
         Self {
-            inner: Any::global("CSSUnparsedValue").new(&[members.into()]).as_::<CSSStyleValue>(),
+            inner: Any::global("CSSUnparsedValue")
+                .new(&[members.into()])
+                .as_::<CSSStyleValue>(),
         }
     }
-
 }
 impl CSSUnparsedValue {
     /// Getter of the `length` attribute.
@@ -81,5 +79,4 @@ impl CSSUnparsedValue {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PressureObserverOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PressureObserverOptions {
 
 impl AsMut<Any> for PressureObserverOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PressureObserverOptions> for Any {

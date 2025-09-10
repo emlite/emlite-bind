@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BufferedChangeEvent class.
 /// [`BufferedChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BufferedChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BufferedChangeEvent {
 
 impl FromVal for BufferedChangeEvent {
     fn from_val(v: &Any) -> Self {
-        BufferedChangeEvent { inner: Event::from_val(v) }
+        BufferedChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BufferedChangeEvent {
 
 impl AsMut<Any> for BufferedChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BufferedChangeEvent> for Any {
@@ -64,23 +63,27 @@ impl From<&BufferedChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(BufferedChangeEvent);
 
-
-
 impl BufferedChangeEvent {
     /// The `new BufferedChangeEvent(..)` constructor, creating a new BufferedChangeEvent instance
     pub fn new0(type_: &JsString) -> BufferedChangeEvent {
         Self {
-            inner: Any::global("BufferedChangeEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("BufferedChangeEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new BufferedChangeEvent(..)` constructor, creating a new BufferedChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &BufferedChangeEventInit) -> BufferedChangeEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &BufferedChangeEventInit,
+    ) -> BufferedChangeEvent {
         Self {
-            inner: Any::global("BufferedChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("BufferedChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl BufferedChangeEvent {
     /// Getter of the `addedRanges` attribute.
@@ -88,7 +91,6 @@ impl BufferedChangeEvent {
     pub fn added_ranges(&self) -> TimeRanges {
         self.inner.get("addedRanges").as_::<TimeRanges>()
     }
-
 }
 impl BufferedChangeEvent {
     /// Getter of the `removedRanges` attribute.
@@ -96,5 +98,4 @@ impl BufferedChangeEvent {
     pub fn removed_ranges(&self) -> TimeRanges {
         self.inner.get("removedRanges").as_::<TimeRanges>()
     }
-
 }

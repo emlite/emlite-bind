@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigateEvent class.
 /// [`NavigateEvent`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NavigateEvent {
 
 impl FromVal for NavigateEvent {
     fn from_val(v: &Any) -> Self {
-        NavigateEvent { inner: Event::from_val(v) }
+        NavigateEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NavigateEvent {
 
 impl AsMut<Any> for NavigateEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigateEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&NavigateEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigateEvent);
 
-
-
 impl NavigateEvent {
     /// The `new NavigateEvent(..)` constructor, creating a new NavigateEvent instance
     pub fn new(type_: &JsString, event_init_dict: &NavigateEventInit) -> NavigateEvent {
         Self {
-            inner: Any::global("NavigateEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("NavigateEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `navigationType` attribute.
@@ -81,7 +79,6 @@ impl NavigateEvent {
     pub fn navigation_type(&self) -> NavigationType {
         self.inner.get("navigationType").as_::<NavigationType>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `destination` attribute.
@@ -89,7 +86,6 @@ impl NavigateEvent {
     pub fn destination(&self) -> NavigationDestination {
         self.inner.get("destination").as_::<NavigationDestination>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `canIntercept` attribute.
@@ -97,7 +93,6 @@ impl NavigateEvent {
     pub fn can_intercept(&self) -> bool {
         self.inner.get("canIntercept").as_::<bool>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `userInitiated` attribute.
@@ -105,7 +100,6 @@ impl NavigateEvent {
     pub fn user_initiated(&self) -> bool {
         self.inner.get("userInitiated").as_::<bool>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `hashChange` attribute.
@@ -113,7 +107,6 @@ impl NavigateEvent {
     pub fn hash_change(&self) -> bool {
         self.inner.get("hashChange").as_::<bool>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `signal` attribute.
@@ -121,7 +114,6 @@ impl NavigateEvent {
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `formData` attribute.
@@ -129,7 +121,6 @@ impl NavigateEvent {
     pub fn form_data(&self) -> FormData {
         self.inner.get("formData").as_::<FormData>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `downloadRequest` attribute.
@@ -137,7 +128,6 @@ impl NavigateEvent {
     pub fn download_request(&self) -> JsString {
         self.inner.get("downloadRequest").as_::<JsString>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `info` attribute.
@@ -145,7 +135,6 @@ impl NavigateEvent {
     pub fn info(&self) -> Any {
         self.inner.get("info").as_::<Any>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `hasUAVisualTransition` attribute.
@@ -153,7 +142,6 @@ impl NavigateEvent {
     pub fn has_ua_visual_transition(&self) -> bool {
         self.inner.get("hasUAVisualTransition").as_::<bool>()
     }
-
 }
 impl NavigateEvent {
     /// Getter of the `sourceElement` attribute.
@@ -161,24 +149,25 @@ impl NavigateEvent {
     pub fn source_element(&self) -> Element {
         self.inner.get("sourceElement").as_::<Element>()
     }
-
 }
 impl NavigateEvent {
     /// The intercept method.
     /// [`NavigateEvent.intercept`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/intercept)
-    pub fn intercept0(&self, ) -> Undefined {
+    pub fn intercept0(&self) -> Undefined {
         self.inner.call("intercept", &[]).as_::<Undefined>()
     }
     /// The intercept method.
     /// [`NavigateEvent.intercept`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/intercept)
     pub fn intercept1(&self, options: &NavigationInterceptOptions) -> Undefined {
-        self.inner.call("intercept", &[options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("intercept", &[options.into()])
+            .as_::<Undefined>()
     }
 }
 impl NavigateEvent {
     /// The scroll method.
     /// [`NavigateEvent.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/scroll)
-    pub fn scroll(&self, ) -> Undefined {
+    pub fn scroll(&self) -> Undefined {
         self.inner.call("scroll", &[]).as_::<Undefined>()
     }
 }

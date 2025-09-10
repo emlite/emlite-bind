@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ImageEncodeOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ImageEncodeOptions {
 
 impl AsMut<Any> for ImageEncodeOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ImageEncodeOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CaretPositionFromPointOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for CaretPositionFromPointOptions {
 
 impl AsMut<Any> for CaretPositionFromPointOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CaretPositionFromPointOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&CaretPositionFromPointOptions> for Any {
 impl CaretPositionFromPointOptions {
     /// Getter of the `shadowRoots` attribute.
     pub fn shadow_roots(&self) -> TypedArray<ShadowRoot> {
-        self.inner.get("shadowRoots").as_::<TypedArray<ShadowRoot>>()
+        self.inner
+            .get("shadowRoots")
+            .as_::<TypedArray<ShadowRoot>>()
     }
 
     /// Setter of the `shadowRoots` attribute.

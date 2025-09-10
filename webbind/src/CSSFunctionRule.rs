@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSFunctionRule class.
 /// [`CSSFunctionRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSFunctionRule {
 
 impl FromVal for CSSFunctionRule {
     fn from_val(v: &Any) -> Self {
-        CSSFunctionRule { inner: CSSGroupingRule::from_val(v) }
+        CSSFunctionRule {
+            inner: CSSGroupingRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSFunctionRule {
 
 impl AsMut<Any> for CSSFunctionRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSFunctionRule> for Any {
@@ -64,20 +63,20 @@ impl From<&CSSFunctionRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSFunctionRule);
 
-
 impl CSSFunctionRule {
     /// Getter of the `name` attribute.
     /// [`CSSFunctionRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSFunctionRule {
     /// The getParameters method.
     /// [`CSSFunctionRule.getParameters`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/getParameters)
-    pub fn get_parameters(&self, ) -> TypedArray<FunctionParameter> {
-        self.inner.call("getParameters", &[]).as_::<TypedArray<FunctionParameter>>()
+    pub fn get_parameters(&self) -> TypedArray<FunctionParameter> {
+        self.inner
+            .call("getParameters", &[])
+            .as_::<TypedArray<FunctionParameter>>()
     }
 }
 impl CSSFunctionRule {
@@ -86,5 +85,4 @@ impl CSSFunctionRule {
     pub fn return_type(&self) -> JsString {
         self.inner.get("returnType").as_::<JsString>()
     }
-
 }

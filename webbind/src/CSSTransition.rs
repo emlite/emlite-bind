@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSTransition class.
 /// [`CSSTransition`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSTransition {
 
 impl FromVal for CSSTransition {
     fn from_val(v: &Any) -> Self {
-        CSSTransition { inner: Animation::from_val(v) }
+        CSSTransition {
+            inner: Animation::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSTransition {
 
 impl AsMut<Any> for CSSTransition {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSTransition> for Any {
@@ -64,12 +63,10 @@ impl From<&CSSTransition> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSTransition);
 
-
 impl CSSTransition {
     /// Getter of the `transitionProperty` attribute.
     /// [`CSSTransition.transitionProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransition/transitionProperty)
     pub fn transition_property(&self) -> JsString {
         self.inner.get("transitionProperty").as_::<JsString>()
     }
-
 }

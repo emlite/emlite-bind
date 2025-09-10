@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IIRFilterOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IIRFilterOptions {
 
 impl AsMut<Any> for IIRFilterOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IIRFilterOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Attr class.
 /// [`Attr`](https://developer.mozilla.org/en-US/docs/Web/API/Attr)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Attr {
 
 impl FromVal for Attr {
     fn from_val(v: &Any) -> Self {
-        Attr { inner: Node::from_val(v) }
+        Attr {
+            inner: Node::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Attr {
 
 impl AsMut<Any> for Attr {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Attr> for Any {
@@ -64,14 +63,12 @@ impl From<&Attr> for Any {
 
 jsbind::utils::impl_dyn_cast!(Attr);
 
-
 impl Attr {
     /// Getter of the `namespaceURI` attribute.
     /// [`Attr.namespaceURI`](https://developer.mozilla.org/en-US/docs/Web/API/Attr/namespaceURI)
     pub fn namespace_uri(&self) -> JsString {
         self.inner.get("namespaceURI").as_::<JsString>()
     }
-
 }
 impl Attr {
     /// Getter of the `prefix` attribute.
@@ -79,7 +76,6 @@ impl Attr {
     pub fn prefix(&self) -> JsString {
         self.inner.get("prefix").as_::<JsString>()
     }
-
 }
 impl Attr {
     /// Getter of the `localName` attribute.
@@ -87,7 +83,6 @@ impl Attr {
     pub fn local_name(&self) -> JsString {
         self.inner.get("localName").as_::<JsString>()
     }
-
 }
 impl Attr {
     /// Getter of the `name` attribute.
@@ -95,7 +90,6 @@ impl Attr {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl Attr {
     /// Getter of the `value` attribute.
@@ -116,7 +110,6 @@ impl Attr {
     pub fn owner_element(&self) -> Element {
         self.inner.get("ownerElement").as_::<Element>()
     }
-
 }
 impl Attr {
     /// Getter of the `specified` attribute.
@@ -124,5 +117,4 @@ impl Attr {
     pub fn specified(&self) -> bool {
         self.inner.get("specified").as_::<bool>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GamepadTouch dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GamepadTouch {
 
 impl AsMut<Any> for GamepadTouch {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GamepadTouch> for Any {

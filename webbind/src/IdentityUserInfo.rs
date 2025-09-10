@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdentityUserInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IdentityUserInfo {
 
 impl AsMut<Any> for IdentityUserInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdentityUserInfo> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaStreamTrackAudioSourceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaStreamTrackAudioSourceOptions {
 
 impl AsMut<Any> for MediaStreamTrackAudioSourceOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaStreamTrackAudioSourceOptions> for Any {

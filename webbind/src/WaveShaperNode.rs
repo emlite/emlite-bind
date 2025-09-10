@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WaveShaperNode class.
 /// [`WaveShaperNode`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WaveShaperNode {
 
 impl FromVal for WaveShaperNode {
     fn from_val(v: &Any) -> Self {
-        WaveShaperNode { inner: AudioNode::from_val(v) }
+        WaveShaperNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WaveShaperNode {
 
 impl AsMut<Any> for WaveShaperNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WaveShaperNode> for Any {
@@ -64,23 +63,24 @@ impl From<&WaveShaperNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(WaveShaperNode);
 
-
-
 impl WaveShaperNode {
     /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
     pub fn new0(context: &BaseAudioContext) -> WaveShaperNode {
         Self {
-            inner: Any::global("WaveShaperNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("WaveShaperNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
     pub fn new1(context: &BaseAudioContext, options: &WaveShaperOptions) -> WaveShaperNode {
         Self {
-            inner: Any::global("WaveShaperNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("WaveShaperNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl WaveShaperNode {
     /// Getter of the `curve` attribute.

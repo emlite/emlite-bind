@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGElement class.
 /// [`SVGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGElement {
 
 impl FromVal for SVGElement {
     fn from_val(v: &Any) -> Self {
-        SVGElement { inner: Element::from_val(v) }
+        SVGElement {
+            inner: Element::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGElement {
 
 impl AsMut<Any> for SVGElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGElement);
 
-
 impl SVGElement {
     /// Getter of the `className` attribute.
     /// [`SVGElement.className`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/className)
     pub fn class_name(&self) -> SVGAnimatedString {
         self.inner.get("className").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGElement {
     /// Getter of the `ownerSVGElement` attribute.
@@ -79,7 +76,6 @@ impl SVGElement {
     pub fn owner_svg_element(&self) -> SVGSVGElement {
         self.inner.get("ownerSVGElement").as_::<SVGSVGElement>()
     }
-
 }
 impl SVGElement {
     /// Getter of the `viewportElement` attribute.
@@ -87,7 +83,6 @@ impl SVGElement {
     pub fn viewport_element(&self) -> SVGElement {
         self.inner.get("viewportElement").as_::<SVGElement>()
     }
-
 }
 impl SVGElement {
     /// Getter of the `onbeforexrselect` attribute.
@@ -108,15 +103,15 @@ impl SVGElement {
     pub fn corresponding_element(&self) -> SVGElement {
         self.inner.get("correspondingElement").as_::<SVGElement>()
     }
-
 }
 impl SVGElement {
     /// Getter of the `correspondingUseElement` attribute.
     /// [`SVGElement.correspondingUseElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/correspondingUseElement)
     pub fn corresponding_use_element(&self) -> SVGUseElement {
-        self.inner.get("correspondingUseElement").as_::<SVGUseElement>()
+        self.inner
+            .get("correspondingUseElement")
+            .as_::<SVGUseElement>()
     }
-
 }
 impl SVGElement {
     /// Getter of the `dataset` attribute.
@@ -124,7 +119,6 @@ impl SVGElement {
     pub fn dataset(&self) -> DOMStringMap {
         self.inner.get("dataset").as_::<DOMStringMap>()
     }
-
 }
 impl SVGElement {
     /// Getter of the `nonce` attribute.
@@ -168,19 +162,21 @@ impl SVGElement {
 impl SVGElement {
     /// The focus method.
     /// [`SVGElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/focus)
-    pub fn focus0(&self, ) -> Undefined {
+    pub fn focus0(&self) -> Undefined {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
     /// The focus method.
     /// [`SVGElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/focus)
     pub fn focus1(&self, options: &FocusOptions) -> Undefined {
-        self.inner.call("focus", &[options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("focus", &[options.into()])
+            .as_::<Undefined>()
     }
 }
 impl SVGElement {
     /// The blur method.
     /// [`SVGElement.blur`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/blur)
-    pub fn blur(&self, ) -> Undefined {
+    pub fn blur(&self) -> Undefined {
         self.inner.call("blur", &[]).as_::<Undefined>()
     }
 }
@@ -190,5 +186,4 @@ impl SVGElement {
     pub fn style(&self) -> CSSStyleProperties {
         self.inner.get("style").as_::<CSSStyleProperties>()
     }
-
 }

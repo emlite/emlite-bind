@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ManagedSourceBuffer class.
 /// [`ManagedSourceBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/ManagedSourceBuffer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ManagedSourceBuffer {
 
 impl FromVal for ManagedSourceBuffer {
     fn from_val(v: &Any) -> Self {
-        ManagedSourceBuffer { inner: SourceBuffer::from_val(v) }
+        ManagedSourceBuffer {
+            inner: SourceBuffer::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ManagedSourceBuffer {
 
 impl AsMut<Any> for ManagedSourceBuffer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ManagedSourceBuffer> for Any {
@@ -63,7 +62,6 @@ impl From<&ManagedSourceBuffer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(ManagedSourceBuffer);
-
 
 impl ManagedSourceBuffer {
     /// Getter of the `onbufferedchange` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLLayerNormalizationOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLLayerNormalizationOptions {
 
 impl AsMut<Any> for MLLayerNormalizationOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLLayerNormalizationOptions> for Any {

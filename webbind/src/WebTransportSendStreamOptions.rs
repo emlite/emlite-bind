@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportSendStreamOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WebTransportSendStreamOptions {
 
 impl AsMut<Any> for WebTransportSendStreamOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportSendStreamOptions> for Any {

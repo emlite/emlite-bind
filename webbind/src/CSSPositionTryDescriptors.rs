@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSPositionTryDescriptors class.
 /// [`CSSPositionTryDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPositionTryDescriptors)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSPositionTryDescriptors {
 
 impl FromVal for CSSPositionTryDescriptors {
     fn from_val(v: &Any) -> Self {
-        CSSPositionTryDescriptors { inner: CSSStyleDeclaration::from_val(v) }
+        CSSPositionTryDescriptors {
+            inner: CSSStyleDeclaration::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSPositionTryDescriptors {
 
 impl AsMut<Any> for CSSPositionTryDescriptors {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSPositionTryDescriptors> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSPositionTryDescriptors> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSPositionTryDescriptors);
-
 
 impl CSSPositionTryDescriptors {
     /// Getter of the `margin` attribute.

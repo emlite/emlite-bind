@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoTrack class.
 /// [`VideoTrack`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct VideoTrack {
 
 impl FromVal for VideoTrack {
     fn from_val(v: &Any) -> Self {
-        VideoTrack { inner: Any::from_val(v) }
+        VideoTrack {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for VideoTrack {
 
 impl AsMut<Any> for VideoTrack {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoTrack> for Any {
@@ -64,14 +63,12 @@ impl From<&VideoTrack> for Any {
 
 jsbind::utils::impl_dyn_cast!(VideoTrack);
 
-
 impl VideoTrack {
     /// Getter of the `id` attribute.
     /// [`VideoTrack.id`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrack/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl VideoTrack {
     /// Getter of the `kind` attribute.
@@ -79,7 +76,6 @@ impl VideoTrack {
     pub fn kind(&self) -> JsString {
         self.inner.get("kind").as_::<JsString>()
     }
-
 }
 impl VideoTrack {
     /// Getter of the `label` attribute.
@@ -87,7 +83,6 @@ impl VideoTrack {
     pub fn label(&self) -> JsString {
         self.inner.get("label").as_::<JsString>()
     }
-
 }
 impl VideoTrack {
     /// Getter of the `language` attribute.
@@ -95,7 +90,6 @@ impl VideoTrack {
     pub fn language(&self) -> JsString {
         self.inner.get("language").as_::<JsString>()
     }
-
 }
 impl VideoTrack {
     /// Getter of the `selected` attribute.
@@ -116,5 +110,4 @@ impl VideoTrack {
     pub fn source_buffer(&self) -> SourceBuffer {
         self.inner.get("sourceBuffer").as_::<SourceBuffer>()
     }
-
 }

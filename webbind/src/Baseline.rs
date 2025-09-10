@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Baseline class.
 /// [`Baseline`](https://developer.mozilla.org/en-US/docs/Web/API/Baseline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Baseline {
 
 impl FromVal for Baseline {
     fn from_val(v: &Any) -> Self {
-        Baseline { inner: Any::from_val(v) }
+        Baseline {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Baseline {
 
 impl AsMut<Any> for Baseline {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Baseline> for Any {
@@ -64,14 +63,12 @@ impl From<&Baseline> for Any {
 
 jsbind::utils::impl_dyn_cast!(Baseline);
 
-
 impl Baseline {
     /// Getter of the `name` attribute.
     /// [`Baseline.name`](https://developer.mozilla.org/en-US/docs/Web/API/Baseline/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl Baseline {
     /// Getter of the `value` attribute.
@@ -79,5 +76,4 @@ impl Baseline {
     pub fn value(&self) -> f64 {
         self.inner.get("value").as_::<f64>()
     }
-
 }

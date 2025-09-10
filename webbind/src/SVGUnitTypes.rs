@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGUnitTypes class.
 /// [`SVGUnitTypes`](https://developer.mozilla.org/en-US/docs/Web/API/SVGUnitTypes)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGUnitTypes {
 
 impl FromVal for SVGUnitTypes {
     fn from_val(v: &Any) -> Self {
-        SVGUnitTypes { inner: Any::from_val(v) }
+        SVGUnitTypes {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGUnitTypes {
 
 impl AsMut<Any> for SVGUnitTypes {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGUnitTypes> for Any {
@@ -63,5 +62,3 @@ impl From<&SVGUnitTypes> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGUnitTypes);
-
-

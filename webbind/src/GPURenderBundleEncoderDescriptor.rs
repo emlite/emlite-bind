@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPURenderBundleEncoderDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPURenderBundleEncoderDescriptor {
 
 impl AsMut<Any> for GPURenderBundleEncoderDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPURenderBundleEncoderDescriptor> for Any {

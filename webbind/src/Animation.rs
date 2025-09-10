@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Animation class.
 /// [`Animation`](https://developer.mozilla.org/en-US/docs/Web/API/Animation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Animation {
 
 impl FromVal for Animation {
     fn from_val(v: &Any) -> Self {
-        Animation { inner: EventTarget::from_val(v) }
+        Animation {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Animation {
 
 impl AsMut<Any> for Animation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Animation> for Any {
@@ -64,8 +63,6 @@ impl From<&Animation> for Any {
 
 jsbind::utils::impl_dyn_cast!(Animation);
 
-
-
 impl Animation {
     /// The `new Animation(..)` constructor, creating a new Animation instance
     pub fn new0() -> Animation {
@@ -77,17 +74,20 @@ impl Animation {
     /// The `new Animation(..)` constructor, creating a new Animation instance
     pub fn new1(effect: &AnimationEffect) -> Animation {
         Self {
-            inner: Any::global("Animation").new(&[effect.into()]).as_::<EventTarget>(),
+            inner: Any::global("Animation")
+                .new(&[effect.into()])
+                .as_::<EventTarget>(),
         }
     }
 
     /// The `new Animation(..)` constructor, creating a new Animation instance
     pub fn new2(effect: &AnimationEffect, timeline: &AnimationTimeline) -> Animation {
         Self {
-            inner: Any::global("Animation").new(&[effect.into(), timeline.into()]).as_::<EventTarget>(),
+            inner: Any::global("Animation")
+                .new(&[effect.into(), timeline.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl Animation {
     /// Getter of the `id` attribute.
@@ -147,15 +147,15 @@ impl Animation {
     pub fn play_state(&self) -> AnimationPlayState {
         self.inner.get("playState").as_::<AnimationPlayState>()
     }
-
 }
 impl Animation {
     /// Getter of the `replaceState` attribute.
     /// [`Animation.replaceState`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/replaceState)
     pub fn replace_state(&self) -> AnimationReplaceState {
-        self.inner.get("replaceState").as_::<AnimationReplaceState>()
+        self.inner
+            .get("replaceState")
+            .as_::<AnimationReplaceState>()
     }
-
 }
 impl Animation {
     /// Getter of the `pending` attribute.
@@ -163,7 +163,6 @@ impl Animation {
     pub fn pending(&self) -> bool {
         self.inner.get("pending").as_::<bool>()
     }
-
 }
 impl Animation {
     /// Getter of the `ready` attribute.
@@ -171,7 +170,6 @@ impl Animation {
     pub fn ready(&self) -> Promise<Animation> {
         self.inner.get("ready").as_::<Promise<Animation>>()
     }
-
 }
 impl Animation {
     /// Getter of the `finished` attribute.
@@ -179,7 +177,6 @@ impl Animation {
     pub fn finished(&self) -> Promise<Animation> {
         self.inner.get("finished").as_::<Promise<Animation>>()
     }
-
 }
 impl Animation {
     /// Getter of the `onfinish` attribute.
@@ -223,28 +220,28 @@ impl Animation {
 impl Animation {
     /// The cancel method.
     /// [`Animation.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel)
-    pub fn cancel(&self, ) -> Undefined {
+    pub fn cancel(&self) -> Undefined {
         self.inner.call("cancel", &[]).as_::<Undefined>()
     }
 }
 impl Animation {
     /// The finish method.
     /// [`Animation.finish`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/finish)
-    pub fn finish(&self, ) -> Undefined {
+    pub fn finish(&self) -> Undefined {
         self.inner.call("finish", &[]).as_::<Undefined>()
     }
 }
 impl Animation {
     /// The play method.
     /// [`Animation.play`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/play)
-    pub fn play(&self, ) -> Undefined {
+    pub fn play(&self) -> Undefined {
         self.inner.call("play", &[]).as_::<Undefined>()
     }
 }
 impl Animation {
     /// The pause method.
     /// [`Animation.pause`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/pause)
-    pub fn pause(&self, ) -> Undefined {
+    pub fn pause(&self) -> Undefined {
         self.inner.call("pause", &[]).as_::<Undefined>()
     }
 }
@@ -252,27 +249,29 @@ impl Animation {
     /// The updatePlaybackRate method.
     /// [`Animation.updatePlaybackRate`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/updatePlaybackRate)
     pub fn update_playback_rate(&self, playback_rate: f64) -> Undefined {
-        self.inner.call("updatePlaybackRate", &[playback_rate.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("updatePlaybackRate", &[playback_rate.into()])
+            .as_::<Undefined>()
     }
 }
 impl Animation {
     /// The reverse method.
     /// [`Animation.reverse`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/reverse)
-    pub fn reverse(&self, ) -> Undefined {
+    pub fn reverse(&self) -> Undefined {
         self.inner.call("reverse", &[]).as_::<Undefined>()
     }
 }
 impl Animation {
     /// The persist method.
     /// [`Animation.persist`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/persist)
-    pub fn persist(&self, ) -> Undefined {
+    pub fn persist(&self) -> Undefined {
         self.inner.call("persist", &[]).as_::<Undefined>()
     }
 }
 impl Animation {
     /// The commitStyles method.
     /// [`Animation.commitStyles`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/commitStyles)
-    pub fn commit_styles(&self, ) -> Undefined {
+    pub fn commit_styles(&self) -> Undefined {
         self.inner.call("commitStyles", &[]).as_::<Undefined>()
     }
 }
@@ -321,5 +320,4 @@ impl Animation {
     pub fn overall_progress(&self) -> f64 {
         self.inner.get("overallProgress").as_::<f64>()
     }
-
 }

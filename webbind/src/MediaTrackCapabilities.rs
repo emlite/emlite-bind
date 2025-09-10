@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaTrackCapabilities dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaTrackCapabilities {
 
 impl AsMut<Any> for MediaTrackCapabilities {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaTrackCapabilities> for Any {

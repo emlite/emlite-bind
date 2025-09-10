@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WEBGL_lose_context class.
 /// [`WEBGL_lose_context`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WEBGL_lose_context {
 
 impl FromVal for WEBGL_lose_context {
     fn from_val(v: &Any) -> Self {
-        WEBGL_lose_context { inner: Any::from_val(v) }
+        WEBGL_lose_context {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WEBGL_lose_context {
 
 impl AsMut<Any> for WEBGL_lose_context {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WEBGL_lose_context> for Any {
@@ -64,18 +63,17 @@ impl From<&WEBGL_lose_context> for Any {
 
 jsbind::utils::impl_dyn_cast!(WEBGL_lose_context);
 
-
 impl WEBGL_lose_context {
     /// The loseContext method.
     /// [`WEBGL_lose_context.loseContext`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context/loseContext)
-    pub fn lose_context(&self, ) -> Undefined {
+    pub fn lose_context(&self) -> Undefined {
         self.inner.call("loseContext", &[]).as_::<Undefined>()
     }
 }
 impl WEBGL_lose_context {
     /// The restoreContext method.
     /// [`WEBGL_lose_context.restoreContext`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context/restoreContext)
-    pub fn restore_context(&self, ) -> Undefined {
+    pub fn restore_context(&self) -> Undefined {
         self.inner.call("restoreContext", &[]).as_::<Undefined>()
     }
 }

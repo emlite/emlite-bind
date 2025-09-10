@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoColorSpace class.
 /// [`VideoColorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct VideoColorSpace {
 
 impl FromVal for VideoColorSpace {
     fn from_val(v: &Any) -> Self {
-        VideoColorSpace { inner: Any::from_val(v) }
+        VideoColorSpace {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for VideoColorSpace {
 
 impl AsMut<Any> for VideoColorSpace {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoColorSpace> for Any {
@@ -64,8 +63,6 @@ impl From<&VideoColorSpace> for Any {
 
 jsbind::utils::impl_dyn_cast!(VideoColorSpace);
 
-
-
 impl VideoColorSpace {
     /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
     pub fn new0() -> VideoColorSpace {
@@ -77,10 +74,11 @@ impl VideoColorSpace {
     /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
     pub fn new1(init: &VideoColorSpaceInit) -> VideoColorSpace {
         Self {
-            inner: Any::global("VideoColorSpace").new(&[init.into()]).as_::<Any>(),
+            inner: Any::global("VideoColorSpace")
+                .new(&[init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl VideoColorSpace {
     /// Getter of the `primaries` attribute.
@@ -88,15 +86,15 @@ impl VideoColorSpace {
     pub fn primaries(&self) -> VideoColorPrimaries {
         self.inner.get("primaries").as_::<VideoColorPrimaries>()
     }
-
 }
 impl VideoColorSpace {
     /// Getter of the `transfer` attribute.
     /// [`VideoColorSpace.transfer`](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace/transfer)
     pub fn transfer(&self) -> VideoTransferCharacteristics {
-        self.inner.get("transfer").as_::<VideoTransferCharacteristics>()
+        self.inner
+            .get("transfer")
+            .as_::<VideoTransferCharacteristics>()
     }
-
 }
 impl VideoColorSpace {
     /// Getter of the `matrix` attribute.
@@ -104,7 +102,6 @@ impl VideoColorSpace {
     pub fn matrix(&self) -> VideoMatrixCoefficients {
         self.inner.get("matrix").as_::<VideoMatrixCoefficients>()
     }
-
 }
 impl VideoColorSpace {
     /// Getter of the `fullRange` attribute.
@@ -112,12 +109,11 @@ impl VideoColorSpace {
     pub fn full_range(&self) -> bool {
         self.inner.get("fullRange").as_::<bool>()
     }
-
 }
 impl VideoColorSpace {
     /// The toJSON method.
     /// [`VideoColorSpace.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace/toJSON)
-    pub fn to_json(&self, ) -> VideoColorSpaceInit {
+    pub fn to_json(&self) -> VideoColorSpaceInit {
         self.inner.call("toJSON", &[]).as_::<VideoColorSpaceInit>()
     }
 }

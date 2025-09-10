@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdentityCredential class.
 /// [`IdentityCredential`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IdentityCredential {
 
 impl FromVal for IdentityCredential {
     fn from_val(v: &Any) -> Self {
-        IdentityCredential { inner: Credential::from_val(v) }
+        IdentityCredential {
+            inner: Credential::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IdentityCredential {
 
 impl AsMut<Any> for IdentityCredential {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdentityCredential> for Any {
@@ -64,12 +63,13 @@ impl From<&IdentityCredential> for Any {
 
 jsbind::utils::impl_dyn_cast!(IdentityCredential);
 
-
 impl IdentityCredential {
     /// The disconnect method.
     /// [`IdentityCredential.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/disconnect)
     pub fn disconnect(options: &IdentityCredentialDisconnectOptions) -> Promise<Undefined> {
-        Any::global("IdentityCredential").call("disconnect", &[options.into(), ]).as_::<Promise<Undefined>>()
+        Any::global("IdentityCredential")
+            .call("disconnect", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl IdentityCredential {
@@ -78,7 +78,6 @@ impl IdentityCredential {
     pub fn token(&self) -> JsString {
         self.inner.get("token").as_::<JsString>()
     }
-
 }
 impl IdentityCredential {
     /// Getter of the `isAutoSelected` attribute.
@@ -86,7 +85,6 @@ impl IdentityCredential {
     pub fn is_auto_selected(&self) -> bool {
         self.inner.get("isAutoSelected").as_::<bool>()
     }
-
 }
 impl IdentityCredential {
     /// Getter of the `configURL` attribute.
@@ -94,5 +92,4 @@ impl IdentityCredential {
     pub fn config_url(&self) -> JsString {
         self.inner.get("configURL").as_::<JsString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRViewport class.
 /// [`XRViewport`](https://developer.mozilla.org/en-US/docs/Web/API/XRViewport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRViewport {
 
 impl FromVal for XRViewport {
     fn from_val(v: &Any) -> Self {
-        XRViewport { inner: Any::from_val(v) }
+        XRViewport {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRViewport {
 
 impl AsMut<Any> for XRViewport {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRViewport> for Any {
@@ -64,14 +63,12 @@ impl From<&XRViewport> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRViewport);
 
-
 impl XRViewport {
     /// Getter of the `x` attribute.
     /// [`XRViewport.x`](https://developer.mozilla.org/en-US/docs/Web/API/XRViewport/x)
     pub fn x(&self) -> i32 {
         self.inner.get("x").as_::<i32>()
     }
-
 }
 impl XRViewport {
     /// Getter of the `y` attribute.
@@ -79,7 +76,6 @@ impl XRViewport {
     pub fn y(&self) -> i32 {
         self.inner.get("y").as_::<i32>()
     }
-
 }
 impl XRViewport {
     /// Getter of the `width` attribute.
@@ -87,7 +83,6 @@ impl XRViewport {
     pub fn width(&self) -> i32 {
         self.inner.get("width").as_::<i32>()
     }
-
 }
 impl XRViewport {
     /// Getter of the `height` attribute.
@@ -95,5 +90,4 @@ impl XRViewport {
     pub fn height(&self) -> i32 {
         self.inner.get("height").as_::<i32>()
     }
-
 }

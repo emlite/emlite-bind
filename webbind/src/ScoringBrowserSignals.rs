@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ScoringBrowserSignals dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ScoringBrowserSignals {
 
 impl AsMut<Any> for ScoringBrowserSignals {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ScoringBrowserSignals> for Any {
@@ -119,7 +116,9 @@ impl ScoringBrowserSignals {
 impl ScoringBrowserSignals {
     /// Getter of the `renderSize` attribute.
     pub fn render_size(&self) -> Record<JsString, JsString> {
-        self.inner.get("renderSize").as_::<Record<JsString, JsString>>()
+        self.inner
+            .get("renderSize")
+            .as_::<Record<JsString, JsString>>()
     }
 
     /// Setter of the `renderSize` attribute.
@@ -163,7 +162,9 @@ impl ScoringBrowserSignals {
 impl ScoringBrowserSignals {
     /// Getter of the `forDebuggingOnlyInCooldownOrLockout` attribute.
     pub fn for_debugging_only_in_cooldown_or_lockout(&self) -> bool {
-        self.inner.get("forDebuggingOnlyInCooldownOrLockout").as_::<bool>()
+        self.inner
+            .get("forDebuggingOnlyInCooldownOrLockout")
+            .as_::<bool>()
     }
 
     /// Setter of the `forDebuggingOnlyInCooldownOrLockout` attribute.
@@ -185,11 +186,14 @@ impl ScoringBrowserSignals {
 impl ScoringBrowserSignals {
     /// Getter of the `adComponentsCreativeScanningMetadata` attribute.
     pub fn ad_components_creative_scanning_metadata(&self) -> TypedArray<JsString> {
-        self.inner.get("adComponentsCreativeScanningMetadata").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("adComponentsCreativeScanningMetadata")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `adComponentsCreativeScanningMetadata` attribute.
     pub fn set_ad_components_creative_scanning_metadata(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("adComponentsCreativeScanningMetadata", value);
+        self.inner
+            .set("adComponentsCreativeScanningMetadata", value);
     }
 }

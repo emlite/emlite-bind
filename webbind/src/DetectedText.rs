@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DetectedText dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DetectedText {
 
 impl AsMut<Any> for DetectedText {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DetectedText> for Any {

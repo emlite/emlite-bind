@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Gamepad class.
 /// [`Gamepad`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Gamepad {
 
 impl FromVal for Gamepad {
     fn from_val(v: &Any) -> Self {
-        Gamepad { inner: Any::from_val(v) }
+        Gamepad {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Gamepad {
 
 impl AsMut<Any> for Gamepad {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Gamepad> for Any {
@@ -64,14 +63,12 @@ impl From<&Gamepad> for Any {
 
 jsbind::utils::impl_dyn_cast!(Gamepad);
 
-
 impl Gamepad {
     /// Getter of the `id` attribute.
     /// [`Gamepad.id`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/id)
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `index` attribute.
@@ -79,7 +76,6 @@ impl Gamepad {
     pub fn index(&self) -> i32 {
         self.inner.get("index").as_::<i32>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `connected` attribute.
@@ -87,7 +83,6 @@ impl Gamepad {
     pub fn connected(&self) -> bool {
         self.inner.get("connected").as_::<bool>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `timestamp` attribute.
@@ -95,7 +90,6 @@ impl Gamepad {
     pub fn timestamp(&self) -> Any {
         self.inner.get("timestamp").as_::<Any>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `mapping` attribute.
@@ -103,7 +97,6 @@ impl Gamepad {
     pub fn mapping(&self) -> GamepadMappingType {
         self.inner.get("mapping").as_::<GamepadMappingType>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `axes` attribute.
@@ -111,7 +104,6 @@ impl Gamepad {
     pub fn axes(&self) -> TypedArray<f64> {
         self.inner.get("axes").as_::<TypedArray<f64>>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `buttons` attribute.
@@ -119,7 +111,6 @@ impl Gamepad {
     pub fn buttons(&self) -> TypedArray<GamepadButton> {
         self.inner.get("buttons").as_::<TypedArray<GamepadButton>>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `touches` attribute.
@@ -127,15 +118,15 @@ impl Gamepad {
     pub fn touches(&self) -> TypedArray<GamepadTouch> {
         self.inner.get("touches").as_::<TypedArray<GamepadTouch>>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `vibrationActuator` attribute.
     /// [`Gamepad.vibrationActuator`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/vibrationActuator)
     pub fn vibration_actuator(&self) -> GamepadHapticActuator {
-        self.inner.get("vibrationActuator").as_::<GamepadHapticActuator>()
+        self.inner
+            .get("vibrationActuator")
+            .as_::<GamepadHapticActuator>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `hand` attribute.
@@ -143,15 +134,15 @@ impl Gamepad {
     pub fn hand(&self) -> GamepadHand {
         self.inner.get("hand").as_::<GamepadHand>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `hapticActuators` attribute.
     /// [`Gamepad.hapticActuators`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/hapticActuators)
     pub fn haptic_actuators(&self) -> TypedArray<GamepadHapticActuator> {
-        self.inner.get("hapticActuators").as_::<TypedArray<GamepadHapticActuator>>()
+        self.inner
+            .get("hapticActuators")
+            .as_::<TypedArray<GamepadHapticActuator>>()
     }
-
 }
 impl Gamepad {
     /// Getter of the `pose` attribute.
@@ -159,5 +150,4 @@ impl Gamepad {
     pub fn pose(&self) -> GamepadPose {
         self.inner.get("pose").as_::<GamepadPose>()
     }
-
 }

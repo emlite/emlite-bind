@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DynamicsCompressorNode class.
 /// [`DynamicsCompressorNode`](https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DynamicsCompressorNode {
 
 impl FromVal for DynamicsCompressorNode {
     fn from_val(v: &Any) -> Self {
-        DynamicsCompressorNode { inner: AudioNode::from_val(v) }
+        DynamicsCompressorNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DynamicsCompressorNode {
 
 impl AsMut<Any> for DynamicsCompressorNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DynamicsCompressorNode> for Any {
@@ -64,23 +63,27 @@ impl From<&DynamicsCompressorNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(DynamicsCompressorNode);
 
-
-
 impl DynamicsCompressorNode {
     /// The `new DynamicsCompressorNode(..)` constructor, creating a new DynamicsCompressorNode instance
     pub fn new0(context: &BaseAudioContext) -> DynamicsCompressorNode {
         Self {
-            inner: Any::global("DynamicsCompressorNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("DynamicsCompressorNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new DynamicsCompressorNode(..)` constructor, creating a new DynamicsCompressorNode instance
-    pub fn new1(context: &BaseAudioContext, options: &DynamicsCompressorOptions) -> DynamicsCompressorNode {
+    pub fn new1(
+        context: &BaseAudioContext,
+        options: &DynamicsCompressorOptions,
+    ) -> DynamicsCompressorNode {
         Self {
-            inner: Any::global("DynamicsCompressorNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("DynamicsCompressorNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl DynamicsCompressorNode {
     /// Getter of the `threshold` attribute.
@@ -88,7 +91,6 @@ impl DynamicsCompressorNode {
     pub fn threshold(&self) -> AudioParam {
         self.inner.get("threshold").as_::<AudioParam>()
     }
-
 }
 impl DynamicsCompressorNode {
     /// Getter of the `knee` attribute.
@@ -96,7 +98,6 @@ impl DynamicsCompressorNode {
     pub fn knee(&self) -> AudioParam {
         self.inner.get("knee").as_::<AudioParam>()
     }
-
 }
 impl DynamicsCompressorNode {
     /// Getter of the `ratio` attribute.
@@ -104,7 +105,6 @@ impl DynamicsCompressorNode {
     pub fn ratio(&self) -> AudioParam {
         self.inner.get("ratio").as_::<AudioParam>()
     }
-
 }
 impl DynamicsCompressorNode {
     /// Getter of the `reduction` attribute.
@@ -112,7 +112,6 @@ impl DynamicsCompressorNode {
     pub fn reduction(&self) -> f32 {
         self.inner.get("reduction").as_::<f32>()
     }
-
 }
 impl DynamicsCompressorNode {
     /// Getter of the `attack` attribute.
@@ -120,7 +119,6 @@ impl DynamicsCompressorNode {
     pub fn attack(&self) -> AudioParam {
         self.inner.get("attack").as_::<AudioParam>()
     }
-
 }
 impl DynamicsCompressorNode {
     /// Getter of the `release` attribute.
@@ -128,5 +126,4 @@ impl DynamicsCompressorNode {
     pub fn release(&self) -> AudioParam {
         self.inner.get("release").as_::<AudioParam>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGFEMergeNodeElement class.
 /// [`SVGFEMergeNodeElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMergeNodeElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGFEMergeNodeElement {
 
 impl FromVal for SVGFEMergeNodeElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEMergeNodeElement { inner: SVGElement::from_val(v) }
+        SVGFEMergeNodeElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGFEMergeNodeElement {
 
 impl AsMut<Any> for SVGFEMergeNodeElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGFEMergeNodeElement> for Any {
@@ -64,12 +63,10 @@ impl From<&SVGFEMergeNodeElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEMergeNodeElement);
 
-
 impl SVGFEMergeNodeElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEMergeNodeElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMergeNodeElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
-
 }

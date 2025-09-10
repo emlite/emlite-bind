@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportConnectionStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WebTransportConnectionStats {
 
 impl AsMut<Any> for WebTransportConnectionStats {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportConnectionStats> for Any {
@@ -163,7 +160,9 @@ impl WebTransportConnectionStats {
 impl WebTransportConnectionStats {
     /// Getter of the `datagrams` attribute.
     pub fn datagrams(&self) -> WebTransportDatagramStats {
-        self.inner.get("datagrams").as_::<WebTransportDatagramStats>()
+        self.inner
+            .get("datagrams")
+            .as_::<WebTransportDatagramStats>()
     }
 
     /// Setter of the `datagrams` attribute.

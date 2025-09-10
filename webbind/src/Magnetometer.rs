@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Magnetometer class.
 /// [`Magnetometer`](https://developer.mozilla.org/en-US/docs/Web/API/Magnetometer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Magnetometer {
 
 impl FromVal for Magnetometer {
     fn from_val(v: &Any) -> Self {
-        Magnetometer { inner: Sensor::from_val(v) }
+        Magnetometer {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Magnetometer {
 
 impl AsMut<Any> for Magnetometer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Magnetometer> for Any {
@@ -64,8 +63,6 @@ impl From<&Magnetometer> for Any {
 
 jsbind::utils::impl_dyn_cast!(Magnetometer);
 
-
-
 impl Magnetometer {
     /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
     pub fn new0() -> Magnetometer {
@@ -77,10 +74,11 @@ impl Magnetometer {
     /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
     pub fn new1(sensor_options: &MagnetometerSensorOptions) -> Magnetometer {
         Self {
-            inner: Any::global("Magnetometer").new(&[sensor_options.into()]).as_::<Sensor>(),
+            inner: Any::global("Magnetometer")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
         }
     }
-
 }
 impl Magnetometer {
     /// Getter of the `x` attribute.
@@ -88,7 +86,6 @@ impl Magnetometer {
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
-
 }
 impl Magnetometer {
     /// Getter of the `y` attribute.
@@ -96,7 +93,6 @@ impl Magnetometer {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
-
 }
 impl Magnetometer {
     /// Getter of the `z` attribute.
@@ -104,5 +100,4 @@ impl Magnetometer {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
-
 }

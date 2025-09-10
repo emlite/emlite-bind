@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Subscriber class.
 /// [`Subscriber`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Subscriber {
 
 impl FromVal for Subscriber {
     fn from_val(v: &Any) -> Self {
-        Subscriber { inner: Any::from_val(v) }
+        Subscriber {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Subscriber {
 
 impl AsMut<Any> for Subscriber {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Subscriber> for Any {
@@ -64,25 +63,24 @@ impl From<&Subscriber> for Any {
 
 jsbind::utils::impl_dyn_cast!(Subscriber);
 
-
 impl Subscriber {
     /// The next method.
     /// [`Subscriber.next`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/next)
     pub fn next(&self, value: &Any) -> Undefined {
-        self.inner.call("next", &[value.into(), ]).as_::<Undefined>()
+        self.inner.call("next", &[value.into()]).as_::<Undefined>()
     }
 }
 impl Subscriber {
     /// The error method.
     /// [`Subscriber.error`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/error)
     pub fn error(&self, error: &Any) -> Undefined {
-        self.inner.call("error", &[error.into(), ]).as_::<Undefined>()
+        self.inner.call("error", &[error.into()]).as_::<Undefined>()
     }
 }
 impl Subscriber {
     /// The complete method.
     /// [`Subscriber.complete`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/complete)
-    pub fn complete(&self, ) -> Undefined {
+    pub fn complete(&self) -> Undefined {
         self.inner.call("complete", &[]).as_::<Undefined>()
     }
 }
@@ -90,7 +88,9 @@ impl Subscriber {
     /// The addTeardown method.
     /// [`Subscriber.addTeardown`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/addTeardown)
     pub fn add_teardown(&self, teardown: &Function) -> Undefined {
-        self.inner.call("addTeardown", &[teardown.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("addTeardown", &[teardown.into()])
+            .as_::<Undefined>()
     }
 }
 impl Subscriber {
@@ -99,7 +99,6 @@ impl Subscriber {
     pub fn active(&self) -> bool {
         self.inner.get("active").as_::<bool>()
     }
-
 }
 impl Subscriber {
     /// Getter of the `signal` attribute.
@@ -107,5 +106,4 @@ impl Subscriber {
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
-
 }

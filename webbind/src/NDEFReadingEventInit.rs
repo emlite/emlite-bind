@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NDEFReadingEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for NDEFReadingEventInit {
 
 impl AsMut<Any> for NDEFReadingEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NDEFReadingEventInit> for Any {

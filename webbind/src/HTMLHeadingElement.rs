@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLHeadingElement class.
 /// [`HTMLHeadingElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLHeadingElement {
 
 impl FromVal for HTMLHeadingElement {
     fn from_val(v: &Any) -> Self {
-        HTMLHeadingElement { inner: HTMLElement::from_val(v) }
+        HTMLHeadingElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLHeadingElement {
 
 impl AsMut<Any> for HTMLHeadingElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLHeadingElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLHeadingElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLHeadingElement);
 
-
-
 impl HTMLHeadingElement {
     /// The `new HTMLHeadingElement(..)` constructor, creating a new HTMLHeadingElement instance
     pub fn new() -> HTMLHeadingElement {
         Self {
-            inner: Any::global("HTMLHeadingElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLHeadingElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLHeadingElement {
     /// Getter of the `align` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RewriterCreateOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RewriterCreateOptions {
 
 impl AsMut<Any> for RewriterCreateOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RewriterCreateOptions> for Any {

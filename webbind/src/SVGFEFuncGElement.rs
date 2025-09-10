@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGFEFuncGElement class.
 /// [`SVGFEFuncGElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEFuncGElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGFEFuncGElement {
 
 impl FromVal for SVGFEFuncGElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEFuncGElement { inner: SVGComponentTransferFunctionElement::from_val(v) }
+        SVGFEFuncGElement {
+            inner: SVGComponentTransferFunctionElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGFEFuncGElement {
 
 impl AsMut<Any> for SVGFEFuncGElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGFEFuncGElement> for Any {
@@ -63,5 +62,3 @@ impl From<&SVGFEFuncGElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGFEFuncGElement);
-
-

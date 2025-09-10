@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMathSum class.
 /// [`CSSMathSum`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathSum)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSMathSum {
 
 impl FromVal for CSSMathSum {
     fn from_val(v: &Any) -> Self {
-        CSSMathSum { inner: CSSMathValue::from_val(v) }
+        CSSMathSum {
+            inner: CSSMathValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSMathSum {
 
 impl AsMut<Any> for CSSMathSum {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMathSum> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSMathSum> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathSum);
 
-
-
 impl CSSMathSum {
     /// The `new CSSMathSum(..)` constructor, creating a new CSSMathSum instance
     pub fn new(args: &Any) -> CSSMathSum {
         Self {
-            inner: Any::global("CSSMathSum").new(&[args.into()]).as_::<CSSMathValue>(),
+            inner: Any::global("CSSMathSum")
+                .new(&[args.into()])
+                .as_::<CSSMathValue>(),
         }
     }
-
 }
 impl CSSMathSum {
     /// Getter of the `values` attribute.
@@ -81,5 +79,4 @@ impl CSSMathSum {
     pub fn values(&self) -> CSSNumericArray {
         self.inner.get("values").as_::<CSSNumericArray>()
     }
-
 }

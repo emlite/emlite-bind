@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLFencedFrameElement class.
 /// [`HTMLFencedFrameElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLFencedFrameElement {
 
 impl FromVal for HTMLFencedFrameElement {
     fn from_val(v: &Any) -> Self {
-        HTMLFencedFrameElement { inner: HTMLElement::from_val(v) }
+        HTMLFencedFrameElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLFencedFrameElement {
 
 impl AsMut<Any> for HTMLFencedFrameElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLFencedFrameElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLFencedFrameElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLFencedFrameElement);
 
-
-
 impl HTMLFencedFrameElement {
     /// The `new HTMLFencedFrameElement(..)` constructor, creating a new HTMLFencedFrameElement instance
     pub fn new() -> HTMLFencedFrameElement {
         Self {
-            inner: Any::global("HTMLFencedFrameElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLFencedFrameElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLFencedFrameElement {
     /// Getter of the `config` attribute.
@@ -120,7 +118,6 @@ impl HTMLFencedFrameElement {
     pub fn sandbox(&self) -> DOMTokenList {
         self.inner.get("sandbox").as_::<DOMTokenList>()
     }
-
 }
 impl HTMLFencedFrameElement {
     /// Getter of the `allow` attribute.

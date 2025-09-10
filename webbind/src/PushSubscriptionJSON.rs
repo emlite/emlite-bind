@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PushSubscriptionJSON dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PushSubscriptionJSON {
 
 impl AsMut<Any> for PushSubscriptionJSON {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PushSubscriptionJSON> for Any {

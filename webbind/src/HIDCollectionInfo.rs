@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HIDCollectionInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HIDCollectionInfo {
 
 impl AsMut<Any> for HIDCollectionInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HIDCollectionInfo> for Any {
@@ -97,7 +94,9 @@ impl HIDCollectionInfo {
 impl HIDCollectionInfo {
     /// Getter of the `children` attribute.
     pub fn children(&self) -> TypedArray<HIDCollectionInfo> {
-        self.inner.get("children").as_::<TypedArray<HIDCollectionInfo>>()
+        self.inner
+            .get("children")
+            .as_::<TypedArray<HIDCollectionInfo>>()
     }
 
     /// Setter of the `children` attribute.
@@ -108,7 +107,9 @@ impl HIDCollectionInfo {
 impl HIDCollectionInfo {
     /// Getter of the `inputReports` attribute.
     pub fn input_reports(&self) -> TypedArray<HIDReportInfo> {
-        self.inner.get("inputReports").as_::<TypedArray<HIDReportInfo>>()
+        self.inner
+            .get("inputReports")
+            .as_::<TypedArray<HIDReportInfo>>()
     }
 
     /// Setter of the `inputReports` attribute.
@@ -119,7 +120,9 @@ impl HIDCollectionInfo {
 impl HIDCollectionInfo {
     /// Getter of the `outputReports` attribute.
     pub fn output_reports(&self) -> TypedArray<HIDReportInfo> {
-        self.inner.get("outputReports").as_::<TypedArray<HIDReportInfo>>()
+        self.inner
+            .get("outputReports")
+            .as_::<TypedArray<HIDReportInfo>>()
     }
 
     /// Setter of the `outputReports` attribute.
@@ -130,7 +133,9 @@ impl HIDCollectionInfo {
 impl HIDCollectionInfo {
     /// Getter of the `featureReports` attribute.
     pub fn feature_reports(&self) -> TypedArray<HIDReportInfo> {
-        self.inner.get("featureReports").as_::<TypedArray<HIDReportInfo>>()
+        self.inner
+            .get("featureReports")
+            .as_::<TypedArray<HIDReportInfo>>()
     }
 
     /// Setter of the `featureReports` attribute.

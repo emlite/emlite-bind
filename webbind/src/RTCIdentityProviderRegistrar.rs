@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCIdentityProviderRegistrar class.
 /// [`RTCIdentityProviderRegistrar`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderRegistrar)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCIdentityProviderRegistrar {
 
 impl FromVal for RTCIdentityProviderRegistrar {
     fn from_val(v: &Any) -> Self {
-        RTCIdentityProviderRegistrar { inner: Any::from_val(v) }
+        RTCIdentityProviderRegistrar {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCIdentityProviderRegistrar {
 
 impl AsMut<Any> for RTCIdentityProviderRegistrar {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCIdentityProviderRegistrar> for Any {
@@ -64,11 +63,12 @@ impl From<&RTCIdentityProviderRegistrar> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderRegistrar);
 
-
 impl RTCIdentityProviderRegistrar {
     /// The register method.
     /// [`RTCIdentityProviderRegistrar.register`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderRegistrar/register)
     pub fn register(&self, idp: &RTCIdentityProvider) -> Undefined {
-        self.inner.call("register", &[idp.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("register", &[idp.into()])
+            .as_::<Undefined>()
     }
 }

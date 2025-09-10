@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRInputSourcesChangeEvent class.
 /// [`XRInputSourcesChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourcesChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRInputSourcesChangeEvent {
 
 impl FromVal for XRInputSourcesChangeEvent {
     fn from_val(v: &Any) -> Self {
-        XRInputSourcesChangeEvent { inner: Event::from_val(v) }
+        XRInputSourcesChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRInputSourcesChangeEvent {
 
 impl AsMut<Any> for XRInputSourcesChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRInputSourcesChangeEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&XRInputSourcesChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRInputSourcesChangeEvent);
 
-
-
 impl XRInputSourcesChangeEvent {
     /// The `new XRInputSourcesChangeEvent(..)` constructor, creating a new XRInputSourcesChangeEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &XRInputSourcesChangeEventInit) -> XRInputSourcesChangeEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &XRInputSourcesChangeEventInit,
+    ) -> XRInputSourcesChangeEvent {
         Self {
-            inner: Any::global("XRInputSourcesChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("XRInputSourcesChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl XRInputSourcesChangeEvent {
     /// Getter of the `session` attribute.
@@ -81,7 +82,6 @@ impl XRInputSourcesChangeEvent {
     pub fn session(&self) -> XRSession {
         self.inner.get("session").as_::<XRSession>()
     }
-
 }
 impl XRInputSourcesChangeEvent {
     /// Getter of the `added` attribute.
@@ -89,7 +89,6 @@ impl XRInputSourcesChangeEvent {
     pub fn added(&self) -> TypedArray<XRInputSource> {
         self.inner.get("added").as_::<TypedArray<XRInputSource>>()
     }
-
 }
 impl XRInputSourcesChangeEvent {
     /// Getter of the `removed` attribute.
@@ -97,5 +96,4 @@ impl XRInputSourcesChangeEvent {
     pub fn removed(&self) -> TypedArray<XRInputSource> {
         self.inner.get("removed").as_::<TypedArray<XRInputSource>>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUCanvasContext class.
 /// [`GPUCanvasContext`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCanvasContext)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUCanvasContext {
 
 impl FromVal for GPUCanvasContext {
     fn from_val(v: &Any) -> Self {
-        GPUCanvasContext { inner: Any::from_val(v) }
+        GPUCanvasContext {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUCanvasContext {
 
 impl AsMut<Any> for GPUCanvasContext {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUCanvasContext> for Any {
@@ -64,40 +63,44 @@ impl From<&GPUCanvasContext> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUCanvasContext);
 
-
 impl GPUCanvasContext {
     /// Getter of the `canvas` attribute.
     /// [`GPUCanvasContext.canvas`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCanvasContext/canvas)
     pub fn canvas(&self) -> Any {
         self.inner.get("canvas").as_::<Any>()
     }
-
 }
 impl GPUCanvasContext {
     /// The configure method.
     /// [`GPUCanvasContext.configure`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCanvasContext/configure)
     pub fn configure(&self, configuration: &GPUCanvasConfiguration) -> Undefined {
-        self.inner.call("configure", &[configuration.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("configure", &[configuration.into()])
+            .as_::<Undefined>()
     }
 }
 impl GPUCanvasContext {
     /// The unconfigure method.
     /// [`GPUCanvasContext.unconfigure`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCanvasContext/unconfigure)
-    pub fn unconfigure(&self, ) -> Undefined {
+    pub fn unconfigure(&self) -> Undefined {
         self.inner.call("unconfigure", &[]).as_::<Undefined>()
     }
 }
 impl GPUCanvasContext {
     /// The getConfiguration method.
     /// [`GPUCanvasContext.getConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCanvasContext/getConfiguration)
-    pub fn get_configuration(&self, ) -> GPUCanvasConfiguration {
-        self.inner.call("getConfiguration", &[]).as_::<GPUCanvasConfiguration>()
+    pub fn get_configuration(&self) -> GPUCanvasConfiguration {
+        self.inner
+            .call("getConfiguration", &[])
+            .as_::<GPUCanvasConfiguration>()
     }
 }
 impl GPUCanvasContext {
     /// The getCurrentTexture method.
     /// [`GPUCanvasContext.getCurrentTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCanvasContext/getCurrentTexture)
-    pub fn get_current_texture(&self, ) -> GPUTexture {
-        self.inner.call("getCurrentTexture", &[]).as_::<GPUTexture>()
+    pub fn get_current_texture(&self) -> GPUTexture {
+        self.inner
+            .call("getCurrentTexture", &[])
+            .as_::<GPUTexture>()
     }
 }

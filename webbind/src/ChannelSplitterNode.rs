@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ChannelSplitterNode class.
 /// [`ChannelSplitterNode`](https://developer.mozilla.org/en-US/docs/Web/API/ChannelSplitterNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ChannelSplitterNode {
 
 impl FromVal for ChannelSplitterNode {
     fn from_val(v: &Any) -> Self {
-        ChannelSplitterNode { inner: AudioNode::from_val(v) }
+        ChannelSplitterNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ChannelSplitterNode {
 
 impl AsMut<Any> for ChannelSplitterNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ChannelSplitterNode> for Any {
@@ -64,21 +63,25 @@ impl From<&ChannelSplitterNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(ChannelSplitterNode);
 
-
-
 impl ChannelSplitterNode {
     /// The `new ChannelSplitterNode(..)` constructor, creating a new ChannelSplitterNode instance
     pub fn new0(context: &BaseAudioContext) -> ChannelSplitterNode {
         Self {
-            inner: Any::global("ChannelSplitterNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: Any::global("ChannelSplitterNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     /// The `new ChannelSplitterNode(..)` constructor, creating a new ChannelSplitterNode instance
-    pub fn new1(context: &BaseAudioContext, options: &ChannelSplitterOptions) -> ChannelSplitterNode {
+    pub fn new1(
+        context: &BaseAudioContext,
+        options: &ChannelSplitterOptions,
+    ) -> ChannelSplitterNode {
         Self {
-            inner: Any::global("ChannelSplitterNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: Any::global("ChannelSplitterNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }

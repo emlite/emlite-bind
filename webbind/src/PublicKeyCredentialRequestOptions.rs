@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PublicKeyCredentialRequestOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PublicKeyCredentialRequestOptions {
 
 impl AsMut<Any> for PublicKeyCredentialRequestOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PublicKeyCredentialRequestOptions> for Any {
@@ -97,7 +94,9 @@ impl PublicKeyCredentialRequestOptions {
 impl PublicKeyCredentialRequestOptions {
     /// Getter of the `allowCredentials` attribute.
     pub fn allow_credentials(&self) -> TypedArray<PublicKeyCredentialDescriptor> {
-        self.inner.get("allowCredentials").as_::<TypedArray<PublicKeyCredentialDescriptor>>()
+        self.inner
+            .get("allowCredentials")
+            .as_::<TypedArray<PublicKeyCredentialDescriptor>>()
     }
 
     /// Setter of the `allowCredentials` attribute.
@@ -130,7 +129,9 @@ impl PublicKeyCredentialRequestOptions {
 impl PublicKeyCredentialRequestOptions {
     /// Getter of the `extensions` attribute.
     pub fn extensions(&self) -> AuthenticationExtensionsClientInputs {
-        self.inner.get("extensions").as_::<AuthenticationExtensionsClientInputs>()
+        self.inner
+            .get("extensions")
+            .as_::<AuthenticationExtensionsClientInputs>()
     }
 
     /// Setter of the `extensions` attribute.

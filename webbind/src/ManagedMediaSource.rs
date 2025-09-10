@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ManagedMediaSource class.
 /// [`ManagedMediaSource`](https://developer.mozilla.org/en-US/docs/Web/API/ManagedMediaSource)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ManagedMediaSource {
 
 impl FromVal for ManagedMediaSource {
     fn from_val(v: &Any) -> Self {
-        ManagedMediaSource { inner: MediaSource::from_val(v) }
+        ManagedMediaSource {
+            inner: MediaSource::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ManagedMediaSource {
 
 impl AsMut<Any> for ManagedMediaSource {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ManagedMediaSource> for Any {
@@ -64,16 +63,15 @@ impl From<&ManagedMediaSource> for Any {
 
 jsbind::utils::impl_dyn_cast!(ManagedMediaSource);
 
-
-
 impl ManagedMediaSource {
     /// The `new ManagedMediaSource(..)` constructor, creating a new ManagedMediaSource instance
     pub fn new() -> ManagedMediaSource {
         Self {
-            inner: Any::global("ManagedMediaSource").new(&[]).as_::<MediaSource>(),
+            inner: Any::global("ManagedMediaSource")
+                .new(&[])
+                .as_::<MediaSource>(),
         }
     }
-
 }
 impl ManagedMediaSource {
     /// Getter of the `streaming` attribute.
@@ -81,7 +79,6 @@ impl ManagedMediaSource {
     pub fn streaming(&self) -> bool {
         self.inner.get("streaming").as_::<bool>()
     }
-
 }
 impl ManagedMediaSource {
     /// Getter of the `onstartstreaming` attribute.

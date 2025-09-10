@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ForDebuggingOnly class.
 /// [`ForDebuggingOnly`](https://developer.mozilla.org/en-US/docs/Web/API/ForDebuggingOnly)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ForDebuggingOnly {
 
 impl FromVal for ForDebuggingOnly {
     fn from_val(v: &Any) -> Self {
-        ForDebuggingOnly { inner: Any::from_val(v) }
+        ForDebuggingOnly {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ForDebuggingOnly {
 
 impl AsMut<Any> for ForDebuggingOnly {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ForDebuggingOnly> for Any {
@@ -64,18 +63,21 @@ impl From<&ForDebuggingOnly> for Any {
 
 jsbind::utils::impl_dyn_cast!(ForDebuggingOnly);
 
-
 impl ForDebuggingOnly {
     /// The reportAdAuctionWin method.
     /// [`ForDebuggingOnly.reportAdAuctionWin`](https://developer.mozilla.org/en-US/docs/Web/API/ForDebuggingOnly/reportAdAuctionWin)
     pub fn report_ad_auction_win(&self, url: &JsString) -> Undefined {
-        self.inner.call("reportAdAuctionWin", &[url.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("reportAdAuctionWin", &[url.into()])
+            .as_::<Undefined>()
     }
 }
 impl ForDebuggingOnly {
     /// The reportAdAuctionLoss method.
     /// [`ForDebuggingOnly.reportAdAuctionLoss`](https://developer.mozilla.org/en-US/docs/Web/API/ForDebuggingOnly/reportAdAuctionLoss)
     pub fn report_ad_auction_loss(&self, url: &JsString) -> Undefined {
-        self.inner.call("reportAdAuctionLoss", &[url.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("reportAdAuctionLoss", &[url.into()])
+            .as_::<Undefined>()
     }
 }

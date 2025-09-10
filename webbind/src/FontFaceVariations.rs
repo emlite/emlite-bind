@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FontFaceVariations class.
 /// [`FontFaceVariations`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceVariations)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FontFaceVariations {
 
 impl FromVal for FontFaceVariations {
     fn from_val(v: &Any) -> Self {
-        FontFaceVariations { inner: Any::from_val(v) }
+        FontFaceVariations {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FontFaceVariations {
 
 impl AsMut<Any> for FontFaceVariations {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FontFaceVariations> for Any {
@@ -63,5 +62,3 @@ impl From<&FontFaceVariations> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(FontFaceVariations);
-
-

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FocusEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for FocusEventInit {
 
 impl AsMut<Any> for FocusEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FocusEventInit> for Any {

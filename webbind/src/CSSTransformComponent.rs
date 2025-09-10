@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSTransformComponent class.
 /// [`CSSTransformComponent`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformComponent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSTransformComponent {
 
 impl FromVal for CSSTransformComponent {
     fn from_val(v: &Any) -> Self {
-        CSSTransformComponent { inner: Any::from_val(v) }
+        CSSTransformComponent {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSTransformComponent {
 
 impl AsMut<Any> for CSSTransformComponent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSTransformComponent> for Any {
@@ -64,7 +63,6 @@ impl From<&CSSTransformComponent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSTransformComponent);
 
-
 impl CSSTransformComponent {
     /// Getter of the `is2D` attribute.
     /// [`CSSTransformComponent.is2D`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformComponent/is2D)
@@ -81,7 +79,7 @@ impl CSSTransformComponent {
 impl CSSTransformComponent {
     /// The toMatrix method.
     /// [`CSSTransformComponent.toMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformComponent/toMatrix)
-    pub fn to_matrix(&self, ) -> DOMMatrix {
+    pub fn to_matrix(&self) -> DOMMatrix {
         self.inner.call("toMatrix", &[]).as_::<DOMMatrix>()
     }
 }

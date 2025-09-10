@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPURenderPassColorAttachment dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPURenderPassColorAttachment {
 
 impl AsMut<Any> for GPURenderPassColorAttachment {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPURenderPassColorAttachment> for Any {

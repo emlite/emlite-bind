@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SpeechSynthesisVoice class.
 /// [`SpeechSynthesisVoice`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SpeechSynthesisVoice {
 
 impl FromVal for SpeechSynthesisVoice {
     fn from_val(v: &Any) -> Self {
-        SpeechSynthesisVoice { inner: Any::from_val(v) }
+        SpeechSynthesisVoice {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SpeechSynthesisVoice {
 
 impl AsMut<Any> for SpeechSynthesisVoice {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SpeechSynthesisVoice> for Any {
@@ -64,14 +63,12 @@ impl From<&SpeechSynthesisVoice> for Any {
 
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisVoice);
 
-
 impl SpeechSynthesisVoice {
     /// Getter of the `voiceURI` attribute.
     /// [`SpeechSynthesisVoice.voiceURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/voiceURI)
     pub fn voice_uri(&self) -> JsString {
         self.inner.get("voiceURI").as_::<JsString>()
     }
-
 }
 impl SpeechSynthesisVoice {
     /// Getter of the `name` attribute.
@@ -79,7 +76,6 @@ impl SpeechSynthesisVoice {
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl SpeechSynthesisVoice {
     /// Getter of the `lang` attribute.
@@ -87,7 +83,6 @@ impl SpeechSynthesisVoice {
     pub fn lang(&self) -> JsString {
         self.inner.get("lang").as_::<JsString>()
     }
-
 }
 impl SpeechSynthesisVoice {
     /// Getter of the `localService` attribute.
@@ -95,7 +90,6 @@ impl SpeechSynthesisVoice {
     pub fn local_service(&self) -> bool {
         self.inner.get("localService").as_::<bool>()
     }
-
 }
 impl SpeechSynthesisVoice {
     /// Getter of the `default` attribute.
@@ -103,5 +97,4 @@ impl SpeechSynthesisVoice {
     pub fn default(&self) -> bool {
         self.inner.get("default").as_::<bool>()
     }
-
 }

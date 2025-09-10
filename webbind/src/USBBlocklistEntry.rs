@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The USBBlocklistEntry dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for USBBlocklistEntry {
 
 impl AsMut<Any> for USBBlocklistEntry {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<USBBlocklistEntry> for Any {

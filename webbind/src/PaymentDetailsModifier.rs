@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PaymentDetailsModifier dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PaymentDetailsModifier {
 
 impl AsMut<Any> for PaymentDetailsModifier {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PaymentDetailsModifier> for Any {
@@ -86,7 +83,9 @@ impl PaymentDetailsModifier {
 impl PaymentDetailsModifier {
     /// Getter of the `additionalDisplayItems` attribute.
     pub fn additional_display_items(&self) -> TypedArray<PaymentItem> {
-        self.inner.get("additionalDisplayItems").as_::<TypedArray<PaymentItem>>()
+        self.inner
+            .get("additionalDisplayItems")
+            .as_::<TypedArray<PaymentItem>>()
     }
 
     /// Setter of the `additionalDisplayItems` attribute.

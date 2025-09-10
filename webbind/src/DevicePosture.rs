@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DevicePosture class.
 /// [`DevicePosture`](https://developer.mozilla.org/en-US/docs/Web/API/DevicePosture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DevicePosture {
 
 impl FromVal for DevicePosture {
     fn from_val(v: &Any) -> Self {
-        DevicePosture { inner: EventTarget::from_val(v) }
+        DevicePosture {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DevicePosture {
 
 impl AsMut<Any> for DevicePosture {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DevicePosture> for Any {
@@ -64,14 +63,12 @@ impl From<&DevicePosture> for Any {
 
 jsbind::utils::impl_dyn_cast!(DevicePosture);
 
-
 impl DevicePosture {
     /// Getter of the `type` attribute.
     /// [`DevicePosture.type`](https://developer.mozilla.org/en-US/docs/Web/API/DevicePosture/type)
     pub fn type_(&self) -> DevicePostureType {
         self.inner.get("type").as_::<DevicePostureType>()
     }
-
 }
 impl DevicePosture {
     /// Getter of the `onchange` attribute.

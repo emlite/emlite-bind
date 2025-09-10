@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCIceCandidatePair class.
 /// [`RTCIceCandidatePair`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidatePair)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCIceCandidatePair {
 
 impl FromVal for RTCIceCandidatePair {
     fn from_val(v: &Any) -> Self {
-        RTCIceCandidatePair { inner: Any::from_val(v) }
+        RTCIceCandidatePair {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCIceCandidatePair {
 
 impl AsMut<Any> for RTCIceCandidatePair {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCIceCandidatePair> for Any {
@@ -64,14 +63,12 @@ impl From<&RTCIceCandidatePair> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCIceCandidatePair);
 
-
 impl RTCIceCandidatePair {
     /// Getter of the `local` attribute.
     /// [`RTCIceCandidatePair.local`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidatePair/local)
     pub fn local(&self) -> RTCIceCandidate {
         self.inner.get("local").as_::<RTCIceCandidate>()
     }
-
 }
 impl RTCIceCandidatePair {
     /// Getter of the `remote` attribute.
@@ -79,5 +76,4 @@ impl RTCIceCandidatePair {
     pub fn remote(&self) -> RTCIceCandidate {
         self.inner.get("remote").as_::<RTCIceCandidate>()
     }
-
 }

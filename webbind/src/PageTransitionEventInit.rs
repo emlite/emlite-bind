@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PageTransitionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PageTransitionEventInit {
 
 impl AsMut<Any> for PageTransitionEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PageTransitionEventInit> for Any {

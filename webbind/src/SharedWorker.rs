@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SharedWorker class.
 /// [`SharedWorker`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SharedWorker {
 
 impl FromVal for SharedWorker {
     fn from_val(v: &Any) -> Self {
-        SharedWorker { inner: EventTarget::from_val(v) }
+        SharedWorker {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SharedWorker {
 
 impl AsMut<Any> for SharedWorker {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SharedWorker> for Any {
@@ -64,23 +63,24 @@ impl From<&SharedWorker> for Any {
 
 jsbind::utils::impl_dyn_cast!(SharedWorker);
 
-
-
 impl SharedWorker {
     /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
     pub fn new0(script_url: &Any) -> SharedWorker {
         Self {
-            inner: Any::global("SharedWorker").new(&[script_url.into()]).as_::<EventTarget>(),
+            inner: Any::global("SharedWorker")
+                .new(&[script_url.into()])
+                .as_::<EventTarget>(),
         }
     }
 
     /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
     pub fn new1(script_url: &Any, options: &Any) -> SharedWorker {
         Self {
-            inner: Any::global("SharedWorker").new(&[script_url.into(), options.into()]).as_::<EventTarget>(),
+            inner: Any::global("SharedWorker")
+                .new(&[script_url.into(), options.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl SharedWorker {
     /// Getter of the `port` attribute.
@@ -88,7 +88,6 @@ impl SharedWorker {
     pub fn port(&self) -> MessagePort {
         self.inner.get("port").as_::<MessagePort>()
     }
-
 }
 impl SharedWorker {
     /// Getter of the `onerror` attribute.

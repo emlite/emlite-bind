@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioProcessingEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AudioProcessingEventInit {
 
 impl AsMut<Any> for AudioProcessingEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioProcessingEventInit> for Any {

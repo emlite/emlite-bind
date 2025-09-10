@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AccelerometerSensorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AccelerometerSensorOptions {
 
 impl AsMut<Any> for AccelerometerSensorOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AccelerometerSensorOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&AccelerometerSensorOptions> for Any {
 impl AccelerometerSensorOptions {
     /// Getter of the `referenceFrame` attribute.
     pub fn reference_frame(&self) -> AccelerometerLocalCoordinateSystem {
-        self.inner.get("referenceFrame").as_::<AccelerometerLocalCoordinateSystem>()
+        self.inner
+            .get("referenceFrame")
+            .as_::<AccelerometerLocalCoordinateSystem>()
     }
 
     /// Setter of the `referenceFrame` attribute.

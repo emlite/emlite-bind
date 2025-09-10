@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DataCue class.
 /// [`DataCue`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DataCue {
 
 impl FromVal for DataCue {
     fn from_val(v: &Any) -> Self {
-        DataCue { inner: TextTrackCue::from_val(v) }
+        DataCue {
+            inner: TextTrackCue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DataCue {
 
 impl AsMut<Any> for DataCue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DataCue> for Any {
@@ -64,23 +63,29 @@ impl From<&DataCue> for Any {
 
 jsbind::utils::impl_dyn_cast!(DataCue);
 
-
-
 impl DataCue {
     /// The `new DataCue(..)` constructor, creating a new DataCue instance
     pub fn new0(start_time: f64, end_time: f64, value: &Any) -> DataCue {
         Self {
-            inner: Any::global("DataCue").new(&[start_time.into(), end_time.into(), value.into()]).as_::<TextTrackCue>(),
+            inner: Any::global("DataCue")
+                .new(&[start_time.into(), end_time.into(), value.into()])
+                .as_::<TextTrackCue>(),
         }
     }
 
     /// The `new DataCue(..)` constructor, creating a new DataCue instance
     pub fn new1(start_time: f64, end_time: f64, value: &Any, type_: &JsString) -> DataCue {
         Self {
-            inner: Any::global("DataCue").new(&[start_time.into(), end_time.into(), value.into(), type_.into()]).as_::<TextTrackCue>(),
+            inner: Any::global("DataCue")
+                .new(&[
+                    start_time.into(),
+                    end_time.into(),
+                    value.into(),
+                    type_.into(),
+                ])
+                .as_::<TextTrackCue>(),
         }
     }
-
 }
 impl DataCue {
     /// Getter of the `value` attribute.
@@ -101,5 +106,4 @@ impl DataCue {
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
-
 }

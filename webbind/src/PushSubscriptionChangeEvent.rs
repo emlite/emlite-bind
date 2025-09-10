@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PushSubscriptionChangeEvent class.
 /// [`PushSubscriptionChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PushSubscriptionChangeEvent {
 
 impl FromVal for PushSubscriptionChangeEvent {
     fn from_val(v: &Any) -> Self {
-        PushSubscriptionChangeEvent { inner: ExtendableEvent::from_val(v) }
+        PushSubscriptionChangeEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PushSubscriptionChangeEvent {
 
 impl AsMut<Any> for PushSubscriptionChangeEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PushSubscriptionChangeEvent> for Any {
@@ -64,23 +63,27 @@ impl From<&PushSubscriptionChangeEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PushSubscriptionChangeEvent);
 
-
-
 impl PushSubscriptionChangeEvent {
     /// The `new PushSubscriptionChangeEvent(..)` constructor, creating a new PushSubscriptionChangeEvent instance
     pub fn new0(type_: &JsString) -> PushSubscriptionChangeEvent {
         Self {
-            inner: Any::global("PushSubscriptionChangeEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("PushSubscriptionChangeEvent")
+                .new(&[type_.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
 
     /// The `new PushSubscriptionChangeEvent(..)` constructor, creating a new PushSubscriptionChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &PushSubscriptionChangeEventInit) -> PushSubscriptionChangeEvent {
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &PushSubscriptionChangeEventInit,
+    ) -> PushSubscriptionChangeEvent {
         Self {
-            inner: Any::global("PushSubscriptionChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("PushSubscriptionChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl PushSubscriptionChangeEvent {
     /// Getter of the `newSubscription` attribute.
@@ -88,7 +91,6 @@ impl PushSubscriptionChangeEvent {
     pub fn new_subscription(&self) -> PushSubscription {
         self.inner.get("newSubscription").as_::<PushSubscription>()
     }
-
 }
 impl PushSubscriptionChangeEvent {
     /// Getter of the `oldSubscription` attribute.
@@ -96,5 +98,4 @@ impl PushSubscriptionChangeEvent {
     pub fn old_subscription(&self) -> PushSubscription {
         self.inner.get("oldSubscription").as_::<PushSubscription>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TrackEvent class.
 /// [`TrackEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TrackEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TrackEvent {
 
 impl FromVal for TrackEvent {
     fn from_val(v: &Any) -> Self {
-        TrackEvent { inner: Event::from_val(v) }
+        TrackEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TrackEvent {
 
 impl AsMut<Any> for TrackEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TrackEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&TrackEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(TrackEvent);
 
-
-
 impl TrackEvent {
     /// The `new TrackEvent(..)` constructor, creating a new TrackEvent instance
     pub fn new0(type_: &JsString) -> TrackEvent {
         Self {
-            inner: Any::global("TrackEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("TrackEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new TrackEvent(..)` constructor, creating a new TrackEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &TrackEventInit) -> TrackEvent {
         Self {
-            inner: Any::global("TrackEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("TrackEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl TrackEvent {
     /// Getter of the `track` attribute.
@@ -88,5 +88,4 @@ impl TrackEvent {
     pub fn track(&self) -> Any {
         self.inner.get("track").as_::<Any>()
     }
-
 }

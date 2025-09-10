@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUCommandBuffer class.
 /// [`GPUCommandBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandBuffer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUCommandBuffer {
 
 impl FromVal for GPUCommandBuffer {
     fn from_val(v: &Any) -> Self {
-        GPUCommandBuffer { inner: Any::from_val(v) }
+        GPUCommandBuffer {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUCommandBuffer {
 
 impl AsMut<Any> for GPUCommandBuffer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUCommandBuffer> for Any {
@@ -63,7 +62,6 @@ impl From<&GPUCommandBuffer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(GPUCommandBuffer);
-
 
 impl GPUCommandBuffer {
     /// Getter of the `label` attribute.

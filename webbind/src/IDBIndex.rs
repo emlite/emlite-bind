@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBIndex class.
 /// [`IDBIndex`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IDBIndex {
 
 impl FromVal for IDBIndex {
     fn from_val(v: &Any) -> Self {
-        IDBIndex { inner: Any::from_val(v) }
+        IDBIndex {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IDBIndex {
 
 impl AsMut<Any> for IDBIndex {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBIndex> for Any {
@@ -63,7 +62,6 @@ impl From<&IDBIndex> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(IDBIndex);
-
 
 impl IDBIndex {
     /// Getter of the `name` attribute.
@@ -84,7 +82,6 @@ impl IDBIndex {
     pub fn object_store(&self) -> IDBObjectStore {
         self.inner.get("objectStore").as_::<IDBObjectStore>()
     }
-
 }
 impl IDBIndex {
     /// Getter of the `keyPath` attribute.
@@ -92,7 +89,6 @@ impl IDBIndex {
     pub fn key_path(&self) -> Any {
         self.inner.get("keyPath").as_::<Any>()
     }
-
 }
 impl IDBIndex {
     /// Getter of the `multiEntry` attribute.
@@ -100,7 +96,6 @@ impl IDBIndex {
     pub fn multi_entry(&self) -> bool {
         self.inner.get("multiEntry").as_::<bool>()
     }
-
 }
 impl IDBIndex {
     /// Getter of the `unique` attribute.
@@ -108,111 +103,132 @@ impl IDBIndex {
     pub fn unique(&self) -> bool {
         self.inner.get("unique").as_::<bool>()
     }
-
 }
 impl IDBIndex {
     /// The get method.
     /// [`IDBIndex.get`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/get)
     pub fn get(&self, query: &Any) -> IDBRequest {
-        self.inner.call("get", &[query.into(), ]).as_::<IDBRequest>()
+        self.inner.call("get", &[query.into()]).as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
     /// The getKey method.
     /// [`IDBIndex.getKey`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getKey)
     pub fn get_key(&self, query: &Any) -> IDBRequest {
-        self.inner.call("getKey", &[query.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("getKey", &[query.into()])
+            .as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
     /// The getAll method.
     /// [`IDBIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAll)
-    pub fn get_all0(&self, ) -> IDBRequest {
+    pub fn get_all0(&self) -> IDBRequest {
         self.inner.call("getAll", &[]).as_::<IDBRequest>()
     }
     /// The getAll method.
     /// [`IDBIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAll)
     pub fn get_all1(&self, query_or_options: &Any) -> IDBRequest {
-        self.inner.call("getAll", &[query_or_options.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("getAll", &[query_or_options.into()])
+            .as_::<IDBRequest>()
     }
     /// The getAll method.
     /// [`IDBIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAll)
     pub fn get_all2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
-        self.inner.call("getAll", &[query_or_options.into(), count.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("getAll", &[query_or_options.into(), count.into()])
+            .as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
     /// The getAllKeys method.
     /// [`IDBIndex.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllKeys)
-    pub fn get_all_keys0(&self, ) -> IDBRequest {
+    pub fn get_all_keys0(&self) -> IDBRequest {
         self.inner.call("getAllKeys", &[]).as_::<IDBRequest>()
     }
     /// The getAllKeys method.
     /// [`IDBIndex.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllKeys)
     pub fn get_all_keys1(&self, query_or_options: &Any) -> IDBRequest {
-        self.inner.call("getAllKeys", &[query_or_options.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("getAllKeys", &[query_or_options.into()])
+            .as_::<IDBRequest>()
     }
     /// The getAllKeys method.
     /// [`IDBIndex.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllKeys)
     pub fn get_all_keys2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
-        self.inner.call("getAllKeys", &[query_or_options.into(), count.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("getAllKeys", &[query_or_options.into(), count.into()])
+            .as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
     /// The getAllRecords method.
     /// [`IDBIndex.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllRecords)
-    pub fn get_all_records0(&self, ) -> IDBRequest {
+    pub fn get_all_records0(&self) -> IDBRequest {
         self.inner.call("getAllRecords", &[]).as_::<IDBRequest>()
     }
     /// The getAllRecords method.
     /// [`IDBIndex.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/getAllRecords)
     pub fn get_all_records1(&self, options: &IDBGetAllOptions) -> IDBRequest {
-        self.inner.call("getAllRecords", &[options.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("getAllRecords", &[options.into()])
+            .as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
     /// The count method.
     /// [`IDBIndex.count`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/count)
-    pub fn count0(&self, ) -> IDBRequest {
+    pub fn count0(&self) -> IDBRequest {
         self.inner.call("count", &[]).as_::<IDBRequest>()
     }
     /// The count method.
     /// [`IDBIndex.count`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/count)
     pub fn count1(&self, query: &Any) -> IDBRequest {
-        self.inner.call("count", &[query.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("count", &[query.into()])
+            .as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
     /// The openCursor method.
     /// [`IDBIndex.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openCursor)
-    pub fn open_cursor0(&self, ) -> IDBRequest {
+    pub fn open_cursor0(&self) -> IDBRequest {
         self.inner.call("openCursor", &[]).as_::<IDBRequest>()
     }
     /// The openCursor method.
     /// [`IDBIndex.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openCursor)
     pub fn open_cursor1(&self, query: &Any) -> IDBRequest {
-        self.inner.call("openCursor", &[query.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("openCursor", &[query.into()])
+            .as_::<IDBRequest>()
     }
     /// The openCursor method.
     /// [`IDBIndex.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openCursor)
     pub fn open_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
-        self.inner.call("openCursor", &[query.into(), direction.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("openCursor", &[query.into(), direction.into()])
+            .as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
     /// The openKeyCursor method.
     /// [`IDBIndex.openKeyCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openKeyCursor)
-    pub fn open_key_cursor0(&self, ) -> IDBRequest {
+    pub fn open_key_cursor0(&self) -> IDBRequest {
         self.inner.call("openKeyCursor", &[]).as_::<IDBRequest>()
     }
     /// The openKeyCursor method.
     /// [`IDBIndex.openKeyCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openKeyCursor)
     pub fn open_key_cursor1(&self, query: &Any) -> IDBRequest {
-        self.inner.call("openKeyCursor", &[query.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("openKeyCursor", &[query.into()])
+            .as_::<IDBRequest>()
     }
     /// The openKeyCursor method.
     /// [`IDBIndex.openKeyCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/openKeyCursor)
     pub fn open_key_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
-        self.inner.call("openKeyCursor", &[query.into(), direction.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("openKeyCursor", &[query.into(), direction.into()])
+            .as_::<IDBRequest>()
     }
 }

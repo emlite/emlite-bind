@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUSampler class.
 /// [`GPUSampler`](https://developer.mozilla.org/en-US/docs/Web/API/GPUSampler)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUSampler {
 
 impl FromVal for GPUSampler {
     fn from_val(v: &Any) -> Self {
-        GPUSampler { inner: Any::from_val(v) }
+        GPUSampler {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUSampler {
 
 impl AsMut<Any> for GPUSampler {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUSampler> for Any {
@@ -63,7 +62,6 @@ impl From<&GPUSampler> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(GPUSampler);
-
 
 impl GPUSampler {
     /// Getter of the `label` attribute.

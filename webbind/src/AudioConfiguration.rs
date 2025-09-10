@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AudioConfiguration {
 
 impl AsMut<Any> for AudioConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioConfiguration> for Any {

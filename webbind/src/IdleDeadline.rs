@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdleDeadline class.
 /// [`IdleDeadline`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IdleDeadline {
 
 impl FromVal for IdleDeadline {
     fn from_val(v: &Any) -> Self {
-        IdleDeadline { inner: Any::from_val(v) }
+        IdleDeadline {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IdleDeadline {
 
 impl AsMut<Any> for IdleDeadline {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdleDeadline> for Any {
@@ -64,11 +63,10 @@ impl From<&IdleDeadline> for Any {
 
 jsbind::utils::impl_dyn_cast!(IdleDeadline);
 
-
 impl IdleDeadline {
     /// The timeRemaining method.
     /// [`IdleDeadline.timeRemaining`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline/timeRemaining)
-    pub fn time_remaining(&self, ) -> Any {
+    pub fn time_remaining(&self) -> Any {
         self.inner.call("timeRemaining", &[]).as_::<Any>()
     }
 }
@@ -78,5 +76,4 @@ impl IdleDeadline {
     pub fn did_timeout(&self) -> bool {
         self.inner.get("didTimeout").as_::<bool>()
     }
-
 }

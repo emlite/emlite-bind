@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSParserRule class.
 /// [`CSSParserRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSParserRule {
 
 impl FromVal for CSSParserRule {
     fn from_val(v: &Any) -> Self {
-        CSSParserRule { inner: Any::from_val(v) }
+        CSSParserRule {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSParserRule {
 
 impl AsMut<Any> for CSSParserRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSParserRule> for Any {
@@ -63,5 +62,3 @@ impl From<&CSSParserRule> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSParserRule);
-
-

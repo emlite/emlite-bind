@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RegistrationOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RegistrationOptions {
 
 impl AsMut<Any> for RegistrationOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RegistrationOptions> for Any {
@@ -86,7 +83,9 @@ impl RegistrationOptions {
 impl RegistrationOptions {
     /// Getter of the `updateViaCache` attribute.
     pub fn update_via_cache(&self) -> ServiceWorkerUpdateViaCache {
-        self.inner.get("updateViaCache").as_::<ServiceWorkerUpdateViaCache>()
+        self.inner
+            .get("updateViaCache")
+            .as_::<ServiceWorkerUpdateViaCache>()
     }
 
     /// Setter of the `updateViaCache` attribute.

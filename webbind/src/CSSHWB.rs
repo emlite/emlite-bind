@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSHWB class.
 /// [`CSSHWB`](https://developer.mozilla.org/en-US/docs/Web/API/CSSHWB)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSHWB {
 
 impl FromVal for CSSHWB {
     fn from_val(v: &Any) -> Self {
-        CSSHWB { inner: CSSColorValue::from_val(v) }
+        CSSHWB {
+            inner: CSSColorValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSHWB {
 
 impl AsMut<Any> for CSSHWB {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSHWB> for Any {
@@ -64,23 +63,24 @@ impl From<&CSSHWB> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSHWB);
 
-
-
 impl CSSHWB {
     /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
     pub fn new0(h: &CSSNumericValue, w: &Any, b: &Any) -> CSSHWB {
         Self {
-            inner: Any::global("CSSHWB").new(&[h.into(), w.into(), b.into()]).as_::<CSSColorValue>(),
+            inner: Any::global("CSSHWB")
+                .new(&[h.into(), w.into(), b.into()])
+                .as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
     pub fn new1(h: &CSSNumericValue, w: &Any, b: &Any, alpha: &Any) -> CSSHWB {
         Self {
-            inner: Any::global("CSSHWB").new(&[h.into(), w.into(), b.into(), alpha.into()]).as_::<CSSColorValue>(),
+            inner: Any::global("CSSHWB")
+                .new(&[h.into(), w.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
         }
     }
-
 }
 impl CSSHWB {
     /// Getter of the `h` attribute.

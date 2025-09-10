@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SyncEvent class.
 /// [`SyncEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SyncEvent {
 
 impl FromVal for SyncEvent {
     fn from_val(v: &Any) -> Self {
-        SyncEvent { inner: ExtendableEvent::from_val(v) }
+        SyncEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SyncEvent {
 
 impl AsMut<Any> for SyncEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SyncEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&SyncEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SyncEvent);
 
-
-
 impl SyncEvent {
     /// The `new SyncEvent(..)` constructor, creating a new SyncEvent instance
     pub fn new(type_: &JsString, init: &SyncEventInit) -> SyncEvent {
         Self {
-            inner: Any::global("SyncEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("SyncEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl SyncEvent {
     /// Getter of the `tag` attribute.
@@ -81,7 +79,6 @@ impl SyncEvent {
     pub fn tag(&self) -> JsString {
         self.inner.get("tag").as_::<JsString>()
     }
-
 }
 impl SyncEvent {
     /// Getter of the `lastChance` attribute.
@@ -89,5 +86,4 @@ impl SyncEvent {
     pub fn last_chance(&self) -> bool {
         self.inner.get("lastChance").as_::<bool>()
     }
-
 }

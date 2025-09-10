@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCConfiguration {
 
 impl AsMut<Any> for RTCConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCConfiguration> for Any {
@@ -64,7 +61,9 @@ impl From<&RTCConfiguration> for Any {
 impl RTCConfiguration {
     /// Getter of the `iceServers` attribute.
     pub fn ice_servers(&self) -> TypedArray<RTCIceServer> {
-        self.inner.get("iceServers").as_::<TypedArray<RTCIceServer>>()
+        self.inner
+            .get("iceServers")
+            .as_::<TypedArray<RTCIceServer>>()
     }
 
     /// Setter of the `iceServers` attribute.
@@ -75,7 +74,9 @@ impl RTCConfiguration {
 impl RTCConfiguration {
     /// Getter of the `iceTransportPolicy` attribute.
     pub fn ice_transport_policy(&self) -> RTCIceTransportPolicy {
-        self.inner.get("iceTransportPolicy").as_::<RTCIceTransportPolicy>()
+        self.inner
+            .get("iceTransportPolicy")
+            .as_::<RTCIceTransportPolicy>()
     }
 
     /// Setter of the `iceTransportPolicy` attribute.
@@ -108,7 +109,9 @@ impl RTCConfiguration {
 impl RTCConfiguration {
     /// Getter of the `certificates` attribute.
     pub fn certificates(&self) -> TypedArray<RTCCertificate> {
-        self.inner.get("certificates").as_::<TypedArray<RTCCertificate>>()
+        self.inner
+            .get("certificates")
+            .as_::<TypedArray<RTCCertificate>>()
     }
 
     /// Setter of the `certificates` attribute.

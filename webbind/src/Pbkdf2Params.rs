@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Pbkdf2Params dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for Pbkdf2Params {
 
 impl AsMut<Any> for Pbkdf2Params {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Pbkdf2Params> for Any {

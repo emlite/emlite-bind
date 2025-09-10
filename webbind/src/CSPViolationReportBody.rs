@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSPViolationReportBody dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for CSPViolationReportBody {
 
 impl AsMut<Any> for CSPViolationReportBody {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSPViolationReportBody> for Any {
@@ -141,7 +138,9 @@ impl CSPViolationReportBody {
 impl CSPViolationReportBody {
     /// Getter of the `disposition` attribute.
     pub fn disposition(&self) -> SecurityPolicyViolationEventDisposition {
-        self.inner.get("disposition").as_::<SecurityPolicyViolationEventDisposition>()
+        self.inner
+            .get("disposition")
+            .as_::<SecurityPolicyViolationEventDisposition>()
     }
 
     /// Setter of the `disposition` attribute.

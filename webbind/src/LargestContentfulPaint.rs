@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LargestContentfulPaint class.
 /// [`LargestContentfulPaint`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct LargestContentfulPaint {
 
 impl FromVal for LargestContentfulPaint {
     fn from_val(v: &Any) -> Self {
-        LargestContentfulPaint { inner: PerformanceEntry::from_val(v) }
+        LargestContentfulPaint {
+            inner: PerformanceEntry::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for LargestContentfulPaint {
 
 impl AsMut<Any> for LargestContentfulPaint {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LargestContentfulPaint> for Any {
@@ -64,14 +63,12 @@ impl From<&LargestContentfulPaint> for Any {
 
 jsbind::utils::impl_dyn_cast!(LargestContentfulPaint);
 
-
 impl LargestContentfulPaint {
     /// Getter of the `loadTime` attribute.
     /// [`LargestContentfulPaint.loadTime`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/loadTime)
     pub fn load_time(&self) -> Any {
         self.inner.get("loadTime").as_::<Any>()
     }
-
 }
 impl LargestContentfulPaint {
     /// Getter of the `size` attribute.
@@ -79,7 +76,6 @@ impl LargestContentfulPaint {
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
-
 }
 impl LargestContentfulPaint {
     /// Getter of the `id` attribute.
@@ -87,7 +83,6 @@ impl LargestContentfulPaint {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl LargestContentfulPaint {
     /// Getter of the `url` attribute.
@@ -95,7 +90,6 @@ impl LargestContentfulPaint {
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
     }
-
 }
 impl LargestContentfulPaint {
     /// Getter of the `element` attribute.
@@ -103,12 +97,11 @@ impl LargestContentfulPaint {
     pub fn element(&self) -> Element {
         self.inner.get("element").as_::<Element>()
     }
-
 }
 impl LargestContentfulPaint {
     /// The toJSON method.
     /// [`LargestContentfulPaint.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/toJSON)
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
@@ -118,7 +111,6 @@ impl LargestContentfulPaint {
     pub fn paint_time(&self) -> Any {
         self.inner.get("paintTime").as_::<Any>()
     }
-
 }
 impl LargestContentfulPaint {
     /// Getter of the `presentationTime` attribute.
@@ -126,5 +118,4 @@ impl LargestContentfulPaint {
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
     }
-
 }

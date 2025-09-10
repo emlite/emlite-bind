@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLVertexArrayObjectOES class.
 /// [`WebGLVertexArrayObjectOES`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLVertexArrayObjectOES)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLVertexArrayObjectOES {
 
 impl FromVal for WebGLVertexArrayObjectOES {
     fn from_val(v: &Any) -> Self {
-        WebGLVertexArrayObjectOES { inner: WebGLObject::from_val(v) }
+        WebGLVertexArrayObjectOES {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLVertexArrayObjectOES {
 
 impl AsMut<Any> for WebGLVertexArrayObjectOES {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLVertexArrayObjectOES> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLVertexArrayObjectOES> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLVertexArrayObjectOES);
-
-

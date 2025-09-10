@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLContextOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLContextOptions {
 
 impl AsMut<Any> for MLContextOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLContextOptions> for Any {

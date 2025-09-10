@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCRemoteInboundRtpStreamStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCRemoteInboundRtpStreamStats {
 
 impl AsMut<Any> for RTCRemoteInboundRtpStreamStats {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCRemoteInboundRtpStreamStats> for Any {
@@ -119,7 +116,9 @@ impl RTCRemoteInboundRtpStreamStats {
 impl RTCRemoteInboundRtpStreamStats {
     /// Getter of the `packetsWithBleachedEct1Marking` attribute.
     pub fn packets_with_bleached_ect1_marking(&self) -> u64 {
-        self.inner.get("packetsWithBleachedEct1Marking").as_::<u64>()
+        self.inner
+            .get("packetsWithBleachedEct1Marking")
+            .as_::<u64>()
     }
 
     /// Setter of the `packetsWithBleachedEct1Marking` attribute.

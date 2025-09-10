@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AllAcceptedCredentialsOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AllAcceptedCredentialsOptions {
 
 impl AsMut<Any> for AllAcceptedCredentialsOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AllAcceptedCredentialsOptions> for Any {
@@ -86,7 +83,9 @@ impl AllAcceptedCredentialsOptions {
 impl AllAcceptedCredentialsOptions {
     /// Getter of the `allAcceptedCredentialIds` attribute.
     pub fn all_accepted_credential_ids(&self) -> TypedArray<Any> {
-        self.inner.get("allAcceptedCredentialIds").as_::<TypedArray<Any>>()
+        self.inner
+            .get("allAcceptedCredentialIds")
+            .as_::<TypedArray<Any>>()
     }
 
     /// Setter of the `allAcceptedCredentialIds` attribute.

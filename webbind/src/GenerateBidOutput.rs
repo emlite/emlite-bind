@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GenerateBidOutput dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GenerateBidOutput {
 
 impl AsMut<Any> for GenerateBidOutput {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GenerateBidOutput> for Any {
@@ -108,7 +105,9 @@ impl GenerateBidOutput {
 impl GenerateBidOutput {
     /// Getter of the `selectedBuyerAndSellerReportingId` attribute.
     pub fn selected_buyer_and_seller_reporting_id(&self) -> JsString {
-        self.inner.get("selectedBuyerAndSellerReportingId").as_::<JsString>()
+        self.inner
+            .get("selectedBuyerAndSellerReportingId")
+            .as_::<JsString>()
     }
 
     /// Setter of the `selectedBuyerAndSellerReportingId` attribute.

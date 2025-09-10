@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The InputEvent class.
 /// [`InputEvent`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct InputEvent {
 
 impl FromVal for InputEvent {
     fn from_val(v: &Any) -> Self {
-        InputEvent { inner: UIEvent::from_val(v) }
+        InputEvent {
+            inner: UIEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for InputEvent {
 
 impl AsMut<Any> for InputEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<InputEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&InputEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(InputEvent);
 
-
-
 impl InputEvent {
     /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
     pub fn new0(type_: &JsString) -> InputEvent {
         Self {
-            inner: Any::global("InputEvent").new(&[type_.into()]).as_::<UIEvent>(),
+            inner: Any::global("InputEvent")
+                .new(&[type_.into()])
+                .as_::<UIEvent>(),
         }
     }
 
     /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &InputEventInit) -> InputEvent {
         Self {
-            inner: Any::global("InputEvent").new(&[type_.into(), event_init_dict.into()]).as_::<UIEvent>(),
+            inner: Any::global("InputEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<UIEvent>(),
         }
     }
-
 }
 impl InputEvent {
     /// Getter of the `data` attribute.
@@ -88,7 +88,6 @@ impl InputEvent {
     pub fn data(&self) -> JsString {
         self.inner.get("data").as_::<JsString>()
     }
-
 }
 impl InputEvent {
     /// Getter of the `isComposing` attribute.
@@ -96,7 +95,6 @@ impl InputEvent {
     pub fn is_composing(&self) -> bool {
         self.inner.get("isComposing").as_::<bool>()
     }
-
 }
 impl InputEvent {
     /// Getter of the `inputType` attribute.
@@ -104,7 +102,6 @@ impl InputEvent {
     pub fn input_type(&self) -> JsString {
         self.inner.get("inputType").as_::<JsString>()
     }
-
 }
 impl InputEvent {
     /// Getter of the `dataTransfer` attribute.
@@ -112,12 +109,13 @@ impl InputEvent {
     pub fn data_transfer(&self) -> DataTransfer {
         self.inner.get("dataTransfer").as_::<DataTransfer>()
     }
-
 }
 impl InputEvent {
     /// The getTargetRanges method.
     /// [`InputEvent.getTargetRanges`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/getTargetRanges)
-    pub fn get_target_ranges(&self, ) -> TypedArray<StaticRange> {
-        self.inner.call("getTargetRanges", &[]).as_::<TypedArray<StaticRange>>()
+    pub fn get_target_ranges(&self) -> TypedArray<StaticRange> {
+        self.inner
+            .call("getTargetRanges", &[])
+            .as_::<TypedArray<StaticRange>>()
     }
 }

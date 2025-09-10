@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLReduceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLReduceOptions {
 
 impl AsMut<Any> for MLReduceOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLReduceOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioWorkletNodeOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AudioWorkletNodeOptions {
 
 impl AsMut<Any> for AudioWorkletNodeOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioWorkletNodeOptions> for Any {
@@ -86,7 +83,9 @@ impl AudioWorkletNodeOptions {
 impl AudioWorkletNodeOptions {
     /// Getter of the `outputChannelCount` attribute.
     pub fn output_channel_count(&self) -> TypedArray<u32> {
-        self.inner.get("outputChannelCount").as_::<TypedArray<u32>>()
+        self.inner
+            .get("outputChannelCount")
+            .as_::<TypedArray<u32>>()
     }
 
     /// Setter of the `outputChannelCount` attribute.
@@ -97,7 +96,9 @@ impl AudioWorkletNodeOptions {
 impl AudioWorkletNodeOptions {
     /// Getter of the `parameterData` attribute.
     pub fn parameter_data(&self) -> Record<JsString, f64> {
-        self.inner.get("parameterData").as_::<Record<JsString, f64>>()
+        self.inner
+            .get("parameterData")
+            .as_::<Record<JsString, f64>>()
     }
 
     /// Setter of the `parameterData` attribute.

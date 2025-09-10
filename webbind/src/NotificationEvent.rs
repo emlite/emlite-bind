@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NotificationEvent class.
 /// [`NotificationEvent`](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NotificationEvent {
 
 impl FromVal for NotificationEvent {
     fn from_val(v: &Any) -> Self {
-        NotificationEvent { inner: ExtendableEvent::from_val(v) }
+        NotificationEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NotificationEvent {
 
 impl AsMut<Any> for NotificationEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NotificationEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&NotificationEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(NotificationEvent);
 
-
-
 impl NotificationEvent {
     /// The `new NotificationEvent(..)` constructor, creating a new NotificationEvent instance
     pub fn new(type_: &JsString, event_init_dict: &NotificationEventInit) -> NotificationEvent {
         Self {
-            inner: Any::global("NotificationEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("NotificationEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl NotificationEvent {
     /// Getter of the `notification` attribute.
@@ -81,7 +79,6 @@ impl NotificationEvent {
     pub fn notification(&self) -> Notification {
         self.inner.get("notification").as_::<Notification>()
     }
-
 }
 impl NotificationEvent {
     /// Getter of the `action` attribute.
@@ -89,5 +86,4 @@ impl NotificationEvent {
     pub fn action(&self) -> JsString {
         self.inner.get("action").as_::<JsString>()
     }
-
 }

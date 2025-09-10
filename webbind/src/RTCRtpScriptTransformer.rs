@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCRtpScriptTransformer class.
 /// [`RTCRtpScriptTransformer`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCRtpScriptTransformer {
 
 impl FromVal for RTCRtpScriptTransformer {
     fn from_val(v: &Any) -> Self {
-        RTCRtpScriptTransformer { inner: EventTarget::from_val(v) }
+        RTCRtpScriptTransformer {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCRtpScriptTransformer {
 
 impl AsMut<Any> for RTCRtpScriptTransformer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCRtpScriptTransformer> for Any {
@@ -64,32 +63,36 @@ impl From<&RTCRtpScriptTransformer> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCRtpScriptTransformer);
 
-
 impl RTCRtpScriptTransformer {
     /// Getter of the `readable` attribute.
     /// [`RTCRtpScriptTransformer.readable`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/readable)
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
-
 }
 impl RTCRtpScriptTransformer {
     /// The generateKeyFrame method.
     /// [`RTCRtpScriptTransformer.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame)
-    pub fn generate_key_frame0(&self, ) -> Promise<u64> {
-        self.inner.call("generateKeyFrame", &[]).as_::<Promise<u64>>()
+    pub fn generate_key_frame0(&self) -> Promise<u64> {
+        self.inner
+            .call("generateKeyFrame", &[])
+            .as_::<Promise<u64>>()
     }
     /// The generateKeyFrame method.
     /// [`RTCRtpScriptTransformer.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame)
     pub fn generate_key_frame1(&self, rid: &JsString) -> Promise<u64> {
-        self.inner.call("generateKeyFrame", &[rid.into(), ]).as_::<Promise<u64>>()
+        self.inner
+            .call("generateKeyFrame", &[rid.into()])
+            .as_::<Promise<u64>>()
     }
 }
 impl RTCRtpScriptTransformer {
     /// The sendKeyFrameRequest method.
     /// [`RTCRtpScriptTransformer.sendKeyFrameRequest`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/sendKeyFrameRequest)
-    pub fn send_key_frame_request(&self, ) -> Promise<Undefined> {
-        self.inner.call("sendKeyFrameRequest", &[]).as_::<Promise<Undefined>>()
+    pub fn send_key_frame_request(&self) -> Promise<Undefined> {
+        self.inner
+            .call("sendKeyFrameRequest", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpScriptTransformer {
@@ -98,7 +101,6 @@ impl RTCRtpScriptTransformer {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }
 impl RTCRtpScriptTransformer {
     /// Getter of the `onkeyframerequest` attribute.
@@ -119,5 +121,4 @@ impl RTCRtpScriptTransformer {
     pub fn options(&self) -> Any {
         self.inner.get("options").as_::<Any>()
     }
-
 }

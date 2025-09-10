@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRLightEstimate class.
 /// [`XRLightEstimate`](https://developer.mozilla.org/en-US/docs/Web/API/XRLightEstimate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRLightEstimate {
 
 impl FromVal for XRLightEstimate {
     fn from_val(v: &Any) -> Self {
-        XRLightEstimate { inner: Any::from_val(v) }
+        XRLightEstimate {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRLightEstimate {
 
 impl AsMut<Any> for XRLightEstimate {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRLightEstimate> for Any {
@@ -64,28 +63,30 @@ impl From<&XRLightEstimate> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRLightEstimate);
 
-
 impl XRLightEstimate {
     /// Getter of the `sphericalHarmonicsCoefficients` attribute.
     /// [`XRLightEstimate.sphericalHarmonicsCoefficients`](https://developer.mozilla.org/en-US/docs/Web/API/XRLightEstimate/sphericalHarmonicsCoefficients)
     pub fn spherical_harmonics_coefficients(&self) -> Float32Array {
-        self.inner.get("sphericalHarmonicsCoefficients").as_::<Float32Array>()
+        self.inner
+            .get("sphericalHarmonicsCoefficients")
+            .as_::<Float32Array>()
     }
-
 }
 impl XRLightEstimate {
     /// Getter of the `primaryLightDirection` attribute.
     /// [`XRLightEstimate.primaryLightDirection`](https://developer.mozilla.org/en-US/docs/Web/API/XRLightEstimate/primaryLightDirection)
     pub fn primary_light_direction(&self) -> DOMPointReadOnly {
-        self.inner.get("primaryLightDirection").as_::<DOMPointReadOnly>()
+        self.inner
+            .get("primaryLightDirection")
+            .as_::<DOMPointReadOnly>()
     }
-
 }
 impl XRLightEstimate {
     /// Getter of the `primaryLightIntensity` attribute.
     /// [`XRLightEstimate.primaryLightIntensity`](https://developer.mozilla.org/en-US/docs/Web/API/XRLightEstimate/primaryLightIntensity)
     pub fn primary_light_intensity(&self) -> DOMPointReadOnly {
-        self.inner.get("primaryLightIntensity").as_::<DOMPointReadOnly>()
+        self.inner
+            .get("primaryLightIntensity")
+            .as_::<DOMPointReadOnly>()
     }
-
 }

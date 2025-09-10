@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigationActivation class.
 /// [`NavigationActivation`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationActivation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NavigationActivation {
 
 impl FromVal for NavigationActivation {
     fn from_val(v: &Any) -> Self {
-        NavigationActivation { inner: Any::from_val(v) }
+        NavigationActivation {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NavigationActivation {
 
 impl AsMut<Any> for NavigationActivation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigationActivation> for Any {
@@ -64,14 +63,12 @@ impl From<&NavigationActivation> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigationActivation);
 
-
 impl NavigationActivation {
     /// Getter of the `from` attribute.
     /// [`NavigationActivation.from`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationActivation/from)
     pub fn from(&self) -> NavigationHistoryEntry {
         self.inner.get("from").as_::<NavigationHistoryEntry>()
     }
-
 }
 impl NavigationActivation {
     /// Getter of the `entry` attribute.
@@ -79,7 +76,6 @@ impl NavigationActivation {
     pub fn entry(&self) -> NavigationHistoryEntry {
         self.inner.get("entry").as_::<NavigationHistoryEntry>()
     }
-
 }
 impl NavigationActivation {
     /// Getter of the `navigationType` attribute.
@@ -87,5 +83,4 @@ impl NavigationActivation {
     pub fn navigation_type(&self) -> NavigationType {
         self.inner.get("navigationType").as_::<NavigationType>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLMetaElement class.
 /// [`HTMLMetaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLMetaElement {
 
 impl FromVal for HTMLMetaElement {
     fn from_val(v: &Any) -> Self {
-        HTMLMetaElement { inner: HTMLElement::from_val(v) }
+        HTMLMetaElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLMetaElement {
 
 impl AsMut<Any> for HTMLMetaElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLMetaElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLMetaElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLMetaElement);
 
-
-
 impl HTMLMetaElement {
     /// The `new HTMLMetaElement(..)` constructor, creating a new HTMLMetaElement instance
     pub fn new() -> HTMLMetaElement {
@@ -73,7 +70,6 @@ impl HTMLMetaElement {
             inner: Any::global("HTMLMetaElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLMetaElement {
     /// Getter of the `name` attribute.

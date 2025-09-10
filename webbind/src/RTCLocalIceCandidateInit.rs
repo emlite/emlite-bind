@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCLocalIceCandidateInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCLocalIceCandidateInit {
 
 impl AsMut<Any> for RTCLocalIceCandidateInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCLocalIceCandidateInit> for Any {
@@ -64,7 +61,9 @@ impl From<&RTCLocalIceCandidateInit> for Any {
 impl RTCLocalIceCandidateInit {
     /// Getter of the `relayProtocol` attribute.
     pub fn relay_protocol(&self) -> RTCIceServerTransportProtocol {
-        self.inner.get("relayProtocol").as_::<RTCIceServerTransportProtocol>()
+        self.inner
+            .get("relayProtocol")
+            .as_::<RTCIceServerTransportProtocol>()
     }
 
     /// Setter of the `relayProtocol` attribute.

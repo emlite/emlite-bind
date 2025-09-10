@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LayoutConstraintsOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for LayoutConstraintsOptions {
 
 impl AsMut<Any> for LayoutConstraintsOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LayoutConstraintsOptions> for Any {
@@ -141,7 +138,9 @@ impl LayoutConstraintsOptions {
 impl LayoutConstraintsOptions {
     /// Getter of the `blockFragmentationType` attribute.
     pub fn block_fragmentation_type(&self) -> BlockFragmentationType {
-        self.inner.get("blockFragmentationType").as_::<BlockFragmentationType>()
+        self.inner
+            .get("blockFragmentationType")
+            .as_::<BlockFragmentationType>()
     }
 
     /// Setter of the `blockFragmentationType` attribute.

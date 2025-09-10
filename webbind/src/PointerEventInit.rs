@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PointerEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PointerEventInit {
 
 impl AsMut<Any> for PointerEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PointerEventInit> for Any {
@@ -207,7 +204,9 @@ impl PointerEventInit {
 impl PointerEventInit {
     /// Getter of the `coalescedEvents` attribute.
     pub fn coalesced_events(&self) -> TypedArray<PointerEvent> {
-        self.inner.get("coalescedEvents").as_::<TypedArray<PointerEvent>>()
+        self.inner
+            .get("coalescedEvents")
+            .as_::<TypedArray<PointerEvent>>()
     }
 
     /// Setter of the `coalescedEvents` attribute.
@@ -218,7 +217,9 @@ impl PointerEventInit {
 impl PointerEventInit {
     /// Getter of the `predictedEvents` attribute.
     pub fn predicted_events(&self) -> TypedArray<PointerEvent> {
-        self.inner.get("predictedEvents").as_::<TypedArray<PointerEvent>>()
+        self.inner
+            .get("predictedEvents")
+            .as_::<TypedArray<PointerEvent>>()
     }
 
     /// Setter of the `predictedEvents` attribute.

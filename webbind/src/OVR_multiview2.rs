@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OVR_multiview2 class.
 /// [`OVR_multiview2`](https://developer.mozilla.org/en-US/docs/Web/API/OVR_multiview2)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct OVR_multiview2 {
 
 impl FromVal for OVR_multiview2 {
     fn from_val(v: &Any) -> Self {
-        OVR_multiview2 { inner: Any::from_val(v) }
+        OVR_multiview2 {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for OVR_multiview2 {
 
 impl AsMut<Any> for OVR_multiview2 {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OVR_multiview2> for Any {
@@ -64,11 +63,30 @@ impl From<&OVR_multiview2> for Any {
 
 jsbind::utils::impl_dyn_cast!(OVR_multiview2);
 
-
 impl OVR_multiview2 {
     /// The framebufferTextureMultiviewOVR method.
     /// [`OVR_multiview2.framebufferTextureMultiviewOVR`](https://developer.mozilla.org/en-US/docs/Web/API/OVR_multiview2/framebufferTextureMultiviewOVR)
-    pub fn framebuffer_texture_multiview_ovr(&self, target: &Any, attachment: &Any, texture: &WebGLTexture, level: &Any, base_view_index: &Any, num_views: &Any) -> Undefined {
-        self.inner.call("framebufferTextureMultiviewOVR", &[target.into(), attachment.into(), texture.into(), level.into(), base_view_index.into(), num_views.into(), ]).as_::<Undefined>()
+    pub fn framebuffer_texture_multiview_ovr(
+        &self,
+        target: &Any,
+        attachment: &Any,
+        texture: &WebGLTexture,
+        level: &Any,
+        base_view_index: &Any,
+        num_views: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "framebufferTextureMultiviewOVR",
+                &[
+                    target.into(),
+                    attachment.into(),
+                    texture.into(),
+                    level.into(),
+                    base_view_index.into(),
+                    num_views.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 }

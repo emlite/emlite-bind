@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLShaderPrecisionFormat class.
 /// [`WebGLShaderPrecisionFormat`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLShaderPrecisionFormat {
 
 impl FromVal for WebGLShaderPrecisionFormat {
     fn from_val(v: &Any) -> Self {
-        WebGLShaderPrecisionFormat { inner: Any::from_val(v) }
+        WebGLShaderPrecisionFormat {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLShaderPrecisionFormat {
 
 impl AsMut<Any> for WebGLShaderPrecisionFormat {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLShaderPrecisionFormat> for Any {
@@ -64,14 +63,12 @@ impl From<&WebGLShaderPrecisionFormat> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebGLShaderPrecisionFormat);
 
-
 impl WebGLShaderPrecisionFormat {
     /// Getter of the `rangeMin` attribute.
     /// [`WebGLShaderPrecisionFormat.rangeMin`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat/rangeMin)
     pub fn range_min(&self) -> Any {
         self.inner.get("rangeMin").as_::<Any>()
     }
-
 }
 impl WebGLShaderPrecisionFormat {
     /// Getter of the `rangeMax` attribute.
@@ -79,7 +76,6 @@ impl WebGLShaderPrecisionFormat {
     pub fn range_max(&self) -> Any {
         self.inner.get("rangeMax").as_::<Any>()
     }
-
 }
 impl WebGLShaderPrecisionFormat {
     /// Getter of the `precision` attribute.
@@ -87,5 +83,4 @@ impl WebGLShaderPrecisionFormat {
     pub fn precision(&self) -> Any {
         self.inner.get("precision").as_::<Any>()
     }
-
 }

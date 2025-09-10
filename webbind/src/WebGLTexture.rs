@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLTexture class.
 /// [`WebGLTexture`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLTexture {
 
 impl FromVal for WebGLTexture {
     fn from_val(v: &Any) -> Self {
-        WebGLTexture { inner: WebGLObject::from_val(v) }
+        WebGLTexture {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLTexture {
 
 impl AsMut<Any> for WebGLTexture {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLTexture> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLTexture> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLTexture);
-
-

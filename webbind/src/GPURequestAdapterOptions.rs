@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPURequestAdapterOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPURequestAdapterOptions {
 
 impl AsMut<Any> for GPURequestAdapterOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPURequestAdapterOptions> for Any {
@@ -75,7 +72,9 @@ impl GPURequestAdapterOptions {
 impl GPURequestAdapterOptions {
     /// Getter of the `powerPreference` attribute.
     pub fn power_preference(&self) -> GPUPowerPreference {
-        self.inner.get("powerPreference").as_::<GPUPowerPreference>()
+        self.inner
+            .get("powerPreference")
+            .as_::<GPUPowerPreference>()
     }
 
     /// Setter of the `powerPreference` attribute.

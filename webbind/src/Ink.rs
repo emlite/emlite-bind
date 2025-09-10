@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Ink class.
 /// [`Ink`](https://developer.mozilla.org/en-US/docs/Web/API/Ink)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Ink {
 
 impl FromVal for Ink {
     fn from_val(v: &Any) -> Self {
-        Ink { inner: Any::from_val(v) }
+        Ink {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Ink {
 
 impl AsMut<Any> for Ink {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Ink> for Any {
@@ -64,16 +63,22 @@ impl From<&Ink> for Any {
 
 jsbind::utils::impl_dyn_cast!(Ink);
 
-
 impl Ink {
     /// The requestPresenter method.
     /// [`Ink.requestPresenter`](https://developer.mozilla.org/en-US/docs/Web/API/Ink/requestPresenter)
-    pub fn request_presenter0(&self, ) -> Promise<DelegatedInkTrailPresenter> {
-        self.inner.call("requestPresenter", &[]).as_::<Promise<DelegatedInkTrailPresenter>>()
+    pub fn request_presenter0(&self) -> Promise<DelegatedInkTrailPresenter> {
+        self.inner
+            .call("requestPresenter", &[])
+            .as_::<Promise<DelegatedInkTrailPresenter>>()
     }
     /// The requestPresenter method.
     /// [`Ink.requestPresenter`](https://developer.mozilla.org/en-US/docs/Web/API/Ink/requestPresenter)
-    pub fn request_presenter1(&self, param: &InkPresenterParam) -> Promise<DelegatedInkTrailPresenter> {
-        self.inner.call("requestPresenter", &[param.into(), ]).as_::<Promise<DelegatedInkTrailPresenter>>()
+    pub fn request_presenter1(
+        &self,
+        param: &InkPresenterParam,
+    ) -> Promise<DelegatedInkTrailPresenter> {
+        self.inner
+            .call("requestPresenter", &[param.into()])
+            .as_::<Promise<DelegatedInkTrailPresenter>>()
     }
 }

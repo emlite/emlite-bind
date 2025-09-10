@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for WebTransportOptions {
 
 impl AsMut<Any> for WebTransportOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportOptions> for Any {
@@ -86,7 +83,9 @@ impl WebTransportOptions {
 impl WebTransportOptions {
     /// Getter of the `serverCertificateHashes` attribute.
     pub fn server_certificate_hashes(&self) -> TypedArray<WebTransportHash> {
-        self.inner.get("serverCertificateHashes").as_::<TypedArray<WebTransportHash>>()
+        self.inner
+            .get("serverCertificateHashes")
+            .as_::<TypedArray<WebTransportHash>>()
     }
 
     /// Setter of the `serverCertificateHashes` attribute.
@@ -97,7 +96,9 @@ impl WebTransportOptions {
 impl WebTransportOptions {
     /// Getter of the `congestionControl` attribute.
     pub fn congestion_control(&self) -> WebTransportCongestionControl {
-        self.inner.get("congestionControl").as_::<WebTransportCongestionControl>()
+        self.inner
+            .get("congestionControl")
+            .as_::<WebTransportCongestionControl>()
     }
 
     /// Setter of the `congestionControl` attribute.
@@ -108,23 +109,29 @@ impl WebTransportOptions {
 impl WebTransportOptions {
     /// Getter of the `anticipatedConcurrentIncomingUnidirectionalStreams` attribute.
     pub fn anticipated_concurrent_incoming_unidirectional_streams(&self) -> u16 {
-        self.inner.get("anticipatedConcurrentIncomingUnidirectionalStreams").as_::<u16>()
+        self.inner
+            .get("anticipatedConcurrentIncomingUnidirectionalStreams")
+            .as_::<u16>()
     }
 
     /// Setter of the `anticipatedConcurrentIncomingUnidirectionalStreams` attribute.
     pub fn set_anticipated_concurrent_incoming_unidirectional_streams(&mut self, value: u16) {
-        self.inner.set("anticipatedConcurrentIncomingUnidirectionalStreams", value);
+        self.inner
+            .set("anticipatedConcurrentIncomingUnidirectionalStreams", value);
     }
 }
 impl WebTransportOptions {
     /// Getter of the `anticipatedConcurrentIncomingBidirectionalStreams` attribute.
     pub fn anticipated_concurrent_incoming_bidirectional_streams(&self) -> u16 {
-        self.inner.get("anticipatedConcurrentIncomingBidirectionalStreams").as_::<u16>()
+        self.inner
+            .get("anticipatedConcurrentIncomingBidirectionalStreams")
+            .as_::<u16>()
     }
 
     /// Setter of the `anticipatedConcurrentIncomingBidirectionalStreams` attribute.
     pub fn set_anticipated_concurrent_incoming_bidirectional_streams(&mut self, value: u16) {
-        self.inner.set("anticipatedConcurrentIncomingBidirectionalStreams", value);
+        self.inner
+            .set("anticipatedConcurrentIncomingBidirectionalStreams", value);
     }
 }
 impl WebTransportOptions {
@@ -141,7 +148,9 @@ impl WebTransportOptions {
 impl WebTransportOptions {
     /// Getter of the `datagramsReadableMode` attribute.
     pub fn datagrams_readable_mode(&self) -> DatagramsReadableMode {
-        self.inner.get("datagramsReadableMode").as_::<DatagramsReadableMode>()
+        self.inner
+            .get("datagramsReadableMode")
+            .as_::<DatagramsReadableMode>()
     }
 
     /// Setter of the `datagramsReadableMode` attribute.

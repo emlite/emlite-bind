@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ChapterInformation class.
 /// [`ChapterInformation`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ChapterInformation {
 
 impl FromVal for ChapterInformation {
     fn from_val(v: &Any) -> Self {
-        ChapterInformation { inner: Any::from_val(v) }
+        ChapterInformation {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ChapterInformation {
 
 impl AsMut<Any> for ChapterInformation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ChapterInformation> for Any {
@@ -64,14 +63,12 @@ impl From<&ChapterInformation> for Any {
 
 jsbind::utils::impl_dyn_cast!(ChapterInformation);
 
-
 impl ChapterInformation {
     /// Getter of the `title` attribute.
     /// [`ChapterInformation.title`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation/title)
     pub fn title(&self) -> JsString {
         self.inner.get("title").as_::<JsString>()
     }
-
 }
 impl ChapterInformation {
     /// Getter of the `startTime` attribute.
@@ -79,7 +76,6 @@ impl ChapterInformation {
     pub fn start_time(&self) -> f64 {
         self.inner.get("startTime").as_::<f64>()
     }
-
 }
 impl ChapterInformation {
     /// Getter of the `artwork` attribute.
@@ -87,5 +83,4 @@ impl ChapterInformation {
     pub fn artwork(&self) -> TypedArray<MediaImage> {
         self.inner.get("artwork").as_::<TypedArray<MediaImage>>()
     }
-
 }

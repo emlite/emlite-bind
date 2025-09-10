@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PhotoCapabilities dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PhotoCapabilities {
 
 impl AsMut<Any> for PhotoCapabilities {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PhotoCapabilities> for Any {
@@ -97,7 +94,9 @@ impl PhotoCapabilities {
 impl PhotoCapabilities {
     /// Getter of the `fillLightMode` attribute.
     pub fn fill_light_mode(&self) -> TypedArray<FillLightMode> {
-        self.inner.get("fillLightMode").as_::<TypedArray<FillLightMode>>()
+        self.inner
+            .get("fillLightMode")
+            .as_::<TypedArray<FillLightMode>>()
     }
 
     /// Setter of the `fillLightMode` attribute.

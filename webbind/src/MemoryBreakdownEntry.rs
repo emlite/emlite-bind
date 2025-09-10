@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MemoryBreakdownEntry dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MemoryBreakdownEntry {
 
 impl AsMut<Any> for MemoryBreakdownEntry {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MemoryBreakdownEntry> for Any {
@@ -75,7 +72,9 @@ impl MemoryBreakdownEntry {
 impl MemoryBreakdownEntry {
     /// Getter of the `attribution` attribute.
     pub fn attribution(&self) -> TypedArray<MemoryAttribution> {
-        self.inner.get("attribution").as_::<TypedArray<MemoryAttribution>>()
+        self.inner
+            .get("attribution")
+            .as_::<TypedArray<MemoryAttribution>>()
     }
 
     /// Setter of the `attribution` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PresentationConnectionAvailableEvent class.
 /// [`PresentationConnectionAvailableEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionAvailableEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PresentationConnectionAvailableEvent {
 
 impl FromVal for PresentationConnectionAvailableEvent {
     fn from_val(v: &Any) -> Self {
-        PresentationConnectionAvailableEvent { inner: Event::from_val(v) }
+        PresentationConnectionAvailableEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PresentationConnectionAvailableEvent {
 
 impl AsMut<Any> for PresentationConnectionAvailableEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PresentationConnectionAvailableEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&PresentationConnectionAvailableEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PresentationConnectionAvailableEvent);
 
-
-
 impl PresentationConnectionAvailableEvent {
     /// The `new PresentationConnectionAvailableEvent(..)` constructor, creating a new PresentationConnectionAvailableEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &PresentationConnectionAvailableEventInit) -> PresentationConnectionAvailableEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PresentationConnectionAvailableEventInit,
+    ) -> PresentationConnectionAvailableEvent {
         Self {
-            inner: Any::global("PresentationConnectionAvailableEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("PresentationConnectionAvailableEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PresentationConnectionAvailableEvent {
     /// Getter of the `connection` attribute.
@@ -81,5 +82,4 @@ impl PresentationConnectionAvailableEvent {
     pub fn connection(&self) -> PresentationConnection {
         self.inner.get("connection").as_::<PresentationConnection>()
     }
-
 }

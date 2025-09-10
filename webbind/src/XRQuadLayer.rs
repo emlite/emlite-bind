@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRQuadLayer class.
 /// [`XRQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRQuadLayer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRQuadLayer {
 
 impl FromVal for XRQuadLayer {
     fn from_val(v: &Any) -> Self {
-        XRQuadLayer { inner: XRCompositionLayer::from_val(v) }
+        XRQuadLayer {
+            inner: XRCompositionLayer::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRQuadLayer {
 
 impl AsMut<Any> for XRQuadLayer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRQuadLayer> for Any {
@@ -63,7 +62,6 @@ impl From<&XRQuadLayer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRQuadLayer);
-
 
 impl XRQuadLayer {
     /// Getter of the `space` attribute.

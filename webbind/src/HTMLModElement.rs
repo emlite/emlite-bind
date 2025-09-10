@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLModElement class.
 /// [`HTMLModElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLModElement {
 
 impl FromVal for HTMLModElement {
     fn from_val(v: &Any) -> Self {
-        HTMLModElement { inner: HTMLElement::from_val(v) }
+        HTMLModElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLModElement {
 
 impl AsMut<Any> for HTMLModElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLModElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLModElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLModElement);
 
-
-
 impl HTMLModElement {
     /// The `new HTMLModElement(..)` constructor, creating a new HTMLModElement instance
     pub fn new() -> HTMLModElement {
@@ -73,7 +70,6 @@ impl HTMLModElement {
             inner: Any::global("HTMLModElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLModElement {
     /// Getter of the `cite` attribute.

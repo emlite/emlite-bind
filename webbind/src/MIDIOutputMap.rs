@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MIDIOutputMap class.
 /// [`MIDIOutputMap`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutputMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MIDIOutputMap {
 
 impl FromVal for MIDIOutputMap {
     fn from_val(v: &Any) -> Self {
-        MIDIOutputMap { inner: Any::from_val(v) }
+        MIDIOutputMap {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MIDIOutputMap {
 
 impl AsMut<Any> for MIDIOutputMap {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MIDIOutputMap> for Any {
@@ -63,5 +62,3 @@ impl From<&MIDIOutputMap> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(MIDIOutputMap);
-
-

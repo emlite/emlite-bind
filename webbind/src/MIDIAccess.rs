@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MIDIAccess class.
 /// [`MIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MIDIAccess {
 
 impl FromVal for MIDIAccess {
     fn from_val(v: &Any) -> Self {
-        MIDIAccess { inner: EventTarget::from_val(v) }
+        MIDIAccess {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MIDIAccess {
 
 impl AsMut<Any> for MIDIAccess {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MIDIAccess> for Any {
@@ -64,14 +63,12 @@ impl From<&MIDIAccess> for Any {
 
 jsbind::utils::impl_dyn_cast!(MIDIAccess);
 
-
 impl MIDIAccess {
     /// Getter of the `inputs` attribute.
     /// [`MIDIAccess.inputs`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIAccess/inputs)
     pub fn inputs(&self) -> MIDIInputMap {
         self.inner.get("inputs").as_::<MIDIInputMap>()
     }
-
 }
 impl MIDIAccess {
     /// Getter of the `outputs` attribute.
@@ -79,7 +76,6 @@ impl MIDIAccess {
     pub fn outputs(&self) -> MIDIOutputMap {
         self.inner.get("outputs").as_::<MIDIOutputMap>()
     }
-
 }
 impl MIDIAccess {
     /// Getter of the `onstatechange` attribute.
@@ -100,5 +96,4 @@ impl MIDIAccess {
     pub fn sysex_enabled(&self) -> bool {
         self.inner.get("sysexEnabled").as_::<bool>()
     }
-
 }

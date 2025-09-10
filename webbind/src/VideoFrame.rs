@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoFrame class.
 /// [`VideoFrame`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct VideoFrame {
 
 impl FromVal for VideoFrame {
     fn from_val(v: &Any) -> Self {
-        VideoFrame { inner: Any::from_val(v) }
+        VideoFrame {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for VideoFrame {
 
 impl AsMut<Any> for VideoFrame {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoFrame> for Any {
@@ -64,16 +63,15 @@ impl From<&VideoFrame> for Any {
 
 jsbind::utils::impl_dyn_cast!(VideoFrame);
 
-
-
 impl VideoFrame {
     /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
     pub fn new(data: &Any, init: &VideoFrameBufferInit) -> VideoFrame {
         Self {
-            inner: Any::global("VideoFrame").new(&[data.into(), init.into()]).as_::<Any>(),
+            inner: Any::global("VideoFrame")
+                .new(&[data.into(), init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl VideoFrame {
     /// Getter of the `format` attribute.
@@ -81,7 +79,6 @@ impl VideoFrame {
     pub fn format(&self) -> VideoPixelFormat {
         self.inner.get("format").as_::<VideoPixelFormat>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `codedWidth` attribute.
@@ -89,7 +86,6 @@ impl VideoFrame {
     pub fn coded_width(&self) -> u32 {
         self.inner.get("codedWidth").as_::<u32>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `codedHeight` attribute.
@@ -97,7 +93,6 @@ impl VideoFrame {
     pub fn coded_height(&self) -> u32 {
         self.inner.get("codedHeight").as_::<u32>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `codedRect` attribute.
@@ -105,7 +100,6 @@ impl VideoFrame {
     pub fn coded_rect(&self) -> DOMRectReadOnly {
         self.inner.get("codedRect").as_::<DOMRectReadOnly>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `visibleRect` attribute.
@@ -113,7 +107,6 @@ impl VideoFrame {
     pub fn visible_rect(&self) -> DOMRectReadOnly {
         self.inner.get("visibleRect").as_::<DOMRectReadOnly>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `rotation` attribute.
@@ -121,7 +114,6 @@ impl VideoFrame {
     pub fn rotation(&self) -> f64 {
         self.inner.get("rotation").as_::<f64>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `flip` attribute.
@@ -129,7 +121,6 @@ impl VideoFrame {
     pub fn flip(&self) -> bool {
         self.inner.get("flip").as_::<bool>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `displayWidth` attribute.
@@ -137,7 +128,6 @@ impl VideoFrame {
     pub fn display_width(&self) -> u32 {
         self.inner.get("displayWidth").as_::<u32>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `displayHeight` attribute.
@@ -145,7 +135,6 @@ impl VideoFrame {
     pub fn display_height(&self) -> u32 {
         self.inner.get("displayHeight").as_::<u32>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `duration` attribute.
@@ -153,7 +142,6 @@ impl VideoFrame {
     pub fn duration(&self) -> u64 {
         self.inner.get("duration").as_::<u64>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `timestamp` attribute.
@@ -161,7 +149,6 @@ impl VideoFrame {
     pub fn timestamp(&self) -> i64 {
         self.inner.get("timestamp").as_::<i64>()
     }
-
 }
 impl VideoFrame {
     /// Getter of the `colorSpace` attribute.
@@ -169,50 +156,59 @@ impl VideoFrame {
     pub fn color_space(&self) -> VideoColorSpace {
         self.inner.get("colorSpace").as_::<VideoColorSpace>()
     }
-
 }
 impl VideoFrame {
     /// The metadata method.
     /// [`VideoFrame.metadata`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/metadata)
-    pub fn metadata(&self, ) -> VideoFrameMetadata {
+    pub fn metadata(&self) -> VideoFrameMetadata {
         self.inner.call("metadata", &[]).as_::<VideoFrameMetadata>()
     }
 }
 impl VideoFrame {
     /// The allocationSize method.
     /// [`VideoFrame.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/allocationSize)
-    pub fn allocation_size0(&self, ) -> u32 {
+    pub fn allocation_size0(&self) -> u32 {
         self.inner.call("allocationSize", &[]).as_::<u32>()
     }
     /// The allocationSize method.
     /// [`VideoFrame.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/allocationSize)
     pub fn allocation_size1(&self, options: &VideoFrameCopyToOptions) -> u32 {
-        self.inner.call("allocationSize", &[options.into(), ]).as_::<u32>()
+        self.inner
+            .call("allocationSize", &[options.into()])
+            .as_::<u32>()
     }
 }
 impl VideoFrame {
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
     pub fn copy_to0(&self, destination: &Any) -> Promise<TypedArray<PlaneLayout>> {
-        self.inner.call("copyTo", &[destination.into(), ]).as_::<Promise<TypedArray<PlaneLayout>>>()
+        self.inner
+            .call("copyTo", &[destination.into()])
+            .as_::<Promise<TypedArray<PlaneLayout>>>()
     }
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
-    pub fn copy_to1(&self, destination: &Any, options: &VideoFrameCopyToOptions) -> Promise<TypedArray<PlaneLayout>> {
-        self.inner.call("copyTo", &[destination.into(), options.into(), ]).as_::<Promise<TypedArray<PlaneLayout>>>()
+    pub fn copy_to1(
+        &self,
+        destination: &Any,
+        options: &VideoFrameCopyToOptions,
+    ) -> Promise<TypedArray<PlaneLayout>> {
+        self.inner
+            .call("copyTo", &[destination.into(), options.into()])
+            .as_::<Promise<TypedArray<PlaneLayout>>>()
     }
 }
 impl VideoFrame {
     /// The clone method.
     /// [`VideoFrame.clone`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/clone)
-    pub fn clone_(&self, ) -> VideoFrame {
+    pub fn clone_(&self) -> VideoFrame {
         self.inner.call("clone", &[]).as_::<VideoFrame>()
     }
 }
 impl VideoFrame {
     /// The close method.
     /// [`VideoFrame.close`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/close)
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

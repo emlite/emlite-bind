@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLLstmSupportLimits dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLLstmSupportLimits {
 
 impl AsMut<Any> for MLLstmSupportLimits {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLLstmSupportLimits> for Any {

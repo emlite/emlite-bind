@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdleDetector class.
 /// [`IdleDetector`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IdleDetector {
 
 impl FromVal for IdleDetector {
     fn from_val(v: &Any) -> Self {
-        IdleDetector { inner: EventTarget::from_val(v) }
+        IdleDetector {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IdleDetector {
 
 impl AsMut<Any> for IdleDetector {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdleDetector> for Any {
@@ -64,8 +63,6 @@ impl From<&IdleDetector> for Any {
 
 jsbind::utils::impl_dyn_cast!(IdleDetector);
 
-
-
 impl IdleDetector {
     /// The `new IdleDetector(..)` constructor, creating a new IdleDetector instance
     pub fn new() -> IdleDetector {
@@ -73,7 +70,6 @@ impl IdleDetector {
             inner: Any::global("IdleDetector").new(&[]).as_::<EventTarget>(),
         }
     }
-
 }
 impl IdleDetector {
     /// Getter of the `userState` attribute.
@@ -81,7 +77,6 @@ impl IdleDetector {
     pub fn user_state(&self) -> UserIdleState {
         self.inner.get("userState").as_::<UserIdleState>()
     }
-
 }
 impl IdleDetector {
     /// Getter of the `screenState` attribute.
@@ -89,7 +84,6 @@ impl IdleDetector {
     pub fn screen_state(&self) -> ScreenIdleState {
         self.inner.get("screenState").as_::<ScreenIdleState>()
     }
-
 }
 impl IdleDetector {
     /// Getter of the `onchange` attribute.
@@ -108,18 +102,22 @@ impl IdleDetector {
     /// The requestPermission method.
     /// [`IdleDetector.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/requestPermission)
     pub fn request_permission() -> Promise<PermissionState> {
-        Any::global("IdleDetector").call("requestPermission", &[]).as_::<Promise<PermissionState>>()
+        Any::global("IdleDetector")
+            .call("requestPermission", &[])
+            .as_::<Promise<PermissionState>>()
     }
 }
 impl IdleDetector {
     /// The start method.
     /// [`IdleDetector.start`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/start)
-    pub fn start0(&self, ) -> Promise<Undefined> {
+    pub fn start0(&self) -> Promise<Undefined> {
         self.inner.call("start", &[]).as_::<Promise<Undefined>>()
     }
     /// The start method.
     /// [`IdleDetector.start`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/start)
     pub fn start1(&self, options: &IdleOptions) -> Promise<Undefined> {
-        self.inner.call("start", &[options.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("start", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

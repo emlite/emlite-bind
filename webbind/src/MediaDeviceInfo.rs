@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaDeviceInfo class.
 /// [`MediaDeviceInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MediaDeviceInfo {
 
 impl FromVal for MediaDeviceInfo {
     fn from_val(v: &Any) -> Self {
-        MediaDeviceInfo { inner: Any::from_val(v) }
+        MediaDeviceInfo {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MediaDeviceInfo {
 
 impl AsMut<Any> for MediaDeviceInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaDeviceInfo> for Any {
@@ -64,14 +63,12 @@ impl From<&MediaDeviceInfo> for Any {
 
 jsbind::utils::impl_dyn_cast!(MediaDeviceInfo);
 
-
 impl MediaDeviceInfo {
     /// Getter of the `deviceId` attribute.
     /// [`MediaDeviceInfo.deviceId`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/deviceId)
     pub fn device_id(&self) -> JsString {
         self.inner.get("deviceId").as_::<JsString>()
     }
-
 }
 impl MediaDeviceInfo {
     /// Getter of the `kind` attribute.
@@ -79,7 +76,6 @@ impl MediaDeviceInfo {
     pub fn kind(&self) -> MediaDeviceKind {
         self.inner.get("kind").as_::<MediaDeviceKind>()
     }
-
 }
 impl MediaDeviceInfo {
     /// Getter of the `label` attribute.
@@ -87,7 +83,6 @@ impl MediaDeviceInfo {
     pub fn label(&self) -> JsString {
         self.inner.get("label").as_::<JsString>()
     }
-
 }
 impl MediaDeviceInfo {
     /// Getter of the `groupId` attribute.
@@ -95,12 +90,11 @@ impl MediaDeviceInfo {
     pub fn group_id(&self) -> JsString {
         self.inner.get("groupId").as_::<JsString>()
     }
-
 }
 impl MediaDeviceInfo {
     /// The toJSON method.
     /// [`MediaDeviceInfo.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/toJSON)
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

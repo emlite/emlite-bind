@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUQuerySet class.
 /// [`GPUQuerySet`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUQuerySet {
 
 impl FromVal for GPUQuerySet {
     fn from_val(v: &Any) -> Self {
-        GPUQuerySet { inner: Any::from_val(v) }
+        GPUQuerySet {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUQuerySet {
 
 impl AsMut<Any> for GPUQuerySet {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUQuerySet> for Any {
@@ -64,11 +63,10 @@ impl From<&GPUQuerySet> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUQuerySet);
 
-
 impl GPUQuerySet {
     /// The destroy method.
     /// [`GPUQuerySet.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet/destroy)
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }
@@ -78,7 +76,6 @@ impl GPUQuerySet {
     pub fn type_(&self) -> GPUQueryType {
         self.inner.get("type").as_::<GPUQueryType>()
     }
-
 }
 impl GPUQuerySet {
     /// Getter of the `count` attribute.
@@ -86,7 +83,6 @@ impl GPUQuerySet {
     pub fn count(&self) -> Any {
         self.inner.get("count").as_::<Any>()
     }
-
 }
 impl GPUQuerySet {
     /// Getter of the `label` attribute.

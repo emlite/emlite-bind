@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCOfferAnswerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCOfferAnswerOptions {
 
 impl AsMut<Any> for RTCOfferAnswerOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCOfferAnswerOptions> for Any {
@@ -60,4 +57,3 @@ impl From<&RTCOfferAnswerOptions> for Any {
         s.inner.clone()
     }
 }
-

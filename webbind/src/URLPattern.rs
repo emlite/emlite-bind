@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The URLPattern class.
 /// [`URLPattern`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct URLPattern {
 
 impl FromVal for URLPattern {
     fn from_val(v: &Any) -> Self {
-        URLPattern { inner: Any::from_val(v) }
+        URLPattern {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for URLPattern {
 
 impl AsMut<Any> for URLPattern {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<URLPattern> for Any {
@@ -63,8 +62,6 @@ impl From<&URLPattern> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(URLPattern);
-
-
 
 impl URLPattern {
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
@@ -84,43 +81,50 @@ impl URLPattern {
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
     pub fn new2(input: &Any, options: &URLPatternOptions) -> URLPattern {
         Self {
-            inner: Any::global("URLPattern").new(&[input.into(), options.into()]).as_::<Any>(),
+            inner: Any::global("URLPattern")
+                .new(&[input.into(), options.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl URLPattern {
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
-    pub fn test0(&self, ) -> bool {
+    pub fn test0(&self) -> bool {
         self.inner.call("test", &[]).as_::<bool>()
     }
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
     pub fn test1(&self, input: &Any) -> bool {
-        self.inner.call("test", &[input.into(), ]).as_::<bool>()
+        self.inner.call("test", &[input.into()]).as_::<bool>()
     }
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
     pub fn test2(&self, input: &Any, base_url: &JsString) -> bool {
-        self.inner.call("test", &[input.into(), base_url.into(), ]).as_::<bool>()
+        self.inner
+            .call("test", &[input.into(), base_url.into()])
+            .as_::<bool>()
     }
 }
 impl URLPattern {
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
-    pub fn exec0(&self, ) -> URLPatternResult {
+    pub fn exec0(&self) -> URLPatternResult {
         self.inner.call("exec", &[]).as_::<URLPatternResult>()
     }
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
     pub fn exec1(&self, input: &Any) -> URLPatternResult {
-        self.inner.call("exec", &[input.into(), ]).as_::<URLPatternResult>()
+        self.inner
+            .call("exec", &[input.into()])
+            .as_::<URLPatternResult>()
     }
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
     pub fn exec2(&self, input: &Any, base_url: &JsString) -> URLPatternResult {
-        self.inner.call("exec", &[input.into(), base_url.into(), ]).as_::<URLPatternResult>()
+        self.inner
+            .call("exec", &[input.into(), base_url.into()])
+            .as_::<URLPatternResult>()
     }
 }
 impl URLPattern {
@@ -129,7 +133,6 @@ impl URLPattern {
     pub fn protocol(&self) -> JsString {
         self.inner.get("protocol").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `username` attribute.
@@ -137,7 +140,6 @@ impl URLPattern {
     pub fn username(&self) -> JsString {
         self.inner.get("username").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `password` attribute.
@@ -145,7 +147,6 @@ impl URLPattern {
     pub fn password(&self) -> JsString {
         self.inner.get("password").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `hostname` attribute.
@@ -153,7 +154,6 @@ impl URLPattern {
     pub fn hostname(&self) -> JsString {
         self.inner.get("hostname").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `port` attribute.
@@ -161,7 +161,6 @@ impl URLPattern {
     pub fn port(&self) -> JsString {
         self.inner.get("port").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `pathname` attribute.
@@ -169,7 +168,6 @@ impl URLPattern {
     pub fn pathname(&self) -> JsString {
         self.inner.get("pathname").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `search` attribute.
@@ -177,7 +175,6 @@ impl URLPattern {
     pub fn search(&self) -> JsString {
         self.inner.get("search").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `hash` attribute.
@@ -185,7 +182,6 @@ impl URLPattern {
     pub fn hash(&self) -> JsString {
         self.inner.get("hash").as_::<JsString>()
     }
-
 }
 impl URLPattern {
     /// Getter of the `hasRegExpGroups` attribute.
@@ -193,5 +189,4 @@ impl URLPattern {
     pub fn has_reg_exp_groups(&self) -> bool {
         self.inner.get("hasRegExpGroups").as_::<bool>()
     }
-
 }

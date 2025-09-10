@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCEncodedFrameMetadata dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCEncodedFrameMetadata {
 
 impl AsMut<Any> for RTCEncodedFrameMetadata {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCEncodedFrameMetadata> for Any {
@@ -86,7 +83,9 @@ impl RTCEncodedFrameMetadata {
 impl RTCEncodedFrameMetadata {
     /// Getter of the `contributingSources` attribute.
     pub fn contributing_sources(&self) -> TypedArray<u32> {
-        self.inner.get("contributingSources").as_::<TypedArray<u32>>()
+        self.inner
+            .get("contributingSources")
+            .as_::<TypedArray<u32>>()
     }
 
     /// Setter of the `contributingSources` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaTrackConstraints dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaTrackConstraints {
 
 impl AsMut<Any> for MediaTrackConstraints {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaTrackConstraints> for Any {
@@ -64,7 +61,9 @@ impl From<&MediaTrackConstraints> for Any {
 impl MediaTrackConstraints {
     /// Getter of the `advanced` attribute.
     pub fn advanced(&self) -> TypedArray<MediaTrackConstraintSet> {
-        self.inner.get("advanced").as_::<TypedArray<MediaTrackConstraintSet>>()
+        self.inner
+            .get("advanced")
+            .as_::<TypedArray<MediaTrackConstraintSet>>()
     }
 
     /// Setter of the `advanced` attribute.

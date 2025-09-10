@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioBufferSourceOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AudioBufferSourceOptions {
 
 impl AsMut<Any> for AudioBufferSourceOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioBufferSourceOptions> for Any {

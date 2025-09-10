@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FontFacePalettes class.
 /// [`FontFacePalettes`](https://developer.mozilla.org/en-US/docs/Web/API/FontFacePalettes)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FontFacePalettes {
 
 impl FromVal for FontFacePalettes {
     fn from_val(v: &Any) -> Self {
-        FontFacePalettes { inner: Any::from_val(v) }
+        FontFacePalettes {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FontFacePalettes {
 
 impl AsMut<Any> for FontFacePalettes {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FontFacePalettes> for Any {
@@ -64,12 +63,10 @@ impl From<&FontFacePalettes> for Any {
 
 jsbind::utils::impl_dyn_cast!(FontFacePalettes);
 
-
 impl FontFacePalettes {
     /// Getter of the `length` attribute.
     /// [`FontFacePalettes.length`](https://developer.mozilla.org/en-US/docs/Web/API/FontFacePalettes/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }

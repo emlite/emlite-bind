@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FormDataEvent class.
 /// [`FormDataEvent`](https://developer.mozilla.org/en-US/docs/Web/API/FormDataEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FormDataEvent {
 
 impl FromVal for FormDataEvent {
     fn from_val(v: &Any) -> Self {
-        FormDataEvent { inner: Event::from_val(v) }
+        FormDataEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FormDataEvent {
 
 impl AsMut<Any> for FormDataEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FormDataEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&FormDataEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(FormDataEvent);
 
-
-
 impl FormDataEvent {
     /// The `new FormDataEvent(..)` constructor, creating a new FormDataEvent instance
     pub fn new(type_: &JsString, event_init_dict: &FormDataEventInit) -> FormDataEvent {
         Self {
-            inner: Any::global("FormDataEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("FormDataEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl FormDataEvent {
     /// Getter of the `formData` attribute.
@@ -81,5 +79,4 @@ impl FormDataEvent {
     pub fn form_data(&self) -> FormData {
         self.inner.get("formData").as_::<FormData>()
     }
-
 }

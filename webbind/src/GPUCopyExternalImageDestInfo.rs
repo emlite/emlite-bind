@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUCopyExternalImageDestInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUCopyExternalImageDestInfo {
 
 impl AsMut<Any> for GPUCopyExternalImageDestInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUCopyExternalImageDestInfo> for Any {

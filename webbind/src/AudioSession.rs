@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioSession class.
 /// [`AudioSession`](https://developer.mozilla.org/en-US/docs/Web/API/AudioSession)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioSession {
 
 impl FromVal for AudioSession {
     fn from_val(v: &Any) -> Self {
-        AudioSession { inner: EventTarget::from_val(v) }
+        AudioSession {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioSession {
 
 impl AsMut<Any> for AudioSession {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioSession> for Any {
@@ -63,7 +62,6 @@ impl From<&AudioSession> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(AudioSession);
-
 
 impl AudioSession {
     /// Getter of the `type` attribute.
@@ -84,7 +82,6 @@ impl AudioSession {
     pub fn state(&self) -> AudioSessionState {
         self.inner.get("state").as_::<AudioSessionState>()
     }
-
 }
 impl AudioSession {
     /// Getter of the `onstatechange` attribute.

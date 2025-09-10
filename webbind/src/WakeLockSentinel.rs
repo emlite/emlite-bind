@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WakeLockSentinel class.
 /// [`WakeLockSentinel`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WakeLockSentinel {
 
 impl FromVal for WakeLockSentinel {
     fn from_val(v: &Any) -> Self {
-        WakeLockSentinel { inner: EventTarget::from_val(v) }
+        WakeLockSentinel {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WakeLockSentinel {
 
 impl AsMut<Any> for WakeLockSentinel {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WakeLockSentinel> for Any {
@@ -64,14 +63,12 @@ impl From<&WakeLockSentinel> for Any {
 
 jsbind::utils::impl_dyn_cast!(WakeLockSentinel);
 
-
 impl WakeLockSentinel {
     /// Getter of the `released` attribute.
     /// [`WakeLockSentinel.released`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel/released)
     pub fn released(&self) -> bool {
         self.inner.get("released").as_::<bool>()
     }
-
 }
 impl WakeLockSentinel {
     /// Getter of the `type` attribute.
@@ -79,12 +76,11 @@ impl WakeLockSentinel {
     pub fn type_(&self) -> WakeLockType {
         self.inner.get("type").as_::<WakeLockType>()
     }
-
 }
 impl WakeLockSentinel {
     /// The release method.
     /// [`WakeLockSentinel.release`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel/release)
-    pub fn release(&self, ) -> Promise<Undefined> {
+    pub fn release(&self) -> Promise<Undefined> {
         self.inner.call("release", &[]).as_::<Promise<Undefined>>()
     }
 }

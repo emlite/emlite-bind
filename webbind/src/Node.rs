@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Node class.
 /// [`Node`](https://developer.mozilla.org/en-US/docs/Web/API/Node)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Node {
 
 impl FromVal for Node {
     fn from_val(v: &Any) -> Self {
-        Node { inner: EventTarget::from_val(v) }
+        Node {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Node {
 
 impl AsMut<Any> for Node {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Node> for Any {
@@ -64,14 +63,12 @@ impl From<&Node> for Any {
 
 jsbind::utils::impl_dyn_cast!(Node);
 
-
 impl Node {
     /// Getter of the `nodeType` attribute.
     /// [`Node.nodeType`](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType)
     pub fn node_type(&self) -> u16 {
         self.inner.get("nodeType").as_::<u16>()
     }
-
 }
 impl Node {
     /// Getter of the `nodeName` attribute.
@@ -79,7 +76,6 @@ impl Node {
     pub fn node_name(&self) -> JsString {
         self.inner.get("nodeName").as_::<JsString>()
     }
-
 }
 impl Node {
     /// Getter of the `baseURI` attribute.
@@ -87,7 +83,6 @@ impl Node {
     pub fn base_uri(&self) -> JsString {
         self.inner.get("baseURI").as_::<JsString>()
     }
-
 }
 impl Node {
     /// Getter of the `isConnected` attribute.
@@ -95,7 +90,6 @@ impl Node {
     pub fn is_connected(&self) -> bool {
         self.inner.get("isConnected").as_::<bool>()
     }
-
 }
 impl Node {
     /// Getter of the `ownerDocument` attribute.
@@ -103,18 +97,19 @@ impl Node {
     pub fn owner_document(&self) -> Document {
         self.inner.get("ownerDocument").as_::<Document>()
     }
-
 }
 impl Node {
     /// The getRootNode method.
     /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
-    pub fn get_root_node0(&self, ) -> Node {
+    pub fn get_root_node0(&self) -> Node {
         self.inner.call("getRootNode", &[]).as_::<Node>()
     }
     /// The getRootNode method.
     /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
     pub fn get_root_node1(&self, options: &GetRootNodeOptions) -> Node {
-        self.inner.call("getRootNode", &[options.into(), ]).as_::<Node>()
+        self.inner
+            .call("getRootNode", &[options.into()])
+            .as_::<Node>()
     }
 }
 impl Node {
@@ -123,7 +118,6 @@ impl Node {
     pub fn parent_node(&self) -> Node {
         self.inner.get("parentNode").as_::<Node>()
     }
-
 }
 impl Node {
     /// Getter of the `parentElement` attribute.
@@ -131,12 +125,11 @@ impl Node {
     pub fn parent_element(&self) -> Element {
         self.inner.get("parentElement").as_::<Element>()
     }
-
 }
 impl Node {
     /// The hasChildNodes method.
     /// [`Node.hasChildNodes`](https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes)
-    pub fn has_child_nodes(&self, ) -> bool {
+    pub fn has_child_nodes(&self) -> bool {
         self.inner.call("hasChildNodes", &[]).as_::<bool>()
     }
 }
@@ -146,7 +139,6 @@ impl Node {
     pub fn child_nodes(&self) -> NodeList {
         self.inner.get("childNodes").as_::<NodeList>()
     }
-
 }
 impl Node {
     /// Getter of the `firstChild` attribute.
@@ -154,7 +146,6 @@ impl Node {
     pub fn first_child(&self) -> Node {
         self.inner.get("firstChild").as_::<Node>()
     }
-
 }
 impl Node {
     /// Getter of the `lastChild` attribute.
@@ -162,7 +153,6 @@ impl Node {
     pub fn last_child(&self) -> Node {
         self.inner.get("lastChild").as_::<Node>()
     }
-
 }
 impl Node {
     /// Getter of the `previousSibling` attribute.
@@ -170,7 +160,6 @@ impl Node {
     pub fn previous_sibling(&self) -> Node {
         self.inner.get("previousSibling").as_::<Node>()
     }
-
 }
 impl Node {
     /// Getter of the `nextSibling` attribute.
@@ -178,7 +167,6 @@ impl Node {
     pub fn next_sibling(&self) -> Node {
         self.inner.get("nextSibling").as_::<Node>()
     }
-
 }
 impl Node {
     /// Getter of the `nodeValue` attribute.
@@ -209,96 +197,116 @@ impl Node {
 impl Node {
     /// The normalize method.
     /// [`Node.normalize`](https://developer.mozilla.org/en-US/docs/Web/API/Node/normalize)
-    pub fn normalize(&self, ) -> Undefined {
+    pub fn normalize(&self) -> Undefined {
         self.inner.call("normalize", &[]).as_::<Undefined>()
     }
 }
 impl Node {
     /// The cloneNode method.
     /// [`Node.cloneNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
-    pub fn clone_node0(&self, ) -> Node {
+    pub fn clone_node0(&self) -> Node {
         self.inner.call("cloneNode", &[]).as_::<Node>()
     }
     /// The cloneNode method.
     /// [`Node.cloneNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
     pub fn clone_node1(&self, subtree: bool) -> Node {
-        self.inner.call("cloneNode", &[subtree.into(), ]).as_::<Node>()
+        self.inner
+            .call("cloneNode", &[subtree.into()])
+            .as_::<Node>()
     }
 }
 impl Node {
     /// The isEqualNode method.
     /// [`Node.isEqualNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/isEqualNode)
     pub fn is_equal_node(&self, other_node: &Node) -> bool {
-        self.inner.call("isEqualNode", &[other_node.into(), ]).as_::<bool>()
+        self.inner
+            .call("isEqualNode", &[other_node.into()])
+            .as_::<bool>()
     }
 }
 impl Node {
     /// The isSameNode method.
     /// [`Node.isSameNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/isSameNode)
     pub fn is_same_node(&self, other_node: &Node) -> bool {
-        self.inner.call("isSameNode", &[other_node.into(), ]).as_::<bool>()
+        self.inner
+            .call("isSameNode", &[other_node.into()])
+            .as_::<bool>()
     }
 }
 impl Node {
     /// The compareDocumentPosition method.
     /// [`Node.compareDocumentPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition)
     pub fn compare_document_position(&self, other: &Node) -> u16 {
-        self.inner.call("compareDocumentPosition", &[other.into(), ]).as_::<u16>()
+        self.inner
+            .call("compareDocumentPosition", &[other.into()])
+            .as_::<u16>()
     }
 }
 impl Node {
     /// The contains method.
     /// [`Node.contains`](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains)
     pub fn contains(&self, other: &Node) -> bool {
-        self.inner.call("contains", &[other.into(), ]).as_::<bool>()
+        self.inner.call("contains", &[other.into()]).as_::<bool>()
     }
 }
 impl Node {
     /// The lookupPrefix method.
     /// [`Node.lookupPrefix`](https://developer.mozilla.org/en-US/docs/Web/API/Node/lookupPrefix)
     pub fn lookup_prefix(&self, namespace: &JsString) -> JsString {
-        self.inner.call("lookupPrefix", &[namespace.into(), ]).as_::<JsString>()
+        self.inner
+            .call("lookupPrefix", &[namespace.into()])
+            .as_::<JsString>()
     }
 }
 impl Node {
     /// The lookupNamespaceURI method.
     /// [`Node.lookupNamespaceURI`](https://developer.mozilla.org/en-US/docs/Web/API/Node/lookupNamespaceURI)
     pub fn lookup_namespace_uri(&self, prefix: &JsString) -> JsString {
-        self.inner.call("lookupNamespaceURI", &[prefix.into(), ]).as_::<JsString>()
+        self.inner
+            .call("lookupNamespaceURI", &[prefix.into()])
+            .as_::<JsString>()
     }
 }
 impl Node {
     /// The isDefaultNamespace method.
     /// [`Node.isDefaultNamespace`](https://developer.mozilla.org/en-US/docs/Web/API/Node/isDefaultNamespace)
     pub fn is_default_namespace(&self, namespace: &JsString) -> bool {
-        self.inner.call("isDefaultNamespace", &[namespace.into(), ]).as_::<bool>()
+        self.inner
+            .call("isDefaultNamespace", &[namespace.into()])
+            .as_::<bool>()
     }
 }
 impl Node {
     /// The insertBefore method.
     /// [`Node.insertBefore`](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
     pub fn insert_before(&self, node: &Node, child: &Node) -> Node {
-        self.inner.call("insertBefore", &[node.into(), child.into(), ]).as_::<Node>()
+        self.inner
+            .call("insertBefore", &[node.into(), child.into()])
+            .as_::<Node>()
     }
 }
 impl Node {
     /// The appendChild method.
     /// [`Node.appendChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
     pub fn append_child(&self, node: &Node) -> Node {
-        self.inner.call("appendChild", &[node.into(), ]).as_::<Node>()
+        self.inner.call("appendChild", &[node.into()]).as_::<Node>()
     }
 }
 impl Node {
     /// The replaceChild method.
     /// [`Node.replaceChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild)
     pub fn replace_child(&self, node: &Node, child: &Node) -> Node {
-        self.inner.call("replaceChild", &[node.into(), child.into(), ]).as_::<Node>()
+        self.inner
+            .call("replaceChild", &[node.into(), child.into()])
+            .as_::<Node>()
     }
 }
 impl Node {
     /// The removeChild method.
     /// [`Node.removeChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
     pub fn remove_child(&self, child: &Node) -> Node {
-        self.inner.call("removeChild", &[child.into(), ]).as_::<Node>()
+        self.inner
+            .call("removeChild", &[child.into()])
+            .as_::<Node>()
     }
 }

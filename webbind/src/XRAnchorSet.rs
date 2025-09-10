@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRAnchorSet class.
 /// [`XRAnchorSet`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchorSet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRAnchorSet {
 
 impl FromVal for XRAnchorSet {
     fn from_val(v: &Any) -> Self {
-        XRAnchorSet { inner: Any::from_val(v) }
+        XRAnchorSet {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRAnchorSet {
 
 impl AsMut<Any> for XRAnchorSet {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRAnchorSet> for Any {
@@ -63,5 +62,3 @@ impl From<&XRAnchorSet> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRAnchorSet);
-
-

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLImageElement class.
 /// [`HTMLImageElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLImageElement {
 
 impl FromVal for HTMLImageElement {
     fn from_val(v: &Any) -> Self {
-        HTMLImageElement { inner: HTMLElement::from_val(v) }
+        HTMLImageElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLImageElement {
 
 impl AsMut<Any> for HTMLImageElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLImageElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLImageElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLImageElement);
 
-
-
 impl HTMLImageElement {
     /// The `new HTMLImageElement(..)` constructor, creating a new HTMLImageElement instance
     pub fn new() -> HTMLImageElement {
         Self {
-            inner: Any::global("HTMLImageElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLImageElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLImageElement {
     /// Getter of the `alt` attribute.
@@ -198,7 +196,6 @@ impl HTMLImageElement {
     pub fn natural_width(&self) -> u32 {
         self.inner.get("naturalWidth").as_::<u32>()
     }
-
 }
 impl HTMLImageElement {
     /// Getter of the `naturalHeight` attribute.
@@ -206,7 +203,6 @@ impl HTMLImageElement {
     pub fn natural_height(&self) -> u32 {
         self.inner.get("naturalHeight").as_::<u32>()
     }
-
 }
 impl HTMLImageElement {
     /// Getter of the `complete` attribute.
@@ -214,7 +210,6 @@ impl HTMLImageElement {
     pub fn complete(&self) -> bool {
         self.inner.get("complete").as_::<bool>()
     }
-
 }
 impl HTMLImageElement {
     /// Getter of the `currentSrc` attribute.
@@ -222,7 +217,6 @@ impl HTMLImageElement {
     pub fn current_src(&self) -> JsString {
         self.inner.get("currentSrc").as_::<JsString>()
     }
-
 }
 impl HTMLImageElement {
     /// Getter of the `referrerPolicy` attribute.
@@ -279,7 +273,7 @@ impl HTMLImageElement {
 impl HTMLImageElement {
     /// The decode method.
     /// [`HTMLImageElement.decode`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode)
-    pub fn decode(&self, ) -> Promise<Undefined> {
+    pub fn decode(&self) -> Promise<Undefined> {
         self.inner.call("decode", &[]).as_::<Promise<Undefined>>()
     }
 }
@@ -289,7 +283,6 @@ impl HTMLImageElement {
     pub fn x(&self) -> i32 {
         self.inner.get("x").as_::<i32>()
     }
-
 }
 impl HTMLImageElement {
     /// Getter of the `y` attribute.
@@ -297,7 +290,6 @@ impl HTMLImageElement {
     pub fn y(&self) -> i32 {
         self.inner.get("y").as_::<i32>()
     }
-
 }
 impl HTMLImageElement {
     /// Getter of the `name` attribute.

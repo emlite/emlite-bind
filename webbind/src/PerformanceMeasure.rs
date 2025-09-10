@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PerformanceMeasure class.
 /// [`PerformanceMeasure`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMeasure)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PerformanceMeasure {
 
 impl FromVal for PerformanceMeasure {
     fn from_val(v: &Any) -> Self {
-        PerformanceMeasure { inner: PerformanceEntry::from_val(v) }
+        PerformanceMeasure {
+            inner: PerformanceEntry::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PerformanceMeasure {
 
 impl AsMut<Any> for PerformanceMeasure {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PerformanceMeasure> for Any {
@@ -64,12 +63,10 @@ impl From<&PerformanceMeasure> for Any {
 
 jsbind::utils::impl_dyn_cast!(PerformanceMeasure);
 
-
 impl PerformanceMeasure {
     /// Getter of the `detail` attribute.
     /// [`PerformanceMeasure.detail`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMeasure/detail)
     pub fn detail(&self) -> Any {
         self.inner.get("detail").as_::<Any>()
     }
-
 }

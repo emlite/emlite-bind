@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGScriptElement class.
 /// [`SVGScriptElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGScriptElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGScriptElement {
 
 impl FromVal for SVGScriptElement {
     fn from_val(v: &Any) -> Self {
-        SVGScriptElement { inner: SVGElement::from_val(v) }
+        SVGScriptElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGScriptElement {
 
 impl AsMut<Any> for SVGScriptElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGScriptElement> for Any {
@@ -63,7 +62,6 @@ impl From<&SVGScriptElement> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGScriptElement);
-
 
 impl SVGScriptElement {
     /// Getter of the `type` attribute.
@@ -97,5 +95,4 @@ impl SVGScriptElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

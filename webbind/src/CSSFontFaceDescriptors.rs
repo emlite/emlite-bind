@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSFontFaceDescriptors class.
 /// [`CSSFontFaceDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFaceDescriptors)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSFontFaceDescriptors {
 
 impl FromVal for CSSFontFaceDescriptors {
     fn from_val(v: &Any) -> Self {
-        CSSFontFaceDescriptors { inner: CSSStyleDeclaration::from_val(v) }
+        CSSFontFaceDescriptors {
+            inner: CSSStyleDeclaration::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSFontFaceDescriptors {
 
 impl AsMut<Any> for CSSFontFaceDescriptors {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSFontFaceDescriptors> for Any {
@@ -63,7 +62,6 @@ impl From<&CSSFontFaceDescriptors> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(CSSFontFaceDescriptors);
-
 
 impl CSSFontFaceDescriptors {
     /// Getter of the `src` attribute.
@@ -290,7 +288,9 @@ impl CSSFontFaceDescriptors {
     /// Getter of the `superscriptPositionOverride` attribute.
     /// [`CSSFontFaceDescriptors.superscriptPositionOverride`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFaceDescriptors/superscriptPositionOverride)
     pub fn superscript_position_override(&self) -> JsString {
-        self.inner.get("superscriptPositionOverride").as_::<JsString>()
+        self.inner
+            .get("superscriptPositionOverride")
+            .as_::<JsString>()
     }
 
     /// Setter of the `superscriptPositionOverride` attribute.
@@ -303,7 +303,9 @@ impl CSSFontFaceDescriptors {
     /// Getter of the `subscriptPositionOverride` attribute.
     /// [`CSSFontFaceDescriptors.subscriptPositionOverride`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFaceDescriptors/subscriptPositionOverride)
     pub fn subscript_position_override(&self) -> JsString {
-        self.inner.get("subscriptPositionOverride").as_::<JsString>()
+        self.inner
+            .get("subscriptPositionOverride")
+            .as_::<JsString>()
     }
 
     /// Setter of the `subscriptPositionOverride` attribute.

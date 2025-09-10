@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MessagePort class.
 /// [`MessagePort`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct MessagePort {
 
 impl FromVal for MessagePort {
     fn from_val(v: &Any) -> Self {
-        MessagePort { inner: EventTarget::from_val(v) }
+        MessagePort {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for MessagePort {
 
 impl AsMut<Any> for MessagePort {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MessagePort> for Any {
@@ -64,30 +63,33 @@ impl From<&MessagePort> for Any {
 
 jsbind::utils::impl_dyn_cast!(MessagePort);
 
-
 impl MessagePort {
     /// The postMessage method.
     /// [`MessagePort.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage)
     pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
     /// The postMessage method.
     /// [`MessagePort.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage)
     pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }
 impl MessagePort {
     /// The start method.
     /// [`MessagePort.start`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/start)
-    pub fn start(&self, ) -> Undefined {
+    pub fn start(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
 }
 impl MessagePort {
     /// The close method.
     /// [`MessagePort.close`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/close)
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

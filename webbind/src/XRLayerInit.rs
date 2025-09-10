@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRLayerInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRLayerInit {
 
 impl AsMut<Any> for XRLayerInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRLayerInit> for Any {

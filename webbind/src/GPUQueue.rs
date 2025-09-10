@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUQueue class.
 /// [`GPUQueue`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUQueue {
 
 impl FromVal for GPUQueue {
     fn from_val(v: &Any) -> Self {
-        GPUQueue { inner: Any::from_val(v) }
+        GPUQueue {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUQueue {
 
 impl AsMut<Any> for GPUQueue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUQueue> for Any {
@@ -64,50 +63,118 @@ impl From<&GPUQueue> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUQueue);
 
-
 impl GPUQueue {
     /// The submit method.
     /// [`GPUQueue.submit`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/submit)
     pub fn submit(&self, command_buffers: &TypedArray<GPUCommandBuffer>) -> Undefined {
-        self.inner.call("submit", &[command_buffers.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("submit", &[command_buffers.into()])
+            .as_::<Undefined>()
     }
 }
 impl GPUQueue {
     /// The onSubmittedWorkDone method.
     /// [`GPUQueue.onSubmittedWorkDone`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/onSubmittedWorkDone)
-    pub fn on_submitted_work_done(&self, ) -> Promise<Undefined> {
-        self.inner.call("onSubmittedWorkDone", &[]).as_::<Promise<Undefined>>()
+    pub fn on_submitted_work_done(&self) -> Promise<Undefined> {
+        self.inner
+            .call("onSubmittedWorkDone", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl GPUQueue {
     /// The writeBuffer method.
     /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
     pub fn write_buffer0(&self, buffer: &GPUBuffer, buffer_offset: &Any, data: &Any) -> Undefined {
-        self.inner.call("writeBuffer", &[buffer.into(), buffer_offset.into(), data.into(), ]).as_::<Undefined>()
+        self.inner
+            .call(
+                "writeBuffer",
+                &[buffer.into(), buffer_offset.into(), data.into()],
+            )
+            .as_::<Undefined>()
     }
     /// The writeBuffer method.
     /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
-    pub fn write_buffer1(&self, buffer: &GPUBuffer, buffer_offset: &Any, data: &Any, data_offset: &Any) -> Undefined {
-        self.inner.call("writeBuffer", &[buffer.into(), buffer_offset.into(), data.into(), data_offset.into(), ]).as_::<Undefined>()
+    pub fn write_buffer1(
+        &self,
+        buffer: &GPUBuffer,
+        buffer_offset: &Any,
+        data: &Any,
+        data_offset: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "writeBuffer",
+                &[
+                    buffer.into(),
+                    buffer_offset.into(),
+                    data.into(),
+                    data_offset.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
     /// The writeBuffer method.
     /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
-    pub fn write_buffer2(&self, buffer: &GPUBuffer, buffer_offset: &Any, data: &Any, data_offset: &Any, size: &Any) -> Undefined {
-        self.inner.call("writeBuffer", &[buffer.into(), buffer_offset.into(), data.into(), data_offset.into(), size.into(), ]).as_::<Undefined>()
+    pub fn write_buffer2(
+        &self,
+        buffer: &GPUBuffer,
+        buffer_offset: &Any,
+        data: &Any,
+        data_offset: &Any,
+        size: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "writeBuffer",
+                &[
+                    buffer.into(),
+                    buffer_offset.into(),
+                    data.into(),
+                    data_offset.into(),
+                    size.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 }
 impl GPUQueue {
     /// The writeTexture method.
     /// [`GPUQueue.writeTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeTexture)
-    pub fn write_texture(&self, destination: &GPUTexelCopyTextureInfo, data: &Any, data_layout: &GPUTexelCopyBufferLayout, size: &Any) -> Undefined {
-        self.inner.call("writeTexture", &[destination.into(), data.into(), data_layout.into(), size.into(), ]).as_::<Undefined>()
+    pub fn write_texture(
+        &self,
+        destination: &GPUTexelCopyTextureInfo,
+        data: &Any,
+        data_layout: &GPUTexelCopyBufferLayout,
+        size: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "writeTexture",
+                &[
+                    destination.into(),
+                    data.into(),
+                    data_layout.into(),
+                    size.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 }
 impl GPUQueue {
     /// The copyExternalImageToTexture method.
     /// [`GPUQueue.copyExternalImageToTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/copyExternalImageToTexture)
-    pub fn copy_external_image_to_texture(&self, source: &GPUCopyExternalImageSourceInfo, destination: &GPUCopyExternalImageDestInfo, copy_size: &Any) -> Undefined {
-        self.inner.call("copyExternalImageToTexture", &[source.into(), destination.into(), copy_size.into(), ]).as_::<Undefined>()
+    pub fn copy_external_image_to_texture(
+        &self,
+        source: &GPUCopyExternalImageSourceInfo,
+        destination: &GPUCopyExternalImageDestInfo,
+        copy_size: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "copyExternalImageToTexture",
+                &[source.into(), destination.into(), copy_size.into()],
+            )
+            .as_::<Undefined>()
     }
 }
 impl GPUQueue {

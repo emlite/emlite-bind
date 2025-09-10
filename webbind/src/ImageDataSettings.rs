@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ImageDataSettings dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ImageDataSettings {
 
 impl AsMut<Any> for ImageDataSettings {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ImageDataSettings> for Any {

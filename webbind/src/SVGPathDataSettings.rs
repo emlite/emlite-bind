@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGPathDataSettings dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SVGPathDataSettings {
 
 impl AsMut<Any> for SVGPathDataSettings {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGPathDataSettings> for Any {

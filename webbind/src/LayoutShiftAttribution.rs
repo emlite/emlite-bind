@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LayoutShiftAttribution class.
 /// [`LayoutShiftAttribution`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutShiftAttribution)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct LayoutShiftAttribution {
 
 impl FromVal for LayoutShiftAttribution {
     fn from_val(v: &Any) -> Self {
-        LayoutShiftAttribution { inner: Any::from_val(v) }
+        LayoutShiftAttribution {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for LayoutShiftAttribution {
 
 impl AsMut<Any> for LayoutShiftAttribution {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LayoutShiftAttribution> for Any {
@@ -64,14 +63,12 @@ impl From<&LayoutShiftAttribution> for Any {
 
 jsbind::utils::impl_dyn_cast!(LayoutShiftAttribution);
 
-
 impl LayoutShiftAttribution {
     /// Getter of the `node` attribute.
     /// [`LayoutShiftAttribution.node`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutShiftAttribution/node)
     pub fn node(&self) -> Node {
         self.inner.get("node").as_::<Node>()
     }
-
 }
 impl LayoutShiftAttribution {
     /// Getter of the `previousRect` attribute.
@@ -79,7 +76,6 @@ impl LayoutShiftAttribution {
     pub fn previous_rect(&self) -> DOMRectReadOnly {
         self.inner.get("previousRect").as_::<DOMRectReadOnly>()
     }
-
 }
 impl LayoutShiftAttribution {
     /// Getter of the `currentRect` attribute.
@@ -87,5 +83,4 @@ impl LayoutShiftAttribution {
     pub fn current_rect(&self) -> DOMRectReadOnly {
         self.inner.get("currentRect").as_::<DOMRectReadOnly>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCStatsReport class.
 /// [`RTCStatsReport`](https://developer.mozilla.org/en-US/docs/Web/API/RTCStatsReport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCStatsReport {
 
 impl FromVal for RTCStatsReport {
     fn from_val(v: &Any) -> Self {
-        RTCStatsReport { inner: Any::from_val(v) }
+        RTCStatsReport {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCStatsReport {
 
 impl AsMut<Any> for RTCStatsReport {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCStatsReport> for Any {
@@ -63,5 +62,3 @@ impl From<&RTCStatsReport> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(RTCStatsReport);
-
-

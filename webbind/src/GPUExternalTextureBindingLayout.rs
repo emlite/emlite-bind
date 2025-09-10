@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUExternalTextureBindingLayout dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPUExternalTextureBindingLayout {
 
 impl AsMut<Any> for GPUExternalTextureBindingLayout {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUExternalTextureBindingLayout> for Any {
@@ -60,4 +57,3 @@ impl From<&GPUExternalTextureBindingLayout> for Any {
         s.inner.clone()
     }
 }
-

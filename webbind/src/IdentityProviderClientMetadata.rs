@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IdentityProviderClientMetadata dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for IdentityProviderClientMetadata {
 
 impl AsMut<Any> for IdentityProviderClientMetadata {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IdentityProviderClientMetadata> for Any {

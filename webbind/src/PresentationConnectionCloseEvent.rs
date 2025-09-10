@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PresentationConnectionCloseEvent class.
 /// [`PresentationConnectionCloseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionCloseEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PresentationConnectionCloseEvent {
 
 impl FromVal for PresentationConnectionCloseEvent {
     fn from_val(v: &Any) -> Self {
-        PresentationConnectionCloseEvent { inner: Event::from_val(v) }
+        PresentationConnectionCloseEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PresentationConnectionCloseEvent {
 
 impl AsMut<Any> for PresentationConnectionCloseEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PresentationConnectionCloseEvent> for Any {
@@ -64,24 +63,27 @@ impl From<&PresentationConnectionCloseEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(PresentationConnectionCloseEvent);
 
-
-
 impl PresentationConnectionCloseEvent {
     /// The `new PresentationConnectionCloseEvent(..)` constructor, creating a new PresentationConnectionCloseEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &PresentationConnectionCloseEventInit) -> PresentationConnectionCloseEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PresentationConnectionCloseEventInit,
+    ) -> PresentationConnectionCloseEvent {
         Self {
-            inner: Any::global("PresentationConnectionCloseEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("PresentationConnectionCloseEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PresentationConnectionCloseEvent {
     /// Getter of the `reason` attribute.
     /// [`PresentationConnectionCloseEvent.reason`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionCloseEvent/reason)
     pub fn reason(&self) -> PresentationConnectionCloseReason {
-        self.inner.get("reason").as_::<PresentationConnectionCloseReason>()
+        self.inner
+            .get("reason")
+            .as_::<PresentationConnectionCloseReason>()
     }
-
 }
 impl PresentationConnectionCloseEvent {
     /// Getter of the `message` attribute.
@@ -89,5 +91,4 @@ impl PresentationConnectionCloseEvent {
     pub fn message(&self) -> JsString {
         self.inner.get("message").as_::<JsString>()
     }
-
 }

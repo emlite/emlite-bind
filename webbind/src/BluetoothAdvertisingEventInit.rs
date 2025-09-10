@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothAdvertisingEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for BluetoothAdvertisingEventInit {
 
 impl AsMut<Any> for BluetoothAdvertisingEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothAdvertisingEventInit> for Any {
@@ -130,7 +127,9 @@ impl BluetoothAdvertisingEventInit {
 impl BluetoothAdvertisingEventInit {
     /// Getter of the `manufacturerData` attribute.
     pub fn manufacturer_data(&self) -> BluetoothManufacturerDataMap {
-        self.inner.get("manufacturerData").as_::<BluetoothManufacturerDataMap>()
+        self.inner
+            .get("manufacturerData")
+            .as_::<BluetoothManufacturerDataMap>()
     }
 
     /// Setter of the `manufacturerData` attribute.
@@ -141,7 +140,9 @@ impl BluetoothAdvertisingEventInit {
 impl BluetoothAdvertisingEventInit {
     /// Getter of the `serviceData` attribute.
     pub fn service_data(&self) -> BluetoothServiceDataMap {
-        self.inner.get("serviceData").as_::<BluetoothServiceDataMap>()
+        self.inner
+            .get("serviceData")
+            .as_::<BluetoothServiceDataMap>()
     }
 
     /// Setter of the `serviceData` attribute.

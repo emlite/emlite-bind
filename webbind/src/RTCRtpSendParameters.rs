@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCRtpSendParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCRtpSendParameters {
 
 impl AsMut<Any> for RTCRtpSendParameters {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCRtpSendParameters> for Any {
@@ -75,7 +72,9 @@ impl RTCRtpSendParameters {
 impl RTCRtpSendParameters {
     /// Getter of the `encodings` attribute.
     pub fn encodings(&self) -> TypedArray<RTCRtpEncodingParameters> {
-        self.inner.get("encodings").as_::<TypedArray<RTCRtpEncodingParameters>>()
+        self.inner
+            .get("encodings")
+            .as_::<TypedArray<RTCRtpEncodingParameters>>()
     }
 
     /// Setter of the `encodings` attribute.

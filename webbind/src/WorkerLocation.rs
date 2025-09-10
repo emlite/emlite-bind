@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WorkerLocation class.
 /// [`WorkerLocation`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WorkerLocation {
 
 impl FromVal for WorkerLocation {
     fn from_val(v: &Any) -> Self {
-        WorkerLocation { inner: Any::from_val(v) }
+        WorkerLocation {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WorkerLocation {
 
 impl AsMut<Any> for WorkerLocation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WorkerLocation> for Any {
@@ -64,14 +63,12 @@ impl From<&WorkerLocation> for Any {
 
 jsbind::utils::impl_dyn_cast!(WorkerLocation);
 
-
 impl WorkerLocation {
     /// Getter of the `href` attribute.
     /// [`WorkerLocation.href`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/href)
     pub fn href(&self) -> JsString {
         self.inner.get("href").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `origin` attribute.
@@ -79,7 +76,6 @@ impl WorkerLocation {
     pub fn origin(&self) -> JsString {
         self.inner.get("origin").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `protocol` attribute.
@@ -87,7 +83,6 @@ impl WorkerLocation {
     pub fn protocol(&self) -> JsString {
         self.inner.get("protocol").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `host` attribute.
@@ -95,7 +90,6 @@ impl WorkerLocation {
     pub fn host(&self) -> JsString {
         self.inner.get("host").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `hostname` attribute.
@@ -103,7 +97,6 @@ impl WorkerLocation {
     pub fn hostname(&self) -> JsString {
         self.inner.get("hostname").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `port` attribute.
@@ -111,7 +104,6 @@ impl WorkerLocation {
     pub fn port(&self) -> JsString {
         self.inner.get("port").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `pathname` attribute.
@@ -119,7 +111,6 @@ impl WorkerLocation {
     pub fn pathname(&self) -> JsString {
         self.inner.get("pathname").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `search` attribute.
@@ -127,7 +118,6 @@ impl WorkerLocation {
     pub fn search(&self) -> JsString {
         self.inner.get("search").as_::<JsString>()
     }
-
 }
 impl WorkerLocation {
     /// Getter of the `hash` attribute.
@@ -135,5 +125,4 @@ impl WorkerLocation {
     pub fn hash(&self) -> JsString {
         self.inner.get("hash").as_::<JsString>()
     }
-
 }

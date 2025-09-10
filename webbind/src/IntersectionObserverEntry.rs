@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IntersectionObserverEntry class.
 /// [`IntersectionObserverEntry`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IntersectionObserverEntry {
 
 impl FromVal for IntersectionObserverEntry {
     fn from_val(v: &Any) -> Self {
-        IntersectionObserverEntry { inner: Any::from_val(v) }
+        IntersectionObserverEntry {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IntersectionObserverEntry {
 
 impl AsMut<Any> for IntersectionObserverEntry {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IntersectionObserverEntry> for Any {
@@ -64,16 +63,17 @@ impl From<&IntersectionObserverEntry> for Any {
 
 jsbind::utils::impl_dyn_cast!(IntersectionObserverEntry);
 
-
-
 impl IntersectionObserverEntry {
     /// The `new IntersectionObserverEntry(..)` constructor, creating a new IntersectionObserverEntry instance
-    pub fn new(intersection_observer_entry_init: &IntersectionObserverEntryInit) -> IntersectionObserverEntry {
+    pub fn new(
+        intersection_observer_entry_init: &IntersectionObserverEntryInit,
+    ) -> IntersectionObserverEntry {
         Self {
-            inner: Any::global("IntersectionObserverEntry").new(&[intersection_observer_entry_init.into()]).as_::<Any>(),
+            inner: Any::global("IntersectionObserverEntry")
+                .new(&[intersection_observer_entry_init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `time` attribute.
@@ -81,7 +81,6 @@ impl IntersectionObserverEntry {
     pub fn time(&self) -> Any {
         self.inner.get("time").as_::<Any>()
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `rootBounds` attribute.
@@ -89,15 +88,15 @@ impl IntersectionObserverEntry {
     pub fn root_bounds(&self) -> DOMRectReadOnly {
         self.inner.get("rootBounds").as_::<DOMRectReadOnly>()
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `boundingClientRect` attribute.
     /// [`IntersectionObserverEntry.boundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/boundingClientRect)
     pub fn bounding_client_rect(&self) -> DOMRectReadOnly {
-        self.inner.get("boundingClientRect").as_::<DOMRectReadOnly>()
+        self.inner
+            .get("boundingClientRect")
+            .as_::<DOMRectReadOnly>()
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `intersectionRect` attribute.
@@ -105,7 +104,6 @@ impl IntersectionObserverEntry {
     pub fn intersection_rect(&self) -> DOMRectReadOnly {
         self.inner.get("intersectionRect").as_::<DOMRectReadOnly>()
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `isIntersecting` attribute.
@@ -113,7 +111,6 @@ impl IntersectionObserverEntry {
     pub fn is_intersecting(&self) -> bool {
         self.inner.get("isIntersecting").as_::<bool>()
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `isVisible` attribute.
@@ -121,7 +118,6 @@ impl IntersectionObserverEntry {
     pub fn is_visible(&self) -> bool {
         self.inner.get("isVisible").as_::<bool>()
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `intersectionRatio` attribute.
@@ -129,7 +125,6 @@ impl IntersectionObserverEntry {
     pub fn intersection_ratio(&self) -> f64 {
         self.inner.get("intersectionRatio").as_::<f64>()
     }
-
 }
 impl IntersectionObserverEntry {
     /// Getter of the `target` attribute.
@@ -137,5 +132,4 @@ impl IntersectionObserverEntry {
     pub fn target(&self) -> Element {
         self.inner.get("target").as_::<Element>()
     }
-
 }

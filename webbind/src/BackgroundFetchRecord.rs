@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BackgroundFetchRecord class.
 /// [`BackgroundFetchRecord`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRecord)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BackgroundFetchRecord {
 
 impl FromVal for BackgroundFetchRecord {
     fn from_val(v: &Any) -> Self {
-        BackgroundFetchRecord { inner: Any::from_val(v) }
+        BackgroundFetchRecord {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BackgroundFetchRecord {
 
 impl AsMut<Any> for BackgroundFetchRecord {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BackgroundFetchRecord> for Any {
@@ -64,14 +63,12 @@ impl From<&BackgroundFetchRecord> for Any {
 
 jsbind::utils::impl_dyn_cast!(BackgroundFetchRecord);
 
-
 impl BackgroundFetchRecord {
     /// Getter of the `request` attribute.
     /// [`BackgroundFetchRecord.request`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRecord/request)
     pub fn request(&self) -> Request {
         self.inner.get("request").as_::<Request>()
     }
-
 }
 impl BackgroundFetchRecord {
     /// Getter of the `responseReady` attribute.
@@ -79,5 +76,4 @@ impl BackgroundFetchRecord {
     pub fn response_ready(&self) -> Promise<Response> {
         self.inner.get("responseReady").as_::<Promise<Response>>()
     }
-
 }

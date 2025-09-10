@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ScrollTimelineOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ScrollTimelineOptions {
 
 impl AsMut<Any> for ScrollTimelineOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ScrollTimelineOptions> for Any {

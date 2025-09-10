@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MidiPermissionDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MidiPermissionDescriptor {
 
 impl AsMut<Any> for MidiPermissionDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MidiPermissionDescriptor> for Any {

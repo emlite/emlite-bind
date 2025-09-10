@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUTexture class.
 /// [`GPUTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUTexture {
 
 impl FromVal for GPUTexture {
     fn from_val(v: &Any) -> Self {
-        GPUTexture { inner: Any::from_val(v) }
+        GPUTexture {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUTexture {
 
 impl AsMut<Any> for GPUTexture {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUTexture> for Any {
@@ -64,23 +63,24 @@ impl From<&GPUTexture> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUTexture);
 
-
 impl GPUTexture {
     /// The createView method.
     /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
-    pub fn create_view0(&self, ) -> GPUTextureView {
+    pub fn create_view0(&self) -> GPUTextureView {
         self.inner.call("createView", &[]).as_::<GPUTextureView>()
     }
     /// The createView method.
     /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
     pub fn create_view1(&self, descriptor: &GPUTextureViewDescriptor) -> GPUTextureView {
-        self.inner.call("createView", &[descriptor.into(), ]).as_::<GPUTextureView>()
+        self.inner
+            .call("createView", &[descriptor.into()])
+            .as_::<GPUTextureView>()
     }
 }
 impl GPUTexture {
     /// The destroy method.
     /// [`GPUTexture.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/destroy)
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }
@@ -90,7 +90,6 @@ impl GPUTexture {
     pub fn width(&self) -> Any {
         self.inner.get("width").as_::<Any>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `height` attribute.
@@ -98,7 +97,6 @@ impl GPUTexture {
     pub fn height(&self) -> Any {
         self.inner.get("height").as_::<Any>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `depthOrArrayLayers` attribute.
@@ -106,7 +104,6 @@ impl GPUTexture {
     pub fn depth_or_array_layers(&self) -> Any {
         self.inner.get("depthOrArrayLayers").as_::<Any>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `mipLevelCount` attribute.
@@ -114,7 +111,6 @@ impl GPUTexture {
     pub fn mip_level_count(&self) -> Any {
         self.inner.get("mipLevelCount").as_::<Any>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `sampleCount` attribute.
@@ -122,7 +118,6 @@ impl GPUTexture {
     pub fn sample_count(&self) -> Any {
         self.inner.get("sampleCount").as_::<Any>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `dimension` attribute.
@@ -130,7 +125,6 @@ impl GPUTexture {
     pub fn dimension(&self) -> GPUTextureDimension {
         self.inner.get("dimension").as_::<GPUTextureDimension>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `format` attribute.
@@ -138,7 +132,6 @@ impl GPUTexture {
     pub fn format(&self) -> GPUTextureFormat {
         self.inner.get("format").as_::<GPUTextureFormat>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `usage` attribute.
@@ -146,7 +139,6 @@ impl GPUTexture {
     pub fn usage(&self) -> Any {
         self.inner.get("usage").as_::<Any>()
     }
-
 }
 impl GPUTexture {
     /// Getter of the `label` attribute.

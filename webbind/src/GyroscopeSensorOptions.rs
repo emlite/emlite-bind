@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GyroscopeSensorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GyroscopeSensorOptions {
 
 impl AsMut<Any> for GyroscopeSensorOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GyroscopeSensorOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&GyroscopeSensorOptions> for Any {
 impl GyroscopeSensorOptions {
     /// Getter of the `referenceFrame` attribute.
     pub fn reference_frame(&self) -> GyroscopeLocalCoordinateSystem {
-        self.inner.get("referenceFrame").as_::<GyroscopeLocalCoordinateSystem>()
+        self.inner
+            .get("referenceFrame")
+            .as_::<GyroscopeLocalCoordinateSystem>()
     }
 
     /// Setter of the `referenceFrame` attribute.

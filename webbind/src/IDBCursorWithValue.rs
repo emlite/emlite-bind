@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBCursorWithValue class.
 /// [`IDBCursorWithValue`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursorWithValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IDBCursorWithValue {
 
 impl FromVal for IDBCursorWithValue {
     fn from_val(v: &Any) -> Self {
-        IDBCursorWithValue { inner: IDBCursor::from_val(v) }
+        IDBCursorWithValue {
+            inner: IDBCursor::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IDBCursorWithValue {
 
 impl AsMut<Any> for IDBCursorWithValue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBCursorWithValue> for Any {
@@ -64,12 +63,10 @@ impl From<&IDBCursorWithValue> for Any {
 
 jsbind::utils::impl_dyn_cast!(IDBCursorWithValue);
 
-
 impl IDBCursorWithValue {
     /// Getter of the `value` attribute.
     /// [`IDBCursorWithValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursorWithValue/value)
     pub fn value(&self) -> Any {
         self.inner.get("value").as_::<Any>()
     }
-
 }

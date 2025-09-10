@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRBoundedReferenceSpace class.
 /// [`XRBoundedReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRBoundedReferenceSpace)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRBoundedReferenceSpace {
 
 impl FromVal for XRBoundedReferenceSpace {
     fn from_val(v: &Any) -> Self {
-        XRBoundedReferenceSpace { inner: XRReferenceSpace::from_val(v) }
+        XRBoundedReferenceSpace {
+            inner: XRReferenceSpace::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRBoundedReferenceSpace {
 
 impl AsMut<Any> for XRBoundedReferenceSpace {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRBoundedReferenceSpace> for Any {
@@ -64,12 +63,12 @@ impl From<&XRBoundedReferenceSpace> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRBoundedReferenceSpace);
 
-
 impl XRBoundedReferenceSpace {
     /// Getter of the `boundsGeometry` attribute.
     /// [`XRBoundedReferenceSpace.boundsGeometry`](https://developer.mozilla.org/en-US/docs/Web/API/XRBoundedReferenceSpace/boundsGeometry)
     pub fn bounds_geometry(&self) -> TypedArray<DOMPointReadOnly> {
-        self.inner.get("boundsGeometry").as_::<TypedArray<DOMPointReadOnly>>()
+        self.inner
+            .get("boundsGeometry")
+            .as_::<TypedArray<DOMPointReadOnly>>()
     }
-
 }

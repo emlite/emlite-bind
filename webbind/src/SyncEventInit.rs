@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SyncEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SyncEventInit {
 
 impl AsMut<Any> for SyncEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SyncEventInit> for Any {

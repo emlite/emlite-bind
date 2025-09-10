@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSPositionTryRule class.
 /// [`CSSPositionTryRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPositionTryRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSPositionTryRule {
 
 impl FromVal for CSSPositionTryRule {
     fn from_val(v: &Any) -> Self {
-        CSSPositionTryRule { inner: CSSRule::from_val(v) }
+        CSSPositionTryRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSPositionTryRule {
 
 impl AsMut<Any> for CSSPositionTryRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSPositionTryRule> for Any {
@@ -64,14 +63,12 @@ impl From<&CSSPositionTryRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSPositionTryRule);
 
-
 impl CSSPositionTryRule {
     /// Getter of the `name` attribute.
     /// [`CSSPositionTryRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPositionTryRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSPositionTryRule {
     /// Getter of the `style` attribute.
@@ -79,5 +76,4 @@ impl CSSPositionTryRule {
     pub fn style(&self) -> CSSPositionTryDescriptors {
         self.inner.get("style").as_::<CSSPositionTryDescriptors>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BackgroundSyncOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for BackgroundSyncOptions {
 
 impl AsMut<Any> for BackgroundSyncOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BackgroundSyncOptions> for Any {

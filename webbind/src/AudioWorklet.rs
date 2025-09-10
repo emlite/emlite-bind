@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioWorklet class.
 /// [`AudioWorklet`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioWorklet {
 
 impl FromVal for AudioWorklet {
     fn from_val(v: &Any) -> Self {
-        AudioWorklet { inner: Worklet::from_val(v) }
+        AudioWorklet {
+            inner: Worklet::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioWorklet {
 
 impl AsMut<Any> for AudioWorklet {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioWorklet> for Any {
@@ -64,12 +63,10 @@ impl From<&AudioWorklet> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioWorklet);
 
-
 impl AudioWorklet {
     /// Getter of the `port` attribute.
     /// [`AudioWorklet.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet/port)
     pub fn port(&self) -> MessagePort {
         self.inner.get("port").as_::<MessagePort>()
     }
-
 }

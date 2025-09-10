@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaCapabilitiesEncodingInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaCapabilitiesEncodingInfo {
 
 impl AsMut<Any> for MediaCapabilitiesEncodingInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaCapabilitiesEncodingInfo> for Any {
@@ -64,7 +61,9 @@ impl From<&MediaCapabilitiesEncodingInfo> for Any {
 impl MediaCapabilitiesEncodingInfo {
     /// Getter of the `configuration` attribute.
     pub fn configuration(&self) -> MediaEncodingConfiguration {
-        self.inner.get("configuration").as_::<MediaEncodingConfiguration>()
+        self.inner
+            .get("configuration")
+            .as_::<MediaEncodingConfiguration>()
     }
 
     /// Setter of the `configuration` attribute.

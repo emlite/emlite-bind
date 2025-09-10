@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRDepthInformation class.
 /// [`XRDepthInformation`](https://developer.mozilla.org/en-US/docs/Web/API/XRDepthInformation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRDepthInformation {
 
 impl FromVal for XRDepthInformation {
     fn from_val(v: &Any) -> Self {
-        XRDepthInformation { inner: Any::from_val(v) }
+        XRDepthInformation {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRDepthInformation {
 
 impl AsMut<Any> for XRDepthInformation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRDepthInformation> for Any {
@@ -64,14 +63,12 @@ impl From<&XRDepthInformation> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRDepthInformation);
 
-
 impl XRDepthInformation {
     /// Getter of the `width` attribute.
     /// [`XRDepthInformation.width`](https://developer.mozilla.org/en-US/docs/Web/API/XRDepthInformation/width)
     pub fn width(&self) -> u32 {
         self.inner.get("width").as_::<u32>()
     }
-
 }
 impl XRDepthInformation {
     /// Getter of the `height` attribute.
@@ -79,15 +76,15 @@ impl XRDepthInformation {
     pub fn height(&self) -> u32 {
         self.inner.get("height").as_::<u32>()
     }
-
 }
 impl XRDepthInformation {
     /// Getter of the `normDepthBufferFromNormView` attribute.
     /// [`XRDepthInformation.normDepthBufferFromNormView`](https://developer.mozilla.org/en-US/docs/Web/API/XRDepthInformation/normDepthBufferFromNormView)
     pub fn norm_depth_buffer_from_norm_view(&self) -> XRRigidTransform {
-        self.inner.get("normDepthBufferFromNormView").as_::<XRRigidTransform>()
+        self.inner
+            .get("normDepthBufferFromNormView")
+            .as_::<XRRigidTransform>()
     }
-
 }
 impl XRDepthInformation {
     /// Getter of the `rawValueToMeters` attribute.
@@ -95,7 +92,6 @@ impl XRDepthInformation {
     pub fn raw_value_to_meters(&self) -> f32 {
         self.inner.get("rawValueToMeters").as_::<f32>()
     }
-
 }
 impl XRDepthInformation {
     /// Getter of the `projectionMatrix` attribute.
@@ -103,7 +99,6 @@ impl XRDepthInformation {
     pub fn projection_matrix(&self) -> Float32Array {
         self.inner.get("projectionMatrix").as_::<Float32Array>()
     }
-
 }
 impl XRDepthInformation {
     /// Getter of the `transform` attribute.
@@ -111,5 +106,4 @@ impl XRDepthInformation {
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
-
 }

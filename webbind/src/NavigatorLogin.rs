@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigatorLogin class.
 /// [`NavigatorLogin`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLogin)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NavigatorLogin {
 
 impl FromVal for NavigatorLogin {
     fn from_val(v: &Any) -> Self {
-        NavigatorLogin { inner: Any::from_val(v) }
+        NavigatorLogin {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NavigatorLogin {
 
 impl AsMut<Any> for NavigatorLogin {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigatorLogin> for Any {
@@ -64,11 +63,12 @@ impl From<&NavigatorLogin> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigatorLogin);
 
-
 impl NavigatorLogin {
     /// The setStatus method.
     /// [`NavigatorLogin.setStatus`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLogin/setStatus)
     pub fn set_status(&self, status: &LoginStatus) -> Promise<Undefined> {
-        self.inner.call("setStatus", &[status.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("setStatus", &[status.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

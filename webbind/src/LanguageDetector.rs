@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LanguageDetector class.
 /// [`LanguageDetector`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct LanguageDetector {
 
 impl FromVal for LanguageDetector {
     fn from_val(v: &Any) -> Self {
-        LanguageDetector { inner: Any::from_val(v) }
+        LanguageDetector {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for LanguageDetector {
 
 impl AsMut<Any> for LanguageDetector {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LanguageDetector> for Any {
@@ -64,61 +63,85 @@ impl From<&LanguageDetector> for Any {
 
 jsbind::utils::impl_dyn_cast!(LanguageDetector);
 
-
 impl LanguageDetector {
     /// The create method.
     /// [`LanguageDetector.create`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/create)
     pub fn create0() -> Promise<LanguageDetector> {
-        Any::global("LanguageDetector").call("create", &[]).as_::<Promise<LanguageDetector>>()
+        Any::global("LanguageDetector")
+            .call("create", &[])
+            .as_::<Promise<LanguageDetector>>()
     }
     /// The create method.
     /// [`LanguageDetector.create`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/create)
     pub fn create1(options: &LanguageDetectorCreateOptions) -> Promise<LanguageDetector> {
-        Any::global("LanguageDetector").call("create", &[options.into(), ]).as_::<Promise<LanguageDetector>>()
+        Any::global("LanguageDetector")
+            .call("create", &[options.into()])
+            .as_::<Promise<LanguageDetector>>()
     }
 }
 impl LanguageDetector {
     /// The availability method.
     /// [`LanguageDetector.availability`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/availability)
     pub fn availability0() -> Promise<Availability> {
-        Any::global("LanguageDetector").call("availability", &[]).as_::<Promise<Availability>>()
+        Any::global("LanguageDetector")
+            .call("availability", &[])
+            .as_::<Promise<Availability>>()
     }
     /// The availability method.
     /// [`LanguageDetector.availability`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/availability)
     pub fn availability1(options: &LanguageDetectorCreateCoreOptions) -> Promise<Availability> {
-        Any::global("LanguageDetector").call("availability", &[options.into(), ]).as_::<Promise<Availability>>()
+        Any::global("LanguageDetector")
+            .call("availability", &[options.into()])
+            .as_::<Promise<Availability>>()
     }
 }
 impl LanguageDetector {
     /// The detect method.
     /// [`LanguageDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/detect)
     pub fn detect0(&self, input: &JsString) -> Promise<TypedArray<LanguageDetectionResult>> {
-        self.inner.call("detect", &[input.into(), ]).as_::<Promise<TypedArray<LanguageDetectionResult>>>()
+        self.inner
+            .call("detect", &[input.into()])
+            .as_::<Promise<TypedArray<LanguageDetectionResult>>>()
     }
     /// The detect method.
     /// [`LanguageDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/detect)
-    pub fn detect1(&self, input: &JsString, options: &LanguageDetectorDetectOptions) -> Promise<TypedArray<LanguageDetectionResult>> {
-        self.inner.call("detect", &[input.into(), options.into(), ]).as_::<Promise<TypedArray<LanguageDetectionResult>>>()
+    pub fn detect1(
+        &self,
+        input: &JsString,
+        options: &LanguageDetectorDetectOptions,
+    ) -> Promise<TypedArray<LanguageDetectionResult>> {
+        self.inner
+            .call("detect", &[input.into(), options.into()])
+            .as_::<Promise<TypedArray<LanguageDetectionResult>>>()
     }
 }
 impl LanguageDetector {
     /// Getter of the `expectedInputLanguages` attribute.
     /// [`LanguageDetector.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/expectedInputLanguages)
     pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner.get("expectedInputLanguages").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<TypedArray<JsString>>()
     }
-
 }
 impl LanguageDetector {
     /// The measureInputUsage method.
     /// [`LanguageDetector.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
-        self.inner.call("measureInputUsage", &[input.into(), ]).as_::<Promise<f64>>()
+        self.inner
+            .call("measureInputUsage", &[input.into()])
+            .as_::<Promise<f64>>()
     }
     /// The measureInputUsage method.
     /// [`LanguageDetector.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/measureInputUsage)
-    pub fn measure_input_usage1(&self, input: &JsString, options: &LanguageDetectorDetectOptions) -> Promise<f64> {
-        self.inner.call("measureInputUsage", &[input.into(), options.into(), ]).as_::<Promise<f64>>()
+    pub fn measure_input_usage1(
+        &self,
+        input: &JsString,
+        options: &LanguageDetectorDetectOptions,
+    ) -> Promise<f64> {
+        self.inner
+            .call("measureInputUsage", &[input.into(), options.into()])
+            .as_::<Promise<f64>>()
     }
 }
 impl LanguageDetector {
@@ -127,12 +150,11 @@ impl LanguageDetector {
     pub fn input_quota(&self) -> f64 {
         self.inner.get("inputQuota").as_::<f64>()
     }
-
 }
 impl LanguageDetector {
     /// The destroy method.
     /// [`LanguageDetector.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/destroy)
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

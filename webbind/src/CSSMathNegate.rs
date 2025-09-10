@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMathNegate class.
 /// [`CSSMathNegate`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathNegate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSMathNegate {
 
 impl FromVal for CSSMathNegate {
     fn from_val(v: &Any) -> Self {
-        CSSMathNegate { inner: CSSMathValue::from_val(v) }
+        CSSMathNegate {
+            inner: CSSMathValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSMathNegate {
 
 impl AsMut<Any> for CSSMathNegate {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMathNegate> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSMathNegate> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathNegate);
 
-
-
 impl CSSMathNegate {
     /// The `new CSSMathNegate(..)` constructor, creating a new CSSMathNegate instance
     pub fn new(arg: &Any) -> CSSMathNegate {
         Self {
-            inner: Any::global("CSSMathNegate").new(&[arg.into()]).as_::<CSSMathValue>(),
+            inner: Any::global("CSSMathNegate")
+                .new(&[arg.into()])
+                .as_::<CSSMathValue>(),
         }
     }
-
 }
 impl CSSMathNegate {
     /// Getter of the `value` attribute.
@@ -81,5 +79,4 @@ impl CSSMathNegate {
     pub fn value(&self) -> CSSNumericValue {
         self.inner.get("value").as_::<CSSNumericValue>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CropTarget class.
 /// [`CropTarget`](https://developer.mozilla.org/en-US/docs/Web/API/CropTarget)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CropTarget {
 
 impl FromVal for CropTarget {
     fn from_val(v: &Any) -> Self {
-        CropTarget { inner: Any::from_val(v) }
+        CropTarget {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CropTarget {
 
 impl AsMut<Any> for CropTarget {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CropTarget> for Any {
@@ -64,11 +63,12 @@ impl From<&CropTarget> for Any {
 
 jsbind::utils::impl_dyn_cast!(CropTarget);
 
-
 impl CropTarget {
     /// The fromElement method.
     /// [`CropTarget.fromElement`](https://developer.mozilla.org/en-US/docs/Web/API/CropTarget/fromElement)
     pub fn from_element(element: &Element) -> Promise<CropTarget> {
-        Any::global("CropTarget").call("fromElement", &[element.into(), ]).as_::<Promise<CropTarget>>()
+        Any::global("CropTarget")
+            .call("fromElement", &[element.into()])
+            .as_::<Promise<CropTarget>>()
     }
 }

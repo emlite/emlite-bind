@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DragEvent class.
 /// [`DragEvent`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DragEvent {
 
 impl FromVal for DragEvent {
     fn from_val(v: &Any) -> Self {
-        DragEvent { inner: MouseEvent::from_val(v) }
+        DragEvent {
+            inner: MouseEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DragEvent {
 
 impl AsMut<Any> for DragEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DragEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&DragEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(DragEvent);
 
-
-
 impl DragEvent {
     /// The `new DragEvent(..)` constructor, creating a new DragEvent instance
     pub fn new0(type_: &JsString) -> DragEvent {
         Self {
-            inner: Any::global("DragEvent").new(&[type_.into()]).as_::<MouseEvent>(),
+            inner: Any::global("DragEvent")
+                .new(&[type_.into()])
+                .as_::<MouseEvent>(),
         }
     }
 
     /// The `new DragEvent(..)` constructor, creating a new DragEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &DragEventInit) -> DragEvent {
         Self {
-            inner: Any::global("DragEvent").new(&[type_.into(), event_init_dict.into()]).as_::<MouseEvent>(),
+            inner: Any::global("DragEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<MouseEvent>(),
         }
     }
-
 }
 impl DragEvent {
     /// Getter of the `dataTransfer` attribute.
@@ -88,5 +88,4 @@ impl DragEvent {
     pub fn data_transfer(&self) -> DataTransfer {
         self.inner.get("dataTransfer").as_::<DataTransfer>()
     }
-
 }

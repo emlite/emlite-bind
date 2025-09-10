@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuctionAd dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuctionAd {
 
 impl AsMut<Any> for AuctionAd {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuctionAd> for Any {
@@ -108,7 +105,9 @@ impl AuctionAd {
 impl AuctionAd {
     /// Getter of the `buyerAndSellerReportingId` attribute.
     pub fn buyer_and_seller_reporting_id(&self) -> JsString {
-        self.inner.get("buyerAndSellerReportingId").as_::<JsString>()
+        self.inner
+            .get("buyerAndSellerReportingId")
+            .as_::<JsString>()
     }
 
     /// Setter of the `buyerAndSellerReportingId` attribute.
@@ -119,18 +118,23 @@ impl AuctionAd {
 impl AuctionAd {
     /// Getter of the `selectableBuyerAndSellerReportingIds` attribute.
     pub fn selectable_buyer_and_seller_reporting_ids(&self) -> TypedArray<JsString> {
-        self.inner.get("selectableBuyerAndSellerReportingIds").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("selectableBuyerAndSellerReportingIds")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `selectableBuyerAndSellerReportingIds` attribute.
     pub fn set_selectable_buyer_and_seller_reporting_ids(&mut self, value: &TypedArray<JsString>) {
-        self.inner.set("selectableBuyerAndSellerReportingIds", value);
+        self.inner
+            .set("selectableBuyerAndSellerReportingIds", value);
     }
 }
 impl AuctionAd {
     /// Getter of the `allowedReportingOrigins` attribute.
     pub fn allowed_reporting_origins(&self) -> TypedArray<JsString> {
-        self.inner.get("allowedReportingOrigins").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("allowedReportingOrigins")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `allowedReportingOrigins` attribute.

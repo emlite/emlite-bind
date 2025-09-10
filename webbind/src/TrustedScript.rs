@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TrustedScript class.
 /// [`TrustedScript`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedScript)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TrustedScript {
 
 impl FromVal for TrustedScript {
     fn from_val(v: &Any) -> Self {
-        TrustedScript { inner: Any::from_val(v) }
+        TrustedScript {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TrustedScript {
 
 impl AsMut<Any> for TrustedScript {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TrustedScript> for Any {
@@ -64,11 +63,10 @@ impl From<&TrustedScript> for Any {
 
 jsbind::utils::impl_dyn_cast!(TrustedScript);
 
-
 impl TrustedScript {
     /// The toJSON method.
     /// [`TrustedScript.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedScript/toJSON)
-    pub fn to_json(&self, ) -> JsString {
+    pub fn to_json(&self) -> JsString {
         self.inner.call("toJSON", &[]).as_::<JsString>()
     }
 }

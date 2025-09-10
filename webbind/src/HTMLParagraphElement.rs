@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLParagraphElement class.
 /// [`HTMLParagraphElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParagraphElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLParagraphElement {
 
 impl FromVal for HTMLParagraphElement {
     fn from_val(v: &Any) -> Self {
-        HTMLParagraphElement { inner: HTMLElement::from_val(v) }
+        HTMLParagraphElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLParagraphElement {
 
 impl AsMut<Any> for HTMLParagraphElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLParagraphElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLParagraphElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLParagraphElement);
 
-
-
 impl HTMLParagraphElement {
     /// The `new HTMLParagraphElement(..)` constructor, creating a new HTMLParagraphElement instance
     pub fn new() -> HTMLParagraphElement {
         Self {
-            inner: Any::global("HTMLParagraphElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLParagraphElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLParagraphElement {
     /// Getter of the `align` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HMACGetSecretOutput dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HMACGetSecretOutput {
 
 impl AsMut<Any> for HMACGetSecretOutput {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HMACGetSecretOutput> for Any {

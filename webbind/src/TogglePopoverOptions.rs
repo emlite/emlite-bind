@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TogglePopoverOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for TogglePopoverOptions {
 
 impl AsMut<Any> for TogglePopoverOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TogglePopoverOptions> for Any {

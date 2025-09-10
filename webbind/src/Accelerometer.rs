@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Accelerometer class.
 /// [`Accelerometer`](https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Accelerometer {
 
 impl FromVal for Accelerometer {
     fn from_val(v: &Any) -> Self {
-        Accelerometer { inner: Sensor::from_val(v) }
+        Accelerometer {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Accelerometer {
 
 impl AsMut<Any> for Accelerometer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Accelerometer> for Any {
@@ -64,8 +63,6 @@ impl From<&Accelerometer> for Any {
 
 jsbind::utils::impl_dyn_cast!(Accelerometer);
 
-
-
 impl Accelerometer {
     /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
     pub fn new0() -> Accelerometer {
@@ -77,10 +74,11 @@ impl Accelerometer {
     /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
     pub fn new1(options: &AccelerometerSensorOptions) -> Accelerometer {
         Self {
-            inner: Any::global("Accelerometer").new(&[options.into()]).as_::<Sensor>(),
+            inner: Any::global("Accelerometer")
+                .new(&[options.into()])
+                .as_::<Sensor>(),
         }
     }
-
 }
 impl Accelerometer {
     /// Getter of the `x` attribute.
@@ -88,7 +86,6 @@ impl Accelerometer {
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
-
 }
 impl Accelerometer {
     /// Getter of the `y` attribute.
@@ -96,7 +93,6 @@ impl Accelerometer {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
-
 }
 impl Accelerometer {
     /// Getter of the `z` attribute.
@@ -104,5 +100,4 @@ impl Accelerometer {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
-
 }

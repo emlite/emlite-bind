@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The KeyFrameRequestEvent class.
 /// [`KeyFrameRequestEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyFrameRequestEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct KeyFrameRequestEvent {
 
 impl FromVal for KeyFrameRequestEvent {
     fn from_val(v: &Any) -> Self {
-        KeyFrameRequestEvent { inner: Event::from_val(v) }
+        KeyFrameRequestEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for KeyFrameRequestEvent {
 
 impl AsMut<Any> for KeyFrameRequestEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<KeyFrameRequestEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&KeyFrameRequestEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(KeyFrameRequestEvent);
 
-
-
 impl KeyFrameRequestEvent {
     /// The `new KeyFrameRequestEvent(..)` constructor, creating a new KeyFrameRequestEvent instance
     pub fn new0(type_: &JsString) -> KeyFrameRequestEvent {
         Self {
-            inner: Any::global("KeyFrameRequestEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("KeyFrameRequestEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new KeyFrameRequestEvent(..)` constructor, creating a new KeyFrameRequestEvent instance
     pub fn new1(type_: &JsString, rid: &JsString) -> KeyFrameRequestEvent {
         Self {
-            inner: Any::global("KeyFrameRequestEvent").new(&[type_.into(), rid.into()]).as_::<Event>(),
+            inner: Any::global("KeyFrameRequestEvent")
+                .new(&[type_.into(), rid.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl KeyFrameRequestEvent {
     /// Getter of the `rid` attribute.
@@ -88,5 +88,4 @@ impl KeyFrameRequestEvent {
     pub fn rid(&self) -> JsString {
         self.inner.get("rid").as_::<JsString>()
     }
-
 }

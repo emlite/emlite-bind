@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLLIElement class.
 /// [`HTMLLIElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLLIElement {
 
 impl FromVal for HTMLLIElement {
     fn from_val(v: &Any) -> Self {
-        HTMLLIElement { inner: HTMLElement::from_val(v) }
+        HTMLLIElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLLIElement {
 
 impl AsMut<Any> for HTMLLIElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLLIElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLLIElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLLIElement);
 
-
-
 impl HTMLLIElement {
     /// The `new HTMLLIElement(..)` constructor, creating a new HTMLLIElement instance
     pub fn new() -> HTMLLIElement {
@@ -73,7 +70,6 @@ impl HTMLLIElement {
             inner: Any::global("HTMLLIElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLLIElement {
     /// Getter of the `value` attribute.

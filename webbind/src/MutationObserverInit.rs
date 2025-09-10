@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MutationObserverInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MutationObserverInit {
 
 impl AsMut<Any> for MutationObserverInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MutationObserverInit> for Any {
@@ -130,7 +127,9 @@ impl MutationObserverInit {
 impl MutationObserverInit {
     /// Getter of the `attributeFilter` attribute.
     pub fn attribute_filter(&self) -> TypedArray<JsString> {
-        self.inner.get("attributeFilter").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("attributeFilter")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `attributeFilter` attribute.

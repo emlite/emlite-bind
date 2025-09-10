@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CloseWatcher class.
 /// [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CloseWatcher {
 
 impl FromVal for CloseWatcher {
     fn from_val(v: &Any) -> Self {
-        CloseWatcher { inner: EventTarget::from_val(v) }
+        CloseWatcher {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CloseWatcher {
 
 impl AsMut<Any> for CloseWatcher {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CloseWatcher> for Any {
@@ -64,8 +63,6 @@ impl From<&CloseWatcher> for Any {
 
 jsbind::utils::impl_dyn_cast!(CloseWatcher);
 
-
-
 impl CloseWatcher {
     /// The `new CloseWatcher(..)` constructor, creating a new CloseWatcher instance
     pub fn new0() -> CloseWatcher {
@@ -77,29 +74,30 @@ impl CloseWatcher {
     /// The `new CloseWatcher(..)` constructor, creating a new CloseWatcher instance
     pub fn new1(options: &CloseWatcherOptions) -> CloseWatcher {
         Self {
-            inner: Any::global("CloseWatcher").new(&[options.into()]).as_::<EventTarget>(),
+            inner: Any::global("CloseWatcher")
+                .new(&[options.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl CloseWatcher {
     /// The requestClose method.
     /// [`CloseWatcher.requestClose`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/requestClose)
-    pub fn request_close(&self, ) -> Undefined {
+    pub fn request_close(&self) -> Undefined {
         self.inner.call("requestClose", &[]).as_::<Undefined>()
     }
 }
 impl CloseWatcher {
     /// The close method.
     /// [`CloseWatcher.close`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/close)
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
 impl CloseWatcher {
     /// The destroy method.
     /// [`CloseWatcher.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/destroy)
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

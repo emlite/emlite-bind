@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ScreenDetails class.
 /// [`ScreenDetails`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenDetails)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ScreenDetails {
 
 impl FromVal for ScreenDetails {
     fn from_val(v: &Any) -> Self {
-        ScreenDetails { inner: EventTarget::from_val(v) }
+        ScreenDetails {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ScreenDetails {
 
 impl AsMut<Any> for ScreenDetails {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ScreenDetails> for Any {
@@ -64,14 +63,14 @@ impl From<&ScreenDetails> for Any {
 
 jsbind::utils::impl_dyn_cast!(ScreenDetails);
 
-
 impl ScreenDetails {
     /// Getter of the `screens` attribute.
     /// [`ScreenDetails.screens`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenDetails/screens)
     pub fn screens(&self) -> TypedArray<ScreenDetailed> {
-        self.inner.get("screens").as_::<TypedArray<ScreenDetailed>>()
+        self.inner
+            .get("screens")
+            .as_::<TypedArray<ScreenDetailed>>()
     }
-
 }
 impl ScreenDetails {
     /// Getter of the `currentScreen` attribute.
@@ -79,7 +78,6 @@ impl ScreenDetails {
     pub fn current_screen(&self) -> ScreenDetailed {
         self.inner.get("currentScreen").as_::<ScreenDetailed>()
     }
-
 }
 impl ScreenDetails {
     /// Getter of the `onscreenschange` attribute.

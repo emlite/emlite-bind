@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportError class.
 /// [`WebTransportError`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebTransportError {
 
 impl FromVal for WebTransportError {
     fn from_val(v: &Any) -> Self {
-        WebTransportError { inner: DOMException::from_val(v) }
+        WebTransportError {
+            inner: DOMException::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebTransportError {
 
 impl AsMut<Any> for WebTransportError {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportError> for Any {
@@ -64,30 +63,33 @@ impl From<&WebTransportError> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebTransportError);
 
-
-
 impl WebTransportError {
     /// The `new WebTransportError(..)` constructor, creating a new WebTransportError instance
     pub fn new0() -> WebTransportError {
         Self {
-            inner: Any::global("WebTransportError").new(&[]).as_::<DOMException>(),
+            inner: Any::global("WebTransportError")
+                .new(&[])
+                .as_::<DOMException>(),
         }
     }
 
     /// The `new WebTransportError(..)` constructor, creating a new WebTransportError instance
     pub fn new1(message: &JsString) -> WebTransportError {
         Self {
-            inner: Any::global("WebTransportError").new(&[message.into()]).as_::<DOMException>(),
+            inner: Any::global("WebTransportError")
+                .new(&[message.into()])
+                .as_::<DOMException>(),
         }
     }
 
     /// The `new WebTransportError(..)` constructor, creating a new WebTransportError instance
     pub fn new2(message: &JsString, options: &WebTransportErrorOptions) -> WebTransportError {
         Self {
-            inner: Any::global("WebTransportError").new(&[message.into(), options.into()]).as_::<DOMException>(),
+            inner: Any::global("WebTransportError")
+                .new(&[message.into(), options.into()])
+                .as_::<DOMException>(),
         }
     }
-
 }
 impl WebTransportError {
     /// Getter of the `source` attribute.
@@ -95,7 +97,6 @@ impl WebTransportError {
     pub fn source(&self) -> WebTransportErrorSource {
         self.inner.get("source").as_::<WebTransportErrorSource>()
     }
-
 }
 impl WebTransportError {
     /// Getter of the `streamErrorCode` attribute.
@@ -103,5 +104,4 @@ impl WebTransportError {
     pub fn stream_error_code(&self) -> u32 {
         self.inner.get("streamErrorCode").as_::<u32>()
     }
-
 }

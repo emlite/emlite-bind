@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WritableStreamDefaultController class.
 /// [`WritableStreamDefaultController`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WritableStreamDefaultController {
 
 impl FromVal for WritableStreamDefaultController {
     fn from_val(v: &Any) -> Self {
-        WritableStreamDefaultController { inner: Any::from_val(v) }
+        WritableStreamDefaultController {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WritableStreamDefaultController {
 
 impl AsMut<Any> for WritableStreamDefaultController {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WritableStreamDefaultController> for Any {
@@ -64,24 +63,22 @@ impl From<&WritableStreamDefaultController> for Any {
 
 jsbind::utils::impl_dyn_cast!(WritableStreamDefaultController);
 
-
 impl WritableStreamDefaultController {
     /// Getter of the `signal` attribute.
     /// [`WritableStreamDefaultController.signal`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/signal)
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
-
 }
 impl WritableStreamDefaultController {
     /// The error method.
     /// [`WritableStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/error)
-    pub fn error0(&self, ) -> Undefined {
+    pub fn error0(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
     /// The error method.
     /// [`WritableStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/error)
     pub fn error1(&self, e: &Any) -> Undefined {
-        self.inner.call("error", &[e.into(), ]).as_::<Undefined>()
+        self.inner.call("error", &[e.into()]).as_::<Undefined>()
     }
 }

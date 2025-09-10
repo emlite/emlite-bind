@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ElementInternals class.
 /// [`ElementInternals`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ElementInternals {
 
 impl FromVal for ElementInternals {
     fn from_val(v: &Any) -> Self {
-        ElementInternals { inner: Any::from_val(v) }
+        ElementInternals {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ElementInternals {
 
 impl AsMut<Any> for ElementInternals {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ElementInternals> for Any {
@@ -64,25 +63,27 @@ impl From<&ElementInternals> for Any {
 
 jsbind::utils::impl_dyn_cast!(ElementInternals);
 
-
 impl ElementInternals {
     /// Getter of the `shadowRoot` attribute.
     /// [`ElementInternals.shadowRoot`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/shadowRoot)
     pub fn shadow_root(&self) -> ShadowRoot {
         self.inner.get("shadowRoot").as_::<ShadowRoot>()
     }
-
 }
 impl ElementInternals {
     /// The setFormValue method.
     /// [`ElementInternals.setFormValue`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setFormValue)
     pub fn set_form_value0(&self, value: &Any) -> Undefined {
-        self.inner.call("setFormValue", &[value.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setFormValue", &[value.into()])
+            .as_::<Undefined>()
     }
     /// The setFormValue method.
     /// [`ElementInternals.setFormValue`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setFormValue)
     pub fn set_form_value1(&self, value: &Any, state: &Any) -> Undefined {
-        self.inner.call("setFormValue", &[value.into(), state.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setFormValue", &[value.into(), state.into()])
+            .as_::<Undefined>()
     }
 }
 impl ElementInternals {
@@ -91,28 +92,41 @@ impl ElementInternals {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
-
 }
 impl ElementInternals {
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
-    pub fn set_validity0(&self, ) -> Undefined {
+    pub fn set_validity0(&self) -> Undefined {
         self.inner.call("setValidity", &[]).as_::<Undefined>()
     }
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
     pub fn set_validity1(&self, flags: &ValidityStateFlags) -> Undefined {
-        self.inner.call("setValidity", &[flags.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setValidity", &[flags.into()])
+            .as_::<Undefined>()
     }
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
     pub fn set_validity2(&self, flags: &ValidityStateFlags, message: &JsString) -> Undefined {
-        self.inner.call("setValidity", &[flags.into(), message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setValidity", &[flags.into(), message.into()])
+            .as_::<Undefined>()
     }
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
-    pub fn set_validity3(&self, flags: &ValidityStateFlags, message: &JsString, anchor: &HTMLElement) -> Undefined {
-        self.inner.call("setValidity", &[flags.into(), message.into(), anchor.into(), ]).as_::<Undefined>()
+    pub fn set_validity3(
+        &self,
+        flags: &ValidityStateFlags,
+        message: &JsString,
+        anchor: &HTMLElement,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "setValidity",
+                &[flags.into(), message.into(), anchor.into()],
+            )
+            .as_::<Undefined>()
     }
 }
 impl ElementInternals {
@@ -121,7 +135,6 @@ impl ElementInternals {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
-
 }
 impl ElementInternals {
     /// Getter of the `validity` attribute.
@@ -129,7 +142,6 @@ impl ElementInternals {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
-
 }
 impl ElementInternals {
     /// Getter of the `validationMessage` attribute.
@@ -137,19 +149,18 @@ impl ElementInternals {
     pub fn validation_message(&self) -> JsString {
         self.inner.get("validationMessage").as_::<JsString>()
     }
-
 }
 impl ElementInternals {
     /// The checkValidity method.
     /// [`ElementInternals.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/checkValidity)
-    pub fn check_validity(&self, ) -> bool {
+    pub fn check_validity(&self) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
 }
 impl ElementInternals {
     /// The reportValidity method.
     /// [`ElementInternals.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/reportValidity)
-    pub fn report_validity(&self, ) -> bool {
+    pub fn report_validity(&self) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
 }
@@ -159,7 +170,6 @@ impl ElementInternals {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
-
 }
 impl ElementInternals {
     /// Getter of the `states` attribute.
@@ -167,7 +177,6 @@ impl ElementInternals {
     pub fn states(&self) -> CustomStateSet {
         self.inner.get("states").as_::<CustomStateSet>()
     }
-
 }
 impl ElementInternals {
     /// Getter of the `role` attribute.
@@ -186,7 +195,9 @@ impl ElementInternals {
     /// Getter of the `ariaActiveDescendantElement` attribute.
     /// [`ElementInternals.ariaActiveDescendantElement`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaActiveDescendantElement)
     pub fn aria_active_descendant_element(&self) -> Element {
-        self.inner.get("ariaActiveDescendantElement").as_::<Element>()
+        self.inner
+            .get("ariaActiveDescendantElement")
+            .as_::<Element>()
     }
 
     /// Setter of the `ariaActiveDescendantElement` attribute.
@@ -238,7 +249,9 @@ impl ElementInternals {
     /// Getter of the `ariaBrailleRoleDescription` attribute.
     /// [`ElementInternals.ariaBrailleRoleDescription`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaBrailleRoleDescription)
     pub fn aria_braille_role_description(&self) -> JsString {
-        self.inner.get("ariaBrailleRoleDescription").as_::<JsString>()
+        self.inner
+            .get("ariaBrailleRoleDescription")
+            .as_::<JsString>()
     }
 
     /// Setter of the `ariaBrailleRoleDescription` attribute.
@@ -329,7 +342,9 @@ impl ElementInternals {
     /// Getter of the `ariaControlsElements` attribute.
     /// [`ElementInternals.ariaControlsElements`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaControlsElements)
     pub fn aria_controls_elements(&self) -> TypedArray<Element> {
-        self.inner.get("ariaControlsElements").as_::<TypedArray<Element>>()
+        self.inner
+            .get("ariaControlsElements")
+            .as_::<TypedArray<Element>>()
     }
 
     /// Setter of the `ariaControlsElements` attribute.
@@ -355,7 +370,9 @@ impl ElementInternals {
     /// Getter of the `ariaDescribedByElements` attribute.
     /// [`ElementInternals.ariaDescribedByElements`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaDescribedByElements)
     pub fn aria_described_by_elements(&self) -> TypedArray<Element> {
-        self.inner.get("ariaDescribedByElements").as_::<TypedArray<Element>>()
+        self.inner
+            .get("ariaDescribedByElements")
+            .as_::<TypedArray<Element>>()
     }
 
     /// Setter of the `ariaDescribedByElements` attribute.
@@ -381,7 +398,9 @@ impl ElementInternals {
     /// Getter of the `ariaDetailsElements` attribute.
     /// [`ElementInternals.ariaDetailsElements`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaDetailsElements)
     pub fn aria_details_elements(&self) -> TypedArray<Element> {
-        self.inner.get("ariaDetailsElements").as_::<TypedArray<Element>>()
+        self.inner
+            .get("ariaDetailsElements")
+            .as_::<TypedArray<Element>>()
     }
 
     /// Setter of the `ariaDetailsElements` attribute.
@@ -407,7 +426,9 @@ impl ElementInternals {
     /// Getter of the `ariaErrorMessageElements` attribute.
     /// [`ElementInternals.ariaErrorMessageElements`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaErrorMessageElements)
     pub fn aria_error_message_elements(&self) -> TypedArray<Element> {
-        self.inner.get("ariaErrorMessageElements").as_::<TypedArray<Element>>()
+        self.inner
+            .get("ariaErrorMessageElements")
+            .as_::<TypedArray<Element>>()
     }
 
     /// Setter of the `ariaErrorMessageElements` attribute.
@@ -433,7 +454,9 @@ impl ElementInternals {
     /// Getter of the `ariaFlowToElements` attribute.
     /// [`ElementInternals.ariaFlowToElements`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaFlowToElements)
     pub fn aria_flow_to_elements(&self) -> TypedArray<Element> {
-        self.inner.get("ariaFlowToElements").as_::<TypedArray<Element>>()
+        self.inner
+            .get("ariaFlowToElements")
+            .as_::<TypedArray<Element>>()
     }
 
     /// Setter of the `ariaFlowToElements` attribute.
@@ -511,7 +534,9 @@ impl ElementInternals {
     /// Getter of the `ariaLabelledByElements` attribute.
     /// [`ElementInternals.ariaLabelledByElements`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaLabelledByElements)
     pub fn aria_labelled_by_elements(&self) -> TypedArray<Element> {
-        self.inner.get("ariaLabelledByElements").as_::<TypedArray<Element>>()
+        self.inner
+            .get("ariaLabelledByElements")
+            .as_::<TypedArray<Element>>()
     }
 
     /// Setter of the `ariaLabelledByElements` attribute.
@@ -602,7 +627,9 @@ impl ElementInternals {
     /// Getter of the `ariaOwnsElements` attribute.
     /// [`ElementInternals.ariaOwnsElements`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/ariaOwnsElements)
     pub fn aria_owns_elements(&self) -> TypedArray<Element> {
-        self.inner.get("ariaOwnsElements").as_::<TypedArray<Element>>()
+        self.inner
+            .get("ariaOwnsElements")
+            .as_::<TypedArray<Element>>()
     }
 
     /// Setter of the `ariaOwnsElements` attribute.

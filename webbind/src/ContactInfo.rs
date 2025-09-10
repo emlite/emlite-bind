@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ContactInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ContactInfo {
 
 impl AsMut<Any> for ContactInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ContactInfo> for Any {
@@ -64,7 +61,9 @@ impl From<&ContactInfo> for Any {
 impl ContactInfo {
     /// Getter of the `address` attribute.
     pub fn address(&self) -> TypedArray<ContactAddress> {
-        self.inner.get("address").as_::<TypedArray<ContactAddress>>()
+        self.inner
+            .get("address")
+            .as_::<TypedArray<ContactAddress>>()
     }
 
     /// Setter of the `address` attribute.

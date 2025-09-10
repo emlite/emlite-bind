@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The StyleSheet class.
 /// [`StyleSheet`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct StyleSheet {
 
 impl FromVal for StyleSheet {
     fn from_val(v: &Any) -> Self {
-        StyleSheet { inner: Any::from_val(v) }
+        StyleSheet {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for StyleSheet {
 
 impl AsMut<Any> for StyleSheet {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<StyleSheet> for Any {
@@ -64,14 +63,12 @@ impl From<&StyleSheet> for Any {
 
 jsbind::utils::impl_dyn_cast!(StyleSheet);
 
-
 impl StyleSheet {
     /// Getter of the `type` attribute.
     /// [`StyleSheet.type`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet/type)
     pub fn type_(&self) -> JsString {
         self.inner.get("type").as_::<JsString>()
     }
-
 }
 impl StyleSheet {
     /// Getter of the `href` attribute.
@@ -79,7 +76,6 @@ impl StyleSheet {
     pub fn href(&self) -> JsString {
         self.inner.get("href").as_::<JsString>()
     }
-
 }
 impl StyleSheet {
     /// Getter of the `ownerNode` attribute.
@@ -87,7 +83,6 @@ impl StyleSheet {
     pub fn owner_node(&self) -> Any {
         self.inner.get("ownerNode").as_::<Any>()
     }
-
 }
 impl StyleSheet {
     /// Getter of the `parentStyleSheet` attribute.
@@ -95,7 +90,6 @@ impl StyleSheet {
     pub fn parent_style_sheet(&self) -> CSSStyleSheet {
         self.inner.get("parentStyleSheet").as_::<CSSStyleSheet>()
     }
-
 }
 impl StyleSheet {
     /// Getter of the `title` attribute.
@@ -103,7 +97,6 @@ impl StyleSheet {
     pub fn title(&self) -> JsString {
         self.inner.get("title").as_::<JsString>()
     }
-
 }
 impl StyleSheet {
     /// Getter of the `media` attribute.
@@ -111,7 +104,6 @@ impl StyleSheet {
     pub fn media(&self) -> MediaList {
         self.inner.get("media").as_::<MediaList>()
     }
-
 }
 impl StyleSheet {
     /// Getter of the `disabled` attribute.

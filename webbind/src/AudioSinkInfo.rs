@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioSinkInfo class.
 /// [`AudioSinkInfo`](https://developer.mozilla.org/en-US/docs/Web/API/AudioSinkInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioSinkInfo {
 
 impl FromVal for AudioSinkInfo {
     fn from_val(v: &Any) -> Self {
-        AudioSinkInfo { inner: Any::from_val(v) }
+        AudioSinkInfo {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioSinkInfo {
 
 impl AsMut<Any> for AudioSinkInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioSinkInfo> for Any {
@@ -64,12 +63,10 @@ impl From<&AudioSinkInfo> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioSinkInfo);
 
-
 impl AudioSinkInfo {
     /// Getter of the `type` attribute.
     /// [`AudioSinkInfo.type`](https://developer.mozilla.org/en-US/docs/Web/API/AudioSinkInfo/type)
     pub fn type_(&self) -> AudioSinkType {
         self.inner.get("type").as_::<AudioSinkType>()
     }
-
 }

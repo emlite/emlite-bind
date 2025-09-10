@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LayoutFragment class.
 /// [`LayoutFragment`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutFragment)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct LayoutFragment {
 
 impl FromVal for LayoutFragment {
     fn from_val(v: &Any) -> Self {
-        LayoutFragment { inner: Any::from_val(v) }
+        LayoutFragment {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for LayoutFragment {
 
 impl AsMut<Any> for LayoutFragment {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LayoutFragment> for Any {
@@ -64,14 +63,12 @@ impl From<&LayoutFragment> for Any {
 
 jsbind::utils::impl_dyn_cast!(LayoutFragment);
 
-
 impl LayoutFragment {
     /// Getter of the `inlineSize` attribute.
     /// [`LayoutFragment.inlineSize`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutFragment/inlineSize)
     pub fn inline_size(&self) -> f64 {
         self.inner.get("inlineSize").as_::<f64>()
     }
-
 }
 impl LayoutFragment {
     /// Getter of the `blockSize` attribute.
@@ -79,7 +76,6 @@ impl LayoutFragment {
     pub fn block_size(&self) -> f64 {
         self.inner.get("blockSize").as_::<f64>()
     }
-
 }
 impl LayoutFragment {
     /// Getter of the `inlineOffset` attribute.
@@ -113,7 +109,6 @@ impl LayoutFragment {
     pub fn data(&self) -> Any {
         self.inner.get("data").as_::<Any>()
     }
-
 }
 impl LayoutFragment {
     /// Getter of the `breakToken` attribute.
@@ -121,5 +116,4 @@ impl LayoutFragment {
     pub fn break_token(&self) -> ChildBreakToken {
         self.inner.get("breakToken").as_::<ChildBreakToken>()
     }
-
 }

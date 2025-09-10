@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Landmark dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for Landmark {
 
 impl AsMut<Any> for Landmark {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Landmark> for Any {

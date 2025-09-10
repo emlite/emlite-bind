@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Serial class.
 /// [`Serial`](https://developer.mozilla.org/en-US/docs/Web/API/Serial)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Serial {
 
 impl FromVal for Serial {
     fn from_val(v: &Any) -> Self {
-        Serial { inner: EventTarget::from_val(v) }
+        Serial {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Serial {
 
 impl AsMut<Any> for Serial {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Serial> for Any {
@@ -63,7 +62,6 @@ impl From<&Serial> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(Serial);
-
 
 impl Serial {
     /// Getter of the `onconnect` attribute.
@@ -94,19 +92,25 @@ impl Serial {
 impl Serial {
     /// The getPorts method.
     /// [`Serial.getPorts`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/getPorts)
-    pub fn get_ports(&self, ) -> Promise<TypedArray<SerialPort>> {
-        self.inner.call("getPorts", &[]).as_::<Promise<TypedArray<SerialPort>>>()
+    pub fn get_ports(&self) -> Promise<TypedArray<SerialPort>> {
+        self.inner
+            .call("getPorts", &[])
+            .as_::<Promise<TypedArray<SerialPort>>>()
     }
 }
 impl Serial {
     /// The requestPort method.
     /// [`Serial.requestPort`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/requestPort)
-    pub fn request_port0(&self, ) -> Promise<SerialPort> {
-        self.inner.call("requestPort", &[]).as_::<Promise<SerialPort>>()
+    pub fn request_port0(&self) -> Promise<SerialPort> {
+        self.inner
+            .call("requestPort", &[])
+            .as_::<Promise<SerialPort>>()
     }
     /// The requestPort method.
     /// [`Serial.requestPort`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/requestPort)
     pub fn request_port1(&self, options: &SerialPortRequestOptions) -> Promise<SerialPort> {
-        self.inner.call("requestPort", &[options.into(), ]).as_::<Promise<SerialPort>>()
+        self.inner
+            .call("requestPort", &[options.into()])
+            .as_::<Promise<SerialPort>>()
     }
 }

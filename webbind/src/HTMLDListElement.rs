@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLDListElement class.
 /// [`HTMLDListElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDListElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLDListElement {
 
 impl FromVal for HTMLDListElement {
     fn from_val(v: &Any) -> Self {
-        HTMLDListElement { inner: HTMLElement::from_val(v) }
+        HTMLDListElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLDListElement {
 
 impl AsMut<Any> for HTMLDListElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLDListElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLDListElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLDListElement);
 
-
-
 impl HTMLDListElement {
     /// The `new HTMLDListElement(..)` constructor, creating a new HTMLDListElement instance
     pub fn new() -> HTMLDListElement {
         Self {
-            inner: Any::global("HTMLDListElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLDListElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLDListElement {
     /// Getter of the `compact` attribute.

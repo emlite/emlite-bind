@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRCompositionLayer class.
 /// [`XRCompositionLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRCompositionLayer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRCompositionLayer {
 
 impl FromVal for XRCompositionLayer {
     fn from_val(v: &Any) -> Self {
-        XRCompositionLayer { inner: XRLayer::from_val(v) }
+        XRCompositionLayer {
+            inner: XRLayer::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRCompositionLayer {
 
 impl AsMut<Any> for XRCompositionLayer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRCompositionLayer> for Any {
@@ -64,14 +63,12 @@ impl From<&XRCompositionLayer> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRCompositionLayer);
 
-
 impl XRCompositionLayer {
     /// Getter of the `layout` attribute.
     /// [`XRCompositionLayer.layout`](https://developer.mozilla.org/en-US/docs/Web/API/XRCompositionLayer/layout)
     pub fn layout(&self) -> XRLayerLayout {
         self.inner.get("layout").as_::<XRLayerLayout>()
     }
-
 }
 impl XRCompositionLayer {
     /// Getter of the `blendTextureSourceAlpha` attribute.
@@ -118,7 +115,6 @@ impl XRCompositionLayer {
     pub fn mip_levels(&self) -> u32 {
         self.inner.get("mipLevels").as_::<u32>()
     }
-
 }
 impl XRCompositionLayer {
     /// Getter of the `quality` attribute.
@@ -139,12 +135,11 @@ impl XRCompositionLayer {
     pub fn needs_redraw(&self) -> bool {
         self.inner.get("needsRedraw").as_::<bool>()
     }
-
 }
 impl XRCompositionLayer {
     /// The destroy method.
     /// [`XRCompositionLayer.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/XRCompositionLayer/destroy)
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

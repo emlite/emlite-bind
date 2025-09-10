@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RealTimeReporting class.
 /// [`RealTimeReporting`](https://developer.mozilla.org/en-US/docs/Web/API/RealTimeReporting)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RealTimeReporting {
 
 impl FromVal for RealTimeReporting {
     fn from_val(v: &Any) -> Self {
-        RealTimeReporting { inner: Any::from_val(v) }
+        RealTimeReporting {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RealTimeReporting {
 
 impl AsMut<Any> for RealTimeReporting {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RealTimeReporting> for Any {
@@ -64,11 +63,12 @@ impl From<&RealTimeReporting> for Any {
 
 jsbind::utils::impl_dyn_cast!(RealTimeReporting);
 
-
 impl RealTimeReporting {
     /// The contributeToHistogram method.
     /// [`RealTimeReporting.contributeToHistogram`](https://developer.mozilla.org/en-US/docs/Web/API/RealTimeReporting/contributeToHistogram)
     pub fn contribute_to_histogram(&self, contribution: &RealTimeContribution) -> Undefined {
-        self.inner.call("contributeToHistogram", &[contribution.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("contributeToHistogram", &[contribution.into()])
+            .as_::<Undefined>()
     }
 }

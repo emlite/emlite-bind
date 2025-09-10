@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigationCurrentEntryChangeEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for NavigationCurrentEntryChangeEventInit {
 
 impl AsMut<Any> for NavigationCurrentEntryChangeEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigationCurrentEntryChangeEventInit> for Any {

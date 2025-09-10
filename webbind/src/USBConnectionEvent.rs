@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The USBConnectionEvent class.
 /// [`USBConnectionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/USBConnectionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct USBConnectionEvent {
 
 impl FromVal for USBConnectionEvent {
     fn from_val(v: &Any) -> Self {
-        USBConnectionEvent { inner: Event::from_val(v) }
+        USBConnectionEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for USBConnectionEvent {
 
 impl AsMut<Any> for USBConnectionEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<USBConnectionEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&USBConnectionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(USBConnectionEvent);
 
-
-
 impl USBConnectionEvent {
     /// The `new USBConnectionEvent(..)` constructor, creating a new USBConnectionEvent instance
     pub fn new(type_: &JsString, event_init_dict: &USBConnectionEventInit) -> USBConnectionEvent {
         Self {
-            inner: Any::global("USBConnectionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("USBConnectionEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl USBConnectionEvent {
     /// Getter of the `device` attribute.
@@ -81,5 +79,4 @@ impl USBConnectionEvent {
     pub fn device(&self) -> USBDevice {
         self.inner.get("device").as_::<USBDevice>()
     }
-
 }

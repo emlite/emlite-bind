@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BarcodeDetector class.
 /// [`BarcodeDetector`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BarcodeDetector {
 
 impl FromVal for BarcodeDetector {
     fn from_val(v: &Any) -> Self {
-        BarcodeDetector { inner: Any::from_val(v) }
+        BarcodeDetector {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BarcodeDetector {
 
 impl AsMut<Any> for BarcodeDetector {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BarcodeDetector> for Any {
@@ -64,8 +63,6 @@ impl From<&BarcodeDetector> for Any {
 
 jsbind::utils::impl_dyn_cast!(BarcodeDetector);
 
-
-
 impl BarcodeDetector {
     /// The `new BarcodeDetector(..)` constructor, creating a new BarcodeDetector instance
     pub fn new0() -> BarcodeDetector {
@@ -77,22 +74,27 @@ impl BarcodeDetector {
     /// The `new BarcodeDetector(..)` constructor, creating a new BarcodeDetector instance
     pub fn new1(barcode_detector_options: &BarcodeDetectorOptions) -> BarcodeDetector {
         Self {
-            inner: Any::global("BarcodeDetector").new(&[barcode_detector_options.into()]).as_::<Any>(),
+            inner: Any::global("BarcodeDetector")
+                .new(&[barcode_detector_options.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl BarcodeDetector {
     /// The getSupportedFormats method.
     /// [`BarcodeDetector.getSupportedFormats`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/getSupportedFormats)
     pub fn get_supported_formats() -> Promise<TypedArray<BarcodeFormat>> {
-        Any::global("BarcodeDetector").call("getSupportedFormats", &[]).as_::<Promise<TypedArray<BarcodeFormat>>>()
+        Any::global("BarcodeDetector")
+            .call("getSupportedFormats", &[])
+            .as_::<Promise<TypedArray<BarcodeFormat>>>()
     }
 }
 impl BarcodeDetector {
     /// The detect method.
     /// [`BarcodeDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/detect)
     pub fn detect(&self, image: &Any) -> Promise<TypedArray<DetectedBarcode>> {
-        self.inner.call("detect", &[image.into(), ]).as_::<Promise<TypedArray<DetectedBarcode>>>()
+        self.inner
+            .call("detect", &[image.into()])
+            .as_::<Promise<TypedArray<DetectedBarcode>>>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLContextEvent class.
 /// [`WebGLContextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLContextEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLContextEvent {
 
 impl FromVal for WebGLContextEvent {
     fn from_val(v: &Any) -> Self {
-        WebGLContextEvent { inner: Event::from_val(v) }
+        WebGLContextEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLContextEvent {
 
 impl AsMut<Any> for WebGLContextEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLContextEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&WebGLContextEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebGLContextEvent);
 
-
-
 impl WebGLContextEvent {
     /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
     pub fn new0(type_: &JsString) -> WebGLContextEvent {
         Self {
-            inner: Any::global("WebGLContextEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("WebGLContextEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
     pub fn new1(type_: &JsString, event_init: &WebGLContextEventInit) -> WebGLContextEvent {
         Self {
-            inner: Any::global("WebGLContextEvent").new(&[type_.into(), event_init.into()]).as_::<Event>(),
+            inner: Any::global("WebGLContextEvent")
+                .new(&[type_.into(), event_init.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl WebGLContextEvent {
     /// Getter of the `statusMessage` attribute.
@@ -88,5 +88,4 @@ impl WebGLContextEvent {
     pub fn status_message(&self) -> JsString {
         self.inner.get("statusMessage").as_::<JsString>()
     }
-
 }

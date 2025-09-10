@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XPathResult class.
 /// [`XPathResult`](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XPathResult {
 
 impl FromVal for XPathResult {
     fn from_val(v: &Any) -> Self {
-        XPathResult { inner: Any::from_val(v) }
+        XPathResult {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XPathResult {
 
 impl AsMut<Any> for XPathResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XPathResult> for Any {
@@ -64,14 +63,12 @@ impl From<&XPathResult> for Any {
 
 jsbind::utils::impl_dyn_cast!(XPathResult);
 
-
 impl XPathResult {
     /// Getter of the `resultType` attribute.
     /// [`XPathResult.resultType`](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult/resultType)
     pub fn result_type(&self) -> u16 {
         self.inner.get("resultType").as_::<u16>()
     }
-
 }
 impl XPathResult {
     /// Getter of the `numberValue` attribute.
@@ -79,7 +76,6 @@ impl XPathResult {
     pub fn number_value(&self) -> f64 {
         self.inner.get("numberValue").as_::<f64>()
     }
-
 }
 impl XPathResult {
     /// Getter of the `stringValue` attribute.
@@ -87,7 +83,6 @@ impl XPathResult {
     pub fn string_value(&self) -> JsString {
         self.inner.get("stringValue").as_::<JsString>()
     }
-
 }
 impl XPathResult {
     /// Getter of the `booleanValue` attribute.
@@ -95,7 +90,6 @@ impl XPathResult {
     pub fn boolean_value(&self) -> bool {
         self.inner.get("booleanValue").as_::<bool>()
     }
-
 }
 impl XPathResult {
     /// Getter of the `singleNodeValue` attribute.
@@ -103,7 +97,6 @@ impl XPathResult {
     pub fn single_node_value(&self) -> Node {
         self.inner.get("singleNodeValue").as_::<Node>()
     }
-
 }
 impl XPathResult {
     /// Getter of the `invalidIteratorState` attribute.
@@ -111,7 +104,6 @@ impl XPathResult {
     pub fn invalid_iterator_state(&self) -> bool {
         self.inner.get("invalidIteratorState").as_::<bool>()
     }
-
 }
 impl XPathResult {
     /// Getter of the `snapshotLength` attribute.
@@ -119,12 +111,11 @@ impl XPathResult {
     pub fn snapshot_length(&self) -> u32 {
         self.inner.get("snapshotLength").as_::<u32>()
     }
-
 }
 impl XPathResult {
     /// The iterateNext method.
     /// [`XPathResult.iterateNext`](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult/iterateNext)
-    pub fn iterate_next(&self, ) -> Node {
+    pub fn iterate_next(&self) -> Node {
         self.inner.call("iterateNext", &[]).as_::<Node>()
     }
 }
@@ -132,6 +123,8 @@ impl XPathResult {
     /// The snapshotItem method.
     /// [`XPathResult.snapshotItem`](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult/snapshotItem)
     pub fn snapshot_item(&self, index: u32) -> Node {
-        self.inner.call("snapshotItem", &[index.into(), ]).as_::<Node>()
+        self.inner
+            .call("snapshotItem", &[index.into()])
+            .as_::<Node>()
     }
 }

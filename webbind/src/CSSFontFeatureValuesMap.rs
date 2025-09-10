@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSFontFeatureValuesMap class.
 /// [`CSSFontFeatureValuesMap`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSFontFeatureValuesMap {
 
 impl FromVal for CSSFontFeatureValuesMap {
     fn from_val(v: &Any) -> Self {
-        CSSFontFeatureValuesMap { inner: Any::from_val(v) }
+        CSSFontFeatureValuesMap {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSFontFeatureValuesMap {
 
 impl AsMut<Any> for CSSFontFeatureValuesMap {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSFontFeatureValuesMap> for Any {
@@ -64,11 +63,12 @@ impl From<&CSSFontFeatureValuesMap> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesMap);
 
-
 impl CSSFontFeatureValuesMap {
     /// The set method.
     /// [`CSSFontFeatureValuesMap.set`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesMap/set)
     pub fn set(&self, feature_value_name: &JsString, values: &Any) -> Undefined {
-        self.inner.call("set", &[feature_value_name.into(), values.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("set", &[feature_value_name.into(), values.into()])
+            .as_::<Undefined>()
     }
 }

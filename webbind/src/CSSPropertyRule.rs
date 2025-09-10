@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSPropertyRule class.
 /// [`CSSPropertyRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPropertyRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSPropertyRule {
 
 impl FromVal for CSSPropertyRule {
     fn from_val(v: &Any) -> Self {
-        CSSPropertyRule { inner: CSSRule::from_val(v) }
+        CSSPropertyRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSPropertyRule {
 
 impl AsMut<Any> for CSSPropertyRule {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSPropertyRule> for Any {
@@ -64,14 +63,12 @@ impl From<&CSSPropertyRule> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSPropertyRule);
 
-
 impl CSSPropertyRule {
     /// Getter of the `name` attribute.
     /// [`CSSPropertyRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPropertyRule/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
     }
-
 }
 impl CSSPropertyRule {
     /// Getter of the `syntax` attribute.
@@ -79,7 +76,6 @@ impl CSSPropertyRule {
     pub fn syntax(&self) -> JsString {
         self.inner.get("syntax").as_::<JsString>()
     }
-
 }
 impl CSSPropertyRule {
     /// Getter of the `inherits` attribute.
@@ -87,7 +83,6 @@ impl CSSPropertyRule {
     pub fn inherits(&self) -> bool {
         self.inner.get("inherits").as_::<bool>()
     }
-
 }
 impl CSSPropertyRule {
     /// Getter of the `initialValue` attribute.
@@ -95,5 +90,4 @@ impl CSSPropertyRule {
     pub fn initial_value(&self) -> JsString {
         self.inner.get("initialValue").as_::<JsString>()
     }
-
 }

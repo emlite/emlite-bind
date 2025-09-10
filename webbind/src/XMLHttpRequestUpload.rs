@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XMLHttpRequestUpload class.
 /// [`XMLHttpRequestUpload`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestUpload)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XMLHttpRequestUpload {
 
 impl FromVal for XMLHttpRequestUpload {
     fn from_val(v: &Any) -> Self {
-        XMLHttpRequestUpload { inner: XMLHttpRequestEventTarget::from_val(v) }
+        XMLHttpRequestUpload {
+            inner: XMLHttpRequestEventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XMLHttpRequestUpload {
 
 impl AsMut<Any> for XMLHttpRequestUpload {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XMLHttpRequestUpload> for Any {
@@ -63,5 +62,3 @@ impl From<&XMLHttpRequestUpload> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XMLHttpRequestUpload);
-
-

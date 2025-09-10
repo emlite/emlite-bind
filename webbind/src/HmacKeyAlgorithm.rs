@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HmacKeyAlgorithm dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HmacKeyAlgorithm {
 
 impl AsMut<Any> for HmacKeyAlgorithm {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HmacKeyAlgorithm> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GenerateTestReportParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GenerateTestReportParameters {
 
 impl AsMut<Any> for GenerateTestReportParameters {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GenerateTestReportParameters> for Any {

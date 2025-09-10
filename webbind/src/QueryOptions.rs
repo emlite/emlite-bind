@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The QueryOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for QueryOptions {
 
 impl AsMut<Any> for QueryOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<QueryOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&QueryOptions> for Any {
 impl QueryOptions {
     /// Getter of the `postscriptNames` attribute.
     pub fn postscript_names(&self) -> TypedArray<JsString> {
-        self.inner.get("postscriptNames").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("postscriptNames")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `postscriptNames` attribute.

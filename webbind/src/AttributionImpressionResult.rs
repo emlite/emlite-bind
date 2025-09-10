@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AttributionImpressionResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AttributionImpressionResult {
 
 impl AsMut<Any> for AttributionImpressionResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AttributionImpressionResult> for Any {
@@ -60,4 +57,3 @@ impl From<&AttributionImpressionResult> for Any {
         s.inner.clone()
     }
 }
-

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BluetoothLEScanPermissionResult class.
 /// [`BluetoothLEScanPermissionResult`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanPermissionResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BluetoothLEScanPermissionResult {
 
 impl FromVal for BluetoothLEScanPermissionResult {
     fn from_val(v: &Any) -> Self {
-        BluetoothLEScanPermissionResult { inner: PermissionStatus::from_val(v) }
+        BluetoothLEScanPermissionResult {
+            inner: PermissionStatus::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BluetoothLEScanPermissionResult {
 
 impl AsMut<Any> for BluetoothLEScanPermissionResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BluetoothLEScanPermissionResult> for Any {
@@ -63,7 +62,6 @@ impl From<&BluetoothLEScanPermissionResult> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanPermissionResult);
-
 
 impl BluetoothLEScanPermissionResult {
     /// Getter of the `scans` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WorkletGlobalScope class.
 /// [`WorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WorkletGlobalScope {
 
 impl FromVal for WorkletGlobalScope {
     fn from_val(v: &Any) -> Self {
-        WorkletGlobalScope { inner: Any::from_val(v) }
+        WorkletGlobalScope {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WorkletGlobalScope {
 
 impl AsMut<Any> for WorkletGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WorkletGlobalScope> for Any {
@@ -63,5 +62,3 @@ impl From<&WorkletGlobalScope> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WorkletGlobalScope);
-
-

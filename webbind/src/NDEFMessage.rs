@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NDEFMessage class.
 /// [`NDEFMessage`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFMessage)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NDEFMessage {
 
 impl FromVal for NDEFMessage {
     fn from_val(v: &Any) -> Self {
-        NDEFMessage { inner: Any::from_val(v) }
+        NDEFMessage {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NDEFMessage {
 
 impl AsMut<Any> for NDEFMessage {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NDEFMessage> for Any {
@@ -64,16 +63,15 @@ impl From<&NDEFMessage> for Any {
 
 jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
-
-
 impl NDEFMessage {
     /// The `new NDEFMessage(..)` constructor, creating a new NDEFMessage instance
     pub fn new(message_init: &NDEFMessageInit) -> NDEFMessage {
         Self {
-            inner: Any::global("NDEFMessage").new(&[message_init.into()]).as_::<Any>(),
+            inner: Any::global("NDEFMessage")
+                .new(&[message_init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl NDEFMessage {
     /// Getter of the `records` attribute.
@@ -81,5 +79,4 @@ impl NDEFMessage {
     pub fn records(&self) -> TypedArray<NDEFRecord> {
         self.inner.get("records").as_::<TypedArray<NDEFRecord>>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TextFormatUpdateEvent class.
 /// [`TextFormatUpdateEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormatUpdateEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TextFormatUpdateEvent {
 
 impl FromVal for TextFormatUpdateEvent {
     fn from_val(v: &Any) -> Self {
-        TextFormatUpdateEvent { inner: Event::from_val(v) }
+        TextFormatUpdateEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TextFormatUpdateEvent {
 
 impl AsMut<Any> for TextFormatUpdateEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TextFormatUpdateEvent> for Any {
@@ -64,28 +63,31 @@ impl From<&TextFormatUpdateEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextFormatUpdateEvent);
 
-
-
 impl TextFormatUpdateEvent {
     /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
     pub fn new0(type_: &JsString) -> TextFormatUpdateEvent {
         Self {
-            inner: Any::global("TextFormatUpdateEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("TextFormatUpdateEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
     pub fn new1(type_: &JsString, options: &TextFormatUpdateEventInit) -> TextFormatUpdateEvent {
         Self {
-            inner: Any::global("TextFormatUpdateEvent").new(&[type_.into(), options.into()]).as_::<Event>(),
+            inner: Any::global("TextFormatUpdateEvent")
+                .new(&[type_.into(), options.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl TextFormatUpdateEvent {
     /// The getTextFormats method.
     /// [`TextFormatUpdateEvent.getTextFormats`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormatUpdateEvent/getTextFormats)
-    pub fn get_text_formats(&self, ) -> TypedArray<TextFormat> {
-        self.inner.call("getTextFormats", &[]).as_::<TypedArray<TextFormat>>()
+    pub fn get_text_formats(&self) -> TypedArray<TextFormat> {
+        self.inner
+            .call("getTextFormats", &[])
+            .as_::<TypedArray<TextFormat>>()
     }
 }

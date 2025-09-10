@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ContactsManager class.
 /// [`ContactsManager`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ContactsManager {
 
 impl FromVal for ContactsManager {
     fn from_val(v: &Any) -> Self {
-        ContactsManager { inner: Any::from_val(v) }
+        ContactsManager {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ContactsManager {
 
 impl AsMut<Any> for ContactsManager {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ContactsManager> for Any {
@@ -64,23 +63,35 @@ impl From<&ContactsManager> for Any {
 
 jsbind::utils::impl_dyn_cast!(ContactsManager);
 
-
 impl ContactsManager {
     /// The getProperties method.
     /// [`ContactsManager.getProperties`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/getProperties)
-    pub fn get_properties(&self, ) -> Promise<TypedArray<ContactProperty>> {
-        self.inner.call("getProperties", &[]).as_::<Promise<TypedArray<ContactProperty>>>()
+    pub fn get_properties(&self) -> Promise<TypedArray<ContactProperty>> {
+        self.inner
+            .call("getProperties", &[])
+            .as_::<Promise<TypedArray<ContactProperty>>>()
     }
 }
 impl ContactsManager {
     /// The select method.
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
-    pub fn select0(&self, properties: &TypedArray<ContactProperty>) -> Promise<TypedArray<ContactInfo>> {
-        self.inner.call("select", &[properties.into(), ]).as_::<Promise<TypedArray<ContactInfo>>>()
+    pub fn select0(
+        &self,
+        properties: &TypedArray<ContactProperty>,
+    ) -> Promise<TypedArray<ContactInfo>> {
+        self.inner
+            .call("select", &[properties.into()])
+            .as_::<Promise<TypedArray<ContactInfo>>>()
     }
     /// The select method.
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
-    pub fn select1(&self, properties: &TypedArray<ContactProperty>, options: &ContactsSelectOptions) -> Promise<TypedArray<ContactInfo>> {
-        self.inner.call("select", &[properties.into(), options.into(), ]).as_::<Promise<TypedArray<ContactInfo>>>()
+    pub fn select1(
+        &self,
+        properties: &TypedArray<ContactProperty>,
+        options: &ContactsSelectOptions,
+    ) -> Promise<TypedArray<ContactInfo>> {
+        self.inner
+            .call("select", &[properties.into(), options.into()])
+            .as_::<Promise<TypedArray<ContactInfo>>>()
     }
 }

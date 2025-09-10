@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AudioNode class.
 /// [`AudioNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct AudioNode {
 
 impl FromVal for AudioNode {
     fn from_val(v: &Any) -> Self {
-        AudioNode { inner: EventTarget::from_val(v) }
+        AudioNode {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for AudioNode {
 
 impl AsMut<Any> for AudioNode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AudioNode> for Any {
@@ -64,24 +63,29 @@ impl From<&AudioNode> for Any {
 
 jsbind::utils::impl_dyn_cast!(AudioNode);
 
-
 impl AudioNode {
     /// The connect method.
     /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
     pub fn connect0(&self, destination_param: &AudioParam) -> Undefined {
-        self.inner.call("connect", &[destination_param.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("connect", &[destination_param.into()])
+            .as_::<Undefined>()
     }
     /// The connect method.
     /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
     pub fn connect1(&self, destination_param: &AudioParam, output: u32) -> Undefined {
-        self.inner.call("connect", &[destination_param.into(), output.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("connect", &[destination_param.into(), output.into()])
+            .as_::<Undefined>()
     }
 }
 impl AudioNode {
     /// The disconnect method.
     /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
     pub fn disconnect(&self, destination_param: &AudioParam, output: u32) -> Undefined {
-        self.inner.call("disconnect", &[destination_param.into(), output.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("disconnect", &[destination_param.into(), output.into()])
+            .as_::<Undefined>()
     }
 }
 impl AudioNode {
@@ -90,7 +94,6 @@ impl AudioNode {
     pub fn context(&self) -> BaseAudioContext {
         self.inner.get("context").as_::<BaseAudioContext>()
     }
-
 }
 impl AudioNode {
     /// Getter of the `numberOfInputs` attribute.
@@ -98,7 +101,6 @@ impl AudioNode {
     pub fn number_of_inputs(&self) -> u32 {
         self.inner.get("numberOfInputs").as_::<u32>()
     }
-
 }
 impl AudioNode {
     /// Getter of the `numberOfOutputs` attribute.
@@ -106,7 +108,6 @@ impl AudioNode {
     pub fn number_of_outputs(&self) -> u32 {
         self.inner.get("numberOfOutputs").as_::<u32>()
     }
-
 }
 impl AudioNode {
     /// Getter of the `channelCount` attribute.
@@ -138,7 +139,9 @@ impl AudioNode {
     /// Getter of the `channelInterpretation` attribute.
     /// [`AudioNode.channelInterpretation`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelInterpretation)
     pub fn channel_interpretation(&self) -> ChannelInterpretation {
-        self.inner.get("channelInterpretation").as_::<ChannelInterpretation>()
+        self.inner
+            .get("channelInterpretation")
+            .as_::<ChannelInterpretation>()
     }
 
     /// Setter of the `channelInterpretation` attribute.

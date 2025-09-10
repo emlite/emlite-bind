@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The InputDeviceCapabilitiesInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for InputDeviceCapabilitiesInit {
 
 impl AsMut<Any> for InputDeviceCapabilitiesInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<InputDeviceCapabilitiesInit> for Any {

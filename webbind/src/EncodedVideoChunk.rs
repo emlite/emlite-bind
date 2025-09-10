@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The EncodedVideoChunk class.
 /// [`EncodedVideoChunk`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct EncodedVideoChunk {
 
 impl FromVal for EncodedVideoChunk {
     fn from_val(v: &Any) -> Self {
-        EncodedVideoChunk { inner: Any::from_val(v) }
+        EncodedVideoChunk {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for EncodedVideoChunk {
 
 impl AsMut<Any> for EncodedVideoChunk {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<EncodedVideoChunk> for Any {
@@ -64,16 +63,15 @@ impl From<&EncodedVideoChunk> for Any {
 
 jsbind::utils::impl_dyn_cast!(EncodedVideoChunk);
 
-
-
 impl EncodedVideoChunk {
     /// The `new EncodedVideoChunk(..)` constructor, creating a new EncodedVideoChunk instance
     pub fn new(init: &EncodedVideoChunkInit) -> EncodedVideoChunk {
         Self {
-            inner: Any::global("EncodedVideoChunk").new(&[init.into()]).as_::<Any>(),
+            inner: Any::global("EncodedVideoChunk")
+                .new(&[init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl EncodedVideoChunk {
     /// Getter of the `type` attribute.
@@ -81,7 +79,6 @@ impl EncodedVideoChunk {
     pub fn type_(&self) -> EncodedVideoChunkType {
         self.inner.get("type").as_::<EncodedVideoChunkType>()
     }
-
 }
 impl EncodedVideoChunk {
     /// Getter of the `timestamp` attribute.
@@ -89,7 +86,6 @@ impl EncodedVideoChunk {
     pub fn timestamp(&self) -> i64 {
         self.inner.get("timestamp").as_::<i64>()
     }
-
 }
 impl EncodedVideoChunk {
     /// Getter of the `duration` attribute.
@@ -97,7 +93,6 @@ impl EncodedVideoChunk {
     pub fn duration(&self) -> u64 {
         self.inner.get("duration").as_::<u64>()
     }
-
 }
 impl EncodedVideoChunk {
     /// Getter of the `byteLength` attribute.
@@ -105,12 +100,13 @@ impl EncodedVideoChunk {
     pub fn byte_length(&self) -> u32 {
         self.inner.get("byteLength").as_::<u32>()
     }
-
 }
 impl EncodedVideoChunk {
     /// The copyTo method.
     /// [`EncodedVideoChunk.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk/copyTo)
     pub fn copy_to(&self, destination: &Any) -> Undefined {
-        self.inner.call("copyTo", &[destination.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("copyTo", &[destination.into()])
+            .as_::<Undefined>()
     }
 }

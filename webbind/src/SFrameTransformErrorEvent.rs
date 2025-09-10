@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SFrameTransformErrorEvent class.
 /// [`SFrameTransformErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransformErrorEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SFrameTransformErrorEvent {
 
 impl FromVal for SFrameTransformErrorEvent {
     fn from_val(v: &Any) -> Self {
-        SFrameTransformErrorEvent { inner: Event::from_val(v) }
+        SFrameTransformErrorEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SFrameTransformErrorEvent {
 
 impl AsMut<Any> for SFrameTransformErrorEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SFrameTransformErrorEvent> for Any {
@@ -64,24 +63,27 @@ impl From<&SFrameTransformErrorEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(SFrameTransformErrorEvent);
 
-
-
 impl SFrameTransformErrorEvent {
     /// The `new SFrameTransformErrorEvent(..)` constructor, creating a new SFrameTransformErrorEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &SFrameTransformErrorEventInit) -> SFrameTransformErrorEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &SFrameTransformErrorEventInit,
+    ) -> SFrameTransformErrorEvent {
         Self {
-            inner: Any::global("SFrameTransformErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("SFrameTransformErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl SFrameTransformErrorEvent {
     /// Getter of the `errorType` attribute.
     /// [`SFrameTransformErrorEvent.errorType`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransformErrorEvent/errorType)
     pub fn error_type(&self) -> SFrameTransformErrorEventType {
-        self.inner.get("errorType").as_::<SFrameTransformErrorEventType>()
+        self.inner
+            .get("errorType")
+            .as_::<SFrameTransformErrorEventType>()
     }
-
 }
 impl SFrameTransformErrorEvent {
     /// Getter of the `keyID` attribute.
@@ -89,7 +91,6 @@ impl SFrameTransformErrorEvent {
     pub fn key_id(&self) -> Any {
         self.inner.get("keyID").as_::<Any>()
     }
-
 }
 impl SFrameTransformErrorEvent {
     /// Getter of the `frame` attribute.
@@ -97,5 +98,4 @@ impl SFrameTransformErrorEvent {
     pub fn frame(&self) -> Any {
         self.inner.get("frame").as_::<Any>()
     }
-
 }

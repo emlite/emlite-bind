@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PointerTimelineOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for PointerTimelineOptions {
 
 impl AsMut<Any> for PointerTimelineOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PointerTimelineOptions> for Any {

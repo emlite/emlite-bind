@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The PaintWorkletGlobalScope class.
 /// [`PaintWorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct PaintWorkletGlobalScope {
 
 impl FromVal for PaintWorkletGlobalScope {
     fn from_val(v: &Any) -> Self {
-        PaintWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
+        PaintWorkletGlobalScope {
+            inner: WorkletGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for PaintWorkletGlobalScope {
 
 impl AsMut<Any> for PaintWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<PaintWorkletGlobalScope> for Any {
@@ -64,12 +63,13 @@ impl From<&PaintWorkletGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(PaintWorkletGlobalScope);
 
-
 impl PaintWorkletGlobalScope {
     /// The registerPaint method.
     /// [`PaintWorkletGlobalScope.registerPaint`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/registerPaint)
     pub fn register_paint(&self, name: &JsString, paint_ctor: &Function) -> Undefined {
-        self.inner.call("registerPaint", &[name.into(), paint_ctor.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("registerPaint", &[name.into(), paint_ctor.into()])
+            .as_::<Undefined>()
     }
 }
 impl PaintWorkletGlobalScope {
@@ -78,5 +78,4 @@ impl PaintWorkletGlobalScope {
     pub fn device_pixel_ratio(&self) -> f64 {
         self.inner.get("devicePixelRatio").as_::<f64>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FilePickerOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for FilePickerOptions {
 
 impl AsMut<Any> for FilePickerOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FilePickerOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&FilePickerOptions> for Any {
 impl FilePickerOptions {
     /// Getter of the `types` attribute.
     pub fn types(&self) -> TypedArray<FilePickerAcceptType> {
-        self.inner.get("types").as_::<TypedArray<FilePickerAcceptType>>()
+        self.inner
+            .get("types")
+            .as_::<TypedArray<FilePickerAcceptType>>()
     }
 
     /// Setter of the `types` attribute.

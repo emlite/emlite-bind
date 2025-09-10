@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLOptionsCollection class.
 /// [`HTMLOptionsCollection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLOptionsCollection {
 
 impl FromVal for HTMLOptionsCollection {
     fn from_val(v: &Any) -> Self {
-        HTMLOptionsCollection { inner: HTMLCollection::from_val(v) }
+        HTMLOptionsCollection {
+            inner: HTMLCollection::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLOptionsCollection {
 
 impl AsMut<Any> for HTMLOptionsCollection {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLOptionsCollection> for Any {
@@ -64,7 +63,6 @@ impl From<&HTMLOptionsCollection> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLOptionsCollection);
 
-
 impl HTMLOptionsCollection {
     /// Getter of the `length` attribute.
     /// [`HTMLOptionsCollection.length`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/length)
@@ -82,19 +80,23 @@ impl HTMLOptionsCollection {
     /// The add method.
     /// [`HTMLOptionsCollection.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/add)
     pub fn add0(&self, element: &Any) -> Undefined {
-        self.inner.call("add", &[element.into(), ]).as_::<Undefined>()
+        self.inner.call("add", &[element.into()]).as_::<Undefined>()
     }
     /// The add method.
     /// [`HTMLOptionsCollection.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/add)
     pub fn add1(&self, element: &Any, before: &Any) -> Undefined {
-        self.inner.call("add", &[element.into(), before.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("add", &[element.into(), before.into()])
+            .as_::<Undefined>()
     }
 }
 impl HTMLOptionsCollection {
     /// The remove method.
     /// [`HTMLOptionsCollection.remove`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/remove)
     pub fn remove(&self, index: i32) -> Undefined {
-        self.inner.call("remove", &[index.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("remove", &[index.into()])
+            .as_::<Undefined>()
     }
 }
 impl HTMLOptionsCollection {

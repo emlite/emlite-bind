@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebTransportWriter class.
 /// [`WebTransportWriter`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportWriter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebTransportWriter {
 
 impl FromVal for WebTransportWriter {
     fn from_val(v: &Any) -> Self {
-        WebTransportWriter { inner: WritableStreamDefaultWriter::from_val(v) }
+        WebTransportWriter {
+            inner: WritableStreamDefaultWriter::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebTransportWriter {
 
 impl AsMut<Any> for WebTransportWriter {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebTransportWriter> for Any {
@@ -64,23 +63,26 @@ impl From<&WebTransportWriter> for Any {
 
 jsbind::utils::impl_dyn_cast!(WebTransportWriter);
 
-
 impl WebTransportWriter {
     /// The atomicWrite method.
     /// [`WebTransportWriter.atomicWrite`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportWriter/atomicWrite)
-    pub fn atomic_write0(&self, ) -> Promise<Undefined> {
-        self.inner.call("atomicWrite", &[]).as_::<Promise<Undefined>>()
+    pub fn atomic_write0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("atomicWrite", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The atomicWrite method.
     /// [`WebTransportWriter.atomicWrite`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportWriter/atomicWrite)
     pub fn atomic_write1(&self, chunk: &Any) -> Promise<Undefined> {
-        self.inner.call("atomicWrite", &[chunk.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("atomicWrite", &[chunk.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl WebTransportWriter {
     /// The commit method.
     /// [`WebTransportWriter.commit`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportWriter/commit)
-    pub fn commit(&self, ) -> Undefined {
+    pub fn commit(&self) -> Undefined {
         self.inner.call("commit", &[]).as_::<Undefined>()
     }
 }

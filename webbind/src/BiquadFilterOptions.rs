@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BiquadFilterOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for BiquadFilterOptions {
 
 impl AsMut<Any> for BiquadFilterOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BiquadFilterOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ModuleImportDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ModuleImportDescriptor {
 
 impl AsMut<Any> for ModuleImportDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ModuleImportDescriptor> for Any {

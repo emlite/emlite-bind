@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AesGcmParams dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AesGcmParams {
 
 impl AsMut<Any> for AesGcmParams {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AesGcmParams> for Any {

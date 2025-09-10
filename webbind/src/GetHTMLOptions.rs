@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GetHTMLOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GetHTMLOptions {
 
 impl AsMut<Any> for GetHTMLOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GetHTMLOptions> for Any {
@@ -75,7 +72,9 @@ impl GetHTMLOptions {
 impl GetHTMLOptions {
     /// Getter of the `shadowRoots` attribute.
     pub fn shadow_roots(&self) -> TypedArray<ShadowRoot> {
-        self.inner.get("shadowRoots").as_::<TypedArray<ShadowRoot>>()
+        self.inner
+            .get("shadowRoots")
+            .as_::<TypedArray<ShadowRoot>>()
     }
 
     /// Setter of the `shadowRoots` attribute.

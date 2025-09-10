@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRSessionEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for XRSessionEventInit {
 
 impl AsMut<Any> for XRSessionEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRSessionEventInit> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The QuotaExceededErrorOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for QuotaExceededErrorOptions {
 
 impl AsMut<Any> for QuotaExceededErrorOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<QuotaExceededErrorOptions> for Any {

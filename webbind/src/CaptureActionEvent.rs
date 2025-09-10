@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CaptureActionEvent class.
 /// [`CaptureActionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureActionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CaptureActionEvent {
 
 impl FromVal for CaptureActionEvent {
     fn from_val(v: &Any) -> Self {
-        CaptureActionEvent { inner: Event::from_val(v) }
+        CaptureActionEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CaptureActionEvent {
 
 impl AsMut<Any> for CaptureActionEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CaptureActionEvent> for Any {
@@ -64,8 +63,6 @@ impl From<&CaptureActionEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CaptureActionEvent);
 
-
-
 impl CaptureActionEvent {
     /// The `new CaptureActionEvent(..)` constructor, creating a new CaptureActionEvent instance
     pub fn new0() -> CaptureActionEvent {
@@ -77,10 +74,11 @@ impl CaptureActionEvent {
     /// The `new CaptureActionEvent(..)` constructor, creating a new CaptureActionEvent instance
     pub fn new1(init: &CaptureActionEventInit) -> CaptureActionEvent {
         Self {
-            inner: Any::global("CaptureActionEvent").new(&[init.into()]).as_::<Event>(),
+            inner: Any::global("CaptureActionEvent")
+                .new(&[init.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl CaptureActionEvent {
     /// Getter of the `action` attribute.
@@ -88,5 +86,4 @@ impl CaptureActionEvent {
     pub fn action(&self) -> CaptureAction {
         self.inner.get("action").as_::<CaptureAction>()
     }
-
 }

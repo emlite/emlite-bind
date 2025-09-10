@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DOMRect class.
 /// [`DOMRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct DOMRect {
 
 impl FromVal for DOMRect {
     fn from_val(v: &Any) -> Self {
-        DOMRect { inner: DOMRectReadOnly::from_val(v) }
+        DOMRect {
+            inner: DOMRectReadOnly::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for DOMRect {
 
 impl AsMut<Any> for DOMRect {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DOMRect> for Any {
@@ -64,8 +63,6 @@ impl From<&DOMRect> for Any {
 
 jsbind::utils::impl_dyn_cast!(DOMRect);
 
-
-
 impl DOMRect {
     /// The `new DOMRect(..)` constructor, creating a new DOMRect instance
     pub fn new0() -> DOMRect {
@@ -77,42 +74,53 @@ impl DOMRect {
     /// The `new DOMRect(..)` constructor, creating a new DOMRect instance
     pub fn new1(x: f64) -> DOMRect {
         Self {
-            inner: Any::global("DOMRect").new(&[x.into()]).as_::<DOMRectReadOnly>(),
+            inner: Any::global("DOMRect")
+                .new(&[x.into()])
+                .as_::<DOMRectReadOnly>(),
         }
     }
 
     /// The `new DOMRect(..)` constructor, creating a new DOMRect instance
     pub fn new2(x: f64, y: f64) -> DOMRect {
         Self {
-            inner: Any::global("DOMRect").new(&[x.into(), y.into()]).as_::<DOMRectReadOnly>(),
+            inner: Any::global("DOMRect")
+                .new(&[x.into(), y.into()])
+                .as_::<DOMRectReadOnly>(),
         }
     }
 
     /// The `new DOMRect(..)` constructor, creating a new DOMRect instance
     pub fn new3(x: f64, y: f64, width: f64) -> DOMRect {
         Self {
-            inner: Any::global("DOMRect").new(&[x.into(), y.into(), width.into()]).as_::<DOMRectReadOnly>(),
+            inner: Any::global("DOMRect")
+                .new(&[x.into(), y.into(), width.into()])
+                .as_::<DOMRectReadOnly>(),
         }
     }
 
     /// The `new DOMRect(..)` constructor, creating a new DOMRect instance
     pub fn new4(x: f64, y: f64, width: f64, height: f64) -> DOMRect {
         Self {
-            inner: Any::global("DOMRect").new(&[x.into(), y.into(), width.into(), height.into()]).as_::<DOMRectReadOnly>(),
+            inner: Any::global("DOMRect")
+                .new(&[x.into(), y.into(), width.into(), height.into()])
+                .as_::<DOMRectReadOnly>(),
         }
     }
-
 }
 impl DOMRect {
     /// The fromRect method.
     /// [`DOMRect.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/fromRect)
     pub fn from_rect0() -> DOMRect {
-        Any::global("DOMRect").call("fromRect", &[]).as_::<DOMRect>()
+        Any::global("DOMRect")
+            .call("fromRect", &[])
+            .as_::<DOMRect>()
     }
     /// The fromRect method.
     /// [`DOMRect.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/fromRect)
     pub fn from_rect1(other: &DOMRectInit) -> DOMRect {
-        Any::global("DOMRect").call("fromRect", &[other.into(), ]).as_::<DOMRect>()
+        Any::global("DOMRect")
+            .call("fromRect", &[other.into()])
+            .as_::<DOMRect>()
     }
 }
 impl DOMRect {

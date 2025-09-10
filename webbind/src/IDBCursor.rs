@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The IDBCursor class.
 /// [`IDBCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct IDBCursor {
 
 impl FromVal for IDBCursor {
     fn from_val(v: &Any) -> Self {
-        IDBCursor { inner: Any::from_val(v) }
+        IDBCursor {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for IDBCursor {
 
 impl AsMut<Any> for IDBCursor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<IDBCursor> for Any {
@@ -64,14 +63,12 @@ impl From<&IDBCursor> for Any {
 
 jsbind::utils::impl_dyn_cast!(IDBCursor);
 
-
 impl IDBCursor {
     /// Getter of the `source` attribute.
     /// [`IDBCursor.source`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/source)
     pub fn source(&self) -> Any {
         self.inner.get("source").as_::<Any>()
     }
-
 }
 impl IDBCursor {
     /// Getter of the `direction` attribute.
@@ -79,7 +76,6 @@ impl IDBCursor {
     pub fn direction(&self) -> IDBCursorDirection {
         self.inner.get("direction").as_::<IDBCursorDirection>()
     }
-
 }
 impl IDBCursor {
     /// Getter of the `key` attribute.
@@ -87,7 +83,6 @@ impl IDBCursor {
     pub fn key(&self) -> Any {
         self.inner.get("key").as_::<Any>()
     }
-
 }
 impl IDBCursor {
     /// Getter of the `primaryKey` attribute.
@@ -95,7 +90,6 @@ impl IDBCursor {
     pub fn primary_key(&self) -> Any {
         self.inner.get("primaryKey").as_::<Any>()
     }
-
 }
 impl IDBCursor {
     /// Getter of the `request` attribute.
@@ -103,45 +97,52 @@ impl IDBCursor {
     pub fn request(&self) -> IDBRequest {
         self.inner.get("request").as_::<IDBRequest>()
     }
-
 }
 impl IDBCursor {
     /// The advance method.
     /// [`IDBCursor.advance`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/advance)
     pub fn advance(&self, count: u32) -> Undefined {
-        self.inner.call("advance", &[count.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("advance", &[count.into()])
+            .as_::<Undefined>()
     }
 }
 impl IDBCursor {
     /// The continue method.
     /// [`IDBCursor.continue`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/continue)
-    pub fn continue_0(&self, ) -> Undefined {
+    pub fn continue_0(&self) -> Undefined {
         self.inner.call("continue", &[]).as_::<Undefined>()
     }
     /// The continue method.
     /// [`IDBCursor.continue`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/continue)
     pub fn continue_1(&self, key: &Any) -> Undefined {
-        self.inner.call("continue", &[key.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("continue", &[key.into()])
+            .as_::<Undefined>()
     }
 }
 impl IDBCursor {
     /// The continuePrimaryKey method.
     /// [`IDBCursor.continuePrimaryKey`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/continuePrimaryKey)
     pub fn continue_primary_key(&self, key: &Any, primary_key: &Any) -> Undefined {
-        self.inner.call("continuePrimaryKey", &[key.into(), primary_key.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("continuePrimaryKey", &[key.into(), primary_key.into()])
+            .as_::<Undefined>()
     }
 }
 impl IDBCursor {
     /// The update method.
     /// [`IDBCursor.update`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/update)
     pub fn update(&self, value: &Any) -> IDBRequest {
-        self.inner.call("update", &[value.into(), ]).as_::<IDBRequest>()
+        self.inner
+            .call("update", &[value.into()])
+            .as_::<IDBRequest>()
     }
 }
 impl IDBCursor {
     /// The delete method.
     /// [`IDBCursor.delete`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/delete)
-    pub fn delete(&self, ) -> IDBRequest {
+    pub fn delete(&self) -> IDBRequest {
         self.inner.call("delete", &[]).as_::<IDBRequest>()
     }
 }

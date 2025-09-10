@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCSessionDescription class.
 /// [`RTCSessionDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct RTCSessionDescription {
 
 impl FromVal for RTCSessionDescription {
     fn from_val(v: &Any) -> Self {
-        RTCSessionDescription { inner: Any::from_val(v) }
+        RTCSessionDescription {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for RTCSessionDescription {
 
 impl AsMut<Any> for RTCSessionDescription {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCSessionDescription> for Any {
@@ -64,16 +63,15 @@ impl From<&RTCSessionDescription> for Any {
 
 jsbind::utils::impl_dyn_cast!(RTCSessionDescription);
 
-
-
 impl RTCSessionDescription {
     /// The `new RTCSessionDescription(..)` constructor, creating a new RTCSessionDescription instance
     pub fn new(description_init_dict: &RTCSessionDescriptionInit) -> RTCSessionDescription {
         Self {
-            inner: Any::global("RTCSessionDescription").new(&[description_init_dict.into()]).as_::<Any>(),
+            inner: Any::global("RTCSessionDescription")
+                .new(&[description_init_dict.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl RTCSessionDescription {
     /// Getter of the `type` attribute.
@@ -81,7 +79,6 @@ impl RTCSessionDescription {
     pub fn type_(&self) -> RTCSdpType {
         self.inner.get("type").as_::<RTCSdpType>()
     }
-
 }
 impl RTCSessionDescription {
     /// Getter of the `sdp` attribute.
@@ -89,12 +86,13 @@ impl RTCSessionDescription {
     pub fn sdp(&self) -> JsString {
         self.inner.get("sdp").as_::<JsString>()
     }
-
 }
 impl RTCSessionDescription {
     /// The toJSON method.
     /// [`RTCSessionDescription.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/toJSON)
-    pub fn to_json(&self, ) -> RTCSessionDescriptionInit {
-        self.inner.call("toJSON", &[]).as_::<RTCSessionDescriptionInit>()
+    pub fn to_json(&self) -> RTCSessionDescriptionInit {
+        self.inner
+            .call("toJSON", &[])
+            .as_::<RTCSessionDescriptionInit>()
     }
 }

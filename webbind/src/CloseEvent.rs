@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CloseEvent class.
 /// [`CloseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CloseEvent {
 
 impl FromVal for CloseEvent {
     fn from_val(v: &Any) -> Self {
-        CloseEvent { inner: Event::from_val(v) }
+        CloseEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CloseEvent {
 
 impl AsMut<Any> for CloseEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CloseEvent> for Any {
@@ -64,23 +63,24 @@ impl From<&CloseEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(CloseEvent);
 
-
-
 impl CloseEvent {
     /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
     pub fn new0(type_: &JsString) -> CloseEvent {
         Self {
-            inner: Any::global("CloseEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: Any::global("CloseEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &CloseEventInit) -> CloseEvent {
         Self {
-            inner: Any::global("CloseEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("CloseEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl CloseEvent {
     /// Getter of the `wasClean` attribute.
@@ -88,7 +88,6 @@ impl CloseEvent {
     pub fn was_clean(&self) -> bool {
         self.inner.get("wasClean").as_::<bool>()
     }
-
 }
 impl CloseEvent {
     /// Getter of the `code` attribute.
@@ -96,7 +95,6 @@ impl CloseEvent {
     pub fn code(&self) -> u16 {
         self.inner.get("code").as_::<u16>()
     }
-
 }
 impl CloseEvent {
     /// Getter of the `reason` attribute.
@@ -104,5 +102,4 @@ impl CloseEvent {
     pub fn reason(&self) -> JsString {
         self.inner.get("reason").as_::<JsString>()
     }
-
 }

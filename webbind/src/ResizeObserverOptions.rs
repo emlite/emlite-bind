@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ResizeObserverOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ResizeObserverOptions {
 
 impl AsMut<Any> for ResizeObserverOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ResizeObserverOptions> for Any {

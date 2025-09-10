@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRReferenceSpaceEvent class.
 /// [`XRReferenceSpaceEvent`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRReferenceSpaceEvent {
 
 impl FromVal for XRReferenceSpaceEvent {
     fn from_val(v: &Any) -> Self {
-        XRReferenceSpaceEvent { inner: Event::from_val(v) }
+        XRReferenceSpaceEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRReferenceSpaceEvent {
 
 impl AsMut<Any> for XRReferenceSpaceEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRReferenceSpaceEvent> for Any {
@@ -64,16 +63,18 @@ impl From<&XRReferenceSpaceEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(XRReferenceSpaceEvent);
 
-
-
 impl XRReferenceSpaceEvent {
     /// The `new XRReferenceSpaceEvent(..)` constructor, creating a new XRReferenceSpaceEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &XRReferenceSpaceEventInit) -> XRReferenceSpaceEvent {
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &XRReferenceSpaceEventInit,
+    ) -> XRReferenceSpaceEvent {
         Self {
-            inner: Any::global("XRReferenceSpaceEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("XRReferenceSpaceEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl XRReferenceSpaceEvent {
     /// Getter of the `referenceSpace` attribute.
@@ -81,7 +82,6 @@ impl XRReferenceSpaceEvent {
     pub fn reference_space(&self) -> XRReferenceSpace {
         self.inner.get("referenceSpace").as_::<XRReferenceSpace>()
     }
-
 }
 impl XRReferenceSpaceEvent {
     /// Getter of the `transform` attribute.
@@ -89,5 +89,4 @@ impl XRReferenceSpaceEvent {
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
-
 }

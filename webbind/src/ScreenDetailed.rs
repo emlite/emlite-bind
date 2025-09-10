@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ScreenDetailed class.
 /// [`ScreenDetailed`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenDetailed)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ScreenDetailed {
 
 impl FromVal for ScreenDetailed {
     fn from_val(v: &Any) -> Self {
-        ScreenDetailed { inner: Screen::from_val(v) }
+        ScreenDetailed {
+            inner: Screen::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ScreenDetailed {
 
 impl AsMut<Any> for ScreenDetailed {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ScreenDetailed> for Any {
@@ -64,14 +63,12 @@ impl From<&ScreenDetailed> for Any {
 
 jsbind::utils::impl_dyn_cast!(ScreenDetailed);
 
-
 impl ScreenDetailed {
     /// Getter of the `availLeft` attribute.
     /// [`ScreenDetailed.availLeft`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenDetailed/availLeft)
     pub fn avail_left(&self) -> i32 {
         self.inner.get("availLeft").as_::<i32>()
     }
-
 }
 impl ScreenDetailed {
     /// Getter of the `availTop` attribute.
@@ -79,7 +76,6 @@ impl ScreenDetailed {
     pub fn avail_top(&self) -> i32 {
         self.inner.get("availTop").as_::<i32>()
     }
-
 }
 impl ScreenDetailed {
     /// Getter of the `left` attribute.
@@ -87,7 +83,6 @@ impl ScreenDetailed {
     pub fn left(&self) -> i32 {
         self.inner.get("left").as_::<i32>()
     }
-
 }
 impl ScreenDetailed {
     /// Getter of the `top` attribute.
@@ -95,7 +90,6 @@ impl ScreenDetailed {
     pub fn top(&self) -> i32 {
         self.inner.get("top").as_::<i32>()
     }
-
 }
 impl ScreenDetailed {
     /// Getter of the `isPrimary` attribute.
@@ -103,7 +97,6 @@ impl ScreenDetailed {
     pub fn is_primary(&self) -> bool {
         self.inner.get("isPrimary").as_::<bool>()
     }
-
 }
 impl ScreenDetailed {
     /// Getter of the `isInternal` attribute.
@@ -111,7 +104,6 @@ impl ScreenDetailed {
     pub fn is_internal(&self) -> bool {
         self.inner.get("isInternal").as_::<bool>()
     }
-
 }
 impl ScreenDetailed {
     /// Getter of the `devicePixelRatio` attribute.
@@ -119,7 +111,6 @@ impl ScreenDetailed {
     pub fn device_pixel_ratio(&self) -> f32 {
         self.inner.get("devicePixelRatio").as_::<f32>()
     }
-
 }
 impl ScreenDetailed {
     /// Getter of the `label` attribute.
@@ -127,5 +118,4 @@ impl ScreenDetailed {
     pub fn label(&self) -> JsString {
         self.inner.get("label").as_::<JsString>()
     }
-
 }

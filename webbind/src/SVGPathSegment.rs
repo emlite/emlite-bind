@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGPathSegment class.
 /// [`SVGPathSegment`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathSegment)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGPathSegment {
 
 impl FromVal for SVGPathSegment {
     fn from_val(v: &Any) -> Self {
-        SVGPathSegment { inner: Any::from_val(v) }
+        SVGPathSegment {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGPathSegment {
 
 impl AsMut<Any> for SVGPathSegment {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGPathSegment> for Any {
@@ -63,7 +62,6 @@ impl From<&SVGPathSegment> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGPathSegment);
-
 
 impl SVGPathSegment {
     /// Getter of the `type` attribute.

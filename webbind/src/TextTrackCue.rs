@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TextTrackCue class.
 /// [`TextTrackCue`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct TextTrackCue {
 
 impl FromVal for TextTrackCue {
     fn from_val(v: &Any) -> Self {
-        TextTrackCue { inner: EventTarget::from_val(v) }
+        TextTrackCue {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for TextTrackCue {
 
 impl AsMut<Any> for TextTrackCue {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TextTrackCue> for Any {
@@ -64,14 +63,12 @@ impl From<&TextTrackCue> for Any {
 
 jsbind::utils::impl_dyn_cast!(TextTrackCue);
 
-
 impl TextTrackCue {
     /// Getter of the `track` attribute.
     /// [`TextTrackCue.track`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCue/track)
     pub fn track(&self) -> TextTrack {
         self.inner.get("track").as_::<TextTrack>()
     }
-
 }
 impl TextTrackCue {
     /// Getter of the `id` attribute.

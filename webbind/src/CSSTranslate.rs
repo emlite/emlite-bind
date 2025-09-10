@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSTranslate class.
 /// [`CSSTranslate`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTranslate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSTranslate {
 
 impl FromVal for CSSTranslate {
     fn from_val(v: &Any) -> Self {
-        CSSTranslate { inner: CSSTransformComponent::from_val(v) }
+        CSSTranslate {
+            inner: CSSTransformComponent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSTranslate {
 
 impl AsMut<Any> for CSSTranslate {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSTranslate> for Any {
@@ -64,23 +63,24 @@ impl From<&CSSTranslate> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSTranslate);
 
-
-
 impl CSSTranslate {
     /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
     pub fn new0(x: &CSSNumericValue, y: &CSSNumericValue) -> CSSTranslate {
         Self {
-            inner: Any::global("CSSTranslate").new(&[x.into(), y.into()]).as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSTranslate")
+                .new(&[x.into(), y.into()])
+                .as_::<CSSTransformComponent>(),
         }
     }
 
     /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
     pub fn new1(x: &CSSNumericValue, y: &CSSNumericValue, z: &CSSNumericValue) -> CSSTranslate {
         Self {
-            inner: Any::global("CSSTranslate").new(&[x.into(), y.into(), z.into()]).as_::<CSSTransformComponent>(),
+            inner: Any::global("CSSTranslate")
+                .new(&[x.into(), y.into(), z.into()])
+                .as_::<CSSTransformComponent>(),
         }
     }
-
 }
 impl CSSTranslate {
     /// Getter of the `x` attribute.

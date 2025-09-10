@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CrashReportBody dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for CrashReportBody {
 
 impl AsMut<Any> for CrashReportBody {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CrashReportBody> for Any {
@@ -97,7 +94,9 @@ impl CrashReportBody {
 impl CrashReportBody {
     /// Getter of the `page_visibility` attribute.
     pub fn page_visibility(&self) -> DocumentVisibilityState {
-        self.inner.get("page_visibility").as_::<DocumentVisibilityState>()
+        self.inner
+            .get("page_visibility")
+            .as_::<DocumentVisibilityState>()
     }
 
     /// Setter of the `page_visibility` attribute.

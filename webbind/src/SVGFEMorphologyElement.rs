@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGFEMorphologyElement class.
 /// [`SVGFEMorphologyElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMorphologyElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGFEMorphologyElement {
 
 impl FromVal for SVGFEMorphologyElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEMorphologyElement { inner: SVGElement::from_val(v) }
+        SVGFEMorphologyElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGFEMorphologyElement {
 
 impl AsMut<Any> for SVGFEMorphologyElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGFEMorphologyElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGFEMorphologyElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEMorphologyElement);
 
-
 impl SVGFEMorphologyElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEMorphologyElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMorphologyElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `operator` attribute.
@@ -79,7 +76,6 @@ impl SVGFEMorphologyElement {
     pub fn operator(&self) -> SVGAnimatedEnumeration {
         self.inner.get("operator").as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `radiusX` attribute.
@@ -87,7 +83,6 @@ impl SVGFEMorphologyElement {
     pub fn radius_x(&self) -> SVGAnimatedNumber {
         self.inner.get("radiusX").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `radiusY` attribute.
@@ -95,7 +90,6 @@ impl SVGFEMorphologyElement {
     pub fn radius_y(&self) -> SVGAnimatedNumber {
         self.inner.get("radiusY").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `x` attribute.
@@ -103,7 +97,6 @@ impl SVGFEMorphologyElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `y` attribute.
@@ -111,7 +104,6 @@ impl SVGFEMorphologyElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `width` attribute.
@@ -119,7 +111,6 @@ impl SVGFEMorphologyElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `height` attribute.
@@ -127,7 +118,6 @@ impl SVGFEMorphologyElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEMorphologyElement {
     /// Getter of the `result` attribute.
@@ -135,5 +125,4 @@ impl SVGFEMorphologyElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CanvasCaptureMediaStreamTrack class.
 /// [`CanvasCaptureMediaStreamTrack`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasCaptureMediaStreamTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CanvasCaptureMediaStreamTrack {
 
 impl FromVal for CanvasCaptureMediaStreamTrack {
     fn from_val(v: &Any) -> Self {
-        CanvasCaptureMediaStreamTrack { inner: MediaStreamTrack::from_val(v) }
+        CanvasCaptureMediaStreamTrack {
+            inner: MediaStreamTrack::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CanvasCaptureMediaStreamTrack {
 
 impl AsMut<Any> for CanvasCaptureMediaStreamTrack {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CanvasCaptureMediaStreamTrack> for Any {
@@ -64,19 +63,17 @@ impl From<&CanvasCaptureMediaStreamTrack> for Any {
 
 jsbind::utils::impl_dyn_cast!(CanvasCaptureMediaStreamTrack);
 
-
 impl CanvasCaptureMediaStreamTrack {
     /// Getter of the `canvas` attribute.
     /// [`CanvasCaptureMediaStreamTrack.canvas`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasCaptureMediaStreamTrack/canvas)
     pub fn canvas(&self) -> HTMLCanvasElement {
         self.inner.get("canvas").as_::<HTMLCanvasElement>()
     }
-
 }
 impl CanvasCaptureMediaStreamTrack {
     /// The requestFrame method.
     /// [`CanvasCaptureMediaStreamTrack.requestFrame`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasCaptureMediaStreamTrack/requestFrame)
-    pub fn request_frame(&self, ) -> Undefined {
+    pub fn request_frame(&self) -> Undefined {
         self.inner.call("requestFrame", &[]).as_::<Undefined>()
     }
 }

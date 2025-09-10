@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGFEDropShadowElement class.
 /// [`SVGFEDropShadowElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGFEDropShadowElement {
 
 impl FromVal for SVGFEDropShadowElement {
     fn from_val(v: &Any) -> Self {
-        SVGFEDropShadowElement { inner: SVGElement::from_val(v) }
+        SVGFEDropShadowElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGFEDropShadowElement {
 
 impl AsMut<Any> for SVGFEDropShadowElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGFEDropShadowElement> for Any {
@@ -64,14 +63,12 @@ impl From<&SVGFEDropShadowElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(SVGFEDropShadowElement);
 
-
 impl SVGFEDropShadowElement {
     /// Getter of the `in1` attribute.
     /// [`SVGFEDropShadowElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `dx` attribute.
@@ -79,7 +76,6 @@ impl SVGFEDropShadowElement {
     pub fn dx(&self) -> SVGAnimatedNumber {
         self.inner.get("dx").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `dy` attribute.
@@ -87,7 +83,6 @@ impl SVGFEDropShadowElement {
     pub fn dy(&self) -> SVGAnimatedNumber {
         self.inner.get("dy").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `stdDeviationX` attribute.
@@ -95,7 +90,6 @@ impl SVGFEDropShadowElement {
     pub fn std_deviation_x(&self) -> SVGAnimatedNumber {
         self.inner.get("stdDeviationX").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `stdDeviationY` attribute.
@@ -103,13 +97,17 @@ impl SVGFEDropShadowElement {
     pub fn std_deviation_y(&self) -> SVGAnimatedNumber {
         self.inner.get("stdDeviationY").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// The setStdDeviation method.
     /// [`SVGFEDropShadowElement.setStdDeviation`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement/setStdDeviation)
     pub fn set_std_deviation(&self, std_deviation_x: f32, std_deviation_y: f32) -> Undefined {
-        self.inner.call("setStdDeviation", &[std_deviation_x.into(), std_deviation_y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call(
+                "setStdDeviation",
+                &[std_deviation_x.into(), std_deviation_y.into()],
+            )
+            .as_::<Undefined>()
     }
 }
 impl SVGFEDropShadowElement {
@@ -118,7 +116,6 @@ impl SVGFEDropShadowElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `y` attribute.
@@ -126,7 +123,6 @@ impl SVGFEDropShadowElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `width` attribute.
@@ -134,7 +130,6 @@ impl SVGFEDropShadowElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `height` attribute.
@@ -142,7 +137,6 @@ impl SVGFEDropShadowElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDropShadowElement {
     /// Getter of the `result` attribute.
@@ -150,5 +144,4 @@ impl SVGFEDropShadowElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BackgroundFetchUIOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for BackgroundFetchUIOptions {
 
 impl AsMut<Any> for BackgroundFetchUIOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BackgroundFetchUIOptions> for Any {

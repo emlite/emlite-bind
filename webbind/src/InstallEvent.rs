@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The InstallEvent class.
 /// [`InstallEvent`](https://developer.mozilla.org/en-US/docs/Web/API/InstallEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct InstallEvent {
 
 impl FromVal for InstallEvent {
     fn from_val(v: &Any) -> Self {
-        InstallEvent { inner: ExtendableEvent::from_val(v) }
+        InstallEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for InstallEvent {
 
 impl AsMut<Any> for InstallEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<InstallEvent> for Any {
@@ -64,28 +63,31 @@ impl From<&InstallEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(InstallEvent);
 
-
-
 impl InstallEvent {
     /// The `new InstallEvent(..)` constructor, creating a new InstallEvent instance
     pub fn new0(type_: &JsString) -> InstallEvent {
         Self {
-            inner: Any::global("InstallEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("InstallEvent")
+                .new(&[type_.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
 
     /// The `new InstallEvent(..)` constructor, creating a new InstallEvent instance
     pub fn new1(type_: &JsString, event_init_dict: &ExtendableEventInit) -> InstallEvent {
         Self {
-            inner: Any::global("InstallEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
+            inner: Any::global("InstallEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl InstallEvent {
     /// The addRoutes method.
     /// [`InstallEvent.addRoutes`](https://developer.mozilla.org/en-US/docs/Web/API/InstallEvent/addRoutes)
     pub fn add_routes(&self, rules: &Any) -> Promise<Undefined> {
-        self.inner.call("addRoutes", &[rules.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("addRoutes", &[rules.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SVGAnimatedBoolean class.
 /// [`SVGAnimatedBoolean`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct SVGAnimatedBoolean {
 
 impl FromVal for SVGAnimatedBoolean {
     fn from_val(v: &Any) -> Self {
-        SVGAnimatedBoolean { inner: Any::from_val(v) }
+        SVGAnimatedBoolean {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for SVGAnimatedBoolean {
 
 impl AsMut<Any> for SVGAnimatedBoolean {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SVGAnimatedBoolean> for Any {
@@ -63,7 +62,6 @@ impl From<&SVGAnimatedBoolean> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(SVGAnimatedBoolean);
-
 
 impl SVGAnimatedBoolean {
     /// Getter of the `baseVal` attribute.
@@ -84,5 +82,4 @@ impl SVGAnimatedBoolean {
     pub fn anim_val(&self) -> bool {
         self.inner.get("animVal").as_::<bool>()
     }
-
 }

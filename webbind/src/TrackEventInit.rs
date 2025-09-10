@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TrackEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for TrackEventInit {
 
 impl AsMut<Any> for TrackEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TrackEventInit> for Any {

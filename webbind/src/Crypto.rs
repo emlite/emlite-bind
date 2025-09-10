@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Crypto class.
 /// [`Crypto`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Crypto {
 
 impl FromVal for Crypto {
     fn from_val(v: &Any) -> Self {
-        Crypto { inner: Any::from_val(v) }
+        Crypto {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Crypto {
 
 impl AsMut<Any> for Crypto {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Crypto> for Any {
@@ -64,26 +63,26 @@ impl From<&Crypto> for Any {
 
 jsbind::utils::impl_dyn_cast!(Crypto);
 
-
 impl Crypto {
     /// Getter of the `subtle` attribute.
     /// [`Crypto.subtle`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/subtle)
     pub fn subtle(&self) -> SubtleCrypto {
         self.inner.get("subtle").as_::<SubtleCrypto>()
     }
-
 }
 impl Crypto {
     /// The getRandomValues method.
     /// [`Crypto.getRandomValues`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues)
     pub fn get_random_values(&self, array: &Any) -> Any {
-        self.inner.call("getRandomValues", &[array.into(), ]).as_::<Any>()
+        self.inner
+            .call("getRandomValues", &[array.into()])
+            .as_::<Any>()
     }
 }
 impl Crypto {
     /// The randomUUID method.
     /// [`Crypto.randomUUID`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)
-    pub fn random_uuid(&self, ) -> JsString {
+    pub fn random_uuid(&self) -> JsString {
         self.inner.call("randomUUID", &[]).as_::<JsString>()
     }
 }

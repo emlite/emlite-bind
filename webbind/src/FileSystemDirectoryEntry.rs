@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FileSystemDirectoryEntry class.
 /// [`FileSystemDirectoryEntry`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct FileSystemDirectoryEntry {
 
 impl FromVal for FileSystemDirectoryEntry {
     fn from_val(v: &Any) -> Self {
-        FileSystemDirectoryEntry { inner: FileSystemEntry::from_val(v) }
+        FileSystemDirectoryEntry {
+            inner: FileSystemEntry::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for FileSystemDirectoryEntry {
 
 impl AsMut<Any> for FileSystemDirectoryEntry {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FileSystemDirectoryEntry> for Any {
@@ -64,65 +63,126 @@ impl From<&FileSystemDirectoryEntry> for Any {
 
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryEntry);
 
-
 impl FileSystemDirectoryEntry {
     /// The createReader method.
     /// [`FileSystemDirectoryEntry.createReader`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/createReader)
-    pub fn create_reader(&self, ) -> FileSystemDirectoryReader {
-        self.inner.call("createReader", &[]).as_::<FileSystemDirectoryReader>()
+    pub fn create_reader(&self) -> FileSystemDirectoryReader {
+        self.inner
+            .call("createReader", &[])
+            .as_::<FileSystemDirectoryReader>()
     }
 }
 impl FileSystemDirectoryEntry {
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file0(&self, ) -> Undefined {
+    pub fn get_file0(&self) -> Undefined {
         self.inner.call("getFile", &[]).as_::<Undefined>()
     }
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
     pub fn get_file1(&self, path: &JsString) -> Undefined {
-        self.inner.call("getFile", &[path.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("getFile", &[path.into()])
+            .as_::<Undefined>()
     }
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
     pub fn get_file2(&self, path: &JsString, options: &FileSystemFlags) -> Undefined {
-        self.inner.call("getFile", &[path.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("getFile", &[path.into(), options.into()])
+            .as_::<Undefined>()
     }
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file3(&self, path: &JsString, options: &FileSystemFlags, success_callback: &Function) -> Undefined {
-        self.inner.call("getFile", &[path.into(), options.into(), success_callback.into(), ]).as_::<Undefined>()
+    pub fn get_file3(
+        &self,
+        path: &JsString,
+        options: &FileSystemFlags,
+        success_callback: &Function,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "getFile",
+                &[path.into(), options.into(), success_callback.into()],
+            )
+            .as_::<Undefined>()
     }
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file4(&self, path: &JsString, options: &FileSystemFlags, success_callback: &Function, error_callback: &Function) -> Undefined {
-        self.inner.call("getFile", &[path.into(), options.into(), success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
+    pub fn get_file4(
+        &self,
+        path: &JsString,
+        options: &FileSystemFlags,
+        success_callback: &Function,
+        error_callback: &Function,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "getFile",
+                &[
+                    path.into(),
+                    options.into(),
+                    success_callback.into(),
+                    error_callback.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 }
 impl FileSystemDirectoryEntry {
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory0(&self, ) -> Undefined {
+    pub fn get_directory0(&self) -> Undefined {
         self.inner.call("getDirectory", &[]).as_::<Undefined>()
     }
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
     pub fn get_directory1(&self, path: &JsString) -> Undefined {
-        self.inner.call("getDirectory", &[path.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("getDirectory", &[path.into()])
+            .as_::<Undefined>()
     }
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
     pub fn get_directory2(&self, path: &JsString, options: &FileSystemFlags) -> Undefined {
-        self.inner.call("getDirectory", &[path.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("getDirectory", &[path.into(), options.into()])
+            .as_::<Undefined>()
     }
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory3(&self, path: &JsString, options: &FileSystemFlags, success_callback: &Function) -> Undefined {
-        self.inner.call("getDirectory", &[path.into(), options.into(), success_callback.into(), ]).as_::<Undefined>()
+    pub fn get_directory3(
+        &self,
+        path: &JsString,
+        options: &FileSystemFlags,
+        success_callback: &Function,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "getDirectory",
+                &[path.into(), options.into(), success_callback.into()],
+            )
+            .as_::<Undefined>()
     }
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory4(&self, path: &JsString, options: &FileSystemFlags, success_callback: &Function, error_callback: &Function) -> Undefined {
-        self.inner.call("getDirectory", &[path.into(), options.into(), success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
+    pub fn get_directory4(
+        &self,
+        path: &JsString,
+        options: &FileSystemFlags,
+        success_callback: &Function,
+        error_callback: &Function,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "getDirectory",
+                &[
+                    path.into(),
+                    options.into(),
+                    success_callback.into(),
+                    error_callback.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 }

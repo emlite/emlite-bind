@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The KeyboardLayoutMap class.
 /// [`KeyboardLayoutMap`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct KeyboardLayoutMap {
 
 impl FromVal for KeyboardLayoutMap {
     fn from_val(v: &Any) -> Self {
-        KeyboardLayoutMap { inner: Any::from_val(v) }
+        KeyboardLayoutMap {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for KeyboardLayoutMap {
 
 impl AsMut<Any> for KeyboardLayoutMap {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<KeyboardLayoutMap> for Any {
@@ -63,5 +62,3 @@ impl From<&KeyboardLayoutMap> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(KeyboardLayoutMap);
-
-

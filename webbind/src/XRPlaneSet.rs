@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRPlaneSet class.
 /// [`XRPlaneSet`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlaneSet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRPlaneSet {
 
 impl FromVal for XRPlaneSet {
     fn from_val(v: &Any) -> Self {
-        XRPlaneSet { inner: Any::from_val(v) }
+        XRPlaneSet {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRPlaneSet {
 
 impl AsMut<Any> for XRPlaneSet {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRPlaneSet> for Any {
@@ -63,5 +62,3 @@ impl From<&XRPlaneSet> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRPlaneSet);
-
-

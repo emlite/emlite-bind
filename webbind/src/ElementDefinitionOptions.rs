@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ElementDefinitionOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ElementDefinitionOptions {
 
 impl AsMut<Any> for ElementDefinitionOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ElementDefinitionOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NDEFRecord class.
 /// [`NDEFRecord`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NDEFRecord {
 
 impl FromVal for NDEFRecord {
     fn from_val(v: &Any) -> Self {
-        NDEFRecord { inner: Any::from_val(v) }
+        NDEFRecord {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NDEFRecord {
 
 impl AsMut<Any> for NDEFRecord {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NDEFRecord> for Any {
@@ -64,16 +63,15 @@ impl From<&NDEFRecord> for Any {
 
 jsbind::utils::impl_dyn_cast!(NDEFRecord);
 
-
-
 impl NDEFRecord {
     /// The `new NDEFRecord(..)` constructor, creating a new NDEFRecord instance
     pub fn new(record_init: &NDEFRecordInit) -> NDEFRecord {
         Self {
-            inner: Any::global("NDEFRecord").new(&[record_init.into()]).as_::<Any>(),
+            inner: Any::global("NDEFRecord")
+                .new(&[record_init.into()])
+                .as_::<Any>(),
         }
     }
-
 }
 impl NDEFRecord {
     /// Getter of the `recordType` attribute.
@@ -81,7 +79,6 @@ impl NDEFRecord {
     pub fn record_type(&self) -> JsString {
         self.inner.get("recordType").as_::<JsString>()
     }
-
 }
 impl NDEFRecord {
     /// Getter of the `mediaType` attribute.
@@ -89,7 +86,6 @@ impl NDEFRecord {
     pub fn media_type(&self) -> JsString {
         self.inner.get("mediaType").as_::<JsString>()
     }
-
 }
 impl NDEFRecord {
     /// Getter of the `id` attribute.
@@ -97,7 +93,6 @@ impl NDEFRecord {
     pub fn id(&self) -> JsString {
         self.inner.get("id").as_::<JsString>()
     }
-
 }
 impl NDEFRecord {
     /// Getter of the `data` attribute.
@@ -105,7 +100,6 @@ impl NDEFRecord {
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
-
 }
 impl NDEFRecord {
     /// Getter of the `encoding` attribute.
@@ -113,7 +107,6 @@ impl NDEFRecord {
     pub fn encoding(&self) -> JsString {
         self.inner.get("encoding").as_::<JsString>()
     }
-
 }
 impl NDEFRecord {
     /// Getter of the `lang` attribute.
@@ -121,12 +114,13 @@ impl NDEFRecord {
     pub fn lang(&self) -> JsString {
         self.inner.get("lang").as_::<JsString>()
     }
-
 }
 impl NDEFRecord {
     /// The toRecords method.
     /// [`NDEFRecord.toRecords`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/toRecords)
-    pub fn to_records(&self, ) -> TypedArray<NDEFRecord> {
-        self.inner.call("toRecords", &[]).as_::<TypedArray<NDEFRecord>>()
+    pub fn to_records(&self) -> TypedArray<NDEFRecord> {
+        self.inner
+            .call("toRecords", &[])
+            .as_::<TypedArray<NDEFRecord>>()
     }
 }

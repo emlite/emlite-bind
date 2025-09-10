@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCEncodedAudioFrameOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCEncodedAudioFrameOptions {
 
 impl AsMut<Any> for RTCEncodedAudioFrameOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCEncodedAudioFrameOptions> for Any {
@@ -64,7 +61,9 @@ impl From<&RTCEncodedAudioFrameOptions> for Any {
 impl RTCEncodedAudioFrameOptions {
     /// Getter of the `metadata` attribute.
     pub fn metadata(&self) -> RTCEncodedAudioFrameMetadata {
-        self.inner.get("metadata").as_::<RTCEncodedAudioFrameMetadata>()
+        self.inner
+            .get("metadata")
+            .as_::<RTCEncodedAudioFrameMetadata>()
     }
 
     /// Setter of the `metadata` attribute.

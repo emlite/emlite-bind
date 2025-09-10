@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLBuffer class.
 /// [`WebGLBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLBuffer {
 
 impl FromVal for WebGLBuffer {
     fn from_val(v: &Any) -> Self {
-        WebGLBuffer { inner: WebGLObject::from_val(v) }
+        WebGLBuffer {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLBuffer {
 
 impl AsMut<Any> for WebGLBuffer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLBuffer> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLBuffer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLBuffer);
-
-

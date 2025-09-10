@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The StaticRange class.
 /// [`StaticRange`](https://developer.mozilla.org/en-US/docs/Web/API/StaticRange)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct StaticRange {
 
 impl FromVal for StaticRange {
     fn from_val(v: &Any) -> Self {
-        StaticRange { inner: AbstractRange::from_val(v) }
+        StaticRange {
+            inner: AbstractRange::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for StaticRange {
 
 impl AsMut<Any> for StaticRange {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<StaticRange> for Any {
@@ -64,14 +63,13 @@ impl From<&StaticRange> for Any {
 
 jsbind::utils::impl_dyn_cast!(StaticRange);
 
-
-
 impl StaticRange {
     /// The `new StaticRange(..)` constructor, creating a new StaticRange instance
     pub fn new(init: &StaticRangeInit) -> StaticRange {
         Self {
-            inner: Any::global("StaticRange").new(&[init.into()]).as_::<AbstractRange>(),
+            inner: Any::global("StaticRange")
+                .new(&[init.into()])
+                .as_::<AbstractRange>(),
         }
     }
-
 }

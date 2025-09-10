@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLHtmlElement class.
 /// [`HTMLHtmlElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHtmlElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLHtmlElement {
 
 impl FromVal for HTMLHtmlElement {
     fn from_val(v: &Any) -> Self {
-        HTMLHtmlElement { inner: HTMLElement::from_val(v) }
+        HTMLHtmlElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLHtmlElement {
 
 impl AsMut<Any> for HTMLHtmlElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLHtmlElement> for Any {
@@ -64,8 +63,6 @@ impl From<&HTMLHtmlElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLHtmlElement);
 
-
-
 impl HTMLHtmlElement {
     /// The `new HTMLHtmlElement(..)` constructor, creating a new HTMLHtmlElement instance
     pub fn new() -> HTMLHtmlElement {
@@ -73,7 +70,6 @@ impl HTMLHtmlElement {
             inner: Any::global("HTMLHtmlElement").new(&[]).as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLHtmlElement {
     /// Getter of the `version` attribute.

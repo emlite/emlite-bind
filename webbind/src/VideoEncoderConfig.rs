@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoEncoderConfig dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for VideoEncoderConfig {
 
 impl AsMut<Any> for VideoEncoderConfig {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoEncoderConfig> for Any {
@@ -141,7 +138,9 @@ impl VideoEncoderConfig {
 impl VideoEncoderConfig {
     /// Getter of the `hardwareAcceleration` attribute.
     pub fn hardware_acceleration(&self) -> HardwareAcceleration {
-        self.inner.get("hardwareAcceleration").as_::<HardwareAcceleration>()
+        self.inner
+            .get("hardwareAcceleration")
+            .as_::<HardwareAcceleration>()
     }
 
     /// Setter of the `hardwareAcceleration` attribute.
@@ -174,7 +173,9 @@ impl VideoEncoderConfig {
 impl VideoEncoderConfig {
     /// Getter of the `bitrateMode` attribute.
     pub fn bitrate_mode(&self) -> VideoEncoderBitrateMode {
-        self.inner.get("bitrateMode").as_::<VideoEncoderBitrateMode>()
+        self.inner
+            .get("bitrateMode")
+            .as_::<VideoEncoderBitrateMode>()
     }
 
     /// Setter of the `bitrateMode` attribute.

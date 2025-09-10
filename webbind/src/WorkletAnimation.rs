@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WorkletAnimation class.
 /// [`WorkletAnimation`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WorkletAnimation {
 
 impl FromVal for WorkletAnimation {
     fn from_val(v: &Any) -> Self {
-        WorkletAnimation { inner: Animation::from_val(v) }
+        WorkletAnimation {
+            inner: Animation::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WorkletAnimation {
 
 impl AsMut<Any> for WorkletAnimation {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WorkletAnimation> for Any {
@@ -64,37 +63,56 @@ impl From<&WorkletAnimation> for Any {
 
 jsbind::utils::impl_dyn_cast!(WorkletAnimation);
 
-
-
 impl WorkletAnimation {
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
     pub fn new0(animator_name: &JsString) -> WorkletAnimation {
         Self {
-            inner: Any::global("WorkletAnimation").new(&[animator_name.into()]).as_::<Animation>(),
+            inner: Any::global("WorkletAnimation")
+                .new(&[animator_name.into()])
+                .as_::<Animation>(),
         }
     }
 
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
     pub fn new1(animator_name: &JsString, effects: &Any) -> WorkletAnimation {
         Self {
-            inner: Any::global("WorkletAnimation").new(&[animator_name.into(), effects.into()]).as_::<Animation>(),
+            inner: Any::global("WorkletAnimation")
+                .new(&[animator_name.into(), effects.into()])
+                .as_::<Animation>(),
         }
     }
 
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new2(animator_name: &JsString, effects: &Any, timeline: &AnimationTimeline) -> WorkletAnimation {
+    pub fn new2(
+        animator_name: &JsString,
+        effects: &Any,
+        timeline: &AnimationTimeline,
+    ) -> WorkletAnimation {
         Self {
-            inner: Any::global("WorkletAnimation").new(&[animator_name.into(), effects.into(), timeline.into()]).as_::<Animation>(),
+            inner: Any::global("WorkletAnimation")
+                .new(&[animator_name.into(), effects.into(), timeline.into()])
+                .as_::<Animation>(),
         }
     }
 
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new3(animator_name: &JsString, effects: &Any, timeline: &AnimationTimeline, options: &Any) -> WorkletAnimation {
+    pub fn new3(
+        animator_name: &JsString,
+        effects: &Any,
+        timeline: &AnimationTimeline,
+        options: &Any,
+    ) -> WorkletAnimation {
         Self {
-            inner: Any::global("WorkletAnimation").new(&[animator_name.into(), effects.into(), timeline.into(), options.into()]).as_::<Animation>(),
+            inner: Any::global("WorkletAnimation")
+                .new(&[
+                    animator_name.into(),
+                    effects.into(),
+                    timeline.into(),
+                    options.into(),
+                ])
+                .as_::<Animation>(),
         }
     }
-
 }
 impl WorkletAnimation {
     /// Getter of the `animatorName` attribute.
@@ -102,5 +120,4 @@ impl WorkletAnimation {
     pub fn animator_name(&self) -> JsString {
         self.inner.get("animatorName").as_::<JsString>()
     }
-
 }

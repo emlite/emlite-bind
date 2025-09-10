@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The SFrameTransformErrorEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for SFrameTransformErrorEventInit {
 
 impl AsMut<Any> for SFrameTransformErrorEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<SFrameTransformErrorEventInit> for Any {
@@ -64,7 +61,9 @@ impl From<&SFrameTransformErrorEventInit> for Any {
 impl SFrameTransformErrorEventInit {
     /// Getter of the `errorType` attribute.
     pub fn error_type(&self) -> SFrameTransformErrorEventType {
-        self.inner.get("errorType").as_::<SFrameTransformErrorEventType>()
+        self.inner
+            .get("errorType")
+            .as_::<SFrameTransformErrorEventType>()
     }
 
     /// Setter of the `errorType` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPURenderPassDescriptor dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GPURenderPassDescriptor {
 
 impl AsMut<Any> for GPURenderPassDescriptor {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPURenderPassDescriptor> for Any {
@@ -64,7 +61,9 @@ impl From<&GPURenderPassDescriptor> for Any {
 impl GPURenderPassDescriptor {
     /// Getter of the `colorAttachments` attribute.
     pub fn color_attachments(&self) -> TypedArray<GPURenderPassColorAttachment> {
-        self.inner.get("colorAttachments").as_::<TypedArray<GPURenderPassColorAttachment>>()
+        self.inner
+            .get("colorAttachments")
+            .as_::<TypedArray<GPURenderPassColorAttachment>>()
     }
 
     /// Setter of the `colorAttachments` attribute.
@@ -75,7 +74,9 @@ impl GPURenderPassDescriptor {
 impl GPURenderPassDescriptor {
     /// Getter of the `depthStencilAttachment` attribute.
     pub fn depth_stencil_attachment(&self) -> GPURenderPassDepthStencilAttachment {
-        self.inner.get("depthStencilAttachment").as_::<GPURenderPassDepthStencilAttachment>()
+        self.inner
+            .get("depthStencilAttachment")
+            .as_::<GPURenderPassDepthStencilAttachment>()
     }
 
     /// Setter of the `depthStencilAttachment` attribute.
@@ -97,7 +98,9 @@ impl GPURenderPassDescriptor {
 impl GPURenderPassDescriptor {
     /// Getter of the `timestampWrites` attribute.
     pub fn timestamp_writes(&self) -> GPURenderPassTimestampWrites {
-        self.inner.get("timestampWrites").as_::<GPURenderPassTimestampWrites>()
+        self.inner
+            .get("timestampWrites")
+            .as_::<GPURenderPassTimestampWrites>()
     }
 
     /// Setter of the `timestampWrites` attribute.

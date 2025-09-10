@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSMathInvert class.
 /// [`CSSMathInvert`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathInvert)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSMathInvert {
 
 impl FromVal for CSSMathInvert {
     fn from_val(v: &Any) -> Self {
-        CSSMathInvert { inner: CSSMathValue::from_val(v) }
+        CSSMathInvert {
+            inner: CSSMathValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSMathInvert {
 
 impl AsMut<Any> for CSSMathInvert {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSMathInvert> for Any {
@@ -64,16 +63,15 @@ impl From<&CSSMathInvert> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSMathInvert);
 
-
-
 impl CSSMathInvert {
     /// The `new CSSMathInvert(..)` constructor, creating a new CSSMathInvert instance
     pub fn new(arg: &Any) -> CSSMathInvert {
         Self {
-            inner: Any::global("CSSMathInvert").new(&[arg.into()]).as_::<CSSMathValue>(),
+            inner: Any::global("CSSMathInvert")
+                .new(&[arg.into()])
+                .as_::<CSSMathValue>(),
         }
     }
-
 }
 impl CSSMathInvert {
     /// Getter of the `value` attribute.
@@ -81,5 +79,4 @@ impl CSSMathInvert {
     pub fn value(&self) -> CSSNumericValue {
         self.inner.get("value").as_::<CSSNumericValue>()
     }
-
 }

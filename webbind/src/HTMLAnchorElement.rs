@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLAnchorElement class.
 /// [`HTMLAnchorElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLAnchorElement {
 
 impl FromVal for HTMLAnchorElement {
     fn from_val(v: &Any) -> Self {
-        HTMLAnchorElement { inner: HTMLElement::from_val(v) }
+        HTMLAnchorElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLAnchorElement {
 
 impl AsMut<Any> for HTMLAnchorElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLAnchorElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLAnchorElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLAnchorElement);
 
-
-
 impl HTMLAnchorElement {
     /// The `new HTMLAnchorElement(..)` constructor, creating a new HTMLAnchorElement instance
     pub fn new() -> HTMLAnchorElement {
         Self {
-            inner: Any::global("HTMLAnchorElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLAnchorElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLAnchorElement {
     /// Getter of the `target` attribute.
@@ -133,7 +131,6 @@ impl HTMLAnchorElement {
     pub fn rel_list(&self) -> DOMTokenList {
         self.inner.get("relList").as_::<DOMTokenList>()
     }
-
 }
 impl HTMLAnchorElement {
     /// Getter of the `hreflang` attribute.
@@ -297,7 +294,6 @@ impl HTMLAnchorElement {
     pub fn origin(&self) -> JsString {
         self.inner.get("origin").as_::<JsString>()
     }
-
 }
 impl HTMLAnchorElement {
     /// Getter of the `protocol` attribute.

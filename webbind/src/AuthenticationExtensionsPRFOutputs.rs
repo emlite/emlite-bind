@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuthenticationExtensionsPRFOutputs dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuthenticationExtensionsPRFOutputs {
 
 impl AsMut<Any> for AuthenticationExtensionsPRFOutputs {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuthenticationExtensionsPRFOutputs> for Any {
@@ -75,7 +72,9 @@ impl AuthenticationExtensionsPRFOutputs {
 impl AuthenticationExtensionsPRFOutputs {
     /// Getter of the `results` attribute.
     pub fn results(&self) -> AuthenticationExtensionsPRFValues {
-        self.inner.get("results").as_::<AuthenticationExtensionsPRFValues>()
+        self.inner
+            .get("results")
+            .as_::<AuthenticationExtensionsPRFValues>()
     }
 
     /// Setter of the `results` attribute.

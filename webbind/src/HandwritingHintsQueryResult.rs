@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HandwritingHintsQueryResult dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HandwritingHintsQueryResult {
 
 impl AsMut<Any> for HandwritingHintsQueryResult {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HandwritingHintsQueryResult> for Any {
@@ -64,7 +61,9 @@ impl From<&HandwritingHintsQueryResult> for Any {
 impl HandwritingHintsQueryResult {
     /// Getter of the `recognitionType` attribute.
     pub fn recognition_type(&self) -> TypedArray<HandwritingRecognitionType> {
-        self.inner.get("recognitionType").as_::<TypedArray<HandwritingRecognitionType>>()
+        self.inner
+            .get("recognitionType")
+            .as_::<TypedArray<HandwritingRecognitionType>>()
     }
 
     /// Setter of the `recognitionType` attribute.
@@ -75,7 +74,9 @@ impl HandwritingHintsQueryResult {
 impl HandwritingHintsQueryResult {
     /// Getter of the `inputType` attribute.
     pub fn input_type(&self) -> TypedArray<HandwritingInputType> {
-        self.inner.get("inputType").as_::<TypedArray<HandwritingInputType>>()
+        self.inner
+            .get("inputType")
+            .as_::<TypedArray<HandwritingInputType>>()
     }
 
     /// Setter of the `inputType` attribute.

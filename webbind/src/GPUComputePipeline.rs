@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GPUComputePipeline class.
 /// [`GPUComputePipeline`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePipeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct GPUComputePipeline {
 
 impl FromVal for GPUComputePipeline {
     fn from_val(v: &Any) -> Self {
-        GPUComputePipeline { inner: Any::from_val(v) }
+        GPUComputePipeline {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for GPUComputePipeline {
 
 impl AsMut<Any> for GPUComputePipeline {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GPUComputePipeline> for Any {
@@ -64,7 +63,6 @@ impl From<&GPUComputePipeline> for Any {
 
 jsbind::utils::impl_dyn_cast!(GPUComputePipeline);
 
-
 impl GPUComputePipeline {
     /// Getter of the `label` attribute.
     /// [`GPUComputePipeline.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePipeline/label)
@@ -82,6 +80,8 @@ impl GPUComputePipeline {
     /// The getBindGroupLayout method.
     /// [`GPUComputePipeline.getBindGroupLayout`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePipeline/getBindGroupLayout)
     pub fn get_bind_group_layout(&self, index: u32) -> GPUBindGroupLayout {
-        self.inner.call("getBindGroupLayout", &[index.into(), ]).as_::<GPUBindGroupLayout>()
+        self.inner
+            .call("getBindGroupLayout", &[index.into()])
+            .as_::<GPUBindGroupLayout>()
     }
 }

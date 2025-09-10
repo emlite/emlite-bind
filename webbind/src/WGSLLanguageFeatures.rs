@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WGSLLanguageFeatures class.
 /// [`WGSLLanguageFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/WGSLLanguageFeatures)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WGSLLanguageFeatures {
 
 impl FromVal for WGSLLanguageFeatures {
     fn from_val(v: &Any) -> Self {
-        WGSLLanguageFeatures { inner: Any::from_val(v) }
+        WGSLLanguageFeatures {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WGSLLanguageFeatures {
 
 impl AsMut<Any> for WGSLLanguageFeatures {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WGSLLanguageFeatures> for Any {
@@ -63,5 +62,3 @@ impl From<&WGSLLanguageFeatures> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WGSLLanguageFeatures);
-
-

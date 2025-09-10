@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BatteryManager class.
 /// [`BatteryManager`](https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BatteryManager {
 
 impl FromVal for BatteryManager {
     fn from_val(v: &Any) -> Self {
-        BatteryManager { inner: EventTarget::from_val(v) }
+        BatteryManager {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BatteryManager {
 
 impl AsMut<Any> for BatteryManager {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BatteryManager> for Any {
@@ -64,14 +63,12 @@ impl From<&BatteryManager> for Any {
 
 jsbind::utils::impl_dyn_cast!(BatteryManager);
 
-
 impl BatteryManager {
     /// Getter of the `charging` attribute.
     /// [`BatteryManager.charging`](https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/charging)
     pub fn charging(&self) -> bool {
         self.inner.get("charging").as_::<bool>()
     }
-
 }
 impl BatteryManager {
     /// Getter of the `chargingTime` attribute.
@@ -79,7 +76,6 @@ impl BatteryManager {
     pub fn charging_time(&self) -> f64 {
         self.inner.get("chargingTime").as_::<f64>()
     }
-
 }
 impl BatteryManager {
     /// Getter of the `dischargingTime` attribute.
@@ -87,7 +83,6 @@ impl BatteryManager {
     pub fn discharging_time(&self) -> f64 {
         self.inner.get("dischargingTime").as_::<f64>()
     }
-
 }
 impl BatteryManager {
     /// Getter of the `level` attribute.
@@ -95,7 +90,6 @@ impl BatteryManager {
     pub fn level(&self) -> f64 {
         self.inner.get("level").as_::<f64>()
     }
-
 }
 impl BatteryManager {
     /// Getter of the `onchargingchange` attribute.

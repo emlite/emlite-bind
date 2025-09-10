@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MockCameraConfiguration dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MockCameraConfiguration {
 
 impl AsMut<Any> for MockCameraConfiguration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MockCameraConfiguration> for Any {

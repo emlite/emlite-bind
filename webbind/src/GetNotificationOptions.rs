@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The GetNotificationOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for GetNotificationOptions {
 
 impl AsMut<Any> for GetNotificationOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<GetNotificationOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The DetectedBarcode dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for DetectedBarcode {
 
 impl AsMut<Any> for DetectedBarcode {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<DetectedBarcode> for Any {

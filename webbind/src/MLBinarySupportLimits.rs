@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLBinarySupportLimits dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLBinarySupportLimits {
 
 impl AsMut<Any> for MLBinarySupportLimits {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLBinarySupportLimits> for Any {

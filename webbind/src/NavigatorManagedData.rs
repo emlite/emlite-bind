@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The NavigatorManagedData class.
 /// [`NavigatorManagedData`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct NavigatorManagedData {
 
 impl FromVal for NavigatorManagedData {
     fn from_val(v: &Any) -> Self {
-        NavigatorManagedData { inner: EventTarget::from_val(v) }
+        NavigatorManagedData {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for NavigatorManagedData {
 
 impl AsMut<Any> for NavigatorManagedData {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<NavigatorManagedData> for Any {
@@ -64,12 +63,16 @@ impl From<&NavigatorManagedData> for Any {
 
 jsbind::utils::impl_dyn_cast!(NavigatorManagedData);
 
-
 impl NavigatorManagedData {
     /// The getManagedConfiguration method.
     /// [`NavigatorManagedData.getManagedConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getManagedConfiguration)
-    pub fn get_managed_configuration(&self, keys: &TypedArray<JsString>) -> Promise<Record<JsString, Object>> {
-        self.inner.call("getManagedConfiguration", &[keys.into(), ]).as_::<Promise<Record<JsString, Object>>>()
+    pub fn get_managed_configuration(
+        &self,
+        keys: &TypedArray<JsString>,
+    ) -> Promise<Record<JsString, Object>> {
+        self.inner
+            .call("getManagedConfiguration", &[keys.into()])
+            .as_::<Promise<Record<JsString, Object>>>()
     }
 }
 impl NavigatorManagedData {
@@ -88,35 +91,45 @@ impl NavigatorManagedData {
 impl NavigatorManagedData {
     /// The getAnnotatedAssetId method.
     /// [`NavigatorManagedData.getAnnotatedAssetId`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getAnnotatedAssetId)
-    pub fn get_annotated_asset_id(&self, ) -> Promise<JsString> {
-        self.inner.call("getAnnotatedAssetId", &[]).as_::<Promise<JsString>>()
+    pub fn get_annotated_asset_id(&self) -> Promise<JsString> {
+        self.inner
+            .call("getAnnotatedAssetId", &[])
+            .as_::<Promise<JsString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getAnnotatedLocation method.
     /// [`NavigatorManagedData.getAnnotatedLocation`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getAnnotatedLocation)
-    pub fn get_annotated_location(&self, ) -> Promise<JsString> {
-        self.inner.call("getAnnotatedLocation", &[]).as_::<Promise<JsString>>()
+    pub fn get_annotated_location(&self) -> Promise<JsString> {
+        self.inner
+            .call("getAnnotatedLocation", &[])
+            .as_::<Promise<JsString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getDirectoryId method.
     /// [`NavigatorManagedData.getDirectoryId`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getDirectoryId)
-    pub fn get_directory_id(&self, ) -> Promise<JsString> {
-        self.inner.call("getDirectoryId", &[]).as_::<Promise<JsString>>()
+    pub fn get_directory_id(&self) -> Promise<JsString> {
+        self.inner
+            .call("getDirectoryId", &[])
+            .as_::<Promise<JsString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getHostname method.
     /// [`NavigatorManagedData.getHostname`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getHostname)
-    pub fn get_hostname(&self, ) -> Promise<JsString> {
-        self.inner.call("getHostname", &[]).as_::<Promise<JsString>>()
+    pub fn get_hostname(&self) -> Promise<JsString> {
+        self.inner
+            .call("getHostname", &[])
+            .as_::<Promise<JsString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getSerialNumber method.
     /// [`NavigatorManagedData.getSerialNumber`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getSerialNumber)
-    pub fn get_serial_number(&self, ) -> Promise<JsString> {
-        self.inner.call("getSerialNumber", &[]).as_::<Promise<JsString>>()
+    pub fn get_serial_number(&self) -> Promise<JsString> {
+        self.inner
+            .call("getSerialNumber", &[])
+            .as_::<Promise<JsString>>()
     }
 }

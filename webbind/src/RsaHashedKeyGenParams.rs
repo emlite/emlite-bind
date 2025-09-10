@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RsaHashedKeyGenParams dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RsaHashedKeyGenParams {
 
 impl AsMut<Any> for RsaHashedKeyGenParams {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RsaHashedKeyGenParams> for Any {

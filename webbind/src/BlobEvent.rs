@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The BlobEvent class.
 /// [`BlobEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct BlobEvent {
 
 impl FromVal for BlobEvent {
     fn from_val(v: &Any) -> Self {
-        BlobEvent { inner: Event::from_val(v) }
+        BlobEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for BlobEvent {
 
 impl AsMut<Any> for BlobEvent {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<BlobEvent> for Any {
@@ -64,16 +63,15 @@ impl From<&BlobEvent> for Any {
 
 jsbind::utils::impl_dyn_cast!(BlobEvent);
 
-
-
 impl BlobEvent {
     /// The `new BlobEvent(..)` constructor, creating a new BlobEvent instance
     pub fn new(type_: &JsString, event_init_dict: &BlobEventInit) -> BlobEvent {
         Self {
-            inner: Any::global("BlobEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: Any::global("BlobEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl BlobEvent {
     /// Getter of the `data` attribute.
@@ -81,7 +79,6 @@ impl BlobEvent {
     pub fn data(&self) -> Blob {
         self.inner.get("data").as_::<Blob>()
     }
-
 }
 impl BlobEvent {
     /// Getter of the `timecode` attribute.
@@ -89,5 +86,4 @@ impl BlobEvent {
     pub fn timecode(&self) -> Any {
         self.inner.get("timecode").as_::<Any>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The USBPermissionStorage dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for USBPermissionStorage {
 
 impl AsMut<Any> for USBPermissionStorage {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<USBPermissionStorage> for Any {
@@ -64,7 +61,9 @@ impl From<&USBPermissionStorage> for Any {
 impl USBPermissionStorage {
     /// Getter of the `allowedDevices` attribute.
     pub fn allowed_devices(&self) -> TypedArray<AllowedUSBDevice> {
-        self.inner.get("allowedDevices").as_::<TypedArray<AllowedUSBDevice>>()
+        self.inner
+            .get("allowedDevices")
+            .as_::<TypedArray<AllowedUSBDevice>>()
     }
 
     /// Setter of the `allowedDevices` attribute.

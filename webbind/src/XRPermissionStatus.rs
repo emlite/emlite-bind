@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The XRPermissionStatus class.
 /// [`XRPermissionStatus`](https://developer.mozilla.org/en-US/docs/Web/API/XRPermissionStatus)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct XRPermissionStatus {
 
 impl FromVal for XRPermissionStatus {
     fn from_val(v: &Any) -> Self {
-        XRPermissionStatus { inner: PermissionStatus::from_val(v) }
+        XRPermissionStatus {
+            inner: PermissionStatus::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for XRPermissionStatus {
 
 impl AsMut<Any> for XRPermissionStatus {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<XRPermissionStatus> for Any {
@@ -63,7 +62,6 @@ impl From<&XRPermissionStatus> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(XRPermissionStatus);
-
 
 impl XRPermissionStatus {
     /// Getter of the `granted` attribute.

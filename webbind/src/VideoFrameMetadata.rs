@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoFrameMetadata dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for VideoFrameMetadata {
 
 impl AsMut<Any> for VideoFrameMetadata {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoFrameMetadata> for Any {
@@ -60,4 +57,3 @@ impl From<&VideoFrameMetadata> for Any {
         s.inner.clone()
     }
 }
-

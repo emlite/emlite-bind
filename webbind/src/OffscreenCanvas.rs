@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The OffscreenCanvas class.
 /// [`OffscreenCanvas`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct OffscreenCanvas {
 
 impl FromVal for OffscreenCanvas {
     fn from_val(v: &Any) -> Self {
-        OffscreenCanvas { inner: EventTarget::from_val(v) }
+        OffscreenCanvas {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for OffscreenCanvas {
 
 impl AsMut<Any> for OffscreenCanvas {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<OffscreenCanvas> for Any {
@@ -64,16 +63,15 @@ impl From<&OffscreenCanvas> for Any {
 
 jsbind::utils::impl_dyn_cast!(OffscreenCanvas);
 
-
-
 impl OffscreenCanvas {
     /// The `new OffscreenCanvas(..)` constructor, creating a new OffscreenCanvas instance
     pub fn new(width: u64, height: u64) -> OffscreenCanvas {
         Self {
-            inner: Any::global("OffscreenCanvas").new(&[width.into(), height.into()]).as_::<EventTarget>(),
+            inner: Any::global("OffscreenCanvas")
+                .new(&[width.into(), height.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl OffscreenCanvas {
     /// Getter of the `width` attribute.
@@ -105,31 +103,39 @@ impl OffscreenCanvas {
     /// The getContext method.
     /// [`OffscreenCanvas.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/getContext)
     pub fn get_context0(&self, context_id: &OffscreenRenderingContextId) -> Any {
-        self.inner.call("getContext", &[context_id.into(), ]).as_::<Any>()
+        self.inner
+            .call("getContext", &[context_id.into()])
+            .as_::<Any>()
     }
     /// The getContext method.
     /// [`OffscreenCanvas.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/getContext)
     pub fn get_context1(&self, context_id: &OffscreenRenderingContextId, options: &Any) -> Any {
-        self.inner.call("getContext", &[context_id.into(), options.into(), ]).as_::<Any>()
+        self.inner
+            .call("getContext", &[context_id.into(), options.into()])
+            .as_::<Any>()
     }
 }
 impl OffscreenCanvas {
     /// The transferToImageBitmap method.
     /// [`OffscreenCanvas.transferToImageBitmap`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/transferToImageBitmap)
-    pub fn transfer_to_image_bitmap(&self, ) -> ImageBitmap {
-        self.inner.call("transferToImageBitmap", &[]).as_::<ImageBitmap>()
+    pub fn transfer_to_image_bitmap(&self) -> ImageBitmap {
+        self.inner
+            .call("transferToImageBitmap", &[])
+            .as_::<ImageBitmap>()
     }
 }
 impl OffscreenCanvas {
     /// The convertToBlob method.
     /// [`OffscreenCanvas.convertToBlob`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/convertToBlob)
-    pub fn convert_to_blob0(&self, ) -> Promise<Blob> {
+    pub fn convert_to_blob0(&self) -> Promise<Blob> {
         self.inner.call("convertToBlob", &[]).as_::<Promise<Blob>>()
     }
     /// The convertToBlob method.
     /// [`OffscreenCanvas.convertToBlob`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/convertToBlob)
     pub fn convert_to_blob1(&self, options: &ImageEncodeOptions) -> Promise<Blob> {
-        self.inner.call("convertToBlob", &[options.into(), ]).as_::<Promise<Blob>>()
+        self.inner
+            .call("convertToBlob", &[options.into()])
+            .as_::<Promise<Blob>>()
     }
 }
 impl OffscreenCanvas {

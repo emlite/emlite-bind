@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ClientQueryOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ClientQueryOptions {
 
 impl AsMut<Any> for ClientQueryOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ClientQueryOptions> for Any {

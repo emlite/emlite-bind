@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The TouchEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for TouchEventInit {
 
 impl AsMut<Any> for TouchEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<TouchEventInit> for Any {

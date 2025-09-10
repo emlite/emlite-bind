@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLTableColElement class.
 /// [`HTMLTableColElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLTableColElement {
 
 impl FromVal for HTMLTableColElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTableColElement { inner: HTMLElement::from_val(v) }
+        HTMLTableColElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLTableColElement {
 
 impl AsMut<Any> for HTMLTableColElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLTableColElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLTableColElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTableColElement);
 
-
-
 impl HTMLTableColElement {
     /// The `new HTMLTableColElement(..)` constructor, creating a new HTMLTableColElement instance
     pub fn new() -> HTMLTableColElement {
         Self {
-            inner: Any::global("HTMLTableColElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLTableColElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLTableColElement {
     /// Getter of the `span` attribute.

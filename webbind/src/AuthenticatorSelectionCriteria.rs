@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuthenticatorSelectionCriteria dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuthenticatorSelectionCriteria {
 
 impl AsMut<Any> for AuthenticatorSelectionCriteria {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuthenticatorSelectionCriteria> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HTMLTemplateElement class.
 /// [`HTMLTemplateElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct HTMLTemplateElement {
 
 impl FromVal for HTMLTemplateElement {
     fn from_val(v: &Any) -> Self {
-        HTMLTemplateElement { inner: HTMLElement::from_val(v) }
+        HTMLTemplateElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for HTMLTemplateElement {
 
 impl AsMut<Any> for HTMLTemplateElement {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HTMLTemplateElement> for Any {
@@ -64,16 +63,15 @@ impl From<&HTMLTemplateElement> for Any {
 
 jsbind::utils::impl_dyn_cast!(HTMLTemplateElement);
 
-
-
 impl HTMLTemplateElement {
     /// The `new HTMLTemplateElement(..)` constructor, creating a new HTMLTemplateElement instance
     pub fn new() -> HTMLTemplateElement {
         Self {
-            inner: Any::global("HTMLTemplateElement").new(&[]).as_::<HTMLElement>(),
+            inner: Any::global("HTMLTemplateElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLTemplateElement {
     /// Getter of the `content` attribute.
@@ -81,7 +79,6 @@ impl HTMLTemplateElement {
     pub fn content(&self) -> DocumentFragment {
         self.inner.get("content").as_::<DocumentFragment>()
     }
-
 }
 impl HTMLTemplateElement {
     /// Getter of the `shadowRootMode` attribute.
@@ -139,7 +136,9 @@ impl HTMLTemplateElement {
     /// Getter of the `shadowRootCustomElementRegistry` attribute.
     /// [`HTMLTemplateElement.shadowRootCustomElementRegistry`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/shadowRootCustomElementRegistry)
     pub fn shadow_root_custom_element_registry(&self) -> JsString {
-        self.inner.get("shadowRootCustomElementRegistry").as_::<JsString>()
+        self.inner
+            .get("shadowRootCustomElementRegistry")
+            .as_::<JsString>()
     }
 
     /// Setter of the `shadowRootCustomElementRegistry` attribute.

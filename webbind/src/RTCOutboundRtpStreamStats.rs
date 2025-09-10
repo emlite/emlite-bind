@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The RTCOutboundRtpStreamStats dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for RTCOutboundRtpStreamStats {
 
 impl AsMut<Any> for RTCOutboundRtpStreamStats {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<RTCOutboundRtpStreamStats> for Any {
@@ -317,7 +314,9 @@ impl RTCOutboundRtpStreamStats {
 impl RTCOutboundRtpStreamStats {
     /// Getter of the `qualityLimitationReason` attribute.
     pub fn quality_limitation_reason(&self) -> RTCQualityLimitationReason {
-        self.inner.get("qualityLimitationReason").as_::<RTCQualityLimitationReason>()
+        self.inner
+            .get("qualityLimitationReason")
+            .as_::<RTCQualityLimitationReason>()
     }
 
     /// Setter of the `qualityLimitationReason` attribute.
@@ -328,7 +327,9 @@ impl RTCOutboundRtpStreamStats {
 impl RTCOutboundRtpStreamStats {
     /// Getter of the `qualityLimitationDurations` attribute.
     pub fn quality_limitation_durations(&self) -> Record<JsString, f64> {
-        self.inner.get("qualityLimitationDurations").as_::<Record<JsString, f64>>()
+        self.inner
+            .get("qualityLimitationDurations")
+            .as_::<Record<JsString, f64>>()
     }
 
     /// Setter of the `qualityLimitationDurations` attribute.
@@ -339,7 +340,9 @@ impl RTCOutboundRtpStreamStats {
 impl RTCOutboundRtpStreamStats {
     /// Getter of the `qualityLimitationResolutionChanges` attribute.
     pub fn quality_limitation_resolution_changes(&self) -> u32 {
-        self.inner.get("qualityLimitationResolutionChanges").as_::<u32>()
+        self.inner
+            .get("qualityLimitationResolutionChanges")
+            .as_::<u32>()
     }
 
     /// Setter of the `qualityLimitationResolutionChanges` attribute.

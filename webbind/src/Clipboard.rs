@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Clipboard class.
 /// [`Clipboard`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Clipboard {
 
 impl FromVal for Clipboard {
     fn from_val(v: &Any) -> Self {
-        Clipboard { inner: EventTarget::from_val(v) }
+        Clipboard {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Clipboard {
 
 impl AsMut<Any> for Clipboard {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Clipboard> for Any {
@@ -64,23 +63,24 @@ impl From<&Clipboard> for Any {
 
 jsbind::utils::impl_dyn_cast!(Clipboard);
 
-
 impl Clipboard {
     /// The read method.
     /// [`Clipboard.read`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read)
-    pub fn read0(&self, ) -> Promise<Any> {
+    pub fn read0(&self) -> Promise<Any> {
         self.inner.call("read", &[]).as_::<Promise<Any>>()
     }
     /// The read method.
     /// [`Clipboard.read`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read)
     pub fn read1(&self, formats: &ClipboardUnsanitizedFormats) -> Promise<Any> {
-        self.inner.call("read", &[formats.into(), ]).as_::<Promise<Any>>()
+        self.inner
+            .call("read", &[formats.into()])
+            .as_::<Promise<Any>>()
     }
 }
 impl Clipboard {
     /// The readText method.
     /// [`Clipboard.readText`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/readText)
-    pub fn read_text(&self, ) -> Promise<JsString> {
+    pub fn read_text(&self) -> Promise<JsString> {
         self.inner.call("readText", &[]).as_::<Promise<JsString>>()
     }
 }
@@ -88,13 +88,17 @@ impl Clipboard {
     /// The write method.
     /// [`Clipboard.write`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/write)
     pub fn write(&self, data: &Any) -> Promise<Undefined> {
-        self.inner.call("write", &[data.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("write", &[data.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Clipboard {
     /// The writeText method.
     /// [`Clipboard.writeText`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText)
     pub fn write_text(&self, data: &JsString) -> Promise<Undefined> {
-        self.inner.call("writeText", &[data.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("writeText", &[data.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

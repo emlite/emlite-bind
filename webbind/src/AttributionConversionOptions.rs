@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AttributionConversionOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AttributionConversionOptions {
 
 impl AsMut<Any> for AttributionConversionOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AttributionConversionOptions> for Any {
@@ -119,7 +116,9 @@ impl AttributionConversionOptions {
 impl AttributionConversionOptions {
     /// Getter of the `impressionSites` attribute.
     pub fn impression_sites(&self) -> TypedArray<JsString> {
-        self.inner.get("impressionSites").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("impressionSites")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `impressionSites` attribute.
@@ -130,7 +129,9 @@ impl AttributionConversionOptions {
 impl AttributionConversionOptions {
     /// Getter of the `impressionCallers` attribute.
     pub fn impression_callers(&self) -> TypedArray<JsString> {
-        self.inner.get("impressionCallers").as_::<TypedArray<JsString>>()
+        self.inner
+            .get("impressionCallers")
+            .as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `impressionCallers` attribute.
@@ -152,7 +153,9 @@ impl AttributionConversionOptions {
 impl AttributionConversionOptions {
     /// Getter of the `logicOptions` attribute.
     pub fn logic_options(&self) -> AttributionLogicOptions {
-        self.inner.get("logicOptions").as_::<AttributionLogicOptions>()
+        self.inner
+            .get("logicOptions")
+            .as_::<AttributionLogicOptions>()
     }
 
     /// Setter of the `logicOptions` attribute.

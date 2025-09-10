@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLObject class.
 /// [`WebGLObject`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLObject)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLObject {
 
 impl FromVal for WebGLObject {
     fn from_val(v: &Any) -> Self {
-        WebGLObject { inner: Any::from_val(v) }
+        WebGLObject {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLObject {
 
 impl AsMut<Any> for WebGLObject {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLObject> for Any {
@@ -63,7 +62,6 @@ impl From<&WebGLObject> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLObject);
-
 
 impl WebGLObject {
     /// Getter of the `label` attribute.

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MLEluOptions dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MLEluOptions {
 
 impl AsMut<Any> for MLEluOptions {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MLEluOptions> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ViewTransition class.
 /// [`ViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ViewTransition {
 
 impl FromVal for ViewTransition {
     fn from_val(v: &Any) -> Self {
-        ViewTransition { inner: Any::from_val(v) }
+        ViewTransition {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ViewTransition {
 
 impl AsMut<Any> for ViewTransition {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ViewTransition> for Any {
@@ -64,14 +63,14 @@ impl From<&ViewTransition> for Any {
 
 jsbind::utils::impl_dyn_cast!(ViewTransition);
 
-
 impl ViewTransition {
     /// Getter of the `updateCallbackDone` attribute.
     /// [`ViewTransition.updateCallbackDone`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/updateCallbackDone)
     pub fn update_callback_done(&self) -> Promise<Undefined> {
-        self.inner.get("updateCallbackDone").as_::<Promise<Undefined>>()
+        self.inner
+            .get("updateCallbackDone")
+            .as_::<Promise<Undefined>>()
     }
-
 }
 impl ViewTransition {
     /// Getter of the `ready` attribute.
@@ -79,7 +78,6 @@ impl ViewTransition {
     pub fn ready(&self) -> Promise<Undefined> {
         self.inner.get("ready").as_::<Promise<Undefined>>()
     }
-
 }
 impl ViewTransition {
     /// Getter of the `finished` attribute.
@@ -87,12 +85,11 @@ impl ViewTransition {
     pub fn finished(&self) -> Promise<Undefined> {
         self.inner.get("finished").as_::<Promise<Undefined>>()
     }
-
 }
 impl ViewTransition {
     /// The skipTransition method.
     /// [`ViewTransition.skipTransition`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/skipTransition)
-    pub fn skip_transition(&self, ) -> Undefined {
+    pub fn skip_transition(&self) -> Undefined {
         self.inner.call("skipTransition", &[]).as_::<Undefined>()
     }
 }

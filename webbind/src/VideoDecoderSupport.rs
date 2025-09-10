@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The VideoDecoderSupport dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for VideoDecoderSupport {
 
 impl AsMut<Any> for VideoDecoderSupport {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<VideoDecoderSupport> for Any {

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The HandwritingPrediction dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for HandwritingPrediction {
 
 impl AsMut<Any> for HandwritingPrediction {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<HandwritingPrediction> for Any {
@@ -75,7 +72,9 @@ impl HandwritingPrediction {
 impl HandwritingPrediction {
     /// Getter of the `segmentationResult` attribute.
     pub fn segmentation_result(&self) -> TypedArray<HandwritingSegment> {
-        self.inner.get("segmentationResult").as_::<TypedArray<HandwritingSegment>>()
+        self.inner
+            .get("segmentationResult")
+            .as_::<TypedArray<HandwritingSegment>>()
     }
 
     /// Setter of the `segmentationResult` attribute.

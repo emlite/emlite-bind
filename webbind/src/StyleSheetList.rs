@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The StyleSheetList class.
 /// [`StyleSheetList`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct StyleSheetList {
 
 impl FromVal for StyleSheetList {
     fn from_val(v: &Any) -> Self {
-        StyleSheetList { inner: Any::from_val(v) }
+        StyleSheetList {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for StyleSheetList {
 
 impl AsMut<Any> for StyleSheetList {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<StyleSheetList> for Any {
@@ -64,12 +63,13 @@ impl From<&StyleSheetList> for Any {
 
 jsbind::utils::impl_dyn_cast!(StyleSheetList);
 
-
 impl StyleSheetList {
     /// The item method.
     /// [`StyleSheetList.item`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList/item)
     pub fn item(&self, index: u32) -> CSSStyleSheet {
-        self.inner.call("item", &[index.into(), ]).as_::<CSSStyleSheet>()
+        self.inner
+            .call("item", &[index.into()])
+            .as_::<CSSStyleSheet>()
     }
 }
 impl StyleSheetList {
@@ -78,5 +78,4 @@ impl StyleSheetList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }

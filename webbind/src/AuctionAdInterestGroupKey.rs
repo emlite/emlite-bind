@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The AuctionAdInterestGroupKey dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for AuctionAdInterestGroupKey {
 
 impl AsMut<Any> for AuctionAdInterestGroupKey {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<AuctionAdInterestGroupKey> for Any {

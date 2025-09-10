@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The FormDataEventInit dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for FormDataEventInit {
 
 impl AsMut<Any> for FormDataEventInit {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<FormDataEventInit> for Any {

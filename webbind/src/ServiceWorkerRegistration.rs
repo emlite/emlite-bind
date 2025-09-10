@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ServiceWorkerRegistration class.
 /// [`ServiceWorkerRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct ServiceWorkerRegistration {
 
 impl FromVal for ServiceWorkerRegistration {
     fn from_val(v: &Any) -> Self {
-        ServiceWorkerRegistration { inner: EventTarget::from_val(v) }
+        ServiceWorkerRegistration {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for ServiceWorkerRegistration {
 
 impl AsMut<Any> for ServiceWorkerRegistration {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ServiceWorkerRegistration> for Any {
@@ -64,14 +63,12 @@ impl From<&ServiceWorkerRegistration> for Any {
 
 jsbind::utils::impl_dyn_cast!(ServiceWorkerRegistration);
 
-
 impl ServiceWorkerRegistration {
     /// Getter of the `installing` attribute.
     /// [`ServiceWorkerRegistration.installing`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/installing)
     pub fn installing(&self) -> ServiceWorker {
         self.inner.get("installing").as_::<ServiceWorker>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `waiting` attribute.
@@ -79,7 +76,6 @@ impl ServiceWorkerRegistration {
     pub fn waiting(&self) -> ServiceWorker {
         self.inner.get("waiting").as_::<ServiceWorker>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `active` attribute.
@@ -87,15 +83,15 @@ impl ServiceWorkerRegistration {
     pub fn active(&self) -> ServiceWorker {
         self.inner.get("active").as_::<ServiceWorker>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `navigationPreload` attribute.
     /// [`ServiceWorkerRegistration.navigationPreload`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/navigationPreload)
     pub fn navigation_preload(&self) -> NavigationPreloadManager {
-        self.inner.get("navigationPreload").as_::<NavigationPreloadManager>()
+        self.inner
+            .get("navigationPreload")
+            .as_::<NavigationPreloadManager>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `scope` attribute.
@@ -103,27 +99,29 @@ impl ServiceWorkerRegistration {
     pub fn scope(&self) -> JsString {
         self.inner.get("scope").as_::<JsString>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `updateViaCache` attribute.
     /// [`ServiceWorkerRegistration.updateViaCache`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/updateViaCache)
     pub fn update_via_cache(&self) -> ServiceWorkerUpdateViaCache {
-        self.inner.get("updateViaCache").as_::<ServiceWorkerUpdateViaCache>()
+        self.inner
+            .get("updateViaCache")
+            .as_::<ServiceWorkerUpdateViaCache>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// The update method.
     /// [`ServiceWorkerRegistration.update`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update)
-    pub fn update(&self, ) -> Promise<ServiceWorkerRegistration> {
-        self.inner.call("update", &[]).as_::<Promise<ServiceWorkerRegistration>>()
+    pub fn update(&self) -> Promise<ServiceWorkerRegistration> {
+        self.inner
+            .call("update", &[])
+            .as_::<Promise<ServiceWorkerRegistration>>()
     }
 }
 impl ServiceWorkerRegistration {
     /// The unregister method.
     /// [`ServiceWorkerRegistration.unregister`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/unregister)
-    pub fn unregister(&self, ) -> Promise<bool> {
+    pub fn unregister(&self) -> Promise<bool> {
         self.inner.call("unregister", &[]).as_::<Promise<bool>>()
     }
 }
@@ -144,9 +142,10 @@ impl ServiceWorkerRegistration {
     /// Getter of the `backgroundFetch` attribute.
     /// [`ServiceWorkerRegistration.backgroundFetch`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/backgroundFetch)
     pub fn background_fetch(&self) -> BackgroundFetchManager {
-        self.inner.get("backgroundFetch").as_::<BackgroundFetchManager>()
+        self.inner
+            .get("backgroundFetch")
+            .as_::<BackgroundFetchManager>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `sync` attribute.
@@ -154,7 +153,6 @@ impl ServiceWorkerRegistration {
     pub fn sync(&self) -> SyncManager {
         self.inner.get("sync").as_::<SyncManager>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `index` attribute.
@@ -162,7 +160,6 @@ impl ServiceWorkerRegistration {
     pub fn index(&self) -> ContentIndex {
         self.inner.get("index").as_::<ContentIndex>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `cookies` attribute.
@@ -170,30 +167,44 @@ impl ServiceWorkerRegistration {
     pub fn cookies(&self) -> CookieStoreManager {
         self.inner.get("cookies").as_::<CookieStoreManager>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
     pub fn show_notification0(&self, title: &JsString) -> Promise<Undefined> {
-        self.inner.call("showNotification", &[title.into(), ]).as_::<Promise<Undefined>>()
+        self.inner
+            .call("showNotification", &[title.into()])
+            .as_::<Promise<Undefined>>()
     }
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
-    pub fn show_notification1(&self, title: &JsString, options: &NotificationOptions) -> Promise<Undefined> {
-        self.inner.call("showNotification", &[title.into(), options.into(), ]).as_::<Promise<Undefined>>()
+    pub fn show_notification1(
+        &self,
+        title: &JsString,
+        options: &NotificationOptions,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call("showNotification", &[title.into(), options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ServiceWorkerRegistration {
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
-    pub fn get_notifications0(&self, ) -> Promise<TypedArray<Notification>> {
-        self.inner.call("getNotifications", &[]).as_::<Promise<TypedArray<Notification>>>()
+    pub fn get_notifications0(&self) -> Promise<TypedArray<Notification>> {
+        self.inner
+            .call("getNotifications", &[])
+            .as_::<Promise<TypedArray<Notification>>>()
     }
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
-    pub fn get_notifications1(&self, filter: &GetNotificationOptions) -> Promise<TypedArray<Notification>> {
-        self.inner.call("getNotifications", &[filter.into(), ]).as_::<Promise<TypedArray<Notification>>>()
+    pub fn get_notifications1(
+        &self,
+        filter: &GetNotificationOptions,
+    ) -> Promise<TypedArray<Notification>> {
+        self.inner
+            .call("getNotifications", &[filter.into()])
+            .as_::<Promise<TypedArray<Notification>>>()
     }
 }
 impl ServiceWorkerRegistration {
@@ -202,7 +213,6 @@ impl ServiceWorkerRegistration {
     pub fn payment_manager(&self) -> PaymentManager {
         self.inner.get("paymentManager").as_::<PaymentManager>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `periodicSync` attribute.
@@ -210,7 +220,6 @@ impl ServiceWorkerRegistration {
     pub fn periodic_sync(&self) -> PeriodicSyncManager {
         self.inner.get("periodicSync").as_::<PeriodicSyncManager>()
     }
-
 }
 impl ServiceWorkerRegistration {
     /// Getter of the `pushManager` attribute.
@@ -218,5 +227,4 @@ impl ServiceWorkerRegistration {
     pub fn push_manager(&self) -> PushManager {
         self.inner.get("pushManager").as_::<PushManager>()
     }
-
 }

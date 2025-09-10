@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The CSSLab class.
 /// [`CSSLab`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLab)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct CSSLab {
 
 impl FromVal for CSSLab {
     fn from_val(v: &Any) -> Self {
-        CSSLab { inner: CSSColorValue::from_val(v) }
+        CSSLab {
+            inner: CSSColorValue::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for CSSLab {
 
 impl AsMut<Any> for CSSLab {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<CSSLab> for Any {
@@ -64,23 +63,24 @@ impl From<&CSSLab> for Any {
 
 jsbind::utils::impl_dyn_cast!(CSSLab);
 
-
-
 impl CSSLab {
     /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
     pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSLab {
         Self {
-            inner: Any::global("CSSLab").new(&[l.into(), a.into(), b.into()]).as_::<CSSColorValue>(),
+            inner: Any::global("CSSLab")
+                .new(&[l.into(), a.into(), b.into()])
+                .as_::<CSSColorValue>(),
         }
     }
 
     /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
     pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSLab {
         Self {
-            inner: Any::global("CSSLab").new(&[l.into(), a.into(), b.into(), alpha.into()]).as_::<CSSColorValue>(),
+            inner: Any::global("CSSLab")
+                .new(&[l.into(), a.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
         }
     }
-
 }
 impl CSSLab {
     /// Getter of the `l` attribute.

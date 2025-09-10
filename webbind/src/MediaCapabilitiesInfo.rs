@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The MediaCapabilitiesInfo dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for MediaCapabilitiesInfo {
 
 impl AsMut<Any> for MediaCapabilitiesInfo {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<MediaCapabilitiesInfo> for Any {

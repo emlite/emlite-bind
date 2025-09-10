@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The Scheduling class.
 /// [`Scheduling`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct Scheduling {
 
 impl FromVal for Scheduling {
     fn from_val(v: &Any) -> Self {
-        Scheduling { inner: Any::from_val(v) }
+        Scheduling {
+            inner: Any::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for Scheduling {
 
 impl AsMut<Any> for Scheduling {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<Scheduling> for Any {
@@ -64,16 +63,17 @@ impl From<&Scheduling> for Any {
 
 jsbind::utils::impl_dyn_cast!(Scheduling);
 
-
 impl Scheduling {
     /// The isInputPending method.
     /// [`Scheduling.isInputPending`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling/isInputPending)
-    pub fn is_input_pending0(&self, ) -> bool {
+    pub fn is_input_pending0(&self) -> bool {
         self.inner.call("isInputPending", &[]).as_::<bool>()
     }
     /// The isInputPending method.
     /// [`Scheduling.isInputPending`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling/isInputPending)
     pub fn is_input_pending1(&self, is_input_pending_options: &IsInputPendingOptions) -> bool {
-        self.inner.call("isInputPending", &[is_input_pending_options.into(), ]).as_::<bool>()
+        self.inner
+            .call("isInputPending", &[is_input_pending_options.into()])
+            .as_::<bool>()
     }
 }

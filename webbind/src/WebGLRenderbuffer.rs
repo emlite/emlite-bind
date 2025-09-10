@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The WebGLRenderbuffer class.
 /// [`WebGLRenderbuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderbuffer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct WebGLRenderbuffer {
 
 impl FromVal for WebGLRenderbuffer {
     fn from_val(v: &Any) -> Self {
-        WebGLRenderbuffer { inner: WebGLObject::from_val(v) }
+        WebGLRenderbuffer {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for WebGLRenderbuffer {
 
 impl AsMut<Any> for WebGLRenderbuffer {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<WebGLRenderbuffer> for Any {
@@ -63,5 +62,3 @@ impl From<&WebGLRenderbuffer> for Any {
 }
 
 jsbind::utils::impl_dyn_cast!(WebGLRenderbuffer);
-
-

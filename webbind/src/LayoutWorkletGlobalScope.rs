@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The LayoutWorkletGlobalScope class.
 /// [`LayoutWorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutWorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -13,7 +10,9 @@ pub struct LayoutWorkletGlobalScope {
 
 impl FromVal for LayoutWorkletGlobalScope {
     fn from_val(v: &Any) -> Self {
-        LayoutWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
+        LayoutWorkletGlobalScope {
+            inner: WorkletGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: AnyHandle) -> Self {
         Self::from_val(&Any::take_ownership(v))
@@ -44,8 +43,8 @@ impl AsRef<Any> for LayoutWorkletGlobalScope {
 
 impl AsMut<Any> for LayoutWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<LayoutWorkletGlobalScope> for Any {
@@ -64,11 +63,12 @@ impl From<&LayoutWorkletGlobalScope> for Any {
 
 jsbind::utils::impl_dyn_cast!(LayoutWorkletGlobalScope);
 
-
 impl LayoutWorkletGlobalScope {
     /// The registerLayout method.
     /// [`LayoutWorkletGlobalScope.registerLayout`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutWorkletGlobalScope/registerLayout)
     pub fn register_layout(&self, name: &JsString, layout_ctor: &Function) -> Undefined {
-        self.inner.call("registerLayout", &[name.into(), layout_ctor.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("registerLayout", &[name.into(), layout_ctor.into()])
+            .as_::<Undefined>()
     }
 }

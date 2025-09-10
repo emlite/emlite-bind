@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 /// The ConstrainPoint2DParameters dictionary.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -43,8 +40,8 @@ impl AsRef<Any> for ConstrainPoint2DParameters {
 
 impl AsMut<Any> for ConstrainPoint2DParameters {
     fn as_mut(&mut self) -> &mut Any {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 
 impl From<ConstrainPoint2DParameters> for Any {
