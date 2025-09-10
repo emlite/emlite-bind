@@ -1,6 +1,6 @@
 [package]
 name = "jsbind"
-version = "0.1.34"
+version = "0.1.35"
 edition = "2024"
 description = "Bindings for basic JS types required for webbind"
 documentation = "https://docs.rs/jsbind"
@@ -11,4 +11,4 @@ keywords = ["wasm", "wasi", "polyfill", "shim", "bindings"]
 categories = ["api-bindings", "wasm"]
 
 [dependencies]
-emlite = "0.1.47"
+emlite = "0.1.48"
