@@ -73,16 +73,18 @@ impl RTCDTMFToneChangeEvent {
 
 impl RTCDTMFToneChangeEvent {
     /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
-    pub fn new0(type_: &JsString) -> RTCDTMFToneChangeEvent {
+    pub fn new(type_: &JsString) -> RTCDTMFToneChangeEvent {
         Self {
             inner: Any::global("RTCDTMFToneChangeEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl RTCDTMFToneChangeEvent {
     /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &RTCDTMFToneChangeEventInit,
     ) -> RTCDTMFToneChangeEvent {

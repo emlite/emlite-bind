@@ -129,14 +129,16 @@ impl SerialPort {
 impl SerialPort {
     /// The setSignals method.
     /// [`SerialPort.setSignals`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/setSignals)
-    pub fn set_signals0(&self) -> Promise<Undefined> {
+    pub fn set_signals(&self) -> Promise<Undefined> {
         self.inner
             .call("setSignals", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl SerialPort {
     /// The setSignals method.
     /// [`SerialPort.setSignals`](https://developer.mozilla.org/en-US/docs/Web/API/SerialPort/setSignals)
-    pub fn set_signals1(&self, signals: &SerialOutputSignals) -> Promise<Undefined> {
+    pub fn set_signals_with_signals(&self, signals: &SerialOutputSignals) -> Promise<Undefined> {
         self.inner
             .call("setSignals", &[signals.into()])
             .as_::<Promise<Undefined>>()

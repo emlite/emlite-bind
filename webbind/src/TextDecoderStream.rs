@@ -101,23 +101,30 @@ impl TextDecoderStream {
 
 impl TextDecoderStream {
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new0() -> TextDecoderStream {
+    pub fn new() -> TextDecoderStream {
         Self {
             inner: Any::global("TextDecoderStream").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl TextDecoderStream {
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new1(label: &JsString) -> TextDecoderStream {
+    pub fn new_with_label(label: &JsString) -> TextDecoderStream {
         Self {
             inner: Any::global("TextDecoderStream")
                 .new(&[label.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl TextDecoderStream {
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new2(label: &JsString, options: &TextDecoderOptions) -> TextDecoderStream {
+    pub fn new_with_label_and_options(
+        label: &JsString,
+        options: &TextDecoderOptions,
+    ) -> TextDecoderStream {
         Self {
             inner: Any::global("TextDecoderStream")
                 .new(&[label.into(), options.into()])

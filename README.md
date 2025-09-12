@@ -41,13 +41,9 @@ lto = true
 Usage in your Rust source files:
 ```rust
 use jsbind::prelude::*;
-use webbind::html_button_element::HTMLButtonElement;
-use webbind::node::Node;
-use webbind::pointer_event::PointerEvent;
-use webbind::window;
+use webbind::*;
 
 fn main() {
-    emlite::init();
     let con = Console::get();
     let document = window().document();
     let bodies = document.get_elements_by_tag_name(&"body".into());
@@ -57,17 +53,17 @@ fn main() {
     }
     let body = bodies.item(0);
     let mut button = document
-        .create_element0(&"BUTTON".into())
+        .create_element(&"BUTTON".into())
         .dyn_into::<HTMLButtonElement>()
         .unwrap();
 
     let style = button.style();
-    style.set_property0(&"color".into(), &"red".into());
-    style.set_property0(&"background-color".into(), &"#aaf".into());
-    style.set_property0(&"border".into(), &"solid".into());
+    style.set_property(&"color".into(), &"red".into());
+    style.set_property(&"background-color".into(), &"#aaf".into());
+    style.set_property(&"border".into(), &"solid".into());
 
     button.set_text_content(&"Click me".into());
-    button.add_event_listener0(
+    button.add_event_listener(
         // or &JsString::from("click"),
         &"click".into(),
         &Closure::bind1(move |p: PointerEvent| {

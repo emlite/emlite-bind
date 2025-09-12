@@ -86,14 +86,19 @@ impl DocumentPictureInPicture {
 impl DocumentPictureInPicture {
     /// The requestWindow method.
     /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
-    pub fn request_window0(&self) -> Promise<Window> {
+    pub fn request_window(&self) -> Promise<Window> {
         self.inner
             .call("requestWindow", &[])
             .as_::<Promise<Window>>()
     }
+}
+impl DocumentPictureInPicture {
     /// The requestWindow method.
     /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
-    pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise<Window> {
+    pub fn request_window_with_options(
+        &self,
+        options: &DocumentPictureInPictureOptions,
+    ) -> Promise<Window> {
         self.inner
             .call("requestWindow", &[options.into()])
             .as_::<Promise<Window>>()

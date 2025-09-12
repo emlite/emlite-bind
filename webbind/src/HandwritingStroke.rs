@@ -71,6 +71,7 @@ impl HandwritingStroke {
         }
     }
 }
+
 impl HandwritingStroke {
     /// The addPoint method.
     /// [`HandwritingStroke.addPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/addPoint)

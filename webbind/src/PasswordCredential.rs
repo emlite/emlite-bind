@@ -98,7 +98,7 @@ impl PasswordCredential {
 
 impl PasswordCredential {
     /// The `new PasswordCredential(..)` constructor, creating a new PasswordCredential instance
-    pub fn new1(data: &PasswordCredentialData) -> PasswordCredential {
+    pub fn new_with_data(data: &PasswordCredentialData) -> PasswordCredential {
         Self {
             inner: Any::global("PasswordCredential")
                 .new(&[data.into()])

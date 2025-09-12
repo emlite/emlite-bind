@@ -66,12 +66,17 @@ jsbind::utils::impl_dyn_cast!(Scheduling);
 impl Scheduling {
     /// The isInputPending method.
     /// [`Scheduling.isInputPending`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling/isInputPending)
-    pub fn is_input_pending0(&self) -> bool {
+    pub fn is_input_pending(&self) -> bool {
         self.inner.call("isInputPending", &[]).as_::<bool>()
     }
+}
+impl Scheduling {
     /// The isInputPending method.
     /// [`Scheduling.isInputPending`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling/isInputPending)
-    pub fn is_input_pending1(&self, is_input_pending_options: &IsInputPendingOptions) -> bool {
+    pub fn is_input_pending_with_is_input_pending_options(
+        &self,
+        is_input_pending_options: &IsInputPendingOptions,
+    ) -> bool {
         self.inner
             .call("isInputPending", &[is_input_pending_options.into()])
             .as_::<bool>()

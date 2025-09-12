@@ -122,39 +122,52 @@ impl DOMRectReadOnly {
 
 impl DOMRectReadOnly {
     /// The `new DOMRectReadOnly(..)` constructor, creating a new DOMRectReadOnly instance
-    pub fn new0() -> DOMRectReadOnly {
+    pub fn new() -> DOMRectReadOnly {
         Self {
             inner: Any::global("DOMRectReadOnly").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl DOMRectReadOnly {
     /// The `new DOMRectReadOnly(..)` constructor, creating a new DOMRectReadOnly instance
-    pub fn new1(x: f64) -> DOMRectReadOnly {
+    pub fn new_with_x(x: f64) -> DOMRectReadOnly {
         Self {
             inner: Any::global("DOMRectReadOnly").new(&[x.into()]).as_::<Any>(),
         }
     }
+}
 
+impl DOMRectReadOnly {
     /// The `new DOMRectReadOnly(..)` constructor, creating a new DOMRectReadOnly instance
-    pub fn new2(x: f64, y: f64) -> DOMRectReadOnly {
+    pub fn new_with_x_and_y(x: f64, y: f64) -> DOMRectReadOnly {
         Self {
             inner: Any::global("DOMRectReadOnly")
                 .new(&[x.into(), y.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMRectReadOnly {
     /// The `new DOMRectReadOnly(..)` constructor, creating a new DOMRectReadOnly instance
-    pub fn new3(x: f64, y: f64, width: f64) -> DOMRectReadOnly {
+    pub fn new_with_x_and_y_and_width(x: f64, y: f64, width: f64) -> DOMRectReadOnly {
         Self {
             inner: Any::global("DOMRectReadOnly")
                 .new(&[x.into(), y.into(), width.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMRectReadOnly {
     /// The `new DOMRectReadOnly(..)` constructor, creating a new DOMRectReadOnly instance
-    pub fn new4(x: f64, y: f64, width: f64, height: f64) -> DOMRectReadOnly {
+    pub fn new_with_x_and_y_and_width_and_height(
+        x: f64,
+        y: f64,
+        width: f64,
+        height: f64,
+    ) -> DOMRectReadOnly {
         Self {
             inner: Any::global("DOMRectReadOnly")
                 .new(&[x.into(), y.into(), width.into(), height.into()])
@@ -162,17 +175,20 @@ impl DOMRectReadOnly {
         }
     }
 }
+
 impl DOMRectReadOnly {
     /// The fromRect method.
     /// [`DOMRectReadOnly.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/fromRect)
-    pub fn from_rect0() -> DOMRectReadOnly {
+    pub fn from_rect() -> DOMRectReadOnly {
         Any::global("DOMRectReadOnly")
             .call("fromRect", &[])
             .as_::<DOMRectReadOnly>()
     }
+}
+impl DOMRectReadOnly {
     /// The fromRect method.
     /// [`DOMRectReadOnly.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/fromRect)
-    pub fn from_rect1(other: &DOMRectInit) -> DOMRectReadOnly {
+    pub fn from_rect_with_other(other: &DOMRectInit) -> DOMRectReadOnly {
         Any::global("DOMRectReadOnly")
             .call("fromRect", &[other.into()])
             .as_::<DOMRectReadOnly>()

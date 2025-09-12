@@ -101,6 +101,7 @@ impl VideoDecoder {
         }
     }
 }
+
 impl VideoDecoder {
     /// The configure method.
     /// [`VideoDecoder.configure`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/configure)

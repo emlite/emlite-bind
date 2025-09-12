@@ -80,16 +80,18 @@ impl SpeechRecognitionPhrase {
 
 impl SpeechRecognitionPhrase {
     /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
-    pub fn new0(phrase: &JsString) -> SpeechRecognitionPhrase {
+    pub fn new(phrase: &JsString) -> SpeechRecognitionPhrase {
         Self {
             inner: Any::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl SpeechRecognitionPhrase {
     /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
-    pub fn new1(phrase: &JsString, boost: f32) -> SpeechRecognitionPhrase {
+    pub fn new_with_boost(phrase: &JsString, boost: f32) -> SpeechRecognitionPhrase {
         Self {
             inner: Any::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into(), boost.into()])

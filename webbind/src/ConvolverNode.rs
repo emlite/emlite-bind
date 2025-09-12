@@ -92,16 +92,21 @@ impl ConvolverNode {
 
 impl ConvolverNode {
     /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
-    pub fn new0(context: &BaseAudioContext) -> ConvolverNode {
+    pub fn new(context: &BaseAudioContext) -> ConvolverNode {
         Self {
             inner: Any::global("ConvolverNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl ConvolverNode {
     /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
-    pub fn new1(context: &BaseAudioContext, options: &ConvolverOptions) -> ConvolverNode {
+    pub fn new_with_options(
+        context: &BaseAudioContext,
+        options: &ConvolverOptions,
+    ) -> ConvolverNode {
         Self {
             inner: Any::global("ConvolverNode")
                 .new(&[context.into(), options.into()])

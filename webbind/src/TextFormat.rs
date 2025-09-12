@@ -96,14 +96,16 @@ impl TextFormat {
 
 impl TextFormat {
     /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
-    pub fn new0() -> TextFormat {
+    pub fn new() -> TextFormat {
         Self {
             inner: Any::global("TextFormat").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl TextFormat {
     /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
-    pub fn new1(options: &TextFormatInit) -> TextFormat {
+    pub fn new_with_options(options: &TextFormatInit) -> TextFormat {
         Self {
             inner: Any::global("TextFormat")
                 .new(&[options.into()])

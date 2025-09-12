@@ -65,16 +65,21 @@ jsbind::utils::impl_dyn_cast!(ChannelMergerNode);
 
 impl ChannelMergerNode {
     /// The `new ChannelMergerNode(..)` constructor, creating a new ChannelMergerNode instance
-    pub fn new0(context: &BaseAudioContext) -> ChannelMergerNode {
+    pub fn new(context: &BaseAudioContext) -> ChannelMergerNode {
         Self {
             inner: Any::global("ChannelMergerNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl ChannelMergerNode {
     /// The `new ChannelMergerNode(..)` constructor, creating a new ChannelMergerNode instance
-    pub fn new1(context: &BaseAudioContext, options: &ChannelMergerOptions) -> ChannelMergerNode {
+    pub fn new_with_options(
+        context: &BaseAudioContext,
+        options: &ChannelMergerOptions,
+    ) -> ChannelMergerNode {
         Self {
             inner: Any::global("ChannelMergerNode")
                 .new(&[context.into(), options.into()])

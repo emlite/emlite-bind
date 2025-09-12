@@ -73,16 +73,21 @@ impl PageRevealEvent {
 
 impl PageRevealEvent {
     /// The `new PageRevealEvent(..)` constructor, creating a new PageRevealEvent instance
-    pub fn new0(type_: &JsString) -> PageRevealEvent {
+    pub fn new(type_: &JsString) -> PageRevealEvent {
         Self {
             inner: Any::global("PageRevealEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl PageRevealEvent {
     /// The `new PageRevealEvent(..)` constructor, creating a new PageRevealEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &PageRevealEventInit) -> PageRevealEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &PageRevealEventInit,
+    ) -> PageRevealEvent {
         Self {
             inner: Any::global("PageRevealEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -212,14 +212,16 @@ impl WorkerNavigator {
 impl WorkerNavigator {
     /// The setAppBadge method.
     /// [`WorkerNavigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/setAppBadge)
-    pub fn set_app_badge0(&self) -> Promise<Undefined> {
+    pub fn set_app_badge(&self) -> Promise<Undefined> {
         self.inner
             .call("setAppBadge", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl WorkerNavigator {
     /// The setAppBadge method.
     /// [`WorkerNavigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/setAppBadge)
-    pub fn set_app_badge1(&self, contents: u64) -> Promise<Undefined> {
+    pub fn set_app_badge_with_contents(&self, contents: u64) -> Promise<Undefined> {
         self.inner
             .call("setAppBadge", &[contents.into()])
             .as_::<Promise<Undefined>>()

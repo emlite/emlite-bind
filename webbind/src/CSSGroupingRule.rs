@@ -73,12 +73,14 @@ impl CSSGroupingRule {
 impl CSSGroupingRule {
     /// The insertRule method.
     /// [`CSSGroupingRule.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule/insertRule)
-    pub fn insert_rule0(&self, rule: &JsString) -> u32 {
+    pub fn insert_rule(&self, rule: &JsString) -> u32 {
         self.inner.call("insertRule", &[rule.into()]).as_::<u32>()
     }
+}
+impl CSSGroupingRule {
     /// The insertRule method.
     /// [`CSSGroupingRule.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSGroupingRule/insertRule)
-    pub fn insert_rule1(&self, rule: &JsString, index: u32) -> u32 {
+    pub fn insert_rule_with_index(&self, rule: &JsString, index: u32) -> u32 {
         self.inner
             .call("insertRule", &[rule.into(), index.into()])
             .as_::<u32>()

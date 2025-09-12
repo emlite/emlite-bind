@@ -108,16 +108,21 @@ impl IntersectionObserver {
 
 impl IntersectionObserver {
     /// The `new IntersectionObserver(..)` constructor, creating a new IntersectionObserver instance
-    pub fn new0(callback: &Function) -> IntersectionObserver {
+    pub fn new(callback: &Function) -> IntersectionObserver {
         Self {
             inner: Any::global("IntersectionObserver")
                 .new(&[callback.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl IntersectionObserver {
     /// The `new IntersectionObserver(..)` constructor, creating a new IntersectionObserver instance
-    pub fn new1(callback: &Function, options: &IntersectionObserverInit) -> IntersectionObserver {
+    pub fn new_with_options(
+        callback: &Function,
+        options: &IntersectionObserverInit,
+    ) -> IntersectionObserver {
         Self {
             inner: Any::global("IntersectionObserver")
                 .new(&[callback.into(), options.into()])
@@ -125,6 +130,7 @@ impl IntersectionObserver {
         }
     }
 }
+
 impl IntersectionObserver {
     /// The observe method.
     /// [`IntersectionObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/observe)

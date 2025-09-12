@@ -105,16 +105,18 @@ impl CSSColor {
 
 impl CSSColor {
     /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
-    pub fn new0(color_space: &Any, channels: &TypedArray<Any>) -> CSSColor {
+    pub fn new(color_space: &Any, channels: &TypedArray<Any>) -> CSSColor {
         Self {
             inner: Any::global("CSSColor")
                 .new(&[color_space.into(), channels.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSColor {
     /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
-    pub fn new1(color_space: &Any, channels: &TypedArray<Any>, alpha: &Any) -> CSSColor {
+    pub fn new_with_alpha(color_space: &Any, channels: &TypedArray<Any>, alpha: &Any) -> CSSColor {
         Self {
             inner: Any::global("CSSColor")
                 .new(&[color_space.into(), channels.into(), alpha.into()])

@@ -73,25 +73,29 @@ impl WorkletAnimation {
 
 impl WorkletAnimation {
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new0(animator_name: &JsString) -> WorkletAnimation {
+    pub fn new(animator_name: &JsString) -> WorkletAnimation {
         Self {
             inner: Any::global("WorkletAnimation")
                 .new(&[animator_name.into()])
                 .as_::<Animation>(),
         }
     }
+}
 
+impl WorkletAnimation {
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new1(animator_name: &JsString, effects: &Any) -> WorkletAnimation {
+    pub fn new_with_effects(animator_name: &JsString, effects: &Any) -> WorkletAnimation {
         Self {
             inner: Any::global("WorkletAnimation")
                 .new(&[animator_name.into(), effects.into()])
                 .as_::<Animation>(),
         }
     }
+}
 
+impl WorkletAnimation {
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new2(
+    pub fn new_with_effects_and_timeline(
         animator_name: &JsString,
         effects: &Any,
         timeline: &AnimationTimeline,
@@ -102,9 +106,11 @@ impl WorkletAnimation {
                 .as_::<Animation>(),
         }
     }
+}
 
+impl WorkletAnimation {
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new3(
+    pub fn new_with_effects_and_timeline_and_options(
         animator_name: &JsString,
         effects: &Any,
         timeline: &AnimationTimeline,

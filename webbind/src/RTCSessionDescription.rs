@@ -88,6 +88,7 @@ impl RTCSessionDescription {
         }
     }
 }
+
 impl RTCSessionDescription {
     /// The toJSON method.
     /// [`RTCSessionDescription.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/toJSON)

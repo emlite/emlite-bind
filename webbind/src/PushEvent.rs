@@ -73,16 +73,21 @@ impl PushEvent {
 
 impl PushEvent {
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance
-    pub fn new0(type_: &JsString) -> PushEvent {
+    pub fn new(type_: &JsString) -> PushEvent {
         Self {
             inner: Any::global("PushEvent")
                 .new(&[type_.into()])
                 .as_::<ExtendableEvent>(),
         }
     }
+}
 
+impl PushEvent {
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &PushEventInit) -> PushEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &PushEventInit,
+    ) -> PushEvent {
         Self {
             inner: Any::global("PushEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -364,6 +364,7 @@ impl HTMLIFrameElement {
         }
     }
 }
+
 impl HTMLIFrameElement {
     /// The getSVGDocument method.
     /// [`HTMLIFrameElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/getSVGDocument)

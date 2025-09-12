@@ -143,16 +143,21 @@ impl KeyboardEvent {
 
 impl KeyboardEvent {
     /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
-    pub fn new0(type_: &JsString) -> KeyboardEvent {
+    pub fn new(type_: &JsString) -> KeyboardEvent {
         Self {
             inner: Any::global("KeyboardEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
+}
 
+impl KeyboardEvent {
     /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &KeyboardEventInit) -> KeyboardEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &KeyboardEventInit,
+    ) -> KeyboardEvent {
         Self {
             inner: Any::global("KeyboardEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -160,6 +165,7 @@ impl KeyboardEvent {
         }
     }
 }
+
 impl KeyboardEvent {
     /// The getModifierState method.
     /// [`KeyboardEvent.getModifierState`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState)
@@ -172,21 +178,29 @@ impl KeyboardEvent {
 impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event0(&self, type_arg: &JsString) -> Undefined {
+    pub fn init_keyboard_event(&self, type_arg: &JsString) -> Undefined {
         self.inner
             .call("initKeyboardEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event1(&self, type_arg: &JsString, bubbles_arg: bool) -> Undefined {
+    pub fn init_keyboard_event_with_bubbles_arg(
+        &self,
+        type_arg: &JsString,
+        bubbles_arg: bool,
+    ) -> Undefined {
         self.inner
             .call("initKeyboardEvent", &[type_arg.into(), bubbles_arg.into()])
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event2(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -199,9 +213,11 @@ impl KeyboardEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event3(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg_and_view_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -220,9 +236,11 @@ impl KeyboardEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event4(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_key_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -243,9 +261,11 @@ impl KeyboardEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event5(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_key_arg_and_location_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -268,9 +288,11 @@ impl KeyboardEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event6(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_key_arg_and_location_arg_and_ctrl_key(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -295,9 +317,11 @@ impl KeyboardEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event7(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_key_arg_and_location_arg_and_ctrl_key_and_alt_key(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -324,9 +348,11 @@ impl KeyboardEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event8(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_key_arg_and_location_arg_and_ctrl_key_and_alt_key_and_shift_key(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -355,9 +381,11 @@ impl KeyboardEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event9(
+    pub fn init_keyboard_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_key_arg_and_location_arg_and_ctrl_key_and_alt_key_and_shift_key_and_meta_key(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,

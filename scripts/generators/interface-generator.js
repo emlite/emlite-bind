@@ -64,48 +64,38 @@ function emitAttr(attr, owner, isStatic = false, isInterface = false) {
  * @param {boolean} isInterface - Whether this is for an interface (adds docs)
  * @returns {Array<string>} Generated source lines
  */
-function emitOp(
-  op,
-  owner,
-  isStatic = false,
-  isInterface = false,
-  groupTotal = undefined,
-  suffixStart = 0
-) {
+function emitOp(op, owner, isStatic = false, isInterface = false, variantNames) {
   const S = [];
   if (!op.name) return { S: [], used: 0 };
-  S.push(`impl ${owner} {`);
-  const ret = rust(op.idlType || "undefined");
-  const rustName = fixIdent(op.name);
   const variants = variantsOf(op.arguments);
+  const ret = rust(op.idlType || "undefined");
 
-  let i = suffixStart;
-  const sz = variants.length;
-  const totalGroup = typeof groupTotal === "number" ? groupTotal : sz;
-  const omitSuffix = totalGroup === 1 ? true : sz === 1 && suffixStart === 0;
+  const names = Array.isArray(variantNames) && variantNames.length === variants.length
+    ? variantNames
+    : variants.map((_, i) => `${fixIdent(op.name)}${i === 0 ? "" : i}`);
+
+  let idx = 0;
   for (const v of variants) {
     const declSrc = argDecl(v);
     const callArgs = v.map((a) => `${fixIdent(a.name)}.into()`).join(", ");
     const callExpr = isStatic
-      ? `Any::global("${owner}").call("${op.name}", &[${
-          callArgs ? callArgs + ", " : ""
-        }])`
+      ? `Any::global("${owner}").call("${op.name}", &[${callArgs ? callArgs + ", " : ""}])`
       : `self.inner.call("${op.name}", &[${callArgs ? callArgs + ", " : ""}])`;
+
+    S.push(`impl ${owner} {`);
     if (isInterface)
       S.push(
         `    /// The ${op.name} method.`,
         `    /// [\`${owner}.${op.name}\`](https://developer.mozilla.org/en-US/docs/Web/API/${owner}/${op.name})`
       );
     S.push(
-      `    pub fn ${rustName}${omitSuffix ? "" : i}(${
-        isStatic ? "" : "&self, "
-      }${declSrc}) -> ${ret} {`,
+      `    pub fn ${names[idx]}(${isStatic ? "" : "&self, "}${declSrc}) -> ${ret} {`,
       `        ${callExpr}.as_::<${ret}>()`,
-      `    }`
+      `    }`,
+      `}`
     );
-    i += 1;
+    idx += 1;
   }
-  S.push("}");
   return { S, used: variants.length };
 }
 
@@ -168,6 +158,35 @@ function emitCtorGrouped(
     i += 1;
   }
   S.push("}");
+  return { S, used: variants.length };
+}
+
+// New helper: emit constructors with explicit variant names
+function emitCtorNamed(ctor, owner, parent, variantNames) {
+  const variants = variantsOf(ctor.arguments);
+  const S = [];
+  const names = Array.isArray(variantNames) && variantNames.length === variants.length
+    ? variantNames
+    : variants.map((_, i) => (i === 0 ? "new" : `new${i}`));
+
+  let idx = 0;
+  for (const v of variants) {
+    const declSrc = argDecl(v);
+    const callArgs = v.map((a) => `${fixIdent(a.name)}.into()`).join(", ");
+
+    S.push(
+      `\nimpl ${owner} {`,
+      `    /// The \`new ${owner}(..)\` constructor, creating a new ${owner} instance`,
+      `    pub fn ${names[idx]}(${declSrc}) -> ${owner} {`,
+      `        Self {`,
+      `            inner: Any::global("${owner}").new(&[${callArgs}]).as_::<${parent}>(),`,
+      `        }`,
+      `    }`,
+      `}`,
+      ""
+    );
+    idx += 1;
+  }
   return { S, used: variants.length };
 }
 
@@ -291,6 +310,7 @@ export function generateInterface(interfaceName, interfaceRec, dependencies) {
   );
 
   // Generate member methods
+  const usedNames = new Set();
   // First emit attributes and collect constructors directly
   const opGroups = new Map();
   const opOrder = [];
@@ -300,6 +320,8 @@ export function generateInterface(interfaceName, interfaceRec, dependencies) {
     if (m.type === "attribute") {
       const S = emitAttr(m, interfaceName, isStatic, true);
       src.push(...S);
+      usedNames.add(fixIdent(m.name));
+      if (!m.readonly) usedNames.add(`set_${fixIdent(m.name)}`);
     } else if (
       m.type === "constructor" ||
       (m.type === "operation" && m.special === "constructor")
@@ -315,35 +337,93 @@ export function generateInterface(interfaceName, interfaceRec, dependencies) {
     }
   });
 
-  // Emit constructors grouped by total overload count with consistent suffix numbering
+  // Unique name helper with conflict fallback (and _static for static)
+  const uniqueName = (candidate, isStatic = false) => {
+    let name = candidate;
+    if (usedNames.has(name) && isStatic && !name.endsWith("_static")) {
+      name = `${name}_static`;
+    }
+    let n = 2;
+    while (usedNames.has(name)) {
+      name = `${candidate}_${n}`;
+      n += 1;
+    }
+    usedNames.add(name);
+    return name;
+  };
+
+  // Build a sanitized "with_..." suffix from parameter names
+  const withSuffix = (args) => {
+    if (!args || args.length === 0) return "";
+    const parts = args
+      .map((a) => fixIdent(a.name))
+      // drop trailing underscores from keyword-renamed params like type_ / async_
+      .map((n) => n.replace(/_+$/g, ""))
+      .filter((n) => n.length > 0);
+    if (parts.length === 0) return "";
+    const joined = parts.join("_and_");
+    // collapse any accidental multiple underscores
+    const cleaned = joined.replace(/_+/g, "_");
+    return `with_${cleaned}`;
+  };
+
+  // Emit constructors with param-name suffixes (extras-only per constructor)
   if (ctors.length > 0) {
     const totalCtorVariants = ctors.reduce(
       (sum, c) => sum + variantsOf(c.arguments).length,
       0
     );
-    let offset = 0;
     for (const c of ctors) {
-      const { S, used } = emitCtorGrouped(
-        c,
-        interfaceName,
-        parent,
-        totalCtorVariants,
-        offset
-      );
+      const variants = variantsOf(c.arguments);
+      const baseLen = variants[0]?.length || 0;
+      const names = variants.map((args, idx) => {
+        // Base variant for the first constructor seen gets plain `new` if available
+        if (idx === 0) {
+          const baseName = uniqueName("new");
+          if (baseName === "new") return baseName;
+          // If `new` was already taken by a previous constructor, include full params
+          const suf = withSuffix(args);
+          const candidate = suf ? `new_${suf}` : "new_2";
+          return uniqueName(candidate);
+        }
+        // Extras-only suffix for additional optional params relative to base of this constructor
+        const extras = args.slice(baseLen);
+        const suf = withSuffix(extras);
+        const candidate = suf ? `new_${suf}` : "new_2";
+        return uniqueName(candidate);
+      });
+      const { S } = emitCtorNamed(c, interfaceName, parent, names);
       src.push(...S);
-      offset += used;
     }
   }
 
-  // Emit operations grouped by name and static-ness with consistent suffix numbering
+  // Emit operations grouped by name and static-ness using param-name suffixes
   for (const key of opOrder) {
     const { isStatic, ops } = opGroups.get(key);
     const total = ops.reduce((sum, op) => sum + variantsOf(op.arguments).length, 0);
-    let offset = 0;
     for (const op of ops) {
-      const { S, used } = emitOp(op, interfaceName, isStatic, true, total, offset);
+      const variants = variantsOf(op.arguments);
+      const base = fixIdent(op.name);
+      const baseLen = variants[0]?.length || 0;
+      const names = variants.map((args, idx) => {
+        if (total === 1 && variants.length === 1) return uniqueName(base, isStatic);
+        if (idx === 0) {
+          // Base variant for this op: use plain base if available, else include full params
+          const candidate = uniqueName(base, isStatic);
+          if (candidate === base) return candidate;
+          const suf0 = withSuffix(args);
+          const join0 = base.endsWith("_") || !suf0 ? "" : "_";
+          const fallback = suf0 ? `${base}${join0}${suf0}` : `${base}_2`;
+          return uniqueName(fallback, isStatic);
+        }
+        const extras = args.slice(baseLen);
+        const suf = withSuffix(extras);
+        const join = base.endsWith("_") || !suf ? "" : "_";
+        const candidate = suf ? `${base}${join}${suf}` : `${base}_2`;
+        return uniqueName(candidate, isStatic);
+      });
+      const { S } = emitOp(op, interfaceName, isStatic, true, names);
       src.push(...S);
-      offset += used;
     }
   }
 

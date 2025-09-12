@@ -127,14 +127,16 @@ impl MediaMetadata {
 
 impl MediaMetadata {
     /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
-    pub fn new0() -> MediaMetadata {
+    pub fn new() -> MediaMetadata {
         Self {
             inner: Any::global("MediaMetadata").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl MediaMetadata {
     /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
-    pub fn new1(init: &MediaMetadataInit) -> MediaMetadata {
+    pub fn new_with_init(init: &MediaMetadataInit) -> MediaMetadata {
         Self {
             inner: Any::global("MediaMetadata")
                 .new(&[init.into()])

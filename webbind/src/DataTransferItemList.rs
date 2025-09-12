@@ -82,7 +82,7 @@ impl DataTransferItemList {
 impl DataTransferItemList {
     /// The add method.
     /// [`DataTransferItemList.add`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/add)
-    pub fn add1(&self, data: &File) -> DataTransferItem {
+    pub fn add_with_data(&self, data: &File) -> DataTransferItem {
         self.inner
             .call("add", &[data.into()])
             .as_::<DataTransferItem>()

@@ -73,16 +73,21 @@ impl ClipboardEvent {
 
 impl ClipboardEvent {
     /// The `new ClipboardEvent(..)` constructor, creating a new ClipboardEvent instance
-    pub fn new0(type_: &JsString) -> ClipboardEvent {
+    pub fn new(type_: &JsString) -> ClipboardEvent {
         Self {
             inner: Any::global("ClipboardEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl ClipboardEvent {
     /// The `new ClipboardEvent(..)` constructor, creating a new ClipboardEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &ClipboardEventInit) -> ClipboardEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &ClipboardEventInit,
+    ) -> ClipboardEvent {
         Self {
             inner: Any::global("ClipboardEvent")
                 .new(&[type_.into(), event_init_dict.into()])

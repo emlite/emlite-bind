@@ -66,12 +66,14 @@ jsbind::utils::impl_dyn_cast!(Fence);
 impl Fence {
     /// The reportEvent method.
     /// [`Fence.reportEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/reportEvent)
-    pub fn report_event0(&self) -> Undefined {
+    pub fn report_event(&self) -> Undefined {
         self.inner.call("reportEvent", &[]).as_::<Undefined>()
     }
+}
+impl Fence {
     /// The reportEvent method.
     /// [`Fence.reportEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/reportEvent)
-    pub fn report_event1(&self, event: &Any) -> Undefined {
+    pub fn report_event_with_event(&self, event: &Any) -> Undefined {
         self.inner
             .call("reportEvent", &[event.into()])
             .as_::<Undefined>()
@@ -80,14 +82,19 @@ impl Fence {
 impl Fence {
     /// The setReportEventDataForAutomaticBeacons method.
     /// [`Fence.setReportEventDataForAutomaticBeacons`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/setReportEventDataForAutomaticBeacons)
-    pub fn set_report_event_data_for_automatic_beacons0(&self) -> Undefined {
+    pub fn set_report_event_data_for_automatic_beacons(&self) -> Undefined {
         self.inner
             .call("setReportEventDataForAutomaticBeacons", &[])
             .as_::<Undefined>()
     }
+}
+impl Fence {
     /// The setReportEventDataForAutomaticBeacons method.
     /// [`Fence.setReportEventDataForAutomaticBeacons`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/setReportEventDataForAutomaticBeacons)
-    pub fn set_report_event_data_for_automatic_beacons1(&self, event: &FenceEvent) -> Undefined {
+    pub fn set_report_event_data_for_automatic_beacons_with_event(
+        &self,
+        event: &FenceEvent,
+    ) -> Undefined {
         self.inner
             .call("setReportEventDataForAutomaticBeacons", &[event.into()])
             .as_::<Undefined>()

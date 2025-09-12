@@ -141,12 +141,14 @@ impl SVGTextContentElement {
 impl SVGTextContentElement {
     /// The getCharNumAtPosition method.
     /// [`SVGTextContentElement.getCharNumAtPosition`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextContentElement/getCharNumAtPosition)
-    pub fn get_char_num_at_position0(&self) -> i32 {
+    pub fn get_char_num_at_position(&self) -> i32 {
         self.inner.call("getCharNumAtPosition", &[]).as_::<i32>()
     }
+}
+impl SVGTextContentElement {
     /// The getCharNumAtPosition method.
     /// [`SVGTextContentElement.getCharNumAtPosition`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTextContentElement/getCharNumAtPosition)
-    pub fn get_char_num_at_position1(&self, point: &DOMPointInit) -> i32 {
+    pub fn get_char_num_at_position_with_point(&self, point: &DOMPointInit) -> i32 {
         self.inner
             .call("getCharNumAtPosition", &[point.into()])
             .as_::<i32>()

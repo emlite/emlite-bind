@@ -101,19 +101,27 @@ impl FileSystemEntry {
 impl FileSystemEntry {
     /// The getParent method.
     /// [`FileSystemEntry.getParent`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry/getParent)
-    pub fn get_parent0(&self) -> Undefined {
+    pub fn get_parent(&self) -> Undefined {
         self.inner.call("getParent", &[]).as_::<Undefined>()
     }
+}
+impl FileSystemEntry {
     /// The getParent method.
     /// [`FileSystemEntry.getParent`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry/getParent)
-    pub fn get_parent1(&self, success_callback: &Function) -> Undefined {
+    pub fn get_parent_with_success_callback(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("getParent", &[success_callback.into()])
             .as_::<Undefined>()
     }
+}
+impl FileSystemEntry {
     /// The getParent method.
     /// [`FileSystemEntry.getParent`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry/getParent)
-    pub fn get_parent2(&self, success_callback: &Function, error_callback: &Function) -> Undefined {
+    pub fn get_parent_with_success_callback_and_error_callback(
+        &self,
+        success_callback: &Function,
+        error_callback: &Function,
+    ) -> Undefined {
         self.inner
             .call(
                 "getParent",

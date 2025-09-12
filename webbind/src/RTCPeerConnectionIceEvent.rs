@@ -80,16 +80,18 @@ impl RTCPeerConnectionIceEvent {
 
 impl RTCPeerConnectionIceEvent {
     /// The `new RTCPeerConnectionIceEvent(..)` constructor, creating a new RTCPeerConnectionIceEvent instance
-    pub fn new0(type_: &JsString) -> RTCPeerConnectionIceEvent {
+    pub fn new(type_: &JsString) -> RTCPeerConnectionIceEvent {
         Self {
             inner: Any::global("RTCPeerConnectionIceEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl RTCPeerConnectionIceEvent {
     /// The `new RTCPeerConnectionIceEvent(..)` constructor, creating a new RTCPeerConnectionIceEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &RTCPeerConnectionIceEventInit,
     ) -> RTCPeerConnectionIceEvent {

@@ -73,14 +73,16 @@ impl Instance {
 
 impl Instance {
     /// The `new Instance(..)` constructor, creating a new Instance instance
-    pub fn new0(module: &Module) -> Instance {
+    pub fn new(module: &Module) -> Instance {
         Self {
             inner: Any::global("Instance").new(&[module.into()]).as_::<Any>(),
         }
     }
+}
 
+impl Instance {
     /// The `new Instance(..)` constructor, creating a new Instance instance
-    pub fn new1(module: &Module, import_object: &Object) -> Instance {
+    pub fn new_with_import_object(module: &Module, import_object: &Object) -> Instance {
         Self {
             inner: Any::global("Instance")
                 .new(&[module.into(), import_object.into()])

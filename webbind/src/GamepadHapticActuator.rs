@@ -75,14 +75,16 @@ impl GamepadHapticActuator {
 impl GamepadHapticActuator {
     /// The playEffect method.
     /// [`GamepadHapticActuator.playEffect`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/playEffect)
-    pub fn play_effect0(&self, type_: &GamepadHapticEffectType) -> Promise<GamepadHapticsResult> {
+    pub fn play_effect(&self, type_: &GamepadHapticEffectType) -> Promise<GamepadHapticsResult> {
         self.inner
             .call("playEffect", &[type_.into()])
             .as_::<Promise<GamepadHapticsResult>>()
     }
+}
+impl GamepadHapticActuator {
     /// The playEffect method.
     /// [`GamepadHapticActuator.playEffect`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/playEffect)
-    pub fn play_effect1(
+    pub fn play_effect_with_params(
         &self,
         type_: &GamepadHapticEffectType,
         params: &GamepadEffectParameters,

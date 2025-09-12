@@ -88,14 +88,16 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     /// The dispatchWorkgroups method.
     /// [`GPUComputePassEncoder.dispatchWorkgroups`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
-    pub fn dispatch_workgroups0(&self, workgroup_count_x: &Any) -> Undefined {
+    pub fn dispatch_workgroups(&self, workgroup_count_x: &Any) -> Undefined {
         self.inner
             .call("dispatchWorkgroups", &[workgroup_count_x.into()])
             .as_::<Undefined>()
     }
+}
+impl GPUComputePassEncoder {
     /// The dispatchWorkgroups method.
     /// [`GPUComputePassEncoder.dispatchWorkgroups`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
-    pub fn dispatch_workgroups1(
+    pub fn dispatch_workgroups_with_workgroup_count_y(
         &self,
         workgroup_count_x: &Any,
         workgroup_count_y: &Any,
@@ -107,9 +109,11 @@ impl GPUComputePassEncoder {
             )
             .as_::<Undefined>()
     }
+}
+impl GPUComputePassEncoder {
     /// The dispatchWorkgroups method.
     /// [`GPUComputePassEncoder.dispatchWorkgroups`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
-    pub fn dispatch_workgroups2(
+    pub fn dispatch_workgroups_with_workgroup_count_y_and_workgroup_count_z(
         &self,
         workgroup_count_x: &Any,
         workgroup_count_y: &Any,
@@ -178,14 +182,16 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     /// The setBindGroup method.
     /// [`GPUComputePassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setBindGroup)
-    pub fn set_bind_group0(&self, index: &Any, bind_group: &GPUBindGroup) -> Undefined {
+    pub fn set_bind_group(&self, index: &Any, bind_group: &GPUBindGroup) -> Undefined {
         self.inner
             .call("setBindGroup", &[index.into(), bind_group.into()])
             .as_::<Undefined>()
     }
+}
+impl GPUComputePassEncoder {
     /// The setBindGroup method.
     /// [`GPUComputePassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setBindGroup)
-    pub fn set_bind_group1(
+    pub fn set_bind_group_with_dynamic_offsets(
         &self,
         index: &Any,
         bind_group: &GPUBindGroup,
@@ -202,7 +208,7 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     /// The setBindGroup method.
     /// [`GPUComputePassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setBindGroup)
-    pub fn set_bind_group2(
+    pub fn set_bind_group_with_index_and_bind_group_and_dynamic_offsets_data_and_dynamic_offsets_data_start_and_dynamic_offsets_data_length(
         &self,
         index: &Any,
         bind_group: &GPUBindGroup,

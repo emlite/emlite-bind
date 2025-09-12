@@ -71,6 +71,7 @@ impl FileReaderSync {
         }
     }
 }
+
 impl FileReaderSync {
     /// The readAsArrayBuffer method.
     /// [`FileReaderSync.readAsArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsArrayBuffer)
@@ -92,14 +93,16 @@ impl FileReaderSync {
 impl FileReaderSync {
     /// The readAsText method.
     /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
-    pub fn read_as_text0(&self, blob: &Blob) -> JsString {
+    pub fn read_as_text(&self, blob: &Blob) -> JsString {
         self.inner
             .call("readAsText", &[blob.into()])
             .as_::<JsString>()
     }
+}
+impl FileReaderSync {
     /// The readAsText method.
     /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
-    pub fn read_as_text1(&self, blob: &Blob, encoding: &JsString) -> JsString {
+    pub fn read_as_text_with_encoding(&self, blob: &Blob, encoding: &JsString) -> JsString {
         self.inner
             .call("readAsText", &[blob.into(), encoding.into()])
             .as_::<JsString>()

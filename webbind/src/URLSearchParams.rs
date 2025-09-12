@@ -73,14 +73,16 @@ impl URLSearchParams {
 
 impl URLSearchParams {
     /// The `new URLSearchParams(..)` constructor, creating a new URLSearchParams instance
-    pub fn new0() -> URLSearchParams {
+    pub fn new() -> URLSearchParams {
         Self {
             inner: Any::global("URLSearchParams").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl URLSearchParams {
     /// The `new URLSearchParams(..)` constructor, creating a new URLSearchParams instance
-    pub fn new1(init: &Any) -> URLSearchParams {
+    pub fn new_with_init(init: &Any) -> URLSearchParams {
         Self {
             inner: Any::global("URLSearchParams")
                 .new(&[init.into()])
@@ -88,6 +90,7 @@ impl URLSearchParams {
         }
     }
 }
+
 impl URLSearchParams {
     /// The append method.
     /// [`URLSearchParams.append`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/append)
@@ -100,12 +103,14 @@ impl URLSearchParams {
 impl URLSearchParams {
     /// The delete method.
     /// [`URLSearchParams.delete`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete)
-    pub fn delete0(&self, name: &JsString) -> Undefined {
+    pub fn delete(&self, name: &JsString) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
+}
+impl URLSearchParams {
     /// The delete method.
     /// [`URLSearchParams.delete`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete)
-    pub fn delete1(&self, name: &JsString, value: &JsString) -> Undefined {
+    pub fn delete_with_value(&self, name: &JsString, value: &JsString) -> Undefined {
         self.inner
             .call("delete", &[name.into(), value.into()])
             .as_::<Undefined>()
@@ -130,12 +135,14 @@ impl URLSearchParams {
 impl URLSearchParams {
     /// The has method.
     /// [`URLSearchParams.has`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has)
-    pub fn has0(&self, name: &JsString) -> bool {
+    pub fn has(&self, name: &JsString) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
+}
+impl URLSearchParams {
     /// The has method.
     /// [`URLSearchParams.has`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has)
-    pub fn has1(&self, name: &JsString, value: &JsString) -> bool {
+    pub fn has_with_value(&self, name: &JsString, value: &JsString) -> bool {
         self.inner
             .call("has", &[name.into(), value.into()])
             .as_::<bool>()

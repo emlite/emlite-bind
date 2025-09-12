@@ -73,16 +73,21 @@ impl CompositionEvent {
 
 impl CompositionEvent {
     /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
-    pub fn new0(type_: &JsString) -> CompositionEvent {
+    pub fn new(type_: &JsString) -> CompositionEvent {
         Self {
             inner: Any::global("CompositionEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
+}
 
+impl CompositionEvent {
     /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &CompositionEventInit) -> CompositionEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &CompositionEventInit,
+    ) -> CompositionEvent {
         Self {
             inner: Any::global("CompositionEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -90,17 +95,24 @@ impl CompositionEvent {
         }
     }
 }
+
 impl CompositionEvent {
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event0(&self, type_arg: &JsString) -> Undefined {
+    pub fn init_composition_event(&self, type_arg: &JsString) -> Undefined {
         self.inner
             .call("initCompositionEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
+}
+impl CompositionEvent {
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event1(&self, type_arg: &JsString, bubbles_arg: bool) -> Undefined {
+    pub fn init_composition_event_with_bubbles_arg(
+        &self,
+        type_arg: &JsString,
+        bubbles_arg: bool,
+    ) -> Undefined {
         self.inner
             .call(
                 "initCompositionEvent",
@@ -108,9 +120,11 @@ impl CompositionEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl CompositionEvent {
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event2(
+    pub fn init_composition_event_with_bubbles_arg_and_cancelable_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -123,9 +137,11 @@ impl CompositionEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl CompositionEvent {
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event3(
+    pub fn init_composition_event_with_bubbles_arg_and_cancelable_arg_and_view_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -144,9 +160,11 @@ impl CompositionEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl CompositionEvent {
     /// The initCompositionEvent method.
     /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
-    pub fn init_composition_event4(
+    pub fn init_composition_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_data_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,

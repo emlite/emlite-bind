@@ -73,16 +73,21 @@ impl WebGLContextEvent {
 
 impl WebGLContextEvent {
     /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
-    pub fn new0(type_: &JsString) -> WebGLContextEvent {
+    pub fn new(type_: &JsString) -> WebGLContextEvent {
         Self {
             inner: Any::global("WebGLContextEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl WebGLContextEvent {
     /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
-    pub fn new1(type_: &JsString, event_init: &WebGLContextEventInit) -> WebGLContextEvent {
+    pub fn new_with_event_init(
+        type_: &JsString,
+        event_init: &WebGLContextEventInit,
+    ) -> WebGLContextEvent {
         Self {
             inner: Any::global("WebGLContextEvent")
                 .new(&[type_.into(), event_init.into()])

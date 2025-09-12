@@ -66,12 +66,14 @@ jsbind::utils::impl_dyn_cast!(MIDIOutput);
 impl MIDIOutput {
     /// The send method.
     /// [`MIDIOutput.send`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutput/send)
-    pub fn send0(&self, data: TypedArray<u8>) -> Undefined {
+    pub fn send(&self, data: TypedArray<u8>) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
+}
+impl MIDIOutput {
     /// The send method.
     /// [`MIDIOutput.send`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIOutput/send)
-    pub fn send1(&self, data: TypedArray<u8>, timestamp: &Any) -> Undefined {
+    pub fn send_with_timestamp(&self, data: TypedArray<u8>, timestamp: &Any) -> Undefined {
         self.inner
             .call("send", &[data.into(), timestamp.into()])
             .as_::<Undefined>()

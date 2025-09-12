@@ -93,14 +93,16 @@ impl AbortSignal {
 impl AbortSignal {
     /// The abort method.
     /// [`AbortSignal.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/abort)
-    pub fn abort0() -> AbortSignal {
+    pub fn abort() -> AbortSignal {
         Any::global("AbortSignal")
             .call("abort", &[])
             .as_::<AbortSignal>()
     }
+}
+impl AbortSignal {
     /// The abort method.
     /// [`AbortSignal.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/abort)
-    pub fn abort1(reason: &Any) -> AbortSignal {
+    pub fn abort_with_reason(reason: &Any) -> AbortSignal {
         Any::global("AbortSignal")
             .call("abort", &[reason.into()])
             .as_::<AbortSignal>()

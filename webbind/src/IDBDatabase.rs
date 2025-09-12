@@ -139,21 +139,29 @@ impl IDBDatabase {
 impl IDBDatabase {
     /// The transaction method.
     /// [`IDBDatabase.transaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction)
-    pub fn transaction0(&self, store_names: &Any) -> IDBTransaction {
+    pub fn transaction(&self, store_names: &Any) -> IDBTransaction {
         self.inner
             .call("transaction", &[store_names.into()])
             .as_::<IDBTransaction>()
     }
+}
+impl IDBDatabase {
     /// The transaction method.
     /// [`IDBDatabase.transaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction)
-    pub fn transaction1(&self, store_names: &Any, mode: &IDBTransactionMode) -> IDBTransaction {
+    pub fn transaction_with_mode(
+        &self,
+        store_names: &Any,
+        mode: &IDBTransactionMode,
+    ) -> IDBTransaction {
         self.inner
             .call("transaction", &[store_names.into(), mode.into()])
             .as_::<IDBTransaction>()
     }
+}
+impl IDBDatabase {
     /// The transaction method.
     /// [`IDBDatabase.transaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction)
-    pub fn transaction2(
+    pub fn transaction_with_mode_and_options(
         &self,
         store_names: &Any,
         mode: &IDBTransactionMode,
@@ -177,14 +185,16 @@ impl IDBDatabase {
 impl IDBDatabase {
     /// The createObjectStore method.
     /// [`IDBDatabase.createObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
-    pub fn create_object_store0(&self, name: &JsString) -> IDBObjectStore {
+    pub fn create_object_store(&self, name: &JsString) -> IDBObjectStore {
         self.inner
             .call("createObjectStore", &[name.into()])
             .as_::<IDBObjectStore>()
     }
+}
+impl IDBDatabase {
     /// The createObjectStore method.
     /// [`IDBDatabase.createObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
-    pub fn create_object_store1(
+    pub fn create_object_store_with_options(
         &self,
         name: &JsString,
         options: &IDBObjectStoreParameters,

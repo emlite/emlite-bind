@@ -132,14 +132,16 @@ impl WebTransportDatagramDuplexStream {
 impl WebTransportDatagramDuplexStream {
     /// The createWritable method.
     /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
-    pub fn create_writable0(&self) -> WebTransportDatagramsWritable {
+    pub fn create_writable(&self) -> WebTransportDatagramsWritable {
         self.inner
             .call("createWritable", &[])
             .as_::<WebTransportDatagramsWritable>()
     }
+}
+impl WebTransportDatagramDuplexStream {
     /// The createWritable method.
     /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
-    pub fn create_writable1(
+    pub fn create_writable_with_options(
         &self,
         options: &WebTransportSendOptions,
     ) -> WebTransportDatagramsWritable {

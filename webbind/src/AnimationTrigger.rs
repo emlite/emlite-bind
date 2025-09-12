@@ -144,14 +144,16 @@ impl AnimationTrigger {
 
 impl AnimationTrigger {
     /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
-    pub fn new0() -> AnimationTrigger {
+    pub fn new() -> AnimationTrigger {
         Self {
             inner: Any::global("AnimationTrigger").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl AnimationTrigger {
     /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
-    pub fn new1(options: &AnimationTriggerOptions) -> AnimationTrigger {
+    pub fn new_with_options(options: &AnimationTriggerOptions) -> AnimationTrigger {
         Self {
             inner: Any::global("AnimationTrigger")
                 .new(&[options.into()])

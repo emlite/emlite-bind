@@ -75,26 +75,36 @@ impl FileSystemDirectoryEntry {
 impl FileSystemDirectoryEntry {
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file0(&self) -> Undefined {
+    pub fn get_file(&self) -> Undefined {
         self.inner.call("getFile", &[]).as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file1(&self, path: &JsString) -> Undefined {
+    pub fn get_file_with_path(&self, path: &JsString) -> Undefined {
         self.inner
             .call("getFile", &[path.into()])
             .as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file2(&self, path: &JsString, options: &FileSystemFlags) -> Undefined {
+    pub fn get_file_with_path_and_options(
+        &self,
+        path: &JsString,
+        options: &FileSystemFlags,
+    ) -> Undefined {
         self.inner
             .call("getFile", &[path.into(), options.into()])
             .as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file3(
+    pub fn get_file_with_path_and_options_and_success_callback(
         &self,
         path: &JsString,
         options: &FileSystemFlags,
@@ -107,9 +117,11 @@ impl FileSystemDirectoryEntry {
             )
             .as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getFile method.
     /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
-    pub fn get_file4(
+    pub fn get_file_with_path_and_options_and_success_callback_and_error_callback(
         &self,
         path: &JsString,
         options: &FileSystemFlags,
@@ -132,26 +144,36 @@ impl FileSystemDirectoryEntry {
 impl FileSystemDirectoryEntry {
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory0(&self) -> Undefined {
+    pub fn get_directory(&self) -> Undefined {
         self.inner.call("getDirectory", &[]).as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory1(&self, path: &JsString) -> Undefined {
+    pub fn get_directory_with_path(&self, path: &JsString) -> Undefined {
         self.inner
             .call("getDirectory", &[path.into()])
             .as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory2(&self, path: &JsString, options: &FileSystemFlags) -> Undefined {
+    pub fn get_directory_with_path_and_options(
+        &self,
+        path: &JsString,
+        options: &FileSystemFlags,
+    ) -> Undefined {
         self.inner
             .call("getDirectory", &[path.into(), options.into()])
             .as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory3(
+    pub fn get_directory_with_path_and_options_and_success_callback(
         &self,
         path: &JsString,
         options: &FileSystemFlags,
@@ -164,9 +186,11 @@ impl FileSystemDirectoryEntry {
             )
             .as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryEntry {
     /// The getDirectory method.
     /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
-    pub fn get_directory4(
+    pub fn get_directory_with_path_and_options_and_success_callback_and_error_callback(
         &self,
         path: &JsString,
         options: &FileSystemFlags,

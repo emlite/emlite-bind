@@ -71,17 +71,20 @@ impl XPathEvaluator {
         }
     }
 }
+
 impl XPathEvaluator {
     /// The createExpression method.
     /// [`XPathEvaluator.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/createExpression)
-    pub fn create_expression0(&self, expression: &JsString) -> XPathExpression {
+    pub fn create_expression(&self, expression: &JsString) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into()])
             .as_::<XPathExpression>()
     }
+}
+impl XPathEvaluator {
     /// The createExpression method.
     /// [`XPathEvaluator.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/createExpression)
-    pub fn create_expression1(
+    pub fn create_expression_with_resolver(
         &self,
         expression: &JsString,
         resolver: &Function,
@@ -103,14 +106,16 @@ impl XPathEvaluator {
 impl XPathEvaluator {
     /// The evaluate method.
     /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
-    pub fn evaluate0(&self, expression: &JsString, context_node: &Node) -> XPathResult {
+    pub fn evaluate(&self, expression: &JsString, context_node: &Node) -> XPathResult {
         self.inner
             .call("evaluate", &[expression.into(), context_node.into()])
             .as_::<XPathResult>()
     }
+}
+impl XPathEvaluator {
     /// The evaluate method.
     /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
-    pub fn evaluate1(
+    pub fn evaluate_with_resolver(
         &self,
         expression: &JsString,
         context_node: &Node,
@@ -123,9 +128,11 @@ impl XPathEvaluator {
             )
             .as_::<XPathResult>()
     }
+}
+impl XPathEvaluator {
     /// The evaluate method.
     /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
-    pub fn evaluate2(
+    pub fn evaluate_with_resolver_and_type(
         &self,
         expression: &JsString,
         context_node: &Node,
@@ -144,9 +151,11 @@ impl XPathEvaluator {
             )
             .as_::<XPathResult>()
     }
+}
+impl XPathEvaluator {
     /// The evaluate method.
     /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
-    pub fn evaluate3(
+    pub fn evaluate_with_resolver_and_type_and_result(
         &self,
         expression: &JsString,
         context_node: &Node,

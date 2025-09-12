@@ -118,16 +118,18 @@ impl CSSRGB {
 
 impl CSSRGB {
     /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
-    pub fn new0(r: &Any, g: &Any, b: &Any) -> CSSRGB {
+    pub fn new(r: &Any, g: &Any, b: &Any) -> CSSRGB {
         Self {
             inner: Any::global("CSSRGB")
                 .new(&[r.into(), g.into(), b.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSRGB {
     /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
-    pub fn new1(r: &Any, g: &Any, b: &Any, alpha: &Any) -> CSSRGB {
+    pub fn new_with_alpha(r: &Any, g: &Any, b: &Any, alpha: &Any) -> CSSRGB {
         Self {
             inner: Any::global("CSSRGB")
                 .new(&[r.into(), g.into(), b.into(), alpha.into()])

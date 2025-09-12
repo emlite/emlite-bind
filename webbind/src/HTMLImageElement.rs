@@ -402,6 +402,7 @@ impl HTMLImageElement {
         }
     }
 }
+
 impl HTMLImageElement {
     /// The decode method.
     /// [`HTMLImageElement.decode`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode)

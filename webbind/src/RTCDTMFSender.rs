@@ -93,21 +93,30 @@ impl RTCDTMFSender {
 impl RTCDTMFSender {
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf0(&self, tones: &JsString) -> Undefined {
+    pub fn insert_dtmf(&self, tones: &JsString) -> Undefined {
         self.inner
             .call("insertDTMF", &[tones.into()])
             .as_::<Undefined>()
     }
+}
+impl RTCDTMFSender {
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf1(&self, tones: &JsString, duration: u32) -> Undefined {
+    pub fn insert_dtmf_with_duration(&self, tones: &JsString, duration: u32) -> Undefined {
         self.inner
             .call("insertDTMF", &[tones.into(), duration.into()])
             .as_::<Undefined>()
     }
+}
+impl RTCDTMFSender {
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf2(&self, tones: &JsString, duration: u32, inter_tone_gap: u32) -> Undefined {
+    pub fn insert_dtmf_with_duration_and_inter_tone_gap(
+        &self,
+        tones: &JsString,
+        duration: u32,
+        inter_tone_gap: u32,
+    ) -> Undefined {
         self.inner
             .call(
                 "insertDTMF",

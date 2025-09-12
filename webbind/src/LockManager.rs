@@ -75,7 +75,7 @@ impl LockManager {
 impl LockManager {
     /// The request method.
     /// [`LockManager.request`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request)
-    pub fn request1(
+    pub fn request_with_name_and_options_and_callback(
         &self,
         name: &JsString,
         options: &LockOptions,

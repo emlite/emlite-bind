@@ -115,14 +115,16 @@ impl GeolocationSensor {
 
 impl GeolocationSensor {
     /// The `new GeolocationSensor(..)` constructor, creating a new GeolocationSensor instance
-    pub fn new0() -> GeolocationSensor {
+    pub fn new() -> GeolocationSensor {
         Self {
             inner: Any::global("GeolocationSensor").new(&[]).as_::<Sensor>(),
         }
     }
+}
 
+impl GeolocationSensor {
     /// The `new GeolocationSensor(..)` constructor, creating a new GeolocationSensor instance
-    pub fn new1(options: &GeolocationSensorOptions) -> GeolocationSensor {
+    pub fn new_with_options(options: &GeolocationSensorOptions) -> GeolocationSensor {
         Self {
             inner: Any::global("GeolocationSensor")
                 .new(&[options.into()])
@@ -130,17 +132,20 @@ impl GeolocationSensor {
         }
     }
 }
+
 impl GeolocationSensor {
     /// The read method.
     /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
-    pub fn read0() -> Promise<GeolocationSensorReading> {
+    pub fn read() -> Promise<GeolocationSensorReading> {
         Any::global("GeolocationSensor")
             .call("read", &[])
             .as_::<Promise<GeolocationSensorReading>>()
     }
+}
+impl GeolocationSensor {
     /// The read method.
     /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
-    pub fn read1(read_options: &ReadOptions) -> Promise<GeolocationSensorReading> {
+    pub fn read_with_read_options(read_options: &ReadOptions) -> Promise<GeolocationSensorReading> {
         Any::global("GeolocationSensor")
             .call("read", &[read_options.into()])
             .as_::<Promise<GeolocationSensorReading>>()

@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(HandwritingRecognizer);
 impl HandwritingRecognizer {
     /// The startDrawing method.
     /// [`HandwritingRecognizer.startDrawing`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingRecognizer/startDrawing)
-    pub fn start_drawing0(&self) -> HandwritingDrawing {
+    pub fn start_drawing(&self) -> HandwritingDrawing {
         self.inner
             .call("startDrawing", &[])
             .as_::<HandwritingDrawing>()
     }
+}
+impl HandwritingRecognizer {
     /// The startDrawing method.
     /// [`HandwritingRecognizer.startDrawing`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingRecognizer/startDrawing)
-    pub fn start_drawing1(&self, hints: &HandwritingHints) -> HandwritingDrawing {
+    pub fn start_drawing_with_hints(&self, hints: &HandwritingHints) -> HandwritingDrawing {
         self.inner
             .call("startDrawing", &[hints.into()])
             .as_::<HandwritingDrawing>()

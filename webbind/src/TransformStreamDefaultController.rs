@@ -73,12 +73,14 @@ impl TransformStreamDefaultController {
 impl TransformStreamDefaultController {
     /// The enqueue method.
     /// [`TransformStreamDefaultController.enqueue`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/enqueue)
-    pub fn enqueue0(&self) -> Undefined {
+    pub fn enqueue(&self) -> Undefined {
         self.inner.call("enqueue", &[]).as_::<Undefined>()
     }
+}
+impl TransformStreamDefaultController {
     /// The enqueue method.
     /// [`TransformStreamDefaultController.enqueue`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/enqueue)
-    pub fn enqueue1(&self, chunk: &Any) -> Undefined {
+    pub fn enqueue_with_chunk(&self, chunk: &Any) -> Undefined {
         self.inner
             .call("enqueue", &[chunk.into()])
             .as_::<Undefined>()
@@ -87,12 +89,14 @@ impl TransformStreamDefaultController {
 impl TransformStreamDefaultController {
     /// The error method.
     /// [`TransformStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/error)
-    pub fn error0(&self) -> Undefined {
+    pub fn error(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
+}
+impl TransformStreamDefaultController {
     /// The error method.
     /// [`TransformStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStreamDefaultController/error)
-    pub fn error1(&self, reason: &Any) -> Undefined {
+    pub fn error_with_reason(&self, reason: &Any) -> Undefined {
         self.inner
             .call("error", &[reason.into()])
             .as_::<Undefined>()

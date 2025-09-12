@@ -118,16 +118,18 @@ impl CSSHSL {
 
 impl CSSHSL {
     /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
-    pub fn new0(h: &Any, s: &Any, l: &Any) -> CSSHSL {
+    pub fn new(h: &Any, s: &Any, l: &Any) -> CSSHSL {
         Self {
             inner: Any::global("CSSHSL")
                 .new(&[h.into(), s.into(), l.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSHSL {
     /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
-    pub fn new1(h: &Any, s: &Any, l: &Any, alpha: &Any) -> CSSHSL {
+    pub fn new_with_alpha(h: &Any, s: &Any, l: &Any, alpha: &Any) -> CSSHSL {
         Self {
             inner: Any::global("CSSHSL")
                 .new(&[h.into(), s.into(), l.into(), alpha.into()])

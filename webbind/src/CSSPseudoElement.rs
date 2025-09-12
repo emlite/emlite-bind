@@ -96,14 +96,16 @@ impl CSSPseudoElement {
 impl CSSPseudoElement {
     /// The getBoxQuads method.
     /// [`CSSPseudoElement.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/getBoxQuads)
-    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads(&self) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
             .as_::<TypedArray<DOMQuad>>()
     }
+}
+impl CSSPseudoElement {
     /// The getBoxQuads method.
     /// [`CSSPseudoElement.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/getBoxQuads)
-    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads_with_options(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
             .as_::<TypedArray<DOMQuad>>()
@@ -112,14 +114,16 @@ impl CSSPseudoElement {
 impl CSSPseudoElement {
     /// The convertQuadFromNode method.
     /// [`CSSPseudoElement.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertQuadFromNode)
-    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
+    pub fn convert_quad_from_node(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl CSSPseudoElement {
     /// The convertQuadFromNode method.
     /// [`CSSPseudoElement.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertQuadFromNode)
-    pub fn convert_quad_from_node1(
+    pub fn convert_quad_from_node_with_options(
         &self,
         quad: &DOMQuadInit,
         from: &Any,
@@ -136,14 +140,16 @@ impl CSSPseudoElement {
 impl CSSPseudoElement {
     /// The convertRectFromNode method.
     /// [`CSSPseudoElement.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertRectFromNode)
-    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
+    pub fn convert_rect_from_node(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl CSSPseudoElement {
     /// The convertRectFromNode method.
     /// [`CSSPseudoElement.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertRectFromNode)
-    pub fn convert_rect_from_node1(
+    pub fn convert_rect_from_node_with_options(
         &self,
         rect: &DOMRectReadOnly,
         from: &Any,
@@ -160,14 +166,16 @@ impl CSSPseudoElement {
 impl CSSPseudoElement {
     /// The convertPointFromNode method.
     /// [`CSSPseudoElement.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertPointFromNode)
-    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
+    pub fn convert_point_from_node(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
     }
+}
+impl CSSPseudoElement {
     /// The convertPointFromNode method.
     /// [`CSSPseudoElement.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertPointFromNode)
-    pub fn convert_point_from_node1(
+    pub fn convert_point_from_node_with_options(
         &self,
         point: &DOMPointInit,
         from: &Any,

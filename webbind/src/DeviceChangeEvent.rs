@@ -84,16 +84,21 @@ impl DeviceChangeEvent {
 
 impl DeviceChangeEvent {
     /// The `new DeviceChangeEvent(..)` constructor, creating a new DeviceChangeEvent instance
-    pub fn new0(type_: &JsString) -> DeviceChangeEvent {
+    pub fn new(type_: &JsString) -> DeviceChangeEvent {
         Self {
             inner: Any::global("DeviceChangeEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl DeviceChangeEvent {
     /// The `new DeviceChangeEvent(..)` constructor, creating a new DeviceChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &DeviceChangeEventInit) -> DeviceChangeEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &DeviceChangeEventInit,
+    ) -> DeviceChangeEvent {
         Self {
             inner: Any::global("DeviceChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -73,6 +73,7 @@ impl FencedFrameConfig {
         }
     }
 }
+
 impl FencedFrameConfig {
     /// The setSharedStorageContext method.
     /// [`FencedFrameConfig.setSharedStorageContext`](https://developer.mozilla.org/en-US/docs/Web/API/FencedFrameConfig/setSharedStorageContext)

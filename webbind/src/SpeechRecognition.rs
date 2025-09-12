@@ -310,6 +310,7 @@ impl SpeechRecognition {
         }
     }
 }
+
 impl SpeechRecognition {
     /// The start method.
     /// [`SpeechRecognition.start`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
@@ -320,7 +321,7 @@ impl SpeechRecognition {
 impl SpeechRecognition {
     /// The start method.
     /// [`SpeechRecognition.start`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
-    pub fn start1(&self, audio_track: &MediaStreamTrack) -> Undefined {
+    pub fn start_with_audio_track(&self, audio_track: &MediaStreamTrack) -> Undefined {
         self.inner
             .call("start", &[audio_track.into()])
             .as_::<Undefined>()

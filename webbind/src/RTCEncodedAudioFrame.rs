@@ -79,16 +79,18 @@ impl RTCEncodedAudioFrame {
 
 impl RTCEncodedAudioFrame {
     /// The `new RTCEncodedAudioFrame(..)` constructor, creating a new RTCEncodedAudioFrame instance
-    pub fn new0(original_frame: &RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {
+    pub fn new(original_frame: &RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {
         Self {
             inner: Any::global("RTCEncodedAudioFrame")
                 .new(&[original_frame.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl RTCEncodedAudioFrame {
     /// The `new RTCEncodedAudioFrame(..)` constructor, creating a new RTCEncodedAudioFrame instance
-    pub fn new1(
+    pub fn new_with_options(
         original_frame: &RTCEncodedAudioFrame,
         options: &RTCEncodedAudioFrameOptions,
     ) -> RTCEncodedAudioFrame {
@@ -99,6 +101,7 @@ impl RTCEncodedAudioFrame {
         }
     }
 }
+
 impl RTCEncodedAudioFrame {
     /// The getMetadata method.
     /// [`RTCEncodedAudioFrame.getMetadata`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame/getMetadata)

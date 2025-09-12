@@ -132,16 +132,18 @@ impl AudioBufferSourceNode {
 
 impl AudioBufferSourceNode {
     /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
-    pub fn new0(context: &BaseAudioContext) -> AudioBufferSourceNode {
+    pub fn new(context: &BaseAudioContext) -> AudioBufferSourceNode {
         Self {
             inner: Any::global("AudioBufferSourceNode")
                 .new(&[context.into()])
                 .as_::<AudioScheduledSourceNode>(),
         }
     }
+}
 
+impl AudioBufferSourceNode {
     /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
-    pub fn new1(
+    pub fn new_with_options(
         context: &BaseAudioContext,
         options: &AudioBufferSourceOptions,
     ) -> AudioBufferSourceNode {
@@ -152,27 +154,39 @@ impl AudioBufferSourceNode {
         }
     }
 }
+
 impl AudioBufferSourceNode {
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
-    pub fn start0(&self) -> Undefined {
+    pub fn start(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
+}
+impl AudioBufferSourceNode {
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
-    pub fn start1(&self, when: f64) -> Undefined {
+    pub fn start_with_when(&self, when: f64) -> Undefined {
         self.inner.call("start", &[when.into()]).as_::<Undefined>()
     }
+}
+impl AudioBufferSourceNode {
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
-    pub fn start2(&self, when: f64, offset: f64) -> Undefined {
+    pub fn start_with_when_and_offset(&self, when: f64, offset: f64) -> Undefined {
         self.inner
             .call("start", &[when.into(), offset.into()])
             .as_::<Undefined>()
     }
+}
+impl AudioBufferSourceNode {
     /// The start method.
     /// [`AudioBufferSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/start)
-    pub fn start3(&self, when: f64, offset: f64, duration: f64) -> Undefined {
+    pub fn start_with_when_and_offset_and_duration(
+        &self,
+        when: f64,
+        offset: f64,
+        duration: f64,
+    ) -> Undefined {
         self.inner
             .call("start", &[when.into(), offset.into(), duration.into()])
             .as_::<Undefined>()

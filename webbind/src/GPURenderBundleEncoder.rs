@@ -79,12 +79,17 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The finish method.
     /// [`GPURenderBundleEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/finish)
-    pub fn finish0(&self) -> GPURenderBundle {
+    pub fn finish(&self) -> GPURenderBundle {
         self.inner.call("finish", &[]).as_::<GPURenderBundle>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The finish method.
     /// [`GPURenderBundleEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/finish)
-    pub fn finish1(&self, descriptor: &GPURenderBundleDescriptor) -> GPURenderBundle {
+    pub fn finish_with_descriptor(
+        &self,
+        descriptor: &GPURenderBundleDescriptor,
+    ) -> GPURenderBundle {
         self.inner
             .call("finish", &[descriptor.into()])
             .as_::<GPURenderBundle>()
@@ -118,14 +123,16 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The setBindGroup method.
     /// [`GPURenderBundleEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setBindGroup)
-    pub fn set_bind_group0(&self, index: &Any, bind_group: &GPUBindGroup) -> Undefined {
+    pub fn set_bind_group(&self, index: &Any, bind_group: &GPUBindGroup) -> Undefined {
         self.inner
             .call("setBindGroup", &[index.into(), bind_group.into()])
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The setBindGroup method.
     /// [`GPURenderBundleEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setBindGroup)
-    pub fn set_bind_group1(
+    pub fn set_bind_group_with_dynamic_offsets(
         &self,
         index: &Any,
         bind_group: &GPUBindGroup,
@@ -142,7 +149,7 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The setBindGroup method.
     /// [`GPURenderBundleEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setBindGroup)
-    pub fn set_bind_group2(
+    pub fn set_bind_group_with_index_and_bind_group_and_dynamic_offsets_data_and_dynamic_offsets_data_start_and_dynamic_offsets_data_length(
         &self,
         index: &Any,
         bind_group: &GPUBindGroup,
@@ -176,18 +183,16 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The setIndexBuffer method.
     /// [`GPURenderBundleEncoder.setIndexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer)
-    pub fn set_index_buffer0(
-        &self,
-        buffer: &GPUBuffer,
-        index_format: &GPUIndexFormat,
-    ) -> Undefined {
+    pub fn set_index_buffer(&self, buffer: &GPUBuffer, index_format: &GPUIndexFormat) -> Undefined {
         self.inner
             .call("setIndexBuffer", &[buffer.into(), index_format.into()])
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The setIndexBuffer method.
     /// [`GPURenderBundleEncoder.setIndexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer)
-    pub fn set_index_buffer1(
+    pub fn set_index_buffer_with_offset(
         &self,
         buffer: &GPUBuffer,
         index_format: &GPUIndexFormat,
@@ -200,9 +205,11 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The setIndexBuffer method.
     /// [`GPURenderBundleEncoder.setIndexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer)
-    pub fn set_index_buffer2(
+    pub fn set_index_buffer_with_offset_and_size(
         &self,
         buffer: &GPUBuffer,
         index_format: &GPUIndexFormat,
@@ -225,14 +232,21 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The setVertexBuffer method.
     /// [`GPURenderBundleEncoder.setVertexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer)
-    pub fn set_vertex_buffer0(&self, slot: &Any, buffer: &GPUBuffer) -> Undefined {
+    pub fn set_vertex_buffer(&self, slot: &Any, buffer: &GPUBuffer) -> Undefined {
         self.inner
             .call("setVertexBuffer", &[slot.into(), buffer.into()])
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The setVertexBuffer method.
     /// [`GPURenderBundleEncoder.setVertexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer)
-    pub fn set_vertex_buffer1(&self, slot: &Any, buffer: &GPUBuffer, offset: &Any) -> Undefined {
+    pub fn set_vertex_buffer_with_offset(
+        &self,
+        slot: &Any,
+        buffer: &GPUBuffer,
+        offset: &Any,
+    ) -> Undefined {
         self.inner
             .call(
                 "setVertexBuffer",
@@ -240,9 +254,11 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The setVertexBuffer method.
     /// [`GPURenderBundleEncoder.setVertexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer)
-    pub fn set_vertex_buffer2(
+    pub fn set_vertex_buffer_with_offset_and_size(
         &self,
         slot: &Any,
         buffer: &GPUBuffer,
@@ -260,21 +276,30 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The draw method.
     /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
-    pub fn draw0(&self, vertex_count: &Any) -> Undefined {
+    pub fn draw(&self, vertex_count: &Any) -> Undefined {
         self.inner
             .call("draw", &[vertex_count.into()])
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The draw method.
     /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
-    pub fn draw1(&self, vertex_count: &Any, instance_count: &Any) -> Undefined {
+    pub fn draw_with_instance_count(&self, vertex_count: &Any, instance_count: &Any) -> Undefined {
         self.inner
             .call("draw", &[vertex_count.into(), instance_count.into()])
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The draw method.
     /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
-    pub fn draw2(&self, vertex_count: &Any, instance_count: &Any, first_vertex: &Any) -> Undefined {
+    pub fn draw_with_instance_count_and_first_vertex(
+        &self,
+        vertex_count: &Any,
+        instance_count: &Any,
+        first_vertex: &Any,
+    ) -> Undefined {
         self.inner
             .call(
                 "draw",
@@ -286,9 +311,11 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The draw method.
     /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
-    pub fn draw3(
+    pub fn draw_with_instance_count_and_first_vertex_and_first_instance(
         &self,
         vertex_count: &Any,
         instance_count: &Any,
@@ -311,21 +338,29 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The drawIndexed method.
     /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
-    pub fn draw_indexed0(&self, index_count: &Any) -> Undefined {
+    pub fn draw_indexed(&self, index_count: &Any) -> Undefined {
         self.inner
             .call("drawIndexed", &[index_count.into()])
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The drawIndexed method.
     /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
-    pub fn draw_indexed1(&self, index_count: &Any, instance_count: &Any) -> Undefined {
+    pub fn draw_indexed_with_instance_count(
+        &self,
+        index_count: &Any,
+        instance_count: &Any,
+    ) -> Undefined {
         self.inner
             .call("drawIndexed", &[index_count.into(), instance_count.into()])
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The drawIndexed method.
     /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
-    pub fn draw_indexed2(
+    pub fn draw_indexed_with_instance_count_and_first_index(
         &self,
         index_count: &Any,
         instance_count: &Any,
@@ -342,9 +377,11 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The drawIndexed method.
     /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
-    pub fn draw_indexed3(
+    pub fn draw_indexed_with_instance_count_and_first_index_and_base_vertex(
         &self,
         index_count: &Any,
         instance_count: &Any,
@@ -363,9 +400,11 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
+}
+impl GPURenderBundleEncoder {
     /// The drawIndexed method.
     /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
-    pub fn draw_indexed4(
+    pub fn draw_indexed_with_instance_count_and_first_index_and_base_vertex_and_first_instance(
         &self,
         index_count: &Any,
         instance_count: &Any,

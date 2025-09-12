@@ -179,14 +179,16 @@ impl BluetoothDevice {
 impl BluetoothDevice {
     /// The watchAdvertisements method.
     /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements0(&self) -> Promise<Undefined> {
+    pub fn watch_advertisements(&self) -> Promise<Undefined> {
         self.inner
             .call("watchAdvertisements", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl BluetoothDevice {
     /// The watchAdvertisements method.
     /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements1(
+    pub fn watch_advertisements_with_options(
         &self,
         options: &WatchAdvertisementsOptions,
     ) -> Promise<Undefined> {

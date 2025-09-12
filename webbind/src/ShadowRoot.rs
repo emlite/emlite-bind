@@ -143,12 +143,14 @@ impl ShadowRoot {
 impl ShadowRoot {
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
-    pub fn get_html0(&self) -> JsString {
+    pub fn get_html(&self) -> JsString {
         self.inner.call("getHTML", &[]).as_::<JsString>()
     }
+}
+impl ShadowRoot {
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
-    pub fn get_html1(&self, options: &GetHTMLOptions) -> JsString {
+    pub fn get_html_with_options(&self, options: &GetHTMLOptions) -> JsString {
         self.inner
             .call("getHTML", &[options.into()])
             .as_::<JsString>()

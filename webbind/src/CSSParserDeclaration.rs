@@ -80,16 +80,21 @@ impl CSSParserDeclaration {
 
 impl CSSParserDeclaration {
     /// The `new CSSParserDeclaration(..)` constructor, creating a new CSSParserDeclaration instance
-    pub fn new0(name: &JsString) -> CSSParserDeclaration {
+    pub fn new(name: &JsString) -> CSSParserDeclaration {
         Self {
             inner: Any::global("CSSParserDeclaration")
                 .new(&[name.into()])
                 .as_::<CSSParserRule>(),
         }
     }
+}
 
+impl CSSParserDeclaration {
     /// The `new CSSParserDeclaration(..)` constructor, creating a new CSSParserDeclaration instance
-    pub fn new1(name: &JsString, body: &TypedArray<CSSParserRule>) -> CSSParserDeclaration {
+    pub fn new_with_body(
+        name: &JsString,
+        body: &TypedArray<CSSParserRule>,
+    ) -> CSSParserDeclaration {
         Self {
             inner: Any::global("CSSParserDeclaration")
                 .new(&[name.into(), body.into()])

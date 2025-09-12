@@ -240,14 +240,19 @@ impl MediaStreamTrack {
 impl MediaStreamTrack {
     /// The applyConstraints method.
     /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
-    pub fn apply_constraints0(&self) -> Promise<Undefined> {
+    pub fn apply_constraints(&self) -> Promise<Undefined> {
         self.inner
             .call("applyConstraints", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl MediaStreamTrack {
     /// The applyConstraints method.
     /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
-    pub fn apply_constraints1(&self, constraints: &MediaTrackConstraints) -> Promise<Undefined> {
+    pub fn apply_constraints_with_constraints(
+        &self,
+        constraints: &MediaTrackConstraints,
+    ) -> Promise<Undefined> {
         self.inner
             .call("applyConstraints", &[constraints.into()])
             .as_::<Promise<Undefined>>()

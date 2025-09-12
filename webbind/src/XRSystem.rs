@@ -88,14 +88,16 @@ impl XRSystem {
 impl XRSystem {
     /// The requestSession method.
     /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
-    pub fn request_session0(&self, mode: &XRSessionMode) -> Promise<XRSession> {
+    pub fn request_session(&self, mode: &XRSessionMode) -> Promise<XRSession> {
         self.inner
             .call("requestSession", &[mode.into()])
             .as_::<Promise<XRSession>>()
     }
+}
+impl XRSystem {
     /// The requestSession method.
     /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
-    pub fn request_session1(
+    pub fn request_session_with_options(
         &self,
         mode: &XRSessionMode,
         options: &XRSessionInit,

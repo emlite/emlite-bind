@@ -142,6 +142,7 @@ impl HTMLFieldSetElement {
         }
     }
 }
+
 impl HTMLFieldSetElement {
     /// The checkValidity method.
     /// [`HTMLFieldSetElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/checkValidity)

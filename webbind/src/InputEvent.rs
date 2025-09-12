@@ -94,16 +94,21 @@ impl InputEvent {
 
 impl InputEvent {
     /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
-    pub fn new0(type_: &JsString) -> InputEvent {
+    pub fn new(type_: &JsString) -> InputEvent {
         Self {
             inner: Any::global("InputEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
+}
 
+impl InputEvent {
     /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &InputEventInit) -> InputEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &InputEventInit,
+    ) -> InputEvent {
         Self {
             inner: Any::global("InputEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -111,6 +116,7 @@ impl InputEvent {
         }
     }
 }
+
 impl InputEvent {
     /// The getTargetRanges method.
     /// [`InputEvent.getTargetRanges`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/getTargetRanges)

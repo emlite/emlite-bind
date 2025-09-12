@@ -113,6 +113,7 @@ impl HTMLDialogElement {
         }
     }
 }
+
 impl HTMLDialogElement {
     /// The show method.
     /// [`HTMLDialogElement.show`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/show)
@@ -130,12 +131,14 @@ impl HTMLDialogElement {
 impl HTMLDialogElement {
     /// The close method.
     /// [`HTMLDialogElement.close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close)
-    pub fn close0(&self) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
+}
+impl HTMLDialogElement {
     /// The close method.
     /// [`HTMLDialogElement.close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close)
-    pub fn close1(&self, return_value: &JsString) -> Undefined {
+    pub fn close_with_return_value(&self, return_value: &JsString) -> Undefined {
         self.inner
             .call("close", &[return_value.into()])
             .as_::<Undefined>()
@@ -144,12 +147,14 @@ impl HTMLDialogElement {
 impl HTMLDialogElement {
     /// The requestClose method.
     /// [`HTMLDialogElement.requestClose`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/requestClose)
-    pub fn request_close0(&self) -> Undefined {
+    pub fn request_close(&self) -> Undefined {
         self.inner.call("requestClose", &[]).as_::<Undefined>()
     }
+}
+impl HTMLDialogElement {
     /// The requestClose method.
     /// [`HTMLDialogElement.requestClose`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/requestClose)
-    pub fn request_close1(&self, return_value: &JsString) -> Undefined {
+    pub fn request_close_with_return_value(&self, return_value: &JsString) -> Undefined {
         self.inner
             .call("requestClose", &[return_value.into()])
             .as_::<Undefined>()

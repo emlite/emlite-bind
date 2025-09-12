@@ -105,14 +105,16 @@ impl BluetoothRemoteGATTServer {
 impl BluetoothRemoteGATTServer {
     /// The getPrimaryServices method.
     /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
-    pub fn get_primary_services0(&self) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
+    pub fn get_primary_services(&self) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
         self.inner
             .call("getPrimaryServices", &[])
             .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
+}
+impl BluetoothRemoteGATTServer {
     /// The getPrimaryServices method.
     /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
-    pub fn get_primary_services1(
+    pub fn get_primary_services_with_service(
         &self,
         service: &Any,
     ) -> Promise<TypedArray<BluetoothRemoteGATTService>> {

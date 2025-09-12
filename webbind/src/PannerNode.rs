@@ -212,16 +212,18 @@ impl PannerNode {
 
 impl PannerNode {
     /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
-    pub fn new0(context: &BaseAudioContext) -> PannerNode {
+    pub fn new(context: &BaseAudioContext) -> PannerNode {
         Self {
             inner: Any::global("PannerNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl PannerNode {
     /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
-    pub fn new1(context: &BaseAudioContext, options: &PannerOptions) -> PannerNode {
+    pub fn new_with_options(context: &BaseAudioContext, options: &PannerOptions) -> PannerNode {
         Self {
             inner: Any::global("PannerNode")
                 .new(&[context.into(), options.into()])
@@ -229,6 +231,7 @@ impl PannerNode {
         }
     }
 }
+
 impl PannerNode {
     /// The setPosition method.
     /// [`PannerNode.setPosition`](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/setPosition)

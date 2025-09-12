@@ -101,14 +101,19 @@ impl Serial {
 impl Serial {
     /// The requestPort method.
     /// [`Serial.requestPort`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/requestPort)
-    pub fn request_port0(&self) -> Promise<SerialPort> {
+    pub fn request_port(&self) -> Promise<SerialPort> {
         self.inner
             .call("requestPort", &[])
             .as_::<Promise<SerialPort>>()
     }
+}
+impl Serial {
     /// The requestPort method.
     /// [`Serial.requestPort`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/requestPort)
-    pub fn request_port1(&self, options: &SerialPortRequestOptions) -> Promise<SerialPort> {
+    pub fn request_port_with_options(
+        &self,
+        options: &SerialPortRequestOptions,
+    ) -> Promise<SerialPort> {
         self.inner
             .call("requestPort", &[options.into()])
             .as_::<Promise<SerialPort>>()

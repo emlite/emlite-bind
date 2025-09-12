@@ -65,16 +65,18 @@ jsbind::utils::impl_dyn_cast!(LinearAccelerationSensor);
 
 impl LinearAccelerationSensor {
     /// The `new LinearAccelerationSensor(..)` constructor, creating a new LinearAccelerationSensor instance
-    pub fn new0() -> LinearAccelerationSensor {
+    pub fn new() -> LinearAccelerationSensor {
         Self {
             inner: Any::global("LinearAccelerationSensor")
                 .new(&[])
                 .as_::<Accelerometer>(),
         }
     }
+}
 
+impl LinearAccelerationSensor {
     /// The `new LinearAccelerationSensor(..)` constructor, creating a new LinearAccelerationSensor instance
-    pub fn new1(options: &AccelerometerSensorOptions) -> LinearAccelerationSensor {
+    pub fn new_with_options(options: &AccelerometerSensorOptions) -> LinearAccelerationSensor {
         Self {
             inner: Any::global("LinearAccelerationSensor")
                 .new(&[options.into()])

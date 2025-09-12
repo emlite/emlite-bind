@@ -80,12 +80,14 @@ impl AnimationTimeline {
 impl AnimationTimeline {
     /// The play method.
     /// [`AnimationTimeline.play`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTimeline/play)
-    pub fn play0(&self) -> Animation {
+    pub fn play(&self) -> Animation {
         self.inner.call("play", &[]).as_::<Animation>()
     }
+}
+impl AnimationTimeline {
     /// The play method.
     /// [`AnimationTimeline.play`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTimeline/play)
-    pub fn play1(&self, effect: &AnimationEffect) -> Animation {
+    pub fn play_with_effect(&self, effect: &AnimationEffect) -> Animation {
         self.inner.call("play", &[effect.into()]).as_::<Animation>()
     }
 }

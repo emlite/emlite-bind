@@ -65,16 +65,21 @@ jsbind::utils::impl_dyn_cast!(PeriodicWave);
 
 impl PeriodicWave {
     /// The `new PeriodicWave(..)` constructor, creating a new PeriodicWave instance
-    pub fn new0(context: &BaseAudioContext) -> PeriodicWave {
+    pub fn new(context: &BaseAudioContext) -> PeriodicWave {
         Self {
             inner: Any::global("PeriodicWave")
                 .new(&[context.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl PeriodicWave {
     /// The `new PeriodicWave(..)` constructor, creating a new PeriodicWave instance
-    pub fn new1(context: &BaseAudioContext, options: &PeriodicWaveOptions) -> PeriodicWave {
+    pub fn new_with_options(
+        context: &BaseAudioContext,
+        options: &PeriodicWaveOptions,
+    ) -> PeriodicWave {
         Self {
             inner: Any::global("PeriodicWave")
                 .new(&[context.into(), options.into()])

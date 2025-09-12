@@ -65,19 +65,22 @@ jsbind::utils::impl_dyn_cast!(Headers);
 
 impl Headers {
     /// The `new Headers(..)` constructor, creating a new Headers instance
-    pub fn new0() -> Headers {
+    pub fn new() -> Headers {
         Self {
             inner: Any::global("Headers").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl Headers {
     /// The `new Headers(..)` constructor, creating a new Headers instance
-    pub fn new1(init: &Any) -> Headers {
+    pub fn new_with_init(init: &Any) -> Headers {
         Self {
             inner: Any::global("Headers").new(&[init.into()]).as_::<Any>(),
         }
     }
 }
+
 impl Headers {
     /// The append method.
     /// [`Headers.append`](https://developer.mozilla.org/en-US/docs/Web/API/Headers/append)

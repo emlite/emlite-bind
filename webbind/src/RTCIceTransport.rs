@@ -167,6 +167,7 @@ impl RTCIceTransport {
         }
     }
 }
+
 impl RTCIceTransport {
     /// The getLocalCandidates method.
     /// [`RTCIceTransport.getLocalCandidates`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/getLocalCandidates)
@@ -215,12 +216,14 @@ impl RTCIceTransport {
 impl RTCIceTransport {
     /// The gather method.
     /// [`RTCIceTransport.gather`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/gather)
-    pub fn gather0(&self) -> Undefined {
+    pub fn gather(&self) -> Undefined {
         self.inner.call("gather", &[]).as_::<Undefined>()
     }
+}
+impl RTCIceTransport {
     /// The gather method.
     /// [`RTCIceTransport.gather`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/gather)
-    pub fn gather1(&self, options: &RTCIceGatherOptions) -> Undefined {
+    pub fn gather_with_options(&self, options: &RTCIceGatherOptions) -> Undefined {
         self.inner
             .call("gather", &[options.into()])
             .as_::<Undefined>()
@@ -229,19 +232,27 @@ impl RTCIceTransport {
 impl RTCIceTransport {
     /// The start method.
     /// [`RTCIceTransport.start`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/start)
-    pub fn start0(&self) -> Undefined {
+    pub fn start(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
+}
+impl RTCIceTransport {
     /// The start method.
     /// [`RTCIceTransport.start`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/start)
-    pub fn start1(&self, remote_parameters: &RTCIceParameters) -> Undefined {
+    pub fn start_with_remote_parameters(&self, remote_parameters: &RTCIceParameters) -> Undefined {
         self.inner
             .call("start", &[remote_parameters.into()])
             .as_::<Undefined>()
     }
+}
+impl RTCIceTransport {
     /// The start method.
     /// [`RTCIceTransport.start`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/start)
-    pub fn start2(&self, remote_parameters: &RTCIceParameters, role: &RTCIceRole) -> Undefined {
+    pub fn start_with_remote_parameters_and_role(
+        &self,
+        remote_parameters: &RTCIceParameters,
+        role: &RTCIceRole,
+    ) -> Undefined {
         self.inner
             .call("start", &[remote_parameters.into(), role.into()])
             .as_::<Undefined>()
@@ -257,14 +268,19 @@ impl RTCIceTransport {
 impl RTCIceTransport {
     /// The addRemoteCandidate method.
     /// [`RTCIceTransport.addRemoteCandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/addRemoteCandidate)
-    pub fn add_remote_candidate0(&self) -> Undefined {
+    pub fn add_remote_candidate(&self) -> Undefined {
         self.inner
             .call("addRemoteCandidate", &[])
             .as_::<Undefined>()
     }
+}
+impl RTCIceTransport {
     /// The addRemoteCandidate method.
     /// [`RTCIceTransport.addRemoteCandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/addRemoteCandidate)
-    pub fn add_remote_candidate1(&self, remote_candidate: &RTCIceCandidateInit) -> Undefined {
+    pub fn add_remote_candidate_with_remote_candidate(
+        &self,
+        remote_candidate: &RTCIceCandidateInit,
+    ) -> Undefined {
         self.inner
             .call("addRemoteCandidate", &[remote_candidate.into()])
             .as_::<Undefined>()

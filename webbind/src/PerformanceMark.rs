@@ -73,16 +73,21 @@ impl PerformanceMark {
 
 impl PerformanceMark {
     /// The `new PerformanceMark(..)` constructor, creating a new PerformanceMark instance
-    pub fn new0(mark_name: &JsString) -> PerformanceMark {
+    pub fn new(mark_name: &JsString) -> PerformanceMark {
         Self {
             inner: Any::global("PerformanceMark")
                 .new(&[mark_name.into()])
                 .as_::<PerformanceEntry>(),
         }
     }
+}
 
+impl PerformanceMark {
     /// The `new PerformanceMark(..)` constructor, creating a new PerformanceMark instance
-    pub fn new1(mark_name: &JsString, mark_options: &PerformanceMarkOptions) -> PerformanceMark {
+    pub fn new_with_mark_options(
+        mark_name: &JsString,
+        mark_options: &PerformanceMarkOptions,
+    ) -> PerformanceMark {
         Self {
             inner: Any::global("PerformanceMark")
                 .new(&[mark_name.into(), mark_options.into()])

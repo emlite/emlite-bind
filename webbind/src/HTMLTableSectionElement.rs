@@ -133,17 +133,20 @@ impl HTMLTableSectionElement {
         }
     }
 }
+
 impl HTMLTableSectionElement {
     /// The insertRow method.
     /// [`HTMLTableSectionElement.insertRow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/insertRow)
-    pub fn insert_row0(&self) -> HTMLTableRowElement {
+    pub fn insert_row(&self) -> HTMLTableRowElement {
         self.inner
             .call("insertRow", &[])
             .as_::<HTMLTableRowElement>()
     }
+}
+impl HTMLTableSectionElement {
     /// The insertRow method.
     /// [`HTMLTableSectionElement.insertRow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/insertRow)
-    pub fn insert_row1(&self, index: i32) -> HTMLTableRowElement {
+    pub fn insert_row_with_index(&self, index: i32) -> HTMLTableRowElement {
         self.inner
             .call("insertRow", &[index.into()])
             .as_::<HTMLTableRowElement>()

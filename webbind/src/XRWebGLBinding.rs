@@ -88,17 +88,23 @@ impl XRWebGLBinding {
         }
     }
 }
+
 impl XRWebGLBinding {
     /// The createProjectionLayer method.
     /// [`XRWebGLBinding.createProjectionLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createProjectionLayer)
-    pub fn create_projection_layer0(&self) -> XRProjectionLayer {
+    pub fn create_projection_layer(&self) -> XRProjectionLayer {
         self.inner
             .call("createProjectionLayer", &[])
             .as_::<XRProjectionLayer>()
     }
+}
+impl XRWebGLBinding {
     /// The createProjectionLayer method.
     /// [`XRWebGLBinding.createProjectionLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createProjectionLayer)
-    pub fn create_projection_layer1(&self, init: &XRProjectionLayerInit) -> XRProjectionLayer {
+    pub fn create_projection_layer_with_init(
+        &self,
+        init: &XRProjectionLayerInit,
+    ) -> XRProjectionLayer {
         self.inner
             .call("createProjectionLayer", &[init.into()])
             .as_::<XRProjectionLayer>()
@@ -107,12 +113,14 @@ impl XRWebGLBinding {
 impl XRWebGLBinding {
     /// The createQuadLayer method.
     /// [`XRWebGLBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createQuadLayer)
-    pub fn create_quad_layer0(&self) -> XRQuadLayer {
+    pub fn create_quad_layer(&self) -> XRQuadLayer {
         self.inner.call("createQuadLayer", &[]).as_::<XRQuadLayer>()
     }
+}
+impl XRWebGLBinding {
     /// The createQuadLayer method.
     /// [`XRWebGLBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createQuadLayer)
-    pub fn create_quad_layer1(&self, init: &XRQuadLayerInit) -> XRQuadLayer {
+    pub fn create_quad_layer_with_init(&self, init: &XRQuadLayerInit) -> XRQuadLayer {
         self.inner
             .call("createQuadLayer", &[init.into()])
             .as_::<XRQuadLayer>()
@@ -121,14 +129,16 @@ impl XRWebGLBinding {
 impl XRWebGLBinding {
     /// The createCylinderLayer method.
     /// [`XRWebGLBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCylinderLayer)
-    pub fn create_cylinder_layer0(&self) -> XRCylinderLayer {
+    pub fn create_cylinder_layer(&self) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[])
             .as_::<XRCylinderLayer>()
     }
+}
+impl XRWebGLBinding {
     /// The createCylinderLayer method.
     /// [`XRWebGLBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCylinderLayer)
-    pub fn create_cylinder_layer1(&self, init: &XRCylinderLayerInit) -> XRCylinderLayer {
+    pub fn create_cylinder_layer_with_init(&self, init: &XRCylinderLayerInit) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[init.into()])
             .as_::<XRCylinderLayer>()
@@ -137,14 +147,16 @@ impl XRWebGLBinding {
 impl XRWebGLBinding {
     /// The createEquirectLayer method.
     /// [`XRWebGLBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createEquirectLayer)
-    pub fn create_equirect_layer0(&self) -> XREquirectLayer {
+    pub fn create_equirect_layer(&self) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[])
             .as_::<XREquirectLayer>()
     }
+}
+impl XRWebGLBinding {
     /// The createEquirectLayer method.
     /// [`XRWebGLBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createEquirectLayer)
-    pub fn create_equirect_layer1(&self, init: &XREquirectLayerInit) -> XREquirectLayer {
+    pub fn create_equirect_layer_with_init(&self, init: &XREquirectLayerInit) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[init.into()])
             .as_::<XREquirectLayer>()
@@ -153,12 +165,14 @@ impl XRWebGLBinding {
 impl XRWebGLBinding {
     /// The createCubeLayer method.
     /// [`XRWebGLBinding.createCubeLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCubeLayer)
-    pub fn create_cube_layer0(&self) -> XRCubeLayer {
+    pub fn create_cube_layer(&self) -> XRCubeLayer {
         self.inner.call("createCubeLayer", &[]).as_::<XRCubeLayer>()
     }
+}
+impl XRWebGLBinding {
     /// The createCubeLayer method.
     /// [`XRWebGLBinding.createCubeLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCubeLayer)
-    pub fn create_cube_layer1(&self, init: &XRCubeLayerInit) -> XRCubeLayer {
+    pub fn create_cube_layer_with_init(&self, init: &XRCubeLayerInit) -> XRCubeLayer {
         self.inner
             .call("createCubeLayer", &[init.into()])
             .as_::<XRCubeLayer>()
@@ -167,14 +181,16 @@ impl XRWebGLBinding {
 impl XRWebGLBinding {
     /// The getSubImage method.
     /// [`XRWebGLBinding.getSubImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getSubImage)
-    pub fn get_sub_image0(&self, layer: &XRCompositionLayer, frame: &XRFrame) -> XRWebGLSubImage {
+    pub fn get_sub_image(&self, layer: &XRCompositionLayer, frame: &XRFrame) -> XRWebGLSubImage {
         self.inner
             .call("getSubImage", &[layer.into(), frame.into()])
             .as_::<XRWebGLSubImage>()
     }
+}
+impl XRWebGLBinding {
     /// The getSubImage method.
     /// [`XRWebGLBinding.getSubImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getSubImage)
-    pub fn get_sub_image1(
+    pub fn get_sub_image_with_eye(
         &self,
         layer: &XRCompositionLayer,
         frame: &XRFrame,

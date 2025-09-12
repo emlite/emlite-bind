@@ -710,27 +710,32 @@ impl HTMLInputElement {
         }
     }
 }
+
 impl HTMLInputElement {
     /// The stepUp method.
     /// [`HTMLInputElement.stepUp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepUp)
-    pub fn step_up0(&self) -> Undefined {
+    pub fn step_up(&self) -> Undefined {
         self.inner.call("stepUp", &[]).as_::<Undefined>()
     }
+}
+impl HTMLInputElement {
     /// The stepUp method.
     /// [`HTMLInputElement.stepUp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepUp)
-    pub fn step_up1(&self, n: i32) -> Undefined {
+    pub fn step_up_with_n(&self, n: i32) -> Undefined {
         self.inner.call("stepUp", &[n.into()]).as_::<Undefined>()
     }
 }
 impl HTMLInputElement {
     /// The stepDown method.
     /// [`HTMLInputElement.stepDown`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepDown)
-    pub fn step_down0(&self) -> Undefined {
+    pub fn step_down(&self) -> Undefined {
         self.inner.call("stepDown", &[]).as_::<Undefined>()
     }
+}
+impl HTMLInputElement {
     /// The stepDown method.
     /// [`HTMLInputElement.stepDown`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepDown)
-    pub fn step_down1(&self, n: i32) -> Undefined {
+    pub fn step_down_with_n(&self, n: i32) -> Undefined {
         self.inner.call("stepDown", &[n.into()]).as_::<Undefined>()
     }
 }
@@ -776,7 +781,12 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// The setRangeText method.
     /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
-    pub fn set_range_text1(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
+    pub fn set_range_text_with_replacement_and_start_and_end(
+        &self,
+        replacement: &JsString,
+        start: u32,
+        end: u32,
+    ) -> Undefined {
         self.inner
             .call(
                 "setRangeText",
@@ -784,9 +794,11 @@ impl HTMLInputElement {
             )
             .as_::<Undefined>()
     }
+}
+impl HTMLInputElement {
     /// The setRangeText method.
     /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
-    pub fn set_range_text2(
+    pub fn set_range_text_with_selection_mode(
         &self,
         replacement: &JsString,
         start: u32,
@@ -809,14 +821,21 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// The setSelectionRange method.
     /// [`HTMLInputElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange)
-    pub fn set_selection_range0(&self, start: u32, end: u32) -> Undefined {
+    pub fn set_selection_range(&self, start: u32, end: u32) -> Undefined {
         self.inner
             .call("setSelectionRange", &[start.into(), end.into()])
             .as_::<Undefined>()
     }
+}
+impl HTMLInputElement {
     /// The setSelectionRange method.
     /// [`HTMLInputElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange)
-    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &JsString) -> Undefined {
+    pub fn set_selection_range_with_direction(
+        &self,
+        start: u32,
+        end: u32,
+        direction: &JsString,
+    ) -> Undefined {
         self.inner
             .call(
                 "setSelectionRange",

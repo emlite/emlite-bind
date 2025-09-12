@@ -169,14 +169,16 @@ impl Event {
 
 impl Event {
     /// The `new Event(..)` constructor, creating a new Event instance
-    pub fn new0(type_: &JsString) -> Event {
+    pub fn new(type_: &JsString) -> Event {
         Self {
             inner: Any::global("Event").new(&[type_.into()]).as_::<Any>(),
         }
     }
+}
 
+impl Event {
     /// The `new Event(..)` constructor, creating a new Event instance
-    pub fn new1(type_: &JsString, event_init_dict: &EventInit) -> Event {
+    pub fn new_with_event_init_dict(type_: &JsString, event_init_dict: &EventInit) -> Event {
         Self {
             inner: Any::global("Event")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -184,6 +186,7 @@ impl Event {
         }
     }
 }
+
 impl Event {
     /// The composedPath method.
     /// [`Event.composedPath`](https://developer.mozilla.org/en-US/docs/Web/API/Event/composedPath)
@@ -219,21 +222,30 @@ impl Event {
 impl Event {
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
-    pub fn init_event0(&self, type_: &JsString) -> Undefined {
+    pub fn init_event(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initEvent", &[type_.into()])
             .as_::<Undefined>()
     }
+}
+impl Event {
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
-    pub fn init_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
+    pub fn init_event_with_bubbles(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
+}
+impl Event {
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
-    pub fn init_event2(&self, type_: &JsString, bubbles: bool, cancelable: bool) -> Undefined {
+    pub fn init_event_with_bubbles_and_cancelable(
+        &self,
+        type_: &JsString,
+        bubbles: bool,
+        cancelable: bool,
+    ) -> Undefined {
         self.inner
             .call(
                 "initEvent",

@@ -2,7 +2,7 @@ use jsbind::prelude::*;
 use webbind::*;
 
 fn main() {
-    let context = AudioContext::new0();
+    let context = AudioContext::new();
     println!("Got an AudioContext");
 
     // Create oscillator
@@ -14,17 +14,17 @@ fn main() {
     let document = window().document();
     let body = document.get_elements_by_tag_name(&"body".into()).item(0);
     let mut button = document
-        .create_element0(&"BUTTON".into())
+        .create_element(&"BUTTON".into())
         .dyn_into::<HTMLButtonElement>()
         .unwrap();
 
     button.set_text_content(&"Click me".into());
-    button.add_event_listener0(
+    button.add_event_listener(
         &JsString::from("click"),
         &Closure::bind1(move |_p: PointerEvent| {
             println!("Playing");
-            oscillator.connect3(context.destination().unchecked_ref::<AudioParam>());
-            oscillator.start1(0.0);
+            oscillator.connect_with_destination_param(context.destination().unchecked_ref::<AudioParam>());
+            oscillator.start_with_when(0.0);
             println!("All done!");
         })
         .into(),

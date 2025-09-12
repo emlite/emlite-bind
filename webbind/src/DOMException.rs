@@ -87,23 +87,27 @@ impl DOMException {
 
 impl DOMException {
     /// The `new DOMException(..)` constructor, creating a new DOMException instance
-    pub fn new0() -> DOMException {
+    pub fn new() -> DOMException {
         Self {
             inner: Any::global("DOMException").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl DOMException {
     /// The `new DOMException(..)` constructor, creating a new DOMException instance
-    pub fn new1(message: &JsString) -> DOMException {
+    pub fn new_with_message(message: &JsString) -> DOMException {
         Self {
             inner: Any::global("DOMException")
                 .new(&[message.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMException {
     /// The `new DOMException(..)` constructor, creating a new DOMException instance
-    pub fn new2(message: &JsString, name: &JsString) -> DOMException {
+    pub fn new_with_message_and_name(message: &JsString, name: &JsString) -> DOMException {
         Self {
             inner: Any::global("DOMException")
                 .new(&[message.into(), name.into()])

@@ -87,14 +87,16 @@ impl Magnetometer {
 
 impl Magnetometer {
     /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
-    pub fn new0() -> Magnetometer {
+    pub fn new() -> Magnetometer {
         Self {
             inner: Any::global("Magnetometer").new(&[]).as_::<Sensor>(),
         }
     }
+}
 
+impl Magnetometer {
     /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
-    pub fn new1(sensor_options: &MagnetometerSensorOptions) -> Magnetometer {
+    pub fn new_with_sensor_options(sensor_options: &MagnetometerSensorOptions) -> Magnetometer {
         Self {
             inner: Any::global("Magnetometer")
                 .new(&[sensor_options.into()])

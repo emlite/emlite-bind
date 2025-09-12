@@ -170,14 +170,19 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The createChannelMerger method.
     /// [`BaseAudioContext.createChannelMerger`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelMerger)
-    pub fn create_channel_merger0(&self) -> ChannelMergerNode {
+    pub fn create_channel_merger(&self) -> ChannelMergerNode {
         self.inner
             .call("createChannelMerger", &[])
             .as_::<ChannelMergerNode>()
     }
+}
+impl BaseAudioContext {
     /// The createChannelMerger method.
     /// [`BaseAudioContext.createChannelMerger`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelMerger)
-    pub fn create_channel_merger1(&self, number_of_inputs: u32) -> ChannelMergerNode {
+    pub fn create_channel_merger_with_number_of_inputs(
+        &self,
+        number_of_inputs: u32,
+    ) -> ChannelMergerNode {
         self.inner
             .call("createChannelMerger", &[number_of_inputs.into()])
             .as_::<ChannelMergerNode>()
@@ -186,14 +191,19 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The createChannelSplitter method.
     /// [`BaseAudioContext.createChannelSplitter`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelSplitter)
-    pub fn create_channel_splitter0(&self) -> ChannelSplitterNode {
+    pub fn create_channel_splitter(&self) -> ChannelSplitterNode {
         self.inner
             .call("createChannelSplitter", &[])
             .as_::<ChannelSplitterNode>()
     }
+}
+impl BaseAudioContext {
     /// The createChannelSplitter method.
     /// [`BaseAudioContext.createChannelSplitter`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelSplitter)
-    pub fn create_channel_splitter1(&self, number_of_outputs: u32) -> ChannelSplitterNode {
+    pub fn create_channel_splitter_with_number_of_outputs(
+        &self,
+        number_of_outputs: u32,
+    ) -> ChannelSplitterNode {
         self.inner
             .call("createChannelSplitter", &[number_of_outputs.into()])
             .as_::<ChannelSplitterNode>()
@@ -220,12 +230,14 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The createDelay method.
     /// [`BaseAudioContext.createDelay`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createDelay)
-    pub fn create_delay0(&self) -> DelayNode {
+    pub fn create_delay(&self) -> DelayNode {
         self.inner.call("createDelay", &[]).as_::<DelayNode>()
     }
+}
+impl BaseAudioContext {
     /// The createDelay method.
     /// [`BaseAudioContext.createDelay`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createDelay)
-    pub fn create_delay1(&self, max_delay_time: f64) -> DelayNode {
+    pub fn create_delay_with_max_delay_time(&self, max_delay_time: f64) -> DelayNode {
         self.inner
             .call("createDelay", &[max_delay_time.into()])
             .as_::<DelayNode>()
@@ -279,7 +291,7 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The createPeriodicWave method.
     /// [`BaseAudioContext.createPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPeriodicWave)
-    pub fn create_periodic_wave0(
+    pub fn create_periodic_wave(
         &self,
         real: TypedArray<f32>,
         imag: TypedArray<f32>,
@@ -288,9 +300,11 @@ impl BaseAudioContext {
             .call("createPeriodicWave", &[real.into(), imag.into()])
             .as_::<PeriodicWave>()
     }
+}
+impl BaseAudioContext {
     /// The createPeriodicWave method.
     /// [`BaseAudioContext.createPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPeriodicWave)
-    pub fn create_periodic_wave1(
+    pub fn create_periodic_wave_with_constraints(
         &self,
         real: TypedArray<f32>,
         imag: TypedArray<f32>,
@@ -307,21 +321,28 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The createScriptProcessor method.
     /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
-    pub fn create_script_processor0(&self) -> ScriptProcessorNode {
+    pub fn create_script_processor(&self) -> ScriptProcessorNode {
         self.inner
             .call("createScriptProcessor", &[])
             .as_::<ScriptProcessorNode>()
     }
+}
+impl BaseAudioContext {
     /// The createScriptProcessor method.
     /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
-    pub fn create_script_processor1(&self, buffer_size: u32) -> ScriptProcessorNode {
+    pub fn create_script_processor_with_buffer_size(
+        &self,
+        buffer_size: u32,
+    ) -> ScriptProcessorNode {
         self.inner
             .call("createScriptProcessor", &[buffer_size.into()])
             .as_::<ScriptProcessorNode>()
     }
+}
+impl BaseAudioContext {
     /// The createScriptProcessor method.
     /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
-    pub fn create_script_processor2(
+    pub fn create_script_processor_with_buffer_size_and_number_of_input_channels(
         &self,
         buffer_size: u32,
         number_of_input_channels: u32,
@@ -333,9 +354,11 @@ impl BaseAudioContext {
             )
             .as_::<ScriptProcessorNode>()
     }
+}
+impl BaseAudioContext {
     /// The createScriptProcessor method.
     /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
-    pub fn create_script_processor3(
+    pub fn create_script_processor_with_buffer_size_and_number_of_input_channels_and_number_of_output_channels(
         &self,
         buffer_size: u32,
         number_of_input_channels: u32,
@@ -374,14 +397,16 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The decodeAudioData method.
     /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
-    pub fn decode_audio_data0(&self, audio_data: &ArrayBuffer) -> Promise<AudioBuffer> {
+    pub fn decode_audio_data(&self, audio_data: &ArrayBuffer) -> Promise<AudioBuffer> {
         self.inner
             .call("decodeAudioData", &[audio_data.into()])
             .as_::<Promise<AudioBuffer>>()
     }
+}
+impl BaseAudioContext {
     /// The decodeAudioData method.
     /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
-    pub fn decode_audio_data1(
+    pub fn decode_audio_data_with_success_callback(
         &self,
         audio_data: &ArrayBuffer,
         success_callback: &Function,
@@ -393,9 +418,11 @@ impl BaseAudioContext {
             )
             .as_::<Promise<AudioBuffer>>()
     }
+}
+impl BaseAudioContext {
     /// The decodeAudioData method.
     /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
-    pub fn decode_audio_data2(
+    pub fn decode_audio_data_with_success_callback_and_error_callback(
         &self,
         audio_data: &ArrayBuffer,
         success_callback: &Function,

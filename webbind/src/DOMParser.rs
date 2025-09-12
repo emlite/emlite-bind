@@ -71,6 +71,7 @@ impl DOMParser {
         }
     }
 }
+
 impl DOMParser {
     /// The parseFromString method.
     /// [`DOMParser.parseFromString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString)

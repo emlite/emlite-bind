@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchManager);
 impl BackgroundFetchManager {
     /// The fetch method.
     /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
-    pub fn fetch0(&self, id: &JsString, requests: &Any) -> Promise<BackgroundFetchRegistration> {
+    pub fn fetch(&self, id: &JsString, requests: &Any) -> Promise<BackgroundFetchRegistration> {
         self.inner
             .call("fetch", &[id.into(), requests.into()])
             .as_::<Promise<BackgroundFetchRegistration>>()
     }
+}
+impl BackgroundFetchManager {
     /// The fetch method.
     /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
-    pub fn fetch1(
+    pub fn fetch_with_options(
         &self,
         id: &JsString,
         requests: &Any,

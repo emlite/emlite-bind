@@ -437,7 +437,7 @@ impl Navigator {
 impl Navigator {
     /// The getAutoplayPolicy method.
     /// [`Navigator.getAutoplayPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getAutoplayPolicy)
-    pub fn get_autoplay_policy1(&self, element: &HTMLMediaElement) -> AutoplayPolicy {
+    pub fn get_autoplay_policy_with_element(&self, element: &HTMLMediaElement) -> AutoplayPolicy {
         self.inner
             .call("getAutoplayPolicy", &[element.into()])
             .as_::<AutoplayPolicy>()
@@ -446,7 +446,7 @@ impl Navigator {
 impl Navigator {
     /// The getAutoplayPolicy method.
     /// [`Navigator.getAutoplayPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getAutoplayPolicy)
-    pub fn get_autoplay_policy2(&self, context: &AudioContext) -> AutoplayPolicy {
+    pub fn get_autoplay_policy_with_context(&self, context: &AudioContext) -> AutoplayPolicy {
         self.inner
             .call("getAutoplayPolicy", &[context.into()])
             .as_::<AutoplayPolicy>()
@@ -464,12 +464,14 @@ impl Navigator {
 impl Navigator {
     /// The sendBeacon method.
     /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
-    pub fn send_beacon0(&self, url: &JsString) -> bool {
+    pub fn send_beacon(&self, url: &JsString) -> bool {
         self.inner.call("sendBeacon", &[url.into()]).as_::<bool>()
     }
+}
+impl Navigator {
     /// The sendBeacon method.
     /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
-    pub fn send_beacon1(&self, url: &JsString, data: &Any) -> bool {
+    pub fn send_beacon_with_data(&self, url: &JsString, data: &Any) -> bool {
         self.inner
             .call("sendBeacon", &[url.into(), data.into()])
             .as_::<bool>()
@@ -510,14 +512,16 @@ impl Navigator {
 impl Navigator {
     /// The deprecatedURNtoURL method.
     /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
-    pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise<JsString> {
+    pub fn deprecated_ur_nto_url(&self, urn_or_config: &Any) -> Promise<JsString> {
         self.inner
             .call("deprecatedURNtoURL", &[urn_or_config.into()])
             .as_::<Promise<JsString>>()
     }
+}
+impl Navigator {
     /// The deprecatedURNtoURL method.
     /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
-    pub fn deprecated_ur_nto_url1(
+    pub fn deprecated_ur_nto_url_with_send_reports(
         &self,
         urn_or_config: &Any,
         send_reports: bool,
@@ -593,14 +597,16 @@ impl Navigator {
 impl Navigator {
     /// The leaveAdInterestGroup method.
     /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
-    pub fn leave_ad_interest_group0(&self) -> Promise<Undefined> {
+    pub fn leave_ad_interest_group(&self) -> Promise<Undefined> {
         self.inner
             .call("leaveAdInterestGroup", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl Navigator {
     /// The leaveAdInterestGroup method.
     /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
-    pub fn leave_ad_interest_group1(
+    pub fn leave_ad_interest_group_with_group(
         &self,
         group: &AuctionAdInterestGroupKey,
     ) -> Promise<Undefined> {
@@ -612,14 +618,16 @@ impl Navigator {
 impl Navigator {
     /// The clearOriginJoinedAdInterestGroups method.
     /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
-    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &JsString) -> Promise<Undefined> {
+    pub fn clear_origin_joined_ad_interest_groups(&self, owner: &JsString) -> Promise<Undefined> {
         self.inner
             .call("clearOriginJoinedAdInterestGroups", &[owner.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl Navigator {
     /// The clearOriginJoinedAdInterestGroups method.
     /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
-    pub fn clear_origin_joined_ad_interest_groups1(
+    pub fn clear_origin_joined_ad_interest_groups_with_interest_groups_to_keep(
         &self,
         owner: &JsString,
         interest_groups_to_keep: &TypedArray<JsString>,
@@ -653,14 +661,16 @@ impl Navigator {
 impl Navigator {
     /// The getInterestGroupAdAuctionData method.
     /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
-    pub fn get_interest_group_ad_auction_data0(&self) -> Promise<AdAuctionData> {
+    pub fn get_interest_group_ad_auction_data(&self) -> Promise<AdAuctionData> {
         self.inner
             .call("getInterestGroupAdAuctionData", &[])
             .as_::<Promise<AdAuctionData>>()
     }
+}
+impl Navigator {
     /// The getInterestGroupAdAuctionData method.
     /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
-    pub fn get_interest_group_ad_auction_data1(
+    pub fn get_interest_group_ad_auction_data_with_config(
         &self,
         config: &AdAuctionDataConfig,
     ) -> Promise<AdAuctionData> {
@@ -697,12 +707,14 @@ impl Navigator {
 impl Navigator {
     /// The share method.
     /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-    pub fn share0(&self) -> Promise<Undefined> {
+    pub fn share(&self) -> Promise<Undefined> {
         self.inner.call("share", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl Navigator {
     /// The share method.
     /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-    pub fn share1(&self, data: &ShareData) -> Promise<Undefined> {
+    pub fn share_with_data(&self, data: &ShareData) -> Promise<Undefined> {
         self.inner
             .call("share", &[data.into()])
             .as_::<Promise<Undefined>>()
@@ -711,26 +723,30 @@ impl Navigator {
 impl Navigator {
     /// The canShare method.
     /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
-    pub fn can_share0(&self) -> bool {
+    pub fn can_share(&self) -> bool {
         self.inner.call("canShare", &[]).as_::<bool>()
     }
+}
+impl Navigator {
     /// The canShare method.
     /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
-    pub fn can_share1(&self, data: &ShareData) -> bool {
+    pub fn can_share_with_data(&self, data: &ShareData) -> bool {
         self.inner.call("canShare", &[data.into()]).as_::<bool>()
     }
 }
 impl Navigator {
     /// The requestMIDIAccess method.
     /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
-    pub fn request_midi_access0(&self) -> Promise<MIDIAccess> {
+    pub fn request_midi_access(&self) -> Promise<MIDIAccess> {
         self.inner
             .call("requestMIDIAccess", &[])
             .as_::<Promise<MIDIAccess>>()
     }
+}
+impl Navigator {
     /// The requestMIDIAccess method.
     /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
-    pub fn request_midi_access1(&self, options: &MIDIOptions) -> Promise<MIDIAccess> {
+    pub fn request_midi_access_with_options(&self, options: &MIDIOptions) -> Promise<MIDIAccess> {
         self.inner
             .call("requestMIDIAccess", &[options.into()])
             .as_::<Promise<MIDIAccess>>()
@@ -739,14 +755,16 @@ impl Navigator {
 impl Navigator {
     /// The setAppBadge method.
     /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
-    pub fn set_app_badge0(&self) -> Promise<Undefined> {
+    pub fn set_app_badge(&self) -> Promise<Undefined> {
         self.inner
             .call("setAppBadge", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl Navigator {
     /// The setAppBadge method.
     /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
-    pub fn set_app_badge1(&self, contents: u64) -> Promise<Undefined> {
+    pub fn set_app_badge_with_contents(&self, contents: u64) -> Promise<Undefined> {
         self.inner
             .call("setAppBadge", &[contents.into()])
             .as_::<Promise<Undefined>>()

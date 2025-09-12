@@ -109,14 +109,16 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The setParameters method.
     /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
-    pub fn set_parameters0(&self, parameters: &RTCRtpSendParameters) -> Promise<Undefined> {
+    pub fn set_parameters(&self, parameters: &RTCRtpSendParameters) -> Promise<Undefined> {
         self.inner
             .call("setParameters", &[parameters.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl RTCRtpSender {
     /// The setParameters method.
     /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
-    pub fn set_parameters1(
+    pub fn set_parameters_with_set_parameter_options(
         &self,
         parameters: &RTCRtpSendParameters,
         set_parameter_options: &RTCSetParameterOptions,
@@ -168,14 +170,16 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
-    pub fn generate_key_frame0(&self) -> Promise<Undefined> {
+    pub fn generate_key_frame(&self) -> Promise<Undefined> {
         self.inner
             .call("generateKeyFrame", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl RTCRtpSender {
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
-    pub fn generate_key_frame1(&self, rids: &TypedArray<JsString>) -> Promise<Undefined> {
+    pub fn generate_key_frame_with_rids(&self, rids: &TypedArray<JsString>) -> Promise<Undefined> {
         self.inner
             .call("generateKeyFrame", &[rids.into()])
             .as_::<Promise<Undefined>>()

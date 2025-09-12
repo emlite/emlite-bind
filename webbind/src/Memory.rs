@@ -79,6 +79,7 @@ impl Memory {
         }
     }
 }
+
 impl Memory {
     /// The grow method.
     /// [`Memory.grow`](https://developer.mozilla.org/en-US/docs/Web/API/Memory/grow)

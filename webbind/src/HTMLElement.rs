@@ -408,6 +408,7 @@ impl HTMLElement {
         }
     }
 }
+
 impl HTMLElement {
     /// The click method.
     /// [`HTMLElement.click`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click)
@@ -427,12 +428,14 @@ impl HTMLElement {
 impl HTMLElement {
     /// The showPopover method.
     /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
-    pub fn show_popover0(&self) -> Undefined {
+    pub fn show_popover(&self) -> Undefined {
         self.inner.call("showPopover", &[]).as_::<Undefined>()
     }
+}
+impl HTMLElement {
     /// The showPopover method.
     /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
-    pub fn show_popover1(&self, options: &ShowPopoverOptions) -> Undefined {
+    pub fn show_popover_with_options(&self, options: &ShowPopoverOptions) -> Undefined {
         self.inner
             .call("showPopover", &[options.into()])
             .as_::<Undefined>()
@@ -448,12 +451,14 @@ impl HTMLElement {
 impl HTMLElement {
     /// The togglePopover method.
     /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
-    pub fn toggle_popover0(&self) -> bool {
+    pub fn toggle_popover(&self) -> bool {
         self.inner.call("togglePopover", &[]).as_::<bool>()
     }
+}
+impl HTMLElement {
     /// The togglePopover method.
     /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
-    pub fn toggle_popover1(&self, options: &Any) -> bool {
+    pub fn toggle_popover_with_options(&self, options: &Any) -> bool {
         self.inner
             .call("togglePopover", &[options.into()])
             .as_::<bool>()
@@ -462,12 +467,14 @@ impl HTMLElement {
 impl HTMLElement {
     /// The focus method.
     /// [`HTMLElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)
-    pub fn focus0(&self) -> Undefined {
+    pub fn focus(&self) -> Undefined {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
+}
+impl HTMLElement {
     /// The focus method.
     /// [`HTMLElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)
-    pub fn focus1(&self, options: &FocusOptions) -> Undefined {
+    pub fn focus_with_options(&self, options: &FocusOptions) -> Undefined {
         self.inner
             .call("focus", &[options.into()])
             .as_::<Undefined>()

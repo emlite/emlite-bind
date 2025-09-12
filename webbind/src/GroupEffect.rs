@@ -87,16 +87,18 @@ impl GroupEffect {
 
 impl GroupEffect {
     /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
-    pub fn new0(children: &TypedArray<AnimationEffect>) -> GroupEffect {
+    pub fn new(children: &TypedArray<AnimationEffect>) -> GroupEffect {
         Self {
             inner: Any::global("GroupEffect")
                 .new(&[children.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl GroupEffect {
     /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
-    pub fn new1(children: &TypedArray<AnimationEffect>, timing: &Any) -> GroupEffect {
+    pub fn new_with_timing(children: &TypedArray<AnimationEffect>, timing: &Any) -> GroupEffect {
         Self {
             inner: Any::global("GroupEffect")
                 .new(&[children.into(), timing.into()])
@@ -104,6 +106,7 @@ impl GroupEffect {
         }
     }
 }
+
 impl GroupEffect {
     /// The clone method.
     /// [`GroupEffect.clone`](https://developer.mozilla.org/en-US/docs/Web/API/GroupEffect/clone)

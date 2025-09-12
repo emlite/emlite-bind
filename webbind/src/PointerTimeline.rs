@@ -80,16 +80,18 @@ impl PointerTimeline {
 
 impl PointerTimeline {
     /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
-    pub fn new0() -> PointerTimeline {
+    pub fn new() -> PointerTimeline {
         Self {
             inner: Any::global("PointerTimeline")
                 .new(&[])
                 .as_::<AnimationTimeline>(),
         }
     }
+}
 
+impl PointerTimeline {
     /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
-    pub fn new1(options: &PointerTimelineOptions) -> PointerTimeline {
+    pub fn new_with_options(options: &PointerTimelineOptions) -> PointerTimeline {
         Self {
             inner: Any::global("PointerTimeline")
                 .new(&[options.into()])

@@ -73,12 +73,14 @@ impl WritableStreamDefaultController {
 impl WritableStreamDefaultController {
     /// The error method.
     /// [`WritableStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/error)
-    pub fn error0(&self) -> Undefined {
+    pub fn error(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
+}
+impl WritableStreamDefaultController {
     /// The error method.
     /// [`WritableStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/error)
-    pub fn error1(&self, e: &Any) -> Undefined {
+    pub fn error_with_e(&self, e: &Any) -> Undefined {
         self.inner.call("error", &[e.into()]).as_::<Undefined>()
     }
 }

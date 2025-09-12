@@ -71,17 +71,20 @@ impl CustomElementRegistry {
         }
     }
 }
+
 impl CustomElementRegistry {
     /// The define method.
     /// [`CustomElementRegistry.define`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define)
-    pub fn define0(&self, name: &JsString, constructor: &Function) -> Undefined {
+    pub fn define(&self, name: &JsString, constructor: &Function) -> Undefined {
         self.inner
             .call("define", &[name.into(), constructor.into()])
             .as_::<Undefined>()
     }
+}
+impl CustomElementRegistry {
     /// The define method.
     /// [`CustomElementRegistry.define`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define)
-    pub fn define1(
+    pub fn define_with_options(
         &self,
         name: &JsString,
         constructor: &Function,

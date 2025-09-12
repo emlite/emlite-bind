@@ -166,16 +166,18 @@ impl WebSocket {
 
 impl WebSocket {
     /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
-    pub fn new0(url: &JsString) -> WebSocket {
+    pub fn new(url: &JsString) -> WebSocket {
         Self {
             inner: Any::global("WebSocket")
                 .new(&[url.into()])
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl WebSocket {
     /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
-    pub fn new1(url: &JsString, protocols: &Any) -> WebSocket {
+    pub fn new_with_protocols(url: &JsString, protocols: &Any) -> WebSocket {
         Self {
             inner: Any::global("WebSocket")
                 .new(&[url.into(), protocols.into()])
@@ -183,20 +185,25 @@ impl WebSocket {
         }
     }
 }
+
 impl WebSocket {
     /// The close method.
     /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
-    pub fn close0(&self) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
+}
+impl WebSocket {
     /// The close method.
     /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
-    pub fn close1(&self, code: u16) -> Undefined {
+    pub fn close_with_code(&self, code: u16) -> Undefined {
         self.inner.call("close", &[code.into()]).as_::<Undefined>()
     }
+}
+impl WebSocket {
     /// The close method.
     /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
-    pub fn close2(&self, code: u16, reason: &JsString) -> Undefined {
+    pub fn close_with_code_and_reason(&self, code: u16, reason: &JsString) -> Undefined {
         self.inner
             .call("close", &[code.into(), reason.into()])
             .as_::<Undefined>()

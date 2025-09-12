@@ -84,7 +84,12 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     /// The bufferData method.
     /// [`WebGLRenderingContext.bufferData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bufferData)
-    pub fn buffer_data1(&self, target: &Any, data: &Any, usage: &Any) -> Undefined {
+    pub fn buffer_data_with_target_and_data_and_usage(
+        &self,
+        target: &Any,
+        data: &Any,
+        usage: &Any,
+    ) -> Undefined {
         self.inner
             .call("bufferData", &[target.into(), data.into(), usage.into()])
             .as_::<Undefined>()
@@ -227,7 +232,7 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     /// The texImage2D method.
     /// [`WebGLRenderingContext.texImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texImage2D)
-    pub fn tex_image2_d1(
+    pub fn tex_image2_d_with_target_and_level_and_internalformat_and_format_and_type_and_source(
         &self,
         target: &Any,
         level: &Any,
@@ -287,7 +292,7 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     /// The texSubImage2D method.
     /// [`WebGLRenderingContext.texSubImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texSubImage2D)
-    pub fn tex_sub_image2_d1(
+    pub fn tex_sub_image2_d_with_target_and_level_and_xoffset_and_yoffset_and_format_and_type_and_source(
         &self,
         target: &Any,
         level: &Any,

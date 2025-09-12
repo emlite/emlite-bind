@@ -71,6 +71,7 @@ impl TextDetector {
         }
     }
 }
+
 impl TextDetector {
     /// The detect method.
     /// [`TextDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/TextDetector/detect)

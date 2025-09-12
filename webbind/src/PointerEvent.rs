@@ -157,16 +157,21 @@ impl PointerEvent {
 
 impl PointerEvent {
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new0(type_: &JsString) -> PointerEvent {
+    pub fn new(type_: &JsString) -> PointerEvent {
         Self {
             inner: Any::global("PointerEvent")
                 .new(&[type_.into()])
                 .as_::<MouseEvent>(),
         }
     }
+}
 
+impl PointerEvent {
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &PointerEventInit) -> PointerEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &PointerEventInit,
+    ) -> PointerEvent {
         Self {
             inner: Any::global("PointerEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -174,6 +179,7 @@ impl PointerEvent {
         }
     }
 }
+
 impl PointerEvent {
     /// The getCoalescedEvents method.
     /// [`PointerEvent.getCoalescedEvents`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/getCoalescedEvents)

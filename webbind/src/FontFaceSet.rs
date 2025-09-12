@@ -140,14 +140,20 @@ impl FontFaceSet {
 impl FontFaceSet {
     /// The load method.
     /// [`FontFaceSet.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load)
-    pub fn load0(&self, font: &JsString) -> Promise<TypedArray<FontFace>> {
+    pub fn load(&self, font: &JsString) -> Promise<TypedArray<FontFace>> {
         self.inner
             .call("load", &[font.into()])
             .as_::<Promise<TypedArray<FontFace>>>()
     }
+}
+impl FontFaceSet {
     /// The load method.
     /// [`FontFaceSet.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load)
-    pub fn load1(&self, font: &JsString, text: &JsString) -> Promise<TypedArray<FontFace>> {
+    pub fn load_with_text(
+        &self,
+        font: &JsString,
+        text: &JsString,
+    ) -> Promise<TypedArray<FontFace>> {
         self.inner
             .call("load", &[font.into(), text.into()])
             .as_::<Promise<TypedArray<FontFace>>>()
@@ -156,12 +162,14 @@ impl FontFaceSet {
 impl FontFaceSet {
     /// The check method.
     /// [`FontFaceSet.check`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/check)
-    pub fn check0(&self, font: &JsString) -> bool {
+    pub fn check(&self, font: &JsString) -> bool {
         self.inner.call("check", &[font.into()]).as_::<bool>()
     }
+}
+impl FontFaceSet {
     /// The check method.
     /// [`FontFaceSet.check`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/check)
-    pub fn check1(&self, font: &JsString, text: &JsString) -> bool {
+    pub fn check_with_text(&self, font: &JsString, text: &JsString) -> bool {
         self.inner
             .call("check", &[font.into(), text.into()])
             .as_::<bool>()

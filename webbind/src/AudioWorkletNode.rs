@@ -93,16 +93,18 @@ impl AudioWorkletNode {
 
 impl AudioWorkletNode {
     /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new0(context: &BaseAudioContext, name: &JsString) -> AudioWorkletNode {
+    pub fn new(context: &BaseAudioContext, name: &JsString) -> AudioWorkletNode {
         Self {
             inner: Any::global("AudioWorkletNode")
                 .new(&[context.into(), name.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl AudioWorkletNode {
     /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new1(
+    pub fn new_with_options(
         context: &BaseAudioContext,
         name: &JsString,
         options: &AudioWorkletNodeOptions,

@@ -152,6 +152,7 @@ impl HTMLEmbedElement {
         }
     }
 }
+
 impl HTMLEmbedElement {
     /// The getSVGDocument method.
     /// [`HTMLEmbedElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/getSVGDocument)

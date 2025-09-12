@@ -79,16 +79,18 @@ impl CSSMatrixComponent {
 
 impl CSSMatrixComponent {
     /// The `new CSSMatrixComponent(..)` constructor, creating a new CSSMatrixComponent instance
-    pub fn new0(matrix: &DOMMatrixReadOnly) -> CSSMatrixComponent {
+    pub fn new(matrix: &DOMMatrixReadOnly) -> CSSMatrixComponent {
         Self {
             inner: Any::global("CSSMatrixComponent")
                 .new(&[matrix.into()])
                 .as_::<CSSTransformComponent>(),
         }
     }
+}
 
+impl CSSMatrixComponent {
     /// The `new CSSMatrixComponent(..)` constructor, creating a new CSSMatrixComponent instance
-    pub fn new1(
+    pub fn new_with_options(
         matrix: &DOMMatrixReadOnly,
         options: &CSSMatrixComponentOptions,
     ) -> CSSMatrixComponent {

@@ -80,16 +80,21 @@ impl USBOutTransferResult {
 
 impl USBOutTransferResult {
     /// The `new USBOutTransferResult(..)` constructor, creating a new USBOutTransferResult instance
-    pub fn new0(status: &USBTransferStatus) -> USBOutTransferResult {
+    pub fn new(status: &USBTransferStatus) -> USBOutTransferResult {
         Self {
             inner: Any::global("USBOutTransferResult")
                 .new(&[status.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl USBOutTransferResult {
     /// The `new USBOutTransferResult(..)` constructor, creating a new USBOutTransferResult instance
-    pub fn new1(status: &USBTransferStatus, bytes_written: u32) -> USBOutTransferResult {
+    pub fn new_with_bytes_written(
+        status: &USBTransferStatus,
+        bytes_written: u32,
+    ) -> USBOutTransferResult {
         Self {
             inner: Any::global("USBOutTransferResult")
                 .new(&[status.into(), bytes_written.into()])

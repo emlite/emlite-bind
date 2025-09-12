@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(FileSystemDirectoryReader);
 impl FileSystemDirectoryReader {
     /// The readEntries method.
     /// [`FileSystemDirectoryReader.readEntries`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader/readEntries)
-    pub fn read_entries0(&self, success_callback: &Function) -> Undefined {
+    pub fn read_entries(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("readEntries", &[success_callback.into()])
             .as_::<Undefined>()
     }
+}
+impl FileSystemDirectoryReader {
     /// The readEntries method.
     /// [`FileSystemDirectoryReader.readEntries`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryReader/readEntries)
-    pub fn read_entries1(
+    pub fn read_entries_with_error_callback(
         &self,
         success_callback: &Function,
         error_callback: &Function,

@@ -65,14 +65,16 @@ jsbind::utils::impl_dyn_cast!(Sanitizer);
 
 impl Sanitizer {
     /// The `new Sanitizer(..)` constructor, creating a new Sanitizer instance
-    pub fn new0() -> Sanitizer {
+    pub fn new() -> Sanitizer {
         Self {
             inner: Any::global("Sanitizer").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl Sanitizer {
     /// The `new Sanitizer(..)` constructor, creating a new Sanitizer instance
-    pub fn new1(configuration: &Any) -> Sanitizer {
+    pub fn new_with_configuration(configuration: &Any) -> Sanitizer {
         Self {
             inner: Any::global("Sanitizer")
                 .new(&[configuration.into()])
@@ -80,6 +82,7 @@ impl Sanitizer {
         }
     }
 }
+
 impl Sanitizer {
     /// The get method.
     /// [`Sanitizer.get`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/get)

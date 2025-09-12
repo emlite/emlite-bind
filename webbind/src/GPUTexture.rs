@@ -135,12 +135,17 @@ impl GPUTexture {
 impl GPUTexture {
     /// The createView method.
     /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
-    pub fn create_view0(&self) -> GPUTextureView {
+    pub fn create_view(&self) -> GPUTextureView {
         self.inner.call("createView", &[]).as_::<GPUTextureView>()
     }
+}
+impl GPUTexture {
     /// The createView method.
     /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
-    pub fn create_view1(&self, descriptor: &GPUTextureViewDescriptor) -> GPUTextureView {
+    pub fn create_view_with_descriptor(
+        &self,
+        descriptor: &GPUTextureViewDescriptor,
+    ) -> GPUTextureView {
         self.inner
             .call("createView", &[descriptor.into()])
             .as_::<GPUTextureView>()

@@ -71,6 +71,7 @@ impl Module {
         }
     }
 }
+
 impl Module {
     /// The exports method.
     /// [`Module.exports`](https://developer.mozilla.org/en-US/docs/Web/API/Module/exports)

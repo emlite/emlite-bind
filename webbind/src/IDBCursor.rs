@@ -110,12 +110,14 @@ impl IDBCursor {
 impl IDBCursor {
     /// The continue method.
     /// [`IDBCursor.continue`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/continue)
-    pub fn continue_0(&self) -> Undefined {
+    pub fn continue_(&self) -> Undefined {
         self.inner.call("continue", &[]).as_::<Undefined>()
     }
+}
+impl IDBCursor {
     /// The continue method.
     /// [`IDBCursor.continue`](https://developer.mozilla.org/en-US/docs/Web/API/IDBCursor/continue)
-    pub fn continue_1(&self, key: &Any) -> Undefined {
+    pub fn continue_with_key(&self, key: &Any) -> Undefined {
         self.inner
             .call("continue", &[key.into()])
             .as_::<Undefined>()

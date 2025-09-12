@@ -101,16 +101,18 @@ impl ExtendableMessageEvent {
 
 impl ExtendableMessageEvent {
     /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new0(type_: &JsString) -> ExtendableMessageEvent {
+    pub fn new(type_: &JsString) -> ExtendableMessageEvent {
         Self {
             inner: Any::global("ExtendableMessageEvent")
                 .new(&[type_.into()])
                 .as_::<ExtendableEvent>(),
         }
     }
+}
 
+impl ExtendableMessageEvent {
     /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &ExtendableMessageEventInit,
     ) -> ExtendableMessageEvent {

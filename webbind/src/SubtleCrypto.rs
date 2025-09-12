@@ -162,14 +162,16 @@ impl SubtleCrypto {
 impl SubtleCrypto {
     /// The deriveBits method.
     /// [`SubtleCrypto.deriveBits`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveBits)
-    pub fn derive_bits0(&self, algorithm: &Any, base_key: &CryptoKey) -> Promise<ArrayBuffer> {
+    pub fn derive_bits(&self, algorithm: &Any, base_key: &CryptoKey) -> Promise<ArrayBuffer> {
         self.inner
             .call("deriveBits", &[algorithm.into(), base_key.into()])
             .as_::<Promise<ArrayBuffer>>()
     }
+}
+impl SubtleCrypto {
     /// The deriveBits method.
     /// [`SubtleCrypto.deriveBits`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveBits)
-    pub fn derive_bits1(
+    pub fn derive_bits_with_length(
         &self,
         algorithm: &Any,
         base_key: &CryptoKey,

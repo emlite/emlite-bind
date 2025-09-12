@@ -66,12 +66,14 @@ jsbind::utils::impl_dyn_cast!(CredentialsContainer);
 impl CredentialsContainer {
     /// The get method.
     /// [`CredentialsContainer.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get)
-    pub fn get0(&self) -> Promise<Credential> {
+    pub fn get(&self) -> Promise<Credential> {
         self.inner.call("get", &[]).as_::<Promise<Credential>>()
     }
+}
+impl CredentialsContainer {
     /// The get method.
     /// [`CredentialsContainer.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get)
-    pub fn get1(&self, options: &CredentialRequestOptions) -> Promise<Credential> {
+    pub fn get_with_options(&self, options: &CredentialRequestOptions) -> Promise<Credential> {
         self.inner
             .call("get", &[options.into()])
             .as_::<Promise<Credential>>()
@@ -89,12 +91,14 @@ impl CredentialsContainer {
 impl CredentialsContainer {
     /// The create method.
     /// [`CredentialsContainer.create`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create)
-    pub fn create0(&self) -> Promise<Credential> {
+    pub fn create(&self) -> Promise<Credential> {
         self.inner.call("create", &[]).as_::<Promise<Credential>>()
     }
+}
+impl CredentialsContainer {
     /// The create method.
     /// [`CredentialsContainer.create`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create)
-    pub fn create1(&self, options: &CredentialCreationOptions) -> Promise<Credential> {
+    pub fn create_with_options(&self, options: &CredentialCreationOptions) -> Promise<Credential> {
         self.inner
             .call("create", &[options.into()])
             .as_::<Promise<Credential>>()

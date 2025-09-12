@@ -65,14 +65,18 @@ jsbind::utils::impl_dyn_cast!(BarcodeDetector);
 
 impl BarcodeDetector {
     /// The `new BarcodeDetector(..)` constructor, creating a new BarcodeDetector instance
-    pub fn new0() -> BarcodeDetector {
+    pub fn new() -> BarcodeDetector {
         Self {
             inner: Any::global("BarcodeDetector").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl BarcodeDetector {
     /// The `new BarcodeDetector(..)` constructor, creating a new BarcodeDetector instance
-    pub fn new1(barcode_detector_options: &BarcodeDetectorOptions) -> BarcodeDetector {
+    pub fn new_with_barcode_detector_options(
+        barcode_detector_options: &BarcodeDetectorOptions,
+    ) -> BarcodeDetector {
         Self {
             inner: Any::global("BarcodeDetector")
                 .new(&[barcode_detector_options.into()])
@@ -80,6 +84,7 @@ impl BarcodeDetector {
         }
     }
 }
+
 impl BarcodeDetector {
     /// The getSupportedFormats method.
     /// [`BarcodeDetector.getSupportedFormats`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/getSupportedFormats)

@@ -244,16 +244,22 @@ impl FontFace {
 
 impl FontFace {
     /// The `new FontFace(..)` constructor, creating a new FontFace instance
-    pub fn new0(family: &JsString, source: &Any) -> FontFace {
+    pub fn new(family: &JsString, source: &Any) -> FontFace {
         Self {
             inner: Any::global("FontFace")
                 .new(&[family.into(), source.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl FontFace {
     /// The `new FontFace(..)` constructor, creating a new FontFace instance
-    pub fn new1(family: &JsString, source: &Any, descriptors: &FontFaceDescriptors) -> FontFace {
+    pub fn new_with_descriptors(
+        family: &JsString,
+        source: &Any,
+        descriptors: &FontFaceDescriptors,
+    ) -> FontFace {
         Self {
             inner: Any::global("FontFace")
                 .new(&[family.into(), source.into(), descriptors.into()])
@@ -261,6 +267,7 @@ impl FontFace {
         }
     }
 }
+
 impl FontFace {
     /// The load method.
     /// [`FontFace.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/load)

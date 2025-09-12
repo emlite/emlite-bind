@@ -100,21 +100,30 @@ impl GPUBuffer {
 impl GPUBuffer {
     /// The mapAsync method.
     /// [`GPUBuffer.mapAsync`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/mapAsync)
-    pub fn map_async0(&self, mode: &Any) -> Promise<Undefined> {
+    pub fn map_async(&self, mode: &Any) -> Promise<Undefined> {
         self.inner
             .call("mapAsync", &[mode.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl GPUBuffer {
     /// The mapAsync method.
     /// [`GPUBuffer.mapAsync`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/mapAsync)
-    pub fn map_async1(&self, mode: &Any, offset: &Any) -> Promise<Undefined> {
+    pub fn map_async_with_offset(&self, mode: &Any, offset: &Any) -> Promise<Undefined> {
         self.inner
             .call("mapAsync", &[mode.into(), offset.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl GPUBuffer {
     /// The mapAsync method.
     /// [`GPUBuffer.mapAsync`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/mapAsync)
-    pub fn map_async2(&self, mode: &Any, offset: &Any, size: &Any) -> Promise<Undefined> {
+    pub fn map_async_with_offset_and_size(
+        &self,
+        mode: &Any,
+        offset: &Any,
+        size: &Any,
+    ) -> Promise<Undefined> {
         self.inner
             .call("mapAsync", &[mode.into(), offset.into(), size.into()])
             .as_::<Promise<Undefined>>()
@@ -123,19 +132,23 @@ impl GPUBuffer {
 impl GPUBuffer {
     /// The getMappedRange method.
     /// [`GPUBuffer.getMappedRange`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/getMappedRange)
-    pub fn get_mapped_range0(&self) -> ArrayBuffer {
+    pub fn get_mapped_range(&self) -> ArrayBuffer {
         self.inner.call("getMappedRange", &[]).as_::<ArrayBuffer>()
     }
+}
+impl GPUBuffer {
     /// The getMappedRange method.
     /// [`GPUBuffer.getMappedRange`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/getMappedRange)
-    pub fn get_mapped_range1(&self, offset: &Any) -> ArrayBuffer {
+    pub fn get_mapped_range_with_offset(&self, offset: &Any) -> ArrayBuffer {
         self.inner
             .call("getMappedRange", &[offset.into()])
             .as_::<ArrayBuffer>()
     }
+}
+impl GPUBuffer {
     /// The getMappedRange method.
     /// [`GPUBuffer.getMappedRange`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/getMappedRange)
-    pub fn get_mapped_range2(&self, offset: &Any, size: &Any) -> ArrayBuffer {
+    pub fn get_mapped_range_with_offset_and_size(&self, offset: &Any, size: &Any) -> ArrayBuffer {
         self.inner
             .call("getMappedRange", &[offset.into(), size.into()])
             .as_::<ArrayBuffer>()

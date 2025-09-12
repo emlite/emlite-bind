@@ -129,16 +129,22 @@ impl URLPattern {
 
 impl URLPattern {
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
-    pub fn new0(input: &Any, base_url: &JsString) -> URLPattern {
+    pub fn new(input: &Any, base_url: &JsString) -> URLPattern {
         Self {
             inner: Any::global("URLPattern")
                 .new(&[input.into(), base_url.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl URLPattern {
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
-    pub fn new1(input: &Any, base_url: &JsString, options: &URLPatternOptions) -> URLPattern {
+    pub fn new_with_options(
+        input: &Any,
+        base_url: &JsString,
+        options: &URLPatternOptions,
+    ) -> URLPattern {
         Self {
             inner: Any::global("URLPattern")
                 .new(&[input.into(), base_url.into(), options.into()])
@@ -149,21 +155,25 @@ impl URLPattern {
 
 impl URLPattern {
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
-    pub fn new2() -> URLPattern {
+    pub fn new_2_2() -> URLPattern {
         Self {
             inner: Any::global("URLPattern").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl URLPattern {
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
-    pub fn new3(input: &Any) -> URLPattern {
+    pub fn new_with_input(input: &Any) -> URLPattern {
         Self {
             inner: Any::global("URLPattern").new(&[input.into()]).as_::<Any>(),
         }
     }
+}
 
+impl URLPattern {
     /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
-    pub fn new4(input: &Any, options: &URLPatternOptions) -> URLPattern {
+    pub fn new_with_input_and_options(input: &Any, options: &URLPatternOptions) -> URLPattern {
         Self {
             inner: Any::global("URLPattern")
                 .new(&[input.into(), options.into()])
@@ -171,20 +181,25 @@ impl URLPattern {
         }
     }
 }
+
 impl URLPattern {
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
-    pub fn test0(&self) -> bool {
+    pub fn test(&self) -> bool {
         self.inner.call("test", &[]).as_::<bool>()
     }
+}
+impl URLPattern {
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
-    pub fn test1(&self, input: &Any) -> bool {
+    pub fn test_with_input(&self, input: &Any) -> bool {
         self.inner.call("test", &[input.into()]).as_::<bool>()
     }
+}
+impl URLPattern {
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
-    pub fn test2(&self, input: &Any, base_url: &JsString) -> bool {
+    pub fn test_with_input_and_base_url(&self, input: &Any, base_url: &JsString) -> bool {
         self.inner
             .call("test", &[input.into(), base_url.into()])
             .as_::<bool>()
@@ -193,19 +208,27 @@ impl URLPattern {
 impl URLPattern {
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
-    pub fn exec0(&self) -> URLPatternResult {
+    pub fn exec(&self) -> URLPatternResult {
         self.inner.call("exec", &[]).as_::<URLPatternResult>()
     }
+}
+impl URLPattern {
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
-    pub fn exec1(&self, input: &Any) -> URLPatternResult {
+    pub fn exec_with_input(&self, input: &Any) -> URLPatternResult {
         self.inner
             .call("exec", &[input.into()])
             .as_::<URLPatternResult>()
     }
+}
+impl URLPattern {
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
-    pub fn exec2(&self, input: &Any, base_url: &JsString) -> URLPatternResult {
+    pub fn exec_with_input_and_base_url(
+        &self,
+        input: &Any,
+        base_url: &JsString,
+    ) -> URLPatternResult {
         self.inner
             .call("exec", &[input.into(), base_url.into()])
             .as_::<URLPatternResult>()

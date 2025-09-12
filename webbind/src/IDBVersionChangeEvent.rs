@@ -80,16 +80,18 @@ impl IDBVersionChangeEvent {
 
 impl IDBVersionChangeEvent {
     /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
-    pub fn new0(type_: &JsString) -> IDBVersionChangeEvent {
+    pub fn new(type_: &JsString) -> IDBVersionChangeEvent {
         Self {
             inner: Any::global("IDBVersionChangeEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl IDBVersionChangeEvent {
     /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &IDBVersionChangeEventInit,
     ) -> IDBVersionChangeEvent {

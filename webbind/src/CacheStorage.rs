@@ -66,14 +66,20 @@ jsbind::utils::impl_dyn_cast!(CacheStorage);
 impl CacheStorage {
     /// The match method.
     /// [`CacheStorage.match`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match)
-    pub fn match_0(&self, request: &Any) -> Promise<Any> {
+    pub fn match_(&self, request: &Any) -> Promise<Any> {
         self.inner
             .call("match", &[request.into()])
             .as_::<Promise<Any>>()
     }
+}
+impl CacheStorage {
     /// The match method.
     /// [`CacheStorage.match`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match)
-    pub fn match_1(&self, request: &Any, options: &MultiCacheQueryOptions) -> Promise<Any> {
+    pub fn match_with_options(
+        &self,
+        request: &Any,
+        options: &MultiCacheQueryOptions,
+    ) -> Promise<Any> {
         self.inner
             .call("match", &[request.into(), options.into()])
             .as_::<Promise<Any>>()

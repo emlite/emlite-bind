@@ -73,14 +73,19 @@ impl Clients {
 impl Clients {
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
-    pub fn match_all0(&self) -> Promise<TypedArray<Client>> {
+    pub fn match_all(&self) -> Promise<TypedArray<Client>> {
         self.inner
             .call("matchAll", &[])
             .as_::<Promise<TypedArray<Client>>>()
     }
+}
+impl Clients {
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
-    pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise<TypedArray<Client>> {
+    pub fn match_all_with_options(
+        &self,
+        options: &ClientQueryOptions,
+    ) -> Promise<TypedArray<Client>> {
         self.inner
             .call("matchAll", &[options.into()])
             .as_::<Promise<TypedArray<Client>>>()

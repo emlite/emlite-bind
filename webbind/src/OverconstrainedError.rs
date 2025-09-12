@@ -73,16 +73,18 @@ impl OverconstrainedError {
 
 impl OverconstrainedError {
     /// The `new OverconstrainedError(..)` constructor, creating a new OverconstrainedError instance
-    pub fn new0(constraint: &JsString) -> OverconstrainedError {
+    pub fn new(constraint: &JsString) -> OverconstrainedError {
         Self {
             inner: Any::global("OverconstrainedError")
                 .new(&[constraint.into()])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl OverconstrainedError {
     /// The `new OverconstrainedError(..)` constructor, creating a new OverconstrainedError instance
-    pub fn new1(constraint: &JsString, message: &JsString) -> OverconstrainedError {
+    pub fn new_with_message(constraint: &JsString, message: &JsString) -> OverconstrainedError {
         Self {
             inner: Any::global("OverconstrainedError")
                 .new(&[constraint.into(), message.into()])

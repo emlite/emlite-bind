@@ -349,12 +349,14 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The setTransform method.
     /// [`PaintRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setTransform)
-    pub fn set_transform1(&self) -> Undefined {
+    pub fn set_transform_2_2(&self) -> Undefined {
         self.inner.call("setTransform", &[]).as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The setTransform method.
     /// [`PaintRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setTransform)
-    pub fn set_transform2(&self, transform: &DOMMatrix2DInit) -> Undefined {
+    pub fn set_transform_with_transform(&self, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("setTransform", &[transform.into()])
             .as_::<Undefined>()
@@ -464,12 +466,14 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The fill method.
     /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
-    pub fn fill0(&self) -> Undefined {
+    pub fn fill(&self) -> Undefined {
         self.inner.call("fill", &[]).as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The fill method.
     /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
-    pub fn fill1(&self, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn fill_with_fill_rule(&self, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("fill", &[fill_rule.into()])
             .as_::<Undefined>()
@@ -478,12 +482,14 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The fill method.
     /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
-    pub fn fill2(&self, path: &Path2D) -> Undefined {
+    pub fn fill_with_path(&self, path: &Path2D) -> Undefined {
         self.inner.call("fill", &[path.into()]).as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The fill method.
     /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
-    pub fn fill3(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn fill_with_fill_rule_2(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("fill", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
@@ -499,19 +505,21 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The stroke method.
     /// [`PaintRenderingContext2D.stroke`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/stroke)
-    pub fn stroke1(&self, path: &Path2D) -> Undefined {
+    pub fn stroke_with_path(&self, path: &Path2D) -> Undefined {
         self.inner.call("stroke", &[path.into()]).as_::<Undefined>()
     }
 }
 impl PaintRenderingContext2D {
     /// The clip method.
     /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
-    pub fn clip0(&self) -> Undefined {
+    pub fn clip(&self) -> Undefined {
         self.inner.call("clip", &[]).as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The clip method.
     /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
-    pub fn clip1(&self, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn clip_with_fill_rule(&self, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("clip", &[fill_rule.into()])
             .as_::<Undefined>()
@@ -520,12 +528,14 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The clip method.
     /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
-    pub fn clip2(&self, path: &Path2D) -> Undefined {
+    pub fn clip_with_path(&self, path: &Path2D) -> Undefined {
         self.inner.call("clip", &[path.into()]).as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The clip method.
     /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
-    pub fn clip3(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn clip_with_fill_rule_2(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("clip", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
@@ -534,14 +544,21 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The isPointInPath method.
     /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path0(&self, x: f64, y: f64) -> bool {
+    pub fn is_point_in_path(&self, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInPath", &[x.into(), y.into()])
             .as_::<bool>()
     }
+}
+impl PaintRenderingContext2D {
     /// The isPointInPath method.
     /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path1(&self, x: f64, y: f64, fill_rule: &CanvasFillRule) -> bool {
+    pub fn is_point_in_path_with_fill_rule(
+        &self,
+        x: f64,
+        y: f64,
+        fill_rule: &CanvasFillRule,
+    ) -> bool {
         self.inner
             .call("isPointInPath", &[x.into(), y.into(), fill_rule.into()])
             .as_::<bool>()
@@ -550,14 +567,16 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The isPointInPath method.
     /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path2(&self, path: &Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_path_with_path_and_x_and_y(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInPath", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
     }
+}
+impl PaintRenderingContext2D {
     /// The isPointInPath method.
     /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path3(
+    pub fn is_point_in_path_with_fill_rule_2(
         &self,
         path: &Path2D,
         x: f64,
@@ -584,7 +603,7 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The isPointInStroke method.
     /// [`PaintRenderingContext2D.isPointInStroke`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInStroke)
-    pub fn is_point_in_stroke1(&self, path: &Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_stroke_with_path_and_x_and_y(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInStroke", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
@@ -602,7 +621,14 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The drawImage method.
     /// [`PaintRenderingContext2D.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/drawImage)
-    pub fn draw_image1(&self, image: &Any, dx: f64, dy: f64, dw: f64, dh: f64) -> Undefined {
+    pub fn draw_image_with_image_and_dx_and_dy_and_dw_and_dh(
+        &self,
+        image: &Any,
+        dx: f64,
+        dy: f64,
+        dw: f64,
+        dh: f64,
+    ) -> Undefined {
         self.inner
             .call(
                 "drawImage",
@@ -614,7 +640,7 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The drawImage method.
     /// [`PaintRenderingContext2D.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/drawImage)
-    pub fn draw_image2(
+    pub fn draw_image_with_image_and_sx_and_sy_and_sw_and_sh_and_dx_and_dy_and_dw_and_dh(
         &self,
         image: &Any,
         sx: f64,
@@ -748,14 +774,16 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The roundRect method.
     /// [`PaintRenderingContext2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/roundRect)
-    pub fn round_rect0(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
+    pub fn round_rect(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
         self.inner
             .call("roundRect", &[x.into(), y.into(), w.into(), h.into()])
             .as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The roundRect method.
     /// [`PaintRenderingContext2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/roundRect)
-    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
+    pub fn round_rect_with_radii(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
         self.inner
             .call(
                 "roundRect",
@@ -767,7 +795,7 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The arc method.
     /// [`PaintRenderingContext2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/arc)
-    pub fn arc0(&self, x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -> Undefined {
+    pub fn arc(&self, x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -> Undefined {
         self.inner
             .call(
                 "arc",
@@ -781,9 +809,11 @@ impl PaintRenderingContext2D {
             )
             .as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The arc method.
     /// [`PaintRenderingContext2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/arc)
-    pub fn arc1(
+    pub fn arc_with_counterclockwise(
         &self,
         x: f64,
         y: f64,
@@ -810,7 +840,7 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The ellipse method.
     /// [`PaintRenderingContext2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/ellipse)
-    pub fn ellipse0(
+    pub fn ellipse(
         &self,
         x: f64,
         y: f64,
@@ -835,9 +865,11 @@ impl PaintRenderingContext2D {
             )
             .as_::<Undefined>()
     }
+}
+impl PaintRenderingContext2D {
     /// The ellipse method.
     /// [`PaintRenderingContext2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/ellipse)
-    pub fn ellipse1(
+    pub fn ellipse_with_counterclockwise(
         &self,
         x: f64,
         y: f64,

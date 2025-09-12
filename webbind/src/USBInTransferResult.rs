@@ -80,16 +80,18 @@ impl USBInTransferResult {
 
 impl USBInTransferResult {
     /// The `new USBInTransferResult(..)` constructor, creating a new USBInTransferResult instance
-    pub fn new0(status: &USBTransferStatus) -> USBInTransferResult {
+    pub fn new(status: &USBTransferStatus) -> USBInTransferResult {
         Self {
             inner: Any::global("USBInTransferResult")
                 .new(&[status.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl USBInTransferResult {
     /// The `new USBInTransferResult(..)` constructor, creating a new USBInTransferResult instance
-    pub fn new1(status: &USBTransferStatus, data: &DataView) -> USBInTransferResult {
+    pub fn new_with_data(status: &USBTransferStatus, data: &DataView) -> USBInTransferResult {
         Self {
             inner: Any::global("USBInTransferResult")
                 .new(&[status.into(), data.into()])

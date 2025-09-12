@@ -66,12 +66,14 @@ jsbind::utils::impl_dyn_cast!(FileSystemSyncAccessHandle);
 impl FileSystemSyncAccessHandle {
     /// The read method.
     /// [`FileSystemSyncAccessHandle.read`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/read)
-    pub fn read0(&self, buffer: &Any) -> u64 {
+    pub fn read(&self, buffer: &Any) -> u64 {
         self.inner.call("read", &[buffer.into()]).as_::<u64>()
     }
+}
+impl FileSystemSyncAccessHandle {
     /// The read method.
     /// [`FileSystemSyncAccessHandle.read`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/read)
-    pub fn read1(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
+    pub fn read_with_options(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
         self.inner
             .call("read", &[buffer.into(), options.into()])
             .as_::<u64>()
@@ -80,12 +82,14 @@ impl FileSystemSyncAccessHandle {
 impl FileSystemSyncAccessHandle {
     /// The write method.
     /// [`FileSystemSyncAccessHandle.write`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/write)
-    pub fn write0(&self, buffer: &Any) -> u64 {
+    pub fn write(&self, buffer: &Any) -> u64 {
         self.inner.call("write", &[buffer.into()]).as_::<u64>()
     }
+}
+impl FileSystemSyncAccessHandle {
     /// The write method.
     /// [`FileSystemSyncAccessHandle.write`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemSyncAccessHandle/write)
-    pub fn write1(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
+    pub fn write_with_options(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
         self.inner
             .call("write", &[buffer.into(), options.into()])
             .as_::<u64>()

@@ -235,16 +235,18 @@ impl SpeechSynthesisUtterance {
 
 impl SpeechSynthesisUtterance {
     /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
-    pub fn new0() -> SpeechSynthesisUtterance {
+    pub fn new() -> SpeechSynthesisUtterance {
         Self {
             inner: Any::global("SpeechSynthesisUtterance")
                 .new(&[])
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl SpeechSynthesisUtterance {
     /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
-    pub fn new1(text: &JsString) -> SpeechSynthesisUtterance {
+    pub fn new_with_text(text: &JsString) -> SpeechSynthesisUtterance {
         Self {
             inner: Any::global("SpeechSynthesisUtterance")
                 .new(&[text.into()])

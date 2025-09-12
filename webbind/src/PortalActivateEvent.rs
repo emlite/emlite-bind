@@ -73,16 +73,18 @@ impl PortalActivateEvent {
 
 impl PortalActivateEvent {
     /// The `new PortalActivateEvent(..)` constructor, creating a new PortalActivateEvent instance
-    pub fn new0(type_: &JsString) -> PortalActivateEvent {
+    pub fn new(type_: &JsString) -> PortalActivateEvent {
         Self {
             inner: Any::global("PortalActivateEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl PortalActivateEvent {
     /// The `new PortalActivateEvent(..)` constructor, creating a new PortalActivateEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &PortalActivateEventInit,
     ) -> PortalActivateEvent {
@@ -93,6 +95,7 @@ impl PortalActivateEvent {
         }
     }
 }
+
 impl PortalActivateEvent {
     /// The adoptPredecessor method.
     /// [`PortalActivateEvent.adoptPredecessor`](https://developer.mozilla.org/en-US/docs/Web/API/PortalActivateEvent/adoptPredecessor)

@@ -80,14 +80,16 @@ impl FragmentResult {
 
 impl FragmentResult {
     /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
-    pub fn new0() -> FragmentResult {
+    pub fn new() -> FragmentResult {
         Self {
             inner: Any::global("FragmentResult").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl FragmentResult {
     /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
-    pub fn new1(options: &FragmentResultOptions) -> FragmentResult {
+    pub fn new_with_options(options: &FragmentResultOptions) -> FragmentResult {
         Self {
             inner: Any::global("FragmentResult")
                 .new(&[options.into()])

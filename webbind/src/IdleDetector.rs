@@ -99,6 +99,7 @@ impl IdleDetector {
         }
     }
 }
+
 impl IdleDetector {
     /// The requestPermission method.
     /// [`IdleDetector.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/requestPermission)
@@ -111,12 +112,14 @@ impl IdleDetector {
 impl IdleDetector {
     /// The start method.
     /// [`IdleDetector.start`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/start)
-    pub fn start0(&self) -> Promise<Undefined> {
+    pub fn start(&self) -> Promise<Undefined> {
         self.inner.call("start", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl IdleDetector {
     /// The start method.
     /// [`IdleDetector.start`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/start)
-    pub fn start1(&self, options: &IdleOptions) -> Promise<Undefined> {
+    pub fn start_with_options(&self, options: &IdleOptions) -> Promise<Undefined> {
         self.inner
             .call("start", &[options.into()])
             .as_::<Promise<Undefined>>()

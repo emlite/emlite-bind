@@ -80,16 +80,21 @@ impl USBIsochronousOutTransferPacket {
 
 impl USBIsochronousOutTransferPacket {
     /// The `new USBIsochronousOutTransferPacket(..)` constructor, creating a new USBIsochronousOutTransferPacket instance
-    pub fn new0(status: &USBTransferStatus) -> USBIsochronousOutTransferPacket {
+    pub fn new(status: &USBTransferStatus) -> USBIsochronousOutTransferPacket {
         Self {
             inner: Any::global("USBIsochronousOutTransferPacket")
                 .new(&[status.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl USBIsochronousOutTransferPacket {
     /// The `new USBIsochronousOutTransferPacket(..)` constructor, creating a new USBIsochronousOutTransferPacket instance
-    pub fn new1(status: &USBTransferStatus, bytes_written: u32) -> USBIsochronousOutTransferPacket {
+    pub fn new_with_bytes_written(
+        status: &USBTransferStatus,
+        bytes_written: u32,
+    ) -> USBIsochronousOutTransferPacket {
         Self {
             inner: Any::global("USBIsochronousOutTransferPacket")
                 .new(&[status.into(), bytes_written.into()])

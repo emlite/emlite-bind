@@ -65,14 +65,18 @@ jsbind::utils::impl_dyn_cast!(FaceDetector);
 
 impl FaceDetector {
     /// The `new FaceDetector(..)` constructor, creating a new FaceDetector instance
-    pub fn new0() -> FaceDetector {
+    pub fn new() -> FaceDetector {
         Self {
             inner: Any::global("FaceDetector").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl FaceDetector {
     /// The `new FaceDetector(..)` constructor, creating a new FaceDetector instance
-    pub fn new1(face_detector_options: &FaceDetectorOptions) -> FaceDetector {
+    pub fn new_with_face_detector_options(
+        face_detector_options: &FaceDetectorOptions,
+    ) -> FaceDetector {
         Self {
             inner: Any::global("FaceDetector")
                 .new(&[face_detector_options.into()])
@@ -80,6 +84,7 @@ impl FaceDetector {
         }
     }
 }
+
 impl FaceDetector {
     /// The detect method.
     /// [`FaceDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/FaceDetector/detect)

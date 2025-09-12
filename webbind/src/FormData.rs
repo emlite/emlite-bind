@@ -65,21 +65,28 @@ jsbind::utils::impl_dyn_cast!(FormData);
 
 impl FormData {
     /// The `new FormData(..)` constructor, creating a new FormData instance
-    pub fn new0() -> FormData {
+    pub fn new() -> FormData {
         Self {
             inner: Any::global("FormData").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl FormData {
     /// The `new FormData(..)` constructor, creating a new FormData instance
-    pub fn new1(form: &HTMLFormElement) -> FormData {
+    pub fn new_with_form(form: &HTMLFormElement) -> FormData {
         Self {
             inner: Any::global("FormData").new(&[form.into()]).as_::<Any>(),
         }
     }
+}
 
+impl FormData {
     /// The `new FormData(..)` constructor, creating a new FormData instance
-    pub fn new2(form: &HTMLFormElement, submitter: &HTMLElement) -> FormData {
+    pub fn new_with_form_and_submitter(
+        form: &HTMLFormElement,
+        submitter: &HTMLElement,
+    ) -> FormData {
         Self {
             inner: Any::global("FormData")
                 .new(&[form.into(), submitter.into()])
@@ -87,6 +94,7 @@ impl FormData {
         }
     }
 }
+
 impl FormData {
     /// The append method.
     /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
@@ -99,14 +107,21 @@ impl FormData {
 impl FormData {
     /// The append method.
     /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
-    pub fn append1(&self, name: &JsString, blob_value: &Blob) -> Undefined {
+    pub fn append_with_name_and_blob_value(&self, name: &JsString, blob_value: &Blob) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
+}
+impl FormData {
     /// The append method.
     /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
-    pub fn append2(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
+    pub fn append_with_filename(
+        &self,
+        name: &JsString,
+        blob_value: &Blob,
+        filename: &JsString,
+    ) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()
@@ -154,14 +169,21 @@ impl FormData {
 impl FormData {
     /// The set method.
     /// [`FormData.set`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
-    pub fn set1(&self, name: &JsString, blob_value: &Blob) -> Undefined {
+    pub fn set_with_name_and_blob_value(&self, name: &JsString, blob_value: &Blob) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
+}
+impl FormData {
     /// The set method.
     /// [`FormData.set`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
-    pub fn set2(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
+    pub fn set_with_filename(
+        &self,
+        name: &JsString,
+        blob_value: &Blob,
+        filename: &JsString,
+    ) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()

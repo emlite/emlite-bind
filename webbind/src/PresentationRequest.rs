@@ -90,7 +90,7 @@ impl PresentationRequest {
 
 impl PresentationRequest {
     /// The `new PresentationRequest(..)` constructor, creating a new PresentationRequest instance
-    pub fn new1(urls: &TypedArray<JsString>) -> PresentationRequest {
+    pub fn new_with_urls(urls: &TypedArray<JsString>) -> PresentationRequest {
         Self {
             inner: Any::global("PresentationRequest")
                 .new(&[urls.into()])
@@ -98,6 +98,7 @@ impl PresentationRequest {
         }
     }
 }
+
 impl PresentationRequest {
     /// The start method.
     /// [`PresentationRequest.start`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/start)

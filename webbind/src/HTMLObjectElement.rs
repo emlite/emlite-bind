@@ -324,6 +324,7 @@ impl HTMLObjectElement {
         }
     }
 }
+
 impl HTMLObjectElement {
     /// The getSVGDocument method.
     /// [`HTMLObjectElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLObjectElement/getSVGDocument)

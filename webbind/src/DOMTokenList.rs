@@ -116,12 +116,14 @@ impl DOMTokenList {
 impl DOMTokenList {
     /// The toggle method.
     /// [`DOMTokenList.toggle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle)
-    pub fn toggle0(&self, token: &JsString) -> bool {
+    pub fn toggle(&self, token: &JsString) -> bool {
         self.inner.call("toggle", &[token.into()]).as_::<bool>()
     }
+}
+impl DOMTokenList {
     /// The toggle method.
     /// [`DOMTokenList.toggle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle)
-    pub fn toggle1(&self, token: &JsString, force: bool) -> bool {
+    pub fn toggle_with_force(&self, token: &JsString, force: bool) -> bool {
         self.inner
             .call("toggle", &[token.into(), force.into()])
             .as_::<bool>()

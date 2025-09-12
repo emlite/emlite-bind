@@ -66,7 +66,7 @@ jsbind::utils::impl_dyn_cast!(SharedStorageWorklet);
 impl SharedStorageWorklet {
     /// The selectURL method.
     /// [`SharedStorageWorklet.selectURL`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorklet/selectURL)
-    pub fn select_url0(
+    pub fn select_url(
         &self,
         name: &JsString,
         urls: &TypedArray<SharedStorageUrlWithMetadata>,
@@ -75,9 +75,11 @@ impl SharedStorageWorklet {
             .call("selectURL", &[name.into(), urls.into()])
             .as_::<Promise<Any>>()
     }
+}
+impl SharedStorageWorklet {
     /// The selectURL method.
     /// [`SharedStorageWorklet.selectURL`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorklet/selectURL)
-    pub fn select_url1(
+    pub fn select_url_with_options(
         &self,
         name: &JsString,
         urls: &TypedArray<SharedStorageUrlWithMetadata>,
@@ -91,12 +93,14 @@ impl SharedStorageWorklet {
 impl SharedStorageWorklet {
     /// The run method.
     /// [`SharedStorageWorklet.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorklet/run)
-    pub fn run0(&self, name: &JsString) -> Promise<Any> {
+    pub fn run(&self, name: &JsString) -> Promise<Any> {
         self.inner.call("run", &[name.into()]).as_::<Promise<Any>>()
     }
+}
+impl SharedStorageWorklet {
     /// The run method.
     /// [`SharedStorageWorklet.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorklet/run)
-    pub fn run1(
+    pub fn run_with_options(
         &self,
         name: &JsString,
         options: &SharedStorageRunOperationMethodOptions,

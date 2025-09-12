@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(IDBFactory);
 impl IDBFactory {
     /// The open method.
     /// [`IDBFactory.open`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/open)
-    pub fn open0(&self, name: &JsString) -> IDBOpenDBRequest {
+    pub fn open(&self, name: &JsString) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into()])
             .as_::<IDBOpenDBRequest>()
     }
+}
+impl IDBFactory {
     /// The open method.
     /// [`IDBFactory.open`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/open)
-    pub fn open1(&self, name: &JsString, version: u64) -> IDBOpenDBRequest {
+    pub fn open_with_version(&self, name: &JsString, version: u64) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into(), version.into()])
             .as_::<IDBOpenDBRequest>()

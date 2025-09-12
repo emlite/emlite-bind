@@ -87,21 +87,28 @@ impl TextDecoder {
 
 impl TextDecoder {
     /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
-    pub fn new0() -> TextDecoder {
+    pub fn new() -> TextDecoder {
         Self {
             inner: Any::global("TextDecoder").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl TextDecoder {
     /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
-    pub fn new1(label: &JsString) -> TextDecoder {
+    pub fn new_with_label(label: &JsString) -> TextDecoder {
         Self {
             inner: Any::global("TextDecoder").new(&[label.into()]).as_::<Any>(),
         }
     }
+}
 
+impl TextDecoder {
     /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
-    pub fn new2(label: &JsString, options: &TextDecoderOptions) -> TextDecoder {
+    pub fn new_with_label_and_options(
+        label: &JsString,
+        options: &TextDecoderOptions,
+    ) -> TextDecoder {
         Self {
             inner: Any::global("TextDecoder")
                 .new(&[label.into(), options.into()])
@@ -109,20 +116,29 @@ impl TextDecoder {
         }
     }
 }
+
 impl TextDecoder {
     /// The decode method.
     /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
-    pub fn decode0(&self) -> JsString {
+    pub fn decode(&self) -> JsString {
         self.inner.call("decode", &[]).as_::<JsString>()
     }
+}
+impl TextDecoder {
     /// The decode method.
     /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
-    pub fn decode1(&self, input: &Any) -> JsString {
+    pub fn decode_with_input(&self, input: &Any) -> JsString {
         self.inner.call("decode", &[input.into()]).as_::<JsString>()
     }
+}
+impl TextDecoder {
     /// The decode method.
     /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
-    pub fn decode2(&self, input: &Any, options: &TextDecodeOptions) -> JsString {
+    pub fn decode_with_input_and_options(
+        &self,
+        input: &Any,
+        options: &TextDecodeOptions,
+    ) -> JsString {
         self.inner
             .call("decode", &[input.into(), options.into()])
             .as_::<JsString>()

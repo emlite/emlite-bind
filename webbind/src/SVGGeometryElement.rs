@@ -73,12 +73,14 @@ impl SVGGeometryElement {
 impl SVGGeometryElement {
     /// The isPointInFill method.
     /// [`SVGGeometryElement.isPointInFill`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement/isPointInFill)
-    pub fn is_point_in_fill0(&self) -> bool {
+    pub fn is_point_in_fill(&self) -> bool {
         self.inner.call("isPointInFill", &[]).as_::<bool>()
     }
+}
+impl SVGGeometryElement {
     /// The isPointInFill method.
     /// [`SVGGeometryElement.isPointInFill`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement/isPointInFill)
-    pub fn is_point_in_fill1(&self, point: &DOMPointInit) -> bool {
+    pub fn is_point_in_fill_with_point(&self, point: &DOMPointInit) -> bool {
         self.inner
             .call("isPointInFill", &[point.into()])
             .as_::<bool>()
@@ -87,12 +89,14 @@ impl SVGGeometryElement {
 impl SVGGeometryElement {
     /// The isPointInStroke method.
     /// [`SVGGeometryElement.isPointInStroke`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement/isPointInStroke)
-    pub fn is_point_in_stroke0(&self) -> bool {
+    pub fn is_point_in_stroke(&self) -> bool {
         self.inner.call("isPointInStroke", &[]).as_::<bool>()
     }
+}
+impl SVGGeometryElement {
     /// The isPointInStroke method.
     /// [`SVGGeometryElement.isPointInStroke`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGeometryElement/isPointInStroke)
-    pub fn is_point_in_stroke1(&self, point: &DOMPointInit) -> bool {
+    pub fn is_point_in_stroke_with_point(&self, point: &DOMPointInit) -> bool {
         self.inner
             .call("isPointInStroke", &[point.into()])
             .as_::<bool>()

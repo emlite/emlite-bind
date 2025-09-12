@@ -89,14 +89,16 @@ impl FileSystemHandle {
 impl FileSystemHandle {
     /// The queryPermission method.
     /// [`FileSystemHandle.queryPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/queryPermission)
-    pub fn query_permission0(&self) -> Promise<PermissionState> {
+    pub fn query_permission(&self) -> Promise<PermissionState> {
         self.inner
             .call("queryPermission", &[])
             .as_::<Promise<PermissionState>>()
     }
+}
+impl FileSystemHandle {
     /// The queryPermission method.
     /// [`FileSystemHandle.queryPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/queryPermission)
-    pub fn query_permission1(
+    pub fn query_permission_with_descriptor(
         &self,
         descriptor: &FileSystemHandlePermissionDescriptor,
     ) -> Promise<PermissionState> {
@@ -108,14 +110,16 @@ impl FileSystemHandle {
 impl FileSystemHandle {
     /// The requestPermission method.
     /// [`FileSystemHandle.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/requestPermission)
-    pub fn request_permission0(&self) -> Promise<PermissionState> {
+    pub fn request_permission(&self) -> Promise<PermissionState> {
         self.inner
             .call("requestPermission", &[])
             .as_::<Promise<PermissionState>>()
     }
+}
+impl FileSystemHandle {
     /// The requestPermission method.
     /// [`FileSystemHandle.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/requestPermission)
-    pub fn request_permission1(
+    pub fn request_permission_with_descriptor(
         &self,
         descriptor: &FileSystemHandlePermissionDescriptor,
     ) -> Promise<PermissionState> {

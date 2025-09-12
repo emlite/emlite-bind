@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(HighlightRegistry);
 impl HighlightRegistry {
     /// The highlightsFromPoint method.
     /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
-    pub fn highlights_from_point0(&self, x: f32, y: f32) -> TypedArray<HighlightHitResult> {
+    pub fn highlights_from_point(&self, x: f32, y: f32) -> TypedArray<HighlightHitResult> {
         self.inner
             .call("highlightsFromPoint", &[x.into(), y.into()])
             .as_::<TypedArray<HighlightHitResult>>()
     }
+}
+impl HighlightRegistry {
     /// The highlightsFromPoint method.
     /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
-    pub fn highlights_from_point1(
+    pub fn highlights_from_point_with_options(
         &self,
         x: f32,
         y: f32,

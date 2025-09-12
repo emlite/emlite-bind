@@ -65,16 +65,20 @@ jsbind::utils::impl_dyn_cast!(AbsoluteOrientationSensor);
 
 impl AbsoluteOrientationSensor {
     /// The `new AbsoluteOrientationSensor(..)` constructor, creating a new AbsoluteOrientationSensor instance
-    pub fn new0() -> AbsoluteOrientationSensor {
+    pub fn new() -> AbsoluteOrientationSensor {
         Self {
             inner: Any::global("AbsoluteOrientationSensor")
                 .new(&[])
                 .as_::<OrientationSensor>(),
         }
     }
+}
 
+impl AbsoluteOrientationSensor {
     /// The `new AbsoluteOrientationSensor(..)` constructor, creating a new AbsoluteOrientationSensor instance
-    pub fn new1(sensor_options: &OrientationSensorOptions) -> AbsoluteOrientationSensor {
+    pub fn new_with_sensor_options(
+        sensor_options: &OrientationSensorOptions,
+    ) -> AbsoluteOrientationSensor {
         Self {
             inner: Any::global("AbsoluteOrientationSensor")
                 .new(&[sensor_options.into()])

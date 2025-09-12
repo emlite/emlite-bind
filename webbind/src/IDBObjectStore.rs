@@ -107,12 +107,14 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The put method.
     /// [`IDBObjectStore.put`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/put)
-    pub fn put0(&self, value: &Any) -> IDBRequest {
+    pub fn put(&self, value: &Any) -> IDBRequest {
         self.inner.call("put", &[value.into()]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The put method.
     /// [`IDBObjectStore.put`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/put)
-    pub fn put1(&self, value: &Any, key: &Any) -> IDBRequest {
+    pub fn put_with_key(&self, value: &Any, key: &Any) -> IDBRequest {
         self.inner
             .call("put", &[value.into(), key.into()])
             .as_::<IDBRequest>()
@@ -121,12 +123,14 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The add method.
     /// [`IDBObjectStore.add`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/add)
-    pub fn add0(&self, value: &Any) -> IDBRequest {
+    pub fn add(&self, value: &Any) -> IDBRequest {
         self.inner.call("add", &[value.into()]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The add method.
     /// [`IDBObjectStore.add`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/add)
-    pub fn add1(&self, value: &Any, key: &Any) -> IDBRequest {
+    pub fn add_with_key(&self, value: &Any, key: &Any) -> IDBRequest {
         self.inner
             .call("add", &[value.into(), key.into()])
             .as_::<IDBRequest>()
@@ -167,19 +171,27 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The getAll method.
     /// [`IDBObjectStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAll)
-    pub fn get_all0(&self) -> IDBRequest {
+    pub fn get_all(&self) -> IDBRequest {
         self.inner.call("getAll", &[]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The getAll method.
     /// [`IDBObjectStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAll)
-    pub fn get_all1(&self, query_or_options: &Any) -> IDBRequest {
+    pub fn get_all_with_query_or_options(&self, query_or_options: &Any) -> IDBRequest {
         self.inner
             .call("getAll", &[query_or_options.into()])
             .as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The getAll method.
     /// [`IDBObjectStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAll)
-    pub fn get_all2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
+    pub fn get_all_with_query_or_options_and_count(
+        &self,
+        query_or_options: &Any,
+        count: u32,
+    ) -> IDBRequest {
         self.inner
             .call("getAll", &[query_or_options.into(), count.into()])
             .as_::<IDBRequest>()
@@ -188,19 +200,27 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The getAllKeys method.
     /// [`IDBObjectStore.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllKeys)
-    pub fn get_all_keys0(&self) -> IDBRequest {
+    pub fn get_all_keys(&self) -> IDBRequest {
         self.inner.call("getAllKeys", &[]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The getAllKeys method.
     /// [`IDBObjectStore.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllKeys)
-    pub fn get_all_keys1(&self, query_or_options: &Any) -> IDBRequest {
+    pub fn get_all_keys_with_query_or_options(&self, query_or_options: &Any) -> IDBRequest {
         self.inner
             .call("getAllKeys", &[query_or_options.into()])
             .as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The getAllKeys method.
     /// [`IDBObjectStore.getAllKeys`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllKeys)
-    pub fn get_all_keys2(&self, query_or_options: &Any, count: u32) -> IDBRequest {
+    pub fn get_all_keys_with_query_or_options_and_count(
+        &self,
+        query_or_options: &Any,
+        count: u32,
+    ) -> IDBRequest {
         self.inner
             .call("getAllKeys", &[query_or_options.into(), count.into()])
             .as_::<IDBRequest>()
@@ -209,12 +229,14 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The getAllRecords method.
     /// [`IDBObjectStore.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllRecords)
-    pub fn get_all_records0(&self) -> IDBRequest {
+    pub fn get_all_records(&self) -> IDBRequest {
         self.inner.call("getAllRecords", &[]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The getAllRecords method.
     /// [`IDBObjectStore.getAllRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/getAllRecords)
-    pub fn get_all_records1(&self, options: &IDBGetAllOptions) -> IDBRequest {
+    pub fn get_all_records_with_options(&self, options: &IDBGetAllOptions) -> IDBRequest {
         self.inner
             .call("getAllRecords", &[options.into()])
             .as_::<IDBRequest>()
@@ -223,12 +245,14 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The count method.
     /// [`IDBObjectStore.count`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/count)
-    pub fn count0(&self) -> IDBRequest {
+    pub fn count(&self) -> IDBRequest {
         self.inner.call("count", &[]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The count method.
     /// [`IDBObjectStore.count`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/count)
-    pub fn count1(&self, query: &Any) -> IDBRequest {
+    pub fn count_with_query(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("count", &[query.into()])
             .as_::<IDBRequest>()
@@ -237,19 +261,27 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The openCursor method.
     /// [`IDBObjectStore.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openCursor)
-    pub fn open_cursor0(&self) -> IDBRequest {
+    pub fn open_cursor(&self) -> IDBRequest {
         self.inner.call("openCursor", &[]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The openCursor method.
     /// [`IDBObjectStore.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openCursor)
-    pub fn open_cursor1(&self, query: &Any) -> IDBRequest {
+    pub fn open_cursor_with_query(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("openCursor", &[query.into()])
             .as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The openCursor method.
     /// [`IDBObjectStore.openCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openCursor)
-    pub fn open_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
+    pub fn open_cursor_with_query_and_direction(
+        &self,
+        query: &Any,
+        direction: &IDBCursorDirection,
+    ) -> IDBRequest {
         self.inner
             .call("openCursor", &[query.into(), direction.into()])
             .as_::<IDBRequest>()
@@ -258,19 +290,27 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The openKeyCursor method.
     /// [`IDBObjectStore.openKeyCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openKeyCursor)
-    pub fn open_key_cursor0(&self) -> IDBRequest {
+    pub fn open_key_cursor(&self) -> IDBRequest {
         self.inner.call("openKeyCursor", &[]).as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The openKeyCursor method.
     /// [`IDBObjectStore.openKeyCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openKeyCursor)
-    pub fn open_key_cursor1(&self, query: &Any) -> IDBRequest {
+    pub fn open_key_cursor_with_query(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("openKeyCursor", &[query.into()])
             .as_::<IDBRequest>()
     }
+}
+impl IDBObjectStore {
     /// The openKeyCursor method.
     /// [`IDBObjectStore.openKeyCursor`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/openKeyCursor)
-    pub fn open_key_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
+    pub fn open_key_cursor_with_query_and_direction(
+        &self,
+        query: &Any,
+        direction: &IDBCursorDirection,
+    ) -> IDBRequest {
         self.inner
             .call("openKeyCursor", &[query.into(), direction.into()])
             .as_::<IDBRequest>()
@@ -286,14 +326,16 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The createIndex method.
     /// [`IDBObjectStore.createIndex`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/createIndex)
-    pub fn create_index0(&self, name: &JsString, key_path: &Any) -> IDBIndex {
+    pub fn create_index(&self, name: &JsString, key_path: &Any) -> IDBIndex {
         self.inner
             .call("createIndex", &[name.into(), key_path.into()])
             .as_::<IDBIndex>()
     }
+}
+impl IDBObjectStore {
     /// The createIndex method.
     /// [`IDBObjectStore.createIndex`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/createIndex)
-    pub fn create_index1(
+    pub fn create_index_with_options(
         &self,
         name: &JsString,
         key_path: &Any,

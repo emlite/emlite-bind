@@ -278,6 +278,7 @@ impl HTMLButtonElement {
         }
     }
 }
+
 impl HTMLButtonElement {
     /// The checkValidity method.
     /// [`HTMLButtonElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/checkValidity)

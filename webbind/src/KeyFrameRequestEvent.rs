@@ -73,16 +73,18 @@ impl KeyFrameRequestEvent {
 
 impl KeyFrameRequestEvent {
     /// The `new KeyFrameRequestEvent(..)` constructor, creating a new KeyFrameRequestEvent instance
-    pub fn new0(type_: &JsString) -> KeyFrameRequestEvent {
+    pub fn new(type_: &JsString) -> KeyFrameRequestEvent {
         Self {
             inner: Any::global("KeyFrameRequestEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl KeyFrameRequestEvent {
     /// The `new KeyFrameRequestEvent(..)` constructor, creating a new KeyFrameRequestEvent instance
-    pub fn new1(type_: &JsString, rid: &JsString) -> KeyFrameRequestEvent {
+    pub fn new_with_rid(type_: &JsString, rid: &JsString) -> KeyFrameRequestEvent {
         Self {
             inner: Any::global("KeyFrameRequestEvent")
                 .new(&[type_.into(), rid.into()])

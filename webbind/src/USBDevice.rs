@@ -264,7 +264,7 @@ impl USBDevice {
 impl USBDevice {
     /// The controlTransferOut method.
     /// [`USBDevice.controlTransferOut`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/controlTransferOut)
-    pub fn control_transfer_out0(
+    pub fn control_transfer_out(
         &self,
         setup: &USBControlTransferParameters,
     ) -> Promise<USBOutTransferResult> {
@@ -272,9 +272,11 @@ impl USBDevice {
             .call("controlTransferOut", &[setup.into()])
             .as_::<Promise<USBOutTransferResult>>()
     }
+}
+impl USBDevice {
     /// The controlTransferOut method.
     /// [`USBDevice.controlTransferOut`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/controlTransferOut)
-    pub fn control_transfer_out1(
+    pub fn control_transfer_out_with_data(
         &self,
         setup: &USBControlTransferParameters,
         data: &Any,

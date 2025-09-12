@@ -80,16 +80,18 @@ impl ScrollTimeline {
 
 impl ScrollTimeline {
     /// The `new ScrollTimeline(..)` constructor, creating a new ScrollTimeline instance
-    pub fn new0() -> ScrollTimeline {
+    pub fn new() -> ScrollTimeline {
         Self {
             inner: Any::global("ScrollTimeline")
                 .new(&[])
                 .as_::<AnimationTimeline>(),
         }
     }
+}
 
+impl ScrollTimeline {
     /// The `new ScrollTimeline(..)` constructor, creating a new ScrollTimeline instance
-    pub fn new1(options: &ScrollTimelineOptions) -> ScrollTimeline {
+    pub fn new_with_options(options: &ScrollTimelineOptions) -> ScrollTimeline {
         Self {
             inner: Any::global("ScrollTimeline")
                 .new(&[options.into()])

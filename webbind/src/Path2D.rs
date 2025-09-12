@@ -65,30 +65,35 @@ jsbind::utils::impl_dyn_cast!(Path2D);
 
 impl Path2D {
     /// The `new Path2D(..)` constructor, creating a new Path2D instance
-    pub fn new0() -> Path2D {
+    pub fn new() -> Path2D {
         Self {
             inner: Any::global("Path2D").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl Path2D {
     /// The `new Path2D(..)` constructor, creating a new Path2D instance
-    pub fn new1(path: &Any) -> Path2D {
+    pub fn new_with_path(path: &Any) -> Path2D {
         Self {
             inner: Any::global("Path2D").new(&[path.into()]).as_::<Any>(),
         }
     }
 }
+
 impl Path2D {
     /// The addPath method.
     /// [`Path2D.addPath`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/addPath)
-    pub fn add_path0(&self, path: &Path2D) -> Undefined {
+    pub fn add_path(&self, path: &Path2D) -> Undefined {
         self.inner
             .call("addPath", &[path.into()])
             .as_::<Undefined>()
     }
+}
+impl Path2D {
     /// The addPath method.
     /// [`Path2D.addPath`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/addPath)
-    pub fn add_path1(&self, path: &Path2D, transform: &DOMMatrix2DInit) -> Undefined {
+    pub fn add_path_with_transform(&self, path: &Path2D, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("addPath", &[path.into(), transform.into()])
             .as_::<Undefined>()
@@ -182,14 +187,16 @@ impl Path2D {
 impl Path2D {
     /// The roundRect method.
     /// [`Path2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/roundRect)
-    pub fn round_rect0(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
+    pub fn round_rect(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
         self.inner
             .call("roundRect", &[x.into(), y.into(), w.into(), h.into()])
             .as_::<Undefined>()
     }
+}
+impl Path2D {
     /// The roundRect method.
     /// [`Path2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/roundRect)
-    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
+    pub fn round_rect_with_radii(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
         self.inner
             .call(
                 "roundRect",
@@ -201,7 +208,7 @@ impl Path2D {
 impl Path2D {
     /// The arc method.
     /// [`Path2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/arc)
-    pub fn arc0(&self, x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -> Undefined {
+    pub fn arc(&self, x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -> Undefined {
         self.inner
             .call(
                 "arc",
@@ -215,9 +222,11 @@ impl Path2D {
             )
             .as_::<Undefined>()
     }
+}
+impl Path2D {
     /// The arc method.
     /// [`Path2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/arc)
-    pub fn arc1(
+    pub fn arc_with_counterclockwise(
         &self,
         x: f64,
         y: f64,
@@ -244,7 +253,7 @@ impl Path2D {
 impl Path2D {
     /// The ellipse method.
     /// [`Path2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/ellipse)
-    pub fn ellipse0(
+    pub fn ellipse(
         &self,
         x: f64,
         y: f64,
@@ -269,9 +278,11 @@ impl Path2D {
             )
             .as_::<Undefined>()
     }
+}
+impl Path2D {
     /// The ellipse method.
     /// [`Path2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/ellipse)
-    pub fn ellipse1(
+    pub fn ellipse_with_counterclockwise(
         &self,
         x: f64,
         y: f64,

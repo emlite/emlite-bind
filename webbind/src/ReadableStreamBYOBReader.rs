@@ -81,17 +81,20 @@ impl ReadableStreamBYOBReader {
         }
     }
 }
+
 impl ReadableStreamBYOBReader {
     /// The read method.
     /// [`ReadableStreamBYOBReader.read`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/read)
-    pub fn read0(&self, view: &Any) -> Promise<ReadableStreamReadResult> {
+    pub fn read(&self, view: &Any) -> Promise<ReadableStreamReadResult> {
         self.inner
             .call("read", &[view.into()])
             .as_::<Promise<ReadableStreamReadResult>>()
     }
+}
+impl ReadableStreamBYOBReader {
     /// The read method.
     /// [`ReadableStreamBYOBReader.read`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/read)
-    pub fn read1(
+    pub fn read_with_options(
         &self,
         view: &Any,
         options: &ReadableStreamBYOBReaderReadOptions,
@@ -111,12 +114,14 @@ impl ReadableStreamBYOBReader {
 impl ReadableStreamBYOBReader {
     /// The cancel method.
     /// [`ReadableStreamBYOBReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/cancel)
-    pub fn cancel0(&self) -> Promise<Undefined> {
+    pub fn cancel(&self) -> Promise<Undefined> {
         self.inner.call("cancel", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl ReadableStreamBYOBReader {
     /// The cancel method.
     /// [`ReadableStreamBYOBReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/cancel)
-    pub fn cancel1(&self, reason: &Any) -> Promise<Undefined> {
+    pub fn cancel_with_reason(&self, reason: &Any) -> Promise<Undefined> {
         self.inner
             .call("cancel", &[reason.into()])
             .as_::<Promise<Undefined>>()

@@ -81,15 +81,18 @@ impl ImageCapture {
         }
     }
 }
+
 impl ImageCapture {
     /// The takePhoto method.
     /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
-    pub fn take_photo0(&self) -> Promise<Blob> {
+    pub fn take_photo(&self) -> Promise<Blob> {
         self.inner.call("takePhoto", &[]).as_::<Promise<Blob>>()
     }
+}
+impl ImageCapture {
     /// The takePhoto method.
     /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
-    pub fn take_photo1(&self, photo_settings: &PhotoSettings) -> Promise<Blob> {
+    pub fn take_photo_with_photo_settings(&self, photo_settings: &PhotoSettings) -> Promise<Blob> {
         self.inner
             .call("takePhoto", &[photo_settings.into()])
             .as_::<Promise<Blob>>()

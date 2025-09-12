@@ -100,17 +100,20 @@ impl HTMLCanvasElement {
         }
     }
 }
+
 impl HTMLCanvasElement {
     /// The getContext method.
     /// [`HTMLCanvasElement.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext)
-    pub fn get_context0(&self, context_id: &JsString) -> Any {
+    pub fn get_context(&self, context_id: &JsString) -> Any {
         self.inner
             .call("getContext", &[context_id.into()])
             .as_::<Any>()
     }
+}
+impl HTMLCanvasElement {
     /// The getContext method.
     /// [`HTMLCanvasElement.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext)
-    pub fn get_context1(&self, context_id: &JsString, options: &Any) -> Any {
+    pub fn get_context_with_options(&self, context_id: &JsString, options: &Any) -> Any {
         self.inner
             .call("getContext", &[context_id.into(), options.into()])
             .as_::<Any>()
@@ -119,19 +122,23 @@ impl HTMLCanvasElement {
 impl HTMLCanvasElement {
     /// The toDataURL method.
     /// [`HTMLCanvasElement.toDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)
-    pub fn to_data_url0(&self) -> JsString {
+    pub fn to_data_url(&self) -> JsString {
         self.inner.call("toDataURL", &[]).as_::<JsString>()
     }
+}
+impl HTMLCanvasElement {
     /// The toDataURL method.
     /// [`HTMLCanvasElement.toDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)
-    pub fn to_data_url1(&self, type_: &JsString) -> JsString {
+    pub fn to_data_url_with_type(&self, type_: &JsString) -> JsString {
         self.inner
             .call("toDataURL", &[type_.into()])
             .as_::<JsString>()
     }
+}
+impl HTMLCanvasElement {
     /// The toDataURL method.
     /// [`HTMLCanvasElement.toDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)
-    pub fn to_data_url2(&self, type_: &JsString, quality: &Any) -> JsString {
+    pub fn to_data_url_with_type_and_quality(&self, type_: &JsString, quality: &Any) -> JsString {
         self.inner
             .call("toDataURL", &[type_.into(), quality.into()])
             .as_::<JsString>()
@@ -140,21 +147,30 @@ impl HTMLCanvasElement {
 impl HTMLCanvasElement {
     /// The toBlob method.
     /// [`HTMLCanvasElement.toBlob`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)
-    pub fn to_blob0(&self, callback: &Function) -> Undefined {
+    pub fn to_blob(&self, callback: &Function) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into()])
             .as_::<Undefined>()
     }
+}
+impl HTMLCanvasElement {
     /// The toBlob method.
     /// [`HTMLCanvasElement.toBlob`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)
-    pub fn to_blob1(&self, callback: &Function, type_: &JsString) -> Undefined {
+    pub fn to_blob_with_type(&self, callback: &Function, type_: &JsString) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into(), type_.into()])
             .as_::<Undefined>()
     }
+}
+impl HTMLCanvasElement {
     /// The toBlob method.
     /// [`HTMLCanvasElement.toBlob`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)
-    pub fn to_blob2(&self, callback: &Function, type_: &JsString, quality: &Any) -> Undefined {
+    pub fn to_blob_with_type_and_quality(
+        &self,
+        callback: &Function,
+        type_: &JsString,
+        quality: &Any,
+    ) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into(), type_.into(), quality.into()])
             .as_::<Undefined>()
@@ -172,12 +188,14 @@ impl HTMLCanvasElement {
 impl HTMLCanvasElement {
     /// The captureStream method.
     /// [`HTMLCanvasElement.captureStream`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/captureStream)
-    pub fn capture_stream0(&self) -> MediaStream {
+    pub fn capture_stream(&self) -> MediaStream {
         self.inner.call("captureStream", &[]).as_::<MediaStream>()
     }
+}
+impl HTMLCanvasElement {
     /// The captureStream method.
     /// [`HTMLCanvasElement.captureStream`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/captureStream)
-    pub fn capture_stream1(&self, frame_request_rate: f64) -> MediaStream {
+    pub fn capture_stream_with_frame_request_rate(&self, frame_request_rate: f64) -> MediaStream {
         self.inner
             .call("captureStream", &[frame_request_rate.into()])
             .as_::<MediaStream>()

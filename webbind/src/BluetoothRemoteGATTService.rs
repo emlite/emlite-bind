@@ -151,14 +151,16 @@ impl BluetoothRemoteGATTService {
 impl BluetoothRemoteGATTService {
     /// The getCharacteristics method.
     /// [`BluetoothRemoteGATTService.getCharacteristics`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristics)
-    pub fn get_characteristics0(&self) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
+    pub fn get_characteristics(&self) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
         self.inner
             .call("getCharacteristics", &[])
             .as_::<Promise<TypedArray<BluetoothRemoteGATTCharacteristic>>>()
     }
+}
+impl BluetoothRemoteGATTService {
     /// The getCharacteristics method.
     /// [`BluetoothRemoteGATTService.getCharacteristics`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristics)
-    pub fn get_characteristics1(
+    pub fn get_characteristics_with_characteristic(
         &self,
         characteristic: &Any,
     ) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
@@ -179,14 +181,16 @@ impl BluetoothRemoteGATTService {
 impl BluetoothRemoteGATTService {
     /// The getIncludedServices method.
     /// [`BluetoothRemoteGATTService.getIncludedServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getIncludedServices)
-    pub fn get_included_services0(&self) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
+    pub fn get_included_services(&self) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
         self.inner
             .call("getIncludedServices", &[])
             .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
+}
+impl BluetoothRemoteGATTService {
     /// The getIncludedServices method.
     /// [`BluetoothRemoteGATTService.getIncludedServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getIncludedServices)
-    pub fn get_included_services1(
+    pub fn get_included_services_with_service(
         &self,
         service: &Any,
     ) -> Promise<TypedArray<BluetoothRemoteGATTService>> {

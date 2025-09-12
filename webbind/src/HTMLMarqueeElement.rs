@@ -217,6 +217,7 @@ impl HTMLMarqueeElement {
         }
     }
 }
+
 impl HTMLMarqueeElement {
     /// The start method.
     /// [`HTMLMarqueeElement.start`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/start)

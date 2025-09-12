@@ -66,14 +66,20 @@ jsbind::utils::impl_dyn_cast!(StorageBucketManager);
 impl StorageBucketManager {
     /// The open method.
     /// [`StorageBucketManager.open`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/open)
-    pub fn open0(&self, name: &JsString) -> Promise<StorageBucket> {
+    pub fn open(&self, name: &JsString) -> Promise<StorageBucket> {
         self.inner
             .call("open", &[name.into()])
             .as_::<Promise<StorageBucket>>()
     }
+}
+impl StorageBucketManager {
     /// The open method.
     /// [`StorageBucketManager.open`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/open)
-    pub fn open1(&self, name: &JsString, options: &StorageBucketOptions) -> Promise<StorageBucket> {
+    pub fn open_with_options(
+        &self,
+        name: &JsString,
+        options: &StorageBucketOptions,
+    ) -> Promise<StorageBucket> {
         self.inner
             .call("open", &[name.into(), options.into()])
             .as_::<Promise<StorageBucket>>()

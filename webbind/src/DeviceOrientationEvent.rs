@@ -94,16 +94,18 @@ impl DeviceOrientationEvent {
 
 impl DeviceOrientationEvent {
     /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
-    pub fn new0(type_: &JsString) -> DeviceOrientationEvent {
+    pub fn new(type_: &JsString) -> DeviceOrientationEvent {
         Self {
             inner: Any::global("DeviceOrientationEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl DeviceOrientationEvent {
     /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &DeviceOrientationEventInit,
     ) -> DeviceOrientationEvent {
@@ -114,17 +116,20 @@ impl DeviceOrientationEvent {
         }
     }
 }
+
 impl DeviceOrientationEvent {
     /// The requestPermission method.
     /// [`DeviceOrientationEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission)
-    pub fn request_permission0() -> Promise<PermissionState> {
+    pub fn request_permission() -> Promise<PermissionState> {
         Any::global("DeviceOrientationEvent")
             .call("requestPermission", &[])
             .as_::<Promise<PermissionState>>()
     }
+}
+impl DeviceOrientationEvent {
     /// The requestPermission method.
     /// [`DeviceOrientationEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission)
-    pub fn request_permission1(absolute: bool) -> Promise<PermissionState> {
+    pub fn request_permission_with_absolute(absolute: bool) -> Promise<PermissionState> {
         Any::global("DeviceOrientationEvent")
             .call("requestPermission", &[absolute.into()])
             .as_::<Promise<PermissionState>>()

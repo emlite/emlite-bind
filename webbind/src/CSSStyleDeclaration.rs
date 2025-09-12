@@ -118,14 +118,16 @@ impl CSSStyleDeclaration {
 impl CSSStyleDeclaration {
     /// The setProperty method.
     /// [`CSSStyleDeclaration.setProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
-    pub fn set_property0(&self, property: &JsString, value: &JsString) -> Undefined {
+    pub fn set_property(&self, property: &JsString, value: &JsString) -> Undefined {
         self.inner
             .call("setProperty", &[property.into(), value.into()])
             .as_::<Undefined>()
     }
+}
+impl CSSStyleDeclaration {
     /// The setProperty method.
     /// [`CSSStyleDeclaration.setProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
-    pub fn set_property1(
+    pub fn set_property_with_priority(
         &self,
         property: &JsString,
         value: &JsString,

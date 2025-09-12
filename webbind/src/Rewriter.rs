@@ -126,14 +126,16 @@ impl Rewriter {
 impl Rewriter {
     /// The create method.
     /// [`Rewriter.create`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/create)
-    pub fn create0() -> Promise<Rewriter> {
+    pub fn create() -> Promise<Rewriter> {
         Any::global("Rewriter")
             .call("create", &[])
             .as_::<Promise<Rewriter>>()
     }
+}
+impl Rewriter {
     /// The create method.
     /// [`Rewriter.create`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/create)
-    pub fn create1(options: &RewriterCreateOptions) -> Promise<Rewriter> {
+    pub fn create_with_options(options: &RewriterCreateOptions) -> Promise<Rewriter> {
         Any::global("Rewriter")
             .call("create", &[options.into()])
             .as_::<Promise<Rewriter>>()
@@ -142,14 +144,16 @@ impl Rewriter {
 impl Rewriter {
     /// The availability method.
     /// [`Rewriter.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/availability)
-    pub fn availability0() -> Promise<Availability> {
+    pub fn availability() -> Promise<Availability> {
         Any::global("Rewriter")
             .call("availability", &[])
             .as_::<Promise<Availability>>()
     }
+}
+impl Rewriter {
     /// The availability method.
     /// [`Rewriter.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/availability)
-    pub fn availability1(options: &RewriterCreateCoreOptions) -> Promise<Availability> {
+    pub fn availability_with_options(options: &RewriterCreateCoreOptions) -> Promise<Availability> {
         Any::global("Rewriter")
             .call("availability", &[options.into()])
             .as_::<Promise<Availability>>()
@@ -158,14 +162,16 @@ impl Rewriter {
 impl Rewriter {
     /// The rewrite method.
     /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
-    pub fn rewrite0(&self, input: &JsString) -> Promise<JsString> {
+    pub fn rewrite(&self, input: &JsString) -> Promise<JsString> {
         self.inner
             .call("rewrite", &[input.into()])
             .as_::<Promise<JsString>>()
     }
+}
+impl Rewriter {
     /// The rewrite method.
     /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
-    pub fn rewrite1(
+    pub fn rewrite_with_options(
         &self,
         input: &JsString,
         options: &RewriterRewriteOptions,
@@ -178,14 +184,16 @@ impl Rewriter {
 impl Rewriter {
     /// The rewriteStreaming method.
     /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
-    pub fn rewrite_streaming0(&self, input: &JsString) -> ReadableStream {
+    pub fn rewrite_streaming(&self, input: &JsString) -> ReadableStream {
         self.inner
             .call("rewriteStreaming", &[input.into()])
             .as_::<ReadableStream>()
     }
+}
+impl Rewriter {
     /// The rewriteStreaming method.
     /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
-    pub fn rewrite_streaming1(
+    pub fn rewrite_streaming_with_options(
         &self,
         input: &JsString,
         options: &RewriterRewriteOptions,
@@ -198,14 +206,16 @@ impl Rewriter {
 impl Rewriter {
     /// The measureInputUsage method.
     /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
+    pub fn measure_input_usage(&self, input: &JsString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
     }
+}
+impl Rewriter {
     /// The measureInputUsage method.
     /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
-    pub fn measure_input_usage1(
+    pub fn measure_input_usage_with_options(
         &self,
         input: &JsString,
         options: &RewriterRewriteOptions,

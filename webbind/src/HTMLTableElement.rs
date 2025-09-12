@@ -244,6 +244,7 @@ impl HTMLTableElement {
         }
     }
 }
+
 impl HTMLTableElement {
     /// The createCaption method.
     /// [`HTMLTableElement.createCaption`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/createCaption)
@@ -304,14 +305,16 @@ impl HTMLTableElement {
 impl HTMLTableElement {
     /// The insertRow method.
     /// [`HTMLTableElement.insertRow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow)
-    pub fn insert_row0(&self) -> HTMLTableRowElement {
+    pub fn insert_row(&self) -> HTMLTableRowElement {
         self.inner
             .call("insertRow", &[])
             .as_::<HTMLTableRowElement>()
     }
+}
+impl HTMLTableElement {
     /// The insertRow method.
     /// [`HTMLTableElement.insertRow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow)
-    pub fn insert_row1(&self, index: i32) -> HTMLTableRowElement {
+    pub fn insert_row_with_index(&self, index: i32) -> HTMLTableRowElement {
         self.inner
             .call("insertRow", &[index.into()])
             .as_::<HTMLTableRowElement>()

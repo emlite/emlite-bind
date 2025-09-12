@@ -101,6 +101,7 @@ impl VideoEncoder {
         }
     }
 }
+
 impl VideoEncoder {
     /// The configure method.
     /// [`VideoEncoder.configure`](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/configure)
@@ -113,14 +114,20 @@ impl VideoEncoder {
 impl VideoEncoder {
     /// The encode method.
     /// [`VideoEncoder.encode`](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/encode)
-    pub fn encode0(&self, frame: &VideoFrame) -> Undefined {
+    pub fn encode(&self, frame: &VideoFrame) -> Undefined {
         self.inner
             .call("encode", &[frame.into()])
             .as_::<Undefined>()
     }
+}
+impl VideoEncoder {
     /// The encode method.
     /// [`VideoEncoder.encode`](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/encode)
-    pub fn encode1(&self, frame: &VideoFrame, options: &VideoEncoderEncodeOptions) -> Undefined {
+    pub fn encode_with_options(
+        &self,
+        frame: &VideoFrame,
+        options: &VideoEncoderEncodeOptions,
+    ) -> Undefined {
         self.inner
             .call("encode", &[frame.into(), options.into()])
             .as_::<Undefined>()

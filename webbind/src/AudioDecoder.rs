@@ -101,6 +101,7 @@ impl AudioDecoder {
         }
     }
 }
+
 impl AudioDecoder {
     /// The configure method.
     /// [`AudioDecoder.configure`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/configure)

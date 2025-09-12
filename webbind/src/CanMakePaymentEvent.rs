@@ -73,6 +73,7 @@ impl CanMakePaymentEvent {
         }
     }
 }
+
 impl CanMakePaymentEvent {
     /// The respondWith method.
     /// [`CanMakePaymentEvent.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/CanMakePaymentEvent/respondWith)

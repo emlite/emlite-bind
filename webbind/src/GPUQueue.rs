@@ -97,7 +97,7 @@ impl GPUQueue {
 impl GPUQueue {
     /// The writeBuffer method.
     /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
-    pub fn write_buffer0(&self, buffer: &GPUBuffer, buffer_offset: &Any, data: &Any) -> Undefined {
+    pub fn write_buffer(&self, buffer: &GPUBuffer, buffer_offset: &Any, data: &Any) -> Undefined {
         self.inner
             .call(
                 "writeBuffer",
@@ -105,9 +105,11 @@ impl GPUQueue {
             )
             .as_::<Undefined>()
     }
+}
+impl GPUQueue {
     /// The writeBuffer method.
     /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
-    pub fn write_buffer1(
+    pub fn write_buffer_with_data_offset(
         &self,
         buffer: &GPUBuffer,
         buffer_offset: &Any,
@@ -126,9 +128,11 @@ impl GPUQueue {
             )
             .as_::<Undefined>()
     }
+}
+impl GPUQueue {
     /// The writeBuffer method.
     /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
-    pub fn write_buffer2(
+    pub fn write_buffer_with_data_offset_and_size(
         &self,
         buffer: &GPUBuffer,
         buffer_offset: &Any,

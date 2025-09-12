@@ -176,12 +176,14 @@ impl Node {
 impl Node {
     /// The getRootNode method.
     /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
-    pub fn get_root_node0(&self) -> Node {
+    pub fn get_root_node(&self) -> Node {
         self.inner.call("getRootNode", &[]).as_::<Node>()
     }
+}
+impl Node {
     /// The getRootNode method.
     /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
-    pub fn get_root_node1(&self, options: &GetRootNodeOptions) -> Node {
+    pub fn get_root_node_with_options(&self, options: &GetRootNodeOptions) -> Node {
         self.inner
             .call("getRootNode", &[options.into()])
             .as_::<Node>()
@@ -204,12 +206,14 @@ impl Node {
 impl Node {
     /// The cloneNode method.
     /// [`Node.cloneNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
-    pub fn clone_node0(&self) -> Node {
+    pub fn clone_node(&self) -> Node {
         self.inner.call("cloneNode", &[]).as_::<Node>()
     }
+}
+impl Node {
     /// The cloneNode method.
     /// [`Node.cloneNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
-    pub fn clone_node1(&self, subtree: bool) -> Node {
+    pub fn clone_node_with_subtree(&self, subtree: bool) -> Node {
         self.inner
             .call("cloneNode", &[subtree.into()])
             .as_::<Node>()

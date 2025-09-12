@@ -92,14 +92,16 @@ impl CloseWatcher {
 
 impl CloseWatcher {
     /// The `new CloseWatcher(..)` constructor, creating a new CloseWatcher instance
-    pub fn new0() -> CloseWatcher {
+    pub fn new() -> CloseWatcher {
         Self {
             inner: Any::global("CloseWatcher").new(&[]).as_::<EventTarget>(),
         }
     }
+}
 
+impl CloseWatcher {
     /// The `new CloseWatcher(..)` constructor, creating a new CloseWatcher instance
-    pub fn new1(options: &CloseWatcherOptions) -> CloseWatcher {
+    pub fn new_with_options(options: &CloseWatcherOptions) -> CloseWatcher {
         Self {
             inner: Any::global("CloseWatcher")
                 .new(&[options.into()])
@@ -107,6 +109,7 @@ impl CloseWatcher {
         }
     }
 }
+
 impl CloseWatcher {
     /// The requestClose method.
     /// [`CloseWatcher.requestClose`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/requestClose)

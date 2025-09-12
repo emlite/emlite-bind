@@ -65,16 +65,21 @@ jsbind::utils::impl_dyn_cast!(ExtendableEvent);
 
 impl ExtendableEvent {
     /// The `new ExtendableEvent(..)` constructor, creating a new ExtendableEvent instance
-    pub fn new0(type_: &JsString) -> ExtendableEvent {
+    pub fn new(type_: &JsString) -> ExtendableEvent {
         Self {
             inner: Any::global("ExtendableEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl ExtendableEvent {
     /// The `new ExtendableEvent(..)` constructor, creating a new ExtendableEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &ExtendableEventInit) -> ExtendableEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &ExtendableEventInit,
+    ) -> ExtendableEvent {
         Self {
             inner: Any::global("ExtendableEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -82,6 +87,7 @@ impl ExtendableEvent {
         }
     }
 }
+
 impl ExtendableEvent {
     /// The waitUntil method.
     /// [`ExtendableEvent.waitUntil`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil)

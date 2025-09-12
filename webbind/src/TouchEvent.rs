@@ -115,16 +115,21 @@ impl TouchEvent {
 
 impl TouchEvent {
     /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
-    pub fn new0(type_: &JsString) -> TouchEvent {
+    pub fn new(type_: &JsString) -> TouchEvent {
         Self {
             inner: Any::global("TouchEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
+}
 
+impl TouchEvent {
     /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &TouchEventInit) -> TouchEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &TouchEventInit,
+    ) -> TouchEvent {
         Self {
             inner: Any::global("TouchEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -132,6 +137,7 @@ impl TouchEvent {
         }
     }
 }
+
 impl TouchEvent {
     /// The getModifierState method.
     /// [`TouchEvent.getModifierState`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/getModifierState)

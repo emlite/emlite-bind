@@ -116,7 +116,11 @@ impl MLContext {
 impl MLContext {
     /// The readTensor method.
     /// [`MLContext.readTensor`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/readTensor)
-    pub fn read_tensor1(&self, tensor: &MLTensor, output_data: &Any) -> Promise<Undefined> {
+    pub fn read_tensor_with_tensor_and_output_data(
+        &self,
+        tensor: &MLTensor,
+        output_data: &Any,
+    ) -> Promise<Undefined> {
         self.inner
             .call("readTensor", &[tensor.into(), output_data.into()])
             .as_::<Promise<Undefined>>()

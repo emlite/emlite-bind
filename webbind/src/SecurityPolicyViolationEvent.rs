@@ -152,16 +152,18 @@ impl SecurityPolicyViolationEvent {
 
 impl SecurityPolicyViolationEvent {
     /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
-    pub fn new0(type_: &JsString) -> SecurityPolicyViolationEvent {
+    pub fn new(type_: &JsString) -> SecurityPolicyViolationEvent {
         Self {
             inner: Any::global("SecurityPolicyViolationEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl SecurityPolicyViolationEvent {
     /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &SecurityPolicyViolationEventInit,
     ) -> SecurityPolicyViolationEvent {

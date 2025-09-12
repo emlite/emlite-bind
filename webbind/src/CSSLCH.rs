@@ -118,16 +118,18 @@ impl CSSLCH {
 
 impl CSSLCH {
     /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
-    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSLCH {
+    pub fn new(l: &Any, c: &Any, h: &Any) -> CSSLCH {
         Self {
             inner: Any::global("CSSLCH")
                 .new(&[l.into(), c.into(), h.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSLCH {
     /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
-    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSLCH {
+    pub fn new_with_alpha(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSLCH {
         Self {
             inner: Any::global("CSSLCH")
                 .new(&[l.into(), c.into(), h.into(), alpha.into()])

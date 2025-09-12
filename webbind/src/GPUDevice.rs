@@ -152,12 +152,14 @@ impl GPUDevice {
 impl GPUDevice {
     /// The createSampler method.
     /// [`GPUDevice.createSampler`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/createSampler)
-    pub fn create_sampler0(&self) -> GPUSampler {
+    pub fn create_sampler(&self) -> GPUSampler {
         self.inner.call("createSampler", &[]).as_::<GPUSampler>()
     }
+}
+impl GPUDevice {
     /// The createSampler method.
     /// [`GPUDevice.createSampler`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/createSampler)
-    pub fn create_sampler1(&self, descriptor: &GPUSamplerDescriptor) -> GPUSampler {
+    pub fn create_sampler_with_descriptor(&self, descriptor: &GPUSamplerDescriptor) -> GPUSampler {
         self.inner
             .call("createSampler", &[descriptor.into()])
             .as_::<GPUSampler>()
@@ -268,14 +270,16 @@ impl GPUDevice {
 impl GPUDevice {
     /// The createCommandEncoder method.
     /// [`GPUDevice.createCommandEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/createCommandEncoder)
-    pub fn create_command_encoder0(&self) -> GPUCommandEncoder {
+    pub fn create_command_encoder(&self) -> GPUCommandEncoder {
         self.inner
             .call("createCommandEncoder", &[])
             .as_::<GPUCommandEncoder>()
     }
+}
+impl GPUDevice {
     /// The createCommandEncoder method.
     /// [`GPUDevice.createCommandEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/createCommandEncoder)
-    pub fn create_command_encoder1(
+    pub fn create_command_encoder_with_descriptor(
         &self,
         descriptor: &GPUCommandEncoderDescriptor,
     ) -> GPUCommandEncoder {

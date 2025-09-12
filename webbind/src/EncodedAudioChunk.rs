@@ -102,6 +102,7 @@ impl EncodedAudioChunk {
         }
     }
 }
+
 impl EncodedAudioChunk {
     /// The copyTo method.
     /// [`EncodedAudioChunk.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedAudioChunk/copyTo)

@@ -101,16 +101,18 @@ impl ImageData {
 
 impl ImageData {
     /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new0(sw: u32, sh: u32) -> ImageData {
+    pub fn new(sw: u32, sh: u32) -> ImageData {
         Self {
             inner: Any::global("ImageData")
                 .new(&[sw.into(), sh.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl ImageData {
     /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new1(sw: u32, sh: u32, settings: &ImageDataSettings) -> ImageData {
+    pub fn new_with_settings(sw: u32, sh: u32, settings: &ImageDataSettings) -> ImageData {
         Self {
             inner: Any::global("ImageData")
                 .new(&[sw.into(), sh.into(), settings.into()])
@@ -121,25 +123,34 @@ impl ImageData {
 
 impl ImageData {
     /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new2(data: &Any, sw: u32) -> ImageData {
+    pub fn new_with_data_and_sw(data: &Any, sw: u32) -> ImageData {
         Self {
             inner: Any::global("ImageData")
                 .new(&[data.into(), sw.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl ImageData {
     /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new3(data: &Any, sw: u32, sh: u32) -> ImageData {
+    pub fn new_with_sh(data: &Any, sw: u32, sh: u32) -> ImageData {
         Self {
             inner: Any::global("ImageData")
                 .new(&[data.into(), sw.into(), sh.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl ImageData {
     /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new4(data: &Any, sw: u32, sh: u32, settings: &ImageDataSettings) -> ImageData {
+    pub fn new_with_sh_and_settings(
+        data: &Any,
+        sw: u32,
+        sh: u32,
+        settings: &ImageDataSettings,
+    ) -> ImageData {
         Self {
             inner: Any::global("ImageData")
                 .new(&[data.into(), sw.into(), sh.into(), settings.into()])

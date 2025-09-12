@@ -162,6 +162,7 @@ impl HTMLOutputElement {
         }
     }
 }
+
 impl HTMLOutputElement {
     /// The checkValidity method.
     /// [`HTMLOutputElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/checkValidity)

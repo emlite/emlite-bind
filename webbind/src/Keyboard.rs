@@ -79,12 +79,14 @@ impl Keyboard {
 impl Keyboard {
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
-    pub fn lock0(&self) -> Promise<Undefined> {
+    pub fn lock(&self) -> Promise<Undefined> {
         self.inner.call("lock", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl Keyboard {
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
-    pub fn lock1(&self, key_codes: &TypedArray<JsString>) -> Promise<Undefined> {
+    pub fn lock_with_key_codes(&self, key_codes: &TypedArray<JsString>) -> Promise<Undefined> {
         self.inner
             .call("lock", &[key_codes.into()])
             .as_::<Promise<Undefined>>()

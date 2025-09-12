@@ -87,14 +87,19 @@ impl GPUAdapter {
 impl GPUAdapter {
     /// The requestDevice method.
     /// [`GPUAdapter.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/requestDevice)
-    pub fn request_device0(&self) -> Promise<GPUDevice> {
+    pub fn request_device(&self) -> Promise<GPUDevice> {
         self.inner
             .call("requestDevice", &[])
             .as_::<Promise<GPUDevice>>()
     }
+}
+impl GPUAdapter {
     /// The requestDevice method.
     /// [`GPUAdapter.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/requestDevice)
-    pub fn request_device1(&self, descriptor: &GPUDeviceDescriptor) -> Promise<GPUDevice> {
+    pub fn request_device_with_descriptor(
+        &self,
+        descriptor: &GPUDeviceDescriptor,
+    ) -> Promise<GPUDevice> {
         self.inner
             .call("requestDevice", &[descriptor.into()])
             .as_::<Promise<GPUDevice>>()

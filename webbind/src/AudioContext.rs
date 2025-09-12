@@ -113,16 +113,18 @@ impl AudioContext {
 
 impl AudioContext {
     /// The `new AudioContext(..)` constructor, creating a new AudioContext instance
-    pub fn new0() -> AudioContext {
+    pub fn new() -> AudioContext {
         Self {
             inner: Any::global("AudioContext")
                 .new(&[])
                 .as_::<BaseAudioContext>(),
         }
     }
+}
 
+impl AudioContext {
     /// The `new AudioContext(..)` constructor, creating a new AudioContext instance
-    pub fn new1(context_options: &AudioContextOptions) -> AudioContext {
+    pub fn new_with_context_options(context_options: &AudioContextOptions) -> AudioContext {
         Self {
             inner: Any::global("AudioContext")
                 .new(&[context_options.into()])
@@ -130,6 +132,7 @@ impl AudioContext {
         }
     }
 }
+
 impl AudioContext {
     /// The getOutputTimestamp method.
     /// [`AudioContext.getOutputTimestamp`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/getOutputTimestamp)

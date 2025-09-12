@@ -344,6 +344,7 @@ impl HTMLTextAreaElement {
         }
     }
 }
+
 impl HTMLTextAreaElement {
     /// The checkValidity method.
     /// [`HTMLTextAreaElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/checkValidity)
@@ -386,7 +387,12 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// The setRangeText method.
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
-    pub fn set_range_text1(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
+    pub fn set_range_text_with_replacement_and_start_and_end(
+        &self,
+        replacement: &JsString,
+        start: u32,
+        end: u32,
+    ) -> Undefined {
         self.inner
             .call(
                 "setRangeText",
@@ -394,9 +400,11 @@ impl HTMLTextAreaElement {
             )
             .as_::<Undefined>()
     }
+}
+impl HTMLTextAreaElement {
     /// The setRangeText method.
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
-    pub fn set_range_text2(
+    pub fn set_range_text_with_selection_mode(
         &self,
         replacement: &JsString,
         start: u32,
@@ -419,14 +427,21 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// The setSelectionRange method.
     /// [`HTMLTextAreaElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setSelectionRange)
-    pub fn set_selection_range0(&self, start: u32, end: u32) -> Undefined {
+    pub fn set_selection_range(&self, start: u32, end: u32) -> Undefined {
         self.inner
             .call("setSelectionRange", &[start.into(), end.into()])
             .as_::<Undefined>()
     }
+}
+impl HTMLTextAreaElement {
     /// The setSelectionRange method.
     /// [`HTMLTextAreaElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setSelectionRange)
-    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &JsString) -> Undefined {
+    pub fn set_selection_range_with_direction(
+        &self,
+        start: u32,
+        end: u32,
+        direction: &JsString,
+    ) -> Undefined {
         self.inner
             .call(
                 "setSelectionRange",

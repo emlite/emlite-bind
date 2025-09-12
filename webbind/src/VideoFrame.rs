@@ -150,14 +150,16 @@ impl VideoFrame {
 
 impl VideoFrame {
     /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
-    pub fn new0(image: &Any) -> VideoFrame {
+    pub fn new(image: &Any) -> VideoFrame {
         Self {
             inner: Any::global("VideoFrame").new(&[image.into()]).as_::<Any>(),
         }
     }
+}
 
+impl VideoFrame {
     /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
-    pub fn new1(image: &Any, init: &VideoFrameInit) -> VideoFrame {
+    pub fn new_with_init(image: &Any, init: &VideoFrameInit) -> VideoFrame {
         Self {
             inner: Any::global("VideoFrame")
                 .new(&[image.into(), init.into()])
@@ -168,7 +170,7 @@ impl VideoFrame {
 
 impl VideoFrame {
     /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
-    pub fn new2(data: &Any, init: &VideoFrameBufferInit) -> VideoFrame {
+    pub fn new_with_data_and_init(data: &Any, init: &VideoFrameBufferInit) -> VideoFrame {
         Self {
             inner: Any::global("VideoFrame")
                 .new(&[data.into(), init.into()])
@@ -176,6 +178,7 @@ impl VideoFrame {
         }
     }
 }
+
 impl VideoFrame {
     /// The metadata method.
     /// [`VideoFrame.metadata`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/metadata)
@@ -186,12 +189,14 @@ impl VideoFrame {
 impl VideoFrame {
     /// The allocationSize method.
     /// [`VideoFrame.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/allocationSize)
-    pub fn allocation_size0(&self) -> u32 {
+    pub fn allocation_size(&self) -> u32 {
         self.inner.call("allocationSize", &[]).as_::<u32>()
     }
+}
+impl VideoFrame {
     /// The allocationSize method.
     /// [`VideoFrame.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/allocationSize)
-    pub fn allocation_size1(&self, options: &VideoFrameCopyToOptions) -> u32 {
+    pub fn allocation_size_with_options(&self, options: &VideoFrameCopyToOptions) -> u32 {
         self.inner
             .call("allocationSize", &[options.into()])
             .as_::<u32>()
@@ -200,14 +205,16 @@ impl VideoFrame {
 impl VideoFrame {
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
-    pub fn copy_to0(&self, destination: &Any) -> Promise<TypedArray<PlaneLayout>> {
+    pub fn copy_to(&self, destination: &Any) -> Promise<TypedArray<PlaneLayout>> {
         self.inner
             .call("copyTo", &[destination.into()])
             .as_::<Promise<TypedArray<PlaneLayout>>>()
     }
+}
+impl VideoFrame {
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
-    pub fn copy_to1(
+    pub fn copy_to_with_options(
         &self,
         destination: &Any,
         options: &VideoFrameCopyToOptions,

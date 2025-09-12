@@ -86,14 +86,19 @@ impl TaskSignal {
 impl TaskSignal {
     /// The any method.
     /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
-    pub fn any0(signals: &TypedArray<AbortSignal>) -> TaskSignal {
+    pub fn any(signals: &TypedArray<AbortSignal>) -> TaskSignal {
         Any::global("TaskSignal")
             .call("any", &[signals.into()])
             .as_::<TaskSignal>()
     }
+}
+impl TaskSignal {
     /// The any method.
     /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
-    pub fn any1(signals: &TypedArray<AbortSignal>, init: &TaskSignalAnyInit) -> TaskSignal {
+    pub fn any_with_init(
+        signals: &TypedArray<AbortSignal>,
+        init: &TaskSignalAnyInit,
+    ) -> TaskSignal {
         Any::global("TaskSignal")
             .call("any", &[signals.into(), init.into()])
             .as_::<TaskSignal>()

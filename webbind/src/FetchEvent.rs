@@ -116,6 +116,7 @@ impl FetchEvent {
         }
     }
 }
+
 impl FetchEvent {
     /// The respondWith method.
     /// [`FetchEvent.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith)

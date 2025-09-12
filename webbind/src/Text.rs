@@ -80,14 +80,16 @@ impl Text {
 
 impl Text {
     /// The `new Text(..)` constructor, creating a new Text instance
-    pub fn new0() -> Text {
+    pub fn new() -> Text {
         Self {
             inner: Any::global("Text").new(&[]).as_::<CharacterData>(),
         }
     }
+}
 
+impl Text {
     /// The `new Text(..)` constructor, creating a new Text instance
-    pub fn new1(data: &JsString) -> Text {
+    pub fn new_with_data(data: &JsString) -> Text {
         Self {
             inner: Any::global("Text")
                 .new(&[data.into()])
@@ -95,6 +97,7 @@ impl Text {
         }
     }
 }
+
 impl Text {
     /// The splitText method.
     /// [`Text.splitText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/splitText)
@@ -105,14 +108,16 @@ impl Text {
 impl Text {
     /// The getBoxQuads method.
     /// [`Text.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Text/getBoxQuads)
-    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads(&self) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
             .as_::<TypedArray<DOMQuad>>()
     }
+}
+impl Text {
     /// The getBoxQuads method.
     /// [`Text.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Text/getBoxQuads)
-    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads_with_options(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
             .as_::<TypedArray<DOMQuad>>()
@@ -121,14 +126,16 @@ impl Text {
 impl Text {
     /// The convertQuadFromNode method.
     /// [`Text.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertQuadFromNode)
-    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
+    pub fn convert_quad_from_node(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl Text {
     /// The convertQuadFromNode method.
     /// [`Text.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertQuadFromNode)
-    pub fn convert_quad_from_node1(
+    pub fn convert_quad_from_node_with_options(
         &self,
         quad: &DOMQuadInit,
         from: &Any,
@@ -145,14 +152,16 @@ impl Text {
 impl Text {
     /// The convertRectFromNode method.
     /// [`Text.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertRectFromNode)
-    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
+    pub fn convert_rect_from_node(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl Text {
     /// The convertRectFromNode method.
     /// [`Text.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertRectFromNode)
-    pub fn convert_rect_from_node1(
+    pub fn convert_rect_from_node_with_options(
         &self,
         rect: &DOMRectReadOnly,
         from: &Any,
@@ -169,14 +178,16 @@ impl Text {
 impl Text {
     /// The convertPointFromNode method.
     /// [`Text.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertPointFromNode)
-    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
+    pub fn convert_point_from_node(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
     }
+}
+impl Text {
     /// The convertPointFromNode method.
     /// [`Text.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertPointFromNode)
-    pub fn convert_point_from_node1(
+    pub fn convert_point_from_node_with_options(
         &self,
         point: &DOMPointInit,
         from: &Any,

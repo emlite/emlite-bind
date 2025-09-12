@@ -125,16 +125,18 @@ impl AnalyserNode {
 
 impl AnalyserNode {
     /// The `new AnalyserNode(..)` constructor, creating a new AnalyserNode instance
-    pub fn new0(context: &BaseAudioContext) -> AnalyserNode {
+    pub fn new(context: &BaseAudioContext) -> AnalyserNode {
         Self {
             inner: Any::global("AnalyserNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl AnalyserNode {
     /// The `new AnalyserNode(..)` constructor, creating a new AnalyserNode instance
-    pub fn new1(context: &BaseAudioContext, options: &AnalyserOptions) -> AnalyserNode {
+    pub fn new_with_options(context: &BaseAudioContext, options: &AnalyserOptions) -> AnalyserNode {
         Self {
             inner: Any::global("AnalyserNode")
                 .new(&[context.into(), options.into()])
@@ -142,6 +144,7 @@ impl AnalyserNode {
         }
     }
 }
+
 impl AnalyserNode {
     /// The getFloatFrequencyData method.
     /// [`AnalyserNode.getFloatFrequencyData`](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatFrequencyData)

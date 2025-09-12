@@ -89,12 +89,14 @@ impl SVGGraphicsElement {
 impl SVGGraphicsElement {
     /// The getBBox method.
     /// [`SVGGraphicsElement.getBBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox)
-    pub fn get_b_box0(&self) -> DOMRect {
+    pub fn get_b_box(&self) -> DOMRect {
         self.inner.call("getBBox", &[]).as_::<DOMRect>()
     }
+}
+impl SVGGraphicsElement {
     /// The getBBox method.
     /// [`SVGGraphicsElement.getBBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox)
-    pub fn get_b_box1(&self, options: &SVGBoundingBoxOptions) -> DOMRect {
+    pub fn get_b_box_with_options(&self, options: &SVGBoundingBoxOptions) -> DOMRect {
         self.inner
             .call("getBBox", &[options.into()])
             .as_::<DOMRect>()

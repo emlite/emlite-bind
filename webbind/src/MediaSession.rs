@@ -103,12 +103,14 @@ impl MediaSession {
 impl MediaSession {
     /// The setPositionState method.
     /// [`MediaSession.setPositionState`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setPositionState)
-    pub fn set_position_state0(&self) -> Undefined {
+    pub fn set_position_state(&self) -> Undefined {
         self.inner.call("setPositionState", &[]).as_::<Undefined>()
     }
+}
+impl MediaSession {
     /// The setPositionState method.
     /// [`MediaSession.setPositionState`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setPositionState)
-    pub fn set_position_state1(&self, state: &MediaPositionState) -> Undefined {
+    pub fn set_position_state_with_state(&self, state: &MediaPositionState) -> Undefined {
         self.inner
             .call("setPositionState", &[state.into()])
             .as_::<Undefined>()

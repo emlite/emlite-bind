@@ -105,14 +105,16 @@ impl Translator {
 impl Translator {
     /// The translate method.
     /// [`Translator.translate`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translate)
-    pub fn translate0(&self, input: &JsString) -> Promise<JsString> {
+    pub fn translate(&self, input: &JsString) -> Promise<JsString> {
         self.inner
             .call("translate", &[input.into()])
             .as_::<Promise<JsString>>()
     }
+}
+impl Translator {
     /// The translate method.
     /// [`Translator.translate`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translate)
-    pub fn translate1(
+    pub fn translate_with_options(
         &self,
         input: &JsString,
         options: &TranslatorTranslateOptions,
@@ -125,14 +127,16 @@ impl Translator {
 impl Translator {
     /// The translateStreaming method.
     /// [`Translator.translateStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translateStreaming)
-    pub fn translate_streaming0(&self, input: &JsString) -> ReadableStream {
+    pub fn translate_streaming(&self, input: &JsString) -> ReadableStream {
         self.inner
             .call("translateStreaming", &[input.into()])
             .as_::<ReadableStream>()
     }
+}
+impl Translator {
     /// The translateStreaming method.
     /// [`Translator.translateStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translateStreaming)
-    pub fn translate_streaming1(
+    pub fn translate_streaming_with_options(
         &self,
         input: &JsString,
         options: &TranslatorTranslateOptions,
@@ -145,14 +149,16 @@ impl Translator {
 impl Translator {
     /// The measureInputUsage method.
     /// [`Translator.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
+    pub fn measure_input_usage(&self, input: &JsString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
     }
+}
+impl Translator {
     /// The measureInputUsage method.
     /// [`Translator.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/measureInputUsage)
-    pub fn measure_input_usage1(
+    pub fn measure_input_usage_with_options(
         &self,
         input: &JsString,
         options: &TranslatorTranslateOptions,

@@ -159,14 +159,16 @@ impl EditContext {
 
 impl EditContext {
     /// The `new EditContext(..)` constructor, creating a new EditContext instance
-    pub fn new0() -> EditContext {
+    pub fn new() -> EditContext {
         Self {
             inner: Any::global("EditContext").new(&[]).as_::<EventTarget>(),
         }
     }
+}
 
+impl EditContext {
     /// The `new EditContext(..)` constructor, creating a new EditContext instance
-    pub fn new1(options: &EditContextInit) -> EditContext {
+    pub fn new_with_options(options: &EditContextInit) -> EditContext {
         Self {
             inner: Any::global("EditContext")
                 .new(&[options.into()])
@@ -174,6 +176,7 @@ impl EditContext {
         }
     }
 }
+
 impl EditContext {
     /// The updateText method.
     /// [`EditContext.updateText`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateText)

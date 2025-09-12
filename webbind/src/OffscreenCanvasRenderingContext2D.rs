@@ -523,12 +523,14 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The setTransform method.
     /// [`OffscreenCanvasRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/setTransform)
-    pub fn set_transform1(&self) -> Undefined {
+    pub fn set_transform_2_2(&self) -> Undefined {
         self.inner.call("setTransform", &[]).as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The setTransform method.
     /// [`OffscreenCanvasRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/setTransform)
-    pub fn set_transform2(&self, transform: &DOMMatrix2DInit) -> Undefined {
+    pub fn set_transform_with_transform(&self, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("setTransform", &[transform.into()])
             .as_::<Undefined>()
@@ -638,12 +640,14 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The fill method.
     /// [`OffscreenCanvasRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fill)
-    pub fn fill0(&self) -> Undefined {
+    pub fn fill(&self) -> Undefined {
         self.inner.call("fill", &[]).as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The fill method.
     /// [`OffscreenCanvasRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fill)
-    pub fn fill1(&self, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn fill_with_fill_rule(&self, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("fill", &[fill_rule.into()])
             .as_::<Undefined>()
@@ -652,12 +656,14 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The fill method.
     /// [`OffscreenCanvasRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fill)
-    pub fn fill2(&self, path: &Path2D) -> Undefined {
+    pub fn fill_with_path(&self, path: &Path2D) -> Undefined {
         self.inner.call("fill", &[path.into()]).as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The fill method.
     /// [`OffscreenCanvasRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fill)
-    pub fn fill3(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn fill_with_fill_rule_2(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("fill", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
@@ -673,19 +679,21 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The stroke method.
     /// [`OffscreenCanvasRenderingContext2D.stroke`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/stroke)
-    pub fn stroke1(&self, path: &Path2D) -> Undefined {
+    pub fn stroke_with_path(&self, path: &Path2D) -> Undefined {
         self.inner.call("stroke", &[path.into()]).as_::<Undefined>()
     }
 }
 impl OffscreenCanvasRenderingContext2D {
     /// The clip method.
     /// [`OffscreenCanvasRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/clip)
-    pub fn clip0(&self) -> Undefined {
+    pub fn clip(&self) -> Undefined {
         self.inner.call("clip", &[]).as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The clip method.
     /// [`OffscreenCanvasRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/clip)
-    pub fn clip1(&self, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn clip_with_fill_rule(&self, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("clip", &[fill_rule.into()])
             .as_::<Undefined>()
@@ -694,12 +702,14 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The clip method.
     /// [`OffscreenCanvasRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/clip)
-    pub fn clip2(&self, path: &Path2D) -> Undefined {
+    pub fn clip_with_path(&self, path: &Path2D) -> Undefined {
         self.inner.call("clip", &[path.into()]).as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The clip method.
     /// [`OffscreenCanvasRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/clip)
-    pub fn clip3(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn clip_with_fill_rule_2(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("clip", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
@@ -708,14 +718,21 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The isPointInPath method.
     /// [`OffscreenCanvasRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path0(&self, x: f64, y: f64) -> bool {
+    pub fn is_point_in_path(&self, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInPath", &[x.into(), y.into()])
             .as_::<bool>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The isPointInPath method.
     /// [`OffscreenCanvasRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path1(&self, x: f64, y: f64, fill_rule: &CanvasFillRule) -> bool {
+    pub fn is_point_in_path_with_fill_rule(
+        &self,
+        x: f64,
+        y: f64,
+        fill_rule: &CanvasFillRule,
+    ) -> bool {
         self.inner
             .call("isPointInPath", &[x.into(), y.into(), fill_rule.into()])
             .as_::<bool>()
@@ -724,14 +741,16 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The isPointInPath method.
     /// [`OffscreenCanvasRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path2(&self, path: &Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_path_with_path_and_x_and_y(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInPath", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The isPointInPath method.
     /// [`OffscreenCanvasRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path3(
+    pub fn is_point_in_path_with_fill_rule_2(
         &self,
         path: &Path2D,
         x: f64,
@@ -758,7 +777,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The isPointInStroke method.
     /// [`OffscreenCanvasRenderingContext2D.isPointInStroke`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/isPointInStroke)
-    pub fn is_point_in_stroke1(&self, path: &Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_stroke_with_path_and_x_and_y(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInStroke", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
@@ -767,14 +786,22 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The fillText method.
     /// [`OffscreenCanvasRenderingContext2D.fillText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fillText)
-    pub fn fill_text0(&self, text: &JsString, x: f64, y: f64) -> Undefined {
+    pub fn fill_text(&self, text: &JsString, x: f64, y: f64) -> Undefined {
         self.inner
             .call("fillText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The fillText method.
     /// [`OffscreenCanvasRenderingContext2D.fillText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fillText)
-    pub fn fill_text1(&self, text: &JsString, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn fill_text_with_max_width(
+        &self,
+        text: &JsString,
+        x: f64,
+        y: f64,
+        max_width: f64,
+    ) -> Undefined {
         self.inner
             .call(
                 "fillText",
@@ -786,14 +813,22 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The strokeText method.
     /// [`OffscreenCanvasRenderingContext2D.strokeText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/strokeText)
-    pub fn stroke_text0(&self, text: &JsString, x: f64, y: f64) -> Undefined {
+    pub fn stroke_text(&self, text: &JsString, x: f64, y: f64) -> Undefined {
         self.inner
             .call("strokeText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The strokeText method.
     /// [`OffscreenCanvasRenderingContext2D.strokeText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/strokeText)
-    pub fn stroke_text1(&self, text: &JsString, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn stroke_text_with_max_width(
+        &self,
+        text: &JsString,
+        x: f64,
+        y: f64,
+        max_width: f64,
+    ) -> Undefined {
         self.inner
             .call(
                 "strokeText",
@@ -823,7 +858,14 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The drawImage method.
     /// [`OffscreenCanvasRenderingContext2D.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/drawImage)
-    pub fn draw_image1(&self, image: &Any, dx: f64, dy: f64, dw: f64, dh: f64) -> Undefined {
+    pub fn draw_image_with_image_and_dx_and_dy_and_dw_and_dh(
+        &self,
+        image: &Any,
+        dx: f64,
+        dy: f64,
+        dw: f64,
+        dh: f64,
+    ) -> Undefined {
         self.inner
             .call(
                 "drawImage",
@@ -835,7 +877,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The drawImage method.
     /// [`OffscreenCanvasRenderingContext2D.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/drawImage)
-    pub fn draw_image2(
+    pub fn draw_image_with_image_and_sx_and_sy_and_sw_and_sh_and_dx_and_dy_and_dw_and_dh(
         &self,
         image: &Any,
         sx: f64,
@@ -868,14 +910,21 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The createImageData method.
     /// [`OffscreenCanvasRenderingContext2D.createImageData`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/createImageData)
-    pub fn create_image_data0(&self, sw: i32, sh: i32) -> ImageData {
+    pub fn create_image_data(&self, sw: i32, sh: i32) -> ImageData {
         self.inner
             .call("createImageData", &[sw.into(), sh.into()])
             .as_::<ImageData>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The createImageData method.
     /// [`OffscreenCanvasRenderingContext2D.createImageData`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/createImageData)
-    pub fn create_image_data1(&self, sw: i32, sh: i32, settings: &ImageDataSettings) -> ImageData {
+    pub fn create_image_data_with_settings(
+        &self,
+        sw: i32,
+        sh: i32,
+        settings: &ImageDataSettings,
+    ) -> ImageData {
         self.inner
             .call("createImageData", &[sw.into(), sh.into(), settings.into()])
             .as_::<ImageData>()
@@ -884,7 +933,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The createImageData method.
     /// [`OffscreenCanvasRenderingContext2D.createImageData`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/createImageData)
-    pub fn create_image_data2(&self, image_data: &ImageData) -> ImageData {
+    pub fn create_image_data_with_image_data(&self, image_data: &ImageData) -> ImageData {
         self.inner
             .call("createImageData", &[image_data.into()])
             .as_::<ImageData>()
@@ -893,7 +942,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The getImageData method.
     /// [`OffscreenCanvasRenderingContext2D.getImageData`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/getImageData)
-    pub fn get_image_data0(&self, sx: i32, sy: i32, sw: i32, sh: i32) -> ImageData {
+    pub fn get_image_data(&self, sx: i32, sy: i32, sw: i32, sh: i32) -> ImageData {
         self.inner
             .call(
                 "getImageData",
@@ -901,9 +950,11 @@ impl OffscreenCanvasRenderingContext2D {
             )
             .as_::<ImageData>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The getImageData method.
     /// [`OffscreenCanvasRenderingContext2D.getImageData`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/getImageData)
-    pub fn get_image_data1(
+    pub fn get_image_data_with_settings(
         &self,
         sx: i32,
         sy: i32,
@@ -931,7 +982,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The putImageData method.
     /// [`OffscreenCanvasRenderingContext2D.putImageData`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/putImageData)
-    pub fn put_image_data1(
+    pub fn put_image_data_with_image_data_and_dx_and_dy_and_dirty_x_and_dirty_y_and_dirty_width_and_dirty_height(
         &self,
         image_data: &ImageData,
         dx: i32,
@@ -1061,14 +1112,16 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The roundRect method.
     /// [`OffscreenCanvasRenderingContext2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/roundRect)
-    pub fn round_rect0(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
+    pub fn round_rect(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
         self.inner
             .call("roundRect", &[x.into(), y.into(), w.into(), h.into()])
             .as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The roundRect method.
     /// [`OffscreenCanvasRenderingContext2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/roundRect)
-    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
+    pub fn round_rect_with_radii(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
         self.inner
             .call(
                 "roundRect",
@@ -1080,7 +1133,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The arc method.
     /// [`OffscreenCanvasRenderingContext2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/arc)
-    pub fn arc0(&self, x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -> Undefined {
+    pub fn arc(&self, x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -> Undefined {
         self.inner
             .call(
                 "arc",
@@ -1094,9 +1147,11 @@ impl OffscreenCanvasRenderingContext2D {
             )
             .as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The arc method.
     /// [`OffscreenCanvasRenderingContext2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/arc)
-    pub fn arc1(
+    pub fn arc_with_counterclockwise(
         &self,
         x: f64,
         y: f64,
@@ -1123,7 +1178,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The ellipse method.
     /// [`OffscreenCanvasRenderingContext2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/ellipse)
-    pub fn ellipse0(
+    pub fn ellipse(
         &self,
         x: f64,
         y: f64,
@@ -1148,9 +1203,11 @@ impl OffscreenCanvasRenderingContext2D {
             )
             .as_::<Undefined>()
     }
+}
+impl OffscreenCanvasRenderingContext2D {
     /// The ellipse method.
     /// [`OffscreenCanvasRenderingContext2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/ellipse)
-    pub fn ellipse1(
+    pub fn ellipse_with_counterclockwise(
         &self,
         x: f64,
         y: f64,

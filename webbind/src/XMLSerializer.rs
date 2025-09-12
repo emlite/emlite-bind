@@ -71,6 +71,7 @@ impl XMLSerializer {
         }
     }
 }
+
 impl XMLSerializer {
     /// The serializeToString method.
     /// [`XMLSerializer.serializeToString`](https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer/serializeToString)

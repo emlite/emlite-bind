@@ -100,16 +100,21 @@ impl DeviceMotionEvent {
 
 impl DeviceMotionEvent {
     /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
-    pub fn new0(type_: &JsString) -> DeviceMotionEvent {
+    pub fn new(type_: &JsString) -> DeviceMotionEvent {
         Self {
             inner: Any::global("DeviceMotionEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl DeviceMotionEvent {
     /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &DeviceMotionEventInit) -> DeviceMotionEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &DeviceMotionEventInit,
+    ) -> DeviceMotionEvent {
         Self {
             inner: Any::global("DeviceMotionEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -117,6 +122,7 @@ impl DeviceMotionEvent {
         }
     }
 }
+
 impl DeviceMotionEvent {
     /// The requestPermission method.
     /// [`DeviceMotionEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/requestPermission)

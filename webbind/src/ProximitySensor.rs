@@ -87,14 +87,16 @@ impl ProximitySensor {
 
 impl ProximitySensor {
     /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
-    pub fn new0() -> ProximitySensor {
+    pub fn new() -> ProximitySensor {
         Self {
             inner: Any::global("ProximitySensor").new(&[]).as_::<Sensor>(),
         }
     }
+}
 
+impl ProximitySensor {
     /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
-    pub fn new1(sensor_options: &SensorOptions) -> ProximitySensor {
+    pub fn new_with_sensor_options(sensor_options: &SensorOptions) -> ProximitySensor {
         Self {
             inner: Any::global("ProximitySensor")
                 .new(&[sensor_options.into()])

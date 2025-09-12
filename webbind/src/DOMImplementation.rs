@@ -83,14 +83,16 @@ impl DOMImplementation {
 impl DOMImplementation {
     /// The createDocument method.
     /// [`DOMImplementation.createDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocument)
-    pub fn create_document0(&self, namespace: &JsString, qualified_name: &JsString) -> XMLDocument {
+    pub fn create_document(&self, namespace: &JsString, qualified_name: &JsString) -> XMLDocument {
         self.inner
             .call("createDocument", &[namespace.into(), qualified_name.into()])
             .as_::<XMLDocument>()
     }
+}
+impl DOMImplementation {
     /// The createDocument method.
     /// [`DOMImplementation.createDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocument)
-    pub fn create_document1(
+    pub fn create_document_with_doctype(
         &self,
         namespace: &JsString,
         qualified_name: &JsString,
@@ -107,12 +109,14 @@ impl DOMImplementation {
 impl DOMImplementation {
     /// The createHTMLDocument method.
     /// [`DOMImplementation.createHTMLDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
-    pub fn create_html_document0(&self) -> Document {
+    pub fn create_html_document(&self) -> Document {
         self.inner.call("createHTMLDocument", &[]).as_::<Document>()
     }
+}
+impl DOMImplementation {
     /// The createHTMLDocument method.
     /// [`DOMImplementation.createHTMLDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
-    pub fn create_html_document1(&self, title: &JsString) -> Document {
+    pub fn create_html_document_with_title(&self, title: &JsString) -> Document {
         self.inner
             .call("createHTMLDocument", &[title.into()])
             .as_::<Document>()

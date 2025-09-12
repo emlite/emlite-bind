@@ -169,12 +169,14 @@ impl SVGElement {
 impl SVGElement {
     /// The focus method.
     /// [`SVGElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/focus)
-    pub fn focus0(&self) -> Undefined {
+    pub fn focus(&self) -> Undefined {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
+}
+impl SVGElement {
     /// The focus method.
     /// [`SVGElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/focus)
-    pub fn focus1(&self, options: &FocusOptions) -> Undefined {
+    pub fn focus_with_options(&self, options: &FocusOptions) -> Undefined {
         self.inner
             .call("focus", &[options.into()])
             .as_::<Undefined>()

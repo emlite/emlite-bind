@@ -83,15 +83,18 @@ impl PerformanceObserver {
         }
     }
 }
+
 impl PerformanceObserver {
     /// The observe method.
     /// [`PerformanceObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/observe)
-    pub fn observe0(&self) -> Undefined {
+    pub fn observe(&self) -> Undefined {
         self.inner.call("observe", &[]).as_::<Undefined>()
     }
+}
+impl PerformanceObserver {
     /// The observe method.
     /// [`PerformanceObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/observe)
-    pub fn observe1(&self, options: &PerformanceObserverInit) -> Undefined {
+    pub fn observe_with_options(&self, options: &PerformanceObserverInit) -> Undefined {
         self.inner
             .call("observe", &[options.into()])
             .as_::<Undefined>()

@@ -87,14 +87,16 @@ impl CSSStyleSheet {
 
 impl CSSStyleSheet {
     /// The `new CSSStyleSheet(..)` constructor, creating a new CSSStyleSheet instance
-    pub fn new0() -> CSSStyleSheet {
+    pub fn new() -> CSSStyleSheet {
         Self {
             inner: Any::global("CSSStyleSheet").new(&[]).as_::<StyleSheet>(),
         }
     }
+}
 
+impl CSSStyleSheet {
     /// The `new CSSStyleSheet(..)` constructor, creating a new CSSStyleSheet instance
-    pub fn new1(options: &CSSStyleSheetInit) -> CSSStyleSheet {
+    pub fn new_with_options(options: &CSSStyleSheetInit) -> CSSStyleSheet {
         Self {
             inner: Any::global("CSSStyleSheet")
                 .new(&[options.into()])
@@ -102,15 +104,18 @@ impl CSSStyleSheet {
         }
     }
 }
+
 impl CSSStyleSheet {
     /// The insertRule method.
     /// [`CSSStyleSheet.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule)
-    pub fn insert_rule0(&self, rule: &JsString) -> u32 {
+    pub fn insert_rule(&self, rule: &JsString) -> u32 {
         self.inner.call("insertRule", &[rule.into()]).as_::<u32>()
     }
+}
+impl CSSStyleSheet {
     /// The insertRule method.
     /// [`CSSStyleSheet.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule)
-    pub fn insert_rule1(&self, rule: &JsString, index: u32) -> u32 {
+    pub fn insert_rule_with_index(&self, rule: &JsString, index: u32) -> u32 {
         self.inner
             .call("insertRule", &[rule.into(), index.into()])
             .as_::<u32>()
@@ -146,24 +151,35 @@ impl CSSStyleSheet {
 impl CSSStyleSheet {
     /// The addRule method.
     /// [`CSSStyleSheet.addRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/addRule)
-    pub fn add_rule0(&self) -> i32 {
+    pub fn add_rule(&self) -> i32 {
         self.inner.call("addRule", &[]).as_::<i32>()
     }
+}
+impl CSSStyleSheet {
     /// The addRule method.
     /// [`CSSStyleSheet.addRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/addRule)
-    pub fn add_rule1(&self, selector: &JsString) -> i32 {
+    pub fn add_rule_with_selector(&self, selector: &JsString) -> i32 {
         self.inner.call("addRule", &[selector.into()]).as_::<i32>()
     }
+}
+impl CSSStyleSheet {
     /// The addRule method.
     /// [`CSSStyleSheet.addRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/addRule)
-    pub fn add_rule2(&self, selector: &JsString, style: &JsString) -> i32 {
+    pub fn add_rule_with_selector_and_style(&self, selector: &JsString, style: &JsString) -> i32 {
         self.inner
             .call("addRule", &[selector.into(), style.into()])
             .as_::<i32>()
     }
+}
+impl CSSStyleSheet {
     /// The addRule method.
     /// [`CSSStyleSheet.addRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/addRule)
-    pub fn add_rule3(&self, selector: &JsString, style: &JsString, index: u32) -> i32 {
+    pub fn add_rule_with_selector_and_style_and_index(
+        &self,
+        selector: &JsString,
+        style: &JsString,
+        index: u32,
+    ) -> i32 {
         self.inner
             .call("addRule", &[selector.into(), style.into(), index.into()])
             .as_::<i32>()
@@ -172,12 +188,14 @@ impl CSSStyleSheet {
 impl CSSStyleSheet {
     /// The removeRule method.
     /// [`CSSStyleSheet.removeRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/removeRule)
-    pub fn remove_rule0(&self) -> Undefined {
+    pub fn remove_rule(&self) -> Undefined {
         self.inner.call("removeRule", &[]).as_::<Undefined>()
     }
+}
+impl CSSStyleSheet {
     /// The removeRule method.
     /// [`CSSStyleSheet.removeRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/removeRule)
-    pub fn remove_rule1(&self, index: u32) -> Undefined {
+    pub fn remove_rule_with_index(&self, index: u32) -> Undefined {
         self.inner
             .call("removeRule", &[index.into()])
             .as_::<Undefined>()

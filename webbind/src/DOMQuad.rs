@@ -94,39 +94,51 @@ impl DOMQuad {
 
 impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
-    pub fn new0() -> DOMQuad {
+    pub fn new() -> DOMQuad {
         Self {
             inner: Any::global("DOMQuad").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
-    pub fn new1(p1: &DOMPointInit) -> DOMQuad {
+    pub fn new_with_p1(p1: &DOMPointInit) -> DOMQuad {
         Self {
             inner: Any::global("DOMQuad").new(&[p1.into()]).as_::<Any>(),
         }
     }
+}
 
+impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
-    pub fn new2(p1: &DOMPointInit, p2: &DOMPointInit) -> DOMQuad {
+    pub fn new_with_p1_and_p2(p1: &DOMPointInit, p2: &DOMPointInit) -> DOMQuad {
         Self {
             inner: Any::global("DOMQuad")
                 .new(&[p1.into(), p2.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
-    pub fn new3(p1: &DOMPointInit, p2: &DOMPointInit, p3: &DOMPointInit) -> DOMQuad {
+    pub fn new_with_p1_and_p2_and_p3(
+        p1: &DOMPointInit,
+        p2: &DOMPointInit,
+        p3: &DOMPointInit,
+    ) -> DOMQuad {
         Self {
             inner: Any::global("DOMQuad")
                 .new(&[p1.into(), p2.into(), p3.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
-    pub fn new4(
+    pub fn new_with_p1_and_p2_and_p3_and_p4(
         p1: &DOMPointInit,
         p2: &DOMPointInit,
         p3: &DOMPointInit,
@@ -139,17 +151,20 @@ impl DOMQuad {
         }
     }
 }
+
 impl DOMQuad {
     /// The fromRect method.
     /// [`DOMQuad.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromRect)
-    pub fn from_rect0() -> DOMQuad {
+    pub fn from_rect() -> DOMQuad {
         Any::global("DOMQuad")
             .call("fromRect", &[])
             .as_::<DOMQuad>()
     }
+}
+impl DOMQuad {
     /// The fromRect method.
     /// [`DOMQuad.fromRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromRect)
-    pub fn from_rect1(other: &DOMRectInit) -> DOMQuad {
+    pub fn from_rect_with_other(other: &DOMRectInit) -> DOMQuad {
         Any::global("DOMQuad")
             .call("fromRect", &[other.into()])
             .as_::<DOMQuad>()
@@ -158,14 +173,16 @@ impl DOMQuad {
 impl DOMQuad {
     /// The fromQuad method.
     /// [`DOMQuad.fromQuad`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromQuad)
-    pub fn from_quad0() -> DOMQuad {
+    pub fn from_quad() -> DOMQuad {
         Any::global("DOMQuad")
             .call("fromQuad", &[])
             .as_::<DOMQuad>()
     }
+}
+impl DOMQuad {
     /// The fromQuad method.
     /// [`DOMQuad.fromQuad`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/fromQuad)
-    pub fn from_quad1(other: &DOMQuadInit) -> DOMQuad {
+    pub fn from_quad_with_other(other: &DOMQuadInit) -> DOMQuad {
         Any::global("DOMQuad")
             .call("fromQuad", &[other.into()])
             .as_::<DOMQuad>()

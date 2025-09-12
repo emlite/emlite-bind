@@ -107,6 +107,7 @@ impl CaptureController {
         }
     }
 }
+
 impl CaptureController {
     /// The setFocusBehavior method.
     /// [`CaptureController.setFocusBehavior`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/setFocusBehavior)

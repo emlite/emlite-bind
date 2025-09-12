@@ -114,6 +114,7 @@ impl AudioData {
         }
     }
 }
+
 impl AudioData {
     /// The allocationSize method.
     /// [`AudioData.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData/allocationSize)

@@ -82,16 +82,18 @@ impl CSSParserQualifiedRule {
 
 impl CSSParserQualifiedRule {
     /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
-    pub fn new0(prelude: &TypedArray<Any>) -> CSSParserQualifiedRule {
+    pub fn new(prelude: &TypedArray<Any>) -> CSSParserQualifiedRule {
         Self {
             inner: Any::global("CSSParserQualifiedRule")
                 .new(&[prelude.into()])
                 .as_::<CSSParserRule>(),
         }
     }
+}
 
+impl CSSParserQualifiedRule {
     /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
-    pub fn new1(
+    pub fn new_with_body(
         prelude: &TypedArray<Any>,
         body: &TypedArray<CSSParserRule>,
     ) -> CSSParserQualifiedRule {

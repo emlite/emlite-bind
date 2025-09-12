@@ -73,17 +73,20 @@ impl XRMediaBinding {
         }
     }
 }
+
 impl XRMediaBinding {
     /// The createQuadLayer method.
     /// [`XRMediaBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createQuadLayer)
-    pub fn create_quad_layer0(&self, video: &HTMLVideoElement) -> XRQuadLayer {
+    pub fn create_quad_layer(&self, video: &HTMLVideoElement) -> XRQuadLayer {
         self.inner
             .call("createQuadLayer", &[video.into()])
             .as_::<XRQuadLayer>()
     }
+}
+impl XRMediaBinding {
     /// The createQuadLayer method.
     /// [`XRMediaBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createQuadLayer)
-    pub fn create_quad_layer1(
+    pub fn create_quad_layer_with_init(
         &self,
         video: &HTMLVideoElement,
         init: &XRMediaQuadLayerInit,
@@ -96,14 +99,16 @@ impl XRMediaBinding {
 impl XRMediaBinding {
     /// The createCylinderLayer method.
     /// [`XRMediaBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createCylinderLayer)
-    pub fn create_cylinder_layer0(&self, video: &HTMLVideoElement) -> XRCylinderLayer {
+    pub fn create_cylinder_layer(&self, video: &HTMLVideoElement) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[video.into()])
             .as_::<XRCylinderLayer>()
     }
+}
+impl XRMediaBinding {
     /// The createCylinderLayer method.
     /// [`XRMediaBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createCylinderLayer)
-    pub fn create_cylinder_layer1(
+    pub fn create_cylinder_layer_with_init(
         &self,
         video: &HTMLVideoElement,
         init: &XRMediaCylinderLayerInit,
@@ -116,14 +121,16 @@ impl XRMediaBinding {
 impl XRMediaBinding {
     /// The createEquirectLayer method.
     /// [`XRMediaBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createEquirectLayer)
-    pub fn create_equirect_layer0(&self, video: &HTMLVideoElement) -> XREquirectLayer {
+    pub fn create_equirect_layer(&self, video: &HTMLVideoElement) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[video.into()])
             .as_::<XREquirectLayer>()
     }
+}
+impl XRMediaBinding {
     /// The createEquirectLayer method.
     /// [`XRMediaBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createEquirectLayer)
-    pub fn create_equirect_layer1(
+    pub fn create_equirect_layer_with_init(
         &self,
         video: &HTMLVideoElement,
         init: &XRMediaEquirectLayerInit,

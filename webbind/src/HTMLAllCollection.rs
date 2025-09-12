@@ -80,12 +80,14 @@ impl HTMLAllCollection {
 impl HTMLAllCollection {
     /// The item method.
     /// [`HTMLAllCollection.item`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAllCollection/item)
-    pub fn item0(&self) -> Any {
+    pub fn item(&self) -> Any {
         self.inner.call("item", &[]).as_::<Any>()
     }
+}
+impl HTMLAllCollection {
     /// The item method.
     /// [`HTMLAllCollection.item`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAllCollection/item)
-    pub fn item1(&self, name_or_index: &JsString) -> Any {
+    pub fn item_with_name_or_index(&self, name_or_index: &JsString) -> Any {
         self.inner
             .call("item", &[name_or_index.into()])
             .as_::<Any>()

@@ -80,25 +80,29 @@ impl IdentityCredentialError {
 
 impl IdentityCredentialError {
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
-    pub fn new0() -> IdentityCredentialError {
+    pub fn new() -> IdentityCredentialError {
         Self {
             inner: Any::global("IdentityCredentialError")
                 .new(&[])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl IdentityCredentialError {
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
-    pub fn new1(message: &JsString) -> IdentityCredentialError {
+    pub fn new_with_message(message: &JsString) -> IdentityCredentialError {
         Self {
             inner: Any::global("IdentityCredentialError")
                 .new(&[message.into()])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl IdentityCredentialError {
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
-    pub fn new2(
+    pub fn new_with_message_and_options(
         message: &JsString,
         options: &IdentityCredentialErrorInit,
     ) -> IdentityCredentialError {

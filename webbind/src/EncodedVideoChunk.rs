@@ -102,6 +102,7 @@ impl EncodedVideoChunk {
         }
     }
 }
+
 impl EncodedVideoChunk {
     /// The copyTo method.
     /// [`EncodedVideoChunk.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk/copyTo)

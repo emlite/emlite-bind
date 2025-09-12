@@ -80,25 +80,32 @@ impl QuotaExceededError {
 
 impl QuotaExceededError {
     /// The `new QuotaExceededError(..)` constructor, creating a new QuotaExceededError instance
-    pub fn new0() -> QuotaExceededError {
+    pub fn new() -> QuotaExceededError {
         Self {
             inner: Any::global("QuotaExceededError")
                 .new(&[])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl QuotaExceededError {
     /// The `new QuotaExceededError(..)` constructor, creating a new QuotaExceededError instance
-    pub fn new1(message: &JsString) -> QuotaExceededError {
+    pub fn new_with_message(message: &JsString) -> QuotaExceededError {
         Self {
             inner: Any::global("QuotaExceededError")
                 .new(&[message.into()])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl QuotaExceededError {
     /// The `new QuotaExceededError(..)` constructor, creating a new QuotaExceededError instance
-    pub fn new2(message: &JsString, options: &QuotaExceededErrorOptions) -> QuotaExceededError {
+    pub fn new_with_message_and_options(
+        message: &JsString,
+        options: &QuotaExceededErrorOptions,
+    ) -> QuotaExceededError {
         Self {
             inner: Any::global("QuotaExceededError")
                 .new(&[message.into(), options.into()])

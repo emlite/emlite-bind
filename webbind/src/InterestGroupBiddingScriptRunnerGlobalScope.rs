@@ -66,12 +66,14 @@ jsbind::utils::impl_dyn_cast!(InterestGroupBiddingScriptRunnerGlobalScope);
 impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setBid method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setBid`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setBid)
-    pub fn set_bid0(&self) -> bool {
+    pub fn set_bid(&self) -> bool {
         self.inner.call("setBid", &[]).as_::<bool>()
     }
+}
+impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setBid method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setBid`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setBid)
-    pub fn set_bid1(&self, one_or_many_bids: &Any) -> bool {
+    pub fn set_bid_with_one_or_many_bids(&self, one_or_many_bids: &Any) -> bool {
         self.inner
             .call("setBid", &[one_or_many_bids.into()])
             .as_::<bool>()
@@ -89,14 +91,20 @@ impl InterestGroupBiddingScriptRunnerGlobalScope {
 impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setPrioritySignalsOverride method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setPrioritySignalsOverride`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setPrioritySignalsOverride)
-    pub fn set_priority_signals_override0(&self, key: &JsString) -> Undefined {
+    pub fn set_priority_signals_override(&self, key: &JsString) -> Undefined {
         self.inner
             .call("setPrioritySignalsOverride", &[key.into()])
             .as_::<Undefined>()
     }
+}
+impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setPrioritySignalsOverride method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setPrioritySignalsOverride`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setPrioritySignalsOverride)
-    pub fn set_priority_signals_override1(&self, key: &JsString, priority: f64) -> Undefined {
+    pub fn set_priority_signals_override_with_priority(
+        &self,
+        key: &JsString,
+        priority: f64,
+    ) -> Undefined {
         self.inner
             .call("setPrioritySignalsOverride", &[key.into(), priority.into()])
             .as_::<Undefined>()

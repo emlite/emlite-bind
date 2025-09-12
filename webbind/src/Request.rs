@@ -199,14 +199,16 @@ impl Request {
 
 impl Request {
     /// The `new Request(..)` constructor, creating a new Request instance
-    pub fn new0(input: &Any) -> Request {
+    pub fn new(input: &Any) -> Request {
         Self {
             inner: Any::global("Request").new(&[input.into()]).as_::<Any>(),
         }
     }
+}
 
+impl Request {
     /// The `new Request(..)` constructor, creating a new Request instance
-    pub fn new1(input: &Any, init: &RequestInit) -> Request {
+    pub fn new_with_init(input: &Any, init: &RequestInit) -> Request {
         Self {
             inner: Any::global("Request")
                 .new(&[input.into(), init.into()])
@@ -214,6 +216,7 @@ impl Request {
         }
     }
 }
+
 impl Request {
     /// The clone method.
     /// [`Request.clone`](https://developer.mozilla.org/en-US/docs/Web/API/Request/clone)

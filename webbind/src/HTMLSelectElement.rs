@@ -247,6 +247,7 @@ impl HTMLSelectElement {
         }
     }
 }
+
 impl HTMLSelectElement {
     /// The item method.
     /// [`HTMLSelectElement.item`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/item)
@@ -268,12 +269,14 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// The add method.
     /// [`HTMLSelectElement.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add)
-    pub fn add0(&self, element: &Any) -> Undefined {
+    pub fn add(&self, element: &Any) -> Undefined {
         self.inner.call("add", &[element.into()]).as_::<Undefined>()
     }
+}
+impl HTMLSelectElement {
     /// The add method.
     /// [`HTMLSelectElement.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add)
-    pub fn add1(&self, element: &Any, before: &Any) -> Undefined {
+    pub fn add_with_before(&self, element: &Any, before: &Any) -> Undefined {
         self.inner
             .call("add", &[element.into(), before.into()])
             .as_::<Undefined>()
@@ -289,7 +292,7 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// The remove method.
     /// [`HTMLSelectElement.remove`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove)
-    pub fn remove1(&self, index: i32) -> Undefined {
+    pub fn remove_with_index(&self, index: i32) -> Undefined {
         self.inner
             .call("remove", &[index.into()])
             .as_::<Undefined>()

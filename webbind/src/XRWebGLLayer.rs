@@ -114,16 +114,22 @@ impl XRWebGLLayer {
 
 impl XRWebGLLayer {
     /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
-    pub fn new0(session: &XRSession, context: &Any) -> XRWebGLLayer {
+    pub fn new(session: &XRSession, context: &Any) -> XRWebGLLayer {
         Self {
             inner: Any::global("XRWebGLLayer")
                 .new(&[session.into(), context.into()])
                 .as_::<XRLayer>(),
         }
     }
+}
 
+impl XRWebGLLayer {
     /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
-    pub fn new1(session: &XRSession, context: &Any, layer_init: &XRWebGLLayerInit) -> XRWebGLLayer {
+    pub fn new_with_layer_init(
+        session: &XRSession,
+        context: &Any,
+        layer_init: &XRWebGLLayerInit,
+    ) -> XRWebGLLayer {
         Self {
             inner: Any::global("XRWebGLLayer")
                 .new(&[session.into(), context.into(), layer_init.into()])
@@ -131,6 +137,7 @@ impl XRWebGLLayer {
         }
     }
 }
+
 impl XRWebGLLayer {
     /// The getViewport method.
     /// [`XRWebGLLayer.getViewport`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLLayer/getViewport)

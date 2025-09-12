@@ -105,14 +105,16 @@ impl BluetoothLEScanFilter {
 
 impl BluetoothLEScanFilter {
     /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
-    pub fn new0() -> BluetoothLEScanFilter {
+    pub fn new() -> BluetoothLEScanFilter {
         Self {
             inner: Any::global("BluetoothLEScanFilter").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl BluetoothLEScanFilter {
     /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
-    pub fn new1(init: &BluetoothLEScanFilterInit) -> BluetoothLEScanFilter {
+    pub fn new_with_init(init: &BluetoothLEScanFilterInit) -> BluetoothLEScanFilter {
         Self {
             inner: Any::global("BluetoothLEScanFilter")
                 .new(&[init.into()])

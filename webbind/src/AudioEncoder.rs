@@ -101,6 +101,7 @@ impl AudioEncoder {
         }
     }
 }
+
 impl AudioEncoder {
     /// The configure method.
     /// [`AudioEncoder.configure`](https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder/configure)

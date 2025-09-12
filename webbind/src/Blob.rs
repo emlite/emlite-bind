@@ -80,21 +80,28 @@ impl Blob {
 
 impl Blob {
     /// The `new Blob(..)` constructor, creating a new Blob instance
-    pub fn new0() -> Blob {
+    pub fn new() -> Blob {
         Self {
             inner: Any::global("Blob").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl Blob {
     /// The `new Blob(..)` constructor, creating a new Blob instance
-    pub fn new1(blob_parts: &TypedArray<Any>) -> Blob {
+    pub fn new_with_blob_parts(blob_parts: &TypedArray<Any>) -> Blob {
         Self {
             inner: Any::global("Blob").new(&[blob_parts.into()]).as_::<Any>(),
         }
     }
+}
 
+impl Blob {
     /// The `new Blob(..)` constructor, creating a new Blob instance
-    pub fn new2(blob_parts: &TypedArray<Any>, options: &BlobPropertyBag) -> Blob {
+    pub fn new_with_blob_parts_and_options(
+        blob_parts: &TypedArray<Any>,
+        options: &BlobPropertyBag,
+    ) -> Blob {
         Self {
             inner: Any::global("Blob")
                 .new(&[blob_parts.into(), options.into()])
@@ -102,27 +109,39 @@ impl Blob {
         }
     }
 }
+
 impl Blob {
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
-    pub fn slice0(&self) -> Blob {
+    pub fn slice(&self) -> Blob {
         self.inner.call("slice", &[]).as_::<Blob>()
     }
+}
+impl Blob {
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
-    pub fn slice1(&self, start: i64) -> Blob {
+    pub fn slice_with_start(&self, start: i64) -> Blob {
         self.inner.call("slice", &[start.into()]).as_::<Blob>()
     }
+}
+impl Blob {
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
-    pub fn slice2(&self, start: i64, end: i64) -> Blob {
+    pub fn slice_with_start_and_end(&self, start: i64, end: i64) -> Blob {
         self.inner
             .call("slice", &[start.into(), end.into()])
             .as_::<Blob>()
     }
+}
+impl Blob {
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
-    pub fn slice3(&self, start: i64, end: i64, content_type: &JsString) -> Blob {
+    pub fn slice_with_start_and_end_and_content_type(
+        &self,
+        start: i64,
+        end: i64,
+        content_type: &JsString,
+    ) -> Blob {
         self.inner
             .call("slice", &[start.into(), end.into(), content_type.into()])
             .as_::<Blob>()

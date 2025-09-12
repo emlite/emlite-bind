@@ -118,16 +118,18 @@ impl CSSOKLCH {
 
 impl CSSOKLCH {
     /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
-    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSOKLCH {
+    pub fn new(l: &Any, c: &Any, h: &Any) -> CSSOKLCH {
         Self {
             inner: Any::global("CSSOKLCH")
                 .new(&[l.into(), c.into(), h.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSOKLCH {
     /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
-    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSOKLCH {
+    pub fn new_with_alpha(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSOKLCH {
         Self {
             inner: Any::global("CSSOKLCH")
                 .new(&[l.into(), c.into(), h.into(), alpha.into()])

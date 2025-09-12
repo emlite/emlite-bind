@@ -98,14 +98,19 @@ impl SVGPathElement {
 impl SVGPathElement {
     /// The getPathData method.
     /// [`SVGPathElement.getPathData`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement/getPathData)
-    pub fn get_path_data0(&self) -> TypedArray<SVGPathSegment> {
+    pub fn get_path_data(&self) -> TypedArray<SVGPathSegment> {
         self.inner
             .call("getPathData", &[])
             .as_::<TypedArray<SVGPathSegment>>()
     }
+}
+impl SVGPathElement {
     /// The getPathData method.
     /// [`SVGPathElement.getPathData`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement/getPathData)
-    pub fn get_path_data1(&self, settings: &SVGPathDataSettings) -> TypedArray<SVGPathSegment> {
+    pub fn get_path_data_with_settings(
+        &self,
+        settings: &SVGPathDataSettings,
+    ) -> TypedArray<SVGPathSegment> {
         self.inner
             .call("getPathData", &[settings.into()])
             .as_::<TypedArray<SVGPathSegment>>()

@@ -65,16 +65,21 @@ jsbind::utils::impl_dyn_cast!(TextFormatUpdateEvent);
 
 impl TextFormatUpdateEvent {
     /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
-    pub fn new0(type_: &JsString) -> TextFormatUpdateEvent {
+    pub fn new(type_: &JsString) -> TextFormatUpdateEvent {
         Self {
             inner: Any::global("TextFormatUpdateEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl TextFormatUpdateEvent {
     /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
-    pub fn new1(type_: &JsString, options: &TextFormatUpdateEventInit) -> TextFormatUpdateEvent {
+    pub fn new_with_options(
+        type_: &JsString,
+        options: &TextFormatUpdateEventInit,
+    ) -> TextFormatUpdateEvent {
         Self {
             inner: Any::global("TextFormatUpdateEvent")
                 .new(&[type_.into(), options.into()])
@@ -82,6 +87,7 @@ impl TextFormatUpdateEvent {
         }
     }
 }
+
 impl TextFormatUpdateEvent {
     /// The getTextFormats method.
     /// [`TextFormatUpdateEvent.getTextFormats`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormatUpdateEvent/getTextFormats)

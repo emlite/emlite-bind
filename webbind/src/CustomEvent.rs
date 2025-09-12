@@ -73,16 +73,21 @@ impl CustomEvent {
 
 impl CustomEvent {
     /// The `new CustomEvent(..)` constructor, creating a new CustomEvent instance
-    pub fn new0(type_: &JsString) -> CustomEvent {
+    pub fn new(type_: &JsString) -> CustomEvent {
         Self {
             inner: Any::global("CustomEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl CustomEvent {
     /// The `new CustomEvent(..)` constructor, creating a new CustomEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &CustomEventInit) -> CustomEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &CustomEventInit,
+    ) -> CustomEvent {
         Self {
             inner: Any::global("CustomEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -90,24 +95,29 @@ impl CustomEvent {
         }
     }
 }
+
 impl CustomEvent {
     /// The initCustomEvent method.
     /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
-    pub fn init_custom_event0(&self, type_: &JsString) -> Undefined {
+    pub fn init_custom_event(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initCustomEvent", &[type_.into()])
             .as_::<Undefined>()
     }
+}
+impl CustomEvent {
     /// The initCustomEvent method.
     /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
-    pub fn init_custom_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
+    pub fn init_custom_event_with_bubbles(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initCustomEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
+}
+impl CustomEvent {
     /// The initCustomEvent method.
     /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
-    pub fn init_custom_event2(
+    pub fn init_custom_event_with_bubbles_and_cancelable(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -120,9 +130,11 @@ impl CustomEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl CustomEvent {
     /// The initCustomEvent method.
     /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
-    pub fn init_custom_event3(
+    pub fn init_custom_event_with_bubbles_and_cancelable_and_detail(
         &self,
         type_: &JsString,
         bubbles: bool,

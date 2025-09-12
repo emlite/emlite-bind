@@ -81,6 +81,7 @@ impl ReadableStreamDefaultReader {
         }
     }
 }
+
 impl ReadableStreamDefaultReader {
     /// The read method.
     /// [`ReadableStreamDefaultReader.read`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/read)
@@ -100,12 +101,14 @@ impl ReadableStreamDefaultReader {
 impl ReadableStreamDefaultReader {
     /// The cancel method.
     /// [`ReadableStreamDefaultReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/cancel)
-    pub fn cancel0(&self) -> Promise<Undefined> {
+    pub fn cancel(&self) -> Promise<Undefined> {
         self.inner.call("cancel", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl ReadableStreamDefaultReader {
     /// The cancel method.
     /// [`ReadableStreamDefaultReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/cancel)
-    pub fn cancel1(&self, reason: &Any) -> Promise<Undefined> {
+    pub fn cancel_with_reason(&self, reason: &Any) -> Promise<Undefined> {
         self.inner
             .call("cancel", &[reason.into()])
             .as_::<Promise<Undefined>>()

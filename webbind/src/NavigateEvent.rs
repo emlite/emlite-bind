@@ -151,15 +151,18 @@ impl NavigateEvent {
         }
     }
 }
+
 impl NavigateEvent {
     /// The intercept method.
     /// [`NavigateEvent.intercept`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/intercept)
-    pub fn intercept0(&self) -> Undefined {
+    pub fn intercept(&self) -> Undefined {
         self.inner.call("intercept", &[]).as_::<Undefined>()
     }
+}
+impl NavigateEvent {
     /// The intercept method.
     /// [`NavigateEvent.intercept`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/intercept)
-    pub fn intercept1(&self, options: &NavigationInterceptOptions) -> Undefined {
+    pub fn intercept_with_options(&self, options: &NavigationInterceptOptions) -> Undefined {
         self.inner
             .call("intercept", &[options.into()])
             .as_::<Undefined>()

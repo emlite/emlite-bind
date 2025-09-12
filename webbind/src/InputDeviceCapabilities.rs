@@ -80,14 +80,18 @@ impl InputDeviceCapabilities {
 
 impl InputDeviceCapabilities {
     /// The `new InputDeviceCapabilities(..)` constructor, creating a new InputDeviceCapabilities instance
-    pub fn new0() -> InputDeviceCapabilities {
+    pub fn new() -> InputDeviceCapabilities {
         Self {
             inner: Any::global("InputDeviceCapabilities").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl InputDeviceCapabilities {
     /// The `new InputDeviceCapabilities(..)` constructor, creating a new InputDeviceCapabilities instance
-    pub fn new1(device_init_dict: &InputDeviceCapabilitiesInit) -> InputDeviceCapabilities {
+    pub fn new_with_device_init_dict(
+        device_init_dict: &InputDeviceCapabilitiesInit,
+    ) -> InputDeviceCapabilities {
         Self {
             inner: Any::global("InputDeviceCapabilities")
                 .new(&[device_init_dict.into()])

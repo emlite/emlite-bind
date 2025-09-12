@@ -73,16 +73,18 @@ impl ContentVisibilityAutoStateChangeEvent {
 
 impl ContentVisibilityAutoStateChangeEvent {
     /// The `new ContentVisibilityAutoStateChangeEvent(..)` constructor, creating a new ContentVisibilityAutoStateChangeEvent instance
-    pub fn new0(type_: &JsString) -> ContentVisibilityAutoStateChangeEvent {
+    pub fn new(type_: &JsString) -> ContentVisibilityAutoStateChangeEvent {
         Self {
             inner: Any::global("ContentVisibilityAutoStateChangeEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl ContentVisibilityAutoStateChangeEvent {
     /// The `new ContentVisibilityAutoStateChangeEvent(..)` constructor, creating a new ContentVisibilityAutoStateChangeEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &ContentVisibilityAutoStateChangeEventInit,
     ) -> ContentVisibilityAutoStateChangeEvent {

@@ -73,17 +73,24 @@ impl ResizeObserver {
         }
     }
 }
+
 impl ResizeObserver {
     /// The observe method.
     /// [`ResizeObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/observe)
-    pub fn observe0(&self, target: &Element) -> Undefined {
+    pub fn observe(&self, target: &Element) -> Undefined {
         self.inner
             .call("observe", &[target.into()])
             .as_::<Undefined>()
     }
+}
+impl ResizeObserver {
     /// The observe method.
     /// [`ResizeObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/observe)
-    pub fn observe1(&self, target: &Element, options: &ResizeObserverOptions) -> Undefined {
+    pub fn observe_with_options(
+        &self,
+        target: &Element,
+        options: &ResizeObserverOptions,
+    ) -> Undefined {
         self.inner
             .call("observe", &[target.into(), options.into()])
             .as_::<Undefined>()

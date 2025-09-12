@@ -119,6 +119,7 @@ impl DataTransfer {
         }
     }
 }
+
 impl DataTransfer {
     /// The setDragImage method.
     /// [`DataTransfer.setDragImage`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setDragImage)
@@ -149,12 +150,14 @@ impl DataTransfer {
 impl DataTransfer {
     /// The clearData method.
     /// [`DataTransfer.clearData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData)
-    pub fn clear_data0(&self) -> Undefined {
+    pub fn clear_data(&self) -> Undefined {
         self.inner.call("clearData", &[]).as_::<Undefined>()
     }
+}
+impl DataTransfer {
     /// The clearData method.
     /// [`DataTransfer.clearData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData)
-    pub fn clear_data1(&self, format: &JsString) -> Undefined {
+    pub fn clear_data_with_format(&self, format: &JsString) -> Undefined {
         self.inner
             .call("clearData", &[format.into()])
             .as_::<Undefined>()

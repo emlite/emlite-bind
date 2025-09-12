@@ -100,17 +100,20 @@ impl ImageDecoder {
         }
     }
 }
+
 impl ImageDecoder {
     /// The decode method.
     /// [`ImageDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/decode)
-    pub fn decode0(&self) -> Promise<ImageDecodeResult> {
+    pub fn decode(&self) -> Promise<ImageDecodeResult> {
         self.inner
             .call("decode", &[])
             .as_::<Promise<ImageDecodeResult>>()
     }
+}
+impl ImageDecoder {
     /// The decode method.
     /// [`ImageDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/decode)
-    pub fn decode1(&self, options: &ImageDecodeOptions) -> Promise<ImageDecodeResult> {
+    pub fn decode_with_options(&self, options: &ImageDecodeOptions) -> Promise<ImageDecodeResult> {
         self.inner
             .call("decode", &[options.into()])
             .as_::<Promise<ImageDecodeResult>>()

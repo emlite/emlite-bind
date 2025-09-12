@@ -73,14 +73,16 @@ impl Table {
 
 impl Table {
     /// The `new Table(..)` constructor, creating a new Table instance
-    pub fn new0(descriptor: &TableDescriptor) -> Table {
+    pub fn new(descriptor: &TableDescriptor) -> Table {
         Self {
             inner: Any::global("Table").new(&[descriptor.into()]).as_::<Any>(),
         }
     }
+}
 
+impl Table {
     /// The `new Table(..)` constructor, creating a new Table instance
-    pub fn new1(descriptor: &TableDescriptor, value: &Any) -> Table {
+    pub fn new_with_value(descriptor: &TableDescriptor, value: &Any) -> Table {
         Self {
             inner: Any::global("Table")
                 .new(&[descriptor.into(), value.into()])
@@ -88,15 +90,18 @@ impl Table {
         }
     }
 }
+
 impl Table {
     /// The grow method.
     /// [`Table.grow`](https://developer.mozilla.org/en-US/docs/Web/API/Table/grow)
-    pub fn grow0(&self, delta: u32) -> u32 {
+    pub fn grow(&self, delta: u32) -> u32 {
         self.inner.call("grow", &[delta.into()]).as_::<u32>()
     }
+}
+impl Table {
     /// The grow method.
     /// [`Table.grow`](https://developer.mozilla.org/en-US/docs/Web/API/Table/grow)
-    pub fn grow1(&self, delta: u32, value: &Any) -> u32 {
+    pub fn grow_with_value(&self, delta: u32, value: &Any) -> u32 {
         self.inner
             .call("grow", &[delta.into(), value.into()])
             .as_::<u32>()
@@ -112,12 +117,14 @@ impl Table {
 impl Table {
     /// The set method.
     /// [`Table.set`](https://developer.mozilla.org/en-US/docs/Web/API/Table/set)
-    pub fn set0(&self, index: u32) -> Undefined {
+    pub fn set(&self, index: u32) -> Undefined {
         self.inner.call("set", &[index.into()]).as_::<Undefined>()
     }
+}
+impl Table {
     /// The set method.
     /// [`Table.set`](https://developer.mozilla.org/en-US/docs/Web/API/Table/set)
-    pub fn set1(&self, index: u32, value: &Any) -> Undefined {
+    pub fn set_with_value(&self, index: u32, value: &Any) -> Undefined {
         self.inner
             .call("set", &[index.into(), value.into()])
             .as_::<Undefined>()

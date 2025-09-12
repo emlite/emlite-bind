@@ -80,16 +80,18 @@ impl MediaEncryptedEvent {
 
 impl MediaEncryptedEvent {
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
-    pub fn new0(type_: &JsString) -> MediaEncryptedEvent {
+    pub fn new(type_: &JsString) -> MediaEncryptedEvent {
         Self {
             inner: Any::global("MediaEncryptedEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl MediaEncryptedEvent {
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &MediaEncryptedEventInit,
     ) -> MediaEncryptedEvent {

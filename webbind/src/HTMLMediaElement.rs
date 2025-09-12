@@ -452,21 +452,25 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track0(&self, kind: &TextTrackKind) -> TextTrack {
+    pub fn add_text_track(&self, kind: &TextTrackKind) -> TextTrack {
         self.inner
             .call("addTextTrack", &[kind.into()])
             .as_::<TextTrack>()
     }
+}
+impl HTMLMediaElement {
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track1(&self, kind: &TextTrackKind, label: &JsString) -> TextTrack {
+    pub fn add_text_track_with_label(&self, kind: &TextTrackKind, label: &JsString) -> TextTrack {
         self.inner
             .call("addTextTrack", &[kind.into(), label.into()])
             .as_::<TextTrack>()
     }
+}
+impl HTMLMediaElement {
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track2(
+    pub fn add_text_track_with_label_and_language(
         &self,
         kind: &TextTrackKind,
         label: &JsString,

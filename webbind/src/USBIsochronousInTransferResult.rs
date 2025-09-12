@@ -82,7 +82,7 @@ impl USBIsochronousInTransferResult {
 
 impl USBIsochronousInTransferResult {
     /// The `new USBIsochronousInTransferResult(..)` constructor, creating a new USBIsochronousInTransferResult instance
-    pub fn new0(
+    pub fn new(
         packets: &TypedArray<USBIsochronousInTransferPacket>,
     ) -> USBIsochronousInTransferResult {
         Self {
@@ -91,9 +91,11 @@ impl USBIsochronousInTransferResult {
                 .as_::<Any>(),
         }
     }
+}
 
+impl USBIsochronousInTransferResult {
     /// The `new USBIsochronousInTransferResult(..)` constructor, creating a new USBIsochronousInTransferResult instance
-    pub fn new1(
+    pub fn new_with_data(
         packets: &TypedArray<USBIsochronousInTransferPacket>,
         data: &DataView,
     ) -> USBIsochronousInTransferResult {

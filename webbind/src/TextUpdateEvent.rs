@@ -101,16 +101,18 @@ impl TextUpdateEvent {
 
 impl TextUpdateEvent {
     /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
-    pub fn new0(type_: &JsString) -> TextUpdateEvent {
+    pub fn new(type_: &JsString) -> TextUpdateEvent {
         Self {
             inner: Any::global("TextUpdateEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl TextUpdateEvent {
     /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
-    pub fn new1(type_: &JsString, options: &TextUpdateEventInit) -> TextUpdateEvent {
+    pub fn new_with_options(type_: &JsString, options: &TextUpdateEventInit) -> TextUpdateEvent {
         Self {
             inner: Any::global("TextUpdateEvent")
                 .new(&[type_.into(), options.into()])

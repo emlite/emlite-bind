@@ -142,19 +142,23 @@ impl PaymentResponse {
 impl PaymentResponse {
     /// The complete method.
     /// [`PaymentResponse.complete`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/complete)
-    pub fn complete0(&self) -> Promise<Undefined> {
+    pub fn complete(&self) -> Promise<Undefined> {
         self.inner.call("complete", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl PaymentResponse {
     /// The complete method.
     /// [`PaymentResponse.complete`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/complete)
-    pub fn complete1(&self, result: &PaymentComplete) -> Promise<Undefined> {
+    pub fn complete_with_result(&self, result: &PaymentComplete) -> Promise<Undefined> {
         self.inner
             .call("complete", &[result.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl PaymentResponse {
     /// The complete method.
     /// [`PaymentResponse.complete`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/complete)
-    pub fn complete2(
+    pub fn complete_with_result_and_details(
         &self,
         result: &PaymentComplete,
         details: &PaymentCompleteDetails,
@@ -167,12 +171,17 @@ impl PaymentResponse {
 impl PaymentResponse {
     /// The retry method.
     /// [`PaymentResponse.retry`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/retry)
-    pub fn retry0(&self) -> Promise<Undefined> {
+    pub fn retry(&self) -> Promise<Undefined> {
         self.inner.call("retry", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl PaymentResponse {
     /// The retry method.
     /// [`PaymentResponse.retry`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/retry)
-    pub fn retry1(&self, error_fields: &PaymentValidationErrors) -> Promise<Undefined> {
+    pub fn retry_with_error_fields(
+        &self,
+        error_fields: &PaymentValidationErrors,
+    ) -> Promise<Undefined> {
         self.inner
             .call("retry", &[error_fields.into()])
             .as_::<Promise<Undefined>>()

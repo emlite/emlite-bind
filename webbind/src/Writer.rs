@@ -126,14 +126,16 @@ impl Writer {
 impl Writer {
     /// The create method.
     /// [`Writer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/create)
-    pub fn create0() -> Promise<Writer> {
+    pub fn create() -> Promise<Writer> {
         Any::global("Writer")
             .call("create", &[])
             .as_::<Promise<Writer>>()
     }
+}
+impl Writer {
     /// The create method.
     /// [`Writer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/create)
-    pub fn create1(options: &WriterCreateOptions) -> Promise<Writer> {
+    pub fn create_with_options(options: &WriterCreateOptions) -> Promise<Writer> {
         Any::global("Writer")
             .call("create", &[options.into()])
             .as_::<Promise<Writer>>()
@@ -142,14 +144,16 @@ impl Writer {
 impl Writer {
     /// The availability method.
     /// [`Writer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/availability)
-    pub fn availability0() -> Promise<Availability> {
+    pub fn availability() -> Promise<Availability> {
         Any::global("Writer")
             .call("availability", &[])
             .as_::<Promise<Availability>>()
     }
+}
+impl Writer {
     /// The availability method.
     /// [`Writer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/availability)
-    pub fn availability1(options: &WriterCreateCoreOptions) -> Promise<Availability> {
+    pub fn availability_with_options(options: &WriterCreateCoreOptions) -> Promise<Availability> {
         Any::global("Writer")
             .call("availability", &[options.into()])
             .as_::<Promise<Availability>>()
@@ -158,14 +162,20 @@ impl Writer {
 impl Writer {
     /// The write method.
     /// [`Writer.write`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/write)
-    pub fn write0(&self, input: &JsString) -> Promise<JsString> {
+    pub fn write(&self, input: &JsString) -> Promise<JsString> {
         self.inner
             .call("write", &[input.into()])
             .as_::<Promise<JsString>>()
     }
+}
+impl Writer {
     /// The write method.
     /// [`Writer.write`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/write)
-    pub fn write1(&self, input: &JsString, options: &WriterWriteOptions) -> Promise<JsString> {
+    pub fn write_with_options(
+        &self,
+        input: &JsString,
+        options: &WriterWriteOptions,
+    ) -> Promise<JsString> {
         self.inner
             .call("write", &[input.into(), options.into()])
             .as_::<Promise<JsString>>()
@@ -174,14 +184,16 @@ impl Writer {
 impl Writer {
     /// The writeStreaming method.
     /// [`Writer.writeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/writeStreaming)
-    pub fn write_streaming0(&self, input: &JsString) -> ReadableStream {
+    pub fn write_streaming(&self, input: &JsString) -> ReadableStream {
         self.inner
             .call("writeStreaming", &[input.into()])
             .as_::<ReadableStream>()
     }
+}
+impl Writer {
     /// The writeStreaming method.
     /// [`Writer.writeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/writeStreaming)
-    pub fn write_streaming1(
+    pub fn write_streaming_with_options(
         &self,
         input: &JsString,
         options: &WriterWriteOptions,
@@ -194,14 +206,16 @@ impl Writer {
 impl Writer {
     /// The measureInputUsage method.
     /// [`Writer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
+    pub fn measure_input_usage(&self, input: &JsString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
     }
+}
+impl Writer {
     /// The measureInputUsage method.
     /// [`Writer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/measureInputUsage)
-    pub fn measure_input_usage1(
+    pub fn measure_input_usage_with_options(
         &self,
         input: &JsString,
         options: &WriterWriteOptions,

@@ -126,14 +126,16 @@ impl Summarizer {
 impl Summarizer {
     /// The create method.
     /// [`Summarizer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/create)
-    pub fn create0() -> Promise<Summarizer> {
+    pub fn create() -> Promise<Summarizer> {
         Any::global("Summarizer")
             .call("create", &[])
             .as_::<Promise<Summarizer>>()
     }
+}
+impl Summarizer {
     /// The create method.
     /// [`Summarizer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/create)
-    pub fn create1(options: &SummarizerCreateOptions) -> Promise<Summarizer> {
+    pub fn create_with_options(options: &SummarizerCreateOptions) -> Promise<Summarizer> {
         Any::global("Summarizer")
             .call("create", &[options.into()])
             .as_::<Promise<Summarizer>>()
@@ -142,14 +144,18 @@ impl Summarizer {
 impl Summarizer {
     /// The availability method.
     /// [`Summarizer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/availability)
-    pub fn availability0() -> Promise<Availability> {
+    pub fn availability() -> Promise<Availability> {
         Any::global("Summarizer")
             .call("availability", &[])
             .as_::<Promise<Availability>>()
     }
+}
+impl Summarizer {
     /// The availability method.
     /// [`Summarizer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/availability)
-    pub fn availability1(options: &SummarizerCreateCoreOptions) -> Promise<Availability> {
+    pub fn availability_with_options(
+        options: &SummarizerCreateCoreOptions,
+    ) -> Promise<Availability> {
         Any::global("Summarizer")
             .call("availability", &[options.into()])
             .as_::<Promise<Availability>>()
@@ -158,14 +164,16 @@ impl Summarizer {
 impl Summarizer {
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
-    pub fn summarize0(&self, input: &JsString) -> Promise<JsString> {
+    pub fn summarize(&self, input: &JsString) -> Promise<JsString> {
         self.inner
             .call("summarize", &[input.into()])
             .as_::<Promise<JsString>>()
     }
+}
+impl Summarizer {
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
-    pub fn summarize1(
+    pub fn summarize_with_options(
         &self,
         input: &JsString,
         options: &SummarizerSummarizeOptions,
@@ -178,14 +186,16 @@ impl Summarizer {
 impl Summarizer {
     /// The summarizeStreaming method.
     /// [`Summarizer.summarizeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarizeStreaming)
-    pub fn summarize_streaming0(&self, input: &JsString) -> ReadableStream {
+    pub fn summarize_streaming(&self, input: &JsString) -> ReadableStream {
         self.inner
             .call("summarizeStreaming", &[input.into()])
             .as_::<ReadableStream>()
     }
+}
+impl Summarizer {
     /// The summarizeStreaming method.
     /// [`Summarizer.summarizeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarizeStreaming)
-    pub fn summarize_streaming1(
+    pub fn summarize_streaming_with_options(
         &self,
         input: &JsString,
         options: &SummarizerSummarizeOptions,
@@ -198,14 +208,16 @@ impl Summarizer {
 impl Summarizer {
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
+    pub fn measure_input_usage(&self, input: &JsString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
     }
+}
+impl Summarizer {
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
-    pub fn measure_input_usage1(
+    pub fn measure_input_usage_with_options(
         &self,
         input: &JsString,
         options: &SummarizerSummarizeOptions,

@@ -101,14 +101,19 @@ impl MediaDevices {
 impl MediaDevices {
     /// The selectAudioOutput method.
     /// [`MediaDevices.selectAudioOutput`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/selectAudioOutput)
-    pub fn select_audio_output0(&self) -> Promise<MediaDeviceInfo> {
+    pub fn select_audio_output(&self) -> Promise<MediaDeviceInfo> {
         self.inner
             .call("selectAudioOutput", &[])
             .as_::<Promise<MediaDeviceInfo>>()
     }
+}
+impl MediaDevices {
     /// The selectAudioOutput method.
     /// [`MediaDevices.selectAudioOutput`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/selectAudioOutput)
-    pub fn select_audio_output1(&self, options: &AudioOutputOptions) -> Promise<MediaDeviceInfo> {
+    pub fn select_audio_output_with_options(
+        &self,
+        options: &AudioOutputOptions,
+    ) -> Promise<MediaDeviceInfo> {
         self.inner
             .call("selectAudioOutput", &[options.into()])
             .as_::<Promise<MediaDeviceInfo>>()
@@ -117,14 +122,16 @@ impl MediaDevices {
 impl MediaDevices {
     /// The setCaptureHandleConfig method.
     /// [`MediaDevices.setCaptureHandleConfig`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/setCaptureHandleConfig)
-    pub fn set_capture_handle_config0(&self) -> Undefined {
+    pub fn set_capture_handle_config(&self) -> Undefined {
         self.inner
             .call("setCaptureHandleConfig", &[])
             .as_::<Undefined>()
     }
+}
+impl MediaDevices {
     /// The setCaptureHandleConfig method.
     /// [`MediaDevices.setCaptureHandleConfig`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/setCaptureHandleConfig)
-    pub fn set_capture_handle_config1(&self, config: &CaptureHandleConfig) -> Undefined {
+    pub fn set_capture_handle_config_with_config(&self, config: &CaptureHandleConfig) -> Undefined {
         self.inner
             .call("setCaptureHandleConfig", &[config.into()])
             .as_::<Undefined>()
@@ -151,14 +158,19 @@ impl MediaDevices {
 impl MediaDevices {
     /// The getUserMedia method.
     /// [`MediaDevices.getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
-    pub fn get_user_media0(&self) -> Promise<MediaStream> {
+    pub fn get_user_media(&self) -> Promise<MediaStream> {
         self.inner
             .call("getUserMedia", &[])
             .as_::<Promise<MediaStream>>()
     }
+}
+impl MediaDevices {
     /// The getUserMedia method.
     /// [`MediaDevices.getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
-    pub fn get_user_media1(&self, constraints: &MediaStreamConstraints) -> Promise<MediaStream> {
+    pub fn get_user_media_with_constraints(
+        &self,
+        constraints: &MediaStreamConstraints,
+    ) -> Promise<MediaStream> {
         self.inner
             .call("getUserMedia", &[constraints.into()])
             .as_::<Promise<MediaStream>>()
@@ -167,14 +179,19 @@ impl MediaDevices {
 impl MediaDevices {
     /// The getViewportMedia method.
     /// [`MediaDevices.getViewportMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getViewportMedia)
-    pub fn get_viewport_media0(&self) -> Promise<MediaStream> {
+    pub fn get_viewport_media(&self) -> Promise<MediaStream> {
         self.inner
             .call("getViewportMedia", &[])
             .as_::<Promise<MediaStream>>()
     }
+}
+impl MediaDevices {
     /// The getViewportMedia method.
     /// [`MediaDevices.getViewportMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getViewportMedia)
-    pub fn get_viewport_media1(&self, options: &DisplayMediaStreamOptions) -> Promise<MediaStream> {
+    pub fn get_viewport_media_with_options(
+        &self,
+        options: &DisplayMediaStreamOptions,
+    ) -> Promise<MediaStream> {
         self.inner
             .call("getViewportMedia", &[options.into()])
             .as_::<Promise<MediaStream>>()
@@ -183,14 +200,19 @@ impl MediaDevices {
 impl MediaDevices {
     /// The getDisplayMedia method.
     /// [`MediaDevices.getDisplayMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia)
-    pub fn get_display_media0(&self) -> Promise<MediaStream> {
+    pub fn get_display_media(&self) -> Promise<MediaStream> {
         self.inner
             .call("getDisplayMedia", &[])
             .as_::<Promise<MediaStream>>()
     }
+}
+impl MediaDevices {
     /// The getDisplayMedia method.
     /// [`MediaDevices.getDisplayMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia)
-    pub fn get_display_media1(&self, options: &DisplayMediaStreamOptions) -> Promise<MediaStream> {
+    pub fn get_display_media_with_options(
+        &self,
+        options: &DisplayMediaStreamOptions,
+    ) -> Promise<MediaStream> {
         self.inner
             .call("getDisplayMedia", &[options.into()])
             .as_::<Promise<MediaStream>>()

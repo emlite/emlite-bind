@@ -15,14 +15,17 @@ pub fn compile(bytes: &Any) -> Promise<Module> {
 }
 
 /// The instantiate function from the WebAssembly namespace.
-pub fn instantiate0(module_object: &Module) -> Promise<Instance> {
+pub fn instantiate(module_object: &Module) -> Promise<Instance> {
     Any::global("WebAssembly")
         .call("instantiate", &[module_object.into()])
         .as_::<Promise<Instance>>()
 }
 
 /// The instantiate function from the WebAssembly namespace.
-pub fn instantiate1(module_object: &Module, import_object: &Object) -> Promise<Instance> {
+pub fn instantiate_with_import_object(
+    module_object: &Module,
+    import_object: &Object,
+) -> Promise<Instance> {
     Any::global("WebAssembly")
         .call("instantiate", &[module_object.into(), import_object.into()])
         .as_::<Promise<Instance>>()
@@ -36,16 +39,14 @@ pub fn compile_streaming(source: &Promise<Response>) -> Promise<Module> {
 }
 
 /// The instantiateStreaming function from the WebAssembly namespace.
-pub fn instantiate_streaming0(
-    source: &Promise<Response>,
-) -> Promise<WebAssemblyInstantiatedSource> {
+pub fn instantiate_streaming(source: &Promise<Response>) -> Promise<WebAssemblyInstantiatedSource> {
     Any::global("WebAssembly")
         .call("instantiateStreaming", &[source.into()])
         .as_::<Promise<WebAssemblyInstantiatedSource>>()
 }
 
 /// The instantiateStreaming function from the WebAssembly namespace.
-pub fn instantiate_streaming1(
+pub fn instantiate_streaming_with_import_object(
     source: &Promise<Response>,
     import_object: &Object,
 ) -> Promise<WebAssemblyInstantiatedSource> {

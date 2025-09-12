@@ -80,16 +80,21 @@ impl USBIsochronousInTransferPacket {
 
 impl USBIsochronousInTransferPacket {
     /// The `new USBIsochronousInTransferPacket(..)` constructor, creating a new USBIsochronousInTransferPacket instance
-    pub fn new0(status: &USBTransferStatus) -> USBIsochronousInTransferPacket {
+    pub fn new(status: &USBTransferStatus) -> USBIsochronousInTransferPacket {
         Self {
             inner: Any::global("USBIsochronousInTransferPacket")
                 .new(&[status.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl USBIsochronousInTransferPacket {
     /// The `new USBIsochronousInTransferPacket(..)` constructor, creating a new USBIsochronousInTransferPacket instance
-    pub fn new1(status: &USBTransferStatus, data: &DataView) -> USBIsochronousInTransferPacket {
+    pub fn new_with_data(
+        status: &USBTransferStatus,
+        data: &DataView,
+    ) -> USBIsochronousInTransferPacket {
         Self {
             inner: Any::global("USBIsochronousInTransferPacket")
                 .new(&[status.into(), data.into()])

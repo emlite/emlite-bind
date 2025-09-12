@@ -94,16 +94,21 @@ impl WheelEvent {
 
 impl WheelEvent {
     /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
-    pub fn new0(type_: &JsString) -> WheelEvent {
+    pub fn new(type_: &JsString) -> WheelEvent {
         Self {
             inner: Any::global("WheelEvent")
                 .new(&[type_.into()])
                 .as_::<MouseEvent>(),
         }
     }
+}
 
+impl WheelEvent {
     /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &WheelEventInit) -> WheelEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &WheelEventInit,
+    ) -> WheelEvent {
         Self {
             inner: Any::global("WheelEvent")
                 .new(&[type_.into(), event_init_dict.into()])

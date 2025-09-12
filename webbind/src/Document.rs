@@ -659,6 +659,7 @@ impl Document {
         }
     }
 }
+
 impl Document {
     /// The getElementsByTagName method.
     /// [`Document.getElementsByTagName`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName)
@@ -696,14 +697,16 @@ impl Document {
 impl Document {
     /// The createElement method.
     /// [`Document.createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
-    pub fn create_element0(&self, local_name: &JsString) -> Element {
+    pub fn create_element(&self, local_name: &JsString) -> Element {
         self.inner
             .call("createElement", &[local_name.into()])
             .as_::<Element>()
     }
+}
+impl Document {
     /// The createElement method.
     /// [`Document.createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
-    pub fn create_element1(&self, local_name: &JsString, options: &Any) -> Element {
+    pub fn create_element_with_options(&self, local_name: &JsString, options: &Any) -> Element {
         self.inner
             .call("createElement", &[local_name.into(), options.into()])
             .as_::<Element>()
@@ -712,7 +715,7 @@ impl Document {
 impl Document {
     /// The createElementNS method.
     /// [`Document.createElementNS`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS)
-    pub fn create_element_ns0(&self, namespace: &JsString, qualified_name: &JsString) -> Element {
+    pub fn create_element_ns(&self, namespace: &JsString, qualified_name: &JsString) -> Element {
         self.inner
             .call(
                 "createElementNS",
@@ -720,9 +723,11 @@ impl Document {
             )
             .as_::<Element>()
     }
+}
+impl Document {
     /// The createElementNS method.
     /// [`Document.createElementNS`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS)
-    pub fn create_element_ns1(
+    pub fn create_element_ns_with_options(
         &self,
         namespace: &JsString,
         qualified_name: &JsString,
@@ -788,12 +793,14 @@ impl Document {
 impl Document {
     /// The importNode method.
     /// [`Document.importNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
-    pub fn import_node0(&self, node: &Node) -> Node {
+    pub fn import_node(&self, node: &Node) -> Node {
         self.inner.call("importNode", &[node.into()]).as_::<Node>()
     }
+}
+impl Document {
     /// The importNode method.
     /// [`Document.importNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
-    pub fn import_node1(&self, node: &Node, options: &Any) -> Node {
+    pub fn import_node_with_options(&self, node: &Node, options: &Any) -> Node {
         self.inner
             .call("importNode", &[node.into(), options.into()])
             .as_::<Node>()
@@ -846,21 +853,29 @@ impl Document {
 impl Document {
     /// The createNodeIterator method.
     /// [`Document.createNodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator)
-    pub fn create_node_iterator0(&self, root: &Node) -> NodeIterator {
+    pub fn create_node_iterator(&self, root: &Node) -> NodeIterator {
         self.inner
             .call("createNodeIterator", &[root.into()])
             .as_::<NodeIterator>()
     }
+}
+impl Document {
     /// The createNodeIterator method.
     /// [`Document.createNodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator)
-    pub fn create_node_iterator1(&self, root: &Node, what_to_show: u32) -> NodeIterator {
+    pub fn create_node_iterator_with_what_to_show(
+        &self,
+        root: &Node,
+        what_to_show: u32,
+    ) -> NodeIterator {
         self.inner
             .call("createNodeIterator", &[root.into(), what_to_show.into()])
             .as_::<NodeIterator>()
     }
+}
+impl Document {
     /// The createNodeIterator method.
     /// [`Document.createNodeIterator`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator)
-    pub fn create_node_iterator2(
+    pub fn create_node_iterator_with_what_to_show_and_filter(
         &self,
         root: &Node,
         what_to_show: u32,
@@ -877,21 +892,29 @@ impl Document {
 impl Document {
     /// The createTreeWalker method.
     /// [`Document.createTreeWalker`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker)
-    pub fn create_tree_walker0(&self, root: &Node) -> TreeWalker {
+    pub fn create_tree_walker(&self, root: &Node) -> TreeWalker {
         self.inner
             .call("createTreeWalker", &[root.into()])
             .as_::<TreeWalker>()
     }
+}
+impl Document {
     /// The createTreeWalker method.
     /// [`Document.createTreeWalker`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker)
-    pub fn create_tree_walker1(&self, root: &Node, what_to_show: u32) -> TreeWalker {
+    pub fn create_tree_walker_with_what_to_show(
+        &self,
+        root: &Node,
+        what_to_show: u32,
+    ) -> TreeWalker {
         self.inner
             .call("createTreeWalker", &[root.into(), what_to_show.into()])
             .as_::<TreeWalker>()
     }
+}
+impl Document {
     /// The createTreeWalker method.
     /// [`Document.createTreeWalker`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTreeWalker)
-    pub fn create_tree_walker2(
+    pub fn create_tree_walker_with_what_to_show_and_filter(
         &self,
         root: &Node,
         what_to_show: u32,
@@ -908,14 +931,19 @@ impl Document {
 impl Document {
     /// The startViewTransition method.
     /// [`Document.startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition)
-    pub fn start_view_transition0(&self) -> ViewTransition {
+    pub fn start_view_transition(&self) -> ViewTransition {
         self.inner
             .call("startViewTransition", &[])
             .as_::<ViewTransition>()
     }
+}
+impl Document {
     /// The startViewTransition method.
     /// [`Document.startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition)
-    pub fn start_view_transition1(&self, callback_options: &Any) -> ViewTransition {
+    pub fn start_view_transition_with_callback_options(
+        &self,
+        callback_options: &Any,
+    ) -> ViewTransition {
         self.inner
             .call("startViewTransition", &[callback_options.into()])
             .as_::<ViewTransition>()
@@ -942,14 +970,16 @@ impl Document {
 impl Document {
     /// The caretPositionFromPoint method.
     /// [`Document.caretPositionFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/Document/caretPositionFromPoint)
-    pub fn caret_position_from_point0(&self, x: f64, y: f64) -> CaretPosition {
+    pub fn caret_position_from_point(&self, x: f64, y: f64) -> CaretPosition {
         self.inner
             .call("caretPositionFromPoint", &[x.into(), y.into()])
             .as_::<CaretPosition>()
     }
+}
+impl Document {
     /// The caretPositionFromPoint method.
     /// [`Document.caretPositionFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/Document/caretPositionFromPoint)
-    pub fn caret_position_from_point1(
+    pub fn caret_position_from_point_with_options(
         &self,
         x: f64,
         y: f64,
@@ -1015,17 +1045,25 @@ impl Document {
 impl Document {
     /// The open method.
     /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
-    pub fn open0(&self) -> Document {
+    pub fn open(&self) -> Document {
         self.inner.call("open", &[]).as_::<Document>()
     }
+}
+impl Document {
     /// The open method.
     /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
-    pub fn open1(&self, unused1: &JsString) -> Document {
+    pub fn open_with_unused1(&self, unused1: &JsString) -> Document {
         self.inner.call("open", &[unused1.into()]).as_::<Document>()
     }
+}
+impl Document {
     /// The open method.
     /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
-    pub fn open2(&self, unused1: &JsString, unused2: &JsString) -> Document {
+    pub fn open_with_unused1_and_unused2(
+        &self,
+        unused1: &JsString,
+        unused2: &JsString,
+    ) -> Document {
         self.inner
             .call("open", &[unused1.into(), unused2.into()])
             .as_::<Document>()
@@ -1034,7 +1072,12 @@ impl Document {
 impl Document {
     /// The open method.
     /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
-    pub fn open3(&self, url: &JsString, name: &JsString, features: &JsString) -> Any {
+    pub fn open_with_url_and_name_and_features(
+        &self,
+        url: &JsString,
+        name: &JsString,
+        features: &JsString,
+    ) -> Any {
         self.inner
             .call("open", &[url.into(), name.into(), features.into()])
             .as_::<Any>()
@@ -1073,21 +1116,30 @@ impl Document {
 impl Document {
     /// The execCommand method.
     /// [`Document.execCommand`](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand)
-    pub fn exec_command0(&self, command_id: &JsString) -> bool {
+    pub fn exec_command(&self, command_id: &JsString) -> bool {
         self.inner
             .call("execCommand", &[command_id.into()])
             .as_::<bool>()
     }
+}
+impl Document {
     /// The execCommand method.
     /// [`Document.execCommand`](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand)
-    pub fn exec_command1(&self, command_id: &JsString, show_ui: bool) -> bool {
+    pub fn exec_command_with_show_ui(&self, command_id: &JsString, show_ui: bool) -> bool {
         self.inner
             .call("execCommand", &[command_id.into(), show_ui.into()])
             .as_::<bool>()
     }
+}
+impl Document {
     /// The execCommand method.
     /// [`Document.execCommand`](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand)
-    pub fn exec_command2(&self, command_id: &JsString, show_ui: bool, value: &JsString) -> bool {
+    pub fn exec_command_with_show_ui_and_value(
+        &self,
+        command_id: &JsString,
+        show_ui: bool,
+        value: &JsString,
+    ) -> bool {
         self.inner
             .call(
                 "execCommand",
@@ -1242,14 +1294,16 @@ impl Document {
 impl Document {
     /// The getBoxQuads method.
     /// [`Document.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getBoxQuads)
-    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads(&self) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
             .as_::<TypedArray<DOMQuad>>()
     }
+}
+impl Document {
     /// The getBoxQuads method.
     /// [`Document.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getBoxQuads)
-    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads_with_options(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
             .as_::<TypedArray<DOMQuad>>()
@@ -1258,14 +1312,16 @@ impl Document {
 impl Document {
     /// The convertQuadFromNode method.
     /// [`Document.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertQuadFromNode)
-    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
+    pub fn convert_quad_from_node(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl Document {
     /// The convertQuadFromNode method.
     /// [`Document.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertQuadFromNode)
-    pub fn convert_quad_from_node1(
+    pub fn convert_quad_from_node_with_options(
         &self,
         quad: &DOMQuadInit,
         from: &Any,
@@ -1282,14 +1338,16 @@ impl Document {
 impl Document {
     /// The convertRectFromNode method.
     /// [`Document.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertRectFromNode)
-    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
+    pub fn convert_rect_from_node(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl Document {
     /// The convertRectFromNode method.
     /// [`Document.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertRectFromNode)
-    pub fn convert_rect_from_node1(
+    pub fn convert_rect_from_node_with_options(
         &self,
         rect: &DOMRectReadOnly,
         from: &Any,
@@ -1306,14 +1364,16 @@ impl Document {
 impl Document {
     /// The convertPointFromNode method.
     /// [`Document.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertPointFromNode)
-    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
+    pub fn convert_point_from_node(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
     }
+}
+impl Document {
     /// The convertPointFromNode method.
     /// [`Document.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/convertPointFromNode)
-    pub fn convert_point_from_node1(
+    pub fn convert_point_from_node_with_options(
         &self,
         point: &DOMPointInit,
         from: &Any,
@@ -1402,14 +1462,16 @@ impl Document {
 impl Document {
     /// The createExpression method.
     /// [`Document.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createExpression)
-    pub fn create_expression0(&self, expression: &JsString) -> XPathExpression {
+    pub fn create_expression(&self, expression: &JsString) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into()])
             .as_::<XPathExpression>()
     }
+}
+impl Document {
     /// The createExpression method.
     /// [`Document.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createExpression)
-    pub fn create_expression1(
+    pub fn create_expression_with_resolver(
         &self,
         expression: &JsString,
         resolver: &Function,
@@ -1431,14 +1493,16 @@ impl Document {
 impl Document {
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
-    pub fn evaluate0(&self, expression: &JsString, context_node: &Node) -> XPathResult {
+    pub fn evaluate(&self, expression: &JsString, context_node: &Node) -> XPathResult {
         self.inner
             .call("evaluate", &[expression.into(), context_node.into()])
             .as_::<XPathResult>()
     }
+}
+impl Document {
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
-    pub fn evaluate1(
+    pub fn evaluate_with_resolver(
         &self,
         expression: &JsString,
         context_node: &Node,
@@ -1451,9 +1515,11 @@ impl Document {
             )
             .as_::<XPathResult>()
     }
+}
+impl Document {
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
-    pub fn evaluate2(
+    pub fn evaluate_with_resolver_and_type(
         &self,
         expression: &JsString,
         context_node: &Node,
@@ -1472,9 +1538,11 @@ impl Document {
             )
             .as_::<XPathResult>()
     }
+}
+impl Document {
     /// The evaluate method.
     /// [`Document.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate)
-    pub fn evaluate3(
+    pub fn evaluate_with_resolver_and_type_and_result(
         &self,
         expression: &JsString,
         context_node: &Node,

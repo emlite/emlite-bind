@@ -88,14 +88,16 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     /// The beginComputePass method.
     /// [`GPUCommandEncoder.beginComputePass`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/beginComputePass)
-    pub fn begin_compute_pass0(&self) -> GPUComputePassEncoder {
+    pub fn begin_compute_pass(&self) -> GPUComputePassEncoder {
         self.inner
             .call("beginComputePass", &[])
             .as_::<GPUComputePassEncoder>()
     }
+}
+impl GPUCommandEncoder {
     /// The beginComputePass method.
     /// [`GPUCommandEncoder.beginComputePass`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/beginComputePass)
-    pub fn begin_compute_pass1(
+    pub fn begin_compute_pass_with_descriptor(
         &self,
         descriptor: &GPUComputePassDescriptor,
     ) -> GPUComputePassEncoder {
@@ -107,14 +109,16 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     /// The copyBufferToBuffer method.
     /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
-    pub fn copy_buffer_to_buffer0(&self, source: &GPUBuffer, destination: &GPUBuffer) -> Undefined {
+    pub fn copy_buffer_to_buffer(&self, source: &GPUBuffer, destination: &GPUBuffer) -> Undefined {
         self.inner
             .call("copyBufferToBuffer", &[source.into(), destination.into()])
             .as_::<Undefined>()
     }
+}
+impl GPUCommandEncoder {
     /// The copyBufferToBuffer method.
     /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
-    pub fn copy_buffer_to_buffer1(
+    pub fn copy_buffer_to_buffer_with_size(
         &self,
         source: &GPUBuffer,
         destination: &GPUBuffer,
@@ -131,7 +135,7 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     /// The copyBufferToBuffer method.
     /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
-    pub fn copy_buffer_to_buffer2(
+    pub fn copy_buffer_to_buffer_with_source_and_source_offset_and_destination_and_destination_offset(
         &self,
         source: &GPUBuffer,
         source_offset: &Any,
@@ -150,9 +154,11 @@ impl GPUCommandEncoder {
             )
             .as_::<Undefined>()
     }
+}
+impl GPUCommandEncoder {
     /// The copyBufferToBuffer method.
     /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
-    pub fn copy_buffer_to_buffer3(
+    pub fn copy_buffer_to_buffer_with_size_2(
         &self,
         source: &GPUBuffer,
         source_offset: &Any,
@@ -228,21 +234,30 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     /// The clearBuffer method.
     /// [`GPUCommandEncoder.clearBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/clearBuffer)
-    pub fn clear_buffer0(&self, buffer: &GPUBuffer) -> Undefined {
+    pub fn clear_buffer(&self, buffer: &GPUBuffer) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into()])
             .as_::<Undefined>()
     }
+}
+impl GPUCommandEncoder {
     /// The clearBuffer method.
     /// [`GPUCommandEncoder.clearBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/clearBuffer)
-    pub fn clear_buffer1(&self, buffer: &GPUBuffer, offset: &Any) -> Undefined {
+    pub fn clear_buffer_with_offset(&self, buffer: &GPUBuffer, offset: &Any) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into(), offset.into()])
             .as_::<Undefined>()
     }
+}
+impl GPUCommandEncoder {
     /// The clearBuffer method.
     /// [`GPUCommandEncoder.clearBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/clearBuffer)
-    pub fn clear_buffer2(&self, buffer: &GPUBuffer, offset: &Any, size: &Any) -> Undefined {
+    pub fn clear_buffer_with_offset_and_size(
+        &self,
+        buffer: &GPUBuffer,
+        offset: &Any,
+        size: &Any,
+    ) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into(), offset.into(), size.into()])
             .as_::<Undefined>()
@@ -276,12 +291,17 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     /// The finish method.
     /// [`GPUCommandEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/finish)
-    pub fn finish0(&self) -> GPUCommandBuffer {
+    pub fn finish(&self) -> GPUCommandBuffer {
         self.inner.call("finish", &[]).as_::<GPUCommandBuffer>()
     }
+}
+impl GPUCommandEncoder {
     /// The finish method.
     /// [`GPUCommandEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/finish)
-    pub fn finish1(&self, descriptor: &GPUCommandBufferDescriptor) -> GPUCommandBuffer {
+    pub fn finish_with_descriptor(
+        &self,
+        descriptor: &GPUCommandBufferDescriptor,
+    ) -> GPUCommandBuffer {
         self.inner
             .call("finish", &[descriptor.into()])
             .as_::<GPUCommandBuffer>()

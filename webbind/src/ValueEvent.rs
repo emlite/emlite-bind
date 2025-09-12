@@ -73,16 +73,18 @@ impl ValueEvent {
 
 impl ValueEvent {
     /// The `new ValueEvent(..)` constructor, creating a new ValueEvent instance
-    pub fn new0(type_: &JsString) -> ValueEvent {
+    pub fn new(type_: &JsString) -> ValueEvent {
         Self {
             inner: Any::global("ValueEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl ValueEvent {
     /// The `new ValueEvent(..)` constructor, creating a new ValueEvent instance
-    pub fn new1(type_: &JsString, init_dict: &ValueEventInit) -> ValueEvent {
+    pub fn new_with_init_dict(type_: &JsString, init_dict: &ValueEventInit) -> ValueEvent {
         Self {
             inner: Any::global("ValueEvent")
                 .new(&[type_.into(), init_dict.into()])

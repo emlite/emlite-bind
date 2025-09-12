@@ -213,16 +213,21 @@ impl MouseEvent {
 
 impl MouseEvent {
     /// The `new MouseEvent(..)` constructor, creating a new MouseEvent instance
-    pub fn new0(type_: &JsString) -> MouseEvent {
+    pub fn new(type_: &JsString) -> MouseEvent {
         Self {
             inner: Any::global("MouseEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
+}
 
+impl MouseEvent {
     /// The `new MouseEvent(..)` constructor, creating a new MouseEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &MouseEventInit) -> MouseEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &MouseEventInit,
+    ) -> MouseEvent {
         Self {
             inner: Any::global("MouseEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -230,6 +235,7 @@ impl MouseEvent {
         }
     }
 }
+
 impl MouseEvent {
     /// The getModifierState method.
     /// [`MouseEvent.getModifierState`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState)
@@ -242,21 +248,29 @@ impl MouseEvent {
 impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event0(&self, type_arg: &JsString) -> Undefined {
+    pub fn init_mouse_event(&self, type_arg: &JsString) -> Undefined {
         self.inner
             .call("initMouseEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event1(&self, type_arg: &JsString, bubbles_arg: bool) -> Undefined {
+    pub fn init_mouse_event_with_bubbles_arg(
+        &self,
+        type_arg: &JsString,
+        bubbles_arg: bool,
+    ) -> Undefined {
         self.inner
             .call("initMouseEvent", &[type_arg.into(), bubbles_arg.into()])
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event2(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -269,9 +283,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event3(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -290,9 +306,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event4(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -313,9 +331,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event5(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -338,9 +358,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event6(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -365,9 +387,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event7(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -394,9 +418,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event8(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg_and_client_y_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -425,9 +451,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event9(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg_and_client_y_arg_and_ctrl_key_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -458,9 +486,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event10(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg_and_client_y_arg_and_ctrl_key_arg_and_alt_key_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -493,9 +523,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event11(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg_and_client_y_arg_and_ctrl_key_arg_and_alt_key_arg_and_shift_key_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -530,9 +562,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event12(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg_and_client_y_arg_and_ctrl_key_arg_and_alt_key_arg_and_shift_key_arg_and_meta_key_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -569,9 +603,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event13(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg_and_client_y_arg_and_ctrl_key_arg_and_alt_key_arg_and_shift_key_arg_and_meta_key_arg_and_button_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,
@@ -610,9 +646,11 @@ impl MouseEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MouseEvent {
     /// The initMouseEvent method.
     /// [`MouseEvent.initMouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent)
-    pub fn init_mouse_event14(
+    pub fn init_mouse_event_with_bubbles_arg_and_cancelable_arg_and_view_arg_and_detail_arg_and_screen_x_arg_and_screen_y_arg_and_client_x_arg_and_client_y_arg_and_ctrl_key_arg_and_alt_key_arg_and_shift_key_arg_and_meta_key_arg_and_button_arg_and_related_target_arg(
         &self,
         type_arg: &JsString,
         bubbles_arg: bool,

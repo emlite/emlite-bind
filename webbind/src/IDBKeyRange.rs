@@ -103,14 +103,16 @@ impl IDBKeyRange {
 impl IDBKeyRange {
     /// The lowerBound method.
     /// [`IDBKeyRange.lowerBound`](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange/lowerBound)
-    pub fn lower_bound0(lower: &Any) -> IDBKeyRange {
+    pub fn lower_bound(lower: &Any) -> IDBKeyRange {
         Any::global("IDBKeyRange")
             .call("lowerBound", &[lower.into()])
             .as_::<IDBKeyRange>()
     }
+}
+impl IDBKeyRange {
     /// The lowerBound method.
     /// [`IDBKeyRange.lowerBound`](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange/lowerBound)
-    pub fn lower_bound1(lower: &Any, open: bool) -> IDBKeyRange {
+    pub fn lower_bound_with_open(lower: &Any, open: bool) -> IDBKeyRange {
         Any::global("IDBKeyRange")
             .call("lowerBound", &[lower.into(), open.into()])
             .as_::<IDBKeyRange>()
@@ -119,14 +121,16 @@ impl IDBKeyRange {
 impl IDBKeyRange {
     /// The upperBound method.
     /// [`IDBKeyRange.upperBound`](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange/upperBound)
-    pub fn upper_bound0(upper: &Any) -> IDBKeyRange {
+    pub fn upper_bound(upper: &Any) -> IDBKeyRange {
         Any::global("IDBKeyRange")
             .call("upperBound", &[upper.into()])
             .as_::<IDBKeyRange>()
     }
+}
+impl IDBKeyRange {
     /// The upperBound method.
     /// [`IDBKeyRange.upperBound`](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange/upperBound)
-    pub fn upper_bound1(upper: &Any, open: bool) -> IDBKeyRange {
+    pub fn upper_bound_with_open(upper: &Any, open: bool) -> IDBKeyRange {
         Any::global("IDBKeyRange")
             .call("upperBound", &[upper.into(), open.into()])
             .as_::<IDBKeyRange>()
@@ -135,21 +139,30 @@ impl IDBKeyRange {
 impl IDBKeyRange {
     /// The bound method.
     /// [`IDBKeyRange.bound`](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange/bound)
-    pub fn bound0(lower: &Any, upper: &Any) -> IDBKeyRange {
+    pub fn bound(lower: &Any, upper: &Any) -> IDBKeyRange {
         Any::global("IDBKeyRange")
             .call("bound", &[lower.into(), upper.into()])
             .as_::<IDBKeyRange>()
     }
+}
+impl IDBKeyRange {
     /// The bound method.
     /// [`IDBKeyRange.bound`](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange/bound)
-    pub fn bound1(lower: &Any, upper: &Any, lower_open: bool) -> IDBKeyRange {
+    pub fn bound_with_lower_open(lower: &Any, upper: &Any, lower_open: bool) -> IDBKeyRange {
         Any::global("IDBKeyRange")
             .call("bound", &[lower.into(), upper.into(), lower_open.into()])
             .as_::<IDBKeyRange>()
     }
+}
+impl IDBKeyRange {
     /// The bound method.
     /// [`IDBKeyRange.bound`](https://developer.mozilla.org/en-US/docs/Web/API/IDBKeyRange/bound)
-    pub fn bound2(lower: &Any, upper: &Any, lower_open: bool, upper_open: bool) -> IDBKeyRange {
+    pub fn bound_with_lower_open_and_upper_open(
+        lower: &Any,
+        upper: &Any,
+        lower_open: bool,
+        upper_open: bool,
+    ) -> IDBKeyRange {
         Any::global("IDBKeyRange")
             .call(
                 "bound",

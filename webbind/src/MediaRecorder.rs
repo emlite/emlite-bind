@@ -186,16 +186,18 @@ impl MediaRecorder {
 
 impl MediaRecorder {
     /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
-    pub fn new0(stream: &MediaStream) -> MediaRecorder {
+    pub fn new(stream: &MediaStream) -> MediaRecorder {
         Self {
             inner: Any::global("MediaRecorder")
                 .new(&[stream.into()])
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl MediaRecorder {
     /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
-    pub fn new1(stream: &MediaStream, options: &MediaRecorderOptions) -> MediaRecorder {
+    pub fn new_with_options(stream: &MediaStream, options: &MediaRecorderOptions) -> MediaRecorder {
         Self {
             inner: Any::global("MediaRecorder")
                 .new(&[stream.into(), options.into()])
@@ -203,15 +205,18 @@ impl MediaRecorder {
         }
     }
 }
+
 impl MediaRecorder {
     /// The start method.
     /// [`MediaRecorder.start`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/start)
-    pub fn start0(&self) -> Undefined {
+    pub fn start(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
+}
+impl MediaRecorder {
     /// The start method.
     /// [`MediaRecorder.start`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/start)
-    pub fn start1(&self, timeslice: u32) -> Undefined {
+    pub fn start_with_timeslice(&self, timeslice: u32) -> Undefined {
         self.inner
             .call("start", &[timeslice.into()])
             .as_::<Undefined>()

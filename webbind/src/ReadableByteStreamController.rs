@@ -98,12 +98,14 @@ impl ReadableByteStreamController {
 impl ReadableByteStreamController {
     /// The error method.
     /// [`ReadableByteStreamController.error`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableByteStreamController/error)
-    pub fn error0(&self) -> Undefined {
+    pub fn error(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
+}
+impl ReadableByteStreamController {
     /// The error method.
     /// [`ReadableByteStreamController.error`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableByteStreamController/error)
-    pub fn error1(&self, e: &Any) -> Undefined {
+    pub fn error_with_e(&self, e: &Any) -> Undefined {
         self.inner.call("error", &[e.into()]).as_::<Undefined>()
     }
 }

@@ -118,41 +118,49 @@ impl DOMPoint {
 
 impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
-    pub fn new0() -> DOMPoint {
+    pub fn new() -> DOMPoint {
         Self {
             inner: Any::global("DOMPoint").new(&[]).as_::<DOMPointReadOnly>(),
         }
     }
+}
 
+impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
-    pub fn new1(x: f64) -> DOMPoint {
+    pub fn new_with_x(x: f64) -> DOMPoint {
         Self {
             inner: Any::global("DOMPoint")
                 .new(&[x.into()])
                 .as_::<DOMPointReadOnly>(),
         }
     }
+}
 
+impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
-    pub fn new2(x: f64, y: f64) -> DOMPoint {
+    pub fn new_with_x_and_y(x: f64, y: f64) -> DOMPoint {
         Self {
             inner: Any::global("DOMPoint")
                 .new(&[x.into(), y.into()])
                 .as_::<DOMPointReadOnly>(),
         }
     }
+}
 
+impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
-    pub fn new3(x: f64, y: f64, z: f64) -> DOMPoint {
+    pub fn new_with_x_and_y_and_z(x: f64, y: f64, z: f64) -> DOMPoint {
         Self {
             inner: Any::global("DOMPoint")
                 .new(&[x.into(), y.into(), z.into()])
                 .as_::<DOMPointReadOnly>(),
         }
     }
+}
 
+impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
-    pub fn new4(x: f64, y: f64, z: f64, w: f64) -> DOMPoint {
+    pub fn new_with_x_and_y_and_z_and_w(x: f64, y: f64, z: f64, w: f64) -> DOMPoint {
         Self {
             inner: Any::global("DOMPoint")
                 .new(&[x.into(), y.into(), z.into(), w.into()])
@@ -160,17 +168,20 @@ impl DOMPoint {
         }
     }
 }
+
 impl DOMPoint {
     /// The fromPoint method.
     /// [`DOMPoint.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/fromPoint)
-    pub fn from_point0() -> DOMPoint {
+    pub fn from_point() -> DOMPoint {
         Any::global("DOMPoint")
             .call("fromPoint", &[])
             .as_::<DOMPoint>()
     }
+}
+impl DOMPoint {
     /// The fromPoint method.
     /// [`DOMPoint.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/fromPoint)
-    pub fn from_point1(other: &DOMPointInit) -> DOMPoint {
+    pub fn from_point_with_other(other: &DOMPointInit) -> DOMPoint {
         Any::global("DOMPoint")
             .call("fromPoint", &[other.into()])
             .as_::<DOMPoint>()

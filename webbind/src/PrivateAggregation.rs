@@ -91,12 +91,14 @@ impl PrivateAggregation {
 impl PrivateAggregation {
     /// The enableDebugMode method.
     /// [`PrivateAggregation.enableDebugMode`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/enableDebugMode)
-    pub fn enable_debug_mode0(&self) -> Undefined {
+    pub fn enable_debug_mode(&self) -> Undefined {
         self.inner.call("enableDebugMode", &[]).as_::<Undefined>()
     }
+}
+impl PrivateAggregation {
     /// The enableDebugMode method.
     /// [`PrivateAggregation.enableDebugMode`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/enableDebugMode)
-    pub fn enable_debug_mode1(&self, options: &PADebugModeOptions) -> Undefined {
+    pub fn enable_debug_mode_with_options(&self, options: &PADebugModeOptions) -> Undefined {
         self.inner
             .call("enableDebugMode", &[options.into()])
             .as_::<Undefined>()

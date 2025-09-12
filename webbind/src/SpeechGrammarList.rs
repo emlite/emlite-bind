@@ -79,6 +79,7 @@ impl SpeechGrammarList {
         }
     }
 }
+
 impl SpeechGrammarList {
     /// The item method.
     /// [`SpeechGrammarList.item`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/item)
@@ -91,14 +92,16 @@ impl SpeechGrammarList {
 impl SpeechGrammarList {
     /// The addFromURI method.
     /// [`SpeechGrammarList.addFromURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromURI)
-    pub fn add_from_uri0(&self, src: &JsString) -> Undefined {
+    pub fn add_from_uri(&self, src: &JsString) -> Undefined {
         self.inner
             .call("addFromURI", &[src.into()])
             .as_::<Undefined>()
     }
+}
+impl SpeechGrammarList {
     /// The addFromURI method.
     /// [`SpeechGrammarList.addFromURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromURI)
-    pub fn add_from_uri1(&self, src: &JsString, weight: f32) -> Undefined {
+    pub fn add_from_uri_with_weight(&self, src: &JsString, weight: f32) -> Undefined {
         self.inner
             .call("addFromURI", &[src.into(), weight.into()])
             .as_::<Undefined>()
@@ -107,14 +110,16 @@ impl SpeechGrammarList {
 impl SpeechGrammarList {
     /// The addFromString method.
     /// [`SpeechGrammarList.addFromString`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromString)
-    pub fn add_from_string0(&self, string: &JsString) -> Undefined {
+    pub fn add_from_string(&self, string: &JsString) -> Undefined {
         self.inner
             .call("addFromString", &[string.into()])
             .as_::<Undefined>()
     }
+}
+impl SpeechGrammarList {
     /// The addFromString method.
     /// [`SpeechGrammarList.addFromString`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromString)
-    pub fn add_from_string1(&self, string: &JsString, weight: f32) -> Undefined {
+    pub fn add_from_string_with_weight(&self, string: &JsString, weight: f32) -> Undefined {
         self.inner
             .call("addFromString", &[string.into(), weight.into()])
             .as_::<Undefined>()

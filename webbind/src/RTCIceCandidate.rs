@@ -180,14 +180,18 @@ impl RTCIceCandidate {
 
 impl RTCIceCandidate {
     /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
-    pub fn new0() -> RTCIceCandidate {
+    pub fn new() -> RTCIceCandidate {
         Self {
             inner: Any::global("RTCIceCandidate").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl RTCIceCandidate {
     /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
-    pub fn new1(candidate_init_dict: &RTCLocalIceCandidateInit) -> RTCIceCandidate {
+    pub fn new_with_candidate_init_dict(
+        candidate_init_dict: &RTCLocalIceCandidateInit,
+    ) -> RTCIceCandidate {
         Self {
             inner: Any::global("RTCIceCandidate")
                 .new(&[candidate_init_dict.into()])
@@ -195,6 +199,7 @@ impl RTCIceCandidate {
         }
     }
 }
+
 impl RTCIceCandidate {
     /// The toJSON method.
     /// [`RTCIceCandidate.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/toJSON)

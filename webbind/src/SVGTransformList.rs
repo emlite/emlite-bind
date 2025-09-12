@@ -141,14 +141,19 @@ impl SVGTransformList {
 impl SVGTransformList {
     /// The createSVGTransformFromMatrix method.
     /// [`SVGTransformList.createSVGTransformFromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransformList/createSVGTransformFromMatrix)
-    pub fn create_svg_transform_from_matrix0(&self) -> SVGTransform {
+    pub fn create_svg_transform_from_matrix(&self) -> SVGTransform {
         self.inner
             .call("createSVGTransformFromMatrix", &[])
             .as_::<SVGTransform>()
     }
+}
+impl SVGTransformList {
     /// The createSVGTransformFromMatrix method.
     /// [`SVGTransformList.createSVGTransformFromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransformList/createSVGTransformFromMatrix)
-    pub fn create_svg_transform_from_matrix1(&self, matrix: &DOMMatrix2DInit) -> SVGTransform {
+    pub fn create_svg_transform_from_matrix_with_matrix(
+        &self,
+        matrix: &DOMMatrix2DInit,
+    ) -> SVGTransform {
         self.inner
             .call("createSVGTransformFromMatrix", &[matrix.into()])
             .as_::<SVGTransform>()

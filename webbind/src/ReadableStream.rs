@@ -73,23 +73,30 @@ impl ReadableStream {
 
 impl ReadableStream {
     /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
-    pub fn new0() -> ReadableStream {
+    pub fn new() -> ReadableStream {
         Self {
             inner: Any::global("ReadableStream").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl ReadableStream {
     /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
-    pub fn new1(underlying_source: &Object) -> ReadableStream {
+    pub fn new_with_underlying_source(underlying_source: &Object) -> ReadableStream {
         Self {
             inner: Any::global("ReadableStream")
                 .new(&[underlying_source.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl ReadableStream {
     /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
-    pub fn new2(underlying_source: &Object, strategy: &QueuingStrategy) -> ReadableStream {
+    pub fn new_with_underlying_source_and_strategy(
+        underlying_source: &Object,
+        strategy: &QueuingStrategy,
+    ) -> ReadableStream {
         Self {
             inner: Any::global("ReadableStream")
                 .new(&[underlying_source.into(), strategy.into()])
@@ -97,6 +104,7 @@ impl ReadableStream {
         }
     }
 }
+
 impl ReadableStream {
     /// The from method.
     /// [`ReadableStream.from`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/from)
@@ -109,12 +117,14 @@ impl ReadableStream {
 impl ReadableStream {
     /// The cancel method.
     /// [`ReadableStream.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/cancel)
-    pub fn cancel0(&self) -> Promise<Undefined> {
+    pub fn cancel(&self) -> Promise<Undefined> {
         self.inner.call("cancel", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl ReadableStream {
     /// The cancel method.
     /// [`ReadableStream.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/cancel)
-    pub fn cancel1(&self, reason: &Any) -> Promise<Undefined> {
+    pub fn cancel_with_reason(&self, reason: &Any) -> Promise<Undefined> {
         self.inner
             .call("cancel", &[reason.into()])
             .as_::<Promise<Undefined>>()
@@ -123,26 +133,30 @@ impl ReadableStream {
 impl ReadableStream {
     /// The getReader method.
     /// [`ReadableStream.getReader`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader)
-    pub fn get_reader0(&self) -> Any {
+    pub fn get_reader(&self) -> Any {
         self.inner.call("getReader", &[]).as_::<Any>()
     }
+}
+impl ReadableStream {
     /// The getReader method.
     /// [`ReadableStream.getReader`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader)
-    pub fn get_reader1(&self, options: &ReadableStreamGetReaderOptions) -> Any {
+    pub fn get_reader_with_options(&self, options: &ReadableStreamGetReaderOptions) -> Any {
         self.inner.call("getReader", &[options.into()]).as_::<Any>()
     }
 }
 impl ReadableStream {
     /// The pipeThrough method.
     /// [`ReadableStream.pipeThrough`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough)
-    pub fn pipe_through0(&self, transform: &ReadableWritablePair) -> ReadableStream {
+    pub fn pipe_through(&self, transform: &ReadableWritablePair) -> ReadableStream {
         self.inner
             .call("pipeThrough", &[transform.into()])
             .as_::<ReadableStream>()
     }
+}
+impl ReadableStream {
     /// The pipeThrough method.
     /// [`ReadableStream.pipeThrough`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough)
-    pub fn pipe_through1(
+    pub fn pipe_through_with_options(
         &self,
         transform: &ReadableWritablePair,
         options: &StreamPipeOptions,
@@ -155,14 +169,16 @@ impl ReadableStream {
 impl ReadableStream {
     /// The pipeTo method.
     /// [`ReadableStream.pipeTo`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo)
-    pub fn pipe_to0(&self, destination: &WritableStream) -> Promise<Undefined> {
+    pub fn pipe_to(&self, destination: &WritableStream) -> Promise<Undefined> {
         self.inner
             .call("pipeTo", &[destination.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl ReadableStream {
     /// The pipeTo method.
     /// [`ReadableStream.pipeTo`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo)
-    pub fn pipe_to1(
+    pub fn pipe_to_with_options(
         &self,
         destination: &WritableStream,
         options: &StreamPipeOptions,

@@ -103,12 +103,14 @@ impl AnimationEffect {
 impl AnimationEffect {
     /// The updateTiming method.
     /// [`AnimationEffect.updateTiming`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/updateTiming)
-    pub fn update_timing0(&self) -> Undefined {
+    pub fn update_timing(&self) -> Undefined {
         self.inner.call("updateTiming", &[]).as_::<Undefined>()
     }
+}
+impl AnimationEffect {
     /// The updateTiming method.
     /// [`AnimationEffect.updateTiming`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/updateTiming)
-    pub fn update_timing1(&self, timing: &OptionalEffectTiming) -> Undefined {
+    pub fn update_timing_with_timing(&self, timing: &OptionalEffectTiming) -> Undefined {
         self.inner
             .call("updateTiming", &[timing.into()])
             .as_::<Undefined>()

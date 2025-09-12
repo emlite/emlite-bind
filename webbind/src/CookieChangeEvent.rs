@@ -84,16 +84,21 @@ impl CookieChangeEvent {
 
 impl CookieChangeEvent {
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
-    pub fn new0(type_: &JsString) -> CookieChangeEvent {
+    pub fn new(type_: &JsString) -> CookieChangeEvent {
         Self {
             inner: Any::global("CookieChangeEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl CookieChangeEvent {
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &CookieChangeEventInit) -> CookieChangeEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &CookieChangeEventInit,
+    ) -> CookieChangeEvent {
         Self {
             inner: Any::global("CookieChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

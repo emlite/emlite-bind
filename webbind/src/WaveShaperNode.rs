@@ -92,16 +92,21 @@ impl WaveShaperNode {
 
 impl WaveShaperNode {
     /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
-    pub fn new0(context: &BaseAudioContext) -> WaveShaperNode {
+    pub fn new(context: &BaseAudioContext) -> WaveShaperNode {
         Self {
             inner: Any::global("WaveShaperNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl WaveShaperNode {
     /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
-    pub fn new1(context: &BaseAudioContext, options: &WaveShaperOptions) -> WaveShaperNode {
+    pub fn new_with_options(
+        context: &BaseAudioContext,
+        options: &WaveShaperOptions,
+    ) -> WaveShaperNode {
         Self {
             inner: Any::global("WaveShaperNode")
                 .new(&[context.into(), options.into()])

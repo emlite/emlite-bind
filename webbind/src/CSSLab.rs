@@ -118,16 +118,18 @@ impl CSSLab {
 
 impl CSSLab {
     /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
-    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSLab {
+    pub fn new(l: &Any, a: &Any, b: &Any) -> CSSLab {
         Self {
             inner: Any::global("CSSLab")
                 .new(&[l.into(), a.into(), b.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSLab {
     /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
-    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSLab {
+    pub fn new_with_alpha(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSLab {
         Self {
             inner: Any::global("CSSLab")
                 .new(&[l.into(), a.into(), b.into(), alpha.into()])

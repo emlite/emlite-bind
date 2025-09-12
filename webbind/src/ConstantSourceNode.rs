@@ -73,16 +73,21 @@ impl ConstantSourceNode {
 
 impl ConstantSourceNode {
     /// The `new ConstantSourceNode(..)` constructor, creating a new ConstantSourceNode instance
-    pub fn new0(context: &BaseAudioContext) -> ConstantSourceNode {
+    pub fn new(context: &BaseAudioContext) -> ConstantSourceNode {
         Self {
             inner: Any::global("ConstantSourceNode")
                 .new(&[context.into()])
                 .as_::<AudioScheduledSourceNode>(),
         }
     }
+}
 
+impl ConstantSourceNode {
     /// The `new ConstantSourceNode(..)` constructor, creating a new ConstantSourceNode instance
-    pub fn new1(context: &BaseAudioContext, options: &ConstantSourceOptions) -> ConstantSourceNode {
+    pub fn new_with_options(
+        context: &BaseAudioContext,
+        options: &ConstantSourceOptions,
+    ) -> ConstantSourceNode {
         Self {
             inner: Any::global("ConstantSourceNode")
                 .new(&[context.into(), options.into()])

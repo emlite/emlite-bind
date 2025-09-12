@@ -66,21 +66,30 @@ jsbind::utils::impl_dyn_cast!(XPathExpression);
 impl XPathExpression {
     /// The evaluate method.
     /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
-    pub fn evaluate0(&self, context_node: &Node) -> XPathResult {
+    pub fn evaluate(&self, context_node: &Node) -> XPathResult {
         self.inner
             .call("evaluate", &[context_node.into()])
             .as_::<XPathResult>()
     }
+}
+impl XPathExpression {
     /// The evaluate method.
     /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
-    pub fn evaluate1(&self, context_node: &Node, type_: u16) -> XPathResult {
+    pub fn evaluate_with_type(&self, context_node: &Node, type_: u16) -> XPathResult {
         self.inner
             .call("evaluate", &[context_node.into(), type_.into()])
             .as_::<XPathResult>()
     }
+}
+impl XPathExpression {
     /// The evaluate method.
     /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
-    pub fn evaluate2(&self, context_node: &Node, type_: u16, result: &XPathResult) -> XPathResult {
+    pub fn evaluate_with_type_and_result(
+        &self,
+        context_node: &Node,
+        type_: u16,
+        result: &XPathResult,
+    ) -> XPathResult {
         self.inner
             .call(
                 "evaluate",

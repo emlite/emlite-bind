@@ -73,17 +73,20 @@ impl MutationObserver {
         }
     }
 }
+
 impl MutationObserver {
     /// The observe method.
     /// [`MutationObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe)
-    pub fn observe0(&self, target: &Node) -> Undefined {
+    pub fn observe(&self, target: &Node) -> Undefined {
         self.inner
             .call("observe", &[target.into()])
             .as_::<Undefined>()
     }
+}
+impl MutationObserver {
     /// The observe method.
     /// [`MutationObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe)
-    pub fn observe1(&self, target: &Node, options: &MutationObserverInit) -> Undefined {
+    pub fn observe_with_options(&self, target: &Node, options: &MutationObserverInit) -> Undefined {
         self.inner
             .call("observe", &[target.into(), options.into()])
             .as_::<Undefined>()

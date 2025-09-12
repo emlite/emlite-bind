@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(WakeLock);
 impl WakeLock {
     /// The request method.
     /// [`WakeLock.request`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request)
-    pub fn request0(&self) -> Promise<WakeLockSentinel> {
+    pub fn request(&self) -> Promise<WakeLockSentinel> {
         self.inner
             .call("request", &[])
             .as_::<Promise<WakeLockSentinel>>()
     }
+}
+impl WakeLock {
     /// The request method.
     /// [`WakeLock.request`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request)
-    pub fn request1(&self, type_: &WakeLockType) -> Promise<WakeLockSentinel> {
+    pub fn request_with_type(&self, type_: &WakeLockType) -> Promise<WakeLockSentinel> {
         self.inner
             .call("request", &[type_.into()])
             .as_::<Promise<WakeLockSentinel>>()

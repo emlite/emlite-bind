@@ -126,17 +126,24 @@ impl OffscreenCanvas {
         }
     }
 }
+
 impl OffscreenCanvas {
     /// The getContext method.
     /// [`OffscreenCanvas.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/getContext)
-    pub fn get_context0(&self, context_id: &OffscreenRenderingContextId) -> Any {
+    pub fn get_context(&self, context_id: &OffscreenRenderingContextId) -> Any {
         self.inner
             .call("getContext", &[context_id.into()])
             .as_::<Any>()
     }
+}
+impl OffscreenCanvas {
     /// The getContext method.
     /// [`OffscreenCanvas.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/getContext)
-    pub fn get_context1(&self, context_id: &OffscreenRenderingContextId, options: &Any) -> Any {
+    pub fn get_context_with_options(
+        &self,
+        context_id: &OffscreenRenderingContextId,
+        options: &Any,
+    ) -> Any {
         self.inner
             .call("getContext", &[context_id.into(), options.into()])
             .as_::<Any>()
@@ -154,12 +161,14 @@ impl OffscreenCanvas {
 impl OffscreenCanvas {
     /// The convertToBlob method.
     /// [`OffscreenCanvas.convertToBlob`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/convertToBlob)
-    pub fn convert_to_blob0(&self) -> Promise<Blob> {
+    pub fn convert_to_blob(&self) -> Promise<Blob> {
         self.inner.call("convertToBlob", &[]).as_::<Promise<Blob>>()
     }
+}
+impl OffscreenCanvas {
     /// The convertToBlob method.
     /// [`OffscreenCanvas.convertToBlob`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/convertToBlob)
-    pub fn convert_to_blob1(&self, options: &ImageEncodeOptions) -> Promise<Blob> {
+    pub fn convert_to_blob_with_options(&self, options: &ImageEncodeOptions) -> Promise<Blob> {
         self.inner
             .call("convertToBlob", &[options.into()])
             .as_::<Promise<Blob>>()

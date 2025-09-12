@@ -95,15 +95,18 @@ impl WritableStreamDefaultWriter {
         }
     }
 }
+
 impl WritableStreamDefaultWriter {
     /// The abort method.
     /// [`WritableStreamDefaultWriter.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/abort)
-    pub fn abort0(&self) -> Promise<Undefined> {
+    pub fn abort(&self) -> Promise<Undefined> {
         self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl WritableStreamDefaultWriter {
     /// The abort method.
     /// [`WritableStreamDefaultWriter.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/abort)
-    pub fn abort1(&self, reason: &Any) -> Promise<Undefined> {
+    pub fn abort_with_reason(&self, reason: &Any) -> Promise<Undefined> {
         self.inner
             .call("abort", &[reason.into()])
             .as_::<Promise<Undefined>>()
@@ -126,12 +129,14 @@ impl WritableStreamDefaultWriter {
 impl WritableStreamDefaultWriter {
     /// The write method.
     /// [`WritableStreamDefaultWriter.write`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/write)
-    pub fn write0(&self) -> Promise<Undefined> {
+    pub fn write(&self) -> Promise<Undefined> {
         self.inner.call("write", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl WritableStreamDefaultWriter {
     /// The write method.
     /// [`WritableStreamDefaultWriter.write`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/write)
-    pub fn write1(&self, chunk: &Any) -> Promise<Undefined> {
+    pub fn write_with_chunk(&self, chunk: &Any) -> Promise<Undefined> {
         self.inner
             .call("write", &[chunk.into()])
             .as_::<Promise<Undefined>>()

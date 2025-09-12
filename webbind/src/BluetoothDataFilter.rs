@@ -80,14 +80,16 @@ impl BluetoothDataFilter {
 
 impl BluetoothDataFilter {
     /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
-    pub fn new0() -> BluetoothDataFilter {
+    pub fn new() -> BluetoothDataFilter {
         Self {
             inner: Any::global("BluetoothDataFilter").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl BluetoothDataFilter {
     /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
-    pub fn new1(init: &BluetoothDataFilterInit) -> BluetoothDataFilter {
+    pub fn new_with_init(init: &BluetoothDataFilterInit) -> BluetoothDataFilter {
         Self {
             inner: Any::global("BluetoothDataFilter")
                 .new(&[init.into()])

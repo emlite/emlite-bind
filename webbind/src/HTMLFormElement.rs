@@ -225,6 +225,7 @@ impl HTMLFormElement {
         }
     }
 }
+
 impl HTMLFormElement {
     /// The submit method.
     /// [`HTMLFormElement.submit`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit)
@@ -235,12 +236,14 @@ impl HTMLFormElement {
 impl HTMLFormElement {
     /// The requestSubmit method.
     /// [`HTMLFormElement.requestSubmit`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit)
-    pub fn request_submit0(&self) -> Undefined {
+    pub fn request_submit(&self) -> Undefined {
         self.inner.call("requestSubmit", &[]).as_::<Undefined>()
     }
+}
+impl HTMLFormElement {
     /// The requestSubmit method.
     /// [`HTMLFormElement.requestSubmit`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit)
-    pub fn request_submit1(&self, submitter: &HTMLElement) -> Undefined {
+    pub fn request_submit_with_submitter(&self, submitter: &HTMLElement) -> Undefined {
         self.inner
             .call("requestSubmit", &[submitter.into()])
             .as_::<Undefined>()

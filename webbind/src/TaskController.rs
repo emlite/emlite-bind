@@ -65,16 +65,18 @@ jsbind::utils::impl_dyn_cast!(TaskController);
 
 impl TaskController {
     /// The `new TaskController(..)` constructor, creating a new TaskController instance
-    pub fn new0() -> TaskController {
+    pub fn new() -> TaskController {
         Self {
             inner: Any::global("TaskController")
                 .new(&[])
                 .as_::<AbortController>(),
         }
     }
+}
 
+impl TaskController {
     /// The `new TaskController(..)` constructor, creating a new TaskController instance
-    pub fn new1(init: &TaskControllerInit) -> TaskController {
+    pub fn new_with_init(init: &TaskControllerInit) -> TaskController {
         Self {
             inner: Any::global("TaskController")
                 .new(&[init.into()])
@@ -82,6 +84,7 @@ impl TaskController {
         }
     }
 }
+
 impl TaskController {
     /// The setPriority method.
     /// [`TaskController.setPriority`](https://developer.mozilla.org/en-US/docs/Web/API/TaskController/setPriority)

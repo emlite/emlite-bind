@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(Scheduler);
 impl Scheduler {
     /// The postTask method.
     /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
-    pub fn post_task0(&self, callback: &Function) -> Promise<Any> {
+    pub fn post_task(&self, callback: &Function) -> Promise<Any> {
         self.inner
             .call("postTask", &[callback.into()])
             .as_::<Promise<Any>>()
     }
+}
+impl Scheduler {
     /// The postTask method.
     /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
-    pub fn post_task1(
+    pub fn post_task_with_options(
         &self,
         callback: &Function,
         options: &SchedulerPostTaskOptions,

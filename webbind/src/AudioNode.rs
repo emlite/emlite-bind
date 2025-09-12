@@ -128,21 +128,30 @@ impl AudioNode {
 impl AudioNode {
     /// The connect method.
     /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
-    pub fn connect0(&self, destination_node: &AudioNode) -> AudioNode {
+    pub fn connect(&self, destination_node: &AudioNode) -> AudioNode {
         self.inner
             .call("connect", &[destination_node.into()])
             .as_::<AudioNode>()
     }
+}
+impl AudioNode {
     /// The connect method.
     /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
-    pub fn connect1(&self, destination_node: &AudioNode, output: u32) -> AudioNode {
+    pub fn connect_with_output(&self, destination_node: &AudioNode, output: u32) -> AudioNode {
         self.inner
             .call("connect", &[destination_node.into(), output.into()])
             .as_::<AudioNode>()
     }
+}
+impl AudioNode {
     /// The connect method.
     /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
-    pub fn connect2(&self, destination_node: &AudioNode, output: u32, input: u32) -> AudioNode {
+    pub fn connect_with_output_and_input(
+        &self,
+        destination_node: &AudioNode,
+        output: u32,
+        input: u32,
+    ) -> AudioNode {
         self.inner
             .call(
                 "connect",
@@ -154,14 +163,16 @@ impl AudioNode {
 impl AudioNode {
     /// The connect method.
     /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
-    pub fn connect3(&self, destination_param: &AudioParam) -> Undefined {
+    pub fn connect_with_destination_param(&self, destination_param: &AudioParam) -> Undefined {
         self.inner
             .call("connect", &[destination_param.into()])
             .as_::<Undefined>()
     }
+}
+impl AudioNode {
     /// The connect method.
     /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
-    pub fn connect4(&self, destination_param: &AudioParam, output: u32) -> Undefined {
+    pub fn connect_with_output_2(&self, destination_param: &AudioParam, output: u32) -> Undefined {
         self.inner
             .call("connect", &[destination_param.into(), output.into()])
             .as_::<Undefined>()
@@ -177,7 +188,7 @@ impl AudioNode {
 impl AudioNode {
     /// The disconnect method.
     /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
-    pub fn disconnect1(&self, output: u32) -> Undefined {
+    pub fn disconnect_with_output(&self, output: u32) -> Undefined {
         self.inner
             .call("disconnect", &[output.into()])
             .as_::<Undefined>()
@@ -186,7 +197,7 @@ impl AudioNode {
 impl AudioNode {
     /// The disconnect method.
     /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
-    pub fn disconnect2(&self, destination_node: &AudioNode) -> Undefined {
+    pub fn disconnect_with_destination_node(&self, destination_node: &AudioNode) -> Undefined {
         self.inner
             .call("disconnect", &[destination_node.into()])
             .as_::<Undefined>()
@@ -195,7 +206,11 @@ impl AudioNode {
 impl AudioNode {
     /// The disconnect method.
     /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
-    pub fn disconnect3(&self, destination_node: &AudioNode, output: u32) -> Undefined {
+    pub fn disconnect_with_destination_node_and_output(
+        &self,
+        destination_node: &AudioNode,
+        output: u32,
+    ) -> Undefined {
         self.inner
             .call("disconnect", &[destination_node.into(), output.into()])
             .as_::<Undefined>()
@@ -204,7 +219,12 @@ impl AudioNode {
 impl AudioNode {
     /// The disconnect method.
     /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
-    pub fn disconnect4(&self, destination_node: &AudioNode, output: u32, input: u32) -> Undefined {
+    pub fn disconnect_with_destination_node_and_output_and_input(
+        &self,
+        destination_node: &AudioNode,
+        output: u32,
+        input: u32,
+    ) -> Undefined {
         self.inner
             .call(
                 "disconnect",
@@ -216,7 +236,7 @@ impl AudioNode {
 impl AudioNode {
     /// The disconnect method.
     /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
-    pub fn disconnect5(&self, destination_param: &AudioParam) -> Undefined {
+    pub fn disconnect_with_destination_param(&self, destination_param: &AudioParam) -> Undefined {
         self.inner
             .call("disconnect", &[destination_param.into()])
             .as_::<Undefined>()
@@ -225,7 +245,11 @@ impl AudioNode {
 impl AudioNode {
     /// The disconnect method.
     /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
-    pub fn disconnect6(&self, destination_param: &AudioParam, output: u32) -> Undefined {
+    pub fn disconnect_with_destination_param_and_output(
+        &self,
+        destination_param: &AudioParam,
+        output: u32,
+    ) -> Undefined {
         self.inner
             .call("disconnect", &[destination_param.into(), output.into()])
             .as_::<Undefined>()

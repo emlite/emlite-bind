@@ -108,16 +108,18 @@ impl RTCError {
 
 impl RTCError {
     /// The `new RTCError(..)` constructor, creating a new RTCError instance
-    pub fn new0(init: &RTCErrorInit) -> RTCError {
+    pub fn new(init: &RTCErrorInit) -> RTCError {
         Self {
             inner: Any::global("RTCError")
                 .new(&[init.into()])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl RTCError {
     /// The `new RTCError(..)` constructor, creating a new RTCError instance
-    pub fn new1(init: &RTCErrorInit, message: &JsString) -> RTCError {
+    pub fn new_with_message(init: &RTCErrorInit, message: &JsString) -> RTCError {
         Self {
             inner: Any::global("RTCError")
                 .new(&[init.into(), message.into()])

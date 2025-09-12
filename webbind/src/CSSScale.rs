@@ -105,16 +105,18 @@ impl CSSScale {
 
 impl CSSScale {
     /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
-    pub fn new0(x: &Any, y: &Any) -> CSSScale {
+    pub fn new(x: &Any, y: &Any) -> CSSScale {
         Self {
             inner: Any::global("CSSScale")
                 .new(&[x.into(), y.into()])
                 .as_::<CSSTransformComponent>(),
         }
     }
+}
 
+impl CSSScale {
     /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
-    pub fn new1(x: &Any, y: &Any, z: &Any) -> CSSScale {
+    pub fn new_with_z(x: &Any, y: &Any, z: &Any) -> CSSScale {
         Self {
             inner: Any::global("CSSScale")
                 .new(&[x.into(), y.into(), z.into()])

@@ -86,16 +86,21 @@ impl CSSVariableReferenceValue {
 
 impl CSSVariableReferenceValue {
     /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
-    pub fn new0(variable: &JsString) -> CSSVariableReferenceValue {
+    pub fn new(variable: &JsString) -> CSSVariableReferenceValue {
         Self {
             inner: Any::global("CSSVariableReferenceValue")
                 .new(&[variable.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl CSSVariableReferenceValue {
     /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
-    pub fn new1(variable: &JsString, fallback: &CSSUnparsedValue) -> CSSVariableReferenceValue {
+    pub fn new_with_fallback(
+        variable: &JsString,
+        fallback: &CSSUnparsedValue,
+    ) -> CSSVariableReferenceValue {
         Self {
             inner: Any::global("CSSVariableReferenceValue")
                 .new(&[variable.into(), fallback.into()])

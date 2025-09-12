@@ -163,6 +163,7 @@ impl MediaSource {
         }
     }
 }
+
 impl MediaSource {
     /// The addSourceBuffer method.
     /// [`MediaSource.addSourceBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/addSourceBuffer)
@@ -184,12 +185,14 @@ impl MediaSource {
 impl MediaSource {
     /// The endOfStream method.
     /// [`MediaSource.endOfStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/endOfStream)
-    pub fn end_of_stream0(&self) -> Undefined {
+    pub fn end_of_stream(&self) -> Undefined {
         self.inner.call("endOfStream", &[]).as_::<Undefined>()
     }
+}
+impl MediaSource {
     /// The endOfStream method.
     /// [`MediaSource.endOfStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/endOfStream)
-    pub fn end_of_stream1(&self, error: &EndOfStreamError) -> Undefined {
+    pub fn end_of_stream_with_error(&self, error: &EndOfStreamError) -> Undefined {
         self.inner
             .call("endOfStream", &[error.into()])
             .as_::<Undefined>()

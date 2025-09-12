@@ -160,17 +160,20 @@ impl HTMLTableRowElement {
         }
     }
 }
+
 impl HTMLTableRowElement {
     /// The insertCell method.
     /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
-    pub fn insert_cell0(&self) -> HTMLTableCellElement {
+    pub fn insert_cell(&self) -> HTMLTableCellElement {
         self.inner
             .call("insertCell", &[])
             .as_::<HTMLTableCellElement>()
     }
+}
+impl HTMLTableRowElement {
     /// The insertCell method.
     /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
-    pub fn insert_cell1(&self, index: i32) -> HTMLTableCellElement {
+    pub fn insert_cell_with_index(&self, index: i32) -> HTMLTableCellElement {
         self.inner
             .call("insertCell", &[index.into()])
             .as_::<HTMLTableCellElement>()

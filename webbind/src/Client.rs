@@ -112,14 +112,20 @@ impl Client {
 impl Client {
     /// The postMessage method.
     /// [`Client.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage)
-    pub fn post_message1(&self, message: &Any) -> Undefined {
+    pub fn post_message_with_message(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
+}
+impl Client {
     /// The postMessage method.
     /// [`Client.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage)
-    pub fn post_message2(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+    pub fn post_message_with_options(
+        &self,
+        message: &Any,
+        options: &StructuredSerializeOptions,
+    ) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()

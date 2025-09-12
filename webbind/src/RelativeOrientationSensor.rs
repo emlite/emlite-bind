@@ -65,16 +65,20 @@ jsbind::utils::impl_dyn_cast!(RelativeOrientationSensor);
 
 impl RelativeOrientationSensor {
     /// The `new RelativeOrientationSensor(..)` constructor, creating a new RelativeOrientationSensor instance
-    pub fn new0() -> RelativeOrientationSensor {
+    pub fn new() -> RelativeOrientationSensor {
         Self {
             inner: Any::global("RelativeOrientationSensor")
                 .new(&[])
                 .as_::<OrientationSensor>(),
         }
     }
+}
 
+impl RelativeOrientationSensor {
     /// The `new RelativeOrientationSensor(..)` constructor, creating a new RelativeOrientationSensor instance
-    pub fn new1(sensor_options: &OrientationSensorOptions) -> RelativeOrientationSensor {
+    pub fn new_with_sensor_options(
+        sensor_options: &OrientationSensorOptions,
+    ) -> RelativeOrientationSensor {
         Self {
             inner: Any::global("RelativeOrientationSensor")
                 .new(&[sensor_options.into()])

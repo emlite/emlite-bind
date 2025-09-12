@@ -182,14 +182,16 @@ impl WebTransport {
 
 impl WebTransport {
     /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
-    pub fn new0(url: &JsString) -> WebTransport {
+    pub fn new(url: &JsString) -> WebTransport {
         Self {
             inner: Any::global("WebTransport").new(&[url.into()]).as_::<Any>(),
         }
     }
+}
 
+impl WebTransport {
     /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
-    pub fn new1(url: &JsString, options: &WebTransportOptions) -> WebTransport {
+    pub fn new_with_options(url: &JsString, options: &WebTransportOptions) -> WebTransport {
         Self {
             inner: Any::global("WebTransport")
                 .new(&[url.into(), options.into()])
@@ -197,6 +199,7 @@ impl WebTransport {
         }
     }
 }
+
 impl WebTransport {
     /// The getStats method.
     /// [`WebTransport.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats)
@@ -209,14 +212,20 @@ impl WebTransport {
 impl WebTransport {
     /// The exportKeyingMaterial method.
     /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
-    pub fn export_keying_material0(&self, label: &Any) -> Promise<ArrayBuffer> {
+    pub fn export_keying_material(&self, label: &Any) -> Promise<ArrayBuffer> {
         self.inner
             .call("exportKeyingMaterial", &[label.into()])
             .as_::<Promise<ArrayBuffer>>()
     }
+}
+impl WebTransport {
     /// The exportKeyingMaterial method.
     /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
-    pub fn export_keying_material1(&self, label: &Any, context: &Any) -> Promise<ArrayBuffer> {
+    pub fn export_keying_material_with_context(
+        &self,
+        label: &Any,
+        context: &Any,
+    ) -> Promise<ArrayBuffer> {
         self.inner
             .call("exportKeyingMaterial", &[label.into(), context.into()])
             .as_::<Promise<ArrayBuffer>>()
@@ -225,12 +234,14 @@ impl WebTransport {
 impl WebTransport {
     /// The close method.
     /// [`WebTransport.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/close)
-    pub fn close0(&self) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
+}
+impl WebTransport {
     /// The close method.
     /// [`WebTransport.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/close)
-    pub fn close1(&self, close_info: &WebTransportCloseInfo) -> Undefined {
+    pub fn close_with_close_info(&self, close_info: &WebTransportCloseInfo) -> Undefined {
         self.inner
             .call("close", &[close_info.into()])
             .as_::<Undefined>()
@@ -239,14 +250,16 @@ impl WebTransport {
 impl WebTransport {
     /// The createBidirectionalStream method.
     /// [`WebTransport.createBidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createBidirectionalStream)
-    pub fn create_bidirectional_stream0(&self) -> Promise<WebTransportBidirectionalStream> {
+    pub fn create_bidirectional_stream(&self) -> Promise<WebTransportBidirectionalStream> {
         self.inner
             .call("createBidirectionalStream", &[])
             .as_::<Promise<WebTransportBidirectionalStream>>()
     }
+}
+impl WebTransport {
     /// The createBidirectionalStream method.
     /// [`WebTransport.createBidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createBidirectionalStream)
-    pub fn create_bidirectional_stream1(
+    pub fn create_bidirectional_stream_with_options(
         &self,
         options: &WebTransportSendStreamOptions,
     ) -> Promise<WebTransportBidirectionalStream> {
@@ -258,14 +271,16 @@ impl WebTransport {
 impl WebTransport {
     /// The createUnidirectionalStream method.
     /// [`WebTransport.createUnidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createUnidirectionalStream)
-    pub fn create_unidirectional_stream0(&self) -> Promise<WebTransportSendStream> {
+    pub fn create_unidirectional_stream(&self) -> Promise<WebTransportSendStream> {
         self.inner
             .call("createUnidirectionalStream", &[])
             .as_::<Promise<WebTransportSendStream>>()
     }
+}
+impl WebTransport {
     /// The createUnidirectionalStream method.
     /// [`WebTransport.createUnidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createUnidirectionalStream)
-    pub fn create_unidirectional_stream1(
+    pub fn create_unidirectional_stream_with_options(
         &self,
         options: &WebTransportSendStreamOptions,
     ) -> Promise<WebTransportSendStream> {

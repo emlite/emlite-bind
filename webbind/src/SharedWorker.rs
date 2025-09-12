@@ -86,16 +86,18 @@ impl SharedWorker {
 
 impl SharedWorker {
     /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
-    pub fn new0(script_url: &Any) -> SharedWorker {
+    pub fn new(script_url: &Any) -> SharedWorker {
         Self {
             inner: Any::global("SharedWorker")
                 .new(&[script_url.into()])
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl SharedWorker {
     /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
-    pub fn new1(script_url: &Any, options: &Any) -> SharedWorker {
+    pub fn new_with_options(script_url: &Any, options: &Any) -> SharedWorker {
         Self {
             inner: Any::global("SharedWorker")
                 .new(&[script_url.into(), options.into()])

@@ -75,14 +75,19 @@ impl PushManager {
 impl PushManager {
     /// The subscribe method.
     /// [`PushManager.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe)
-    pub fn subscribe0(&self) -> Promise<PushSubscription> {
+    pub fn subscribe(&self) -> Promise<PushSubscription> {
         self.inner
             .call("subscribe", &[])
             .as_::<Promise<PushSubscription>>()
     }
+}
+impl PushManager {
     /// The subscribe method.
     /// [`PushManager.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe)
-    pub fn subscribe1(&self, options: &PushSubscriptionOptionsInit) -> Promise<PushSubscription> {
+    pub fn subscribe_with_options(
+        &self,
+        options: &PushSubscriptionOptionsInit,
+    ) -> Promise<PushSubscription> {
         self.inner
             .call("subscribe", &[options.into()])
             .as_::<Promise<PushSubscription>>()
@@ -100,14 +105,16 @@ impl PushManager {
 impl PushManager {
     /// The permissionState method.
     /// [`PushManager.permissionState`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/permissionState)
-    pub fn permission_state0(&self) -> Promise<PermissionState> {
+    pub fn permission_state(&self) -> Promise<PermissionState> {
         self.inner
             .call("permissionState", &[])
             .as_::<Promise<PermissionState>>()
     }
+}
+impl PushManager {
     /// The permissionState method.
     /// [`PushManager.permissionState`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/permissionState)
-    pub fn permission_state1(
+    pub fn permission_state_with_options(
         &self,
         options: &PushSubscriptionOptionsInit,
     ) -> Promise<PermissionState> {

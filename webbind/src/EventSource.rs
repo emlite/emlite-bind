@@ -126,16 +126,21 @@ impl EventSource {
 
 impl EventSource {
     /// The `new EventSource(..)` constructor, creating a new EventSource instance
-    pub fn new0(url: &JsString) -> EventSource {
+    pub fn new(url: &JsString) -> EventSource {
         Self {
             inner: Any::global("EventSource")
                 .new(&[url.into()])
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl EventSource {
     /// The `new EventSource(..)` constructor, creating a new EventSource instance
-    pub fn new1(url: &JsString, event_source_init_dict: &EventSourceInit) -> EventSource {
+    pub fn new_with_event_source_init_dict(
+        url: &JsString,
+        event_source_init_dict: &EventSourceInit,
+    ) -> EventSource {
         Self {
             inner: Any::global("EventSource")
                 .new(&[url.into(), event_source_init_dict.into()])
@@ -143,6 +148,7 @@ impl EventSource {
         }
     }
 }
+
 impl EventSource {
     /// The close method.
     /// [`EventSource.close`](https://developer.mozilla.org/en-US/docs/Web/API/EventSource/close)

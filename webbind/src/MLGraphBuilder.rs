@@ -73,6 +73,7 @@ impl MLGraphBuilder {
         }
     }
 }
+
 impl MLGraphBuilder {
     /// The input method.
     /// [`MLGraphBuilder.input`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/input)
@@ -94,7 +95,11 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The constant method.
     /// [`MLGraphBuilder.constant`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/constant)
-    pub fn constant1(&self, type_: &MLOperandDataType, value: &Any) -> MLOperand {
+    pub fn constant_with_type_and_value(
+        &self,
+        type_: &MLOperandDataType,
+        value: &Any,
+    ) -> MLOperand {
         self.inner
             .call("constant", &[type_.into(), value.into()])
             .as_::<MLOperand>()
@@ -103,7 +108,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The constant method.
     /// [`MLGraphBuilder.constant`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/constant)
-    pub fn constant2(&self, tensor: &MLTensor) -> MLOperand {
+    pub fn constant_with_tensor(&self, tensor: &MLTensor) -> MLOperand {
         self.inner
             .call("constant", &[tensor.into()])
             .as_::<MLOperand>()
@@ -121,14 +126,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The argMin method.
     /// [`MLGraphBuilder.argMin`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/argMin)
-    pub fn arg_min0(&self, input: &MLOperand, axis: u32) -> MLOperand {
+    pub fn arg_min(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("argMin", &[input.into(), axis.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The argMin method.
     /// [`MLGraphBuilder.argMin`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/argMin)
-    pub fn arg_min1(
+    pub fn arg_min_with_options(
         &self,
         input: &MLOperand,
         axis: u32,
@@ -142,14 +149,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The argMax method.
     /// [`MLGraphBuilder.argMax`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/argMax)
-    pub fn arg_max0(&self, input: &MLOperand, axis: u32) -> MLOperand {
+    pub fn arg_max(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("argMax", &[input.into(), axis.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The argMax method.
     /// [`MLGraphBuilder.argMax`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/argMax)
-    pub fn arg_max1(
+    pub fn arg_max_with_options(
         &self,
         input: &MLOperand,
         axis: u32,
@@ -163,7 +172,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The batchNormalization method.
     /// [`MLGraphBuilder.batchNormalization`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/batchNormalization)
-    pub fn batch_normalization0(
+    pub fn batch_normalization(
         &self,
         input: &MLOperand,
         mean: &MLOperand,
@@ -176,9 +185,11 @@ impl MLGraphBuilder {
             )
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The batchNormalization method.
     /// [`MLGraphBuilder.batchNormalization`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/batchNormalization)
-    pub fn batch_normalization1(
+    pub fn batch_normalization_with_options(
         &self,
         input: &MLOperand,
         mean: &MLOperand,
@@ -196,14 +207,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The cast method.
     /// [`MLGraphBuilder.cast`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/cast)
-    pub fn cast0(&self, input: &MLOperand, type_: &MLOperandDataType) -> MLOperand {
+    pub fn cast(&self, input: &MLOperand, type_: &MLOperandDataType) -> MLOperand {
         self.inner
             .call("cast", &[input.into(), type_.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The cast method.
     /// [`MLGraphBuilder.cast`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/cast)
-    pub fn cast1(
+    pub fn cast_with_options(
         &self,
         input: &MLOperand,
         type_: &MLOperandDataType,
@@ -217,12 +230,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The clamp method.
     /// [`MLGraphBuilder.clamp`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/clamp)
-    pub fn clamp0(&self, input: &MLOperand) -> MLOperand {
+    pub fn clamp(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("clamp", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The clamp method.
     /// [`MLGraphBuilder.clamp`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/clamp)
-    pub fn clamp1(&self, input: &MLOperand, options: &MLClampOptions) -> MLOperand {
+    pub fn clamp_with_options(&self, input: &MLOperand, options: &MLClampOptions) -> MLOperand {
         self.inner
             .call("clamp", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -231,14 +246,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The concat method.
     /// [`MLGraphBuilder.concat`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/concat)
-    pub fn concat0(&self, inputs: &TypedArray<MLOperand>, axis: u32) -> MLOperand {
+    pub fn concat(&self, inputs: &TypedArray<MLOperand>, axis: u32) -> MLOperand {
         self.inner
             .call("concat", &[inputs.into(), axis.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The concat method.
     /// [`MLGraphBuilder.concat`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/concat)
-    pub fn concat1(
+    pub fn concat_with_options(
         &self,
         inputs: &TypedArray<MLOperand>,
         axis: u32,
@@ -252,14 +269,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The conv2d method.
     /// [`MLGraphBuilder.conv2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/conv2d)
-    pub fn conv2d0(&self, input: &MLOperand, filter: &MLOperand) -> MLOperand {
+    pub fn conv2d(&self, input: &MLOperand, filter: &MLOperand) -> MLOperand {
         self.inner
             .call("conv2d", &[input.into(), filter.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The conv2d method.
     /// [`MLGraphBuilder.conv2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/conv2d)
-    pub fn conv2d1(
+    pub fn conv2d_with_options(
         &self,
         input: &MLOperand,
         filter: &MLOperand,
@@ -273,14 +292,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The convTranspose2d method.
     /// [`MLGraphBuilder.convTranspose2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/convTranspose2d)
-    pub fn conv_transpose2d0(&self, input: &MLOperand, filter: &MLOperand) -> MLOperand {
+    pub fn conv_transpose2d(&self, input: &MLOperand, filter: &MLOperand) -> MLOperand {
         self.inner
             .call("convTranspose2d", &[input.into(), filter.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The convTranspose2d method.
     /// [`MLGraphBuilder.convTranspose2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/convTranspose2d)
-    pub fn conv_transpose2d1(
+    pub fn conv_transpose2d_with_options(
         &self,
         input: &MLOperand,
         filter: &MLOperand,
@@ -297,14 +318,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The cumulativeSum method.
     /// [`MLGraphBuilder.cumulativeSum`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/cumulativeSum)
-    pub fn cumulative_sum0(&self, input: &MLOperand, axis: u32) -> MLOperand {
+    pub fn cumulative_sum(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("cumulativeSum", &[input.into(), axis.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The cumulativeSum method.
     /// [`MLGraphBuilder.cumulativeSum`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/cumulativeSum)
-    pub fn cumulative_sum1(
+    pub fn cumulative_sum_with_options(
         &self,
         input: &MLOperand,
         axis: u32,
@@ -321,14 +344,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The add method.
     /// [`MLGraphBuilder.add`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/add)
-    pub fn add0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn add(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("add", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The add method.
     /// [`MLGraphBuilder.add`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/add)
-    pub fn add1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn add_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("add", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -337,14 +367,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The sub method.
     /// [`MLGraphBuilder.sub`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sub)
-    pub fn sub0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn sub(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("sub", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The sub method.
     /// [`MLGraphBuilder.sub`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sub)
-    pub fn sub1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn sub_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("sub", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -353,14 +390,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The mul method.
     /// [`MLGraphBuilder.mul`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/mul)
-    pub fn mul0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn mul(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("mul", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The mul method.
     /// [`MLGraphBuilder.mul`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/mul)
-    pub fn mul1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn mul_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("mul", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -369,14 +413,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The div method.
     /// [`MLGraphBuilder.div`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/div)
-    pub fn div0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn div(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("div", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The div method.
     /// [`MLGraphBuilder.div`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/div)
-    pub fn div1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn div_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("div", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -385,14 +436,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The max method.
     /// [`MLGraphBuilder.max`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/max)
-    pub fn max0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn max(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("max", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The max method.
     /// [`MLGraphBuilder.max`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/max)
-    pub fn max1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn max_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("max", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -401,14 +459,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The min method.
     /// [`MLGraphBuilder.min`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/min)
-    pub fn min0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn min(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("min", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The min method.
     /// [`MLGraphBuilder.min`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/min)
-    pub fn min1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn min_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("min", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -417,14 +482,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The pow method.
     /// [`MLGraphBuilder.pow`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/pow)
-    pub fn pow0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn pow(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("pow", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The pow method.
     /// [`MLGraphBuilder.pow`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/pow)
-    pub fn pow1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn pow_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("pow", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -433,14 +505,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The equal method.
     /// [`MLGraphBuilder.equal`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/equal)
-    pub fn equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn equal(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("equal", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The equal method.
     /// [`MLGraphBuilder.equal`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/equal)
-    pub fn equal1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn equal_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("equal", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -449,14 +528,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The notEqual method.
     /// [`MLGraphBuilder.notEqual`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/notEqual)
-    pub fn not_equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn not_equal(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("notEqual", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The notEqual method.
     /// [`MLGraphBuilder.notEqual`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/notEqual)
-    pub fn not_equal1(
+    pub fn not_equal_with_options(
         &self,
         a: &MLOperand,
         b: &MLOperand,
@@ -470,14 +551,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The greater method.
     /// [`MLGraphBuilder.greater`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/greater)
-    pub fn greater0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn greater(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("greater", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The greater method.
     /// [`MLGraphBuilder.greater`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/greater)
-    pub fn greater1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn greater_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("greater", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -486,14 +574,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The greaterOrEqual method.
     /// [`MLGraphBuilder.greaterOrEqual`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/greaterOrEqual)
-    pub fn greater_or_equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn greater_or_equal(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("greaterOrEqual", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The greaterOrEqual method.
     /// [`MLGraphBuilder.greaterOrEqual`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/greaterOrEqual)
-    pub fn greater_or_equal1(
+    pub fn greater_or_equal_with_options(
         &self,
         a: &MLOperand,
         b: &MLOperand,
@@ -507,14 +597,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The lesser method.
     /// [`MLGraphBuilder.lesser`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lesser)
-    pub fn lesser0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn lesser(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("lesser", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The lesser method.
     /// [`MLGraphBuilder.lesser`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lesser)
-    pub fn lesser1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn lesser_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("lesser", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -523,14 +620,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The lesserOrEqual method.
     /// [`MLGraphBuilder.lesserOrEqual`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lesserOrEqual)
-    pub fn lesser_or_equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn lesser_or_equal(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("lesserOrEqual", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The lesserOrEqual method.
     /// [`MLGraphBuilder.lesserOrEqual`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lesserOrEqual)
-    pub fn lesser_or_equal1(
+    pub fn lesser_or_equal_with_options(
         &self,
         a: &MLOperand,
         b: &MLOperand,
@@ -544,14 +643,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The logicalNot method.
     /// [`MLGraphBuilder.logicalNot`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalNot)
-    pub fn logical_not0(&self, a: &MLOperand) -> MLOperand {
+    pub fn logical_not(&self, a: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalNot", &[a.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The logicalNot method.
     /// [`MLGraphBuilder.logicalNot`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalNot)
-    pub fn logical_not1(&self, a: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn logical_not_with_options(
+        &self,
+        a: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("logicalNot", &[a.into(), options.into()])
             .as_::<MLOperand>()
@@ -560,14 +665,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The logicalAnd method.
     /// [`MLGraphBuilder.logicalAnd`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalAnd)
-    pub fn logical_and0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn logical_and(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalAnd", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The logicalAnd method.
     /// [`MLGraphBuilder.logicalAnd`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalAnd)
-    pub fn logical_and1(
+    pub fn logical_and_with_options(
         &self,
         a: &MLOperand,
         b: &MLOperand,
@@ -581,14 +688,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The logicalOr method.
     /// [`MLGraphBuilder.logicalOr`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalOr)
-    pub fn logical_or0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn logical_or(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalOr", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The logicalOr method.
     /// [`MLGraphBuilder.logicalOr`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalOr)
-    pub fn logical_or1(
+    pub fn logical_or_with_options(
         &self,
         a: &MLOperand,
         b: &MLOperand,
@@ -602,14 +711,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The logicalXor method.
     /// [`MLGraphBuilder.logicalXor`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalXor)
-    pub fn logical_xor0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn logical_xor(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalXor", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The logicalXor method.
     /// [`MLGraphBuilder.logicalXor`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/logicalXor)
-    pub fn logical_xor1(
+    pub fn logical_xor_with_options(
         &self,
         a: &MLOperand,
         b: &MLOperand,
@@ -623,12 +734,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The abs method.
     /// [`MLGraphBuilder.abs`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/abs)
-    pub fn abs0(&self, input: &MLOperand) -> MLOperand {
+    pub fn abs(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("abs", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The abs method.
     /// [`MLGraphBuilder.abs`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/abs)
-    pub fn abs1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn abs_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("abs", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -637,12 +750,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The ceil method.
     /// [`MLGraphBuilder.ceil`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/ceil)
-    pub fn ceil0(&self, input: &MLOperand) -> MLOperand {
+    pub fn ceil(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("ceil", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The ceil method.
     /// [`MLGraphBuilder.ceil`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/ceil)
-    pub fn ceil1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn ceil_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("ceil", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -651,12 +766,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The cos method.
     /// [`MLGraphBuilder.cos`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/cos)
-    pub fn cos0(&self, input: &MLOperand) -> MLOperand {
+    pub fn cos(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("cos", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The cos method.
     /// [`MLGraphBuilder.cos`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/cos)
-    pub fn cos1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn cos_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("cos", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -665,12 +782,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The erf method.
     /// [`MLGraphBuilder.erf`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/erf)
-    pub fn erf0(&self, input: &MLOperand) -> MLOperand {
+    pub fn erf(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("erf", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The erf method.
     /// [`MLGraphBuilder.erf`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/erf)
-    pub fn erf1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn erf_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("erf", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -679,12 +798,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The exp method.
     /// [`MLGraphBuilder.exp`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/exp)
-    pub fn exp0(&self, input: &MLOperand) -> MLOperand {
+    pub fn exp(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("exp", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The exp method.
     /// [`MLGraphBuilder.exp`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/exp)
-    pub fn exp1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn exp_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("exp", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -693,12 +814,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The floor method.
     /// [`MLGraphBuilder.floor`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/floor)
-    pub fn floor0(&self, input: &MLOperand) -> MLOperand {
+    pub fn floor(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("floor", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The floor method.
     /// [`MLGraphBuilder.floor`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/floor)
-    pub fn floor1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn floor_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("floor", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -707,14 +830,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The identity method.
     /// [`MLGraphBuilder.identity`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/identity)
-    pub fn identity0(&self, input: &MLOperand) -> MLOperand {
+    pub fn identity(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("identity", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The identity method.
     /// [`MLGraphBuilder.identity`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/identity)
-    pub fn identity1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn identity_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("identity", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -723,12 +852,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The log method.
     /// [`MLGraphBuilder.log`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/log)
-    pub fn log0(&self, input: &MLOperand) -> MLOperand {
+    pub fn log(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("log", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The log method.
     /// [`MLGraphBuilder.log`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/log)
-    pub fn log1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn log_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("log", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -737,12 +868,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The neg method.
     /// [`MLGraphBuilder.neg`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/neg)
-    pub fn neg0(&self, input: &MLOperand) -> MLOperand {
+    pub fn neg(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("neg", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The neg method.
     /// [`MLGraphBuilder.neg`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/neg)
-    pub fn neg1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn neg_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("neg", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -751,14 +884,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reciprocal method.
     /// [`MLGraphBuilder.reciprocal`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reciprocal)
-    pub fn reciprocal0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reciprocal(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reciprocal", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reciprocal method.
     /// [`MLGraphBuilder.reciprocal`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reciprocal)
-    pub fn reciprocal1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn reciprocal_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("reciprocal", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -767,14 +906,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The roundEven method.
     /// [`MLGraphBuilder.roundEven`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/roundEven)
-    pub fn round_even0(&self, input: &MLOperand) -> MLOperand {
+    pub fn round_even(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("roundEven", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The roundEven method.
     /// [`MLGraphBuilder.roundEven`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/roundEven)
-    pub fn round_even1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn round_even_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("roundEven", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -783,12 +928,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The sin method.
     /// [`MLGraphBuilder.sin`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sin)
-    pub fn sin0(&self, input: &MLOperand) -> MLOperand {
+    pub fn sin(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("sin", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The sin method.
     /// [`MLGraphBuilder.sin`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sin)
-    pub fn sin1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn sin_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sin", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -797,12 +944,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The sign method.
     /// [`MLGraphBuilder.sign`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sign)
-    pub fn sign0(&self, input: &MLOperand) -> MLOperand {
+    pub fn sign(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("sign", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The sign method.
     /// [`MLGraphBuilder.sign`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sign)
-    pub fn sign1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn sign_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sign", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -811,12 +960,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The sqrt method.
     /// [`MLGraphBuilder.sqrt`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sqrt)
-    pub fn sqrt0(&self, input: &MLOperand) -> MLOperand {
+    pub fn sqrt(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("sqrt", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The sqrt method.
     /// [`MLGraphBuilder.sqrt`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sqrt)
-    pub fn sqrt1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn sqrt_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sqrt", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -825,12 +976,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The tan method.
     /// [`MLGraphBuilder.tan`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/tan)
-    pub fn tan0(&self, input: &MLOperand) -> MLOperand {
+    pub fn tan(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("tan", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The tan method.
     /// [`MLGraphBuilder.tan`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/tan)
-    pub fn tan1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn tan_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("tan", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -839,7 +992,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The dequantizeLinear method.
     /// [`MLGraphBuilder.dequantizeLinear`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/dequantizeLinear)
-    pub fn dequantize_linear0(
+    pub fn dequantize_linear(
         &self,
         input: &MLOperand,
         scale: &MLOperand,
@@ -852,9 +1005,11 @@ impl MLGraphBuilder {
             )
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The dequantizeLinear method.
     /// [`MLGraphBuilder.dequantizeLinear`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/dequantizeLinear)
-    pub fn dequantize_linear1(
+    pub fn dequantize_linear_with_options(
         &self,
         input: &MLOperand,
         scale: &MLOperand,
@@ -877,7 +1032,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The quantizeLinear method.
     /// [`MLGraphBuilder.quantizeLinear`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/quantizeLinear)
-    pub fn quantize_linear0(
+    pub fn quantize_linear(
         &self,
         input: &MLOperand,
         scale: &MLOperand,
@@ -890,9 +1045,11 @@ impl MLGraphBuilder {
             )
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The quantizeLinear method.
     /// [`MLGraphBuilder.quantizeLinear`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/quantizeLinear)
-    pub fn quantize_linear1(
+    pub fn quantize_linear_with_options(
         &self,
         input: &MLOperand,
         scale: &MLOperand,
@@ -915,12 +1072,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The elu method.
     /// [`MLGraphBuilder.elu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/elu)
-    pub fn elu0(&self, input: &MLOperand) -> MLOperand {
+    pub fn elu(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("elu", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The elu method.
     /// [`MLGraphBuilder.elu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/elu)
-    pub fn elu1(&self, input: &MLOperand, options: &MLEluOptions) -> MLOperand {
+    pub fn elu_with_options(&self, input: &MLOperand, options: &MLEluOptions) -> MLOperand {
         self.inner
             .call("elu", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -929,14 +1088,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The expand method.
     /// [`MLGraphBuilder.expand`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/expand)
-    pub fn expand0(&self, input: &MLOperand, new_shape: TypedArray<u32>) -> MLOperand {
+    pub fn expand(&self, input: &MLOperand, new_shape: TypedArray<u32>) -> MLOperand {
         self.inner
             .call("expand", &[input.into(), new_shape.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The expand method.
     /// [`MLGraphBuilder.expand`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/expand)
-    pub fn expand1(
+    pub fn expand_with_options(
         &self,
         input: &MLOperand,
         new_shape: TypedArray<u32>,
@@ -950,14 +1111,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The gather method.
     /// [`MLGraphBuilder.gather`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gather)
-    pub fn gather0(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
+    pub fn gather(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
         self.inner
             .call("gather", &[input.into(), indices.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The gather method.
     /// [`MLGraphBuilder.gather`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gather)
-    pub fn gather1(
+    pub fn gather_with_options(
         &self,
         input: &MLOperand,
         indices: &MLOperand,
@@ -971,14 +1134,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The gatherElements method.
     /// [`MLGraphBuilder.gatherElements`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gatherElements)
-    pub fn gather_elements0(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
+    pub fn gather_elements(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
         self.inner
             .call("gatherElements", &[input.into(), indices.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The gatherElements method.
     /// [`MLGraphBuilder.gatherElements`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gatherElements)
-    pub fn gather_elements1(
+    pub fn gather_elements_with_options(
         &self,
         input: &MLOperand,
         indices: &MLOperand,
@@ -995,14 +1160,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The gatherND method.
     /// [`MLGraphBuilder.gatherND`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gatherND)
-    pub fn gather_nd0(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
+    pub fn gather_nd(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
         self.inner
             .call("gatherND", &[input.into(), indices.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The gatherND method.
     /// [`MLGraphBuilder.gatherND`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gatherND)
-    pub fn gather_nd1(
+    pub fn gather_nd_with_options(
         &self,
         input: &MLOperand,
         indices: &MLOperand,
@@ -1016,12 +1183,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The gelu method.
     /// [`MLGraphBuilder.gelu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gelu)
-    pub fn gelu0(&self, input: &MLOperand) -> MLOperand {
+    pub fn gelu(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("gelu", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The gelu method.
     /// [`MLGraphBuilder.gelu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gelu)
-    pub fn gelu1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn gelu_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("gelu", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1030,14 +1199,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The gemm method.
     /// [`MLGraphBuilder.gemm`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gemm)
-    pub fn gemm0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn gemm(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("gemm", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The gemm method.
     /// [`MLGraphBuilder.gemm`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gemm)
-    pub fn gemm1(&self, a: &MLOperand, b: &MLOperand, options: &MLGemmOptions) -> MLOperand {
+    pub fn gemm_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLGemmOptions,
+    ) -> MLOperand {
         self.inner
             .call("gemm", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -1046,7 +1222,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The gru method.
     /// [`MLGraphBuilder.gru`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gru)
-    pub fn gru0(
+    pub fn gru(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1067,9 +1243,11 @@ impl MLGraphBuilder {
             )
             .as_::<TypedArray<MLOperand>>()
     }
+}
+impl MLGraphBuilder {
     /// The gru method.
     /// [`MLGraphBuilder.gru`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gru)
-    pub fn gru1(
+    pub fn gru_with_options(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1096,7 +1274,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The gruCell method.
     /// [`MLGraphBuilder.gruCell`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gruCell)
-    pub fn gru_cell0(
+    pub fn gru_cell(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1117,9 +1295,11 @@ impl MLGraphBuilder {
             )
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The gruCell method.
     /// [`MLGraphBuilder.gruCell`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gruCell)
-    pub fn gru_cell1(
+    pub fn gru_cell_with_options(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1146,14 +1326,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The hardSigmoid method.
     /// [`MLGraphBuilder.hardSigmoid`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/hardSigmoid)
-    pub fn hard_sigmoid0(&self, input: &MLOperand) -> MLOperand {
+    pub fn hard_sigmoid(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("hardSigmoid", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The hardSigmoid method.
     /// [`MLGraphBuilder.hardSigmoid`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/hardSigmoid)
-    pub fn hard_sigmoid1(&self, input: &MLOperand, options: &MLHardSigmoidOptions) -> MLOperand {
+    pub fn hard_sigmoid_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLHardSigmoidOptions,
+    ) -> MLOperand {
         self.inner
             .call("hardSigmoid", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1162,14 +1348,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The hardSwish method.
     /// [`MLGraphBuilder.hardSwish`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/hardSwish)
-    pub fn hard_swish0(&self, input: &MLOperand) -> MLOperand {
+    pub fn hard_swish(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("hardSwish", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The hardSwish method.
     /// [`MLGraphBuilder.hardSwish`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/hardSwish)
-    pub fn hard_swish1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn hard_swish_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("hardSwish", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1178,14 +1370,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The instanceNormalization method.
     /// [`MLGraphBuilder.instanceNormalization`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/instanceNormalization)
-    pub fn instance_normalization0(&self, input: &MLOperand) -> MLOperand {
+    pub fn instance_normalization(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("instanceNormalization", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The instanceNormalization method.
     /// [`MLGraphBuilder.instanceNormalization`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/instanceNormalization)
-    pub fn instance_normalization1(
+    pub fn instance_normalization_with_options(
         &self,
         input: &MLOperand,
         options: &MLInstanceNormalizationOptions,
@@ -1198,14 +1392,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The layerNormalization method.
     /// [`MLGraphBuilder.layerNormalization`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/layerNormalization)
-    pub fn layer_normalization0(&self, input: &MLOperand) -> MLOperand {
+    pub fn layer_normalization(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("layerNormalization", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The layerNormalization method.
     /// [`MLGraphBuilder.layerNormalization`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/layerNormalization)
-    pub fn layer_normalization1(
+    pub fn layer_normalization_with_options(
         &self,
         input: &MLOperand,
         options: &MLLayerNormalizationOptions,
@@ -1218,14 +1414,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The leakyRelu method.
     /// [`MLGraphBuilder.leakyRelu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/leakyRelu)
-    pub fn leaky_relu0(&self, input: &MLOperand) -> MLOperand {
+    pub fn leaky_relu(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("leakyRelu", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The leakyRelu method.
     /// [`MLGraphBuilder.leakyRelu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/leakyRelu)
-    pub fn leaky_relu1(&self, input: &MLOperand, options: &MLLeakyReluOptions) -> MLOperand {
+    pub fn leaky_relu_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLLeakyReluOptions,
+    ) -> MLOperand {
         self.inner
             .call("leakyRelu", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1234,14 +1436,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The linear method.
     /// [`MLGraphBuilder.linear`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/linear)
-    pub fn linear0(&self, input: &MLOperand) -> MLOperand {
+    pub fn linear(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("linear", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The linear method.
     /// [`MLGraphBuilder.linear`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/linear)
-    pub fn linear1(&self, input: &MLOperand, options: &MLLinearOptions) -> MLOperand {
+    pub fn linear_with_options(&self, input: &MLOperand, options: &MLLinearOptions) -> MLOperand {
         self.inner
             .call("linear", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1250,7 +1454,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The lstm method.
     /// [`MLGraphBuilder.lstm`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lstm)
-    pub fn lstm0(
+    pub fn lstm(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1271,9 +1475,11 @@ impl MLGraphBuilder {
             )
             .as_::<TypedArray<MLOperand>>()
     }
+}
+impl MLGraphBuilder {
     /// The lstm method.
     /// [`MLGraphBuilder.lstm`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lstm)
-    pub fn lstm1(
+    pub fn lstm_with_options(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1300,7 +1506,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The lstmCell method.
     /// [`MLGraphBuilder.lstmCell`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lstmCell)
-    pub fn lstm_cell0(
+    pub fn lstm_cell(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1323,9 +1529,11 @@ impl MLGraphBuilder {
             )
             .as_::<TypedArray<MLOperand>>()
     }
+}
+impl MLGraphBuilder {
     /// The lstmCell method.
     /// [`MLGraphBuilder.lstmCell`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lstmCell)
-    pub fn lstm_cell1(
+    pub fn lstm_cell_with_options(
         &self,
         input: &MLOperand,
         weight: &MLOperand,
@@ -1354,14 +1562,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The matmul method.
     /// [`MLGraphBuilder.matmul`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/matmul)
-    pub fn matmul0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
+    pub fn matmul(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("matmul", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The matmul method.
     /// [`MLGraphBuilder.matmul`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/matmul)
-    pub fn matmul1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn matmul_with_options(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("matmul", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -1370,7 +1585,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The pad method.
     /// [`MLGraphBuilder.pad`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/pad)
-    pub fn pad0(
+    pub fn pad(
         &self,
         input: &MLOperand,
         beginning_padding: TypedArray<u32>,
@@ -1387,9 +1602,11 @@ impl MLGraphBuilder {
             )
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The pad method.
     /// [`MLGraphBuilder.pad`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/pad)
-    pub fn pad1(
+    pub fn pad_with_options(
         &self,
         input: &MLOperand,
         beginning_padding: TypedArray<u32>,
@@ -1412,14 +1629,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The averagePool2d method.
     /// [`MLGraphBuilder.averagePool2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/averagePool2d)
-    pub fn average_pool2d0(&self, input: &MLOperand) -> MLOperand {
+    pub fn average_pool2d(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("averagePool2d", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The averagePool2d method.
     /// [`MLGraphBuilder.averagePool2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/averagePool2d)
-    pub fn average_pool2d1(&self, input: &MLOperand, options: &MLPool2dOptions) -> MLOperand {
+    pub fn average_pool2d_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLPool2dOptions,
+    ) -> MLOperand {
         self.inner
             .call("averagePool2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1428,14 +1651,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The l2Pool2d method.
     /// [`MLGraphBuilder.l2Pool2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/l2Pool2d)
-    pub fn l2_pool2d0(&self, input: &MLOperand) -> MLOperand {
+    pub fn l2_pool2d(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("l2Pool2d", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The l2Pool2d method.
     /// [`MLGraphBuilder.l2Pool2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/l2Pool2d)
-    pub fn l2_pool2d1(&self, input: &MLOperand, options: &MLPool2dOptions) -> MLOperand {
+    pub fn l2_pool2d_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLPool2dOptions,
+    ) -> MLOperand {
         self.inner
             .call("l2Pool2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1444,14 +1673,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The maxPool2d method.
     /// [`MLGraphBuilder.maxPool2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/maxPool2d)
-    pub fn max_pool2d0(&self, input: &MLOperand) -> MLOperand {
+    pub fn max_pool2d(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("maxPool2d", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The maxPool2d method.
     /// [`MLGraphBuilder.maxPool2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/maxPool2d)
-    pub fn max_pool2d1(&self, input: &MLOperand, options: &MLPool2dOptions) -> MLOperand {
+    pub fn max_pool2d_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLPool2dOptions,
+    ) -> MLOperand {
         self.inner
             .call("maxPool2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1460,14 +1695,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The prelu method.
     /// [`MLGraphBuilder.prelu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/prelu)
-    pub fn prelu0(&self, input: &MLOperand, slope: &MLOperand) -> MLOperand {
+    pub fn prelu(&self, input: &MLOperand, slope: &MLOperand) -> MLOperand {
         self.inner
             .call("prelu", &[input.into(), slope.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The prelu method.
     /// [`MLGraphBuilder.prelu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/prelu)
-    pub fn prelu1(
+    pub fn prelu_with_options(
         &self,
         input: &MLOperand,
         slope: &MLOperand,
@@ -1481,14 +1718,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceL1 method.
     /// [`MLGraphBuilder.reduceL1`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceL1)
-    pub fn reduce_l10(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_l1(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceL1", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceL1 method.
     /// [`MLGraphBuilder.reduceL1`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceL1)
-    pub fn reduce_l11(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_l1_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceL1", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1497,14 +1740,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceL2 method.
     /// [`MLGraphBuilder.reduceL2`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceL2)
-    pub fn reduce_l20(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_l2(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceL2", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceL2 method.
     /// [`MLGraphBuilder.reduceL2`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceL2)
-    pub fn reduce_l21(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_l2_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceL2", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1513,14 +1762,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceLogSum method.
     /// [`MLGraphBuilder.reduceLogSum`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceLogSum)
-    pub fn reduce_log_sum0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_log_sum(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceLogSum", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceLogSum method.
     /// [`MLGraphBuilder.reduceLogSum`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceLogSum)
-    pub fn reduce_log_sum1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_log_sum_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceLogSum", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1529,14 +1784,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceLogSumExp method.
     /// [`MLGraphBuilder.reduceLogSumExp`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceLogSumExp)
-    pub fn reduce_log_sum_exp0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_log_sum_exp(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceLogSumExp", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceLogSumExp method.
     /// [`MLGraphBuilder.reduceLogSumExp`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceLogSumExp)
-    pub fn reduce_log_sum_exp1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_log_sum_exp_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceLogSumExp", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1545,14 +1806,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceMax method.
     /// [`MLGraphBuilder.reduceMax`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceMax)
-    pub fn reduce_max0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_max(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceMax", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceMax method.
     /// [`MLGraphBuilder.reduceMax`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceMax)
-    pub fn reduce_max1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_max_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceMax", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1561,14 +1828,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceMean method.
     /// [`MLGraphBuilder.reduceMean`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceMean)
-    pub fn reduce_mean0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_mean(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceMean", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceMean method.
     /// [`MLGraphBuilder.reduceMean`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceMean)
-    pub fn reduce_mean1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_mean_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceMean", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1577,14 +1850,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceMin method.
     /// [`MLGraphBuilder.reduceMin`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceMin)
-    pub fn reduce_min0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_min(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceMin", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceMin method.
     /// [`MLGraphBuilder.reduceMin`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceMin)
-    pub fn reduce_min1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_min_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceMin", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1593,14 +1872,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceProduct method.
     /// [`MLGraphBuilder.reduceProduct`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceProduct)
-    pub fn reduce_product0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_product(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceProduct", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceProduct method.
     /// [`MLGraphBuilder.reduceProduct`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceProduct)
-    pub fn reduce_product1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_product_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceProduct", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1609,14 +1894,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceSum method.
     /// [`MLGraphBuilder.reduceSum`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceSum)
-    pub fn reduce_sum0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_sum(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceSum", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceSum method.
     /// [`MLGraphBuilder.reduceSum`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceSum)
-    pub fn reduce_sum1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_sum_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceSum", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1625,14 +1916,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reduceSumSquare method.
     /// [`MLGraphBuilder.reduceSumSquare`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceSumSquare)
-    pub fn reduce_sum_square0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reduce_sum_square(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceSumSquare", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reduceSumSquare method.
     /// [`MLGraphBuilder.reduceSumSquare`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reduceSumSquare)
-    pub fn reduce_sum_square1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
+    pub fn reduce_sum_square_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLReduceOptions,
+    ) -> MLOperand {
         self.inner
             .call("reduceSumSquare", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1641,12 +1938,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The relu method.
     /// [`MLGraphBuilder.relu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/relu)
-    pub fn relu0(&self, input: &MLOperand) -> MLOperand {
+    pub fn relu(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("relu", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The relu method.
     /// [`MLGraphBuilder.relu`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/relu)
-    pub fn relu1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn relu_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("relu", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1655,14 +1954,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The resample2d method.
     /// [`MLGraphBuilder.resample2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/resample2d)
-    pub fn resample2d0(&self, input: &MLOperand) -> MLOperand {
+    pub fn resample2d(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("resample2d", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The resample2d method.
     /// [`MLGraphBuilder.resample2d`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/resample2d)
-    pub fn resample2d1(&self, input: &MLOperand, options: &MLResample2dOptions) -> MLOperand {
+    pub fn resample2d_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLResample2dOptions,
+    ) -> MLOperand {
         self.inner
             .call("resample2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1671,14 +1976,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reshape method.
     /// [`MLGraphBuilder.reshape`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reshape)
-    pub fn reshape0(&self, input: &MLOperand, new_shape: TypedArray<u32>) -> MLOperand {
+    pub fn reshape(&self, input: &MLOperand, new_shape: TypedArray<u32>) -> MLOperand {
         self.inner
             .call("reshape", &[input.into(), new_shape.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reshape method.
     /// [`MLGraphBuilder.reshape`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reshape)
-    pub fn reshape1(
+    pub fn reshape_with_options(
         &self,
         input: &MLOperand,
         new_shape: TypedArray<u32>,
@@ -1692,14 +1999,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reverse method.
     /// [`MLGraphBuilder.reverse`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reverse)
-    pub fn reverse0(&self, input: &MLOperand) -> MLOperand {
+    pub fn reverse(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reverse", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The reverse method.
     /// [`MLGraphBuilder.reverse`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reverse)
-    pub fn reverse1(&self, input: &MLOperand, options: &MLReverseOptions) -> MLOperand {
+    pub fn reverse_with_options(&self, input: &MLOperand, options: &MLReverseOptions) -> MLOperand {
         self.inner
             .call("reverse", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1708,7 +2017,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The scatterElements method.
     /// [`MLGraphBuilder.scatterElements`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/scatterElements)
-    pub fn scatter_elements0(
+    pub fn scatter_elements(
         &self,
         input: &MLOperand,
         indices: &MLOperand,
@@ -1721,9 +2030,11 @@ impl MLGraphBuilder {
             )
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The scatterElements method.
     /// [`MLGraphBuilder.scatterElements`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/scatterElements)
-    pub fn scatter_elements1(
+    pub fn scatter_elements_with_options(
         &self,
         input: &MLOperand,
         indices: &MLOperand,
@@ -1741,7 +2052,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The scatterND method.
     /// [`MLGraphBuilder.scatterND`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/scatterND)
-    pub fn scatter_nd0(
+    pub fn scatter_nd(
         &self,
         input: &MLOperand,
         indices: &MLOperand,
@@ -1751,9 +2062,11 @@ impl MLGraphBuilder {
             .call("scatterND", &[input.into(), indices.into(), updates.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The scatterND method.
     /// [`MLGraphBuilder.scatterND`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/scatterND)
-    pub fn scatter_nd1(
+    pub fn scatter_nd_with_options(
         &self,
         input: &MLOperand,
         indices: &MLOperand,
@@ -1771,14 +2084,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The sigmoid method.
     /// [`MLGraphBuilder.sigmoid`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sigmoid)
-    pub fn sigmoid0(&self, input: &MLOperand) -> MLOperand {
+    pub fn sigmoid(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("sigmoid", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The sigmoid method.
     /// [`MLGraphBuilder.sigmoid`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/sigmoid)
-    pub fn sigmoid1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn sigmoid_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("sigmoid", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1787,7 +2106,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The slice method.
     /// [`MLGraphBuilder.slice`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/slice)
-    pub fn slice0(
+    pub fn slice(
         &self,
         input: &MLOperand,
         starts: TypedArray<u32>,
@@ -1797,9 +2116,11 @@ impl MLGraphBuilder {
             .call("slice", &[input.into(), starts.into(), sizes.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The slice method.
     /// [`MLGraphBuilder.slice`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/slice)
-    pub fn slice1(
+    pub fn slice_with_options(
         &self,
         input: &MLOperand,
         starts: TypedArray<u32>,
@@ -1817,14 +2138,21 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The softmax method.
     /// [`MLGraphBuilder.softmax`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/softmax)
-    pub fn softmax0(&self, input: &MLOperand, axis: u32) -> MLOperand {
+    pub fn softmax(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("softmax", &[input.into(), axis.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The softmax method.
     /// [`MLGraphBuilder.softmax`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/softmax)
-    pub fn softmax1(&self, input: &MLOperand, axis: u32, options: &MLOperatorOptions) -> MLOperand {
+    pub fn softmax_with_options(
+        &self,
+        input: &MLOperand,
+        axis: u32,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("softmax", &[input.into(), axis.into(), options.into()])
             .as_::<MLOperand>()
@@ -1833,14 +2161,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The softplus method.
     /// [`MLGraphBuilder.softplus`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/softplus)
-    pub fn softplus0(&self, input: &MLOperand) -> MLOperand {
+    pub fn softplus(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("softplus", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The softplus method.
     /// [`MLGraphBuilder.softplus`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/softplus)
-    pub fn softplus1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn softplus_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("softplus", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1849,14 +2183,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The softsign method.
     /// [`MLGraphBuilder.softsign`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/softsign)
-    pub fn softsign0(&self, input: &MLOperand) -> MLOperand {
+    pub fn softsign(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("softsign", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The softsign method.
     /// [`MLGraphBuilder.softsign`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/softsign)
-    pub fn softsign1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn softsign_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("softsign", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1865,14 +2205,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The split method.
     /// [`MLGraphBuilder.split`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/split)
-    pub fn split0(&self, input: &MLOperand, splits: &Any) -> TypedArray<MLOperand> {
+    pub fn split(&self, input: &MLOperand, splits: &Any) -> TypedArray<MLOperand> {
         self.inner
             .call("split", &[input.into(), splits.into()])
             .as_::<TypedArray<MLOperand>>()
     }
+}
+impl MLGraphBuilder {
     /// The split method.
     /// [`MLGraphBuilder.split`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/split)
-    pub fn split1(
+    pub fn split_with_options(
         &self,
         input: &MLOperand,
         splits: &Any,
@@ -1886,12 +2228,14 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The tanh method.
     /// [`MLGraphBuilder.tanh`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/tanh)
-    pub fn tanh0(&self, input: &MLOperand) -> MLOperand {
+    pub fn tanh(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("tanh", &[input.into()]).as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The tanh method.
     /// [`MLGraphBuilder.tanh`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/tanh)
-    pub fn tanh1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+    pub fn tanh_with_options(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("tanh", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1900,14 +2244,16 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The tile method.
     /// [`MLGraphBuilder.tile`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/tile)
-    pub fn tile0(&self, input: &MLOperand, repetitions: TypedArray<u32>) -> MLOperand {
+    pub fn tile(&self, input: &MLOperand, repetitions: TypedArray<u32>) -> MLOperand {
         self.inner
             .call("tile", &[input.into(), repetitions.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The tile method.
     /// [`MLGraphBuilder.tile`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/tile)
-    pub fn tile1(
+    pub fn tile_with_options(
         &self,
         input: &MLOperand,
         repetitions: TypedArray<u32>,
@@ -1921,14 +2267,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The transpose method.
     /// [`MLGraphBuilder.transpose`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/transpose)
-    pub fn transpose0(&self, input: &MLOperand) -> MLOperand {
+    pub fn transpose(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("transpose", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The transpose method.
     /// [`MLGraphBuilder.transpose`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/transpose)
-    pub fn transpose1(&self, input: &MLOperand, options: &MLTransposeOptions) -> MLOperand {
+    pub fn transpose_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLTransposeOptions,
+    ) -> MLOperand {
         self.inner
             .call("transpose", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1937,14 +2289,20 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The triangular method.
     /// [`MLGraphBuilder.triangular`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/triangular)
-    pub fn triangular0(&self, input: &MLOperand) -> MLOperand {
+    pub fn triangular(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("triangular", &[input.into()])
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The triangular method.
     /// [`MLGraphBuilder.triangular`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/triangular)
-    pub fn triangular1(&self, input: &MLOperand, options: &MLTriangularOptions) -> MLOperand {
+    pub fn triangular_with_options(
+        &self,
+        input: &MLOperand,
+        options: &MLTriangularOptions,
+    ) -> MLOperand {
         self.inner
             .call("triangular", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -1953,7 +2311,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The where method.
     /// [`MLGraphBuilder.where`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/where)
-    pub fn where_0(
+    pub fn where_(
         &self,
         condition: &MLOperand,
         true_value: &MLOperand,
@@ -1966,9 +2324,11 @@ impl MLGraphBuilder {
             )
             .as_::<MLOperand>()
     }
+}
+impl MLGraphBuilder {
     /// The where method.
     /// [`MLGraphBuilder.where`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/where)
-    pub fn where_1(
+    pub fn where_with_options(
         &self,
         condition: &MLOperand,
         true_value: &MLOperand,

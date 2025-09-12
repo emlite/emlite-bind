@@ -80,14 +80,19 @@ impl SnapEvent {
 
 impl SnapEvent {
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
-    pub fn new0(type_: &JsString) -> SnapEvent {
+    pub fn new(type_: &JsString) -> SnapEvent {
         Self {
             inner: Any::global("SnapEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
+}
 
+impl SnapEvent {
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &SnapEventInit) -> SnapEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &SnapEventInit,
+    ) -> SnapEvent {
         Self {
             inner: Any::global("SnapEvent")
                 .new(&[type_.into(), event_init_dict.into()])

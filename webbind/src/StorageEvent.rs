@@ -101,16 +101,21 @@ impl StorageEvent {
 
 impl StorageEvent {
     /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
-    pub fn new0(type_: &JsString) -> StorageEvent {
+    pub fn new(type_: &JsString) -> StorageEvent {
         Self {
             inner: Any::global("StorageEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl StorageEvent {
     /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &StorageEventInit) -> StorageEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &StorageEventInit,
+    ) -> StorageEvent {
         Self {
             inner: Any::global("StorageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -118,24 +123,29 @@ impl StorageEvent {
         }
     }
 }
+
 impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event0(&self, type_: &JsString) -> Undefined {
+    pub fn init_storage_event(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initStorageEvent", &[type_.into()])
             .as_::<Undefined>()
     }
+}
+impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
+    pub fn init_storage_event_with_bubbles(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initStorageEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
+}
+impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event2(
+    pub fn init_storage_event_with_bubbles_and_cancelable(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -148,9 +158,11 @@ impl StorageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event3(
+    pub fn init_storage_event_with_bubbles_and_cancelable_and_key(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -164,9 +176,11 @@ impl StorageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event4(
+    pub fn init_storage_event_with_bubbles_and_cancelable_and_key_and_old_value(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -187,9 +201,11 @@ impl StorageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event5(
+    pub fn init_storage_event_with_bubbles_and_cancelable_and_key_and_old_value_and_new_value(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -212,9 +228,11 @@ impl StorageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event6(
+    pub fn init_storage_event_with_bubbles_and_cancelable_and_key_and_old_value_and_new_value_and_url(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -239,9 +257,11 @@ impl StorageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event7(
+    pub fn init_storage_event_with_bubbles_and_cancelable_and_key_and_old_value_and_new_value_and_url_and_storage_area(
         &self,
         type_: &JsString,
         bubbles: bool,

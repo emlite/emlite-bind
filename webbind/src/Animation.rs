@@ -240,23 +240,30 @@ impl Animation {
 
 impl Animation {
     /// The `new Animation(..)` constructor, creating a new Animation instance
-    pub fn new0() -> Animation {
+    pub fn new() -> Animation {
         Self {
             inner: Any::global("Animation").new(&[]).as_::<EventTarget>(),
         }
     }
+}
 
+impl Animation {
     /// The `new Animation(..)` constructor, creating a new Animation instance
-    pub fn new1(effect: &AnimationEffect) -> Animation {
+    pub fn new_with_effect(effect: &AnimationEffect) -> Animation {
         Self {
             inner: Any::global("Animation")
                 .new(&[effect.into()])
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl Animation {
     /// The `new Animation(..)` constructor, creating a new Animation instance
-    pub fn new2(effect: &AnimationEffect, timeline: &AnimationTimeline) -> Animation {
+    pub fn new_with_effect_and_timeline(
+        effect: &AnimationEffect,
+        timeline: &AnimationTimeline,
+    ) -> Animation {
         Self {
             inner: Any::global("Animation")
                 .new(&[effect.into(), timeline.into()])
@@ -264,6 +271,7 @@ impl Animation {
         }
     }
 }
+
 impl Animation {
     /// The cancel method.
     /// [`Animation.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel)

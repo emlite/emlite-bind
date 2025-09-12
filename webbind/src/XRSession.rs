@@ -323,12 +323,14 @@ impl XRSession {
 impl XRSession {
     /// The updateRenderState method.
     /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
-    pub fn update_render_state0(&self) -> Undefined {
+    pub fn update_render_state(&self) -> Undefined {
         self.inner.call("updateRenderState", &[]).as_::<Undefined>()
     }
+}
+impl XRSession {
     /// The updateRenderState method.
     /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
-    pub fn update_render_state1(&self, state: &XRRenderStateInit) -> Undefined {
+    pub fn update_render_state_with_state(&self, state: &XRRenderStateInit) -> Undefined {
         self.inner
             .call("updateRenderState", &[state.into()])
             .as_::<Undefined>()
@@ -441,14 +443,19 @@ impl XRSession {
 impl XRSession {
     /// The requestLightProbe method.
     /// [`XRSession.requestLightProbe`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestLightProbe)
-    pub fn request_light_probe0(&self) -> Promise<XRLightProbe> {
+    pub fn request_light_probe(&self) -> Promise<XRLightProbe> {
         self.inner
             .call("requestLightProbe", &[])
             .as_::<Promise<XRLightProbe>>()
     }
+}
+impl XRSession {
     /// The requestLightProbe method.
     /// [`XRSession.requestLightProbe`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestLightProbe)
-    pub fn request_light_probe1(&self, options: &XRLightProbeInit) -> Promise<XRLightProbe> {
+    pub fn request_light_probe_with_options(
+        &self,
+        options: &XRLightProbeInit,
+    ) -> Promise<XRLightProbe> {
         self.inner
             .call("requestLightProbe", &[options.into()])
             .as_::<Promise<XRLightProbe>>()

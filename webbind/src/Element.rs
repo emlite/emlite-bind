@@ -1138,14 +1138,16 @@ impl Element {
 impl Element {
     /// The toggleAttribute method.
     /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
-    pub fn toggle_attribute0(&self, qualified_name: &JsString) -> bool {
+    pub fn toggle_attribute(&self, qualified_name: &JsString) -> bool {
         self.inner
             .call("toggleAttribute", &[qualified_name.into()])
             .as_::<bool>()
     }
+}
+impl Element {
     /// The toggleAttribute method.
     /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
-    pub fn toggle_attribute1(&self, qualified_name: &JsString, force: bool) -> bool {
+    pub fn toggle_attribute_with_force(&self, qualified_name: &JsString, force: bool) -> bool {
         self.inner
             .call("toggleAttribute", &[qualified_name.into(), force.into()])
             .as_::<bool>()
@@ -1314,14 +1316,16 @@ impl Element {
 impl Element {
     /// The focusableAreas method.
     /// [`Element.focusableAreas`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focusableAreas)
-    pub fn focusable_areas0(&self) -> TypedArray<Node> {
+    pub fn focusable_areas(&self) -> TypedArray<Node> {
         self.inner
             .call("focusableAreas", &[])
             .as_::<TypedArray<Node>>()
     }
+}
+impl Element {
     /// The focusableAreas method.
     /// [`Element.focusableAreas`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focusableAreas)
-    pub fn focusable_areas1(&self, option: &FocusableAreasOption) -> TypedArray<Node> {
+    pub fn focusable_areas_with_option(&self, option: &FocusableAreasOption) -> TypedArray<Node> {
         self.inner
             .call("focusableAreas", &[option.into()])
             .as_::<TypedArray<Node>>()
@@ -1330,14 +1334,16 @@ impl Element {
 impl Element {
     /// The spatialNavigationSearch method.
     /// [`Element.spatialNavigationSearch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/spatialNavigationSearch)
-    pub fn spatial_navigation_search0(&self, dir: &SpatialNavigationDirection) -> Node {
+    pub fn spatial_navigation_search(&self, dir: &SpatialNavigationDirection) -> Node {
         self.inner
             .call("spatialNavigationSearch", &[dir.into()])
             .as_::<Node>()
     }
+}
+impl Element {
     /// The spatialNavigationSearch method.
     /// [`Element.spatialNavigationSearch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/spatialNavigationSearch)
-    pub fn spatial_navigation_search1(
+    pub fn spatial_navigation_search_with_options(
         &self,
         dir: &SpatialNavigationDirection,
         options: &SpatialNavigationSearchOptions,
@@ -1384,12 +1390,14 @@ impl Element {
 impl Element {
     /// The checkVisibility method.
     /// [`Element.checkVisibility`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility)
-    pub fn check_visibility0(&self) -> bool {
+    pub fn check_visibility(&self) -> bool {
         self.inner.call("checkVisibility", &[]).as_::<bool>()
     }
+}
+impl Element {
     /// The checkVisibility method.
     /// [`Element.checkVisibility`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility)
-    pub fn check_visibility1(&self, options: &CheckVisibilityOptions) -> bool {
+    pub fn check_visibility_with_options(&self, options: &CheckVisibilityOptions) -> bool {
         self.inner
             .call("checkVisibility", &[options.into()])
             .as_::<bool>()
@@ -1398,12 +1406,14 @@ impl Element {
 impl Element {
     /// The scrollIntoView method.
     /// [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
-    pub fn scroll_into_view0(&self) -> Undefined {
+    pub fn scroll_into_view(&self) -> Undefined {
         self.inner.call("scrollIntoView", &[]).as_::<Undefined>()
     }
+}
+impl Element {
     /// The scrollIntoView method.
     /// [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
-    pub fn scroll_into_view1(&self, arg: &Any) -> Undefined {
+    pub fn scroll_into_view_with_arg(&self, arg: &Any) -> Undefined {
         self.inner
             .call("scrollIntoView", &[arg.into()])
             .as_::<Undefined>()
@@ -1412,12 +1422,14 @@ impl Element {
 impl Element {
     /// The scroll method.
     /// [`Element.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll)
-    pub fn scroll0(&self) -> Undefined {
+    pub fn scroll(&self) -> Undefined {
         self.inner.call("scroll", &[]).as_::<Undefined>()
     }
+}
+impl Element {
     /// The scroll method.
     /// [`Element.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll)
-    pub fn scroll1(&self, options: &ScrollToOptions) -> Undefined {
+    pub fn scroll_with_options(&self, options: &ScrollToOptions) -> Undefined {
         self.inner
             .call("scroll", &[options.into()])
             .as_::<Undefined>()
@@ -1426,7 +1438,7 @@ impl Element {
 impl Element {
     /// The scroll method.
     /// [`Element.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll)
-    pub fn scroll2(&self, x: f64, y: f64) -> Undefined {
+    pub fn scroll_with_x_and_y(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("scroll", &[x.into(), y.into()])
             .as_::<Undefined>()
@@ -1435,12 +1447,14 @@ impl Element {
 impl Element {
     /// The scrollTo method.
     /// [`Element.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
-    pub fn scroll_to0(&self) -> Undefined {
+    pub fn scroll_to(&self) -> Undefined {
         self.inner.call("scrollTo", &[]).as_::<Undefined>()
     }
+}
+impl Element {
     /// The scrollTo method.
     /// [`Element.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
-    pub fn scroll_to1(&self, options: &ScrollToOptions) -> Undefined {
+    pub fn scroll_to_with_options(&self, options: &ScrollToOptions) -> Undefined {
         self.inner
             .call("scrollTo", &[options.into()])
             .as_::<Undefined>()
@@ -1449,7 +1463,7 @@ impl Element {
 impl Element {
     /// The scrollTo method.
     /// [`Element.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
-    pub fn scroll_to2(&self, x: f64, y: f64) -> Undefined {
+    pub fn scroll_to_with_x_and_y(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("scrollTo", &[x.into(), y.into()])
             .as_::<Undefined>()
@@ -1458,12 +1472,14 @@ impl Element {
 impl Element {
     /// The scrollBy method.
     /// [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy)
-    pub fn scroll_by0(&self) -> Undefined {
+    pub fn scroll_by(&self) -> Undefined {
         self.inner.call("scrollBy", &[]).as_::<Undefined>()
     }
+}
+impl Element {
     /// The scrollBy method.
     /// [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy)
-    pub fn scroll_by1(&self, options: &ScrollToOptions) -> Undefined {
+    pub fn scroll_by_with_options(&self, options: &ScrollToOptions) -> Undefined {
         self.inner
             .call("scrollBy", &[options.into()])
             .as_::<Undefined>()
@@ -1472,7 +1488,7 @@ impl Element {
 impl Element {
     /// The scrollBy method.
     /// [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy)
-    pub fn scroll_by2(&self, x: f64, y: f64) -> Undefined {
+    pub fn scroll_by_with_x_and_y(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("scrollBy", &[x.into(), y.into()])
             .as_::<Undefined>()
@@ -1481,14 +1497,19 @@ impl Element {
 impl Element {
     /// The requestFullscreen method.
     /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
-    pub fn request_fullscreen0(&self) -> Promise<Undefined> {
+    pub fn request_fullscreen(&self) -> Promise<Undefined> {
         self.inner
             .call("requestFullscreen", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl Element {
     /// The requestFullscreen method.
     /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
-    pub fn request_fullscreen1(&self, options: &FullscreenOptions) -> Promise<Undefined> {
+    pub fn request_fullscreen_with_options(
+        &self,
+        options: &FullscreenOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("requestFullscreen", &[options.into()])
             .as_::<Promise<Undefined>>()
@@ -1506,12 +1527,14 @@ impl Element {
 impl Element {
     /// The getHTML method.
     /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
-    pub fn get_html0(&self) -> JsString {
+    pub fn get_html(&self) -> JsString {
         self.inner.call("getHTML", &[]).as_::<JsString>()
     }
+}
+impl Element {
     /// The getHTML method.
     /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
-    pub fn get_html1(&self, options: &GetHTMLOptions) -> JsString {
+    pub fn get_html_with_options(&self, options: &GetHTMLOptions) -> JsString {
         self.inner
             .call("getHTML", &[options.into()])
             .as_::<JsString>()
@@ -1556,14 +1579,19 @@ impl Element {
 impl Element {
     /// The requestPointerLock method.
     /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
-    pub fn request_pointer_lock0(&self) -> Promise<Undefined> {
+    pub fn request_pointer_lock(&self) -> Promise<Undefined> {
         self.inner
             .call("requestPointerLock", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl Element {
     /// The requestPointerLock method.
     /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
-    pub fn request_pointer_lock1(&self, options: &PointerLockOptions) -> Promise<Undefined> {
+    pub fn request_pointer_lock_with_options(
+        &self,
+        options: &PointerLockOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("requestPointerLock", &[options.into()])
             .as_::<Promise<Undefined>>()
@@ -1581,14 +1609,16 @@ impl Element {
 impl Element {
     /// The getBoxQuads method.
     /// [`Element.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoxQuads)
-    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads(&self) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
             .as_::<TypedArray<DOMQuad>>()
     }
+}
+impl Element {
     /// The getBoxQuads method.
     /// [`Element.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoxQuads)
-    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
+    pub fn get_box_quads_with_options(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
             .as_::<TypedArray<DOMQuad>>()
@@ -1597,14 +1627,16 @@ impl Element {
 impl Element {
     /// The convertQuadFromNode method.
     /// [`Element.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertQuadFromNode)
-    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
+    pub fn convert_quad_from_node(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl Element {
     /// The convertQuadFromNode method.
     /// [`Element.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertQuadFromNode)
-    pub fn convert_quad_from_node1(
+    pub fn convert_quad_from_node_with_options(
         &self,
         quad: &DOMQuadInit,
         from: &Any,
@@ -1621,14 +1653,16 @@ impl Element {
 impl Element {
     /// The convertRectFromNode method.
     /// [`Element.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertRectFromNode)
-    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
+    pub fn convert_rect_from_node(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
     }
+}
+impl Element {
     /// The convertRectFromNode method.
     /// [`Element.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertRectFromNode)
-    pub fn convert_rect_from_node1(
+    pub fn convert_rect_from_node_with_options(
         &self,
         rect: &DOMRectReadOnly,
         from: &Any,
@@ -1645,14 +1679,16 @@ impl Element {
 impl Element {
     /// The convertPointFromNode method.
     /// [`Element.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertPointFromNode)
-    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
+    pub fn convert_point_from_node(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
     }
+}
+impl Element {
     /// The convertPointFromNode method.
     /// [`Element.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertPointFromNode)
-    pub fn convert_point_from_node1(
+    pub fn convert_point_from_node_with_options(
         &self,
         point: &DOMPointInit,
         from: &Any,
@@ -1755,14 +1791,16 @@ impl Element {
 impl Element {
     /// The animate method.
     /// [`Element.animate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate)
-    pub fn animate0(&self, keyframes: &Object) -> Animation {
+    pub fn animate(&self, keyframes: &Object) -> Animation {
         self.inner
             .call("animate", &[keyframes.into()])
             .as_::<Animation>()
     }
+}
+impl Element {
     /// The animate method.
     /// [`Element.animate`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate)
-    pub fn animate1(&self, keyframes: &Object, options: &Any) -> Animation {
+    pub fn animate_with_options(&self, keyframes: &Object, options: &Any) -> Animation {
         self.inner
             .call("animate", &[keyframes.into(), options.into()])
             .as_::<Animation>()
@@ -1771,14 +1809,19 @@ impl Element {
 impl Element {
     /// The getAnimations method.
     /// [`Element.getAnimations`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAnimations)
-    pub fn get_animations0(&self) -> TypedArray<Animation> {
+    pub fn get_animations(&self) -> TypedArray<Animation> {
         self.inner
             .call("getAnimations", &[])
             .as_::<TypedArray<Animation>>()
     }
+}
+impl Element {
     /// The getAnimations method.
     /// [`Element.getAnimations`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAnimations)
-    pub fn get_animations1(&self, options: &GetAnimationsOptions) -> TypedArray<Animation> {
+    pub fn get_animations_with_options(
+        &self,
+        options: &GetAnimationsOptions,
+    ) -> TypedArray<Animation> {
         self.inner
             .call("getAnimations", &[options.into()])
             .as_::<TypedArray<Animation>>()

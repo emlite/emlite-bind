@@ -87,14 +87,16 @@ impl Gyroscope {
 
 impl Gyroscope {
     /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
-    pub fn new0() -> Gyroscope {
+    pub fn new() -> Gyroscope {
         Self {
             inner: Any::global("Gyroscope").new(&[]).as_::<Sensor>(),
         }
     }
+}
 
+impl Gyroscope {
     /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
-    pub fn new1(sensor_options: &GyroscopeSensorOptions) -> Gyroscope {
+    pub fn new_with_sensor_options(sensor_options: &GyroscopeSensorOptions) -> Gyroscope {
         Self {
             inner: Any::global("Gyroscope")
                 .new(&[sensor_options.into()])

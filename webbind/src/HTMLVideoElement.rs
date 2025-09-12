@@ -179,6 +179,7 @@ impl HTMLVideoElement {
         }
     }
 }
+
 impl HTMLVideoElement {
     /// The getVideoPlaybackQuality method.
     /// [`HTMLVideoElement.getVideoPlaybackQuality`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/getVideoPlaybackQuality)

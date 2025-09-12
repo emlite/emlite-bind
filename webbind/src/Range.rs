@@ -79,6 +79,7 @@ impl Range {
         }
     }
 }
+
 impl Range {
     /// The setStart method.
     /// [`Range.setStart`](https://developer.mozilla.org/en-US/docs/Web/API/Range/setStart)
@@ -136,12 +137,14 @@ impl Range {
 impl Range {
     /// The collapse method.
     /// [`Range.collapse`](https://developer.mozilla.org/en-US/docs/Web/API/Range/collapse)
-    pub fn collapse0(&self) -> Undefined {
+    pub fn collapse(&self) -> Undefined {
         self.inner.call("collapse", &[]).as_::<Undefined>()
     }
+}
+impl Range {
     /// The collapse method.
     /// [`Range.collapse`](https://developer.mozilla.org/en-US/docs/Web/API/Range/collapse)
-    pub fn collapse1(&self, to_start: bool) -> Undefined {
+    pub fn collapse_with_to_start(&self, to_start: bool) -> Undefined {
         self.inner
             .call("collapse", &[to_start.into()])
             .as_::<Undefined>()

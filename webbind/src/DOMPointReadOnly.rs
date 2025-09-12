@@ -94,41 +94,49 @@ impl DOMPointReadOnly {
 
 impl DOMPointReadOnly {
     /// The `new DOMPointReadOnly(..)` constructor, creating a new DOMPointReadOnly instance
-    pub fn new0() -> DOMPointReadOnly {
+    pub fn new() -> DOMPointReadOnly {
         Self {
             inner: Any::global("DOMPointReadOnly").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl DOMPointReadOnly {
     /// The `new DOMPointReadOnly(..)` constructor, creating a new DOMPointReadOnly instance
-    pub fn new1(x: f64) -> DOMPointReadOnly {
+    pub fn new_with_x(x: f64) -> DOMPointReadOnly {
         Self {
             inner: Any::global("DOMPointReadOnly")
                 .new(&[x.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMPointReadOnly {
     /// The `new DOMPointReadOnly(..)` constructor, creating a new DOMPointReadOnly instance
-    pub fn new2(x: f64, y: f64) -> DOMPointReadOnly {
+    pub fn new_with_x_and_y(x: f64, y: f64) -> DOMPointReadOnly {
         Self {
             inner: Any::global("DOMPointReadOnly")
                 .new(&[x.into(), y.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMPointReadOnly {
     /// The `new DOMPointReadOnly(..)` constructor, creating a new DOMPointReadOnly instance
-    pub fn new3(x: f64, y: f64, z: f64) -> DOMPointReadOnly {
+    pub fn new_with_x_and_y_and_z(x: f64, y: f64, z: f64) -> DOMPointReadOnly {
         Self {
             inner: Any::global("DOMPointReadOnly")
                 .new(&[x.into(), y.into(), z.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl DOMPointReadOnly {
     /// The `new DOMPointReadOnly(..)` constructor, creating a new DOMPointReadOnly instance
-    pub fn new4(x: f64, y: f64, z: f64, w: f64) -> DOMPointReadOnly {
+    pub fn new_with_x_and_y_and_z_and_w(x: f64, y: f64, z: f64, w: f64) -> DOMPointReadOnly {
         Self {
             inner: Any::global("DOMPointReadOnly")
                 .new(&[x.into(), y.into(), z.into(), w.into()])
@@ -136,17 +144,20 @@ impl DOMPointReadOnly {
         }
     }
 }
+
 impl DOMPointReadOnly {
     /// The fromPoint method.
     /// [`DOMPointReadOnly.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/fromPoint)
-    pub fn from_point0() -> DOMPointReadOnly {
+    pub fn from_point() -> DOMPointReadOnly {
         Any::global("DOMPointReadOnly")
             .call("fromPoint", &[])
             .as_::<DOMPointReadOnly>()
     }
+}
+impl DOMPointReadOnly {
     /// The fromPoint method.
     /// [`DOMPointReadOnly.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/fromPoint)
-    pub fn from_point1(other: &DOMPointInit) -> DOMPointReadOnly {
+    pub fn from_point_with_other(other: &DOMPointInit) -> DOMPointReadOnly {
         Any::global("DOMPointReadOnly")
             .call("fromPoint", &[other.into()])
             .as_::<DOMPointReadOnly>()
@@ -155,12 +166,14 @@ impl DOMPointReadOnly {
 impl DOMPointReadOnly {
     /// The matrixTransform method.
     /// [`DOMPointReadOnly.matrixTransform`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/matrixTransform)
-    pub fn matrix_transform0(&self) -> DOMPoint {
+    pub fn matrix_transform(&self) -> DOMPoint {
         self.inner.call("matrixTransform", &[]).as_::<DOMPoint>()
     }
+}
+impl DOMPointReadOnly {
     /// The matrixTransform method.
     /// [`DOMPointReadOnly.matrixTransform`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/matrixTransform)
-    pub fn matrix_transform1(&self, matrix: &DOMMatrixInit) -> DOMPoint {
+    pub fn matrix_transform_with_matrix(&self, matrix: &DOMMatrixInit) -> DOMPoint {
         self.inner
             .call("matrixTransform", &[matrix.into()])
             .as_::<DOMPoint>()

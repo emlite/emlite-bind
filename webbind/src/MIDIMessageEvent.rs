@@ -73,16 +73,21 @@ impl MIDIMessageEvent {
 
 impl MIDIMessageEvent {
     /// The `new MIDIMessageEvent(..)` constructor, creating a new MIDIMessageEvent instance
-    pub fn new0(type_: &JsString) -> MIDIMessageEvent {
+    pub fn new(type_: &JsString) -> MIDIMessageEvent {
         Self {
             inner: Any::global("MIDIMessageEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl MIDIMessageEvent {
     /// The `new MIDIMessageEvent(..)` constructor, creating a new MIDIMessageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &MIDIMessageEventInit) -> MIDIMessageEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &MIDIMessageEventInit,
+    ) -> MIDIMessageEvent {
         Self {
             inner: Any::global("MIDIMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])

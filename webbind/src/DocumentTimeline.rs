@@ -65,16 +65,18 @@ jsbind::utils::impl_dyn_cast!(DocumentTimeline);
 
 impl DocumentTimeline {
     /// The `new DocumentTimeline(..)` constructor, creating a new DocumentTimeline instance
-    pub fn new0() -> DocumentTimeline {
+    pub fn new() -> DocumentTimeline {
         Self {
             inner: Any::global("DocumentTimeline")
                 .new(&[])
                 .as_::<AnimationTimeline>(),
         }
     }
+}
 
+impl DocumentTimeline {
     /// The `new DocumentTimeline(..)` constructor, creating a new DocumentTimeline instance
-    pub fn new1(options: &DocumentTimelineOptions) -> DocumentTimeline {
+    pub fn new_with_options(options: &DocumentTimelineOptions) -> DocumentTimeline {
         Self {
             inner: Any::global("DocumentTimeline")
                 .new(&[options.into()])

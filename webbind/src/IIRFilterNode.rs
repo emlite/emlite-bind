@@ -73,6 +73,7 @@ impl IIRFilterNode {
         }
     }
 }
+
 impl IIRFilterNode {
     /// The getFrequencyResponse method.
     /// [`IIRFilterNode.getFrequencyResponse`](https://developer.mozilla.org/en-US/docs/Web/API/IIRFilterNode/getFrequencyResponse)

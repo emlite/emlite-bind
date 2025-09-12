@@ -80,16 +80,18 @@ impl AnimationPlaybackEvent {
 
 impl AnimationPlaybackEvent {
     /// The `new AnimationPlaybackEvent(..)` constructor, creating a new AnimationPlaybackEvent instance
-    pub fn new0(type_: &JsString) -> AnimationPlaybackEvent {
+    pub fn new(type_: &JsString) -> AnimationPlaybackEvent {
         Self {
             inner: Any::global("AnimationPlaybackEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl AnimationPlaybackEvent {
     /// The `new AnimationPlaybackEvent(..)` constructor, creating a new AnimationPlaybackEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &AnimationPlaybackEventInit,
     ) -> AnimationPlaybackEvent {

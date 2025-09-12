@@ -182,14 +182,19 @@ impl Bluetooth {
 impl Bluetooth {
     /// The requestDevice method.
     /// [`Bluetooth.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice)
-    pub fn request_device0(&self) -> Promise<BluetoothDevice> {
+    pub fn request_device(&self) -> Promise<BluetoothDevice> {
         self.inner
             .call("requestDevice", &[])
             .as_::<Promise<BluetoothDevice>>()
     }
+}
+impl Bluetooth {
     /// The requestDevice method.
     /// [`Bluetooth.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice)
-    pub fn request_device1(&self, options: &RequestDeviceOptions) -> Promise<BluetoothDevice> {
+    pub fn request_device_with_options(
+        &self,
+        options: &RequestDeviceOptions,
+    ) -> Promise<BluetoothDevice> {
         self.inner
             .call("requestDevice", &[options.into()])
             .as_::<Promise<BluetoothDevice>>()
@@ -198,14 +203,19 @@ impl Bluetooth {
 impl Bluetooth {
     /// The requestLEScan method.
     /// [`Bluetooth.requestLEScan`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestLEScan)
-    pub fn request_le_scan0(&self) -> Promise<BluetoothLEScan> {
+    pub fn request_le_scan(&self) -> Promise<BluetoothLEScan> {
         self.inner
             .call("requestLEScan", &[])
             .as_::<Promise<BluetoothLEScan>>()
     }
+}
+impl Bluetooth {
     /// The requestLEScan method.
     /// [`Bluetooth.requestLEScan`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestLEScan)
-    pub fn request_le_scan1(&self, options: &BluetoothLEScanOptions) -> Promise<BluetoothLEScan> {
+    pub fn request_le_scan_with_options(
+        &self,
+        options: &BluetoothLEScanOptions,
+    ) -> Promise<BluetoothLEScan> {
         self.inner
             .call("requestLEScan", &[options.into()])
             .as_::<Promise<BluetoothLEScan>>()

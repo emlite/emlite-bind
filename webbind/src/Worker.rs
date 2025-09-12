@@ -105,16 +105,18 @@ impl Worker {
 
 impl Worker {
     /// The `new Worker(..)` constructor, creating a new Worker instance
-    pub fn new0(script_url: &Any) -> Worker {
+    pub fn new(script_url: &Any) -> Worker {
         Self {
             inner: Any::global("Worker")
                 .new(&[script_url.into()])
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl Worker {
     /// The `new Worker(..)` constructor, creating a new Worker instance
-    pub fn new1(script_url: &Any, options: &WorkerOptions) -> Worker {
+    pub fn new_with_options(script_url: &Any, options: &WorkerOptions) -> Worker {
         Self {
             inner: Any::global("Worker")
                 .new(&[script_url.into(), options.into()])
@@ -122,6 +124,7 @@ impl Worker {
         }
     }
 }
+
 impl Worker {
     /// The terminate method.
     /// [`Worker.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/terminate)
@@ -141,14 +144,20 @@ impl Worker {
 impl Worker {
     /// The postMessage method.
     /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
-    pub fn post_message1(&self, message: &Any) -> Undefined {
+    pub fn post_message_with_message(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
+}
+impl Worker {
     /// The postMessage method.
     /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
-    pub fn post_message2(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+    pub fn post_message_with_options(
+        &self,
+        message: &Any,
+        options: &StructuredSerializeOptions,
+    ) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()

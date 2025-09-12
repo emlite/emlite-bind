@@ -206,6 +206,7 @@ impl VTTCue {
         }
     }
 }
+
 impl VTTCue {
     /// The getCueAsHTML method.
     /// [`VTTCue.getCueAsHTML`](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue/getCueAsHTML)

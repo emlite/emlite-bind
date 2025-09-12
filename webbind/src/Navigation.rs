@@ -173,14 +173,16 @@ impl Navigation {
 impl Navigation {
     /// The navigate method.
     /// [`Navigation.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate)
-    pub fn navigate0(&self, url: &JsString) -> NavigationResult {
+    pub fn navigate(&self, url: &JsString) -> NavigationResult {
         self.inner
             .call("navigate", &[url.into()])
             .as_::<NavigationResult>()
     }
+}
+impl Navigation {
     /// The navigate method.
     /// [`Navigation.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate)
-    pub fn navigate1(
+    pub fn navigate_with_options(
         &self,
         url: &JsString,
         options: &NavigationNavigateOptions,
@@ -193,12 +195,14 @@ impl Navigation {
 impl Navigation {
     /// The reload method.
     /// [`Navigation.reload`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/reload)
-    pub fn reload0(&self) -> NavigationResult {
+    pub fn reload(&self) -> NavigationResult {
         self.inner.call("reload", &[]).as_::<NavigationResult>()
     }
+}
+impl Navigation {
     /// The reload method.
     /// [`Navigation.reload`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/reload)
-    pub fn reload1(&self, options: &NavigationReloadOptions) -> NavigationResult {
+    pub fn reload_with_options(&self, options: &NavigationReloadOptions) -> NavigationResult {
         self.inner
             .call("reload", &[options.into()])
             .as_::<NavigationResult>()
@@ -207,14 +211,20 @@ impl Navigation {
 impl Navigation {
     /// The traverseTo method.
     /// [`Navigation.traverseTo`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/traverseTo)
-    pub fn traverse_to0(&self, key: &JsString) -> NavigationResult {
+    pub fn traverse_to(&self, key: &JsString) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into()])
             .as_::<NavigationResult>()
     }
+}
+impl Navigation {
     /// The traverseTo method.
     /// [`Navigation.traverseTo`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/traverseTo)
-    pub fn traverse_to1(&self, key: &JsString, options: &NavigationOptions) -> NavigationResult {
+    pub fn traverse_to_with_options(
+        &self,
+        key: &JsString,
+        options: &NavigationOptions,
+    ) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into(), options.into()])
             .as_::<NavigationResult>()
@@ -223,12 +233,14 @@ impl Navigation {
 impl Navigation {
     /// The back method.
     /// [`Navigation.back`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/back)
-    pub fn back0(&self) -> NavigationResult {
+    pub fn back(&self) -> NavigationResult {
         self.inner.call("back", &[]).as_::<NavigationResult>()
     }
+}
+impl Navigation {
     /// The back method.
     /// [`Navigation.back`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/back)
-    pub fn back1(&self, options: &NavigationOptions) -> NavigationResult {
+    pub fn back_with_options(&self, options: &NavigationOptions) -> NavigationResult {
         self.inner
             .call("back", &[options.into()])
             .as_::<NavigationResult>()
@@ -237,12 +249,14 @@ impl Navigation {
 impl Navigation {
     /// The forward method.
     /// [`Navigation.forward`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/forward)
-    pub fn forward0(&self) -> NavigationResult {
+    pub fn forward(&self) -> NavigationResult {
         self.inner.call("forward", &[]).as_::<NavigationResult>()
     }
+}
+impl Navigation {
     /// The forward method.
     /// [`Navigation.forward`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/forward)
-    pub fn forward1(&self, options: &NavigationOptions) -> NavigationResult {
+    pub fn forward_with_options(&self, options: &NavigationOptions) -> NavigationResult {
         self.inner
             .call("forward", &[options.into()])
             .as_::<NavigationResult>()

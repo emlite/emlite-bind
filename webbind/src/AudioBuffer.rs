@@ -102,6 +102,7 @@ impl AudioBuffer {
         }
     }
 }
+
 impl AudioBuffer {
     /// The getChannelData method.
     /// [`AudioBuffer.getChannelData`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/getChannelData)
@@ -114,7 +115,7 @@ impl AudioBuffer {
 impl AudioBuffer {
     /// The copyFromChannel method.
     /// [`AudioBuffer.copyFromChannel`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/copyFromChannel)
-    pub fn copy_from_channel0(&self, destination: &Float32Array, channel_number: u32) -> Undefined {
+    pub fn copy_from_channel(&self, destination: &Float32Array, channel_number: u32) -> Undefined {
         self.inner
             .call(
                 "copyFromChannel",
@@ -122,9 +123,11 @@ impl AudioBuffer {
             )
             .as_::<Undefined>()
     }
+}
+impl AudioBuffer {
     /// The copyFromChannel method.
     /// [`AudioBuffer.copyFromChannel`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/copyFromChannel)
-    pub fn copy_from_channel1(
+    pub fn copy_from_channel_with_buffer_offset(
         &self,
         destination: &Float32Array,
         channel_number: u32,
@@ -145,14 +148,16 @@ impl AudioBuffer {
 impl AudioBuffer {
     /// The copyToChannel method.
     /// [`AudioBuffer.copyToChannel`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/copyToChannel)
-    pub fn copy_to_channel0(&self, source: &Float32Array, channel_number: u32) -> Undefined {
+    pub fn copy_to_channel(&self, source: &Float32Array, channel_number: u32) -> Undefined {
         self.inner
             .call("copyToChannel", &[source.into(), channel_number.into()])
             .as_::<Undefined>()
     }
+}
+impl AudioBuffer {
     /// The copyToChannel method.
     /// [`AudioBuffer.copyToChannel`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/copyToChannel)
-    pub fn copy_to_channel1(
+    pub fn copy_to_channel_with_buffer_offset(
         &self,
         source: &Float32Array,
         channel_number: u32,

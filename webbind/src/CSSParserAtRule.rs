@@ -89,16 +89,18 @@ impl CSSParserAtRule {
 
 impl CSSParserAtRule {
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
-    pub fn new0(name: &JsString, prelude: &TypedArray<Any>) -> CSSParserAtRule {
+    pub fn new(name: &JsString, prelude: &TypedArray<Any>) -> CSSParserAtRule {
         Self {
             inner: Any::global("CSSParserAtRule")
                 .new(&[name.into(), prelude.into()])
                 .as_::<CSSParserRule>(),
         }
     }
+}
 
+impl CSSParserAtRule {
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
-    pub fn new1(
+    pub fn new_with_body(
         name: &JsString,
         prelude: &TypedArray<Any>,
         body: &TypedArray<CSSParserRule>,

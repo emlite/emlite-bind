@@ -120,16 +120,18 @@ impl KeyframeEffect {
 
 impl KeyframeEffect {
     /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
-    pub fn new0(target: &Element, keyframes: &Object) -> KeyframeEffect {
+    pub fn new(target: &Element, keyframes: &Object) -> KeyframeEffect {
         Self {
             inner: Any::global("KeyframeEffect")
                 .new(&[target.into(), keyframes.into()])
                 .as_::<AnimationEffect>(),
         }
     }
+}
 
+impl KeyframeEffect {
     /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
-    pub fn new1(target: &Element, keyframes: &Object, options: &Any) -> KeyframeEffect {
+    pub fn new_with_options(target: &Element, keyframes: &Object, options: &Any) -> KeyframeEffect {
         Self {
             inner: Any::global("KeyframeEffect")
                 .new(&[target.into(), keyframes.into(), options.into()])
@@ -140,7 +142,7 @@ impl KeyframeEffect {
 
 impl KeyframeEffect {
     /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
-    pub fn new2(source: &KeyframeEffect) -> KeyframeEffect {
+    pub fn new_with_source(source: &KeyframeEffect) -> KeyframeEffect {
         Self {
             inner: Any::global("KeyframeEffect")
                 .new(&[source.into()])
@@ -148,6 +150,7 @@ impl KeyframeEffect {
         }
     }
 }
+
 impl KeyframeEffect {
     /// The getKeyframes method.
     /// [`KeyframeEffect.getKeyframes`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/getKeyframes)

@@ -1,21 +1,21 @@
 use super::*;
 
 /// The assert function from the console namespace.
-pub fn assert0() -> Undefined {
+pub fn assert() -> Undefined {
     Any::global("console")
         .call("assert", &[])
         .as_::<Undefined>()
 }
 
 /// The assert function from the console namespace.
-pub fn assert1(condition: bool) -> Undefined {
+pub fn assert_with_condition(condition: bool) -> Undefined {
     Any::global("console")
         .call("assert", &[condition.into()])
         .as_::<Undefined>()
 }
 
 /// The assert function from the console namespace.
-pub fn assert2(condition: bool, data: &Any) -> Undefined {
+pub fn assert_with_condition_and_data(condition: bool, data: &Any) -> Undefined {
     Any::global("console")
         .call("assert", &[condition.into(), data.into()])
         .as_::<Undefined>()
@@ -55,19 +55,22 @@ pub fn log(data: &Any) -> Undefined {
 }
 
 /// The table function from the console namespace.
-pub fn table0() -> Undefined {
+pub fn table() -> Undefined {
     Any::global("console").call("table", &[]).as_::<Undefined>()
 }
 
 /// The table function from the console namespace.
-pub fn table1(tabular_data: &Any) -> Undefined {
+pub fn table_with_tabular_data(tabular_data: &Any) -> Undefined {
     Any::global("console")
         .call("table", &[tabular_data.into()])
         .as_::<Undefined>()
 }
 
 /// The table function from the console namespace.
-pub fn table2(tabular_data: &Any, properties: &TypedArray<JsString>) -> Undefined {
+pub fn table_with_tabular_data_and_properties(
+    tabular_data: &Any,
+    properties: &TypedArray<JsString>,
+) -> Undefined {
     Any::global("console")
         .call("table", &[tabular_data.into(), properties.into()])
         .as_::<Undefined>()
@@ -88,19 +91,19 @@ pub fn warn(data: &Any) -> Undefined {
 }
 
 /// The dir function from the console namespace.
-pub fn dir0() -> Undefined {
+pub fn dir() -> Undefined {
     Any::global("console").call("dir", &[]).as_::<Undefined>()
 }
 
 /// The dir function from the console namespace.
-pub fn dir1(item: &Any) -> Undefined {
+pub fn dir_with_item(item: &Any) -> Undefined {
     Any::global("console")
         .call("dir", &[item.into()])
         .as_::<Undefined>()
 }
 
 /// The dir function from the console namespace.
-pub fn dir2(item: &Any, options: &Object) -> Undefined {
+pub fn dir_with_item_and_options(item: &Any, options: &Object) -> Undefined {
     Any::global("console")
         .call("dir", &[item.into(), options.into()])
         .as_::<Undefined>()
@@ -114,26 +117,26 @@ pub fn dirxml(data: &Any) -> Undefined {
 }
 
 /// The count function from the console namespace.
-pub fn count0() -> Undefined {
+pub fn count() -> Undefined {
     Any::global("console").call("count", &[]).as_::<Undefined>()
 }
 
 /// The count function from the console namespace.
-pub fn count1(label: &JsString) -> Undefined {
+pub fn count_with_label(label: &JsString) -> Undefined {
     Any::global("console")
         .call("count", &[label.into()])
         .as_::<Undefined>()
 }
 
 /// The countReset function from the console namespace.
-pub fn count_reset0() -> Undefined {
+pub fn count_reset() -> Undefined {
     Any::global("console")
         .call("countReset", &[])
         .as_::<Undefined>()
 }
 
 /// The countReset function from the console namespace.
-pub fn count_reset1(label: &JsString) -> Undefined {
+pub fn count_reset_with_label(label: &JsString) -> Undefined {
     Any::global("console")
         .call("countReset", &[label.into()])
         .as_::<Undefined>()
@@ -161,47 +164,47 @@ pub fn group_end() -> Undefined {
 }
 
 /// The time function from the console namespace.
-pub fn time0() -> Undefined {
+pub fn time() -> Undefined {
     Any::global("console").call("time", &[]).as_::<Undefined>()
 }
 
 /// The time function from the console namespace.
-pub fn time1(label: &JsString) -> Undefined {
+pub fn time_with_label(label: &JsString) -> Undefined {
     Any::global("console")
         .call("time", &[label.into()])
         .as_::<Undefined>()
 }
 
 /// The timeLog function from the console namespace.
-pub fn time_log0() -> Undefined {
+pub fn time_log() -> Undefined {
     Any::global("console")
         .call("timeLog", &[])
         .as_::<Undefined>()
 }
 
 /// The timeLog function from the console namespace.
-pub fn time_log1(label: &JsString) -> Undefined {
+pub fn time_log_with_label(label: &JsString) -> Undefined {
     Any::global("console")
         .call("timeLog", &[label.into()])
         .as_::<Undefined>()
 }
 
 /// The timeLog function from the console namespace.
-pub fn time_log2(label: &JsString, data: &Any) -> Undefined {
+pub fn time_log_with_label_and_data(label: &JsString, data: &Any) -> Undefined {
     Any::global("console")
         .call("timeLog", &[label.into(), data.into()])
         .as_::<Undefined>()
 }
 
 /// The timeEnd function from the console namespace.
-pub fn time_end0() -> Undefined {
+pub fn time_end() -> Undefined {
     Any::global("console")
         .call("timeEnd", &[])
         .as_::<Undefined>()
 }
 
 /// The timeEnd function from the console namespace.
-pub fn time_end1(label: &JsString) -> Undefined {
+pub fn time_end_with_label(label: &JsString) -> Undefined {
     Any::global("console")
         .call("timeEnd", &[label.into()])
         .as_::<Undefined>()

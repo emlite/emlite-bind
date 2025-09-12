@@ -146,14 +146,16 @@ impl StorageAccessHandle {
 impl StorageAccessHandle {
     /// The SharedWorker method.
     /// [`StorageAccessHandle.SharedWorker`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/SharedWorker)
-    pub fn shared_worker0(&self, script_url: &JsString) -> SharedWorker {
+    pub fn shared_worker(&self, script_url: &JsString) -> SharedWorker {
         self.inner
             .call("SharedWorker", &[script_url.into()])
             .as_::<SharedWorker>()
     }
+}
+impl StorageAccessHandle {
     /// The SharedWorker method.
     /// [`StorageAccessHandle.SharedWorker`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/SharedWorker)
-    pub fn shared_worker1(&self, script_url: &JsString, options: &Any) -> SharedWorker {
+    pub fn shared_worker_with_options(&self, script_url: &JsString, options: &Any) -> SharedWorker {
         self.inner
             .call("SharedWorker", &[script_url.into(), options.into()])
             .as_::<SharedWorker>()

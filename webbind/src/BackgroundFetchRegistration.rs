@@ -144,14 +144,16 @@ impl BackgroundFetchRegistration {
 impl BackgroundFetchRegistration {
     /// The match method.
     /// [`BackgroundFetchRegistration.match`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/match)
-    pub fn match_0(&self, request: &Any) -> Promise<BackgroundFetchRecord> {
+    pub fn match_(&self, request: &Any) -> Promise<BackgroundFetchRecord> {
         self.inner
             .call("match", &[request.into()])
             .as_::<Promise<BackgroundFetchRecord>>()
     }
+}
+impl BackgroundFetchRegistration {
     /// The match method.
     /// [`BackgroundFetchRegistration.match`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/match)
-    pub fn match_1(
+    pub fn match_with_options(
         &self,
         request: &Any,
         options: &CacheQueryOptions,
@@ -164,21 +166,28 @@ impl BackgroundFetchRegistration {
 impl BackgroundFetchRegistration {
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all0(&self) -> Promise<TypedArray<BackgroundFetchRecord>> {
+    pub fn match_all(&self) -> Promise<TypedArray<BackgroundFetchRecord>> {
         self.inner
             .call("matchAll", &[])
             .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
+}
+impl BackgroundFetchRegistration {
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all1(&self, request: &Any) -> Promise<TypedArray<BackgroundFetchRecord>> {
+    pub fn match_all_with_request(
+        &self,
+        request: &Any,
+    ) -> Promise<TypedArray<BackgroundFetchRecord>> {
         self.inner
             .call("matchAll", &[request.into()])
             .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
+}
+impl BackgroundFetchRegistration {
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all2(
+    pub fn match_all_with_request_and_options(
         &self,
         request: &Any,
         options: &CacheQueryOptions,

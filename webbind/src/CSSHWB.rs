@@ -118,16 +118,18 @@ impl CSSHWB {
 
 impl CSSHWB {
     /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
-    pub fn new0(h: &CSSNumericValue, w: &Any, b: &Any) -> CSSHWB {
+    pub fn new(h: &CSSNumericValue, w: &Any, b: &Any) -> CSSHWB {
         Self {
             inner: Any::global("CSSHWB")
                 .new(&[h.into(), w.into(), b.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSHWB {
     /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
-    pub fn new1(h: &CSSNumericValue, w: &Any, b: &Any, alpha: &Any) -> CSSHWB {
+    pub fn new_with_alpha(h: &CSSNumericValue, w: &Any, b: &Any, alpha: &Any) -> CSSHWB {
         Self {
             inner: Any::global("CSSHWB")
                 .new(&[h.into(), w.into(), b.into(), alpha.into()])

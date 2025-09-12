@@ -192,14 +192,16 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
-    pub fn show_notification0(&self, title: &JsString) -> Promise<Undefined> {
+    pub fn show_notification(&self, title: &JsString) -> Promise<Undefined> {
         self.inner
             .call("showNotification", &[title.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl ServiceWorkerRegistration {
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
-    pub fn show_notification1(
+    pub fn show_notification_with_options(
         &self,
         title: &JsString,
         options: &NotificationOptions,
@@ -212,14 +214,16 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
-    pub fn get_notifications0(&self) -> Promise<TypedArray<Notification>> {
+    pub fn get_notifications(&self) -> Promise<TypedArray<Notification>> {
         self.inner
             .call("getNotifications", &[])
             .as_::<Promise<TypedArray<Notification>>>()
     }
+}
+impl ServiceWorkerRegistration {
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
-    pub fn get_notifications1(
+    pub fn get_notifications_with_filter(
         &self,
         filter: &GetNotificationOptions,
     ) -> Promise<TypedArray<Notification>> {

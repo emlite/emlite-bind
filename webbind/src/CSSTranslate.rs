@@ -105,16 +105,22 @@ impl CSSTranslate {
 
 impl CSSTranslate {
     /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
-    pub fn new0(x: &CSSNumericValue, y: &CSSNumericValue) -> CSSTranslate {
+    pub fn new(x: &CSSNumericValue, y: &CSSNumericValue) -> CSSTranslate {
         Self {
             inner: Any::global("CSSTranslate")
                 .new(&[x.into(), y.into()])
                 .as_::<CSSTransformComponent>(),
         }
     }
+}
 
+impl CSSTranslate {
     /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
-    pub fn new1(x: &CSSNumericValue, y: &CSSNumericValue, z: &CSSNumericValue) -> CSSTranslate {
+    pub fn new_with_z(
+        x: &CSSNumericValue,
+        y: &CSSNumericValue,
+        z: &CSSNumericValue,
+    ) -> CSSTranslate {
         Self {
             inner: Any::global("CSSTranslate")
                 .new(&[x.into(), y.into(), z.into()])

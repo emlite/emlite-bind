@@ -96,14 +96,16 @@ impl VideoColorSpace {
 
 impl VideoColorSpace {
     /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
-    pub fn new0() -> VideoColorSpace {
+    pub fn new() -> VideoColorSpace {
         Self {
             inner: Any::global("VideoColorSpace").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl VideoColorSpace {
     /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
-    pub fn new1(init: &VideoColorSpaceInit) -> VideoColorSpace {
+    pub fn new_with_init(init: &VideoColorSpaceInit) -> VideoColorSpace {
         Self {
             inner: Any::global("VideoColorSpace")
                 .new(&[init.into()])
@@ -111,6 +113,7 @@ impl VideoColorSpace {
         }
     }
 }
+
 impl VideoColorSpace {
     /// The toJSON method.
     /// [`VideoColorSpace.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace/toJSON)

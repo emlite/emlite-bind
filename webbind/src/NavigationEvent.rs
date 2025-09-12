@@ -80,16 +80,21 @@ impl NavigationEvent {
 
 impl NavigationEvent {
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
-    pub fn new0(type_: &JsString) -> NavigationEvent {
+    pub fn new(type_: &JsString) -> NavigationEvent {
         Self {
             inner: Any::global("NavigationEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
+}
 
+impl NavigationEvent {
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &NavigationEventInit) -> NavigationEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &NavigationEventInit,
+    ) -> NavigationEvent {
         Self {
             inner: Any::global("NavigationEvent")
                 .new(&[type_.into(), event_init_dict.into()])

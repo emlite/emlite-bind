@@ -87,14 +87,16 @@ impl ViewTimeline {
 
 impl ViewTimeline {
     /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
-    pub fn new0() -> ViewTimeline {
+    pub fn new() -> ViewTimeline {
         Self {
             inner: Any::global("ViewTimeline").new(&[]).as_::<ScrollTimeline>(),
         }
     }
+}
 
+impl ViewTimeline {
     /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
-    pub fn new1(options: &ViewTimelineOptions) -> ViewTimeline {
+    pub fn new_with_options(options: &ViewTimelineOptions) -> ViewTimeline {
         Self {
             inner: Any::global("ViewTimeline")
                 .new(&[options.into()])

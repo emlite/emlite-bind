@@ -86,16 +86,18 @@ impl RTCEncodedVideoFrame {
 
 impl RTCEncodedVideoFrame {
     /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
-    pub fn new0(original_frame: &RTCEncodedVideoFrame) -> RTCEncodedVideoFrame {
+    pub fn new(original_frame: &RTCEncodedVideoFrame) -> RTCEncodedVideoFrame {
         Self {
             inner: Any::global("RTCEncodedVideoFrame")
                 .new(&[original_frame.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl RTCEncodedVideoFrame {
     /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
-    pub fn new1(
+    pub fn new_with_options(
         original_frame: &RTCEncodedVideoFrame,
         options: &RTCEncodedVideoFrameOptions,
     ) -> RTCEncodedVideoFrame {
@@ -106,6 +108,7 @@ impl RTCEncodedVideoFrame {
         }
     }
 }
+
 impl RTCEncodedVideoFrame {
     /// The getMetadata method.
     /// [`RTCEncodedVideoFrame.getMetadata`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/getMetadata)

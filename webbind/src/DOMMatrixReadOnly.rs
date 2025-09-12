@@ -234,14 +234,16 @@ impl DOMMatrixReadOnly {
 
 impl DOMMatrixReadOnly {
     /// The `new DOMMatrixReadOnly(..)` constructor, creating a new DOMMatrixReadOnly instance
-    pub fn new0() -> DOMMatrixReadOnly {
+    pub fn new() -> DOMMatrixReadOnly {
         Self {
             inner: Any::global("DOMMatrixReadOnly").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl DOMMatrixReadOnly {
     /// The `new DOMMatrixReadOnly(..)` constructor, creating a new DOMMatrixReadOnly instance
-    pub fn new1(init: &Any) -> DOMMatrixReadOnly {
+    pub fn new_with_init(init: &Any) -> DOMMatrixReadOnly {
         Self {
             inner: Any::global("DOMMatrixReadOnly")
                 .new(&[init.into()])
@@ -249,17 +251,20 @@ impl DOMMatrixReadOnly {
         }
     }
 }
+
 impl DOMMatrixReadOnly {
     /// The fromMatrix method.
     /// [`DOMMatrixReadOnly.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromMatrix)
-    pub fn from_matrix0() -> DOMMatrixReadOnly {
+    pub fn from_matrix() -> DOMMatrixReadOnly {
         Any::global("DOMMatrixReadOnly")
             .call("fromMatrix", &[])
             .as_::<DOMMatrixReadOnly>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The fromMatrix method.
     /// [`DOMMatrixReadOnly.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromMatrix)
-    pub fn from_matrix1(other: &DOMMatrixInit) -> DOMMatrixReadOnly {
+    pub fn from_matrix_with_other(other: &DOMMatrixInit) -> DOMMatrixReadOnly {
         Any::global("DOMMatrixReadOnly")
             .call("fromMatrix", &[other.into()])
             .as_::<DOMMatrixReadOnly>()
@@ -286,26 +291,32 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The translate method.
     /// [`DOMMatrixReadOnly.translate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/translate)
-    pub fn translate0(&self) -> DOMMatrix {
+    pub fn translate(&self) -> DOMMatrix {
         self.inner.call("translate", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The translate method.
     /// [`DOMMatrixReadOnly.translate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/translate)
-    pub fn translate1(&self, tx: f64) -> DOMMatrix {
+    pub fn translate_with_tx(&self, tx: f64) -> DOMMatrix {
         self.inner
             .call("translate", &[tx.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The translate method.
     /// [`DOMMatrixReadOnly.translate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/translate)
-    pub fn translate2(&self, tx: f64, ty: f64) -> DOMMatrix {
+    pub fn translate_with_tx_and_ty(&self, tx: f64, ty: f64) -> DOMMatrix {
         self.inner
             .call("translate", &[tx.into(), ty.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The translate method.
     /// [`DOMMatrixReadOnly.translate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/translate)
-    pub fn translate3(&self, tx: f64, ty: f64, tz: f64) -> DOMMatrix {
+    pub fn translate_with_tx_and_ty_and_tz(&self, tx: f64, ty: f64, tz: f64) -> DOMMatrix {
         self.inner
             .call("translate", &[tx.into(), ty.into(), tz.into()])
             .as_::<DOMMatrix>()
@@ -314,33 +325,52 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The scale method.
     /// [`DOMMatrixReadOnly.scale`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale)
-    pub fn scale0(&self) -> DOMMatrix {
+    pub fn scale(&self) -> DOMMatrix {
         self.inner.call("scale", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale method.
     /// [`DOMMatrixReadOnly.scale`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale)
-    pub fn scale1(&self, scale_x: f64) -> DOMMatrix {
+    pub fn scale_with_scale_x(&self, scale_x: f64) -> DOMMatrix {
         self.inner
             .call("scale", &[scale_x.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale method.
     /// [`DOMMatrixReadOnly.scale`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale)
-    pub fn scale2(&self, scale_x: f64, scale_y: f64) -> DOMMatrix {
+    pub fn scale_with_scale_x_and_scale_y(&self, scale_x: f64, scale_y: f64) -> DOMMatrix {
         self.inner
             .call("scale", &[scale_x.into(), scale_y.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale method.
     /// [`DOMMatrixReadOnly.scale`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale)
-    pub fn scale3(&self, scale_x: f64, scale_y: f64, scale_z: f64) -> DOMMatrix {
+    pub fn scale_with_scale_x_and_scale_y_and_scale_z(
+        &self,
+        scale_x: f64,
+        scale_y: f64,
+        scale_z: f64,
+    ) -> DOMMatrix {
         self.inner
             .call("scale", &[scale_x.into(), scale_y.into(), scale_z.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale method.
     /// [`DOMMatrixReadOnly.scale`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale)
-    pub fn scale4(&self, scale_x: f64, scale_y: f64, scale_z: f64, origin_x: f64) -> DOMMatrix {
+    pub fn scale_with_scale_x_and_scale_y_and_scale_z_and_origin_x(
+        &self,
+        scale_x: f64,
+        scale_y: f64,
+        scale_z: f64,
+        origin_x: f64,
+    ) -> DOMMatrix {
         self.inner
             .call(
                 "scale",
@@ -353,9 +383,11 @@ impl DOMMatrixReadOnly {
             )
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale method.
     /// [`DOMMatrixReadOnly.scale`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale)
-    pub fn scale5(
+    pub fn scale_with_scale_x_and_scale_y_and_scale_z_and_origin_x_and_origin_y(
         &self,
         scale_x: f64,
         scale_y: f64,
@@ -376,9 +408,11 @@ impl DOMMatrixReadOnly {
             )
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale method.
     /// [`DOMMatrixReadOnly.scale`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale)
-    pub fn scale6(
+    pub fn scale_with_scale_x_and_scale_y_and_scale_z_and_origin_x_and_origin_y_and_origin_z(
         &self,
         scale_x: f64,
         scale_y: f64,
@@ -405,19 +439,27 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The scaleNonUniform method.
     /// [`DOMMatrixReadOnly.scaleNonUniform`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scaleNonUniform)
-    pub fn scale_non_uniform0(&self) -> DOMMatrix {
+    pub fn scale_non_uniform(&self) -> DOMMatrix {
         self.inner.call("scaleNonUniform", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scaleNonUniform method.
     /// [`DOMMatrixReadOnly.scaleNonUniform`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scaleNonUniform)
-    pub fn scale_non_uniform1(&self, scale_x: f64) -> DOMMatrix {
+    pub fn scale_non_uniform_with_scale_x(&self, scale_x: f64) -> DOMMatrix {
         self.inner
             .call("scaleNonUniform", &[scale_x.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scaleNonUniform method.
     /// [`DOMMatrixReadOnly.scaleNonUniform`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scaleNonUniform)
-    pub fn scale_non_uniform2(&self, scale_x: f64, scale_y: f64) -> DOMMatrix {
+    pub fn scale_non_uniform_with_scale_x_and_scale_y(
+        &self,
+        scale_x: f64,
+        scale_y: f64,
+    ) -> DOMMatrix {
         self.inner
             .call("scaleNonUniform", &[scale_x.into(), scale_y.into()])
             .as_::<DOMMatrix>()
@@ -426,33 +468,52 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The scale3d method.
     /// [`DOMMatrixReadOnly.scale3d`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale3d)
-    pub fn scale3d0(&self) -> DOMMatrix {
+    pub fn scale3d(&self) -> DOMMatrix {
         self.inner.call("scale3d", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale3d method.
     /// [`DOMMatrixReadOnly.scale3d`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale3d)
-    pub fn scale3d1(&self, scale: f64) -> DOMMatrix {
+    pub fn scale3d_with_scale(&self, scale: f64) -> DOMMatrix {
         self.inner
             .call("scale3d", &[scale.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale3d method.
     /// [`DOMMatrixReadOnly.scale3d`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale3d)
-    pub fn scale3d2(&self, scale: f64, origin_x: f64) -> DOMMatrix {
+    pub fn scale3d_with_scale_and_origin_x(&self, scale: f64, origin_x: f64) -> DOMMatrix {
         self.inner
             .call("scale3d", &[scale.into(), origin_x.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale3d method.
     /// [`DOMMatrixReadOnly.scale3d`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale3d)
-    pub fn scale3d3(&self, scale: f64, origin_x: f64, origin_y: f64) -> DOMMatrix {
+    pub fn scale3d_with_scale_and_origin_x_and_origin_y(
+        &self,
+        scale: f64,
+        origin_x: f64,
+        origin_y: f64,
+    ) -> DOMMatrix {
         self.inner
             .call("scale3d", &[scale.into(), origin_x.into(), origin_y.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The scale3d method.
     /// [`DOMMatrixReadOnly.scale3d`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/scale3d)
-    pub fn scale3d4(&self, scale: f64, origin_x: f64, origin_y: f64, origin_z: f64) -> DOMMatrix {
+    pub fn scale3d_with_scale_and_origin_x_and_origin_y_and_origin_z(
+        &self,
+        scale: f64,
+        origin_x: f64,
+        origin_y: f64,
+        origin_z: f64,
+    ) -> DOMMatrix {
         self.inner
             .call(
                 "scale3d",
@@ -469,26 +530,37 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The rotate method.
     /// [`DOMMatrixReadOnly.rotate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotate)
-    pub fn rotate0(&self) -> DOMMatrix {
+    pub fn rotate(&self) -> DOMMatrix {
         self.inner.call("rotate", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotate method.
     /// [`DOMMatrixReadOnly.rotate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotate)
-    pub fn rotate1(&self, rot_x: f64) -> DOMMatrix {
+    pub fn rotate_with_rot_x(&self, rot_x: f64) -> DOMMatrix {
         self.inner
             .call("rotate", &[rot_x.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotate method.
     /// [`DOMMatrixReadOnly.rotate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotate)
-    pub fn rotate2(&self, rot_x: f64, rot_y: f64) -> DOMMatrix {
+    pub fn rotate_with_rot_x_and_rot_y(&self, rot_x: f64, rot_y: f64) -> DOMMatrix {
         self.inner
             .call("rotate", &[rot_x.into(), rot_y.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotate method.
     /// [`DOMMatrixReadOnly.rotate`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotate)
-    pub fn rotate3(&self, rot_x: f64, rot_y: f64, rot_z: f64) -> DOMMatrix {
+    pub fn rotate_with_rot_x_and_rot_y_and_rot_z(
+        &self,
+        rot_x: f64,
+        rot_y: f64,
+        rot_z: f64,
+    ) -> DOMMatrix {
         self.inner
             .call("rotate", &[rot_x.into(), rot_y.into(), rot_z.into()])
             .as_::<DOMMatrix>()
@@ -497,19 +569,23 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The rotateFromVector method.
     /// [`DOMMatrixReadOnly.rotateFromVector`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateFromVector)
-    pub fn rotate_from_vector0(&self) -> DOMMatrix {
+    pub fn rotate_from_vector(&self) -> DOMMatrix {
         self.inner.call("rotateFromVector", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotateFromVector method.
     /// [`DOMMatrixReadOnly.rotateFromVector`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateFromVector)
-    pub fn rotate_from_vector1(&self, x: f64) -> DOMMatrix {
+    pub fn rotate_from_vector_with_x(&self, x: f64) -> DOMMatrix {
         self.inner
             .call("rotateFromVector", &[x.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotateFromVector method.
     /// [`DOMMatrixReadOnly.rotateFromVector`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateFromVector)
-    pub fn rotate_from_vector2(&self, x: f64, y: f64) -> DOMMatrix {
+    pub fn rotate_from_vector_with_x_and_y(&self, x: f64, y: f64) -> DOMMatrix {
         self.inner
             .call("rotateFromVector", &[x.into(), y.into()])
             .as_::<DOMMatrix>()
@@ -518,33 +594,47 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The rotateAxisAngle method.
     /// [`DOMMatrixReadOnly.rotateAxisAngle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateAxisAngle)
-    pub fn rotate_axis_angle0(&self) -> DOMMatrix {
+    pub fn rotate_axis_angle(&self) -> DOMMatrix {
         self.inner.call("rotateAxisAngle", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotateAxisAngle method.
     /// [`DOMMatrixReadOnly.rotateAxisAngle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateAxisAngle)
-    pub fn rotate_axis_angle1(&self, x: f64) -> DOMMatrix {
+    pub fn rotate_axis_angle_with_x(&self, x: f64) -> DOMMatrix {
         self.inner
             .call("rotateAxisAngle", &[x.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotateAxisAngle method.
     /// [`DOMMatrixReadOnly.rotateAxisAngle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateAxisAngle)
-    pub fn rotate_axis_angle2(&self, x: f64, y: f64) -> DOMMatrix {
+    pub fn rotate_axis_angle_with_x_and_y(&self, x: f64, y: f64) -> DOMMatrix {
         self.inner
             .call("rotateAxisAngle", &[x.into(), y.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotateAxisAngle method.
     /// [`DOMMatrixReadOnly.rotateAxisAngle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateAxisAngle)
-    pub fn rotate_axis_angle3(&self, x: f64, y: f64, z: f64) -> DOMMatrix {
+    pub fn rotate_axis_angle_with_x_and_y_and_z(&self, x: f64, y: f64, z: f64) -> DOMMatrix {
         self.inner
             .call("rotateAxisAngle", &[x.into(), y.into(), z.into()])
             .as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The rotateAxisAngle method.
     /// [`DOMMatrixReadOnly.rotateAxisAngle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/rotateAxisAngle)
-    pub fn rotate_axis_angle4(&self, x: f64, y: f64, z: f64, angle: f64) -> DOMMatrix {
+    pub fn rotate_axis_angle_with_x_and_y_and_z_and_angle(
+        &self,
+        x: f64,
+        y: f64,
+        z: f64,
+        angle: f64,
+    ) -> DOMMatrix {
         self.inner
             .call(
                 "rotateAxisAngle",
@@ -556,36 +646,42 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The skewX method.
     /// [`DOMMatrixReadOnly.skewX`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/skewX)
-    pub fn skew_x0(&self) -> DOMMatrix {
+    pub fn skew_x(&self) -> DOMMatrix {
         self.inner.call("skewX", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The skewX method.
     /// [`DOMMatrixReadOnly.skewX`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/skewX)
-    pub fn skew_x1(&self, sx: f64) -> DOMMatrix {
+    pub fn skew_x_with_sx(&self, sx: f64) -> DOMMatrix {
         self.inner.call("skewX", &[sx.into()]).as_::<DOMMatrix>()
     }
 }
 impl DOMMatrixReadOnly {
     /// The skewY method.
     /// [`DOMMatrixReadOnly.skewY`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/skewY)
-    pub fn skew_y0(&self) -> DOMMatrix {
+    pub fn skew_y(&self) -> DOMMatrix {
         self.inner.call("skewY", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The skewY method.
     /// [`DOMMatrixReadOnly.skewY`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/skewY)
-    pub fn skew_y1(&self, sy: f64) -> DOMMatrix {
+    pub fn skew_y_with_sy(&self, sy: f64) -> DOMMatrix {
         self.inner.call("skewY", &[sy.into()]).as_::<DOMMatrix>()
     }
 }
 impl DOMMatrixReadOnly {
     /// The multiply method.
     /// [`DOMMatrixReadOnly.multiply`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/multiply)
-    pub fn multiply0(&self) -> DOMMatrix {
+    pub fn multiply(&self) -> DOMMatrix {
         self.inner.call("multiply", &[]).as_::<DOMMatrix>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The multiply method.
     /// [`DOMMatrixReadOnly.multiply`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/multiply)
-    pub fn multiply1(&self, other: &DOMMatrixInit) -> DOMMatrix {
+    pub fn multiply_with_other(&self, other: &DOMMatrixInit) -> DOMMatrix {
         self.inner
             .call("multiply", &[other.into()])
             .as_::<DOMMatrix>()
@@ -615,12 +711,14 @@ impl DOMMatrixReadOnly {
 impl DOMMatrixReadOnly {
     /// The transformPoint method.
     /// [`DOMMatrixReadOnly.transformPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/transformPoint)
-    pub fn transform_point0(&self) -> DOMPoint {
+    pub fn transform_point(&self) -> DOMPoint {
         self.inner.call("transformPoint", &[]).as_::<DOMPoint>()
     }
+}
+impl DOMMatrixReadOnly {
     /// The transformPoint method.
     /// [`DOMMatrixReadOnly.transformPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/transformPoint)
-    pub fn transform_point1(&self, point: &DOMPointInit) -> DOMPoint {
+    pub fn transform_point_with_point(&self, point: &DOMPointInit) -> DOMPoint {
         self.inner
             .call("transformPoint", &[point.into()])
             .as_::<DOMPoint>()

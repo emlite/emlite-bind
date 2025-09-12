@@ -107,6 +107,7 @@ impl BroadcastChannel {
         }
     }
 }
+
 impl BroadcastChannel {
     /// The postMessage method.
     /// [`BroadcastChannel.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/postMessage)

@@ -87,14 +87,16 @@ impl TrustedTypePolicyFactory {
 impl TrustedTypePolicyFactory {
     /// The createPolicy method.
     /// [`TrustedTypePolicyFactory.createPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy)
-    pub fn create_policy0(&self, policy_name: &JsString) -> TrustedTypePolicy {
+    pub fn create_policy(&self, policy_name: &JsString) -> TrustedTypePolicy {
         self.inner
             .call("createPolicy", &[policy_name.into()])
             .as_::<TrustedTypePolicy>()
     }
+}
+impl TrustedTypePolicyFactory {
     /// The createPolicy method.
     /// [`TrustedTypePolicyFactory.createPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy)
-    pub fn create_policy1(
+    pub fn create_policy_with_policy_options(
         &self,
         policy_name: &JsString,
         policy_options: &TrustedTypePolicyOptions,
@@ -130,14 +132,16 @@ impl TrustedTypePolicyFactory {
 impl TrustedTypePolicyFactory {
     /// The getAttributeType method.
     /// [`TrustedTypePolicyFactory.getAttributeType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
-    pub fn get_attribute_type0(&self, tag_name: &JsString, attribute: &JsString) -> JsString {
+    pub fn get_attribute_type(&self, tag_name: &JsString, attribute: &JsString) -> JsString {
         self.inner
             .call("getAttributeType", &[tag_name.into(), attribute.into()])
             .as_::<JsString>()
     }
+}
+impl TrustedTypePolicyFactory {
     /// The getAttributeType method.
     /// [`TrustedTypePolicyFactory.getAttributeType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
-    pub fn get_attribute_type1(
+    pub fn get_attribute_type_with_element_ns(
         &self,
         tag_name: &JsString,
         attribute: &JsString,
@@ -150,9 +154,11 @@ impl TrustedTypePolicyFactory {
             )
             .as_::<JsString>()
     }
+}
+impl TrustedTypePolicyFactory {
     /// The getAttributeType method.
     /// [`TrustedTypePolicyFactory.getAttributeType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
-    pub fn get_attribute_type2(
+    pub fn get_attribute_type_with_element_ns_and_attr_ns(
         &self,
         tag_name: &JsString,
         attribute: &JsString,
@@ -175,14 +181,16 @@ impl TrustedTypePolicyFactory {
 impl TrustedTypePolicyFactory {
     /// The getPropertyType method.
     /// [`TrustedTypePolicyFactory.getPropertyType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getPropertyType)
-    pub fn get_property_type0(&self, tag_name: &JsString, property: &JsString) -> JsString {
+    pub fn get_property_type(&self, tag_name: &JsString, property: &JsString) -> JsString {
         self.inner
             .call("getPropertyType", &[tag_name.into(), property.into()])
             .as_::<JsString>()
     }
+}
+impl TrustedTypePolicyFactory {
     /// The getPropertyType method.
     /// [`TrustedTypePolicyFactory.getPropertyType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getPropertyType)
-    pub fn get_property_type1(
+    pub fn get_property_type_with_element_ns(
         &self,
         tag_name: &JsString,
         property: &JsString,

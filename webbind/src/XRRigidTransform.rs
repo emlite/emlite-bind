@@ -94,23 +94,30 @@ impl XRRigidTransform {
 
 impl XRRigidTransform {
     /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
-    pub fn new0() -> XRRigidTransform {
+    pub fn new() -> XRRigidTransform {
         Self {
             inner: Any::global("XRRigidTransform").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl XRRigidTransform {
     /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
-    pub fn new1(position: &DOMPointInit) -> XRRigidTransform {
+    pub fn new_with_position(position: &DOMPointInit) -> XRRigidTransform {
         Self {
             inner: Any::global("XRRigidTransform")
                 .new(&[position.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl XRRigidTransform {
     /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
-    pub fn new2(position: &DOMPointInit, orientation: &DOMPointInit) -> XRRigidTransform {
+    pub fn new_with_position_and_orientation(
+        position: &DOMPointInit,
+        orientation: &DOMPointInit,
+    ) -> XRRigidTransform {
         Self {
             inner: Any::global("XRRigidTransform")
                 .new(&[position.into(), orientation.into()])

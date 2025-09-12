@@ -73,23 +73,30 @@ impl WritableStream {
 
 impl WritableStream {
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
-    pub fn new0() -> WritableStream {
+    pub fn new() -> WritableStream {
         Self {
             inner: Any::global("WritableStream").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl WritableStream {
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
-    pub fn new1(underlying_sink: &Object) -> WritableStream {
+    pub fn new_with_underlying_sink(underlying_sink: &Object) -> WritableStream {
         Self {
             inner: Any::global("WritableStream")
                 .new(&[underlying_sink.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl WritableStream {
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
-    pub fn new2(underlying_sink: &Object, strategy: &QueuingStrategy) -> WritableStream {
+    pub fn new_with_underlying_sink_and_strategy(
+        underlying_sink: &Object,
+        strategy: &QueuingStrategy,
+    ) -> WritableStream {
         Self {
             inner: Any::global("WritableStream")
                 .new(&[underlying_sink.into(), strategy.into()])
@@ -97,15 +104,18 @@ impl WritableStream {
         }
     }
 }
+
 impl WritableStream {
     /// The abort method.
     /// [`WritableStream.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/abort)
-    pub fn abort0(&self) -> Promise<Undefined> {
+    pub fn abort(&self) -> Promise<Undefined> {
         self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl WritableStream {
     /// The abort method.
     /// [`WritableStream.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/abort)
-    pub fn abort1(&self, reason: &Any) -> Promise<Undefined> {
+    pub fn abort_with_reason(&self, reason: &Any) -> Promise<Undefined> {
         self.inner
             .call("abort", &[reason.into()])
             .as_::<Promise<Undefined>>()

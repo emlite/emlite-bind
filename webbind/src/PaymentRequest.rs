@@ -133,7 +133,7 @@ impl PaymentRequest {
 
 impl PaymentRequest {
     /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
-    pub fn new0(
+    pub fn new(
         method_data: &TypedArray<PaymentMethodData>,
         details: &PaymentDetailsInit,
     ) -> PaymentRequest {
@@ -143,9 +143,11 @@ impl PaymentRequest {
                 .as_::<EventTarget>(),
         }
     }
+}
 
+impl PaymentRequest {
     /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
-    pub fn new1(
+    pub fn new_with_options(
         method_data: &TypedArray<PaymentMethodData>,
         details: &PaymentDetailsInit,
         options: &PaymentOptions,
@@ -157,17 +159,20 @@ impl PaymentRequest {
         }
     }
 }
+
 impl PaymentRequest {
     /// The show method.
     /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
-    pub fn show0(&self) -> Promise<PaymentResponse> {
+    pub fn show(&self) -> Promise<PaymentResponse> {
         self.inner
             .call("show", &[])
             .as_::<Promise<PaymentResponse>>()
     }
+}
+impl PaymentRequest {
     /// The show method.
     /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
-    pub fn show1(
+    pub fn show_with_details_promise(
         &self,
         details_promise: &Promise<PaymentDetailsUpdate>,
     ) -> Promise<PaymentResponse> {

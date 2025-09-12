@@ -65,25 +65,29 @@ jsbind::utils::impl_dyn_cast!(RTCRtpScriptTransform);
 
 impl RTCRtpScriptTransform {
     /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
-    pub fn new0(worker: &Worker) -> RTCRtpScriptTransform {
+    pub fn new(worker: &Worker) -> RTCRtpScriptTransform {
         Self {
             inner: Any::global("RTCRtpScriptTransform")
                 .new(&[worker.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl RTCRtpScriptTransform {
     /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
-    pub fn new1(worker: &Worker, options: &Any) -> RTCRtpScriptTransform {
+    pub fn new_with_options(worker: &Worker, options: &Any) -> RTCRtpScriptTransform {
         Self {
             inner: Any::global("RTCRtpScriptTransform")
                 .new(&[worker.into(), options.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl RTCRtpScriptTransform {
     /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
-    pub fn new2(
+    pub fn new_with_options_and_transfer(
         worker: &Worker,
         options: &Any,
         transfer: &TypedArray<Object>,

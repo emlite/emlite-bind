@@ -87,21 +87,28 @@ impl XRRay {
 
 impl XRRay {
     /// The `new XRRay(..)` constructor, creating a new XRRay instance
-    pub fn new0() -> XRRay {
+    pub fn new() -> XRRay {
         Self {
             inner: Any::global("XRRay").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl XRRay {
     /// The `new XRRay(..)` constructor, creating a new XRRay instance
-    pub fn new1(origin: &DOMPointInit) -> XRRay {
+    pub fn new_with_origin(origin: &DOMPointInit) -> XRRay {
         Self {
             inner: Any::global("XRRay").new(&[origin.into()]).as_::<Any>(),
         }
     }
+}
 
+impl XRRay {
     /// The `new XRRay(..)` constructor, creating a new XRRay instance
-    pub fn new2(origin: &DOMPointInit, direction: &XRRayDirectionInit) -> XRRay {
+    pub fn new_with_origin_and_direction(
+        origin: &DOMPointInit,
+        direction: &XRRayDirectionInit,
+    ) -> XRRay {
         Self {
             inner: Any::global("XRRay")
                 .new(&[origin.into(), direction.into()])
@@ -112,7 +119,7 @@ impl XRRay {
 
 impl XRRay {
     /// The `new XRRay(..)` constructor, creating a new XRRay instance
-    pub fn new3(transform: &XRRigidTransform) -> XRRay {
+    pub fn new_with_transform(transform: &XRRigidTransform) -> XRRay {
         Self {
             inner: Any::global("XRRay").new(&[transform.into()]).as_::<Any>(),
         }

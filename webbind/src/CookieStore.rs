@@ -88,12 +88,14 @@ impl CookieStore {
 impl CookieStore {
     /// The get method.
     /// [`CookieStore.get`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/get)
-    pub fn get1(&self) -> Promise<CookieListItem> {
+    pub fn get_2_2(&self) -> Promise<CookieListItem> {
         self.inner.call("get", &[]).as_::<Promise<CookieListItem>>()
     }
+}
+impl CookieStore {
     /// The get method.
     /// [`CookieStore.get`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/get)
-    pub fn get2(&self, options: &CookieStoreGetOptions) -> Promise<CookieListItem> {
+    pub fn get_with_options(&self, options: &CookieStoreGetOptions) -> Promise<CookieListItem> {
         self.inner
             .call("get", &[options.into()])
             .as_::<Promise<CookieListItem>>()
@@ -111,12 +113,14 @@ impl CookieStore {
 impl CookieStore {
     /// The getAll method.
     /// [`CookieStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/getAll)
-    pub fn get_all1(&self) -> Promise<Any> {
+    pub fn get_all_2_2(&self) -> Promise<Any> {
         self.inner.call("getAll", &[]).as_::<Promise<Any>>()
     }
+}
+impl CookieStore {
     /// The getAll method.
     /// [`CookieStore.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/getAll)
-    pub fn get_all2(&self, options: &CookieStoreGetOptions) -> Promise<Any> {
+    pub fn get_all_with_options(&self, options: &CookieStoreGetOptions) -> Promise<Any> {
         self.inner
             .call("getAll", &[options.into()])
             .as_::<Promise<Any>>()
@@ -134,7 +138,7 @@ impl CookieStore {
 impl CookieStore {
     /// The set method.
     /// [`CookieStore.set`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/set)
-    pub fn set1(&self, options: &CookieInit) -> Promise<Undefined> {
+    pub fn set_with_options(&self, options: &CookieInit) -> Promise<Undefined> {
         self.inner
             .call("set", &[options.into()])
             .as_::<Promise<Undefined>>()
@@ -152,7 +156,7 @@ impl CookieStore {
 impl CookieStore {
     /// The delete method.
     /// [`CookieStore.delete`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStore/delete)
-    pub fn delete1(&self, options: &CookieStoreDeleteOptions) -> Promise<Undefined> {
+    pub fn delete_with_options(&self, options: &CookieStoreDeleteOptions) -> Promise<Undefined> {
         self.inner
             .call("delete", &[options.into()])
             .as_::<Promise<Undefined>>()

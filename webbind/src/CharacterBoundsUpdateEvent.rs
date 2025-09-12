@@ -80,16 +80,18 @@ impl CharacterBoundsUpdateEvent {
 
 impl CharacterBoundsUpdateEvent {
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
-    pub fn new0(type_: &JsString) -> CharacterBoundsUpdateEvent {
+    pub fn new(type_: &JsString) -> CharacterBoundsUpdateEvent {
         Self {
             inner: Any::global("CharacterBoundsUpdateEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl CharacterBoundsUpdateEvent {
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
-    pub fn new1(
+    pub fn new_with_options(
         type_: &JsString,
         options: &CharacterBoundsUpdateEventInit,
     ) -> CharacterBoundsUpdateEvent {

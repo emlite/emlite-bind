@@ -809,14 +809,16 @@ impl ElementInternals {
 impl ElementInternals {
     /// The setFormValue method.
     /// [`ElementInternals.setFormValue`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setFormValue)
-    pub fn set_form_value0(&self, value: &Any) -> Undefined {
+    pub fn set_form_value(&self, value: &Any) -> Undefined {
         self.inner
             .call("setFormValue", &[value.into()])
             .as_::<Undefined>()
     }
+}
+impl ElementInternals {
     /// The setFormValue method.
     /// [`ElementInternals.setFormValue`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setFormValue)
-    pub fn set_form_value1(&self, value: &Any, state: &Any) -> Undefined {
+    pub fn set_form_value_with_state(&self, value: &Any, state: &Any) -> Undefined {
         self.inner
             .call("setFormValue", &[value.into(), state.into()])
             .as_::<Undefined>()
@@ -825,26 +827,36 @@ impl ElementInternals {
 impl ElementInternals {
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
-    pub fn set_validity0(&self) -> Undefined {
+    pub fn set_validity(&self) -> Undefined {
         self.inner.call("setValidity", &[]).as_::<Undefined>()
     }
+}
+impl ElementInternals {
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
-    pub fn set_validity1(&self, flags: &ValidityStateFlags) -> Undefined {
+    pub fn set_validity_with_flags(&self, flags: &ValidityStateFlags) -> Undefined {
         self.inner
             .call("setValidity", &[flags.into()])
             .as_::<Undefined>()
     }
+}
+impl ElementInternals {
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
-    pub fn set_validity2(&self, flags: &ValidityStateFlags, message: &JsString) -> Undefined {
+    pub fn set_validity_with_flags_and_message(
+        &self,
+        flags: &ValidityStateFlags,
+        message: &JsString,
+    ) -> Undefined {
         self.inner
             .call("setValidity", &[flags.into(), message.into()])
             .as_::<Undefined>()
     }
+}
+impl ElementInternals {
     /// The setValidity method.
     /// [`ElementInternals.setValidity`](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity)
-    pub fn set_validity3(
+    pub fn set_validity_with_flags_and_message_and_anchor(
         &self,
         flags: &ValidityStateFlags,
         message: &JsString,

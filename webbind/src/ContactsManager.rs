@@ -75,7 +75,7 @@ impl ContactsManager {
 impl ContactsManager {
     /// The select method.
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
-    pub fn select0(
+    pub fn select(
         &self,
         properties: &TypedArray<ContactProperty>,
     ) -> Promise<TypedArray<ContactInfo>> {
@@ -83,9 +83,11 @@ impl ContactsManager {
             .call("select", &[properties.into()])
             .as_::<Promise<TypedArray<ContactInfo>>>()
     }
+}
+impl ContactsManager {
     /// The select method.
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
-    pub fn select1(
+    pub fn select_with_options(
         &self,
         properties: &TypedArray<ContactProperty>,
         options: &ContactsSelectOptions,

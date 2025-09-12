@@ -80,16 +80,18 @@ impl MediaQueryListEvent {
 
 impl MediaQueryListEvent {
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
-    pub fn new0(type_: &JsString) -> MediaQueryListEvent {
+    pub fn new(type_: &JsString) -> MediaQueryListEvent {
         Self {
             inner: Any::global("MediaQueryListEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl MediaQueryListEvent {
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &MediaQueryListEventInit,
     ) -> MediaQueryListEvent {

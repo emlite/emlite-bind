@@ -65,14 +65,16 @@ jsbind::utils::impl_dyn_cast!(GravitySensor);
 
 impl GravitySensor {
     /// The `new GravitySensor(..)` constructor, creating a new GravitySensor instance
-    pub fn new0() -> GravitySensor {
+    pub fn new() -> GravitySensor {
         Self {
             inner: Any::global("GravitySensor").new(&[]).as_::<Accelerometer>(),
         }
     }
+}
 
+impl GravitySensor {
     /// The `new GravitySensor(..)` constructor, creating a new GravitySensor instance
-    pub fn new1(options: &AccelerometerSensorOptions) -> GravitySensor {
+    pub fn new_with_options(options: &AccelerometerSensorOptions) -> GravitySensor {
         Self {
             inner: Any::global("GravitySensor")
                 .new(&[options.into()])

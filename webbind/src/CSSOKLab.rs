@@ -118,16 +118,18 @@ impl CSSOKLab {
 
 impl CSSOKLab {
     /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
-    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSOKLab {
+    pub fn new(l: &Any, a: &Any, b: &Any) -> CSSOKLab {
         Self {
             inner: Any::global("CSSOKLab")
                 .new(&[l.into(), a.into(), b.into()])
                 .as_::<CSSColorValue>(),
         }
     }
+}
 
+impl CSSOKLab {
     /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
-    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSOKLab {
+    pub fn new_with_alpha(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSOKLab {
         Self {
             inner: Any::global("CSSOKLab")
                 .new(&[l.into(), a.into(), b.into(), alpha.into()])

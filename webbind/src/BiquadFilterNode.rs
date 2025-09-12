@@ -107,16 +107,21 @@ impl BiquadFilterNode {
 
 impl BiquadFilterNode {
     /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
-    pub fn new0(context: &BaseAudioContext) -> BiquadFilterNode {
+    pub fn new(context: &BaseAudioContext) -> BiquadFilterNode {
         Self {
             inner: Any::global("BiquadFilterNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl BiquadFilterNode {
     /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
-    pub fn new1(context: &BaseAudioContext, options: &BiquadFilterOptions) -> BiquadFilterNode {
+    pub fn new_with_options(
+        context: &BaseAudioContext,
+        options: &BiquadFilterOptions,
+    ) -> BiquadFilterNode {
         Self {
             inner: Any::global("BiquadFilterNode")
                 .new(&[context.into(), options.into()])
@@ -124,6 +129,7 @@ impl BiquadFilterNode {
         }
     }
 }
+
 impl BiquadFilterNode {
     /// The getFrequencyResponse method.
     /// [`BiquadFilterNode.getFrequencyResponse`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/getFrequencyResponse)

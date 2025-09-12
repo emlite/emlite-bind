@@ -15,14 +15,14 @@ pub fn supports(condition_text: &JsString) -> bool {
 }
 
 /// The parseStylesheet function from the CSS namespace.
-pub fn parse_stylesheet0(css: &Any) -> Promise<TypedArray<CSSParserRule>> {
+pub fn parse_stylesheet(css: &Any) -> Promise<TypedArray<CSSParserRule>> {
     Any::global("CSS")
         .call("parseStylesheet", &[css.into()])
         .as_::<Promise<TypedArray<CSSParserRule>>>()
 }
 
 /// The parseStylesheet function from the CSS namespace.
-pub fn parse_stylesheet1(
+pub fn parse_stylesheet_with_options(
     css: &Any,
     options: &CSSParserOptions,
 ) -> Promise<TypedArray<CSSParserRule>> {
@@ -32,14 +32,14 @@ pub fn parse_stylesheet1(
 }
 
 /// The parseRuleList function from the CSS namespace.
-pub fn parse_rule_list0(css: &Any) -> Promise<TypedArray<CSSParserRule>> {
+pub fn parse_rule_list(css: &Any) -> Promise<TypedArray<CSSParserRule>> {
     Any::global("CSS")
         .call("parseRuleList", &[css.into()])
         .as_::<Promise<TypedArray<CSSParserRule>>>()
 }
 
 /// The parseRuleList function from the CSS namespace.
-pub fn parse_rule_list1(
+pub fn parse_rule_list_with_options(
     css: &Any,
     options: &CSSParserOptions,
 ) -> Promise<TypedArray<CSSParserRule>> {
@@ -49,28 +49,28 @@ pub fn parse_rule_list1(
 }
 
 /// The parseRule function from the CSS namespace.
-pub fn parse_rule0(css: &Any) -> Promise<CSSParserRule> {
+pub fn parse_rule(css: &Any) -> Promise<CSSParserRule> {
     Any::global("CSS")
         .call("parseRule", &[css.into()])
         .as_::<Promise<CSSParserRule>>()
 }
 
 /// The parseRule function from the CSS namespace.
-pub fn parse_rule1(css: &Any, options: &CSSParserOptions) -> Promise<CSSParserRule> {
+pub fn parse_rule_with_options(css: &Any, options: &CSSParserOptions) -> Promise<CSSParserRule> {
     Any::global("CSS")
         .call("parseRule", &[css.into(), options.into()])
         .as_::<Promise<CSSParserRule>>()
 }
 
 /// The parseDeclarationList function from the CSS namespace.
-pub fn parse_declaration_list0(css: &Any) -> Promise<TypedArray<CSSParserRule>> {
+pub fn parse_declaration_list(css: &Any) -> Promise<TypedArray<CSSParserRule>> {
     Any::global("CSS")
         .call("parseDeclarationList", &[css.into()])
         .as_::<Promise<TypedArray<CSSParserRule>>>()
 }
 
 /// The parseDeclarationList function from the CSS namespace.
-pub fn parse_declaration_list1(
+pub fn parse_declaration_list_with_options(
     css: &Any,
     options: &CSSParserOptions,
 ) -> Promise<TypedArray<CSSParserRule>> {
@@ -80,14 +80,17 @@ pub fn parse_declaration_list1(
 }
 
 /// The parseDeclaration function from the CSS namespace.
-pub fn parse_declaration0(css: &JsString) -> CSSParserDeclaration {
+pub fn parse_declaration(css: &JsString) -> CSSParserDeclaration {
     Any::global("CSS")
         .call("parseDeclaration", &[css.into()])
         .as_::<CSSParserDeclaration>()
 }
 
 /// The parseDeclaration function from the CSS namespace.
-pub fn parse_declaration1(css: &JsString, options: &CSSParserOptions) -> CSSParserDeclaration {
+pub fn parse_declaration_with_options(
+    css: &JsString,
+    options: &CSSParserOptions,
+) -> CSSParserDeclaration {
     Any::global("CSS")
         .call("parseDeclaration", &[css.into(), options.into()])
         .as_::<CSSParserDeclaration>()

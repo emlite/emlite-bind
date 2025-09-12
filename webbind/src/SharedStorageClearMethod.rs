@@ -65,16 +65,20 @@ jsbind::utils::impl_dyn_cast!(SharedStorageClearMethod);
 
 impl SharedStorageClearMethod {
     /// The `new SharedStorageClearMethod(..)` constructor, creating a new SharedStorageClearMethod instance
-    pub fn new0() -> SharedStorageClearMethod {
+    pub fn new() -> SharedStorageClearMethod {
         Self {
             inner: Any::global("SharedStorageClearMethod")
                 .new(&[])
                 .as_::<SharedStorageModifierMethod>(),
         }
     }
+}
 
+impl SharedStorageClearMethod {
     /// The `new SharedStorageClearMethod(..)` constructor, creating a new SharedStorageClearMethod instance
-    pub fn new1(options: &SharedStorageModifierMethodOptions) -> SharedStorageClearMethod {
+    pub fn new_with_options(
+        options: &SharedStorageModifierMethodOptions,
+    ) -> SharedStorageClearMethod {
         Self {
             inner: Any::global("SharedStorageClearMethod")
                 .new(&[options.into()])

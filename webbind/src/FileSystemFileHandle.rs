@@ -73,14 +73,16 @@ impl FileSystemFileHandle {
 impl FileSystemFileHandle {
     /// The createWritable method.
     /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
-    pub fn create_writable0(&self) -> Promise<FileSystemWritableFileStream> {
+    pub fn create_writable(&self) -> Promise<FileSystemWritableFileStream> {
         self.inner
             .call("createWritable", &[])
             .as_::<Promise<FileSystemWritableFileStream>>()
     }
+}
+impl FileSystemFileHandle {
     /// The createWritable method.
     /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
-    pub fn create_writable1(
+    pub fn create_writable_with_options(
         &self,
         options: &FileSystemCreateWritableOptions,
     ) -> Promise<FileSystemWritableFileStream> {

@@ -65,16 +65,18 @@ jsbind::utils::impl_dyn_cast!(BluetoothServiceDataFilter);
 
 impl BluetoothServiceDataFilter {
     /// The `new BluetoothServiceDataFilter(..)` constructor, creating a new BluetoothServiceDataFilter instance
-    pub fn new0() -> BluetoothServiceDataFilter {
+    pub fn new() -> BluetoothServiceDataFilter {
         Self {
             inner: Any::global("BluetoothServiceDataFilter")
                 .new(&[])
                 .as_::<Any>(),
         }
     }
+}
 
+impl BluetoothServiceDataFilter {
     /// The `new BluetoothServiceDataFilter(..)` constructor, creating a new BluetoothServiceDataFilter instance
-    pub fn new1(init: &Object) -> BluetoothServiceDataFilter {
+    pub fn new_with_init(init: &Object) -> BluetoothServiceDataFilter {
         Self {
             inner: Any::global("BluetoothServiceDataFilter")
                 .new(&[init.into()])

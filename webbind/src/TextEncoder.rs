@@ -79,15 +79,18 @@ impl TextEncoder {
         }
     }
 }
+
 impl TextEncoder {
     /// The encode method.
     /// [`TextEncoder.encode`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encode)
-    pub fn encode0(&self) -> Uint8Array {
+    pub fn encode(&self) -> Uint8Array {
         self.inner.call("encode", &[]).as_::<Uint8Array>()
     }
+}
+impl TextEncoder {
     /// The encode method.
     /// [`TextEncoder.encode`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encode)
-    pub fn encode1(&self, input: &JsString) -> Uint8Array {
+    pub fn encode_with_input(&self, input: &JsString) -> Uint8Array {
         self.inner
             .call("encode", &[input.into()])
             .as_::<Uint8Array>()

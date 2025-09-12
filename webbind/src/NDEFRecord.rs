@@ -116,6 +116,7 @@ impl NDEFRecord {
         }
     }
 }
+
 impl NDEFRecord {
     /// The toRecords method.
     /// [`NDEFRecord.toRecords`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/toRecords)

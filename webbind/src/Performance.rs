@@ -153,14 +153,16 @@ impl Performance {
 impl Performance {
     /// The getEntriesByName method.
     /// [`Performance.getEntriesByName`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByName)
-    pub fn get_entries_by_name0(&self, name: &JsString) -> Any {
+    pub fn get_entries_by_name(&self, name: &JsString) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into()])
             .as_::<Any>()
     }
+}
+impl Performance {
     /// The getEntriesByName method.
     /// [`Performance.getEntriesByName`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByName)
-    pub fn get_entries_by_name1(&self, name: &JsString, type_: &JsString) -> Any {
+    pub fn get_entries_by_name_with_type(&self, name: &JsString, type_: &JsString) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into(), type_.into()])
             .as_::<Any>()
@@ -187,14 +189,16 @@ impl Performance {
 impl Performance {
     /// The mark method.
     /// [`Performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark)
-    pub fn mark0(&self, mark_name: &JsString) -> PerformanceMark {
+    pub fn mark(&self, mark_name: &JsString) -> PerformanceMark {
         self.inner
             .call("mark", &[mark_name.into()])
             .as_::<PerformanceMark>()
     }
+}
+impl Performance {
     /// The mark method.
     /// [`Performance.mark`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark)
-    pub fn mark1(
+    pub fn mark_with_mark_options(
         &self,
         mark_name: &JsString,
         mark_options: &PerformanceMarkOptions,
@@ -207,12 +211,14 @@ impl Performance {
 impl Performance {
     /// The clearMarks method.
     /// [`Performance.clearMarks`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/clearMarks)
-    pub fn clear_marks0(&self) -> Undefined {
+    pub fn clear_marks(&self) -> Undefined {
         self.inner.call("clearMarks", &[]).as_::<Undefined>()
     }
+}
+impl Performance {
     /// The clearMarks method.
     /// [`Performance.clearMarks`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/clearMarks)
-    pub fn clear_marks1(&self, mark_name: &JsString) -> Undefined {
+    pub fn clear_marks_with_mark_name(&self, mark_name: &JsString) -> Undefined {
         self.inner
             .call("clearMarks", &[mark_name.into()])
             .as_::<Undefined>()
@@ -221,14 +227,16 @@ impl Performance {
 impl Performance {
     /// The measure method.
     /// [`Performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure)
-    pub fn measure0(&self, measure_name: &JsString) -> PerformanceMeasure {
+    pub fn measure(&self, measure_name: &JsString) -> PerformanceMeasure {
         self.inner
             .call("measure", &[measure_name.into()])
             .as_::<PerformanceMeasure>()
     }
+}
+impl Performance {
     /// The measure method.
     /// [`Performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure)
-    pub fn measure1(
+    pub fn measure_with_start_or_measure_options(
         &self,
         measure_name: &JsString,
         start_or_measure_options: &Any,
@@ -240,9 +248,11 @@ impl Performance {
             )
             .as_::<PerformanceMeasure>()
     }
+}
+impl Performance {
     /// The measure method.
     /// [`Performance.measure`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure)
-    pub fn measure2(
+    pub fn measure_with_start_or_measure_options_and_end_mark(
         &self,
         measure_name: &JsString,
         start_or_measure_options: &Any,
@@ -263,12 +273,14 @@ impl Performance {
 impl Performance {
     /// The clearMeasures method.
     /// [`Performance.clearMeasures`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/clearMeasures)
-    pub fn clear_measures0(&self) -> Undefined {
+    pub fn clear_measures(&self) -> Undefined {
         self.inner.call("clearMeasures", &[]).as_::<Undefined>()
     }
+}
+impl Performance {
     /// The clearMeasures method.
     /// [`Performance.clearMeasures`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/clearMeasures)
-    pub fn clear_measures1(&self, measure_name: &JsString) -> Undefined {
+    pub fn clear_measures_with_measure_name(&self, measure_name: &JsString) -> Undefined {
         self.inner
             .call("clearMeasures", &[measure_name.into()])
             .as_::<Undefined>()

@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(PermissionsPolicy);
 impl PermissionsPolicy {
     /// The allowsFeature method.
     /// [`PermissionsPolicy.allowsFeature`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionsPolicy/allowsFeature)
-    pub fn allows_feature0(&self, feature: &JsString) -> bool {
+    pub fn allows_feature(&self, feature: &JsString) -> bool {
         self.inner
             .call("allowsFeature", &[feature.into()])
             .as_::<bool>()
     }
+}
+impl PermissionsPolicy {
     /// The allowsFeature method.
     /// [`PermissionsPolicy.allowsFeature`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionsPolicy/allowsFeature)
-    pub fn allows_feature1(&self, feature: &JsString, origin: &JsString) -> bool {
+    pub fn allows_feature_with_origin(&self, feature: &JsString, origin: &JsString) -> bool {
         self.inner
             .call("allowsFeature", &[feature.into(), origin.into()])
             .as_::<bool>()

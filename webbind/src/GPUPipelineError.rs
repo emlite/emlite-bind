@@ -73,25 +73,32 @@ impl GPUPipelineError {
 
 impl GPUPipelineError {
     /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
-    pub fn new0() -> GPUPipelineError {
+    pub fn new() -> GPUPipelineError {
         Self {
             inner: Any::global("GPUPipelineError")
                 .new(&[])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl GPUPipelineError {
     /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
-    pub fn new1(message: &JsString) -> GPUPipelineError {
+    pub fn new_with_message(message: &JsString) -> GPUPipelineError {
         Self {
             inner: Any::global("GPUPipelineError")
                 .new(&[message.into()])
                 .as_::<DOMException>(),
         }
     }
+}
 
+impl GPUPipelineError {
     /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
-    pub fn new2(message: &JsString, options: &GPUPipelineErrorInit) -> GPUPipelineError {
+    pub fn new_with_message_and_options(
+        message: &JsString,
+        options: &GPUPipelineErrorInit,
+    ) -> GPUPipelineError {
         Self {
             inner: Any::global("GPUPipelineError")
                 .new(&[message.into(), options.into()])

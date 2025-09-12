@@ -175,21 +175,21 @@ impl PresentationConnection {
 impl PresentationConnection {
     /// The send method.
     /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
-    pub fn send1(&self, data: &Blob) -> Undefined {
+    pub fn send_with_data(&self, data: &Blob) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }
 impl PresentationConnection {
     /// The send method.
     /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
-    pub fn send2(&self, data: &ArrayBuffer) -> Undefined {
+    pub fn send_with_data_2(&self, data: &ArrayBuffer) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }
 impl PresentationConnection {
     /// The send method.
     /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
-    pub fn send3(&self, data: &Any) -> Undefined {
+    pub fn send_with_data_3(&self, data: &Any) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }

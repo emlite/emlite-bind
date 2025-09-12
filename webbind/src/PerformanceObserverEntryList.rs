@@ -82,14 +82,16 @@ impl PerformanceObserverEntryList {
 impl PerformanceObserverEntryList {
     /// The getEntriesByName method.
     /// [`PerformanceObserverEntryList.getEntriesByName`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList/getEntriesByName)
-    pub fn get_entries_by_name0(&self, name: &JsString) -> Any {
+    pub fn get_entries_by_name(&self, name: &JsString) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into()])
             .as_::<Any>()
     }
+}
+impl PerformanceObserverEntryList {
     /// The getEntriesByName method.
     /// [`PerformanceObserverEntryList.getEntriesByName`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserverEntryList/getEntriesByName)
-    pub fn get_entries_by_name1(&self, name: &JsString, type_: &JsString) -> Any {
+    pub fn get_entries_by_name_with_type(&self, name: &JsString, type_: &JsString) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into(), type_.into()])
             .as_::<Any>()

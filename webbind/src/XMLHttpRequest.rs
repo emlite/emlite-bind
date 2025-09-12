@@ -184,6 +184,7 @@ impl XMLHttpRequest {
         }
     }
 }
+
 impl XMLHttpRequest {
     /// The open method.
     /// [`XMLHttpRequest.open`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)
@@ -196,14 +197,21 @@ impl XMLHttpRequest {
 impl XMLHttpRequest {
     /// The open method.
     /// [`XMLHttpRequest.open`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)
-    pub fn open1(&self, method: &JsString, url: &JsString, async_: bool) -> Undefined {
+    pub fn open_with_method_and_url_and_async(
+        &self,
+        method: &JsString,
+        url: &JsString,
+        async_: bool,
+    ) -> Undefined {
         self.inner
             .call("open", &[method.into(), url.into(), async_.into()])
             .as_::<Undefined>()
     }
+}
+impl XMLHttpRequest {
     /// The open method.
     /// [`XMLHttpRequest.open`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)
-    pub fn open2(
+    pub fn open_with_username(
         &self,
         method: &JsString,
         url: &JsString,
@@ -217,9 +225,11 @@ impl XMLHttpRequest {
             )
             .as_::<Undefined>()
     }
+}
+impl XMLHttpRequest {
     /// The open method.
     /// [`XMLHttpRequest.open`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)
-    pub fn open3(
+    pub fn open_with_username_and_password(
         &self,
         method: &JsString,
         url: &JsString,
@@ -253,12 +263,14 @@ impl XMLHttpRequest {
 impl XMLHttpRequest {
     /// The send method.
     /// [`XMLHttpRequest.send`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)
-    pub fn send0(&self) -> Undefined {
+    pub fn send(&self) -> Undefined {
         self.inner.call("send", &[]).as_::<Undefined>()
     }
+}
+impl XMLHttpRequest {
     /// The send method.
     /// [`XMLHttpRequest.send`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)
-    pub fn send1(&self, body: &Any) -> Undefined {
+    pub fn send_with_body(&self, body: &Any) -> Undefined {
         self.inner.call("send", &[body.into()]).as_::<Undefined>()
     }
 }

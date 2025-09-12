@@ -121,14 +121,16 @@ impl RemotePlayback {
 impl RemotePlayback {
     /// The cancelWatchAvailability method.
     /// [`RemotePlayback.cancelWatchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/cancelWatchAvailability)
-    pub fn cancel_watch_availability0(&self) -> Promise<Undefined> {
+    pub fn cancel_watch_availability(&self) -> Promise<Undefined> {
         self.inner
             .call("cancelWatchAvailability", &[])
             .as_::<Promise<Undefined>>()
     }
+}
+impl RemotePlayback {
     /// The cancelWatchAvailability method.
     /// [`RemotePlayback.cancelWatchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/cancelWatchAvailability)
-    pub fn cancel_watch_availability1(&self, id: i32) -> Promise<Undefined> {
+    pub fn cancel_watch_availability_with_id(&self, id: i32) -> Promise<Undefined> {
         self.inner
             .call("cancelWatchAvailability", &[id.into()])
             .as_::<Promise<Undefined>>()

@@ -71,17 +71,20 @@ impl EventTarget {
         }
     }
 }
+
 impl EventTarget {
     /// The addEventListener method.
     /// [`EventTarget.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
-    pub fn add_event_listener0(&self, type_: &JsString, callback: &Function) -> Undefined {
+    pub fn add_event_listener(&self, type_: &JsString, callback: &Function) -> Undefined {
         self.inner
             .call("addEventListener", &[type_.into(), callback.into()])
             .as_::<Undefined>()
     }
+}
+impl EventTarget {
     /// The addEventListener method.
     /// [`EventTarget.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
-    pub fn add_event_listener1(
+    pub fn add_event_listener_with_options(
         &self,
         type_: &JsString,
         callback: &Function,
@@ -98,14 +101,16 @@ impl EventTarget {
 impl EventTarget {
     /// The removeEventListener method.
     /// [`EventTarget.removeEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
-    pub fn remove_event_listener0(&self, type_: &JsString, callback: &Function) -> Undefined {
+    pub fn remove_event_listener(&self, type_: &JsString, callback: &Function) -> Undefined {
         self.inner
             .call("removeEventListener", &[type_.into(), callback.into()])
             .as_::<Undefined>()
     }
+}
+impl EventTarget {
     /// The removeEventListener method.
     /// [`EventTarget.removeEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
-    pub fn remove_event_listener1(
+    pub fn remove_event_listener_with_options(
         &self,
         type_: &JsString,
         callback: &Function,
@@ -131,12 +136,18 @@ impl EventTarget {
 impl EventTarget {
     /// The when method.
     /// [`EventTarget.when`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/when)
-    pub fn when0(&self, type_: &JsString) -> Observable {
+    pub fn when(&self, type_: &JsString) -> Observable {
         self.inner.call("when", &[type_.into()]).as_::<Observable>()
     }
+}
+impl EventTarget {
     /// The when method.
     /// [`EventTarget.when`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/when)
-    pub fn when1(&self, type_: &JsString, options: &ObservableEventListenerOptions) -> Observable {
+    pub fn when_with_options(
+        &self,
+        type_: &JsString,
+        options: &ObservableEventListenerOptions,
+    ) -> Observable {
         self.inner
             .call("when", &[type_.into(), options.into()])
             .as_::<Observable>()

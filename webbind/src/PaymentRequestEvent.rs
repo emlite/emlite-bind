@@ -128,16 +128,18 @@ impl PaymentRequestEvent {
 
 impl PaymentRequestEvent {
     /// The `new PaymentRequestEvent(..)` constructor, creating a new PaymentRequestEvent instance
-    pub fn new0(type_: &JsString) -> PaymentRequestEvent {
+    pub fn new(type_: &JsString) -> PaymentRequestEvent {
         Self {
             inner: Any::global("PaymentRequestEvent")
                 .new(&[type_.into()])
                 .as_::<ExtendableEvent>(),
         }
     }
+}
 
+impl PaymentRequestEvent {
     /// The `new PaymentRequestEvent(..)` constructor, creating a new PaymentRequestEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &PaymentRequestEventInit,
     ) -> PaymentRequestEvent {
@@ -148,6 +150,7 @@ impl PaymentRequestEvent {
         }
     }
 }
+
 impl PaymentRequestEvent {
     /// The openWindow method.
     /// [`PaymentRequestEvent.openWindow`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/openWindow)
@@ -160,7 +163,7 @@ impl PaymentRequestEvent {
 impl PaymentRequestEvent {
     /// The changePaymentMethod method.
     /// [`PaymentRequestEvent.changePaymentMethod`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changePaymentMethod)
-    pub fn change_payment_method0(
+    pub fn change_payment_method(
         &self,
         method_name: &JsString,
     ) -> Promise<PaymentRequestDetailsUpdate> {
@@ -168,9 +171,11 @@ impl PaymentRequestEvent {
             .call("changePaymentMethod", &[method_name.into()])
             .as_::<Promise<PaymentRequestDetailsUpdate>>()
     }
+}
+impl PaymentRequestEvent {
     /// The changePaymentMethod method.
     /// [`PaymentRequestEvent.changePaymentMethod`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changePaymentMethod)
-    pub fn change_payment_method1(
+    pub fn change_payment_method_with_method_details(
         &self,
         method_name: &JsString,
         method_details: &Object,
@@ -186,14 +191,16 @@ impl PaymentRequestEvent {
 impl PaymentRequestEvent {
     /// The changeShippingAddress method.
     /// [`PaymentRequestEvent.changeShippingAddress`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changeShippingAddress)
-    pub fn change_shipping_address0(&self) -> Promise<PaymentRequestDetailsUpdate> {
+    pub fn change_shipping_address(&self) -> Promise<PaymentRequestDetailsUpdate> {
         self.inner
             .call("changeShippingAddress", &[])
             .as_::<Promise<PaymentRequestDetailsUpdate>>()
     }
+}
+impl PaymentRequestEvent {
     /// The changeShippingAddress method.
     /// [`PaymentRequestEvent.changeShippingAddress`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changeShippingAddress)
-    pub fn change_shipping_address1(
+    pub fn change_shipping_address_with_shipping_address(
         &self,
         shipping_address: &AddressInit,
     ) -> Promise<PaymentRequestDetailsUpdate> {

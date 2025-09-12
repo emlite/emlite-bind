@@ -79,24 +79,28 @@ impl AudioScheduledSourceNode {
 impl AudioScheduledSourceNode {
     /// The start method.
     /// [`AudioScheduledSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/start)
-    pub fn start0(&self) -> Undefined {
+    pub fn start(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
+}
+impl AudioScheduledSourceNode {
     /// The start method.
     /// [`AudioScheduledSourceNode.start`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/start)
-    pub fn start1(&self, when: f64) -> Undefined {
+    pub fn start_with_when(&self, when: f64) -> Undefined {
         self.inner.call("start", &[when.into()]).as_::<Undefined>()
     }
 }
 impl AudioScheduledSourceNode {
     /// The stop method.
     /// [`AudioScheduledSourceNode.stop`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/stop)
-    pub fn stop0(&self) -> Undefined {
+    pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
+}
+impl AudioScheduledSourceNode {
     /// The stop method.
     /// [`AudioScheduledSourceNode.stop`](https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/stop)
-    pub fn stop1(&self, when: f64) -> Undefined {
+    pub fn stop_with_when(&self, when: f64) -> Undefined {
         self.inner.call("stop", &[when.into()]).as_::<Undefined>()
     }
 }

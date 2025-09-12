@@ -87,12 +87,14 @@ impl SVGTransform {
 impl SVGTransform {
     /// The setMatrix method.
     /// [`SVGTransform.setMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransform/setMatrix)
-    pub fn set_matrix0(&self) -> Undefined {
+    pub fn set_matrix(&self) -> Undefined {
         self.inner.call("setMatrix", &[]).as_::<Undefined>()
     }
+}
+impl SVGTransform {
     /// The setMatrix method.
     /// [`SVGTransform.setMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/SVGTransform/setMatrix)
-    pub fn set_matrix1(&self, matrix: &DOMMatrix2DInit) -> Undefined {
+    pub fn set_matrix_with_matrix(&self, matrix: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("setMatrix", &[matrix.into()])
             .as_::<Undefined>()

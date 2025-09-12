@@ -84,16 +84,18 @@ impl ExtendableCookieChangeEvent {
 
 impl ExtendableCookieChangeEvent {
     /// The `new ExtendableCookieChangeEvent(..)` constructor, creating a new ExtendableCookieChangeEvent instance
-    pub fn new0(type_: &JsString) -> ExtendableCookieChangeEvent {
+    pub fn new(type_: &JsString) -> ExtendableCookieChangeEvent {
         Self {
             inner: Any::global("ExtendableCookieChangeEvent")
                 .new(&[type_.into()])
                 .as_::<ExtendableEvent>(),
         }
     }
+}
 
+impl ExtendableCookieChangeEvent {
     /// The `new ExtendableCookieChangeEvent(..)` constructor, creating a new ExtendableCookieChangeEvent instance
-    pub fn new1(
+    pub fn new_with_event_init_dict(
         type_: &JsString,
         event_init_dict: &ExtendableCookieChangeEventInit,
     ) -> ExtendableCookieChangeEvent {

@@ -87,14 +87,16 @@ impl Accelerometer {
 
 impl Accelerometer {
     /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
-    pub fn new0() -> Accelerometer {
+    pub fn new() -> Accelerometer {
         Self {
             inner: Any::global("Accelerometer").new(&[]).as_::<Sensor>(),
         }
     }
+}
 
+impl Accelerometer {
     /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
-    pub fn new1(options: &AccelerometerSensorOptions) -> Accelerometer {
+    pub fn new_with_options(options: &AccelerometerSensorOptions) -> Accelerometer {
         Self {
             inner: Any::global("Accelerometer")
                 .new(&[options.into()])

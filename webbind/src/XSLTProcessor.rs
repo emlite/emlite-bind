@@ -71,6 +71,7 @@ impl XSLTProcessor {
         }
     }
 }
+
 impl XSLTProcessor {
     /// The importStylesheet method.
     /// [`XSLTProcessor.importStylesheet`](https://developer.mozilla.org/en-US/docs/Web/API/XSLTProcessor/importStylesheet)

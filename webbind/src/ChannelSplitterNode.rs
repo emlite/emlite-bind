@@ -65,16 +65,18 @@ jsbind::utils::impl_dyn_cast!(ChannelSplitterNode);
 
 impl ChannelSplitterNode {
     /// The `new ChannelSplitterNode(..)` constructor, creating a new ChannelSplitterNode instance
-    pub fn new0(context: &BaseAudioContext) -> ChannelSplitterNode {
+    pub fn new(context: &BaseAudioContext) -> ChannelSplitterNode {
         Self {
             inner: Any::global("ChannelSplitterNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
+}
 
+impl ChannelSplitterNode {
     /// The `new ChannelSplitterNode(..)` constructor, creating a new ChannelSplitterNode instance
-    pub fn new1(
+    pub fn new_with_options(
         context: &BaseAudioContext,
         options: &ChannelSplitterOptions,
     ) -> ChannelSplitterNode {

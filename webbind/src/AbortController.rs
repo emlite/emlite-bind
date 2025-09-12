@@ -79,15 +79,18 @@ impl AbortController {
         }
     }
 }
+
 impl AbortController {
     /// The abort method.
     /// [`AbortController.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort)
-    pub fn abort0(&self) -> Undefined {
+    pub fn abort(&self) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
+}
+impl AbortController {
     /// The abort method.
     /// [`AbortController.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort)
-    pub fn abort1(&self, reason: &Any) -> Undefined {
+    pub fn abort_with_reason(&self, reason: &Any) -> Undefined {
         self.inner
             .call("abort", &[reason.into()])
             .as_::<Undefined>()

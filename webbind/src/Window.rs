@@ -605,24 +605,35 @@ impl Window {
 impl Window {
     /// The open method.
     /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open0(&self) -> Any {
+    pub fn open(&self) -> Any {
         self.inner.call("open", &[]).as_::<Any>()
     }
+}
+impl Window {
     /// The open method.
     /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open1(&self, url: &JsString) -> Any {
+    pub fn open_with_url(&self, url: &JsString) -> Any {
         self.inner.call("open", &[url.into()]).as_::<Any>()
     }
+}
+impl Window {
     /// The open method.
     /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open2(&self, url: &JsString, target: &JsString) -> Any {
+    pub fn open_with_url_and_target(&self, url: &JsString, target: &JsString) -> Any {
         self.inner
             .call("open", &[url.into(), target.into()])
             .as_::<Any>()
     }
+}
+impl Window {
     /// The open method.
     /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open3(&self, url: &JsString, target: &JsString, features: &JsString) -> Any {
+    pub fn open_with_url_and_target_and_features(
+        &self,
+        url: &JsString,
+        target: &JsString,
+        features: &JsString,
+    ) -> Any {
         self.inner
             .call("open", &[url.into(), target.into(), features.into()])
             .as_::<Any>()
@@ -638,7 +649,7 @@ impl Window {
 impl Window {
     /// The alert method.
     /// [`Window.alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
-    pub fn alert1(&self, message: &JsString) -> Undefined {
+    pub fn alert_with_message(&self, message: &JsString) -> Undefined {
         self.inner
             .call("alert", &[message.into()])
             .as_::<Undefined>()
@@ -647,31 +658,41 @@ impl Window {
 impl Window {
     /// The confirm method.
     /// [`Window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
-    pub fn confirm0(&self) -> bool {
+    pub fn confirm(&self) -> bool {
         self.inner.call("confirm", &[]).as_::<bool>()
     }
+}
+impl Window {
     /// The confirm method.
     /// [`Window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
-    pub fn confirm1(&self, message: &JsString) -> bool {
+    pub fn confirm_with_message(&self, message: &JsString) -> bool {
         self.inner.call("confirm", &[message.into()]).as_::<bool>()
     }
 }
 impl Window {
     /// The prompt method.
     /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt0(&self) -> JsString {
+    pub fn prompt(&self) -> JsString {
         self.inner.call("prompt", &[]).as_::<JsString>()
     }
+}
+impl Window {
     /// The prompt method.
     /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt1(&self, message: &JsString) -> JsString {
+    pub fn prompt_with_message(&self, message: &JsString) -> JsString {
         self.inner
             .call("prompt", &[message.into()])
             .as_::<JsString>()
     }
+}
+impl Window {
     /// The prompt method.
     /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt2(&self, message: &JsString, default: &JsString) -> JsString {
+    pub fn prompt_with_message_and_default(
+        &self,
+        message: &JsString,
+        default: &JsString,
+    ) -> JsString {
         self.inner
             .call("prompt", &[message.into(), default.into()])
             .as_::<JsString>()
@@ -687,14 +708,16 @@ impl Window {
 impl Window {
     /// The postMessage method.
     /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
-    pub fn post_message0(&self, message: &Any, target_origin: &JsString) -> Undefined {
+    pub fn post_message(&self, message: &Any, target_origin: &JsString) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), target_origin.into()])
             .as_::<Undefined>()
     }
+}
+impl Window {
     /// The postMessage method.
     /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
-    pub fn post_message1(
+    pub fn post_message_with_transfer(
         &self,
         message: &Any,
         target_origin: &JsString,
@@ -711,14 +734,20 @@ impl Window {
 impl Window {
     /// The postMessage method.
     /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
-    pub fn post_message2(&self, message: &Any) -> Undefined {
+    pub fn post_message_with_message(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
+}
+impl Window {
     /// The postMessage method.
     /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
-    pub fn post_message3(&self, message: &Any, options: &WindowPostMessageOptions) -> Undefined {
+    pub fn post_message_with_options(
+        &self,
+        message: &Any,
+        options: &WindowPostMessageOptions,
+    ) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()
@@ -781,12 +810,14 @@ impl Window {
 impl Window {
     /// The scroll method.
     /// [`Window.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll)
-    pub fn scroll0(&self) -> Undefined {
+    pub fn scroll(&self) -> Undefined {
         self.inner.call("scroll", &[]).as_::<Undefined>()
     }
+}
+impl Window {
     /// The scroll method.
     /// [`Window.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll)
-    pub fn scroll1(&self, options: &ScrollToOptions) -> Undefined {
+    pub fn scroll_with_options(&self, options: &ScrollToOptions) -> Undefined {
         self.inner
             .call("scroll", &[options.into()])
             .as_::<Undefined>()
@@ -795,7 +826,7 @@ impl Window {
 impl Window {
     /// The scroll method.
     /// [`Window.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll)
-    pub fn scroll2(&self, x: f64, y: f64) -> Undefined {
+    pub fn scroll_with_x_and_y(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("scroll", &[x.into(), y.into()])
             .as_::<Undefined>()
@@ -804,12 +835,14 @@ impl Window {
 impl Window {
     /// The scrollTo method.
     /// [`Window.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
-    pub fn scroll_to0(&self) -> Undefined {
+    pub fn scroll_to(&self) -> Undefined {
         self.inner.call("scrollTo", &[]).as_::<Undefined>()
     }
+}
+impl Window {
     /// The scrollTo method.
     /// [`Window.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
-    pub fn scroll_to1(&self, options: &ScrollToOptions) -> Undefined {
+    pub fn scroll_to_with_options(&self, options: &ScrollToOptions) -> Undefined {
         self.inner
             .call("scrollTo", &[options.into()])
             .as_::<Undefined>()
@@ -818,7 +851,7 @@ impl Window {
 impl Window {
     /// The scrollTo method.
     /// [`Window.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
-    pub fn scroll_to2(&self, x: f64, y: f64) -> Undefined {
+    pub fn scroll_to_with_x_and_y(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("scrollTo", &[x.into(), y.into()])
             .as_::<Undefined>()
@@ -827,12 +860,14 @@ impl Window {
 impl Window {
     /// The scrollBy method.
     /// [`Window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy)
-    pub fn scroll_by0(&self) -> Undefined {
+    pub fn scroll_by(&self) -> Undefined {
         self.inner.call("scrollBy", &[]).as_::<Undefined>()
     }
+}
+impl Window {
     /// The scrollBy method.
     /// [`Window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy)
-    pub fn scroll_by1(&self, options: &ScrollToOptions) -> Undefined {
+    pub fn scroll_by_with_options(&self, options: &ScrollToOptions) -> Undefined {
         self.inner
             .call("scrollBy", &[options.into()])
             .as_::<Undefined>()
@@ -841,7 +876,7 @@ impl Window {
 impl Window {
     /// The scrollBy method.
     /// [`Window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy)
-    pub fn scroll_by2(&self, x: f64, y: f64) -> Undefined {
+    pub fn scroll_by_with_x_and_y(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("scrollBy", &[x.into(), y.into()])
             .as_::<Undefined>()
@@ -850,14 +885,20 @@ impl Window {
 impl Window {
     /// The getComputedStyle method.
     /// [`Window.getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
-    pub fn get_computed_style0(&self, elt: &Element) -> CSSStyleProperties {
+    pub fn get_computed_style(&self, elt: &Element) -> CSSStyleProperties {
         self.inner
             .call("getComputedStyle", &[elt.into()])
             .as_::<CSSStyleProperties>()
     }
+}
+impl Window {
     /// The getComputedStyle method.
     /// [`Window.getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
-    pub fn get_computed_style1(&self, elt: &Element, pseudo_elt: &JsString) -> CSSStyleProperties {
+    pub fn get_computed_style_with_pseudo_elt(
+        &self,
+        elt: &Element,
+        pseudo_elt: &JsString,
+    ) -> CSSStyleProperties {
         self.inner
             .call("getComputedStyle", &[elt.into(), pseudo_elt.into()])
             .as_::<CSSStyleProperties>()
@@ -878,14 +919,20 @@ impl Window {
 impl Window {
     /// The fetchLater method.
     /// [`Window.fetchLater`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetchLater)
-    pub fn fetch_later0(&self, input: &Any) -> FetchLaterResult {
+    pub fn fetch_later(&self, input: &Any) -> FetchLaterResult {
         self.inner
             .call("fetchLater", &[input.into()])
             .as_::<FetchLaterResult>()
     }
+}
+impl Window {
     /// The fetchLater method.
     /// [`Window.fetchLater`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetchLater)
-    pub fn fetch_later1(&self, input: &Any, init: &DeferredRequestInit) -> FetchLaterResult {
+    pub fn fetch_later_with_init(
+        &self,
+        input: &Any,
+        init: &DeferredRequestInit,
+    ) -> FetchLaterResult {
         self.inner
             .call("fetchLater", &[input.into(), init.into()])
             .as_::<FetchLaterResult>()
@@ -894,14 +941,16 @@ impl Window {
 impl Window {
     /// The showOpenFilePicker method.
     /// [`Window.showOpenFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker)
-    pub fn show_open_file_picker0(&self) -> Promise<TypedArray<FileSystemFileHandle>> {
+    pub fn show_open_file_picker(&self) -> Promise<TypedArray<FileSystemFileHandle>> {
         self.inner
             .call("showOpenFilePicker", &[])
             .as_::<Promise<TypedArray<FileSystemFileHandle>>>()
     }
+}
+impl Window {
     /// The showOpenFilePicker method.
     /// [`Window.showOpenFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker)
-    pub fn show_open_file_picker1(
+    pub fn show_open_file_picker_with_options(
         &self,
         options: &OpenFilePickerOptions,
     ) -> Promise<TypedArray<FileSystemFileHandle>> {
@@ -913,14 +962,16 @@ impl Window {
 impl Window {
     /// The showSaveFilePicker method.
     /// [`Window.showSaveFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showSaveFilePicker)
-    pub fn show_save_file_picker0(&self) -> Promise<FileSystemFileHandle> {
+    pub fn show_save_file_picker(&self) -> Promise<FileSystemFileHandle> {
         self.inner
             .call("showSaveFilePicker", &[])
             .as_::<Promise<FileSystemFileHandle>>()
     }
+}
+impl Window {
     /// The showSaveFilePicker method.
     /// [`Window.showSaveFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showSaveFilePicker)
-    pub fn show_save_file_picker1(
+    pub fn show_save_file_picker_with_options(
         &self,
         options: &SaveFilePickerOptions,
     ) -> Promise<FileSystemFileHandle> {
@@ -932,14 +983,16 @@ impl Window {
 impl Window {
     /// The showDirectoryPicker method.
     /// [`Window.showDirectoryPicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showDirectoryPicker)
-    pub fn show_directory_picker0(&self) -> Promise<FileSystemDirectoryHandle> {
+    pub fn show_directory_picker(&self) -> Promise<FileSystemDirectoryHandle> {
         self.inner
             .call("showDirectoryPicker", &[])
             .as_::<Promise<FileSystemDirectoryHandle>>()
     }
+}
+impl Window {
     /// The showDirectoryPicker method.
     /// [`Window.showDirectoryPicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showDirectoryPicker)
-    pub fn show_directory_picker1(
+    pub fn show_directory_picker_with_options(
         &self,
         options: &DirectoryPickerOptions,
     ) -> Promise<FileSystemDirectoryHandle> {
@@ -965,14 +1018,19 @@ impl Window {
 impl Window {
     /// The queryLocalFonts method.
     /// [`Window.queryLocalFonts`](https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts)
-    pub fn query_local_fonts0(&self) -> Promise<TypedArray<FontData>> {
+    pub fn query_local_fonts(&self) -> Promise<TypedArray<FontData>> {
         self.inner
             .call("queryLocalFonts", &[])
             .as_::<Promise<TypedArray<FontData>>>()
     }
+}
+impl Window {
     /// The queryLocalFonts method.
     /// [`Window.queryLocalFonts`](https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts)
-    pub fn query_local_fonts1(&self, options: &QueryOptions) -> Promise<TypedArray<FontData>> {
+    pub fn query_local_fonts_with_options(
+        &self,
+        options: &QueryOptions,
+    ) -> Promise<TypedArray<FontData>> {
         self.inner
             .call("queryLocalFonts", &[options.into()])
             .as_::<Promise<TypedArray<FontData>>>()
@@ -981,14 +1039,20 @@ impl Window {
 impl Window {
     /// The requestIdleCallback method.
     /// [`Window.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
-    pub fn request_idle_callback0(&self, callback: &Function) -> u32 {
+    pub fn request_idle_callback(&self, callback: &Function) -> u32 {
         self.inner
             .call("requestIdleCallback", &[callback.into()])
             .as_::<u32>()
     }
+}
+impl Window {
     /// The requestIdleCallback method.
     /// [`Window.requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
-    pub fn request_idle_callback1(&self, callback: &Function, options: &IdleRequestOptions) -> u32 {
+    pub fn request_idle_callback_with_options(
+        &self,
+        callback: &Function,
+        options: &IdleRequestOptions,
+    ) -> u32 {
         self.inner
             .call("requestIdleCallback", &[callback.into(), options.into()])
             .as_::<u32>()

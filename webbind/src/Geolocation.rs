@@ -66,14 +66,16 @@ jsbind::utils::impl_dyn_cast!(Geolocation);
 impl Geolocation {
     /// The getCurrentPosition method.
     /// [`Geolocation.getCurrentPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
-    pub fn get_current_position0(&self, success_callback: &Function) -> Undefined {
+    pub fn get_current_position(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("getCurrentPosition", &[success_callback.into()])
             .as_::<Undefined>()
     }
+}
+impl Geolocation {
     /// The getCurrentPosition method.
     /// [`Geolocation.getCurrentPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
-    pub fn get_current_position1(
+    pub fn get_current_position_with_error_callback(
         &self,
         success_callback: &Function,
         error_callback: &Function,
@@ -85,9 +87,11 @@ impl Geolocation {
             )
             .as_::<Undefined>()
     }
+}
+impl Geolocation {
     /// The getCurrentPosition method.
     /// [`Geolocation.getCurrentPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
-    pub fn get_current_position2(
+    pub fn get_current_position_with_error_callback_and_options(
         &self,
         success_callback: &Function,
         error_callback: &Function,
@@ -108,14 +112,20 @@ impl Geolocation {
 impl Geolocation {
     /// The watchPosition method.
     /// [`Geolocation.watchPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/watchPosition)
-    pub fn watch_position0(&self, success_callback: &Function) -> i32 {
+    pub fn watch_position(&self, success_callback: &Function) -> i32 {
         self.inner
             .call("watchPosition", &[success_callback.into()])
             .as_::<i32>()
     }
+}
+impl Geolocation {
     /// The watchPosition method.
     /// [`Geolocation.watchPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/watchPosition)
-    pub fn watch_position1(&self, success_callback: &Function, error_callback: &Function) -> i32 {
+    pub fn watch_position_with_error_callback(
+        &self,
+        success_callback: &Function,
+        error_callback: &Function,
+    ) -> i32 {
         self.inner
             .call(
                 "watchPosition",
@@ -123,9 +133,11 @@ impl Geolocation {
             )
             .as_::<i32>()
     }
+}
+impl Geolocation {
     /// The watchPosition method.
     /// [`Geolocation.watchPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/watchPosition)
-    pub fn watch_position2(
+    pub fn watch_position_with_error_callback_and_options(
         &self,
         success_callback: &Function,
         error_callback: &Function,

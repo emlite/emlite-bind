@@ -129,7 +129,12 @@ impl CSSRotate {
 
 impl CSSRotate {
     /// The `new CSSRotate(..)` constructor, creating a new CSSRotate instance
-    pub fn new1(x: &Any, y: &Any, z: &Any, angle: &CSSNumericValue) -> CSSRotate {
+    pub fn new_with_x_and_y_and_z_and_angle(
+        x: &Any,
+        y: &Any,
+        z: &Any,
+        angle: &CSSNumericValue,
+    ) -> CSSRotate {
         Self {
             inner: Any::global("CSSRotate")
                 .new(&[x.into(), y.into(), z.into(), angle.into()])

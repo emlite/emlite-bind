@@ -73,21 +73,30 @@ impl TextEvent {
 impl TextEvent {
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event0(&self, type_: &JsString) -> Undefined {
+    pub fn init_text_event(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into()])
             .as_::<Undefined>()
     }
+}
+impl TextEvent {
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
+    pub fn init_text_event_with_bubbles(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
+}
+impl TextEvent {
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event2(&self, type_: &JsString, bubbles: bool, cancelable: bool) -> Undefined {
+    pub fn init_text_event_with_bubbles_and_cancelable(
+        &self,
+        type_: &JsString,
+        bubbles: bool,
+        cancelable: bool,
+    ) -> Undefined {
         self.inner
             .call(
                 "initTextEvent",
@@ -95,9 +104,11 @@ impl TextEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl TextEvent {
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event3(
+    pub fn init_text_event_with_bubbles_and_cancelable_and_view(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -111,9 +122,11 @@ impl TextEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl TextEvent {
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event4(
+    pub fn init_text_event_with_bubbles_and_cancelable_and_view_and_data(
         &self,
         type_: &JsString,
         bubbles: bool,

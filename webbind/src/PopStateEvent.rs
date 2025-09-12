@@ -80,16 +80,21 @@ impl PopStateEvent {
 
 impl PopStateEvent {
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
-    pub fn new0(type_: &JsString) -> PopStateEvent {
+    pub fn new(type_: &JsString) -> PopStateEvent {
         Self {
             inner: Any::global("PopStateEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl PopStateEvent {
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &PopStateEventInit) -> PopStateEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &PopStateEventInit,
+    ) -> PopStateEvent {
         Self {
             inner: Any::global("PopStateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

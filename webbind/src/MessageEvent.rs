@@ -101,16 +101,21 @@ impl MessageEvent {
 
 impl MessageEvent {
     /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
-    pub fn new0(type_: &JsString) -> MessageEvent {
+    pub fn new(type_: &JsString) -> MessageEvent {
         Self {
             inner: Any::global("MessageEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
+}
 
+impl MessageEvent {
     /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &MessageEventInit) -> MessageEvent {
+    pub fn new_with_event_init_dict(
+        type_: &JsString,
+        event_init_dict: &MessageEventInit,
+    ) -> MessageEvent {
         Self {
             inner: Any::global("MessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -118,24 +123,29 @@ impl MessageEvent {
         }
     }
 }
+
 impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event0(&self, type_: &JsString) -> Undefined {
+    pub fn init_message_event(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into()])
             .as_::<Undefined>()
     }
+}
+impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
+    pub fn init_message_event_with_bubbles(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
+}
+impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event2(
+    pub fn init_message_event_with_bubbles_and_cancelable(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -148,9 +158,11 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event3(
+    pub fn init_message_event_with_bubbles_and_cancelable_and_data(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -164,9 +176,11 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event4(
+    pub fn init_message_event_with_bubbles_and_cancelable_and_data_and_origin(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -187,9 +201,11 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event5(
+    pub fn init_message_event_with_bubbles_and_cancelable_and_data_and_origin_and_last_event_id(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -212,9 +228,11 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event6(
+    pub fn init_message_event_with_bubbles_and_cancelable_and_data_and_origin_and_last_event_id_and_source(
         &self,
         type_: &JsString,
         bubbles: bool,
@@ -239,9 +257,11 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
+}
+impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event7(
+    pub fn init_message_event_with_bubbles_and_cancelable_and_data_and_origin_and_last_event_id_and_source_and_ports(
         &self,
         type_: &JsString,
         bubbles: bool,

@@ -126,15 +126,18 @@ impl HTMLPortalElement {
         }
     }
 }
+
 impl HTMLPortalElement {
     /// The activate method.
     /// [`HTMLPortalElement.activate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/activate)
-    pub fn activate0(&self) -> Promise<Undefined> {
+    pub fn activate(&self) -> Promise<Undefined> {
         self.inner.call("activate", &[]).as_::<Promise<Undefined>>()
     }
+}
+impl HTMLPortalElement {
     /// The activate method.
     /// [`HTMLPortalElement.activate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/activate)
-    pub fn activate1(&self, options: &PortalActivateOptions) -> Promise<Undefined> {
+    pub fn activate_with_options(&self, options: &PortalActivateOptions) -> Promise<Undefined> {
         self.inner
             .call("activate", &[options.into()])
             .as_::<Promise<Undefined>>()
@@ -143,14 +146,20 @@ impl HTMLPortalElement {
 impl HTMLPortalElement {
     /// The postMessage method.
     /// [`HTMLPortalElement.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
+    pub fn post_message(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
+}
+impl HTMLPortalElement {
     /// The postMessage method.
     /// [`HTMLPortalElement.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+    pub fn post_message_with_options(
+        &self,
+        message: &Any,
+        options: &StructuredSerializeOptions,
+    ) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()

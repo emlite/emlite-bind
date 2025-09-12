@@ -66,14 +66,20 @@ jsbind::utils::impl_dyn_cast!(PeriodicSyncManager);
 impl PeriodicSyncManager {
     /// The register method.
     /// [`PeriodicSyncManager.register`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager/register)
-    pub fn register0(&self, tag: &JsString) -> Promise<Undefined> {
+    pub fn register(&self, tag: &JsString) -> Promise<Undefined> {
         self.inner
             .call("register", &[tag.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl PeriodicSyncManager {
     /// The register method.
     /// [`PeriodicSyncManager.register`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager/register)
-    pub fn register1(&self, tag: &JsString, options: &BackgroundSyncOptions) -> Promise<Undefined> {
+    pub fn register_with_options(
+        &self,
+        tag: &JsString,
+        options: &BackgroundSyncOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("register", &[tag.into(), options.into()])
             .as_::<Promise<Undefined>>()

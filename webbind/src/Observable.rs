@@ -73,22 +73,31 @@ impl Observable {
         }
     }
 }
+
 impl Observable {
     /// The subscribe method.
     /// [`Observable.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/subscribe)
-    pub fn subscribe0(&self) -> Undefined {
+    pub fn subscribe(&self) -> Undefined {
         self.inner.call("subscribe", &[]).as_::<Undefined>()
     }
+}
+impl Observable {
     /// The subscribe method.
     /// [`Observable.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/subscribe)
-    pub fn subscribe1(&self, observer: &Any) -> Undefined {
+    pub fn subscribe_with_observer(&self, observer: &Any) -> Undefined {
         self.inner
             .call("subscribe", &[observer.into()])
             .as_::<Undefined>()
     }
+}
+impl Observable {
     /// The subscribe method.
     /// [`Observable.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/subscribe)
-    pub fn subscribe2(&self, observer: &Any, options: &SubscribeOptions) -> Undefined {
+    pub fn subscribe_with_observer_and_options(
+        &self,
+        observer: &Any,
+        options: &SubscribeOptions,
+    ) -> Undefined {
         self.inner
             .call("subscribe", &[observer.into(), options.into()])
             .as_::<Undefined>()
@@ -167,12 +176,14 @@ impl Observable {
 impl Observable {
     /// The inspect method.
     /// [`Observable.inspect`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/inspect)
-    pub fn inspect0(&self) -> Observable {
+    pub fn inspect(&self) -> Observable {
         self.inner.call("inspect", &[]).as_::<Observable>()
     }
+}
+impl Observable {
     /// The inspect method.
     /// [`Observable.inspect`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/inspect)
-    pub fn inspect1(&self, inspector_union: &Any) -> Observable {
+    pub fn inspect_with_inspector_union(&self, inspector_union: &Any) -> Observable {
         self.inner
             .call("inspect", &[inspector_union.into()])
             .as_::<Observable>()
@@ -199,14 +210,16 @@ impl Observable {
 impl Observable {
     /// The toArray method.
     /// [`Observable.toArray`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/toArray)
-    pub fn to_array0(&self) -> Promise<TypedArray<Any>> {
+    pub fn to_array(&self) -> Promise<TypedArray<Any>> {
         self.inner
             .call("toArray", &[])
             .as_::<Promise<TypedArray<Any>>>()
     }
+}
+impl Observable {
     /// The toArray method.
     /// [`Observable.toArray`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/toArray)
-    pub fn to_array1(&self, options: &SubscribeOptions) -> Promise<TypedArray<Any>> {
+    pub fn to_array_with_options(&self, options: &SubscribeOptions) -> Promise<TypedArray<Any>> {
         self.inner
             .call("toArray", &[options.into()])
             .as_::<Promise<TypedArray<Any>>>()
@@ -215,14 +228,20 @@ impl Observable {
 impl Observable {
     /// The forEach method.
     /// [`Observable.forEach`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/forEach)
-    pub fn for_each0(&self, callback: &Function) -> Promise<Undefined> {
+    pub fn for_each(&self, callback: &Function) -> Promise<Undefined> {
         self.inner
             .call("forEach", &[callback.into()])
             .as_::<Promise<Undefined>>()
     }
+}
+impl Observable {
     /// The forEach method.
     /// [`Observable.forEach`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/forEach)
-    pub fn for_each1(&self, callback: &Function, options: &SubscribeOptions) -> Promise<Undefined> {
+    pub fn for_each_with_options(
+        &self,
+        callback: &Function,
+        options: &SubscribeOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("forEach", &[callback.into(), options.into()])
             .as_::<Promise<Undefined>>()
@@ -231,14 +250,20 @@ impl Observable {
 impl Observable {
     /// The every method.
     /// [`Observable.every`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/every)
-    pub fn every0(&self, predicate: &Function) -> Promise<bool> {
+    pub fn every(&self, predicate: &Function) -> Promise<bool> {
         self.inner
             .call("every", &[predicate.into()])
             .as_::<Promise<bool>>()
     }
+}
+impl Observable {
     /// The every method.
     /// [`Observable.every`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/every)
-    pub fn every1(&self, predicate: &Function, options: &SubscribeOptions) -> Promise<bool> {
+    pub fn every_with_options(
+        &self,
+        predicate: &Function,
+        options: &SubscribeOptions,
+    ) -> Promise<bool> {
         self.inner
             .call("every", &[predicate.into(), options.into()])
             .as_::<Promise<bool>>()
@@ -247,12 +272,14 @@ impl Observable {
 impl Observable {
     /// The first method.
     /// [`Observable.first`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/first)
-    pub fn first0(&self) -> Promise<Any> {
+    pub fn first(&self) -> Promise<Any> {
         self.inner.call("first", &[]).as_::<Promise<Any>>()
     }
+}
+impl Observable {
     /// The first method.
     /// [`Observable.first`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/first)
-    pub fn first1(&self, options: &SubscribeOptions) -> Promise<Any> {
+    pub fn first_with_options(&self, options: &SubscribeOptions) -> Promise<Any> {
         self.inner
             .call("first", &[options.into()])
             .as_::<Promise<Any>>()
@@ -261,12 +288,14 @@ impl Observable {
 impl Observable {
     /// The last method.
     /// [`Observable.last`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/last)
-    pub fn last0(&self) -> Promise<Any> {
+    pub fn last(&self) -> Promise<Any> {
         self.inner.call("last", &[]).as_::<Promise<Any>>()
     }
+}
+impl Observable {
     /// The last method.
     /// [`Observable.last`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/last)
-    pub fn last1(&self, options: &SubscribeOptions) -> Promise<Any> {
+    pub fn last_with_options(&self, options: &SubscribeOptions) -> Promise<Any> {
         self.inner
             .call("last", &[options.into()])
             .as_::<Promise<Any>>()
@@ -275,14 +304,20 @@ impl Observable {
 impl Observable {
     /// The find method.
     /// [`Observable.find`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/find)
-    pub fn find0(&self, predicate: &Function) -> Promise<Any> {
+    pub fn find(&self, predicate: &Function) -> Promise<Any> {
         self.inner
             .call("find", &[predicate.into()])
             .as_::<Promise<Any>>()
     }
+}
+impl Observable {
     /// The find method.
     /// [`Observable.find`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/find)
-    pub fn find1(&self, predicate: &Function, options: &SubscribeOptions) -> Promise<Any> {
+    pub fn find_with_options(
+        &self,
+        predicate: &Function,
+        options: &SubscribeOptions,
+    ) -> Promise<Any> {
         self.inner
             .call("find", &[predicate.into(), options.into()])
             .as_::<Promise<Any>>()
@@ -291,14 +326,20 @@ impl Observable {
 impl Observable {
     /// The some method.
     /// [`Observable.some`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/some)
-    pub fn some0(&self, predicate: &Function) -> Promise<bool> {
+    pub fn some(&self, predicate: &Function) -> Promise<bool> {
         self.inner
             .call("some", &[predicate.into()])
             .as_::<Promise<bool>>()
     }
+}
+impl Observable {
     /// The some method.
     /// [`Observable.some`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/some)
-    pub fn some1(&self, predicate: &Function, options: &SubscribeOptions) -> Promise<bool> {
+    pub fn some_with_options(
+        &self,
+        predicate: &Function,
+        options: &SubscribeOptions,
+    ) -> Promise<bool> {
         self.inner
             .call("some", &[predicate.into(), options.into()])
             .as_::<Promise<bool>>()
@@ -307,21 +348,29 @@ impl Observable {
 impl Observable {
     /// The reduce method.
     /// [`Observable.reduce`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/reduce)
-    pub fn reduce0(&self, reducer: &Function) -> Promise<Any> {
+    pub fn reduce(&self, reducer: &Function) -> Promise<Any> {
         self.inner
             .call("reduce", &[reducer.into()])
             .as_::<Promise<Any>>()
     }
+}
+impl Observable {
     /// The reduce method.
     /// [`Observable.reduce`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/reduce)
-    pub fn reduce1(&self, reducer: &Function, initial_value: &Any) -> Promise<Any> {
+    pub fn reduce_with_initial_value(
+        &self,
+        reducer: &Function,
+        initial_value: &Any,
+    ) -> Promise<Any> {
         self.inner
             .call("reduce", &[reducer.into(), initial_value.into()])
             .as_::<Promise<Any>>()
     }
+}
+impl Observable {
     /// The reduce method.
     /// [`Observable.reduce`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/reduce)
-    pub fn reduce2(
+    pub fn reduce_with_initial_value_and_options(
         &self,
         reducer: &Function,
         initial_value: &Any,

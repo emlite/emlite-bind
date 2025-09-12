@@ -65,14 +65,16 @@ jsbind::utils::impl_dyn_cast!(Comment);
 
 impl Comment {
     /// The `new Comment(..)` constructor, creating a new Comment instance
-    pub fn new0() -> Comment {
+    pub fn new() -> Comment {
         Self {
             inner: Any::global("Comment").new(&[]).as_::<CharacterData>(),
         }
     }
+}
 
+impl Comment {
     /// The `new Comment(..)` constructor, creating a new Comment instance
-    pub fn new1(data: &JsString) -> Comment {
+    pub fn new_with_data(data: &JsString) -> Comment {
         Self {
             inner: Any::global("Comment")
                 .new(&[data.into()])

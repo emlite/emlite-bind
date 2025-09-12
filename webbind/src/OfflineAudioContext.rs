@@ -97,7 +97,11 @@ impl OfflineAudioContext {
 
 impl OfflineAudioContext {
     /// The `new OfflineAudioContext(..)` constructor, creating a new OfflineAudioContext instance
-    pub fn new1(number_of_channels: u32, length: u32, sample_rate: f32) -> OfflineAudioContext {
+    pub fn new_with_number_of_channels_and_length_and_sample_rate(
+        number_of_channels: u32,
+        length: u32,
+        sample_rate: f32,
+    ) -> OfflineAudioContext {
         Self {
             inner: Any::global("OfflineAudioContext")
                 .new(&[number_of_channels.into(), length.into(), sample_rate.into()])
@@ -105,6 +109,7 @@ impl OfflineAudioContext {
         }
     }
 }
+
 impl OfflineAudioContext {
     /// The startRendering method.
     /// [`OfflineAudioContext.startRendering`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/startRendering)

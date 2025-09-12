@@ -115,7 +115,7 @@ impl MediaStream {
 
 impl MediaStream {
     /// The `new MediaStream(..)` constructor, creating a new MediaStream instance
-    pub fn new1(stream: &MediaStream) -> MediaStream {
+    pub fn new_with_stream(stream: &MediaStream) -> MediaStream {
         Self {
             inner: Any::global("MediaStream")
                 .new(&[stream.into()])
@@ -126,7 +126,7 @@ impl MediaStream {
 
 impl MediaStream {
     /// The `new MediaStream(..)` constructor, creating a new MediaStream instance
-    pub fn new2(tracks: &TypedArray<MediaStreamTrack>) -> MediaStream {
+    pub fn new_with_tracks(tracks: &TypedArray<MediaStreamTrack>) -> MediaStream {
         Self {
             inner: Any::global("MediaStream")
                 .new(&[tracks.into()])
@@ -134,6 +134,7 @@ impl MediaStream {
         }
     }
 }
+
 impl MediaStream {
     /// The getAudioTracks method.
     /// [`MediaStream.getAudioTracks`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getAudioTracks)

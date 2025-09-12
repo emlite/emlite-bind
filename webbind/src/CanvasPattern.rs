@@ -66,12 +66,14 @@ jsbind::utils::impl_dyn_cast!(CanvasPattern);
 impl CanvasPattern {
     /// The setTransform method.
     /// [`CanvasPattern.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern/setTransform)
-    pub fn set_transform0(&self) -> Undefined {
+    pub fn set_transform(&self) -> Undefined {
         self.inner.call("setTransform", &[]).as_::<Undefined>()
     }
+}
+impl CanvasPattern {
     /// The setTransform method.
     /// [`CanvasPattern.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern/setTransform)
-    pub fn set_transform1(&self, transform: &DOMMatrix2DInit) -> Undefined {
+    pub fn set_transform_with_transform(&self, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("setTransform", &[transform.into()])
             .as_::<Undefined>()

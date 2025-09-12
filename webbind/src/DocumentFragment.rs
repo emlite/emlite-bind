@@ -100,6 +100,7 @@ impl DocumentFragment {
         }
     }
 }
+
 impl DocumentFragment {
     /// The getElementById method.
     /// [`DocumentFragment.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/getElementById)

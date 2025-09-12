@@ -129,21 +129,25 @@ impl Response {
 
 impl Response {
     /// The `new Response(..)` constructor, creating a new Response instance
-    pub fn new0() -> Response {
+    pub fn new() -> Response {
         Self {
             inner: Any::global("Response").new(&[]).as_::<Any>(),
         }
     }
+}
 
+impl Response {
     /// The `new Response(..)` constructor, creating a new Response instance
-    pub fn new1(body: &Any) -> Response {
+    pub fn new_with_body(body: &Any) -> Response {
         Self {
             inner: Any::global("Response").new(&[body.into()]).as_::<Any>(),
         }
     }
+}
 
+impl Response {
     /// The `new Response(..)` constructor, creating a new Response instance
-    pub fn new2(body: &Any, init: &ResponseInit) -> Response {
+    pub fn new_with_body_and_init(body: &Any, init: &ResponseInit) -> Response {
         Self {
             inner: Any::global("Response")
                 .new(&[body.into(), init.into()])
@@ -151,6 +155,7 @@ impl Response {
         }
     }
 }
+
 impl Response {
     /// The error method.
     /// [`Response.error`](https://developer.mozilla.org/en-US/docs/Web/API/Response/error)
@@ -161,14 +166,16 @@ impl Response {
 impl Response {
     /// The redirect method.
     /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
-    pub fn redirect0(url: &JsString) -> Response {
+    pub fn redirect(url: &JsString) -> Response {
         Any::global("Response")
             .call("redirect", &[url.into()])
             .as_::<Response>()
     }
+}
+impl Response {
     /// The redirect method.
     /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
-    pub fn redirect1(url: &JsString, status: u16) -> Response {
+    pub fn redirect_with_status(url: &JsString, status: u16) -> Response {
         Any::global("Response")
             .call("redirect", &[url.into(), status.into()])
             .as_::<Response>()
@@ -177,14 +184,16 @@ impl Response {
 impl Response {
     /// The json method.
     /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
-    pub fn json0(data: &Any) -> Response {
+    pub fn json(data: &Any) -> Response {
         Any::global("Response")
             .call("json", &[data.into()])
             .as_::<Response>()
     }
+}
+impl Response {
     /// The json method.
     /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
-    pub fn json1(data: &Any, init: &ResponseInit) -> Response {
+    pub fn json_with_init(data: &Any, init: &ResponseInit) -> Response {
         Any::global("Response")
             .call("json", &[data.into(), init.into()])
             .as_::<Response>()
@@ -230,7 +239,7 @@ impl Response {
 impl Response {
     /// The json method.
     /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
-    pub fn json(&self) -> Promise<Any> {
+    pub fn json_2(&self) -> Promise<Any> {
         self.inner.call("json", &[]).as_::<Promise<Any>>()
     }
 }

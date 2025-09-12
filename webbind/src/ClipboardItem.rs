@@ -82,16 +82,21 @@ impl ClipboardItem {
 
 impl ClipboardItem {
     /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
-    pub fn new0(items: &Record<JsString, Any>) -> ClipboardItem {
+    pub fn new(items: &Record<JsString, Any>) -> ClipboardItem {
         Self {
             inner: Any::global("ClipboardItem")
                 .new(&[items.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl ClipboardItem {
     /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
-    pub fn new1(items: &Record<JsString, Any>, options: &ClipboardItemOptions) -> ClipboardItem {
+    pub fn new_with_options(
+        items: &Record<JsString, Any>,
+        options: &ClipboardItemOptions,
+    ) -> ClipboardItem {
         Self {
             inner: Any::global("ClipboardItem")
                 .new(&[items.into(), options.into()])
@@ -99,6 +104,7 @@ impl ClipboardItem {
         }
     }
 }
+
 impl ClipboardItem {
     /// The getType method.
     /// [`ClipboardItem.getType`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/getType)

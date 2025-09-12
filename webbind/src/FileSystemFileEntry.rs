@@ -66,14 +66,20 @@ jsbind::utils::impl_dyn_cast!(FileSystemFileEntry);
 impl FileSystemFileEntry {
     /// The file method.
     /// [`FileSystemFileEntry.file`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry/file)
-    pub fn file0(&self, success_callback: &Function) -> Undefined {
+    pub fn file(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("file", &[success_callback.into()])
             .as_::<Undefined>()
     }
+}
+impl FileSystemFileEntry {
     /// The file method.
     /// [`FileSystemFileEntry.file`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileEntry/file)
-    pub fn file1(&self, success_callback: &Function, error_callback: &Function) -> Undefined {
+    pub fn file_with_error_callback(
+        &self,
+        success_callback: &Function,
+        error_callback: &Function,
+    ) -> Undefined {
         self.inner
             .call("file", &[success_callback.into(), error_callback.into()])
             .as_::<Undefined>()

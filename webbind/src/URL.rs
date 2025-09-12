@@ -210,14 +210,16 @@ impl URL {
 
 impl URL {
     /// The `new URL(..)` constructor, creating a new URL instance
-    pub fn new0(url: &JsString) -> URL {
+    pub fn new(url: &JsString) -> URL {
         Self {
             inner: Any::global("URL").new(&[url.into()]).as_::<Any>(),
         }
     }
+}
 
+impl URL {
     /// The `new URL(..)` constructor, creating a new URL instance
-    pub fn new1(url: &JsString, base: &JsString) -> URL {
+    pub fn new_with_base(url: &JsString, base: &JsString) -> URL {
         Self {
             inner: Any::global("URL")
                 .new(&[url.into(), base.into()])
@@ -225,15 +227,18 @@ impl URL {
         }
     }
 }
+
 impl URL {
     /// The parse method.
     /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
-    pub fn parse0(url: &JsString) -> URL {
+    pub fn parse(url: &JsString) -> URL {
         Any::global("URL").call("parse", &[url.into()]).as_::<URL>()
     }
+}
+impl URL {
     /// The parse method.
     /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
-    pub fn parse1(url: &JsString, base: &JsString) -> URL {
+    pub fn parse_with_base(url: &JsString, base: &JsString) -> URL {
         Any::global("URL")
             .call("parse", &[url.into(), base.into()])
             .as_::<URL>()
@@ -242,14 +247,16 @@ impl URL {
 impl URL {
     /// The canParse method.
     /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
-    pub fn can_parse0(url: &JsString) -> bool {
+    pub fn can_parse(url: &JsString) -> bool {
         Any::global("URL")
             .call("canParse", &[url.into()])
             .as_::<bool>()
     }
+}
+impl URL {
     /// The canParse method.
     /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
-    pub fn can_parse1(url: &JsString, base: &JsString) -> bool {
+    pub fn can_parse_with_base(url: &JsString, base: &JsString) -> bool {
         Any::global("URL")
             .call("canParse", &[url.into(), base.into()])
             .as_::<bool>()

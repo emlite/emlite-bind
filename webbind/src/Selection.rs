@@ -163,14 +163,16 @@ impl Selection {
 impl Selection {
     /// The getComposedRanges method.
     /// [`Selection.getComposedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/getComposedRanges)
-    pub fn get_composed_ranges0(&self) -> TypedArray<StaticRange> {
+    pub fn get_composed_ranges(&self) -> TypedArray<StaticRange> {
         self.inner
             .call("getComposedRanges", &[])
             .as_::<TypedArray<StaticRange>>()
     }
+}
+impl Selection {
     /// The getComposedRanges method.
     /// [`Selection.getComposedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/getComposedRanges)
-    pub fn get_composed_ranges1(
+    pub fn get_composed_ranges_with_options(
         &self,
         options: &GetComposedRangesOptions,
     ) -> TypedArray<StaticRange> {
@@ -182,14 +184,16 @@ impl Selection {
 impl Selection {
     /// The collapse method.
     /// [`Selection.collapse`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/collapse)
-    pub fn collapse0(&self, node: &Node) -> Undefined {
+    pub fn collapse(&self, node: &Node) -> Undefined {
         self.inner
             .call("collapse", &[node.into()])
             .as_::<Undefined>()
     }
+}
+impl Selection {
     /// The collapse method.
     /// [`Selection.collapse`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/collapse)
-    pub fn collapse1(&self, node: &Node, offset: u32) -> Undefined {
+    pub fn collapse_with_offset(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("collapse", &[node.into(), offset.into()])
             .as_::<Undefined>()
@@ -198,14 +202,16 @@ impl Selection {
 impl Selection {
     /// The setPosition method.
     /// [`Selection.setPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/setPosition)
-    pub fn set_position0(&self, node: &Node) -> Undefined {
+    pub fn set_position(&self, node: &Node) -> Undefined {
         self.inner
             .call("setPosition", &[node.into()])
             .as_::<Undefined>()
     }
+}
+impl Selection {
     /// The setPosition method.
     /// [`Selection.setPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/setPosition)
-    pub fn set_position1(&self, node: &Node, offset: u32) -> Undefined {
+    pub fn set_position_with_offset(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("setPosition", &[node.into(), offset.into()])
             .as_::<Undefined>()
@@ -228,12 +234,14 @@ impl Selection {
 impl Selection {
     /// The extend method.
     /// [`Selection.extend`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/extend)
-    pub fn extend0(&self, node: &Node) -> Undefined {
+    pub fn extend(&self, node: &Node) -> Undefined {
         self.inner.call("extend", &[node.into()]).as_::<Undefined>()
     }
+}
+impl Selection {
     /// The extend method.
     /// [`Selection.extend`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/extend)
-    pub fn extend1(&self, node: &Node, offset: u32) -> Undefined {
+    pub fn extend_with_offset(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("extend", &[node.into(), offset.into()])
             .as_::<Undefined>()
@@ -274,26 +282,36 @@ impl Selection {
 impl Selection {
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify0(&self) -> Undefined {
+    pub fn modify(&self) -> Undefined {
         self.inner.call("modify", &[]).as_::<Undefined>()
     }
+}
+impl Selection {
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify1(&self, alter: &JsString) -> Undefined {
+    pub fn modify_with_alter(&self, alter: &JsString) -> Undefined {
         self.inner
             .call("modify", &[alter.into()])
             .as_::<Undefined>()
     }
+}
+impl Selection {
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify2(&self, alter: &JsString, direction: &JsString) -> Undefined {
+    pub fn modify_with_alter_and_direction(
+        &self,
+        alter: &JsString,
+        direction: &JsString,
+    ) -> Undefined {
         self.inner
             .call("modify", &[alter.into(), direction.into()])
             .as_::<Undefined>()
     }
+}
+impl Selection {
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify3(
+    pub fn modify_with_alter_and_direction_and_granularity(
         &self,
         alter: &JsString,
         direction: &JsString,
@@ -319,14 +337,20 @@ impl Selection {
 impl Selection {
     /// The containsNode method.
     /// [`Selection.containsNode`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/containsNode)
-    pub fn contains_node0(&self, node: &Node) -> bool {
+    pub fn contains_node(&self, node: &Node) -> bool {
         self.inner
             .call("containsNode", &[node.into()])
             .as_::<bool>()
     }
+}
+impl Selection {
     /// The containsNode method.
     /// [`Selection.containsNode`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/containsNode)
-    pub fn contains_node1(&self, node: &Node, allow_partial_containment: bool) -> bool {
+    pub fn contains_node_with_allow_partial_containment(
+        &self,
+        node: &Node,
+        allow_partial_containment: bool,
+    ) -> bool {
         self.inner
             .call(
                 "containsNode",

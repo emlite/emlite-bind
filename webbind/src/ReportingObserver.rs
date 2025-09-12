@@ -65,16 +65,21 @@ jsbind::utils::impl_dyn_cast!(ReportingObserver);
 
 impl ReportingObserver {
     /// The `new ReportingObserver(..)` constructor, creating a new ReportingObserver instance
-    pub fn new0(callback: &Function) -> ReportingObserver {
+    pub fn new(callback: &Function) -> ReportingObserver {
         Self {
             inner: Any::global("ReportingObserver")
                 .new(&[callback.into()])
                 .as_::<Any>(),
         }
     }
+}
 
+impl ReportingObserver {
     /// The `new ReportingObserver(..)` constructor, creating a new ReportingObserver instance
-    pub fn new1(callback: &Function, options: &ReportingObserverOptions) -> ReportingObserver {
+    pub fn new_with_options(
+        callback: &Function,
+        options: &ReportingObserverOptions,
+    ) -> ReportingObserver {
         Self {
             inner: Any::global("ReportingObserver")
                 .new(&[callback.into(), options.into()])
@@ -82,6 +87,7 @@ impl ReportingObserver {
         }
     }
 }
+
 impl ReportingObserver {
     /// The observe method.
     /// [`ReportingObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/ReportingObserver/observe)

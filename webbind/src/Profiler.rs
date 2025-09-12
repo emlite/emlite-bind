@@ -88,6 +88,7 @@ impl Profiler {
         }
     }
 }
+
 impl Profiler {
     /// The stop method.
     /// [`Profiler.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler/stop)
