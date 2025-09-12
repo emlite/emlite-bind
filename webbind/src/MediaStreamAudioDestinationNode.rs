@@ -64,6 +64,14 @@ impl From<&MediaStreamAudioDestinationNode> for Any {
 jsbind::utils::impl_dyn_cast!(MediaStreamAudioDestinationNode);
 
 impl MediaStreamAudioDestinationNode {
+    /// Getter of the `stream` attribute.
+    /// [`MediaStreamAudioDestinationNode.stream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode/stream)
+    pub fn stream(&self) -> MediaStream {
+        self.inner.get("stream").as_::<MediaStream>()
+    }
+}
+
+impl MediaStreamAudioDestinationNode {
     /// The `new MediaStreamAudioDestinationNode(..)` constructor, creating a new MediaStreamAudioDestinationNode instance
     pub fn new0(context: &AudioContext) -> MediaStreamAudioDestinationNode {
         Self {
@@ -83,12 +91,5 @@ impl MediaStreamAudioDestinationNode {
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
-    }
-}
-impl MediaStreamAudioDestinationNode {
-    /// Getter of the `stream` attribute.
-    /// [`MediaStreamAudioDestinationNode.stream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode/stream)
-    pub fn stream(&self) -> MediaStream {
-        self.inner.get("stream").as_::<MediaStream>()
     }
 }

@@ -64,25 +64,6 @@ impl From<&CSSOKLab> for Any {
 jsbind::utils::impl_dyn_cast!(CSSOKLab);
 
 impl CSSOKLab {
-    /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
-    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSOKLab {
-        Self {
-            inner: Any::global("CSSOKLab")
-                .new(&[l.into(), a.into(), b.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
-    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSOKLab {
-        Self {
-            inner: Any::global("CSSOKLab")
-                .new(&[l.into(), a.into(), b.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSOKLab {
     /// Getter of the `l` attribute.
     /// [`CSSOKLab.l`](https://developer.mozilla.org/en-US/docs/Web/API/CSSOKLab/l)
     pub fn l(&self) -> Any {
@@ -132,5 +113,25 @@ impl CSSOKLab {
     /// [`CSSOKLab.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSOKLab/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSOKLab {
+    /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
+    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSOKLab {
+        Self {
+            inner: Any::global("CSSOKLab")
+                .new(&[l.into(), a.into(), b.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSOKLab(..)` constructor, creating a new CSSOKLab instance
+    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSOKLab {
+        Self {
+            inner: Any::global("CSSOKLab")
+                .new(&[l.into(), a.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

@@ -64,16 +64,6 @@ impl From<&HTMLSourceElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLSourceElement);
 
 impl HTMLSourceElement {
-    /// The `new HTMLSourceElement(..)` constructor, creating a new HTMLSourceElement instance
-    pub fn new() -> HTMLSourceElement {
-        Self {
-            inner: Any::global("HTMLSourceElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLSourceElement {
     /// Getter of the `src` attribute.
     /// [`HTMLSourceElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/src)
     pub fn src(&self) -> JsString {
@@ -162,5 +152,16 @@ impl HTMLSourceElement {
     /// [`HTMLSourceElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/height)
     pub fn set_height(&mut self, value: u32) {
         self.inner.set("height", value);
+    }
+}
+
+impl HTMLSourceElement {
+    /// The `new HTMLSourceElement(..)` constructor, creating a new HTMLSourceElement instance
+    pub fn new() -> HTMLSourceElement {
+        Self {
+            inner: Any::global("HTMLSourceElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

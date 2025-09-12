@@ -64,19 +64,6 @@ impl From<&CSSParserFunction> for Any {
 jsbind::utils::impl_dyn_cast!(CSSParserFunction);
 
 impl CSSParserFunction {
-    /// The `new CSSParserFunction(..)` constructor, creating a new CSSParserFunction instance
-    pub fn new(
-        name: &JsString,
-        args: &TypedArray<TypedArray<CSSParserValue>>,
-    ) -> CSSParserFunction {
-        Self {
-            inner: Any::global("CSSParserFunction")
-                .new(&[name.into(), args.into()])
-                .as_::<CSSParserValue>(),
-        }
-    }
-}
-impl CSSParserFunction {
     /// Getter of the `name` attribute.
     /// [`CSSParserFunction.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserFunction/name)
     pub fn name(&self) -> JsString {
@@ -90,5 +77,19 @@ impl CSSParserFunction {
         self.inner
             .get("args")
             .as_::<TypedArray<TypedArray<CSSParserValue>>>()
+    }
+}
+
+impl CSSParserFunction {
+    /// The `new CSSParserFunction(..)` constructor, creating a new CSSParserFunction instance
+    pub fn new(
+        name: &JsString,
+        args: &TypedArray<TypedArray<CSSParserValue>>,
+    ) -> CSSParserFunction {
+        Self {
+            inner: Any::global("CSSParserFunction")
+                .new(&[name.into(), args.into()])
+                .as_::<CSSParserValue>(),
+        }
     }
 }

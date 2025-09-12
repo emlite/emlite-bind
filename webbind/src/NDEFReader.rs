@@ -64,14 +64,6 @@ impl From<&NDEFReader> for Any {
 jsbind::utils::impl_dyn_cast!(NDEFReader);
 
 impl NDEFReader {
-    /// The `new NDEFReader(..)` constructor, creating a new NDEFReader instance
-    pub fn new() -> NDEFReader {
-        Self {
-            inner: Any::global("NDEFReader").new(&[]).as_::<EventTarget>(),
-        }
-    }
-}
-impl NDEFReader {
     /// Getter of the `onreading` attribute.
     /// [`NDEFReader.onreading`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/onreading)
     pub fn onreading(&self) -> Any {
@@ -95,6 +87,15 @@ impl NDEFReader {
     /// [`NDEFReader.onreadingerror`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReader/onreadingerror)
     pub fn set_onreadingerror(&mut self, value: &Any) {
         self.inner.set("onreadingerror", value);
+    }
+}
+
+impl NDEFReader {
+    /// The `new NDEFReader(..)` constructor, creating a new NDEFReader instance
+    pub fn new() -> NDEFReader {
+        Self {
+            inner: Any::global("NDEFReader").new(&[]).as_::<EventTarget>(),
+        }
     }
 }
 impl NDEFReader {

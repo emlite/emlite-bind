@@ -64,6 +64,14 @@ impl From<&DelayNode> for Any {
 jsbind::utils::impl_dyn_cast!(DelayNode);
 
 impl DelayNode {
+    /// Getter of the `delayTime` attribute.
+    /// [`DelayNode.delayTime`](https://developer.mozilla.org/en-US/docs/Web/API/DelayNode/delayTime)
+    pub fn delay_time(&self) -> AudioParam {
+        self.inner.get("delayTime").as_::<AudioParam>()
+    }
+}
+
+impl DelayNode {
     /// The `new DelayNode(..)` constructor, creating a new DelayNode instance
     pub fn new0(context: &BaseAudioContext) -> DelayNode {
         Self {
@@ -80,12 +88,5 @@ impl DelayNode {
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
-    }
-}
-impl DelayNode {
-    /// Getter of the `delayTime` attribute.
-    /// [`DelayNode.delayTime`](https://developer.mozilla.org/en-US/docs/Web/API/DelayNode/delayTime)
-    pub fn delay_time(&self) -> AudioParam {
-        self.inner.get("delayTime").as_::<AudioParam>()
     }
 }

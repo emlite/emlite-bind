@@ -87,15 +87,6 @@ impl ServiceWorkerGlobalScope {
     }
 }
 impl ServiceWorkerGlobalScope {
-    /// The skipWaiting method.
-    /// [`ServiceWorkerGlobalScope.skipWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting)
-    pub fn skip_waiting(&self) -> Promise<Undefined> {
-        self.inner
-            .call("skipWaiting", &[])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl ServiceWorkerGlobalScope {
     /// Getter of the `oninstall` attribute.
     /// [`ServiceWorkerGlobalScope.oninstall`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/oninstall)
     pub fn oninstall(&self) -> Any {
@@ -347,5 +338,14 @@ impl ServiceWorkerGlobalScope {
     /// [`ServiceWorkerGlobalScope.onpushsubscriptionchange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/onpushsubscriptionchange)
     pub fn set_onpushsubscriptionchange(&mut self, value: &Any) {
         self.inner.set("onpushsubscriptionchange", value);
+    }
+}
+impl ServiceWorkerGlobalScope {
+    /// The skipWaiting method.
+    /// [`ServiceWorkerGlobalScope.skipWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting)
+    pub fn skip_waiting(&self) -> Promise<Undefined> {
+        self.inner
+            .call("skipWaiting", &[])
+            .as_::<Promise<Undefined>>()
     }
 }

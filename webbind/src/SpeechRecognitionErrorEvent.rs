@@ -64,19 +64,6 @@ impl From<&SpeechRecognitionErrorEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionErrorEvent);
 
 impl SpeechRecognitionErrorEvent {
-    /// The `new SpeechRecognitionErrorEvent(..)` constructor, creating a new SpeechRecognitionErrorEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &SpeechRecognitionErrorEventInit,
-    ) -> SpeechRecognitionErrorEvent {
-        Self {
-            inner: Any::global("SpeechRecognitionErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl SpeechRecognitionErrorEvent {
     /// Getter of the `error` attribute.
     /// [`SpeechRecognitionErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionErrorEvent/error)
     pub fn error(&self) -> SpeechRecognitionErrorCode {
@@ -88,5 +75,19 @@ impl SpeechRecognitionErrorEvent {
     /// [`SpeechRecognitionErrorEvent.message`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionErrorEvent/message)
     pub fn message(&self) -> JsString {
         self.inner.get("message").as_::<JsString>()
+    }
+}
+
+impl SpeechRecognitionErrorEvent {
+    /// The `new SpeechRecognitionErrorEvent(..)` constructor, creating a new SpeechRecognitionErrorEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &SpeechRecognitionErrorEventInit,
+    ) -> SpeechRecognitionErrorEvent {
+        Self {
+            inner: Any::global("SpeechRecognitionErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

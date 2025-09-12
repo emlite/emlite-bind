@@ -64,16 +64,6 @@ impl From<&HTMLLegendElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLLegendElement);
 
 impl HTMLLegendElement {
-    /// The `new HTMLLegendElement(..)` constructor, creating a new HTMLLegendElement instance
-    pub fn new() -> HTMLLegendElement {
-        Self {
-            inner: Any::global("HTMLLegendElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLLegendElement {
     /// Getter of the `form` attribute.
     /// [`HTMLLegendElement.form`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement/form)
     pub fn form(&self) -> HTMLFormElement {
@@ -91,5 +81,16 @@ impl HTMLLegendElement {
     /// [`HTMLLegendElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement/align)
     pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
+    }
+}
+
+impl HTMLLegendElement {
+    /// The `new HTMLLegendElement(..)` constructor, creating a new HTMLLegendElement instance
+    pub fn new() -> HTMLLegendElement {
+        Self {
+            inner: Any::global("HTMLLegendElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

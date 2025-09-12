@@ -64,16 +64,6 @@ impl From<&HTMLOptGroupElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLOptGroupElement);
 
 impl HTMLOptGroupElement {
-    /// The `new HTMLOptGroupElement(..)` constructor, creating a new HTMLOptGroupElement instance
-    pub fn new() -> HTMLOptGroupElement {
-        Self {
-            inner: Any::global("HTMLOptGroupElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLOptGroupElement {
     /// Getter of the `disabled` attribute.
     /// [`HTMLOptGroupElement.disabled`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptGroupElement/disabled)
     pub fn disabled(&self) -> bool {
@@ -97,5 +87,16 @@ impl HTMLOptGroupElement {
     /// [`HTMLOptGroupElement.label`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptGroupElement/label)
     pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
+    }
+}
+
+impl HTMLOptGroupElement {
+    /// The `new HTMLOptGroupElement(..)` constructor, creating a new HTMLOptGroupElement instance
+    pub fn new() -> HTMLOptGroupElement {
+        Self {
+            inner: Any::global("HTMLOptGroupElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

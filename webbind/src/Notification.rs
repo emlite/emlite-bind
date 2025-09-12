@@ -64,47 +64,12 @@ impl From<&Notification> for Any {
 jsbind::utils::impl_dyn_cast!(Notification);
 
 impl Notification {
-    /// The `new Notification(..)` constructor, creating a new Notification instance
-    pub fn new0(title: &JsString) -> Notification {
-        Self {
-            inner: Any::global("Notification")
-                .new(&[title.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-
-    /// The `new Notification(..)` constructor, creating a new Notification instance
-    pub fn new1(title: &JsString, options: &NotificationOptions) -> Notification {
-        Self {
-            inner: Any::global("Notification")
-                .new(&[title.into(), options.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl Notification {
     /// Getter of the `permission` static attribute.
     /// [`Notification.permission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/permission)
     pub fn permission() -> NotificationPermission {
         Any::global("Notification")
             .get("permission")
             .as_::<NotificationPermission>()
-    }
-}
-impl Notification {
-    /// The requestPermission method.
-    /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
-    pub fn request_permission0() -> Promise<NotificationPermission> {
-        Any::global("Notification")
-            .call("requestPermission", &[])
-            .as_::<Promise<NotificationPermission>>()
-    }
-    /// The requestPermission method.
-    /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
-    pub fn request_permission1(deprecated_callback: &Function) -> Promise<NotificationPermission> {
-        Any::global("Notification")
-            .call("requestPermission", &[deprecated_callback.into()])
-            .as_::<Promise<NotificationPermission>>()
     }
 }
 impl Notification {
@@ -278,6 +243,42 @@ impl Notification {
         self.inner
             .get("actions")
             .as_::<TypedArray<NotificationAction>>()
+    }
+}
+
+impl Notification {
+    /// The `new Notification(..)` constructor, creating a new Notification instance
+    pub fn new0(title: &JsString) -> Notification {
+        Self {
+            inner: Any::global("Notification")
+                .new(&[title.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    /// The `new Notification(..)` constructor, creating a new Notification instance
+    pub fn new1(title: &JsString, options: &NotificationOptions) -> Notification {
+        Self {
+            inner: Any::global("Notification")
+                .new(&[title.into(), options.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+impl Notification {
+    /// The requestPermission method.
+    /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
+    pub fn request_permission0() -> Promise<NotificationPermission> {
+        Any::global("Notification")
+            .call("requestPermission", &[])
+            .as_::<Promise<NotificationPermission>>()
+    }
+    /// The requestPermission method.
+    /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
+    pub fn request_permission1(deprecated_callback: &Function) -> Promise<NotificationPermission> {
+        Any::global("Notification")
+            .call("requestPermission", &[deprecated_callback.into()])
+            .as_::<Promise<NotificationPermission>>()
     }
 }
 impl Notification {

@@ -64,6 +64,27 @@ impl From<&DataCue> for Any {
 jsbind::utils::impl_dyn_cast!(DataCue);
 
 impl DataCue {
+    /// Getter of the `value` attribute.
+    /// [`DataCue.value`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue/value)
+    pub fn value(&self) -> Any {
+        self.inner.get("value").as_::<Any>()
+    }
+
+    /// Setter of the `value` attribute.
+    /// [`DataCue.value`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue/value)
+    pub fn set_value(&mut self, value: &Any) {
+        self.inner.set("value", value);
+    }
+}
+impl DataCue {
+    /// Getter of the `type` attribute.
+    /// [`DataCue.type`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue/type)
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
+    }
+}
+
+impl DataCue {
     /// The `new DataCue(..)` constructor, creating a new DataCue instance
     pub fn new0(start_time: f64, end_time: f64, value: &Any) -> DataCue {
         Self {
@@ -85,25 +106,5 @@ impl DataCue {
                 ])
                 .as_::<TextTrackCue>(),
         }
-    }
-}
-impl DataCue {
-    /// Getter of the `value` attribute.
-    /// [`DataCue.value`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue/value)
-    pub fn value(&self) -> Any {
-        self.inner.get("value").as_::<Any>()
-    }
-
-    /// Setter of the `value` attribute.
-    /// [`DataCue.value`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue/value)
-    pub fn set_value(&mut self, value: &Any) {
-        self.inner.set("value", value);
-    }
-}
-impl DataCue {
-    /// Getter of the `type` attribute.
-    /// [`DataCue.type`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue/type)
-    pub fn type_(&self) -> JsString {
-        self.inner.get("type").as_::<JsString>()
     }
 }

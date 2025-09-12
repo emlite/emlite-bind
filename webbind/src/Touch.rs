@@ -64,16 +64,6 @@ impl From<&Touch> for Any {
 jsbind::utils::impl_dyn_cast!(Touch);
 
 impl Touch {
-    /// The `new Touch(..)` constructor, creating a new Touch instance
-    pub fn new(touch_init_dict: &TouchInit) -> Touch {
-        Self {
-            inner: Any::global("Touch")
-                .new(&[touch_init_dict.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl Touch {
     /// Getter of the `identifier` attribute.
     /// [`Touch.identifier`](https://developer.mozilla.org/en-US/docs/Web/API/Touch/identifier)
     pub fn identifier(&self) -> i32 {
@@ -176,5 +166,16 @@ impl Touch {
     /// [`Touch.touchType`](https://developer.mozilla.org/en-US/docs/Web/API/Touch/touchType)
     pub fn touch_type(&self) -> TouchType {
         self.inner.get("touchType").as_::<TouchType>()
+    }
+}
+
+impl Touch {
+    /// The `new Touch(..)` constructor, creating a new Touch instance
+    pub fn new(touch_init_dict: &TouchInit) -> Touch {
+        Self {
+            inner: Any::global("Touch")
+                .new(&[touch_init_dict.into()])
+                .as_::<Any>(),
+        }
     }
 }

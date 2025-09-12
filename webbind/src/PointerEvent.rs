@@ -64,25 +64,6 @@ impl From<&PointerEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PointerEvent);
 
 impl PointerEvent {
-    /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new0(type_: &JsString) -> PointerEvent {
-        Self {
-            inner: Any::global("PointerEvent")
-                .new(&[type_.into()])
-                .as_::<MouseEvent>(),
-        }
-    }
-
-    /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &PointerEventInit) -> PointerEvent {
-        Self {
-            inner: Any::global("PointerEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<MouseEvent>(),
-        }
-    }
-}
-impl PointerEvent {
     /// Getter of the `pointerId` attribute.
     /// [`PointerEvent.pointerId`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/pointerId)
     pub fn pointer_id(&self) -> i32 {
@@ -171,6 +152,26 @@ impl PointerEvent {
     /// [`PointerEvent.persistentDeviceId`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/persistentDeviceId)
     pub fn persistent_device_id(&self) -> i32 {
         self.inner.get("persistentDeviceId").as_::<i32>()
+    }
+}
+
+impl PointerEvent {
+    /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
+    pub fn new0(type_: &JsString) -> PointerEvent {
+        Self {
+            inner: Any::global("PointerEvent")
+                .new(&[type_.into()])
+                .as_::<MouseEvent>(),
+        }
+    }
+
+    /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &PointerEventInit) -> PointerEvent {
+        Self {
+            inner: Any::global("PointerEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<MouseEvent>(),
+        }
     }
 }
 impl PointerEvent {

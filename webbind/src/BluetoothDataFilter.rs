@@ -64,6 +64,21 @@ impl From<&BluetoothDataFilter> for Any {
 jsbind::utils::impl_dyn_cast!(BluetoothDataFilter);
 
 impl BluetoothDataFilter {
+    /// Getter of the `dataPrefix` attribute.
+    /// [`BluetoothDataFilter.dataPrefix`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter/dataPrefix)
+    pub fn data_prefix(&self) -> ArrayBuffer {
+        self.inner.get("dataPrefix").as_::<ArrayBuffer>()
+    }
+}
+impl BluetoothDataFilter {
+    /// Getter of the `mask` attribute.
+    /// [`BluetoothDataFilter.mask`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter/mask)
+    pub fn mask(&self) -> ArrayBuffer {
+        self.inner.get("mask").as_::<ArrayBuffer>()
+    }
+}
+
+impl BluetoothDataFilter {
     /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
     pub fn new0() -> BluetoothDataFilter {
         Self {
@@ -78,19 +93,5 @@ impl BluetoothDataFilter {
                 .new(&[init.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl BluetoothDataFilter {
-    /// Getter of the `dataPrefix` attribute.
-    /// [`BluetoothDataFilter.dataPrefix`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter/dataPrefix)
-    pub fn data_prefix(&self) -> ArrayBuffer {
-        self.inner.get("dataPrefix").as_::<ArrayBuffer>()
-    }
-}
-impl BluetoothDataFilter {
-    /// Getter of the `mask` attribute.
-    /// [`BluetoothDataFilter.mask`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter/mask)
-    pub fn mask(&self) -> ArrayBuffer {
-        self.inner.get("mask").as_::<ArrayBuffer>()
     }
 }

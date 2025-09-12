@@ -64,6 +64,14 @@ impl From<&ShadowAnimation> for Any {
 jsbind::utils::impl_dyn_cast!(ShadowAnimation);
 
 impl ShadowAnimation {
+    /// Getter of the `sourceAnimation` attribute.
+    /// [`ShadowAnimation.sourceAnimation`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowAnimation/sourceAnimation)
+    pub fn source_animation(&self) -> Animation {
+        self.inner.get("sourceAnimation").as_::<Animation>()
+    }
+}
+
+impl ShadowAnimation {
     /// The `new ShadowAnimation(..)` constructor, creating a new ShadowAnimation instance
     pub fn new(source: &Animation, new_target: &Any) -> ShadowAnimation {
         Self {
@@ -71,12 +79,5 @@ impl ShadowAnimation {
                 .new(&[source.into(), new_target.into()])
                 .as_::<Animation>(),
         }
-    }
-}
-impl ShadowAnimation {
-    /// Getter of the `sourceAnimation` attribute.
-    /// [`ShadowAnimation.sourceAnimation`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowAnimation/sourceAnimation)
-    pub fn source_animation(&self) -> Animation {
-        self.inner.get("sourceAnimation").as_::<Animation>()
     }
 }

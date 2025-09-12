@@ -84,6 +84,20 @@ impl CharacterData {
     }
 }
 impl CharacterData {
+    /// Getter of the `previousElementSibling` attribute.
+    /// [`CharacterData.previousElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/previousElementSibling)
+    pub fn previous_element_sibling(&self) -> Element {
+        self.inner.get("previousElementSibling").as_::<Element>()
+    }
+}
+impl CharacterData {
+    /// Getter of the `nextElementSibling` attribute.
+    /// [`CharacterData.nextElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/nextElementSibling)
+    pub fn next_element_sibling(&self) -> Element {
+        self.inner.get("nextElementSibling").as_::<Element>()
+    }
+}
+impl CharacterData {
     /// The substringData method.
     /// [`CharacterData.substringData`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/substringData)
     pub fn substring_data(&self, offset: u32, count: u32) -> JsString {
@@ -126,20 +140,6 @@ impl CharacterData {
         self.inner
             .call("replaceData", &[offset.into(), count.into(), data.into()])
             .as_::<Undefined>()
-    }
-}
-impl CharacterData {
-    /// Getter of the `previousElementSibling` attribute.
-    /// [`CharacterData.previousElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/previousElementSibling)
-    pub fn previous_element_sibling(&self) -> Element {
-        self.inner.get("previousElementSibling").as_::<Element>()
-    }
-}
-impl CharacterData {
-    /// Getter of the `nextElementSibling` attribute.
-    /// [`CharacterData.nextElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/nextElementSibling)
-    pub fn next_element_sibling(&self) -> Element {
-        self.inner.get("nextElementSibling").as_::<Element>()
     }
 }
 impl CharacterData {

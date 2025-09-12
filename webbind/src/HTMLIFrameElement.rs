@@ -64,16 +64,6 @@ impl From<&HTMLIFrameElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLIFrameElement);
 
 impl HTMLIFrameElement {
-    /// The `new HTMLIFrameElement(..)` constructor, creating a new HTMLIFrameElement instance
-    pub fn new() -> HTMLIFrameElement {
-        Self {
-            inner: Any::global("HTMLIFrameElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLIFrameElement {
     /// Getter of the `src` attribute.
     /// [`HTMLIFrameElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/src)
     pub fn src(&self) -> JsString {
@@ -209,13 +199,6 @@ impl HTMLIFrameElement {
     /// [`HTMLIFrameElement.contentWindow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow)
     pub fn content_window(&self) -> Any {
         self.inner.get("contentWindow").as_::<Any>()
-    }
-}
-impl HTMLIFrameElement {
-    /// The getSVGDocument method.
-    /// [`HTMLIFrameElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/getSVGDocument)
-    pub fn get_svg_document(&self) -> Document {
-        self.inner.call("getSVGDocument", &[]).as_::<Document>()
     }
 }
 impl HTMLIFrameElement {
@@ -368,5 +351,23 @@ impl HTMLIFrameElement {
     /// [`HTMLIFrameElement.sharedStorageWritable`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/sharedStorageWritable)
     pub fn set_shared_storage_writable(&mut self, value: bool) {
         self.inner.set("sharedStorageWritable", value);
+    }
+}
+
+impl HTMLIFrameElement {
+    /// The `new HTMLIFrameElement(..)` constructor, creating a new HTMLIFrameElement instance
+    pub fn new() -> HTMLIFrameElement {
+        Self {
+            inner: Any::global("HTMLIFrameElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLIFrameElement {
+    /// The getSVGDocument method.
+    /// [`HTMLIFrameElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/getSVGDocument)
+    pub fn get_svg_document(&self) -> Document {
+        self.inner.call("getSVGDocument", &[]).as_::<Document>()
     }
 }

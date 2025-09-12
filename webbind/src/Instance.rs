@@ -64,6 +64,14 @@ impl From<&Instance> for Any {
 jsbind::utils::impl_dyn_cast!(Instance);
 
 impl Instance {
+    /// Getter of the `exports` attribute.
+    /// [`Instance.exports`](https://developer.mozilla.org/en-US/docs/Web/API/Instance/exports)
+    pub fn exports(&self) -> Object {
+        self.inner.get("exports").as_::<Object>()
+    }
+}
+
+impl Instance {
     /// The `new Instance(..)` constructor, creating a new Instance instance
     pub fn new0(module: &Module) -> Instance {
         Self {
@@ -78,12 +86,5 @@ impl Instance {
                 .new(&[module.into(), import_object.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl Instance {
-    /// Getter of the `exports` attribute.
-    /// [`Instance.exports`](https://developer.mozilla.org/en-US/docs/Web/API/Instance/exports)
-    pub fn exports(&self) -> Object {
-        self.inner.get("exports").as_::<Object>()
     }
 }

@@ -64,17 +64,18 @@ impl From<&AudioWorkletProcessor> for Any {
 jsbind::utils::impl_dyn_cast!(AudioWorkletProcessor);
 
 impl AudioWorkletProcessor {
+    /// Getter of the `port` attribute.
+    /// [`AudioWorkletProcessor.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor/port)
+    pub fn port(&self) -> MessagePort {
+        self.inner.get("port").as_::<MessagePort>()
+    }
+}
+
+impl AudioWorkletProcessor {
     /// The `new AudioWorkletProcessor(..)` constructor, creating a new AudioWorkletProcessor instance
     pub fn new() -> AudioWorkletProcessor {
         Self {
             inner: Any::global("AudioWorkletProcessor").new(&[]).as_::<Any>(),
         }
-    }
-}
-impl AudioWorkletProcessor {
-    /// Getter of the `port` attribute.
-    /// [`AudioWorkletProcessor.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor/port)
-    pub fn port(&self) -> MessagePort {
-        self.inner.get("port").as_::<MessagePort>()
     }
 }

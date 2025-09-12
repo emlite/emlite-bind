@@ -64,16 +64,6 @@ impl From<&NavigateEvent> for Any {
 jsbind::utils::impl_dyn_cast!(NavigateEvent);
 
 impl NavigateEvent {
-    /// The `new NavigateEvent(..)` constructor, creating a new NavigateEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &NavigateEventInit) -> NavigateEvent {
-        Self {
-            inner: Any::global("NavigateEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl NavigateEvent {
     /// Getter of the `navigationType` attribute.
     /// [`NavigateEvent.navigationType`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/navigationType)
     pub fn navigation_type(&self) -> NavigationType {
@@ -148,6 +138,17 @@ impl NavigateEvent {
     /// [`NavigateEvent.sourceElement`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/sourceElement)
     pub fn source_element(&self) -> Element {
         self.inner.get("sourceElement").as_::<Element>()
+    }
+}
+
+impl NavigateEvent {
+    /// The `new NavigateEvent(..)` constructor, creating a new NavigateEvent instance
+    pub fn new(type_: &JsString, event_init_dict: &NavigateEventInit) -> NavigateEvent {
+        Self {
+            inner: Any::global("NavigateEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }
 impl NavigateEvent {

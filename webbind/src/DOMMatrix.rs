@@ -64,57 +64,6 @@ impl From<&DOMMatrix> for Any {
 jsbind::utils::impl_dyn_cast!(DOMMatrix);
 
 impl DOMMatrix {
-    /// The `new DOMMatrix(..)` constructor, creating a new DOMMatrix instance
-    pub fn new0() -> DOMMatrix {
-        Self {
-            inner: Any::global("DOMMatrix").new(&[]).as_::<DOMMatrixReadOnly>(),
-        }
-    }
-
-    /// The `new DOMMatrix(..)` constructor, creating a new DOMMatrix instance
-    pub fn new1(init: &Any) -> DOMMatrix {
-        Self {
-            inner: Any::global("DOMMatrix")
-                .new(&[init.into()])
-                .as_::<DOMMatrixReadOnly>(),
-        }
-    }
-}
-impl DOMMatrix {
-    /// The fromMatrix method.
-    /// [`DOMMatrix.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromMatrix)
-    pub fn from_matrix0() -> DOMMatrix {
-        Any::global("DOMMatrix")
-            .call("fromMatrix", &[])
-            .as_::<DOMMatrix>()
-    }
-    /// The fromMatrix method.
-    /// [`DOMMatrix.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromMatrix)
-    pub fn from_matrix1(other: &DOMMatrixInit) -> DOMMatrix {
-        Any::global("DOMMatrix")
-            .call("fromMatrix", &[other.into()])
-            .as_::<DOMMatrix>()
-    }
-}
-impl DOMMatrix {
-    /// The fromFloat32Array method.
-    /// [`DOMMatrix.fromFloat32Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromFloat32Array)
-    pub fn from_float32_array(array32: &Float32Array) -> DOMMatrix {
-        Any::global("DOMMatrix")
-            .call("fromFloat32Array", &[array32.into()])
-            .as_::<DOMMatrix>()
-    }
-}
-impl DOMMatrix {
-    /// The fromFloat64Array method.
-    /// [`DOMMatrix.fromFloat64Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromFloat64Array)
-    pub fn from_float64_array(array64: &Float64Array) -> DOMMatrix {
-        Any::global("DOMMatrix")
-            .call("fromFloat64Array", &[array64.into()])
-            .as_::<DOMMatrix>()
-    }
-}
-impl DOMMatrix {
     /// Getter of the `a` attribute.
     /// [`DOMMatrix.a`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/a)
     pub fn a(&self) -> f64 {
@@ -398,6 +347,58 @@ impl DOMMatrix {
     /// [`DOMMatrix.m44`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/m44)
     pub fn set_m44(&mut self, value: f64) {
         self.inner.set("m44", value);
+    }
+}
+
+impl DOMMatrix {
+    /// The `new DOMMatrix(..)` constructor, creating a new DOMMatrix instance
+    pub fn new0() -> DOMMatrix {
+        Self {
+            inner: Any::global("DOMMatrix").new(&[]).as_::<DOMMatrixReadOnly>(),
+        }
+    }
+
+    /// The `new DOMMatrix(..)` constructor, creating a new DOMMatrix instance
+    pub fn new1(init: &Any) -> DOMMatrix {
+        Self {
+            inner: Any::global("DOMMatrix")
+                .new(&[init.into()])
+                .as_::<DOMMatrixReadOnly>(),
+        }
+    }
+}
+impl DOMMatrix {
+    /// The fromMatrix method.
+    /// [`DOMMatrix.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromMatrix)
+    pub fn from_matrix0() -> DOMMatrix {
+        Any::global("DOMMatrix")
+            .call("fromMatrix", &[])
+            .as_::<DOMMatrix>()
+    }
+    /// The fromMatrix method.
+    /// [`DOMMatrix.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromMatrix)
+    pub fn from_matrix1(other: &DOMMatrixInit) -> DOMMatrix {
+        Any::global("DOMMatrix")
+            .call("fromMatrix", &[other.into()])
+            .as_::<DOMMatrix>()
+    }
+}
+impl DOMMatrix {
+    /// The fromFloat32Array method.
+    /// [`DOMMatrix.fromFloat32Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromFloat32Array)
+    pub fn from_float32_array(array32: &Float32Array) -> DOMMatrix {
+        Any::global("DOMMatrix")
+            .call("fromFloat32Array", &[array32.into()])
+            .as_::<DOMMatrix>()
+    }
+}
+impl DOMMatrix {
+    /// The fromFloat64Array method.
+    /// [`DOMMatrix.fromFloat64Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/fromFloat64Array)
+    pub fn from_float64_array(array64: &Float64Array) -> DOMMatrix {
+        Any::global("DOMMatrix")
+            .call("fromFloat64Array", &[array64.into()])
+            .as_::<DOMMatrix>()
     }
 }
 impl DOMMatrix {

@@ -85,6 +85,58 @@ impl BluetoothRemoteGATTService {
     }
 }
 impl BluetoothRemoteGATTService {
+    /// Getter of the `oncharacteristicvaluechanged` attribute.
+    /// [`BluetoothRemoteGATTService.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/oncharacteristicvaluechanged)
+    pub fn oncharacteristicvaluechanged(&self) -> Any {
+        self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
+    }
+
+    /// Setter of the `oncharacteristicvaluechanged` attribute.
+    /// [`BluetoothRemoteGATTService.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/oncharacteristicvaluechanged)
+    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
+        self.inner.set("oncharacteristicvaluechanged", value);
+    }
+}
+impl BluetoothRemoteGATTService {
+    /// Getter of the `onserviceadded` attribute.
+    /// [`BluetoothRemoteGATTService.onserviceadded`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceadded)
+    pub fn onserviceadded(&self) -> Any {
+        self.inner.get("onserviceadded").as_::<Any>()
+    }
+
+    /// Setter of the `onserviceadded` attribute.
+    /// [`BluetoothRemoteGATTService.onserviceadded`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceadded)
+    pub fn set_onserviceadded(&mut self, value: &Any) {
+        self.inner.set("onserviceadded", value);
+    }
+}
+impl BluetoothRemoteGATTService {
+    /// Getter of the `onservicechanged` attribute.
+    /// [`BluetoothRemoteGATTService.onservicechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onservicechanged)
+    pub fn onservicechanged(&self) -> Any {
+        self.inner.get("onservicechanged").as_::<Any>()
+    }
+
+    /// Setter of the `onservicechanged` attribute.
+    /// [`BluetoothRemoteGATTService.onservicechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onservicechanged)
+    pub fn set_onservicechanged(&mut self, value: &Any) {
+        self.inner.set("onservicechanged", value);
+    }
+}
+impl BluetoothRemoteGATTService {
+    /// Getter of the `onserviceremoved` attribute.
+    /// [`BluetoothRemoteGATTService.onserviceremoved`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceremoved)
+    pub fn onserviceremoved(&self) -> Any {
+        self.inner.get("onserviceremoved").as_::<Any>()
+    }
+
+    /// Setter of the `onserviceremoved` attribute.
+    /// [`BluetoothRemoteGATTService.onserviceremoved`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceremoved)
+    pub fn set_onserviceremoved(&mut self, value: &Any) {
+        self.inner.set("onserviceremoved", value);
+    }
+}
+impl BluetoothRemoteGATTService {
     /// The getCharacteristic method.
     /// [`BluetoothRemoteGATTService.getCharacteristic`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristic)
     pub fn get_characteristic(
@@ -141,57 +193,5 @@ impl BluetoothRemoteGATTService {
         self.inner
             .call("getIncludedServices", &[service.into()])
             .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
-    }
-}
-impl BluetoothRemoteGATTService {
-    /// Getter of the `oncharacteristicvaluechanged` attribute.
-    /// [`BluetoothRemoteGATTService.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/oncharacteristicvaluechanged)
-    pub fn oncharacteristicvaluechanged(&self) -> Any {
-        self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
-    }
-
-    /// Setter of the `oncharacteristicvaluechanged` attribute.
-    /// [`BluetoothRemoteGATTService.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/oncharacteristicvaluechanged)
-    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
-        self.inner.set("oncharacteristicvaluechanged", value);
-    }
-}
-impl BluetoothRemoteGATTService {
-    /// Getter of the `onserviceadded` attribute.
-    /// [`BluetoothRemoteGATTService.onserviceadded`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceadded)
-    pub fn onserviceadded(&self) -> Any {
-        self.inner.get("onserviceadded").as_::<Any>()
-    }
-
-    /// Setter of the `onserviceadded` attribute.
-    /// [`BluetoothRemoteGATTService.onserviceadded`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceadded)
-    pub fn set_onserviceadded(&mut self, value: &Any) {
-        self.inner.set("onserviceadded", value);
-    }
-}
-impl BluetoothRemoteGATTService {
-    /// Getter of the `onservicechanged` attribute.
-    /// [`BluetoothRemoteGATTService.onservicechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onservicechanged)
-    pub fn onservicechanged(&self) -> Any {
-        self.inner.get("onservicechanged").as_::<Any>()
-    }
-
-    /// Setter of the `onservicechanged` attribute.
-    /// [`BluetoothRemoteGATTService.onservicechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onservicechanged)
-    pub fn set_onservicechanged(&mut self, value: &Any) {
-        self.inner.set("onservicechanged", value);
-    }
-}
-impl BluetoothRemoteGATTService {
-    /// Getter of the `onserviceremoved` attribute.
-    /// [`BluetoothRemoteGATTService.onserviceremoved`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceremoved)
-    pub fn onserviceremoved(&self) -> Any {
-        self.inner.get("onserviceremoved").as_::<Any>()
-    }
-
-    /// Setter of the `onserviceremoved` attribute.
-    /// [`BluetoothRemoteGATTService.onserviceremoved`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/onserviceremoved)
-    pub fn set_onserviceremoved(&mut self, value: &Any) {
-        self.inner.set("onserviceremoved", value);
     }
 }

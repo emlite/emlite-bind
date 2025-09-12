@@ -64,6 +64,14 @@ impl From<&DocumentPictureInPictureEvent> for Any {
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPictureEvent);
 
 impl DocumentPictureInPictureEvent {
+    /// Getter of the `window` attribute.
+    /// [`DocumentPictureInPictureEvent.window`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPictureEvent/window)
+    pub fn window(&self) -> Window {
+        self.inner.get("window").as_::<Window>()
+    }
+}
+
+impl DocumentPictureInPictureEvent {
     /// The `new DocumentPictureInPictureEvent(..)` constructor, creating a new DocumentPictureInPictureEvent instance
     pub fn new(
         type_: &JsString,
@@ -74,12 +82,5 @@ impl DocumentPictureInPictureEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl DocumentPictureInPictureEvent {
-    /// Getter of the `window` attribute.
-    /// [`DocumentPictureInPictureEvent.window`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPictureEvent/window)
-    pub fn window(&self) -> Window {
-        self.inner.get("window").as_::<Window>()
     }
 }

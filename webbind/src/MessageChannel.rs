@@ -64,14 +64,6 @@ impl From<&MessageChannel> for Any {
 jsbind::utils::impl_dyn_cast!(MessageChannel);
 
 impl MessageChannel {
-    /// The `new MessageChannel(..)` constructor, creating a new MessageChannel instance
-    pub fn new() -> MessageChannel {
-        Self {
-            inner: Any::global("MessageChannel").new(&[]).as_::<Any>(),
-        }
-    }
-}
-impl MessageChannel {
     /// Getter of the `port1` attribute.
     /// [`MessageChannel.port1`](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel/port1)
     pub fn port1(&self) -> MessagePort {
@@ -83,5 +75,14 @@ impl MessageChannel {
     /// [`MessageChannel.port2`](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel/port2)
     pub fn port2(&self) -> MessagePort {
         self.inner.get("port2").as_::<MessagePort>()
+    }
+}
+
+impl MessageChannel {
+    /// The `new MessageChannel(..)` constructor, creating a new MessageChannel instance
+    pub fn new() -> MessageChannel {
+        Self {
+            inner: Any::global("MessageChannel").new(&[]).as_::<Any>(),
+        }
     }
 }

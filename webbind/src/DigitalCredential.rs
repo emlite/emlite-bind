@@ -64,13 +64,6 @@ impl From<&DigitalCredential> for Any {
 jsbind::utils::impl_dyn_cast!(DigitalCredential);
 
 impl DigitalCredential {
-    /// The toJSON method.
-    /// [`DigitalCredential.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl DigitalCredential {
     /// Getter of the `protocol` attribute.
     /// [`DigitalCredential.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/protocol)
     pub fn protocol(&self) -> JsString {
@@ -82,6 +75,13 @@ impl DigitalCredential {
     /// [`DigitalCredential.data`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/data)
     pub fn data(&self) -> Object {
         self.inner.get("data").as_::<Object>()
+    }
+}
+impl DigitalCredential {
+    /// The toJSON method.
+    /// [`DigitalCredential.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
 impl DigitalCredential {

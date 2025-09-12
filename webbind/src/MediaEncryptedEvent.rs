@@ -64,6 +64,21 @@ impl From<&MediaEncryptedEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MediaEncryptedEvent);
 
 impl MediaEncryptedEvent {
+    /// Getter of the `initDataType` attribute.
+    /// [`MediaEncryptedEvent.initDataType`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent/initDataType)
+    pub fn init_data_type(&self) -> JsString {
+        self.inner.get("initDataType").as_::<JsString>()
+    }
+}
+impl MediaEncryptedEvent {
+    /// Getter of the `initData` attribute.
+    /// [`MediaEncryptedEvent.initData`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent/initData)
+    pub fn init_data(&self) -> ArrayBuffer {
+        self.inner.get("initData").as_::<ArrayBuffer>()
+    }
+}
+
+impl MediaEncryptedEvent {
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
     pub fn new0(type_: &JsString) -> MediaEncryptedEvent {
         Self {
@@ -83,19 +98,5 @@ impl MediaEncryptedEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl MediaEncryptedEvent {
-    /// Getter of the `initDataType` attribute.
-    /// [`MediaEncryptedEvent.initDataType`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent/initDataType)
-    pub fn init_data_type(&self) -> JsString {
-        self.inner.get("initDataType").as_::<JsString>()
-    }
-}
-impl MediaEncryptedEvent {
-    /// Getter of the `initData` attribute.
-    /// [`MediaEncryptedEvent.initData`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent/initData)
-    pub fn init_data(&self) -> ArrayBuffer {
-        self.inner.get("initData").as_::<ArrayBuffer>()
     }
 }

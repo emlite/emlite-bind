@@ -64,6 +64,21 @@ impl From<&PaymentMethodChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PaymentMethodChangeEvent);
 
 impl PaymentMethodChangeEvent {
+    /// Getter of the `methodName` attribute.
+    /// [`PaymentMethodChangeEvent.methodName`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent/methodName)
+    pub fn method_name(&self) -> JsString {
+        self.inner.get("methodName").as_::<JsString>()
+    }
+}
+impl PaymentMethodChangeEvent {
+    /// Getter of the `methodDetails` attribute.
+    /// [`PaymentMethodChangeEvent.methodDetails`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent/methodDetails)
+    pub fn method_details(&self) -> Object {
+        self.inner.get("methodDetails").as_::<Object>()
+    }
+}
+
+impl PaymentMethodChangeEvent {
     /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
     pub fn new0(type_: &JsString) -> PaymentMethodChangeEvent {
         Self {
@@ -83,19 +98,5 @@ impl PaymentMethodChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<PaymentRequestUpdateEvent>(),
         }
-    }
-}
-impl PaymentMethodChangeEvent {
-    /// Getter of the `methodName` attribute.
-    /// [`PaymentMethodChangeEvent.methodName`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent/methodName)
-    pub fn method_name(&self) -> JsString {
-        self.inner.get("methodName").as_::<JsString>()
-    }
-}
-impl PaymentMethodChangeEvent {
-    /// Getter of the `methodDetails` attribute.
-    /// [`PaymentMethodChangeEvent.methodDetails`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent/methodDetails)
-    pub fn method_details(&self) -> Object {
-        self.inner.get("methodDetails").as_::<Object>()
     }
 }

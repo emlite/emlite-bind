@@ -64,25 +64,6 @@ impl From<&TouchEvent> for Any {
 jsbind::utils::impl_dyn_cast!(TouchEvent);
 
 impl TouchEvent {
-    /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
-    pub fn new0(type_: &JsString) -> TouchEvent {
-        Self {
-            inner: Any::global("TouchEvent")
-                .new(&[type_.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-
-    /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &TouchEventInit) -> TouchEvent {
-        Self {
-            inner: Any::global("TouchEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-}
-impl TouchEvent {
     /// Getter of the `touches` attribute.
     /// [`TouchEvent.touches`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
     pub fn touches(&self) -> TouchList {
@@ -129,6 +110,26 @@ impl TouchEvent {
     /// [`TouchEvent.shiftKey`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/shiftKey)
     pub fn shift_key(&self) -> bool {
         self.inner.get("shiftKey").as_::<bool>()
+    }
+}
+
+impl TouchEvent {
+    /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
+    pub fn new0(type_: &JsString) -> TouchEvent {
+        Self {
+            inner: Any::global("TouchEvent")
+                .new(&[type_.into()])
+                .as_::<UIEvent>(),
+        }
+    }
+
+    /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &TouchEventInit) -> TouchEvent {
+        Self {
+            inner: Any::global("TouchEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<UIEvent>(),
+        }
     }
 }
 impl TouchEvent {

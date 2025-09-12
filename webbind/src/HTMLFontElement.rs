@@ -64,14 +64,6 @@ impl From<&HTMLFontElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLFontElement);
 
 impl HTMLFontElement {
-    /// The `new HTMLFontElement(..)` constructor, creating a new HTMLFontElement instance
-    pub fn new() -> HTMLFontElement {
-        Self {
-            inner: Any::global("HTMLFontElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLFontElement {
     /// Getter of the `color` attribute.
     /// [`HTMLFontElement.color`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/color)
     pub fn color(&self) -> JsString {
@@ -108,5 +100,14 @@ impl HTMLFontElement {
     /// [`HTMLFontElement.size`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/size)
     pub fn set_size(&mut self, value: &JsString) {
         self.inner.set("size", value);
+    }
+}
+
+impl HTMLFontElement {
+    /// The `new HTMLFontElement(..)` constructor, creating a new HTMLFontElement instance
+    pub fn new() -> HTMLFontElement {
+        Self {
+            inner: Any::global("HTMLFontElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

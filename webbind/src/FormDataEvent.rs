@@ -64,6 +64,14 @@ impl From<&FormDataEvent> for Any {
 jsbind::utils::impl_dyn_cast!(FormDataEvent);
 
 impl FormDataEvent {
+    /// Getter of the `formData` attribute.
+    /// [`FormDataEvent.formData`](https://developer.mozilla.org/en-US/docs/Web/API/FormDataEvent/formData)
+    pub fn form_data(&self) -> FormData {
+        self.inner.get("formData").as_::<FormData>()
+    }
+}
+
+impl FormDataEvent {
     /// The `new FormDataEvent(..)` constructor, creating a new FormDataEvent instance
     pub fn new(type_: &JsString, event_init_dict: &FormDataEventInit) -> FormDataEvent {
         Self {
@@ -71,12 +79,5 @@ impl FormDataEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl FormDataEvent {
-    /// Getter of the `formData` attribute.
-    /// [`FormDataEvent.formData`](https://developer.mozilla.org/en-US/docs/Web/API/FormDataEvent/formData)
-    pub fn form_data(&self) -> FormData {
-        self.inner.get("formData").as_::<FormData>()
     }
 }

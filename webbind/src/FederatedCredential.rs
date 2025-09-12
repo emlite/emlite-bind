@@ -64,16 +64,6 @@ impl From<&FederatedCredential> for Any {
 jsbind::utils::impl_dyn_cast!(FederatedCredential);
 
 impl FederatedCredential {
-    /// The `new FederatedCredential(..)` constructor, creating a new FederatedCredential instance
-    pub fn new(data: &FederatedCredentialInit) -> FederatedCredential {
-        Self {
-            inner: Any::global("FederatedCredential")
-                .new(&[data.into()])
-                .as_::<Credential>(),
-        }
-    }
-}
-impl FederatedCredential {
     /// Getter of the `provider` attribute.
     /// [`FederatedCredential.provider`](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential/provider)
     pub fn provider(&self) -> JsString {
@@ -99,5 +89,16 @@ impl FederatedCredential {
     /// [`FederatedCredential.iconURL`](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential/iconURL)
     pub fn icon_url(&self) -> JsString {
         self.inner.get("iconURL").as_::<JsString>()
+    }
+}
+
+impl FederatedCredential {
+    /// The `new FederatedCredential(..)` constructor, creating a new FederatedCredential instance
+    pub fn new(data: &FederatedCredentialInit) -> FederatedCredential {
+        Self {
+            inner: Any::global("FederatedCredential")
+                .new(&[data.into()])
+                .as_::<Credential>(),
+        }
     }
 }

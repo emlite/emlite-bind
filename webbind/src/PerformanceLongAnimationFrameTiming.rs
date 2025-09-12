@@ -129,13 +129,6 @@ impl PerformanceLongAnimationFrameTiming {
     }
 }
 impl PerformanceLongAnimationFrameTiming {
-    /// The toJSON method.
-    /// [`PerformanceLongAnimationFrameTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `paintTime` attribute.
     /// [`PerformanceLongAnimationFrameTiming.paintTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/paintTime)
     pub fn paint_time(&self) -> Any {
@@ -147,5 +140,12 @@ impl PerformanceLongAnimationFrameTiming {
     /// [`PerformanceLongAnimationFrameTiming.presentationTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/presentationTime)
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
+    }
+}
+impl PerformanceLongAnimationFrameTiming {
+    /// The toJSON method.
+    /// [`PerformanceLongAnimationFrameTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

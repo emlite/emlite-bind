@@ -64,25 +64,6 @@ impl From<&GroupEffect> for Any {
 jsbind::utils::impl_dyn_cast!(GroupEffect);
 
 impl GroupEffect {
-    /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
-    pub fn new0(children: &TypedArray<AnimationEffect>) -> GroupEffect {
-        Self {
-            inner: Any::global("GroupEffect")
-                .new(&[children.into()])
-                .as_::<Any>(),
-        }
-    }
-
-    /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
-    pub fn new1(children: &TypedArray<AnimationEffect>, timing: &Any) -> GroupEffect {
-        Self {
-            inner: Any::global("GroupEffect")
-                .new(&[children.into(), timing.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl GroupEffect {
     /// Getter of the `children` attribute.
     /// [`GroupEffect.children`](https://developer.mozilla.org/en-US/docs/Web/API/GroupEffect/children)
     pub fn children(&self) -> AnimationNodeList {
@@ -101,6 +82,26 @@ impl GroupEffect {
     /// [`GroupEffect.lastChild`](https://developer.mozilla.org/en-US/docs/Web/API/GroupEffect/lastChild)
     pub fn last_child(&self) -> AnimationEffect {
         self.inner.get("lastChild").as_::<AnimationEffect>()
+    }
+}
+
+impl GroupEffect {
+    /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
+    pub fn new0(children: &TypedArray<AnimationEffect>) -> GroupEffect {
+        Self {
+            inner: Any::global("GroupEffect")
+                .new(&[children.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
+    pub fn new1(children: &TypedArray<AnimationEffect>, timing: &Any) -> GroupEffect {
+        Self {
+            inner: Any::global("GroupEffect")
+                .new(&[children.into(), timing.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl GroupEffect {

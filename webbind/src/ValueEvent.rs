@@ -64,6 +64,14 @@ impl From<&ValueEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ValueEvent);
 
 impl ValueEvent {
+    /// Getter of the `value` attribute.
+    /// [`ValueEvent.value`](https://developer.mozilla.org/en-US/docs/Web/API/ValueEvent/value)
+    pub fn value(&self) -> Any {
+        self.inner.get("value").as_::<Any>()
+    }
+}
+
+impl ValueEvent {
     /// The `new ValueEvent(..)` constructor, creating a new ValueEvent instance
     pub fn new0(type_: &JsString) -> ValueEvent {
         Self {
@@ -80,12 +88,5 @@ impl ValueEvent {
                 .new(&[type_.into(), init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl ValueEvent {
-    /// Getter of the `value` attribute.
-    /// [`ValueEvent.value`](https://developer.mozilla.org/en-US/docs/Web/API/ValueEvent/value)
-    pub fn value(&self) -> Any {
-        self.inner.get("value").as_::<Any>()
     }
 }

@@ -138,176 +138,10 @@ impl Element {
     }
 }
 impl Element {
-    /// The hasAttributes method.
-    /// [`Element.hasAttributes`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttributes)
-    pub fn has_attributes(&self) -> bool {
-        self.inner.call("hasAttributes", &[]).as_::<bool>()
-    }
-}
-impl Element {
     /// Getter of the `attributes` attribute.
     /// [`Element.attributes`](https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes)
     pub fn attributes(&self) -> NamedNodeMap {
         self.inner.get("attributes").as_::<NamedNodeMap>()
-    }
-}
-impl Element {
-    /// The getAttributeNames method.
-    /// [`Element.getAttributeNames`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNames)
-    pub fn get_attribute_names(&self) -> TypedArray<JsString> {
-        self.inner
-            .call("getAttributeNames", &[])
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Element {
-    /// The getAttribute method.
-    /// [`Element.getAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
-    pub fn get_attribute(&self, qualified_name: &JsString) -> JsString {
-        self.inner
-            .call("getAttribute", &[qualified_name.into()])
-            .as_::<JsString>()
-    }
-}
-impl Element {
-    /// The getAttributeNS method.
-    /// [`Element.getAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNS)
-    pub fn get_attribute_ns(&self, namespace: &JsString, local_name: &JsString) -> JsString {
-        self.inner
-            .call("getAttributeNS", &[namespace.into(), local_name.into()])
-            .as_::<JsString>()
-    }
-}
-impl Element {
-    /// The setAttribute method.
-    /// [`Element.setAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)
-    pub fn set_attribute(&self, qualified_name: &JsString, value: &JsString) -> Undefined {
-        self.inner
-            .call("setAttribute", &[qualified_name.into(), value.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The setAttributeNS method.
-    /// [`Element.setAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNS)
-    pub fn set_attribute_ns(
-        &self,
-        namespace: &JsString,
-        qualified_name: &JsString,
-        value: &JsString,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "setAttributeNS",
-                &[namespace.into(), qualified_name.into(), value.into()],
-            )
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The removeAttribute method.
-    /// [`Element.removeAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute)
-    pub fn remove_attribute(&self, qualified_name: &JsString) -> Undefined {
-        self.inner
-            .call("removeAttribute", &[qualified_name.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The removeAttributeNS method.
-    /// [`Element.removeAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNS)
-    pub fn remove_attribute_ns(&self, namespace: &JsString, local_name: &JsString) -> Undefined {
-        self.inner
-            .call("removeAttributeNS", &[namespace.into(), local_name.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The toggleAttribute method.
-    /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
-    pub fn toggle_attribute0(&self, qualified_name: &JsString) -> bool {
-        self.inner
-            .call("toggleAttribute", &[qualified_name.into()])
-            .as_::<bool>()
-    }
-    /// The toggleAttribute method.
-    /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
-    pub fn toggle_attribute1(&self, qualified_name: &JsString, force: bool) -> bool {
-        self.inner
-            .call("toggleAttribute", &[qualified_name.into(), force.into()])
-            .as_::<bool>()
-    }
-}
-impl Element {
-    /// The hasAttribute method.
-    /// [`Element.hasAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute)
-    pub fn has_attribute(&self, qualified_name: &JsString) -> bool {
-        self.inner
-            .call("hasAttribute", &[qualified_name.into()])
-            .as_::<bool>()
-    }
-}
-impl Element {
-    /// The hasAttributeNS method.
-    /// [`Element.hasAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttributeNS)
-    pub fn has_attribute_ns(&self, namespace: &JsString, local_name: &JsString) -> bool {
-        self.inner
-            .call("hasAttributeNS", &[namespace.into(), local_name.into()])
-            .as_::<bool>()
-    }
-}
-impl Element {
-    /// The getAttributeNode method.
-    /// [`Element.getAttributeNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNode)
-    pub fn get_attribute_node(&self, qualified_name: &JsString) -> Attr {
-        self.inner
-            .call("getAttributeNode", &[qualified_name.into()])
-            .as_::<Attr>()
-    }
-}
-impl Element {
-    /// The getAttributeNodeNS method.
-    /// [`Element.getAttributeNodeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNodeNS)
-    pub fn get_attribute_node_ns(&self, namespace: &JsString, local_name: &JsString) -> Attr {
-        self.inner
-            .call("getAttributeNodeNS", &[namespace.into(), local_name.into()])
-            .as_::<Attr>()
-    }
-}
-impl Element {
-    /// The setAttributeNode method.
-    /// [`Element.setAttributeNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNode)
-    pub fn set_attribute_node(&self, attr: &Attr) -> Attr {
-        self.inner
-            .call("setAttributeNode", &[attr.into()])
-            .as_::<Attr>()
-    }
-}
-impl Element {
-    /// The setAttributeNodeNS method.
-    /// [`Element.setAttributeNodeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNodeNS)
-    pub fn set_attribute_node_ns(&self, attr: &Attr) -> Attr {
-        self.inner
-            .call("setAttributeNodeNS", &[attr.into()])
-            .as_::<Attr>()
-    }
-}
-impl Element {
-    /// The removeAttributeNode method.
-    /// [`Element.removeAttributeNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNode)
-    pub fn remove_attribute_node(&self, attr: &Attr) -> Attr {
-        self.inner
-            .call("removeAttributeNode", &[attr.into()])
-            .as_::<Attr>()
-    }
-}
-impl Element {
-    /// The attachShadow method.
-    /// [`Element.attachShadow`](https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow)
-    pub fn attach_shadow(&self, init: &ShadowRootInit) -> ShadowRoot {
-        self.inner
-            .call("attachShadow", &[init.into()])
-            .as_::<ShadowRoot>()
     }
 }
 impl Element {
@@ -327,223 +161,10 @@ impl Element {
     }
 }
 impl Element {
-    /// The closest method.
-    /// [`Element.closest`](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
-    pub fn closest(&self, selectors: &JsString) -> Element {
-        self.inner
-            .call("closest", &[selectors.into()])
-            .as_::<Element>()
-    }
-}
-impl Element {
-    /// The matches method.
-    /// [`Element.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
-    pub fn matches(&self, selectors: &JsString) -> bool {
-        self.inner
-            .call("matches", &[selectors.into()])
-            .as_::<bool>()
-    }
-}
-impl Element {
-    /// The webkitMatchesSelector method.
-    /// [`Element.webkitMatchesSelector`](https://developer.mozilla.org/en-US/docs/Web/API/Element/webkitMatchesSelector)
-    pub fn webkit_matches_selector(&self, selectors: &JsString) -> bool {
-        self.inner
-            .call("webkitMatchesSelector", &[selectors.into()])
-            .as_::<bool>()
-    }
-}
-impl Element {
-    /// The getElementsByTagName method.
-    /// [`Element.getElementsByTagName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName)
-    pub fn get_elements_by_tag_name(&self, qualified_name: &JsString) -> HTMLCollection {
-        self.inner
-            .call("getElementsByTagName", &[qualified_name.into()])
-            .as_::<HTMLCollection>()
-    }
-}
-impl Element {
-    /// The getElementsByTagNameNS method.
-    /// [`Element.getElementsByTagNameNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagNameNS)
-    pub fn get_elements_by_tag_name_ns(
-        &self,
-        namespace: &JsString,
-        local_name: &JsString,
-    ) -> HTMLCollection {
-        self.inner
-            .call(
-                "getElementsByTagNameNS",
-                &[namespace.into(), local_name.into()],
-            )
-            .as_::<HTMLCollection>()
-    }
-}
-impl Element {
-    /// The getElementsByClassName method.
-    /// [`Element.getElementsByClassName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
-    pub fn get_elements_by_class_name(&self, class_names: &JsString) -> HTMLCollection {
-        self.inner
-            .call("getElementsByClassName", &[class_names.into()])
-            .as_::<HTMLCollection>()
-    }
-}
-impl Element {
-    /// The insertAdjacentElement method.
-    /// [`Element.insertAdjacentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement)
-    pub fn insert_adjacent_element(&self, where_: &JsString, element: &Element) -> Element {
-        self.inner
-            .call("insertAdjacentElement", &[where_.into(), element.into()])
-            .as_::<Element>()
-    }
-}
-impl Element {
-    /// The insertAdjacentText method.
-    /// [`Element.insertAdjacentText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
-    pub fn insert_adjacent_text(&self, where_: &JsString, data: &JsString) -> Undefined {
-        self.inner
-            .call("insertAdjacentText", &[where_.into(), data.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The getSpatialNavigationContainer method.
-    /// [`Element.getSpatialNavigationContainer`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getSpatialNavigationContainer)
-    pub fn get_spatial_navigation_container(&self) -> Node {
-        self.inner
-            .call("getSpatialNavigationContainer", &[])
-            .as_::<Node>()
-    }
-}
-impl Element {
-    /// The focusableAreas method.
-    /// [`Element.focusableAreas`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focusableAreas)
-    pub fn focusable_areas0(&self) -> TypedArray<Node> {
-        self.inner
-            .call("focusableAreas", &[])
-            .as_::<TypedArray<Node>>()
-    }
-    /// The focusableAreas method.
-    /// [`Element.focusableAreas`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focusableAreas)
-    pub fn focusable_areas1(&self, option: &FocusableAreasOption) -> TypedArray<Node> {
-        self.inner
-            .call("focusableAreas", &[option.into()])
-            .as_::<TypedArray<Node>>()
-    }
-}
-impl Element {
-    /// The spatialNavigationSearch method.
-    /// [`Element.spatialNavigationSearch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/spatialNavigationSearch)
-    pub fn spatial_navigation_search0(&self, dir: &SpatialNavigationDirection) -> Node {
-        self.inner
-            .call("spatialNavigationSearch", &[dir.into()])
-            .as_::<Node>()
-    }
-    /// The spatialNavigationSearch method.
-    /// [`Element.spatialNavigationSearch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/spatialNavigationSearch)
-    pub fn spatial_navigation_search1(
-        &self,
-        dir: &SpatialNavigationDirection,
-        options: &SpatialNavigationSearchOptions,
-    ) -> Node {
-        self.inner
-            .call("spatialNavigationSearch", &[dir.into(), options.into()])
-            .as_::<Node>()
-    }
-}
-impl Element {
-    /// The pseudo method.
-    /// [`Element.pseudo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pseudo)
-    pub fn pseudo(&self, type_: &JsString) -> CSSPseudoElement {
-        self.inner
-            .call("pseudo", &[type_.into()])
-            .as_::<CSSPseudoElement>()
-    }
-}
-impl Element {
     /// Getter of the `part` attribute.
     /// [`Element.part`](https://developer.mozilla.org/en-US/docs/Web/API/Element/part)
     pub fn part(&self) -> DOMTokenList {
         self.inner.get("part").as_::<DOMTokenList>()
-    }
-}
-impl Element {
-    /// The computedStyleMap method.
-    /// [`Element.computedStyleMap`](https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap)
-    pub fn computed_style_map(&self) -> StylePropertyMapReadOnly {
-        self.inner
-            .call("computedStyleMap", &[])
-            .as_::<StylePropertyMapReadOnly>()
-    }
-}
-impl Element {
-    /// The getClientRects method.
-    /// [`Element.getClientRects`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getClientRects)
-    pub fn get_client_rects(&self) -> DOMRectList {
-        self.inner.call("getClientRects", &[]).as_::<DOMRectList>()
-    }
-}
-impl Element {
-    /// The getBoundingClientRect method.
-    /// [`Element.getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
-    pub fn get_bounding_client_rect(&self) -> DOMRect {
-        self.inner
-            .call("getBoundingClientRect", &[])
-            .as_::<DOMRect>()
-    }
-}
-impl Element {
-    /// The checkVisibility method.
-    /// [`Element.checkVisibility`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility)
-    pub fn check_visibility0(&self) -> bool {
-        self.inner.call("checkVisibility", &[]).as_::<bool>()
-    }
-    /// The checkVisibility method.
-    /// [`Element.checkVisibility`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility)
-    pub fn check_visibility1(&self, options: &CheckVisibilityOptions) -> bool {
-        self.inner
-            .call("checkVisibility", &[options.into()])
-            .as_::<bool>()
-    }
-}
-impl Element {
-    /// The scrollIntoView method.
-    /// [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
-    pub fn scroll_into_view0(&self) -> Undefined {
-        self.inner.call("scrollIntoView", &[]).as_::<Undefined>()
-    }
-    /// The scrollIntoView method.
-    /// [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
-    pub fn scroll_into_view1(&self, arg: &Any) -> Undefined {
-        self.inner
-            .call("scrollIntoView", &[arg.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The scroll method.
-    /// [`Element.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll)
-    pub fn scroll(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("scroll", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The scrollTo method.
-    /// [`Element.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
-    pub fn scroll_to(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("scrollTo", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The scrollBy method.
-    /// [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy)
-    pub fn scroll_by(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("scrollBy", &[x.into(), y.into()])
-            .as_::<Undefined>()
     }
 }
 impl Element {
@@ -635,22 +256,6 @@ impl Element {
     }
 }
 impl Element {
-    /// The requestFullscreen method.
-    /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
-    pub fn request_fullscreen0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("requestFullscreen", &[])
-            .as_::<Promise<Undefined>>()
-    }
-    /// The requestFullscreen method.
-    /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
-    pub fn request_fullscreen1(&self, options: &FullscreenOptions) -> Promise<Undefined> {
-        self.inner
-            .call("requestFullscreen", &[options.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Element {
     /// Getter of the `onfullscreenchange` attribute.
     /// [`Element.onfullscreenchange`](https://developer.mozilla.org/en-US/docs/Web/API/Element/onfullscreenchange)
     pub fn onfullscreenchange(&self) -> Any {
@@ -674,29 +279,6 @@ impl Element {
     /// [`Element.onfullscreenerror`](https://developer.mozilla.org/en-US/docs/Web/API/Element/onfullscreenerror)
     pub fn set_onfullscreenerror(&mut self, value: &Any) {
         self.inner.set("onfullscreenerror", value);
-    }
-}
-impl Element {
-    /// The setHTMLUnsafe method.
-    /// [`Element.setHTMLUnsafe`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTMLUnsafe)
-    pub fn set_html_unsafe(&self, html: &Any) -> Undefined {
-        self.inner
-            .call("setHTMLUnsafe", &[html.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The getHTML method.
-    /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
-    pub fn get_html0(&self) -> JsString {
-        self.inner.call("getHTML", &[]).as_::<JsString>()
-    }
-    /// The getHTML method.
-    /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
-    pub fn get_html1(&self, options: &GetHTMLOptions) -> JsString {
-        self.inner
-            .call("getHTML", &[options.into()])
-            .as_::<JsString>()
     }
 }
 impl Element {
@@ -726,159 +308,10 @@ impl Element {
     }
 }
 impl Element {
-    /// The insertAdjacentHTML method.
-    /// [`Element.insertAdjacentHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML)
-    pub fn insert_adjacent_html(&self, position: &JsString, string: &Any) -> Undefined {
-        self.inner
-            .call("insertAdjacentHTML", &[position.into(), string.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The setPointerCapture method.
-    /// [`Element.setPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setPointerCapture)
-    pub fn set_pointer_capture(&self, pointer_id: i32) -> Undefined {
-        self.inner
-            .call("setPointerCapture", &[pointer_id.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The releasePointerCapture method.
-    /// [`Element.releasePointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/releasePointerCapture)
-    pub fn release_pointer_capture(&self, pointer_id: i32) -> Undefined {
-        self.inner
-            .call("releasePointerCapture", &[pointer_id.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The hasPointerCapture method.
-    /// [`Element.hasPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasPointerCapture)
-    pub fn has_pointer_capture(&self, pointer_id: i32) -> bool {
-        self.inner
-            .call("hasPointerCapture", &[pointer_id.into()])
-            .as_::<bool>()
-    }
-}
-impl Element {
-    /// The requestPointerLock method.
-    /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
-    pub fn request_pointer_lock0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("requestPointerLock", &[])
-            .as_::<Promise<Undefined>>()
-    }
-    /// The requestPointerLock method.
-    /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
-    pub fn request_pointer_lock1(&self, options: &PointerLockOptions) -> Promise<Undefined> {
-        self.inner
-            .call("requestPointerLock", &[options.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Element {
     /// Getter of the `regionOverset` attribute.
     /// [`Element.regionOverset`](https://developer.mozilla.org/en-US/docs/Web/API/Element/regionOverset)
     pub fn region_overset(&self) -> JsString {
         self.inner.get("regionOverset").as_::<JsString>()
-    }
-}
-impl Element {
-    /// The getRegionFlowRanges method.
-    /// [`Element.getRegionFlowRanges`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getRegionFlowRanges)
-    pub fn get_region_flow_ranges(&self) -> TypedArray<Range> {
-        self.inner
-            .call("getRegionFlowRanges", &[])
-            .as_::<TypedArray<Range>>()
-    }
-}
-impl Element {
-    /// The getBoxQuads method.
-    /// [`Element.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoxQuads)
-    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
-        self.inner
-            .call("getBoxQuads", &[])
-            .as_::<TypedArray<DOMQuad>>()
-    }
-    /// The getBoxQuads method.
-    /// [`Element.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoxQuads)
-    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
-        self.inner
-            .call("getBoxQuads", &[options.into()])
-            .as_::<TypedArray<DOMQuad>>()
-    }
-}
-impl Element {
-    /// The convertQuadFromNode method.
-    /// [`Element.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertQuadFromNode)
-    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
-        self.inner
-            .call("convertQuadFromNode", &[quad.into(), from.into()])
-            .as_::<DOMQuad>()
-    }
-    /// The convertQuadFromNode method.
-    /// [`Element.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertQuadFromNode)
-    pub fn convert_quad_from_node1(
-        &self,
-        quad: &DOMQuadInit,
-        from: &Any,
-        options: &ConvertCoordinateOptions,
-    ) -> DOMQuad {
-        self.inner
-            .call(
-                "convertQuadFromNode",
-                &[quad.into(), from.into(), options.into()],
-            )
-            .as_::<DOMQuad>()
-    }
-}
-impl Element {
-    /// The convertRectFromNode method.
-    /// [`Element.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertRectFromNode)
-    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
-        self.inner
-            .call("convertRectFromNode", &[rect.into(), from.into()])
-            .as_::<DOMQuad>()
-    }
-    /// The convertRectFromNode method.
-    /// [`Element.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertRectFromNode)
-    pub fn convert_rect_from_node1(
-        &self,
-        rect: &DOMRectReadOnly,
-        from: &Any,
-        options: &ConvertCoordinateOptions,
-    ) -> DOMQuad {
-        self.inner
-            .call(
-                "convertRectFromNode",
-                &[rect.into(), from.into(), options.into()],
-            )
-            .as_::<DOMQuad>()
-    }
-}
-impl Element {
-    /// The convertPointFromNode method.
-    /// [`Element.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertPointFromNode)
-    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
-        self.inner
-            .call("convertPointFromNode", &[point.into(), from.into()])
-            .as_::<DOMPoint>()
-    }
-    /// The convertPointFromNode method.
-    /// [`Element.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertPointFromNode)
-    pub fn convert_point_from_node1(
-        &self,
-        point: &DOMPointInit,
-        from: &Any,
-        options: &ConvertCoordinateOptions,
-    ) -> DOMPoint {
-        self.inner
-            .call(
-                "convertPointFromNode",
-                &[point.into(), from.into(), options.into()],
-            )
-            .as_::<DOMPoint>()
     }
 }
 impl Element {
@@ -910,60 +343,6 @@ impl Element {
     }
 }
 impl Element {
-    /// The prepend method.
-    /// [`Element.prepend`](https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend)
-    pub fn prepend(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("prepend", &[nodes.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The append method.
-    /// [`Element.append`](https://developer.mozilla.org/en-US/docs/Web/API/Element/append)
-    pub fn append(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("append", &[nodes.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The replaceChildren method.
-    /// [`Element.replaceChildren`](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren)
-    pub fn replace_children(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("replaceChildren", &[nodes.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The moveBefore method.
-    /// [`Element.moveBefore`](https://developer.mozilla.org/en-US/docs/Web/API/Element/moveBefore)
-    pub fn move_before(&self, node: &Node, child: &Node) -> Undefined {
-        self.inner
-            .call("moveBefore", &[node.into(), child.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The querySelector method.
-    /// [`Element.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector)
-    pub fn query_selector(&self, selectors: &JsString) -> Element {
-        self.inner
-            .call("querySelector", &[selectors.into()])
-            .as_::<Element>()
-    }
-}
-impl Element {
-    /// The querySelectorAll method.
-    /// [`Element.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll)
-    pub fn query_selector_all(&self, selectors: &JsString) -> NodeList {
-        self.inner
-            .call("querySelectorAll", &[selectors.into()])
-            .as_::<NodeList>()
-    }
-}
-impl Element {
     /// Getter of the `previousElementSibling` attribute.
     /// [`Element.previousElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/Element/previousElementSibling)
     pub fn previous_element_sibling(&self) -> Element {
@@ -975,38 +354,6 @@ impl Element {
     /// [`Element.nextElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling)
     pub fn next_element_sibling(&self) -> Element {
         self.inner.get("nextElementSibling").as_::<Element>()
-    }
-}
-impl Element {
-    /// The before method.
-    /// [`Element.before`](https://developer.mozilla.org/en-US/docs/Web/API/Element/before)
-    pub fn before(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("before", &[nodes.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The after method.
-    /// [`Element.after`](https://developer.mozilla.org/en-US/docs/Web/API/Element/after)
-    pub fn after(&self, nodes: &Any) -> Undefined {
-        self.inner.call("after", &[nodes.into()]).as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The replaceWith method.
-    /// [`Element.replaceWith`](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith)
-    pub fn replace_with(&self, nodes: &Any) -> Undefined {
-        self.inner
-            .call("replaceWith", &[nodes.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Element {
-    /// The remove method.
-    /// [`Element.remove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove)
-    pub fn remove(&self) -> Undefined {
-        self.inner.call("remove", &[]).as_::<Undefined>()
     }
 }
 impl Element {
@@ -1708,6 +1055,701 @@ impl Element {
     /// [`Element.ariaValueText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueText)
     pub fn set_aria_value_text(&mut self, value: &JsString) {
         self.inner.set("ariaValueText", value);
+    }
+}
+impl Element {
+    /// The hasAttributes method.
+    /// [`Element.hasAttributes`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttributes)
+    pub fn has_attributes(&self) -> bool {
+        self.inner.call("hasAttributes", &[]).as_::<bool>()
+    }
+}
+impl Element {
+    /// The getAttributeNames method.
+    /// [`Element.getAttributeNames`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNames)
+    pub fn get_attribute_names(&self) -> TypedArray<JsString> {
+        self.inner
+            .call("getAttributeNames", &[])
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Element {
+    /// The getAttribute method.
+    /// [`Element.getAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
+    pub fn get_attribute(&self, qualified_name: &JsString) -> JsString {
+        self.inner
+            .call("getAttribute", &[qualified_name.into()])
+            .as_::<JsString>()
+    }
+}
+impl Element {
+    /// The getAttributeNS method.
+    /// [`Element.getAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNS)
+    pub fn get_attribute_ns(&self, namespace: &JsString, local_name: &JsString) -> JsString {
+        self.inner
+            .call("getAttributeNS", &[namespace.into(), local_name.into()])
+            .as_::<JsString>()
+    }
+}
+impl Element {
+    /// The setAttribute method.
+    /// [`Element.setAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)
+    pub fn set_attribute(&self, qualified_name: &JsString, value: &JsString) -> Undefined {
+        self.inner
+            .call("setAttribute", &[qualified_name.into(), value.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The setAttributeNS method.
+    /// [`Element.setAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNS)
+    pub fn set_attribute_ns(
+        &self,
+        namespace: &JsString,
+        qualified_name: &JsString,
+        value: &JsString,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "setAttributeNS",
+                &[namespace.into(), qualified_name.into(), value.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The removeAttribute method.
+    /// [`Element.removeAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute)
+    pub fn remove_attribute(&self, qualified_name: &JsString) -> Undefined {
+        self.inner
+            .call("removeAttribute", &[qualified_name.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The removeAttributeNS method.
+    /// [`Element.removeAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNS)
+    pub fn remove_attribute_ns(&self, namespace: &JsString, local_name: &JsString) -> Undefined {
+        self.inner
+            .call("removeAttributeNS", &[namespace.into(), local_name.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The toggleAttribute method.
+    /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
+    pub fn toggle_attribute0(&self, qualified_name: &JsString) -> bool {
+        self.inner
+            .call("toggleAttribute", &[qualified_name.into()])
+            .as_::<bool>()
+    }
+    /// The toggleAttribute method.
+    /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
+    pub fn toggle_attribute1(&self, qualified_name: &JsString, force: bool) -> bool {
+        self.inner
+            .call("toggleAttribute", &[qualified_name.into(), force.into()])
+            .as_::<bool>()
+    }
+}
+impl Element {
+    /// The hasAttribute method.
+    /// [`Element.hasAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute)
+    pub fn has_attribute(&self, qualified_name: &JsString) -> bool {
+        self.inner
+            .call("hasAttribute", &[qualified_name.into()])
+            .as_::<bool>()
+    }
+}
+impl Element {
+    /// The hasAttributeNS method.
+    /// [`Element.hasAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttributeNS)
+    pub fn has_attribute_ns(&self, namespace: &JsString, local_name: &JsString) -> bool {
+        self.inner
+            .call("hasAttributeNS", &[namespace.into(), local_name.into()])
+            .as_::<bool>()
+    }
+}
+impl Element {
+    /// The getAttributeNode method.
+    /// [`Element.getAttributeNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNode)
+    pub fn get_attribute_node(&self, qualified_name: &JsString) -> Attr {
+        self.inner
+            .call("getAttributeNode", &[qualified_name.into()])
+            .as_::<Attr>()
+    }
+}
+impl Element {
+    /// The getAttributeNodeNS method.
+    /// [`Element.getAttributeNodeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNodeNS)
+    pub fn get_attribute_node_ns(&self, namespace: &JsString, local_name: &JsString) -> Attr {
+        self.inner
+            .call("getAttributeNodeNS", &[namespace.into(), local_name.into()])
+            .as_::<Attr>()
+    }
+}
+impl Element {
+    /// The setAttributeNode method.
+    /// [`Element.setAttributeNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNode)
+    pub fn set_attribute_node(&self, attr: &Attr) -> Attr {
+        self.inner
+            .call("setAttributeNode", &[attr.into()])
+            .as_::<Attr>()
+    }
+}
+impl Element {
+    /// The setAttributeNodeNS method.
+    /// [`Element.setAttributeNodeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNodeNS)
+    pub fn set_attribute_node_ns(&self, attr: &Attr) -> Attr {
+        self.inner
+            .call("setAttributeNodeNS", &[attr.into()])
+            .as_::<Attr>()
+    }
+}
+impl Element {
+    /// The removeAttributeNode method.
+    /// [`Element.removeAttributeNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNode)
+    pub fn remove_attribute_node(&self, attr: &Attr) -> Attr {
+        self.inner
+            .call("removeAttributeNode", &[attr.into()])
+            .as_::<Attr>()
+    }
+}
+impl Element {
+    /// The attachShadow method.
+    /// [`Element.attachShadow`](https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow)
+    pub fn attach_shadow(&self, init: &ShadowRootInit) -> ShadowRoot {
+        self.inner
+            .call("attachShadow", &[init.into()])
+            .as_::<ShadowRoot>()
+    }
+}
+impl Element {
+    /// The closest method.
+    /// [`Element.closest`](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
+    pub fn closest(&self, selectors: &JsString) -> Element {
+        self.inner
+            .call("closest", &[selectors.into()])
+            .as_::<Element>()
+    }
+}
+impl Element {
+    /// The matches method.
+    /// [`Element.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
+    pub fn matches(&self, selectors: &JsString) -> bool {
+        self.inner
+            .call("matches", &[selectors.into()])
+            .as_::<bool>()
+    }
+}
+impl Element {
+    /// The webkitMatchesSelector method.
+    /// [`Element.webkitMatchesSelector`](https://developer.mozilla.org/en-US/docs/Web/API/Element/webkitMatchesSelector)
+    pub fn webkit_matches_selector(&self, selectors: &JsString) -> bool {
+        self.inner
+            .call("webkitMatchesSelector", &[selectors.into()])
+            .as_::<bool>()
+    }
+}
+impl Element {
+    /// The getElementsByTagName method.
+    /// [`Element.getElementsByTagName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName)
+    pub fn get_elements_by_tag_name(&self, qualified_name: &JsString) -> HTMLCollection {
+        self.inner
+            .call("getElementsByTagName", &[qualified_name.into()])
+            .as_::<HTMLCollection>()
+    }
+}
+impl Element {
+    /// The getElementsByTagNameNS method.
+    /// [`Element.getElementsByTagNameNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagNameNS)
+    pub fn get_elements_by_tag_name_ns(
+        &self,
+        namespace: &JsString,
+        local_name: &JsString,
+    ) -> HTMLCollection {
+        self.inner
+            .call(
+                "getElementsByTagNameNS",
+                &[namespace.into(), local_name.into()],
+            )
+            .as_::<HTMLCollection>()
+    }
+}
+impl Element {
+    /// The getElementsByClassName method.
+    /// [`Element.getElementsByClassName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
+    pub fn get_elements_by_class_name(&self, class_names: &JsString) -> HTMLCollection {
+        self.inner
+            .call("getElementsByClassName", &[class_names.into()])
+            .as_::<HTMLCollection>()
+    }
+}
+impl Element {
+    /// The insertAdjacentElement method.
+    /// [`Element.insertAdjacentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement)
+    pub fn insert_adjacent_element(&self, where_: &JsString, element: &Element) -> Element {
+        self.inner
+            .call("insertAdjacentElement", &[where_.into(), element.into()])
+            .as_::<Element>()
+    }
+}
+impl Element {
+    /// The insertAdjacentText method.
+    /// [`Element.insertAdjacentText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
+    pub fn insert_adjacent_text(&self, where_: &JsString, data: &JsString) -> Undefined {
+        self.inner
+            .call("insertAdjacentText", &[where_.into(), data.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The getSpatialNavigationContainer method.
+    /// [`Element.getSpatialNavigationContainer`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getSpatialNavigationContainer)
+    pub fn get_spatial_navigation_container(&self) -> Node {
+        self.inner
+            .call("getSpatialNavigationContainer", &[])
+            .as_::<Node>()
+    }
+}
+impl Element {
+    /// The focusableAreas method.
+    /// [`Element.focusableAreas`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focusableAreas)
+    pub fn focusable_areas0(&self) -> TypedArray<Node> {
+        self.inner
+            .call("focusableAreas", &[])
+            .as_::<TypedArray<Node>>()
+    }
+    /// The focusableAreas method.
+    /// [`Element.focusableAreas`](https://developer.mozilla.org/en-US/docs/Web/API/Element/focusableAreas)
+    pub fn focusable_areas1(&self, option: &FocusableAreasOption) -> TypedArray<Node> {
+        self.inner
+            .call("focusableAreas", &[option.into()])
+            .as_::<TypedArray<Node>>()
+    }
+}
+impl Element {
+    /// The spatialNavigationSearch method.
+    /// [`Element.spatialNavigationSearch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/spatialNavigationSearch)
+    pub fn spatial_navigation_search0(&self, dir: &SpatialNavigationDirection) -> Node {
+        self.inner
+            .call("spatialNavigationSearch", &[dir.into()])
+            .as_::<Node>()
+    }
+    /// The spatialNavigationSearch method.
+    /// [`Element.spatialNavigationSearch`](https://developer.mozilla.org/en-US/docs/Web/API/Element/spatialNavigationSearch)
+    pub fn spatial_navigation_search1(
+        &self,
+        dir: &SpatialNavigationDirection,
+        options: &SpatialNavigationSearchOptions,
+    ) -> Node {
+        self.inner
+            .call("spatialNavigationSearch", &[dir.into(), options.into()])
+            .as_::<Node>()
+    }
+}
+impl Element {
+    /// The pseudo method.
+    /// [`Element.pseudo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pseudo)
+    pub fn pseudo(&self, type_: &JsString) -> CSSPseudoElement {
+        self.inner
+            .call("pseudo", &[type_.into()])
+            .as_::<CSSPseudoElement>()
+    }
+}
+impl Element {
+    /// The computedStyleMap method.
+    /// [`Element.computedStyleMap`](https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap)
+    pub fn computed_style_map(&self) -> StylePropertyMapReadOnly {
+        self.inner
+            .call("computedStyleMap", &[])
+            .as_::<StylePropertyMapReadOnly>()
+    }
+}
+impl Element {
+    /// The getClientRects method.
+    /// [`Element.getClientRects`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getClientRects)
+    pub fn get_client_rects(&self) -> DOMRectList {
+        self.inner.call("getClientRects", &[]).as_::<DOMRectList>()
+    }
+}
+impl Element {
+    /// The getBoundingClientRect method.
+    /// [`Element.getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+    pub fn get_bounding_client_rect(&self) -> DOMRect {
+        self.inner
+            .call("getBoundingClientRect", &[])
+            .as_::<DOMRect>()
+    }
+}
+impl Element {
+    /// The checkVisibility method.
+    /// [`Element.checkVisibility`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility)
+    pub fn check_visibility0(&self) -> bool {
+        self.inner.call("checkVisibility", &[]).as_::<bool>()
+    }
+    /// The checkVisibility method.
+    /// [`Element.checkVisibility`](https://developer.mozilla.org/en-US/docs/Web/API/Element/checkVisibility)
+    pub fn check_visibility1(&self, options: &CheckVisibilityOptions) -> bool {
+        self.inner
+            .call("checkVisibility", &[options.into()])
+            .as_::<bool>()
+    }
+}
+impl Element {
+    /// The scrollIntoView method.
+    /// [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
+    pub fn scroll_into_view0(&self) -> Undefined {
+        self.inner.call("scrollIntoView", &[]).as_::<Undefined>()
+    }
+    /// The scrollIntoView method.
+    /// [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
+    pub fn scroll_into_view1(&self, arg: &Any) -> Undefined {
+        self.inner
+            .call("scrollIntoView", &[arg.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The scroll method.
+    /// [`Element.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll)
+    pub fn scroll0(&self) -> Undefined {
+        self.inner.call("scroll", &[]).as_::<Undefined>()
+    }
+    /// The scroll method.
+    /// [`Element.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll)
+    pub fn scroll1(&self, options: &ScrollToOptions) -> Undefined {
+        self.inner
+            .call("scroll", &[options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The scroll method.
+    /// [`Element.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scroll)
+    pub fn scroll2(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("scroll", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The scrollTo method.
+    /// [`Element.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
+    pub fn scroll_to0(&self) -> Undefined {
+        self.inner.call("scrollTo", &[]).as_::<Undefined>()
+    }
+    /// The scrollTo method.
+    /// [`Element.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
+    pub fn scroll_to1(&self, options: &ScrollToOptions) -> Undefined {
+        self.inner
+            .call("scrollTo", &[options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The scrollTo method.
+    /// [`Element.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTo)
+    pub fn scroll_to2(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("scrollTo", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The scrollBy method.
+    /// [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy)
+    pub fn scroll_by0(&self) -> Undefined {
+        self.inner.call("scrollBy", &[]).as_::<Undefined>()
+    }
+    /// The scrollBy method.
+    /// [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy)
+    pub fn scroll_by1(&self, options: &ScrollToOptions) -> Undefined {
+        self.inner
+            .call("scrollBy", &[options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The scrollBy method.
+    /// [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy)
+    pub fn scroll_by2(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("scrollBy", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The requestFullscreen method.
+    /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
+    pub fn request_fullscreen0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("requestFullscreen", &[])
+            .as_::<Promise<Undefined>>()
+    }
+    /// The requestFullscreen method.
+    /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
+    pub fn request_fullscreen1(&self, options: &FullscreenOptions) -> Promise<Undefined> {
+        self.inner
+            .call("requestFullscreen", &[options.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Element {
+    /// The setHTMLUnsafe method.
+    /// [`Element.setHTMLUnsafe`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTMLUnsafe)
+    pub fn set_html_unsafe(&self, html: &Any) -> Undefined {
+        self.inner
+            .call("setHTMLUnsafe", &[html.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The getHTML method.
+    /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
+    pub fn get_html0(&self) -> JsString {
+        self.inner.call("getHTML", &[]).as_::<JsString>()
+    }
+    /// The getHTML method.
+    /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
+    pub fn get_html1(&self, options: &GetHTMLOptions) -> JsString {
+        self.inner
+            .call("getHTML", &[options.into()])
+            .as_::<JsString>()
+    }
+}
+impl Element {
+    /// The insertAdjacentHTML method.
+    /// [`Element.insertAdjacentHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML)
+    pub fn insert_adjacent_html(&self, position: &JsString, string: &Any) -> Undefined {
+        self.inner
+            .call("insertAdjacentHTML", &[position.into(), string.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The setPointerCapture method.
+    /// [`Element.setPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setPointerCapture)
+    pub fn set_pointer_capture(&self, pointer_id: i32) -> Undefined {
+        self.inner
+            .call("setPointerCapture", &[pointer_id.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The releasePointerCapture method.
+    /// [`Element.releasePointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/releasePointerCapture)
+    pub fn release_pointer_capture(&self, pointer_id: i32) -> Undefined {
+        self.inner
+            .call("releasePointerCapture", &[pointer_id.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The hasPointerCapture method.
+    /// [`Element.hasPointerCapture`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasPointerCapture)
+    pub fn has_pointer_capture(&self, pointer_id: i32) -> bool {
+        self.inner
+            .call("hasPointerCapture", &[pointer_id.into()])
+            .as_::<bool>()
+    }
+}
+impl Element {
+    /// The requestPointerLock method.
+    /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
+    pub fn request_pointer_lock0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("requestPointerLock", &[])
+            .as_::<Promise<Undefined>>()
+    }
+    /// The requestPointerLock method.
+    /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
+    pub fn request_pointer_lock1(&self, options: &PointerLockOptions) -> Promise<Undefined> {
+        self.inner
+            .call("requestPointerLock", &[options.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Element {
+    /// The getRegionFlowRanges method.
+    /// [`Element.getRegionFlowRanges`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getRegionFlowRanges)
+    pub fn get_region_flow_ranges(&self) -> TypedArray<Range> {
+        self.inner
+            .call("getRegionFlowRanges", &[])
+            .as_::<TypedArray<Range>>()
+    }
+}
+impl Element {
+    /// The getBoxQuads method.
+    /// [`Element.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoxQuads)
+    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
+        self.inner
+            .call("getBoxQuads", &[])
+            .as_::<TypedArray<DOMQuad>>()
+    }
+    /// The getBoxQuads method.
+    /// [`Element.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoxQuads)
+    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
+        self.inner
+            .call("getBoxQuads", &[options.into()])
+            .as_::<TypedArray<DOMQuad>>()
+    }
+}
+impl Element {
+    /// The convertQuadFromNode method.
+    /// [`Element.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertQuadFromNode)
+    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
+        self.inner
+            .call("convertQuadFromNode", &[quad.into(), from.into()])
+            .as_::<DOMQuad>()
+    }
+    /// The convertQuadFromNode method.
+    /// [`Element.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertQuadFromNode)
+    pub fn convert_quad_from_node1(
+        &self,
+        quad: &DOMQuadInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
+    ) -> DOMQuad {
+        self.inner
+            .call(
+                "convertQuadFromNode",
+                &[quad.into(), from.into(), options.into()],
+            )
+            .as_::<DOMQuad>()
+    }
+}
+impl Element {
+    /// The convertRectFromNode method.
+    /// [`Element.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertRectFromNode)
+    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
+        self.inner
+            .call("convertRectFromNode", &[rect.into(), from.into()])
+            .as_::<DOMQuad>()
+    }
+    /// The convertRectFromNode method.
+    /// [`Element.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertRectFromNode)
+    pub fn convert_rect_from_node1(
+        &self,
+        rect: &DOMRectReadOnly,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
+    ) -> DOMQuad {
+        self.inner
+            .call(
+                "convertRectFromNode",
+                &[rect.into(), from.into(), options.into()],
+            )
+            .as_::<DOMQuad>()
+    }
+}
+impl Element {
+    /// The convertPointFromNode method.
+    /// [`Element.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertPointFromNode)
+    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
+        self.inner
+            .call("convertPointFromNode", &[point.into(), from.into()])
+            .as_::<DOMPoint>()
+    }
+    /// The convertPointFromNode method.
+    /// [`Element.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/convertPointFromNode)
+    pub fn convert_point_from_node1(
+        &self,
+        point: &DOMPointInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
+    ) -> DOMPoint {
+        self.inner
+            .call(
+                "convertPointFromNode",
+                &[point.into(), from.into(), options.into()],
+            )
+            .as_::<DOMPoint>()
+    }
+}
+impl Element {
+    /// The prepend method.
+    /// [`Element.prepend`](https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend)
+    pub fn prepend(&self, nodes: &Any) -> Undefined {
+        self.inner
+            .call("prepend", &[nodes.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The append method.
+    /// [`Element.append`](https://developer.mozilla.org/en-US/docs/Web/API/Element/append)
+    pub fn append(&self, nodes: &Any) -> Undefined {
+        self.inner
+            .call("append", &[nodes.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The replaceChildren method.
+    /// [`Element.replaceChildren`](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren)
+    pub fn replace_children(&self, nodes: &Any) -> Undefined {
+        self.inner
+            .call("replaceChildren", &[nodes.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The moveBefore method.
+    /// [`Element.moveBefore`](https://developer.mozilla.org/en-US/docs/Web/API/Element/moveBefore)
+    pub fn move_before(&self, node: &Node, child: &Node) -> Undefined {
+        self.inner
+            .call("moveBefore", &[node.into(), child.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The querySelector method.
+    /// [`Element.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector)
+    pub fn query_selector(&self, selectors: &JsString) -> Element {
+        self.inner
+            .call("querySelector", &[selectors.into()])
+            .as_::<Element>()
+    }
+}
+impl Element {
+    /// The querySelectorAll method.
+    /// [`Element.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll)
+    pub fn query_selector_all(&self, selectors: &JsString) -> NodeList {
+        self.inner
+            .call("querySelectorAll", &[selectors.into()])
+            .as_::<NodeList>()
+    }
+}
+impl Element {
+    /// The before method.
+    /// [`Element.before`](https://developer.mozilla.org/en-US/docs/Web/API/Element/before)
+    pub fn before(&self, nodes: &Any) -> Undefined {
+        self.inner
+            .call("before", &[nodes.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The after method.
+    /// [`Element.after`](https://developer.mozilla.org/en-US/docs/Web/API/Element/after)
+    pub fn after(&self, nodes: &Any) -> Undefined {
+        self.inner.call("after", &[nodes.into()]).as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The replaceWith method.
+    /// [`Element.replaceWith`](https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceWith)
+    pub fn replace_with(&self, nodes: &Any) -> Undefined {
+        self.inner
+            .call("replaceWith", &[nodes.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Element {
+    /// The remove method.
+    /// [`Element.remove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove)
+    pub fn remove(&self) -> Undefined {
+        self.inner.call("remove", &[]).as_::<Undefined>()
     }
 }
 impl Element {

@@ -78,6 +78,27 @@ impl XRFrame {
     }
 }
 impl XRFrame {
+    /// Getter of the `trackedAnchors` attribute.
+    /// [`XRFrame.trackedAnchors`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/trackedAnchors)
+    pub fn tracked_anchors(&self) -> XRAnchorSet {
+        self.inner.get("trackedAnchors").as_::<XRAnchorSet>()
+    }
+}
+impl XRFrame {
+    /// Getter of the `detectedMeshes` attribute.
+    /// [`XRFrame.detectedMeshes`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/detectedMeshes)
+    pub fn detected_meshes(&self) -> XRMeshSet {
+        self.inner.get("detectedMeshes").as_::<XRMeshSet>()
+    }
+}
+impl XRFrame {
+    /// Getter of the `detectedPlanes` attribute.
+    /// [`XRFrame.detectedPlanes`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/detectedPlanes)
+    pub fn detected_planes(&self) -> XRPlaneSet {
+        self.inner.get("detectedPlanes").as_::<XRPlaneSet>()
+    }
+}
+impl XRFrame {
     /// The getViewerPose method.
     /// [`XRFrame.getViewerPose`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/getViewerPose)
     pub fn get_viewer_pose(&self, reference_space: &XRReferenceSpace) -> XRViewerPose {
@@ -102,20 +123,6 @@ impl XRFrame {
         self.inner
             .call("createAnchor", &[pose.into(), space.into()])
             .as_::<Promise<XRAnchor>>()
-    }
-}
-impl XRFrame {
-    /// Getter of the `trackedAnchors` attribute.
-    /// [`XRFrame.trackedAnchors`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/trackedAnchors)
-    pub fn tracked_anchors(&self) -> XRAnchorSet {
-        self.inner.get("trackedAnchors").as_::<XRAnchorSet>()
-    }
-}
-impl XRFrame {
-    /// Getter of the `detectedMeshes` attribute.
-    /// [`XRFrame.detectedMeshes`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/detectedMeshes)
-    pub fn detected_meshes(&self) -> XRMeshSet {
-        self.inner.get("detectedMeshes").as_::<XRMeshSet>()
     }
 }
 impl XRFrame {
@@ -200,12 +207,5 @@ impl XRFrame {
         self.inner
             .call("getLightEstimate", &[light_probe.into()])
             .as_::<XRLightEstimate>()
-    }
-}
-impl XRFrame {
-    /// Getter of the `detectedPlanes` attribute.
-    /// [`XRFrame.detectedPlanes`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/detectedPlanes)
-    pub fn detected_planes(&self) -> XRPlaneSet {
-        self.inner.get("detectedPlanes").as_::<XRPlaneSet>()
     }
 }

@@ -64,25 +64,6 @@ impl From<&WaveShaperNode> for Any {
 jsbind::utils::impl_dyn_cast!(WaveShaperNode);
 
 impl WaveShaperNode {
-    /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
-    pub fn new0(context: &BaseAudioContext) -> WaveShaperNode {
-        Self {
-            inner: Any::global("WaveShaperNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-
-    /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
-    pub fn new1(context: &BaseAudioContext, options: &WaveShaperOptions) -> WaveShaperNode {
-        Self {
-            inner: Any::global("WaveShaperNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-}
-impl WaveShaperNode {
     /// Getter of the `curve` attribute.
     /// [`WaveShaperNode.curve`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/curve)
     pub fn curve(&self) -> Float32Array {
@@ -106,5 +87,25 @@ impl WaveShaperNode {
     /// [`WaveShaperNode.oversample`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/oversample)
     pub fn set_oversample(&mut self, value: &OverSampleType) {
         self.inner.set("oversample", value);
+    }
+}
+
+impl WaveShaperNode {
+    /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
+    pub fn new0(context: &BaseAudioContext) -> WaveShaperNode {
+        Self {
+            inner: Any::global("WaveShaperNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+
+    /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
+    pub fn new1(context: &BaseAudioContext, options: &WaveShaperOptions) -> WaveShaperNode {
+        Self {
+            inner: Any::global("WaveShaperNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
     }
 }

@@ -78,6 +78,26 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
+    /// Getter of the `transform` attribute.
+    /// [`RTCRtpSender.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/transform)
+    pub fn transform(&self) -> Any {
+        self.inner.get("transform").as_::<Any>()
+    }
+
+    /// Setter of the `transform` attribute.
+    /// [`RTCRtpSender.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/transform)
+    pub fn set_transform(&mut self, value: &Any) {
+        self.inner.set("transform", value);
+    }
+}
+impl RTCRtpSender {
+    /// Getter of the `dtmf` attribute.
+    /// [`RTCRtpSender.dtmf`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/dtmf)
+    pub fn dtmf(&self) -> RTCDTMFSender {
+        self.inner.get("dtmf").as_::<RTCDTMFSender>()
+    }
+}
+impl RTCRtpSender {
     /// The getCapabilities method.
     /// [`RTCRtpSender.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getCapabilities)
     pub fn get_capabilities(kind: &JsString) -> RTCRtpCapabilities {
@@ -146,19 +166,6 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
-    /// Getter of the `transform` attribute.
-    /// [`RTCRtpSender.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/transform)
-    pub fn transform(&self) -> Any {
-        self.inner.get("transform").as_::<Any>()
-    }
-
-    /// Setter of the `transform` attribute.
-    /// [`RTCRtpSender.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/transform)
-    pub fn set_transform(&mut self, value: &Any) {
-        self.inner.set("transform", value);
-    }
-}
-impl RTCRtpSender {
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
     pub fn generate_key_frame0(&self) -> Promise<Undefined> {
@@ -172,12 +179,5 @@ impl RTCRtpSender {
         self.inner
             .call("generateKeyFrame", &[rids.into()])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl RTCRtpSender {
-    /// Getter of the `dtmf` attribute.
-    /// [`RTCRtpSender.dtmf`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/dtmf)
-    pub fn dtmf(&self) -> RTCDTMFSender {
-        self.inner.get("dtmf").as_::<RTCDTMFSender>()
     }
 }

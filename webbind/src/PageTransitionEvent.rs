@@ -64,6 +64,14 @@ impl From<&PageTransitionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PageTransitionEvent);
 
 impl PageTransitionEvent {
+    /// Getter of the `persisted` attribute.
+    /// [`PageTransitionEvent.persisted`](https://developer.mozilla.org/en-US/docs/Web/API/PageTransitionEvent/persisted)
+    pub fn persisted(&self) -> bool {
+        self.inner.get("persisted").as_::<bool>()
+    }
+}
+
+impl PageTransitionEvent {
     /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
     pub fn new0(type_: &JsString) -> PageTransitionEvent {
         Self {
@@ -83,12 +91,5 @@ impl PageTransitionEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl PageTransitionEvent {
-    /// Getter of the `persisted` attribute.
-    /// [`PageTransitionEvent.persisted`](https://developer.mozilla.org/en-US/docs/Web/API/PageTransitionEvent/persisted)
-    pub fn persisted(&self) -> bool {
-        self.inner.get("persisted").as_::<bool>()
     }
 }

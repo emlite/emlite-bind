@@ -64,6 +64,14 @@ impl From<&MediaStreamTrackProcessor> for Any {
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackProcessor);
 
 impl MediaStreamTrackProcessor {
+    /// Getter of the `readable` attribute.
+    /// [`MediaStreamTrackProcessor.readable`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackProcessor/readable)
+    pub fn readable(&self) -> ReadableStream {
+        self.inner.get("readable").as_::<ReadableStream>()
+    }
+}
+
+impl MediaStreamTrackProcessor {
     /// The `new MediaStreamTrackProcessor(..)` constructor, creating a new MediaStreamTrackProcessor instance
     pub fn new(init: &MediaStreamTrackProcessorInit) -> MediaStreamTrackProcessor {
         Self {
@@ -71,12 +79,5 @@ impl MediaStreamTrackProcessor {
                 .new(&[init.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl MediaStreamTrackProcessor {
-    /// Getter of the `readable` attribute.
-    /// [`MediaStreamTrackProcessor.readable`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackProcessor/readable)
-    pub fn readable(&self) -> ReadableStream {
-        self.inner.get("readable").as_::<ReadableStream>()
     }
 }

@@ -99,13 +99,6 @@ impl NavigationHistoryEntry {
     }
 }
 impl NavigationHistoryEntry {
-    /// The getState method.
-    /// [`NavigationHistoryEntry.getState`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/getState)
-    pub fn get_state(&self) -> Any {
-        self.inner.call("getState", &[]).as_::<Any>()
-    }
-}
-impl NavigationHistoryEntry {
     /// Getter of the `ondispose` attribute.
     /// [`NavigationHistoryEntry.ondispose`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/ondispose)
     pub fn ondispose(&self) -> Any {
@@ -116,5 +109,12 @@ impl NavigationHistoryEntry {
     /// [`NavigationHistoryEntry.ondispose`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/ondispose)
     pub fn set_ondispose(&mut self, value: &Any) {
         self.inner.set("ondispose", value);
+    }
+}
+impl NavigationHistoryEntry {
+    /// The getState method.
+    /// [`NavigationHistoryEntry.getState`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/getState)
+    pub fn get_state(&self) -> Any {
+        self.inner.call("getState", &[]).as_::<Any>()
     }
 }

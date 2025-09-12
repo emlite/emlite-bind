@@ -64,6 +64,14 @@ impl From<&CompositionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(CompositionEvent);
 
 impl CompositionEvent {
+    /// Getter of the `data` attribute.
+    /// [`CompositionEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/data)
+    pub fn data(&self) -> JsString {
+        self.inner.get("data").as_::<JsString>()
+    }
+}
+
+impl CompositionEvent {
     /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
     pub fn new0(type_: &JsString) -> CompositionEvent {
         Self {
@@ -80,13 +88,6 @@ impl CompositionEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<UIEvent>(),
         }
-    }
-}
-impl CompositionEvent {
-    /// Getter of the `data` attribute.
-    /// [`CompositionEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/data)
-    pub fn data(&self) -> JsString {
-        self.inner.get("data").as_::<JsString>()
     }
 }
 impl CompositionEvent {

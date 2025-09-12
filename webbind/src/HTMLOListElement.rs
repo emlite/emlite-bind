@@ -64,16 +64,6 @@ impl From<&HTMLOListElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLOListElement);
 
 impl HTMLOListElement {
-    /// The `new HTMLOListElement(..)` constructor, creating a new HTMLOListElement instance
-    pub fn new() -> HTMLOListElement {
-        Self {
-            inner: Any::global("HTMLOListElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLOListElement {
     /// Getter of the `reversed` attribute.
     /// [`HTMLOListElement.reversed`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOListElement/reversed)
     pub fn reversed(&self) -> bool {
@@ -123,5 +113,16 @@ impl HTMLOListElement {
     /// [`HTMLOListElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOListElement/compact)
     pub fn set_compact(&mut self, value: bool) {
         self.inner.set("compact", value);
+    }
+}
+
+impl HTMLOListElement {
+    /// The `new HTMLOListElement(..)` constructor, creating a new HTMLOListElement instance
+    pub fn new() -> HTMLOListElement {
+        Self {
+            inner: Any::global("HTMLOListElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

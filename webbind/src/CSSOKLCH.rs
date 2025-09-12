@@ -64,25 +64,6 @@ impl From<&CSSOKLCH> for Any {
 jsbind::utils::impl_dyn_cast!(CSSOKLCH);
 
 impl CSSOKLCH {
-    /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
-    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSOKLCH {
-        Self {
-            inner: Any::global("CSSOKLCH")
-                .new(&[l.into(), c.into(), h.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
-    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSOKLCH {
-        Self {
-            inner: Any::global("CSSOKLCH")
-                .new(&[l.into(), c.into(), h.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSOKLCH {
     /// Getter of the `l` attribute.
     /// [`CSSOKLCH.l`](https://developer.mozilla.org/en-US/docs/Web/API/CSSOKLCH/l)
     pub fn l(&self) -> Any {
@@ -132,5 +113,25 @@ impl CSSOKLCH {
     /// [`CSSOKLCH.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSOKLCH/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSOKLCH {
+    /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
+    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSOKLCH {
+        Self {
+            inner: Any::global("CSSOKLCH")
+                .new(&[l.into(), c.into(), h.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSOKLCH(..)` constructor, creating a new CSSOKLCH instance
+    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSOKLCH {
+        Self {
+            inner: Any::global("CSSOKLCH")
+                .new(&[l.into(), c.into(), h.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

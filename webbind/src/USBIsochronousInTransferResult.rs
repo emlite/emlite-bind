@@ -64,6 +64,23 @@ impl From<&USBIsochronousInTransferResult> for Any {
 jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferResult);
 
 impl USBIsochronousInTransferResult {
+    /// Getter of the `data` attribute.
+    /// [`USBIsochronousInTransferResult.data`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferResult/data)
+    pub fn data(&self) -> DataView {
+        self.inner.get("data").as_::<DataView>()
+    }
+}
+impl USBIsochronousInTransferResult {
+    /// Getter of the `packets` attribute.
+    /// [`USBIsochronousInTransferResult.packets`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferResult/packets)
+    pub fn packets(&self) -> TypedArray<USBIsochronousInTransferPacket> {
+        self.inner
+            .get("packets")
+            .as_::<TypedArray<USBIsochronousInTransferPacket>>()
+    }
+}
+
+impl USBIsochronousInTransferResult {
     /// The `new USBIsochronousInTransferResult(..)` constructor, creating a new USBIsochronousInTransferResult instance
     pub fn new0(
         packets: &TypedArray<USBIsochronousInTransferPacket>,
@@ -85,21 +102,5 @@ impl USBIsochronousInTransferResult {
                 .new(&[packets.into(), data.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl USBIsochronousInTransferResult {
-    /// Getter of the `data` attribute.
-    /// [`USBIsochronousInTransferResult.data`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferResult/data)
-    pub fn data(&self) -> DataView {
-        self.inner.get("data").as_::<DataView>()
-    }
-}
-impl USBIsochronousInTransferResult {
-    /// Getter of the `packets` attribute.
-    /// [`USBIsochronousInTransferResult.packets`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferResult/packets)
-    pub fn packets(&self) -> TypedArray<USBIsochronousInTransferPacket> {
-        self.inner
-            .get("packets")
-            .as_::<TypedArray<USBIsochronousInTransferPacket>>()
     }
 }

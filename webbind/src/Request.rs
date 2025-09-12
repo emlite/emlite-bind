@@ -64,23 +64,6 @@ impl From<&Request> for Any {
 jsbind::utils::impl_dyn_cast!(Request);
 
 impl Request {
-    /// The `new Request(..)` constructor, creating a new Request instance
-    pub fn new0(input: &Any) -> Request {
-        Self {
-            inner: Any::global("Request").new(&[input.into()]).as_::<Any>(),
-        }
-    }
-
-    /// The `new Request(..)` constructor, creating a new Request instance
-    pub fn new1(input: &Any, init: &RequestInit) -> Request {
-        Self {
-            inner: Any::global("Request")
-                .new(&[input.into(), init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl Request {
     /// Getter of the `method` attribute.
     /// [`Request.method`](https://developer.mozilla.org/en-US/docs/Web/API/Request/method)
     pub fn method(&self) -> JsString {
@@ -193,13 +176,6 @@ impl Request {
     }
 }
 impl Request {
-    /// The clone method.
-    /// [`Request.clone`](https://developer.mozilla.org/en-US/docs/Web/API/Request/clone)
-    pub fn clone_(&self) -> Request {
-        self.inner.call("clone", &[]).as_::<Request>()
-    }
-}
-impl Request {
     /// Getter of the `targetAddressSpace` attribute.
     /// [`Request.targetAddressSpace`](https://developer.mozilla.org/en-US/docs/Web/API/Request/targetAddressSpace)
     pub fn target_address_space(&self) -> IPAddressSpace {
@@ -218,6 +194,31 @@ impl Request {
     /// [`Request.bodyUsed`](https://developer.mozilla.org/en-US/docs/Web/API/Request/bodyUsed)
     pub fn body_used(&self) -> bool {
         self.inner.get("bodyUsed").as_::<bool>()
+    }
+}
+
+impl Request {
+    /// The `new Request(..)` constructor, creating a new Request instance
+    pub fn new0(input: &Any) -> Request {
+        Self {
+            inner: Any::global("Request").new(&[input.into()]).as_::<Any>(),
+        }
+    }
+
+    /// The `new Request(..)` constructor, creating a new Request instance
+    pub fn new1(input: &Any, init: &RequestInit) -> Request {
+        Self {
+            inner: Any::global("Request")
+                .new(&[input.into(), init.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+impl Request {
+    /// The clone method.
+    /// [`Request.clone`](https://developer.mozilla.org/en-US/docs/Web/API/Request/clone)
+    pub fn clone_(&self) -> Request {
+        self.inner.call("clone", &[]).as_::<Request>()
     }
 }
 impl Request {

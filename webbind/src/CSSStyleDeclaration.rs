@@ -84,6 +84,13 @@ impl CSSStyleDeclaration {
     }
 }
 impl CSSStyleDeclaration {
+    /// Getter of the `parentRule` attribute.
+    /// [`CSSStyleDeclaration.parentRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/parentRule)
+    pub fn parent_rule(&self) -> CSSRule {
+        self.inner.get("parentRule").as_::<CSSRule>()
+    }
+}
+impl CSSStyleDeclaration {
     /// The item method.
     /// [`CSSStyleDeclaration.item`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/item)
     pub fn item(&self, index: u32) -> JsString {
@@ -139,12 +146,5 @@ impl CSSStyleDeclaration {
         self.inner
             .call("removeProperty", &[property.into()])
             .as_::<JsString>()
-    }
-}
-impl CSSStyleDeclaration {
-    /// Getter of the `parentRule` attribute.
-    /// [`CSSStyleDeclaration.parentRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/parentRule)
-    pub fn parent_rule(&self) -> CSSRule {
-        self.inner.get("parentRule").as_::<CSSRule>()
     }
 }

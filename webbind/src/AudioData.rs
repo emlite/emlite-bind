@@ -64,14 +64,6 @@ impl From<&AudioData> for Any {
 jsbind::utils::impl_dyn_cast!(AudioData);
 
 impl AudioData {
-    /// The `new AudioData(..)` constructor, creating a new AudioData instance
-    pub fn new(init: &AudioDataInit) -> AudioData {
-        Self {
-            inner: Any::global("AudioData").new(&[init.into()]).as_::<Any>(),
-        }
-    }
-}
-impl AudioData {
     /// Getter of the `format` attribute.
     /// [`AudioData.format`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData/format)
     pub fn format(&self) -> AudioSampleFormat {
@@ -111,6 +103,15 @@ impl AudioData {
     /// [`AudioData.timestamp`](https://developer.mozilla.org/en-US/docs/Web/API/AudioData/timestamp)
     pub fn timestamp(&self) -> i64 {
         self.inner.get("timestamp").as_::<i64>()
+    }
+}
+
+impl AudioData {
+    /// The `new AudioData(..)` constructor, creating a new AudioData instance
+    pub fn new(init: &AudioDataInit) -> AudioData {
+        Self {
+            inner: Any::global("AudioData").new(&[init.into()]).as_::<Any>(),
+        }
     }
 }
 impl AudioData {

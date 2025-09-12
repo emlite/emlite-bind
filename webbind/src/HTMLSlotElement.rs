@@ -64,14 +64,6 @@ impl From<&HTMLSlotElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLSlotElement);
 
 impl HTMLSlotElement {
-    /// The `new HTMLSlotElement(..)` constructor, creating a new HTMLSlotElement instance
-    pub fn new() -> HTMLSlotElement {
-        Self {
-            inner: Any::global("HTMLSlotElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLSlotElement {
     /// Getter of the `name` attribute.
     /// [`HTMLSlotElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/name)
     pub fn name(&self) -> JsString {
@@ -82,6 +74,15 @@ impl HTMLSlotElement {
     /// [`HTMLSlotElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/name)
     pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
+    }
+}
+
+impl HTMLSlotElement {
+    /// The `new HTMLSlotElement(..)` constructor, creating a new HTMLSlotElement instance
+    pub fn new() -> HTMLSlotElement {
+        Self {
+            inner: Any::global("HTMLSlotElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }
 impl HTMLSlotElement {

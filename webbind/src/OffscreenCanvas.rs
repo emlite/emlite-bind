@@ -64,16 +64,6 @@ impl From<&OffscreenCanvas> for Any {
 jsbind::utils::impl_dyn_cast!(OffscreenCanvas);
 
 impl OffscreenCanvas {
-    /// The `new OffscreenCanvas(..)` constructor, creating a new OffscreenCanvas instance
-    pub fn new(width: u64, height: u64) -> OffscreenCanvas {
-        Self {
-            inner: Any::global("OffscreenCanvas")
-                .new(&[width.into(), height.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl OffscreenCanvas {
     /// Getter of the `width` attribute.
     /// [`OffscreenCanvas.width`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/width)
     pub fn width(&self) -> u64 {
@@ -97,6 +87,43 @@ impl OffscreenCanvas {
     /// [`OffscreenCanvas.height`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/height)
     pub fn set_height(&mut self, value: u64) {
         self.inner.set("height", value);
+    }
+}
+impl OffscreenCanvas {
+    /// Getter of the `oncontextlost` attribute.
+    /// [`OffscreenCanvas.oncontextlost`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextlost)
+    pub fn oncontextlost(&self) -> Any {
+        self.inner.get("oncontextlost").as_::<Any>()
+    }
+
+    /// Setter of the `oncontextlost` attribute.
+    /// [`OffscreenCanvas.oncontextlost`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextlost)
+    pub fn set_oncontextlost(&mut self, value: &Any) {
+        self.inner.set("oncontextlost", value);
+    }
+}
+impl OffscreenCanvas {
+    /// Getter of the `oncontextrestored` attribute.
+    /// [`OffscreenCanvas.oncontextrestored`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextrestored)
+    pub fn oncontextrestored(&self) -> Any {
+        self.inner.get("oncontextrestored").as_::<Any>()
+    }
+
+    /// Setter of the `oncontextrestored` attribute.
+    /// [`OffscreenCanvas.oncontextrestored`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextrestored)
+    pub fn set_oncontextrestored(&mut self, value: &Any) {
+        self.inner.set("oncontextrestored", value);
+    }
+}
+
+impl OffscreenCanvas {
+    /// The `new OffscreenCanvas(..)` constructor, creating a new OffscreenCanvas instance
+    pub fn new(width: u64, height: u64) -> OffscreenCanvas {
+        Self {
+            inner: Any::global("OffscreenCanvas")
+                .new(&[width.into(), height.into()])
+                .as_::<EventTarget>(),
+        }
     }
 }
 impl OffscreenCanvas {
@@ -136,31 +163,5 @@ impl OffscreenCanvas {
         self.inner
             .call("convertToBlob", &[options.into()])
             .as_::<Promise<Blob>>()
-    }
-}
-impl OffscreenCanvas {
-    /// Getter of the `oncontextlost` attribute.
-    /// [`OffscreenCanvas.oncontextlost`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextlost)
-    pub fn oncontextlost(&self) -> Any {
-        self.inner.get("oncontextlost").as_::<Any>()
-    }
-
-    /// Setter of the `oncontextlost` attribute.
-    /// [`OffscreenCanvas.oncontextlost`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextlost)
-    pub fn set_oncontextlost(&mut self, value: &Any) {
-        self.inner.set("oncontextlost", value);
-    }
-}
-impl OffscreenCanvas {
-    /// Getter of the `oncontextrestored` attribute.
-    /// [`OffscreenCanvas.oncontextrestored`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextrestored)
-    pub fn oncontextrestored(&self) -> Any {
-        self.inner.get("oncontextrestored").as_::<Any>()
-    }
-
-    /// Setter of the `oncontextrestored` attribute.
-    /// [`OffscreenCanvas.oncontextrestored`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/oncontextrestored)
-    pub fn set_oncontextrestored(&mut self, value: &Any) {
-        self.inner.set("oncontextrestored", value);
     }
 }

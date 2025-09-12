@@ -64,14 +64,6 @@ impl From<&HTMLMetaElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLMetaElement);
 
 impl HTMLMetaElement {
-    /// The `new HTMLMetaElement(..)` constructor, creating a new HTMLMetaElement instance
-    pub fn new() -> HTMLMetaElement {
-        Self {
-            inner: Any::global("HTMLMetaElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLMetaElement {
     /// Getter of the `name` attribute.
     /// [`HTMLMetaElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/name)
     pub fn name(&self) -> JsString {
@@ -134,5 +126,14 @@ impl HTMLMetaElement {
     /// [`HTMLMetaElement.scheme`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/scheme)
     pub fn set_scheme(&mut self, value: &JsString) {
         self.inner.set("scheme", value);
+    }
+}
+
+impl HTMLMetaElement {
+    /// The `new HTMLMetaElement(..)` constructor, creating a new HTMLMetaElement instance
+    pub fn new() -> HTMLMetaElement {
+        Self {
+            inner: Any::global("HTMLMetaElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

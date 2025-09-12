@@ -64,14 +64,6 @@ impl From<&MediaSource> for Any {
 jsbind::utils::impl_dyn_cast!(MediaSource);
 
 impl MediaSource {
-    /// The `new MediaSource(..)` constructor, creating a new MediaSource instance
-    pub fn new() -> MediaSource {
-        Self {
-            inner: Any::global("MediaSource").new(&[]).as_::<EventTarget>(),
-        }
-    }
-}
-impl MediaSource {
     /// Getter of the `handle` attribute.
     /// [`MediaSource.handle`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/handle)
     pub fn handle(&self) -> MediaSourceHandle {
@@ -160,6 +152,15 @@ impl MediaSource {
         Any::global("MediaSource")
             .get("canConstructInDedicatedWorker")
             .as_::<bool>()
+    }
+}
+
+impl MediaSource {
+    /// The `new MediaSource(..)` constructor, creating a new MediaSource instance
+    pub fn new() -> MediaSource {
+        Self {
+            inner: Any::global("MediaSource").new(&[]).as_::<EventTarget>(),
+        }
     }
 }
 impl MediaSource {

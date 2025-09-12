@@ -64,25 +64,6 @@ impl From<&CSSColor> for Any {
 jsbind::utils::impl_dyn_cast!(CSSColor);
 
 impl CSSColor {
-    /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
-    pub fn new0(color_space: &Any, channels: &TypedArray<Any>) -> CSSColor {
-        Self {
-            inner: Any::global("CSSColor")
-                .new(&[color_space.into(), channels.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
-    pub fn new1(color_space: &Any, channels: &TypedArray<Any>, alpha: &Any) -> CSSColor {
-        Self {
-            inner: Any::global("CSSColor")
-                .new(&[color_space.into(), channels.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSColor {
     /// Getter of the `colorSpace` attribute.
     /// [`CSSColor.colorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColor/colorSpace)
     pub fn color_space(&self) -> Any {
@@ -119,5 +100,25 @@ impl CSSColor {
     /// [`CSSColor.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColor/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSColor {
+    /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
+    pub fn new0(color_space: &Any, channels: &TypedArray<Any>) -> CSSColor {
+        Self {
+            inner: Any::global("CSSColor")
+                .new(&[color_space.into(), channels.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
+    pub fn new1(color_space: &Any, channels: &TypedArray<Any>, alpha: &Any) -> CSSColor {
+        Self {
+            inner: Any::global("CSSColor")
+                .new(&[color_space.into(), channels.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

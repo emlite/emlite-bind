@@ -64,25 +64,6 @@ impl From<&AudioContext> for Any {
 jsbind::utils::impl_dyn_cast!(AudioContext);
 
 impl AudioContext {
-    /// The `new AudioContext(..)` constructor, creating a new AudioContext instance
-    pub fn new0() -> AudioContext {
-        Self {
-            inner: Any::global("AudioContext")
-                .new(&[])
-                .as_::<BaseAudioContext>(),
-        }
-    }
-
-    /// The `new AudioContext(..)` constructor, creating a new AudioContext instance
-    pub fn new1(context_options: &AudioContextOptions) -> AudioContext {
-        Self {
-            inner: Any::global("AudioContext")
-                .new(&[context_options.into()])
-                .as_::<BaseAudioContext>(),
-        }
-    }
-}
-impl AudioContext {
     /// Getter of the `baseLatency` attribute.
     /// [`AudioContext.baseLatency`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/baseLatency)
     pub fn base_latency(&self) -> f64 {
@@ -127,6 +108,26 @@ impl AudioContext {
     /// [`AudioContext.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/onerror)
     pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
+    }
+}
+
+impl AudioContext {
+    /// The `new AudioContext(..)` constructor, creating a new AudioContext instance
+    pub fn new0() -> AudioContext {
+        Self {
+            inner: Any::global("AudioContext")
+                .new(&[])
+                .as_::<BaseAudioContext>(),
+        }
+    }
+
+    /// The `new AudioContext(..)` constructor, creating a new AudioContext instance
+    pub fn new1(context_options: &AudioContextOptions) -> AudioContext {
+        Self {
+            inner: Any::global("AudioContext")
+                .new(&[context_options.into()])
+                .as_::<BaseAudioContext>(),
+        }
     }
 }
 impl AudioContext {

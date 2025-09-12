@@ -64,18 +64,19 @@ impl From<&AbortController> for Any {
 jsbind::utils::impl_dyn_cast!(AbortController);
 
 impl AbortController {
+    /// Getter of the `signal` attribute.
+    /// [`AbortController.signal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController/signal)
+    pub fn signal(&self) -> AbortSignal {
+        self.inner.get("signal").as_::<AbortSignal>()
+    }
+}
+
+impl AbortController {
     /// The `new AbortController(..)` constructor, creating a new AbortController instance
     pub fn new() -> AbortController {
         Self {
             inner: Any::global("AbortController").new(&[]).as_::<Any>(),
         }
-    }
-}
-impl AbortController {
-    /// Getter of the `signal` attribute.
-    /// [`AbortController.signal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController/signal)
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
     }
 }
 impl AbortController {

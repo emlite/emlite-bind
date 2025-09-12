@@ -64,25 +64,6 @@ impl From<&WebTransportDatagramDuplexStream> for Any {
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramDuplexStream);
 
 impl WebTransportDatagramDuplexStream {
-    /// The createWritable method.
-    /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
-    pub fn create_writable0(&self) -> WebTransportDatagramsWritable {
-        self.inner
-            .call("createWritable", &[])
-            .as_::<WebTransportDatagramsWritable>()
-    }
-    /// The createWritable method.
-    /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
-    pub fn create_writable1(
-        &self,
-        options: &WebTransportSendOptions,
-    ) -> WebTransportDatagramsWritable {
-        self.inner
-            .call("createWritable", &[options.into()])
-            .as_::<WebTransportDatagramsWritable>()
-    }
-}
-impl WebTransportDatagramDuplexStream {
     /// Getter of the `readable` attribute.
     /// [`WebTransportDatagramDuplexStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/readable)
     pub fn readable(&self) -> ReadableStream {
@@ -146,5 +127,24 @@ impl WebTransportDatagramDuplexStream {
     /// [`WebTransportDatagramDuplexStream.outgoingHighWaterMark`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark)
     pub fn set_outgoing_high_water_mark(&mut self, value: f64) {
         self.inner.set("outgoingHighWaterMark", value);
+    }
+}
+impl WebTransportDatagramDuplexStream {
+    /// The createWritable method.
+    /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
+    pub fn create_writable0(&self) -> WebTransportDatagramsWritable {
+        self.inner
+            .call("createWritable", &[])
+            .as_::<WebTransportDatagramsWritable>()
+    }
+    /// The createWritable method.
+    /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
+    pub fn create_writable1(
+        &self,
+        options: &WebTransportSendOptions,
+    ) -> WebTransportDatagramsWritable {
+        self.inner
+            .call("createWritable", &[options.into()])
+            .as_::<WebTransportDatagramsWritable>()
     }
 }

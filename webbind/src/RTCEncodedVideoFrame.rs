@@ -64,6 +64,27 @@ impl From<&RTCEncodedVideoFrame> for Any {
 jsbind::utils::impl_dyn_cast!(RTCEncodedVideoFrame);
 
 impl RTCEncodedVideoFrame {
+    /// Getter of the `type` attribute.
+    /// [`RTCEncodedVideoFrame.type`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/type)
+    pub fn type_(&self) -> RTCEncodedVideoFrameType {
+        self.inner.get("type").as_::<RTCEncodedVideoFrameType>()
+    }
+}
+impl RTCEncodedVideoFrame {
+    /// Getter of the `data` attribute.
+    /// [`RTCEncodedVideoFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/data)
+    pub fn data(&self) -> ArrayBuffer {
+        self.inner.get("data").as_::<ArrayBuffer>()
+    }
+
+    /// Setter of the `data` attribute.
+    /// [`RTCEncodedVideoFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/data)
+    pub fn set_data(&mut self, value: &ArrayBuffer) {
+        self.inner.set("data", value);
+    }
+}
+
+impl RTCEncodedVideoFrame {
     /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
     pub fn new0(original_frame: &RTCEncodedVideoFrame) -> RTCEncodedVideoFrame {
         Self {
@@ -83,26 +104,6 @@ impl RTCEncodedVideoFrame {
                 .new(&[original_frame.into(), options.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl RTCEncodedVideoFrame {
-    /// Getter of the `type` attribute.
-    /// [`RTCEncodedVideoFrame.type`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/type)
-    pub fn type_(&self) -> RTCEncodedVideoFrameType {
-        self.inner.get("type").as_::<RTCEncodedVideoFrameType>()
-    }
-}
-impl RTCEncodedVideoFrame {
-    /// Getter of the `data` attribute.
-    /// [`RTCEncodedVideoFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/data)
-    pub fn data(&self) -> ArrayBuffer {
-        self.inner.get("data").as_::<ArrayBuffer>()
-    }
-
-    /// Setter of the `data` attribute.
-    /// [`RTCEncodedVideoFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/data)
-    pub fn set_data(&mut self, value: &ArrayBuffer) {
-        self.inner.set("data", value);
     }
 }
 impl RTCEncodedVideoFrame {

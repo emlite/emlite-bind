@@ -64,32 +64,6 @@ impl From<&RTCDTMFSender> for Any {
 jsbind::utils::impl_dyn_cast!(RTCDTMFSender);
 
 impl RTCDTMFSender {
-    /// The insertDTMF method.
-    /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf0(&self, tones: &JsString) -> Undefined {
-        self.inner
-            .call("insertDTMF", &[tones.into()])
-            .as_::<Undefined>()
-    }
-    /// The insertDTMF method.
-    /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf1(&self, tones: &JsString, duration: u32) -> Undefined {
-        self.inner
-            .call("insertDTMF", &[tones.into(), duration.into()])
-            .as_::<Undefined>()
-    }
-    /// The insertDTMF method.
-    /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf2(&self, tones: &JsString, duration: u32, inter_tone_gap: u32) -> Undefined {
-        self.inner
-            .call(
-                "insertDTMF",
-                &[tones.into(), duration.into(), inter_tone_gap.into()],
-            )
-            .as_::<Undefined>()
-    }
-}
-impl RTCDTMFSender {
     /// Getter of the `ontonechange` attribute.
     /// [`RTCDTMFSender.ontonechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/ontonechange)
     pub fn ontonechange(&self) -> Any {
@@ -114,5 +88,31 @@ impl RTCDTMFSender {
     /// [`RTCDTMFSender.toneBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/toneBuffer)
     pub fn tone_buffer(&self) -> JsString {
         self.inner.get("toneBuffer").as_::<JsString>()
+    }
+}
+impl RTCDTMFSender {
+    /// The insertDTMF method.
+    /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
+    pub fn insert_dtmf0(&self, tones: &JsString) -> Undefined {
+        self.inner
+            .call("insertDTMF", &[tones.into()])
+            .as_::<Undefined>()
+    }
+    /// The insertDTMF method.
+    /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
+    pub fn insert_dtmf1(&self, tones: &JsString, duration: u32) -> Undefined {
+        self.inner
+            .call("insertDTMF", &[tones.into(), duration.into()])
+            .as_::<Undefined>()
+    }
+    /// The insertDTMF method.
+    /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
+    pub fn insert_dtmf2(&self, tones: &JsString, duration: u32, inter_tone_gap: u32) -> Undefined {
+        self.inner
+            .call(
+                "insertDTMF",
+                &[tones.into(), duration.into(), inter_tone_gap.into()],
+            )
+            .as_::<Undefined>()
     }
 }

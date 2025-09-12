@@ -64,6 +64,21 @@ impl From<&PushSubscriptionChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PushSubscriptionChangeEvent);
 
 impl PushSubscriptionChangeEvent {
+    /// Getter of the `newSubscription` attribute.
+    /// [`PushSubscriptionChangeEvent.newSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionChangeEvent/newSubscription)
+    pub fn new_subscription(&self) -> PushSubscription {
+        self.inner.get("newSubscription").as_::<PushSubscription>()
+    }
+}
+impl PushSubscriptionChangeEvent {
+    /// Getter of the `oldSubscription` attribute.
+    /// [`PushSubscriptionChangeEvent.oldSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionChangeEvent/oldSubscription)
+    pub fn old_subscription(&self) -> PushSubscription {
+        self.inner.get("oldSubscription").as_::<PushSubscription>()
+    }
+}
+
+impl PushSubscriptionChangeEvent {
     /// The `new PushSubscriptionChangeEvent(..)` constructor, creating a new PushSubscriptionChangeEvent instance
     pub fn new0(type_: &JsString) -> PushSubscriptionChangeEvent {
         Self {
@@ -83,19 +98,5 @@ impl PushSubscriptionChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<ExtendableEvent>(),
         }
-    }
-}
-impl PushSubscriptionChangeEvent {
-    /// Getter of the `newSubscription` attribute.
-    /// [`PushSubscriptionChangeEvent.newSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionChangeEvent/newSubscription)
-    pub fn new_subscription(&self) -> PushSubscription {
-        self.inner.get("newSubscription").as_::<PushSubscription>()
-    }
-}
-impl PushSubscriptionChangeEvent {
-    /// Getter of the `oldSubscription` attribute.
-    /// [`PushSubscriptionChangeEvent.oldSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscriptionChangeEvent/oldSubscription)
-    pub fn old_subscription(&self) -> PushSubscription {
-        self.inner.get("oldSubscription").as_::<PushSubscription>()
     }
 }

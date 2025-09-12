@@ -85,32 +85,6 @@ impl BluetoothDevice {
     }
 }
 impl BluetoothDevice {
-    /// The forget method.
-    /// [`BluetoothDevice.forget`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/forget)
-    pub fn forget(&self) -> Promise<Undefined> {
-        self.inner.call("forget", &[]).as_::<Promise<Undefined>>()
-    }
-}
-impl BluetoothDevice {
-    /// The watchAdvertisements method.
-    /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("watchAdvertisements", &[])
-            .as_::<Promise<Undefined>>()
-    }
-    /// The watchAdvertisements method.
-    /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements1(
-        &self,
-        options: &WatchAdvertisementsOptions,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call("watchAdvertisements", &[options.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl BluetoothDevice {
     /// Getter of the `watchingAdvertisements` attribute.
     /// [`BluetoothDevice.watchingAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchingAdvertisements)
     pub fn watching_advertisements(&self) -> bool {
@@ -193,5 +167,31 @@ impl BluetoothDevice {
     /// [`BluetoothDevice.onserviceremoved`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/onserviceremoved)
     pub fn set_onserviceremoved(&mut self, value: &Any) {
         self.inner.set("onserviceremoved", value);
+    }
+}
+impl BluetoothDevice {
+    /// The forget method.
+    /// [`BluetoothDevice.forget`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/forget)
+    pub fn forget(&self) -> Promise<Undefined> {
+        self.inner.call("forget", &[]).as_::<Promise<Undefined>>()
+    }
+}
+impl BluetoothDevice {
+    /// The watchAdvertisements method.
+    /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
+    pub fn watch_advertisements0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("watchAdvertisements", &[])
+            .as_::<Promise<Undefined>>()
+    }
+    /// The watchAdvertisements method.
+    /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
+    pub fn watch_advertisements1(
+        &self,
+        options: &WatchAdvertisementsOptions,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call("watchAdvertisements", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

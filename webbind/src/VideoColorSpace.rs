@@ -64,23 +64,6 @@ impl From<&VideoColorSpace> for Any {
 jsbind::utils::impl_dyn_cast!(VideoColorSpace);
 
 impl VideoColorSpace {
-    /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
-    pub fn new0() -> VideoColorSpace {
-        Self {
-            inner: Any::global("VideoColorSpace").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
-    pub fn new1(init: &VideoColorSpaceInit) -> VideoColorSpace {
-        Self {
-            inner: Any::global("VideoColorSpace")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl VideoColorSpace {
     /// Getter of the `primaries` attribute.
     /// [`VideoColorSpace.primaries`](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace/primaries)
     pub fn primaries(&self) -> VideoColorPrimaries {
@@ -108,6 +91,24 @@ impl VideoColorSpace {
     /// [`VideoColorSpace.fullRange`](https://developer.mozilla.org/en-US/docs/Web/API/VideoColorSpace/fullRange)
     pub fn full_range(&self) -> bool {
         self.inner.get("fullRange").as_::<bool>()
+    }
+}
+
+impl VideoColorSpace {
+    /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
+    pub fn new0() -> VideoColorSpace {
+        Self {
+            inner: Any::global("VideoColorSpace").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new VideoColorSpace(..)` constructor, creating a new VideoColorSpace instance
+    pub fn new1(init: &VideoColorSpaceInit) -> VideoColorSpace {
+        Self {
+            inner: Any::global("VideoColorSpace")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl VideoColorSpace {

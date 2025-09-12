@@ -92,18 +92,6 @@ impl SVGFEGaussianBlurElement {
     }
 }
 impl SVGFEGaussianBlurElement {
-    /// The setStdDeviation method.
-    /// [`SVGFEGaussianBlurElement.setStdDeviation`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement/setStdDeviation)
-    pub fn set_std_deviation(&self, std_deviation_x: f32, std_deviation_y: f32) -> Undefined {
-        self.inner
-            .call(
-                "setStdDeviation",
-                &[std_deviation_x.into(), std_deviation_y.into()],
-            )
-            .as_::<Undefined>()
-    }
-}
-impl SVGFEGaussianBlurElement {
     /// Getter of the `x` attribute.
     /// [`SVGFEGaussianBlurElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement/x)
     pub fn x(&self) -> SVGAnimatedLength {
@@ -136,5 +124,17 @@ impl SVGFEGaussianBlurElement {
     /// [`SVGFEGaussianBlurElement.result`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement/result)
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
+    }
+}
+impl SVGFEGaussianBlurElement {
+    /// The setStdDeviation method.
+    /// [`SVGFEGaussianBlurElement.setStdDeviation`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEGaussianBlurElement/setStdDeviation)
+    pub fn set_std_deviation(&self, std_deviation_x: f32, std_deviation_y: f32) -> Undefined {
+        self.inner
+            .call(
+                "setStdDeviation",
+                &[std_deviation_x.into(), std_deviation_y.into()],
+            )
+            .as_::<Undefined>()
     }
 }

@@ -64,6 +64,35 @@ impl From<&DOMPointReadOnly> for Any {
 jsbind::utils::impl_dyn_cast!(DOMPointReadOnly);
 
 impl DOMPointReadOnly {
+    /// Getter of the `x` attribute.
+    /// [`DOMPointReadOnly.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/x)
+    pub fn x(&self) -> f64 {
+        self.inner.get("x").as_::<f64>()
+    }
+}
+impl DOMPointReadOnly {
+    /// Getter of the `y` attribute.
+    /// [`DOMPointReadOnly.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/y)
+    pub fn y(&self) -> f64 {
+        self.inner.get("y").as_::<f64>()
+    }
+}
+impl DOMPointReadOnly {
+    /// Getter of the `z` attribute.
+    /// [`DOMPointReadOnly.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/z)
+    pub fn z(&self) -> f64 {
+        self.inner.get("z").as_::<f64>()
+    }
+}
+impl DOMPointReadOnly {
+    /// Getter of the `w` attribute.
+    /// [`DOMPointReadOnly.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/w)
+    pub fn w(&self) -> f64 {
+        self.inner.get("w").as_::<f64>()
+    }
+}
+
+impl DOMPointReadOnly {
     /// The `new DOMPointReadOnly(..)` constructor, creating a new DOMPointReadOnly instance
     pub fn new0() -> DOMPointReadOnly {
         Self {
@@ -121,34 +150,6 @@ impl DOMPointReadOnly {
         Any::global("DOMPointReadOnly")
             .call("fromPoint", &[other.into()])
             .as_::<DOMPointReadOnly>()
-    }
-}
-impl DOMPointReadOnly {
-    /// Getter of the `x` attribute.
-    /// [`DOMPointReadOnly.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/x)
-    pub fn x(&self) -> f64 {
-        self.inner.get("x").as_::<f64>()
-    }
-}
-impl DOMPointReadOnly {
-    /// Getter of the `y` attribute.
-    /// [`DOMPointReadOnly.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/y)
-    pub fn y(&self) -> f64 {
-        self.inner.get("y").as_::<f64>()
-    }
-}
-impl DOMPointReadOnly {
-    /// Getter of the `z` attribute.
-    /// [`DOMPointReadOnly.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/z)
-    pub fn z(&self) -> f64 {
-        self.inner.get("z").as_::<f64>()
-    }
-}
-impl DOMPointReadOnly {
-    /// Getter of the `w` attribute.
-    /// [`DOMPointReadOnly.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPointReadOnly/w)
-    pub fn w(&self) -> f64 {
-        self.inner.get("w").as_::<f64>()
     }
 }
 impl DOMPointReadOnly {

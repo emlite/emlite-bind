@@ -78,13 +78,6 @@ impl WakeLockSentinel {
     }
 }
 impl WakeLockSentinel {
-    /// The release method.
-    /// [`WakeLockSentinel.release`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel/release)
-    pub fn release(&self) -> Promise<Undefined> {
-        self.inner.call("release", &[]).as_::<Promise<Undefined>>()
-    }
-}
-impl WakeLockSentinel {
     /// Getter of the `onrelease` attribute.
     /// [`WakeLockSentinel.onrelease`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel/onrelease)
     pub fn onrelease(&self) -> Any {
@@ -95,5 +88,12 @@ impl WakeLockSentinel {
     /// [`WakeLockSentinel.onrelease`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel/onrelease)
     pub fn set_onrelease(&mut self, value: &Any) {
         self.inner.set("onrelease", value);
+    }
+}
+impl WakeLockSentinel {
+    /// The release method.
+    /// [`WakeLockSentinel.release`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel/release)
+    pub fn release(&self) -> Promise<Undefined> {
+        self.inner.call("release", &[]).as_::<Promise<Undefined>>()
     }
 }

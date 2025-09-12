@@ -64,14 +64,6 @@ impl From<&VTTRegion> for Any {
 jsbind::utils::impl_dyn_cast!(VTTRegion);
 
 impl VTTRegion {
-    /// The `new VTTRegion(..)` constructor, creating a new VTTRegion instance
-    pub fn new() -> VTTRegion {
-        Self {
-            inner: Any::global("VTTRegion").new(&[]).as_::<Any>(),
-        }
-    }
-}
-impl VTTRegion {
     /// Getter of the `id` attribute.
     /// [`VTTRegion.id`](https://developer.mozilla.org/en-US/docs/Web/API/VTTRegion/id)
     pub fn id(&self) -> JsString {
@@ -173,5 +165,14 @@ impl VTTRegion {
     /// [`VTTRegion.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/VTTRegion/scroll)
     pub fn set_scroll(&mut self, value: &ScrollSetting) {
         self.inner.set("scroll", value);
+    }
+}
+
+impl VTTRegion {
+    /// The `new VTTRegion(..)` constructor, creating a new VTTRegion instance
+    pub fn new() -> VTTRegion {
+        Self {
+            inner: Any::global("VTTRegion").new(&[]).as_::<Any>(),
+        }
     }
 }

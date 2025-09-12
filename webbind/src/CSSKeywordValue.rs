@@ -64,16 +64,6 @@ impl From<&CSSKeywordValue> for Any {
 jsbind::utils::impl_dyn_cast!(CSSKeywordValue);
 
 impl CSSKeywordValue {
-    /// The `new CSSKeywordValue(..)` constructor, creating a new CSSKeywordValue instance
-    pub fn new(value: &JsString) -> CSSKeywordValue {
-        Self {
-            inner: Any::global("CSSKeywordValue")
-                .new(&[value.into()])
-                .as_::<CSSStyleValue>(),
-        }
-    }
-}
-impl CSSKeywordValue {
     /// Getter of the `value` attribute.
     /// [`CSSKeywordValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue/value)
     pub fn value(&self) -> JsString {
@@ -84,5 +74,16 @@ impl CSSKeywordValue {
     /// [`CSSKeywordValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue/value)
     pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
+    }
+}
+
+impl CSSKeywordValue {
+    /// The `new CSSKeywordValue(..)` constructor, creating a new CSSKeywordValue instance
+    pub fn new(value: &JsString) -> CSSKeywordValue {
+        Self {
+            inner: Any::global("CSSKeywordValue")
+                .new(&[value.into()])
+                .as_::<CSSStyleValue>(),
+        }
     }
 }

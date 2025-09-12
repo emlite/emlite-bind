@@ -64,25 +64,6 @@ impl From<&CSSScale> for Any {
 jsbind::utils::impl_dyn_cast!(CSSScale);
 
 impl CSSScale {
-    /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
-    pub fn new0(x: &Any, y: &Any) -> CSSScale {
-        Self {
-            inner: Any::global("CSSScale")
-                .new(&[x.into(), y.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-
-    /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
-    pub fn new1(x: &Any, y: &Any, z: &Any) -> CSSScale {
-        Self {
-            inner: Any::global("CSSScale")
-                .new(&[x.into(), y.into(), z.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-}
-impl CSSScale {
     /// Getter of the `x` attribute.
     /// [`CSSScale.x`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/x)
     pub fn x(&self) -> Any {
@@ -119,5 +100,25 @@ impl CSSScale {
     /// [`CSSScale.z`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/z)
     pub fn set_z(&mut self, value: &Any) {
         self.inner.set("z", value);
+    }
+}
+
+impl CSSScale {
+    /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
+    pub fn new0(x: &Any, y: &Any) -> CSSScale {
+        Self {
+            inner: Any::global("CSSScale")
+                .new(&[x.into(), y.into()])
+                .as_::<CSSTransformComponent>(),
+        }
+    }
+
+    /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
+    pub fn new1(x: &Any, y: &Any, z: &Any) -> CSSScale {
+        Self {
+            inner: Any::global("CSSScale")
+                .new(&[x.into(), y.into(), z.into()])
+                .as_::<CSSTransformComponent>(),
+        }
     }
 }

@@ -64,13 +64,6 @@ impl From<&PerformancePaintTiming> for Any {
 jsbind::utils::impl_dyn_cast!(PerformancePaintTiming);
 
 impl PerformancePaintTiming {
-    /// The toJSON method.
-    /// [`PerformancePaintTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl PerformancePaintTiming {
     /// Getter of the `paintTime` attribute.
     /// [`PerformancePaintTiming.paintTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming/paintTime)
     pub fn paint_time(&self) -> Any {
@@ -82,5 +75,12 @@ impl PerformancePaintTiming {
     /// [`PerformancePaintTiming.presentationTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming/presentationTime)
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
+    }
+}
+impl PerformancePaintTiming {
+    /// The toJSON method.
+    /// [`PerformancePaintTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

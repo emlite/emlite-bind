@@ -64,23 +64,6 @@ impl From<&AnimationTrigger> for Any {
 jsbind::utils::impl_dyn_cast!(AnimationTrigger);
 
 impl AnimationTrigger {
-    /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
-    pub fn new0() -> AnimationTrigger {
-        Self {
-            inner: Any::global("AnimationTrigger").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
-    pub fn new1(options: &AnimationTriggerOptions) -> AnimationTrigger {
-        Self {
-            inner: Any::global("AnimationTrigger")
-                .new(&[options.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl AnimationTrigger {
     /// Getter of the `timeline` attribute.
     /// [`AnimationTrigger.timeline`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTrigger/timeline)
     pub fn timeline(&self) -> AnimationTimeline {
@@ -156,5 +139,23 @@ impl AnimationTrigger {
     /// [`AnimationTrigger.exitRangeEnd`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationTrigger/exitRangeEnd)
     pub fn set_exit_range_end(&mut self, value: &Any) {
         self.inner.set("exitRangeEnd", value);
+    }
+}
+
+impl AnimationTrigger {
+    /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
+    pub fn new0() -> AnimationTrigger {
+        Self {
+            inner: Any::global("AnimationTrigger").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new AnimationTrigger(..)` constructor, creating a new AnimationTrigger instance
+    pub fn new1(options: &AnimationTriggerOptions) -> AnimationTrigger {
+        Self {
+            inner: Any::global("AnimationTrigger")
+                .new(&[options.into()])
+                .as_::<Any>(),
+        }
     }
 }

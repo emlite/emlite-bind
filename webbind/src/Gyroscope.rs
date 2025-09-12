@@ -64,23 +64,6 @@ impl From<&Gyroscope> for Any {
 jsbind::utils::impl_dyn_cast!(Gyroscope);
 
 impl Gyroscope {
-    /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
-    pub fn new0() -> Gyroscope {
-        Self {
-            inner: Any::global("Gyroscope").new(&[]).as_::<Sensor>(),
-        }
-    }
-
-    /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
-    pub fn new1(sensor_options: &GyroscopeSensorOptions) -> Gyroscope {
-        Self {
-            inner: Any::global("Gyroscope")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
-        }
-    }
-}
-impl Gyroscope {
     /// Getter of the `x` attribute.
     /// [`Gyroscope.x`](https://developer.mozilla.org/en-US/docs/Web/API/Gyroscope/x)
     pub fn x(&self) -> f64 {
@@ -99,5 +82,23 @@ impl Gyroscope {
     /// [`Gyroscope.z`](https://developer.mozilla.org/en-US/docs/Web/API/Gyroscope/z)
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
+    }
+}
+
+impl Gyroscope {
+    /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
+    pub fn new0() -> Gyroscope {
+        Self {
+            inner: Any::global("Gyroscope").new(&[]).as_::<Sensor>(),
+        }
+    }
+
+    /// The `new Gyroscope(..)` constructor, creating a new Gyroscope instance
+    pub fn new1(sensor_options: &GyroscopeSensorOptions) -> Gyroscope {
+        Self {
+            inner: Any::global("Gyroscope")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
+        }
     }
 }

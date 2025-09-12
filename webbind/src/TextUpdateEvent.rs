@@ -64,25 +64,6 @@ impl From<&TextUpdateEvent> for Any {
 jsbind::utils::impl_dyn_cast!(TextUpdateEvent);
 
 impl TextUpdateEvent {
-    /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
-    pub fn new0(type_: &JsString) -> TextUpdateEvent {
-        Self {
-            inner: Any::global("TextUpdateEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
-    pub fn new1(type_: &JsString, options: &TextUpdateEventInit) -> TextUpdateEvent {
-        Self {
-            inner: Any::global("TextUpdateEvent")
-                .new(&[type_.into(), options.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl TextUpdateEvent {
     /// Getter of the `updateRangeStart` attribute.
     /// [`TextUpdateEvent.updateRangeStart`](https://developer.mozilla.org/en-US/docs/Web/API/TextUpdateEvent/updateRangeStart)
     pub fn update_range_start(&self) -> u32 {
@@ -115,5 +96,25 @@ impl TextUpdateEvent {
     /// [`TextUpdateEvent.selectionEnd`](https://developer.mozilla.org/en-US/docs/Web/API/TextUpdateEvent/selectionEnd)
     pub fn selection_end(&self) -> u32 {
         self.inner.get("selectionEnd").as_::<u32>()
+    }
+}
+
+impl TextUpdateEvent {
+    /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
+    pub fn new0(type_: &JsString) -> TextUpdateEvent {
+        Self {
+            inner: Any::global("TextUpdateEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
+    pub fn new1(type_: &JsString, options: &TextUpdateEventInit) -> TextUpdateEvent {
+        Self {
+            inner: Any::global("TextUpdateEvent")
+                .new(&[type_.into(), options.into()])
+                .as_::<Event>(),
+        }
     }
 }

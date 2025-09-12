@@ -64,6 +64,21 @@ impl From<&PointerTimeline> for Any {
 jsbind::utils::impl_dyn_cast!(PointerTimeline);
 
 impl PointerTimeline {
+    /// Getter of the `source` attribute.
+    /// [`PointerTimeline.source`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline/source)
+    pub fn source(&self) -> Element {
+        self.inner.get("source").as_::<Element>()
+    }
+}
+impl PointerTimeline {
+    /// Getter of the `axis` attribute.
+    /// [`PointerTimeline.axis`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline/axis)
+    pub fn axis(&self) -> PointerAxis {
+        self.inner.get("axis").as_::<PointerAxis>()
+    }
+}
+
+impl PointerTimeline {
     /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
     pub fn new0() -> PointerTimeline {
         Self {
@@ -80,19 +95,5 @@ impl PointerTimeline {
                 .new(&[options.into()])
                 .as_::<AnimationTimeline>(),
         }
-    }
-}
-impl PointerTimeline {
-    /// Getter of the `source` attribute.
-    /// [`PointerTimeline.source`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline/source)
-    pub fn source(&self) -> Element {
-        self.inner.get("source").as_::<Element>()
-    }
-}
-impl PointerTimeline {
-    /// Getter of the `axis` attribute.
-    /// [`PointerTimeline.axis`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline/axis)
-    pub fn axis(&self) -> PointerAxis {
-        self.inner.get("axis").as_::<PointerAxis>()
     }
 }

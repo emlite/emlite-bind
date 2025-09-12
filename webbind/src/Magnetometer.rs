@@ -64,23 +64,6 @@ impl From<&Magnetometer> for Any {
 jsbind::utils::impl_dyn_cast!(Magnetometer);
 
 impl Magnetometer {
-    /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
-    pub fn new0() -> Magnetometer {
-        Self {
-            inner: Any::global("Magnetometer").new(&[]).as_::<Sensor>(),
-        }
-    }
-
-    /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
-    pub fn new1(sensor_options: &MagnetometerSensorOptions) -> Magnetometer {
-        Self {
-            inner: Any::global("Magnetometer")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
-        }
-    }
-}
-impl Magnetometer {
     /// Getter of the `x` attribute.
     /// [`Magnetometer.x`](https://developer.mozilla.org/en-US/docs/Web/API/Magnetometer/x)
     pub fn x(&self) -> f64 {
@@ -99,5 +82,23 @@ impl Magnetometer {
     /// [`Magnetometer.z`](https://developer.mozilla.org/en-US/docs/Web/API/Magnetometer/z)
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
+    }
+}
+
+impl Magnetometer {
+    /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
+    pub fn new0() -> Magnetometer {
+        Self {
+            inner: Any::global("Magnetometer").new(&[]).as_::<Sensor>(),
+        }
+    }
+
+    /// The `new Magnetometer(..)` constructor, creating a new Magnetometer instance
+    pub fn new1(sensor_options: &MagnetometerSensorOptions) -> Magnetometer {
+        Self {
+            inner: Any::global("Magnetometer")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
+        }
     }
 }

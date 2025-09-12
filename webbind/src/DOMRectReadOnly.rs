@@ -64,6 +64,63 @@ impl From<&DOMRectReadOnly> for Any {
 jsbind::utils::impl_dyn_cast!(DOMRectReadOnly);
 
 impl DOMRectReadOnly {
+    /// Getter of the `x` attribute.
+    /// [`DOMRectReadOnly.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/x)
+    pub fn x(&self) -> f64 {
+        self.inner.get("x").as_::<f64>()
+    }
+}
+impl DOMRectReadOnly {
+    /// Getter of the `y` attribute.
+    /// [`DOMRectReadOnly.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/y)
+    pub fn y(&self) -> f64 {
+        self.inner.get("y").as_::<f64>()
+    }
+}
+impl DOMRectReadOnly {
+    /// Getter of the `width` attribute.
+    /// [`DOMRectReadOnly.width`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/width)
+    pub fn width(&self) -> f64 {
+        self.inner.get("width").as_::<f64>()
+    }
+}
+impl DOMRectReadOnly {
+    /// Getter of the `height` attribute.
+    /// [`DOMRectReadOnly.height`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/height)
+    pub fn height(&self) -> f64 {
+        self.inner.get("height").as_::<f64>()
+    }
+}
+impl DOMRectReadOnly {
+    /// Getter of the `top` attribute.
+    /// [`DOMRectReadOnly.top`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/top)
+    pub fn top(&self) -> f64 {
+        self.inner.get("top").as_::<f64>()
+    }
+}
+impl DOMRectReadOnly {
+    /// Getter of the `right` attribute.
+    /// [`DOMRectReadOnly.right`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/right)
+    pub fn right(&self) -> f64 {
+        self.inner.get("right").as_::<f64>()
+    }
+}
+impl DOMRectReadOnly {
+    /// Getter of the `bottom` attribute.
+    /// [`DOMRectReadOnly.bottom`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/bottom)
+    pub fn bottom(&self) -> f64 {
+        self.inner.get("bottom").as_::<f64>()
+    }
+}
+impl DOMRectReadOnly {
+    /// Getter of the `left` attribute.
+    /// [`DOMRectReadOnly.left`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/left)
+    pub fn left(&self) -> f64 {
+        self.inner.get("left").as_::<f64>()
+    }
+}
+
+impl DOMRectReadOnly {
     /// The `new DOMRectReadOnly(..)` constructor, creating a new DOMRectReadOnly instance
     pub fn new0() -> DOMRectReadOnly {
         Self {
@@ -119,62 +176,6 @@ impl DOMRectReadOnly {
         Any::global("DOMRectReadOnly")
             .call("fromRect", &[other.into()])
             .as_::<DOMRectReadOnly>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `x` attribute.
-    /// [`DOMRectReadOnly.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/x)
-    pub fn x(&self) -> f64 {
-        self.inner.get("x").as_::<f64>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `y` attribute.
-    /// [`DOMRectReadOnly.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/y)
-    pub fn y(&self) -> f64 {
-        self.inner.get("y").as_::<f64>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `width` attribute.
-    /// [`DOMRectReadOnly.width`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/width)
-    pub fn width(&self) -> f64 {
-        self.inner.get("width").as_::<f64>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `height` attribute.
-    /// [`DOMRectReadOnly.height`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/height)
-    pub fn height(&self) -> f64 {
-        self.inner.get("height").as_::<f64>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `top` attribute.
-    /// [`DOMRectReadOnly.top`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/top)
-    pub fn top(&self) -> f64 {
-        self.inner.get("top").as_::<f64>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `right` attribute.
-    /// [`DOMRectReadOnly.right`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/right)
-    pub fn right(&self) -> f64 {
-        self.inner.get("right").as_::<f64>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `bottom` attribute.
-    /// [`DOMRectReadOnly.bottom`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/bottom)
-    pub fn bottom(&self) -> f64 {
-        self.inner.get("bottom").as_::<f64>()
-    }
-}
-impl DOMRectReadOnly {
-    /// Getter of the `left` attribute.
-    /// [`DOMRectReadOnly.left`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/left)
-    pub fn left(&self) -> f64 {
-        self.inner.get("left").as_::<f64>()
     }
 }
 impl DOMRectReadOnly {

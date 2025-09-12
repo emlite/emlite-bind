@@ -78,6 +78,19 @@ impl MediaQueryList {
     }
 }
 impl MediaQueryList {
+    /// Getter of the `onchange` attribute.
+    /// [`MediaQueryList.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/onchange)
+    pub fn onchange(&self) -> Any {
+        self.inner.get("onchange").as_::<Any>()
+    }
+
+    /// Setter of the `onchange` attribute.
+    /// [`MediaQueryList.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/onchange)
+    pub fn set_onchange(&mut self, value: &Any) {
+        self.inner.set("onchange", value);
+    }
+}
+impl MediaQueryList {
     /// The addListener method.
     /// [`MediaQueryList.addListener`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener)
     pub fn add_listener(&self, callback: &Function) -> Undefined {
@@ -93,18 +106,5 @@ impl MediaQueryList {
         self.inner
             .call("removeListener", &[callback.into()])
             .as_::<Undefined>()
-    }
-}
-impl MediaQueryList {
-    /// Getter of the `onchange` attribute.
-    /// [`MediaQueryList.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/onchange)
-    pub fn onchange(&self) -> Any {
-        self.inner.get("onchange").as_::<Any>()
-    }
-
-    /// Setter of the `onchange` attribute.
-    /// [`MediaQueryList.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/onchange)
-    pub fn set_onchange(&mut self, value: &Any) {
-        self.inner.set("onchange", value);
     }
 }

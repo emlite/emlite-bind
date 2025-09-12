@@ -64,16 +64,6 @@ impl From<&USBInterface> for Any {
 jsbind::utils::impl_dyn_cast!(USBInterface);
 
 impl USBInterface {
-    /// The `new USBInterface(..)` constructor, creating a new USBInterface instance
-    pub fn new(configuration: &USBConfiguration, interface_number: u8) -> USBInterface {
-        Self {
-            inner: Any::global("USBInterface")
-                .new(&[configuration.into(), interface_number.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl USBInterface {
     /// Getter of the `interfaceNumber` attribute.
     /// [`USBInterface.interfaceNumber`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/interfaceNumber)
     pub fn interface_number(&self) -> u8 {
@@ -101,5 +91,16 @@ impl USBInterface {
     /// [`USBInterface.claimed`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/claimed)
     pub fn claimed(&self) -> bool {
         self.inner.get("claimed").as_::<bool>()
+    }
+}
+
+impl USBInterface {
+    /// The `new USBInterface(..)` constructor, creating a new USBInterface instance
+    pub fn new(configuration: &USBConfiguration, interface_number: u8) -> USBInterface {
+        Self {
+            inner: Any::global("USBInterface")
+                .new(&[configuration.into(), interface_number.into()])
+                .as_::<Any>(),
+        }
     }
 }

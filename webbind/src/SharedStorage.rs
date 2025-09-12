@@ -64,6 +64,13 @@ impl From<&SharedStorage> for Any {
 jsbind::utils::impl_dyn_cast!(SharedStorage);
 
 impl SharedStorage {
+    /// Getter of the `worklet` attribute.
+    /// [`SharedStorage.worklet`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/worklet)
+    pub fn worklet(&self) -> SharedStorageWorklet {
+        self.inner.get("worklet").as_::<SharedStorageWorklet>()
+    }
+}
+impl SharedStorage {
     /// The get method.
     /// [`SharedStorage.get`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/get)
     pub fn get(&self, key: &JsString) -> Promise<JsString> {
@@ -229,13 +236,6 @@ impl SharedStorage {
         self.inner
             .call("createWorklet", &[module_url.into(), options.into()])
             .as_::<Promise<SharedStorageWorklet>>()
-    }
-}
-impl SharedStorage {
-    /// Getter of the `worklet` attribute.
-    /// [`SharedStorage.worklet`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/worklet)
-    pub fn worklet(&self) -> SharedStorageWorklet {
-        self.inner.get("worklet").as_::<SharedStorageWorklet>()
     }
 }
 impl SharedStorage {

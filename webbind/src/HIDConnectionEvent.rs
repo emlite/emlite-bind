@@ -64,6 +64,14 @@ impl From<&HIDConnectionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(HIDConnectionEvent);
 
 impl HIDConnectionEvent {
+    /// Getter of the `device` attribute.
+    /// [`HIDConnectionEvent.device`](https://developer.mozilla.org/en-US/docs/Web/API/HIDConnectionEvent/device)
+    pub fn device(&self) -> HIDDevice {
+        self.inner.get("device").as_::<HIDDevice>()
+    }
+}
+
+impl HIDConnectionEvent {
     /// The `new HIDConnectionEvent(..)` constructor, creating a new HIDConnectionEvent instance
     pub fn new(type_: &JsString, event_init_dict: &HIDConnectionEventInit) -> HIDConnectionEvent {
         Self {
@@ -71,12 +79,5 @@ impl HIDConnectionEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl HIDConnectionEvent {
-    /// Getter of the `device` attribute.
-    /// [`HIDConnectionEvent.device`](https://developer.mozilla.org/en-US/docs/Web/API/HIDConnectionEvent/device)
-    pub fn device(&self) -> HIDDevice {
-        self.inner.get("device").as_::<HIDDevice>()
     }
 }

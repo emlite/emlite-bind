@@ -64,15 +64,6 @@ impl From<&IdentityCredential> for Any {
 jsbind::utils::impl_dyn_cast!(IdentityCredential);
 
 impl IdentityCredential {
-    /// The disconnect method.
-    /// [`IdentityCredential.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/disconnect)
-    pub fn disconnect(options: &IdentityCredentialDisconnectOptions) -> Promise<Undefined> {
-        Any::global("IdentityCredential")
-            .call("disconnect", &[options.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl IdentityCredential {
     /// Getter of the `token` attribute.
     /// [`IdentityCredential.token`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/token)
     pub fn token(&self) -> JsString {
@@ -91,5 +82,14 @@ impl IdentityCredential {
     /// [`IdentityCredential.configURL`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/configURL)
     pub fn config_url(&self) -> JsString {
         self.inner.get("configURL").as_::<JsString>()
+    }
+}
+impl IdentityCredential {
+    /// The disconnect method.
+    /// [`IdentityCredential.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/disconnect)
+    pub fn disconnect(options: &IdentityCredentialDisconnectOptions) -> Promise<Undefined> {
+        Any::global("IdentityCredential")
+            .call("disconnect", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

@@ -99,13 +99,6 @@ impl LargestContentfulPaint {
     }
 }
 impl LargestContentfulPaint {
-    /// The toJSON method.
-    /// [`LargestContentfulPaint.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl LargestContentfulPaint {
     /// Getter of the `paintTime` attribute.
     /// [`LargestContentfulPaint.paintTime`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/paintTime)
     pub fn paint_time(&self) -> Any {
@@ -117,5 +110,12 @@ impl LargestContentfulPaint {
     /// [`LargestContentfulPaint.presentationTime`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/presentationTime)
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
+    }
+}
+impl LargestContentfulPaint {
+    /// The toJSON method.
+    /// [`LargestContentfulPaint.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

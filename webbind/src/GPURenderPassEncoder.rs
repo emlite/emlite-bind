@@ -64,6 +64,19 @@ impl From<&GPURenderPassEncoder> for Any {
 jsbind::utils::impl_dyn_cast!(GPURenderPassEncoder);
 
 impl GPURenderPassEncoder {
+    /// Getter of the `label` attribute.
+    /// [`GPURenderPassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/label)
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
+    }
+
+    /// Setter of the `label` attribute.
+    /// [`GPURenderPassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/label)
+    pub fn set_label(&mut self, value: &JsString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPURenderPassEncoder {
     /// The setViewport method.
     /// [`GPURenderPassEncoder.setViewport`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/setViewport)
     pub fn set_viewport(
@@ -153,19 +166,6 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    /// Getter of the `label` attribute.
-    /// [`GPURenderPassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/label)
-    pub fn label(&self) -> JsString {
-        self.inner.get("label").as_::<JsString>()
-    }
-
-    /// Setter of the `label` attribute.
-    /// [`GPURenderPassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/label)
-    pub fn set_label(&mut self, value: &JsString) {
-        self.inner.set("label", value);
-    }
-}
-impl GPURenderPassEncoder {
     /// The pushDebugGroup method.
     /// [`GPURenderPassEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/pushDebugGroup)
     pub fn push_debug_group(&self, group_label: &JsString) -> Undefined {
@@ -193,7 +193,31 @@ impl GPURenderPassEncoder {
 impl GPURenderPassEncoder {
     /// The setBindGroup method.
     /// [`GPURenderPassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/setBindGroup)
-    pub fn set_bind_group(
+    pub fn set_bind_group0(&self, index: &Any, bind_group: &GPUBindGroup) -> Undefined {
+        self.inner
+            .call("setBindGroup", &[index.into(), bind_group.into()])
+            .as_::<Undefined>()
+    }
+    /// The setBindGroup method.
+    /// [`GPURenderPassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/setBindGroup)
+    pub fn set_bind_group1(
+        &self,
+        index: &Any,
+        bind_group: &GPUBindGroup,
+        dynamic_offsets: &TypedArray<Any>,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "setBindGroup",
+                &[index.into(), bind_group.into(), dynamic_offsets.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl GPURenderPassEncoder {
+    /// The setBindGroup method.
+    /// [`GPURenderPassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/setBindGroup)
+    pub fn set_bind_group2(
         &self,
         index: &Any,
         bind_group: &GPUBindGroup,

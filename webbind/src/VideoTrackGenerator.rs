@@ -64,14 +64,6 @@ impl From<&VideoTrackGenerator> for Any {
 jsbind::utils::impl_dyn_cast!(VideoTrackGenerator);
 
 impl VideoTrackGenerator {
-    /// The `new VideoTrackGenerator(..)` constructor, creating a new VideoTrackGenerator instance
-    pub fn new() -> VideoTrackGenerator {
-        Self {
-            inner: Any::global("VideoTrackGenerator").new(&[]).as_::<Any>(),
-        }
-    }
-}
-impl VideoTrackGenerator {
     /// Getter of the `writable` attribute.
     /// [`VideoTrackGenerator.writable`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator/writable)
     pub fn writable(&self) -> WritableStream {
@@ -96,5 +88,14 @@ impl VideoTrackGenerator {
     /// [`VideoTrackGenerator.track`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator/track)
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
+    }
+}
+
+impl VideoTrackGenerator {
+    /// The `new VideoTrackGenerator(..)` constructor, creating a new VideoTrackGenerator instance
+    pub fn new() -> VideoTrackGenerator {
+        Self {
+            inner: Any::global("VideoTrackGenerator").new(&[]).as_::<Any>(),
+        }
     }
 }

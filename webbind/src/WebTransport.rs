@@ -64,48 +64,6 @@ impl From<&WebTransport> for Any {
 jsbind::utils::impl_dyn_cast!(WebTransport);
 
 impl WebTransport {
-    /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
-    pub fn new0(url: &JsString) -> WebTransport {
-        Self {
-            inner: Any::global("WebTransport").new(&[url.into()]).as_::<Any>(),
-        }
-    }
-
-    /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
-    pub fn new1(url: &JsString, options: &WebTransportOptions) -> WebTransport {
-        Self {
-            inner: Any::global("WebTransport")
-                .new(&[url.into(), options.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl WebTransport {
-    /// The getStats method.
-    /// [`WebTransport.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats)
-    pub fn get_stats(&self) -> Promise<WebTransportConnectionStats> {
-        self.inner
-            .call("getStats", &[])
-            .as_::<Promise<WebTransportConnectionStats>>()
-    }
-}
-impl WebTransport {
-    /// The exportKeyingMaterial method.
-    /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
-    pub fn export_keying_material0(&self, label: &Any) -> Promise<ArrayBuffer> {
-        self.inner
-            .call("exportKeyingMaterial", &[label.into()])
-            .as_::<Promise<ArrayBuffer>>()
-    }
-    /// The exportKeyingMaterial method.
-    /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
-    pub fn export_keying_material1(&self, label: &Any, context: &Any) -> Promise<ArrayBuffer> {
-        self.inner
-            .call("exportKeyingMaterial", &[label.into(), context.into()])
-            .as_::<Promise<ArrayBuffer>>()
-    }
-}
-impl WebTransport {
     /// Getter of the `ready` attribute.
     /// [`WebTransport.ready`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/ready)
     pub fn ready(&self) -> Promise<Undefined> {
@@ -186,6 +144,85 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `datagrams` attribute.
+    /// [`WebTransport.datagrams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/datagrams)
+    pub fn datagrams(&self) -> WebTransportDatagramDuplexStream {
+        self.inner
+            .get("datagrams")
+            .as_::<WebTransportDatagramDuplexStream>()
+    }
+}
+impl WebTransport {
+    /// Getter of the `incomingBidirectionalStreams` attribute.
+    /// [`WebTransport.incomingBidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/incomingBidirectionalStreams)
+    pub fn incoming_bidirectional_streams(&self) -> ReadableStream {
+        self.inner
+            .get("incomingBidirectionalStreams")
+            .as_::<ReadableStream>()
+    }
+}
+impl WebTransport {
+    /// Getter of the `incomingUnidirectionalStreams` attribute.
+    /// [`WebTransport.incomingUnidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/incomingUnidirectionalStreams)
+    pub fn incoming_unidirectional_streams(&self) -> ReadableStream {
+        self.inner
+            .get("incomingUnidirectionalStreams")
+            .as_::<ReadableStream>()
+    }
+}
+impl WebTransport {
+    /// Getter of the `supportsReliableOnly` static attribute.
+    /// [`WebTransport.supportsReliableOnly`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/supportsReliableOnly)
+    pub fn supports_reliable_only() -> bool {
+        Any::global("WebTransport")
+            .get("supportsReliableOnly")
+            .as_::<bool>()
+    }
+}
+
+impl WebTransport {
+    /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
+    pub fn new0(url: &JsString) -> WebTransport {
+        Self {
+            inner: Any::global("WebTransport").new(&[url.into()]).as_::<Any>(),
+        }
+    }
+
+    /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
+    pub fn new1(url: &JsString, options: &WebTransportOptions) -> WebTransport {
+        Self {
+            inner: Any::global("WebTransport")
+                .new(&[url.into(), options.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+impl WebTransport {
+    /// The getStats method.
+    /// [`WebTransport.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats)
+    pub fn get_stats(&self) -> Promise<WebTransportConnectionStats> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<WebTransportConnectionStats>>()
+    }
+}
+impl WebTransport {
+    /// The exportKeyingMaterial method.
+    /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
+    pub fn export_keying_material0(&self, label: &Any) -> Promise<ArrayBuffer> {
+        self.inner
+            .call("exportKeyingMaterial", &[label.into()])
+            .as_::<Promise<ArrayBuffer>>()
+    }
+    /// The exportKeyingMaterial method.
+    /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
+    pub fn export_keying_material1(&self, label: &Any, context: &Any) -> Promise<ArrayBuffer> {
+        self.inner
+            .call("exportKeyingMaterial", &[label.into(), context.into()])
+            .as_::<Promise<ArrayBuffer>>()
+    }
+}
+impl WebTransport {
     /// The close method.
     /// [`WebTransport.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/close)
     pub fn close0(&self) -> Undefined {
@@ -197,15 +234,6 @@ impl WebTransport {
         self.inner
             .call("close", &[close_info.into()])
             .as_::<Undefined>()
-    }
-}
-impl WebTransport {
-    /// Getter of the `datagrams` attribute.
-    /// [`WebTransport.datagrams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/datagrams)
-    pub fn datagrams(&self) -> WebTransportDatagramDuplexStream {
-        self.inner
-            .get("datagrams")
-            .as_::<WebTransportDatagramDuplexStream>()
     }
 }
 impl WebTransport {
@@ -228,15 +256,6 @@ impl WebTransport {
     }
 }
 impl WebTransport {
-    /// Getter of the `incomingBidirectionalStreams` attribute.
-    /// [`WebTransport.incomingBidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/incomingBidirectionalStreams)
-    pub fn incoming_bidirectional_streams(&self) -> ReadableStream {
-        self.inner
-            .get("incomingBidirectionalStreams")
-            .as_::<ReadableStream>()
-    }
-}
-impl WebTransport {
     /// The createUnidirectionalStream method.
     /// [`WebTransport.createUnidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createUnidirectionalStream)
     pub fn create_unidirectional_stream0(&self) -> Promise<WebTransportSendStream> {
@@ -256,29 +275,11 @@ impl WebTransport {
     }
 }
 impl WebTransport {
-    /// Getter of the `incomingUnidirectionalStreams` attribute.
-    /// [`WebTransport.incomingUnidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/incomingUnidirectionalStreams)
-    pub fn incoming_unidirectional_streams(&self) -> ReadableStream {
-        self.inner
-            .get("incomingUnidirectionalStreams")
-            .as_::<ReadableStream>()
-    }
-}
-impl WebTransport {
     /// The createSendGroup method.
     /// [`WebTransport.createSendGroup`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createSendGroup)
     pub fn create_send_group(&self) -> WebTransportSendGroup {
         self.inner
             .call("createSendGroup", &[])
             .as_::<WebTransportSendGroup>()
-    }
-}
-impl WebTransport {
-    /// Getter of the `supportsReliableOnly` static attribute.
-    /// [`WebTransport.supportsReliableOnly`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/supportsReliableOnly)
-    pub fn supports_reliable_only() -> bool {
-        Any::global("WebTransport")
-            .get("supportsReliableOnly")
-            .as_::<bool>()
     }
 }

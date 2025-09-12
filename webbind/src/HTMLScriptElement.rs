@@ -64,16 +64,6 @@ impl From<&HTMLScriptElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLScriptElement);
 
 impl HTMLScriptElement {
-    /// The `new HTMLScriptElement(..)` constructor, creating a new HTMLScriptElement instance
-    pub fn new() -> HTMLScriptElement {
-        Self {
-            inner: Any::global("HTMLScriptElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLScriptElement {
     /// Getter of the `type` attribute.
     /// [`HTMLScriptElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/type)
     pub fn type_(&self) -> JsString {
@@ -211,15 +201,6 @@ impl HTMLScriptElement {
     }
 }
 impl HTMLScriptElement {
-    /// The supports method.
-    /// [`HTMLScriptElement.supports`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/supports)
-    pub fn supports(type_: &JsString) -> bool {
-        Any::global("HTMLScriptElement")
-            .call("supports", &[type_.into()])
-            .as_::<bool>()
-    }
-}
-impl HTMLScriptElement {
     /// Getter of the `charset` attribute.
     /// [`HTMLScriptElement.charset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/charset)
     pub fn charset(&self) -> JsString {
@@ -269,5 +250,25 @@ impl HTMLScriptElement {
     /// [`HTMLScriptElement.attributionSrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/attributionSrc)
     pub fn set_attribution_src(&mut self, value: &JsString) {
         self.inner.set("attributionSrc", value);
+    }
+}
+
+impl HTMLScriptElement {
+    /// The `new HTMLScriptElement(..)` constructor, creating a new HTMLScriptElement instance
+    pub fn new() -> HTMLScriptElement {
+        Self {
+            inner: Any::global("HTMLScriptElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLScriptElement {
+    /// The supports method.
+    /// [`HTMLScriptElement.supports`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/supports)
+    pub fn supports(type_: &JsString) -> bool {
+        Any::global("HTMLScriptElement")
+            .call("supports", &[type_.into()])
+            .as_::<bool>()
     }
 }

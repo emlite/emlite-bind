@@ -112,6 +112,35 @@ impl SVGSVGElement {
     }
 }
 impl SVGSVGElement {
+    /// Getter of the `viewBox` attribute.
+    /// [`SVGSVGElement.viewBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/viewBox)
+    pub fn view_box(&self) -> SVGAnimatedRect {
+        self.inner.get("viewBox").as_::<SVGAnimatedRect>()
+    }
+}
+impl SVGSVGElement {
+    /// Getter of the `preserveAspectRatio` attribute.
+    /// [`SVGSVGElement.preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/preserveAspectRatio)
+    pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
+        self.inner
+            .get("preserveAspectRatio")
+            .as_::<SVGAnimatedPreserveAspectRatio>()
+    }
+}
+impl SVGSVGElement {
+    /// Getter of the `onportalactivate` attribute.
+    /// [`SVGSVGElement.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/onportalactivate)
+    pub fn onportalactivate(&self) -> Any {
+        self.inner.get("onportalactivate").as_::<Any>()
+    }
+
+    /// Setter of the `onportalactivate` attribute.
+    /// [`SVGSVGElement.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/onportalactivate)
+    pub fn set_onportalactivate(&mut self, value: &Any) {
+        self.inner.set("onportalactivate", value);
+    }
+}
+impl SVGSVGElement {
     /// The getIntersectionList method.
     /// [`SVGSVGElement.getIntersectionList`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/getIntersectionList)
     pub fn get_intersection_list(
@@ -310,34 +339,5 @@ impl SVGSVGElement {
         self.inner
             .call("setCurrentTime", &[seconds.into()])
             .as_::<Undefined>()
-    }
-}
-impl SVGSVGElement {
-    /// Getter of the `viewBox` attribute.
-    /// [`SVGSVGElement.viewBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/viewBox)
-    pub fn view_box(&self) -> SVGAnimatedRect {
-        self.inner.get("viewBox").as_::<SVGAnimatedRect>()
-    }
-}
-impl SVGSVGElement {
-    /// Getter of the `preserveAspectRatio` attribute.
-    /// [`SVGSVGElement.preserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/preserveAspectRatio)
-    pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner
-            .get("preserveAspectRatio")
-            .as_::<SVGAnimatedPreserveAspectRatio>()
-    }
-}
-impl SVGSVGElement {
-    /// Getter of the `onportalactivate` attribute.
-    /// [`SVGSVGElement.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/onportalactivate)
-    pub fn onportalactivate(&self) -> Any {
-        self.inner.get("onportalactivate").as_::<Any>()
-    }
-
-    /// Setter of the `onportalactivate` attribute.
-    /// [`SVGSVGElement.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/onportalactivate)
-    pub fn set_onportalactivate(&mut self, value: &Any) {
-        self.inner.set("onportalactivate", value);
     }
 }

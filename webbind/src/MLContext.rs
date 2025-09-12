@@ -64,6 +64,13 @@ impl From<&MLContext> for Any {
 jsbind::utils::impl_dyn_cast!(MLContext);
 
 impl MLContext {
+    /// Getter of the `lost` attribute.
+    /// [`MLContext.lost`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/lost)
+    pub fn lost(&self) -> Promise<MLContextLostInfo> {
+        self.inner.get("lost").as_::<Promise<MLContextLostInfo>>()
+    }
+}
+impl MLContext {
     /// The dispatch method.
     /// [`MLContext.dispatch`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/dispatch)
     pub fn dispatch(&self, graph: &MLGraph, inputs: &Any, outputs: &Any) -> Undefined {
@@ -100,7 +107,16 @@ impl MLContext {
 impl MLContext {
     /// The readTensor method.
     /// [`MLContext.readTensor`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/readTensor)
-    pub fn read_tensor(&self, tensor: &MLTensor, output_data: &Any) -> Promise<Undefined> {
+    pub fn read_tensor(&self, tensor: &MLTensor) -> Promise<ArrayBuffer> {
+        self.inner
+            .call("readTensor", &[tensor.into()])
+            .as_::<Promise<ArrayBuffer>>()
+    }
+}
+impl MLContext {
+    /// The readTensor method.
+    /// [`MLContext.readTensor`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/readTensor)
+    pub fn read_tensor1(&self, tensor: &MLTensor, output_data: &Any) -> Promise<Undefined> {
         self.inner
             .call("readTensor", &[tensor.into(), output_data.into()])
             .as_::<Promise<Undefined>>()
@@ -129,12 +145,5 @@ impl MLContext {
     /// [`MLContext.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/destroy)
     pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
-    }
-}
-impl MLContext {
-    /// Getter of the `lost` attribute.
-    /// [`MLContext.lost`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/lost)
-    pub fn lost(&self) -> Promise<MLContextLostInfo> {
-        self.inner.get("lost").as_::<Promise<MLContextLostInfo>>()
     }
 }

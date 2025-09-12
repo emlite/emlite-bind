@@ -64,16 +64,6 @@ impl From<&VideoFrame> for Any {
 jsbind::utils::impl_dyn_cast!(VideoFrame);
 
 impl VideoFrame {
-    /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
-    pub fn new(data: &Any, init: &VideoFrameBufferInit) -> VideoFrame {
-        Self {
-            inner: Any::global("VideoFrame")
-                .new(&[data.into(), init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl VideoFrame {
     /// Getter of the `format` attribute.
     /// [`VideoFrame.format`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/format)
     pub fn format(&self) -> VideoPixelFormat {
@@ -155,6 +145,35 @@ impl VideoFrame {
     /// [`VideoFrame.colorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/colorSpace)
     pub fn color_space(&self) -> VideoColorSpace {
         self.inner.get("colorSpace").as_::<VideoColorSpace>()
+    }
+}
+
+impl VideoFrame {
+    /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
+    pub fn new0(image: &Any) -> VideoFrame {
+        Self {
+            inner: Any::global("VideoFrame").new(&[image.into()]).as_::<Any>(),
+        }
+    }
+
+    /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
+    pub fn new1(image: &Any, init: &VideoFrameInit) -> VideoFrame {
+        Self {
+            inner: Any::global("VideoFrame")
+                .new(&[image.into(), init.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+
+impl VideoFrame {
+    /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
+    pub fn new2(data: &Any, init: &VideoFrameBufferInit) -> VideoFrame {
+        Self {
+            inner: Any::global("VideoFrame")
+                .new(&[data.into(), init.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl VideoFrame {

@@ -183,38 +183,10 @@ impl Window {
     }
 }
 impl Window {
-    /// The close method.
-    /// [`Window.close`](https://developer.mozilla.org/en-US/docs/Web/API/Window/close)
-    pub fn close(&self) -> Undefined {
-        self.inner.call("close", &[]).as_::<Undefined>()
-    }
-}
-impl Window {
     /// Getter of the `closed` attribute.
     /// [`Window.closed`](https://developer.mozilla.org/en-US/docs/Web/API/Window/closed)
     pub fn closed(&self) -> bool {
         self.inner.get("closed").as_::<bool>()
-    }
-}
-impl Window {
-    /// The stop method.
-    /// [`Window.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Window/stop)
-    pub fn stop(&self) -> Undefined {
-        self.inner.call("stop", &[]).as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The focus method.
-    /// [`Window.focus`](https://developer.mozilla.org/en-US/docs/Web/API/Window/focus)
-    pub fn focus(&self) -> Undefined {
-        self.inner.call("focus", &[]).as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The blur method.
-    /// [`Window.blur`](https://developer.mozilla.org/en-US/docs/Web/API/Window/blur)
-    pub fn blur(&self) -> Undefined {
-        self.inner.call("blur", &[]).as_::<Undefined>()
     }
 }
 impl Window {
@@ -266,32 +238,6 @@ impl Window {
     }
 }
 impl Window {
-    /// The open method.
-    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open0(&self) -> Any {
-        self.inner.call("open", &[]).as_::<Any>()
-    }
-    /// The open method.
-    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open1(&self, url: &JsString) -> Any {
-        self.inner.call("open", &[url.into()]).as_::<Any>()
-    }
-    /// The open method.
-    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open2(&self, url: &JsString, target: &JsString) -> Any {
-        self.inner
-            .call("open", &[url.into(), target.into()])
-            .as_::<Any>()
-    }
-    /// The open method.
-    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open3(&self, url: &JsString, target: &JsString, features: &JsString) -> Any {
-        self.inner
-            .call("open", &[url.into(), target.into(), features.into()])
-            .as_::<Any>()
-    }
-}
-impl Window {
     /// Getter of the `navigator` attribute.
     /// [`Window.navigator`](https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator)
     pub fn navigator(&self) -> Navigator {
@@ -310,71 +256,6 @@ impl Window {
     /// [`Window.originAgentCluster`](https://developer.mozilla.org/en-US/docs/Web/API/Window/originAgentCluster)
     pub fn origin_agent_cluster(&self) -> bool {
         self.inner.get("originAgentCluster").as_::<bool>()
-    }
-}
-impl Window {
-    /// The alert method.
-    /// [`Window.alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
-    pub fn alert(&self, message: &JsString) -> Undefined {
-        self.inner
-            .call("alert", &[message.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The confirm method.
-    /// [`Window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
-    pub fn confirm0(&self) -> bool {
-        self.inner.call("confirm", &[]).as_::<bool>()
-    }
-    /// The confirm method.
-    /// [`Window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
-    pub fn confirm1(&self, message: &JsString) -> bool {
-        self.inner.call("confirm", &[message.into()]).as_::<bool>()
-    }
-}
-impl Window {
-    /// The prompt method.
-    /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt0(&self) -> JsString {
-        self.inner.call("prompt", &[]).as_::<JsString>()
-    }
-    /// The prompt method.
-    /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt1(&self, message: &JsString) -> JsString {
-        self.inner
-            .call("prompt", &[message.into()])
-            .as_::<JsString>()
-    }
-    /// The prompt method.
-    /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt2(&self, message: &JsString, default: &JsString) -> JsString {
-        self.inner
-            .call("prompt", &[message.into(), default.into()])
-            .as_::<JsString>()
-    }
-}
-impl Window {
-    /// The print method.
-    /// [`Window.print`](https://developer.mozilla.org/en-US/docs/Web/API/Window/print)
-    pub fn print(&self) -> Undefined {
-        self.inner.call("print", &[]).as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The postMessage method.
-    /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-    /// The postMessage method.
-    /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &WindowPostMessageOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
     }
 }
 impl Window {
@@ -412,28 +293,10 @@ impl Window {
     }
 }
 impl Window {
-    /// The navigate method.
-    /// [`Window.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/navigate)
-    pub fn navigate(&self, dir: &SpatialNavigationDirection) -> Undefined {
-        self.inner
-            .call("navigate", &[dir.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Window {
     /// Getter of the `viewport` attribute.
     /// [`Window.viewport`](https://developer.mozilla.org/en-US/docs/Web/API/Window/viewport)
     pub fn viewport(&self) -> Viewport {
         self.inner.get("viewport").as_::<Viewport>()
-    }
-}
-impl Window {
-    /// The matchMedia method.
-    /// [`Window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
-    pub fn match_media(&self, query: &JsString) -> MediaQueryList {
-        self.inner
-            .call("matchMedia", &[query.into()])
-            .as_::<MediaQueryList>()
     }
 }
 impl Window {
@@ -448,42 +311,6 @@ impl Window {
     /// [`Window.visualViewport`](https://developer.mozilla.org/en-US/docs/Web/API/Window/visualViewport)
     pub fn visual_viewport(&self) -> VisualViewport {
         self.inner.get("visualViewport").as_::<VisualViewport>()
-    }
-}
-impl Window {
-    /// The moveTo method.
-    /// [`Window.moveTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/moveTo)
-    pub fn move_to(&self, x: i32, y: i32) -> Undefined {
-        self.inner
-            .call("moveTo", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The moveBy method.
-    /// [`Window.moveBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/moveBy)
-    pub fn move_by(&self, x: i32, y: i32) -> Undefined {
-        self.inner
-            .call("moveBy", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The resizeTo method.
-    /// [`Window.resizeTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeTo)
-    pub fn resize_to(&self, width: i32, height: i32) -> Undefined {
-        self.inner
-            .call("resizeTo", &[width.into(), height.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The resizeBy method.
-    /// [`Window.resizeBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeBy)
-    pub fn resize_by(&self, x: i32, y: i32) -> Undefined {
-        self.inner
-            .call("resizeBy", &[x.into(), y.into()])
-            .as_::<Undefined>()
     }
 }
 impl Window {
@@ -526,33 +353,6 @@ impl Window {
     /// [`Window.pageYOffset`](https://developer.mozilla.org/en-US/docs/Web/API/Window/pageYOffset)
     pub fn page_y_offset(&self) -> f64 {
         self.inner.get("pageYOffset").as_::<f64>()
-    }
-}
-impl Window {
-    /// The scroll method.
-    /// [`Window.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll)
-    pub fn scroll(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("scroll", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The scrollTo method.
-    /// [`Window.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
-    pub fn scroll_to(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("scrollTo", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Window {
-    /// The scrollBy method.
-    /// [`Window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy)
-    pub fn scroll_by(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("scrollBy", &[x.into(), y.into()])
-            .as_::<Undefined>()
     }
 }
 impl Window {
@@ -605,6 +405,449 @@ impl Window {
     }
 }
 impl Window {
+    /// Getter of the `documentPictureInPicture` attribute.
+    /// [`Window.documentPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/Window/documentPictureInPicture)
+    pub fn document_picture_in_picture(&self) -> DocumentPictureInPicture {
+        self.inner
+            .get("documentPictureInPicture")
+            .as_::<DocumentPictureInPicture>()
+    }
+}
+impl Window {
+    /// Getter of the `event` attribute.
+    /// [`Window.event`](https://developer.mozilla.org/en-US/docs/Web/API/Window/event)
+    pub fn event(&self) -> Any {
+        self.inner.get("event").as_::<Any>()
+    }
+}
+impl Window {
+    /// Getter of the `fence` attribute.
+    /// [`Window.fence`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fence)
+    pub fn fence(&self) -> Fence {
+        self.inner.get("fence").as_::<Fence>()
+    }
+}
+impl Window {
+    /// Getter of the `external` attribute.
+    /// [`Window.external`](https://developer.mozilla.org/en-US/docs/Web/API/Window/external)
+    pub fn external(&self) -> External {
+        self.inner.get("external").as_::<External>()
+    }
+}
+impl Window {
+    /// Getter of the `onappinstalled` attribute.
+    /// [`Window.onappinstalled`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onappinstalled)
+    pub fn onappinstalled(&self) -> Any {
+        self.inner.get("onappinstalled").as_::<Any>()
+    }
+
+    /// Setter of the `onappinstalled` attribute.
+    /// [`Window.onappinstalled`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onappinstalled)
+    pub fn set_onappinstalled(&mut self, value: &Any) {
+        self.inner.set("onappinstalled", value);
+    }
+}
+impl Window {
+    /// Getter of the `onbeforeinstallprompt` attribute.
+    /// [`Window.onbeforeinstallprompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforeinstallprompt)
+    pub fn onbeforeinstallprompt(&self) -> Any {
+        self.inner.get("onbeforeinstallprompt").as_::<Any>()
+    }
+
+    /// Setter of the `onbeforeinstallprompt` attribute.
+    /// [`Window.onbeforeinstallprompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforeinstallprompt)
+    pub fn set_onbeforeinstallprompt(&mut self, value: &Any) {
+        self.inner.set("onbeforeinstallprompt", value);
+    }
+}
+impl Window {
+    /// Getter of the `ondeviceorientation` attribute.
+    /// [`Window.ondeviceorientation`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientation)
+    pub fn ondeviceorientation(&self) -> Any {
+        self.inner.get("ondeviceorientation").as_::<Any>()
+    }
+
+    /// Setter of the `ondeviceorientation` attribute.
+    /// [`Window.ondeviceorientation`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientation)
+    pub fn set_ondeviceorientation(&mut self, value: &Any) {
+        self.inner.set("ondeviceorientation", value);
+    }
+}
+impl Window {
+    /// Getter of the `ondeviceorientationabsolute` attribute.
+    /// [`Window.ondeviceorientationabsolute`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute)
+    pub fn ondeviceorientationabsolute(&self) -> Any {
+        self.inner.get("ondeviceorientationabsolute").as_::<Any>()
+    }
+
+    /// Setter of the `ondeviceorientationabsolute` attribute.
+    /// [`Window.ondeviceorientationabsolute`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute)
+    pub fn set_ondeviceorientationabsolute(&mut self, value: &Any) {
+        self.inner.set("ondeviceorientationabsolute", value);
+    }
+}
+impl Window {
+    /// Getter of the `ondevicemotion` attribute.
+    /// [`Window.ondevicemotion`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondevicemotion)
+    pub fn ondevicemotion(&self) -> Any {
+        self.inner.get("ondevicemotion").as_::<Any>()
+    }
+
+    /// Setter of the `ondevicemotion` attribute.
+    /// [`Window.ondevicemotion`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondevicemotion)
+    pub fn set_ondevicemotion(&mut self, value: &Any) {
+        self.inner.set("ondevicemotion", value);
+    }
+}
+impl Window {
+    /// Getter of the `portalHost` attribute.
+    /// [`Window.portalHost`](https://developer.mozilla.org/en-US/docs/Web/API/Window/portalHost)
+    pub fn portal_host(&self) -> PortalHost {
+        self.inner.get("portalHost").as_::<PortalHost>()
+    }
+}
+impl Window {
+    /// Getter of the `sharedStorage` attribute.
+    /// [`Window.sharedStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sharedStorage)
+    pub fn shared_storage(&self) -> SharedStorage {
+        self.inner.get("sharedStorage").as_::<SharedStorage>()
+    }
+}
+impl Window {
+    /// Getter of the `speechSynthesis` attribute.
+    /// [`Window.speechSynthesis`](https://developer.mozilla.org/en-US/docs/Web/API/Window/speechSynthesis)
+    pub fn speech_synthesis(&self) -> SpeechSynthesis {
+        self.inner.get("speechSynthesis").as_::<SpeechSynthesis>()
+    }
+}
+impl Window {
+    /// Getter of the `launchQueue` attribute.
+    /// [`Window.launchQueue`](https://developer.mozilla.org/en-US/docs/Web/API/Window/launchQueue)
+    pub fn launch_queue(&self) -> LaunchQueue {
+        self.inner.get("launchQueue").as_::<LaunchQueue>()
+    }
+}
+impl Window {
+    /// Getter of the `onbeforexrselect` attribute.
+    /// [`Window.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforexrselect)
+    pub fn onbeforexrselect(&self) -> Any {
+        self.inner.get("onbeforexrselect").as_::<Any>()
+    }
+
+    /// Setter of the `onbeforexrselect` attribute.
+    /// [`Window.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforexrselect)
+    pub fn set_onbeforexrselect(&mut self, value: &Any) {
+        self.inner.set("onbeforexrselect", value);
+    }
+}
+impl Window {
+    /// Getter of the `onportalactivate` attribute.
+    /// [`Window.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onportalactivate)
+    pub fn onportalactivate(&self) -> Any {
+        self.inner.get("onportalactivate").as_::<Any>()
+    }
+
+    /// Setter of the `onportalactivate` attribute.
+    /// [`Window.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onportalactivate)
+    pub fn set_onportalactivate(&mut self, value: &Any) {
+        self.inner.set("onportalactivate", value);
+    }
+}
+impl Window {
+    /// Getter of the `crypto` attribute.
+    /// [`Window.crypto`](https://developer.mozilla.org/en-US/docs/Web/API/Window/crypto)
+    pub fn crypto(&self) -> Crypto {
+        self.inner.get("crypto").as_::<Crypto>()
+    }
+}
+impl Window {
+    /// Getter of the `sessionStorage` attribute.
+    /// [`Window.sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
+    pub fn session_storage(&self) -> Storage {
+        self.inner.get("sessionStorage").as_::<Storage>()
+    }
+}
+impl Window {
+    /// Getter of the `localStorage` attribute.
+    /// [`Window.localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+    pub fn local_storage(&self) -> Storage {
+        self.inner.get("localStorage").as_::<Storage>()
+    }
+}
+impl Window {
+    /// The close method.
+    /// [`Window.close`](https://developer.mozilla.org/en-US/docs/Web/API/Window/close)
+    pub fn close(&self) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The stop method.
+    /// [`Window.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Window/stop)
+    pub fn stop(&self) -> Undefined {
+        self.inner.call("stop", &[]).as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The focus method.
+    /// [`Window.focus`](https://developer.mozilla.org/en-US/docs/Web/API/Window/focus)
+    pub fn focus(&self) -> Undefined {
+        self.inner.call("focus", &[]).as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The blur method.
+    /// [`Window.blur`](https://developer.mozilla.org/en-US/docs/Web/API/Window/blur)
+    pub fn blur(&self) -> Undefined {
+        self.inner.call("blur", &[]).as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The open method.
+    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
+    pub fn open0(&self) -> Any {
+        self.inner.call("open", &[]).as_::<Any>()
+    }
+    /// The open method.
+    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
+    pub fn open1(&self, url: &JsString) -> Any {
+        self.inner.call("open", &[url.into()]).as_::<Any>()
+    }
+    /// The open method.
+    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
+    pub fn open2(&self, url: &JsString, target: &JsString) -> Any {
+        self.inner
+            .call("open", &[url.into(), target.into()])
+            .as_::<Any>()
+    }
+    /// The open method.
+    /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
+    pub fn open3(&self, url: &JsString, target: &JsString, features: &JsString) -> Any {
+        self.inner
+            .call("open", &[url.into(), target.into(), features.into()])
+            .as_::<Any>()
+    }
+}
+impl Window {
+    /// The alert method.
+    /// [`Window.alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
+    pub fn alert(&self) -> Undefined {
+        self.inner.call("alert", &[]).as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The alert method.
+    /// [`Window.alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
+    pub fn alert1(&self, message: &JsString) -> Undefined {
+        self.inner
+            .call("alert", &[message.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The confirm method.
+    /// [`Window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
+    pub fn confirm0(&self) -> bool {
+        self.inner.call("confirm", &[]).as_::<bool>()
+    }
+    /// The confirm method.
+    /// [`Window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
+    pub fn confirm1(&self, message: &JsString) -> bool {
+        self.inner.call("confirm", &[message.into()]).as_::<bool>()
+    }
+}
+impl Window {
+    /// The prompt method.
+    /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
+    pub fn prompt0(&self) -> JsString {
+        self.inner.call("prompt", &[]).as_::<JsString>()
+    }
+    /// The prompt method.
+    /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
+    pub fn prompt1(&self, message: &JsString) -> JsString {
+        self.inner
+            .call("prompt", &[message.into()])
+            .as_::<JsString>()
+    }
+    /// The prompt method.
+    /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
+    pub fn prompt2(&self, message: &JsString, default: &JsString) -> JsString {
+        self.inner
+            .call("prompt", &[message.into(), default.into()])
+            .as_::<JsString>()
+    }
+}
+impl Window {
+    /// The print method.
+    /// [`Window.print`](https://developer.mozilla.org/en-US/docs/Web/API/Window/print)
+    pub fn print(&self) -> Undefined {
+        self.inner.call("print", &[]).as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The postMessage method.
+    /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+    pub fn post_message0(&self, message: &Any, target_origin: &JsString) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), target_origin.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+    pub fn post_message1(
+        &self,
+        message: &Any,
+        target_origin: &JsString,
+        transfer: &TypedArray<Object>,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "postMessage",
+                &[message.into(), target_origin.into(), transfer.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The postMessage method.
+    /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+    pub fn post_message2(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`Window.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+    pub fn post_message3(&self, message: &Any, options: &WindowPostMessageOptions) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The navigate method.
+    /// [`Window.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/navigate)
+    pub fn navigate(&self, dir: &SpatialNavigationDirection) -> Undefined {
+        self.inner
+            .call("navigate", &[dir.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The matchMedia method.
+    /// [`Window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+    pub fn match_media(&self, query: &JsString) -> MediaQueryList {
+        self.inner
+            .call("matchMedia", &[query.into()])
+            .as_::<MediaQueryList>()
+    }
+}
+impl Window {
+    /// The moveTo method.
+    /// [`Window.moveTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/moveTo)
+    pub fn move_to(&self, x: i32, y: i32) -> Undefined {
+        self.inner
+            .call("moveTo", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The moveBy method.
+    /// [`Window.moveBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/moveBy)
+    pub fn move_by(&self, x: i32, y: i32) -> Undefined {
+        self.inner
+            .call("moveBy", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The resizeTo method.
+    /// [`Window.resizeTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeTo)
+    pub fn resize_to(&self, width: i32, height: i32) -> Undefined {
+        self.inner
+            .call("resizeTo", &[width.into(), height.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The resizeBy method.
+    /// [`Window.resizeBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeBy)
+    pub fn resize_by(&self, x: i32, y: i32) -> Undefined {
+        self.inner
+            .call("resizeBy", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The scroll method.
+    /// [`Window.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll)
+    pub fn scroll0(&self) -> Undefined {
+        self.inner.call("scroll", &[]).as_::<Undefined>()
+    }
+    /// The scroll method.
+    /// [`Window.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll)
+    pub fn scroll1(&self, options: &ScrollToOptions) -> Undefined {
+        self.inner
+            .call("scroll", &[options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The scroll method.
+    /// [`Window.scroll`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll)
+    pub fn scroll2(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("scroll", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The scrollTo method.
+    /// [`Window.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
+    pub fn scroll_to0(&self) -> Undefined {
+        self.inner.call("scrollTo", &[]).as_::<Undefined>()
+    }
+    /// The scrollTo method.
+    /// [`Window.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
+    pub fn scroll_to1(&self, options: &ScrollToOptions) -> Undefined {
+        self.inner
+            .call("scrollTo", &[options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The scrollTo method.
+    /// [`Window.scrollTo`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)
+    pub fn scroll_to2(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("scrollTo", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The scrollBy method.
+    /// [`Window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy)
+    pub fn scroll_by0(&self) -> Undefined {
+        self.inner.call("scrollBy", &[]).as_::<Undefined>()
+    }
+    /// The scrollBy method.
+    /// [`Window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy)
+    pub fn scroll_by1(&self, options: &ScrollToOptions) -> Undefined {
+        self.inner
+            .call("scrollBy", &[options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
+    /// The scrollBy method.
+    /// [`Window.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy)
+    pub fn scroll_by2(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("scrollBy", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Window {
     /// The getComputedStyle method.
     /// [`Window.getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
     pub fn get_computed_style0(&self, elt: &Element) -> CSSStyleProperties {
@@ -630,29 +873,6 @@ impl Window {
         self.inner
             .call("getDigitalGoodsService", &[service_provider.into()])
             .as_::<Promise<DigitalGoodsService>>()
-    }
-}
-impl Window {
-    /// Getter of the `documentPictureInPicture` attribute.
-    /// [`Window.documentPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/Window/documentPictureInPicture)
-    pub fn document_picture_in_picture(&self) -> DocumentPictureInPicture {
-        self.inner
-            .get("documentPictureInPicture")
-            .as_::<DocumentPictureInPicture>()
-    }
-}
-impl Window {
-    /// Getter of the `event` attribute.
-    /// [`Window.event`](https://developer.mozilla.org/en-US/docs/Web/API/Window/event)
-    pub fn event(&self) -> Any {
-        self.inner.get("event").as_::<Any>()
-    }
-}
-impl Window {
-    /// Getter of the `fence` attribute.
-    /// [`Window.fence`](https://developer.mozilla.org/en-US/docs/Web/API/Window/fence)
-    pub fn fence(&self) -> Fence {
-        self.inner.get("fence").as_::<Fence>()
     }
 }
 impl Window {
@@ -743,13 +963,6 @@ impl Window {
     }
 }
 impl Window {
-    /// Getter of the `external` attribute.
-    /// [`Window.external`](https://developer.mozilla.org/en-US/docs/Web/API/Window/external)
-    pub fn external(&self) -> External {
-        self.inner.get("external").as_::<External>()
-    }
-}
-impl Window {
     /// The queryLocalFonts method.
     /// [`Window.queryLocalFonts`](https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts)
     pub fn query_local_fonts0(&self) -> Promise<TypedArray<FontData>> {
@@ -763,78 +976,6 @@ impl Window {
         self.inner
             .call("queryLocalFonts", &[options.into()])
             .as_::<Promise<TypedArray<FontData>>>()
-    }
-}
-impl Window {
-    /// Getter of the `onappinstalled` attribute.
-    /// [`Window.onappinstalled`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onappinstalled)
-    pub fn onappinstalled(&self) -> Any {
-        self.inner.get("onappinstalled").as_::<Any>()
-    }
-
-    /// Setter of the `onappinstalled` attribute.
-    /// [`Window.onappinstalled`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onappinstalled)
-    pub fn set_onappinstalled(&mut self, value: &Any) {
-        self.inner.set("onappinstalled", value);
-    }
-}
-impl Window {
-    /// Getter of the `onbeforeinstallprompt` attribute.
-    /// [`Window.onbeforeinstallprompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforeinstallprompt)
-    pub fn onbeforeinstallprompt(&self) -> Any {
-        self.inner.get("onbeforeinstallprompt").as_::<Any>()
-    }
-
-    /// Setter of the `onbeforeinstallprompt` attribute.
-    /// [`Window.onbeforeinstallprompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforeinstallprompt)
-    pub fn set_onbeforeinstallprompt(&mut self, value: &Any) {
-        self.inner.set("onbeforeinstallprompt", value);
-    }
-}
-impl Window {
-    /// Getter of the `ondeviceorientation` attribute.
-    /// [`Window.ondeviceorientation`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientation)
-    pub fn ondeviceorientation(&self) -> Any {
-        self.inner.get("ondeviceorientation").as_::<Any>()
-    }
-
-    /// Setter of the `ondeviceorientation` attribute.
-    /// [`Window.ondeviceorientation`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientation)
-    pub fn set_ondeviceorientation(&mut self, value: &Any) {
-        self.inner.set("ondeviceorientation", value);
-    }
-}
-impl Window {
-    /// Getter of the `ondeviceorientationabsolute` attribute.
-    /// [`Window.ondeviceorientationabsolute`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute)
-    pub fn ondeviceorientationabsolute(&self) -> Any {
-        self.inner.get("ondeviceorientationabsolute").as_::<Any>()
-    }
-
-    /// Setter of the `ondeviceorientationabsolute` attribute.
-    /// [`Window.ondeviceorientationabsolute`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondeviceorientationabsolute)
-    pub fn set_ondeviceorientationabsolute(&mut self, value: &Any) {
-        self.inner.set("ondeviceorientationabsolute", value);
-    }
-}
-impl Window {
-    /// Getter of the `ondevicemotion` attribute.
-    /// [`Window.ondevicemotion`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondevicemotion)
-    pub fn ondevicemotion(&self) -> Any {
-        self.inner.get("ondevicemotion").as_::<Any>()
-    }
-
-    /// Setter of the `ondevicemotion` attribute.
-    /// [`Window.ondevicemotion`](https://developer.mozilla.org/en-US/docs/Web/API/Window/ondevicemotion)
-    pub fn set_ondevicemotion(&mut self, value: &Any) {
-        self.inner.set("ondevicemotion", value);
-    }
-}
-impl Window {
-    /// Getter of the `portalHost` attribute.
-    /// [`Window.portalHost`](https://developer.mozilla.org/en-US/docs/Web/API/Window/portalHost)
-    pub fn portal_host(&self) -> PortalHost {
-        self.inner.get("portalHost").as_::<PortalHost>()
     }
 }
 impl Window {
@@ -870,66 +1011,12 @@ impl Window {
     }
 }
 impl Window {
-    /// Getter of the `sharedStorage` attribute.
-    /// [`Window.sharedStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sharedStorage)
-    pub fn shared_storage(&self) -> SharedStorage {
-        self.inner.get("sharedStorage").as_::<SharedStorage>()
-    }
-}
-impl Window {
-    /// Getter of the `speechSynthesis` attribute.
-    /// [`Window.speechSynthesis`](https://developer.mozilla.org/en-US/docs/Web/API/Window/speechSynthesis)
-    pub fn speech_synthesis(&self) -> SpeechSynthesis {
-        self.inner.get("speechSynthesis").as_::<SpeechSynthesis>()
-    }
-}
-impl Window {
-    /// Getter of the `launchQueue` attribute.
-    /// [`Window.launchQueue`](https://developer.mozilla.org/en-US/docs/Web/API/Window/launchQueue)
-    pub fn launch_queue(&self) -> LaunchQueue {
-        self.inner.get("launchQueue").as_::<LaunchQueue>()
-    }
-}
-impl Window {
     /// The getScreenDetails method.
     /// [`Window.getScreenDetails`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getScreenDetails)
     pub fn get_screen_details(&self) -> Promise<ScreenDetails> {
         self.inner
             .call("getScreenDetails", &[])
             .as_::<Promise<ScreenDetails>>()
-    }
-}
-impl Window {
-    /// Getter of the `onbeforexrselect` attribute.
-    /// [`Window.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforexrselect)
-    pub fn onbeforexrselect(&self) -> Any {
-        self.inner.get("onbeforexrselect").as_::<Any>()
-    }
-
-    /// Setter of the `onbeforexrselect` attribute.
-    /// [`Window.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onbeforexrselect)
-    pub fn set_onbeforexrselect(&mut self, value: &Any) {
-        self.inner.set("onbeforexrselect", value);
-    }
-}
-impl Window {
-    /// Getter of the `onportalactivate` attribute.
-    /// [`Window.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onportalactivate)
-    pub fn onportalactivate(&self) -> Any {
-        self.inner.get("onportalactivate").as_::<Any>()
-    }
-
-    /// Setter of the `onportalactivate` attribute.
-    /// [`Window.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/Window/onportalactivate)
-    pub fn set_onportalactivate(&mut self, value: &Any) {
-        self.inner.set("onportalactivate", value);
-    }
-}
-impl Window {
-    /// Getter of the `crypto` attribute.
-    /// [`Window.crypto`](https://developer.mozilla.org/en-US/docs/Web/API/Window/crypto)
-    pub fn crypto(&self) -> Crypto {
-        self.inner.get("crypto").as_::<Crypto>()
     }
 }
 impl Window {
@@ -948,19 +1035,5 @@ impl Window {
         self.inner
             .call("cancelAnimationFrame", &[handle.into()])
             .as_::<Undefined>()
-    }
-}
-impl Window {
-    /// Getter of the `sessionStorage` attribute.
-    /// [`Window.sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
-    pub fn session_storage(&self) -> Storage {
-        self.inner.get("sessionStorage").as_::<Storage>()
-    }
-}
-impl Window {
-    /// Getter of the `localStorage` attribute.
-    /// [`Window.localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-    pub fn local_storage(&self) -> Storage {
-        self.inner.get("localStorage").as_::<Storage>()
     }
 }

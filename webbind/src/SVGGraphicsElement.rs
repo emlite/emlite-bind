@@ -73,6 +73,20 @@ impl SVGGraphicsElement {
     }
 }
 impl SVGGraphicsElement {
+    /// Getter of the `requiredExtensions` attribute.
+    /// [`SVGGraphicsElement.requiredExtensions`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/requiredExtensions)
+    pub fn required_extensions(&self) -> SVGStringList {
+        self.inner.get("requiredExtensions").as_::<SVGStringList>()
+    }
+}
+impl SVGGraphicsElement {
+    /// Getter of the `systemLanguage` attribute.
+    /// [`SVGGraphicsElement.systemLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/systemLanguage)
+    pub fn system_language(&self) -> SVGStringList {
+        self.inner.get("systemLanguage").as_::<SVGStringList>()
+    }
+}
+impl SVGGraphicsElement {
     /// The getBBox method.
     /// [`SVGGraphicsElement.getBBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox)
     pub fn get_b_box0(&self) -> DOMRect {
@@ -98,19 +112,5 @@ impl SVGGraphicsElement {
     /// [`SVGGraphicsElement.getScreenCTM`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getScreenCTM)
     pub fn get_screen_ctm(&self) -> DOMMatrix {
         self.inner.call("getScreenCTM", &[]).as_::<DOMMatrix>()
-    }
-}
-impl SVGGraphicsElement {
-    /// Getter of the `requiredExtensions` attribute.
-    /// [`SVGGraphicsElement.requiredExtensions`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/requiredExtensions)
-    pub fn required_extensions(&self) -> SVGStringList {
-        self.inner.get("requiredExtensions").as_::<SVGStringList>()
-    }
-}
-impl SVGGraphicsElement {
-    /// Getter of the `systemLanguage` attribute.
-    /// [`SVGGraphicsElement.systemLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/systemLanguage)
-    pub fn system_language(&self) -> SVGStringList {
-        self.inner.get("systemLanguage").as_::<SVGStringList>()
     }
 }

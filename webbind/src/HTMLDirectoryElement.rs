@@ -64,16 +64,6 @@ impl From<&HTMLDirectoryElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLDirectoryElement);
 
 impl HTMLDirectoryElement {
-    /// The `new HTMLDirectoryElement(..)` constructor, creating a new HTMLDirectoryElement instance
-    pub fn new() -> HTMLDirectoryElement {
-        Self {
-            inner: Any::global("HTMLDirectoryElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLDirectoryElement {
     /// Getter of the `compact` attribute.
     /// [`HTMLDirectoryElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDirectoryElement/compact)
     pub fn compact(&self) -> bool {
@@ -84,5 +74,16 @@ impl HTMLDirectoryElement {
     /// [`HTMLDirectoryElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDirectoryElement/compact)
     pub fn set_compact(&mut self, value: bool) {
         self.inner.set("compact", value);
+    }
+}
+
+impl HTMLDirectoryElement {
+    /// The `new HTMLDirectoryElement(..)` constructor, creating a new HTMLDirectoryElement instance
+    pub fn new() -> HTMLDirectoryElement {
+        Self {
+            inner: Any::global("HTMLDirectoryElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,15 +64,6 @@ impl From<&GPUShaderModule> for Any {
 jsbind::utils::impl_dyn_cast!(GPUShaderModule);
 
 impl GPUShaderModule {
-    /// The getCompilationInfo method.
-    /// [`GPUShaderModule.getCompilationInfo`](https://developer.mozilla.org/en-US/docs/Web/API/GPUShaderModule/getCompilationInfo)
-    pub fn get_compilation_info(&self) -> Promise<GPUCompilationInfo> {
-        self.inner
-            .call("getCompilationInfo", &[])
-            .as_::<Promise<GPUCompilationInfo>>()
-    }
-}
-impl GPUShaderModule {
     /// Getter of the `label` attribute.
     /// [`GPUShaderModule.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUShaderModule/label)
     pub fn label(&self) -> JsString {
@@ -83,5 +74,14 @@ impl GPUShaderModule {
     /// [`GPUShaderModule.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUShaderModule/label)
     pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
+    }
+}
+impl GPUShaderModule {
+    /// The getCompilationInfo method.
+    /// [`GPUShaderModule.getCompilationInfo`](https://developer.mozilla.org/en-US/docs/Web/API/GPUShaderModule/getCompilationInfo)
+    pub fn get_compilation_info(&self) -> Promise<GPUCompilationInfo> {
+        self.inner
+            .call("getCompilationInfo", &[])
+            .as_::<Promise<GPUCompilationInfo>>()
     }
 }

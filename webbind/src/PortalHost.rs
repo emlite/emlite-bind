@@ -64,22 +64,6 @@ impl From<&PortalHost> for Any {
 jsbind::utils::impl_dyn_cast!(PortalHost);
 
 impl PortalHost {
-    /// The postMessage method.
-    /// [`PortalHost.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-    /// The postMessage method.
-    /// [`PortalHost.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
-    }
-}
-impl PortalHost {
     /// Getter of the `onmessage` attribute.
     /// [`PortalHost.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/onmessage)
     pub fn onmessage(&self) -> Any {
@@ -103,5 +87,21 @@ impl PortalHost {
     /// [`PortalHost.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/onmessageerror)
     pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
+    }
+}
+impl PortalHost {
+    /// The postMessage method.
+    /// [`PortalHost.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/postMessage)
+    pub fn post_message0(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`PortalHost.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/PortalHost/postMessage)
+    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }

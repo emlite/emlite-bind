@@ -64,25 +64,6 @@ impl From<&KeyboardEvent> for Any {
 jsbind::utils::impl_dyn_cast!(KeyboardEvent);
 
 impl KeyboardEvent {
-    /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
-    pub fn new0(type_: &JsString) -> KeyboardEvent {
-        Self {
-            inner: Any::global("KeyboardEvent")
-                .new(&[type_.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-
-    /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &KeyboardEventInit) -> KeyboardEvent {
-        Self {
-            inner: Any::global("KeyboardEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-}
-impl KeyboardEvent {
     /// Getter of the `key` attribute.
     /// [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
     pub fn key(&self) -> JsString {
@@ -143,6 +124,40 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.isComposing`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/isComposing)
     pub fn is_composing(&self) -> bool {
         self.inner.get("isComposing").as_::<bool>()
+    }
+}
+impl KeyboardEvent {
+    /// Getter of the `charCode` attribute.
+    /// [`KeyboardEvent.charCode`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/charCode)
+    pub fn char_code(&self) -> u32 {
+        self.inner.get("charCode").as_::<u32>()
+    }
+}
+impl KeyboardEvent {
+    /// Getter of the `keyCode` attribute.
+    /// [`KeyboardEvent.keyCode`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
+    pub fn key_code(&self) -> u32 {
+        self.inner.get("keyCode").as_::<u32>()
+    }
+}
+
+impl KeyboardEvent {
+    /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
+    pub fn new0(type_: &JsString) -> KeyboardEvent {
+        Self {
+            inner: Any::global("KeyboardEvent")
+                .new(&[type_.into()])
+                .as_::<UIEvent>(),
+        }
+    }
+
+    /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &KeyboardEventInit) -> KeyboardEvent {
+        Self {
+            inner: Any::global("KeyboardEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<UIEvent>(),
+        }
     }
 }
 impl KeyboardEvent {
@@ -372,19 +387,5 @@ impl KeyboardEvent {
                 ],
             )
             .as_::<Undefined>()
-    }
-}
-impl KeyboardEvent {
-    /// Getter of the `charCode` attribute.
-    /// [`KeyboardEvent.charCode`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/charCode)
-    pub fn char_code(&self) -> u32 {
-        self.inner.get("charCode").as_::<u32>()
-    }
-}
-impl KeyboardEvent {
-    /// Getter of the `keyCode` attribute.
-    /// [`KeyboardEvent.keyCode`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
-    pub fn key_code(&self) -> u32 {
-        self.inner.get("keyCode").as_::<u32>()
     }
 }

@@ -90,14 +90,23 @@ impl FormData {
 impl FormData {
     /// The append method.
     /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
-    pub fn append0(&self, name: &JsString, blob_value: &Blob) -> Undefined {
+    pub fn append(&self, name: &JsString, value: &JsString) -> Undefined {
+        self.inner
+            .call("append", &[name.into(), value.into()])
+            .as_::<Undefined>()
+    }
+}
+impl FormData {
+    /// The append method.
+    /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
+    pub fn append1(&self, name: &JsString, blob_value: &Blob) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
     /// The append method.
     /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
-    pub fn append1(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
+    pub fn append2(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()
@@ -136,14 +145,23 @@ impl FormData {
 impl FormData {
     /// The set method.
     /// [`FormData.set`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
-    pub fn set0(&self, name: &JsString, blob_value: &Blob) -> Undefined {
+    pub fn set(&self, name: &JsString, value: &JsString) -> Undefined {
+        self.inner
+            .call("set", &[name.into(), value.into()])
+            .as_::<Undefined>()
+    }
+}
+impl FormData {
+    /// The set method.
+    /// [`FormData.set`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
+    pub fn set1(&self, name: &JsString, blob_value: &Blob) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
     /// The set method.
     /// [`FormData.set`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
-    pub fn set1(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
+    pub fn set2(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()

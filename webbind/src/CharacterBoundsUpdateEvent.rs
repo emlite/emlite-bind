@@ -64,6 +64,21 @@ impl From<&CharacterBoundsUpdateEvent> for Any {
 jsbind::utils::impl_dyn_cast!(CharacterBoundsUpdateEvent);
 
 impl CharacterBoundsUpdateEvent {
+    /// Getter of the `rangeStart` attribute.
+    /// [`CharacterBoundsUpdateEvent.rangeStart`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterBoundsUpdateEvent/rangeStart)
+    pub fn range_start(&self) -> u32 {
+        self.inner.get("rangeStart").as_::<u32>()
+    }
+}
+impl CharacterBoundsUpdateEvent {
+    /// Getter of the `rangeEnd` attribute.
+    /// [`CharacterBoundsUpdateEvent.rangeEnd`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterBoundsUpdateEvent/rangeEnd)
+    pub fn range_end(&self) -> u32 {
+        self.inner.get("rangeEnd").as_::<u32>()
+    }
+}
+
+impl CharacterBoundsUpdateEvent {
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
     pub fn new0(type_: &JsString) -> CharacterBoundsUpdateEvent {
         Self {
@@ -83,19 +98,5 @@ impl CharacterBoundsUpdateEvent {
                 .new(&[type_.into(), options.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl CharacterBoundsUpdateEvent {
-    /// Getter of the `rangeStart` attribute.
-    /// [`CharacterBoundsUpdateEvent.rangeStart`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterBoundsUpdateEvent/rangeStart)
-    pub fn range_start(&self) -> u32 {
-        self.inner.get("rangeStart").as_::<u32>()
-    }
-}
-impl CharacterBoundsUpdateEvent {
-    /// Getter of the `rangeEnd` attribute.
-    /// [`CharacterBoundsUpdateEvent.rangeEnd`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterBoundsUpdateEvent/rangeEnd)
-    pub fn range_end(&self) -> u32 {
-        self.inner.get("rangeEnd").as_::<u32>()
     }
 }

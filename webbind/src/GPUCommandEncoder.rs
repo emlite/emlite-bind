@@ -64,6 +64,19 @@ impl From<&GPUCommandEncoder> for Any {
 jsbind::utils::impl_dyn_cast!(GPUCommandEncoder);
 
 impl GPUCommandEncoder {
+    /// Getter of the `label` attribute.
+    /// [`GPUCommandEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/label)
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
+    }
+
+    /// Setter of the `label` attribute.
+    /// [`GPUCommandEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/label)
+    pub fn set_label(&mut self, value: &JsString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPUCommandEncoder {
     /// The beginRenderPass method.
     /// [`GPUCommandEncoder.beginRenderPass`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/beginRenderPass)
     pub fn begin_render_pass(&self, descriptor: &GPURenderPassDescriptor) -> GPURenderPassEncoder {
@@ -94,7 +107,31 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     /// The copyBufferToBuffer method.
     /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
-    pub fn copy_buffer_to_buffer0(
+    pub fn copy_buffer_to_buffer0(&self, source: &GPUBuffer, destination: &GPUBuffer) -> Undefined {
+        self.inner
+            .call("copyBufferToBuffer", &[source.into(), destination.into()])
+            .as_::<Undefined>()
+    }
+    /// The copyBufferToBuffer method.
+    /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
+    pub fn copy_buffer_to_buffer1(
+        &self,
+        source: &GPUBuffer,
+        destination: &GPUBuffer,
+        size: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "copyBufferToBuffer",
+                &[source.into(), destination.into(), size.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl GPUCommandEncoder {
+    /// The copyBufferToBuffer method.
+    /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
+    pub fn copy_buffer_to_buffer2(
         &self,
         source: &GPUBuffer,
         source_offset: &Any,
@@ -115,7 +152,7 @@ impl GPUCommandEncoder {
     }
     /// The copyBufferToBuffer method.
     /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
-    pub fn copy_buffer_to_buffer1(
+    pub fn copy_buffer_to_buffer3(
         &self,
         source: &GPUBuffer,
         source_offset: &Any,
@@ -248,19 +285,6 @@ impl GPUCommandEncoder {
         self.inner
             .call("finish", &[descriptor.into()])
             .as_::<GPUCommandBuffer>()
-    }
-}
-impl GPUCommandEncoder {
-    /// Getter of the `label` attribute.
-    /// [`GPUCommandEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/label)
-    pub fn label(&self) -> JsString {
-        self.inner.get("label").as_::<JsString>()
-    }
-
-    /// Setter of the `label` attribute.
-    /// [`GPUCommandEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/label)
-    pub fn set_label(&mut self, value: &JsString) {
-        self.inner.set("label", value);
     }
 }
 impl GPUCommandEncoder {

@@ -160,6 +160,13 @@ impl SVGElement {
     }
 }
 impl SVGElement {
+    /// Getter of the `style` attribute.
+    /// [`SVGElement.style`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/style)
+    pub fn style(&self) -> CSSStyleProperties {
+        self.inner.get("style").as_::<CSSStyleProperties>()
+    }
+}
+impl SVGElement {
     /// The focus method.
     /// [`SVGElement.focus`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/focus)
     pub fn focus0(&self) -> Undefined {
@@ -178,12 +185,5 @@ impl SVGElement {
     /// [`SVGElement.blur`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/blur)
     pub fn blur(&self) -> Undefined {
         self.inner.call("blur", &[]).as_::<Undefined>()
-    }
-}
-impl SVGElement {
-    /// Getter of the `style` attribute.
-    /// [`SVGElement.style`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/style)
-    pub fn style(&self) -> CSSStyleProperties {
-        self.inner.get("style").as_::<CSSStyleProperties>()
     }
 }

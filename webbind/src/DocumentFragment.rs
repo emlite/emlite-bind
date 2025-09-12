@@ -64,23 +64,6 @@ impl From<&DocumentFragment> for Any {
 jsbind::utils::impl_dyn_cast!(DocumentFragment);
 
 impl DocumentFragment {
-    /// The `new DocumentFragment(..)` constructor, creating a new DocumentFragment instance
-    pub fn new() -> DocumentFragment {
-        Self {
-            inner: Any::global("DocumentFragment").new(&[]).as_::<Node>(),
-        }
-    }
-}
-impl DocumentFragment {
-    /// The getElementById method.
-    /// [`DocumentFragment.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/getElementById)
-    pub fn get_element_by_id(&self, element_id: &JsString) -> Element {
-        self.inner
-            .call("getElementById", &[element_id.into()])
-            .as_::<Element>()
-    }
-}
-impl DocumentFragment {
     /// Getter of the `children` attribute.
     /// [`DocumentFragment.children`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/children)
     pub fn children(&self) -> HTMLCollection {
@@ -106,6 +89,24 @@ impl DocumentFragment {
     /// [`DocumentFragment.childElementCount`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/childElementCount)
     pub fn child_element_count(&self) -> u32 {
         self.inner.get("childElementCount").as_::<u32>()
+    }
+}
+
+impl DocumentFragment {
+    /// The `new DocumentFragment(..)` constructor, creating a new DocumentFragment instance
+    pub fn new() -> DocumentFragment {
+        Self {
+            inner: Any::global("DocumentFragment").new(&[]).as_::<Node>(),
+        }
+    }
+}
+impl DocumentFragment {
+    /// The getElementById method.
+    /// [`DocumentFragment.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/getElementById)
+    pub fn get_element_by_id(&self, element_id: &JsString) -> Element {
+        self.inner
+            .call("getElementById", &[element_id.into()])
+            .as_::<Element>()
     }
 }
 impl DocumentFragment {

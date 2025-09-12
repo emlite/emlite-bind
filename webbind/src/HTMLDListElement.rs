@@ -64,16 +64,6 @@ impl From<&HTMLDListElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLDListElement);
 
 impl HTMLDListElement {
-    /// The `new HTMLDListElement(..)` constructor, creating a new HTMLDListElement instance
-    pub fn new() -> HTMLDListElement {
-        Self {
-            inner: Any::global("HTMLDListElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLDListElement {
     /// Getter of the `compact` attribute.
     /// [`HTMLDListElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDListElement/compact)
     pub fn compact(&self) -> bool {
@@ -84,5 +74,16 @@ impl HTMLDListElement {
     /// [`HTMLDListElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDListElement/compact)
     pub fn set_compact(&mut self, value: bool) {
         self.inner.set("compact", value);
+    }
+}
+
+impl HTMLDListElement {
+    /// The `new HTMLDListElement(..)` constructor, creating a new HTMLDListElement instance
+    pub fn new() -> HTMLDListElement {
+        Self {
+            inner: Any::global("HTMLDListElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,25 +64,6 @@ impl From<&InputEvent> for Any {
 jsbind::utils::impl_dyn_cast!(InputEvent);
 
 impl InputEvent {
-    /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
-    pub fn new0(type_: &JsString) -> InputEvent {
-        Self {
-            inner: Any::global("InputEvent")
-                .new(&[type_.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-
-    /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &InputEventInit) -> InputEvent {
-        Self {
-            inner: Any::global("InputEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-}
-impl InputEvent {
     /// Getter of the `data` attribute.
     /// [`InputEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/data)
     pub fn data(&self) -> JsString {
@@ -108,6 +89,26 @@ impl InputEvent {
     /// [`InputEvent.dataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/dataTransfer)
     pub fn data_transfer(&self) -> DataTransfer {
         self.inner.get("dataTransfer").as_::<DataTransfer>()
+    }
+}
+
+impl InputEvent {
+    /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
+    pub fn new0(type_: &JsString) -> InputEvent {
+        Self {
+            inner: Any::global("InputEvent")
+                .new(&[type_.into()])
+                .as_::<UIEvent>(),
+        }
+    }
+
+    /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &InputEventInit) -> InputEvent {
+        Self {
+            inner: Any::global("InputEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<UIEvent>(),
+        }
     }
 }
 impl InputEvent {

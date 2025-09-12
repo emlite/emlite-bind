@@ -64,14 +64,6 @@ impl From<&IdleDetector> for Any {
 jsbind::utils::impl_dyn_cast!(IdleDetector);
 
 impl IdleDetector {
-    /// The `new IdleDetector(..)` constructor, creating a new IdleDetector instance
-    pub fn new() -> IdleDetector {
-        Self {
-            inner: Any::global("IdleDetector").new(&[]).as_::<EventTarget>(),
-        }
-    }
-}
-impl IdleDetector {
     /// Getter of the `userState` attribute.
     /// [`IdleDetector.userState`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/userState)
     pub fn user_state(&self) -> UserIdleState {
@@ -96,6 +88,15 @@ impl IdleDetector {
     /// [`IdleDetector.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/onchange)
     pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
+    }
+}
+
+impl IdleDetector {
+    /// The `new IdleDetector(..)` constructor, creating a new IdleDetector instance
+    pub fn new() -> IdleDetector {
+        Self {
+            inner: Any::global("IdleDetector").new(&[]).as_::<EventTarget>(),
+        }
     }
 }
 impl IdleDetector {

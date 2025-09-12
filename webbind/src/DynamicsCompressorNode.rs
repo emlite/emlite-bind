@@ -64,28 +64,6 @@ impl From<&DynamicsCompressorNode> for Any {
 jsbind::utils::impl_dyn_cast!(DynamicsCompressorNode);
 
 impl DynamicsCompressorNode {
-    /// The `new DynamicsCompressorNode(..)` constructor, creating a new DynamicsCompressorNode instance
-    pub fn new0(context: &BaseAudioContext) -> DynamicsCompressorNode {
-        Self {
-            inner: Any::global("DynamicsCompressorNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-
-    /// The `new DynamicsCompressorNode(..)` constructor, creating a new DynamicsCompressorNode instance
-    pub fn new1(
-        context: &BaseAudioContext,
-        options: &DynamicsCompressorOptions,
-    ) -> DynamicsCompressorNode {
-        Self {
-            inner: Any::global("DynamicsCompressorNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-}
-impl DynamicsCompressorNode {
     /// Getter of the `threshold` attribute.
     /// [`DynamicsCompressorNode.threshold`](https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/threshold)
     pub fn threshold(&self) -> AudioParam {
@@ -125,5 +103,28 @@ impl DynamicsCompressorNode {
     /// [`DynamicsCompressorNode.release`](https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode/release)
     pub fn release(&self) -> AudioParam {
         self.inner.get("release").as_::<AudioParam>()
+    }
+}
+
+impl DynamicsCompressorNode {
+    /// The `new DynamicsCompressorNode(..)` constructor, creating a new DynamicsCompressorNode instance
+    pub fn new0(context: &BaseAudioContext) -> DynamicsCompressorNode {
+        Self {
+            inner: Any::global("DynamicsCompressorNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+
+    /// The `new DynamicsCompressorNode(..)` constructor, creating a new DynamicsCompressorNode instance
+    pub fn new1(
+        context: &BaseAudioContext,
+        options: &DynamicsCompressorOptions,
+    ) -> DynamicsCompressorNode {
+        Self {
+            inner: Any::global("DynamicsCompressorNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
     }
 }

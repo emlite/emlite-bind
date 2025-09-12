@@ -87,13 +87,6 @@ impl ViewTransition {
     }
 }
 impl ViewTransition {
-    /// The skipTransition method.
-    /// [`ViewTransition.skipTransition`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/skipTransition)
-    pub fn skip_transition(&self) -> Undefined {
-        self.inner.call("skipTransition", &[]).as_::<Undefined>()
-    }
-}
-impl ViewTransition {
     /// Getter of the `types` attribute.
     /// [`ViewTransition.types`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/types)
     pub fn types(&self) -> ViewTransitionTypeSet {
@@ -104,5 +97,12 @@ impl ViewTransition {
     /// [`ViewTransition.types`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/types)
     pub fn set_types(&mut self, value: &ViewTransitionTypeSet) {
         self.inner.set("types", value);
+    }
+}
+impl ViewTransition {
+    /// The skipTransition method.
+    /// [`ViewTransition.skipTransition`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/skipTransition)
+    pub fn skip_transition(&self) -> Undefined {
+        self.inner.call("skipTransition", &[]).as_::<Undefined>()
     }
 }

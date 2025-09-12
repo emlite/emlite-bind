@@ -64,6 +64,21 @@ impl From<&InputDeviceCapabilities> for Any {
 jsbind::utils::impl_dyn_cast!(InputDeviceCapabilities);
 
 impl InputDeviceCapabilities {
+    /// Getter of the `firesTouchEvents` attribute.
+    /// [`InputDeviceCapabilities.firesTouchEvents`](https://developer.mozilla.org/en-US/docs/Web/API/InputDeviceCapabilities/firesTouchEvents)
+    pub fn fires_touch_events(&self) -> bool {
+        self.inner.get("firesTouchEvents").as_::<bool>()
+    }
+}
+impl InputDeviceCapabilities {
+    /// Getter of the `pointerMovementScrolls` attribute.
+    /// [`InputDeviceCapabilities.pointerMovementScrolls`](https://developer.mozilla.org/en-US/docs/Web/API/InputDeviceCapabilities/pointerMovementScrolls)
+    pub fn pointer_movement_scrolls(&self) -> bool {
+        self.inner.get("pointerMovementScrolls").as_::<bool>()
+    }
+}
+
+impl InputDeviceCapabilities {
     /// The `new InputDeviceCapabilities(..)` constructor, creating a new InputDeviceCapabilities instance
     pub fn new0() -> InputDeviceCapabilities {
         Self {
@@ -78,19 +93,5 @@ impl InputDeviceCapabilities {
                 .new(&[device_init_dict.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl InputDeviceCapabilities {
-    /// Getter of the `firesTouchEvents` attribute.
-    /// [`InputDeviceCapabilities.firesTouchEvents`](https://developer.mozilla.org/en-US/docs/Web/API/InputDeviceCapabilities/firesTouchEvents)
-    pub fn fires_touch_events(&self) -> bool {
-        self.inner.get("firesTouchEvents").as_::<bool>()
-    }
-}
-impl InputDeviceCapabilities {
-    /// Getter of the `pointerMovementScrolls` attribute.
-    /// [`InputDeviceCapabilities.pointerMovementScrolls`](https://developer.mozilla.org/en-US/docs/Web/API/InputDeviceCapabilities/pointerMovementScrolls)
-    pub fn pointer_movement_scrolls(&self) -> bool {
-        self.inner.get("pointerMovementScrolls").as_::<bool>()
     }
 }

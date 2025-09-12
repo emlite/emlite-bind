@@ -64,6 +64,16 @@ impl From<&PressureObserver> for Any {
 jsbind::utils::impl_dyn_cast!(PressureObserver);
 
 impl PressureObserver {
+    /// Getter of the `knownSources` static attribute.
+    /// [`PressureObserver.knownSources`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/knownSources)
+    pub fn known_sources() -> TypedArray<PressureSource> {
+        Any::global("PressureObserver")
+            .get("knownSources")
+            .as_::<TypedArray<PressureSource>>()
+    }
+}
+
+impl PressureObserver {
     /// The `new PressureObserver(..)` constructor, creating a new PressureObserver instance
     pub fn new(callback: &Function) -> PressureObserver {
         Self {
@@ -116,14 +126,5 @@ impl PressureObserver {
         self.inner
             .call("takeRecords", &[])
             .as_::<TypedArray<PressureRecord>>()
-    }
-}
-impl PressureObserver {
-    /// Getter of the `knownSources` static attribute.
-    /// [`PressureObserver.knownSources`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/knownSources)
-    pub fn known_sources() -> TypedArray<PressureSource> {
-        Any::global("PressureObserver")
-            .get("knownSources")
-            .as_::<TypedArray<PressureSource>>()
     }
 }

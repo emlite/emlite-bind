@@ -64,6 +64,14 @@ impl From<&CSSMathProduct> for Any {
 jsbind::utils::impl_dyn_cast!(CSSMathProduct);
 
 impl CSSMathProduct {
+    /// Getter of the `values` attribute.
+    /// [`CSSMathProduct.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathProduct/values)
+    pub fn values(&self) -> CSSNumericArray {
+        self.inner.get("values").as_::<CSSNumericArray>()
+    }
+}
+
+impl CSSMathProduct {
     /// The `new CSSMathProduct(..)` constructor, creating a new CSSMathProduct instance
     pub fn new(args: &Any) -> CSSMathProduct {
         Self {
@@ -71,12 +79,5 @@ impl CSSMathProduct {
                 .new(&[args.into()])
                 .as_::<CSSMathValue>(),
         }
-    }
-}
-impl CSSMathProduct {
-    /// Getter of the `values` attribute.
-    /// [`CSSMathProduct.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathProduct/values)
-    pub fn values(&self) -> CSSNumericArray {
-        self.inner.get("values").as_::<CSSNumericArray>()
     }
 }

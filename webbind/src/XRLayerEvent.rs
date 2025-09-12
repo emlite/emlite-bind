@@ -64,6 +64,14 @@ impl From<&XRLayerEvent> for Any {
 jsbind::utils::impl_dyn_cast!(XRLayerEvent);
 
 impl XRLayerEvent {
+    /// Getter of the `layer` attribute.
+    /// [`XRLayerEvent.layer`](https://developer.mozilla.org/en-US/docs/Web/API/XRLayerEvent/layer)
+    pub fn layer(&self) -> XRLayer {
+        self.inner.get("layer").as_::<XRLayer>()
+    }
+}
+
+impl XRLayerEvent {
     /// The `new XRLayerEvent(..)` constructor, creating a new XRLayerEvent instance
     pub fn new(type_: &JsString, event_init_dict: &XRLayerEventInit) -> XRLayerEvent {
         Self {
@@ -71,12 +79,5 @@ impl XRLayerEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl XRLayerEvent {
-    /// Getter of the `layer` attribute.
-    /// [`XRLayerEvent.layer`](https://developer.mozilla.org/en-US/docs/Web/API/XRLayerEvent/layer)
-    pub fn layer(&self) -> XRLayer {
-        self.inner.get("layer").as_::<XRLayer>()
     }
 }

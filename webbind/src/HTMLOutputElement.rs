@@ -64,16 +64,6 @@ impl From<&HTMLOutputElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLOutputElement);
 
 impl HTMLOutputElement {
-    /// The `new HTMLOutputElement(..)` constructor, creating a new HTMLOutputElement instance
-    pub fn new() -> HTMLOutputElement {
-        Self {
-            inner: Any::global("HTMLOutputElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLOutputElement {
     /// Getter of the `htmlFor` attribute.
     /// [`HTMLOutputElement.htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/htmlFor)
     pub fn html_for(&self) -> DOMTokenList {
@@ -155,6 +145,24 @@ impl HTMLOutputElement {
     }
 }
 impl HTMLOutputElement {
+    /// Getter of the `labels` attribute.
+    /// [`HTMLOutputElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/labels)
+    pub fn labels(&self) -> NodeList {
+        self.inner.get("labels").as_::<NodeList>()
+    }
+}
+
+impl HTMLOutputElement {
+    /// The `new HTMLOutputElement(..)` constructor, creating a new HTMLOutputElement instance
+    pub fn new() -> HTMLOutputElement {
+        Self {
+            inner: Any::global("HTMLOutputElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLOutputElement {
     /// The checkValidity method.
     /// [`HTMLOutputElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/checkValidity)
     pub fn check_validity(&self) -> bool {
@@ -175,12 +183,5 @@ impl HTMLOutputElement {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()
-    }
-}
-impl HTMLOutputElement {
-    /// Getter of the `labels` attribute.
-    /// [`HTMLOutputElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/labels)
-    pub fn labels(&self) -> NodeList {
-        self.inner.get("labels").as_::<NodeList>()
     }
 }

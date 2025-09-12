@@ -64,14 +64,6 @@ impl From<&HTMLHtmlElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLHtmlElement);
 
 impl HTMLHtmlElement {
-    /// The `new HTMLHtmlElement(..)` constructor, creating a new HTMLHtmlElement instance
-    pub fn new() -> HTMLHtmlElement {
-        Self {
-            inner: Any::global("HTMLHtmlElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLHtmlElement {
     /// Getter of the `version` attribute.
     /// [`HTMLHtmlElement.version`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHtmlElement/version)
     pub fn version(&self) -> JsString {
@@ -82,5 +74,14 @@ impl HTMLHtmlElement {
     /// [`HTMLHtmlElement.version`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHtmlElement/version)
     pub fn set_version(&mut self, value: &JsString) {
         self.inner.set("version", value);
+    }
+}
+
+impl HTMLHtmlElement {
+    /// The `new HTMLHtmlElement(..)` constructor, creating a new HTMLHtmlElement instance
+    pub fn new() -> HTMLHtmlElement {
+        Self {
+            inner: Any::global("HTMLHtmlElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

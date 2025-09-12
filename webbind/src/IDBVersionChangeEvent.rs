@@ -64,6 +64,21 @@ impl From<&IDBVersionChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(IDBVersionChangeEvent);
 
 impl IDBVersionChangeEvent {
+    /// Getter of the `oldVersion` attribute.
+    /// [`IDBVersionChangeEvent.oldVersion`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent/oldVersion)
+    pub fn old_version(&self) -> u64 {
+        self.inner.get("oldVersion").as_::<u64>()
+    }
+}
+impl IDBVersionChangeEvent {
+    /// Getter of the `newVersion` attribute.
+    /// [`IDBVersionChangeEvent.newVersion`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent/newVersion)
+    pub fn new_version(&self) -> u64 {
+        self.inner.get("newVersion").as_::<u64>()
+    }
+}
+
+impl IDBVersionChangeEvent {
     /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
     pub fn new0(type_: &JsString) -> IDBVersionChangeEvent {
         Self {
@@ -83,19 +98,5 @@ impl IDBVersionChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl IDBVersionChangeEvent {
-    /// Getter of the `oldVersion` attribute.
-    /// [`IDBVersionChangeEvent.oldVersion`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent/oldVersion)
-    pub fn old_version(&self) -> u64 {
-        self.inner.get("oldVersion").as_::<u64>()
-    }
-}
-impl IDBVersionChangeEvent {
-    /// Getter of the `newVersion` attribute.
-    /// [`IDBVersionChangeEvent.newVersion`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent/newVersion)
-    pub fn new_version(&self) -> u64 {
-        self.inner.get("newVersion").as_::<u64>()
     }
 }

@@ -64,28 +64,6 @@ impl From<&PaymentRequestEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PaymentRequestEvent);
 
 impl PaymentRequestEvent {
-    /// The `new PaymentRequestEvent(..)` constructor, creating a new PaymentRequestEvent instance
-    pub fn new0(type_: &JsString) -> PaymentRequestEvent {
-        Self {
-            inner: Any::global("PaymentRequestEvent")
-                .new(&[type_.into()])
-                .as_::<ExtendableEvent>(),
-        }
-    }
-
-    /// The `new PaymentRequestEvent(..)` constructor, creating a new PaymentRequestEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &PaymentRequestEventInit,
-    ) -> PaymentRequestEvent {
-        Self {
-            inner: Any::global("PaymentRequestEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<ExtendableEvent>(),
-        }
-    }
-}
-impl PaymentRequestEvent {
     /// Getter of the `topOrigin` attribute.
     /// [`PaymentRequestEvent.topOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/topOrigin)
     pub fn top_origin(&self) -> JsString {
@@ -145,6 +123,29 @@ impl PaymentRequestEvent {
         self.inner
             .get("shippingOptions")
             .as_::<TypedArray<PaymentShippingOption>>()
+    }
+}
+
+impl PaymentRequestEvent {
+    /// The `new PaymentRequestEvent(..)` constructor, creating a new PaymentRequestEvent instance
+    pub fn new0(type_: &JsString) -> PaymentRequestEvent {
+        Self {
+            inner: Any::global("PaymentRequestEvent")
+                .new(&[type_.into()])
+                .as_::<ExtendableEvent>(),
+        }
+    }
+
+    /// The `new PaymentRequestEvent(..)` constructor, creating a new PaymentRequestEvent instance
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &PaymentRequestEventInit,
+    ) -> PaymentRequestEvent {
+        Self {
+            inner: Any::global("PaymentRequestEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
+        }
     }
 }
 impl PaymentRequestEvent {

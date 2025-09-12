@@ -64,6 +64,14 @@ impl From<&MIDIMessageEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MIDIMessageEvent);
 
 impl MIDIMessageEvent {
+    /// Getter of the `data` attribute.
+    /// [`MIDIMessageEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIMessageEvent/data)
+    pub fn data(&self) -> Uint8Array {
+        self.inner.get("data").as_::<Uint8Array>()
+    }
+}
+
+impl MIDIMessageEvent {
     /// The `new MIDIMessageEvent(..)` constructor, creating a new MIDIMessageEvent instance
     pub fn new0(type_: &JsString) -> MIDIMessageEvent {
         Self {
@@ -80,12 +88,5 @@ impl MIDIMessageEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl MIDIMessageEvent {
-    /// Getter of the `data` attribute.
-    /// [`MIDIMessageEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIMessageEvent/data)
-    pub fn data(&self) -> Uint8Array {
-        self.inner.get("data").as_::<Uint8Array>()
     }
 }

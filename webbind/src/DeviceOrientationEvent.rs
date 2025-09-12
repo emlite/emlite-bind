@@ -64,28 +64,6 @@ impl From<&DeviceOrientationEvent> for Any {
 jsbind::utils::impl_dyn_cast!(DeviceOrientationEvent);
 
 impl DeviceOrientationEvent {
-    /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
-    pub fn new0(type_: &JsString) -> DeviceOrientationEvent {
-        Self {
-            inner: Any::global("DeviceOrientationEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &DeviceOrientationEventInit,
-    ) -> DeviceOrientationEvent {
-        Self {
-            inner: Any::global("DeviceOrientationEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl DeviceOrientationEvent {
     /// Getter of the `alpha` attribute.
     /// [`DeviceOrientationEvent.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/alpha)
     pub fn alpha(&self) -> f64 {
@@ -111,6 +89,29 @@ impl DeviceOrientationEvent {
     /// [`DeviceOrientationEvent.absolute`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/absolute)
     pub fn absolute(&self) -> bool {
         self.inner.get("absolute").as_::<bool>()
+    }
+}
+
+impl DeviceOrientationEvent {
+    /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
+    pub fn new0(type_: &JsString) -> DeviceOrientationEvent {
+        Self {
+            inner: Any::global("DeviceOrientationEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &DeviceOrientationEventInit,
+    ) -> DeviceOrientationEvent {
+        Self {
+            inner: Any::global("DeviceOrientationEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }
 impl DeviceOrientationEvent {

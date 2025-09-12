@@ -64,28 +64,6 @@ impl From<&SecurityPolicyViolationEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SecurityPolicyViolationEvent);
 
 impl SecurityPolicyViolationEvent {
-    /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
-    pub fn new0(type_: &JsString) -> SecurityPolicyViolationEvent {
-        Self {
-            inner: Any::global("SecurityPolicyViolationEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &SecurityPolicyViolationEventInit,
-    ) -> SecurityPolicyViolationEvent {
-        Self {
-            inner: Any::global("SecurityPolicyViolationEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl SecurityPolicyViolationEvent {
     /// Getter of the `documentURI` attribute.
     /// [`SecurityPolicyViolationEvent.documentURI`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/documentURI)
     pub fn document_uri(&self) -> JsString {
@@ -169,5 +147,28 @@ impl SecurityPolicyViolationEvent {
     /// [`SecurityPolicyViolationEvent.columnNumber`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/columnNumber)
     pub fn column_number(&self) -> u32 {
         self.inner.get("columnNumber").as_::<u32>()
+    }
+}
+
+impl SecurityPolicyViolationEvent {
+    /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
+    pub fn new0(type_: &JsString) -> SecurityPolicyViolationEvent {
+        Self {
+            inner: Any::global("SecurityPolicyViolationEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &SecurityPolicyViolationEventInit,
+    ) -> SecurityPolicyViolationEvent {
+        Self {
+            inner: Any::global("SecurityPolicyViolationEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

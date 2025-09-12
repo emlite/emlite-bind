@@ -64,24 +64,10 @@ impl From<&Performance> for Any {
 jsbind::utils::impl_dyn_cast!(Performance);
 
 impl Performance {
-    /// The now method.
-    /// [`Performance.now`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
-    pub fn now(&self) -> Any {
-        self.inner.call("now", &[]).as_::<Any>()
-    }
-}
-impl Performance {
     /// Getter of the `timeOrigin` attribute.
     /// [`Performance.timeOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timeOrigin)
     pub fn time_origin(&self) -> Any {
         self.inner.get("timeOrigin").as_::<Any>()
-    }
-}
-impl Performance {
-    /// The toJSON method.
-    /// [`Performance.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
 impl Performance {
@@ -110,6 +96,33 @@ impl Performance {
     /// [`Performance.navigation`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/navigation)
     pub fn navigation(&self) -> PerformanceNavigation {
         self.inner.get("navigation").as_::<PerformanceNavigation>()
+    }
+}
+impl Performance {
+    /// Getter of the `onresourcetimingbufferfull` attribute.
+    /// [`Performance.onresourcetimingbufferfull`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/onresourcetimingbufferfull)
+    pub fn onresourcetimingbufferfull(&self) -> Any {
+        self.inner.get("onresourcetimingbufferfull").as_::<Any>()
+    }
+
+    /// Setter of the `onresourcetimingbufferfull` attribute.
+    /// [`Performance.onresourcetimingbufferfull`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/onresourcetimingbufferfull)
+    pub fn set_onresourcetimingbufferfull(&mut self, value: &Any) {
+        self.inner.set("onresourcetimingbufferfull", value);
+    }
+}
+impl Performance {
+    /// The now method.
+    /// [`Performance.now`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
+    pub fn now(&self) -> Any {
+        self.inner.call("now", &[]).as_::<Any>()
+    }
+}
+impl Performance {
+    /// The toJSON method.
+    /// [`Performance.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
 impl Performance {
@@ -169,19 +182,6 @@ impl Performance {
         self.inner
             .call("setResourceTimingBufferSize", &[max_size.into()])
             .as_::<Undefined>()
-    }
-}
-impl Performance {
-    /// Getter of the `onresourcetimingbufferfull` attribute.
-    /// [`Performance.onresourcetimingbufferfull`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/onresourcetimingbufferfull)
-    pub fn onresourcetimingbufferfull(&self) -> Any {
-        self.inner.get("onresourcetimingbufferfull").as_::<Any>()
-    }
-
-    /// Setter of the `onresourcetimingbufferfull` attribute.
-    /// [`Performance.onresourcetimingbufferfull`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/onresourcetimingbufferfull)
-    pub fn set_onresourcetimingbufferfull(&mut self, value: &Any) {
-        self.inner.set("onresourcetimingbufferfull", value);
     }
 }
 impl Performance {

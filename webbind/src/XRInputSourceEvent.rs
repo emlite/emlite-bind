@@ -64,16 +64,6 @@ impl From<&XRInputSourceEvent> for Any {
 jsbind::utils::impl_dyn_cast!(XRInputSourceEvent);
 
 impl XRInputSourceEvent {
-    /// The `new XRInputSourceEvent(..)` constructor, creating a new XRInputSourceEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &XRInputSourceEventInit) -> XRInputSourceEvent {
-        Self {
-            inner: Any::global("XRInputSourceEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl XRInputSourceEvent {
     /// Getter of the `frame` attribute.
     /// [`XRInputSourceEvent.frame`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourceEvent/frame)
     pub fn frame(&self) -> XRFrame {
@@ -85,5 +75,16 @@ impl XRInputSourceEvent {
     /// [`XRInputSourceEvent.inputSource`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSourceEvent/inputSource)
     pub fn input_source(&self) -> XRInputSource {
         self.inner.get("inputSource").as_::<XRInputSource>()
+    }
+}
+
+impl XRInputSourceEvent {
+    /// The `new XRInputSourceEvent(..)` constructor, creating a new XRInputSourceEvent instance
+    pub fn new(type_: &JsString, event_init_dict: &XRInputSourceEventInit) -> XRInputSourceEvent {
+        Self {
+            inner: Any::global("XRInputSourceEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

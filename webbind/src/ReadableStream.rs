@@ -64,6 +64,14 @@ impl From<&ReadableStream> for Any {
 jsbind::utils::impl_dyn_cast!(ReadableStream);
 
 impl ReadableStream {
+    /// Getter of the `locked` attribute.
+    /// [`ReadableStream.locked`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked)
+    pub fn locked(&self) -> bool {
+        self.inner.get("locked").as_::<bool>()
+    }
+}
+
+impl ReadableStream {
     /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
     pub fn new0() -> ReadableStream {
         Self {
@@ -96,13 +104,6 @@ impl ReadableStream {
         Any::global("ReadableStream")
             .call("from", &[async_iterable.into()])
             .as_::<ReadableStream>()
-    }
-}
-impl ReadableStream {
-    /// Getter of the `locked` attribute.
-    /// [`ReadableStream.locked`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked)
-    pub fn locked(&self) -> bool {
-        self.inner.get("locked").as_::<bool>()
     }
 }
 impl ReadableStream {

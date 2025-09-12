@@ -64,6 +64,16 @@ impl From<&BackgroundFetchEvent> for Any {
 jsbind::utils::impl_dyn_cast!(BackgroundFetchEvent);
 
 impl BackgroundFetchEvent {
+    /// Getter of the `registration` attribute.
+    /// [`BackgroundFetchEvent.registration`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchEvent/registration)
+    pub fn registration(&self) -> BackgroundFetchRegistration {
+        self.inner
+            .get("registration")
+            .as_::<BackgroundFetchRegistration>()
+    }
+}
+
+impl BackgroundFetchEvent {
     /// The `new BackgroundFetchEvent(..)` constructor, creating a new BackgroundFetchEvent instance
     pub fn new(type_: &JsString, init: &BackgroundFetchEventInit) -> BackgroundFetchEvent {
         Self {
@@ -71,14 +81,5 @@ impl BackgroundFetchEvent {
                 .new(&[type_.into(), init.into()])
                 .as_::<ExtendableEvent>(),
         }
-    }
-}
-impl BackgroundFetchEvent {
-    /// Getter of the `registration` attribute.
-    /// [`BackgroundFetchEvent.registration`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchEvent/registration)
-    pub fn registration(&self) -> BackgroundFetchRegistration {
-        self.inner
-            .get("registration")
-            .as_::<BackgroundFetchRegistration>()
     }
 }

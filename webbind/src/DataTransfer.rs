@@ -64,14 +64,6 @@ impl From<&DataTransfer> for Any {
 jsbind::utils::impl_dyn_cast!(DataTransfer);
 
 impl DataTransfer {
-    /// The `new DataTransfer(..)` constructor, creating a new DataTransfer instance
-    pub fn new() -> DataTransfer {
-        Self {
-            inner: Any::global("DataTransfer").new(&[]).as_::<Any>(),
-        }
-    }
-}
-impl DataTransfer {
     /// Getter of the `dropEffect` attribute.
     /// [`DataTransfer.dropEffect`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/dropEffect)
     pub fn drop_effect(&self) -> JsString {
@@ -105,19 +97,35 @@ impl DataTransfer {
     }
 }
 impl DataTransfer {
+    /// Getter of the `types` attribute.
+    /// [`DataTransfer.types`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types)
+    pub fn types(&self) -> TypedArray<JsString> {
+        self.inner.get("types").as_::<TypedArray<JsString>>()
+    }
+}
+impl DataTransfer {
+    /// Getter of the `files` attribute.
+    /// [`DataTransfer.files`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/files)
+    pub fn files(&self) -> FileList {
+        self.inner.get("files").as_::<FileList>()
+    }
+}
+
+impl DataTransfer {
+    /// The `new DataTransfer(..)` constructor, creating a new DataTransfer instance
+    pub fn new() -> DataTransfer {
+        Self {
+            inner: Any::global("DataTransfer").new(&[]).as_::<Any>(),
+        }
+    }
+}
+impl DataTransfer {
     /// The setDragImage method.
     /// [`DataTransfer.setDragImage`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setDragImage)
     pub fn set_drag_image(&self, image: &Element, x: i32, y: i32) -> Undefined {
         self.inner
             .call("setDragImage", &[image.into(), x.into(), y.into()])
             .as_::<Undefined>()
-    }
-}
-impl DataTransfer {
-    /// Getter of the `types` attribute.
-    /// [`DataTransfer.types`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types)
-    pub fn types(&self) -> TypedArray<JsString> {
-        self.inner.get("types").as_::<TypedArray<JsString>>()
     }
 }
 impl DataTransfer {
@@ -150,12 +158,5 @@ impl DataTransfer {
         self.inner
             .call("clearData", &[format.into()])
             .as_::<Undefined>()
-    }
-}
-impl DataTransfer {
-    /// Getter of the `files` attribute.
-    /// [`DataTransfer.files`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/files)
-    pub fn files(&self) -> FileList {
-        self.inner.get("files").as_::<FileList>()
     }
 }

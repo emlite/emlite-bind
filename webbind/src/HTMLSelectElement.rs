@@ -64,16 +64,6 @@ impl From<&HTMLSelectElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLSelectElement);
 
 impl HTMLSelectElement {
-    /// The `new HTMLSelectElement(..)` constructor, creating a new HTMLSelectElement instance
-    pub fn new() -> HTMLSelectElement {
-        Self {
-            inner: Any::global("HTMLSelectElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLSelectElement {
     /// Getter of the `autocomplete` attribute.
     /// [`HTMLSelectElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/autocomplete)
     pub fn autocomplete(&self) -> JsString {
@@ -186,47 +176,6 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    /// The item method.
-    /// [`HTMLSelectElement.item`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/item)
-    pub fn item(&self, index: u32) -> HTMLOptionElement {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<HTMLOptionElement>()
-    }
-}
-impl HTMLSelectElement {
-    /// The namedItem method.
-    /// [`HTMLSelectElement.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/namedItem)
-    pub fn named_item(&self, name: &JsString) -> HTMLOptionElement {
-        self.inner
-            .call("namedItem", &[name.into()])
-            .as_::<HTMLOptionElement>()
-    }
-}
-impl HTMLSelectElement {
-    /// The add method.
-    /// [`HTMLSelectElement.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add)
-    pub fn add0(&self, element: &Any) -> Undefined {
-        self.inner.call("add", &[element.into()]).as_::<Undefined>()
-    }
-    /// The add method.
-    /// [`HTMLSelectElement.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add)
-    pub fn add1(&self, element: &Any, before: &Any) -> Undefined {
-        self.inner
-            .call("add", &[element.into(), before.into()])
-            .as_::<Undefined>()
-    }
-}
-impl HTMLSelectElement {
-    /// The remove method.
-    /// [`HTMLSelectElement.remove`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove)
-    pub fn remove(&self, index: i32) -> Undefined {
-        self.inner
-            .call("remove", &[index.into()])
-            .as_::<Undefined>()
-    }
-}
-impl HTMLSelectElement {
     /// Getter of the `selectedOptions` attribute.
     /// [`HTMLSelectElement.selectedOptions`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedOptions)
     pub fn selected_options(&self) -> HTMLCollection {
@@ -281,6 +230,72 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
+    /// Getter of the `labels` attribute.
+    /// [`HTMLSelectElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/labels)
+    pub fn labels(&self) -> NodeList {
+        self.inner.get("labels").as_::<NodeList>()
+    }
+}
+
+impl HTMLSelectElement {
+    /// The `new HTMLSelectElement(..)` constructor, creating a new HTMLSelectElement instance
+    pub fn new() -> HTMLSelectElement {
+        Self {
+            inner: Any::global("HTMLSelectElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLSelectElement {
+    /// The item method.
+    /// [`HTMLSelectElement.item`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/item)
+    pub fn item(&self, index: u32) -> HTMLOptionElement {
+        self.inner
+            .call("item", &[index.into()])
+            .as_::<HTMLOptionElement>()
+    }
+}
+impl HTMLSelectElement {
+    /// The namedItem method.
+    /// [`HTMLSelectElement.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/namedItem)
+    pub fn named_item(&self, name: &JsString) -> HTMLOptionElement {
+        self.inner
+            .call("namedItem", &[name.into()])
+            .as_::<HTMLOptionElement>()
+    }
+}
+impl HTMLSelectElement {
+    /// The add method.
+    /// [`HTMLSelectElement.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add)
+    pub fn add0(&self, element: &Any) -> Undefined {
+        self.inner.call("add", &[element.into()]).as_::<Undefined>()
+    }
+    /// The add method.
+    /// [`HTMLSelectElement.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add)
+    pub fn add1(&self, element: &Any, before: &Any) -> Undefined {
+        self.inner
+            .call("add", &[element.into(), before.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLSelectElement {
+    /// The remove method.
+    /// [`HTMLSelectElement.remove`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove)
+    pub fn remove(&self) -> Undefined {
+        self.inner.call("remove", &[]).as_::<Undefined>()
+    }
+}
+impl HTMLSelectElement {
+    /// The remove method.
+    /// [`HTMLSelectElement.remove`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove)
+    pub fn remove1(&self, index: i32) -> Undefined {
+        self.inner
+            .call("remove", &[index.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLSelectElement {
     /// The checkValidity method.
     /// [`HTMLSelectElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/checkValidity)
     pub fn check_validity(&self) -> bool {
@@ -308,12 +323,5 @@ impl HTMLSelectElement {
     /// [`HTMLSelectElement.showPicker`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/showPicker)
     pub fn show_picker(&self) -> Undefined {
         self.inner.call("showPicker", &[]).as_::<Undefined>()
-    }
-}
-impl HTMLSelectElement {
-    /// Getter of the `labels` attribute.
-    /// [`HTMLSelectElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/labels)
-    pub fn labels(&self) -> NodeList {
-        self.inner.get("labels").as_::<NodeList>()
     }
 }

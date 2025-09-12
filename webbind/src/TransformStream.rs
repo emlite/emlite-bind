@@ -64,6 +64,21 @@ impl From<&TransformStream> for Any {
 jsbind::utils::impl_dyn_cast!(TransformStream);
 
 impl TransformStream {
+    /// Getter of the `readable` attribute.
+    /// [`TransformStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream/readable)
+    pub fn readable(&self) -> ReadableStream {
+        self.inner.get("readable").as_::<ReadableStream>()
+    }
+}
+impl TransformStream {
+    /// Getter of the `writable` attribute.
+    /// [`TransformStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream/writable)
+    pub fn writable(&self) -> WritableStream {
+        self.inner.get("writable").as_::<WritableStream>()
+    }
+}
+
+impl TransformStream {
     /// The `new TransformStream(..)` constructor, creating a new TransformStream instance
     pub fn new0() -> TransformStream {
         Self {
@@ -104,19 +119,5 @@ impl TransformStream {
                 ])
                 .as_::<Any>(),
         }
-    }
-}
-impl TransformStream {
-    /// Getter of the `readable` attribute.
-    /// [`TransformStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream/readable)
-    pub fn readable(&self) -> ReadableStream {
-        self.inner.get("readable").as_::<ReadableStream>()
-    }
-}
-impl TransformStream {
-    /// Getter of the `writable` attribute.
-    /// [`TransformStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/TransformStream/writable)
-    pub fn writable(&self) -> WritableStream {
-        self.inner.get("writable").as_::<WritableStream>()
     }
 }

@@ -64,16 +64,6 @@ impl From<&HTMLParamElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLParamElement);
 
 impl HTMLParamElement {
-    /// The `new HTMLParamElement(..)` constructor, creating a new HTMLParamElement instance
-    pub fn new() -> HTMLParamElement {
-        Self {
-            inner: Any::global("HTMLParamElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLParamElement {
     /// Getter of the `name` attribute.
     /// [`HTMLParamElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/name)
     pub fn name(&self) -> JsString {
@@ -123,5 +113,16 @@ impl HTMLParamElement {
     /// [`HTMLParamElement.valueType`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/valueType)
     pub fn set_value_type(&mut self, value: &JsString) {
         self.inner.set("valueType", value);
+    }
+}
+
+impl HTMLParamElement {
+    /// The `new HTMLParamElement(..)` constructor, creating a new HTMLParamElement instance
+    pub fn new() -> HTMLParamElement {
+        Self {
+            inner: Any::global("HTMLParamElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

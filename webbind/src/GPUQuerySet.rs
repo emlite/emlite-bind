@@ -64,13 +64,6 @@ impl From<&GPUQuerySet> for Any {
 jsbind::utils::impl_dyn_cast!(GPUQuerySet);
 
 impl GPUQuerySet {
-    /// The destroy method.
-    /// [`GPUQuerySet.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet/destroy)
-    pub fn destroy(&self) -> Undefined {
-        self.inner.call("destroy", &[]).as_::<Undefined>()
-    }
-}
-impl GPUQuerySet {
     /// Getter of the `type` attribute.
     /// [`GPUQuerySet.type`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet/type)
     pub fn type_(&self) -> GPUQueryType {
@@ -95,5 +88,12 @@ impl GPUQuerySet {
     /// [`GPUQuerySet.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet/label)
     pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
+    }
+}
+impl GPUQuerySet {
+    /// The destroy method.
+    /// [`GPUQuerySet.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet/destroy)
+    pub fn destroy(&self) -> Undefined {
+        self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

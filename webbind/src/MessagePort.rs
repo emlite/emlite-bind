@@ -64,36 +64,6 @@ impl From<&MessagePort> for Any {
 jsbind::utils::impl_dyn_cast!(MessagePort);
 
 impl MessagePort {
-    /// The postMessage method.
-    /// [`MessagePort.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-    /// The postMessage method.
-    /// [`MessagePort.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
-    }
-}
-impl MessagePort {
-    /// The start method.
-    /// [`MessagePort.start`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/start)
-    pub fn start(&self) -> Undefined {
-        self.inner.call("start", &[]).as_::<Undefined>()
-    }
-}
-impl MessagePort {
-    /// The close method.
-    /// [`MessagePort.close`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/close)
-    pub fn close(&self) -> Undefined {
-        self.inner.call("close", &[]).as_::<Undefined>()
-    }
-}
-impl MessagePort {
     /// Getter of the `onclose` attribute.
     /// [`MessagePort.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/onclose)
     pub fn onclose(&self) -> Any {
@@ -130,5 +100,44 @@ impl MessagePort {
     /// [`MessagePort.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/onmessageerror)
     pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
+    }
+}
+impl MessagePort {
+    /// The postMessage method.
+    /// [`MessagePort.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage)
+    pub fn post_message(&self, message: &Any, transfer: &TypedArray<Object>) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), transfer.into()])
+            .as_::<Undefined>()
+    }
+}
+impl MessagePort {
+    /// The postMessage method.
+    /// [`MessagePort.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage)
+    pub fn post_message1(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`MessagePort.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage)
+    pub fn post_message2(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl MessagePort {
+    /// The start method.
+    /// [`MessagePort.start`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/start)
+    pub fn start(&self) -> Undefined {
+        self.inner.call("start", &[]).as_::<Undefined>()
+    }
+}
+impl MessagePort {
+    /// The close method.
+    /// [`MessagePort.close`](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/close)
+    pub fn close(&self) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

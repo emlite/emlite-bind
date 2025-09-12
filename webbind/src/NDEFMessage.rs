@@ -64,6 +64,14 @@ impl From<&NDEFMessage> for Any {
 jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
 impl NDEFMessage {
+    /// Getter of the `records` attribute.
+    /// [`NDEFMessage.records`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFMessage/records)
+    pub fn records(&self) -> TypedArray<NDEFRecord> {
+        self.inner.get("records").as_::<TypedArray<NDEFRecord>>()
+    }
+}
+
+impl NDEFMessage {
     /// The `new NDEFMessage(..)` constructor, creating a new NDEFMessage instance
     pub fn new(message_init: &NDEFMessageInit) -> NDEFMessage {
         Self {
@@ -71,12 +79,5 @@ impl NDEFMessage {
                 .new(&[message_init.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl NDEFMessage {
-    /// Getter of the `records` attribute.
-    /// [`NDEFMessage.records`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFMessage/records)
-    pub fn records(&self) -> TypedArray<NDEFRecord> {
-        self.inner.get("records").as_::<TypedArray<NDEFRecord>>()
     }
 }

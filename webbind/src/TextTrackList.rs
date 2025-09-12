@@ -71,15 +71,6 @@ impl TextTrackList {
     }
 }
 impl TextTrackList {
-    /// The getTrackById method.
-    /// [`TextTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/getTrackById)
-    pub fn get_track_by_id(&self, id: &JsString) -> TextTrack {
-        self.inner
-            .call("getTrackById", &[id.into()])
-            .as_::<TextTrack>()
-    }
-}
-impl TextTrackList {
     /// Getter of the `onchange` attribute.
     /// [`TextTrackList.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/onchange)
     pub fn onchange(&self) -> Any {
@@ -116,5 +107,14 @@ impl TextTrackList {
     /// [`TextTrackList.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/onremovetrack)
     pub fn set_onremovetrack(&mut self, value: &Any) {
         self.inner.set("onremovetrack", value);
+    }
+}
+impl TextTrackList {
+    /// The getTrackById method.
+    /// [`TextTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/getTrackById)
+    pub fn get_track_by_id(&self, id: &JsString) -> TextTrack {
+        self.inner
+            .call("getTrackById", &[id.into()])
+            .as_::<TextTrack>()
     }
 }

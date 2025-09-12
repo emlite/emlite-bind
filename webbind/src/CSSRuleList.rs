@@ -64,16 +64,16 @@ impl From<&CSSRuleList> for Any {
 jsbind::utils::impl_dyn_cast!(CSSRuleList);
 
 impl CSSRuleList {
-    /// The item method.
-    /// [`CSSRuleList.item`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList/item)
-    pub fn item(&self, index: u32) -> CSSRule {
-        self.inner.call("item", &[index.into()]).as_::<CSSRule>()
-    }
-}
-impl CSSRuleList {
     /// Getter of the `length` attribute.
     /// [`CSSRuleList.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
+    }
+}
+impl CSSRuleList {
+    /// The item method.
+    /// [`CSSRuleList.item`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList/item)
+    pub fn item(&self, index: u32) -> CSSRule {
+        self.inner.call("item", &[index.into()]).as_::<CSSRule>()
     }
 }

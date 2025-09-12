@@ -64,6 +64,14 @@ impl From<&FontFaceSetLoadEvent> for Any {
 jsbind::utils::impl_dyn_cast!(FontFaceSetLoadEvent);
 
 impl FontFaceSetLoadEvent {
+    /// Getter of the `fontfaces` attribute.
+    /// [`FontFaceSetLoadEvent.fontfaces`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSetLoadEvent/fontfaces)
+    pub fn fontfaces(&self) -> TypedArray<FontFace> {
+        self.inner.get("fontfaces").as_::<TypedArray<FontFace>>()
+    }
+}
+
+impl FontFaceSetLoadEvent {
     /// The `new FontFaceSetLoadEvent(..)` constructor, creating a new FontFaceSetLoadEvent instance
     pub fn new0(type_: &JsString) -> FontFaceSetLoadEvent {
         Self {
@@ -83,12 +91,5 @@ impl FontFaceSetLoadEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl FontFaceSetLoadEvent {
-    /// Getter of the `fontfaces` attribute.
-    /// [`FontFaceSetLoadEvent.fontfaces`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSetLoadEvent/fontfaces)
-    pub fn fontfaces(&self) -> TypedArray<FontFace> {
-        self.inner.get("fontfaces").as_::<TypedArray<FontFace>>()
     }
 }

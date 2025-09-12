@@ -64,6 +64,14 @@ impl From<&PortalActivateEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PortalActivateEvent);
 
 impl PortalActivateEvent {
+    /// Getter of the `data` attribute.
+    /// [`PortalActivateEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/PortalActivateEvent/data)
+    pub fn data(&self) -> Any {
+        self.inner.get("data").as_::<Any>()
+    }
+}
+
+impl PortalActivateEvent {
     /// The `new PortalActivateEvent(..)` constructor, creating a new PortalActivateEvent instance
     pub fn new0(type_: &JsString) -> PortalActivateEvent {
         Self {
@@ -83,13 +91,6 @@ impl PortalActivateEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl PortalActivateEvent {
-    /// Getter of the `data` attribute.
-    /// [`PortalActivateEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/PortalActivateEvent/data)
-    pub fn data(&self) -> Any {
-        self.inner.get("data").as_::<Any>()
     }
 }
 impl PortalActivateEvent {

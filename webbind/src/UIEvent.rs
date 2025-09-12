@@ -64,23 +64,6 @@ impl From<&UIEvent> for Any {
 jsbind::utils::impl_dyn_cast!(UIEvent);
 
 impl UIEvent {
-    /// The `new UIEvent(..)` constructor, creating a new UIEvent instance
-    pub fn new0(type_: &JsString) -> UIEvent {
-        Self {
-            inner: Any::global("UIEvent").new(&[type_.into()]).as_::<Event>(),
-        }
-    }
-
-    /// The `new UIEvent(..)` constructor, creating a new UIEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &UIEventInit) -> UIEvent {
-        Self {
-            inner: Any::global("UIEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl UIEvent {
     /// Getter of the `view` attribute.
     /// [`UIEvent.view`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/view)
     pub fn view(&self) -> Window {
@@ -101,6 +84,31 @@ impl UIEvent {
         self.inner
             .get("sourceCapabilities")
             .as_::<InputDeviceCapabilities>()
+    }
+}
+impl UIEvent {
+    /// Getter of the `which` attribute.
+    /// [`UIEvent.which`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/which)
+    pub fn which(&self) -> u32 {
+        self.inner.get("which").as_::<u32>()
+    }
+}
+
+impl UIEvent {
+    /// The `new UIEvent(..)` constructor, creating a new UIEvent instance
+    pub fn new0(type_: &JsString) -> UIEvent {
+        Self {
+            inner: Any::global("UIEvent").new(&[type_.into()]).as_::<Event>(),
+        }
+    }
+
+    /// The `new UIEvent(..)` constructor, creating a new UIEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &UIEventInit) -> UIEvent {
+        Self {
+            inner: Any::global("UIEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }
 impl UIEvent {
@@ -176,12 +184,5 @@ impl UIEvent {
                 ],
             )
             .as_::<Undefined>()
-    }
-}
-impl UIEvent {
-    /// Getter of the `which` attribute.
-    /// [`UIEvent.which`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/which)
-    pub fn which(&self) -> u32 {
-        self.inner.get("which").as_::<u32>()
     }
 }

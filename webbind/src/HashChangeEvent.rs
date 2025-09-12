@@ -64,6 +64,21 @@ impl From<&HashChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(HashChangeEvent);
 
 impl HashChangeEvent {
+    /// Getter of the `oldURL` attribute.
+    /// [`HashChangeEvent.oldURL`](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent/oldURL)
+    pub fn old_url(&self) -> JsString {
+        self.inner.get("oldURL").as_::<JsString>()
+    }
+}
+impl HashChangeEvent {
+    /// Getter of the `newURL` attribute.
+    /// [`HashChangeEvent.newURL`](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent/newURL)
+    pub fn new_url(&self) -> JsString {
+        self.inner.get("newURL").as_::<JsString>()
+    }
+}
+
+impl HashChangeEvent {
     /// The `new HashChangeEvent(..)` constructor, creating a new HashChangeEvent instance
     pub fn new0(type_: &JsString) -> HashChangeEvent {
         Self {
@@ -80,19 +95,5 @@ impl HashChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl HashChangeEvent {
-    /// Getter of the `oldURL` attribute.
-    /// [`HashChangeEvent.oldURL`](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent/oldURL)
-    pub fn old_url(&self) -> JsString {
-        self.inner.get("oldURL").as_::<JsString>()
-    }
-}
-impl HashChangeEvent {
-    /// Getter of the `newURL` attribute.
-    /// [`HashChangeEvent.newURL`](https://developer.mozilla.org/en-US/docs/Web/API/HashChangeEvent/newURL)
-    pub fn new_url(&self) -> JsString {
-        self.inner.get("newURL").as_::<JsString>()
     }
 }

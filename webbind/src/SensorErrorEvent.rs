@@ -64,6 +64,14 @@ impl From<&SensorErrorEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SensorErrorEvent);
 
 impl SensorErrorEvent {
+    /// Getter of the `error` attribute.
+    /// [`SensorErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/SensorErrorEvent/error)
+    pub fn error(&self) -> DOMException {
+        self.inner.get("error").as_::<DOMException>()
+    }
+}
+
+impl SensorErrorEvent {
     /// The `new SensorErrorEvent(..)` constructor, creating a new SensorErrorEvent instance
     pub fn new(type_: &JsString, error_event_init_dict: &SensorErrorEventInit) -> SensorErrorEvent {
         Self {
@@ -71,12 +79,5 @@ impl SensorErrorEvent {
                 .new(&[type_.into(), error_event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl SensorErrorEvent {
-    /// Getter of the `error` attribute.
-    /// [`SensorErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/SensorErrorEvent/error)
-    pub fn error(&self) -> DOMException {
-        self.inner.get("error").as_::<DOMException>()
     }
 }

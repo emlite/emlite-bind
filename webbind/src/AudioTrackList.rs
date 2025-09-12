@@ -71,15 +71,6 @@ impl AudioTrackList {
     }
 }
 impl AudioTrackList {
-    /// The getTrackById method.
-    /// [`AudioTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList/getTrackById)
-    pub fn get_track_by_id(&self, id: &JsString) -> AudioTrack {
-        self.inner
-            .call("getTrackById", &[id.into()])
-            .as_::<AudioTrack>()
-    }
-}
-impl AudioTrackList {
     /// Getter of the `onchange` attribute.
     /// [`AudioTrackList.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList/onchange)
     pub fn onchange(&self) -> Any {
@@ -116,5 +107,14 @@ impl AudioTrackList {
     /// [`AudioTrackList.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList/onremovetrack)
     pub fn set_onremovetrack(&mut self, value: &Any) {
         self.inner.set("onremovetrack", value);
+    }
+}
+impl AudioTrackList {
+    /// The getTrackById method.
+    /// [`AudioTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList/getTrackById)
+    pub fn get_track_by_id(&self, id: &JsString) -> AudioTrack {
+        self.inner
+            .call("getTrackById", &[id.into()])
+            .as_::<AudioTrack>()
     }
 }

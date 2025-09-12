@@ -64,6 +64,59 @@ impl From<&DOMRect> for Any {
 jsbind::utils::impl_dyn_cast!(DOMRect);
 
 impl DOMRect {
+    /// Getter of the `x` attribute.
+    /// [`DOMRect.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/x)
+    pub fn x(&self) -> f64 {
+        self.inner.get("x").as_::<f64>()
+    }
+
+    /// Setter of the `x` attribute.
+    /// [`DOMRect.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/x)
+    pub fn set_x(&mut self, value: f64) {
+        self.inner.set("x", value);
+    }
+}
+impl DOMRect {
+    /// Getter of the `y` attribute.
+    /// [`DOMRect.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/y)
+    pub fn y(&self) -> f64 {
+        self.inner.get("y").as_::<f64>()
+    }
+
+    /// Setter of the `y` attribute.
+    /// [`DOMRect.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/y)
+    pub fn set_y(&mut self, value: f64) {
+        self.inner.set("y", value);
+    }
+}
+impl DOMRect {
+    /// Getter of the `width` attribute.
+    /// [`DOMRect.width`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/width)
+    pub fn width(&self) -> f64 {
+        self.inner.get("width").as_::<f64>()
+    }
+
+    /// Setter of the `width` attribute.
+    /// [`DOMRect.width`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/width)
+    pub fn set_width(&mut self, value: f64) {
+        self.inner.set("width", value);
+    }
+}
+impl DOMRect {
+    /// Getter of the `height` attribute.
+    /// [`DOMRect.height`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/height)
+    pub fn height(&self) -> f64 {
+        self.inner.get("height").as_::<f64>()
+    }
+
+    /// Setter of the `height` attribute.
+    /// [`DOMRect.height`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/height)
+    pub fn set_height(&mut self, value: f64) {
+        self.inner.set("height", value);
+    }
+}
+
+impl DOMRect {
     /// The `new DOMRect(..)` constructor, creating a new DOMRect instance
     pub fn new0() -> DOMRect {
         Self {
@@ -121,57 +174,5 @@ impl DOMRect {
         Any::global("DOMRect")
             .call("fromRect", &[other.into()])
             .as_::<DOMRect>()
-    }
-}
-impl DOMRect {
-    /// Getter of the `x` attribute.
-    /// [`DOMRect.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/x)
-    pub fn x(&self) -> f64 {
-        self.inner.get("x").as_::<f64>()
-    }
-
-    /// Setter of the `x` attribute.
-    /// [`DOMRect.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/x)
-    pub fn set_x(&mut self, value: f64) {
-        self.inner.set("x", value);
-    }
-}
-impl DOMRect {
-    /// Getter of the `y` attribute.
-    /// [`DOMRect.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/y)
-    pub fn y(&self) -> f64 {
-        self.inner.get("y").as_::<f64>()
-    }
-
-    /// Setter of the `y` attribute.
-    /// [`DOMRect.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/y)
-    pub fn set_y(&mut self, value: f64) {
-        self.inner.set("y", value);
-    }
-}
-impl DOMRect {
-    /// Getter of the `width` attribute.
-    /// [`DOMRect.width`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/width)
-    pub fn width(&self) -> f64 {
-        self.inner.get("width").as_::<f64>()
-    }
-
-    /// Setter of the `width` attribute.
-    /// [`DOMRect.width`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/width)
-    pub fn set_width(&mut self, value: f64) {
-        self.inner.set("width", value);
-    }
-}
-impl DOMRect {
-    /// Getter of the `height` attribute.
-    /// [`DOMRect.height`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/height)
-    pub fn height(&self) -> f64 {
-        self.inner.get("height").as_::<f64>()
-    }
-
-    /// Setter of the `height` attribute.
-    /// [`DOMRect.height`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect/height)
-    pub fn set_height(&mut self, value: f64) {
-        self.inner.set("height", value);
     }
 }

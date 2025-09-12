@@ -64,25 +64,6 @@ impl From<&FontFace> for Any {
 jsbind::utils::impl_dyn_cast!(FontFace);
 
 impl FontFace {
-    /// The `new FontFace(..)` constructor, creating a new FontFace instance
-    pub fn new0(family: &JsString, source: &Any) -> FontFace {
-        Self {
-            inner: Any::global("FontFace")
-                .new(&[family.into(), source.into()])
-                .as_::<Any>(),
-        }
-    }
-
-    /// The `new FontFace(..)` constructor, creating a new FontFace instance
-    pub fn new1(family: &JsString, source: &Any, descriptors: &FontFaceDescriptors) -> FontFace {
-        Self {
-            inner: Any::global("FontFace")
-                .new(&[family.into(), source.into(), descriptors.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl FontFace {
     /// Getter of the `family` attribute.
     /// [`FontFace.family`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/family)
     pub fn family(&self) -> JsString {
@@ -233,13 +214,6 @@ impl FontFace {
     }
 }
 impl FontFace {
-    /// The load method.
-    /// [`FontFace.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/load)
-    pub fn load(&self) -> Promise<FontFace> {
-        self.inner.call("load", &[]).as_::<Promise<FontFace>>()
-    }
-}
-impl FontFace {
     /// Getter of the `loaded` attribute.
     /// [`FontFace.loaded`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/loaded)
     pub fn loaded(&self) -> Promise<FontFace> {
@@ -265,5 +239,32 @@ impl FontFace {
     /// [`FontFace.palettes`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/palettes)
     pub fn palettes(&self) -> FontFacePalettes {
         self.inner.get("palettes").as_::<FontFacePalettes>()
+    }
+}
+
+impl FontFace {
+    /// The `new FontFace(..)` constructor, creating a new FontFace instance
+    pub fn new0(family: &JsString, source: &Any) -> FontFace {
+        Self {
+            inner: Any::global("FontFace")
+                .new(&[family.into(), source.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new FontFace(..)` constructor, creating a new FontFace instance
+    pub fn new1(family: &JsString, source: &Any, descriptors: &FontFaceDescriptors) -> FontFace {
+        Self {
+            inner: Any::global("FontFace")
+                .new(&[family.into(), source.into(), descriptors.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+impl FontFace {
+    /// The load method.
+    /// [`FontFace.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/load)
+    pub fn load(&self) -> Promise<FontFace> {
+        self.inner.call("load", &[]).as_::<Promise<FontFace>>()
     }
 }

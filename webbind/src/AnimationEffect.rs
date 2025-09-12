@@ -64,6 +64,27 @@ impl From<&AnimationEffect> for Any {
 jsbind::utils::impl_dyn_cast!(AnimationEffect);
 
 impl AnimationEffect {
+    /// Getter of the `parent` attribute.
+    /// [`AnimationEffect.parent`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/parent)
+    pub fn parent(&self) -> GroupEffect {
+        self.inner.get("parent").as_::<GroupEffect>()
+    }
+}
+impl AnimationEffect {
+    /// Getter of the `previousSibling` attribute.
+    /// [`AnimationEffect.previousSibling`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/previousSibling)
+    pub fn previous_sibling(&self) -> AnimationEffect {
+        self.inner.get("previousSibling").as_::<AnimationEffect>()
+    }
+}
+impl AnimationEffect {
+    /// Getter of the `nextSibling` attribute.
+    /// [`AnimationEffect.nextSibling`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/nextSibling)
+    pub fn next_sibling(&self) -> AnimationEffect {
+        self.inner.get("nextSibling").as_::<AnimationEffect>()
+    }
+}
+impl AnimationEffect {
     /// The getTiming method.
     /// [`AnimationEffect.getTiming`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/getTiming)
     pub fn get_timing(&self) -> EffectTiming {
@@ -91,27 +112,6 @@ impl AnimationEffect {
         self.inner
             .call("updateTiming", &[timing.into()])
             .as_::<Undefined>()
-    }
-}
-impl AnimationEffect {
-    /// Getter of the `parent` attribute.
-    /// [`AnimationEffect.parent`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/parent)
-    pub fn parent(&self) -> GroupEffect {
-        self.inner.get("parent").as_::<GroupEffect>()
-    }
-}
-impl AnimationEffect {
-    /// Getter of the `previousSibling` attribute.
-    /// [`AnimationEffect.previousSibling`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/previousSibling)
-    pub fn previous_sibling(&self) -> AnimationEffect {
-        self.inner.get("previousSibling").as_::<AnimationEffect>()
-    }
-}
-impl AnimationEffect {
-    /// Getter of the `nextSibling` attribute.
-    /// [`AnimationEffect.nextSibling`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEffect/nextSibling)
-    pub fn next_sibling(&self) -> AnimationEffect {
-        self.inner.get("nextSibling").as_::<AnimationEffect>()
     }
 }
 impl AnimationEffect {

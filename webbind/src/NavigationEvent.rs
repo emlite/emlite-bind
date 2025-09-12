@@ -64,6 +64,21 @@ impl From<&NavigationEvent> for Any {
 jsbind::utils::impl_dyn_cast!(NavigationEvent);
 
 impl NavigationEvent {
+    /// Getter of the `dir` attribute.
+    /// [`NavigationEvent.dir`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationEvent/dir)
+    pub fn dir(&self) -> SpatialNavigationDirection {
+        self.inner.get("dir").as_::<SpatialNavigationDirection>()
+    }
+}
+impl NavigationEvent {
+    /// Getter of the `relatedTarget` attribute.
+    /// [`NavigationEvent.relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationEvent/relatedTarget)
+    pub fn related_target(&self) -> EventTarget {
+        self.inner.get("relatedTarget").as_::<EventTarget>()
+    }
+}
+
+impl NavigationEvent {
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
     pub fn new0(type_: &JsString) -> NavigationEvent {
         Self {
@@ -80,19 +95,5 @@ impl NavigationEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<UIEvent>(),
         }
-    }
-}
-impl NavigationEvent {
-    /// Getter of the `dir` attribute.
-    /// [`NavigationEvent.dir`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationEvent/dir)
-    pub fn dir(&self) -> SpatialNavigationDirection {
-        self.inner.get("dir").as_::<SpatialNavigationDirection>()
-    }
-}
-impl NavigationEvent {
-    /// Getter of the `relatedTarget` attribute.
-    /// [`NavigationEvent.relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationEvent/relatedTarget)
-    pub fn related_target(&self) -> EventTarget {
-        self.inner.get("relatedTarget").as_::<EventTarget>()
     }
 }

@@ -64,16 +64,6 @@ impl From<&HTMLVideoElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLVideoElement);
 
 impl HTMLVideoElement {
-    /// The `new HTMLVideoElement(..)` constructor, creating a new HTMLVideoElement instance
-    pub fn new() -> HTMLVideoElement {
-        Self {
-            inner: Any::global("HTMLVideoElement")
-                .new(&[])
-                .as_::<HTMLMediaElement>(),
-        }
-    }
-}
-impl HTMLVideoElement {
     /// Getter of the `width` attribute.
     /// [`HTMLVideoElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/width)
     pub fn width(&self) -> u32 {
@@ -140,24 +130,6 @@ impl HTMLVideoElement {
     }
 }
 impl HTMLVideoElement {
-    /// The getVideoPlaybackQuality method.
-    /// [`HTMLVideoElement.getVideoPlaybackQuality`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/getVideoPlaybackQuality)
-    pub fn get_video_playback_quality(&self) -> VideoPlaybackQuality {
-        self.inner
-            .call("getVideoPlaybackQuality", &[])
-            .as_::<VideoPlaybackQuality>()
-    }
-}
-impl HTMLVideoElement {
-    /// The requestPictureInPicture method.
-    /// [`HTMLVideoElement.requestPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestPictureInPicture)
-    pub fn request_picture_in_picture(&self) -> Promise<PictureInPictureWindow> {
-        self.inner
-            .call("requestPictureInPicture", &[])
-            .as_::<Promise<PictureInPictureWindow>>()
-    }
-}
-impl HTMLVideoElement {
     /// Getter of the `onenterpictureinpicture` attribute.
     /// [`HTMLVideoElement.onenterpictureinpicture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/onenterpictureinpicture)
     pub fn onenterpictureinpicture(&self) -> Any {
@@ -194,6 +166,35 @@ impl HTMLVideoElement {
     /// [`HTMLVideoElement.disablePictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/disablePictureInPicture)
     pub fn set_disable_picture_in_picture(&mut self, value: bool) {
         self.inner.set("disablePictureInPicture", value);
+    }
+}
+
+impl HTMLVideoElement {
+    /// The `new HTMLVideoElement(..)` constructor, creating a new HTMLVideoElement instance
+    pub fn new() -> HTMLVideoElement {
+        Self {
+            inner: Any::global("HTMLVideoElement")
+                .new(&[])
+                .as_::<HTMLMediaElement>(),
+        }
+    }
+}
+impl HTMLVideoElement {
+    /// The getVideoPlaybackQuality method.
+    /// [`HTMLVideoElement.getVideoPlaybackQuality`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/getVideoPlaybackQuality)
+    pub fn get_video_playback_quality(&self) -> VideoPlaybackQuality {
+        self.inner
+            .call("getVideoPlaybackQuality", &[])
+            .as_::<VideoPlaybackQuality>()
+    }
+}
+impl HTMLVideoElement {
+    /// The requestPictureInPicture method.
+    /// [`HTMLVideoElement.requestPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestPictureInPicture)
+    pub fn request_picture_in_picture(&self) -> Promise<PictureInPictureWindow> {
+        self.inner
+            .call("requestPictureInPicture", &[])
+            .as_::<Promise<PictureInPictureWindow>>()
     }
 }
 impl HTMLVideoElement {

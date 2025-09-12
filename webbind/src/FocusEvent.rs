@@ -64,6 +64,14 @@ impl From<&FocusEvent> for Any {
 jsbind::utils::impl_dyn_cast!(FocusEvent);
 
 impl FocusEvent {
+    /// Getter of the `relatedTarget` attribute.
+    /// [`FocusEvent.relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget)
+    pub fn related_target(&self) -> EventTarget {
+        self.inner.get("relatedTarget").as_::<EventTarget>()
+    }
+}
+
+impl FocusEvent {
     /// The `new FocusEvent(..)` constructor, creating a new FocusEvent instance
     pub fn new0(type_: &JsString) -> FocusEvent {
         Self {
@@ -80,12 +88,5 @@ impl FocusEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<UIEvent>(),
         }
-    }
-}
-impl FocusEvent {
-    /// Getter of the `relatedTarget` attribute.
-    /// [`FocusEvent.relatedTarget`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget)
-    pub fn related_target(&self) -> EventTarget {
-        self.inner.get("relatedTarget").as_::<EventTarget>()
     }
 }

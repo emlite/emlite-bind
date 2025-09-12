@@ -99,18 +99,6 @@ impl SVGFEDropShadowElement {
     }
 }
 impl SVGFEDropShadowElement {
-    /// The setStdDeviation method.
-    /// [`SVGFEDropShadowElement.setStdDeviation`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement/setStdDeviation)
-    pub fn set_std_deviation(&self, std_deviation_x: f32, std_deviation_y: f32) -> Undefined {
-        self.inner
-            .call(
-                "setStdDeviation",
-                &[std_deviation_x.into(), std_deviation_y.into()],
-            )
-            .as_::<Undefined>()
-    }
-}
-impl SVGFEDropShadowElement {
     /// Getter of the `x` attribute.
     /// [`SVGFEDropShadowElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement/x)
     pub fn x(&self) -> SVGAnimatedLength {
@@ -143,5 +131,17 @@ impl SVGFEDropShadowElement {
     /// [`SVGFEDropShadowElement.result`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement/result)
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
+    }
+}
+impl SVGFEDropShadowElement {
+    /// The setStdDeviation method.
+    /// [`SVGFEDropShadowElement.setStdDeviation`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEDropShadowElement/setStdDeviation)
+    pub fn set_std_deviation(&self, std_deviation_x: f32, std_deviation_y: f32) -> Undefined {
+        self.inner
+            .call(
+                "setStdDeviation",
+                &[std_deviation_x.into(), std_deviation_y.into()],
+            )
+            .as_::<Undefined>()
     }
 }

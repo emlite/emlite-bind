@@ -64,6 +64,66 @@ impl From<&Rewriter> for Any {
 jsbind::utils::impl_dyn_cast!(Rewriter);
 
 impl Rewriter {
+    /// Getter of the `sharedContext` attribute.
+    /// [`Rewriter.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/sharedContext)
+    pub fn shared_context(&self) -> JsString {
+        self.inner.get("sharedContext").as_::<JsString>()
+    }
+}
+impl Rewriter {
+    /// Getter of the `tone` attribute.
+    /// [`Rewriter.tone`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/tone)
+    pub fn tone(&self) -> RewriterTone {
+        self.inner.get("tone").as_::<RewriterTone>()
+    }
+}
+impl Rewriter {
+    /// Getter of the `format` attribute.
+    /// [`Rewriter.format`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/format)
+    pub fn format(&self) -> RewriterFormat {
+        self.inner.get("format").as_::<RewriterFormat>()
+    }
+}
+impl Rewriter {
+    /// Getter of the `length` attribute.
+    /// [`Rewriter.length`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/length)
+    pub fn length(&self) -> RewriterLength {
+        self.inner.get("length").as_::<RewriterLength>()
+    }
+}
+impl Rewriter {
+    /// Getter of the `expectedInputLanguages` attribute.
+    /// [`Rewriter.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedInputLanguages)
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Rewriter {
+    /// Getter of the `expectedContextLanguages` attribute.
+    /// [`Rewriter.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedContextLanguages)
+    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
+        self.inner
+            .get("expectedContextLanguages")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Rewriter {
+    /// Getter of the `outputLanguage` attribute.
+    /// [`Rewriter.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/outputLanguage)
+    pub fn output_language(&self) -> JsString {
+        self.inner.get("outputLanguage").as_::<JsString>()
+    }
+}
+impl Rewriter {
+    /// Getter of the `inputQuota` attribute.
+    /// [`Rewriter.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/inputQuota)
+    pub fn input_quota(&self) -> f64 {
+        self.inner.get("inputQuota").as_::<f64>()
+    }
+}
+impl Rewriter {
     /// The create method.
     /// [`Rewriter.create`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/create)
     pub fn create0() -> Promise<Rewriter> {
@@ -136,59 +196,6 @@ impl Rewriter {
     }
 }
 impl Rewriter {
-    /// Getter of the `sharedContext` attribute.
-    /// [`Rewriter.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/sharedContext)
-    pub fn shared_context(&self) -> JsString {
-        self.inner.get("sharedContext").as_::<JsString>()
-    }
-}
-impl Rewriter {
-    /// Getter of the `tone` attribute.
-    /// [`Rewriter.tone`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/tone)
-    pub fn tone(&self) -> RewriterTone {
-        self.inner.get("tone").as_::<RewriterTone>()
-    }
-}
-impl Rewriter {
-    /// Getter of the `format` attribute.
-    /// [`Rewriter.format`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/format)
-    pub fn format(&self) -> RewriterFormat {
-        self.inner.get("format").as_::<RewriterFormat>()
-    }
-}
-impl Rewriter {
-    /// Getter of the `length` attribute.
-    /// [`Rewriter.length`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/length)
-    pub fn length(&self) -> RewriterLength {
-        self.inner.get("length").as_::<RewriterLength>()
-    }
-}
-impl Rewriter {
-    /// Getter of the `expectedInputLanguages` attribute.
-    /// [`Rewriter.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Rewriter {
-    /// Getter of the `expectedContextLanguages` attribute.
-    /// [`Rewriter.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedContextLanguages)
-    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedContextLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Rewriter {
-    /// Getter of the `outputLanguage` attribute.
-    /// [`Rewriter.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/outputLanguage)
-    pub fn output_language(&self) -> JsString {
-        self.inner.get("outputLanguage").as_::<JsString>()
-    }
-}
-impl Rewriter {
     /// The measureInputUsage method.
     /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
@@ -206,13 +213,6 @@ impl Rewriter {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
             .as_::<Promise<f64>>()
-    }
-}
-impl Rewriter {
-    /// Getter of the `inputQuota` attribute.
-    /// [`Rewriter.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/inputQuota)
-    pub fn input_quota(&self) -> f64 {
-        self.inner.get("inputQuota").as_::<f64>()
     }
 }
 impl Rewriter {

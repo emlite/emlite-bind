@@ -64,64 +64,6 @@ impl From<&FileReader> for Any {
 jsbind::utils::impl_dyn_cast!(FileReader);
 
 impl FileReader {
-    /// The `new FileReader(..)` constructor, creating a new FileReader instance
-    pub fn new() -> FileReader {
-        Self {
-            inner: Any::global("FileReader").new(&[]).as_::<EventTarget>(),
-        }
-    }
-}
-impl FileReader {
-    /// The readAsArrayBuffer method.
-    /// [`FileReader.readAsArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer)
-    pub fn read_as_array_buffer(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsArrayBuffer", &[blob.into()])
-            .as_::<Undefined>()
-    }
-}
-impl FileReader {
-    /// The readAsBinaryString method.
-    /// [`FileReader.readAsBinaryString`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString)
-    pub fn read_as_binary_string(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsBinaryString", &[blob.into()])
-            .as_::<Undefined>()
-    }
-}
-impl FileReader {
-    /// The readAsText method.
-    /// [`FileReader.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
-    pub fn read_as_text0(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsText", &[blob.into()])
-            .as_::<Undefined>()
-    }
-    /// The readAsText method.
-    /// [`FileReader.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
-    pub fn read_as_text1(&self, blob: &Blob, encoding: &JsString) -> Undefined {
-        self.inner
-            .call("readAsText", &[blob.into(), encoding.into()])
-            .as_::<Undefined>()
-    }
-}
-impl FileReader {
-    /// The readAsDataURL method.
-    /// [`FileReader.readAsDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL)
-    pub fn read_as_data_url(&self, blob: &Blob) -> Undefined {
-        self.inner
-            .call("readAsDataURL", &[blob.into()])
-            .as_::<Undefined>()
-    }
-}
-impl FileReader {
-    /// The abort method.
-    /// [`FileReader.abort`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/abort)
-    pub fn abort(&self) -> Undefined {
-        self.inner.call("abort", &[]).as_::<Undefined>()
-    }
-}
-impl FileReader {
     /// Getter of the `readyState` attribute.
     /// [`FileReader.readyState`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readyState)
     pub fn ready_state(&self) -> u16 {
@@ -218,5 +160,64 @@ impl FileReader {
     /// [`FileReader.onloadend`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/onloadend)
     pub fn set_onloadend(&mut self, value: &Any) {
         self.inner.set("onloadend", value);
+    }
+}
+
+impl FileReader {
+    /// The `new FileReader(..)` constructor, creating a new FileReader instance
+    pub fn new() -> FileReader {
+        Self {
+            inner: Any::global("FileReader").new(&[]).as_::<EventTarget>(),
+        }
+    }
+}
+impl FileReader {
+    /// The readAsArrayBuffer method.
+    /// [`FileReader.readAsArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer)
+    pub fn read_as_array_buffer(&self, blob: &Blob) -> Undefined {
+        self.inner
+            .call("readAsArrayBuffer", &[blob.into()])
+            .as_::<Undefined>()
+    }
+}
+impl FileReader {
+    /// The readAsBinaryString method.
+    /// [`FileReader.readAsBinaryString`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString)
+    pub fn read_as_binary_string(&self, blob: &Blob) -> Undefined {
+        self.inner
+            .call("readAsBinaryString", &[blob.into()])
+            .as_::<Undefined>()
+    }
+}
+impl FileReader {
+    /// The readAsText method.
+    /// [`FileReader.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
+    pub fn read_as_text0(&self, blob: &Blob) -> Undefined {
+        self.inner
+            .call("readAsText", &[blob.into()])
+            .as_::<Undefined>()
+    }
+    /// The readAsText method.
+    /// [`FileReader.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
+    pub fn read_as_text1(&self, blob: &Blob, encoding: &JsString) -> Undefined {
+        self.inner
+            .call("readAsText", &[blob.into(), encoding.into()])
+            .as_::<Undefined>()
+    }
+}
+impl FileReader {
+    /// The readAsDataURL method.
+    /// [`FileReader.readAsDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL)
+    pub fn read_as_data_url(&self, blob: &Blob) -> Undefined {
+        self.inner
+            .call("readAsDataURL", &[blob.into()])
+            .as_::<Undefined>()
+    }
+}
+impl FileReader {
+    /// The abort method.
+    /// [`FileReader.abort`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/abort)
+    pub fn abort(&self) -> Undefined {
+        self.inner.call("abort", &[]).as_::<Undefined>()
     }
 }

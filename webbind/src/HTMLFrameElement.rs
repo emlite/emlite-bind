@@ -64,16 +64,6 @@ impl From<&HTMLFrameElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLFrameElement);
 
 impl HTMLFrameElement {
-    /// The `new HTMLFrameElement(..)` constructor, creating a new HTMLFrameElement instance
-    pub fn new() -> HTMLFrameElement {
-        Self {
-            inner: Any::global("HTMLFrameElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLFrameElement {
     /// Getter of the `name` attribute.
     /// [`HTMLFrameElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/name)
     pub fn name(&self) -> JsString {
@@ -189,5 +179,16 @@ impl HTMLFrameElement {
     /// [`HTMLFrameElement.marginWidth`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginWidth)
     pub fn set_margin_width(&mut self, value: &JsString) {
         self.inner.set("marginWidth", value);
+    }
+}
+
+impl HTMLFrameElement {
+    /// The `new HTMLFrameElement(..)` constructor, creating a new HTMLFrameElement instance
+    pub fn new() -> HTMLFrameElement {
+        Self {
+            inner: Any::global("HTMLFrameElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,16 +64,6 @@ impl From<&ByteLengthQueuingStrategy> for Any {
 jsbind::utils::impl_dyn_cast!(ByteLengthQueuingStrategy);
 
 impl ByteLengthQueuingStrategy {
-    /// The `new ByteLengthQueuingStrategy(..)` constructor, creating a new ByteLengthQueuingStrategy instance
-    pub fn new(init: &QueuingStrategyInit) -> ByteLengthQueuingStrategy {
-        Self {
-            inner: Any::global("ByteLengthQueuingStrategy")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl ByteLengthQueuingStrategy {
     /// Getter of the `highWaterMark` attribute.
     /// [`ByteLengthQueuingStrategy.highWaterMark`](https://developer.mozilla.org/en-US/docs/Web/API/ByteLengthQueuingStrategy/highWaterMark)
     pub fn high_water_mark(&self) -> f64 {
@@ -85,5 +75,16 @@ impl ByteLengthQueuingStrategy {
     /// [`ByteLengthQueuingStrategy.size`](https://developer.mozilla.org/en-US/docs/Web/API/ByteLengthQueuingStrategy/size)
     pub fn size(&self) -> Function {
         self.inner.get("size").as_::<Function>()
+    }
+}
+
+impl ByteLengthQueuingStrategy {
+    /// The `new ByteLengthQueuingStrategy(..)` constructor, creating a new ByteLengthQueuingStrategy instance
+    pub fn new(init: &QueuingStrategyInit) -> ByteLengthQueuingStrategy {
+        Self {
+            inner: Any::global("ByteLengthQueuingStrategy")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
     }
 }

@@ -110,22 +110,6 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
-    /// The update method.
-    /// [`ServiceWorkerRegistration.update`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update)
-    pub fn update(&self) -> Promise<ServiceWorkerRegistration> {
-        self.inner
-            .call("update", &[])
-            .as_::<Promise<ServiceWorkerRegistration>>()
-    }
-}
-impl ServiceWorkerRegistration {
-    /// The unregister method.
-    /// [`ServiceWorkerRegistration.unregister`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/unregister)
-    pub fn unregister(&self) -> Promise<bool> {
-        self.inner.call("unregister", &[]).as_::<Promise<bool>>()
-    }
-}
-impl ServiceWorkerRegistration {
     /// Getter of the `onupdatefound` attribute.
     /// [`ServiceWorkerRegistration.onupdatefound`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/onupdatefound)
     pub fn onupdatefound(&self) -> Any {
@@ -169,6 +153,43 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `paymentManager` attribute.
+    /// [`ServiceWorkerRegistration.paymentManager`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/paymentManager)
+    pub fn payment_manager(&self) -> PaymentManager {
+        self.inner.get("paymentManager").as_::<PaymentManager>()
+    }
+}
+impl ServiceWorkerRegistration {
+    /// Getter of the `periodicSync` attribute.
+    /// [`ServiceWorkerRegistration.periodicSync`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/periodicSync)
+    pub fn periodic_sync(&self) -> PeriodicSyncManager {
+        self.inner.get("periodicSync").as_::<PeriodicSyncManager>()
+    }
+}
+impl ServiceWorkerRegistration {
+    /// Getter of the `pushManager` attribute.
+    /// [`ServiceWorkerRegistration.pushManager`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/pushManager)
+    pub fn push_manager(&self) -> PushManager {
+        self.inner.get("pushManager").as_::<PushManager>()
+    }
+}
+impl ServiceWorkerRegistration {
+    /// The update method.
+    /// [`ServiceWorkerRegistration.update`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update)
+    pub fn update(&self) -> Promise<ServiceWorkerRegistration> {
+        self.inner
+            .call("update", &[])
+            .as_::<Promise<ServiceWorkerRegistration>>()
+    }
+}
+impl ServiceWorkerRegistration {
+    /// The unregister method.
+    /// [`ServiceWorkerRegistration.unregister`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/unregister)
+    pub fn unregister(&self) -> Promise<bool> {
+        self.inner.call("unregister", &[]).as_::<Promise<bool>>()
+    }
+}
+impl ServiceWorkerRegistration {
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
     pub fn show_notification0(&self, title: &JsString) -> Promise<Undefined> {
@@ -205,26 +226,5 @@ impl ServiceWorkerRegistration {
         self.inner
             .call("getNotifications", &[filter.into()])
             .as_::<Promise<TypedArray<Notification>>>()
-    }
-}
-impl ServiceWorkerRegistration {
-    /// Getter of the `paymentManager` attribute.
-    /// [`ServiceWorkerRegistration.paymentManager`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/paymentManager)
-    pub fn payment_manager(&self) -> PaymentManager {
-        self.inner.get("paymentManager").as_::<PaymentManager>()
-    }
-}
-impl ServiceWorkerRegistration {
-    /// Getter of the `periodicSync` attribute.
-    /// [`ServiceWorkerRegistration.periodicSync`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/periodicSync)
-    pub fn periodic_sync(&self) -> PeriodicSyncManager {
-        self.inner.get("periodicSync").as_::<PeriodicSyncManager>()
-    }
-}
-impl ServiceWorkerRegistration {
-    /// Getter of the `pushManager` attribute.
-    /// [`ServiceWorkerRegistration.pushManager`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/pushManager)
-    pub fn push_manager(&self) -> PushManager {
-        self.inner.get("pushManager").as_::<PushManager>()
     }
 }

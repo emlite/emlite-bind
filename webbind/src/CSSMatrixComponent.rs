@@ -64,6 +64,20 @@ impl From<&CSSMatrixComponent> for Any {
 jsbind::utils::impl_dyn_cast!(CSSMatrixComponent);
 
 impl CSSMatrixComponent {
+    /// Getter of the `matrix` attribute.
+    /// [`CSSMatrixComponent.matrix`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMatrixComponent/matrix)
+    pub fn matrix(&self) -> DOMMatrix {
+        self.inner.get("matrix").as_::<DOMMatrix>()
+    }
+
+    /// Setter of the `matrix` attribute.
+    /// [`CSSMatrixComponent.matrix`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMatrixComponent/matrix)
+    pub fn set_matrix(&mut self, value: &DOMMatrix) {
+        self.inner.set("matrix", value);
+    }
+}
+
+impl CSSMatrixComponent {
     /// The `new CSSMatrixComponent(..)` constructor, creating a new CSSMatrixComponent instance
     pub fn new0(matrix: &DOMMatrixReadOnly) -> CSSMatrixComponent {
         Self {
@@ -83,18 +97,5 @@ impl CSSMatrixComponent {
                 .new(&[matrix.into(), options.into()])
                 .as_::<CSSTransformComponent>(),
         }
-    }
-}
-impl CSSMatrixComponent {
-    /// Getter of the `matrix` attribute.
-    /// [`CSSMatrixComponent.matrix`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMatrixComponent/matrix)
-    pub fn matrix(&self) -> DOMMatrix {
-        self.inner.get("matrix").as_::<DOMMatrix>()
-    }
-
-    /// Setter of the `matrix` attribute.
-    /// [`CSSMatrixComponent.matrix`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMatrixComponent/matrix)
-    pub fn set_matrix(&mut self, value: &DOMMatrix) {
-        self.inner.set("matrix", value);
     }
 }

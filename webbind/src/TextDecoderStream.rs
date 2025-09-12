@@ -64,32 +64,6 @@ impl From<&TextDecoderStream> for Any {
 jsbind::utils::impl_dyn_cast!(TextDecoderStream);
 
 impl TextDecoderStream {
-    /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new0() -> TextDecoderStream {
-        Self {
-            inner: Any::global("TextDecoderStream").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new1(label: &JsString) -> TextDecoderStream {
-        Self {
-            inner: Any::global("TextDecoderStream")
-                .new(&[label.into()])
-                .as_::<Any>(),
-        }
-    }
-
-    /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new2(label: &JsString, options: &TextDecoderOptions) -> TextDecoderStream {
-        Self {
-            inner: Any::global("TextDecoderStream")
-                .new(&[label.into(), options.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl TextDecoderStream {
     /// Getter of the `encoding` attribute.
     /// [`TextDecoderStream.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream/encoding)
     pub fn encoding(&self) -> JsString {
@@ -122,5 +96,32 @@ impl TextDecoderStream {
     /// [`TextDecoderStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream/writable)
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
+    }
+}
+
+impl TextDecoderStream {
+    /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
+    pub fn new0() -> TextDecoderStream {
+        Self {
+            inner: Any::global("TextDecoderStream").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
+    pub fn new1(label: &JsString) -> TextDecoderStream {
+        Self {
+            inner: Any::global("TextDecoderStream")
+                .new(&[label.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
+    pub fn new2(label: &JsString, options: &TextDecoderOptions) -> TextDecoderStream {
+        Self {
+            inner: Any::global("TextDecoderStream")
+                .new(&[label.into(), options.into()])
+                .as_::<Any>(),
+        }
     }
 }

@@ -64,16 +64,6 @@ impl From<&CountQueuingStrategy> for Any {
 jsbind::utils::impl_dyn_cast!(CountQueuingStrategy);
 
 impl CountQueuingStrategy {
-    /// The `new CountQueuingStrategy(..)` constructor, creating a new CountQueuingStrategy instance
-    pub fn new(init: &QueuingStrategyInit) -> CountQueuingStrategy {
-        Self {
-            inner: Any::global("CountQueuingStrategy")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl CountQueuingStrategy {
     /// Getter of the `highWaterMark` attribute.
     /// [`CountQueuingStrategy.highWaterMark`](https://developer.mozilla.org/en-US/docs/Web/API/CountQueuingStrategy/highWaterMark)
     pub fn high_water_mark(&self) -> f64 {
@@ -85,5 +75,16 @@ impl CountQueuingStrategy {
     /// [`CountQueuingStrategy.size`](https://developer.mozilla.org/en-US/docs/Web/API/CountQueuingStrategy/size)
     pub fn size(&self) -> Function {
         self.inner.get("size").as_::<Function>()
+    }
+}
+
+impl CountQueuingStrategy {
+    /// The `new CountQueuingStrategy(..)` constructor, creating a new CountQueuingStrategy instance
+    pub fn new(init: &QueuingStrategyInit) -> CountQueuingStrategy {
+        Self {
+            inner: Any::global("CountQueuingStrategy")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
     }
 }

@@ -64,6 +64,14 @@ impl From<&MediaStreamTrackEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackEvent);
 
 impl MediaStreamTrackEvent {
+    /// Getter of the `track` attribute.
+    /// [`MediaStreamTrackEvent.track`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackEvent/track)
+    pub fn track(&self) -> MediaStreamTrack {
+        self.inner.get("track").as_::<MediaStreamTrack>()
+    }
+}
+
+impl MediaStreamTrackEvent {
     /// The `new MediaStreamTrackEvent(..)` constructor, creating a new MediaStreamTrackEvent instance
     pub fn new(
         type_: &JsString,
@@ -74,12 +82,5 @@ impl MediaStreamTrackEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl MediaStreamTrackEvent {
-    /// Getter of the `track` attribute.
-    /// [`MediaStreamTrackEvent.track`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackEvent/track)
-    pub fn track(&self) -> MediaStreamTrack {
-        self.inner.get("track").as_::<MediaStreamTrack>()
     }
 }

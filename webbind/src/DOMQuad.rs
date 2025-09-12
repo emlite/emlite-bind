@@ -64,6 +64,35 @@ impl From<&DOMQuad> for Any {
 jsbind::utils::impl_dyn_cast!(DOMQuad);
 
 impl DOMQuad {
+    /// Getter of the `p1` attribute.
+    /// [`DOMQuad.p1`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p1)
+    pub fn p1(&self) -> DOMPoint {
+        self.inner.get("p1").as_::<DOMPoint>()
+    }
+}
+impl DOMQuad {
+    /// Getter of the `p2` attribute.
+    /// [`DOMQuad.p2`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p2)
+    pub fn p2(&self) -> DOMPoint {
+        self.inner.get("p2").as_::<DOMPoint>()
+    }
+}
+impl DOMQuad {
+    /// Getter of the `p3` attribute.
+    /// [`DOMQuad.p3`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p3)
+    pub fn p3(&self) -> DOMPoint {
+        self.inner.get("p3").as_::<DOMPoint>()
+    }
+}
+impl DOMQuad {
+    /// Getter of the `p4` attribute.
+    /// [`DOMQuad.p4`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p4)
+    pub fn p4(&self) -> DOMPoint {
+        self.inner.get("p4").as_::<DOMPoint>()
+    }
+}
+
+impl DOMQuad {
     /// The `new DOMQuad(..)` constructor, creating a new DOMQuad instance
     pub fn new0() -> DOMQuad {
         Self {
@@ -140,34 +169,6 @@ impl DOMQuad {
         Any::global("DOMQuad")
             .call("fromQuad", &[other.into()])
             .as_::<DOMQuad>()
-    }
-}
-impl DOMQuad {
-    /// Getter of the `p1` attribute.
-    /// [`DOMQuad.p1`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p1)
-    pub fn p1(&self) -> DOMPoint {
-        self.inner.get("p1").as_::<DOMPoint>()
-    }
-}
-impl DOMQuad {
-    /// Getter of the `p2` attribute.
-    /// [`DOMQuad.p2`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p2)
-    pub fn p2(&self) -> DOMPoint {
-        self.inner.get("p2").as_::<DOMPoint>()
-    }
-}
-impl DOMQuad {
-    /// Getter of the `p3` attribute.
-    /// [`DOMQuad.p3`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p3)
-    pub fn p3(&self) -> DOMPoint {
-        self.inner.get("p3").as_::<DOMPoint>()
-    }
-}
-impl DOMQuad {
-    /// Getter of the `p4` attribute.
-    /// [`DOMQuad.p4`](https://developer.mozilla.org/en-US/docs/Web/API/DOMQuad/p4)
-    pub fn p4(&self) -> DOMPoint {
-        self.inner.get("p4").as_::<DOMPoint>()
     }
 }
 impl DOMQuad {

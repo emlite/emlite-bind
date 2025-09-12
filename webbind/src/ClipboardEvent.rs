@@ -64,6 +64,14 @@ impl From<&ClipboardEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ClipboardEvent);
 
 impl ClipboardEvent {
+    /// Getter of the `clipboardData` attribute.
+    /// [`ClipboardEvent.clipboardData`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent/clipboardData)
+    pub fn clipboard_data(&self) -> DataTransfer {
+        self.inner.get("clipboardData").as_::<DataTransfer>()
+    }
+}
+
+impl ClipboardEvent {
     /// The `new ClipboardEvent(..)` constructor, creating a new ClipboardEvent instance
     pub fn new0(type_: &JsString) -> ClipboardEvent {
         Self {
@@ -80,12 +88,5 @@ impl ClipboardEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl ClipboardEvent {
-    /// Getter of the `clipboardData` attribute.
-    /// [`ClipboardEvent.clipboardData`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardEvent/clipboardData)
-    pub fn clipboard_data(&self) -> DataTransfer {
-        self.inner.get("clipboardData").as_::<DataTransfer>()
     }
 }

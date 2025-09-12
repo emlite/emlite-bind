@@ -64,16 +64,6 @@ impl From<&HTMLTemplateElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTemplateElement);
 
 impl HTMLTemplateElement {
-    /// The `new HTMLTemplateElement(..)` constructor, creating a new HTMLTemplateElement instance
-    pub fn new() -> HTMLTemplateElement {
-        Self {
-            inner: Any::global("HTMLTemplateElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTemplateElement {
     /// Getter of the `content` attribute.
     /// [`HTMLTemplateElement.content`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/content)
     pub fn content(&self) -> DocumentFragment {
@@ -145,5 +135,16 @@ impl HTMLTemplateElement {
     /// [`HTMLTemplateElement.shadowRootCustomElementRegistry`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/shadowRootCustomElementRegistry)
     pub fn set_shadow_root_custom_element_registry(&mut self, value: &JsString) {
         self.inner.set("shadowRootCustomElementRegistry", value);
+    }
+}
+
+impl HTMLTemplateElement {
+    /// The `new HTMLTemplateElement(..)` constructor, creating a new HTMLTemplateElement instance
+    pub fn new() -> HTMLTemplateElement {
+        Self {
+            inner: Any::global("HTMLTemplateElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

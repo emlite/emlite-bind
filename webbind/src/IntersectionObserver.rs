@@ -64,25 +64,6 @@ impl From<&IntersectionObserver> for Any {
 jsbind::utils::impl_dyn_cast!(IntersectionObserver);
 
 impl IntersectionObserver {
-    /// The `new IntersectionObserver(..)` constructor, creating a new IntersectionObserver instance
-    pub fn new0(callback: &Function) -> IntersectionObserver {
-        Self {
-            inner: Any::global("IntersectionObserver")
-                .new(&[callback.into()])
-                .as_::<Any>(),
-        }
-    }
-
-    /// The `new IntersectionObserver(..)` constructor, creating a new IntersectionObserver instance
-    pub fn new1(callback: &Function, options: &IntersectionObserverInit) -> IntersectionObserver {
-        Self {
-            inner: Any::global("IntersectionObserver")
-                .new(&[callback.into(), options.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl IntersectionObserver {
     /// Getter of the `root` attribute.
     /// [`IntersectionObserver.root`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/root)
     pub fn root(&self) -> Any {
@@ -122,6 +103,26 @@ impl IntersectionObserver {
     /// [`IntersectionObserver.trackVisibility`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/trackVisibility)
     pub fn track_visibility(&self) -> bool {
         self.inner.get("trackVisibility").as_::<bool>()
+    }
+}
+
+impl IntersectionObserver {
+    /// The `new IntersectionObserver(..)` constructor, creating a new IntersectionObserver instance
+    pub fn new0(callback: &Function) -> IntersectionObserver {
+        Self {
+            inner: Any::global("IntersectionObserver")
+                .new(&[callback.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new IntersectionObserver(..)` constructor, creating a new IntersectionObserver instance
+    pub fn new1(callback: &Function, options: &IntersectionObserverInit) -> IntersectionObserver {
+        Self {
+            inner: Any::global("IntersectionObserver")
+                .new(&[callback.into(), options.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl IntersectionObserver {

@@ -64,6 +64,14 @@ impl From<&GamepadEvent> for Any {
 jsbind::utils::impl_dyn_cast!(GamepadEvent);
 
 impl GamepadEvent {
+    /// Getter of the `gamepad` attribute.
+    /// [`GamepadEvent.gamepad`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadEvent/gamepad)
+    pub fn gamepad(&self) -> Gamepad {
+        self.inner.get("gamepad").as_::<Gamepad>()
+    }
+}
+
+impl GamepadEvent {
     /// The `new GamepadEvent(..)` constructor, creating a new GamepadEvent instance
     pub fn new(type_: &JsString, event_init_dict: &GamepadEventInit) -> GamepadEvent {
         Self {
@@ -71,12 +79,5 @@ impl GamepadEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl GamepadEvent {
-    /// Getter of the `gamepad` attribute.
-    /// [`GamepadEvent.gamepad`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadEvent/gamepad)
-    pub fn gamepad(&self) -> Gamepad {
-        self.inner.get("gamepad").as_::<Gamepad>()
     }
 }

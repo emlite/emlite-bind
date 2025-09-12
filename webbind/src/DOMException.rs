@@ -64,6 +64,28 @@ impl From<&DOMException> for Any {
 jsbind::utils::impl_dyn_cast!(DOMException);
 
 impl DOMException {
+    /// Getter of the `name` attribute.
+    /// [`DOMException.name`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/name)
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
+    }
+}
+impl DOMException {
+    /// Getter of the `message` attribute.
+    /// [`DOMException.message`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/message)
+    pub fn message(&self) -> JsString {
+        self.inner.get("message").as_::<JsString>()
+    }
+}
+impl DOMException {
+    /// Getter of the `code` attribute.
+    /// [`DOMException.code`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/code)
+    pub fn code(&self) -> u16 {
+        self.inner.get("code").as_::<u16>()
+    }
+}
+
+impl DOMException {
     /// The `new DOMException(..)` constructor, creating a new DOMException instance
     pub fn new0() -> DOMException {
         Self {
@@ -87,26 +109,5 @@ impl DOMException {
                 .new(&[message.into(), name.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl DOMException {
-    /// Getter of the `name` attribute.
-    /// [`DOMException.name`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/name)
-    pub fn name(&self) -> JsString {
-        self.inner.get("name").as_::<JsString>()
-    }
-}
-impl DOMException {
-    /// Getter of the `message` attribute.
-    /// [`DOMException.message`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/message)
-    pub fn message(&self) -> JsString {
-        self.inner.get("message").as_::<JsString>()
-    }
-}
-impl DOMException {
-    /// Getter of the `code` attribute.
-    /// [`DOMException.code`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/code)
-    pub fn code(&self) -> u16 {
-        self.inner.get("code").as_::<u16>()
     }
 }

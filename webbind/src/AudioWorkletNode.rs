@@ -64,29 +64,6 @@ impl From<&AudioWorkletNode> for Any {
 jsbind::utils::impl_dyn_cast!(AudioWorkletNode);
 
 impl AudioWorkletNode {
-    /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new0(context: &BaseAudioContext, name: &JsString) -> AudioWorkletNode {
-        Self {
-            inner: Any::global("AudioWorkletNode")
-                .new(&[context.into(), name.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-
-    /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new1(
-        context: &BaseAudioContext,
-        name: &JsString,
-        options: &AudioWorkletNodeOptions,
-    ) -> AudioWorkletNode {
-        Self {
-            inner: Any::global("AudioWorkletNode")
-                .new(&[context.into(), name.into(), options.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-}
-impl AudioWorkletNode {
     /// Getter of the `parameters` attribute.
     /// [`AudioWorkletNode.parameters`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode/parameters)
     pub fn parameters(&self) -> AudioParamMap {
@@ -111,5 +88,29 @@ impl AudioWorkletNode {
     /// [`AudioWorkletNode.onprocessorerror`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode/onprocessorerror)
     pub fn set_onprocessorerror(&mut self, value: &Any) {
         self.inner.set("onprocessorerror", value);
+    }
+}
+
+impl AudioWorkletNode {
+    /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
+    pub fn new0(context: &BaseAudioContext, name: &JsString) -> AudioWorkletNode {
+        Self {
+            inner: Any::global("AudioWorkletNode")
+                .new(&[context.into(), name.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+
+    /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
+    pub fn new1(
+        context: &BaseAudioContext,
+        name: &JsString,
+        options: &AudioWorkletNodeOptions,
+    ) -> AudioWorkletNode {
+        Self {
+            inner: Any::global("AudioWorkletNode")
+                .new(&[context.into(), name.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
     }
 }

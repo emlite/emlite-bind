@@ -64,6 +64,16 @@ impl From<&PerformanceObserver> for Any {
 jsbind::utils::impl_dyn_cast!(PerformanceObserver);
 
 impl PerformanceObserver {
+    /// Getter of the `supportedEntryTypes` static attribute.
+    /// [`PerformanceObserver.supportedEntryTypes`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/supportedEntryTypes)
+    pub fn supported_entry_types() -> TypedArray<JsString> {
+        Any::global("PerformanceObserver")
+            .get("supportedEntryTypes")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+
+impl PerformanceObserver {
     /// The `new PerformanceObserver(..)` constructor, creating a new PerformanceObserver instance
     pub fn new(callback: &Function) -> PerformanceObserver {
         Self {
@@ -99,14 +109,5 @@ impl PerformanceObserver {
     /// [`PerformanceObserver.takeRecords`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/takeRecords)
     pub fn take_records(&self) -> Any {
         self.inner.call("takeRecords", &[]).as_::<Any>()
-    }
-}
-impl PerformanceObserver {
-    /// Getter of the `supportedEntryTypes` static attribute.
-    /// [`PerformanceObserver.supportedEntryTypes`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/supportedEntryTypes)
-    pub fn supported_entry_types() -> TypedArray<JsString> {
-        Any::global("PerformanceObserver")
-            .get("supportedEntryTypes")
-            .as_::<TypedArray<JsString>>()
     }
 }

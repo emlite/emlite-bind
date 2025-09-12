@@ -64,6 +64,14 @@ impl From<&ReadableStreamDefaultReader> for Any {
 jsbind::utils::impl_dyn_cast!(ReadableStreamDefaultReader);
 
 impl ReadableStreamDefaultReader {
+    /// Getter of the `closed` attribute.
+    /// [`ReadableStreamDefaultReader.closed`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/closed)
+    pub fn closed(&self) -> Promise<Undefined> {
+        self.inner.get("closed").as_::<Promise<Undefined>>()
+    }
+}
+
+impl ReadableStreamDefaultReader {
     /// The `new ReadableStreamDefaultReader(..)` constructor, creating a new ReadableStreamDefaultReader instance
     pub fn new(stream: &ReadableStream) -> ReadableStreamDefaultReader {
         Self {
@@ -87,13 +95,6 @@ impl ReadableStreamDefaultReader {
     /// [`ReadableStreamDefaultReader.releaseLock`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock)
     pub fn release_lock(&self) -> Undefined {
         self.inner.call("releaseLock", &[]).as_::<Undefined>()
-    }
-}
-impl ReadableStreamDefaultReader {
-    /// Getter of the `closed` attribute.
-    /// [`ReadableStreamDefaultReader.closed`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/closed)
-    pub fn closed(&self) -> Promise<Undefined> {
-        self.inner.get("closed").as_::<Promise<Undefined>>()
     }
 }
 impl ReadableStreamDefaultReader {

@@ -64,25 +64,6 @@ impl From<&DeviceMotionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(DeviceMotionEvent);
 
 impl DeviceMotionEvent {
-    /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
-    pub fn new0(type_: &JsString) -> DeviceMotionEvent {
-        Self {
-            inner: Any::global("DeviceMotionEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &DeviceMotionEventInit) -> DeviceMotionEvent {
-        Self {
-            inner: Any::global("DeviceMotionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl DeviceMotionEvent {
     /// Getter of the `acceleration` attribute.
     /// [`DeviceMotionEvent.acceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/acceleration)
     pub fn acceleration(&self) -> DeviceMotionEventAcceleration {
@@ -114,6 +95,26 @@ impl DeviceMotionEvent {
     /// [`DeviceMotionEvent.interval`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/interval)
     pub fn interval(&self) -> f64 {
         self.inner.get("interval").as_::<f64>()
+    }
+}
+
+impl DeviceMotionEvent {
+    /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
+    pub fn new0(type_: &JsString) -> DeviceMotionEvent {
+        Self {
+            inner: Any::global("DeviceMotionEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &DeviceMotionEventInit) -> DeviceMotionEvent {
+        Self {
+            inner: Any::global("DeviceMotionEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }
 impl DeviceMotionEvent {

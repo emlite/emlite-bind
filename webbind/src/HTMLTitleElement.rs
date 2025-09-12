@@ -64,16 +64,6 @@ impl From<&HTMLTitleElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTitleElement);
 
 impl HTMLTitleElement {
-    /// The `new HTMLTitleElement(..)` constructor, creating a new HTMLTitleElement instance
-    pub fn new() -> HTMLTitleElement {
-        Self {
-            inner: Any::global("HTMLTitleElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTitleElement {
     /// Getter of the `text` attribute.
     /// [`HTMLTitleElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement/text)
     pub fn text(&self) -> JsString {
@@ -84,5 +74,16 @@ impl HTMLTitleElement {
     /// [`HTMLTitleElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement/text)
     pub fn set_text(&mut self, value: &JsString) {
         self.inner.set("text", value);
+    }
+}
+
+impl HTMLTitleElement {
+    /// The `new HTMLTitleElement(..)` constructor, creating a new HTMLTitleElement instance
+    pub fn new() -> HTMLTitleElement {
+        Self {
+            inner: Any::global("HTMLTitleElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

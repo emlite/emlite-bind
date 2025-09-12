@@ -64,6 +64,28 @@ impl From<&TextDecoder> for Any {
 jsbind::utils::impl_dyn_cast!(TextDecoder);
 
 impl TextDecoder {
+    /// Getter of the `encoding` attribute.
+    /// [`TextDecoder.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/encoding)
+    pub fn encoding(&self) -> JsString {
+        self.inner.get("encoding").as_::<JsString>()
+    }
+}
+impl TextDecoder {
+    /// Getter of the `fatal` attribute.
+    /// [`TextDecoder.fatal`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/fatal)
+    pub fn fatal(&self) -> bool {
+        self.inner.get("fatal").as_::<bool>()
+    }
+}
+impl TextDecoder {
+    /// Getter of the `ignoreBOM` attribute.
+    /// [`TextDecoder.ignoreBOM`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/ignoreBOM)
+    pub fn ignore_bom(&self) -> bool {
+        self.inner.get("ignoreBOM").as_::<bool>()
+    }
+}
+
+impl TextDecoder {
     /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
     pub fn new0() -> TextDecoder {
         Self {
@@ -104,26 +126,5 @@ impl TextDecoder {
         self.inner
             .call("decode", &[input.into(), options.into()])
             .as_::<JsString>()
-    }
-}
-impl TextDecoder {
-    /// Getter of the `encoding` attribute.
-    /// [`TextDecoder.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/encoding)
-    pub fn encoding(&self) -> JsString {
-        self.inner.get("encoding").as_::<JsString>()
-    }
-}
-impl TextDecoder {
-    /// Getter of the `fatal` attribute.
-    /// [`TextDecoder.fatal`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/fatal)
-    pub fn fatal(&self) -> bool {
-        self.inner.get("fatal").as_::<bool>()
-    }
-}
-impl TextDecoder {
-    /// Getter of the `ignoreBOM` attribute.
-    /// [`TextDecoder.ignoreBOM`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/ignoreBOM)
-    pub fn ignore_bom(&self) -> bool {
-        self.inner.get("ignoreBOM").as_::<bool>()
     }
 }

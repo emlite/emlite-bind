@@ -64,16 +64,6 @@ impl From<&WritableStreamDefaultWriter> for Any {
 jsbind::utils::impl_dyn_cast!(WritableStreamDefaultWriter);
 
 impl WritableStreamDefaultWriter {
-    /// The `new WritableStreamDefaultWriter(..)` constructor, creating a new WritableStreamDefaultWriter instance
-    pub fn new(stream: &WritableStream) -> WritableStreamDefaultWriter {
-        Self {
-            inner: Any::global("WritableStreamDefaultWriter")
-                .new(&[stream.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl WritableStreamDefaultWriter {
     /// Getter of the `closed` attribute.
     /// [`WritableStreamDefaultWriter.closed`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/closed)
     pub fn closed(&self) -> Promise<Undefined> {
@@ -92,6 +82,17 @@ impl WritableStreamDefaultWriter {
     /// [`WritableStreamDefaultWriter.ready`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter/ready)
     pub fn ready(&self) -> Promise<Undefined> {
         self.inner.get("ready").as_::<Promise<Undefined>>()
+    }
+}
+
+impl WritableStreamDefaultWriter {
+    /// The `new WritableStreamDefaultWriter(..)` constructor, creating a new WritableStreamDefaultWriter instance
+    pub fn new(stream: &WritableStream) -> WritableStreamDefaultWriter {
+        Self {
+            inner: Any::global("WritableStreamDefaultWriter")
+                .new(&[stream.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl WritableStreamDefaultWriter {

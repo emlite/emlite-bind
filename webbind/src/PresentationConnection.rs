@@ -85,20 +85,6 @@ impl PresentationConnection {
     }
 }
 impl PresentationConnection {
-    /// The close method.
-    /// [`PresentationConnection.close`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/close)
-    pub fn close(&self) -> Undefined {
-        self.inner.call("close", &[]).as_::<Undefined>()
-    }
-}
-impl PresentationConnection {
-    /// The terminate method.
-    /// [`PresentationConnection.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/terminate)
-    pub fn terminate(&self) -> Undefined {
-        self.inner.call("terminate", &[]).as_::<Undefined>()
-    }
-}
-impl PresentationConnection {
     /// Getter of the `onconnect` attribute.
     /// [`PresentationConnection.onconnect`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/onconnect)
     pub fn onconnect(&self) -> Any {
@@ -164,9 +150,46 @@ impl PresentationConnection {
     }
 }
 impl PresentationConnection {
+    /// The close method.
+    /// [`PresentationConnection.close`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/close)
+    pub fn close(&self) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
+    }
+}
+impl PresentationConnection {
+    /// The terminate method.
+    /// [`PresentationConnection.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/terminate)
+    pub fn terminate(&self) -> Undefined {
+        self.inner.call("terminate", &[]).as_::<Undefined>()
+    }
+}
+impl PresentationConnection {
     /// The send method.
     /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
-    pub fn send(&self, data: &Any) -> Undefined {
+    pub fn send(&self, message: &JsString) -> Undefined {
+        self.inner
+            .call("send", &[message.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PresentationConnection {
+    /// The send method.
+    /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
+    pub fn send1(&self, data: &Blob) -> Undefined {
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+    }
+}
+impl PresentationConnection {
+    /// The send method.
+    /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
+    pub fn send2(&self, data: &ArrayBuffer) -> Undefined {
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+    }
+}
+impl PresentationConnection {
+    /// The send method.
+    /// [`PresentationConnection.send`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/send)
+    pub fn send3(&self, data: &Any) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }

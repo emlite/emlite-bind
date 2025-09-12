@@ -64,16 +64,6 @@ impl From<&HTMLTableColElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTableColElement);
 
 impl HTMLTableColElement {
-    /// The `new HTMLTableColElement(..)` constructor, creating a new HTMLTableColElement instance
-    pub fn new() -> HTMLTableColElement {
-        Self {
-            inner: Any::global("HTMLTableColElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTableColElement {
     /// Getter of the `span` attribute.
     /// [`HTMLTableColElement.span`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/span)
     pub fn span(&self) -> u32 {
@@ -149,5 +139,16 @@ impl HTMLTableColElement {
     /// [`HTMLTableColElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/width)
     pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
+    }
+}
+
+impl HTMLTableColElement {
+    /// The `new HTMLTableColElement(..)` constructor, creating a new HTMLTableColElement instance
+    pub fn new() -> HTMLTableColElement {
+        Self {
+            inner: Any::global("HTMLTableColElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

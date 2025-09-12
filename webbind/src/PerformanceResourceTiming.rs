@@ -234,18 +234,18 @@ impl PerformanceResourceTiming {
     }
 }
 impl PerformanceResourceTiming {
-    /// The toJSON method.
-    /// [`PerformanceResourceTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl PerformanceResourceTiming {
     /// Getter of the `serverTiming` attribute.
     /// [`PerformanceResourceTiming.serverTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/serverTiming)
     pub fn server_timing(&self) -> TypedArray<PerformanceServerTiming> {
         self.inner
             .get("serverTiming")
             .as_::<TypedArray<PerformanceServerTiming>>()
+    }
+}
+impl PerformanceResourceTiming {
+    /// The toJSON method.
+    /// [`PerformanceResourceTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

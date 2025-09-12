@@ -64,16 +64,6 @@ impl From<&CSSUnitValue> for Any {
 jsbind::utils::impl_dyn_cast!(CSSUnitValue);
 
 impl CSSUnitValue {
-    /// The `new CSSUnitValue(..)` constructor, creating a new CSSUnitValue instance
-    pub fn new(value: f64, unit: &JsString) -> CSSUnitValue {
-        Self {
-            inner: Any::global("CSSUnitValue")
-                .new(&[value.into(), unit.into()])
-                .as_::<CSSNumericValue>(),
-        }
-    }
-}
-impl CSSUnitValue {
     /// Getter of the `value` attribute.
     /// [`CSSUnitValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue/value)
     pub fn value(&self) -> f64 {
@@ -91,5 +81,16 @@ impl CSSUnitValue {
     /// [`CSSUnitValue.unit`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue/unit)
     pub fn unit(&self) -> JsString {
         self.inner.get("unit").as_::<JsString>()
+    }
+}
+
+impl CSSUnitValue {
+    /// The `new CSSUnitValue(..)` constructor, creating a new CSSUnitValue instance
+    pub fn new(value: f64, unit: &JsString) -> CSSUnitValue {
+        Self {
+            inner: Any::global("CSSUnitValue")
+                .new(&[value.into(), unit.into()])
+                .as_::<CSSNumericValue>(),
+        }
     }
 }

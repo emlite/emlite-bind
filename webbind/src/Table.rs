@@ -64,6 +64,14 @@ impl From<&Table> for Any {
 jsbind::utils::impl_dyn_cast!(Table);
 
 impl Table {
+    /// Getter of the `length` attribute.
+    /// [`Table.length`](https://developer.mozilla.org/en-US/docs/Web/API/Table/length)
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+
+impl Table {
     /// The `new Table(..)` constructor, creating a new Table instance
     pub fn new0(descriptor: &TableDescriptor) -> Table {
         Self {
@@ -113,12 +121,5 @@ impl Table {
         self.inner
             .call("set", &[index.into(), value.into()])
             .as_::<Undefined>()
-    }
-}
-impl Table {
-    /// Getter of the `length` attribute.
-    /// [`Table.length`](https://developer.mozilla.org/en-US/docs/Web/API/Table/length)
-    pub fn length(&self) -> u32 {
-        self.inner.get("length").as_::<u32>()
     }
 }

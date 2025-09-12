@@ -64,20 +64,6 @@ impl From<&VirtualKeyboard> for Any {
 jsbind::utils::impl_dyn_cast!(VirtualKeyboard);
 
 impl VirtualKeyboard {
-    /// The show method.
-    /// [`VirtualKeyboard.show`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/show)
-    pub fn show(&self) -> Undefined {
-        self.inner.call("show", &[]).as_::<Undefined>()
-    }
-}
-impl VirtualKeyboard {
-    /// The hide method.
-    /// [`VirtualKeyboard.hide`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/hide)
-    pub fn hide(&self) -> Undefined {
-        self.inner.call("hide", &[]).as_::<Undefined>()
-    }
-}
-impl VirtualKeyboard {
     /// Getter of the `boundingRect` attribute.
     /// [`VirtualKeyboard.boundingRect`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/boundingRect)
     pub fn bounding_rect(&self) -> DOMRect {
@@ -108,5 +94,19 @@ impl VirtualKeyboard {
     /// [`VirtualKeyboard.ongeometrychange`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/ongeometrychange)
     pub fn set_ongeometrychange(&mut self, value: &Any) {
         self.inner.set("ongeometrychange", value);
+    }
+}
+impl VirtualKeyboard {
+    /// The show method.
+    /// [`VirtualKeyboard.show`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/show)
+    pub fn show(&self) -> Undefined {
+        self.inner.call("show", &[]).as_::<Undefined>()
+    }
+}
+impl VirtualKeyboard {
+    /// The hide method.
+    /// [`VirtualKeyboard.hide`](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard/hide)
+    pub fn hide(&self) -> Undefined {
+        self.inner.call("hide", &[]).as_::<Undefined>()
     }
 }

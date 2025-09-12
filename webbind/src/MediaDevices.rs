@@ -77,6 +77,19 @@ impl MediaDevices {
     }
 }
 impl MediaDevices {
+    /// Getter of the `oncaptureaction` attribute.
+    /// [`MediaDevices.oncaptureaction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/oncaptureaction)
+    pub fn oncaptureaction(&self) -> Any {
+        self.inner.get("oncaptureaction").as_::<Any>()
+    }
+
+    /// Setter of the `oncaptureaction` attribute.
+    /// [`MediaDevices.oncaptureaction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/oncaptureaction)
+    pub fn set_oncaptureaction(&mut self, value: &Any) {
+        self.inner.set("oncaptureaction", value);
+    }
+}
+impl MediaDevices {
     /// The enumerateDevices method.
     /// [`MediaDevices.enumerateDevices`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices)
     pub fn enumerate_devices(&self) -> Promise<TypedArray<MediaDeviceInfo>> {
@@ -124,19 +137,6 @@ impl MediaDevices {
         self.inner
             .call("setSupportedCaptureActions", &[actions.into()])
             .as_::<Undefined>()
-    }
-}
-impl MediaDevices {
-    /// Getter of the `oncaptureaction` attribute.
-    /// [`MediaDevices.oncaptureaction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/oncaptureaction)
-    pub fn oncaptureaction(&self) -> Any {
-        self.inner.get("oncaptureaction").as_::<Any>()
-    }
-
-    /// Setter of the `oncaptureaction` attribute.
-    /// [`MediaDevices.oncaptureaction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/oncaptureaction)
-    pub fn set_oncaptureaction(&mut self, value: &Any) {
-        self.inner.set("oncaptureaction", value);
     }
 }
 impl MediaDevices {

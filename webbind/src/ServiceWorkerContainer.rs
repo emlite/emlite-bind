@@ -80,6 +80,45 @@ impl ServiceWorkerContainer {
     }
 }
 impl ServiceWorkerContainer {
+    /// Getter of the `oncontrollerchange` attribute.
+    /// [`ServiceWorkerContainer.oncontrollerchange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/oncontrollerchange)
+    pub fn oncontrollerchange(&self) -> Any {
+        self.inner.get("oncontrollerchange").as_::<Any>()
+    }
+
+    /// Setter of the `oncontrollerchange` attribute.
+    /// [`ServiceWorkerContainer.oncontrollerchange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/oncontrollerchange)
+    pub fn set_oncontrollerchange(&mut self, value: &Any) {
+        self.inner.set("oncontrollerchange", value);
+    }
+}
+impl ServiceWorkerContainer {
+    /// Getter of the `onmessage` attribute.
+    /// [`ServiceWorkerContainer.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessage)
+    pub fn onmessage(&self) -> Any {
+        self.inner.get("onmessage").as_::<Any>()
+    }
+
+    /// Setter of the `onmessage` attribute.
+    /// [`ServiceWorkerContainer.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessage)
+    pub fn set_onmessage(&mut self, value: &Any) {
+        self.inner.set("onmessage", value);
+    }
+}
+impl ServiceWorkerContainer {
+    /// Getter of the `onmessageerror` attribute.
+    /// [`ServiceWorkerContainer.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessageerror)
+    pub fn onmessageerror(&self) -> Any {
+        self.inner.get("onmessageerror").as_::<Any>()
+    }
+
+    /// Setter of the `onmessageerror` attribute.
+    /// [`ServiceWorkerContainer.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessageerror)
+    pub fn set_onmessageerror(&mut self, value: &Any) {
+        self.inner.set("onmessageerror", value);
+    }
+}
+impl ServiceWorkerContainer {
     /// The register method.
     /// [`ServiceWorkerContainer.register`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
     pub fn register0(&self, script_url: &Any) -> Promise<ServiceWorkerRegistration> {
@@ -129,44 +168,5 @@ impl ServiceWorkerContainer {
     /// [`ServiceWorkerContainer.startMessages`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/startMessages)
     pub fn start_messages(&self) -> Undefined {
         self.inner.call("startMessages", &[]).as_::<Undefined>()
-    }
-}
-impl ServiceWorkerContainer {
-    /// Getter of the `oncontrollerchange` attribute.
-    /// [`ServiceWorkerContainer.oncontrollerchange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/oncontrollerchange)
-    pub fn oncontrollerchange(&self) -> Any {
-        self.inner.get("oncontrollerchange").as_::<Any>()
-    }
-
-    /// Setter of the `oncontrollerchange` attribute.
-    /// [`ServiceWorkerContainer.oncontrollerchange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/oncontrollerchange)
-    pub fn set_oncontrollerchange(&mut self, value: &Any) {
-        self.inner.set("oncontrollerchange", value);
-    }
-}
-impl ServiceWorkerContainer {
-    /// Getter of the `onmessage` attribute.
-    /// [`ServiceWorkerContainer.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessage)
-    pub fn onmessage(&self) -> Any {
-        self.inner.get("onmessage").as_::<Any>()
-    }
-
-    /// Setter of the `onmessage` attribute.
-    /// [`ServiceWorkerContainer.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessage)
-    pub fn set_onmessage(&mut self, value: &Any) {
-        self.inner.set("onmessage", value);
-    }
-}
-impl ServiceWorkerContainer {
-    /// Getter of the `onmessageerror` attribute.
-    /// [`ServiceWorkerContainer.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessageerror)
-    pub fn onmessageerror(&self) -> Any {
-        self.inner.get("onmessageerror").as_::<Any>()
-    }
-
-    /// Setter of the `onmessageerror` attribute.
-    /// [`ServiceWorkerContainer.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessageerror)
-    pub fn set_onmessageerror(&mut self, value: &Any) {
-        self.inner.set("onmessageerror", value);
     }
 }

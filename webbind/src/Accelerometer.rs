@@ -64,23 +64,6 @@ impl From<&Accelerometer> for Any {
 jsbind::utils::impl_dyn_cast!(Accelerometer);
 
 impl Accelerometer {
-    /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
-    pub fn new0() -> Accelerometer {
-        Self {
-            inner: Any::global("Accelerometer").new(&[]).as_::<Sensor>(),
-        }
-    }
-
-    /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
-    pub fn new1(options: &AccelerometerSensorOptions) -> Accelerometer {
-        Self {
-            inner: Any::global("Accelerometer")
-                .new(&[options.into()])
-                .as_::<Sensor>(),
-        }
-    }
-}
-impl Accelerometer {
     /// Getter of the `x` attribute.
     /// [`Accelerometer.x`](https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer/x)
     pub fn x(&self) -> f64 {
@@ -99,5 +82,23 @@ impl Accelerometer {
     /// [`Accelerometer.z`](https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer/z)
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
+    }
+}
+
+impl Accelerometer {
+    /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
+    pub fn new0() -> Accelerometer {
+        Self {
+            inner: Any::global("Accelerometer").new(&[]).as_::<Sensor>(),
+        }
+    }
+
+    /// The `new Accelerometer(..)` constructor, creating a new Accelerometer instance
+    pub fn new1(options: &AccelerometerSensorOptions) -> Accelerometer {
+        Self {
+            inner: Any::global("Accelerometer")
+                .new(&[options.into()])
+                .as_::<Sensor>(),
+        }
     }
 }

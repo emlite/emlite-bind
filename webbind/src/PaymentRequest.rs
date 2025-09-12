@@ -64,67 +64,6 @@ impl From<&PaymentRequest> for Any {
 jsbind::utils::impl_dyn_cast!(PaymentRequest);
 
 impl PaymentRequest {
-    /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
-    pub fn new0(
-        method_data: &TypedArray<PaymentMethodData>,
-        details: &PaymentDetailsInit,
-    ) -> PaymentRequest {
-        Self {
-            inner: Any::global("PaymentRequest")
-                .new(&[method_data.into(), details.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-
-    /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
-    pub fn new1(
-        method_data: &TypedArray<PaymentMethodData>,
-        details: &PaymentDetailsInit,
-        options: &PaymentOptions,
-    ) -> PaymentRequest {
-        Self {
-            inner: Any::global("PaymentRequest")
-                .new(&[method_data.into(), details.into(), options.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl PaymentRequest {
-    /// The show method.
-    /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
-    pub fn show0(&self) -> Promise<PaymentResponse> {
-        self.inner
-            .call("show", &[])
-            .as_::<Promise<PaymentResponse>>()
-    }
-    /// The show method.
-    /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
-    pub fn show1(
-        &self,
-        details_promise: &Promise<PaymentDetailsUpdate>,
-    ) -> Promise<PaymentResponse> {
-        self.inner
-            .call("show", &[details_promise.into()])
-            .as_::<Promise<PaymentResponse>>()
-    }
-}
-impl PaymentRequest {
-    /// The abort method.
-    /// [`PaymentRequest.abort`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/abort)
-    pub fn abort(&self) -> Promise<Undefined> {
-        self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
-    }
-}
-impl PaymentRequest {
-    /// The canMakePayment method.
-    /// [`PaymentRequest.canMakePayment`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/canMakePayment)
-    pub fn can_make_payment(&self) -> Promise<bool> {
-        self.inner
-            .call("canMakePayment", &[])
-            .as_::<Promise<bool>>()
-    }
-}
-impl PaymentRequest {
     /// Getter of the `id` attribute.
     /// [`PaymentRequest.id`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/id)
     pub fn id(&self) -> JsString {
@@ -189,6 +128,68 @@ impl PaymentRequest {
     /// [`PaymentRequest.onpaymentmethodchange`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/onpaymentmethodchange)
     pub fn set_onpaymentmethodchange(&mut self, value: &Any) {
         self.inner.set("onpaymentmethodchange", value);
+    }
+}
+
+impl PaymentRequest {
+    /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
+    pub fn new0(
+        method_data: &TypedArray<PaymentMethodData>,
+        details: &PaymentDetailsInit,
+    ) -> PaymentRequest {
+        Self {
+            inner: Any::global("PaymentRequest")
+                .new(&[method_data.into(), details.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
+    pub fn new1(
+        method_data: &TypedArray<PaymentMethodData>,
+        details: &PaymentDetailsInit,
+        options: &PaymentOptions,
+    ) -> PaymentRequest {
+        Self {
+            inner: Any::global("PaymentRequest")
+                .new(&[method_data.into(), details.into(), options.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+impl PaymentRequest {
+    /// The show method.
+    /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
+    pub fn show0(&self) -> Promise<PaymentResponse> {
+        self.inner
+            .call("show", &[])
+            .as_::<Promise<PaymentResponse>>()
+    }
+    /// The show method.
+    /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
+    pub fn show1(
+        &self,
+        details_promise: &Promise<PaymentDetailsUpdate>,
+    ) -> Promise<PaymentResponse> {
+        self.inner
+            .call("show", &[details_promise.into()])
+            .as_::<Promise<PaymentResponse>>()
+    }
+}
+impl PaymentRequest {
+    /// The abort method.
+    /// [`PaymentRequest.abort`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/abort)
+    pub fn abort(&self) -> Promise<Undefined> {
+        self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
+    }
+}
+impl PaymentRequest {
+    /// The canMakePayment method.
+    /// [`PaymentRequest.canMakePayment`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/canMakePayment)
+    pub fn can_make_payment(&self) -> Promise<bool> {
+        self.inner
+            .call("canMakePayment", &[])
+            .as_::<Promise<bool>>()
     }
 }
 impl PaymentRequest {

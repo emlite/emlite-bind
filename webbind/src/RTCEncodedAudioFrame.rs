@@ -64,6 +64,20 @@ impl From<&RTCEncodedAudioFrame> for Any {
 jsbind::utils::impl_dyn_cast!(RTCEncodedAudioFrame);
 
 impl RTCEncodedAudioFrame {
+    /// Getter of the `data` attribute.
+    /// [`RTCEncodedAudioFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame/data)
+    pub fn data(&self) -> ArrayBuffer {
+        self.inner.get("data").as_::<ArrayBuffer>()
+    }
+
+    /// Setter of the `data` attribute.
+    /// [`RTCEncodedAudioFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame/data)
+    pub fn set_data(&mut self, value: &ArrayBuffer) {
+        self.inner.set("data", value);
+    }
+}
+
+impl RTCEncodedAudioFrame {
     /// The `new RTCEncodedAudioFrame(..)` constructor, creating a new RTCEncodedAudioFrame instance
     pub fn new0(original_frame: &RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {
         Self {
@@ -83,19 +97,6 @@ impl RTCEncodedAudioFrame {
                 .new(&[original_frame.into(), options.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl RTCEncodedAudioFrame {
-    /// Getter of the `data` attribute.
-    /// [`RTCEncodedAudioFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame/data)
-    pub fn data(&self) -> ArrayBuffer {
-        self.inner.get("data").as_::<ArrayBuffer>()
-    }
-
-    /// Setter of the `data` attribute.
-    /// [`RTCEncodedAudioFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedAudioFrame/data)
-    pub fn set_data(&mut self, value: &ArrayBuffer) {
-        self.inner.set("data", value);
     }
 }
 impl RTCEncodedAudioFrame {

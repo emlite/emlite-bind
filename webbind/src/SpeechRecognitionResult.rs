@@ -71,18 +71,18 @@ impl SpeechRecognitionResult {
     }
 }
 impl SpeechRecognitionResult {
+    /// Getter of the `isFinal` attribute.
+    /// [`SpeechRecognitionResult.isFinal`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult/isFinal)
+    pub fn is_final(&self) -> bool {
+        self.inner.get("isFinal").as_::<bool>()
+    }
+}
+impl SpeechRecognitionResult {
     /// The item method.
     /// [`SpeechRecognitionResult.item`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult/item)
     pub fn item(&self, index: u32) -> SpeechRecognitionAlternative {
         self.inner
             .call("item", &[index.into()])
             .as_::<SpeechRecognitionAlternative>()
-    }
-}
-impl SpeechRecognitionResult {
-    /// Getter of the `isFinal` attribute.
-    /// [`SpeechRecognitionResult.isFinal`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult/isFinal)
-    pub fn is_final(&self) -> bool {
-        self.inner.get("isFinal").as_::<bool>()
     }
 }

@@ -64,25 +64,6 @@ impl From<&UncalibratedMagnetometer> for Any {
 jsbind::utils::impl_dyn_cast!(UncalibratedMagnetometer);
 
 impl UncalibratedMagnetometer {
-    /// The `new UncalibratedMagnetometer(..)` constructor, creating a new UncalibratedMagnetometer instance
-    pub fn new0() -> UncalibratedMagnetometer {
-        Self {
-            inner: Any::global("UncalibratedMagnetometer")
-                .new(&[])
-                .as_::<Sensor>(),
-        }
-    }
-
-    /// The `new UncalibratedMagnetometer(..)` constructor, creating a new UncalibratedMagnetometer instance
-    pub fn new1(sensor_options: &MagnetometerSensorOptions) -> UncalibratedMagnetometer {
-        Self {
-            inner: Any::global("UncalibratedMagnetometer")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
-        }
-    }
-}
-impl UncalibratedMagnetometer {
     /// Getter of the `x` attribute.
     /// [`UncalibratedMagnetometer.x`](https://developer.mozilla.org/en-US/docs/Web/API/UncalibratedMagnetometer/x)
     pub fn x(&self) -> f64 {
@@ -122,5 +103,25 @@ impl UncalibratedMagnetometer {
     /// [`UncalibratedMagnetometer.zBias`](https://developer.mozilla.org/en-US/docs/Web/API/UncalibratedMagnetometer/zBias)
     pub fn z_bias(&self) -> f64 {
         self.inner.get("zBias").as_::<f64>()
+    }
+}
+
+impl UncalibratedMagnetometer {
+    /// The `new UncalibratedMagnetometer(..)` constructor, creating a new UncalibratedMagnetometer instance
+    pub fn new0() -> UncalibratedMagnetometer {
+        Self {
+            inner: Any::global("UncalibratedMagnetometer")
+                .new(&[])
+                .as_::<Sensor>(),
+        }
+    }
+
+    /// The `new UncalibratedMagnetometer(..)` constructor, creating a new UncalibratedMagnetometer instance
+    pub fn new1(sensor_options: &MagnetometerSensorOptions) -> UncalibratedMagnetometer {
+        Self {
+            inner: Any::global("UncalibratedMagnetometer")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
+        }
     }
 }

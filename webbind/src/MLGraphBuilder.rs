@@ -85,7 +85,25 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The constant method.
     /// [`MLGraphBuilder.constant`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/constant)
-    pub fn constant(&self, tensor: &MLTensor) -> MLOperand {
+    pub fn constant(&self, descriptor: &MLOperandDescriptor, buffer: &Any) -> MLOperand {
+        self.inner
+            .call("constant", &[descriptor.into(), buffer.into()])
+            .as_::<MLOperand>()
+    }
+}
+impl MLGraphBuilder {
+    /// The constant method.
+    /// [`MLGraphBuilder.constant`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/constant)
+    pub fn constant1(&self, type_: &MLOperandDataType, value: &Any) -> MLOperand {
+        self.inner
+            .call("constant", &[type_.into(), value.into()])
+            .as_::<MLOperand>()
+    }
+}
+impl MLGraphBuilder {
+    /// The constant method.
+    /// [`MLGraphBuilder.constant`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/constant)
+    pub fn constant2(&self, tensor: &MLTensor) -> MLOperand {
         self.inner
             .call("constant", &[tensor.into()])
             .as_::<MLOperand>()

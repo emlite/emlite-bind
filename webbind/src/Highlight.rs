@@ -64,16 +64,6 @@ impl From<&Highlight> for Any {
 jsbind::utils::impl_dyn_cast!(Highlight);
 
 impl Highlight {
-    /// The `new Highlight(..)` constructor, creating a new Highlight instance
-    pub fn new(initial_ranges: &AbstractRange) -> Highlight {
-        Self {
-            inner: Any::global("Highlight")
-                .new(&[initial_ranges.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl Highlight {
     /// Getter of the `priority` attribute.
     /// [`Highlight.priority`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight/priority)
     pub fn priority(&self) -> i32 {
@@ -97,5 +87,16 @@ impl Highlight {
     /// [`Highlight.type`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight/type)
     pub fn set_type_(&mut self, value: &HighlightType) {
         self.inner.set("type", value);
+    }
+}
+
+impl Highlight {
+    /// The `new Highlight(..)` constructor, creating a new Highlight instance
+    pub fn new(initial_ranges: &AbstractRange) -> Highlight {
+        Self {
+            inner: Any::global("Highlight")
+                .new(&[initial_ranges.into()])
+                .as_::<Any>(),
+        }
     }
 }

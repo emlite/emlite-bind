@@ -85,6 +85,19 @@ impl PreferenceObject {
     }
 }
 impl PreferenceObject {
+    /// Getter of the `onchange` attribute.
+    /// [`PreferenceObject.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/onchange)
+    pub fn onchange(&self) -> Any {
+        self.inner.get("onchange").as_::<Any>()
+    }
+
+    /// Setter of the `onchange` attribute.
+    /// [`PreferenceObject.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/onchange)
+    pub fn set_onchange(&mut self, value: &Any) {
+        self.inner.set("onchange", value);
+    }
+}
+impl PreferenceObject {
     /// The clearOverride method.
     /// [`PreferenceObject.clearOverride`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/clearOverride)
     pub fn clear_override(&self) -> Undefined {
@@ -98,18 +111,5 @@ impl PreferenceObject {
         self.inner
             .call("requestOverride", &[value.into()])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl PreferenceObject {
-    /// Getter of the `onchange` attribute.
-    /// [`PreferenceObject.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/onchange)
-    pub fn onchange(&self) -> Any {
-        self.inner.get("onchange").as_::<Any>()
-    }
-
-    /// Setter of the `onchange` attribute.
-    /// [`PreferenceObject.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/onchange)
-    pub fn set_onchange(&mut self, value: &Any) {
-        self.inner.set("onchange", value);
     }
 }

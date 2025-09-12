@@ -64,16 +64,6 @@ impl From<&CSSTransformValue> for Any {
 jsbind::utils::impl_dyn_cast!(CSSTransformValue);
 
 impl CSSTransformValue {
-    /// The `new CSSTransformValue(..)` constructor, creating a new CSSTransformValue instance
-    pub fn new(transforms: &TypedArray<CSSTransformComponent>) -> CSSTransformValue {
-        Self {
-            inner: Any::global("CSSTransformValue")
-                .new(&[transforms.into()])
-                .as_::<CSSStyleValue>(),
-        }
-    }
-}
-impl CSSTransformValue {
     /// Getter of the `length` attribute.
     /// [`CSSTransformValue.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformValue/length)
     pub fn length(&self) -> u32 {
@@ -85,6 +75,17 @@ impl CSSTransformValue {
     /// [`CSSTransformValue.is2D`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformValue/is2D)
     pub fn is2_d(&self) -> bool {
         self.inner.get("is2D").as_::<bool>()
+    }
+}
+
+impl CSSTransformValue {
+    /// The `new CSSTransformValue(..)` constructor, creating a new CSSTransformValue instance
+    pub fn new(transforms: &TypedArray<CSSTransformComponent>) -> CSSTransformValue {
+        Self {
+            inner: Any::global("CSSTransformValue")
+                .new(&[transforms.into()])
+                .as_::<CSSStyleValue>(),
+        }
     }
 }
 impl CSSTransformValue {

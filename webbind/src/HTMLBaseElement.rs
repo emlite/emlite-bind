@@ -64,14 +64,6 @@ impl From<&HTMLBaseElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLBaseElement);
 
 impl HTMLBaseElement {
-    /// The `new HTMLBaseElement(..)` constructor, creating a new HTMLBaseElement instance
-    pub fn new() -> HTMLBaseElement {
-        Self {
-            inner: Any::global("HTMLBaseElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLBaseElement {
     /// Getter of the `href` attribute.
     /// [`HTMLBaseElement.href`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement/href)
     pub fn href(&self) -> JsString {
@@ -95,5 +87,14 @@ impl HTMLBaseElement {
     /// [`HTMLBaseElement.target`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement/target)
     pub fn set_target(&mut self, value: &JsString) {
         self.inner.set("target", value);
+    }
+}
+
+impl HTMLBaseElement {
+    /// The `new HTMLBaseElement(..)` constructor, creating a new HTMLBaseElement instance
+    pub fn new() -> HTMLBaseElement {
+        Self {
+            inner: Any::global("HTMLBaseElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

@@ -99,20 +99,6 @@ impl Node {
     }
 }
 impl Node {
-    /// The getRootNode method.
-    /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
-    pub fn get_root_node0(&self) -> Node {
-        self.inner.call("getRootNode", &[]).as_::<Node>()
-    }
-    /// The getRootNode method.
-    /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
-    pub fn get_root_node1(&self, options: &GetRootNodeOptions) -> Node {
-        self.inner
-            .call("getRootNode", &[options.into()])
-            .as_::<Node>()
-    }
-}
-impl Node {
     /// Getter of the `parentNode` attribute.
     /// [`Node.parentNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode)
     pub fn parent_node(&self) -> Node {
@@ -124,13 +110,6 @@ impl Node {
     /// [`Node.parentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement)
     pub fn parent_element(&self) -> Element {
         self.inner.get("parentElement").as_::<Element>()
-    }
-}
-impl Node {
-    /// The hasChildNodes method.
-    /// [`Node.hasChildNodes`](https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes)
-    pub fn has_child_nodes(&self) -> bool {
-        self.inner.call("hasChildNodes", &[]).as_::<bool>()
     }
 }
 impl Node {
@@ -192,6 +171,27 @@ impl Node {
     /// [`Node.textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
     pub fn set_text_content(&mut self, value: &JsString) {
         self.inner.set("textContent", value);
+    }
+}
+impl Node {
+    /// The getRootNode method.
+    /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
+    pub fn get_root_node0(&self) -> Node {
+        self.inner.call("getRootNode", &[]).as_::<Node>()
+    }
+    /// The getRootNode method.
+    /// [`Node.getRootNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode)
+    pub fn get_root_node1(&self, options: &GetRootNodeOptions) -> Node {
+        self.inner
+            .call("getRootNode", &[options.into()])
+            .as_::<Node>()
+    }
+}
+impl Node {
+    /// The hasChildNodes method.
+    /// [`Node.hasChildNodes`](https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes)
+    pub fn has_child_nodes(&self) -> bool {
+        self.inner.call("hasChildNodes", &[]).as_::<bool>()
     }
 }
 impl Node {

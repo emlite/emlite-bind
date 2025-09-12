@@ -64,25 +64,6 @@ impl From<&ProgressEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ProgressEvent);
 
 impl ProgressEvent {
-    /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
-    pub fn new0(type_: &JsString) -> ProgressEvent {
-        Self {
-            inner: Any::global("ProgressEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &ProgressEventInit) -> ProgressEvent {
-        Self {
-            inner: Any::global("ProgressEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl ProgressEvent {
     /// Getter of the `lengthComputable` attribute.
     /// [`ProgressEvent.lengthComputable`](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent/lengthComputable)
     pub fn length_computable(&self) -> bool {
@@ -101,5 +82,25 @@ impl ProgressEvent {
     /// [`ProgressEvent.total`](https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent/total)
     pub fn total(&self) -> f64 {
         self.inner.get("total").as_::<f64>()
+    }
+}
+
+impl ProgressEvent {
+    /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
+    pub fn new0(type_: &JsString) -> ProgressEvent {
+        Self {
+            inner: Any::global("ProgressEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &ProgressEventInit) -> ProgressEvent {
+        Self {
+            inner: Any::global("ProgressEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

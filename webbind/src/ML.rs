@@ -66,7 +66,23 @@ jsbind::utils::impl_dyn_cast!(ML);
 impl ML {
     /// The createContext method.
     /// [`ML.createContext`](https://developer.mozilla.org/en-US/docs/Web/API/ML/createContext)
-    pub fn create_context(&self, gpu_device: &GPUDevice) -> Promise<MLContext> {
+    pub fn create_context0(&self) -> Promise<MLContext> {
+        self.inner
+            .call("createContext", &[])
+            .as_::<Promise<MLContext>>()
+    }
+    /// The createContext method.
+    /// [`ML.createContext`](https://developer.mozilla.org/en-US/docs/Web/API/ML/createContext)
+    pub fn create_context1(&self, options: &MLContextOptions) -> Promise<MLContext> {
+        self.inner
+            .call("createContext", &[options.into()])
+            .as_::<Promise<MLContext>>()
+    }
+}
+impl ML {
+    /// The createContext method.
+    /// [`ML.createContext`](https://developer.mozilla.org/en-US/docs/Web/API/ML/createContext)
+    pub fn create_context2(&self, gpu_device: &GPUDevice) -> Promise<MLContext> {
         self.inner
             .call("createContext", &[gpu_device.into()])
             .as_::<Promise<MLContext>>()

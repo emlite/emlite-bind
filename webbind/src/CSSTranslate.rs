@@ -64,25 +64,6 @@ impl From<&CSSTranslate> for Any {
 jsbind::utils::impl_dyn_cast!(CSSTranslate);
 
 impl CSSTranslate {
-    /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
-    pub fn new0(x: &CSSNumericValue, y: &CSSNumericValue) -> CSSTranslate {
-        Self {
-            inner: Any::global("CSSTranslate")
-                .new(&[x.into(), y.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-
-    /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
-    pub fn new1(x: &CSSNumericValue, y: &CSSNumericValue, z: &CSSNumericValue) -> CSSTranslate {
-        Self {
-            inner: Any::global("CSSTranslate")
-                .new(&[x.into(), y.into(), z.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-}
-impl CSSTranslate {
     /// Getter of the `x` attribute.
     /// [`CSSTranslate.x`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTranslate/x)
     pub fn x(&self) -> CSSNumericValue {
@@ -119,5 +100,25 @@ impl CSSTranslate {
     /// [`CSSTranslate.z`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTranslate/z)
     pub fn set_z(&mut self, value: &CSSNumericValue) {
         self.inner.set("z", value);
+    }
+}
+
+impl CSSTranslate {
+    /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
+    pub fn new0(x: &CSSNumericValue, y: &CSSNumericValue) -> CSSTranslate {
+        Self {
+            inner: Any::global("CSSTranslate")
+                .new(&[x.into(), y.into()])
+                .as_::<CSSTransformComponent>(),
+        }
+    }
+
+    /// The `new CSSTranslate(..)` constructor, creating a new CSSTranslate instance
+    pub fn new1(x: &CSSNumericValue, y: &CSSNumericValue, z: &CSSNumericValue) -> CSSTranslate {
+        Self {
+            inner: Any::global("CSSTranslate")
+                .new(&[x.into(), y.into(), z.into()])
+                .as_::<CSSTransformComponent>(),
+        }
     }
 }

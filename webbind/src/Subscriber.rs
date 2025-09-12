@@ -64,6 +64,20 @@ impl From<&Subscriber> for Any {
 jsbind::utils::impl_dyn_cast!(Subscriber);
 
 impl Subscriber {
+    /// Getter of the `active` attribute.
+    /// [`Subscriber.active`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/active)
+    pub fn active(&self) -> bool {
+        self.inner.get("active").as_::<bool>()
+    }
+}
+impl Subscriber {
+    /// Getter of the `signal` attribute.
+    /// [`Subscriber.signal`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/signal)
+    pub fn signal(&self) -> AbortSignal {
+        self.inner.get("signal").as_::<AbortSignal>()
+    }
+}
+impl Subscriber {
     /// The next method.
     /// [`Subscriber.next`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/next)
     pub fn next(&self, value: &Any) -> Undefined {
@@ -91,19 +105,5 @@ impl Subscriber {
         self.inner
             .call("addTeardown", &[teardown.into()])
             .as_::<Undefined>()
-    }
-}
-impl Subscriber {
-    /// Getter of the `active` attribute.
-    /// [`Subscriber.active`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/active)
-    pub fn active(&self) -> bool {
-        self.inner.get("active").as_::<bool>()
-    }
-}
-impl Subscriber {
-    /// Getter of the `signal` attribute.
-    /// [`Subscriber.signal`](https://developer.mozilla.org/en-US/docs/Web/API/Subscriber/signal)
-    pub fn signal(&self) -> AbortSignal {
-        self.inner.get("signal").as_::<AbortSignal>()
     }
 }

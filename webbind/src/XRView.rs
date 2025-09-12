@@ -78,15 +78,6 @@ impl XRView {
     }
 }
 impl XRView {
-    /// The requestViewportScale method.
-    /// [`XRView.requestViewportScale`](https://developer.mozilla.org/en-US/docs/Web/API/XRView/requestViewportScale)
-    pub fn request_viewport_scale(&self, scale: f64) -> Undefined {
-        self.inner
-            .call("requestViewportScale", &[scale.into()])
-            .as_::<Undefined>()
-    }
-}
-impl XRView {
     /// Getter of the `camera` attribute.
     /// [`XRView.camera`](https://developer.mozilla.org/en-US/docs/Web/API/XRView/camera)
     pub fn camera(&self) -> XRCamera {
@@ -112,5 +103,14 @@ impl XRView {
     /// [`XRView.transform`](https://developer.mozilla.org/en-US/docs/Web/API/XRView/transform)
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
+    }
+}
+impl XRView {
+    /// The requestViewportScale method.
+    /// [`XRView.requestViewportScale`](https://developer.mozilla.org/en-US/docs/Web/API/XRView/requestViewportScale)
+    pub fn request_viewport_scale(&self, scale: f64) -> Undefined {
+        self.inner
+            .call("requestViewportScale", &[scale.into()])
+            .as_::<Undefined>()
     }
 }

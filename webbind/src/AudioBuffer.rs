@@ -64,16 +64,6 @@ impl From<&AudioBuffer> for Any {
 jsbind::utils::impl_dyn_cast!(AudioBuffer);
 
 impl AudioBuffer {
-    /// The `new AudioBuffer(..)` constructor, creating a new AudioBuffer instance
-    pub fn new(options: &AudioBufferOptions) -> AudioBuffer {
-        Self {
-            inner: Any::global("AudioBuffer")
-                .new(&[options.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl AudioBuffer {
     /// Getter of the `sampleRate` attribute.
     /// [`AudioBuffer.sampleRate`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/sampleRate)
     pub fn sample_rate(&self) -> f32 {
@@ -99,6 +89,17 @@ impl AudioBuffer {
     /// [`AudioBuffer.numberOfChannels`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer/numberOfChannels)
     pub fn number_of_channels(&self) -> u32 {
         self.inner.get("numberOfChannels").as_::<u32>()
+    }
+}
+
+impl AudioBuffer {
+    /// The `new AudioBuffer(..)` constructor, creating a new AudioBuffer instance
+    pub fn new(options: &AudioBufferOptions) -> AudioBuffer {
+        Self {
+            inner: Any::global("AudioBuffer")
+                .new(&[options.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl AudioBuffer {

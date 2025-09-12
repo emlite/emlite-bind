@@ -64,19 +64,6 @@ impl From<&AudioProcessingEvent> for Any {
 jsbind::utils::impl_dyn_cast!(AudioProcessingEvent);
 
 impl AudioProcessingEvent {
-    /// The `new AudioProcessingEvent(..)` constructor, creating a new AudioProcessingEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &AudioProcessingEventInit,
-    ) -> AudioProcessingEvent {
-        Self {
-            inner: Any::global("AudioProcessingEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl AudioProcessingEvent {
     /// Getter of the `playbackTime` attribute.
     /// [`AudioProcessingEvent.playbackTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent/playbackTime)
     pub fn playback_time(&self) -> f64 {
@@ -95,5 +82,19 @@ impl AudioProcessingEvent {
     /// [`AudioProcessingEvent.outputBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent/outputBuffer)
     pub fn output_buffer(&self) -> AudioBuffer {
         self.inner.get("outputBuffer").as_::<AudioBuffer>()
+    }
+}
+
+impl AudioProcessingEvent {
+    /// The `new AudioProcessingEvent(..)` constructor, creating a new AudioProcessingEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &AudioProcessingEventInit,
+    ) -> AudioProcessingEvent {
+        Self {
+            inner: Any::global("AudioProcessingEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

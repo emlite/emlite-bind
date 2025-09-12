@@ -64,6 +64,14 @@ impl From<&DragEvent> for Any {
 jsbind::utils::impl_dyn_cast!(DragEvent);
 
 impl DragEvent {
+    /// Getter of the `dataTransfer` attribute.
+    /// [`DragEvent.dataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/dataTransfer)
+    pub fn data_transfer(&self) -> DataTransfer {
+        self.inner.get("dataTransfer").as_::<DataTransfer>()
+    }
+}
+
+impl DragEvent {
     /// The `new DragEvent(..)` constructor, creating a new DragEvent instance
     pub fn new0(type_: &JsString) -> DragEvent {
         Self {
@@ -80,12 +88,5 @@ impl DragEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<MouseEvent>(),
         }
-    }
-}
-impl DragEvent {
-    /// Getter of the `dataTransfer` attribute.
-    /// [`DragEvent.dataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/dataTransfer)
-    pub fn data_transfer(&self) -> DataTransfer {
-        self.inner.get("dataTransfer").as_::<DataTransfer>()
     }
 }

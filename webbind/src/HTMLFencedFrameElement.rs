@@ -64,16 +64,6 @@ impl From<&HTMLFencedFrameElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLFencedFrameElement);
 
 impl HTMLFencedFrameElement {
-    /// The `new HTMLFencedFrameElement(..)` constructor, creating a new HTMLFencedFrameElement instance
-    pub fn new() -> HTMLFencedFrameElement {
-        Self {
-            inner: Any::global("HTMLFencedFrameElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLFencedFrameElement {
     /// Getter of the `config` attribute.
     /// [`HTMLFencedFrameElement.config`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/config)
     pub fn config(&self) -> FencedFrameConfig {
@@ -130,5 +120,16 @@ impl HTMLFencedFrameElement {
     /// [`HTMLFencedFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/allow)
     pub fn set_allow(&mut self, value: &JsString) {
         self.inner.set("allow", value);
+    }
+}
+
+impl HTMLFencedFrameElement {
+    /// The `new HTMLFencedFrameElement(..)` constructor, creating a new HTMLFencedFrameElement instance
+    pub fn new() -> HTMLFencedFrameElement {
+        Self {
+            inner: Any::global("HTMLFencedFrameElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

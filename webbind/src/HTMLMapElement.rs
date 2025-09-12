@@ -64,14 +64,6 @@ impl From<&HTMLMapElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLMapElement);
 
 impl HTMLMapElement {
-    /// The `new HTMLMapElement(..)` constructor, creating a new HTMLMapElement instance
-    pub fn new() -> HTMLMapElement {
-        Self {
-            inner: Any::global("HTMLMapElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLMapElement {
     /// Getter of the `name` attribute.
     /// [`HTMLMapElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement/name)
     pub fn name(&self) -> JsString {
@@ -89,5 +81,14 @@ impl HTMLMapElement {
     /// [`HTMLMapElement.areas`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement/areas)
     pub fn areas(&self) -> HTMLCollection {
         self.inner.get("areas").as_::<HTMLCollection>()
+    }
+}
+
+impl HTMLMapElement {
+    /// The `new HTMLMapElement(..)` constructor, creating a new HTMLMapElement instance
+    pub fn new() -> HTMLMapElement {
+        Self {
+            inner: Any::global("HTMLMapElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

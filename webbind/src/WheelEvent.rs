@@ -64,25 +64,6 @@ impl From<&WheelEvent> for Any {
 jsbind::utils::impl_dyn_cast!(WheelEvent);
 
 impl WheelEvent {
-    /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
-    pub fn new0(type_: &JsString) -> WheelEvent {
-        Self {
-            inner: Any::global("WheelEvent")
-                .new(&[type_.into()])
-                .as_::<MouseEvent>(),
-        }
-    }
-
-    /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &WheelEventInit) -> WheelEvent {
-        Self {
-            inner: Any::global("WheelEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<MouseEvent>(),
-        }
-    }
-}
-impl WheelEvent {
     /// Getter of the `deltaX` attribute.
     /// [`WheelEvent.deltaX`](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent/deltaX)
     pub fn delta_x(&self) -> f64 {
@@ -108,5 +89,25 @@ impl WheelEvent {
     /// [`WheelEvent.deltaMode`](https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent/deltaMode)
     pub fn delta_mode(&self) -> u32 {
         self.inner.get("deltaMode").as_::<u32>()
+    }
+}
+
+impl WheelEvent {
+    /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
+    pub fn new0(type_: &JsString) -> WheelEvent {
+        Self {
+            inner: Any::global("WheelEvent")
+                .new(&[type_.into()])
+                .as_::<MouseEvent>(),
+        }
+    }
+
+    /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &WheelEventInit) -> WheelEvent {
+        Self {
+            inner: Any::global("WheelEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<MouseEvent>(),
+        }
     }
 }

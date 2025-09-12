@@ -64,6 +64,19 @@ impl From<&GPUComputePassEncoder> for Any {
 jsbind::utils::impl_dyn_cast!(GPUComputePassEncoder);
 
 impl GPUComputePassEncoder {
+    /// Getter of the `label` attribute.
+    /// [`GPUComputePassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/label)
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
+    }
+
+    /// Setter of the `label` attribute.
+    /// [`GPUComputePassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/label)
+    pub fn set_label(&mut self, value: &JsString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPUComputePassEncoder {
     /// The setPipeline method.
     /// [`GPUComputePassEncoder.setPipeline`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setPipeline)
     pub fn set_pipeline(&self, pipeline: &GPUComputePipeline) -> Undefined {
@@ -138,19 +151,6 @@ impl GPUComputePassEncoder {
     }
 }
 impl GPUComputePassEncoder {
-    /// Getter of the `label` attribute.
-    /// [`GPUComputePassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/label)
-    pub fn label(&self) -> JsString {
-        self.inner.get("label").as_::<JsString>()
-    }
-
-    /// Setter of the `label` attribute.
-    /// [`GPUComputePassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/label)
-    pub fn set_label(&mut self, value: &JsString) {
-        self.inner.set("label", value);
-    }
-}
-impl GPUComputePassEncoder {
     /// The pushDebugGroup method.
     /// [`GPUComputePassEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/pushDebugGroup)
     pub fn push_debug_group(&self, group_label: &JsString) -> Undefined {
@@ -178,7 +178,31 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     /// The setBindGroup method.
     /// [`GPUComputePassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setBindGroup)
-    pub fn set_bind_group(
+    pub fn set_bind_group0(&self, index: &Any, bind_group: &GPUBindGroup) -> Undefined {
+        self.inner
+            .call("setBindGroup", &[index.into(), bind_group.into()])
+            .as_::<Undefined>()
+    }
+    /// The setBindGroup method.
+    /// [`GPUComputePassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setBindGroup)
+    pub fn set_bind_group1(
+        &self,
+        index: &Any,
+        bind_group: &GPUBindGroup,
+        dynamic_offsets: &TypedArray<Any>,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "setBindGroup",
+                &[index.into(), bind_group.into(), dynamic_offsets.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl GPUComputePassEncoder {
+    /// The setBindGroup method.
+    /// [`GPUComputePassEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/setBindGroup)
+    pub fn set_bind_group2(
         &self,
         index: &Any,
         bind_group: &GPUBindGroup,

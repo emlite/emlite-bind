@@ -151,6 +151,52 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `oncapturehandlechange` attribute.
+    /// [`MediaStreamTrack.oncapturehandlechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/oncapturehandlechange)
+    pub fn oncapturehandlechange(&self) -> Any {
+        self.inner.get("oncapturehandlechange").as_::<Any>()
+    }
+
+    /// Setter of the `oncapturehandlechange` attribute.
+    /// [`MediaStreamTrack.oncapturehandlechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/oncapturehandlechange)
+    pub fn set_oncapturehandlechange(&mut self, value: &Any) {
+        self.inner.set("oncapturehandlechange", value);
+    }
+}
+impl MediaStreamTrack {
+    /// Getter of the `contentHint` attribute.
+    /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
+    pub fn content_hint(&self) -> JsString {
+        self.inner.get("contentHint").as_::<JsString>()
+    }
+
+    /// Setter of the `contentHint` attribute.
+    /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
+    pub fn set_content_hint(&mut self, value: &JsString) {
+        self.inner.set("contentHint", value);
+    }
+}
+impl MediaStreamTrack {
+    /// Getter of the `isolated` attribute.
+    /// [`MediaStreamTrack.isolated`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/isolated)
+    pub fn isolated(&self) -> bool {
+        self.inner.get("isolated").as_::<bool>()
+    }
+}
+impl MediaStreamTrack {
+    /// Getter of the `onisolationchange` attribute.
+    /// [`MediaStreamTrack.onisolationchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onisolationchange)
+    pub fn onisolationchange(&self) -> Any {
+        self.inner.get("onisolationchange").as_::<Any>()
+    }
+
+    /// Setter of the `onisolationchange` attribute.
+    /// [`MediaStreamTrack.onisolationchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onisolationchange)
+    pub fn set_onisolationchange(&mut self, value: &Any) {
+        self.inner.set("onisolationchange", value);
+    }
+}
+impl MediaStreamTrack {
     /// The clone method.
     /// [`MediaStreamTrack.clone`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/clone)
     pub fn clone_(&self) -> MediaStreamTrack {
@@ -217,19 +263,6 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
-    /// Getter of the `oncapturehandlechange` attribute.
-    /// [`MediaStreamTrack.oncapturehandlechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/oncapturehandlechange)
-    pub fn oncapturehandlechange(&self) -> Any {
-        self.inner.get("oncapturehandlechange").as_::<Any>()
-    }
-
-    /// Setter of the `oncapturehandlechange` attribute.
-    /// [`MediaStreamTrack.oncapturehandlechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/oncapturehandlechange)
-    pub fn set_oncapturehandlechange(&mut self, value: &Any) {
-        self.inner.set("oncapturehandlechange", value);
-    }
-}
-impl MediaStreamTrack {
     /// The getSupportedCaptureActions method.
     /// [`MediaStreamTrack.getSupportedCaptureActions`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getSupportedCaptureActions)
     pub fn get_supported_capture_actions(&self) -> TypedArray<JsString> {
@@ -245,38 +278,5 @@ impl MediaStreamTrack {
         self.inner
             .call("sendCaptureAction", &[action.into()])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl MediaStreamTrack {
-    /// Getter of the `contentHint` attribute.
-    /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
-    pub fn content_hint(&self) -> JsString {
-        self.inner.get("contentHint").as_::<JsString>()
-    }
-
-    /// Setter of the `contentHint` attribute.
-    /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
-    pub fn set_content_hint(&mut self, value: &JsString) {
-        self.inner.set("contentHint", value);
-    }
-}
-impl MediaStreamTrack {
-    /// Getter of the `isolated` attribute.
-    /// [`MediaStreamTrack.isolated`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/isolated)
-    pub fn isolated(&self) -> bool {
-        self.inner.get("isolated").as_::<bool>()
-    }
-}
-impl MediaStreamTrack {
-    /// Getter of the `onisolationchange` attribute.
-    /// [`MediaStreamTrack.onisolationchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onisolationchange)
-    pub fn onisolationchange(&self) -> Any {
-        self.inner.get("onisolationchange").as_::<Any>()
-    }
-
-    /// Setter of the `onisolationchange` attribute.
-    /// [`MediaStreamTrack.onisolationchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onisolationchange)
-    pub fn set_onisolationchange(&mut self, value: &Any) {
-        self.inner.set("onisolationchange", value);
     }
 }

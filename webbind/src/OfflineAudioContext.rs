@@ -64,8 +64,40 @@ impl From<&OfflineAudioContext> for Any {
 jsbind::utils::impl_dyn_cast!(OfflineAudioContext);
 
 impl OfflineAudioContext {
+    /// Getter of the `length` attribute.
+    /// [`OfflineAudioContext.length`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/length)
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+impl OfflineAudioContext {
+    /// Getter of the `oncomplete` attribute.
+    /// [`OfflineAudioContext.oncomplete`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/oncomplete)
+    pub fn oncomplete(&self) -> Any {
+        self.inner.get("oncomplete").as_::<Any>()
+    }
+
+    /// Setter of the `oncomplete` attribute.
+    /// [`OfflineAudioContext.oncomplete`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/oncomplete)
+    pub fn set_oncomplete(&mut self, value: &Any) {
+        self.inner.set("oncomplete", value);
+    }
+}
+
+impl OfflineAudioContext {
     /// The `new OfflineAudioContext(..)` constructor, creating a new OfflineAudioContext instance
-    pub fn new(number_of_channels: u32, length: u32, sample_rate: f32) -> OfflineAudioContext {
+    pub fn new(context_options: &OfflineAudioContextOptions) -> OfflineAudioContext {
+        Self {
+            inner: Any::global("OfflineAudioContext")
+                .new(&[context_options.into()])
+                .as_::<BaseAudioContext>(),
+        }
+    }
+}
+
+impl OfflineAudioContext {
+    /// The `new OfflineAudioContext(..)` constructor, creating a new OfflineAudioContext instance
+    pub fn new1(number_of_channels: u32, length: u32, sample_rate: f32) -> OfflineAudioContext {
         Self {
             inner: Any::global("OfflineAudioContext")
                 .new(&[number_of_channels.into(), length.into(), sample_rate.into()])
@@ -96,25 +128,5 @@ impl OfflineAudioContext {
         self.inner
             .call("suspend", &[suspend_time.into()])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl OfflineAudioContext {
-    /// Getter of the `length` attribute.
-    /// [`OfflineAudioContext.length`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/length)
-    pub fn length(&self) -> u32 {
-        self.inner.get("length").as_::<u32>()
-    }
-}
-impl OfflineAudioContext {
-    /// Getter of the `oncomplete` attribute.
-    /// [`OfflineAudioContext.oncomplete`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/oncomplete)
-    pub fn oncomplete(&self) -> Any {
-        self.inner.get("oncomplete").as_::<Any>()
-    }
-
-    /// Setter of the `oncomplete` attribute.
-    /// [`OfflineAudioContext.oncomplete`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/oncomplete)
-    pub fn set_oncomplete(&mut self, value: &Any) {
-        self.inner.set("oncomplete", value);
     }
 }

@@ -150,16 +150,16 @@ impl PerformanceNavigationTiming {
     }
 }
 impl PerformanceNavigationTiming {
-    /// The toJSON method.
-    /// [`PerformanceNavigationTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl PerformanceNavigationTiming {
     /// Getter of the `activationStart` attribute.
     /// [`PerformanceNavigationTiming.activationStart`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/activationStart)
     pub fn activation_start(&self) -> Any {
         self.inner.get("activationStart").as_::<Any>()
+    }
+}
+impl PerformanceNavigationTiming {
+    /// The toJSON method.
+    /// [`PerformanceNavigationTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

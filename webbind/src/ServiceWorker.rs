@@ -78,22 +78,6 @@ impl ServiceWorker {
     }
 }
 impl ServiceWorker {
-    /// The postMessage method.
-    /// [`ServiceWorker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-    /// The postMessage method.
-    /// [`ServiceWorker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
-    }
-}
-impl ServiceWorker {
     /// Getter of the `onstatechange` attribute.
     /// [`ServiceWorker.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/onstatechange)
     pub fn onstatechange(&self) -> Any {
@@ -117,5 +101,30 @@ impl ServiceWorker {
     /// [`ServiceWorker.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/onerror)
     pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
+    }
+}
+impl ServiceWorker {
+    /// The postMessage method.
+    /// [`ServiceWorker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/postMessage)
+    pub fn post_message(&self, message: &Any, transfer: &TypedArray<Object>) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), transfer.into()])
+            .as_::<Undefined>()
+    }
+}
+impl ServiceWorker {
+    /// The postMessage method.
+    /// [`ServiceWorker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/postMessage)
+    pub fn post_message1(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`ServiceWorker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/postMessage)
+    pub fn post_message2(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }

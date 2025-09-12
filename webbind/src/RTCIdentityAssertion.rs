@@ -64,16 +64,6 @@ impl From<&RTCIdentityAssertion> for Any {
 jsbind::utils::impl_dyn_cast!(RTCIdentityAssertion);
 
 impl RTCIdentityAssertion {
-    /// The `new RTCIdentityAssertion(..)` constructor, creating a new RTCIdentityAssertion instance
-    pub fn new(idp: &JsString, name: &JsString) -> RTCIdentityAssertion {
-        Self {
-            inner: Any::global("RTCIdentityAssertion")
-                .new(&[idp.into(), name.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl RTCIdentityAssertion {
     /// Getter of the `idp` attribute.
     /// [`RTCIdentityAssertion.idp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/idp)
     pub fn idp(&self) -> JsString {
@@ -97,5 +87,16 @@ impl RTCIdentityAssertion {
     /// [`RTCIdentityAssertion.name`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/name)
     pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
+    }
+}
+
+impl RTCIdentityAssertion {
+    /// The `new RTCIdentityAssertion(..)` constructor, creating a new RTCIdentityAssertion instance
+    pub fn new(idp: &JsString, name: &JsString) -> RTCIdentityAssertion {
+        Self {
+            inner: Any::global("RTCIdentityAssertion")
+                .new(&[idp.into(), name.into()])
+                .as_::<Any>(),
+        }
     }
 }

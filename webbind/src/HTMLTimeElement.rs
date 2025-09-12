@@ -64,14 +64,6 @@ impl From<&HTMLTimeElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTimeElement);
 
 impl HTMLTimeElement {
-    /// The `new HTMLTimeElement(..)` constructor, creating a new HTMLTimeElement instance
-    pub fn new() -> HTMLTimeElement {
-        Self {
-            inner: Any::global("HTMLTimeElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTimeElement {
     /// Getter of the `dateTime` attribute.
     /// [`HTMLTimeElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime)
     pub fn date_time(&self) -> JsString {
@@ -82,5 +74,14 @@ impl HTMLTimeElement {
     /// [`HTMLTimeElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime)
     pub fn set_date_time(&mut self, value: &JsString) {
         self.inner.set("dateTime", value);
+    }
+}
+
+impl HTMLTimeElement {
+    /// The `new HTMLTimeElement(..)` constructor, creating a new HTMLTimeElement instance
+    pub fn new() -> HTMLTimeElement {
+        Self {
+            inner: Any::global("HTMLTimeElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

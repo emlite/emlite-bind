@@ -64,25 +64,6 @@ impl From<&ErrorEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ErrorEvent);
 
 impl ErrorEvent {
-    /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
-    pub fn new0(type_: &JsString) -> ErrorEvent {
-        Self {
-            inner: Any::global("ErrorEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &ErrorEventInit) -> ErrorEvent {
-        Self {
-            inner: Any::global("ErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl ErrorEvent {
     /// Getter of the `message` attribute.
     /// [`ErrorEvent.message`](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent/message)
     pub fn message(&self) -> JsString {
@@ -115,5 +96,25 @@ impl ErrorEvent {
     /// [`ErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent/error)
     pub fn error(&self) -> Any {
         self.inner.get("error").as_::<Any>()
+    }
+}
+
+impl ErrorEvent {
+    /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
+    pub fn new0(type_: &JsString) -> ErrorEvent {
+        Self {
+            inner: Any::global("ErrorEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &ErrorEventInit) -> ErrorEvent {
+        Self {
+            inner: Any::global("ErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

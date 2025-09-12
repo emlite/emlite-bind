@@ -64,6 +64,14 @@ impl From<&GPUUncapturedErrorEvent> for Any {
 jsbind::utils::impl_dyn_cast!(GPUUncapturedErrorEvent);
 
 impl GPUUncapturedErrorEvent {
+    /// Getter of the `error` attribute.
+    /// [`GPUUncapturedErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/GPUUncapturedErrorEvent/error)
+    pub fn error(&self) -> GPUError {
+        self.inner.get("error").as_::<GPUError>()
+    }
+}
+
+impl GPUUncapturedErrorEvent {
     /// The `new GPUUncapturedErrorEvent(..)` constructor, creating a new GPUUncapturedErrorEvent instance
     pub fn new(
         type_: &JsString,
@@ -74,12 +82,5 @@ impl GPUUncapturedErrorEvent {
                 .new(&[type_.into(), gpu_uncaptured_error_event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl GPUUncapturedErrorEvent {
-    /// Getter of the `error` attribute.
-    /// [`GPUUncapturedErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/GPUUncapturedErrorEvent/error)
-    pub fn error(&self) -> GPUError {
-        self.inner.get("error").as_::<GPUError>()
     }
 }

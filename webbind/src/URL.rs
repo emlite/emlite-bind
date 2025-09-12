@@ -64,53 +64,6 @@ impl From<&URL> for Any {
 jsbind::utils::impl_dyn_cast!(URL);
 
 impl URL {
-    /// The `new URL(..)` constructor, creating a new URL instance
-    pub fn new0(url: &JsString) -> URL {
-        Self {
-            inner: Any::global("URL").new(&[url.into()]).as_::<Any>(),
-        }
-    }
-
-    /// The `new URL(..)` constructor, creating a new URL instance
-    pub fn new1(url: &JsString, base: &JsString) -> URL {
-        Self {
-            inner: Any::global("URL")
-                .new(&[url.into(), base.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl URL {
-    /// The parse method.
-    /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
-    pub fn parse0(url: &JsString) -> URL {
-        Any::global("URL").call("parse", &[url.into()]).as_::<URL>()
-    }
-    /// The parse method.
-    /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
-    pub fn parse1(url: &JsString, base: &JsString) -> URL {
-        Any::global("URL")
-            .call("parse", &[url.into(), base.into()])
-            .as_::<URL>()
-    }
-}
-impl URL {
-    /// The canParse method.
-    /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
-    pub fn can_parse0(url: &JsString) -> bool {
-        Any::global("URL")
-            .call("canParse", &[url.into()])
-            .as_::<bool>()
-    }
-    /// The canParse method.
-    /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
-    pub fn can_parse1(url: &JsString, base: &JsString) -> bool {
-        Any::global("URL")
-            .call("canParse", &[url.into(), base.into()])
-            .as_::<bool>()
-    }
-}
-impl URL {
     /// Getter of the `href` attribute.
     /// [`URL.href`](https://developer.mozilla.org/en-US/docs/Web/API/URL/href)
     pub fn href(&self) -> JsString {
@@ -252,6 +205,54 @@ impl URL {
     /// [`URL.hash`](https://developer.mozilla.org/en-US/docs/Web/API/URL/hash)
     pub fn set_hash(&mut self, value: &JsString) {
         self.inner.set("hash", value);
+    }
+}
+
+impl URL {
+    /// The `new URL(..)` constructor, creating a new URL instance
+    pub fn new0(url: &JsString) -> URL {
+        Self {
+            inner: Any::global("URL").new(&[url.into()]).as_::<Any>(),
+        }
+    }
+
+    /// The `new URL(..)` constructor, creating a new URL instance
+    pub fn new1(url: &JsString, base: &JsString) -> URL {
+        Self {
+            inner: Any::global("URL")
+                .new(&[url.into(), base.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+impl URL {
+    /// The parse method.
+    /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
+    pub fn parse0(url: &JsString) -> URL {
+        Any::global("URL").call("parse", &[url.into()]).as_::<URL>()
+    }
+    /// The parse method.
+    /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
+    pub fn parse1(url: &JsString, base: &JsString) -> URL {
+        Any::global("URL")
+            .call("parse", &[url.into(), base.into()])
+            .as_::<URL>()
+    }
+}
+impl URL {
+    /// The canParse method.
+    /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
+    pub fn can_parse0(url: &JsString) -> bool {
+        Any::global("URL")
+            .call("canParse", &[url.into()])
+            .as_::<bool>()
+    }
+    /// The canParse method.
+    /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
+    pub fn can_parse1(url: &JsString, base: &JsString) -> bool {
+        Any::global("URL")
+            .call("canParse", &[url.into(), base.into()])
+            .as_::<bool>()
     }
 }
 impl URL {

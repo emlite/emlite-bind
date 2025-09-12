@@ -64,16 +64,6 @@ impl From<&CSSRotate> for Any {
 jsbind::utils::impl_dyn_cast!(CSSRotate);
 
 impl CSSRotate {
-    /// The `new CSSRotate(..)` constructor, creating a new CSSRotate instance
-    pub fn new(x: &Any, y: &Any, z: &Any, angle: &CSSNumericValue) -> CSSRotate {
-        Self {
-            inner: Any::global("CSSRotate")
-                .new(&[x.into(), y.into(), z.into(), angle.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-}
-impl CSSRotate {
     /// Getter of the `x` attribute.
     /// [`CSSRotate.x`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRotate/x)
     pub fn x(&self) -> Any {
@@ -123,5 +113,27 @@ impl CSSRotate {
     /// [`CSSRotate.angle`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRotate/angle)
     pub fn set_angle(&mut self, value: &CSSNumericValue) {
         self.inner.set("angle", value);
+    }
+}
+
+impl CSSRotate {
+    /// The `new CSSRotate(..)` constructor, creating a new CSSRotate instance
+    pub fn new(angle: &CSSNumericValue) -> CSSRotate {
+        Self {
+            inner: Any::global("CSSRotate")
+                .new(&[angle.into()])
+                .as_::<CSSTransformComponent>(),
+        }
+    }
+}
+
+impl CSSRotate {
+    /// The `new CSSRotate(..)` constructor, creating a new CSSRotate instance
+    pub fn new1(x: &Any, y: &Any, z: &Any, angle: &CSSNumericValue) -> CSSRotate {
+        Self {
+            inner: Any::global("CSSRotate")
+                .new(&[x.into(), y.into(), z.into(), angle.into()])
+                .as_::<CSSTransformComponent>(),
+        }
     }
 }

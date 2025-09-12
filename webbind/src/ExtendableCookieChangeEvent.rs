@@ -64,6 +64,25 @@ impl From<&ExtendableCookieChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ExtendableCookieChangeEvent);
 
 impl ExtendableCookieChangeEvent {
+    /// Getter of the `changed` attribute.
+    /// [`ExtendableCookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/changed)
+    pub fn changed(&self) -> TypedArray<CookieListItem> {
+        self.inner
+            .get("changed")
+            .as_::<TypedArray<CookieListItem>>()
+    }
+}
+impl ExtendableCookieChangeEvent {
+    /// Getter of the `deleted` attribute.
+    /// [`ExtendableCookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/deleted)
+    pub fn deleted(&self) -> TypedArray<CookieListItem> {
+        self.inner
+            .get("deleted")
+            .as_::<TypedArray<CookieListItem>>()
+    }
+}
+
+impl ExtendableCookieChangeEvent {
     /// The `new ExtendableCookieChangeEvent(..)` constructor, creating a new ExtendableCookieChangeEvent instance
     pub fn new0(type_: &JsString) -> ExtendableCookieChangeEvent {
         Self {
@@ -83,23 +102,5 @@ impl ExtendableCookieChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<ExtendableEvent>(),
         }
-    }
-}
-impl ExtendableCookieChangeEvent {
-    /// Getter of the `changed` attribute.
-    /// [`ExtendableCookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/changed)
-    pub fn changed(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("changed")
-            .as_::<TypedArray<CookieListItem>>()
-    }
-}
-impl ExtendableCookieChangeEvent {
-    /// Getter of the `deleted` attribute.
-    /// [`ExtendableCookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/deleted)
-    pub fn deleted(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("deleted")
-            .as_::<TypedArray<CookieListItem>>()
     }
 }

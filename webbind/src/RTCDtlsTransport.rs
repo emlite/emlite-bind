@@ -78,15 +78,6 @@ impl RTCDtlsTransport {
     }
 }
 impl RTCDtlsTransport {
-    /// The getRemoteCertificates method.
-    /// [`RTCDtlsTransport.getRemoteCertificates`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDtlsTransport/getRemoteCertificates)
-    pub fn get_remote_certificates(&self) -> TypedArray<ArrayBuffer> {
-        self.inner
-            .call("getRemoteCertificates", &[])
-            .as_::<TypedArray<ArrayBuffer>>()
-    }
-}
-impl RTCDtlsTransport {
     /// Getter of the `onstatechange` attribute.
     /// [`RTCDtlsTransport.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDtlsTransport/onstatechange)
     pub fn onstatechange(&self) -> Any {
@@ -110,5 +101,14 @@ impl RTCDtlsTransport {
     /// [`RTCDtlsTransport.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDtlsTransport/onerror)
     pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
+    }
+}
+impl RTCDtlsTransport {
+    /// The getRemoteCertificates method.
+    /// [`RTCDtlsTransport.getRemoteCertificates`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDtlsTransport/getRemoteCertificates)
+    pub fn get_remote_certificates(&self) -> TypedArray<ArrayBuffer> {
+        self.inner
+            .call("getRemoteCertificates", &[])
+            .as_::<TypedArray<ArrayBuffer>>()
     }
 }

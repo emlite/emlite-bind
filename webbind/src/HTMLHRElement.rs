@@ -64,14 +64,6 @@ impl From<&HTMLHRElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLHRElement);
 
 impl HTMLHRElement {
-    /// The `new HTMLHRElement(..)` constructor, creating a new HTMLHRElement instance
-    pub fn new() -> HTMLHRElement {
-        Self {
-            inner: Any::global("HTMLHRElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLHRElement {
     /// Getter of the `align` attribute.
     /// [`HTMLHRElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/align)
     pub fn align(&self) -> JsString {
@@ -134,5 +126,14 @@ impl HTMLHRElement {
     /// [`HTMLHRElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/width)
     pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
+    }
+}
+
+impl HTMLHRElement {
+    /// The `new HTMLHRElement(..)` constructor, creating a new HTMLHRElement instance
+    pub fn new() -> HTMLHRElement {
+        Self {
+            inner: Any::global("HTMLHRElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

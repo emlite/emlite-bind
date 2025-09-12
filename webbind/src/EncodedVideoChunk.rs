@@ -64,16 +64,6 @@ impl From<&EncodedVideoChunk> for Any {
 jsbind::utils::impl_dyn_cast!(EncodedVideoChunk);
 
 impl EncodedVideoChunk {
-    /// The `new EncodedVideoChunk(..)` constructor, creating a new EncodedVideoChunk instance
-    pub fn new(init: &EncodedVideoChunkInit) -> EncodedVideoChunk {
-        Self {
-            inner: Any::global("EncodedVideoChunk")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl EncodedVideoChunk {
     /// Getter of the `type` attribute.
     /// [`EncodedVideoChunk.type`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk/type)
     pub fn type_(&self) -> EncodedVideoChunkType {
@@ -99,6 +89,17 @@ impl EncodedVideoChunk {
     /// [`EncodedVideoChunk.byteLength`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk/byteLength)
     pub fn byte_length(&self) -> u32 {
         self.inner.get("byteLength").as_::<u32>()
+    }
+}
+
+impl EncodedVideoChunk {
+    /// The `new EncodedVideoChunk(..)` constructor, creating a new EncodedVideoChunk instance
+    pub fn new(init: &EncodedVideoChunkInit) -> EncodedVideoChunk {
+        Self {
+            inner: Any::global("EncodedVideoChunk")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl EncodedVideoChunk {

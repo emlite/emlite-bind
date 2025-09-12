@@ -64,16 +64,6 @@ impl From<&CSSMathClamp> for Any {
 jsbind::utils::impl_dyn_cast!(CSSMathClamp);
 
 impl CSSMathClamp {
-    /// The `new CSSMathClamp(..)` constructor, creating a new CSSMathClamp instance
-    pub fn new(lower: &Any, value: &Any, upper: &Any) -> CSSMathClamp {
-        Self {
-            inner: Any::global("CSSMathClamp")
-                .new(&[lower.into(), value.into(), upper.into()])
-                .as_::<CSSMathValue>(),
-        }
-    }
-}
-impl CSSMathClamp {
     /// Getter of the `lower` attribute.
     /// [`CSSMathClamp.lower`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathClamp/lower)
     pub fn lower(&self) -> CSSNumericValue {
@@ -92,5 +82,16 @@ impl CSSMathClamp {
     /// [`CSSMathClamp.upper`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathClamp/upper)
     pub fn upper(&self) -> CSSNumericValue {
         self.inner.get("upper").as_::<CSSNumericValue>()
+    }
+}
+
+impl CSSMathClamp {
+    /// The `new CSSMathClamp(..)` constructor, creating a new CSSMathClamp instance
+    pub fn new(lower: &Any, value: &Any, upper: &Any) -> CSSMathClamp {
+        Self {
+            inner: Any::global("CSSMathClamp")
+                .new(&[lower.into(), value.into(), upper.into()])
+                .as_::<CSSMathValue>(),
+        }
     }
 }

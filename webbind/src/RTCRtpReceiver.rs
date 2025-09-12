@@ -78,6 +78,32 @@ impl RTCRtpReceiver {
     }
 }
 impl RTCRtpReceiver {
+    /// Getter of the `jitterBufferTarget` attribute.
+    /// [`RTCRtpReceiver.jitterBufferTarget`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/jitterBufferTarget)
+    pub fn jitter_buffer_target(&self) -> Any {
+        self.inner.get("jitterBufferTarget").as_::<Any>()
+    }
+
+    /// Setter of the `jitterBufferTarget` attribute.
+    /// [`RTCRtpReceiver.jitterBufferTarget`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/jitterBufferTarget)
+    pub fn set_jitter_buffer_target(&mut self, value: &Any) {
+        self.inner.set("jitterBufferTarget", value);
+    }
+}
+impl RTCRtpReceiver {
+    /// Getter of the `transform` attribute.
+    /// [`RTCRtpReceiver.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/transform)
+    pub fn transform(&self) -> Any {
+        self.inner.get("transform").as_::<Any>()
+    }
+
+    /// Setter of the `transform` attribute.
+    /// [`RTCRtpReceiver.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/transform)
+    pub fn set_transform(&mut self, value: &Any) {
+        self.inner.set("transform", value);
+    }
+}
+impl RTCRtpReceiver {
     /// The getCapabilities method.
     /// [`RTCRtpReceiver.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/getCapabilities)
     pub fn get_capabilities(kind: &JsString) -> RTCRtpCapabilities {
@@ -120,31 +146,5 @@ impl RTCRtpReceiver {
         self.inner
             .call("getStats", &[])
             .as_::<Promise<RTCStatsReport>>()
-    }
-}
-impl RTCRtpReceiver {
-    /// Getter of the `jitterBufferTarget` attribute.
-    /// [`RTCRtpReceiver.jitterBufferTarget`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/jitterBufferTarget)
-    pub fn jitter_buffer_target(&self) -> Any {
-        self.inner.get("jitterBufferTarget").as_::<Any>()
-    }
-
-    /// Setter of the `jitterBufferTarget` attribute.
-    /// [`RTCRtpReceiver.jitterBufferTarget`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/jitterBufferTarget)
-    pub fn set_jitter_buffer_target(&mut self, value: &Any) {
-        self.inner.set("jitterBufferTarget", value);
-    }
-}
-impl RTCRtpReceiver {
-    /// Getter of the `transform` attribute.
-    /// [`RTCRtpReceiver.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/transform)
-    pub fn transform(&self) -> Any {
-        self.inner.get("transform").as_::<Any>()
-    }
-
-    /// Setter of the `transform` attribute.
-    /// [`RTCRtpReceiver.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/transform)
-    pub fn set_transform(&mut self, value: &Any) {
-        self.inner.set("transform", value);
     }
 }

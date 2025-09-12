@@ -64,6 +64,14 @@ impl From<&Memory> for Any {
 jsbind::utils::impl_dyn_cast!(Memory);
 
 impl Memory {
+    /// Getter of the `buffer` attribute.
+    /// [`Memory.buffer`](https://developer.mozilla.org/en-US/docs/Web/API/Memory/buffer)
+    pub fn buffer(&self) -> ArrayBuffer {
+        self.inner.get("buffer").as_::<ArrayBuffer>()
+    }
+}
+
+impl Memory {
     /// The `new Memory(..)` constructor, creating a new Memory instance
     pub fn new(descriptor: &MemoryDescriptor) -> Memory {
         Self {
@@ -94,12 +102,5 @@ impl Memory {
         self.inner
             .call("toResizableBuffer", &[])
             .as_::<ArrayBuffer>()
-    }
-}
-impl Memory {
-    /// Getter of the `buffer` attribute.
-    /// [`Memory.buffer`](https://developer.mozilla.org/en-US/docs/Web/API/Memory/buffer)
-    pub fn buffer(&self) -> ArrayBuffer {
-        self.inner.get("buffer").as_::<ArrayBuffer>()
     }
 }

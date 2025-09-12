@@ -64,15 +64,6 @@ impl From<&SharedStorageWorkletGlobalScope> for Any {
 jsbind::utils::impl_dyn_cast!(SharedStorageWorkletGlobalScope);
 
 impl SharedStorageWorkletGlobalScope {
-    /// The register method.
-    /// [`SharedStorageWorkletGlobalScope.register`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/register)
-    pub fn register(&self, name: &JsString, operation_ctor: &Function) -> Undefined {
-        self.inner
-            .call("register", &[name.into(), operation_ctor.into()])
-            .as_::<Undefined>()
-    }
-}
-impl SharedStorageWorkletGlobalScope {
     /// Getter of the `sharedStorage` attribute.
     /// [`SharedStorageWorkletGlobalScope.sharedStorage`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/sharedStorage)
     pub fn shared_storage(&self) -> SharedStorage {
@@ -89,20 +80,29 @@ impl SharedStorageWorkletGlobalScope {
     }
 }
 impl SharedStorageWorkletGlobalScope {
-    /// The interestGroups method.
-    /// [`SharedStorageWorkletGlobalScope.interestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/interestGroups)
-    pub fn interest_groups(&self) -> Promise<TypedArray<StorageInterestGroup>> {
-        self.inner
-            .call("interestGroups", &[])
-            .as_::<Promise<TypedArray<StorageInterestGroup>>>()
-    }
-}
-impl SharedStorageWorkletGlobalScope {
     /// Getter of the `navigator` attribute.
     /// [`SharedStorageWorkletGlobalScope.navigator`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/navigator)
     pub fn navigator(&self) -> SharedStorageWorkletNavigator {
         self.inner
             .get("navigator")
             .as_::<SharedStorageWorkletNavigator>()
+    }
+}
+impl SharedStorageWorkletGlobalScope {
+    /// The register method.
+    /// [`SharedStorageWorkletGlobalScope.register`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/register)
+    pub fn register(&self, name: &JsString, operation_ctor: &Function) -> Undefined {
+        self.inner
+            .call("register", &[name.into(), operation_ctor.into()])
+            .as_::<Undefined>()
+    }
+}
+impl SharedStorageWorkletGlobalScope {
+    /// The interestGroups method.
+    /// [`SharedStorageWorkletGlobalScope.interestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/interestGroups)
+    pub fn interest_groups(&self) -> Promise<TypedArray<StorageInterestGroup>> {
+        self.inner
+            .call("interestGroups", &[])
+            .as_::<Promise<TypedArray<StorageInterestGroup>>>()
     }
 }

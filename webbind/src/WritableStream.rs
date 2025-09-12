@@ -64,6 +64,14 @@ impl From<&WritableStream> for Any {
 jsbind::utils::impl_dyn_cast!(WritableStream);
 
 impl WritableStream {
+    /// Getter of the `locked` attribute.
+    /// [`WritableStream.locked`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/locked)
+    pub fn locked(&self) -> bool {
+        self.inner.get("locked").as_::<bool>()
+    }
+}
+
+impl WritableStream {
     /// The `new WritableStream(..)` constructor, creating a new WritableStream instance
     pub fn new0() -> WritableStream {
         Self {
@@ -87,13 +95,6 @@ impl WritableStream {
                 .new(&[underlying_sink.into(), strategy.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl WritableStream {
-    /// Getter of the `locked` attribute.
-    /// [`WritableStream.locked`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/locked)
-    pub fn locked(&self) -> bool {
-        self.inner.get("locked").as_::<bool>()
     }
 }
 impl WritableStream {

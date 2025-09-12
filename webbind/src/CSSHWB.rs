@@ -64,25 +64,6 @@ impl From<&CSSHWB> for Any {
 jsbind::utils::impl_dyn_cast!(CSSHWB);
 
 impl CSSHWB {
-    /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
-    pub fn new0(h: &CSSNumericValue, w: &Any, b: &Any) -> CSSHWB {
-        Self {
-            inner: Any::global("CSSHWB")
-                .new(&[h.into(), w.into(), b.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
-    pub fn new1(h: &CSSNumericValue, w: &Any, b: &Any, alpha: &Any) -> CSSHWB {
-        Self {
-            inner: Any::global("CSSHWB")
-                .new(&[h.into(), w.into(), b.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSHWB {
     /// Getter of the `h` attribute.
     /// [`CSSHWB.h`](https://developer.mozilla.org/en-US/docs/Web/API/CSSHWB/h)
     pub fn h(&self) -> CSSNumericValue {
@@ -132,5 +113,25 @@ impl CSSHWB {
     /// [`CSSHWB.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSHWB/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSHWB {
+    /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
+    pub fn new0(h: &CSSNumericValue, w: &Any, b: &Any) -> CSSHWB {
+        Self {
+            inner: Any::global("CSSHWB")
+                .new(&[h.into(), w.into(), b.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSHWB(..)` constructor, creating a new CSSHWB instance
+    pub fn new1(h: &CSSNumericValue, w: &Any, b: &Any, alpha: &Any) -> CSSHWB {
+        Self {
+            inner: Any::global("CSSHWB")
+                .new(&[h.into(), w.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

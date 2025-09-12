@@ -64,57 +64,6 @@ impl From<&DOMMatrixReadOnly> for Any {
 jsbind::utils::impl_dyn_cast!(DOMMatrixReadOnly);
 
 impl DOMMatrixReadOnly {
-    /// The `new DOMMatrixReadOnly(..)` constructor, creating a new DOMMatrixReadOnly instance
-    pub fn new0() -> DOMMatrixReadOnly {
-        Self {
-            inner: Any::global("DOMMatrixReadOnly").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new DOMMatrixReadOnly(..)` constructor, creating a new DOMMatrixReadOnly instance
-    pub fn new1(init: &Any) -> DOMMatrixReadOnly {
-        Self {
-            inner: Any::global("DOMMatrixReadOnly")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl DOMMatrixReadOnly {
-    /// The fromMatrix method.
-    /// [`DOMMatrixReadOnly.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromMatrix)
-    pub fn from_matrix0() -> DOMMatrixReadOnly {
-        Any::global("DOMMatrixReadOnly")
-            .call("fromMatrix", &[])
-            .as_::<DOMMatrixReadOnly>()
-    }
-    /// The fromMatrix method.
-    /// [`DOMMatrixReadOnly.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromMatrix)
-    pub fn from_matrix1(other: &DOMMatrixInit) -> DOMMatrixReadOnly {
-        Any::global("DOMMatrixReadOnly")
-            .call("fromMatrix", &[other.into()])
-            .as_::<DOMMatrixReadOnly>()
-    }
-}
-impl DOMMatrixReadOnly {
-    /// The fromFloat32Array method.
-    /// [`DOMMatrixReadOnly.fromFloat32Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromFloat32Array)
-    pub fn from_float32_array(array32: &Float32Array) -> DOMMatrixReadOnly {
-        Any::global("DOMMatrixReadOnly")
-            .call("fromFloat32Array", &[array32.into()])
-            .as_::<DOMMatrixReadOnly>()
-    }
-}
-impl DOMMatrixReadOnly {
-    /// The fromFloat64Array method.
-    /// [`DOMMatrixReadOnly.fromFloat64Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromFloat64Array)
-    pub fn from_float64_array(array64: &Float64Array) -> DOMMatrixReadOnly {
-        Any::global("DOMMatrixReadOnly")
-            .call("fromFloat64Array", &[array64.into()])
-            .as_::<DOMMatrixReadOnly>()
-    }
-}
-impl DOMMatrixReadOnly {
     /// Getter of the `a` attribute.
     /// [`DOMMatrixReadOnly.a`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/a)
     pub fn a(&self) -> f64 {
@@ -280,6 +229,58 @@ impl DOMMatrixReadOnly {
     /// [`DOMMatrixReadOnly.isIdentity`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/isIdentity)
     pub fn is_identity(&self) -> bool {
         self.inner.get("isIdentity").as_::<bool>()
+    }
+}
+
+impl DOMMatrixReadOnly {
+    /// The `new DOMMatrixReadOnly(..)` constructor, creating a new DOMMatrixReadOnly instance
+    pub fn new0() -> DOMMatrixReadOnly {
+        Self {
+            inner: Any::global("DOMMatrixReadOnly").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new DOMMatrixReadOnly(..)` constructor, creating a new DOMMatrixReadOnly instance
+    pub fn new1(init: &Any) -> DOMMatrixReadOnly {
+        Self {
+            inner: Any::global("DOMMatrixReadOnly")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+impl DOMMatrixReadOnly {
+    /// The fromMatrix method.
+    /// [`DOMMatrixReadOnly.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromMatrix)
+    pub fn from_matrix0() -> DOMMatrixReadOnly {
+        Any::global("DOMMatrixReadOnly")
+            .call("fromMatrix", &[])
+            .as_::<DOMMatrixReadOnly>()
+    }
+    /// The fromMatrix method.
+    /// [`DOMMatrixReadOnly.fromMatrix`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromMatrix)
+    pub fn from_matrix1(other: &DOMMatrixInit) -> DOMMatrixReadOnly {
+        Any::global("DOMMatrixReadOnly")
+            .call("fromMatrix", &[other.into()])
+            .as_::<DOMMatrixReadOnly>()
+    }
+}
+impl DOMMatrixReadOnly {
+    /// The fromFloat32Array method.
+    /// [`DOMMatrixReadOnly.fromFloat32Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromFloat32Array)
+    pub fn from_float32_array(array32: &Float32Array) -> DOMMatrixReadOnly {
+        Any::global("DOMMatrixReadOnly")
+            .call("fromFloat32Array", &[array32.into()])
+            .as_::<DOMMatrixReadOnly>()
+    }
+}
+impl DOMMatrixReadOnly {
+    /// The fromFloat64Array method.
+    /// [`DOMMatrixReadOnly.fromFloat64Array`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrixReadOnly/fromFloat64Array)
+    pub fn from_float64_array(array64: &Float64Array) -> DOMMatrixReadOnly {
+        Any::global("DOMMatrixReadOnly")
+            .call("fromFloat64Array", &[array64.into()])
+            .as_::<DOMMatrixReadOnly>()
     }
 }
 impl DOMMatrixReadOnly {

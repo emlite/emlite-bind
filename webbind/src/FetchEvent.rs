@@ -64,16 +64,6 @@ impl From<&FetchEvent> for Any {
 jsbind::utils::impl_dyn_cast!(FetchEvent);
 
 impl FetchEvent {
-    /// The `new FetchEvent(..)` constructor, creating a new FetchEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &FetchEventInit) -> FetchEvent {
-        Self {
-            inner: Any::global("FetchEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<ExtendableEvent>(),
-        }
-    }
-}
-impl FetchEvent {
     /// Getter of the `request` attribute.
     /// [`FetchEvent.request`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/request)
     pub fn request(&self) -> Request {
@@ -113,6 +103,17 @@ impl FetchEvent {
     /// [`FetchEvent.handled`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/handled)
     pub fn handled(&self) -> Promise<Undefined> {
         self.inner.get("handled").as_::<Promise<Undefined>>()
+    }
+}
+
+impl FetchEvent {
+    /// The `new FetchEvent(..)` constructor, creating a new FetchEvent instance
+    pub fn new(type_: &JsString, event_init_dict: &FetchEventInit) -> FetchEvent {
+        Self {
+            inner: Any::global("FetchEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
+        }
     }
 }
 impl FetchEvent {

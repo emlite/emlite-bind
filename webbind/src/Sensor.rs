@@ -85,20 +85,6 @@ impl Sensor {
     }
 }
 impl Sensor {
-    /// The start method.
-    /// [`Sensor.start`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/start)
-    pub fn start(&self) -> Undefined {
-        self.inner.call("start", &[]).as_::<Undefined>()
-    }
-}
-impl Sensor {
-    /// The stop method.
-    /// [`Sensor.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/stop)
-    pub fn stop(&self) -> Undefined {
-        self.inner.call("stop", &[]).as_::<Undefined>()
-    }
-}
-impl Sensor {
     /// Getter of the `onreading` attribute.
     /// [`Sensor.onreading`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/onreading)
     pub fn onreading(&self) -> Any {
@@ -135,5 +121,19 @@ impl Sensor {
     /// [`Sensor.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/onerror)
     pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
+    }
+}
+impl Sensor {
+    /// The start method.
+    /// [`Sensor.start`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/start)
+    pub fn start(&self) -> Undefined {
+        self.inner.call("start", &[]).as_::<Undefined>()
+    }
+}
+impl Sensor {
+    /// The stop method.
+    /// [`Sensor.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Sensor/stop)
+    pub fn stop(&self) -> Undefined {
+        self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }

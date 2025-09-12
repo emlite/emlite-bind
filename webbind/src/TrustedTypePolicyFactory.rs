@@ -64,6 +64,27 @@ impl From<&TrustedTypePolicyFactory> for Any {
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicyFactory);
 
 impl TrustedTypePolicyFactory {
+    /// Getter of the `emptyHTML` attribute.
+    /// [`TrustedTypePolicyFactory.emptyHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/emptyHTML)
+    pub fn empty_html(&self) -> TrustedHTML {
+        self.inner.get("emptyHTML").as_::<TrustedHTML>()
+    }
+}
+impl TrustedTypePolicyFactory {
+    /// Getter of the `emptyScript` attribute.
+    /// [`TrustedTypePolicyFactory.emptyScript`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/emptyScript)
+    pub fn empty_script(&self) -> TrustedScript {
+        self.inner.get("emptyScript").as_::<TrustedScript>()
+    }
+}
+impl TrustedTypePolicyFactory {
+    /// Getter of the `defaultPolicy` attribute.
+    /// [`TrustedTypePolicyFactory.defaultPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/defaultPolicy)
+    pub fn default_policy(&self) -> TrustedTypePolicy {
+        self.inner.get("defaultPolicy").as_::<TrustedTypePolicy>()
+    }
+}
+impl TrustedTypePolicyFactory {
     /// The createPolicy method.
     /// [`TrustedTypePolicyFactory.createPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy)
     pub fn create_policy0(&self, policy_name: &JsString) -> TrustedTypePolicy {
@@ -104,20 +125,6 @@ impl TrustedTypePolicyFactory {
         self.inner
             .call("isScriptURL", &[value.into()])
             .as_::<bool>()
-    }
-}
-impl TrustedTypePolicyFactory {
-    /// Getter of the `emptyHTML` attribute.
-    /// [`TrustedTypePolicyFactory.emptyHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/emptyHTML)
-    pub fn empty_html(&self) -> TrustedHTML {
-        self.inner.get("emptyHTML").as_::<TrustedHTML>()
-    }
-}
-impl TrustedTypePolicyFactory {
-    /// Getter of the `emptyScript` attribute.
-    /// [`TrustedTypePolicyFactory.emptyScript`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/emptyScript)
-    pub fn empty_script(&self) -> TrustedScript {
-        self.inner.get("emptyScript").as_::<TrustedScript>()
     }
 }
 impl TrustedTypePolicyFactory {
@@ -187,12 +194,5 @@ impl TrustedTypePolicyFactory {
                 &[tag_name.into(), property.into(), element_ns.into()],
             )
             .as_::<JsString>()
-    }
-}
-impl TrustedTypePolicyFactory {
-    /// Getter of the `defaultPolicy` attribute.
-    /// [`TrustedTypePolicyFactory.defaultPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/defaultPolicy)
-    pub fn default_policy(&self) -> TrustedTypePolicy {
-        self.inner.get("defaultPolicy").as_::<TrustedTypePolicy>()
     }
 }

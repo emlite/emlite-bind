@@ -64,25 +64,6 @@ impl From<&ConvolverNode> for Any {
 jsbind::utils::impl_dyn_cast!(ConvolverNode);
 
 impl ConvolverNode {
-    /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
-    pub fn new0(context: &BaseAudioContext) -> ConvolverNode {
-        Self {
-            inner: Any::global("ConvolverNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-
-    /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
-    pub fn new1(context: &BaseAudioContext, options: &ConvolverOptions) -> ConvolverNode {
-        Self {
-            inner: Any::global("ConvolverNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-}
-impl ConvolverNode {
     /// Getter of the `buffer` attribute.
     /// [`ConvolverNode.buffer`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/buffer)
     pub fn buffer(&self) -> AudioBuffer {
@@ -106,5 +87,25 @@ impl ConvolverNode {
     /// [`ConvolverNode.normalize`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/normalize)
     pub fn set_normalize(&mut self, value: bool) {
         self.inner.set("normalize", value);
+    }
+}
+
+impl ConvolverNode {
+    /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
+    pub fn new0(context: &BaseAudioContext) -> ConvolverNode {
+        Self {
+            inner: Any::global("ConvolverNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+
+    /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
+    pub fn new1(context: &BaseAudioContext, options: &ConvolverOptions) -> ConvolverNode {
+        Self {
+            inner: Any::global("ConvolverNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
     }
 }

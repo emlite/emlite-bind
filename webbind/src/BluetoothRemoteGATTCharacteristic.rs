@@ -96,6 +96,19 @@ impl BluetoothRemoteGATTCharacteristic {
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
+    /// Getter of the `oncharacteristicvaluechanged` attribute.
+    /// [`BluetoothRemoteGATTCharacteristic.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/oncharacteristicvaluechanged)
+    pub fn oncharacteristicvaluechanged(&self) -> Any {
+        self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
+    }
+
+    /// Setter of the `oncharacteristicvaluechanged` attribute.
+    /// [`BluetoothRemoteGATTCharacteristic.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/oncharacteristicvaluechanged)
+    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
+        self.inner.set("oncharacteristicvaluechanged", value);
+    }
+}
+impl BluetoothRemoteGATTCharacteristic {
     /// The getDescriptor method.
     /// [`BluetoothRemoteGATTCharacteristic.getDescriptor`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/getDescriptor)
     pub fn get_descriptor(&self, descriptor: &Any) -> Promise<BluetoothRemoteGATTDescriptor> {
@@ -173,18 +186,5 @@ impl BluetoothRemoteGATTCharacteristic {
         self.inner
             .call("stopNotifications", &[])
             .as_::<Promise<BluetoothRemoteGATTCharacteristic>>()
-    }
-}
-impl BluetoothRemoteGATTCharacteristic {
-    /// Getter of the `oncharacteristicvaluechanged` attribute.
-    /// [`BluetoothRemoteGATTCharacteristic.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/oncharacteristicvaluechanged)
-    pub fn oncharacteristicvaluechanged(&self) -> Any {
-        self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
-    }
-
-    /// Setter of the `oncharacteristicvaluechanged` attribute.
-    /// [`BluetoothRemoteGATTCharacteristic.oncharacteristicvaluechanged`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/oncharacteristicvaluechanged)
-    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
-        self.inner.set("oncharacteristicvaluechanged", value);
     }
 }

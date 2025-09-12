@@ -64,15 +64,6 @@ impl From<&AudioWorkletGlobalScope> for Any {
 jsbind::utils::impl_dyn_cast!(AudioWorkletGlobalScope);
 
 impl AudioWorkletGlobalScope {
-    /// The registerProcessor method.
-    /// [`AudioWorkletGlobalScope.registerProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope/registerProcessor)
-    pub fn register_processor(&self, name: &JsString, processor_ctor: &Function) -> Undefined {
-        self.inner
-            .call("registerProcessor", &[name.into(), processor_ctor.into()])
-            .as_::<Undefined>()
-    }
-}
-impl AudioWorkletGlobalScope {
     /// Getter of the `currentFrame` attribute.
     /// [`AudioWorkletGlobalScope.currentFrame`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope/currentFrame)
     pub fn current_frame(&self) -> u64 {
@@ -105,5 +96,14 @@ impl AudioWorkletGlobalScope {
     /// [`AudioWorkletGlobalScope.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope/port)
     pub fn port(&self) -> MessagePort {
         self.inner.get("port").as_::<MessagePort>()
+    }
+}
+impl AudioWorkletGlobalScope {
+    /// The registerProcessor method.
+    /// [`AudioWorkletGlobalScope.registerProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletGlobalScope/registerProcessor)
+    pub fn register_processor(&self, name: &JsString, processor_ctor: &Function) -> Undefined {
+        self.inner
+            .call("registerProcessor", &[name.into(), processor_ctor.into()])
+            .as_::<Undefined>()
     }
 }

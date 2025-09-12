@@ -64,6 +64,14 @@ impl From<&KeyFrameRequestEvent> for Any {
 jsbind::utils::impl_dyn_cast!(KeyFrameRequestEvent);
 
 impl KeyFrameRequestEvent {
+    /// Getter of the `rid` attribute.
+    /// [`KeyFrameRequestEvent.rid`](https://developer.mozilla.org/en-US/docs/Web/API/KeyFrameRequestEvent/rid)
+    pub fn rid(&self) -> JsString {
+        self.inner.get("rid").as_::<JsString>()
+    }
+}
+
+impl KeyFrameRequestEvent {
     /// The `new KeyFrameRequestEvent(..)` constructor, creating a new KeyFrameRequestEvent instance
     pub fn new0(type_: &JsString) -> KeyFrameRequestEvent {
         Self {
@@ -80,12 +88,5 @@ impl KeyFrameRequestEvent {
                 .new(&[type_.into(), rid.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl KeyFrameRequestEvent {
-    /// Getter of the `rid` attribute.
-    /// [`KeyFrameRequestEvent.rid`](https://developer.mozilla.org/en-US/docs/Web/API/KeyFrameRequestEvent/rid)
-    pub fn rid(&self) -> JsString {
-        self.inner.get("rid").as_::<JsString>()
     }
 }

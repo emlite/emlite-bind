@@ -64,6 +64,14 @@ impl From<&TaskPriorityChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(TaskPriorityChangeEvent);
 
 impl TaskPriorityChangeEvent {
+    /// Getter of the `previousPriority` attribute.
+    /// [`TaskPriorityChangeEvent.previousPriority`](https://developer.mozilla.org/en-US/docs/Web/API/TaskPriorityChangeEvent/previousPriority)
+    pub fn previous_priority(&self) -> TaskPriority {
+        self.inner.get("previousPriority").as_::<TaskPriority>()
+    }
+}
+
+impl TaskPriorityChangeEvent {
     /// The `new TaskPriorityChangeEvent(..)` constructor, creating a new TaskPriorityChangeEvent instance
     pub fn new(
         type_: &JsString,
@@ -74,12 +82,5 @@ impl TaskPriorityChangeEvent {
                 .new(&[type_.into(), priority_change_event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl TaskPriorityChangeEvent {
-    /// Getter of the `previousPriority` attribute.
-    /// [`TaskPriorityChangeEvent.previousPriority`](https://developer.mozilla.org/en-US/docs/Web/API/TaskPriorityChangeEvent/previousPriority)
-    pub fn previous_priority(&self) -> TaskPriority {
-        self.inner.get("previousPriority").as_::<TaskPriority>()
     }
 }

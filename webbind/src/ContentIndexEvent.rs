@@ -64,6 +64,14 @@ impl From<&ContentIndexEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
 impl ContentIndexEvent {
+    /// Getter of the `id` attribute.
+    /// [`ContentIndexEvent.id`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndexEvent/id)
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
+    }
+}
+
+impl ContentIndexEvent {
     /// The `new ContentIndexEvent(..)` constructor, creating a new ContentIndexEvent instance
     pub fn new(type_: &JsString, init: &ContentIndexEventInit) -> ContentIndexEvent {
         Self {
@@ -71,12 +79,5 @@ impl ContentIndexEvent {
                 .new(&[type_.into(), init.into()])
                 .as_::<ExtendableEvent>(),
         }
-    }
-}
-impl ContentIndexEvent {
-    /// Getter of the `id` attribute.
-    /// [`ContentIndexEvent.id`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndexEvent/id)
-    pub fn id(&self) -> JsString {
-        self.inner.get("id").as_::<JsString>()
     }
 }

@@ -64,6 +64,14 @@ impl From<&MIDIConnectionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MIDIConnectionEvent);
 
 impl MIDIConnectionEvent {
+    /// Getter of the `port` attribute.
+    /// [`MIDIConnectionEvent.port`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIConnectionEvent/port)
+    pub fn port(&self) -> MIDIPort {
+        self.inner.get("port").as_::<MIDIPort>()
+    }
+}
+
+impl MIDIConnectionEvent {
     /// The `new MIDIConnectionEvent(..)` constructor, creating a new MIDIConnectionEvent instance
     pub fn new0(type_: &JsString) -> MIDIConnectionEvent {
         Self {
@@ -83,12 +91,5 @@ impl MIDIConnectionEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl MIDIConnectionEvent {
-    /// Getter of the `port` attribute.
-    /// [`MIDIConnectionEvent.port`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIConnectionEvent/port)
-    pub fn port(&self) -> MIDIPort {
-        self.inner.get("port").as_::<MIDIPort>()
     }
 }

@@ -64,25 +64,6 @@ impl From<&BiquadFilterNode> for Any {
 jsbind::utils::impl_dyn_cast!(BiquadFilterNode);
 
 impl BiquadFilterNode {
-    /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
-    pub fn new0(context: &BaseAudioContext) -> BiquadFilterNode {
-        Self {
-            inner: Any::global("BiquadFilterNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-
-    /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
-    pub fn new1(context: &BaseAudioContext, options: &BiquadFilterOptions) -> BiquadFilterNode {
-        Self {
-            inner: Any::global("BiquadFilterNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-}
-impl BiquadFilterNode {
     /// Getter of the `type` attribute.
     /// [`BiquadFilterNode.type`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type)
     pub fn type_(&self) -> BiquadFilterType {
@@ -121,6 +102,26 @@ impl BiquadFilterNode {
     /// [`BiquadFilterNode.gain`](https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/gain)
     pub fn gain(&self) -> AudioParam {
         self.inner.get("gain").as_::<AudioParam>()
+    }
+}
+
+impl BiquadFilterNode {
+    /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
+    pub fn new0(context: &BaseAudioContext) -> BiquadFilterNode {
+        Self {
+            inner: Any::global("BiquadFilterNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+
+    /// The `new BiquadFilterNode(..)` constructor, creating a new BiquadFilterNode instance
+    pub fn new1(context: &BaseAudioContext, options: &BiquadFilterOptions) -> BiquadFilterNode {
+        Self {
+            inner: Any::global("BiquadFilterNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
     }
 }
 impl BiquadFilterNode {

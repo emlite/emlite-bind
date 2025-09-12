@@ -64,16 +64,6 @@ impl From<&HTMLFrameSetElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLFrameSetElement);
 
 impl HTMLFrameSetElement {
-    /// The `new HTMLFrameSetElement(..)` constructor, creating a new HTMLFrameSetElement instance
-    pub fn new() -> HTMLFrameSetElement {
-        Self {
-            inner: Any::global("HTMLFrameSetElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLFrameSetElement {
     /// Getter of the `cols` attribute.
     /// [`HTMLFrameSetElement.cols`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement/cols)
     pub fn cols(&self) -> JsString {
@@ -110,5 +100,16 @@ impl HTMLFrameSetElement {
     /// [`HTMLFrameSetElement.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement/onportalactivate)
     pub fn set_onportalactivate(&mut self, value: &Any) {
         self.inner.set("onportalactivate", value);
+    }
+}
+
+impl HTMLFrameSetElement {
+    /// The `new HTMLFrameSetElement(..)` constructor, creating a new HTMLFrameSetElement instance
+    pub fn new() -> HTMLFrameSetElement {
+        Self {
+            inner: Any::global("HTMLFrameSetElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,16 +64,6 @@ impl From<&DecompressionStream> for Any {
 jsbind::utils::impl_dyn_cast!(DecompressionStream);
 
 impl DecompressionStream {
-    /// The `new DecompressionStream(..)` constructor, creating a new DecompressionStream instance
-    pub fn new(format: &CompressionFormat) -> DecompressionStream {
-        Self {
-            inner: Any::global("DecompressionStream")
-                .new(&[format.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl DecompressionStream {
     /// Getter of the `readable` attribute.
     /// [`DecompressionStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream/readable)
     pub fn readable(&self) -> ReadableStream {
@@ -85,5 +75,16 @@ impl DecompressionStream {
     /// [`DecompressionStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream/writable)
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
+    }
+}
+
+impl DecompressionStream {
+    /// The `new DecompressionStream(..)` constructor, creating a new DecompressionStream instance
+    pub fn new(format: &CompressionFormat) -> DecompressionStream {
+        Self {
+            inner: Any::global("DecompressionStream")
+                .new(&[format.into()])
+                .as_::<Any>(),
+        }
     }
 }

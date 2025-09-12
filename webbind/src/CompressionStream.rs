@@ -64,16 +64,6 @@ impl From<&CompressionStream> for Any {
 jsbind::utils::impl_dyn_cast!(CompressionStream);
 
 impl CompressionStream {
-    /// The `new CompressionStream(..)` constructor, creating a new CompressionStream instance
-    pub fn new(format: &CompressionFormat) -> CompressionStream {
-        Self {
-            inner: Any::global("CompressionStream")
-                .new(&[format.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl CompressionStream {
     /// Getter of the `readable` attribute.
     /// [`CompressionStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream/readable)
     pub fn readable(&self) -> ReadableStream {
@@ -85,5 +75,16 @@ impl CompressionStream {
     /// [`CompressionStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream/writable)
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
+    }
+}
+
+impl CompressionStream {
+    /// The `new CompressionStream(..)` constructor, creating a new CompressionStream instance
+    pub fn new(format: &CompressionFormat) -> CompressionStream {
+        Self {
+            inner: Any::global("CompressionStream")
+                .new(&[format.into()])
+                .as_::<Any>(),
+        }
     }
 }

@@ -77,6 +77,19 @@ impl HTMLOptionsCollection {
     }
 }
 impl HTMLOptionsCollection {
+    /// Getter of the `selectedIndex` attribute.
+    /// [`HTMLOptionsCollection.selectedIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/selectedIndex)
+    pub fn selected_index(&self) -> i32 {
+        self.inner.get("selectedIndex").as_::<i32>()
+    }
+
+    /// Setter of the `selectedIndex` attribute.
+    /// [`HTMLOptionsCollection.selectedIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/selectedIndex)
+    pub fn set_selected_index(&mut self, value: i32) {
+        self.inner.set("selectedIndex", value);
+    }
+}
+impl HTMLOptionsCollection {
     /// The add method.
     /// [`HTMLOptionsCollection.add`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/add)
     pub fn add0(&self, element: &Any) -> Undefined {
@@ -97,18 +110,5 @@ impl HTMLOptionsCollection {
         self.inner
             .call("remove", &[index.into()])
             .as_::<Undefined>()
-    }
-}
-impl HTMLOptionsCollection {
-    /// Getter of the `selectedIndex` attribute.
-    /// [`HTMLOptionsCollection.selectedIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/selectedIndex)
-    pub fn selected_index(&self) -> i32 {
-        self.inner.get("selectedIndex").as_::<i32>()
-    }
-
-    /// Setter of the `selectedIndex` attribute.
-    /// [`HTMLOptionsCollection.selectedIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionsCollection/selectedIndex)
-    pub fn set_selected_index(&mut self, value: i32) {
-        self.inner.set("selectedIndex", value);
     }
 }

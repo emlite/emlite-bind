@@ -85,6 +85,58 @@ impl IDBDatabase {
     }
 }
 impl IDBDatabase {
+    /// Getter of the `onabort` attribute.
+    /// [`IDBDatabase.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onabort)
+    pub fn onabort(&self) -> Any {
+        self.inner.get("onabort").as_::<Any>()
+    }
+
+    /// Setter of the `onabort` attribute.
+    /// [`IDBDatabase.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onabort)
+    pub fn set_onabort(&mut self, value: &Any) {
+        self.inner.set("onabort", value);
+    }
+}
+impl IDBDatabase {
+    /// Getter of the `onclose` attribute.
+    /// [`IDBDatabase.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onclose)
+    pub fn onclose(&self) -> Any {
+        self.inner.get("onclose").as_::<Any>()
+    }
+
+    /// Setter of the `onclose` attribute.
+    /// [`IDBDatabase.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onclose)
+    pub fn set_onclose(&mut self, value: &Any) {
+        self.inner.set("onclose", value);
+    }
+}
+impl IDBDatabase {
+    /// Getter of the `onerror` attribute.
+    /// [`IDBDatabase.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onerror)
+    pub fn onerror(&self) -> Any {
+        self.inner.get("onerror").as_::<Any>()
+    }
+
+    /// Setter of the `onerror` attribute.
+    /// [`IDBDatabase.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onerror)
+    pub fn set_onerror(&mut self, value: &Any) {
+        self.inner.set("onerror", value);
+    }
+}
+impl IDBDatabase {
+    /// Getter of the `onversionchange` attribute.
+    /// [`IDBDatabase.onversionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onversionchange)
+    pub fn onversionchange(&self) -> Any {
+        self.inner.get("onversionchange").as_::<Any>()
+    }
+
+    /// Setter of the `onversionchange` attribute.
+    /// [`IDBDatabase.onversionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onversionchange)
+    pub fn set_onversionchange(&mut self, value: &Any) {
+        self.inner.set("onversionchange", value);
+    }
+}
+impl IDBDatabase {
     /// The transaction method.
     /// [`IDBDatabase.transaction`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/transaction)
     pub fn transaction0(&self, store_names: &Any) -> IDBTransaction {
@@ -149,57 +201,5 @@ impl IDBDatabase {
         self.inner
             .call("deleteObjectStore", &[name.into()])
             .as_::<Undefined>()
-    }
-}
-impl IDBDatabase {
-    /// Getter of the `onabort` attribute.
-    /// [`IDBDatabase.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onabort)
-    pub fn onabort(&self) -> Any {
-        self.inner.get("onabort").as_::<Any>()
-    }
-
-    /// Setter of the `onabort` attribute.
-    /// [`IDBDatabase.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onabort)
-    pub fn set_onabort(&mut self, value: &Any) {
-        self.inner.set("onabort", value);
-    }
-}
-impl IDBDatabase {
-    /// Getter of the `onclose` attribute.
-    /// [`IDBDatabase.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onclose)
-    pub fn onclose(&self) -> Any {
-        self.inner.get("onclose").as_::<Any>()
-    }
-
-    /// Setter of the `onclose` attribute.
-    /// [`IDBDatabase.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onclose)
-    pub fn set_onclose(&mut self, value: &Any) {
-        self.inner.set("onclose", value);
-    }
-}
-impl IDBDatabase {
-    /// Getter of the `onerror` attribute.
-    /// [`IDBDatabase.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onerror)
-    pub fn onerror(&self) -> Any {
-        self.inner.get("onerror").as_::<Any>()
-    }
-
-    /// Setter of the `onerror` attribute.
-    /// [`IDBDatabase.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onerror)
-    pub fn set_onerror(&mut self, value: &Any) {
-        self.inner.set("onerror", value);
-    }
-}
-impl IDBDatabase {
-    /// Getter of the `onversionchange` attribute.
-    /// [`IDBDatabase.onversionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onversionchange)
-    pub fn onversionchange(&self) -> Any {
-        self.inner.get("onversionchange").as_::<Any>()
-    }
-
-    /// Setter of the `onversionchange` attribute.
-    /// [`IDBDatabase.onversionchange`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/onversionchange)
-    pub fn set_onversionchange(&mut self, value: &Any) {
-        self.inner.set("onversionchange", value);
     }
 }

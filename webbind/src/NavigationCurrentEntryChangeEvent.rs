@@ -64,19 +64,6 @@ impl From<&NavigationCurrentEntryChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(NavigationCurrentEntryChangeEvent);
 
 impl NavigationCurrentEntryChangeEvent {
-    /// The `new NavigationCurrentEntryChangeEvent(..)` constructor, creating a new NavigationCurrentEntryChangeEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &NavigationCurrentEntryChangeEventInit,
-    ) -> NavigationCurrentEntryChangeEvent {
-        Self {
-            inner: Any::global("NavigationCurrentEntryChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl NavigationCurrentEntryChangeEvent {
     /// Getter of the `navigationType` attribute.
     /// [`NavigationCurrentEntryChangeEvent.navigationType`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationCurrentEntryChangeEvent/navigationType)
     pub fn navigation_type(&self) -> NavigationType {
@@ -88,5 +75,19 @@ impl NavigationCurrentEntryChangeEvent {
     /// [`NavigationCurrentEntryChangeEvent.from`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationCurrentEntryChangeEvent/from)
     pub fn from(&self) -> NavigationHistoryEntry {
         self.inner.get("from").as_::<NavigationHistoryEntry>()
+    }
+}
+
+impl NavigationCurrentEntryChangeEvent {
+    /// The `new NavigationCurrentEntryChangeEvent(..)` constructor, creating a new NavigationCurrentEntryChangeEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &NavigationCurrentEntryChangeEventInit,
+    ) -> NavigationCurrentEntryChangeEvent {
+        Self {
+            inner: Any::global("NavigationCurrentEntryChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

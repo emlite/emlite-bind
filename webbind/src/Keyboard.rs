@@ -64,6 +64,19 @@ impl From<&Keyboard> for Any {
 jsbind::utils::impl_dyn_cast!(Keyboard);
 
 impl Keyboard {
+    /// Getter of the `onlayoutchange` attribute.
+    /// [`Keyboard.onlayoutchange`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/onlayoutchange)
+    pub fn onlayoutchange(&self) -> Any {
+        self.inner.get("onlayoutchange").as_::<Any>()
+    }
+
+    /// Setter of the `onlayoutchange` attribute.
+    /// [`Keyboard.onlayoutchange`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/onlayoutchange)
+    pub fn set_onlayoutchange(&mut self, value: &Any) {
+        self.inner.set("onlayoutchange", value);
+    }
+}
+impl Keyboard {
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
     pub fn lock0(&self) -> Promise<Undefined> {
@@ -91,18 +104,5 @@ impl Keyboard {
         self.inner
             .call("getLayoutMap", &[])
             .as_::<Promise<KeyboardLayoutMap>>()
-    }
-}
-impl Keyboard {
-    /// Getter of the `onlayoutchange` attribute.
-    /// [`Keyboard.onlayoutchange`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/onlayoutchange)
-    pub fn onlayoutchange(&self) -> Any {
-        self.inner.get("onlayoutchange").as_::<Any>()
-    }
-
-    /// Setter of the `onlayoutchange` attribute.
-    /// [`Keyboard.onlayoutchange`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/onlayoutchange)
-    pub fn set_onlayoutchange(&mut self, value: &Any) {
-        self.inner.set("onlayoutchange", value);
     }
 }

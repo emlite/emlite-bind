@@ -64,6 +64,14 @@ impl From<&CSSMathInvert> for Any {
 jsbind::utils::impl_dyn_cast!(CSSMathInvert);
 
 impl CSSMathInvert {
+    /// Getter of the `value` attribute.
+    /// [`CSSMathInvert.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathInvert/value)
+    pub fn value(&self) -> CSSNumericValue {
+        self.inner.get("value").as_::<CSSNumericValue>()
+    }
+}
+
+impl CSSMathInvert {
     /// The `new CSSMathInvert(..)` constructor, creating a new CSSMathInvert instance
     pub fn new(arg: &Any) -> CSSMathInvert {
         Self {
@@ -71,12 +79,5 @@ impl CSSMathInvert {
                 .new(&[arg.into()])
                 .as_::<CSSMathValue>(),
         }
-    }
-}
-impl CSSMathInvert {
-    /// Getter of the `value` attribute.
-    /// [`CSSMathInvert.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathInvert/value)
-    pub fn value(&self) -> CSSNumericValue {
-        self.inner.get("value").as_::<CSSNumericValue>()
     }
 }

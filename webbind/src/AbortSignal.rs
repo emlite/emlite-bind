@@ -64,6 +64,33 @@ impl From<&AbortSignal> for Any {
 jsbind::utils::impl_dyn_cast!(AbortSignal);
 
 impl AbortSignal {
+    /// Getter of the `aborted` attribute.
+    /// [`AbortSignal.aborted`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/aborted)
+    pub fn aborted(&self) -> bool {
+        self.inner.get("aborted").as_::<bool>()
+    }
+}
+impl AbortSignal {
+    /// Getter of the `reason` attribute.
+    /// [`AbortSignal.reason`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/reason)
+    pub fn reason(&self) -> Any {
+        self.inner.get("reason").as_::<Any>()
+    }
+}
+impl AbortSignal {
+    /// Getter of the `onabort` attribute.
+    /// [`AbortSignal.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/onabort)
+    pub fn onabort(&self) -> Any {
+        self.inner.get("onabort").as_::<Any>()
+    }
+
+    /// Setter of the `onabort` attribute.
+    /// [`AbortSignal.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/onabort)
+    pub fn set_onabort(&mut self, value: &Any) {
+        self.inner.set("onabort", value);
+    }
+}
+impl AbortSignal {
     /// The abort method.
     /// [`AbortSignal.abort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/abort)
     pub fn abort0() -> AbortSignal {
@@ -98,36 +125,9 @@ impl AbortSignal {
     }
 }
 impl AbortSignal {
-    /// Getter of the `aborted` attribute.
-    /// [`AbortSignal.aborted`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/aborted)
-    pub fn aborted(&self) -> bool {
-        self.inner.get("aborted").as_::<bool>()
-    }
-}
-impl AbortSignal {
-    /// Getter of the `reason` attribute.
-    /// [`AbortSignal.reason`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/reason)
-    pub fn reason(&self) -> Any {
-        self.inner.get("reason").as_::<Any>()
-    }
-}
-impl AbortSignal {
     /// The throwIfAborted method.
     /// [`AbortSignal.throwIfAborted`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/throwIfAborted)
     pub fn throw_if_aborted(&self) -> Undefined {
         self.inner.call("throwIfAborted", &[]).as_::<Undefined>()
-    }
-}
-impl AbortSignal {
-    /// Getter of the `onabort` attribute.
-    /// [`AbortSignal.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/onabort)
-    pub fn onabort(&self) -> Any {
-        self.inner.get("onabort").as_::<Any>()
-    }
-
-    /// Setter of the `onabort` attribute.
-    /// [`AbortSignal.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/onabort)
-    pub fn set_onabort(&mut self, value: &Any) {
-        self.inner.set("onabort", value);
     }
 }

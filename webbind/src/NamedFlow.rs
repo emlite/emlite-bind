@@ -78,19 +78,19 @@ impl NamedFlow {
     }
 }
 impl NamedFlow {
+    /// Getter of the `firstEmptyRegionIndex` attribute.
+    /// [`NamedFlow.firstEmptyRegionIndex`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/firstEmptyRegionIndex)
+    pub fn first_empty_region_index(&self) -> i16 {
+        self.inner.get("firstEmptyRegionIndex").as_::<i16>()
+    }
+}
+impl NamedFlow {
     /// The getRegions method.
     /// [`NamedFlow.getRegions`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getRegions)
     pub fn get_regions(&self) -> TypedArray<Element> {
         self.inner
             .call("getRegions", &[])
             .as_::<TypedArray<Element>>()
-    }
-}
-impl NamedFlow {
-    /// Getter of the `firstEmptyRegionIndex` attribute.
-    /// [`NamedFlow.firstEmptyRegionIndex`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/firstEmptyRegionIndex)
-    pub fn first_empty_region_index(&self) -> i16 {
-        self.inner.get("firstEmptyRegionIndex").as_::<i16>()
     }
 }
 impl NamedFlow {

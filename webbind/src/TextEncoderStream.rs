@@ -64,14 +64,6 @@ impl From<&TextEncoderStream> for Any {
 jsbind::utils::impl_dyn_cast!(TextEncoderStream);
 
 impl TextEncoderStream {
-    /// The `new TextEncoderStream(..)` constructor, creating a new TextEncoderStream instance
-    pub fn new() -> TextEncoderStream {
-        Self {
-            inner: Any::global("TextEncoderStream").new(&[]).as_::<Any>(),
-        }
-    }
-}
-impl TextEncoderStream {
     /// Getter of the `encoding` attribute.
     /// [`TextEncoderStream.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream/encoding)
     pub fn encoding(&self) -> JsString {
@@ -90,5 +82,14 @@ impl TextEncoderStream {
     /// [`TextEncoderStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream/writable)
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
+    }
+}
+
+impl TextEncoderStream {
+    /// The `new TextEncoderStream(..)` constructor, creating a new TextEncoderStream instance
+    pub fn new() -> TextEncoderStream {
+        Self {
+            inner: Any::global("TextEncoderStream").new(&[]).as_::<Any>(),
+        }
     }
 }

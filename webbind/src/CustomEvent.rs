@@ -64,6 +64,14 @@ impl From<&CustomEvent> for Any {
 jsbind::utils::impl_dyn_cast!(CustomEvent);
 
 impl CustomEvent {
+    /// Getter of the `detail` attribute.
+    /// [`CustomEvent.detail`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
+    pub fn detail(&self) -> Any {
+        self.inner.get("detail").as_::<Any>()
+    }
+}
+
+impl CustomEvent {
     /// The `new CustomEvent(..)` constructor, creating a new CustomEvent instance
     pub fn new0(type_: &JsString) -> CustomEvent {
         Self {
@@ -80,13 +88,6 @@ impl CustomEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl CustomEvent {
-    /// Getter of the `detail` attribute.
-    /// [`CustomEvent.detail`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
-    pub fn detail(&self) -> Any {
-        self.inner.get("detail").as_::<Any>()
     }
 }
 impl CustomEvent {

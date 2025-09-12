@@ -64,14 +64,6 @@ impl From<&HTMLLIElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLLIElement);
 
 impl HTMLLIElement {
-    /// The `new HTMLLIElement(..)` constructor, creating a new HTMLLIElement instance
-    pub fn new() -> HTMLLIElement {
-        Self {
-            inner: Any::global("HTMLLIElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLLIElement {
     /// Getter of the `value` attribute.
     /// [`HTMLLIElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement/value)
     pub fn value(&self) -> i32 {
@@ -95,5 +87,14 @@ impl HTMLLIElement {
     /// [`HTMLLIElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement/type)
     pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
+    }
+}
+
+impl HTMLLIElement {
+    /// The `new HTMLLIElement(..)` constructor, creating a new HTMLLIElement instance
+    pub fn new() -> HTMLLIElement {
+        Self {
+            inner: Any::global("HTMLLIElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

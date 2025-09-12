@@ -64,20 +64,6 @@ impl From<&USBEndpoint> for Any {
 jsbind::utils::impl_dyn_cast!(USBEndpoint);
 
 impl USBEndpoint {
-    /// The `new USBEndpoint(..)` constructor, creating a new USBEndpoint instance
-    pub fn new(
-        alternate: &USBAlternateInterface,
-        endpoint_number: u8,
-        direction: &USBDirection,
-    ) -> USBEndpoint {
-        Self {
-            inner: Any::global("USBEndpoint")
-                .new(&[alternate.into(), endpoint_number.into(), direction.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl USBEndpoint {
     /// Getter of the `endpointNumber` attribute.
     /// [`USBEndpoint.endpointNumber`](https://developer.mozilla.org/en-US/docs/Web/API/USBEndpoint/endpointNumber)
     pub fn endpoint_number(&self) -> u8 {
@@ -103,5 +89,20 @@ impl USBEndpoint {
     /// [`USBEndpoint.packetSize`](https://developer.mozilla.org/en-US/docs/Web/API/USBEndpoint/packetSize)
     pub fn packet_size(&self) -> u32 {
         self.inner.get("packetSize").as_::<u32>()
+    }
+}
+
+impl USBEndpoint {
+    /// The `new USBEndpoint(..)` constructor, creating a new USBEndpoint instance
+    pub fn new(
+        alternate: &USBAlternateInterface,
+        endpoint_number: u8,
+        direction: &USBDirection,
+    ) -> USBEndpoint {
+        Self {
+            inner: Any::global("USBEndpoint")
+                .new(&[alternate.into(), endpoint_number.into(), direction.into()])
+                .as_::<Any>(),
+        }
     }
 }

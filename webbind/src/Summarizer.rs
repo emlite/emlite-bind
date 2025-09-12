@@ -64,6 +64,66 @@ impl From<&Summarizer> for Any {
 jsbind::utils::impl_dyn_cast!(Summarizer);
 
 impl Summarizer {
+    /// Getter of the `sharedContext` attribute.
+    /// [`Summarizer.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/sharedContext)
+    pub fn shared_context(&self) -> JsString {
+        self.inner.get("sharedContext").as_::<JsString>()
+    }
+}
+impl Summarizer {
+    /// Getter of the `type` attribute.
+    /// [`Summarizer.type`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/type)
+    pub fn type_(&self) -> SummarizerType {
+        self.inner.get("type").as_::<SummarizerType>()
+    }
+}
+impl Summarizer {
+    /// Getter of the `format` attribute.
+    /// [`Summarizer.format`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/format)
+    pub fn format(&self) -> SummarizerFormat {
+        self.inner.get("format").as_::<SummarizerFormat>()
+    }
+}
+impl Summarizer {
+    /// Getter of the `length` attribute.
+    /// [`Summarizer.length`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/length)
+    pub fn length(&self) -> SummarizerLength {
+        self.inner.get("length").as_::<SummarizerLength>()
+    }
+}
+impl Summarizer {
+    /// Getter of the `expectedInputLanguages` attribute.
+    /// [`Summarizer.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedInputLanguages)
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Summarizer {
+    /// Getter of the `expectedContextLanguages` attribute.
+    /// [`Summarizer.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedContextLanguages)
+    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
+        self.inner
+            .get("expectedContextLanguages")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Summarizer {
+    /// Getter of the `outputLanguage` attribute.
+    /// [`Summarizer.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/outputLanguage)
+    pub fn output_language(&self) -> JsString {
+        self.inner.get("outputLanguage").as_::<JsString>()
+    }
+}
+impl Summarizer {
+    /// Getter of the `inputQuota` attribute.
+    /// [`Summarizer.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/inputQuota)
+    pub fn input_quota(&self) -> f64 {
+        self.inner.get("inputQuota").as_::<f64>()
+    }
+}
+impl Summarizer {
     /// The create method.
     /// [`Summarizer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/create)
     pub fn create0() -> Promise<Summarizer> {
@@ -136,59 +196,6 @@ impl Summarizer {
     }
 }
 impl Summarizer {
-    /// Getter of the `sharedContext` attribute.
-    /// [`Summarizer.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/sharedContext)
-    pub fn shared_context(&self) -> JsString {
-        self.inner.get("sharedContext").as_::<JsString>()
-    }
-}
-impl Summarizer {
-    /// Getter of the `type` attribute.
-    /// [`Summarizer.type`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/type)
-    pub fn type_(&self) -> SummarizerType {
-        self.inner.get("type").as_::<SummarizerType>()
-    }
-}
-impl Summarizer {
-    /// Getter of the `format` attribute.
-    /// [`Summarizer.format`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/format)
-    pub fn format(&self) -> SummarizerFormat {
-        self.inner.get("format").as_::<SummarizerFormat>()
-    }
-}
-impl Summarizer {
-    /// Getter of the `length` attribute.
-    /// [`Summarizer.length`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/length)
-    pub fn length(&self) -> SummarizerLength {
-        self.inner.get("length").as_::<SummarizerLength>()
-    }
-}
-impl Summarizer {
-    /// Getter of the `expectedInputLanguages` attribute.
-    /// [`Summarizer.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Summarizer {
-    /// Getter of the `expectedContextLanguages` attribute.
-    /// [`Summarizer.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedContextLanguages)
-    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedContextLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Summarizer {
-    /// Getter of the `outputLanguage` attribute.
-    /// [`Summarizer.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/outputLanguage)
-    pub fn output_language(&self) -> JsString {
-        self.inner.get("outputLanguage").as_::<JsString>()
-    }
-}
-impl Summarizer {
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
@@ -206,13 +213,6 @@ impl Summarizer {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
             .as_::<Promise<f64>>()
-    }
-}
-impl Summarizer {
-    /// Getter of the `inputQuota` attribute.
-    /// [`Summarizer.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/inputQuota)
-    pub fn input_quota(&self) -> f64 {
-        self.inner.get("inputQuota").as_::<f64>()
     }
 }
 impl Summarizer {

@@ -144,22 +144,6 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    /// The load method.
-    /// [`HTMLMediaElement.load`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/load)
-    pub fn load(&self) -> Undefined {
-        self.inner.call("load", &[]).as_::<Undefined>()
-    }
-}
-impl HTMLMediaElement {
-    /// The canPlayType method.
-    /// [`HTMLMediaElement.canPlayType`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType)
-    pub fn can_play_type(&self, type_: &JsString) -> CanPlayTypeResult {
-        self.inner
-            .call("canPlayType", &[type_.into()])
-            .as_::<CanPlayTypeResult>()
-    }
-}
-impl HTMLMediaElement {
     /// Getter of the `readyState` attribute.
     /// [`HTMLMediaElement.readyState`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/readyState)
     pub fn ready_state(&self) -> u16 {
@@ -187,26 +171,10 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    /// The fastSeek method.
-    /// [`HTMLMediaElement.fastSeek`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek)
-    pub fn fast_seek(&self, time: f64) -> Undefined {
-        self.inner
-            .call("fastSeek", &[time.into()])
-            .as_::<Undefined>()
-    }
-}
-impl HTMLMediaElement {
     /// Getter of the `duration` attribute.
     /// [`HTMLMediaElement.duration`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/duration)
     pub fn duration(&self) -> f64 {
         self.inner.get("duration").as_::<f64>()
-    }
-}
-impl HTMLMediaElement {
-    /// The getStartDate method.
-    /// [`HTMLMediaElement.getStartDate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/getStartDate)
-    pub fn get_start_date(&self) -> Object {
-        self.inner.call("getStartDate", &[]).as_::<Object>()
     }
 }
 impl HTMLMediaElement {
@@ -303,20 +271,6 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    /// The play method.
-    /// [`HTMLMediaElement.play`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)
-    pub fn play(&self) -> Promise<Undefined> {
-        self.inner.call("play", &[]).as_::<Promise<Undefined>>()
-    }
-}
-impl HTMLMediaElement {
-    /// The pause method.
-    /// [`HTMLMediaElement.pause`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)
-    pub fn pause(&self) -> Undefined {
-        self.inner.call("pause", &[]).as_::<Undefined>()
-    }
-}
-impl HTMLMediaElement {
     /// Getter of the `controls` attribute.
     /// [`HTMLMediaElement.controls`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/controls)
     pub fn controls(&self) -> bool {
@@ -390,50 +344,10 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    /// The addTextTrack method.
-    /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track0(&self, kind: &TextTrackKind) -> TextTrack {
-        self.inner
-            .call("addTextTrack", &[kind.into()])
-            .as_::<TextTrack>()
-    }
-    /// The addTextTrack method.
-    /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track1(&self, kind: &TextTrackKind, label: &JsString) -> TextTrack {
-        self.inner
-            .call("addTextTrack", &[kind.into(), label.into()])
-            .as_::<TextTrack>()
-    }
-    /// The addTextTrack method.
-    /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track2(
-        &self,
-        kind: &TextTrackKind,
-        label: &JsString,
-        language: &JsString,
-    ) -> TextTrack {
-        self.inner
-            .call(
-                "addTextTrack",
-                &[kind.into(), label.into(), language.into()],
-            )
-            .as_::<TextTrack>()
-    }
-}
-impl HTMLMediaElement {
     /// Getter of the `sinkId` attribute.
     /// [`HTMLMediaElement.sinkId`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/sinkId)
     pub fn sink_id(&self) -> JsString {
         self.inner.get("sinkId").as_::<JsString>()
-    }
-}
-impl HTMLMediaElement {
-    /// The setSinkId method.
-    /// [`HTMLMediaElement.setSinkId`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setSinkId)
-    pub fn set_sink_id(&self, sink_id: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("setSinkId", &[sink_id.into()])
-            .as_::<Promise<Undefined>>()
     }
 }
 impl HTMLMediaElement {
@@ -470,22 +384,6 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    /// The setMediaKeys method.
-    /// [`HTMLMediaElement.setMediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setMediaKeys)
-    pub fn set_media_keys(&self, media_keys: &MediaKeys) -> Promise<Undefined> {
-        self.inner
-            .call("setMediaKeys", &[media_keys.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl HTMLMediaElement {
-    /// The captureStream method.
-    /// [`HTMLMediaElement.captureStream`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/captureStream)
-    pub fn capture_stream(&self) -> MediaStream {
-        self.inner.call("captureStream", &[]).as_::<MediaStream>()
-    }
-}
-impl HTMLMediaElement {
     /// Getter of the `remote` attribute.
     /// [`HTMLMediaElement.remote`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/remote)
     pub fn remote(&self) -> RemotePlayback {
@@ -503,5 +401,107 @@ impl HTMLMediaElement {
     /// [`HTMLMediaElement.disableRemotePlayback`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/disableRemotePlayback)
     pub fn set_disable_remote_playback(&mut self, value: bool) {
         self.inner.set("disableRemotePlayback", value);
+    }
+}
+impl HTMLMediaElement {
+    /// The load method.
+    /// [`HTMLMediaElement.load`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/load)
+    pub fn load(&self) -> Undefined {
+        self.inner.call("load", &[]).as_::<Undefined>()
+    }
+}
+impl HTMLMediaElement {
+    /// The canPlayType method.
+    /// [`HTMLMediaElement.canPlayType`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType)
+    pub fn can_play_type(&self, type_: &JsString) -> CanPlayTypeResult {
+        self.inner
+            .call("canPlayType", &[type_.into()])
+            .as_::<CanPlayTypeResult>()
+    }
+}
+impl HTMLMediaElement {
+    /// The fastSeek method.
+    /// [`HTMLMediaElement.fastSeek`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek)
+    pub fn fast_seek(&self, time: f64) -> Undefined {
+        self.inner
+            .call("fastSeek", &[time.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLMediaElement {
+    /// The getStartDate method.
+    /// [`HTMLMediaElement.getStartDate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/getStartDate)
+    pub fn get_start_date(&self) -> Object {
+        self.inner.call("getStartDate", &[]).as_::<Object>()
+    }
+}
+impl HTMLMediaElement {
+    /// The play method.
+    /// [`HTMLMediaElement.play`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)
+    pub fn play(&self) -> Promise<Undefined> {
+        self.inner.call("play", &[]).as_::<Promise<Undefined>>()
+    }
+}
+impl HTMLMediaElement {
+    /// The pause method.
+    /// [`HTMLMediaElement.pause`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)
+    pub fn pause(&self) -> Undefined {
+        self.inner.call("pause", &[]).as_::<Undefined>()
+    }
+}
+impl HTMLMediaElement {
+    /// The addTextTrack method.
+    /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
+    pub fn add_text_track0(&self, kind: &TextTrackKind) -> TextTrack {
+        self.inner
+            .call("addTextTrack", &[kind.into()])
+            .as_::<TextTrack>()
+    }
+    /// The addTextTrack method.
+    /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
+    pub fn add_text_track1(&self, kind: &TextTrackKind, label: &JsString) -> TextTrack {
+        self.inner
+            .call("addTextTrack", &[kind.into(), label.into()])
+            .as_::<TextTrack>()
+    }
+    /// The addTextTrack method.
+    /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
+    pub fn add_text_track2(
+        &self,
+        kind: &TextTrackKind,
+        label: &JsString,
+        language: &JsString,
+    ) -> TextTrack {
+        self.inner
+            .call(
+                "addTextTrack",
+                &[kind.into(), label.into(), language.into()],
+            )
+            .as_::<TextTrack>()
+    }
+}
+impl HTMLMediaElement {
+    /// The setSinkId method.
+    /// [`HTMLMediaElement.setSinkId`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setSinkId)
+    pub fn set_sink_id(&self, sink_id: &JsString) -> Promise<Undefined> {
+        self.inner
+            .call("setSinkId", &[sink_id.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl HTMLMediaElement {
+    /// The setMediaKeys method.
+    /// [`HTMLMediaElement.setMediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setMediaKeys)
+    pub fn set_media_keys(&self, media_keys: &MediaKeys) -> Promise<Undefined> {
+        self.inner
+            .call("setMediaKeys", &[media_keys.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl HTMLMediaElement {
+    /// The captureStream method.
+    /// [`HTMLMediaElement.captureStream`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/captureStream)
+    pub fn capture_stream(&self) -> MediaStream {
+        self.inner.call("captureStream", &[]).as_::<MediaStream>()
     }
 }

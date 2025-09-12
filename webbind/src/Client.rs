@@ -92,27 +92,36 @@ impl Client {
     }
 }
 impl Client {
-    /// The postMessage method.
-    /// [`Client.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-    /// The postMessage method.
-    /// [`Client.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Client {
     /// Getter of the `lifecycleState` attribute.
     /// [`Client.lifecycleState`](https://developer.mozilla.org/en-US/docs/Web/API/Client/lifecycleState)
     pub fn lifecycle_state(&self) -> ClientLifecycleState {
         self.inner
             .get("lifecycleState")
             .as_::<ClientLifecycleState>()
+    }
+}
+impl Client {
+    /// The postMessage method.
+    /// [`Client.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage)
+    pub fn post_message(&self, message: &Any, transfer: &TypedArray<Object>) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), transfer.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Client {
+    /// The postMessage method.
+    /// [`Client.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage)
+    pub fn post_message1(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`Client.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Client/postMessage)
+    pub fn post_message2(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }

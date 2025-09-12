@@ -71,13 +71,6 @@ impl SharedWorkerGlobalScope {
     }
 }
 impl SharedWorkerGlobalScope {
-    /// The close method.
-    /// [`SharedWorkerGlobalScope.close`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/close)
-    pub fn close(&self) -> Undefined {
-        self.inner.call("close", &[]).as_::<Undefined>()
-    }
-}
-impl SharedWorkerGlobalScope {
     /// Getter of the `onconnect` attribute.
     /// [`SharedWorkerGlobalScope.onconnect`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/onconnect)
     pub fn onconnect(&self) -> Any {
@@ -88,5 +81,12 @@ impl SharedWorkerGlobalScope {
     /// [`SharedWorkerGlobalScope.onconnect`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/onconnect)
     pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
+    }
+}
+impl SharedWorkerGlobalScope {
+    /// The close method.
+    /// [`SharedWorkerGlobalScope.close`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/close)
+    pub fn close(&self) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

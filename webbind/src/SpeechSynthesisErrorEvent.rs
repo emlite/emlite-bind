@@ -64,6 +64,14 @@ impl From<&SpeechSynthesisErrorEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisErrorEvent);
 
 impl SpeechSynthesisErrorEvent {
+    /// Getter of the `error` attribute.
+    /// [`SpeechSynthesisErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent/error)
+    pub fn error(&self) -> SpeechSynthesisErrorCode {
+        self.inner.get("error").as_::<SpeechSynthesisErrorCode>()
+    }
+}
+
+impl SpeechSynthesisErrorEvent {
     /// The `new SpeechSynthesisErrorEvent(..)` constructor, creating a new SpeechSynthesisErrorEvent instance
     pub fn new(
         type_: &JsString,
@@ -74,12 +82,5 @@ impl SpeechSynthesisErrorEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<SpeechSynthesisEvent>(),
         }
-    }
-}
-impl SpeechSynthesisErrorEvent {
-    /// Getter of the `error` attribute.
-    /// [`SpeechSynthesisErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent/error)
-    pub fn error(&self) -> SpeechSynthesisErrorCode {
-        self.inner.get("error").as_::<SpeechSynthesisErrorCode>()
     }
 }

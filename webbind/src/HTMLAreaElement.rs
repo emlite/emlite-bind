@@ -64,14 +64,6 @@ impl From<&HTMLAreaElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLAreaElement);
 
 impl HTMLAreaElement {
-    /// The `new HTMLAreaElement(..)` constructor, creating a new HTMLAreaElement instance
-    pub fn new() -> HTMLAreaElement {
-        Self {
-            inner: Any::global("HTMLAreaElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLAreaElement {
     /// Getter of the `alt` attribute.
     /// [`HTMLAreaElement.alt`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAreaElement/alt)
     pub fn alt(&self) -> JsString {
@@ -343,5 +335,14 @@ impl HTMLAreaElement {
     /// [`HTMLAreaElement.hash`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAreaElement/hash)
     pub fn set_hash(&mut self, value: &JsString) {
         self.inner.set("hash", value);
+    }
+}
+
+impl HTMLAreaElement {
+    /// The `new HTMLAreaElement(..)` constructor, creating a new HTMLAreaElement instance
+    pub fn new() -> HTMLAreaElement {
+        Self {
+            inner: Any::global("HTMLAreaElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,6 +64,14 @@ impl From<&CSSMathSum> for Any {
 jsbind::utils::impl_dyn_cast!(CSSMathSum);
 
 impl CSSMathSum {
+    /// Getter of the `values` attribute.
+    /// [`CSSMathSum.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathSum/values)
+    pub fn values(&self) -> CSSNumericArray {
+        self.inner.get("values").as_::<CSSNumericArray>()
+    }
+}
+
+impl CSSMathSum {
     /// The `new CSSMathSum(..)` constructor, creating a new CSSMathSum instance
     pub fn new(args: &Any) -> CSSMathSum {
         Self {
@@ -71,12 +79,5 @@ impl CSSMathSum {
                 .new(&[args.into()])
                 .as_::<CSSMathValue>(),
         }
-    }
-}
-impl CSSMathSum {
-    /// Getter of the `values` attribute.
-    /// [`CSSMathSum.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathSum/values)
-    pub fn values(&self) -> CSSNumericArray {
-        self.inner.get("values").as_::<CSSNumericArray>()
     }
 }

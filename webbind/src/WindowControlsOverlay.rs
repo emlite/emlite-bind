@@ -71,13 +71,6 @@ impl WindowControlsOverlay {
     }
 }
 impl WindowControlsOverlay {
-    /// The getTitlebarAreaRect method.
-    /// [`WindowControlsOverlay.getTitlebarAreaRect`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlay/getTitlebarAreaRect)
-    pub fn get_titlebar_area_rect(&self) -> DOMRect {
-        self.inner.call("getTitlebarAreaRect", &[]).as_::<DOMRect>()
-    }
-}
-impl WindowControlsOverlay {
     /// Getter of the `ongeometrychange` attribute.
     /// [`WindowControlsOverlay.ongeometrychange`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlay/ongeometrychange)
     pub fn ongeometrychange(&self) -> Any {
@@ -88,5 +81,12 @@ impl WindowControlsOverlay {
     /// [`WindowControlsOverlay.ongeometrychange`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlay/ongeometrychange)
     pub fn set_ongeometrychange(&mut self, value: &Any) {
         self.inner.set("ongeometrychange", value);
+    }
+}
+impl WindowControlsOverlay {
+    /// The getTitlebarAreaRect method.
+    /// [`WindowControlsOverlay.getTitlebarAreaRect`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlay/getTitlebarAreaRect)
+    pub fn get_titlebar_area_rect(&self) -> DOMRect {
+        self.inner.call("getTitlebarAreaRect", &[]).as_::<DOMRect>()
     }
 }

@@ -92,6 +92,39 @@ impl GPUDevice {
     }
 }
 impl GPUDevice {
+    /// Getter of the `lost` attribute.
+    /// [`GPUDevice.lost`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/lost)
+    pub fn lost(&self) -> Promise<GPUDeviceLostInfo> {
+        self.inner.get("lost").as_::<Promise<GPUDeviceLostInfo>>()
+    }
+}
+impl GPUDevice {
+    /// Getter of the `onuncapturederror` attribute.
+    /// [`GPUDevice.onuncapturederror`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/onuncapturederror)
+    pub fn onuncapturederror(&self) -> Any {
+        self.inner.get("onuncapturederror").as_::<Any>()
+    }
+
+    /// Setter of the `onuncapturederror` attribute.
+    /// [`GPUDevice.onuncapturederror`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/onuncapturederror)
+    pub fn set_onuncapturederror(&mut self, value: &Any) {
+        self.inner.set("onuncapturederror", value);
+    }
+}
+impl GPUDevice {
+    /// Getter of the `label` attribute.
+    /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
+    }
+
+    /// Setter of the `label` attribute.
+    /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
+    pub fn set_label(&mut self, value: &JsString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPUDevice {
     /// The destroy method.
     /// [`GPUDevice.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/destroy)
     pub fn destroy(&self) -> Undefined {
@@ -273,13 +306,6 @@ impl GPUDevice {
     }
 }
 impl GPUDevice {
-    /// Getter of the `lost` attribute.
-    /// [`GPUDevice.lost`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/lost)
-    pub fn lost(&self) -> Promise<GPUDeviceLostInfo> {
-        self.inner.get("lost").as_::<Promise<GPUDeviceLostInfo>>()
-    }
-}
-impl GPUDevice {
     /// The pushErrorScope method.
     /// [`GPUDevice.pushErrorScope`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/pushErrorScope)
     pub fn push_error_scope(&self, filter: &GPUErrorFilter) -> Undefined {
@@ -295,31 +321,5 @@ impl GPUDevice {
         self.inner
             .call("popErrorScope", &[])
             .as_::<Promise<GPUError>>()
-    }
-}
-impl GPUDevice {
-    /// Getter of the `onuncapturederror` attribute.
-    /// [`GPUDevice.onuncapturederror`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/onuncapturederror)
-    pub fn onuncapturederror(&self) -> Any {
-        self.inner.get("onuncapturederror").as_::<Any>()
-    }
-
-    /// Setter of the `onuncapturederror` attribute.
-    /// [`GPUDevice.onuncapturederror`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/onuncapturederror)
-    pub fn set_onuncapturederror(&mut self, value: &Any) {
-        self.inner.set("onuncapturederror", value);
-    }
-}
-impl GPUDevice {
-    /// Getter of the `label` attribute.
-    /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
-    pub fn label(&self) -> JsString {
-        self.inner.get("label").as_::<JsString>()
-    }
-
-    /// Setter of the `label` attribute.
-    /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
-    pub fn set_label(&mut self, value: &JsString) {
-        self.inner.set("label", value);
     }
 }

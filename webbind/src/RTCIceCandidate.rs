@@ -64,23 +64,6 @@ impl From<&RTCIceCandidate> for Any {
 jsbind::utils::impl_dyn_cast!(RTCIceCandidate);
 
 impl RTCIceCandidate {
-    /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
-    pub fn new0() -> RTCIceCandidate {
-        Self {
-            inner: Any::global("RTCIceCandidate").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
-    pub fn new1(candidate_init_dict: &RTCLocalIceCandidateInit) -> RTCIceCandidate {
-        Self {
-            inner: Any::global("RTCIceCandidate")
-                .new(&[candidate_init_dict.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl RTCIceCandidate {
     /// Getter of the `candidate` attribute.
     /// [`RTCIceCandidate.candidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/candidate)
     pub fn candidate(&self) -> JsString {
@@ -192,6 +175,24 @@ impl RTCIceCandidate {
     /// [`RTCIceCandidate.url`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/url)
     pub fn url(&self) -> JsString {
         self.inner.get("url").as_::<JsString>()
+    }
+}
+
+impl RTCIceCandidate {
+    /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
+    pub fn new0() -> RTCIceCandidate {
+        Self {
+            inner: Any::global("RTCIceCandidate").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new RTCIceCandidate(..)` constructor, creating a new RTCIceCandidate instance
+    pub fn new1(candidate_init_dict: &RTCLocalIceCandidateInit) -> RTCIceCandidate {
+        Self {
+            inner: Any::global("RTCIceCandidate")
+                .new(&[candidate_init_dict.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl RTCIceCandidate {

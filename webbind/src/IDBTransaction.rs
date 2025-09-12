@@ -101,29 +101,6 @@ impl IDBTransaction {
     }
 }
 impl IDBTransaction {
-    /// The objectStore method.
-    /// [`IDBTransaction.objectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/objectStore)
-    pub fn object_store(&self, name: &JsString) -> IDBObjectStore {
-        self.inner
-            .call("objectStore", &[name.into()])
-            .as_::<IDBObjectStore>()
-    }
-}
-impl IDBTransaction {
-    /// The commit method.
-    /// [`IDBTransaction.commit`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/commit)
-    pub fn commit(&self) -> Undefined {
-        self.inner.call("commit", &[]).as_::<Undefined>()
-    }
-}
-impl IDBTransaction {
-    /// The abort method.
-    /// [`IDBTransaction.abort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/abort)
-    pub fn abort(&self) -> Undefined {
-        self.inner.call("abort", &[]).as_::<Undefined>()
-    }
-}
-impl IDBTransaction {
     /// Getter of the `onabort` attribute.
     /// [`IDBTransaction.onabort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/onabort)
     pub fn onabort(&self) -> Any {
@@ -160,5 +137,28 @@ impl IDBTransaction {
     /// [`IDBTransaction.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/onerror)
     pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
+    }
+}
+impl IDBTransaction {
+    /// The objectStore method.
+    /// [`IDBTransaction.objectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/objectStore)
+    pub fn object_store(&self, name: &JsString) -> IDBObjectStore {
+        self.inner
+            .call("objectStore", &[name.into()])
+            .as_::<IDBObjectStore>()
+    }
+}
+impl IDBTransaction {
+    /// The commit method.
+    /// [`IDBTransaction.commit`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/commit)
+    pub fn commit(&self) -> Undefined {
+        self.inner.call("commit", &[]).as_::<Undefined>()
+    }
+}
+impl IDBTransaction {
+    /// The abort method.
+    /// [`IDBTransaction.abort`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/abort)
+    pub fn abort(&self) -> Undefined {
+        self.inner.call("abort", &[]).as_::<Undefined>()
     }
 }

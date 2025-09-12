@@ -64,18 +64,19 @@ impl From<&Range> for Any {
 jsbind::utils::impl_dyn_cast!(Range);
 
 impl Range {
+    /// Getter of the `commonAncestorContainer` attribute.
+    /// [`Range.commonAncestorContainer`](https://developer.mozilla.org/en-US/docs/Web/API/Range/commonAncestorContainer)
+    pub fn common_ancestor_container(&self) -> Node {
+        self.inner.get("commonAncestorContainer").as_::<Node>()
+    }
+}
+
+impl Range {
     /// The `new Range(..)` constructor, creating a new Range instance
     pub fn new() -> Range {
         Self {
             inner: Any::global("Range").new(&[]).as_::<AbstractRange>(),
         }
-    }
-}
-impl Range {
-    /// Getter of the `commonAncestorContainer` attribute.
-    /// [`Range.commonAncestorContainer`](https://developer.mozilla.org/en-US/docs/Web/API/Range/commonAncestorContainer)
-    pub fn common_ancestor_container(&self) -> Node {
-        self.inner.get("commonAncestorContainer").as_::<Node>()
     }
 }
 impl Range {

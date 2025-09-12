@@ -64,6 +64,28 @@ impl From<&File> for Any {
 jsbind::utils::impl_dyn_cast!(File);
 
 impl File {
+    /// Getter of the `name` attribute.
+    /// [`File.name`](https://developer.mozilla.org/en-US/docs/Web/API/File/name)
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
+    }
+}
+impl File {
+    /// Getter of the `lastModified` attribute.
+    /// [`File.lastModified`](https://developer.mozilla.org/en-US/docs/Web/API/File/lastModified)
+    pub fn last_modified(&self) -> i64 {
+        self.inner.get("lastModified").as_::<i64>()
+    }
+}
+impl File {
+    /// Getter of the `webkitRelativePath` attribute.
+    /// [`File.webkitRelativePath`](https://developer.mozilla.org/en-US/docs/Web/API/File/webkitRelativePath)
+    pub fn webkit_relative_path(&self) -> JsString {
+        self.inner.get("webkitRelativePath").as_::<JsString>()
+    }
+}
+
+impl File {
     /// The `new File(..)` constructor, creating a new File instance
     pub fn new0(file_bits: &TypedArray<Any>, file_name: &JsString) -> File {
         Self {
@@ -84,26 +106,5 @@ impl File {
                 .new(&[file_bits.into(), file_name.into(), options.into()])
                 .as_::<Blob>(),
         }
-    }
-}
-impl File {
-    /// Getter of the `name` attribute.
-    /// [`File.name`](https://developer.mozilla.org/en-US/docs/Web/API/File/name)
-    pub fn name(&self) -> JsString {
-        self.inner.get("name").as_::<JsString>()
-    }
-}
-impl File {
-    /// Getter of the `lastModified` attribute.
-    /// [`File.lastModified`](https://developer.mozilla.org/en-US/docs/Web/API/File/lastModified)
-    pub fn last_modified(&self) -> i64 {
-        self.inner.get("lastModified").as_::<i64>()
-    }
-}
-impl File {
-    /// Getter of the `webkitRelativePath` attribute.
-    /// [`File.webkitRelativePath`](https://developer.mozilla.org/en-US/docs/Web/API/File/webkitRelativePath)
-    pub fn webkit_relative_path(&self) -> JsString {
-        self.inner.get("webkitRelativePath").as_::<JsString>()
     }
 }

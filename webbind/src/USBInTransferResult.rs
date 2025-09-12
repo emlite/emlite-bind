@@ -64,6 +64,21 @@ impl From<&USBInTransferResult> for Any {
 jsbind::utils::impl_dyn_cast!(USBInTransferResult);
 
 impl USBInTransferResult {
+    /// Getter of the `data` attribute.
+    /// [`USBInTransferResult.data`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult/data)
+    pub fn data(&self) -> DataView {
+        self.inner.get("data").as_::<DataView>()
+    }
+}
+impl USBInTransferResult {
+    /// Getter of the `status` attribute.
+    /// [`USBInTransferResult.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult/status)
+    pub fn status(&self) -> USBTransferStatus {
+        self.inner.get("status").as_::<USBTransferStatus>()
+    }
+}
+
+impl USBInTransferResult {
     /// The `new USBInTransferResult(..)` constructor, creating a new USBInTransferResult instance
     pub fn new0(status: &USBTransferStatus) -> USBInTransferResult {
         Self {
@@ -80,19 +95,5 @@ impl USBInTransferResult {
                 .new(&[status.into(), data.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl USBInTransferResult {
-    /// Getter of the `data` attribute.
-    /// [`USBInTransferResult.data`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult/data)
-    pub fn data(&self) -> DataView {
-        self.inner.get("data").as_::<DataView>()
-    }
-}
-impl USBInTransferResult {
-    /// Getter of the `status` attribute.
-    /// [`USBInTransferResult.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult/status)
-    pub fn status(&self) -> USBTransferStatus {
-        self.inner.get("status").as_::<USBTransferStatus>()
     }
 }

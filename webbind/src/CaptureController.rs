@@ -64,6 +64,40 @@ impl From<&CaptureController> for Any {
 jsbind::utils::impl_dyn_cast!(CaptureController);
 
 impl CaptureController {
+    /// Getter of the `oncapturedmousechange` attribute.
+    /// [`CaptureController.oncapturedmousechange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/oncapturedmousechange)
+    pub fn oncapturedmousechange(&self) -> Any {
+        self.inner.get("oncapturedmousechange").as_::<Any>()
+    }
+
+    /// Setter of the `oncapturedmousechange` attribute.
+    /// [`CaptureController.oncapturedmousechange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/oncapturedmousechange)
+    pub fn set_oncapturedmousechange(&mut self, value: &Any) {
+        self.inner.set("oncapturedmousechange", value);
+    }
+}
+impl CaptureController {
+    /// Getter of the `zoomLevel` attribute.
+    /// [`CaptureController.zoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/zoomLevel)
+    pub fn zoom_level(&self) -> i32 {
+        self.inner.get("zoomLevel").as_::<i32>()
+    }
+}
+impl CaptureController {
+    /// Getter of the `onzoomlevelchange` attribute.
+    /// [`CaptureController.onzoomlevelchange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/onzoomlevelchange)
+    pub fn onzoomlevelchange(&self) -> Any {
+        self.inner.get("onzoomlevelchange").as_::<Any>()
+    }
+
+    /// Setter of the `onzoomlevelchange` attribute.
+    /// [`CaptureController.onzoomlevelchange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/onzoomlevelchange)
+    pub fn set_onzoomlevelchange(&mut self, value: &Any) {
+        self.inner.set("onzoomlevelchange", value);
+    }
+}
+
+impl CaptureController {
     /// The `new CaptureController(..)` constructor, creating a new CaptureController instance
     pub fn new() -> CaptureController {
         Self {
@@ -83,32 +117,12 @@ impl CaptureController {
     }
 }
 impl CaptureController {
-    /// Getter of the `oncapturedmousechange` attribute.
-    /// [`CaptureController.oncapturedmousechange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/oncapturedmousechange)
-    pub fn oncapturedmousechange(&self) -> Any {
-        self.inner.get("oncapturedmousechange").as_::<Any>()
-    }
-
-    /// Setter of the `oncapturedmousechange` attribute.
-    /// [`CaptureController.oncapturedmousechange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/oncapturedmousechange)
-    pub fn set_oncapturedmousechange(&mut self, value: &Any) {
-        self.inner.set("oncapturedmousechange", value);
-    }
-}
-impl CaptureController {
     /// The getSupportedZoomLevels method.
     /// [`CaptureController.getSupportedZoomLevels`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/getSupportedZoomLevels)
     pub fn get_supported_zoom_levels(&self) -> TypedArray<i32> {
         self.inner
             .call("getSupportedZoomLevels", &[])
             .as_::<TypedArray<i32>>()
-    }
-}
-impl CaptureController {
-    /// Getter of the `zoomLevel` attribute.
-    /// [`CaptureController.zoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/zoomLevel)
-    pub fn zoom_level(&self) -> i32 {
-        self.inner.get("zoomLevel").as_::<i32>()
     }
 }
 impl CaptureController {
@@ -136,19 +150,6 @@ impl CaptureController {
         self.inner
             .call("resetZoomLevel", &[])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl CaptureController {
-    /// Getter of the `onzoomlevelchange` attribute.
-    /// [`CaptureController.onzoomlevelchange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/onzoomlevelchange)
-    pub fn onzoomlevelchange(&self) -> Any {
-        self.inner.get("onzoomlevelchange").as_::<Any>()
-    }
-
-    /// Setter of the `onzoomlevelchange` attribute.
-    /// [`CaptureController.onzoomlevelchange`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/onzoomlevelchange)
-    pub fn set_onzoomlevelchange(&mut self, value: &Any) {
-        self.inner.set("onzoomlevelchange", value);
     }
 }
 impl CaptureController {

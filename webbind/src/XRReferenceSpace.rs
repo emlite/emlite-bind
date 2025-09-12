@@ -64,15 +64,6 @@ impl From<&XRReferenceSpace> for Any {
 jsbind::utils::impl_dyn_cast!(XRReferenceSpace);
 
 impl XRReferenceSpace {
-    /// The getOffsetReferenceSpace method.
-    /// [`XRReferenceSpace.getOffsetReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/getOffsetReferenceSpace)
-    pub fn get_offset_reference_space(&self, origin_offset: &XRRigidTransform) -> XRReferenceSpace {
-        self.inner
-            .call("getOffsetReferenceSpace", &[origin_offset.into()])
-            .as_::<XRReferenceSpace>()
-    }
-}
-impl XRReferenceSpace {
     /// Getter of the `onreset` attribute.
     /// [`XRReferenceSpace.onreset`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/onreset)
     pub fn onreset(&self) -> Any {
@@ -83,5 +74,14 @@ impl XRReferenceSpace {
     /// [`XRReferenceSpace.onreset`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/onreset)
     pub fn set_onreset(&mut self, value: &Any) {
         self.inner.set("onreset", value);
+    }
+}
+impl XRReferenceSpace {
+    /// The getOffsetReferenceSpace method.
+    /// [`XRReferenceSpace.getOffsetReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/getOffsetReferenceSpace)
+    pub fn get_offset_reference_space(&self, origin_offset: &XRRigidTransform) -> XRReferenceSpace {
+        self.inner
+            .call("getOffsetReferenceSpace", &[origin_offset.into()])
+            .as_::<XRReferenceSpace>()
     }
 }

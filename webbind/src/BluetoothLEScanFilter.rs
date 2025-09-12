@@ -64,23 +64,6 @@ impl From<&BluetoothLEScanFilter> for Any {
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanFilter);
 
 impl BluetoothLEScanFilter {
-    /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
-    pub fn new0() -> BluetoothLEScanFilter {
-        Self {
-            inner: Any::global("BluetoothLEScanFilter").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
-    pub fn new1(init: &BluetoothLEScanFilterInit) -> BluetoothLEScanFilter {
-        Self {
-            inner: Any::global("BluetoothLEScanFilter")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl BluetoothLEScanFilter {
     /// Getter of the `name` attribute.
     /// [`BluetoothLEScanFilter.name`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/name)
     pub fn name(&self) -> JsString {
@@ -117,5 +100,23 @@ impl BluetoothLEScanFilter {
         self.inner
             .get("serviceData")
             .as_::<BluetoothServiceDataFilter>()
+    }
+}
+
+impl BluetoothLEScanFilter {
+    /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
+    pub fn new0() -> BluetoothLEScanFilter {
+        Self {
+            inner: Any::global("BluetoothLEScanFilter").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new BluetoothLEScanFilter(..)` constructor, creating a new BluetoothLEScanFilter instance
+    pub fn new1(init: &BluetoothLEScanFilterInit) -> BluetoothLEScanFilter {
+        Self {
+            inner: Any::global("BluetoothLEScanFilter")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
     }
 }

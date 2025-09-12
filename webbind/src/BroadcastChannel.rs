@@ -64,36 +64,10 @@ impl From<&BroadcastChannel> for Any {
 jsbind::utils::impl_dyn_cast!(BroadcastChannel);
 
 impl BroadcastChannel {
-    /// The `new BroadcastChannel(..)` constructor, creating a new BroadcastChannel instance
-    pub fn new(name: &JsString) -> BroadcastChannel {
-        Self {
-            inner: Any::global("BroadcastChannel")
-                .new(&[name.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl BroadcastChannel {
     /// Getter of the `name` attribute.
     /// [`BroadcastChannel.name`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/name)
     pub fn name(&self) -> JsString {
         self.inner.get("name").as_::<JsString>()
-    }
-}
-impl BroadcastChannel {
-    /// The postMessage method.
-    /// [`BroadcastChannel.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/postMessage)
-    pub fn post_message(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-}
-impl BroadcastChannel {
-    /// The close method.
-    /// [`BroadcastChannel.close`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/close)
-    pub fn close(&self) -> Undefined {
-        self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
 impl BroadcastChannel {
@@ -120,5 +94,32 @@ impl BroadcastChannel {
     /// [`BroadcastChannel.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/onmessageerror)
     pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
+    }
+}
+
+impl BroadcastChannel {
+    /// The `new BroadcastChannel(..)` constructor, creating a new BroadcastChannel instance
+    pub fn new(name: &JsString) -> BroadcastChannel {
+        Self {
+            inner: Any::global("BroadcastChannel")
+                .new(&[name.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+impl BroadcastChannel {
+    /// The postMessage method.
+    /// [`BroadcastChannel.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/postMessage)
+    pub fn post_message(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+}
+impl BroadcastChannel {
+    /// The close method.
+    /// [`BroadcastChannel.close`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/close)
+    pub fn close(&self) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
     }
 }

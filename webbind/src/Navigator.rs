@@ -71,38 +71,6 @@ impl Navigator {
     }
 }
 impl Navigator {
-    /// The getAutoplayPolicy method.
-    /// [`Navigator.getAutoplayPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getAutoplayPolicy)
-    pub fn get_autoplay_policy(&self, context: &AudioContext) -> AutoplayPolicy {
-        self.inner
-            .call("getAutoplayPolicy", &[context.into()])
-            .as_::<AutoplayPolicy>()
-    }
-}
-impl Navigator {
-    /// The getBattery method.
-    /// [`Navigator.getBattery`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getBattery)
-    pub fn get_battery(&self) -> Promise<BatteryManager> {
-        self.inner
-            .call("getBattery", &[])
-            .as_::<Promise<BatteryManager>>()
-    }
-}
-impl Navigator {
-    /// The sendBeacon method.
-    /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
-    pub fn send_beacon0(&self, url: &JsString) -> bool {
-        self.inner.call("sendBeacon", &[url.into()]).as_::<bool>()
-    }
-    /// The sendBeacon method.
-    /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
-    pub fn send_beacon1(&self, url: &JsString, data: &Any) -> bool {
-        self.inner
-            .call("sendBeacon", &[url.into(), data.into()])
-            .as_::<bool>()
-    }
-}
-impl Navigator {
     /// Getter of the `clipboard` attribute.
     /// [`Navigator.clipboard`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clipboard)
     pub fn clipboard(&self) -> Clipboard {
@@ -131,116 +99,10 @@ impl Navigator {
     }
 }
 impl Navigator {
-    /// The requestMediaKeySystemAccess method.
-    /// [`Navigator.requestMediaKeySystemAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMediaKeySystemAccess)
-    pub fn request_media_key_system_access(
-        &self,
-        key_system: &JsString,
-        supported_configurations: &TypedArray<MediaKeySystemConfiguration>,
-    ) -> Promise<MediaKeySystemAccess> {
-        self.inner
-            .call(
-                "requestMediaKeySystemAccess",
-                &[key_system.into(), supported_configurations.into()],
-            )
-            .as_::<Promise<MediaKeySystemAccess>>()
-    }
-}
-impl Navigator {
-    /// The deprecatedReplaceInURN method.
-    /// [`Navigator.deprecatedReplaceInURN`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedReplaceInURN)
-    pub fn deprecated_replace_in_urn(
-        &self,
-        urn_or_config: &Any,
-        replacements: &Record<JsString, JsString>,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call(
-                "deprecatedReplaceInURN",
-                &[urn_or_config.into(), replacements.into()],
-            )
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Navigator {
-    /// The deprecatedURNtoURL method.
-    /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
-    pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise<JsString> {
-        self.inner
-            .call("deprecatedURNtoURL", &[urn_or_config.into()])
-            .as_::<Promise<JsString>>()
-    }
-    /// The deprecatedURNtoURL method.
-    /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
-    pub fn deprecated_ur_nto_url1(
-        &self,
-        urn_or_config: &Any,
-        send_reports: bool,
-    ) -> Promise<JsString> {
-        self.inner
-            .call(
-                "deprecatedURNtoURL",
-                &[urn_or_config.into(), send_reports.into()],
-            )
-            .as_::<Promise<JsString>>()
-    }
-}
-impl Navigator {
-    /// The adAuctionComponents method.
-    /// [`Navigator.adAuctionComponents`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/adAuctionComponents)
-    pub fn ad_auction_components(&self, num_ad_components: u16) -> TypedArray<JsString> {
-        self.inner
-            .call("adAuctionComponents", &[num_ad_components.into()])
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Navigator {
-    /// The getGamepads method.
-    /// [`Navigator.getGamepads`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getGamepads)
-    pub fn get_gamepads(&self) -> TypedArray<Gamepad> {
-        self.inner
-            .call("getGamepads", &[])
-            .as_::<TypedArray<Gamepad>>()
-    }
-}
-impl Navigator {
     /// Getter of the `geolocation` attribute.
     /// [`Navigator.geolocation`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/geolocation)
     pub fn geolocation(&self) -> Geolocation {
         self.inner.get("geolocation").as_::<Geolocation>()
-    }
-}
-impl Navigator {
-    /// The getInstalledRelatedApps method.
-    /// [`Navigator.getInstalledRelatedApps`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInstalledRelatedApps)
-    pub fn get_installed_related_apps(&self) -> Promise<TypedArray<RelatedApplication>> {
-        self.inner
-            .call("getInstalledRelatedApps", &[])
-            .as_::<Promise<TypedArray<RelatedApplication>>>()
-    }
-}
-impl Navigator {
-    /// The queryHandwritingRecognizer method.
-    /// [`Navigator.queryHandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/queryHandwritingRecognizer)
-    pub fn query_handwriting_recognizer(
-        &self,
-        constraint: &HandwritingModelConstraint,
-    ) -> Promise<HandwritingRecognizerQueryResult> {
-        self.inner
-            .call("queryHandwritingRecognizer", &[constraint.into()])
-            .as_::<Promise<HandwritingRecognizerQueryResult>>()
-    }
-}
-impl Navigator {
-    /// The createHandwritingRecognizer method.
-    /// [`Navigator.createHandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createHandwritingRecognizer)
-    pub fn create_handwriting_recognizer(
-        &self,
-        constraint: &HandwritingModelConstraint,
-    ) -> Promise<HandwritingRecognizer> {
-        self.inner
-            .call("createHandwritingRecognizer", &[constraint.into()])
-            .as_::<Promise<HandwritingRecognizer>>()
     }
 }
 impl Navigator {
@@ -367,66 +229,6 @@ impl Navigator {
     }
 }
 impl Navigator {
-    /// The joinAdInterestGroup method.
-    /// [`Navigator.joinAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/joinAdInterestGroup)
-    pub fn join_ad_interest_group(&self, group: &AuctionAdInterestGroup) -> Promise<Undefined> {
-        self.inner
-            .call("joinAdInterestGroup", &[group.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Navigator {
-    /// The leaveAdInterestGroup method.
-    /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
-    pub fn leave_ad_interest_group0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("leaveAdInterestGroup", &[])
-            .as_::<Promise<Undefined>>()
-    }
-    /// The leaveAdInterestGroup method.
-    /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
-    pub fn leave_ad_interest_group1(
-        &self,
-        group: &AuctionAdInterestGroupKey,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call("leaveAdInterestGroup", &[group.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Navigator {
-    /// The clearOriginJoinedAdInterestGroups method.
-    /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
-    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("clearOriginJoinedAdInterestGroups", &[owner.into()])
-            .as_::<Promise<Undefined>>()
-    }
-    /// The clearOriginJoinedAdInterestGroups method.
-    /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
-    pub fn clear_origin_joined_ad_interest_groups1(
-        &self,
-        owner: &JsString,
-        interest_groups_to_keep: &TypedArray<JsString>,
-    ) -> Promise<Undefined> {
-        self.inner
-            .call(
-                "clearOriginJoinedAdInterestGroups",
-                &[owner.into(), interest_groups_to_keep.into()],
-            )
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Navigator {
-    /// The runAdAuction method.
-    /// [`Navigator.runAdAuction`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/runAdAuction)
-    pub fn run_ad_auction(&self, config: &AuctionAdConfig) -> Promise<Any> {
-        self.inner
-            .call("runAdAuction", &[config.into()])
-            .as_::<Promise<Any>>()
-    }
-}
-impl Navigator {
     /// Getter of the `deprecatedRunAdAuctionEnforcesKAnonymity` attribute.
     /// [`Navigator.deprecatedRunAdAuctionEnforcesKAnonymity`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedRunAdAuctionEnforcesKAnonymity)
     pub fn deprecated_run_ad_auction_enforces_k_anonymity(&self) -> bool {
@@ -436,65 +238,12 @@ impl Navigator {
     }
 }
 impl Navigator {
-    /// The canLoadAdAuctionFencedFrame method.
-    /// [`Navigator.canLoadAdAuctionFencedFrame`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canLoadAdAuctionFencedFrame)
-    pub fn can_load_ad_auction_fenced_frame(&self) -> bool {
-        self.inner
-            .call("canLoadAdAuctionFencedFrame", &[])
-            .as_::<bool>()
-    }
-}
-impl Navigator {
-    /// The getInterestGroupAdAuctionData method.
-    /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
-    pub fn get_interest_group_ad_auction_data0(&self) -> Promise<AdAuctionData> {
-        self.inner
-            .call("getInterestGroupAdAuctionData", &[])
-            .as_::<Promise<AdAuctionData>>()
-    }
-    /// The getInterestGroupAdAuctionData method.
-    /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
-    pub fn get_interest_group_ad_auction_data1(
-        &self,
-        config: &AdAuctionDataConfig,
-    ) -> Promise<AdAuctionData> {
-        self.inner
-            .call("getInterestGroupAdAuctionData", &[config.into()])
-            .as_::<Promise<AdAuctionData>>()
-    }
-}
-impl Navigator {
-    /// The createAuctionNonce method.
-    /// [`Navigator.createAuctionNonce`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createAuctionNonce)
-    pub fn create_auction_nonce(&self) -> Promise<JsString> {
-        self.inner
-            .call("createAuctionNonce", &[])
-            .as_::<Promise<JsString>>()
-    }
-}
-impl Navigator {
-    /// The updateAdInterestGroups method.
-    /// [`Navigator.updateAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/updateAdInterestGroups)
-    pub fn update_ad_interest_groups(&self) -> Undefined {
-        self.inner
-            .call("updateAdInterestGroups", &[])
-            .as_::<Undefined>()
-    }
-}
-impl Navigator {
     /// Getter of the `protectedAudience` attribute.
     /// [`Navigator.protectedAudience`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/protectedAudience)
     pub fn protected_audience(&self) -> ProtectedAudience {
         self.inner
             .get("protectedAudience")
             .as_::<ProtectedAudience>()
-    }
-}
-impl Navigator {
-    /// The vibrate method.
-    /// [`Navigator.vibrate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate)
-    pub fn vibrate(&self, pattern: &Any) -> bool {
-        self.inner.call("vibrate", &[pattern.into()]).as_::<bool>()
     }
 }
 impl Navigator {
@@ -512,52 +261,10 @@ impl Navigator {
     }
 }
 impl Navigator {
-    /// The share method.
-    /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-    pub fn share0(&self) -> Promise<Undefined> {
-        self.inner.call("share", &[]).as_::<Promise<Undefined>>()
-    }
-    /// The share method.
-    /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-    pub fn share1(&self, data: &ShareData) -> Promise<Undefined> {
-        self.inner
-            .call("share", &[data.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Navigator {
-    /// The canShare method.
-    /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
-    pub fn can_share0(&self) -> bool {
-        self.inner.call("canShare", &[]).as_::<bool>()
-    }
-    /// The canShare method.
-    /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
-    pub fn can_share1(&self, data: &ShareData) -> bool {
-        self.inner.call("canShare", &[data.into()]).as_::<bool>()
-    }
-}
-impl Navigator {
     /// Getter of the `hid` attribute.
     /// [`Navigator.hid`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/hid)
     pub fn hid(&self) -> HID {
         self.inner.get("hid").as_::<HID>()
-    }
-}
-impl Navigator {
-    /// The requestMIDIAccess method.
-    /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
-    pub fn request_midi_access0(&self) -> Promise<MIDIAccess> {
-        self.inner
-            .call("requestMIDIAccess", &[])
-            .as_::<Promise<MIDIAccess>>()
-    }
-    /// The requestMIDIAccess method.
-    /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
-    pub fn request_midi_access1(&self, options: &MIDIOptions) -> Promise<MIDIAccess> {
-        self.inner
-            .call("requestMIDIAccess", &[options.into()])
-            .as_::<Promise<MIDIAccess>>()
     }
 }
 impl Navigator {
@@ -584,31 +291,6 @@ impl Navigator {
     }
 }
 impl Navigator {
-    /// The setAppBadge method.
-    /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
-    pub fn set_app_badge0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("setAppBadge", &[])
-            .as_::<Promise<Undefined>>()
-    }
-    /// The setAppBadge method.
-    /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
-    pub fn set_app_badge1(&self, contents: u64) -> Promise<Undefined> {
-        self.inner
-            .call("setAppBadge", &[contents.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Navigator {
-    /// The clearAppBadge method.
-    /// [`Navigator.clearAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearAppBadge)
-    pub fn clear_app_badge(&self) -> Promise<Undefined> {
-        self.inner
-            .call("clearAppBadge", &[])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl Navigator {
     /// Getter of the `deviceMemory` attribute.
     /// [`Navigator.deviceMemory`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deviceMemory)
     pub fn device_memory(&self) -> f64 {
@@ -620,13 +302,6 @@ impl Navigator {
     /// [`Navigator.globalPrivacyControl`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl)
     pub fn global_privacy_control(&self) -> bool {
         self.inner.get("globalPrivacyControl").as_::<bool>()
-    }
-}
-impl Navigator {
-    /// The taintEnabled method.
-    /// [`Navigator.taintEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/taintEnabled)
-    pub fn taint_enabled(&self) -> bool {
-        self.inner.call("taintEnabled", &[]).as_::<bool>()
     }
 }
 impl Navigator {
@@ -658,24 +333,6 @@ impl Navigator {
     }
 }
 impl Navigator {
-    /// The registerProtocolHandler method.
-    /// [`Navigator.registerProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerProtocolHandler)
-    pub fn register_protocol_handler(&self, scheme: &JsString, url: &JsString) -> Undefined {
-        self.inner
-            .call("registerProtocolHandler", &[scheme.into(), url.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Navigator {
-    /// The unregisterProtocolHandler method.
-    /// [`Navigator.unregisterProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/unregisterProtocolHandler)
-    pub fn unregister_protocol_handler(&self, scheme: &JsString, url: &JsString) -> Undefined {
-        self.inner
-            .call("unregisterProtocolHandler", &[scheme.into(), url.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Navigator {
     /// Getter of the `cookieEnabled` attribute.
     /// [`Navigator.cookieEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/cookieEnabled)
     pub fn cookie_enabled(&self) -> bool {
@@ -694,13 +351,6 @@ impl Navigator {
     /// [`Navigator.mimeTypes`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/mimeTypes)
     pub fn mime_types(&self) -> MimeTypeArray {
         self.inner.get("mimeTypes").as_::<MimeTypeArray>()
-    }
-}
-impl Navigator {
-    /// The javaEnabled method.
-    /// [`Navigator.javaEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/javaEnabled)
-    pub fn java_enabled(&self) -> bool {
-        self.inner.call("javaEnabled", &[]).as_::<bool>()
     }
 }
 impl Navigator {
@@ -773,5 +423,373 @@ impl Navigator {
     /// [`Navigator.ml`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/ml)
     pub fn ml(&self) -> ML {
         self.inner.get("ml").as_::<ML>()
+    }
+}
+impl Navigator {
+    /// The getAutoplayPolicy method.
+    /// [`Navigator.getAutoplayPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getAutoplayPolicy)
+    pub fn get_autoplay_policy(&self, type_: &AutoplayPolicyMediaType) -> AutoplayPolicy {
+        self.inner
+            .call("getAutoplayPolicy", &[type_.into()])
+            .as_::<AutoplayPolicy>()
+    }
+}
+impl Navigator {
+    /// The getAutoplayPolicy method.
+    /// [`Navigator.getAutoplayPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getAutoplayPolicy)
+    pub fn get_autoplay_policy1(&self, element: &HTMLMediaElement) -> AutoplayPolicy {
+        self.inner
+            .call("getAutoplayPolicy", &[element.into()])
+            .as_::<AutoplayPolicy>()
+    }
+}
+impl Navigator {
+    /// The getAutoplayPolicy method.
+    /// [`Navigator.getAutoplayPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getAutoplayPolicy)
+    pub fn get_autoplay_policy2(&self, context: &AudioContext) -> AutoplayPolicy {
+        self.inner
+            .call("getAutoplayPolicy", &[context.into()])
+            .as_::<AutoplayPolicy>()
+    }
+}
+impl Navigator {
+    /// The getBattery method.
+    /// [`Navigator.getBattery`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getBattery)
+    pub fn get_battery(&self) -> Promise<BatteryManager> {
+        self.inner
+            .call("getBattery", &[])
+            .as_::<Promise<BatteryManager>>()
+    }
+}
+impl Navigator {
+    /// The sendBeacon method.
+    /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
+    pub fn send_beacon0(&self, url: &JsString) -> bool {
+        self.inner.call("sendBeacon", &[url.into()]).as_::<bool>()
+    }
+    /// The sendBeacon method.
+    /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
+    pub fn send_beacon1(&self, url: &JsString, data: &Any) -> bool {
+        self.inner
+            .call("sendBeacon", &[url.into(), data.into()])
+            .as_::<bool>()
+    }
+}
+impl Navigator {
+    /// The requestMediaKeySystemAccess method.
+    /// [`Navigator.requestMediaKeySystemAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMediaKeySystemAccess)
+    pub fn request_media_key_system_access(
+        &self,
+        key_system: &JsString,
+        supported_configurations: &TypedArray<MediaKeySystemConfiguration>,
+    ) -> Promise<MediaKeySystemAccess> {
+        self.inner
+            .call(
+                "requestMediaKeySystemAccess",
+                &[key_system.into(), supported_configurations.into()],
+            )
+            .as_::<Promise<MediaKeySystemAccess>>()
+    }
+}
+impl Navigator {
+    /// The deprecatedReplaceInURN method.
+    /// [`Navigator.deprecatedReplaceInURN`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedReplaceInURN)
+    pub fn deprecated_replace_in_urn(
+        &self,
+        urn_or_config: &Any,
+        replacements: &Record<JsString, JsString>,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "deprecatedReplaceInURN",
+                &[urn_or_config.into(), replacements.into()],
+            )
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Navigator {
+    /// The deprecatedURNtoURL method.
+    /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
+    pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise<JsString> {
+        self.inner
+            .call("deprecatedURNtoURL", &[urn_or_config.into()])
+            .as_::<Promise<JsString>>()
+    }
+    /// The deprecatedURNtoURL method.
+    /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
+    pub fn deprecated_ur_nto_url1(
+        &self,
+        urn_or_config: &Any,
+        send_reports: bool,
+    ) -> Promise<JsString> {
+        self.inner
+            .call(
+                "deprecatedURNtoURL",
+                &[urn_or_config.into(), send_reports.into()],
+            )
+            .as_::<Promise<JsString>>()
+    }
+}
+impl Navigator {
+    /// The adAuctionComponents method.
+    /// [`Navigator.adAuctionComponents`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/adAuctionComponents)
+    pub fn ad_auction_components(&self, num_ad_components: u16) -> TypedArray<JsString> {
+        self.inner
+            .call("adAuctionComponents", &[num_ad_components.into()])
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Navigator {
+    /// The getGamepads method.
+    /// [`Navigator.getGamepads`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getGamepads)
+    pub fn get_gamepads(&self) -> TypedArray<Gamepad> {
+        self.inner
+            .call("getGamepads", &[])
+            .as_::<TypedArray<Gamepad>>()
+    }
+}
+impl Navigator {
+    /// The getInstalledRelatedApps method.
+    /// [`Navigator.getInstalledRelatedApps`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInstalledRelatedApps)
+    pub fn get_installed_related_apps(&self) -> Promise<TypedArray<RelatedApplication>> {
+        self.inner
+            .call("getInstalledRelatedApps", &[])
+            .as_::<Promise<TypedArray<RelatedApplication>>>()
+    }
+}
+impl Navigator {
+    /// The queryHandwritingRecognizer method.
+    /// [`Navigator.queryHandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/queryHandwritingRecognizer)
+    pub fn query_handwriting_recognizer(
+        &self,
+        constraint: &HandwritingModelConstraint,
+    ) -> Promise<HandwritingRecognizerQueryResult> {
+        self.inner
+            .call("queryHandwritingRecognizer", &[constraint.into()])
+            .as_::<Promise<HandwritingRecognizerQueryResult>>()
+    }
+}
+impl Navigator {
+    /// The createHandwritingRecognizer method.
+    /// [`Navigator.createHandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createHandwritingRecognizer)
+    pub fn create_handwriting_recognizer(
+        &self,
+        constraint: &HandwritingModelConstraint,
+    ) -> Promise<HandwritingRecognizer> {
+        self.inner
+            .call("createHandwritingRecognizer", &[constraint.into()])
+            .as_::<Promise<HandwritingRecognizer>>()
+    }
+}
+impl Navigator {
+    /// The joinAdInterestGroup method.
+    /// [`Navigator.joinAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/joinAdInterestGroup)
+    pub fn join_ad_interest_group(&self, group: &AuctionAdInterestGroup) -> Promise<Undefined> {
+        self.inner
+            .call("joinAdInterestGroup", &[group.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Navigator {
+    /// The leaveAdInterestGroup method.
+    /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
+    pub fn leave_ad_interest_group0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("leaveAdInterestGroup", &[])
+            .as_::<Promise<Undefined>>()
+    }
+    /// The leaveAdInterestGroup method.
+    /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
+    pub fn leave_ad_interest_group1(
+        &self,
+        group: &AuctionAdInterestGroupKey,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call("leaveAdInterestGroup", &[group.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Navigator {
+    /// The clearOriginJoinedAdInterestGroups method.
+    /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
+    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &JsString) -> Promise<Undefined> {
+        self.inner
+            .call("clearOriginJoinedAdInterestGroups", &[owner.into()])
+            .as_::<Promise<Undefined>>()
+    }
+    /// The clearOriginJoinedAdInterestGroups method.
+    /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
+    pub fn clear_origin_joined_ad_interest_groups1(
+        &self,
+        owner: &JsString,
+        interest_groups_to_keep: &TypedArray<JsString>,
+    ) -> Promise<Undefined> {
+        self.inner
+            .call(
+                "clearOriginJoinedAdInterestGroups",
+                &[owner.into(), interest_groups_to_keep.into()],
+            )
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Navigator {
+    /// The runAdAuction method.
+    /// [`Navigator.runAdAuction`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/runAdAuction)
+    pub fn run_ad_auction(&self, config: &AuctionAdConfig) -> Promise<Any> {
+        self.inner
+            .call("runAdAuction", &[config.into()])
+            .as_::<Promise<Any>>()
+    }
+}
+impl Navigator {
+    /// The canLoadAdAuctionFencedFrame method.
+    /// [`Navigator.canLoadAdAuctionFencedFrame`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canLoadAdAuctionFencedFrame)
+    pub fn can_load_ad_auction_fenced_frame(&self) -> bool {
+        self.inner
+            .call("canLoadAdAuctionFencedFrame", &[])
+            .as_::<bool>()
+    }
+}
+impl Navigator {
+    /// The getInterestGroupAdAuctionData method.
+    /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
+    pub fn get_interest_group_ad_auction_data0(&self) -> Promise<AdAuctionData> {
+        self.inner
+            .call("getInterestGroupAdAuctionData", &[])
+            .as_::<Promise<AdAuctionData>>()
+    }
+    /// The getInterestGroupAdAuctionData method.
+    /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
+    pub fn get_interest_group_ad_auction_data1(
+        &self,
+        config: &AdAuctionDataConfig,
+    ) -> Promise<AdAuctionData> {
+        self.inner
+            .call("getInterestGroupAdAuctionData", &[config.into()])
+            .as_::<Promise<AdAuctionData>>()
+    }
+}
+impl Navigator {
+    /// The createAuctionNonce method.
+    /// [`Navigator.createAuctionNonce`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createAuctionNonce)
+    pub fn create_auction_nonce(&self) -> Promise<JsString> {
+        self.inner
+            .call("createAuctionNonce", &[])
+            .as_::<Promise<JsString>>()
+    }
+}
+impl Navigator {
+    /// The updateAdInterestGroups method.
+    /// [`Navigator.updateAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/updateAdInterestGroups)
+    pub fn update_ad_interest_groups(&self) -> Undefined {
+        self.inner
+            .call("updateAdInterestGroups", &[])
+            .as_::<Undefined>()
+    }
+}
+impl Navigator {
+    /// The vibrate method.
+    /// [`Navigator.vibrate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate)
+    pub fn vibrate(&self, pattern: &Any) -> bool {
+        self.inner.call("vibrate", &[pattern.into()]).as_::<bool>()
+    }
+}
+impl Navigator {
+    /// The share method.
+    /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
+    pub fn share0(&self) -> Promise<Undefined> {
+        self.inner.call("share", &[]).as_::<Promise<Undefined>>()
+    }
+    /// The share method.
+    /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
+    pub fn share1(&self, data: &ShareData) -> Promise<Undefined> {
+        self.inner
+            .call("share", &[data.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Navigator {
+    /// The canShare method.
+    /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
+    pub fn can_share0(&self) -> bool {
+        self.inner.call("canShare", &[]).as_::<bool>()
+    }
+    /// The canShare method.
+    /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
+    pub fn can_share1(&self, data: &ShareData) -> bool {
+        self.inner.call("canShare", &[data.into()]).as_::<bool>()
+    }
+}
+impl Navigator {
+    /// The requestMIDIAccess method.
+    /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
+    pub fn request_midi_access0(&self) -> Promise<MIDIAccess> {
+        self.inner
+            .call("requestMIDIAccess", &[])
+            .as_::<Promise<MIDIAccess>>()
+    }
+    /// The requestMIDIAccess method.
+    /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
+    pub fn request_midi_access1(&self, options: &MIDIOptions) -> Promise<MIDIAccess> {
+        self.inner
+            .call("requestMIDIAccess", &[options.into()])
+            .as_::<Promise<MIDIAccess>>()
+    }
+}
+impl Navigator {
+    /// The setAppBadge method.
+    /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
+    pub fn set_app_badge0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("setAppBadge", &[])
+            .as_::<Promise<Undefined>>()
+    }
+    /// The setAppBadge method.
+    /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
+    pub fn set_app_badge1(&self, contents: u64) -> Promise<Undefined> {
+        self.inner
+            .call("setAppBadge", &[contents.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Navigator {
+    /// The clearAppBadge method.
+    /// [`Navigator.clearAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearAppBadge)
+    pub fn clear_app_badge(&self) -> Promise<Undefined> {
+        self.inner
+            .call("clearAppBadge", &[])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl Navigator {
+    /// The taintEnabled method.
+    /// [`Navigator.taintEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/taintEnabled)
+    pub fn taint_enabled(&self) -> bool {
+        self.inner.call("taintEnabled", &[]).as_::<bool>()
+    }
+}
+impl Navigator {
+    /// The registerProtocolHandler method.
+    /// [`Navigator.registerProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerProtocolHandler)
+    pub fn register_protocol_handler(&self, scheme: &JsString, url: &JsString) -> Undefined {
+        self.inner
+            .call("registerProtocolHandler", &[scheme.into(), url.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Navigator {
+    /// The unregisterProtocolHandler method.
+    /// [`Navigator.unregisterProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/unregisterProtocolHandler)
+    pub fn unregister_protocol_handler(&self, scheme: &JsString, url: &JsString) -> Undefined {
+        self.inner
+            .call("unregisterProtocolHandler", &[scheme.into(), url.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Navigator {
+    /// The javaEnabled method.
+    /// [`Navigator.javaEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/javaEnabled)
+    pub fn java_enabled(&self) -> bool {
+        self.inner.call("javaEnabled", &[]).as_::<bool>()
     }
 }

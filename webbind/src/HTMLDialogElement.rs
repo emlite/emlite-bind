@@ -64,16 +64,6 @@ impl From<&HTMLDialogElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLDialogElement);
 
 impl HTMLDialogElement {
-    /// The `new HTMLDialogElement(..)` constructor, creating a new HTMLDialogElement instance
-    pub fn new() -> HTMLDialogElement {
-        Self {
-            inner: Any::global("HTMLDialogElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLDialogElement {
     /// Getter of the `open` attribute.
     /// [`HTMLDialogElement.open`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/open)
     pub fn open(&self) -> bool {
@@ -110,6 +100,17 @@ impl HTMLDialogElement {
     /// [`HTMLDialogElement.closedBy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
     pub fn set_closed_by(&mut self, value: &JsString) {
         self.inner.set("closedBy", value);
+    }
+}
+
+impl HTMLDialogElement {
+    /// The `new HTMLDialogElement(..)` constructor, creating a new HTMLDialogElement instance
+    pub fn new() -> HTMLDialogElement {
+        Self {
+            inner: Any::global("HTMLDialogElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }
 impl HTMLDialogElement {

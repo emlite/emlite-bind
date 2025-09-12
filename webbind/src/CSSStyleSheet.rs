@@ -64,6 +64,28 @@ impl From<&CSSStyleSheet> for Any {
 jsbind::utils::impl_dyn_cast!(CSSStyleSheet);
 
 impl CSSStyleSheet {
+    /// Getter of the `ownerRule` attribute.
+    /// [`CSSStyleSheet.ownerRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/ownerRule)
+    pub fn owner_rule(&self) -> CSSRule {
+        self.inner.get("ownerRule").as_::<CSSRule>()
+    }
+}
+impl CSSStyleSheet {
+    /// Getter of the `cssRules` attribute.
+    /// [`CSSStyleSheet.cssRules`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/cssRules)
+    pub fn css_rules(&self) -> CSSRuleList {
+        self.inner.get("cssRules").as_::<CSSRuleList>()
+    }
+}
+impl CSSStyleSheet {
+    /// Getter of the `rules` attribute.
+    /// [`CSSStyleSheet.rules`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/rules)
+    pub fn rules(&self) -> CSSRuleList {
+        self.inner.get("rules").as_::<CSSRuleList>()
+    }
+}
+
+impl CSSStyleSheet {
     /// The `new CSSStyleSheet(..)` constructor, creating a new CSSStyleSheet instance
     pub fn new0() -> CSSStyleSheet {
         Self {
@@ -78,20 +100,6 @@ impl CSSStyleSheet {
                 .new(&[options.into()])
                 .as_::<StyleSheet>(),
         }
-    }
-}
-impl CSSStyleSheet {
-    /// Getter of the `ownerRule` attribute.
-    /// [`CSSStyleSheet.ownerRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/ownerRule)
-    pub fn owner_rule(&self) -> CSSRule {
-        self.inner.get("ownerRule").as_::<CSSRule>()
-    }
-}
-impl CSSStyleSheet {
-    /// Getter of the `cssRules` attribute.
-    /// [`CSSStyleSheet.cssRules`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/cssRules)
-    pub fn css_rules(&self) -> CSSRuleList {
-        self.inner.get("cssRules").as_::<CSSRuleList>()
     }
 }
 impl CSSStyleSheet {
@@ -133,13 +141,6 @@ impl CSSStyleSheet {
         self.inner
             .call("replaceSync", &[text.into()])
             .as_::<Undefined>()
-    }
-}
-impl CSSStyleSheet {
-    /// Getter of the `rules` attribute.
-    /// [`CSSStyleSheet.rules`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/rules)
-    pub fn rules(&self) -> CSSRuleList {
-        self.inner.get("rules").as_::<CSSRuleList>()
     }
 }
 impl CSSStyleSheet {

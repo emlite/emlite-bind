@@ -64,6 +64,14 @@ impl From<&HTMLDataListElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLDataListElement);
 
 impl HTMLDataListElement {
+    /// Getter of the `options` attribute.
+    /// [`HTMLDataListElement.options`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataListElement/options)
+    pub fn options(&self) -> HTMLCollection {
+        self.inner.get("options").as_::<HTMLCollection>()
+    }
+}
+
+impl HTMLDataListElement {
     /// The `new HTMLDataListElement(..)` constructor, creating a new HTMLDataListElement instance
     pub fn new() -> HTMLDataListElement {
         Self {
@@ -71,12 +79,5 @@ impl HTMLDataListElement {
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
-    }
-}
-impl HTMLDataListElement {
-    /// Getter of the `options` attribute.
-    /// [`HTMLDataListElement.options`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataListElement/options)
-    pub fn options(&self) -> HTMLCollection {
-        self.inner.get("options").as_::<HTMLCollection>()
     }
 }

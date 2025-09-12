@@ -64,25 +64,6 @@ impl From<&StorageEvent> for Any {
 jsbind::utils::impl_dyn_cast!(StorageEvent);
 
 impl StorageEvent {
-    /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
-    pub fn new0(type_: &JsString) -> StorageEvent {
-        Self {
-            inner: Any::global("StorageEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &StorageEventInit) -> StorageEvent {
-        Self {
-            inner: Any::global("StorageEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl StorageEvent {
     /// Getter of the `key` attribute.
     /// [`StorageEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/key)
     pub fn key(&self) -> JsString {
@@ -115,6 +96,26 @@ impl StorageEvent {
     /// [`StorageEvent.storageArea`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/storageArea)
     pub fn storage_area(&self) -> Storage {
         self.inner.get("storageArea").as_::<Storage>()
+    }
+}
+
+impl StorageEvent {
+    /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
+    pub fn new0(type_: &JsString) -> StorageEvent {
+        Self {
+            inner: Any::global("StorageEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &StorageEventInit) -> StorageEvent {
+        Self {
+            inner: Any::global("StorageEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }
 impl StorageEvent {

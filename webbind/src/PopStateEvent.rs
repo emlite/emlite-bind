@@ -64,6 +64,21 @@ impl From<&PopStateEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PopStateEvent);
 
 impl PopStateEvent {
+    /// Getter of the `state` attribute.
+    /// [`PopStateEvent.state`](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent/state)
+    pub fn state(&self) -> Any {
+        self.inner.get("state").as_::<Any>()
+    }
+}
+impl PopStateEvent {
+    /// Getter of the `hasUAVisualTransition` attribute.
+    /// [`PopStateEvent.hasUAVisualTransition`](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent/hasUAVisualTransition)
+    pub fn has_ua_visual_transition(&self) -> bool {
+        self.inner.get("hasUAVisualTransition").as_::<bool>()
+    }
+}
+
+impl PopStateEvent {
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
     pub fn new0(type_: &JsString) -> PopStateEvent {
         Self {
@@ -80,19 +95,5 @@ impl PopStateEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl PopStateEvent {
-    /// Getter of the `state` attribute.
-    /// [`PopStateEvent.state`](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent/state)
-    pub fn state(&self) -> Any {
-        self.inner.get("state").as_::<Any>()
-    }
-}
-impl PopStateEvent {
-    /// Getter of the `hasUAVisualTransition` attribute.
-    /// [`PopStateEvent.hasUAVisualTransition`](https://developer.mozilla.org/en-US/docs/Web/API/PopStateEvent/hasUAVisualTransition)
-    pub fn has_ua_visual_transition(&self) -> bool {
-        self.inner.get("hasUAVisualTransition").as_::<bool>()
     }
 }

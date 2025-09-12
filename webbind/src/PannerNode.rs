@@ -64,25 +64,6 @@ impl From<&PannerNode> for Any {
 jsbind::utils::impl_dyn_cast!(PannerNode);
 
 impl PannerNode {
-    /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
-    pub fn new0(context: &BaseAudioContext) -> PannerNode {
-        Self {
-            inner: Any::global("PannerNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-
-    /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
-    pub fn new1(context: &BaseAudioContext, options: &PannerOptions) -> PannerNode {
-        Self {
-            inner: Any::global("PannerNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
-        }
-    }
-}
-impl PannerNode {
     /// Getter of the `panningModel` attribute.
     /// [`PannerNode.panningModel`](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/panningModel)
     pub fn panning_model(&self) -> PanningModelType {
@@ -226,6 +207,26 @@ impl PannerNode {
     /// [`PannerNode.coneOuterGain`](https://developer.mozilla.org/en-US/docs/Web/API/PannerNode/coneOuterGain)
     pub fn set_cone_outer_gain(&mut self, value: f64) {
         self.inner.set("coneOuterGain", value);
+    }
+}
+
+impl PannerNode {
+    /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
+    pub fn new0(context: &BaseAudioContext) -> PannerNode {
+        Self {
+            inner: Any::global("PannerNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+
+    /// The `new PannerNode(..)` constructor, creating a new PannerNode instance
+    pub fn new1(context: &BaseAudioContext, options: &PannerOptions) -> PannerNode {
+        Self {
+            inner: Any::global("PannerNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
     }
 }
 impl PannerNode {

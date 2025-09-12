@@ -64,19 +64,6 @@ impl From<&SpeechRecognitionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionEvent);
 
 impl SpeechRecognitionEvent {
-    /// The `new SpeechRecognitionEvent(..)` constructor, creating a new SpeechRecognitionEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &SpeechRecognitionEventInit,
-    ) -> SpeechRecognitionEvent {
-        Self {
-            inner: Any::global("SpeechRecognitionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl SpeechRecognitionEvent {
     /// Getter of the `resultIndex` attribute.
     /// [`SpeechRecognitionEvent.resultIndex`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionEvent/resultIndex)
     pub fn result_index(&self) -> u32 {
@@ -90,5 +77,19 @@ impl SpeechRecognitionEvent {
         self.inner
             .get("results")
             .as_::<SpeechRecognitionResultList>()
+    }
+}
+
+impl SpeechRecognitionEvent {
+    /// The `new SpeechRecognitionEvent(..)` constructor, creating a new SpeechRecognitionEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &SpeechRecognitionEventInit,
+    ) -> SpeechRecognitionEvent {
+        Self {
+            inner: Any::global("SpeechRecognitionEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

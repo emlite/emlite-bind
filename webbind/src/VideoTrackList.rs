@@ -71,15 +71,6 @@ impl VideoTrackList {
     }
 }
 impl VideoTrackList {
-    /// The getTrackById method.
-    /// [`VideoTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/getTrackById)
-    pub fn get_track_by_id(&self, id: &JsString) -> VideoTrack {
-        self.inner
-            .call("getTrackById", &[id.into()])
-            .as_::<VideoTrack>()
-    }
-}
-impl VideoTrackList {
     /// Getter of the `selectedIndex` attribute.
     /// [`VideoTrackList.selectedIndex`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/selectedIndex)
     pub fn selected_index(&self) -> i32 {
@@ -123,5 +114,14 @@ impl VideoTrackList {
     /// [`VideoTrackList.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/onremovetrack)
     pub fn set_onremovetrack(&mut self, value: &Any) {
         self.inner.set("onremovetrack", value);
+    }
+}
+impl VideoTrackList {
+    /// The getTrackById method.
+    /// [`VideoTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/getTrackById)
+    pub fn get_track_by_id(&self, id: &JsString) -> VideoTrack {
+        self.inner
+            .call("getTrackById", &[id.into()])
+            .as_::<VideoTrack>()
     }
 }

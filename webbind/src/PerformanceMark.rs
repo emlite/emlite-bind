@@ -64,6 +64,14 @@ impl From<&PerformanceMark> for Any {
 jsbind::utils::impl_dyn_cast!(PerformanceMark);
 
 impl PerformanceMark {
+    /// Getter of the `detail` attribute.
+    /// [`PerformanceMark.detail`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark/detail)
+    pub fn detail(&self) -> Any {
+        self.inner.get("detail").as_::<Any>()
+    }
+}
+
+impl PerformanceMark {
     /// The `new PerformanceMark(..)` constructor, creating a new PerformanceMark instance
     pub fn new0(mark_name: &JsString) -> PerformanceMark {
         Self {
@@ -80,12 +88,5 @@ impl PerformanceMark {
                 .new(&[mark_name.into(), mark_options.into()])
                 .as_::<PerformanceEntry>(),
         }
-    }
-}
-impl PerformanceMark {
-    /// Getter of the `detail` attribute.
-    /// [`PerformanceMark.detail`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark/detail)
-    pub fn detail(&self) -> Any {
-        self.inner.get("detail").as_::<Any>()
     }
 }

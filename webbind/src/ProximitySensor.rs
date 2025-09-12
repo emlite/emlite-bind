@@ -64,23 +64,6 @@ impl From<&ProximitySensor> for Any {
 jsbind::utils::impl_dyn_cast!(ProximitySensor);
 
 impl ProximitySensor {
-    /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
-    pub fn new0() -> ProximitySensor {
-        Self {
-            inner: Any::global("ProximitySensor").new(&[]).as_::<Sensor>(),
-        }
-    }
-
-    /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
-    pub fn new1(sensor_options: &SensorOptions) -> ProximitySensor {
-        Self {
-            inner: Any::global("ProximitySensor")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
-        }
-    }
-}
-impl ProximitySensor {
     /// Getter of the `distance` attribute.
     /// [`ProximitySensor.distance`](https://developer.mozilla.org/en-US/docs/Web/API/ProximitySensor/distance)
     pub fn distance(&self) -> f64 {
@@ -99,5 +82,23 @@ impl ProximitySensor {
     /// [`ProximitySensor.near`](https://developer.mozilla.org/en-US/docs/Web/API/ProximitySensor/near)
     pub fn near(&self) -> bool {
         self.inner.get("near").as_::<bool>()
+    }
+}
+
+impl ProximitySensor {
+    /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
+    pub fn new0() -> ProximitySensor {
+        Self {
+            inner: Any::global("ProximitySensor").new(&[]).as_::<Sensor>(),
+        }
+    }
+
+    /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
+    pub fn new1(sensor_options: &SensorOptions) -> ProximitySensor {
+        Self {
+            inner: Any::global("ProximitySensor")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
+        }
     }
 }

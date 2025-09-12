@@ -64,16 +64,6 @@ impl From<&NDEFRecord> for Any {
 jsbind::utils::impl_dyn_cast!(NDEFRecord);
 
 impl NDEFRecord {
-    /// The `new NDEFRecord(..)` constructor, creating a new NDEFRecord instance
-    pub fn new(record_init: &NDEFRecordInit) -> NDEFRecord {
-        Self {
-            inner: Any::global("NDEFRecord")
-                .new(&[record_init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl NDEFRecord {
     /// Getter of the `recordType` attribute.
     /// [`NDEFRecord.recordType`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/recordType)
     pub fn record_type(&self) -> JsString {
@@ -113,6 +103,17 @@ impl NDEFRecord {
     /// [`NDEFRecord.lang`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/lang)
     pub fn lang(&self) -> JsString {
         self.inner.get("lang").as_::<JsString>()
+    }
+}
+
+impl NDEFRecord {
+    /// The `new NDEFRecord(..)` constructor, creating a new NDEFRecord instance
+    pub fn new(record_init: &NDEFRecordInit) -> NDEFRecord {
+        Self {
+            inner: Any::global("NDEFRecord")
+                .new(&[record_init.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl NDEFRecord {

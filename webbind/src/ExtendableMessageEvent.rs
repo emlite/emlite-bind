@@ -64,28 +64,6 @@ impl From<&ExtendableMessageEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ExtendableMessageEvent);
 
 impl ExtendableMessageEvent {
-    /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new0(type_: &JsString) -> ExtendableMessageEvent {
-        Self {
-            inner: Any::global("ExtendableMessageEvent")
-                .new(&[type_.into()])
-                .as_::<ExtendableEvent>(),
-        }
-    }
-
-    /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new1(
-        type_: &JsString,
-        event_init_dict: &ExtendableMessageEventInit,
-    ) -> ExtendableMessageEvent {
-        Self {
-            inner: Any::global("ExtendableMessageEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<ExtendableEvent>(),
-        }
-    }
-}
-impl ExtendableMessageEvent {
     /// Getter of the `data` attribute.
     /// [`ExtendableMessageEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/data)
     pub fn data(&self) -> Any {
@@ -118,5 +96,28 @@ impl ExtendableMessageEvent {
     /// [`ExtendableMessageEvent.ports`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/ports)
     pub fn ports(&self) -> TypedArray<MessagePort> {
         self.inner.get("ports").as_::<TypedArray<MessagePort>>()
+    }
+}
+
+impl ExtendableMessageEvent {
+    /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
+    pub fn new0(type_: &JsString) -> ExtendableMessageEvent {
+        Self {
+            inner: Any::global("ExtendableMessageEvent")
+                .new(&[type_.into()])
+                .as_::<ExtendableEvent>(),
+        }
+    }
+
+    /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
+    pub fn new1(
+        type_: &JsString,
+        event_init_dict: &ExtendableMessageEventInit,
+    ) -> ExtendableMessageEvent {
+        Self {
+            inner: Any::global("ExtendableMessageEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
+        }
     }
 }

@@ -122,66 +122,6 @@ impl XRSession {
     }
 }
 impl XRSession {
-    /// The updateRenderState method.
-    /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
-    pub fn update_render_state0(&self) -> Undefined {
-        self.inner.call("updateRenderState", &[]).as_::<Undefined>()
-    }
-    /// The updateRenderState method.
-    /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
-    pub fn update_render_state1(&self, state: &XRRenderStateInit) -> Undefined {
-        self.inner
-            .call("updateRenderState", &[state.into()])
-            .as_::<Undefined>()
-    }
-}
-impl XRSession {
-    /// The updateTargetFrameRate method.
-    /// [`XRSession.updateTargetFrameRate`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateTargetFrameRate)
-    pub fn update_target_frame_rate(&self, rate: f32) -> Promise<Undefined> {
-        self.inner
-            .call("updateTargetFrameRate", &[rate.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl XRSession {
-    /// The requestReferenceSpace method.
-    /// [`XRSession.requestReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestReferenceSpace)
-    pub fn request_reference_space(
-        &self,
-        type_: &XRReferenceSpaceType,
-    ) -> Promise<XRReferenceSpace> {
-        self.inner
-            .call("requestReferenceSpace", &[type_.into()])
-            .as_::<Promise<XRReferenceSpace>>()
-    }
-}
-impl XRSession {
-    /// The requestAnimationFrame method.
-    /// [`XRSession.requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestAnimationFrame)
-    pub fn request_animation_frame(&self, callback: &Function) -> u32 {
-        self.inner
-            .call("requestAnimationFrame", &[callback.into()])
-            .as_::<u32>()
-    }
-}
-impl XRSession {
-    /// The cancelAnimationFrame method.
-    /// [`XRSession.cancelAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/cancelAnimationFrame)
-    pub fn cancel_animation_frame(&self, handle: u32) -> Undefined {
-        self.inner
-            .call("cancelAnimationFrame", &[handle.into()])
-            .as_::<Undefined>()
-    }
-}
-impl XRSession {
-    /// The end method.
-    /// [`XRSession.end`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/end)
-    pub fn end(&self) -> Promise<Undefined> {
-        self.inner.call("end", &[]).as_::<Promise<Undefined>>()
-    }
-}
-impl XRSession {
     /// Getter of the `onend` attribute.
     /// [`XRSession.onend`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/onend)
     pub fn onend(&self) -> Any {
@@ -321,24 +261,6 @@ impl XRSession {
     }
 }
 impl XRSession {
-    /// The restorePersistentAnchor method.
-    /// [`XRSession.restorePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/restorePersistentAnchor)
-    pub fn restore_persistent_anchor(&self, uuid: &JsString) -> Promise<XRAnchor> {
-        self.inner
-            .call("restorePersistentAnchor", &[uuid.into()])
-            .as_::<Promise<XRAnchor>>()
-    }
-}
-impl XRSession {
-    /// The deletePersistentAnchor method.
-    /// [`XRSession.deletePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/deletePersistentAnchor)
-    pub fn delete_persistent_anchor(&self, uuid: &JsString) -> Promise<Undefined> {
-        self.inner
-            .call("deletePersistentAnchor", &[uuid.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl XRSession {
     /// Getter of the `environmentBlendMode` attribute.
     /// [`XRSession.environmentBlendMode`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/environmentBlendMode)
     pub fn environment_blend_mode(&self) -> XREnvironmentBlendMode {
@@ -383,6 +305,100 @@ impl XRSession {
     }
 }
 impl XRSession {
+    /// Getter of the `domOverlayState` attribute.
+    /// [`XRSession.domOverlayState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/domOverlayState)
+    pub fn dom_overlay_state(&self) -> XRDOMOverlayState {
+        self.inner.get("domOverlayState").as_::<XRDOMOverlayState>()
+    }
+}
+impl XRSession {
+    /// Getter of the `preferredReflectionFormat` attribute.
+    /// [`XRSession.preferredReflectionFormat`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/preferredReflectionFormat)
+    pub fn preferred_reflection_format(&self) -> XRReflectionFormat {
+        self.inner
+            .get("preferredReflectionFormat")
+            .as_::<XRReflectionFormat>()
+    }
+}
+impl XRSession {
+    /// The updateRenderState method.
+    /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
+    pub fn update_render_state0(&self) -> Undefined {
+        self.inner.call("updateRenderState", &[]).as_::<Undefined>()
+    }
+    /// The updateRenderState method.
+    /// [`XRSession.updateRenderState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateRenderState)
+    pub fn update_render_state1(&self, state: &XRRenderStateInit) -> Undefined {
+        self.inner
+            .call("updateRenderState", &[state.into()])
+            .as_::<Undefined>()
+    }
+}
+impl XRSession {
+    /// The updateTargetFrameRate method.
+    /// [`XRSession.updateTargetFrameRate`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateTargetFrameRate)
+    pub fn update_target_frame_rate(&self, rate: f32) -> Promise<Undefined> {
+        self.inner
+            .call("updateTargetFrameRate", &[rate.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl XRSession {
+    /// The requestReferenceSpace method.
+    /// [`XRSession.requestReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestReferenceSpace)
+    pub fn request_reference_space(
+        &self,
+        type_: &XRReferenceSpaceType,
+    ) -> Promise<XRReferenceSpace> {
+        self.inner
+            .call("requestReferenceSpace", &[type_.into()])
+            .as_::<Promise<XRReferenceSpace>>()
+    }
+}
+impl XRSession {
+    /// The requestAnimationFrame method.
+    /// [`XRSession.requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestAnimationFrame)
+    pub fn request_animation_frame(&self, callback: &Function) -> u32 {
+        self.inner
+            .call("requestAnimationFrame", &[callback.into()])
+            .as_::<u32>()
+    }
+}
+impl XRSession {
+    /// The cancelAnimationFrame method.
+    /// [`XRSession.cancelAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/cancelAnimationFrame)
+    pub fn cancel_animation_frame(&self, handle: u32) -> Undefined {
+        self.inner
+            .call("cancelAnimationFrame", &[handle.into()])
+            .as_::<Undefined>()
+    }
+}
+impl XRSession {
+    /// The end method.
+    /// [`XRSession.end`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/end)
+    pub fn end(&self) -> Promise<Undefined> {
+        self.inner.call("end", &[]).as_::<Promise<Undefined>>()
+    }
+}
+impl XRSession {
+    /// The restorePersistentAnchor method.
+    /// [`XRSession.restorePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/restorePersistentAnchor)
+    pub fn restore_persistent_anchor(&self, uuid: &JsString) -> Promise<XRAnchor> {
+        self.inner
+            .call("restorePersistentAnchor", &[uuid.into()])
+            .as_::<Promise<XRAnchor>>()
+    }
+}
+impl XRSession {
+    /// The deletePersistentAnchor method.
+    /// [`XRSession.deletePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/deletePersistentAnchor)
+    pub fn delete_persistent_anchor(&self, uuid: &JsString) -> Promise<Undefined> {
+        self.inner
+            .call("deletePersistentAnchor", &[uuid.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl XRSession {
     /// The pauseDepthSensing method.
     /// [`XRSession.pauseDepthSensing`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/pauseDepthSensing)
     pub fn pause_depth_sensing(&self) -> Undefined {
@@ -396,13 +412,6 @@ impl XRSession {
         self.inner
             .call("resumeDepthSensing", &[])
             .as_::<Undefined>()
-    }
-}
-impl XRSession {
-    /// Getter of the `domOverlayState` attribute.
-    /// [`XRSession.domOverlayState`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/domOverlayState)
-    pub fn dom_overlay_state(&self) -> XRDOMOverlayState {
-        self.inner.get("domOverlayState").as_::<XRDOMOverlayState>()
     }
 }
 impl XRSession {
@@ -443,15 +452,6 @@ impl XRSession {
         self.inner
             .call("requestLightProbe", &[options.into()])
             .as_::<Promise<XRLightProbe>>()
-    }
-}
-impl XRSession {
-    /// Getter of the `preferredReflectionFormat` attribute.
-    /// [`XRSession.preferredReflectionFormat`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/preferredReflectionFormat)
-    pub fn preferred_reflection_format(&self) -> XRReflectionFormat {
-        self.inner
-            .get("preferredReflectionFormat")
-            .as_::<XRReflectionFormat>()
     }
 }
 impl XRSession {

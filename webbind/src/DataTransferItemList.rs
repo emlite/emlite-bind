@@ -73,7 +73,16 @@ impl DataTransferItemList {
 impl DataTransferItemList {
     /// The add method.
     /// [`DataTransferItemList.add`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/add)
-    pub fn add(&self, data: &File) -> DataTransferItem {
+    pub fn add(&self, data: &JsString, type_: &JsString) -> DataTransferItem {
+        self.inner
+            .call("add", &[data.into(), type_.into()])
+            .as_::<DataTransferItem>()
+    }
+}
+impl DataTransferItemList {
+    /// The add method.
+    /// [`DataTransferItemList.add`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList/add)
+    pub fn add1(&self, data: &File) -> DataTransferItem {
         self.inner
             .call("add", &[data.into()])
             .as_::<DataTransferItem>()

@@ -1,6 +1,6 @@
 [package]
 name = "webbind"
-version = "0.1.35"
+version = "0.1.36"
 edition = "2024"
 description = "Rust bindings for the web api, auto-generated from WebIDL"
 documentation = "https://docs.rs/webbind"

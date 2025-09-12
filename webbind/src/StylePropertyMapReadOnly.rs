@@ -64,6 +64,13 @@ impl From<&StylePropertyMapReadOnly> for Any {
 jsbind::utils::impl_dyn_cast!(StylePropertyMapReadOnly);
 
 impl StylePropertyMapReadOnly {
+    /// Getter of the `size` attribute.
+    /// [`StylePropertyMapReadOnly.size`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/size)
+    pub fn size(&self) -> u32 {
+        self.inner.get("size").as_::<u32>()
+    }
+}
+impl StylePropertyMapReadOnly {
     /// The get method.
     /// [`StylePropertyMapReadOnly.get`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/get)
     pub fn get(&self, property: &JsString) -> Any {
@@ -84,12 +91,5 @@ impl StylePropertyMapReadOnly {
     /// [`StylePropertyMapReadOnly.has`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/has)
     pub fn has(&self, property: &JsString) -> bool {
         self.inner.call("has", &[property.into()]).as_::<bool>()
-    }
-}
-impl StylePropertyMapReadOnly {
-    /// Getter of the `size` attribute.
-    /// [`StylePropertyMapReadOnly.size`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/size)
-    pub fn size(&self) -> u32 {
-        self.inner.get("size").as_::<u32>()
     }
 }

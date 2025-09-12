@@ -64,6 +64,21 @@ impl From<&CapturedMouseEvent> for Any {
 jsbind::utils::impl_dyn_cast!(CapturedMouseEvent);
 
 impl CapturedMouseEvent {
+    /// Getter of the `surfaceX` attribute.
+    /// [`CapturedMouseEvent.surfaceX`](https://developer.mozilla.org/en-US/docs/Web/API/CapturedMouseEvent/surfaceX)
+    pub fn surface_x(&self) -> i32 {
+        self.inner.get("surfaceX").as_::<i32>()
+    }
+}
+impl CapturedMouseEvent {
+    /// Getter of the `surfaceY` attribute.
+    /// [`CapturedMouseEvent.surfaceY`](https://developer.mozilla.org/en-US/docs/Web/API/CapturedMouseEvent/surfaceY)
+    pub fn surface_y(&self) -> i32 {
+        self.inner.get("surfaceY").as_::<i32>()
+    }
+}
+
+impl CapturedMouseEvent {
     /// The `new CapturedMouseEvent(..)` constructor, creating a new CapturedMouseEvent instance
     pub fn new0(type_: &JsString) -> CapturedMouseEvent {
         Self {
@@ -80,19 +95,5 @@ impl CapturedMouseEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl CapturedMouseEvent {
-    /// Getter of the `surfaceX` attribute.
-    /// [`CapturedMouseEvent.surfaceX`](https://developer.mozilla.org/en-US/docs/Web/API/CapturedMouseEvent/surfaceX)
-    pub fn surface_x(&self) -> i32 {
-        self.inner.get("surfaceX").as_::<i32>()
-    }
-}
-impl CapturedMouseEvent {
-    /// Getter of the `surfaceY` attribute.
-    /// [`CapturedMouseEvent.surfaceY`](https://developer.mozilla.org/en-US/docs/Web/API/CapturedMouseEvent/surfaceY)
-    pub fn surface_y(&self) -> i32 {
-        self.inner.get("surfaceY").as_::<i32>()
     }
 }

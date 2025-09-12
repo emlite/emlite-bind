@@ -64,16 +64,6 @@ impl From<&USBAlternateInterface> for Any {
 jsbind::utils::impl_dyn_cast!(USBAlternateInterface);
 
 impl USBAlternateInterface {
-    /// The `new USBAlternateInterface(..)` constructor, creating a new USBAlternateInterface instance
-    pub fn new(device_interface: &USBInterface, alternate_setting: u8) -> USBAlternateInterface {
-        Self {
-            inner: Any::global("USBAlternateInterface")
-                .new(&[device_interface.into(), alternate_setting.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl USBAlternateInterface {
     /// Getter of the `alternateSetting` attribute.
     /// [`USBAlternateInterface.alternateSetting`](https://developer.mozilla.org/en-US/docs/Web/API/USBAlternateInterface/alternateSetting)
     pub fn alternate_setting(&self) -> u8 {
@@ -113,5 +103,16 @@ impl USBAlternateInterface {
     /// [`USBAlternateInterface.endpoints`](https://developer.mozilla.org/en-US/docs/Web/API/USBAlternateInterface/endpoints)
     pub fn endpoints(&self) -> TypedArray<USBEndpoint> {
         self.inner.get("endpoints").as_::<TypedArray<USBEndpoint>>()
+    }
+}
+
+impl USBAlternateInterface {
+    /// The `new USBAlternateInterface(..)` constructor, creating a new USBAlternateInterface instance
+    pub fn new(device_interface: &USBInterface, alternate_setting: u8) -> USBAlternateInterface {
+        Self {
+            inner: Any::global("USBAlternateInterface")
+                .new(&[device_interface.into(), alternate_setting.into()])
+                .as_::<Any>(),
+        }
     }
 }

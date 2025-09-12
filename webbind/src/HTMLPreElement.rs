@@ -64,14 +64,6 @@ impl From<&HTMLPreElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLPreElement);
 
 impl HTMLPreElement {
-    /// The `new HTMLPreElement(..)` constructor, creating a new HTMLPreElement instance
-    pub fn new() -> HTMLPreElement {
-        Self {
-            inner: Any::global("HTMLPreElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLPreElement {
     /// Getter of the `width` attribute.
     /// [`HTMLPreElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement/width)
     pub fn width(&self) -> i32 {
@@ -82,5 +74,14 @@ impl HTMLPreElement {
     /// [`HTMLPreElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement/width)
     pub fn set_width(&mut self, value: i32) {
         self.inner.set("width", value);
+    }
+}
+
+impl HTMLPreElement {
+    /// The `new HTMLPreElement(..)` constructor, creating a new HTMLPreElement instance
+    pub fn new() -> HTMLPreElement {
+        Self {
+            inner: Any::global("HTMLPreElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

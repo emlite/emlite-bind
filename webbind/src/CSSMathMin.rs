@@ -64,6 +64,14 @@ impl From<&CSSMathMin> for Any {
 jsbind::utils::impl_dyn_cast!(CSSMathMin);
 
 impl CSSMathMin {
+    /// Getter of the `values` attribute.
+    /// [`CSSMathMin.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMin/values)
+    pub fn values(&self) -> CSSNumericArray {
+        self.inner.get("values").as_::<CSSNumericArray>()
+    }
+}
+
+impl CSSMathMin {
     /// The `new CSSMathMin(..)` constructor, creating a new CSSMathMin instance
     pub fn new(args: &Any) -> CSSMathMin {
         Self {
@@ -71,12 +79,5 @@ impl CSSMathMin {
                 .new(&[args.into()])
                 .as_::<CSSMathValue>(),
         }
-    }
-}
-impl CSSMathMin {
-    /// Getter of the `values` attribute.
-    /// [`CSSMathMin.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMin/values)
-    pub fn values(&self) -> CSSNumericArray {
-        self.inner.get("values").as_::<CSSNumericArray>()
     }
 }

@@ -64,27 +64,6 @@ impl From<&GPUTexture> for Any {
 jsbind::utils::impl_dyn_cast!(GPUTexture);
 
 impl GPUTexture {
-    /// The createView method.
-    /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
-    pub fn create_view0(&self) -> GPUTextureView {
-        self.inner.call("createView", &[]).as_::<GPUTextureView>()
-    }
-    /// The createView method.
-    /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
-    pub fn create_view1(&self, descriptor: &GPUTextureViewDescriptor) -> GPUTextureView {
-        self.inner
-            .call("createView", &[descriptor.into()])
-            .as_::<GPUTextureView>()
-    }
-}
-impl GPUTexture {
-    /// The destroy method.
-    /// [`GPUTexture.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/destroy)
-    pub fn destroy(&self) -> Undefined {
-        self.inner.call("destroy", &[]).as_::<Undefined>()
-    }
-}
-impl GPUTexture {
     /// Getter of the `width` attribute.
     /// [`GPUTexture.width`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/width)
     pub fn width(&self) -> Any {
@@ -151,5 +130,26 @@ impl GPUTexture {
     /// [`GPUTexture.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/label)
     pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
+    }
+}
+impl GPUTexture {
+    /// The createView method.
+    /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
+    pub fn create_view0(&self) -> GPUTextureView {
+        self.inner.call("createView", &[]).as_::<GPUTextureView>()
+    }
+    /// The createView method.
+    /// [`GPUTexture.createView`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/createView)
+    pub fn create_view1(&self, descriptor: &GPUTextureViewDescriptor) -> GPUTextureView {
+        self.inner
+            .call("createView", &[descriptor.into()])
+            .as_::<GPUTextureView>()
+    }
+}
+impl GPUTexture {
+    /// The destroy method.
+    /// [`GPUTexture.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUTexture/destroy)
+    pub fn destroy(&self) -> Undefined {
+        self.inner.call("destroy", &[]).as_::<Undefined>()
     }
 }

@@ -64,6 +64,21 @@ impl From<&BufferedChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(BufferedChangeEvent);
 
 impl BufferedChangeEvent {
+    /// Getter of the `addedRanges` attribute.
+    /// [`BufferedChangeEvent.addedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/BufferedChangeEvent/addedRanges)
+    pub fn added_ranges(&self) -> TimeRanges {
+        self.inner.get("addedRanges").as_::<TimeRanges>()
+    }
+}
+impl BufferedChangeEvent {
+    /// Getter of the `removedRanges` attribute.
+    /// [`BufferedChangeEvent.removedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/BufferedChangeEvent/removedRanges)
+    pub fn removed_ranges(&self) -> TimeRanges {
+        self.inner.get("removedRanges").as_::<TimeRanges>()
+    }
+}
+
+impl BufferedChangeEvent {
     /// The `new BufferedChangeEvent(..)` constructor, creating a new BufferedChangeEvent instance
     pub fn new0(type_: &JsString) -> BufferedChangeEvent {
         Self {
@@ -83,19 +98,5 @@ impl BufferedChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl BufferedChangeEvent {
-    /// Getter of the `addedRanges` attribute.
-    /// [`BufferedChangeEvent.addedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/BufferedChangeEvent/addedRanges)
-    pub fn added_ranges(&self) -> TimeRanges {
-        self.inner.get("addedRanges").as_::<TimeRanges>()
-    }
-}
-impl BufferedChangeEvent {
-    /// Getter of the `removedRanges` attribute.
-    /// [`BufferedChangeEvent.removedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/BufferedChangeEvent/removedRanges)
-    pub fn removed_ranges(&self) -> TimeRanges {
-        self.inner.get("removedRanges").as_::<TimeRanges>()
     }
 }

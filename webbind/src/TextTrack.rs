@@ -128,22 +128,6 @@ impl TextTrack {
     }
 }
 impl TextTrack {
-    /// The addCue method.
-    /// [`TextTrack.addCue`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/addCue)
-    pub fn add_cue(&self, cue: &TextTrackCue) -> Undefined {
-        self.inner.call("addCue", &[cue.into()]).as_::<Undefined>()
-    }
-}
-impl TextTrack {
-    /// The removeCue method.
-    /// [`TextTrack.removeCue`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/removeCue)
-    pub fn remove_cue(&self, cue: &TextTrackCue) -> Undefined {
-        self.inner
-            .call("removeCue", &[cue.into()])
-            .as_::<Undefined>()
-    }
-}
-impl TextTrack {
     /// Getter of the `oncuechange` attribute.
     /// [`TextTrack.oncuechange`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/oncuechange)
     pub fn oncuechange(&self) -> Any {
@@ -161,5 +145,21 @@ impl TextTrack {
     /// [`TextTrack.sourceBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/sourceBuffer)
     pub fn source_buffer(&self) -> SourceBuffer {
         self.inner.get("sourceBuffer").as_::<SourceBuffer>()
+    }
+}
+impl TextTrack {
+    /// The addCue method.
+    /// [`TextTrack.addCue`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/addCue)
+    pub fn add_cue(&self, cue: &TextTrackCue) -> Undefined {
+        self.inner.call("addCue", &[cue.into()]).as_::<Undefined>()
+    }
+}
+impl TextTrack {
+    /// The removeCue method.
+    /// [`TextTrack.removeCue`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/removeCue)
+    pub fn remove_cue(&self, cue: &TextTrackCue) -> Undefined {
+        self.inner
+            .call("removeCue", &[cue.into()])
+            .as_::<Undefined>()
     }
 }

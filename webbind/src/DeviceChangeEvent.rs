@@ -64,6 +64,25 @@ impl From<&DeviceChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(DeviceChangeEvent);
 
 impl DeviceChangeEvent {
+    /// Getter of the `devices` attribute.
+    /// [`DeviceChangeEvent.devices`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceChangeEvent/devices)
+    pub fn devices(&self) -> TypedArray<MediaDeviceInfo> {
+        self.inner
+            .get("devices")
+            .as_::<TypedArray<MediaDeviceInfo>>()
+    }
+}
+impl DeviceChangeEvent {
+    /// Getter of the `userInsertedDevices` attribute.
+    /// [`DeviceChangeEvent.userInsertedDevices`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceChangeEvent/userInsertedDevices)
+    pub fn user_inserted_devices(&self) -> TypedArray<MediaDeviceInfo> {
+        self.inner
+            .get("userInsertedDevices")
+            .as_::<TypedArray<MediaDeviceInfo>>()
+    }
+}
+
+impl DeviceChangeEvent {
     /// The `new DeviceChangeEvent(..)` constructor, creating a new DeviceChangeEvent instance
     pub fn new0(type_: &JsString) -> DeviceChangeEvent {
         Self {
@@ -80,23 +99,5 @@ impl DeviceChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl DeviceChangeEvent {
-    /// Getter of the `devices` attribute.
-    /// [`DeviceChangeEvent.devices`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceChangeEvent/devices)
-    pub fn devices(&self) -> TypedArray<MediaDeviceInfo> {
-        self.inner
-            .get("devices")
-            .as_::<TypedArray<MediaDeviceInfo>>()
-    }
-}
-impl DeviceChangeEvent {
-    /// Getter of the `userInsertedDevices` attribute.
-    /// [`DeviceChangeEvent.userInsertedDevices`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceChangeEvent/userInsertedDevices)
-    pub fn user_inserted_devices(&self) -> TypedArray<MediaDeviceInfo> {
-        self.inner
-            .get("userInsertedDevices")
-            .as_::<TypedArray<MediaDeviceInfo>>()
     }
 }

@@ -64,14 +64,6 @@ impl From<&HTMLFormElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLFormElement);
 
 impl HTMLFormElement {
-    /// The `new HTMLFormElement(..)` constructor, creating a new HTMLFormElement instance
-    pub fn new() -> HTMLFormElement {
-        Self {
-            inner: Any::global("HTMLFormElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLFormElement {
     /// Getter of the `acceptCharset` attribute.
     /// [`HTMLFormElement.acceptCharset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/acceptCharset)
     pub fn accept_charset(&self) -> JsString {
@@ -222,6 +214,15 @@ impl HTMLFormElement {
     /// [`HTMLFormElement.length`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
+    }
+}
+
+impl HTMLFormElement {
+    /// The `new HTMLFormElement(..)` constructor, creating a new HTMLFormElement instance
+    pub fn new() -> HTMLFormElement {
+        Self {
+            inner: Any::global("HTMLFormElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }
 impl HTMLFormElement {

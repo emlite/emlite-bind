@@ -64,6 +64,21 @@ impl From<&IdentityCredentialError> for Any {
 jsbind::utils::impl_dyn_cast!(IdentityCredentialError);
 
 impl IdentityCredentialError {
+    /// Getter of the `error` attribute.
+    /// [`IdentityCredentialError.error`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError/error)
+    pub fn error(&self) -> JsString {
+        self.inner.get("error").as_::<JsString>()
+    }
+}
+impl IdentityCredentialError {
+    /// Getter of the `url` attribute.
+    /// [`IdentityCredentialError.url`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError/url)
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
+    }
+}
+
+impl IdentityCredentialError {
     /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
     pub fn new0() -> IdentityCredentialError {
         Self {
@@ -92,19 +107,5 @@ impl IdentityCredentialError {
                 .new(&[message.into(), options.into()])
                 .as_::<DOMException>(),
         }
-    }
-}
-impl IdentityCredentialError {
-    /// Getter of the `error` attribute.
-    /// [`IdentityCredentialError.error`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError/error)
-    pub fn error(&self) -> JsString {
-        self.inner.get("error").as_::<JsString>()
-    }
-}
-impl IdentityCredentialError {
-    /// Getter of the `url` attribute.
-    /// [`IdentityCredentialError.url`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError/url)
-    pub fn url(&self) -> JsString {
-        self.inner.get("url").as_::<JsString>()
     }
 }

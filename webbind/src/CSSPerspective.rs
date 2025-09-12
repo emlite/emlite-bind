@@ -64,16 +64,6 @@ impl From<&CSSPerspective> for Any {
 jsbind::utils::impl_dyn_cast!(CSSPerspective);
 
 impl CSSPerspective {
-    /// The `new CSSPerspective(..)` constructor, creating a new CSSPerspective instance
-    pub fn new(length: &Any) -> CSSPerspective {
-        Self {
-            inner: Any::global("CSSPerspective")
-                .new(&[length.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-}
-impl CSSPerspective {
     /// Getter of the `length` attribute.
     /// [`CSSPerspective.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPerspective/length)
     pub fn length(&self) -> Any {
@@ -84,5 +74,16 @@ impl CSSPerspective {
     /// [`CSSPerspective.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPerspective/length)
     pub fn set_length(&mut self, value: &Any) {
         self.inner.set("length", value);
+    }
+}
+
+impl CSSPerspective {
+    /// The `new CSSPerspective(..)` constructor, creating a new CSSPerspective instance
+    pub fn new(length: &Any) -> CSSPerspective {
+        Self {
+            inner: Any::global("CSSPerspective")
+                .new(&[length.into()])
+                .as_::<CSSTransformComponent>(),
+        }
     }
 }

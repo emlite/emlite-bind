@@ -64,6 +64,14 @@ impl From<&RTCErrorEvent> for Any {
 jsbind::utils::impl_dyn_cast!(RTCErrorEvent);
 
 impl RTCErrorEvent {
+    /// Getter of the `error` attribute.
+    /// [`RTCErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/RTCErrorEvent/error)
+    pub fn error(&self) -> RTCError {
+        self.inner.get("error").as_::<RTCError>()
+    }
+}
+
+impl RTCErrorEvent {
     /// The `new RTCErrorEvent(..)` constructor, creating a new RTCErrorEvent instance
     pub fn new(type_: &JsString, event_init_dict: &RTCErrorEventInit) -> RTCErrorEvent {
         Self {
@@ -71,12 +79,5 @@ impl RTCErrorEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl RTCErrorEvent {
-    /// Getter of the `error` attribute.
-    /// [`RTCErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/RTCErrorEvent/error)
-    pub fn error(&self) -> RTCError {
-        self.inner.get("error").as_::<RTCError>()
     }
 }

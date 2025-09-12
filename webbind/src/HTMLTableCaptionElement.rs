@@ -64,16 +64,6 @@ impl From<&HTMLTableCaptionElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTableCaptionElement);
 
 impl HTMLTableCaptionElement {
-    /// The `new HTMLTableCaptionElement(..)` constructor, creating a new HTMLTableCaptionElement instance
-    pub fn new() -> HTMLTableCaptionElement {
-        Self {
-            inner: Any::global("HTMLTableCaptionElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTableCaptionElement {
     /// Getter of the `align` attribute.
     /// [`HTMLTableCaptionElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCaptionElement/align)
     pub fn align(&self) -> JsString {
@@ -84,5 +74,16 @@ impl HTMLTableCaptionElement {
     /// [`HTMLTableCaptionElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCaptionElement/align)
     pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
+    }
+}
+
+impl HTMLTableCaptionElement {
+    /// The `new HTMLTableCaptionElement(..)` constructor, creating a new HTMLTableCaptionElement instance
+    pub fn new() -> HTMLTableCaptionElement {
+        Self {
+            inner: Any::global("HTMLTableCaptionElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

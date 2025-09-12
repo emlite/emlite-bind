@@ -64,14 +64,6 @@ impl From<&HTMLModElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLModElement);
 
 impl HTMLModElement {
-    /// The `new HTMLModElement(..)` constructor, creating a new HTMLModElement instance
-    pub fn new() -> HTMLModElement {
-        Self {
-            inner: Any::global("HTMLModElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLModElement {
     /// Getter of the `cite` attribute.
     /// [`HTMLModElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/cite)
     pub fn cite(&self) -> JsString {
@@ -95,5 +87,14 @@ impl HTMLModElement {
     /// [`HTMLModElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/dateTime)
     pub fn set_date_time(&mut self, value: &JsString) {
         self.inner.set("dateTime", value);
+    }
+}
+
+impl HTMLModElement {
+    /// The `new HTMLModElement(..)` constructor, creating a new HTMLModElement instance
+    pub fn new() -> HTMLModElement {
+        Self {
+            inner: Any::global("HTMLModElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

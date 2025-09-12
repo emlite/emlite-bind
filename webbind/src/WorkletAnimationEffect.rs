@@ -64,6 +64,19 @@ impl From<&WorkletAnimationEffect> for Any {
 jsbind::utils::impl_dyn_cast!(WorkletAnimationEffect);
 
 impl WorkletAnimationEffect {
+    /// Getter of the `localTime` attribute.
+    /// [`WorkletAnimationEffect.localTime`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/localTime)
+    pub fn local_time(&self) -> f64 {
+        self.inner.get("localTime").as_::<f64>()
+    }
+
+    /// Setter of the `localTime` attribute.
+    /// [`WorkletAnimationEffect.localTime`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/localTime)
+    pub fn set_local_time(&mut self, value: f64) {
+        self.inner.set("localTime", value);
+    }
+}
+impl WorkletAnimationEffect {
     /// The getTiming method.
     /// [`WorkletAnimationEffect.getTiming`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/getTiming)
     pub fn get_timing(&self) -> EffectTiming {
@@ -77,18 +90,5 @@ impl WorkletAnimationEffect {
         self.inner
             .call("getComputedTiming", &[])
             .as_::<ComputedEffectTiming>()
-    }
-}
-impl WorkletAnimationEffect {
-    /// Getter of the `localTime` attribute.
-    /// [`WorkletAnimationEffect.localTime`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/localTime)
-    pub fn local_time(&self) -> f64 {
-        self.inner.get("localTime").as_::<f64>()
-    }
-
-    /// Setter of the `localTime` attribute.
-    /// [`WorkletAnimationEffect.localTime`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/localTime)
-    pub fn set_local_time(&mut self, value: f64) {
-        self.inner.set("localTime", value);
     }
 }

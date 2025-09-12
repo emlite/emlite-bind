@@ -64,19 +64,6 @@ impl From<&BluetoothAdvertisingEvent> for Any {
 jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
 impl BluetoothAdvertisingEvent {
-    /// The `new BluetoothAdvertisingEvent(..)` constructor, creating a new BluetoothAdvertisingEvent instance
-    pub fn new(
-        type_: &JsString,
-        init: &BluetoothAdvertisingEventInit,
-    ) -> BluetoothAdvertisingEvent {
-        Self {
-            inner: Any::global("BluetoothAdvertisingEvent")
-                .new(&[type_.into(), init.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl BluetoothAdvertisingEvent {
     /// Getter of the `device` attribute.
     /// [`BluetoothAdvertisingEvent.device`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/device)
     pub fn device(&self) -> BluetoothDevice {
@@ -134,5 +121,19 @@ impl BluetoothAdvertisingEvent {
         self.inner
             .get("serviceData")
             .as_::<BluetoothServiceDataMap>()
+    }
+}
+
+impl BluetoothAdvertisingEvent {
+    /// The `new BluetoothAdvertisingEvent(..)` constructor, creating a new BluetoothAdvertisingEvent instance
+    pub fn new(
+        type_: &JsString,
+        init: &BluetoothAdvertisingEventInit,
+    ) -> BluetoothAdvertisingEvent {
+        Self {
+            inner: Any::global("BluetoothAdvertisingEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<Event>(),
+        }
     }
 }

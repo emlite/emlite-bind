@@ -64,6 +64,66 @@ impl From<&Writer> for Any {
 jsbind::utils::impl_dyn_cast!(Writer);
 
 impl Writer {
+    /// Getter of the `sharedContext` attribute.
+    /// [`Writer.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/sharedContext)
+    pub fn shared_context(&self) -> JsString {
+        self.inner.get("sharedContext").as_::<JsString>()
+    }
+}
+impl Writer {
+    /// Getter of the `tone` attribute.
+    /// [`Writer.tone`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/tone)
+    pub fn tone(&self) -> WriterTone {
+        self.inner.get("tone").as_::<WriterTone>()
+    }
+}
+impl Writer {
+    /// Getter of the `format` attribute.
+    /// [`Writer.format`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/format)
+    pub fn format(&self) -> WriterFormat {
+        self.inner.get("format").as_::<WriterFormat>()
+    }
+}
+impl Writer {
+    /// Getter of the `length` attribute.
+    /// [`Writer.length`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/length)
+    pub fn length(&self) -> WriterLength {
+        self.inner.get("length").as_::<WriterLength>()
+    }
+}
+impl Writer {
+    /// Getter of the `expectedInputLanguages` attribute.
+    /// [`Writer.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/expectedInputLanguages)
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Writer {
+    /// Getter of the `expectedContextLanguages` attribute.
+    /// [`Writer.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/expectedContextLanguages)
+    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
+        self.inner
+            .get("expectedContextLanguages")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl Writer {
+    /// Getter of the `outputLanguage` attribute.
+    /// [`Writer.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/outputLanguage)
+    pub fn output_language(&self) -> JsString {
+        self.inner.get("outputLanguage").as_::<JsString>()
+    }
+}
+impl Writer {
+    /// Getter of the `inputQuota` attribute.
+    /// [`Writer.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/inputQuota)
+    pub fn input_quota(&self) -> f64 {
+        self.inner.get("inputQuota").as_::<f64>()
+    }
+}
+impl Writer {
     /// The create method.
     /// [`Writer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/create)
     pub fn create0() -> Promise<Writer> {
@@ -132,59 +192,6 @@ impl Writer {
     }
 }
 impl Writer {
-    /// Getter of the `sharedContext` attribute.
-    /// [`Writer.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/sharedContext)
-    pub fn shared_context(&self) -> JsString {
-        self.inner.get("sharedContext").as_::<JsString>()
-    }
-}
-impl Writer {
-    /// Getter of the `tone` attribute.
-    /// [`Writer.tone`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/tone)
-    pub fn tone(&self) -> WriterTone {
-        self.inner.get("tone").as_::<WriterTone>()
-    }
-}
-impl Writer {
-    /// Getter of the `format` attribute.
-    /// [`Writer.format`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/format)
-    pub fn format(&self) -> WriterFormat {
-        self.inner.get("format").as_::<WriterFormat>()
-    }
-}
-impl Writer {
-    /// Getter of the `length` attribute.
-    /// [`Writer.length`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/length)
-    pub fn length(&self) -> WriterLength {
-        self.inner.get("length").as_::<WriterLength>()
-    }
-}
-impl Writer {
-    /// Getter of the `expectedInputLanguages` attribute.
-    /// [`Writer.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Writer {
-    /// Getter of the `expectedContextLanguages` attribute.
-    /// [`Writer.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/expectedContextLanguages)
-    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedContextLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl Writer {
-    /// Getter of the `outputLanguage` attribute.
-    /// [`Writer.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/outputLanguage)
-    pub fn output_language(&self) -> JsString {
-        self.inner.get("outputLanguage").as_::<JsString>()
-    }
-}
-impl Writer {
     /// The measureInputUsage method.
     /// [`Writer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
@@ -202,13 +209,6 @@ impl Writer {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
             .as_::<Promise<f64>>()
-    }
-}
-impl Writer {
-    /// Getter of the `inputQuota` attribute.
-    /// [`Writer.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/inputQuota)
-    pub fn input_quota(&self) -> f64 {
-        self.inner.get("inputQuota").as_::<f64>()
     }
 }
 impl Writer {

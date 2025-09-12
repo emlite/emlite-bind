@@ -64,23 +64,6 @@ impl From<&ViewTimeline> for Any {
 jsbind::utils::impl_dyn_cast!(ViewTimeline);
 
 impl ViewTimeline {
-    /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
-    pub fn new0() -> ViewTimeline {
-        Self {
-            inner: Any::global("ViewTimeline").new(&[]).as_::<ScrollTimeline>(),
-        }
-    }
-
-    /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
-    pub fn new1(options: &ViewTimelineOptions) -> ViewTimeline {
-        Self {
-            inner: Any::global("ViewTimeline")
-                .new(&[options.into()])
-                .as_::<ScrollTimeline>(),
-        }
-    }
-}
-impl ViewTimeline {
     /// Getter of the `subject` attribute.
     /// [`ViewTimeline.subject`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline/subject)
     pub fn subject(&self) -> Element {
@@ -99,5 +82,23 @@ impl ViewTimeline {
     /// [`ViewTimeline.endOffset`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline/endOffset)
     pub fn end_offset(&self) -> CSSNumericValue {
         self.inner.get("endOffset").as_::<CSSNumericValue>()
+    }
+}
+
+impl ViewTimeline {
+    /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
+    pub fn new0() -> ViewTimeline {
+        Self {
+            inner: Any::global("ViewTimeline").new(&[]).as_::<ScrollTimeline>(),
+        }
+    }
+
+    /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
+    pub fn new1(options: &ViewTimelineOptions) -> ViewTimeline {
+        Self {
+            inner: Any::global("ViewTimeline")
+                .new(&[options.into()])
+                .as_::<ScrollTimeline>(),
+        }
     }
 }

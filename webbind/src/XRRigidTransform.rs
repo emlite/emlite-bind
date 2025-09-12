@@ -64,32 +64,6 @@ impl From<&XRRigidTransform> for Any {
 jsbind::utils::impl_dyn_cast!(XRRigidTransform);
 
 impl XRRigidTransform {
-    /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
-    pub fn new0() -> XRRigidTransform {
-        Self {
-            inner: Any::global("XRRigidTransform").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
-    pub fn new1(position: &DOMPointInit) -> XRRigidTransform {
-        Self {
-            inner: Any::global("XRRigidTransform")
-                .new(&[position.into()])
-                .as_::<Any>(),
-        }
-    }
-
-    /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
-    pub fn new2(position: &DOMPointInit, orientation: &DOMPointInit) -> XRRigidTransform {
-        Self {
-            inner: Any::global("XRRigidTransform")
-                .new(&[position.into(), orientation.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl XRRigidTransform {
     /// Getter of the `position` attribute.
     /// [`XRRigidTransform.position`](https://developer.mozilla.org/en-US/docs/Web/API/XRRigidTransform/position)
     pub fn position(&self) -> DOMPointReadOnly {
@@ -115,5 +89,32 @@ impl XRRigidTransform {
     /// [`XRRigidTransform.inverse`](https://developer.mozilla.org/en-US/docs/Web/API/XRRigidTransform/inverse)
     pub fn inverse(&self) -> XRRigidTransform {
         self.inner.get("inverse").as_::<XRRigidTransform>()
+    }
+}
+
+impl XRRigidTransform {
+    /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
+    pub fn new0() -> XRRigidTransform {
+        Self {
+            inner: Any::global("XRRigidTransform").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
+    pub fn new1(position: &DOMPointInit) -> XRRigidTransform {
+        Self {
+            inner: Any::global("XRRigidTransform")
+                .new(&[position.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new XRRigidTransform(..)` constructor, creating a new XRRigidTransform instance
+    pub fn new2(position: &DOMPointInit, orientation: &DOMPointInit) -> XRRigidTransform {
+        Self {
+            inner: Any::global("XRRigidTransform")
+                .new(&[position.into(), orientation.into()])
+                .as_::<Any>(),
+        }
     }
 }

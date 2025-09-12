@@ -64,16 +64,6 @@ impl From<&HTMLHeadingElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLHeadingElement);
 
 impl HTMLHeadingElement {
-    /// The `new HTMLHeadingElement(..)` constructor, creating a new HTMLHeadingElement instance
-    pub fn new() -> HTMLHeadingElement {
-        Self {
-            inner: Any::global("HTMLHeadingElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLHeadingElement {
     /// Getter of the `align` attribute.
     /// [`HTMLHeadingElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement/align)
     pub fn align(&self) -> JsString {
@@ -84,5 +74,16 @@ impl HTMLHeadingElement {
     /// [`HTMLHeadingElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement/align)
     pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
+    }
+}
+
+impl HTMLHeadingElement {
+    /// The `new HTMLHeadingElement(..)` constructor, creating a new HTMLHeadingElement instance
+    pub fn new() -> HTMLHeadingElement {
+        Self {
+            inner: Any::global("HTMLHeadingElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

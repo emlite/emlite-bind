@@ -64,16 +64,6 @@ impl From<&KeyframeEffect> for Any {
 jsbind::utils::impl_dyn_cast!(KeyframeEffect);
 
 impl KeyframeEffect {
-    /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
-    pub fn new(source: &KeyframeEffect) -> KeyframeEffect {
-        Self {
-            inner: Any::global("KeyframeEffect")
-                .new(&[source.into()])
-                .as_::<AnimationEffect>(),
-        }
-    }
-}
-impl KeyframeEffect {
     /// Getter of the `target` attribute.
     /// [`KeyframeEffect.target`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/target)
     pub fn target(&self) -> Element {
@@ -113,6 +103,52 @@ impl KeyframeEffect {
     }
 }
 impl KeyframeEffect {
+    /// Getter of the `iterationComposite` attribute.
+    /// [`KeyframeEffect.iterationComposite`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/iterationComposite)
+    pub fn iteration_composite(&self) -> IterationCompositeOperation {
+        self.inner
+            .get("iterationComposite")
+            .as_::<IterationCompositeOperation>()
+    }
+
+    /// Setter of the `iterationComposite` attribute.
+    /// [`KeyframeEffect.iterationComposite`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/iterationComposite)
+    pub fn set_iteration_composite(&mut self, value: &IterationCompositeOperation) {
+        self.inner.set("iterationComposite", value);
+    }
+}
+
+impl KeyframeEffect {
+    /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
+    pub fn new0(target: &Element, keyframes: &Object) -> KeyframeEffect {
+        Self {
+            inner: Any::global("KeyframeEffect")
+                .new(&[target.into(), keyframes.into()])
+                .as_::<AnimationEffect>(),
+        }
+    }
+
+    /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
+    pub fn new1(target: &Element, keyframes: &Object, options: &Any) -> KeyframeEffect {
+        Self {
+            inner: Any::global("KeyframeEffect")
+                .new(&[target.into(), keyframes.into(), options.into()])
+                .as_::<AnimationEffect>(),
+        }
+    }
+}
+
+impl KeyframeEffect {
+    /// The `new KeyframeEffect(..)` constructor, creating a new KeyframeEffect instance
+    pub fn new2(source: &KeyframeEffect) -> KeyframeEffect {
+        Self {
+            inner: Any::global("KeyframeEffect")
+                .new(&[source.into()])
+                .as_::<AnimationEffect>(),
+        }
+    }
+}
+impl KeyframeEffect {
     /// The getKeyframes method.
     /// [`KeyframeEffect.getKeyframes`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/getKeyframes)
     pub fn get_keyframes(&self) -> TypedArray<Object> {
@@ -128,20 +164,5 @@ impl KeyframeEffect {
         self.inner
             .call("setKeyframes", &[keyframes.into()])
             .as_::<Undefined>()
-    }
-}
-impl KeyframeEffect {
-    /// Getter of the `iterationComposite` attribute.
-    /// [`KeyframeEffect.iterationComposite`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/iterationComposite)
-    pub fn iteration_composite(&self) -> IterationCompositeOperation {
-        self.inner
-            .get("iterationComposite")
-            .as_::<IterationCompositeOperation>()
-    }
-
-    /// Setter of the `iterationComposite` attribute.
-    /// [`KeyframeEffect.iterationComposite`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/iterationComposite)
-    pub fn set_iteration_composite(&mut self, value: &IterationCompositeOperation) {
-        self.inner.set("iterationComposite", value);
     }
 }

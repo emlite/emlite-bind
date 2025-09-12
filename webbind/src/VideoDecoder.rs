@@ -64,16 +64,6 @@ impl From<&VideoDecoder> for Any {
 jsbind::utils::impl_dyn_cast!(VideoDecoder);
 
 impl VideoDecoder {
-    /// The `new VideoDecoder(..)` constructor, creating a new VideoDecoder instance
-    pub fn new(init: &VideoDecoderInit) -> VideoDecoder {
-        Self {
-            inner: Any::global("VideoDecoder")
-                .new(&[init.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl VideoDecoder {
     /// Getter of the `state` attribute.
     /// [`VideoDecoder.state`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/state)
     pub fn state(&self) -> CodecState {
@@ -98,6 +88,17 @@ impl VideoDecoder {
     /// [`VideoDecoder.ondequeue`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/ondequeue)
     pub fn set_ondequeue(&mut self, value: &Any) {
         self.inner.set("ondequeue", value);
+    }
+}
+
+impl VideoDecoder {
+    /// The `new VideoDecoder(..)` constructor, creating a new VideoDecoder instance
+    pub fn new(init: &VideoDecoderInit) -> VideoDecoder {
+        Self {
+            inner: Any::global("VideoDecoder")
+                .new(&[init.into()])
+                .as_::<EventTarget>(),
+        }
     }
 }
 impl VideoDecoder {

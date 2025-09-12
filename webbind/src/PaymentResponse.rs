@@ -64,13 +64,6 @@ impl From<&PaymentResponse> for Any {
 jsbind::utils::impl_dyn_cast!(PaymentResponse);
 
 impl PaymentResponse {
-    /// The toJSON method.
-    /// [`PaymentResponse.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl PaymentResponse {
     /// Getter of the `requestId` attribute.
     /// [`PaymentResponse.requestId`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/requestId)
     pub fn request_id(&self) -> JsString {
@@ -127,6 +120,26 @@ impl PaymentResponse {
     }
 }
 impl PaymentResponse {
+    /// Getter of the `onpayerdetailchange` attribute.
+    /// [`PaymentResponse.onpayerdetailchange`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/onpayerdetailchange)
+    pub fn onpayerdetailchange(&self) -> Any {
+        self.inner.get("onpayerdetailchange").as_::<Any>()
+    }
+
+    /// Setter of the `onpayerdetailchange` attribute.
+    /// [`PaymentResponse.onpayerdetailchange`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/onpayerdetailchange)
+    pub fn set_onpayerdetailchange(&mut self, value: &Any) {
+        self.inner.set("onpayerdetailchange", value);
+    }
+}
+impl PaymentResponse {
+    /// The toJSON method.
+    /// [`PaymentResponse.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
+    }
+}
+impl PaymentResponse {
     /// The complete method.
     /// [`PaymentResponse.complete`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/complete)
     pub fn complete0(&self) -> Promise<Undefined> {
@@ -163,18 +176,5 @@ impl PaymentResponse {
         self.inner
             .call("retry", &[error_fields.into()])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl PaymentResponse {
-    /// Getter of the `onpayerdetailchange` attribute.
-    /// [`PaymentResponse.onpayerdetailchange`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/onpayerdetailchange)
-    pub fn onpayerdetailchange(&self) -> Any {
-        self.inner.get("onpayerdetailchange").as_::<Any>()
-    }
-
-    /// Setter of the `onpayerdetailchange` attribute.
-    /// [`PaymentResponse.onpayerdetailchange`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/onpayerdetailchange)
-    pub fn set_onpayerdetailchange(&mut self, value: &Any) {
-        self.inner.set("onpayerdetailchange", value);
     }
 }

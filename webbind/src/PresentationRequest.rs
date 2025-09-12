@@ -64,8 +64,33 @@ impl From<&PresentationRequest> for Any {
 jsbind::utils::impl_dyn_cast!(PresentationRequest);
 
 impl PresentationRequest {
+    /// Getter of the `onconnectionavailable` attribute.
+    /// [`PresentationRequest.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/onconnectionavailable)
+    pub fn onconnectionavailable(&self) -> Any {
+        self.inner.get("onconnectionavailable").as_::<Any>()
+    }
+
+    /// Setter of the `onconnectionavailable` attribute.
+    /// [`PresentationRequest.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/onconnectionavailable)
+    pub fn set_onconnectionavailable(&mut self, value: &Any) {
+        self.inner.set("onconnectionavailable", value);
+    }
+}
+
+impl PresentationRequest {
     /// The `new PresentationRequest(..)` constructor, creating a new PresentationRequest instance
-    pub fn new(urls: &TypedArray<JsString>) -> PresentationRequest {
+    pub fn new(url: &JsString) -> PresentationRequest {
+        Self {
+            inner: Any::global("PresentationRequest")
+                .new(&[url.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+
+impl PresentationRequest {
+    /// The `new PresentationRequest(..)` constructor, creating a new PresentationRequest instance
+    pub fn new1(urls: &TypedArray<JsString>) -> PresentationRequest {
         Self {
             inner: Any::global("PresentationRequest")
                 .new(&[urls.into()])
@@ -98,18 +123,5 @@ impl PresentationRequest {
         self.inner
             .call("getAvailability", &[])
             .as_::<Promise<PresentationAvailability>>()
-    }
-}
-impl PresentationRequest {
-    /// Getter of the `onconnectionavailable` attribute.
-    /// [`PresentationRequest.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/onconnectionavailable)
-    pub fn onconnectionavailable(&self) -> Any {
-        self.inner.get("onconnectionavailable").as_::<Any>()
-    }
-
-    /// Setter of the `onconnectionavailable` attribute.
-    /// [`PresentationRequest.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/onconnectionavailable)
-    pub fn set_onconnectionavailable(&mut self, value: &Any) {
-        self.inner.set("onconnectionavailable", value);
     }
 }

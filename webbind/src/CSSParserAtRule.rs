@@ -64,29 +64,6 @@ impl From<&CSSParserAtRule> for Any {
 jsbind::utils::impl_dyn_cast!(CSSParserAtRule);
 
 impl CSSParserAtRule {
-    /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
-    pub fn new0(name: &JsString, prelude: &TypedArray<Any>) -> CSSParserAtRule {
-        Self {
-            inner: Any::global("CSSParserAtRule")
-                .new(&[name.into(), prelude.into()])
-                .as_::<CSSParserRule>(),
-        }
-    }
-
-    /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
-    pub fn new1(
-        name: &JsString,
-        prelude: &TypedArray<Any>,
-        body: &TypedArray<CSSParserRule>,
-    ) -> CSSParserAtRule {
-        Self {
-            inner: Any::global("CSSParserAtRule")
-                .new(&[name.into(), prelude.into(), body.into()])
-                .as_::<CSSParserRule>(),
-        }
-    }
-}
-impl CSSParserAtRule {
     /// Getter of the `name` attribute.
     /// [`CSSParserAtRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/name)
     pub fn name(&self) -> JsString {
@@ -107,5 +84,29 @@ impl CSSParserAtRule {
     /// [`CSSParserAtRule.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/body)
     pub fn body(&self) -> TypedArray<CSSParserRule> {
         self.inner.get("body").as_::<TypedArray<CSSParserRule>>()
+    }
+}
+
+impl CSSParserAtRule {
+    /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
+    pub fn new0(name: &JsString, prelude: &TypedArray<Any>) -> CSSParserAtRule {
+        Self {
+            inner: Any::global("CSSParserAtRule")
+                .new(&[name.into(), prelude.into()])
+                .as_::<CSSParserRule>(),
+        }
+    }
+
+    /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
+    pub fn new1(
+        name: &JsString,
+        prelude: &TypedArray<Any>,
+        body: &TypedArray<CSSParserRule>,
+    ) -> CSSParserAtRule {
+        Self {
+            inner: Any::global("CSSParserAtRule")
+                .new(&[name.into(), prelude.into(), body.into()])
+                .as_::<CSSParserRule>(),
+        }
     }
 }

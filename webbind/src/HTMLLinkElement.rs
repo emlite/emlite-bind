@@ -64,14 +64,6 @@ impl From<&HTMLLinkElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLLinkElement);
 
 impl HTMLLinkElement {
-    /// The `new HTMLLinkElement(..)` constructor, creating a new HTMLLinkElement instance
-    pub fn new() -> HTMLLinkElement {
-        Self {
-            inner: Any::global("HTMLLinkElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLLinkElement {
     /// Getter of the `href` attribute.
     /// [`HTMLLinkElement.href`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLinkElement/href)
     pub fn href(&self) -> JsString {
@@ -305,5 +297,14 @@ impl HTMLLinkElement {
     /// [`HTMLLinkElement.sheet`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLinkElement/sheet)
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
+    }
+}
+
+impl HTMLLinkElement {
+    /// The `new HTMLLinkElement(..)` constructor, creating a new HTMLLinkElement instance
+    pub fn new() -> HTMLLinkElement {
+        Self {
+            inner: Any::global("HTMLLinkElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

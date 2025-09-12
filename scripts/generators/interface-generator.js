@@ -64,16 +64,25 @@ function emitAttr(attr, owner, isStatic = false, isInterface = false) {
  * @param {boolean} isInterface - Whether this is for an interface (adds docs)
  * @returns {Array<string>} Generated source lines
  */
-function emitOp(op, owner, isStatic = false, isInterface = false) {
+function emitOp(
+  op,
+  owner,
+  isStatic = false,
+  isInterface = false,
+  groupTotal = undefined,
+  suffixStart = 0
+) {
   const S = [];
-  if (!op.name) return S;
+  if (!op.name) return { S: [], used: 0 };
   S.push(`impl ${owner} {`);
   const ret = rust(op.idlType || "undefined");
   const rustName = fixIdent(op.name);
   const variants = variantsOf(op.arguments);
 
-  let i = 0;
+  let i = suffixStart;
   const sz = variants.length;
+  const totalGroup = typeof groupTotal === "number" ? groupTotal : sz;
+  const omitSuffix = totalGroup === 1 ? true : sz === 1 && suffixStart === 0;
   for (const v of variants) {
     const declSrc = argDecl(v);
     const callArgs = v.map((a) => `${fixIdent(a.name)}.into()`).join(", ");
@@ -88,7 +97,7 @@ function emitOp(op, owner, isStatic = false, isInterface = false) {
         `    /// [\`${owner}.${op.name}\`](https://developer.mozilla.org/en-US/docs/Web/API/${owner}/${op.name})`
       );
     S.push(
-      `    pub fn ${rustName}${sz === 1 ? "" : i}(${
+      `    pub fn ${rustName}${omitSuffix ? "" : i}(${
         isStatic ? "" : "&self, "
       }${declSrc}) -> ${ret} {`,
       `        ${callExpr}.as_::<${ret}>()`,
@@ -97,7 +106,7 @@ function emitOp(op, owner, isStatic = false, isInterface = false) {
     i += 1;
   }
   S.push("}");
-  return S;
+  return { S, used: variants.length };
 }
 
 /**
@@ -130,6 +139,36 @@ function emitCtor(ctor, owner, parent) {
   }
   S.push("}");
   return S;
+}
+
+function emitCtorGrouped(
+  ctor,
+  owner,
+  parent,
+  groupTotal = undefined,
+  suffixStart = 0
+) {
+  const variants = variantsOf(ctor.arguments);
+  const S = [`\nimpl ${owner} {`];
+
+  let i = suffixStart;
+  const sz = variants.length;
+  const totalGroup = typeof groupTotal === "number" ? groupTotal : sz;
+  const omitSuffix = totalGroup === 1 ? true : sz === 1 && suffixStart === 0;
+
+  for (const v of variants) {
+    const declSrc = argDecl(v);
+    const callArgs = v.map((a) => `${fixIdent(a.name)}.into()`).join(", ");
+
+    S.push(
+      `    /// The \`new ${owner}(..)\` constructor, creating a new ${owner} instance`,
+      `    pub fn new${omitSuffix ? "" : i}(${declSrc}) -> ${owner} {\n        Self {\n            inner: Any::global("${owner}").new(&[${callArgs}]).as_::<${parent}>(),\n        }\n    }`,
+      ""
+    );
+    i += 1;
+  }
+  S.push("}");
+  return { S, used: variants.length };
 }
 
 /**
@@ -252,22 +291,61 @@ export function generateInterface(interfaceName, interfaceRec, dependencies) {
   );
 
   // Generate member methods
+  // First emit attributes and collect constructors directly
+  const opGroups = new Map();
+  const opOrder = [];
+  const ctors = [];
   interfaceRec.members.forEach((m) => {
     const isStatic = m.static === true || m.special === "static";
     if (m.type === "attribute") {
       const S = emitAttr(m, interfaceName, isStatic, true);
       src.push(...S);
-    } else if (m.type === "operation") {
-      const S = emitOp(m, interfaceName, isStatic, true);
-      src.push(...S);
     } else if (
       m.type === "constructor" ||
       (m.type === "operation" && m.special === "constructor")
     ) {
-      const S = emitCtor(m, interfaceName, parent);
-      src.push(...S);
+      ctors.push(m);
+    } else if (m.type === "operation") {
+      const key = `${isStatic ? "static:" : ""}${m.name}`;
+      if (!opGroups.has(key)) {
+        opGroups.set(key, { isStatic, ops: [] });
+        opOrder.push(key);
+      }
+      opGroups.get(key).ops.push(m);
     }
   });
+
+  // Emit constructors grouped by total overload count with consistent suffix numbering
+  if (ctors.length > 0) {
+    const totalCtorVariants = ctors.reduce(
+      (sum, c) => sum + variantsOf(c.arguments).length,
+      0
+    );
+    let offset = 0;
+    for (const c of ctors) {
+      const { S, used } = emitCtorGrouped(
+        c,
+        interfaceName,
+        parent,
+        totalCtorVariants,
+        offset
+      );
+      src.push(...S);
+      offset += used;
+    }
+  }
+
+  // Emit operations grouped by name and static-ness with consistent suffix numbering
+  for (const key of opOrder) {
+    const { isStatic, ops } = opGroups.get(key);
+    const total = ops.reduce((sum, op) => sum + variantsOf(op.arguments).length, 0);
+    let offset = 0;
+    for (const op of ops) {
+      const { S, used } = emitOp(op, interfaceName, isStatic, true, total, offset);
+      src.push(...S);
+      offset += used;
+    }
+  }
 
   writeSrcFile(interfaceName, src);
 }

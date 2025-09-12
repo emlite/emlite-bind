@@ -64,14 +64,6 @@ impl From<&HTMLDataElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLDataElement);
 
 impl HTMLDataElement {
-    /// The `new HTMLDataElement(..)` constructor, creating a new HTMLDataElement instance
-    pub fn new() -> HTMLDataElement {
-        Self {
-            inner: Any::global("HTMLDataElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLDataElement {
     /// Getter of the `value` attribute.
     /// [`HTMLDataElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement/value)
     pub fn value(&self) -> JsString {
@@ -82,5 +74,14 @@ impl HTMLDataElement {
     /// [`HTMLDataElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement/value)
     pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
+    }
+}
+
+impl HTMLDataElement {
+    /// The `new HTMLDataElement(..)` constructor, creating a new HTMLDataElement instance
+    pub fn new() -> HTMLDataElement {
+        Self {
+            inner: Any::global("HTMLDataElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

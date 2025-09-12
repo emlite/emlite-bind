@@ -64,18 +64,18 @@ impl From<&PaintWorkletGlobalScope> for Any {
 jsbind::utils::impl_dyn_cast!(PaintWorkletGlobalScope);
 
 impl PaintWorkletGlobalScope {
+    /// Getter of the `devicePixelRatio` attribute.
+    /// [`PaintWorkletGlobalScope.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/devicePixelRatio)
+    pub fn device_pixel_ratio(&self) -> f64 {
+        self.inner.get("devicePixelRatio").as_::<f64>()
+    }
+}
+impl PaintWorkletGlobalScope {
     /// The registerPaint method.
     /// [`PaintWorkletGlobalScope.registerPaint`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/registerPaint)
     pub fn register_paint(&self, name: &JsString, paint_ctor: &Function) -> Undefined {
         self.inner
             .call("registerPaint", &[name.into(), paint_ctor.into()])
             .as_::<Undefined>()
-    }
-}
-impl PaintWorkletGlobalScope {
-    /// Getter of the `devicePixelRatio` attribute.
-    /// [`PaintWorkletGlobalScope.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/devicePixelRatio)
-    pub fn device_pixel_ratio(&self) -> f64 {
-        self.inner.get("devicePixelRatio").as_::<f64>()
     }
 }

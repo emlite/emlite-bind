@@ -71,29 +71,6 @@ impl DedicatedWorkerGlobalScope {
     }
 }
 impl DedicatedWorkerGlobalScope {
-    /// The postMessage method.
-    /// [`DedicatedWorkerGlobalScope.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-    /// The postMessage method.
-    /// [`DedicatedWorkerGlobalScope.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
-    }
-}
-impl DedicatedWorkerGlobalScope {
-    /// The close method.
-    /// [`DedicatedWorkerGlobalScope.close`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/close)
-    pub fn close(&self) -> Undefined {
-        self.inner.call("close", &[]).as_::<Undefined>()
-    }
-}
-impl DedicatedWorkerGlobalScope {
     /// Getter of the `onrtctransform` attribute.
     /// [`DedicatedWorkerGlobalScope.onrtctransform`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/onrtctransform)
     pub fn onrtctransform(&self) -> Any {
@@ -104,24 +81,6 @@ impl DedicatedWorkerGlobalScope {
     /// [`DedicatedWorkerGlobalScope.onrtctransform`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/onrtctransform)
     pub fn set_onrtctransform(&mut self, value: &Any) {
         self.inner.set("onrtctransform", value);
-    }
-}
-impl DedicatedWorkerGlobalScope {
-    /// The requestAnimationFrame method.
-    /// [`DedicatedWorkerGlobalScope.requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame)
-    pub fn request_animation_frame(&self, callback: &Function) -> u32 {
-        self.inner
-            .call("requestAnimationFrame", &[callback.into()])
-            .as_::<u32>()
-    }
-}
-impl DedicatedWorkerGlobalScope {
-    /// The cancelAnimationFrame method.
-    /// [`DedicatedWorkerGlobalScope.cancelAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame)
-    pub fn cancel_animation_frame(&self, handle: u32) -> Undefined {
-        self.inner
-            .call("cancelAnimationFrame", &[handle.into()])
-            .as_::<Undefined>()
     }
 }
 impl DedicatedWorkerGlobalScope {
@@ -148,5 +107,55 @@ impl DedicatedWorkerGlobalScope {
     /// [`DedicatedWorkerGlobalScope.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/onmessageerror)
     pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
+    }
+}
+impl DedicatedWorkerGlobalScope {
+    /// The postMessage method.
+    /// [`DedicatedWorkerGlobalScope.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
+    pub fn post_message(&self, message: &Any, transfer: &TypedArray<Object>) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), transfer.into()])
+            .as_::<Undefined>()
+    }
+}
+impl DedicatedWorkerGlobalScope {
+    /// The postMessage method.
+    /// [`DedicatedWorkerGlobalScope.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
+    pub fn post_message1(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`DedicatedWorkerGlobalScope.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
+    pub fn post_message2(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl DedicatedWorkerGlobalScope {
+    /// The close method.
+    /// [`DedicatedWorkerGlobalScope.close`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/close)
+    pub fn close(&self) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
+    }
+}
+impl DedicatedWorkerGlobalScope {
+    /// The requestAnimationFrame method.
+    /// [`DedicatedWorkerGlobalScope.requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame)
+    pub fn request_animation_frame(&self, callback: &Function) -> u32 {
+        self.inner
+            .call("requestAnimationFrame", &[callback.into()])
+            .as_::<u32>()
+    }
+}
+impl DedicatedWorkerGlobalScope {
+    /// The cancelAnimationFrame method.
+    /// [`DedicatedWorkerGlobalScope.cancelAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame)
+    pub fn cancel_animation_frame(&self, handle: u32) -> Undefined {
+        self.inner
+            .call("cancelAnimationFrame", &[handle.into()])
+            .as_::<Undefined>()
     }
 }

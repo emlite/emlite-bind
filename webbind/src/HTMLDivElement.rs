@@ -64,14 +64,6 @@ impl From<&HTMLDivElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLDivElement);
 
 impl HTMLDivElement {
-    /// The `new HTMLDivElement(..)` constructor, creating a new HTMLDivElement instance
-    pub fn new() -> HTMLDivElement {
-        Self {
-            inner: Any::global("HTMLDivElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLDivElement {
     /// Getter of the `align` attribute.
     /// [`HTMLDivElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement/align)
     pub fn align(&self) -> JsString {
@@ -82,5 +74,14 @@ impl HTMLDivElement {
     /// [`HTMLDivElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement/align)
     pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
+    }
+}
+
+impl HTMLDivElement {
+    /// The `new HTMLDivElement(..)` constructor, creating a new HTMLDivElement instance
+    pub fn new() -> HTMLDivElement {
+        Self {
+            inner: Any::global("HTMLDivElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

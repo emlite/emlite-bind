@@ -64,25 +64,6 @@ impl From<&CSSLCH> for Any {
 jsbind::utils::impl_dyn_cast!(CSSLCH);
 
 impl CSSLCH {
-    /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
-    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSLCH {
-        Self {
-            inner: Any::global("CSSLCH")
-                .new(&[l.into(), c.into(), h.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
-    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSLCH {
-        Self {
-            inner: Any::global("CSSLCH")
-                .new(&[l.into(), c.into(), h.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSLCH {
     /// Getter of the `l` attribute.
     /// [`CSSLCH.l`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLCH/l)
     pub fn l(&self) -> Any {
@@ -132,5 +113,25 @@ impl CSSLCH {
     /// [`CSSLCH.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLCH/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSLCH {
+    /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
+    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSLCH {
+        Self {
+            inner: Any::global("CSSLCH")
+                .new(&[l.into(), c.into(), h.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSLCH(..)` constructor, creating a new CSSLCH instance
+    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSLCH {
+        Self {
+            inner: Any::global("CSSLCH")
+                .new(&[l.into(), c.into(), h.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

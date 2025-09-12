@@ -64,16 +64,6 @@ impl From<&HTMLQuoteElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLQuoteElement);
 
 impl HTMLQuoteElement {
-    /// The `new HTMLQuoteElement(..)` constructor, creating a new HTMLQuoteElement instance
-    pub fn new() -> HTMLQuoteElement {
-        Self {
-            inner: Any::global("HTMLQuoteElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLQuoteElement {
     /// Getter of the `cite` attribute.
     /// [`HTMLQuoteElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement/cite)
     pub fn cite(&self) -> JsString {
@@ -84,5 +74,16 @@ impl HTMLQuoteElement {
     /// [`HTMLQuoteElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement/cite)
     pub fn set_cite(&mut self, value: &JsString) {
         self.inner.set("cite", value);
+    }
+}
+
+impl HTMLQuoteElement {
+    /// The `new HTMLQuoteElement(..)` constructor, creating a new HTMLQuoteElement instance
+    pub fn new() -> HTMLQuoteElement {
+        Self {
+            inner: Any::global("HTMLQuoteElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

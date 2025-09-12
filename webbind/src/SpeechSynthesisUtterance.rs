@@ -64,25 +64,6 @@ impl From<&SpeechSynthesisUtterance> for Any {
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisUtterance);
 
 impl SpeechSynthesisUtterance {
-    /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
-    pub fn new0() -> SpeechSynthesisUtterance {
-        Self {
-            inner: Any::global("SpeechSynthesisUtterance")
-                .new(&[])
-                .as_::<EventTarget>(),
-        }
-    }
-
-    /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
-    pub fn new1(text: &JsString) -> SpeechSynthesisUtterance {
-        Self {
-            inner: Any::global("SpeechSynthesisUtterance")
-                .new(&[text.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl SpeechSynthesisUtterance {
     /// Getter of the `text` attribute.
     /// [`SpeechSynthesisUtterance.text`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/text)
     pub fn text(&self) -> JsString {
@@ -249,5 +230,25 @@ impl SpeechSynthesisUtterance {
     /// [`SpeechSynthesisUtterance.onboundary`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/onboundary)
     pub fn set_onboundary(&mut self, value: &Any) {
         self.inner.set("onboundary", value);
+    }
+}
+
+impl SpeechSynthesisUtterance {
+    /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
+    pub fn new0() -> SpeechSynthesisUtterance {
+        Self {
+            inner: Any::global("SpeechSynthesisUtterance")
+                .new(&[])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
+    pub fn new1(text: &JsString) -> SpeechSynthesisUtterance {
+        Self {
+            inner: Any::global("SpeechSynthesisUtterance")
+                .new(&[text.into()])
+                .as_::<EventTarget>(),
+        }
     }
 }

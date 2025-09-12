@@ -64,23 +64,6 @@ impl From<&TextFormat> for Any {
 jsbind::utils::impl_dyn_cast!(TextFormat);
 
 impl TextFormat {
-    /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
-    pub fn new0() -> TextFormat {
-        Self {
-            inner: Any::global("TextFormat").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
-    pub fn new1(options: &TextFormatInit) -> TextFormat {
-        Self {
-            inner: Any::global("TextFormat")
-                .new(&[options.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl TextFormat {
     /// Getter of the `rangeStart` attribute.
     /// [`TextFormat.rangeStart`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormat/rangeStart)
     pub fn range_start(&self) -> u32 {
@@ -108,5 +91,23 @@ impl TextFormat {
         self.inner
             .get("underlineThickness")
             .as_::<UnderlineThickness>()
+    }
+}
+
+impl TextFormat {
+    /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
+    pub fn new0() -> TextFormat {
+        Self {
+            inner: Any::global("TextFormat").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new TextFormat(..)` constructor, creating a new TextFormat instance
+    pub fn new1(options: &TextFormatInit) -> TextFormat {
+        Self {
+            inner: Any::global("TextFormat")
+                .new(&[options.into()])
+                .as_::<Any>(),
+        }
     }
 }

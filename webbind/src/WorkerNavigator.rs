@@ -110,31 +110,6 @@ impl WorkerNavigator {
     }
 }
 impl WorkerNavigator {
-    /// The setAppBadge method.
-    /// [`WorkerNavigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/setAppBadge)
-    pub fn set_app_badge0(&self) -> Promise<Undefined> {
-        self.inner
-            .call("setAppBadge", &[])
-            .as_::<Promise<Undefined>>()
-    }
-    /// The setAppBadge method.
-    /// [`WorkerNavigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/setAppBadge)
-    pub fn set_app_badge1(&self, contents: u64) -> Promise<Undefined> {
-        self.inner
-            .call("setAppBadge", &[contents.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl WorkerNavigator {
-    /// The clearAppBadge method.
-    /// [`WorkerNavigator.clearAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/clearAppBadge)
-    pub fn clear_app_badge(&self) -> Promise<Undefined> {
-        self.inner
-            .call("clearAppBadge", &[])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl WorkerNavigator {
     /// Getter of the `deviceMemory` attribute.
     /// [`WorkerNavigator.deviceMemory`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/deviceMemory)
     pub fn device_memory(&self) -> f64 {
@@ -146,13 +121,6 @@ impl WorkerNavigator {
     /// [`WorkerNavigator.globalPrivacyControl`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/globalPrivacyControl)
     pub fn global_privacy_control(&self) -> bool {
         self.inner.get("globalPrivacyControl").as_::<bool>()
-    }
-}
-impl WorkerNavigator {
-    /// The taintEnabled method.
-    /// [`WorkerNavigator.taintEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/taintEnabled)
-    pub fn taint_enabled(&self) -> bool {
-        self.inner.call("taintEnabled", &[]).as_::<bool>()
     }
 }
 impl WorkerNavigator {
@@ -239,5 +207,37 @@ impl WorkerNavigator {
     /// [`WorkerNavigator.ml`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/ml)
     pub fn ml(&self) -> ML {
         self.inner.get("ml").as_::<ML>()
+    }
+}
+impl WorkerNavigator {
+    /// The setAppBadge method.
+    /// [`WorkerNavigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/setAppBadge)
+    pub fn set_app_badge0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("setAppBadge", &[])
+            .as_::<Promise<Undefined>>()
+    }
+    /// The setAppBadge method.
+    /// [`WorkerNavigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/setAppBadge)
+    pub fn set_app_badge1(&self, contents: u64) -> Promise<Undefined> {
+        self.inner
+            .call("setAppBadge", &[contents.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl WorkerNavigator {
+    /// The clearAppBadge method.
+    /// [`WorkerNavigator.clearAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/clearAppBadge)
+    pub fn clear_app_badge(&self) -> Promise<Undefined> {
+        self.inner
+            .call("clearAppBadge", &[])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl WorkerNavigator {
+    /// The taintEnabled method.
+    /// [`WorkerNavigator.taintEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/taintEnabled)
+    pub fn taint_enabled(&self) -> bool {
+        self.inner.call("taintEnabled", &[]).as_::<bool>()
     }
 }

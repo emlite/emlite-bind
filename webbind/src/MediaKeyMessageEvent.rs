@@ -64,19 +64,6 @@ impl From<&MediaKeyMessageEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MediaKeyMessageEvent);
 
 impl MediaKeyMessageEvent {
-    /// The `new MediaKeyMessageEvent(..)` constructor, creating a new MediaKeyMessageEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &MediaKeyMessageEventInit,
-    ) -> MediaKeyMessageEvent {
-        Self {
-            inner: Any::global("MediaKeyMessageEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl MediaKeyMessageEvent {
     /// Getter of the `messageType` attribute.
     /// [`MediaKeyMessageEvent.messageType`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyMessageEvent/messageType)
     pub fn message_type(&self) -> MediaKeyMessageType {
@@ -88,5 +75,19 @@ impl MediaKeyMessageEvent {
     /// [`MediaKeyMessageEvent.message`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeyMessageEvent/message)
     pub fn message(&self) -> ArrayBuffer {
         self.inner.get("message").as_::<ArrayBuffer>()
+    }
+}
+
+impl MediaKeyMessageEvent {
+    /// The `new MediaKeyMessageEvent(..)` constructor, creating a new MediaKeyMessageEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &MediaKeyMessageEventInit,
+    ) -> MediaKeyMessageEvent {
+        Self {
+            inner: Any::global("MediaKeyMessageEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

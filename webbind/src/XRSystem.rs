@@ -64,6 +64,19 @@ impl From<&XRSystem> for Any {
 jsbind::utils::impl_dyn_cast!(XRSystem);
 
 impl XRSystem {
+    /// Getter of the `ondevicechange` attribute.
+    /// [`XRSystem.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/ondevicechange)
+    pub fn ondevicechange(&self) -> Any {
+        self.inner.get("ondevicechange").as_::<Any>()
+    }
+
+    /// Setter of the `ondevicechange` attribute.
+    /// [`XRSystem.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/ondevicechange)
+    pub fn set_ondevicechange(&mut self, value: &Any) {
+        self.inner.set("ondevicechange", value);
+    }
+}
+impl XRSystem {
     /// The isSessionSupported method.
     /// [`XRSystem.isSessionSupported`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/isSessionSupported)
     pub fn is_session_supported(&self, mode: &XRSessionMode) -> Promise<bool> {
@@ -90,18 +103,5 @@ impl XRSystem {
         self.inner
             .call("requestSession", &[mode.into(), options.into()])
             .as_::<Promise<XRSession>>()
-    }
-}
-impl XRSystem {
-    /// Getter of the `ondevicechange` attribute.
-    /// [`XRSystem.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/ondevicechange)
-    pub fn ondevicechange(&self) -> Any {
-        self.inner.get("ondevicechange").as_::<Any>()
-    }
-
-    /// Setter of the `ondevicechange` attribute.
-    /// [`XRSystem.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/ondevicechange)
-    pub fn set_ondevicechange(&mut self, value: &Any) {
-        self.inner.set("ondevicechange", value);
     }
 }

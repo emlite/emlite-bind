@@ -64,14 +64,6 @@ impl From<&HTMLMenuElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLMenuElement);
 
 impl HTMLMenuElement {
-    /// The `new HTMLMenuElement(..)` constructor, creating a new HTMLMenuElement instance
-    pub fn new() -> HTMLMenuElement {
-        Self {
-            inner: Any::global("HTMLMenuElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLMenuElement {
     /// Getter of the `compact` attribute.
     /// [`HTMLMenuElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMenuElement/compact)
     pub fn compact(&self) -> bool {
@@ -82,5 +74,14 @@ impl HTMLMenuElement {
     /// [`HTMLMenuElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMenuElement/compact)
     pub fn set_compact(&mut self, value: bool) {
         self.inner.set("compact", value);
+    }
+}
+
+impl HTMLMenuElement {
+    /// The `new HTMLMenuElement(..)` constructor, creating a new HTMLMenuElement instance
+    pub fn new() -> HTMLMenuElement {
+        Self {
+            inner: Any::global("HTMLMenuElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

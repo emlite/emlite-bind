@@ -64,16 +64,6 @@ impl From<&HTMLLabelElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLLabelElement);
 
 impl HTMLLabelElement {
-    /// The `new HTMLLabelElement(..)` constructor, creating a new HTMLLabelElement instance
-    pub fn new() -> HTMLLabelElement {
-        Self {
-            inner: Any::global("HTMLLabelElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLLabelElement {
     /// Getter of the `form` attribute.
     /// [`HTMLLabelElement.form`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/form)
     pub fn form(&self) -> HTMLFormElement {
@@ -98,5 +88,16 @@ impl HTMLLabelElement {
     /// [`HTMLLabelElement.control`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control)
     pub fn control(&self) -> HTMLElement {
         self.inner.get("control").as_::<HTMLElement>()
+    }
+}
+
+impl HTMLLabelElement {
+    /// The `new HTMLLabelElement(..)` constructor, creating a new HTMLLabelElement instance
+    pub fn new() -> HTMLLabelElement {
+        Self {
+            inner: Any::global("HTMLLabelElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

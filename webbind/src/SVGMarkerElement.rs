@@ -128,22 +128,6 @@ impl SVGMarkerElement {
     }
 }
 impl SVGMarkerElement {
-    /// The setOrientToAuto method.
-    /// [`SVGMarkerElement.setOrientToAuto`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/setOrientToAuto)
-    pub fn set_orient_to_auto(&self) -> Undefined {
-        self.inner.call("setOrientToAuto", &[]).as_::<Undefined>()
-    }
-}
-impl SVGMarkerElement {
-    /// The setOrientToAngle method.
-    /// [`SVGMarkerElement.setOrientToAngle`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/setOrientToAngle)
-    pub fn set_orient_to_angle(&self, angle: &SVGAngle) -> Undefined {
-        self.inner
-            .call("setOrientToAngle", &[angle.into()])
-            .as_::<Undefined>()
-    }
-}
-impl SVGMarkerElement {
     /// Getter of the `viewBox` attribute.
     /// [`SVGMarkerElement.viewBox`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/viewBox)
     pub fn view_box(&self) -> SVGAnimatedRect {
@@ -157,5 +141,21 @@ impl SVGMarkerElement {
         self.inner
             .get("preserveAspectRatio")
             .as_::<SVGAnimatedPreserveAspectRatio>()
+    }
+}
+impl SVGMarkerElement {
+    /// The setOrientToAuto method.
+    /// [`SVGMarkerElement.setOrientToAuto`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/setOrientToAuto)
+    pub fn set_orient_to_auto(&self) -> Undefined {
+        self.inner.call("setOrientToAuto", &[]).as_::<Undefined>()
+    }
+}
+impl SVGMarkerElement {
+    /// The setOrientToAngle method.
+    /// [`SVGMarkerElement.setOrientToAngle`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/setOrientToAngle)
+    pub fn set_orient_to_angle(&self, angle: &SVGAngle) -> Undefined {
+        self.inner
+            .call("setOrientToAngle", &[angle.into()])
+            .as_::<Undefined>()
     }
 }

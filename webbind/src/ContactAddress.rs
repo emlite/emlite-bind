@@ -64,13 +64,6 @@ impl From<&ContactAddress> for Any {
 jsbind::utils::impl_dyn_cast!(ContactAddress);
 
 impl ContactAddress {
-    /// The toJSON method.
-    /// [`ContactAddress.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl ContactAddress {
     /// Getter of the `city` attribute.
     /// [`ContactAddress.city`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/city)
     pub fn city(&self) -> JsString {
@@ -138,5 +131,12 @@ impl ContactAddress {
     /// [`ContactAddress.addressLine`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/addressLine)
     pub fn address_line(&self) -> TypedArray<JsString> {
         self.inner.get("addressLine").as_::<TypedArray<JsString>>()
+    }
+}
+impl ContactAddress {
+    /// The toJSON method.
+    /// [`ContactAddress.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

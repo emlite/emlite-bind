@@ -175,6 +175,13 @@ impl Location {
     }
 }
 impl Location {
+    /// Getter of the `ancestorOrigins` attribute.
+    /// [`Location.ancestorOrigins`](https://developer.mozilla.org/en-US/docs/Web/API/Location/ancestorOrigins)
+    pub fn ancestor_origins(&self) -> DOMStringList {
+        self.inner.get("ancestorOrigins").as_::<DOMStringList>()
+    }
+}
+impl Location {
     /// The assign method.
     /// [`Location.assign`](https://developer.mozilla.org/en-US/docs/Web/API/Location/assign)
     pub fn assign(&self, url: &JsString) -> Undefined {
@@ -193,12 +200,5 @@ impl Location {
     /// [`Location.reload`](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
     pub fn reload(&self) -> Undefined {
         self.inner.call("reload", &[]).as_::<Undefined>()
-    }
-}
-impl Location {
-    /// Getter of the `ancestorOrigins` attribute.
-    /// [`Location.ancestorOrigins`](https://developer.mozilla.org/en-US/docs/Web/API/Location/ancestorOrigins)
-    pub fn ancestor_origins(&self) -> DOMStringList {
-        self.inner.get("ancestorOrigins").as_::<DOMStringList>()
     }
 }

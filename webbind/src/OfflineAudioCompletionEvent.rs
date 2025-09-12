@@ -64,6 +64,14 @@ impl From<&OfflineAudioCompletionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(OfflineAudioCompletionEvent);
 
 impl OfflineAudioCompletionEvent {
+    /// Getter of the `renderedBuffer` attribute.
+    /// [`OfflineAudioCompletionEvent.renderedBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioCompletionEvent/renderedBuffer)
+    pub fn rendered_buffer(&self) -> AudioBuffer {
+        self.inner.get("renderedBuffer").as_::<AudioBuffer>()
+    }
+}
+
+impl OfflineAudioCompletionEvent {
     /// The `new OfflineAudioCompletionEvent(..)` constructor, creating a new OfflineAudioCompletionEvent instance
     pub fn new(
         type_: &JsString,
@@ -74,12 +82,5 @@ impl OfflineAudioCompletionEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl OfflineAudioCompletionEvent {
-    /// Getter of the `renderedBuffer` attribute.
-    /// [`OfflineAudioCompletionEvent.renderedBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioCompletionEvent/renderedBuffer)
-    pub fn rendered_buffer(&self) -> AudioBuffer {
-        self.inner.get("renderedBuffer").as_::<AudioBuffer>()
     }
 }

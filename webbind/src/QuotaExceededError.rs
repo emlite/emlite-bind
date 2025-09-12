@@ -64,6 +64,21 @@ impl From<&QuotaExceededError> for Any {
 jsbind::utils::impl_dyn_cast!(QuotaExceededError);
 
 impl QuotaExceededError {
+    /// Getter of the `quota` attribute.
+    /// [`QuotaExceededError.quota`](https://developer.mozilla.org/en-US/docs/Web/API/QuotaExceededError/quota)
+    pub fn quota(&self) -> f64 {
+        self.inner.get("quota").as_::<f64>()
+    }
+}
+impl QuotaExceededError {
+    /// Getter of the `requested` attribute.
+    /// [`QuotaExceededError.requested`](https://developer.mozilla.org/en-US/docs/Web/API/QuotaExceededError/requested)
+    pub fn requested(&self) -> f64 {
+        self.inner.get("requested").as_::<f64>()
+    }
+}
+
+impl QuotaExceededError {
     /// The `new QuotaExceededError(..)` constructor, creating a new QuotaExceededError instance
     pub fn new0() -> QuotaExceededError {
         Self {
@@ -89,19 +104,5 @@ impl QuotaExceededError {
                 .new(&[message.into(), options.into()])
                 .as_::<DOMException>(),
         }
-    }
-}
-impl QuotaExceededError {
-    /// Getter of the `quota` attribute.
-    /// [`QuotaExceededError.quota`](https://developer.mozilla.org/en-US/docs/Web/API/QuotaExceededError/quota)
-    pub fn quota(&self) -> f64 {
-        self.inner.get("quota").as_::<f64>()
-    }
-}
-impl QuotaExceededError {
-    /// Getter of the `requested` attribute.
-    /// [`QuotaExceededError.requested`](https://developer.mozilla.org/en-US/docs/Web/API/QuotaExceededError/requested)
-    pub fn requested(&self) -> f64 {
-        self.inner.get("requested").as_::<f64>()
     }
 }

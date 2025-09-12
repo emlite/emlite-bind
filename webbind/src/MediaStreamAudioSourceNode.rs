@@ -64,6 +64,14 @@ impl From<&MediaStreamAudioSourceNode> for Any {
 jsbind::utils::impl_dyn_cast!(MediaStreamAudioSourceNode);
 
 impl MediaStreamAudioSourceNode {
+    /// Getter of the `mediaStream` attribute.
+    /// [`MediaStreamAudioSourceNode.mediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioSourceNode/mediaStream)
+    pub fn media_stream(&self) -> MediaStream {
+        self.inner.get("mediaStream").as_::<MediaStream>()
+    }
+}
+
+impl MediaStreamAudioSourceNode {
     /// The `new MediaStreamAudioSourceNode(..)` constructor, creating a new MediaStreamAudioSourceNode instance
     pub fn new(
         context: &AudioContext,
@@ -74,12 +82,5 @@ impl MediaStreamAudioSourceNode {
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
-    }
-}
-impl MediaStreamAudioSourceNode {
-    /// Getter of the `mediaStream` attribute.
-    /// [`MediaStreamAudioSourceNode.mediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioSourceNode/mediaStream)
-    pub fn media_stream(&self) -> MediaStream {
-        self.inner.get("mediaStream").as_::<MediaStream>()
     }
 }

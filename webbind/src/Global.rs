@@ -64,6 +64,20 @@ impl From<&Global> for Any {
 jsbind::utils::impl_dyn_cast!(Global);
 
 impl Global {
+    /// Getter of the `value` attribute.
+    /// [`Global.value`](https://developer.mozilla.org/en-US/docs/Web/API/Global/value)
+    pub fn value(&self) -> Any {
+        self.inner.get("value").as_::<Any>()
+    }
+
+    /// Setter of the `value` attribute.
+    /// [`Global.value`](https://developer.mozilla.org/en-US/docs/Web/API/Global/value)
+    pub fn set_value(&mut self, value: &Any) {
+        self.inner.set("value", value);
+    }
+}
+
+impl Global {
     /// The `new Global(..)` constructor, creating a new Global instance
     pub fn new0(descriptor: &GlobalDescriptor) -> Global {
         Self {
@@ -85,18 +99,5 @@ impl Global {
     /// [`Global.valueOf`](https://developer.mozilla.org/en-US/docs/Web/API/Global/valueOf)
     pub fn value_of(&self) -> Any {
         self.inner.call("valueOf", &[]).as_::<Any>()
-    }
-}
-impl Global {
-    /// Getter of the `value` attribute.
-    /// [`Global.value`](https://developer.mozilla.org/en-US/docs/Web/API/Global/value)
-    pub fn value(&self) -> Any {
-        self.inner.get("value").as_::<Any>()
-    }
-
-    /// Setter of the `value` attribute.
-    /// [`Global.value`](https://developer.mozilla.org/en-US/docs/Web/API/Global/value)
-    pub fn set_value(&mut self, value: &Any) {
-        self.inner.set("value", value);
     }
 }

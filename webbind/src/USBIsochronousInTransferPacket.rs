@@ -64,6 +64,21 @@ impl From<&USBIsochronousInTransferPacket> for Any {
 jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferPacket);
 
 impl USBIsochronousInTransferPacket {
+    /// Getter of the `data` attribute.
+    /// [`USBIsochronousInTransferPacket.data`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferPacket/data)
+    pub fn data(&self) -> DataView {
+        self.inner.get("data").as_::<DataView>()
+    }
+}
+impl USBIsochronousInTransferPacket {
+    /// Getter of the `status` attribute.
+    /// [`USBIsochronousInTransferPacket.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferPacket/status)
+    pub fn status(&self) -> USBTransferStatus {
+        self.inner.get("status").as_::<USBTransferStatus>()
+    }
+}
+
+impl USBIsochronousInTransferPacket {
     /// The `new USBIsochronousInTransferPacket(..)` constructor, creating a new USBIsochronousInTransferPacket instance
     pub fn new0(status: &USBTransferStatus) -> USBIsochronousInTransferPacket {
         Self {
@@ -80,19 +95,5 @@ impl USBIsochronousInTransferPacket {
                 .new(&[status.into(), data.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl USBIsochronousInTransferPacket {
-    /// Getter of the `data` attribute.
-    /// [`USBIsochronousInTransferPacket.data`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferPacket/data)
-    pub fn data(&self) -> DataView {
-        self.inner.get("data").as_::<DataView>()
-    }
-}
-impl USBIsochronousInTransferPacket {
-    /// Getter of the `status` attribute.
-    /// [`USBIsochronousInTransferPacket.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferPacket/status)
-    pub fn status(&self) -> USBTransferStatus {
-        self.inner.get("status").as_::<USBTransferStatus>()
     }
 }

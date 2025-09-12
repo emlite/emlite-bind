@@ -64,18 +64,18 @@ impl From<&StyleSheetList> for Any {
 jsbind::utils::impl_dyn_cast!(StyleSheetList);
 
 impl StyleSheetList {
+    /// Getter of the `length` attribute.
+    /// [`StyleSheetList.length`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList/length)
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+impl StyleSheetList {
     /// The item method.
     /// [`StyleSheetList.item`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList/item)
     pub fn item(&self, index: u32) -> CSSStyleSheet {
         self.inner
             .call("item", &[index.into()])
             .as_::<CSSStyleSheet>()
-    }
-}
-impl StyleSheetList {
-    /// Getter of the `length` attribute.
-    /// [`StyleSheetList.length`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList/length)
-    pub fn length(&self) -> u32 {
-        self.inner.get("length").as_::<u32>()
     }
 }

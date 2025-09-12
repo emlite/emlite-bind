@@ -64,16 +64,6 @@ impl From<&HTMLPortalElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLPortalElement);
 
 impl HTMLPortalElement {
-    /// The `new HTMLPortalElement(..)` constructor, creating a new HTMLPortalElement instance
-    pub fn new() -> HTMLPortalElement {
-        Self {
-            inner: Any::global("HTMLPortalElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLPortalElement {
     /// Getter of the `src` attribute.
     /// [`HTMLPortalElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/src)
     pub fn src(&self) -> JsString {
@@ -97,6 +87,43 @@ impl HTMLPortalElement {
     /// [`HTMLPortalElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/referrerPolicy)
     pub fn set_referrer_policy(&mut self, value: &JsString) {
         self.inner.set("referrerPolicy", value);
+    }
+}
+impl HTMLPortalElement {
+    /// Getter of the `onmessage` attribute.
+    /// [`HTMLPortalElement.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessage)
+    pub fn onmessage(&self) -> Any {
+        self.inner.get("onmessage").as_::<Any>()
+    }
+
+    /// Setter of the `onmessage` attribute.
+    /// [`HTMLPortalElement.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessage)
+    pub fn set_onmessage(&mut self, value: &Any) {
+        self.inner.set("onmessage", value);
+    }
+}
+impl HTMLPortalElement {
+    /// Getter of the `onmessageerror` attribute.
+    /// [`HTMLPortalElement.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessageerror)
+    pub fn onmessageerror(&self) -> Any {
+        self.inner.get("onmessageerror").as_::<Any>()
+    }
+
+    /// Setter of the `onmessageerror` attribute.
+    /// [`HTMLPortalElement.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessageerror)
+    pub fn set_onmessageerror(&mut self, value: &Any) {
+        self.inner.set("onmessageerror", value);
+    }
+}
+
+impl HTMLPortalElement {
+    /// The `new HTMLPortalElement(..)` constructor, creating a new HTMLPortalElement instance
+    pub fn new() -> HTMLPortalElement {
+        Self {
+            inner: Any::global("HTMLPortalElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }
 impl HTMLPortalElement {
@@ -127,31 +154,5 @@ impl HTMLPortalElement {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()
-    }
-}
-impl HTMLPortalElement {
-    /// Getter of the `onmessage` attribute.
-    /// [`HTMLPortalElement.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessage)
-    pub fn onmessage(&self) -> Any {
-        self.inner.get("onmessage").as_::<Any>()
-    }
-
-    /// Setter of the `onmessage` attribute.
-    /// [`HTMLPortalElement.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessage)
-    pub fn set_onmessage(&mut self, value: &Any) {
-        self.inner.set("onmessage", value);
-    }
-}
-impl HTMLPortalElement {
-    /// Getter of the `onmessageerror` attribute.
-    /// [`HTMLPortalElement.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessageerror)
-    pub fn onmessageerror(&self) -> Any {
-        self.inner.get("onmessageerror").as_::<Any>()
-    }
-
-    /// Setter of the `onmessageerror` attribute.
-    /// [`HTMLPortalElement.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/onmessageerror)
-    pub fn set_onmessageerror(&mut self, value: &Any) {
-        self.inner.set("onmessageerror", value);
     }
 }

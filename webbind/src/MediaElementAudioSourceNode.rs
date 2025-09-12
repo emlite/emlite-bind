@@ -64,6 +64,14 @@ impl From<&MediaElementAudioSourceNode> for Any {
 jsbind::utils::impl_dyn_cast!(MediaElementAudioSourceNode);
 
 impl MediaElementAudioSourceNode {
+    /// Getter of the `mediaElement` attribute.
+    /// [`MediaElementAudioSourceNode.mediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode/mediaElement)
+    pub fn media_element(&self) -> HTMLMediaElement {
+        self.inner.get("mediaElement").as_::<HTMLMediaElement>()
+    }
+}
+
+impl MediaElementAudioSourceNode {
     /// The `new MediaElementAudioSourceNode(..)` constructor, creating a new MediaElementAudioSourceNode instance
     pub fn new(
         context: &AudioContext,
@@ -74,12 +82,5 @@ impl MediaElementAudioSourceNode {
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
-    }
-}
-impl MediaElementAudioSourceNode {
-    /// Getter of the `mediaElement` attribute.
-    /// [`MediaElementAudioSourceNode.mediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode/mediaElement)
-    pub fn media_element(&self) -> HTMLMediaElement {
-        self.inner.get("mediaElement").as_::<HTMLMediaElement>()
     }
 }

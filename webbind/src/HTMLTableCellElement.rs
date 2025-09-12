@@ -64,16 +64,6 @@ impl From<&HTMLTableCellElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTableCellElement);
 
 impl HTMLTableCellElement {
-    /// The `new HTMLTableCellElement(..)` constructor, creating a new HTMLTableCellElement instance
-    pub fn new() -> HTMLTableCellElement {
-        Self {
-            inner: Any::global("HTMLTableCellElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTableCellElement {
     /// Getter of the `colSpan` attribute.
     /// [`HTMLTableCellElement.colSpan`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/colSpan)
     pub fn col_span(&self) -> u32 {
@@ -260,5 +250,16 @@ impl HTMLTableCellElement {
     /// [`HTMLTableCellElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/bgColor)
     pub fn set_bg_color(&mut self, value: &JsString) {
         self.inner.set("bgColor", value);
+    }
+}
+
+impl HTMLTableCellElement {
+    /// The `new HTMLTableCellElement(..)` constructor, creating a new HTMLTableCellElement instance
+    pub fn new() -> HTMLTableCellElement {
+        Self {
+            inner: Any::global("HTMLTableCellElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,16 +64,6 @@ impl From<&EncodedAudioChunk> for Any {
 jsbind::utils::impl_dyn_cast!(EncodedAudioChunk);
 
 impl EncodedAudioChunk {
-    /// The `new EncodedAudioChunk(..)` constructor, creating a new EncodedAudioChunk instance
-    pub fn new(init: &EncodedAudioChunkInit) -> EncodedAudioChunk {
-        Self {
-            inner: Any::global("EncodedAudioChunk")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl EncodedAudioChunk {
     /// Getter of the `type` attribute.
     /// [`EncodedAudioChunk.type`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedAudioChunk/type)
     pub fn type_(&self) -> EncodedAudioChunkType {
@@ -99,6 +89,17 @@ impl EncodedAudioChunk {
     /// [`EncodedAudioChunk.byteLength`](https://developer.mozilla.org/en-US/docs/Web/API/EncodedAudioChunk/byteLength)
     pub fn byte_length(&self) -> u32 {
         self.inner.get("byteLength").as_::<u32>()
+    }
+}
+
+impl EncodedAudioChunk {
+    /// The `new EncodedAudioChunk(..)` constructor, creating a new EncodedAudioChunk instance
+    pub fn new(init: &EncodedAudioChunkInit) -> EncodedAudioChunk {
+        Self {
+            inner: Any::global("EncodedAudioChunk")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl EncodedAudioChunk {

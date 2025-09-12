@@ -64,6 +64,21 @@ impl From<&ScrollTimeline> for Any {
 jsbind::utils::impl_dyn_cast!(ScrollTimeline);
 
 impl ScrollTimeline {
+    /// Getter of the `source` attribute.
+    /// [`ScrollTimeline.source`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollTimeline/source)
+    pub fn source(&self) -> Element {
+        self.inner.get("source").as_::<Element>()
+    }
+}
+impl ScrollTimeline {
+    /// Getter of the `axis` attribute.
+    /// [`ScrollTimeline.axis`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollTimeline/axis)
+    pub fn axis(&self) -> ScrollAxis {
+        self.inner.get("axis").as_::<ScrollAxis>()
+    }
+}
+
+impl ScrollTimeline {
     /// The `new ScrollTimeline(..)` constructor, creating a new ScrollTimeline instance
     pub fn new0() -> ScrollTimeline {
         Self {
@@ -80,19 +95,5 @@ impl ScrollTimeline {
                 .new(&[options.into()])
                 .as_::<AnimationTimeline>(),
         }
-    }
-}
-impl ScrollTimeline {
-    /// Getter of the `source` attribute.
-    /// [`ScrollTimeline.source`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollTimeline/source)
-    pub fn source(&self) -> Element {
-        self.inner.get("source").as_::<Element>()
-    }
-}
-impl ScrollTimeline {
-    /// Getter of the `axis` attribute.
-    /// [`ScrollTimeline.axis`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollTimeline/axis)
-    pub fn axis(&self) -> ScrollAxis {
-        self.inner.get("axis").as_::<ScrollAxis>()
     }
 }

@@ -64,6 +64,14 @@ impl From<&TrackEvent> for Any {
 jsbind::utils::impl_dyn_cast!(TrackEvent);
 
 impl TrackEvent {
+    /// Getter of the `track` attribute.
+    /// [`TrackEvent.track`](https://developer.mozilla.org/en-US/docs/Web/API/TrackEvent/track)
+    pub fn track(&self) -> Any {
+        self.inner.get("track").as_::<Any>()
+    }
+}
+
+impl TrackEvent {
     /// The `new TrackEvent(..)` constructor, creating a new TrackEvent instance
     pub fn new0(type_: &JsString) -> TrackEvent {
         Self {
@@ -80,12 +88,5 @@ impl TrackEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl TrackEvent {
-    /// Getter of the `track` attribute.
-    /// [`TrackEvent.track`](https://developer.mozilla.org/en-US/docs/Web/API/TrackEvent/track)
-    pub fn track(&self) -> Any {
-        self.inner.get("track").as_::<Any>()
     }
 }

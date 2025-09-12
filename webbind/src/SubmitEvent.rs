@@ -64,6 +64,14 @@ impl From<&SubmitEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SubmitEvent);
 
 impl SubmitEvent {
+    /// Getter of the `submitter` attribute.
+    /// [`SubmitEvent.submitter`](https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent/submitter)
+    pub fn submitter(&self) -> HTMLElement {
+        self.inner.get("submitter").as_::<HTMLElement>()
+    }
+}
+
+impl SubmitEvent {
     /// The `new SubmitEvent(..)` constructor, creating a new SubmitEvent instance
     pub fn new0(type_: &JsString) -> SubmitEvent {
         Self {
@@ -80,12 +88,5 @@ impl SubmitEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl SubmitEvent {
-    /// Getter of the `submitter` attribute.
-    /// [`SubmitEvent.submitter`](https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent/submitter)
-    pub fn submitter(&self) -> HTMLElement {
-        self.inner.get("submitter").as_::<HTMLElement>()
     }
 }

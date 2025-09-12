@@ -64,16 +64,6 @@ impl From<&HTMLEmbedElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLEmbedElement);
 
 impl HTMLEmbedElement {
-    /// The `new HTMLEmbedElement(..)` constructor, creating a new HTMLEmbedElement instance
-    pub fn new() -> HTMLEmbedElement {
-        Self {
-            inner: Any::global("HTMLEmbedElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLEmbedElement {
     /// Getter of the `src` attribute.
     /// [`HTMLEmbedElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/src)
     pub fn src(&self) -> JsString {
@@ -126,13 +116,6 @@ impl HTMLEmbedElement {
     }
 }
 impl HTMLEmbedElement {
-    /// The getSVGDocument method.
-    /// [`HTMLEmbedElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/getSVGDocument)
-    pub fn get_svg_document(&self) -> Document {
-        self.inner.call("getSVGDocument", &[]).as_::<Document>()
-    }
-}
-impl HTMLEmbedElement {
     /// Getter of the `align` attribute.
     /// [`HTMLEmbedElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/align)
     pub fn align(&self) -> JsString {
@@ -156,5 +139,23 @@ impl HTMLEmbedElement {
     /// [`HTMLEmbedElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/name)
     pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
+    }
+}
+
+impl HTMLEmbedElement {
+    /// The `new HTMLEmbedElement(..)` constructor, creating a new HTMLEmbedElement instance
+    pub fn new() -> HTMLEmbedElement {
+        Self {
+            inner: Any::global("HTMLEmbedElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLEmbedElement {
+    /// The getSVGDocument method.
+    /// [`HTMLEmbedElement.getSVGDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/getSVGDocument)
+    pub fn get_svg_document(&self) -> Document {
+        self.inner.call("getSVGDocument", &[]).as_::<Document>()
     }
 }

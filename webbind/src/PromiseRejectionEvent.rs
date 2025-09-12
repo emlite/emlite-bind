@@ -64,19 +64,6 @@ impl From<&PromiseRejectionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PromiseRejectionEvent);
 
 impl PromiseRejectionEvent {
-    /// The `new PromiseRejectionEvent(..)` constructor, creating a new PromiseRejectionEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &PromiseRejectionEventInit,
-    ) -> PromiseRejectionEvent {
-        Self {
-            inner: Any::global("PromiseRejectionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl PromiseRejectionEvent {
     /// Getter of the `promise` attribute.
     /// [`PromiseRejectionEvent.promise`](https://developer.mozilla.org/en-US/docs/Web/API/PromiseRejectionEvent/promise)
     pub fn promise(&self) -> Object {
@@ -88,5 +75,19 @@ impl PromiseRejectionEvent {
     /// [`PromiseRejectionEvent.reason`](https://developer.mozilla.org/en-US/docs/Web/API/PromiseRejectionEvent/reason)
     pub fn reason(&self) -> Any {
         self.inner.get("reason").as_::<Any>()
+    }
+}
+
+impl PromiseRejectionEvent {
+    /// The `new PromiseRejectionEvent(..)` constructor, creating a new PromiseRejectionEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &PromiseRejectionEventInit,
+    ) -> PromiseRejectionEvent {
+        Self {
+            inner: Any::global("PromiseRejectionEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

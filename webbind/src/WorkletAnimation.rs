@@ -64,6 +64,14 @@ impl From<&WorkletAnimation> for Any {
 jsbind::utils::impl_dyn_cast!(WorkletAnimation);
 
 impl WorkletAnimation {
+    /// Getter of the `animatorName` attribute.
+    /// [`WorkletAnimation.animatorName`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimation/animatorName)
+    pub fn animator_name(&self) -> JsString {
+        self.inner.get("animatorName").as_::<JsString>()
+    }
+}
+
+impl WorkletAnimation {
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
     pub fn new0(animator_name: &JsString) -> WorkletAnimation {
         Self {
@@ -112,12 +120,5 @@ impl WorkletAnimation {
                 ])
                 .as_::<Animation>(),
         }
-    }
-}
-impl WorkletAnimation {
-    /// Getter of the `animatorName` attribute.
-    /// [`WorkletAnimation.animatorName`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimation/animatorName)
-    pub fn animator_name(&self) -> JsString {
-        self.inner.get("animatorName").as_::<JsString>()
     }
 }

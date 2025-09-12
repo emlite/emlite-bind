@@ -64,6 +64,14 @@ impl From<&ConstantSourceNode> for Any {
 jsbind::utils::impl_dyn_cast!(ConstantSourceNode);
 
 impl ConstantSourceNode {
+    /// Getter of the `offset` attribute.
+    /// [`ConstantSourceNode.offset`](https://developer.mozilla.org/en-US/docs/Web/API/ConstantSourceNode/offset)
+    pub fn offset(&self) -> AudioParam {
+        self.inner.get("offset").as_::<AudioParam>()
+    }
+}
+
+impl ConstantSourceNode {
     /// The `new ConstantSourceNode(..)` constructor, creating a new ConstantSourceNode instance
     pub fn new0(context: &BaseAudioContext) -> ConstantSourceNode {
         Self {
@@ -80,12 +88,5 @@ impl ConstantSourceNode {
                 .new(&[context.into(), options.into()])
                 .as_::<AudioScheduledSourceNode>(),
         }
-    }
-}
-impl ConstantSourceNode {
-    /// Getter of the `offset` attribute.
-    /// [`ConstantSourceNode.offset`](https://developer.mozilla.org/en-US/docs/Web/API/ConstantSourceNode/offset)
-    pub fn offset(&self) -> AudioParam {
-        self.inner.get("offset").as_::<AudioParam>()
     }
 }

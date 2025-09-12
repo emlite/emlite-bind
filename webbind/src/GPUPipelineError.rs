@@ -64,6 +64,14 @@ impl From<&GPUPipelineError> for Any {
 jsbind::utils::impl_dyn_cast!(GPUPipelineError);
 
 impl GPUPipelineError {
+    /// Getter of the `reason` attribute.
+    /// [`GPUPipelineError.reason`](https://developer.mozilla.org/en-US/docs/Web/API/GPUPipelineError/reason)
+    pub fn reason(&self) -> GPUPipelineErrorReason {
+        self.inner.get("reason").as_::<GPUPipelineErrorReason>()
+    }
+}
+
+impl GPUPipelineError {
     /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
     pub fn new0() -> GPUPipelineError {
         Self {
@@ -89,12 +97,5 @@ impl GPUPipelineError {
                 .new(&[message.into(), options.into()])
                 .as_::<DOMException>(),
         }
-    }
-}
-impl GPUPipelineError {
-    /// Getter of the `reason` attribute.
-    /// [`GPUPipelineError.reason`](https://developer.mozilla.org/en-US/docs/Web/API/GPUPipelineError/reason)
-    pub fn reason(&self) -> GPUPipelineErrorReason {
-        self.inner.get("reason").as_::<GPUPipelineErrorReason>()
     }
 }

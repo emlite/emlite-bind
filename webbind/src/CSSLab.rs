@@ -64,25 +64,6 @@ impl From<&CSSLab> for Any {
 jsbind::utils::impl_dyn_cast!(CSSLab);
 
 impl CSSLab {
-    /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
-    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSLab {
-        Self {
-            inner: Any::global("CSSLab")
-                .new(&[l.into(), a.into(), b.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
-    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSLab {
-        Self {
-            inner: Any::global("CSSLab")
-                .new(&[l.into(), a.into(), b.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSLab {
     /// Getter of the `l` attribute.
     /// [`CSSLab.l`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLab/l)
     pub fn l(&self) -> Any {
@@ -132,5 +113,25 @@ impl CSSLab {
     /// [`CSSLab.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLab/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSLab {
+    /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
+    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSLab {
+        Self {
+            inner: Any::global("CSSLab")
+                .new(&[l.into(), a.into(), b.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSLab(..)` constructor, creating a new CSSLab instance
+    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSLab {
+        Self {
+            inner: Any::global("CSSLab")
+                .new(&[l.into(), a.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

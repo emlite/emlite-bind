@@ -64,6 +64,14 @@ impl From<&PeriodicSyncEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PeriodicSyncEvent);
 
 impl PeriodicSyncEvent {
+    /// Getter of the `tag` attribute.
+    /// [`PeriodicSyncEvent.tag`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent/tag)
+    pub fn tag(&self) -> JsString {
+        self.inner.get("tag").as_::<JsString>()
+    }
+}
+
+impl PeriodicSyncEvent {
     /// The `new PeriodicSyncEvent(..)` constructor, creating a new PeriodicSyncEvent instance
     pub fn new(type_: &JsString, init: &PeriodicSyncEventInit) -> PeriodicSyncEvent {
         Self {
@@ -71,12 +79,5 @@ impl PeriodicSyncEvent {
                 .new(&[type_.into(), init.into()])
                 .as_::<ExtendableEvent>(),
         }
-    }
-}
-impl PeriodicSyncEvent {
-    /// Getter of the `tag` attribute.
-    /// [`PeriodicSyncEvent.tag`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncEvent/tag)
-    pub fn tag(&self) -> JsString {
-        self.inner.get("tag").as_::<JsString>()
     }
 }

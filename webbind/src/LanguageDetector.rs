@@ -64,6 +64,22 @@ impl From<&LanguageDetector> for Any {
 jsbind::utils::impl_dyn_cast!(LanguageDetector);
 
 impl LanguageDetector {
+    /// Getter of the `expectedInputLanguages` attribute.
+    /// [`LanguageDetector.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/expectedInputLanguages)
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<TypedArray<JsString>>()
+    }
+}
+impl LanguageDetector {
+    /// Getter of the `inputQuota` attribute.
+    /// [`LanguageDetector.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/inputQuota)
+    pub fn input_quota(&self) -> f64 {
+        self.inner.get("inputQuota").as_::<f64>()
+    }
+}
+impl LanguageDetector {
     /// The create method.
     /// [`LanguageDetector.create`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/create)
     pub fn create0() -> Promise<LanguageDetector> {
@@ -116,15 +132,6 @@ impl LanguageDetector {
     }
 }
 impl LanguageDetector {
-    /// Getter of the `expectedInputLanguages` attribute.
-    /// [`LanguageDetector.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
-        self.inner
-            .get("expectedInputLanguages")
-            .as_::<TypedArray<JsString>>()
-    }
-}
-impl LanguageDetector {
     /// The measureInputUsage method.
     /// [`LanguageDetector.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
@@ -142,13 +149,6 @@ impl LanguageDetector {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
             .as_::<Promise<f64>>()
-    }
-}
-impl LanguageDetector {
-    /// Getter of the `inputQuota` attribute.
-    /// [`LanguageDetector.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/inputQuota)
-    pub fn input_quota(&self) -> f64 {
-        self.inner.get("inputQuota").as_::<f64>()
     }
 }
 impl LanguageDetector {

@@ -64,16 +64,6 @@ impl From<&CSSSkew> for Any {
 jsbind::utils::impl_dyn_cast!(CSSSkew);
 
 impl CSSSkew {
-    /// The `new CSSSkew(..)` constructor, creating a new CSSSkew instance
-    pub fn new(ax: &CSSNumericValue, ay: &CSSNumericValue) -> CSSSkew {
-        Self {
-            inner: Any::global("CSSSkew")
-                .new(&[ax.into(), ay.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-}
-impl CSSSkew {
     /// Getter of the `ax` attribute.
     /// [`CSSSkew.ax`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkew/ax)
     pub fn ax(&self) -> CSSNumericValue {
@@ -97,5 +87,16 @@ impl CSSSkew {
     /// [`CSSSkew.ay`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkew/ay)
     pub fn set_ay(&mut self, value: &CSSNumericValue) {
         self.inner.set("ay", value);
+    }
+}
+
+impl CSSSkew {
+    /// The `new CSSSkew(..)` constructor, creating a new CSSSkew instance
+    pub fn new(ax: &CSSNumericValue, ay: &CSSNumericValue) -> CSSSkew {
+        Self {
+            inner: Any::global("CSSSkew")
+                .new(&[ax.into(), ay.into()])
+                .as_::<CSSTransformComponent>(),
+        }
     }
 }

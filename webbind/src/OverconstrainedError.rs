@@ -64,6 +64,14 @@ impl From<&OverconstrainedError> for Any {
 jsbind::utils::impl_dyn_cast!(OverconstrainedError);
 
 impl OverconstrainedError {
+    /// Getter of the `constraint` attribute.
+    /// [`OverconstrainedError.constraint`](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError/constraint)
+    pub fn constraint(&self) -> JsString {
+        self.inner.get("constraint").as_::<JsString>()
+    }
+}
+
+impl OverconstrainedError {
     /// The `new OverconstrainedError(..)` constructor, creating a new OverconstrainedError instance
     pub fn new0(constraint: &JsString) -> OverconstrainedError {
         Self {
@@ -80,12 +88,5 @@ impl OverconstrainedError {
                 .new(&[constraint.into(), message.into()])
                 .as_::<DOMException>(),
         }
-    }
-}
-impl OverconstrainedError {
-    /// Getter of the `constraint` attribute.
-    /// [`OverconstrainedError.constraint`](https://developer.mozilla.org/en-US/docs/Web/API/OverconstrainedError/constraint)
-    pub fn constraint(&self) -> JsString {
-        self.inner.get("constraint").as_::<JsString>()
     }
 }

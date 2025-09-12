@@ -64,16 +64,6 @@ impl From<&HTMLUListElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLUListElement);
 
 impl HTMLUListElement {
-    /// The `new HTMLUListElement(..)` constructor, creating a new HTMLUListElement instance
-    pub fn new() -> HTMLUListElement {
-        Self {
-            inner: Any::global("HTMLUListElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLUListElement {
     /// Getter of the `compact` attribute.
     /// [`HTMLUListElement.compact`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement/compact)
     pub fn compact(&self) -> bool {
@@ -97,5 +87,16 @@ impl HTMLUListElement {
     /// [`HTMLUListElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement/type)
     pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
+    }
+}
+
+impl HTMLUListElement {
+    /// The `new HTMLUListElement(..)` constructor, creating a new HTMLUListElement instance
+    pub fn new() -> HTMLUListElement {
+        Self {
+            inner: Any::global("HTMLUListElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

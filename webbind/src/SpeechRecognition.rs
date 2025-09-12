@@ -64,16 +64,6 @@ impl From<&SpeechRecognition> for Any {
 jsbind::utils::impl_dyn_cast!(SpeechRecognition);
 
 impl SpeechRecognition {
-    /// The `new SpeechRecognition(..)` constructor, creating a new SpeechRecognition instance
-    pub fn new() -> SpeechRecognition {
-        Self {
-            inner: Any::global("SpeechRecognition")
-                .new(&[])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl SpeechRecognition {
     /// Getter of the `grammars` attribute.
     /// [`SpeechRecognition.grammars`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/grammars)
     pub fn grammars(&self) -> SpeechGrammarList {
@@ -164,47 +154,6 @@ impl SpeechRecognition {
     /// [`SpeechRecognition.phrases`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/phrases)
     pub fn set_phrases(&mut self, value: &TypedArray<SpeechRecognitionPhrase>) {
         self.inner.set("phrases", value);
-    }
-}
-impl SpeechRecognition {
-    /// The start method.
-    /// [`SpeechRecognition.start`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
-    pub fn start(&self, audio_track: &MediaStreamTrack) -> Undefined {
-        self.inner
-            .call("start", &[audio_track.into()])
-            .as_::<Undefined>()
-    }
-}
-impl SpeechRecognition {
-    /// The stop method.
-    /// [`SpeechRecognition.stop`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/stop)
-    pub fn stop(&self) -> Undefined {
-        self.inner.call("stop", &[]).as_::<Undefined>()
-    }
-}
-impl SpeechRecognition {
-    /// The abort method.
-    /// [`SpeechRecognition.abort`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/abort)
-    pub fn abort(&self) -> Undefined {
-        self.inner.call("abort", &[]).as_::<Undefined>()
-    }
-}
-impl SpeechRecognition {
-    /// The available method.
-    /// [`SpeechRecognition.available`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/available)
-    pub fn available(options: &SpeechRecognitionOptions) -> Promise<AvailabilityStatus> {
-        Any::global("SpeechRecognition")
-            .call("available", &[options.into()])
-            .as_::<Promise<AvailabilityStatus>>()
-    }
-}
-impl SpeechRecognition {
-    /// The install method.
-    /// [`SpeechRecognition.install`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/install)
-    pub fn install(options: &SpeechRecognitionOptions) -> Promise<bool> {
-        Any::global("SpeechRecognition")
-            .call("install", &[options.into()])
-            .as_::<Promise<bool>>()
     }
 }
 impl SpeechRecognition {
@@ -348,5 +297,64 @@ impl SpeechRecognition {
     /// [`SpeechRecognition.onend`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/onend)
     pub fn set_onend(&mut self, value: &Any) {
         self.inner.set("onend", value);
+    }
+}
+
+impl SpeechRecognition {
+    /// The `new SpeechRecognition(..)` constructor, creating a new SpeechRecognition instance
+    pub fn new() -> SpeechRecognition {
+        Self {
+            inner: Any::global("SpeechRecognition")
+                .new(&[])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+impl SpeechRecognition {
+    /// The start method.
+    /// [`SpeechRecognition.start`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
+    pub fn start(&self) -> Undefined {
+        self.inner.call("start", &[]).as_::<Undefined>()
+    }
+}
+impl SpeechRecognition {
+    /// The start method.
+    /// [`SpeechRecognition.start`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
+    pub fn start1(&self, audio_track: &MediaStreamTrack) -> Undefined {
+        self.inner
+            .call("start", &[audio_track.into()])
+            .as_::<Undefined>()
+    }
+}
+impl SpeechRecognition {
+    /// The stop method.
+    /// [`SpeechRecognition.stop`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/stop)
+    pub fn stop(&self) -> Undefined {
+        self.inner.call("stop", &[]).as_::<Undefined>()
+    }
+}
+impl SpeechRecognition {
+    /// The abort method.
+    /// [`SpeechRecognition.abort`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/abort)
+    pub fn abort(&self) -> Undefined {
+        self.inner.call("abort", &[]).as_::<Undefined>()
+    }
+}
+impl SpeechRecognition {
+    /// The available method.
+    /// [`SpeechRecognition.available`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/available)
+    pub fn available(options: &SpeechRecognitionOptions) -> Promise<AvailabilityStatus> {
+        Any::global("SpeechRecognition")
+            .call("available", &[options.into()])
+            .as_::<Promise<AvailabilityStatus>>()
+    }
+}
+impl SpeechRecognition {
+    /// The install method.
+    /// [`SpeechRecognition.install`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/install)
+    pub fn install(options: &SpeechRecognitionOptions) -> Promise<bool> {
+        Any::global("SpeechRecognition")
+            .call("install", &[options.into()])
+            .as_::<Promise<bool>>()
     }
 }

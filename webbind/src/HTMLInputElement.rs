@@ -64,16 +64,6 @@ impl From<&HTMLInputElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLInputElement);
 
 impl HTMLInputElement {
-    /// The `new HTMLInputElement(..)` constructor, creating a new HTMLInputElement instance
-    pub fn new() -> HTMLInputElement {
-        Self {
-            inner: Any::global("HTMLInputElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLInputElement {
     /// Getter of the `accept` attribute.
     /// [`HTMLInputElement.accept`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/accept)
     pub fn accept(&self) -> JsString {
@@ -556,30 +546,6 @@ impl HTMLInputElement {
     }
 }
 impl HTMLInputElement {
-    /// The stepUp method.
-    /// [`HTMLInputElement.stepUp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepUp)
-    pub fn step_up0(&self) -> Undefined {
-        self.inner.call("stepUp", &[]).as_::<Undefined>()
-    }
-    /// The stepUp method.
-    /// [`HTMLInputElement.stepUp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepUp)
-    pub fn step_up1(&self, n: i32) -> Undefined {
-        self.inner.call("stepUp", &[n.into()]).as_::<Undefined>()
-    }
-}
-impl HTMLInputElement {
-    /// The stepDown method.
-    /// [`HTMLInputElement.stepDown`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepDown)
-    pub fn step_down0(&self) -> Undefined {
-        self.inner.call("stepDown", &[]).as_::<Undefined>()
-    }
-    /// The stepDown method.
-    /// [`HTMLInputElement.stepDown`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepDown)
-    pub fn step_down1(&self, n: i32) -> Undefined {
-        self.inner.call("stepDown", &[n.into()]).as_::<Undefined>()
-    }
-}
-impl HTMLInputElement {
     /// Getter of the `willValidate` attribute.
     /// [`HTMLInputElement.willValidate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/willValidate)
     pub fn will_validate(&self) -> bool {
@@ -601,40 +567,10 @@ impl HTMLInputElement {
     }
 }
 impl HTMLInputElement {
-    /// The checkValidity method.
-    /// [`HTMLInputElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checkValidity)
-    pub fn check_validity(&self) -> bool {
-        self.inner.call("checkValidity", &[]).as_::<bool>()
-    }
-}
-impl HTMLInputElement {
-    /// The reportValidity method.
-    /// [`HTMLInputElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/reportValidity)
-    pub fn report_validity(&self) -> bool {
-        self.inner.call("reportValidity", &[]).as_::<bool>()
-    }
-}
-impl HTMLInputElement {
-    /// The setCustomValidity method.
-    /// [`HTMLInputElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<Undefined>()
-    }
-}
-impl HTMLInputElement {
     /// Getter of the `labels` attribute.
     /// [`HTMLInputElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/labels)
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
-    }
-}
-impl HTMLInputElement {
-    /// The select method.
-    /// [`HTMLInputElement.select`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select)
-    pub fn select(&self) -> Undefined {
-        self.inner.call("select", &[]).as_::<Undefined>()
     }
 }
 impl HTMLInputElement {
@@ -674,65 +610,6 @@ impl HTMLInputElement {
     /// [`HTMLInputElement.selectionDirection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/selectionDirection)
     pub fn set_selection_direction(&mut self, value: &JsString) {
         self.inner.set("selectionDirection", value);
-    }
-}
-impl HTMLInputElement {
-    /// The setRangeText method.
-    /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
-    pub fn set_range_text0(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
-        self.inner
-            .call(
-                "setRangeText",
-                &[replacement.into(), start.into(), end.into()],
-            )
-            .as_::<Undefined>()
-    }
-    /// The setRangeText method.
-    /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
-    pub fn set_range_text1(
-        &self,
-        replacement: &JsString,
-        start: u32,
-        end: u32,
-        selection_mode: &SelectionMode,
-    ) -> Undefined {
-        self.inner
-            .call(
-                "setRangeText",
-                &[
-                    replacement.into(),
-                    start.into(),
-                    end.into(),
-                    selection_mode.into(),
-                ],
-            )
-            .as_::<Undefined>()
-    }
-}
-impl HTMLInputElement {
-    /// The setSelectionRange method.
-    /// [`HTMLInputElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange)
-    pub fn set_selection_range0(&self, start: u32, end: u32) -> Undefined {
-        self.inner
-            .call("setSelectionRange", &[start.into(), end.into()])
-            .as_::<Undefined>()
-    }
-    /// The setSelectionRange method.
-    /// [`HTMLInputElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange)
-    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &JsString) -> Undefined {
-        self.inner
-            .call(
-                "setSelectionRange",
-                &[start.into(), end.into(), direction.into()],
-            )
-            .as_::<Undefined>()
-    }
-}
-impl HTMLInputElement {
-    /// The showPicker method.
-    /// [`HTMLInputElement.showPicker`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/showPicker)
-    pub fn show_picker(&self) -> Undefined {
-        self.inner.call("showPicker", &[]).as_::<Undefined>()
     }
 }
 impl HTMLInputElement {
@@ -820,5 +697,138 @@ impl HTMLInputElement {
     /// [`HTMLInputElement.popoverTargetAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/popoverTargetAction)
     pub fn set_popover_target_action(&mut self, value: &JsString) {
         self.inner.set("popoverTargetAction", value);
+    }
+}
+
+impl HTMLInputElement {
+    /// The `new HTMLInputElement(..)` constructor, creating a new HTMLInputElement instance
+    pub fn new() -> HTMLInputElement {
+        Self {
+            inner: Any::global("HTMLInputElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLInputElement {
+    /// The stepUp method.
+    /// [`HTMLInputElement.stepUp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepUp)
+    pub fn step_up0(&self) -> Undefined {
+        self.inner.call("stepUp", &[]).as_::<Undefined>()
+    }
+    /// The stepUp method.
+    /// [`HTMLInputElement.stepUp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepUp)
+    pub fn step_up1(&self, n: i32) -> Undefined {
+        self.inner.call("stepUp", &[n.into()]).as_::<Undefined>()
+    }
+}
+impl HTMLInputElement {
+    /// The stepDown method.
+    /// [`HTMLInputElement.stepDown`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepDown)
+    pub fn step_down0(&self) -> Undefined {
+        self.inner.call("stepDown", &[]).as_::<Undefined>()
+    }
+    /// The stepDown method.
+    /// [`HTMLInputElement.stepDown`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/stepDown)
+    pub fn step_down1(&self, n: i32) -> Undefined {
+        self.inner.call("stepDown", &[n.into()]).as_::<Undefined>()
+    }
+}
+impl HTMLInputElement {
+    /// The checkValidity method.
+    /// [`HTMLInputElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checkValidity)
+    pub fn check_validity(&self) -> bool {
+        self.inner.call("checkValidity", &[]).as_::<bool>()
+    }
+}
+impl HTMLInputElement {
+    /// The reportValidity method.
+    /// [`HTMLInputElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/reportValidity)
+    pub fn report_validity(&self) -> bool {
+        self.inner.call("reportValidity", &[]).as_::<bool>()
+    }
+}
+impl HTMLInputElement {
+    /// The setCustomValidity method.
+    /// [`HTMLInputElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setCustomValidity)
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
+        self.inner
+            .call("setCustomValidity", &[error.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLInputElement {
+    /// The select method.
+    /// [`HTMLInputElement.select`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select)
+    pub fn select(&self) -> Undefined {
+        self.inner.call("select", &[]).as_::<Undefined>()
+    }
+}
+impl HTMLInputElement {
+    /// The setRangeText method.
+    /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
+    pub fn set_range_text(&self, replacement: &JsString) -> Undefined {
+        self.inner
+            .call("setRangeText", &[replacement.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLInputElement {
+    /// The setRangeText method.
+    /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
+    pub fn set_range_text1(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
+        self.inner
+            .call(
+                "setRangeText",
+                &[replacement.into(), start.into(), end.into()],
+            )
+            .as_::<Undefined>()
+    }
+    /// The setRangeText method.
+    /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
+    pub fn set_range_text2(
+        &self,
+        replacement: &JsString,
+        start: u32,
+        end: u32,
+        selection_mode: &SelectionMode,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "setRangeText",
+                &[
+                    replacement.into(),
+                    start.into(),
+                    end.into(),
+                    selection_mode.into(),
+                ],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl HTMLInputElement {
+    /// The setSelectionRange method.
+    /// [`HTMLInputElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange)
+    pub fn set_selection_range0(&self, start: u32, end: u32) -> Undefined {
+        self.inner
+            .call("setSelectionRange", &[start.into(), end.into()])
+            .as_::<Undefined>()
+    }
+    /// The setSelectionRange method.
+    /// [`HTMLInputElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange)
+    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &JsString) -> Undefined {
+        self.inner
+            .call(
+                "setSelectionRange",
+                &[start.into(), end.into(), direction.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl HTMLInputElement {
+    /// The showPicker method.
+    /// [`HTMLInputElement.showPicker`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/showPicker)
+    pub fn show_picker(&self) -> Undefined {
+        self.inner.call("showPicker", &[]).as_::<Undefined>()
     }
 }

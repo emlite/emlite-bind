@@ -64,25 +64,6 @@ impl From<&MouseEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MouseEvent);
 
 impl MouseEvent {
-    /// The `new MouseEvent(..)` constructor, creating a new MouseEvent instance
-    pub fn new0(type_: &JsString) -> MouseEvent {
-        Self {
-            inner: Any::global("MouseEvent")
-                .new(&[type_.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-
-    /// The `new MouseEvent(..)` constructor, creating a new MouseEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &MouseEventInit) -> MouseEvent {
-        Self {
-            inner: Any::global("MouseEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<UIEvent>(),
-        }
-    }
-}
-impl MouseEvent {
     /// Getter of the `screenX` attribute.
     /// [`MouseEvent.screenX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX)
     pub fn screen_x(&self) -> i32 {
@@ -174,15 +155,6 @@ impl MouseEvent {
     }
 }
 impl MouseEvent {
-    /// The getModifierState method.
-    /// [`MouseEvent.getModifierState`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState)
-    pub fn get_modifier_state(&self, key_arg: &JsString) -> bool {
-        self.inner
-            .call("getModifierState", &[key_arg.into()])
-            .as_::<bool>()
-    }
-}
-impl MouseEvent {
     /// Getter of the `pageX` attribute.
     /// [`MouseEvent.pageX`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX)
     pub fn page_x(&self) -> f64 {
@@ -236,6 +208,35 @@ impl MouseEvent {
     /// [`MouseEvent.movementY`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementY)
     pub fn movement_y(&self) -> f64 {
         self.inner.get("movementY").as_::<f64>()
+    }
+}
+
+impl MouseEvent {
+    /// The `new MouseEvent(..)` constructor, creating a new MouseEvent instance
+    pub fn new0(type_: &JsString) -> MouseEvent {
+        Self {
+            inner: Any::global("MouseEvent")
+                .new(&[type_.into()])
+                .as_::<UIEvent>(),
+        }
+    }
+
+    /// The `new MouseEvent(..)` constructor, creating a new MouseEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &MouseEventInit) -> MouseEvent {
+        Self {
+            inner: Any::global("MouseEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<UIEvent>(),
+        }
+    }
+}
+impl MouseEvent {
+    /// The getModifierState method.
+    /// [`MouseEvent.getModifierState`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState)
+    pub fn get_modifier_state(&self, key_arg: &JsString) -> bool {
+        self.inner
+            .call("getModifierState", &[key_arg.into()])
+            .as_::<bool>()
     }
 }
 impl MouseEvent {

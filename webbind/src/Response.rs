@@ -64,60 +64,6 @@ impl From<&Response> for Any {
 jsbind::utils::impl_dyn_cast!(Response);
 
 impl Response {
-    /// The `new Response(..)` constructor, creating a new Response instance
-    pub fn new0() -> Response {
-        Self {
-            inner: Any::global("Response").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new Response(..)` constructor, creating a new Response instance
-    pub fn new1(body: &Any) -> Response {
-        Self {
-            inner: Any::global("Response").new(&[body.into()]).as_::<Any>(),
-        }
-    }
-
-    /// The `new Response(..)` constructor, creating a new Response instance
-    pub fn new2(body: &Any, init: &ResponseInit) -> Response {
-        Self {
-            inner: Any::global("Response")
-                .new(&[body.into(), init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl Response {
-    /// The error method.
-    /// [`Response.error`](https://developer.mozilla.org/en-US/docs/Web/API/Response/error)
-    pub fn error() -> Response {
-        Any::global("Response").call("error", &[]).as_::<Response>()
-    }
-}
-impl Response {
-    /// The redirect method.
-    /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
-    pub fn redirect0(url: &JsString) -> Response {
-        Any::global("Response")
-            .call("redirect", &[url.into()])
-            .as_::<Response>()
-    }
-    /// The redirect method.
-    /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
-    pub fn redirect1(url: &JsString, status: u16) -> Response {
-        Any::global("Response")
-            .call("redirect", &[url.into(), status.into()])
-            .as_::<Response>()
-    }
-}
-impl Response {
-    /// The json method.
-    /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
-    pub fn json(&self) -> Promise<Any> {
-        self.inner.call("json", &[]).as_::<Promise<Any>>()
-    }
-}
-impl Response {
     /// Getter of the `type` attribute.
     /// [`Response.type`](https://developer.mozilla.org/en-US/docs/Web/API/Response/type)
     pub fn type_(&self) -> ResponseType {
@@ -167,13 +113,6 @@ impl Response {
     }
 }
 impl Response {
-    /// The clone method.
-    /// [`Response.clone`](https://developer.mozilla.org/en-US/docs/Web/API/Response/clone)
-    pub fn clone_(&self) -> Response {
-        self.inner.call("clone", &[]).as_::<Response>()
-    }
-}
-impl Response {
     /// Getter of the `body` attribute.
     /// [`Response.body`](https://developer.mozilla.org/en-US/docs/Web/API/Response/body)
     pub fn body(&self) -> ReadableStream {
@@ -185,6 +124,77 @@ impl Response {
     /// [`Response.bodyUsed`](https://developer.mozilla.org/en-US/docs/Web/API/Response/bodyUsed)
     pub fn body_used(&self) -> bool {
         self.inner.get("bodyUsed").as_::<bool>()
+    }
+}
+
+impl Response {
+    /// The `new Response(..)` constructor, creating a new Response instance
+    pub fn new0() -> Response {
+        Self {
+            inner: Any::global("Response").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new Response(..)` constructor, creating a new Response instance
+    pub fn new1(body: &Any) -> Response {
+        Self {
+            inner: Any::global("Response").new(&[body.into()]).as_::<Any>(),
+        }
+    }
+
+    /// The `new Response(..)` constructor, creating a new Response instance
+    pub fn new2(body: &Any, init: &ResponseInit) -> Response {
+        Self {
+            inner: Any::global("Response")
+                .new(&[body.into(), init.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+impl Response {
+    /// The error method.
+    /// [`Response.error`](https://developer.mozilla.org/en-US/docs/Web/API/Response/error)
+    pub fn error() -> Response {
+        Any::global("Response").call("error", &[]).as_::<Response>()
+    }
+}
+impl Response {
+    /// The redirect method.
+    /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
+    pub fn redirect0(url: &JsString) -> Response {
+        Any::global("Response")
+            .call("redirect", &[url.into()])
+            .as_::<Response>()
+    }
+    /// The redirect method.
+    /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
+    pub fn redirect1(url: &JsString, status: u16) -> Response {
+        Any::global("Response")
+            .call("redirect", &[url.into(), status.into()])
+            .as_::<Response>()
+    }
+}
+impl Response {
+    /// The json method.
+    /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
+    pub fn json0(data: &Any) -> Response {
+        Any::global("Response")
+            .call("json", &[data.into()])
+            .as_::<Response>()
+    }
+    /// The json method.
+    /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
+    pub fn json1(data: &Any, init: &ResponseInit) -> Response {
+        Any::global("Response")
+            .call("json", &[data.into(), init.into()])
+            .as_::<Response>()
+    }
+}
+impl Response {
+    /// The clone method.
+    /// [`Response.clone`](https://developer.mozilla.org/en-US/docs/Web/API/Response/clone)
+    pub fn clone_(&self) -> Response {
+        self.inner.call("clone", &[]).as_::<Response>()
     }
 }
 impl Response {
@@ -215,6 +225,13 @@ impl Response {
     /// [`Response.formData`](https://developer.mozilla.org/en-US/docs/Web/API/Response/formData)
     pub fn form_data(&self) -> Promise<FormData> {
         self.inner.call("formData", &[]).as_::<Promise<FormData>>()
+    }
+}
+impl Response {
+    /// The json method.
+    /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
+    pub fn json(&self) -> Promise<Any> {
+        self.inner.call("json", &[]).as_::<Promise<Any>>()
     }
 }
 impl Response {

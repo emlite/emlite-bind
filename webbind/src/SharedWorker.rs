@@ -64,25 +64,6 @@ impl From<&SharedWorker> for Any {
 jsbind::utils::impl_dyn_cast!(SharedWorker);
 
 impl SharedWorker {
-    /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
-    pub fn new0(script_url: &Any) -> SharedWorker {
-        Self {
-            inner: Any::global("SharedWorker")
-                .new(&[script_url.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-
-    /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
-    pub fn new1(script_url: &Any, options: &Any) -> SharedWorker {
-        Self {
-            inner: Any::global("SharedWorker")
-                .new(&[script_url.into(), options.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl SharedWorker {
     /// Getter of the `port` attribute.
     /// [`SharedWorker.port`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/port)
     pub fn port(&self) -> MessagePort {
@@ -100,5 +81,25 @@ impl SharedWorker {
     /// [`SharedWorker.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/onerror)
     pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
+    }
+}
+
+impl SharedWorker {
+    /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
+    pub fn new0(script_url: &Any) -> SharedWorker {
+        Self {
+            inner: Any::global("SharedWorker")
+                .new(&[script_url.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    /// The `new SharedWorker(..)` constructor, creating a new SharedWorker instance
+    pub fn new1(script_url: &Any, options: &Any) -> SharedWorker {
+        Self {
+            inner: Any::global("SharedWorker")
+                .new(&[script_url.into(), options.into()])
+                .as_::<EventTarget>(),
+        }
     }
 }

@@ -85,15 +85,6 @@ impl WorkerGlobalScope {
     }
 }
 impl WorkerGlobalScope {
-    /// The importScripts method.
-    /// [`WorkerGlobalScope.importScripts`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts)
-    pub fn import_scripts(&self, urls: &Any) -> Undefined {
-        self.inner
-            .call("importScripts", &[urls.into()])
-            .as_::<Undefined>()
-    }
-}
-impl WorkerGlobalScope {
     /// Getter of the `onerror` attribute.
     /// [`WorkerGlobalScope.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/onerror)
     pub fn onerror(&self) -> Any {
@@ -183,5 +174,14 @@ impl WorkerGlobalScope {
     /// [`WorkerGlobalScope.crypto`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/crypto)
     pub fn crypto(&self) -> Crypto {
         self.inner.get("crypto").as_::<Crypto>()
+    }
+}
+impl WorkerGlobalScope {
+    /// The importScripts method.
+    /// [`WorkerGlobalScope.importScripts`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts)
+    pub fn import_scripts(&self, urls: &Any) -> Undefined {
+        self.inner
+            .call("importScripts", &[urls.into()])
+            .as_::<Undefined>()
     }
 }

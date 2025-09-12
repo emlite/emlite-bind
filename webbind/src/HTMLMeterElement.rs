@@ -64,16 +64,6 @@ impl From<&HTMLMeterElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLMeterElement);
 
 impl HTMLMeterElement {
-    /// The `new HTMLMeterElement(..)` constructor, creating a new HTMLMeterElement instance
-    pub fn new() -> HTMLMeterElement {
-        Self {
-            inner: Any::global("HTMLMeterElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLMeterElement {
     /// Getter of the `value` attribute.
     /// [`HTMLMeterElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMeterElement/value)
     pub fn value(&self) -> f64 {
@@ -156,5 +146,16 @@ impl HTMLMeterElement {
     /// [`HTMLMeterElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMeterElement/labels)
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
+    }
+}
+
+impl HTMLMeterElement {
+    /// The `new HTMLMeterElement(..)` constructor, creating a new HTMLMeterElement instance
+    pub fn new() -> HTMLMeterElement {
+        Self {
+            inner: Any::global("HTMLMeterElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,22 +64,6 @@ impl From<&ScreenOrientation> for Any {
 jsbind::utils::impl_dyn_cast!(ScreenOrientation);
 
 impl ScreenOrientation {
-    /// The lock method.
-    /// [`ScreenOrientation.lock`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/lock)
-    pub fn lock(&self, orientation: &OrientationLockType) -> Promise<Undefined> {
-        self.inner
-            .call("lock", &[orientation.into()])
-            .as_::<Promise<Undefined>>()
-    }
-}
-impl ScreenOrientation {
-    /// The unlock method.
-    /// [`ScreenOrientation.unlock`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/unlock)
-    pub fn unlock(&self) -> Undefined {
-        self.inner.call("unlock", &[]).as_::<Undefined>()
-    }
-}
-impl ScreenOrientation {
     /// Getter of the `type` attribute.
     /// [`ScreenOrientation.type`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/type)
     pub fn type_(&self) -> OrientationType {
@@ -104,5 +88,21 @@ impl ScreenOrientation {
     /// [`ScreenOrientation.onchange`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/onchange)
     pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
+    }
+}
+impl ScreenOrientation {
+    /// The lock method.
+    /// [`ScreenOrientation.lock`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/lock)
+    pub fn lock(&self, orientation: &OrientationLockType) -> Promise<Undefined> {
+        self.inner
+            .call("lock", &[orientation.into()])
+            .as_::<Promise<Undefined>>()
+    }
+}
+impl ScreenOrientation {
+    /// The unlock method.
+    /// [`ScreenOrientation.unlock`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/unlock)
+    pub fn unlock(&self) -> Undefined {
+        self.inner.call("unlock", &[]).as_::<Undefined>()
     }
 }

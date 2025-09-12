@@ -64,25 +64,6 @@ impl From<&RTCError> for Any {
 jsbind::utils::impl_dyn_cast!(RTCError);
 
 impl RTCError {
-    /// The `new RTCError(..)` constructor, creating a new RTCError instance
-    pub fn new0(init: &RTCErrorInit) -> RTCError {
-        Self {
-            inner: Any::global("RTCError")
-                .new(&[init.into()])
-                .as_::<DOMException>(),
-        }
-    }
-
-    /// The `new RTCError(..)` constructor, creating a new RTCError instance
-    pub fn new1(init: &RTCErrorInit, message: &JsString) -> RTCError {
-        Self {
-            inner: Any::global("RTCError")
-                .new(&[init.into(), message.into()])
-                .as_::<DOMException>(),
-        }
-    }
-}
-impl RTCError {
     /// Getter of the `errorDetail` attribute.
     /// [`RTCError.errorDetail`](https://developer.mozilla.org/en-US/docs/Web/API/RTCError/errorDetail)
     pub fn error_detail(&self) -> RTCErrorDetailType {
@@ -122,5 +103,25 @@ impl RTCError {
     /// [`RTCError.httpRequestStatusCode`](https://developer.mozilla.org/en-US/docs/Web/API/RTCError/httpRequestStatusCode)
     pub fn http_request_status_code(&self) -> i32 {
         self.inner.get("httpRequestStatusCode").as_::<i32>()
+    }
+}
+
+impl RTCError {
+    /// The `new RTCError(..)` constructor, creating a new RTCError instance
+    pub fn new0(init: &RTCErrorInit) -> RTCError {
+        Self {
+            inner: Any::global("RTCError")
+                .new(&[init.into()])
+                .as_::<DOMException>(),
+        }
+    }
+
+    /// The `new RTCError(..)` constructor, creating a new RTCError instance
+    pub fn new1(init: &RTCErrorInit, message: &JsString) -> RTCError {
+        Self {
+            inner: Any::global("RTCError")
+                .new(&[init.into(), message.into()])
+                .as_::<DOMException>(),
+        }
     }
 }

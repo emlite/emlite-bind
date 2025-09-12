@@ -64,6 +64,21 @@ impl From<&FragmentResult> for Any {
 jsbind::utils::impl_dyn_cast!(FragmentResult);
 
 impl FragmentResult {
+    /// Getter of the `inlineSize` attribute.
+    /// [`FragmentResult.inlineSize`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult/inlineSize)
+    pub fn inline_size(&self) -> f64 {
+        self.inner.get("inlineSize").as_::<f64>()
+    }
+}
+impl FragmentResult {
+    /// Getter of the `blockSize` attribute.
+    /// [`FragmentResult.blockSize`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult/blockSize)
+    pub fn block_size(&self) -> f64 {
+        self.inner.get("blockSize").as_::<f64>()
+    }
+}
+
+impl FragmentResult {
     /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
     pub fn new0() -> FragmentResult {
         Self {
@@ -78,19 +93,5 @@ impl FragmentResult {
                 .new(&[options.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl FragmentResult {
-    /// Getter of the `inlineSize` attribute.
-    /// [`FragmentResult.inlineSize`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult/inlineSize)
-    pub fn inline_size(&self) -> f64 {
-        self.inner.get("inlineSize").as_::<f64>()
-    }
-}
-impl FragmentResult {
-    /// Getter of the `blockSize` attribute.
-    /// [`FragmentResult.blockSize`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult/blockSize)
-    pub fn block_size(&self) -> f64 {
-        self.inner.get("blockSize").as_::<f64>()
     }
 }

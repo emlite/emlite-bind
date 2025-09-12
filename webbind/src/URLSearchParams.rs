@@ -64,6 +64,14 @@ impl From<&URLSearchParams> for Any {
 jsbind::utils::impl_dyn_cast!(URLSearchParams);
 
 impl URLSearchParams {
+    /// Getter of the `size` attribute.
+    /// [`URLSearchParams.size`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/size)
+    pub fn size(&self) -> u32 {
+        self.inner.get("size").as_::<u32>()
+    }
+}
+
+impl URLSearchParams {
     /// The `new URLSearchParams(..)` constructor, creating a new URLSearchParams instance
     pub fn new0() -> URLSearchParams {
         Self {
@@ -78,13 +86,6 @@ impl URLSearchParams {
                 .new(&[init.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl URLSearchParams {
-    /// Getter of the `size` attribute.
-    /// [`URLSearchParams.size`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/size)
-    pub fn size(&self) -> u32 {
-        self.inner.get("size").as_::<u32>()
     }
 }
 impl URLSearchParams {

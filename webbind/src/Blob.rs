@@ -64,6 +64,21 @@ impl From<&Blob> for Any {
 jsbind::utils::impl_dyn_cast!(Blob);
 
 impl Blob {
+    /// Getter of the `size` attribute.
+    /// [`Blob.size`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/size)
+    pub fn size(&self) -> u64 {
+        self.inner.get("size").as_::<u64>()
+    }
+}
+impl Blob {
+    /// Getter of the `type` attribute.
+    /// [`Blob.type`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/type)
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
+    }
+}
+
+impl Blob {
     /// The `new Blob(..)` constructor, creating a new Blob instance
     pub fn new0() -> Blob {
         Self {
@@ -85,20 +100,6 @@ impl Blob {
                 .new(&[blob_parts.into(), options.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl Blob {
-    /// Getter of the `size` attribute.
-    /// [`Blob.size`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/size)
-    pub fn size(&self) -> u64 {
-        self.inner.get("size").as_::<u64>()
-    }
-}
-impl Blob {
-    /// Getter of the `type` attribute.
-    /// [`Blob.type`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/type)
-    pub fn type_(&self) -> JsString {
-        self.inner.get("type").as_::<JsString>()
     }
 }
 impl Blob {

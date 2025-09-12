@@ -64,6 +64,21 @@ impl From<&USBIsochronousOutTransferPacket> for Any {
 jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferPacket);
 
 impl USBIsochronousOutTransferPacket {
+    /// Getter of the `bytesWritten` attribute.
+    /// [`USBIsochronousOutTransferPacket.bytesWritten`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket/bytesWritten)
+    pub fn bytes_written(&self) -> u32 {
+        self.inner.get("bytesWritten").as_::<u32>()
+    }
+}
+impl USBIsochronousOutTransferPacket {
+    /// Getter of the `status` attribute.
+    /// [`USBIsochronousOutTransferPacket.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket/status)
+    pub fn status(&self) -> USBTransferStatus {
+        self.inner.get("status").as_::<USBTransferStatus>()
+    }
+}
+
+impl USBIsochronousOutTransferPacket {
     /// The `new USBIsochronousOutTransferPacket(..)` constructor, creating a new USBIsochronousOutTransferPacket instance
     pub fn new0(status: &USBTransferStatus) -> USBIsochronousOutTransferPacket {
         Self {
@@ -80,19 +95,5 @@ impl USBIsochronousOutTransferPacket {
                 .new(&[status.into(), bytes_written.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl USBIsochronousOutTransferPacket {
-    /// Getter of the `bytesWritten` attribute.
-    /// [`USBIsochronousOutTransferPacket.bytesWritten`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket/bytesWritten)
-    pub fn bytes_written(&self) -> u32 {
-        self.inner.get("bytesWritten").as_::<u32>()
-    }
-}
-impl USBIsochronousOutTransferPacket {
-    /// Getter of the `status` attribute.
-    /// [`USBIsochronousOutTransferPacket.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket/status)
-    pub fn status(&self) -> USBTransferStatus {
-        self.inner.get("status").as_::<USBTransferStatus>()
     }
 }

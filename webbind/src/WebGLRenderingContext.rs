@@ -75,7 +75,16 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     /// The bufferData method.
     /// [`WebGLRenderingContext.bufferData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bufferData)
-    pub fn buffer_data(&self, target: &Any, data: &Any, usage: &Any) -> Undefined {
+    pub fn buffer_data(&self, target: &Any, size: &Any, usage: &Any) -> Undefined {
+        self.inner
+            .call("bufferData", &[target.into(), size.into(), usage.into()])
+            .as_::<Undefined>()
+    }
+}
+impl WebGLRenderingContext {
+    /// The bufferData method.
+    /// [`WebGLRenderingContext.bufferData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bufferData)
+    pub fn buffer_data1(&self, target: &Any, data: &Any, usage: &Any) -> Undefined {
         self.inner
             .call("bufferData", &[target.into(), data.into(), usage.into()])
             .as_::<Undefined>()
@@ -190,6 +199,39 @@ impl WebGLRenderingContext {
         target: &Any,
         level: &Any,
         internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        border: &Any,
+        format: &Any,
+        type_: &Any,
+        pixels: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "texImage2D",
+                &[
+                    target.into(),
+                    level.into(),
+                    internalformat.into(),
+                    width.into(),
+                    height.into(),
+                    border.into(),
+                    format.into(),
+                    type_.into(),
+                    pixels.into(),
+                ],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl WebGLRenderingContext {
+    /// The texImage2D method.
+    /// [`WebGLRenderingContext.texImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texImage2D)
+    pub fn tex_image2_d1(
+        &self,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
         format: &Any,
         type_: &Any,
         source: &Any,
@@ -213,6 +255,39 @@ impl WebGLRenderingContext {
     /// The texSubImage2D method.
     /// [`WebGLRenderingContext.texSubImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texSubImage2D)
     pub fn tex_sub_image2_d(
+        &self,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        type_: &Any,
+        pixels: &Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "texSubImage2D",
+                &[
+                    target.into(),
+                    level.into(),
+                    xoffset.into(),
+                    yoffset.into(),
+                    width.into(),
+                    height.into(),
+                    format.into(),
+                    type_.into(),
+                    pixels.into(),
+                ],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl WebGLRenderingContext {
+    /// The texSubImage2D method.
+    /// [`WebGLRenderingContext.texSubImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texSubImage2D)
+    pub fn tex_sub_image2_d1(
         &self,
         target: &Any,
         level: &Any,

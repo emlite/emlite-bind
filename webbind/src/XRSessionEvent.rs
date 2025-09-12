@@ -64,6 +64,14 @@ impl From<&XRSessionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(XRSessionEvent);
 
 impl XRSessionEvent {
+    /// Getter of the `session` attribute.
+    /// [`XRSessionEvent.session`](https://developer.mozilla.org/en-US/docs/Web/API/XRSessionEvent/session)
+    pub fn session(&self) -> XRSession {
+        self.inner.get("session").as_::<XRSession>()
+    }
+}
+
+impl XRSessionEvent {
     /// The `new XRSessionEvent(..)` constructor, creating a new XRSessionEvent instance
     pub fn new(type_: &JsString, event_init_dict: &XRSessionEventInit) -> XRSessionEvent {
         Self {
@@ -71,12 +79,5 @@ impl XRSessionEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl XRSessionEvent {
-    /// Getter of the `session` attribute.
-    /// [`XRSessionEvent.session`](https://developer.mozilla.org/en-US/docs/Web/API/XRSessionEvent/session)
-    pub fn session(&self) -> XRSession {
-        self.inner.get("session").as_::<XRSession>()
     }
 }

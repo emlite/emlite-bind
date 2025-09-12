@@ -64,16 +64,6 @@ impl From<&HTMLButtonElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLButtonElement);
 
 impl HTMLButtonElement {
-    /// The `new HTMLButtonElement(..)` constructor, creating a new HTMLButtonElement instance
-    pub fn new() -> HTMLButtonElement {
-        Self {
-            inner: Any::global("HTMLButtonElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLButtonElement {
     /// Getter of the `command` attribute.
     /// [`HTMLButtonElement.command`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command)
     pub fn command(&self) -> JsString {
@@ -245,29 +235,6 @@ impl HTMLButtonElement {
     }
 }
 impl HTMLButtonElement {
-    /// The checkValidity method.
-    /// [`HTMLButtonElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/checkValidity)
-    pub fn check_validity(&self) -> bool {
-        self.inner.call("checkValidity", &[]).as_::<bool>()
-    }
-}
-impl HTMLButtonElement {
-    /// The reportValidity method.
-    /// [`HTMLButtonElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/reportValidity)
-    pub fn report_validity(&self) -> bool {
-        self.inner.call("reportValidity", &[]).as_::<bool>()
-    }
-}
-impl HTMLButtonElement {
-    /// The setCustomValidity method.
-    /// [`HTMLButtonElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<Undefined>()
-    }
-}
-impl HTMLButtonElement {
     /// Getter of the `labels` attribute.
     /// [`HTMLButtonElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/labels)
     pub fn labels(&self) -> NodeList {
@@ -298,5 +265,39 @@ impl HTMLButtonElement {
     /// [`HTMLButtonElement.popoverTargetAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/popoverTargetAction)
     pub fn set_popover_target_action(&mut self, value: &JsString) {
         self.inner.set("popoverTargetAction", value);
+    }
+}
+
+impl HTMLButtonElement {
+    /// The `new HTMLButtonElement(..)` constructor, creating a new HTMLButtonElement instance
+    pub fn new() -> HTMLButtonElement {
+        Self {
+            inner: Any::global("HTMLButtonElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLButtonElement {
+    /// The checkValidity method.
+    /// [`HTMLButtonElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/checkValidity)
+    pub fn check_validity(&self) -> bool {
+        self.inner.call("checkValidity", &[]).as_::<bool>()
+    }
+}
+impl HTMLButtonElement {
+    /// The reportValidity method.
+    /// [`HTMLButtonElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/reportValidity)
+    pub fn report_validity(&self) -> bool {
+        self.inner.call("reportValidity", &[]).as_::<bool>()
+    }
+}
+impl HTMLButtonElement {
+    /// The setCustomValidity method.
+    /// [`HTMLButtonElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/setCustomValidity)
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
+        self.inner
+            .call("setCustomValidity", &[error.into()])
+            .as_::<Undefined>()
     }
 }

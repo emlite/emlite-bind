@@ -64,6 +64,21 @@ impl From<&PageSwapEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PageSwapEvent);
 
 impl PageSwapEvent {
+    /// Getter of the `activation` attribute.
+    /// [`PageSwapEvent.activation`](https://developer.mozilla.org/en-US/docs/Web/API/PageSwapEvent/activation)
+    pub fn activation(&self) -> NavigationActivation {
+        self.inner.get("activation").as_::<NavigationActivation>()
+    }
+}
+impl PageSwapEvent {
+    /// Getter of the `viewTransition` attribute.
+    /// [`PageSwapEvent.viewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/PageSwapEvent/viewTransition)
+    pub fn view_transition(&self) -> ViewTransition {
+        self.inner.get("viewTransition").as_::<ViewTransition>()
+    }
+}
+
+impl PageSwapEvent {
     /// The `new PageSwapEvent(..)` constructor, creating a new PageSwapEvent instance
     pub fn new0(type_: &JsString) -> PageSwapEvent {
         Self {
@@ -80,19 +95,5 @@ impl PageSwapEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl PageSwapEvent {
-    /// Getter of the `activation` attribute.
-    /// [`PageSwapEvent.activation`](https://developer.mozilla.org/en-US/docs/Web/API/PageSwapEvent/activation)
-    pub fn activation(&self) -> NavigationActivation {
-        self.inner.get("activation").as_::<NavigationActivation>()
-    }
-}
-impl PageSwapEvent {
-    /// Getter of the `viewTransition` attribute.
-    /// [`PageSwapEvent.viewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/PageSwapEvent/viewTransition)
-    pub fn view_transition(&self) -> ViewTransition {
-        self.inner.get("viewTransition").as_::<ViewTransition>()
     }
 }

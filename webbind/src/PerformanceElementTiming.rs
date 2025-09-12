@@ -127,13 +127,6 @@ impl PerformanceElementTiming {
     }
 }
 impl PerformanceElementTiming {
-    /// The toJSON method.
-    /// [`PerformanceElementTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/toJSON)
-    pub fn to_json(&self) -> Object {
-        self.inner.call("toJSON", &[]).as_::<Object>()
-    }
-}
-impl PerformanceElementTiming {
     /// Getter of the `paintTime` attribute.
     /// [`PerformanceElementTiming.paintTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/paintTime)
     pub fn paint_time(&self) -> Any {
@@ -145,5 +138,12 @@ impl PerformanceElementTiming {
     /// [`PerformanceElementTiming.presentationTime`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/presentationTime)
     pub fn presentation_time(&self) -> Any {
         self.inner.get("presentationTime").as_::<Any>()
+    }
+}
+impl PerformanceElementTiming {
+    /// The toJSON method.
+    /// [`PerformanceElementTiming.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/toJSON)
+    pub fn to_json(&self) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }

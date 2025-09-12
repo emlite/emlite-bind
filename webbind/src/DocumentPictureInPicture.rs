@@ -64,22 +64,6 @@ impl From<&DocumentPictureInPicture> for Any {
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPicture);
 
 impl DocumentPictureInPicture {
-    /// The requestWindow method.
-    /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
-    pub fn request_window0(&self) -> Promise<Window> {
-        self.inner
-            .call("requestWindow", &[])
-            .as_::<Promise<Window>>()
-    }
-    /// The requestWindow method.
-    /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
-    pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise<Window> {
-        self.inner
-            .call("requestWindow", &[options.into()])
-            .as_::<Promise<Window>>()
-    }
-}
-impl DocumentPictureInPicture {
     /// Getter of the `window` attribute.
     /// [`DocumentPictureInPicture.window`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/window)
     pub fn window(&self) -> Window {
@@ -97,5 +81,21 @@ impl DocumentPictureInPicture {
     /// [`DocumentPictureInPicture.onenter`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/onenter)
     pub fn set_onenter(&mut self, value: &Any) {
         self.inner.set("onenter", value);
+    }
+}
+impl DocumentPictureInPicture {
+    /// The requestWindow method.
+    /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
+    pub fn request_window0(&self) -> Promise<Window> {
+        self.inner
+            .call("requestWindow", &[])
+            .as_::<Promise<Window>>()
+    }
+    /// The requestWindow method.
+    /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
+    pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise<Window> {
+        self.inner
+            .call("requestWindow", &[options.into()])
+            .as_::<Promise<Window>>()
     }
 }

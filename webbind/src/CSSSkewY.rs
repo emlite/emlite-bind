@@ -64,16 +64,6 @@ impl From<&CSSSkewY> for Any {
 jsbind::utils::impl_dyn_cast!(CSSSkewY);
 
 impl CSSSkewY {
-    /// The `new CSSSkewY(..)` constructor, creating a new CSSSkewY instance
-    pub fn new(ay: &CSSNumericValue) -> CSSSkewY {
-        Self {
-            inner: Any::global("CSSSkewY")
-                .new(&[ay.into()])
-                .as_::<CSSTransformComponent>(),
-        }
-    }
-}
-impl CSSSkewY {
     /// Getter of the `ay` attribute.
     /// [`CSSSkewY.ay`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY/ay)
     pub fn ay(&self) -> CSSNumericValue {
@@ -84,5 +74,16 @@ impl CSSSkewY {
     /// [`CSSSkewY.ay`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY/ay)
     pub fn set_ay(&mut self, value: &CSSNumericValue) {
         self.inner.set("ay", value);
+    }
+}
+
+impl CSSSkewY {
+    /// The `new CSSSkewY(..)` constructor, creating a new CSSSkewY instance
+    pub fn new(ay: &CSSNumericValue) -> CSSSkewY {
+        Self {
+            inner: Any::global("CSSSkewY")
+                .new(&[ay.into()])
+                .as_::<CSSTransformComponent>(),
+        }
     }
 }

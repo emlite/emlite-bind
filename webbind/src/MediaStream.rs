@@ -64,20 +64,74 @@ impl From<&MediaStream> for Any {
 jsbind::utils::impl_dyn_cast!(MediaStream);
 
 impl MediaStream {
+    /// Getter of the `id` attribute.
+    /// [`MediaStream.id`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/id)
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
+    }
+}
+impl MediaStream {
+    /// Getter of the `active` attribute.
+    /// [`MediaStream.active`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/active)
+    pub fn active(&self) -> bool {
+        self.inner.get("active").as_::<bool>()
+    }
+}
+impl MediaStream {
+    /// Getter of the `onaddtrack` attribute.
+    /// [`MediaStream.onaddtrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onaddtrack)
+    pub fn onaddtrack(&self) -> Any {
+        self.inner.get("onaddtrack").as_::<Any>()
+    }
+
+    /// Setter of the `onaddtrack` attribute.
+    /// [`MediaStream.onaddtrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onaddtrack)
+    pub fn set_onaddtrack(&mut self, value: &Any) {
+        self.inner.set("onaddtrack", value);
+    }
+}
+impl MediaStream {
+    /// Getter of the `onremovetrack` attribute.
+    /// [`MediaStream.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onremovetrack)
+    pub fn onremovetrack(&self) -> Any {
+        self.inner.get("onremovetrack").as_::<Any>()
+    }
+
+    /// Setter of the `onremovetrack` attribute.
+    /// [`MediaStream.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onremovetrack)
+    pub fn set_onremovetrack(&mut self, value: &Any) {
+        self.inner.set("onremovetrack", value);
+    }
+}
+
+impl MediaStream {
     /// The `new MediaStream(..)` constructor, creating a new MediaStream instance
-    pub fn new(tracks: &TypedArray<MediaStreamTrack>) -> MediaStream {
+    pub fn new() -> MediaStream {
+        Self {
+            inner: Any::global("MediaStream").new(&[]).as_::<EventTarget>(),
+        }
+    }
+}
+
+impl MediaStream {
+    /// The `new MediaStream(..)` constructor, creating a new MediaStream instance
+    pub fn new1(stream: &MediaStream) -> MediaStream {
+        Self {
+            inner: Any::global("MediaStream")
+                .new(&[stream.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+
+impl MediaStream {
+    /// The `new MediaStream(..)` constructor, creating a new MediaStream instance
+    pub fn new2(tracks: &TypedArray<MediaStreamTrack>) -> MediaStream {
         Self {
             inner: Any::global("MediaStream")
                 .new(&[tracks.into()])
                 .as_::<EventTarget>(),
         }
-    }
-}
-impl MediaStream {
-    /// Getter of the `id` attribute.
-    /// [`MediaStream.id`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/id)
-    pub fn id(&self) -> JsString {
-        self.inner.get("id").as_::<JsString>()
     }
 }
 impl MediaStream {
@@ -139,38 +193,5 @@ impl MediaStream {
     /// [`MediaStream.clone`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/clone)
     pub fn clone_(&self) -> MediaStream {
         self.inner.call("clone", &[]).as_::<MediaStream>()
-    }
-}
-impl MediaStream {
-    /// Getter of the `active` attribute.
-    /// [`MediaStream.active`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/active)
-    pub fn active(&self) -> bool {
-        self.inner.get("active").as_::<bool>()
-    }
-}
-impl MediaStream {
-    /// Getter of the `onaddtrack` attribute.
-    /// [`MediaStream.onaddtrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onaddtrack)
-    pub fn onaddtrack(&self) -> Any {
-        self.inner.get("onaddtrack").as_::<Any>()
-    }
-
-    /// Setter of the `onaddtrack` attribute.
-    /// [`MediaStream.onaddtrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onaddtrack)
-    pub fn set_onaddtrack(&mut self, value: &Any) {
-        self.inner.set("onaddtrack", value);
-    }
-}
-impl MediaStream {
-    /// Getter of the `onremovetrack` attribute.
-    /// [`MediaStream.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onremovetrack)
-    pub fn onremovetrack(&self) -> Any {
-        self.inner.get("onremovetrack").as_::<Any>()
-    }
-
-    /// Setter of the `onremovetrack` attribute.
-    /// [`MediaStream.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onremovetrack)
-    pub fn set_onremovetrack(&mut self, value: &Any) {
-        self.inner.set("onremovetrack", value);
     }
 }

@@ -64,16 +64,6 @@ impl From<&HIDInputReportEvent> for Any {
 jsbind::utils::impl_dyn_cast!(HIDInputReportEvent);
 
 impl HIDInputReportEvent {
-    /// The `new HIDInputReportEvent(..)` constructor, creating a new HIDInputReportEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &HIDInputReportEventInit) -> HIDInputReportEvent {
-        Self {
-            inner: Any::global("HIDInputReportEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl HIDInputReportEvent {
     /// Getter of the `device` attribute.
     /// [`HIDInputReportEvent.device`](https://developer.mozilla.org/en-US/docs/Web/API/HIDInputReportEvent/device)
     pub fn device(&self) -> HIDDevice {
@@ -92,5 +82,16 @@ impl HIDInputReportEvent {
     /// [`HIDInputReportEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/HIDInputReportEvent/data)
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
+    }
+}
+
+impl HIDInputReportEvent {
+    /// The `new HIDInputReportEvent(..)` constructor, creating a new HIDInputReportEvent instance
+    pub fn new(type_: &JsString, event_init_dict: &HIDInputReportEventInit) -> HIDInputReportEvent {
+        Self {
+            inner: Any::global("HIDInputReportEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

@@ -64,16 +64,6 @@ impl From<&HTMLFieldSetElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLFieldSetElement);
 
 impl HTMLFieldSetElement {
-    /// The `new HTMLFieldSetElement(..)` constructor, creating a new HTMLFieldSetElement instance
-    pub fn new() -> HTMLFieldSetElement {
-        Self {
-            inner: Any::global("HTMLFieldSetElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLFieldSetElement {
     /// Getter of the `disabled` attribute.
     /// [`HTMLFieldSetElement.disabled`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/disabled)
     pub fn disabled(&self) -> bool {
@@ -139,6 +129,17 @@ impl HTMLFieldSetElement {
     /// [`HTMLFieldSetElement.validationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/validationMessage)
     pub fn validation_message(&self) -> JsString {
         self.inner.get("validationMessage").as_::<JsString>()
+    }
+}
+
+impl HTMLFieldSetElement {
+    /// The `new HTMLFieldSetElement(..)` constructor, creating a new HTMLFieldSetElement instance
+    pub fn new() -> HTMLFieldSetElement {
+        Self {
+            inner: Any::global("HTMLFieldSetElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }
 impl HTMLFieldSetElement {

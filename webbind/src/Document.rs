@@ -64,14 +64,6 @@ impl From<&Document> for Any {
 jsbind::utils::impl_dyn_cast!(Document);
 
 impl Document {
-    /// The `new Document(..)` constructor, creating a new Document instance
-    pub fn new() -> Document {
-        Self {
-            inner: Any::global("Document").new(&[]).as_::<Node>(),
-        }
-    }
-}
-impl Document {
     /// Getter of the `implementation` attribute.
     /// [`Document.implementation`](https://developer.mozilla.org/en-US/docs/Web/API/Document/implementation)
     pub fn implementation(&self) -> DOMImplementation {
@@ -139,6 +131,532 @@ impl Document {
     /// [`Document.documentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement)
     pub fn document_element(&self) -> Element {
         self.inner.get("documentElement").as_::<Element>()
+    }
+}
+impl Document {
+    /// Getter of the `rootElement` attribute.
+    /// [`Document.rootElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/rootElement)
+    pub fn root_element(&self) -> SVGSVGElement {
+        self.inner.get("rootElement").as_::<SVGSVGElement>()
+    }
+}
+impl Document {
+    /// Getter of the `namedFlows` attribute.
+    /// [`Document.namedFlows`](https://developer.mozilla.org/en-US/docs/Web/API/Document/namedFlows)
+    pub fn named_flows(&self) -> NamedFlowMap {
+        self.inner.get("namedFlows").as_::<NamedFlowMap>()
+    }
+}
+impl Document {
+    /// Getter of the `scrollingElement` attribute.
+    /// [`Document.scrollingElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/scrollingElement)
+    pub fn scrolling_element(&self) -> Element {
+        self.inner.get("scrollingElement").as_::<Element>()
+    }
+}
+impl Document {
+    /// Getter of the `fullscreenEnabled` attribute.
+    /// [`Document.fullscreenEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenEnabled)
+    pub fn fullscreen_enabled(&self) -> bool {
+        self.inner.get("fullscreenEnabled").as_::<bool>()
+    }
+}
+impl Document {
+    /// Getter of the `fullscreen` attribute.
+    /// [`Document.fullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreen)
+    pub fn fullscreen(&self) -> bool {
+        self.inner.get("fullscreen").as_::<bool>()
+    }
+}
+impl Document {
+    /// Getter of the `onfullscreenchange` attribute.
+    /// [`Document.onfullscreenchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenchange)
+    pub fn onfullscreenchange(&self) -> Any {
+        self.inner.get("onfullscreenchange").as_::<Any>()
+    }
+
+    /// Setter of the `onfullscreenchange` attribute.
+    /// [`Document.onfullscreenchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenchange)
+    pub fn set_onfullscreenchange(&mut self, value: &Any) {
+        self.inner.set("onfullscreenchange", value);
+    }
+}
+impl Document {
+    /// Getter of the `onfullscreenerror` attribute.
+    /// [`Document.onfullscreenerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenerror)
+    pub fn onfullscreenerror(&self) -> Any {
+        self.inner.get("onfullscreenerror").as_::<Any>()
+    }
+
+    /// Setter of the `onfullscreenerror` attribute.
+    /// [`Document.onfullscreenerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenerror)
+    pub fn set_onfullscreenerror(&mut self, value: &Any) {
+        self.inner.set("onfullscreenerror", value);
+    }
+}
+impl Document {
+    /// Getter of the `location` attribute.
+    /// [`Document.location`](https://developer.mozilla.org/en-US/docs/Web/API/Document/location)
+    pub fn location(&self) -> Location {
+        self.inner.get("location").as_::<Location>()
+    }
+}
+impl Document {
+    /// Getter of the `domain` attribute.
+    /// [`Document.domain`](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
+    pub fn domain(&self) -> JsString {
+        self.inner.get("domain").as_::<JsString>()
+    }
+
+    /// Setter of the `domain` attribute.
+    /// [`Document.domain`](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
+    pub fn set_domain(&mut self, value: &JsString) {
+        self.inner.set("domain", value);
+    }
+}
+impl Document {
+    /// Getter of the `referrer` attribute.
+    /// [`Document.referrer`](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer)
+    pub fn referrer(&self) -> JsString {
+        self.inner.get("referrer").as_::<JsString>()
+    }
+}
+impl Document {
+    /// Getter of the `cookie` attribute.
+    /// [`Document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
+    pub fn cookie(&self) -> JsString {
+        self.inner.get("cookie").as_::<JsString>()
+    }
+
+    /// Setter of the `cookie` attribute.
+    /// [`Document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
+    pub fn set_cookie(&mut self, value: &JsString) {
+        self.inner.set("cookie", value);
+    }
+}
+impl Document {
+    /// Getter of the `lastModified` attribute.
+    /// [`Document.lastModified`](https://developer.mozilla.org/en-US/docs/Web/API/Document/lastModified)
+    pub fn last_modified(&self) -> JsString {
+        self.inner.get("lastModified").as_::<JsString>()
+    }
+}
+impl Document {
+    /// Getter of the `readyState` attribute.
+    /// [`Document.readyState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState)
+    pub fn ready_state(&self) -> DocumentReadyState {
+        self.inner.get("readyState").as_::<DocumentReadyState>()
+    }
+}
+impl Document {
+    /// Getter of the `title` attribute.
+    /// [`Document.title`](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
+    }
+
+    /// Setter of the `title` attribute.
+    /// [`Document.title`](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+    pub fn set_title(&mut self, value: &JsString) {
+        self.inner.set("title", value);
+    }
+}
+impl Document {
+    /// Getter of the `dir` attribute.
+    /// [`Document.dir`](https://developer.mozilla.org/en-US/docs/Web/API/Document/dir)
+    pub fn dir(&self) -> JsString {
+        self.inner.get("dir").as_::<JsString>()
+    }
+
+    /// Setter of the `dir` attribute.
+    /// [`Document.dir`](https://developer.mozilla.org/en-US/docs/Web/API/Document/dir)
+    pub fn set_dir(&mut self, value: &JsString) {
+        self.inner.set("dir", value);
+    }
+}
+impl Document {
+    /// Getter of the `body` attribute.
+    /// [`Document.body`](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
+    pub fn body(&self) -> HTMLElement {
+        self.inner.get("body").as_::<HTMLElement>()
+    }
+
+    /// Setter of the `body` attribute.
+    /// [`Document.body`](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
+    pub fn set_body(&mut self, value: &HTMLElement) {
+        self.inner.set("body", value);
+    }
+}
+impl Document {
+    /// Getter of the `head` attribute.
+    /// [`Document.head`](https://developer.mozilla.org/en-US/docs/Web/API/Document/head)
+    pub fn head(&self) -> HTMLHeadElement {
+        self.inner.get("head").as_::<HTMLHeadElement>()
+    }
+}
+impl Document {
+    /// Getter of the `images` attribute.
+    /// [`Document.images`](https://developer.mozilla.org/en-US/docs/Web/API/Document/images)
+    pub fn images(&self) -> HTMLCollection {
+        self.inner.get("images").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `embeds` attribute.
+    /// [`Document.embeds`](https://developer.mozilla.org/en-US/docs/Web/API/Document/embeds)
+    pub fn embeds(&self) -> HTMLCollection {
+        self.inner.get("embeds").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `plugins` attribute.
+    /// [`Document.plugins`](https://developer.mozilla.org/en-US/docs/Web/API/Document/plugins)
+    pub fn plugins(&self) -> HTMLCollection {
+        self.inner.get("plugins").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `links` attribute.
+    /// [`Document.links`](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
+    pub fn links(&self) -> HTMLCollection {
+        self.inner.get("links").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `forms` attribute.
+    /// [`Document.forms`](https://developer.mozilla.org/en-US/docs/Web/API/Document/forms)
+    pub fn forms(&self) -> HTMLCollection {
+        self.inner.get("forms").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `scripts` attribute.
+    /// [`Document.scripts`](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts)
+    pub fn scripts(&self) -> HTMLCollection {
+        self.inner.get("scripts").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `currentScript` attribute.
+    /// [`Document.currentScript`](https://developer.mozilla.org/en-US/docs/Web/API/Document/currentScript)
+    pub fn current_script(&self) -> Any {
+        self.inner.get("currentScript").as_::<Any>()
+    }
+}
+impl Document {
+    /// Getter of the `defaultView` attribute.
+    /// [`Document.defaultView`](https://developer.mozilla.org/en-US/docs/Web/API/Document/defaultView)
+    pub fn default_view(&self) -> Any {
+        self.inner.get("defaultView").as_::<Any>()
+    }
+}
+impl Document {
+    /// Getter of the `designMode` attribute.
+    /// [`Document.designMode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode)
+    pub fn design_mode(&self) -> JsString {
+        self.inner.get("designMode").as_::<JsString>()
+    }
+
+    /// Setter of the `designMode` attribute.
+    /// [`Document.designMode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode)
+    pub fn set_design_mode(&mut self, value: &JsString) {
+        self.inner.set("designMode", value);
+    }
+}
+impl Document {
+    /// Getter of the `hidden` attribute.
+    /// [`Document.hidden`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hidden)
+    pub fn hidden(&self) -> bool {
+        self.inner.get("hidden").as_::<bool>()
+    }
+}
+impl Document {
+    /// Getter of the `visibilityState` attribute.
+    /// [`Document.visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
+    pub fn visibility_state(&self) -> DocumentVisibilityState {
+        self.inner
+            .get("visibilityState")
+            .as_::<DocumentVisibilityState>()
+    }
+}
+impl Document {
+    /// Getter of the `onreadystatechange` attribute.
+    /// [`Document.onreadystatechange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onreadystatechange)
+    pub fn onreadystatechange(&self) -> Any {
+        self.inner.get("onreadystatechange").as_::<Any>()
+    }
+
+    /// Setter of the `onreadystatechange` attribute.
+    /// [`Document.onreadystatechange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onreadystatechange)
+    pub fn set_onreadystatechange(&mut self, value: &Any) {
+        self.inner.set("onreadystatechange", value);
+    }
+}
+impl Document {
+    /// Getter of the `onvisibilitychange` attribute.
+    /// [`Document.onvisibilitychange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onvisibilitychange)
+    pub fn onvisibilitychange(&self) -> Any {
+        self.inner.get("onvisibilitychange").as_::<Any>()
+    }
+
+    /// Setter of the `onvisibilitychange` attribute.
+    /// [`Document.onvisibilitychange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onvisibilitychange)
+    pub fn set_onvisibilitychange(&mut self, value: &Any) {
+        self.inner.set("onvisibilitychange", value);
+    }
+}
+impl Document {
+    /// Getter of the `fgColor` attribute.
+    /// [`Document.fgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fgColor)
+    pub fn fg_color(&self) -> JsString {
+        self.inner.get("fgColor").as_::<JsString>()
+    }
+
+    /// Setter of the `fgColor` attribute.
+    /// [`Document.fgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fgColor)
+    pub fn set_fg_color(&mut self, value: &JsString) {
+        self.inner.set("fgColor", value);
+    }
+}
+impl Document {
+    /// Getter of the `linkColor` attribute.
+    /// [`Document.linkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/linkColor)
+    pub fn link_color(&self) -> JsString {
+        self.inner.get("linkColor").as_::<JsString>()
+    }
+
+    /// Setter of the `linkColor` attribute.
+    /// [`Document.linkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/linkColor)
+    pub fn set_link_color(&mut self, value: &JsString) {
+        self.inner.set("linkColor", value);
+    }
+}
+impl Document {
+    /// Getter of the `vlinkColor` attribute.
+    /// [`Document.vlinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/vlinkColor)
+    pub fn vlink_color(&self) -> JsString {
+        self.inner.get("vlinkColor").as_::<JsString>()
+    }
+
+    /// Setter of the `vlinkColor` attribute.
+    /// [`Document.vlinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/vlinkColor)
+    pub fn set_vlink_color(&mut self, value: &JsString) {
+        self.inner.set("vlinkColor", value);
+    }
+}
+impl Document {
+    /// Getter of the `alinkColor` attribute.
+    /// [`Document.alinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/alinkColor)
+    pub fn alink_color(&self) -> JsString {
+        self.inner.get("alinkColor").as_::<JsString>()
+    }
+
+    /// Setter of the `alinkColor` attribute.
+    /// [`Document.alinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/alinkColor)
+    pub fn set_alink_color(&mut self, value: &JsString) {
+        self.inner.set("alinkColor", value);
+    }
+}
+impl Document {
+    /// Getter of the `bgColor` attribute.
+    /// [`Document.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/bgColor)
+    pub fn bg_color(&self) -> JsString {
+        self.inner.get("bgColor").as_::<JsString>()
+    }
+
+    /// Setter of the `bgColor` attribute.
+    /// [`Document.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/bgColor)
+    pub fn set_bg_color(&mut self, value: &JsString) {
+        self.inner.set("bgColor", value);
+    }
+}
+impl Document {
+    /// Getter of the `anchors` attribute.
+    /// [`Document.anchors`](https://developer.mozilla.org/en-US/docs/Web/API/Document/anchors)
+    pub fn anchors(&self) -> HTMLCollection {
+        self.inner.get("anchors").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `applets` attribute.
+    /// [`Document.applets`](https://developer.mozilla.org/en-US/docs/Web/API/Document/applets)
+    pub fn applets(&self) -> HTMLCollection {
+        self.inner.get("applets").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `all` attribute.
+    /// [`Document.all`](https://developer.mozilla.org/en-US/docs/Web/API/Document/all)
+    pub fn all(&self) -> HTMLAllCollection {
+        self.inner.get("all").as_::<HTMLAllCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `onfreeze` attribute.
+    /// [`Document.onfreeze`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfreeze)
+    pub fn onfreeze(&self) -> Any {
+        self.inner.get("onfreeze").as_::<Any>()
+    }
+
+    /// Setter of the `onfreeze` attribute.
+    /// [`Document.onfreeze`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfreeze)
+    pub fn set_onfreeze(&mut self, value: &Any) {
+        self.inner.set("onfreeze", value);
+    }
+}
+impl Document {
+    /// Getter of the `onresume` attribute.
+    /// [`Document.onresume`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onresume)
+    pub fn onresume(&self) -> Any {
+        self.inner.get("onresume").as_::<Any>()
+    }
+
+    /// Setter of the `onresume` attribute.
+    /// [`Document.onresume`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onresume)
+    pub fn set_onresume(&mut self, value: &Any) {
+        self.inner.set("onresume", value);
+    }
+}
+impl Document {
+    /// Getter of the `wasDiscarded` attribute.
+    /// [`Document.wasDiscarded`](https://developer.mozilla.org/en-US/docs/Web/API/Document/wasDiscarded)
+    pub fn was_discarded(&self) -> bool {
+        self.inner.get("wasDiscarded").as_::<bool>()
+    }
+}
+impl Document {
+    /// Getter of the `permissionsPolicy` attribute.
+    /// [`Document.permissionsPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Document/permissionsPolicy)
+    pub fn permissions_policy(&self) -> PermissionsPolicy {
+        self.inner
+            .get("permissionsPolicy")
+            .as_::<PermissionsPolicy>()
+    }
+}
+impl Document {
+    /// Getter of the `pictureInPictureEnabled` attribute.
+    /// [`Document.pictureInPictureEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Document/pictureInPictureEnabled)
+    pub fn picture_in_picture_enabled(&self) -> bool {
+        self.inner.get("pictureInPictureEnabled").as_::<bool>()
+    }
+}
+impl Document {
+    /// Getter of the `onpointerlockchange` attribute.
+    /// [`Document.onpointerlockchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockchange)
+    pub fn onpointerlockchange(&self) -> Any {
+        self.inner.get("onpointerlockchange").as_::<Any>()
+    }
+
+    /// Setter of the `onpointerlockchange` attribute.
+    /// [`Document.onpointerlockchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockchange)
+    pub fn set_onpointerlockchange(&mut self, value: &Any) {
+        self.inner.set("onpointerlockchange", value);
+    }
+}
+impl Document {
+    /// Getter of the `onpointerlockerror` attribute.
+    /// [`Document.onpointerlockerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockerror)
+    pub fn onpointerlockerror(&self) -> Any {
+        self.inner.get("onpointerlockerror").as_::<Any>()
+    }
+
+    /// Setter of the `onpointerlockerror` attribute.
+    /// [`Document.onpointerlockerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockerror)
+    pub fn set_onpointerlockerror(&mut self, value: &Any) {
+        self.inner.set("onpointerlockerror", value);
+    }
+}
+impl Document {
+    /// Getter of the `prerendering` attribute.
+    /// [`Document.prerendering`](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering)
+    pub fn prerendering(&self) -> bool {
+        self.inner.get("prerendering").as_::<bool>()
+    }
+}
+impl Document {
+    /// Getter of the `onprerenderingchange` attribute.
+    /// [`Document.onprerenderingchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onprerenderingchange)
+    pub fn onprerenderingchange(&self) -> Any {
+        self.inner.get("onprerenderingchange").as_::<Any>()
+    }
+
+    /// Setter of the `onprerenderingchange` attribute.
+    /// [`Document.onprerenderingchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onprerenderingchange)
+    pub fn set_onprerenderingchange(&mut self, value: &Any) {
+        self.inner.set("onprerenderingchange", value);
+    }
+}
+impl Document {
+    /// Getter of the `fragmentDirective` attribute.
+    /// [`Document.fragmentDirective`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fragmentDirective)
+    pub fn fragment_directive(&self) -> FragmentDirective {
+        self.inner
+            .get("fragmentDirective")
+            .as_::<FragmentDirective>()
+    }
+}
+impl Document {
+    /// Getter of the `timeline` attribute.
+    /// [`Document.timeline`](https://developer.mozilla.org/en-US/docs/Web/API/Document/timeline)
+    pub fn timeline(&self) -> DocumentTimeline {
+        self.inner.get("timeline").as_::<DocumentTimeline>()
+    }
+}
+impl Document {
+    /// Getter of the `fonts` attribute.
+    /// [`Document.fonts`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts)
+    pub fn fonts(&self) -> FontFaceSet {
+        self.inner.get("fonts").as_::<FontFaceSet>()
+    }
+}
+impl Document {
+    /// Getter of the `children` attribute.
+    /// [`Document.children`](https://developer.mozilla.org/en-US/docs/Web/API/Document/children)
+    pub fn children(&self) -> HTMLCollection {
+        self.inner.get("children").as_::<HTMLCollection>()
+    }
+}
+impl Document {
+    /// Getter of the `firstElementChild` attribute.
+    /// [`Document.firstElementChild`](https://developer.mozilla.org/en-US/docs/Web/API/Document/firstElementChild)
+    pub fn first_element_child(&self) -> Element {
+        self.inner.get("firstElementChild").as_::<Element>()
+    }
+}
+impl Document {
+    /// Getter of the `lastElementChild` attribute.
+    /// [`Document.lastElementChild`](https://developer.mozilla.org/en-US/docs/Web/API/Document/lastElementChild)
+    pub fn last_element_child(&self) -> Element {
+        self.inner.get("lastElementChild").as_::<Element>()
+    }
+}
+impl Document {
+    /// Getter of the `childElementCount` attribute.
+    /// [`Document.childElementCount`](https://developer.mozilla.org/en-US/docs/Web/API/Document/childElementCount)
+    pub fn child_element_count(&self) -> u32 {
+        self.inner.get("childElementCount").as_::<u32>()
+    }
+}
+impl Document {
+    /// Getter of the `onbeforexrselect` attribute.
+    /// [`Document.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onbeforexrselect)
+    pub fn onbeforexrselect(&self) -> Any {
+        self.inner.get("onbeforexrselect").as_::<Any>()
+    }
+
+    /// Setter of the `onbeforexrselect` attribute.
+    /// [`Document.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onbeforexrselect)
+    pub fn set_onbeforexrselect(&mut self, value: &Any) {
+        self.inner.set("onbeforexrselect", value);
+    }
+}
+
+impl Document {
+    /// The `new Document(..)` constructor, creating a new Document instance
+    pub fn new() -> Document {
+        Self {
+            inner: Any::global("Document").new(&[]).as_::<Node>(),
+        }
     }
 }
 impl Document {
@@ -388,20 +906,6 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `rootElement` attribute.
-    /// [`Document.rootElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/rootElement)
-    pub fn root_element(&self) -> SVGSVGElement {
-        self.inner.get("rootElement").as_::<SVGSVGElement>()
-    }
-}
-impl Document {
-    /// Getter of the `namedFlows` attribute.
-    /// [`Document.namedFlows`](https://developer.mozilla.org/en-US/docs/Web/API/Document/namedFlows)
-    pub fn named_flows(&self) -> NamedFlowMap {
-        self.inner.get("namedFlows").as_::<NamedFlowMap>()
-    }
-}
-impl Document {
     /// The startViewTransition method.
     /// [`Document.startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition)
     pub fn start_view_transition0(&self) -> ViewTransition {
@@ -460,13 +964,6 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `scrollingElement` attribute.
-    /// [`Document.scrollingElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/scrollingElement)
-    pub fn scrolling_element(&self) -> Element {
-        self.inner.get("scrollingElement").as_::<Element>()
-    }
-}
-impl Document {
     /// The measureElement method.
     /// [`Document.measureElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/measureElement)
     pub fn measure_element(&self, element: &Element) -> FontMetrics {
@@ -489,52 +986,12 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `fullscreenEnabled` attribute.
-    /// [`Document.fullscreenEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenEnabled)
-    pub fn fullscreen_enabled(&self) -> bool {
-        self.inner.get("fullscreenEnabled").as_::<bool>()
-    }
-}
-impl Document {
-    /// Getter of the `fullscreen` attribute.
-    /// [`Document.fullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreen)
-    pub fn fullscreen(&self) -> bool {
-        self.inner.get("fullscreen").as_::<bool>()
-    }
-}
-impl Document {
     /// The exitFullscreen method.
     /// [`Document.exitFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen)
     pub fn exit_fullscreen(&self) -> Promise<Undefined> {
         self.inner
             .call("exitFullscreen", &[])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl Document {
-    /// Getter of the `onfullscreenchange` attribute.
-    /// [`Document.onfullscreenchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenchange)
-    pub fn onfullscreenchange(&self) -> Any {
-        self.inner.get("onfullscreenchange").as_::<Any>()
-    }
-
-    /// Setter of the `onfullscreenchange` attribute.
-    /// [`Document.onfullscreenchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenchange)
-    pub fn set_onfullscreenchange(&mut self, value: &Any) {
-        self.inner.set("onfullscreenchange", value);
-    }
-}
-impl Document {
-    /// Getter of the `onfullscreenerror` attribute.
-    /// [`Document.onfullscreenerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenerror)
-    pub fn onfullscreenerror(&self) -> Any {
-        self.inner.get("onfullscreenerror").as_::<Any>()
-    }
-
-    /// Setter of the `onfullscreenerror` attribute.
-    /// [`Document.onfullscreenerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfullscreenerror)
-    pub fn set_onfullscreenerror(&mut self, value: &Any) {
-        self.inner.set("onfullscreenerror", value);
     }
 }
 impl Document {
@@ -547,148 +1004,6 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `location` attribute.
-    /// [`Document.location`](https://developer.mozilla.org/en-US/docs/Web/API/Document/location)
-    pub fn location(&self) -> Location {
-        self.inner.get("location").as_::<Location>()
-    }
-}
-impl Document {
-    /// Getter of the `domain` attribute.
-    /// [`Document.domain`](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
-    pub fn domain(&self) -> JsString {
-        self.inner.get("domain").as_::<JsString>()
-    }
-
-    /// Setter of the `domain` attribute.
-    /// [`Document.domain`](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
-    pub fn set_domain(&mut self, value: &JsString) {
-        self.inner.set("domain", value);
-    }
-}
-impl Document {
-    /// Getter of the `referrer` attribute.
-    /// [`Document.referrer`](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer)
-    pub fn referrer(&self) -> JsString {
-        self.inner.get("referrer").as_::<JsString>()
-    }
-}
-impl Document {
-    /// Getter of the `cookie` attribute.
-    /// [`Document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
-    pub fn cookie(&self) -> JsString {
-        self.inner.get("cookie").as_::<JsString>()
-    }
-
-    /// Setter of the `cookie` attribute.
-    /// [`Document.cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
-    pub fn set_cookie(&mut self, value: &JsString) {
-        self.inner.set("cookie", value);
-    }
-}
-impl Document {
-    /// Getter of the `lastModified` attribute.
-    /// [`Document.lastModified`](https://developer.mozilla.org/en-US/docs/Web/API/Document/lastModified)
-    pub fn last_modified(&self) -> JsString {
-        self.inner.get("lastModified").as_::<JsString>()
-    }
-}
-impl Document {
-    /// Getter of the `readyState` attribute.
-    /// [`Document.readyState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState)
-    pub fn ready_state(&self) -> DocumentReadyState {
-        self.inner.get("readyState").as_::<DocumentReadyState>()
-    }
-}
-impl Document {
-    /// Getter of the `title` attribute.
-    /// [`Document.title`](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
-    pub fn title(&self) -> JsString {
-        self.inner.get("title").as_::<JsString>()
-    }
-
-    /// Setter of the `title` attribute.
-    /// [`Document.title`](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
-    pub fn set_title(&mut self, value: &JsString) {
-        self.inner.set("title", value);
-    }
-}
-impl Document {
-    /// Getter of the `dir` attribute.
-    /// [`Document.dir`](https://developer.mozilla.org/en-US/docs/Web/API/Document/dir)
-    pub fn dir(&self) -> JsString {
-        self.inner.get("dir").as_::<JsString>()
-    }
-
-    /// Setter of the `dir` attribute.
-    /// [`Document.dir`](https://developer.mozilla.org/en-US/docs/Web/API/Document/dir)
-    pub fn set_dir(&mut self, value: &JsString) {
-        self.inner.set("dir", value);
-    }
-}
-impl Document {
-    /// Getter of the `body` attribute.
-    /// [`Document.body`](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
-    pub fn body(&self) -> HTMLElement {
-        self.inner.get("body").as_::<HTMLElement>()
-    }
-
-    /// Setter of the `body` attribute.
-    /// [`Document.body`](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
-    pub fn set_body(&mut self, value: &HTMLElement) {
-        self.inner.set("body", value);
-    }
-}
-impl Document {
-    /// Getter of the `head` attribute.
-    /// [`Document.head`](https://developer.mozilla.org/en-US/docs/Web/API/Document/head)
-    pub fn head(&self) -> HTMLHeadElement {
-        self.inner.get("head").as_::<HTMLHeadElement>()
-    }
-}
-impl Document {
-    /// Getter of the `images` attribute.
-    /// [`Document.images`](https://developer.mozilla.org/en-US/docs/Web/API/Document/images)
-    pub fn images(&self) -> HTMLCollection {
-        self.inner.get("images").as_::<HTMLCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `embeds` attribute.
-    /// [`Document.embeds`](https://developer.mozilla.org/en-US/docs/Web/API/Document/embeds)
-    pub fn embeds(&self) -> HTMLCollection {
-        self.inner.get("embeds").as_::<HTMLCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `plugins` attribute.
-    /// [`Document.plugins`](https://developer.mozilla.org/en-US/docs/Web/API/Document/plugins)
-    pub fn plugins(&self) -> HTMLCollection {
-        self.inner.get("plugins").as_::<HTMLCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `links` attribute.
-    /// [`Document.links`](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
-    pub fn links(&self) -> HTMLCollection {
-        self.inner.get("links").as_::<HTMLCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `forms` attribute.
-    /// [`Document.forms`](https://developer.mozilla.org/en-US/docs/Web/API/Document/forms)
-    pub fn forms(&self) -> HTMLCollection {
-        self.inner.get("forms").as_::<HTMLCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `scripts` attribute.
-    /// [`Document.scripts`](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts)
-    pub fn scripts(&self) -> HTMLCollection {
-        self.inner.get("scripts").as_::<HTMLCollection>()
-    }
-}
-impl Document {
     /// The getElementsByName method.
     /// [`Document.getElementsByName`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName)
     pub fn get_elements_by_name(&self, element_name: &JsString) -> NodeList {
@@ -698,16 +1013,28 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `currentScript` attribute.
-    /// [`Document.currentScript`](https://developer.mozilla.org/en-US/docs/Web/API/Document/currentScript)
-    pub fn current_script(&self) -> Any {
-        self.inner.get("currentScript").as_::<Any>()
+    /// The open method.
+    /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
+    pub fn open0(&self) -> Document {
+        self.inner.call("open", &[]).as_::<Document>()
+    }
+    /// The open method.
+    /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
+    pub fn open1(&self, unused1: &JsString) -> Document {
+        self.inner.call("open", &[unused1.into()]).as_::<Document>()
+    }
+    /// The open method.
+    /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
+    pub fn open2(&self, unused1: &JsString, unused2: &JsString) -> Document {
+        self.inner
+            .call("open", &[unused1.into(), unused2.into()])
+            .as_::<Document>()
     }
 }
 impl Document {
     /// The open method.
     /// [`Document.open`](https://developer.mozilla.org/en-US/docs/Web/API/Document/open)
-    pub fn open(&self, url: &JsString, name: &JsString, features: &JsString) -> Any {
+    pub fn open3(&self, url: &JsString, name: &JsString, features: &JsString) -> Any {
         self.inner
             .call("open", &[url.into(), name.into(), features.into()])
             .as_::<Any>()
@@ -737,30 +1064,10 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `defaultView` attribute.
-    /// [`Document.defaultView`](https://developer.mozilla.org/en-US/docs/Web/API/Document/defaultView)
-    pub fn default_view(&self) -> Any {
-        self.inner.get("defaultView").as_::<Any>()
-    }
-}
-impl Document {
     /// The hasFocus method.
     /// [`Document.hasFocus`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus)
     pub fn has_focus(&self) -> bool {
         self.inner.call("hasFocus", &[]).as_::<bool>()
-    }
-}
-impl Document {
-    /// Getter of the `designMode` attribute.
-    /// [`Document.designMode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode)
-    pub fn design_mode(&self) -> JsString {
-        self.inner.get("designMode").as_::<JsString>()
-    }
-
-    /// Setter of the `designMode` attribute.
-    /// [`Document.designMode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode)
-    pub fn set_design_mode(&mut self, value: &JsString) {
-        self.inner.set("designMode", value);
     }
 }
 impl Document {
@@ -835,127 +1142,6 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `hidden` attribute.
-    /// [`Document.hidden`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hidden)
-    pub fn hidden(&self) -> bool {
-        self.inner.get("hidden").as_::<bool>()
-    }
-}
-impl Document {
-    /// Getter of the `visibilityState` attribute.
-    /// [`Document.visibilityState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState)
-    pub fn visibility_state(&self) -> DocumentVisibilityState {
-        self.inner
-            .get("visibilityState")
-            .as_::<DocumentVisibilityState>()
-    }
-}
-impl Document {
-    /// Getter of the `onreadystatechange` attribute.
-    /// [`Document.onreadystatechange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onreadystatechange)
-    pub fn onreadystatechange(&self) -> Any {
-        self.inner.get("onreadystatechange").as_::<Any>()
-    }
-
-    /// Setter of the `onreadystatechange` attribute.
-    /// [`Document.onreadystatechange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onreadystatechange)
-    pub fn set_onreadystatechange(&mut self, value: &Any) {
-        self.inner.set("onreadystatechange", value);
-    }
-}
-impl Document {
-    /// Getter of the `onvisibilitychange` attribute.
-    /// [`Document.onvisibilitychange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onvisibilitychange)
-    pub fn onvisibilitychange(&self) -> Any {
-        self.inner.get("onvisibilitychange").as_::<Any>()
-    }
-
-    /// Setter of the `onvisibilitychange` attribute.
-    /// [`Document.onvisibilitychange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onvisibilitychange)
-    pub fn set_onvisibilitychange(&mut self, value: &Any) {
-        self.inner.set("onvisibilitychange", value);
-    }
-}
-impl Document {
-    /// Getter of the `fgColor` attribute.
-    /// [`Document.fgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fgColor)
-    pub fn fg_color(&self) -> JsString {
-        self.inner.get("fgColor").as_::<JsString>()
-    }
-
-    /// Setter of the `fgColor` attribute.
-    /// [`Document.fgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fgColor)
-    pub fn set_fg_color(&mut self, value: &JsString) {
-        self.inner.set("fgColor", value);
-    }
-}
-impl Document {
-    /// Getter of the `linkColor` attribute.
-    /// [`Document.linkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/linkColor)
-    pub fn link_color(&self) -> JsString {
-        self.inner.get("linkColor").as_::<JsString>()
-    }
-
-    /// Setter of the `linkColor` attribute.
-    /// [`Document.linkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/linkColor)
-    pub fn set_link_color(&mut self, value: &JsString) {
-        self.inner.set("linkColor", value);
-    }
-}
-impl Document {
-    /// Getter of the `vlinkColor` attribute.
-    /// [`Document.vlinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/vlinkColor)
-    pub fn vlink_color(&self) -> JsString {
-        self.inner.get("vlinkColor").as_::<JsString>()
-    }
-
-    /// Setter of the `vlinkColor` attribute.
-    /// [`Document.vlinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/vlinkColor)
-    pub fn set_vlink_color(&mut self, value: &JsString) {
-        self.inner.set("vlinkColor", value);
-    }
-}
-impl Document {
-    /// Getter of the `alinkColor` attribute.
-    /// [`Document.alinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/alinkColor)
-    pub fn alink_color(&self) -> JsString {
-        self.inner.get("alinkColor").as_::<JsString>()
-    }
-
-    /// Setter of the `alinkColor` attribute.
-    /// [`Document.alinkColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/alinkColor)
-    pub fn set_alink_color(&mut self, value: &JsString) {
-        self.inner.set("alinkColor", value);
-    }
-}
-impl Document {
-    /// Getter of the `bgColor` attribute.
-    /// [`Document.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/bgColor)
-    pub fn bg_color(&self) -> JsString {
-        self.inner.get("bgColor").as_::<JsString>()
-    }
-
-    /// Setter of the `bgColor` attribute.
-    /// [`Document.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/bgColor)
-    pub fn set_bg_color(&mut self, value: &JsString) {
-        self.inner.set("bgColor", value);
-    }
-}
-impl Document {
-    /// Getter of the `anchors` attribute.
-    /// [`Document.anchors`](https://developer.mozilla.org/en-US/docs/Web/API/Document/anchors)
-    pub fn anchors(&self) -> HTMLCollection {
-        self.inner.get("anchors").as_::<HTMLCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `applets` attribute.
-    /// [`Document.applets`](https://developer.mozilla.org/en-US/docs/Web/API/Document/applets)
-    pub fn applets(&self) -> HTMLCollection {
-        self.inner.get("applets").as_::<HTMLCollection>()
-    }
-}
-impl Document {
     /// The clear method.
     /// [`Document.clear`](https://developer.mozilla.org/en-US/docs/Web/API/Document/clear)
     pub fn clear(&self) -> Undefined {
@@ -977,62 +1163,6 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `all` attribute.
-    /// [`Document.all`](https://developer.mozilla.org/en-US/docs/Web/API/Document/all)
-    pub fn all(&self) -> HTMLAllCollection {
-        self.inner.get("all").as_::<HTMLAllCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `onfreeze` attribute.
-    /// [`Document.onfreeze`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfreeze)
-    pub fn onfreeze(&self) -> Any {
-        self.inner.get("onfreeze").as_::<Any>()
-    }
-
-    /// Setter of the `onfreeze` attribute.
-    /// [`Document.onfreeze`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onfreeze)
-    pub fn set_onfreeze(&mut self, value: &Any) {
-        self.inner.set("onfreeze", value);
-    }
-}
-impl Document {
-    /// Getter of the `onresume` attribute.
-    /// [`Document.onresume`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onresume)
-    pub fn onresume(&self) -> Any {
-        self.inner.get("onresume").as_::<Any>()
-    }
-
-    /// Setter of the `onresume` attribute.
-    /// [`Document.onresume`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onresume)
-    pub fn set_onresume(&mut self, value: &Any) {
-        self.inner.set("onresume", value);
-    }
-}
-impl Document {
-    /// Getter of the `wasDiscarded` attribute.
-    /// [`Document.wasDiscarded`](https://developer.mozilla.org/en-US/docs/Web/API/Document/wasDiscarded)
-    pub fn was_discarded(&self) -> bool {
-        self.inner.get("wasDiscarded").as_::<bool>()
-    }
-}
-impl Document {
-    /// Getter of the `permissionsPolicy` attribute.
-    /// [`Document.permissionsPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Document/permissionsPolicy)
-    pub fn permissions_policy(&self) -> PermissionsPolicy {
-        self.inner
-            .get("permissionsPolicy")
-            .as_::<PermissionsPolicy>()
-    }
-}
-impl Document {
-    /// Getter of the `pictureInPictureEnabled` attribute.
-    /// [`Document.pictureInPictureEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Document/pictureInPictureEnabled)
-    pub fn picture_in_picture_enabled(&self) -> bool {
-        self.inner.get("pictureInPictureEnabled").as_::<bool>()
-    }
-}
-impl Document {
     /// The exitPictureInPicture method.
     /// [`Document.exitPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitPictureInPicture)
     pub fn exit_picture_in_picture(&self) -> Promise<Undefined> {
@@ -1042,56 +1172,10 @@ impl Document {
     }
 }
 impl Document {
-    /// Getter of the `onpointerlockchange` attribute.
-    /// [`Document.onpointerlockchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockchange)
-    pub fn onpointerlockchange(&self) -> Any {
-        self.inner.get("onpointerlockchange").as_::<Any>()
-    }
-
-    /// Setter of the `onpointerlockchange` attribute.
-    /// [`Document.onpointerlockchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockchange)
-    pub fn set_onpointerlockchange(&mut self, value: &Any) {
-        self.inner.set("onpointerlockchange", value);
-    }
-}
-impl Document {
-    /// Getter of the `onpointerlockerror` attribute.
-    /// [`Document.onpointerlockerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockerror)
-    pub fn onpointerlockerror(&self) -> Any {
-        self.inner.get("onpointerlockerror").as_::<Any>()
-    }
-
-    /// Setter of the `onpointerlockerror` attribute.
-    /// [`Document.onpointerlockerror`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onpointerlockerror)
-    pub fn set_onpointerlockerror(&mut self, value: &Any) {
-        self.inner.set("onpointerlockerror", value);
-    }
-}
-impl Document {
     /// The exitPointerLock method.
     /// [`Document.exitPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitPointerLock)
     pub fn exit_pointer_lock(&self) -> Undefined {
         self.inner.call("exitPointerLock", &[]).as_::<Undefined>()
-    }
-}
-impl Document {
-    /// Getter of the `prerendering` attribute.
-    /// [`Document.prerendering`](https://developer.mozilla.org/en-US/docs/Web/API/Document/prerendering)
-    pub fn prerendering(&self) -> bool {
-        self.inner.get("prerendering").as_::<bool>()
-    }
-}
-impl Document {
-    /// Getter of the `onprerenderingchange` attribute.
-    /// [`Document.onprerenderingchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onprerenderingchange)
-    pub fn onprerenderingchange(&self) -> Any {
-        self.inner.get("onprerenderingchange").as_::<Any>()
-    }
-
-    /// Setter of the `onprerenderingchange` attribute.
-    /// [`Document.onprerenderingchange`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onprerenderingchange)
-    pub fn set_onprerenderingchange(&mut self, value: &Any) {
-        self.inner.set("onprerenderingchange", value);
     }
 }
 impl Document {
@@ -1110,15 +1194,6 @@ impl Document {
         self.inner
             .call("hasUnpartitionedCookieAccess", &[])
             .as_::<Promise<bool>>()
-    }
-}
-impl Document {
-    /// Getter of the `fragmentDirective` attribute.
-    /// [`Document.fragmentDirective`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fragmentDirective)
-    pub fn fragment_directive(&self) -> FragmentDirective {
-        self.inner
-            .get("fragmentDirective")
-            .as_::<FragmentDirective>()
     }
 }
 impl Document {
@@ -1162,20 +1237,6 @@ impl Document {
         self.inner
             .call("hasRedemptionRecord", &[issuer.into()])
             .as_::<Promise<bool>>()
-    }
-}
-impl Document {
-    /// Getter of the `timeline` attribute.
-    /// [`Document.timeline`](https://developer.mozilla.org/en-US/docs/Web/API/Document/timeline)
-    pub fn timeline(&self) -> DocumentTimeline {
-        self.inner.get("timeline").as_::<DocumentTimeline>()
-    }
-}
-impl Document {
-    /// Getter of the `fonts` attribute.
-    /// [`Document.fonts`](https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts)
-    pub fn fonts(&self) -> FontFaceSet {
-        self.inner.get("fonts").as_::<FontFaceSet>()
     }
 }
 impl Document {
@@ -1282,34 +1343,6 @@ impl Document {
         self.inner
             .call("getAnimations", &[])
             .as_::<TypedArray<Animation>>()
-    }
-}
-impl Document {
-    /// Getter of the `children` attribute.
-    /// [`Document.children`](https://developer.mozilla.org/en-US/docs/Web/API/Document/children)
-    pub fn children(&self) -> HTMLCollection {
-        self.inner.get("children").as_::<HTMLCollection>()
-    }
-}
-impl Document {
-    /// Getter of the `firstElementChild` attribute.
-    /// [`Document.firstElementChild`](https://developer.mozilla.org/en-US/docs/Web/API/Document/firstElementChild)
-    pub fn first_element_child(&self) -> Element {
-        self.inner.get("firstElementChild").as_::<Element>()
-    }
-}
-impl Document {
-    /// Getter of the `lastElementChild` attribute.
-    /// [`Document.lastElementChild`](https://developer.mozilla.org/en-US/docs/Web/API/Document/lastElementChild)
-    pub fn last_element_child(&self) -> Element {
-        self.inner.get("lastElementChild").as_::<Element>()
-    }
-}
-impl Document {
-    /// Getter of the `childElementCount` attribute.
-    /// [`Document.childElementCount`](https://developer.mozilla.org/en-US/docs/Web/API/Document/childElementCount)
-    pub fn child_element_count(&self) -> u32 {
-        self.inner.get("childElementCount").as_::<u32>()
     }
 }
 impl Document {
@@ -1461,18 +1494,5 @@ impl Document {
                 ],
             )
             .as_::<XPathResult>()
-    }
-}
-impl Document {
-    /// Getter of the `onbeforexrselect` attribute.
-    /// [`Document.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onbeforexrselect)
-    pub fn onbeforexrselect(&self) -> Any {
-        self.inner.get("onbeforexrselect").as_::<Any>()
-    }
-
-    /// Setter of the `onbeforexrselect` attribute.
-    /// [`Document.onbeforexrselect`](https://developer.mozilla.org/en-US/docs/Web/API/Document/onbeforexrselect)
-    pub fn set_onbeforexrselect(&mut self, value: &Any) {
-        self.inner.set("onbeforexrselect", value);
     }
 }

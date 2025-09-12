@@ -64,25 +64,6 @@ impl From<&CloseEvent> for Any {
 jsbind::utils::impl_dyn_cast!(CloseEvent);
 
 impl CloseEvent {
-    /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
-    pub fn new0(type_: &JsString) -> CloseEvent {
-        Self {
-            inner: Any::global("CloseEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &CloseEventInit) -> CloseEvent {
-        Self {
-            inner: Any::global("CloseEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl CloseEvent {
     /// Getter of the `wasClean` attribute.
     /// [`CloseEvent.wasClean`](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/wasClean)
     pub fn was_clean(&self) -> bool {
@@ -101,5 +82,25 @@ impl CloseEvent {
     /// [`CloseEvent.reason`](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/reason)
     pub fn reason(&self) -> JsString {
         self.inner.get("reason").as_::<JsString>()
+    }
+}
+
+impl CloseEvent {
+    /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
+    pub fn new0(type_: &JsString) -> CloseEvent {
+        Self {
+            inner: Any::global("CloseEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &CloseEventInit) -> CloseEvent {
+        Self {
+            inner: Any::global("CloseEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

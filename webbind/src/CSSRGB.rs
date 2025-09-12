@@ -64,25 +64,6 @@ impl From<&CSSRGB> for Any {
 jsbind::utils::impl_dyn_cast!(CSSRGB);
 
 impl CSSRGB {
-    /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
-    pub fn new0(r: &Any, g: &Any, b: &Any) -> CSSRGB {
-        Self {
-            inner: Any::global("CSSRGB")
-                .new(&[r.into(), g.into(), b.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
-    pub fn new1(r: &Any, g: &Any, b: &Any, alpha: &Any) -> CSSRGB {
-        Self {
-            inner: Any::global("CSSRGB")
-                .new(&[r.into(), g.into(), b.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSRGB {
     /// Getter of the `r` attribute.
     /// [`CSSRGB.r`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRGB/r)
     pub fn r(&self) -> Any {
@@ -132,5 +113,25 @@ impl CSSRGB {
     /// [`CSSRGB.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRGB/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSRGB {
+    /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
+    pub fn new0(r: &Any, g: &Any, b: &Any) -> CSSRGB {
+        Self {
+            inner: Any::global("CSSRGB")
+                .new(&[r.into(), g.into(), b.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSRGB(..)` constructor, creating a new CSSRGB instance
+    pub fn new1(r: &Any, g: &Any, b: &Any, alpha: &Any) -> CSSRGB {
+        Self {
+            inner: Any::global("CSSRGB")
+                .new(&[r.into(), g.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

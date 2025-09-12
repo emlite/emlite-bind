@@ -64,6 +64,14 @@ impl From<&StereoPannerNode> for Any {
 jsbind::utils::impl_dyn_cast!(StereoPannerNode);
 
 impl StereoPannerNode {
+    /// Getter of the `pan` attribute.
+    /// [`StereoPannerNode.pan`](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode/pan)
+    pub fn pan(&self) -> AudioParam {
+        self.inner.get("pan").as_::<AudioParam>()
+    }
+}
+
+impl StereoPannerNode {
     /// The `new StereoPannerNode(..)` constructor, creating a new StereoPannerNode instance
     pub fn new0(context: &BaseAudioContext) -> StereoPannerNode {
         Self {
@@ -80,12 +88,5 @@ impl StereoPannerNode {
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
-    }
-}
-impl StereoPannerNode {
-    /// Getter of the `pan` attribute.
-    /// [`StereoPannerNode.pan`](https://developer.mozilla.org/en-US/docs/Web/API/StereoPannerNode/pan)
-    pub fn pan(&self) -> AudioParam {
-        self.inner.get("pan").as_::<AudioParam>()
     }
 }

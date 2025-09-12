@@ -64,6 +64,27 @@ impl From<&Translator> for Any {
 jsbind::utils::impl_dyn_cast!(Translator);
 
 impl Translator {
+    /// Getter of the `sourceLanguage` attribute.
+    /// [`Translator.sourceLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/sourceLanguage)
+    pub fn source_language(&self) -> JsString {
+        self.inner.get("sourceLanguage").as_::<JsString>()
+    }
+}
+impl Translator {
+    /// Getter of the `targetLanguage` attribute.
+    /// [`Translator.targetLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/targetLanguage)
+    pub fn target_language(&self) -> JsString {
+        self.inner.get("targetLanguage").as_::<JsString>()
+    }
+}
+impl Translator {
+    /// Getter of the `inputQuota` attribute.
+    /// [`Translator.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/inputQuota)
+    pub fn input_quota(&self) -> f64 {
+        self.inner.get("inputQuota").as_::<f64>()
+    }
+}
+impl Translator {
     /// The create method.
     /// [`Translator.create`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/create)
     pub fn create(options: &TranslatorCreateOptions) -> Promise<Translator> {
@@ -122,20 +143,6 @@ impl Translator {
     }
 }
 impl Translator {
-    /// Getter of the `sourceLanguage` attribute.
-    /// [`Translator.sourceLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/sourceLanguage)
-    pub fn source_language(&self) -> JsString {
-        self.inner.get("sourceLanguage").as_::<JsString>()
-    }
-}
-impl Translator {
-    /// Getter of the `targetLanguage` attribute.
-    /// [`Translator.targetLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/targetLanguage)
-    pub fn target_language(&self) -> JsString {
-        self.inner.get("targetLanguage").as_::<JsString>()
-    }
-}
-impl Translator {
     /// The measureInputUsage method.
     /// [`Translator.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
@@ -153,13 +160,6 @@ impl Translator {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
             .as_::<Promise<f64>>()
-    }
-}
-impl Translator {
-    /// Getter of the `inputQuota` attribute.
-    /// [`Translator.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/inputQuota)
-    pub fn input_quota(&self) -> f64 {
-        self.inner.get("inputQuota").as_::<f64>()
     }
 }
 impl Translator {

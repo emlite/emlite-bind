@@ -64,16 +64,16 @@ impl From<&NodeList> for Any {
 jsbind::utils::impl_dyn_cast!(NodeList);
 
 impl NodeList {
-    /// The item method.
-    /// [`NodeList.item`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/item)
-    pub fn item(&self, index: u32) -> Node {
-        self.inner.call("item", &[index.into()]).as_::<Node>()
-    }
-}
-impl NodeList {
     /// Getter of the `length` attribute.
     /// [`NodeList.length`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
+    }
+}
+impl NodeList {
+    /// The item method.
+    /// [`NodeList.item`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/item)
+    pub fn item(&self, index: u32) -> Node {
+        self.inner.call("item", &[index.into()]).as_::<Node>()
     }
 }

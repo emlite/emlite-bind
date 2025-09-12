@@ -64,16 +64,6 @@ impl From<&HTMLParagraphElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLParagraphElement);
 
 impl HTMLParagraphElement {
-    /// The `new HTMLParagraphElement(..)` constructor, creating a new HTMLParagraphElement instance
-    pub fn new() -> HTMLParagraphElement {
-        Self {
-            inner: Any::global("HTMLParagraphElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLParagraphElement {
     /// Getter of the `align` attribute.
     /// [`HTMLParagraphElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParagraphElement/align)
     pub fn align(&self) -> JsString {
@@ -84,5 +74,16 @@ impl HTMLParagraphElement {
     /// [`HTMLParagraphElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParagraphElement/align)
     pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
+    }
+}
+
+impl HTMLParagraphElement {
+    /// The `new HTMLParagraphElement(..)` constructor, creating a new HTMLParagraphElement instance
+    pub fn new() -> HTMLParagraphElement {
+        Self {
+            inner: Any::global("HTMLParagraphElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,6 +64,14 @@ impl From<&PresentationConnectionAvailableEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PresentationConnectionAvailableEvent);
 
 impl PresentationConnectionAvailableEvent {
+    /// Getter of the `connection` attribute.
+    /// [`PresentationConnectionAvailableEvent.connection`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionAvailableEvent/connection)
+    pub fn connection(&self) -> PresentationConnection {
+        self.inner.get("connection").as_::<PresentationConnection>()
+    }
+}
+
+impl PresentationConnectionAvailableEvent {
     /// The `new PresentationConnectionAvailableEvent(..)` constructor, creating a new PresentationConnectionAvailableEvent instance
     pub fn new(
         type_: &JsString,
@@ -74,12 +82,5 @@ impl PresentationConnectionAvailableEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl PresentationConnectionAvailableEvent {
-    /// Getter of the `connection` attribute.
-    /// [`PresentationConnectionAvailableEvent.connection`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionAvailableEvent/connection)
-    pub fn connection(&self) -> PresentationConnection {
-        self.inner.get("connection").as_::<PresentationConnection>()
     }
 }

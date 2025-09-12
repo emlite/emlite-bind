@@ -64,6 +64,25 @@ impl From<&CookieChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(CookieChangeEvent);
 
 impl CookieChangeEvent {
+    /// Getter of the `changed` attribute.
+    /// [`CookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/changed)
+    pub fn changed(&self) -> TypedArray<CookieListItem> {
+        self.inner
+            .get("changed")
+            .as_::<TypedArray<CookieListItem>>()
+    }
+}
+impl CookieChangeEvent {
+    /// Getter of the `deleted` attribute.
+    /// [`CookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/deleted)
+    pub fn deleted(&self) -> TypedArray<CookieListItem> {
+        self.inner
+            .get("deleted")
+            .as_::<TypedArray<CookieListItem>>()
+    }
+}
+
+impl CookieChangeEvent {
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
     pub fn new0(type_: &JsString) -> CookieChangeEvent {
         Self {
@@ -80,23 +99,5 @@ impl CookieChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl CookieChangeEvent {
-    /// Getter of the `changed` attribute.
-    /// [`CookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/changed)
-    pub fn changed(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("changed")
-            .as_::<TypedArray<CookieListItem>>()
-    }
-}
-impl CookieChangeEvent {
-    /// Getter of the `deleted` attribute.
-    /// [`CookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/deleted)
-    pub fn deleted(&self) -> TypedArray<CookieListItem> {
-        self.inner
-            .get("deleted")
-            .as_::<TypedArray<CookieListItem>>()
     }
 }

@@ -64,6 +64,21 @@ impl From<&SnapEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SnapEvent);
 
 impl SnapEvent {
+    /// Getter of the `snapTargetBlock` attribute.
+    /// [`SnapEvent.snapTargetBlock`](https://developer.mozilla.org/en-US/docs/Web/API/SnapEvent/snapTargetBlock)
+    pub fn snap_target_block(&self) -> Node {
+        self.inner.get("snapTargetBlock").as_::<Node>()
+    }
+}
+impl SnapEvent {
+    /// Getter of the `snapTargetInline` attribute.
+    /// [`SnapEvent.snapTargetInline`](https://developer.mozilla.org/en-US/docs/Web/API/SnapEvent/snapTargetInline)
+    pub fn snap_target_inline(&self) -> Node {
+        self.inner.get("snapTargetInline").as_::<Node>()
+    }
+}
+
+impl SnapEvent {
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
     pub fn new0(type_: &JsString) -> SnapEvent {
         Self {
@@ -78,19 +93,5 @@ impl SnapEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl SnapEvent {
-    /// Getter of the `snapTargetBlock` attribute.
-    /// [`SnapEvent.snapTargetBlock`](https://developer.mozilla.org/en-US/docs/Web/API/SnapEvent/snapTargetBlock)
-    pub fn snap_target_block(&self) -> Node {
-        self.inner.get("snapTargetBlock").as_::<Node>()
-    }
-}
-impl SnapEvent {
-    /// Getter of the `snapTargetInline` attribute.
-    /// [`SnapEvent.snapTargetInline`](https://developer.mozilla.org/en-US/docs/Web/API/SnapEvent/snapTargetInline)
-    pub fn snap_target_inline(&self) -> Node {
-        self.inner.get("snapTargetInline").as_::<Node>()
     }
 }

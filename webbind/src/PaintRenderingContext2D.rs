@@ -64,101 +64,6 @@ impl From<&PaintRenderingContext2D> for Any {
 jsbind::utils::impl_dyn_cast!(PaintRenderingContext2D);
 
 impl PaintRenderingContext2D {
-    /// The save method.
-    /// [`PaintRenderingContext2D.save`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/save)
-    pub fn save(&self) -> Undefined {
-        self.inner.call("save", &[]).as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The restore method.
-    /// [`PaintRenderingContext2D.restore`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/restore)
-    pub fn restore(&self) -> Undefined {
-        self.inner.call("restore", &[]).as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The reset method.
-    /// [`PaintRenderingContext2D.reset`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/reset)
-    pub fn reset(&self) -> Undefined {
-        self.inner.call("reset", &[]).as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The isContextLost method.
-    /// [`PaintRenderingContext2D.isContextLost`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isContextLost)
-    pub fn is_context_lost(&self) -> bool {
-        self.inner.call("isContextLost", &[]).as_::<bool>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The scale method.
-    /// [`PaintRenderingContext2D.scale`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/scale)
-    pub fn scale(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("scale", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The rotate method.
-    /// [`PaintRenderingContext2D.rotate`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/rotate)
-    pub fn rotate(&self, angle: f64) -> Undefined {
-        self.inner
-            .call("rotate", &[angle.into()])
-            .as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The translate method.
-    /// [`PaintRenderingContext2D.translate`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/translate)
-    pub fn translate(&self, x: f64, y: f64) -> Undefined {
-        self.inner
-            .call("translate", &[x.into(), y.into()])
-            .as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The transform method.
-    /// [`PaintRenderingContext2D.transform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/transform)
-    pub fn transform(&self, a: f64, b: f64, c: f64, d: f64, e: f64, f: f64) -> Undefined {
-        self.inner
-            .call(
-                "transform",
-                &[a.into(), b.into(), c.into(), d.into(), e.into(), f.into()],
-            )
-            .as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The getTransform method.
-    /// [`PaintRenderingContext2D.getTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/getTransform)
-    pub fn get_transform(&self) -> DOMMatrix {
-        self.inner.call("getTransform", &[]).as_::<DOMMatrix>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The setTransform method.
-    /// [`PaintRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setTransform)
-    pub fn set_transform0(&self) -> Undefined {
-        self.inner.call("setTransform", &[]).as_::<Undefined>()
-    }
-    /// The setTransform method.
-    /// [`PaintRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setTransform)
-    pub fn set_transform1(&self, transform: &DOMMatrix2DInit) -> Undefined {
-        self.inner
-            .call("setTransform", &[transform.into()])
-            .as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// The resetTransform method.
-    /// [`PaintRenderingContext2D.resetTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/resetTransform)
-    pub fn reset_transform(&self) -> Undefined {
-        self.inner.call("resetTransform", &[]).as_::<Undefined>()
-    }
-}
-impl PaintRenderingContext2D {
     /// Getter of the `globalAlpha` attribute.
     /// [`PaintRenderingContext2D.globalAlpha`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/globalAlpha)
     pub fn global_alpha(&self) -> f64 {
@@ -239,6 +144,230 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
+    /// Getter of the `shadowOffsetX` attribute.
+    /// [`PaintRenderingContext2D.shadowOffsetX`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetX)
+    pub fn shadow_offset_x(&self) -> f64 {
+        self.inner.get("shadowOffsetX").as_::<f64>()
+    }
+
+    /// Setter of the `shadowOffsetX` attribute.
+    /// [`PaintRenderingContext2D.shadowOffsetX`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetX)
+    pub fn set_shadow_offset_x(&mut self, value: f64) {
+        self.inner.set("shadowOffsetX", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `shadowOffsetY` attribute.
+    /// [`PaintRenderingContext2D.shadowOffsetY`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetY)
+    pub fn shadow_offset_y(&self) -> f64 {
+        self.inner.get("shadowOffsetY").as_::<f64>()
+    }
+
+    /// Setter of the `shadowOffsetY` attribute.
+    /// [`PaintRenderingContext2D.shadowOffsetY`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetY)
+    pub fn set_shadow_offset_y(&mut self, value: f64) {
+        self.inner.set("shadowOffsetY", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `shadowBlur` attribute.
+    /// [`PaintRenderingContext2D.shadowBlur`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowBlur)
+    pub fn shadow_blur(&self) -> f64 {
+        self.inner.get("shadowBlur").as_::<f64>()
+    }
+
+    /// Setter of the `shadowBlur` attribute.
+    /// [`PaintRenderingContext2D.shadowBlur`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowBlur)
+    pub fn set_shadow_blur(&mut self, value: f64) {
+        self.inner.set("shadowBlur", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `shadowColor` attribute.
+    /// [`PaintRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowColor)
+    pub fn shadow_color(&self) -> JsString {
+        self.inner.get("shadowColor").as_::<JsString>()
+    }
+
+    /// Setter of the `shadowColor` attribute.
+    /// [`PaintRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowColor)
+    pub fn set_shadow_color(&mut self, value: &JsString) {
+        self.inner.set("shadowColor", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `lineWidth` attribute.
+    /// [`PaintRenderingContext2D.lineWidth`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineWidth)
+    pub fn line_width(&self) -> f64 {
+        self.inner.get("lineWidth").as_::<f64>()
+    }
+
+    /// Setter of the `lineWidth` attribute.
+    /// [`PaintRenderingContext2D.lineWidth`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineWidth)
+    pub fn set_line_width(&mut self, value: f64) {
+        self.inner.set("lineWidth", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `lineCap` attribute.
+    /// [`PaintRenderingContext2D.lineCap`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineCap)
+    pub fn line_cap(&self) -> CanvasLineCap {
+        self.inner.get("lineCap").as_::<CanvasLineCap>()
+    }
+
+    /// Setter of the `lineCap` attribute.
+    /// [`PaintRenderingContext2D.lineCap`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineCap)
+    pub fn set_line_cap(&mut self, value: &CanvasLineCap) {
+        self.inner.set("lineCap", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `lineJoin` attribute.
+    /// [`PaintRenderingContext2D.lineJoin`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineJoin)
+    pub fn line_join(&self) -> CanvasLineJoin {
+        self.inner.get("lineJoin").as_::<CanvasLineJoin>()
+    }
+
+    /// Setter of the `lineJoin` attribute.
+    /// [`PaintRenderingContext2D.lineJoin`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineJoin)
+    pub fn set_line_join(&mut self, value: &CanvasLineJoin) {
+        self.inner.set("lineJoin", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `miterLimit` attribute.
+    /// [`PaintRenderingContext2D.miterLimit`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/miterLimit)
+    pub fn miter_limit(&self) -> f64 {
+        self.inner.get("miterLimit").as_::<f64>()
+    }
+
+    /// Setter of the `miterLimit` attribute.
+    /// [`PaintRenderingContext2D.miterLimit`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/miterLimit)
+    pub fn set_miter_limit(&mut self, value: f64) {
+        self.inner.set("miterLimit", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// Getter of the `lineDashOffset` attribute.
+    /// [`PaintRenderingContext2D.lineDashOffset`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineDashOffset)
+    pub fn line_dash_offset(&self) -> f64 {
+        self.inner.get("lineDashOffset").as_::<f64>()
+    }
+
+    /// Setter of the `lineDashOffset` attribute.
+    /// [`PaintRenderingContext2D.lineDashOffset`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineDashOffset)
+    pub fn set_line_dash_offset(&mut self, value: f64) {
+        self.inner.set("lineDashOffset", value);
+    }
+}
+impl PaintRenderingContext2D {
+    /// The save method.
+    /// [`PaintRenderingContext2D.save`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/save)
+    pub fn save(&self) -> Undefined {
+        self.inner.call("save", &[]).as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The restore method.
+    /// [`PaintRenderingContext2D.restore`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/restore)
+    pub fn restore(&self) -> Undefined {
+        self.inner.call("restore", &[]).as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The reset method.
+    /// [`PaintRenderingContext2D.reset`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/reset)
+    pub fn reset(&self) -> Undefined {
+        self.inner.call("reset", &[]).as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The isContextLost method.
+    /// [`PaintRenderingContext2D.isContextLost`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isContextLost)
+    pub fn is_context_lost(&self) -> bool {
+        self.inner.call("isContextLost", &[]).as_::<bool>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The scale method.
+    /// [`PaintRenderingContext2D.scale`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/scale)
+    pub fn scale(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("scale", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The rotate method.
+    /// [`PaintRenderingContext2D.rotate`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/rotate)
+    pub fn rotate(&self, angle: f64) -> Undefined {
+        self.inner
+            .call("rotate", &[angle.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The translate method.
+    /// [`PaintRenderingContext2D.translate`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/translate)
+    pub fn translate(&self, x: f64, y: f64) -> Undefined {
+        self.inner
+            .call("translate", &[x.into(), y.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The transform method.
+    /// [`PaintRenderingContext2D.transform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/transform)
+    pub fn transform(&self, a: f64, b: f64, c: f64, d: f64, e: f64, f: f64) -> Undefined {
+        self.inner
+            .call(
+                "transform",
+                &[a.into(), b.into(), c.into(), d.into(), e.into(), f.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The getTransform method.
+    /// [`PaintRenderingContext2D.getTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/getTransform)
+    pub fn get_transform(&self) -> DOMMatrix {
+        self.inner.call("getTransform", &[]).as_::<DOMMatrix>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The setTransform method.
+    /// [`PaintRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setTransform)
+    pub fn set_transform(&self, a: f64, b: f64, c: f64, d: f64, e: f64, f: f64) -> Undefined {
+        self.inner
+            .call(
+                "setTransform",
+                &[a.into(), b.into(), c.into(), d.into(), e.into(), f.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The setTransform method.
+    /// [`PaintRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setTransform)
+    pub fn set_transform1(&self) -> Undefined {
+        self.inner.call("setTransform", &[]).as_::<Undefined>()
+    }
+    /// The setTransform method.
+    /// [`PaintRenderingContext2D.setTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setTransform)
+    pub fn set_transform2(&self, transform: &DOMMatrix2DInit) -> Undefined {
+        self.inner
+            .call("setTransform", &[transform.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The resetTransform method.
+    /// [`PaintRenderingContext2D.resetTransform`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/resetTransform)
+    pub fn reset_transform(&self) -> Undefined {
+        self.inner.call("resetTransform", &[]).as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
     /// The createLinearGradient method.
     /// [`PaintRenderingContext2D.createLinearGradient`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/createLinearGradient)
     pub fn create_linear_gradient(&self, x0: f64, y0: f64, x1: f64, y1: f64) -> CanvasGradient {
@@ -299,58 +428,6 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
-    /// Getter of the `shadowOffsetX` attribute.
-    /// [`PaintRenderingContext2D.shadowOffsetX`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetX)
-    pub fn shadow_offset_x(&self) -> f64 {
-        self.inner.get("shadowOffsetX").as_::<f64>()
-    }
-
-    /// Setter of the `shadowOffsetX` attribute.
-    /// [`PaintRenderingContext2D.shadowOffsetX`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetX)
-    pub fn set_shadow_offset_x(&mut self, value: f64) {
-        self.inner.set("shadowOffsetX", value);
-    }
-}
-impl PaintRenderingContext2D {
-    /// Getter of the `shadowOffsetY` attribute.
-    /// [`PaintRenderingContext2D.shadowOffsetY`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetY)
-    pub fn shadow_offset_y(&self) -> f64 {
-        self.inner.get("shadowOffsetY").as_::<f64>()
-    }
-
-    /// Setter of the `shadowOffsetY` attribute.
-    /// [`PaintRenderingContext2D.shadowOffsetY`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowOffsetY)
-    pub fn set_shadow_offset_y(&mut self, value: f64) {
-        self.inner.set("shadowOffsetY", value);
-    }
-}
-impl PaintRenderingContext2D {
-    /// Getter of the `shadowBlur` attribute.
-    /// [`PaintRenderingContext2D.shadowBlur`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowBlur)
-    pub fn shadow_blur(&self) -> f64 {
-        self.inner.get("shadowBlur").as_::<f64>()
-    }
-
-    /// Setter of the `shadowBlur` attribute.
-    /// [`PaintRenderingContext2D.shadowBlur`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowBlur)
-    pub fn set_shadow_blur(&mut self, value: f64) {
-        self.inner.set("shadowBlur", value);
-    }
-}
-impl PaintRenderingContext2D {
-    /// Getter of the `shadowColor` attribute.
-    /// [`PaintRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowColor)
-    pub fn shadow_color(&self) -> JsString {
-        self.inner.get("shadowColor").as_::<JsString>()
-    }
-
-    /// Setter of the `shadowColor` attribute.
-    /// [`PaintRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowColor)
-    pub fn set_shadow_color(&mut self, value: &JsString) {
-        self.inner.set("shadowColor", value);
-    }
-}
-impl PaintRenderingContext2D {
     /// The clearRect method.
     /// [`PaintRenderingContext2D.clearRect`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clearRect)
     pub fn clear_rect(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
@@ -387,12 +464,26 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The fill method.
     /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
-    pub fn fill0(&self, path: &Path2D) -> Undefined {
+    pub fn fill0(&self) -> Undefined {
+        self.inner.call("fill", &[]).as_::<Undefined>()
+    }
+    /// The fill method.
+    /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
+    pub fn fill1(&self, fill_rule: &CanvasFillRule) -> Undefined {
+        self.inner
+            .call("fill", &[fill_rule.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The fill method.
+    /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
+    pub fn fill2(&self, path: &Path2D) -> Undefined {
         self.inner.call("fill", &[path.into()]).as_::<Undefined>()
     }
     /// The fill method.
     /// [`PaintRenderingContext2D.fill`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/fill)
-    pub fn fill1(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn fill3(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("fill", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
@@ -401,19 +492,40 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The stroke method.
     /// [`PaintRenderingContext2D.stroke`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/stroke)
-    pub fn stroke(&self, path: &Path2D) -> Undefined {
+    pub fn stroke(&self) -> Undefined {
+        self.inner.call("stroke", &[]).as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The stroke method.
+    /// [`PaintRenderingContext2D.stroke`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/stroke)
+    pub fn stroke1(&self, path: &Path2D) -> Undefined {
         self.inner.call("stroke", &[path.into()]).as_::<Undefined>()
     }
 }
 impl PaintRenderingContext2D {
     /// The clip method.
     /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
-    pub fn clip0(&self, path: &Path2D) -> Undefined {
+    pub fn clip0(&self) -> Undefined {
+        self.inner.call("clip", &[]).as_::<Undefined>()
+    }
+    /// The clip method.
+    /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
+    pub fn clip1(&self, fill_rule: &CanvasFillRule) -> Undefined {
+        self.inner
+            .call("clip", &[fill_rule.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The clip method.
+    /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
+    pub fn clip2(&self, path: &Path2D) -> Undefined {
         self.inner.call("clip", &[path.into()]).as_::<Undefined>()
     }
     /// The clip method.
     /// [`PaintRenderingContext2D.clip`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/clip)
-    pub fn clip1(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
+    pub fn clip3(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("clip", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
@@ -422,14 +534,30 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The isPointInPath method.
     /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path0(&self, path: &Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_path0(&self, x: f64, y: f64) -> bool {
+        self.inner
+            .call("isPointInPath", &[x.into(), y.into()])
+            .as_::<bool>()
+    }
+    /// The isPointInPath method.
+    /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
+    pub fn is_point_in_path1(&self, x: f64, y: f64, fill_rule: &CanvasFillRule) -> bool {
+        self.inner
+            .call("isPointInPath", &[x.into(), y.into(), fill_rule.into()])
+            .as_::<bool>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The isPointInPath method.
+    /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
+    pub fn is_point_in_path2(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInPath", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
     }
     /// The isPointInPath method.
     /// [`PaintRenderingContext2D.isPointInPath`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInPath)
-    pub fn is_point_in_path1(
+    pub fn is_point_in_path3(
         &self,
         path: &Path2D,
         x: f64,
@@ -447,7 +575,16 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The isPointInStroke method.
     /// [`PaintRenderingContext2D.isPointInStroke`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInStroke)
-    pub fn is_point_in_stroke(&self, path: &Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_stroke(&self, x: f64, y: f64) -> bool {
+        self.inner
+            .call("isPointInStroke", &[x.into(), y.into()])
+            .as_::<bool>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The isPointInStroke method.
+    /// [`PaintRenderingContext2D.isPointInStroke`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/isPointInStroke)
+    pub fn is_point_in_stroke1(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInStroke", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
@@ -456,7 +593,28 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The drawImage method.
     /// [`PaintRenderingContext2D.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/drawImage)
-    pub fn draw_image(
+    pub fn draw_image(&self, image: &Any, dx: f64, dy: f64) -> Undefined {
+        self.inner
+            .call("drawImage", &[image.into(), dx.into(), dy.into()])
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The drawImage method.
+    /// [`PaintRenderingContext2D.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/drawImage)
+    pub fn draw_image1(&self, image: &Any, dx: f64, dy: f64, dw: f64, dh: f64) -> Undefined {
+        self.inner
+            .call(
+                "drawImage",
+                &[image.into(), dx.into(), dy.into(), dw.into(), dh.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl PaintRenderingContext2D {
+    /// The drawImage method.
+    /// [`PaintRenderingContext2D.drawImage`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/drawImage)
+    pub fn draw_image2(
         &self,
         image: &Any,
         sx: f64,
@@ -487,58 +645,6 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
-    /// Getter of the `lineWidth` attribute.
-    /// [`PaintRenderingContext2D.lineWidth`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineWidth)
-    pub fn line_width(&self) -> f64 {
-        self.inner.get("lineWidth").as_::<f64>()
-    }
-
-    /// Setter of the `lineWidth` attribute.
-    /// [`PaintRenderingContext2D.lineWidth`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineWidth)
-    pub fn set_line_width(&mut self, value: f64) {
-        self.inner.set("lineWidth", value);
-    }
-}
-impl PaintRenderingContext2D {
-    /// Getter of the `lineCap` attribute.
-    /// [`PaintRenderingContext2D.lineCap`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineCap)
-    pub fn line_cap(&self) -> CanvasLineCap {
-        self.inner.get("lineCap").as_::<CanvasLineCap>()
-    }
-
-    /// Setter of the `lineCap` attribute.
-    /// [`PaintRenderingContext2D.lineCap`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineCap)
-    pub fn set_line_cap(&mut self, value: &CanvasLineCap) {
-        self.inner.set("lineCap", value);
-    }
-}
-impl PaintRenderingContext2D {
-    /// Getter of the `lineJoin` attribute.
-    /// [`PaintRenderingContext2D.lineJoin`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineJoin)
-    pub fn line_join(&self) -> CanvasLineJoin {
-        self.inner.get("lineJoin").as_::<CanvasLineJoin>()
-    }
-
-    /// Setter of the `lineJoin` attribute.
-    /// [`PaintRenderingContext2D.lineJoin`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineJoin)
-    pub fn set_line_join(&mut self, value: &CanvasLineJoin) {
-        self.inner.set("lineJoin", value);
-    }
-}
-impl PaintRenderingContext2D {
-    /// Getter of the `miterLimit` attribute.
-    /// [`PaintRenderingContext2D.miterLimit`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/miterLimit)
-    pub fn miter_limit(&self) -> f64 {
-        self.inner.get("miterLimit").as_::<f64>()
-    }
-
-    /// Setter of the `miterLimit` attribute.
-    /// [`PaintRenderingContext2D.miterLimit`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/miterLimit)
-    pub fn set_miter_limit(&mut self, value: f64) {
-        self.inner.set("miterLimit", value);
-    }
-}
-impl PaintRenderingContext2D {
     /// The setLineDash method.
     /// [`PaintRenderingContext2D.setLineDash`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/setLineDash)
     pub fn set_line_dash(&self, segments: TypedArray<f64>) -> Undefined {
@@ -552,19 +658,6 @@ impl PaintRenderingContext2D {
     /// [`PaintRenderingContext2D.getLineDash`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/getLineDash)
     pub fn get_line_dash(&self) -> TypedArray<f64> {
         self.inner.call("getLineDash", &[]).as_::<TypedArray<f64>>()
-    }
-}
-impl PaintRenderingContext2D {
-    /// Getter of the `lineDashOffset` attribute.
-    /// [`PaintRenderingContext2D.lineDashOffset`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineDashOffset)
-    pub fn line_dash_offset(&self) -> f64 {
-        self.inner.get("lineDashOffset").as_::<f64>()
-    }
-
-    /// Setter of the `lineDashOffset` attribute.
-    /// [`PaintRenderingContext2D.lineDashOffset`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/lineDashOffset)
-    pub fn set_line_dash_offset(&mut self, value: f64) {
-        self.inner.set("lineDashOffset", value);
     }
 }
 impl PaintRenderingContext2D {

@@ -64,18 +64,6 @@ impl From<&IntersectionObserverEntry> for Any {
 jsbind::utils::impl_dyn_cast!(IntersectionObserverEntry);
 
 impl IntersectionObserverEntry {
-    /// The `new IntersectionObserverEntry(..)` constructor, creating a new IntersectionObserverEntry instance
-    pub fn new(
-        intersection_observer_entry_init: &IntersectionObserverEntryInit,
-    ) -> IntersectionObserverEntry {
-        Self {
-            inner: Any::global("IntersectionObserverEntry")
-                .new(&[intersection_observer_entry_init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl IntersectionObserverEntry {
     /// Getter of the `time` attribute.
     /// [`IntersectionObserverEntry.time`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/time)
     pub fn time(&self) -> Any {
@@ -131,5 +119,18 @@ impl IntersectionObserverEntry {
     /// [`IntersectionObserverEntry.target`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry/target)
     pub fn target(&self) -> Element {
         self.inner.get("target").as_::<Element>()
+    }
+}
+
+impl IntersectionObserverEntry {
+    /// The `new IntersectionObserverEntry(..)` constructor, creating a new IntersectionObserverEntry instance
+    pub fn new(
+        intersection_observer_entry_init: &IntersectionObserverEntryInit,
+    ) -> IntersectionObserverEntry {
+        Self {
+            inner: Any::global("IntersectionObserverEntry")
+                .new(&[intersection_observer_entry_init.into()])
+                .as_::<Any>(),
+        }
     }
 }

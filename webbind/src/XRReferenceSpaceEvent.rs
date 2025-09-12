@@ -64,19 +64,6 @@ impl From<&XRReferenceSpaceEvent> for Any {
 jsbind::utils::impl_dyn_cast!(XRReferenceSpaceEvent);
 
 impl XRReferenceSpaceEvent {
-    /// The `new XRReferenceSpaceEvent(..)` constructor, creating a new XRReferenceSpaceEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &XRReferenceSpaceEventInit,
-    ) -> XRReferenceSpaceEvent {
-        Self {
-            inner: Any::global("XRReferenceSpaceEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl XRReferenceSpaceEvent {
     /// Getter of the `referenceSpace` attribute.
     /// [`XRReferenceSpaceEvent.referenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceEvent/referenceSpace)
     pub fn reference_space(&self) -> XRReferenceSpace {
@@ -88,5 +75,19 @@ impl XRReferenceSpaceEvent {
     /// [`XRReferenceSpaceEvent.transform`](https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceEvent/transform)
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
+    }
+}
+
+impl XRReferenceSpaceEvent {
+    /// The `new XRReferenceSpaceEvent(..)` constructor, creating a new XRReferenceSpaceEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &XRReferenceSpaceEventInit,
+    ) -> XRReferenceSpaceEvent {
+        Self {
+            inner: Any::global("XRReferenceSpaceEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

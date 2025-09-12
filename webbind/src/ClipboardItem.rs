@@ -64,6 +64,23 @@ impl From<&ClipboardItem> for Any {
 jsbind::utils::impl_dyn_cast!(ClipboardItem);
 
 impl ClipboardItem {
+    /// Getter of the `presentationStyle` attribute.
+    /// [`ClipboardItem.presentationStyle`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/presentationStyle)
+    pub fn presentation_style(&self) -> PresentationStyle {
+        self.inner
+            .get("presentationStyle")
+            .as_::<PresentationStyle>()
+    }
+}
+impl ClipboardItem {
+    /// Getter of the `types` attribute.
+    /// [`ClipboardItem.types`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/types)
+    pub fn types(&self) -> TypedArray<JsString> {
+        self.inner.get("types").as_::<TypedArray<JsString>>()
+    }
+}
+
+impl ClipboardItem {
     /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
     pub fn new0(items: &Record<JsString, Any>) -> ClipboardItem {
         Self {
@@ -80,22 +97,6 @@ impl ClipboardItem {
                 .new(&[items.into(), options.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl ClipboardItem {
-    /// Getter of the `presentationStyle` attribute.
-    /// [`ClipboardItem.presentationStyle`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/presentationStyle)
-    pub fn presentation_style(&self) -> PresentationStyle {
-        self.inner
-            .get("presentationStyle")
-            .as_::<PresentationStyle>()
-    }
-}
-impl ClipboardItem {
-    /// Getter of the `types` attribute.
-    /// [`ClipboardItem.types`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/types)
-    pub fn types(&self) -> TypedArray<JsString> {
-        self.inner.get("types").as_::<TypedArray<JsString>>()
     }
 }
 impl ClipboardItem {

@@ -64,23 +64,6 @@ impl From<&MediaMetadata> for Any {
 jsbind::utils::impl_dyn_cast!(MediaMetadata);
 
 impl MediaMetadata {
-    /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
-    pub fn new0() -> MediaMetadata {
-        Self {
-            inner: Any::global("MediaMetadata").new(&[]).as_::<Any>(),
-        }
-    }
-
-    /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
-    pub fn new1(init: &MediaMetadataInit) -> MediaMetadata {
-        Self {
-            inner: Any::global("MediaMetadata")
-                .new(&[init.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl MediaMetadata {
     /// Getter of the `title` attribute.
     /// [`MediaMetadata.title`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/title)
     pub fn title(&self) -> JsString {
@@ -139,5 +122,23 @@ impl MediaMetadata {
         self.inner
             .get("chapterInfo")
             .as_::<TypedArray<ChapterInformation>>()
+    }
+}
+
+impl MediaMetadata {
+    /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
+    pub fn new0() -> MediaMetadata {
+        Self {
+            inner: Any::global("MediaMetadata").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
+    pub fn new1(init: &MediaMetadataInit) -> MediaMetadata {
+        Self {
+            inner: Any::global("MediaMetadata")
+                .new(&[init.into()])
+                .as_::<Any>(),
+        }
     }
 }

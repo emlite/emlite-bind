@@ -64,16 +64,6 @@ impl From<&HTMLOptionElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLOptionElement);
 
 impl HTMLOptionElement {
-    /// The `new HTMLOptionElement(..)` constructor, creating a new HTMLOptionElement instance
-    pub fn new() -> HTMLOptionElement {
-        Self {
-            inner: Any::global("HTMLOptionElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLOptionElement {
     /// Getter of the `disabled` attribute.
     /// [`HTMLOptionElement.disabled`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/disabled)
     pub fn disabled(&self) -> bool {
@@ -163,5 +153,16 @@ impl HTMLOptionElement {
     /// [`HTMLOptionElement.index`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/index)
     pub fn index(&self) -> i32 {
         self.inner.get("index").as_::<i32>()
+    }
+}
+
+impl HTMLOptionElement {
+    /// The `new HTMLOptionElement(..)` constructor, creating a new HTMLOptionElement instance
+    pub fn new() -> HTMLOptionElement {
+        Self {
+            inner: Any::global("HTMLOptionElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

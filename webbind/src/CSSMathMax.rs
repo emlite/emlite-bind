@@ -64,6 +64,14 @@ impl From<&CSSMathMax> for Any {
 jsbind::utils::impl_dyn_cast!(CSSMathMax);
 
 impl CSSMathMax {
+    /// Getter of the `values` attribute.
+    /// [`CSSMathMax.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMax/values)
+    pub fn values(&self) -> CSSNumericArray {
+        self.inner.get("values").as_::<CSSNumericArray>()
+    }
+}
+
+impl CSSMathMax {
     /// The `new CSSMathMax(..)` constructor, creating a new CSSMathMax instance
     pub fn new(args: &Any) -> CSSMathMax {
         Self {
@@ -71,12 +79,5 @@ impl CSSMathMax {
                 .new(&[args.into()])
                 .as_::<CSSMathValue>(),
         }
-    }
-}
-impl CSSMathMax {
-    /// Getter of the `values` attribute.
-    /// [`CSSMathMax.values`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMathMax/values)
-    pub fn values(&self) -> CSSNumericArray {
-        self.inner.get("values").as_::<CSSNumericArray>()
     }
 }

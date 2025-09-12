@@ -119,6 +119,19 @@ impl ShadowRoot {
     }
 }
 impl ShadowRoot {
+    /// Getter of the `innerHTML` attribute.
+    /// [`ShadowRoot.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/innerHTML)
+    pub fn inner_html(&self) -> Any {
+        self.inner.get("innerHTML").as_::<Any>()
+    }
+
+    /// Setter of the `innerHTML` attribute.
+    /// [`ShadowRoot.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/innerHTML)
+    pub fn set_inner_html(&mut self, value: &Any) {
+        self.inner.set("innerHTML", value);
+    }
+}
+impl ShadowRoot {
     /// The setHTMLUnsafe method.
     /// [`ShadowRoot.setHTMLUnsafe`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/setHTMLUnsafe)
     pub fn set_html_unsafe(&self, html: &Any) -> Undefined {
@@ -139,19 +152,6 @@ impl ShadowRoot {
         self.inner
             .call("getHTML", &[options.into()])
             .as_::<JsString>()
-    }
-}
-impl ShadowRoot {
-    /// Getter of the `innerHTML` attribute.
-    /// [`ShadowRoot.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/innerHTML)
-    pub fn inner_html(&self) -> Any {
-        self.inner.get("innerHTML").as_::<Any>()
-    }
-
-    /// Setter of the `innerHTML` attribute.
-    /// [`ShadowRoot.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/innerHTML)
-    pub fn set_inner_html(&mut self, value: &Any) {
-        self.inner.set("innerHTML", value);
     }
 }
 impl ShadowRoot {

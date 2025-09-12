@@ -64,34 +64,6 @@ impl From<&ImageData> for Any {
 jsbind::utils::impl_dyn_cast!(ImageData);
 
 impl ImageData {
-    /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new0(data: &Any, sw: u32) -> ImageData {
-        Self {
-            inner: Any::global("ImageData")
-                .new(&[data.into(), sw.into()])
-                .as_::<Any>(),
-        }
-    }
-
-    /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new1(data: &Any, sw: u32, sh: u32) -> ImageData {
-        Self {
-            inner: Any::global("ImageData")
-                .new(&[data.into(), sw.into(), sh.into()])
-                .as_::<Any>(),
-        }
-    }
-
-    /// The `new ImageData(..)` constructor, creating a new ImageData instance
-    pub fn new2(data: &Any, sw: u32, sh: u32, settings: &ImageDataSettings) -> ImageData {
-        Self {
-            inner: Any::global("ImageData")
-                .new(&[data.into(), sw.into(), sh.into(), settings.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl ImageData {
     /// Getter of the `width` attribute.
     /// [`ImageData.width`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/width)
     pub fn width(&self) -> u32 {
@@ -124,5 +96,54 @@ impl ImageData {
     /// [`ImageData.colorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/colorSpace)
     pub fn color_space(&self) -> PredefinedColorSpace {
         self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
+    }
+}
+
+impl ImageData {
+    /// The `new ImageData(..)` constructor, creating a new ImageData instance
+    pub fn new0(sw: u32, sh: u32) -> ImageData {
+        Self {
+            inner: Any::global("ImageData")
+                .new(&[sw.into(), sh.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new ImageData(..)` constructor, creating a new ImageData instance
+    pub fn new1(sw: u32, sh: u32, settings: &ImageDataSettings) -> ImageData {
+        Self {
+            inner: Any::global("ImageData")
+                .new(&[sw.into(), sh.into(), settings.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+
+impl ImageData {
+    /// The `new ImageData(..)` constructor, creating a new ImageData instance
+    pub fn new2(data: &Any, sw: u32) -> ImageData {
+        Self {
+            inner: Any::global("ImageData")
+                .new(&[data.into(), sw.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new ImageData(..)` constructor, creating a new ImageData instance
+    pub fn new3(data: &Any, sw: u32, sh: u32) -> ImageData {
+        Self {
+            inner: Any::global("ImageData")
+                .new(&[data.into(), sw.into(), sh.into()])
+                .as_::<Any>(),
+        }
+    }
+
+    /// The `new ImageData(..)` constructor, creating a new ImageData instance
+    pub fn new4(data: &Any, sw: u32, sh: u32, settings: &ImageDataSettings) -> ImageData {
+        Self {
+            inner: Any::global("ImageData")
+                .new(&[data.into(), sw.into(), sh.into(), settings.into()])
+                .as_::<Any>(),
+        }
     }
 }

@@ -64,6 +64,15 @@ impl From<&GPU> for Any {
 jsbind::utils::impl_dyn_cast!(GPU);
 
 impl GPU {
+    /// Getter of the `wgslLanguageFeatures` attribute.
+    /// [`GPU.wgslLanguageFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/wgslLanguageFeatures)
+    pub fn wgsl_language_features(&self) -> WGSLLanguageFeatures {
+        self.inner
+            .get("wgslLanguageFeatures")
+            .as_::<WGSLLanguageFeatures>()
+    }
+}
+impl GPU {
     /// The requestAdapter method.
     /// [`GPU.requestAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter)
     pub fn request_adapter0(&self) -> Promise<GPUAdapter> {
@@ -86,14 +95,5 @@ impl GPU {
         self.inner
             .call("getPreferredCanvasFormat", &[])
             .as_::<GPUTextureFormat>()
-    }
-}
-impl GPU {
-    /// Getter of the `wgslLanguageFeatures` attribute.
-    /// [`GPU.wgslLanguageFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/wgslLanguageFeatures)
-    pub fn wgsl_language_features(&self) -> WGSLLanguageFeatures {
-        self.inner
-            .get("wgslLanguageFeatures")
-            .as_::<WGSLLanguageFeatures>()
     }
 }

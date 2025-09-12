@@ -64,6 +64,19 @@ impl From<&GPURenderBundleEncoder> for Any {
 jsbind::utils::impl_dyn_cast!(GPURenderBundleEncoder);
 
 impl GPURenderBundleEncoder {
+    /// Getter of the `label` attribute.
+    /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
+    }
+
+    /// Setter of the `label` attribute.
+    /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
+    pub fn set_label(&mut self, value: &JsString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPURenderBundleEncoder {
     /// The finish method.
     /// [`GPURenderBundleEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/finish)
     pub fn finish0(&self) -> GPURenderBundle {
@@ -75,19 +88,6 @@ impl GPURenderBundleEncoder {
         self.inner
             .call("finish", &[descriptor.into()])
             .as_::<GPURenderBundle>()
-    }
-}
-impl GPURenderBundleEncoder {
-    /// Getter of the `label` attribute.
-    /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
-    pub fn label(&self) -> JsString {
-        self.inner.get("label").as_::<JsString>()
-    }
-
-    /// Setter of the `label` attribute.
-    /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
-    pub fn set_label(&mut self, value: &JsString) {
-        self.inner.set("label", value);
     }
 }
 impl GPURenderBundleEncoder {
@@ -118,7 +118,31 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The setBindGroup method.
     /// [`GPURenderBundleEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setBindGroup)
-    pub fn set_bind_group(
+    pub fn set_bind_group0(&self, index: &Any, bind_group: &GPUBindGroup) -> Undefined {
+        self.inner
+            .call("setBindGroup", &[index.into(), bind_group.into()])
+            .as_::<Undefined>()
+    }
+    /// The setBindGroup method.
+    /// [`GPURenderBundleEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setBindGroup)
+    pub fn set_bind_group1(
+        &self,
+        index: &Any,
+        bind_group: &GPUBindGroup,
+        dynamic_offsets: &TypedArray<Any>,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "setBindGroup",
+                &[index.into(), bind_group.into(), dynamic_offsets.into()],
+            )
+            .as_::<Undefined>()
+    }
+}
+impl GPURenderBundleEncoder {
+    /// The setBindGroup method.
+    /// [`GPURenderBundleEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setBindGroup)
+    pub fn set_bind_group2(
         &self,
         index: &Any,
         bind_group: &GPUBindGroup,

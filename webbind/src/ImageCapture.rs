@@ -64,6 +64,14 @@ impl From<&ImageCapture> for Any {
 jsbind::utils::impl_dyn_cast!(ImageCapture);
 
 impl ImageCapture {
+    /// Getter of the `track` attribute.
+    /// [`ImageCapture.track`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/track)
+    pub fn track(&self) -> MediaStreamTrack {
+        self.inner.get("track").as_::<MediaStreamTrack>()
+    }
+}
+
+impl ImageCapture {
     /// The `new ImageCapture(..)` constructor, creating a new ImageCapture instance
     pub fn new(video_track: &MediaStreamTrack) -> ImageCapture {
         Self {
@@ -112,12 +120,5 @@ impl ImageCapture {
         self.inner
             .call("grabFrame", &[])
             .as_::<Promise<ImageBitmap>>()
-    }
-}
-impl ImageCapture {
-    /// Getter of the `track` attribute.
-    /// [`ImageCapture.track`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/track)
-    pub fn track(&self) -> MediaStreamTrack {
-        self.inner.get("track").as_::<MediaStreamTrack>()
     }
 }

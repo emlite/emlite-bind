@@ -64,16 +64,6 @@ impl From<&HTMLTextAreaElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTextAreaElement);
 
 impl HTMLTextAreaElement {
-    /// The `new HTMLTextAreaElement(..)` constructor, creating a new HTMLTextAreaElement instance
-    pub fn new() -> HTMLTextAreaElement {
-        Self {
-            inner: Any::global("HTMLTextAreaElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTextAreaElement {
     /// Getter of the `autocomplete` attribute.
     /// [`HTMLTextAreaElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/autocomplete)
     pub fn autocomplete(&self) -> JsString {
@@ -298,40 +288,10 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    /// The checkValidity method.
-    /// [`HTMLTextAreaElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/checkValidity)
-    pub fn check_validity(&self) -> bool {
-        self.inner.call("checkValidity", &[]).as_::<bool>()
-    }
-}
-impl HTMLTextAreaElement {
-    /// The reportValidity method.
-    /// [`HTMLTextAreaElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/reportValidity)
-    pub fn report_validity(&self) -> bool {
-        self.inner.call("reportValidity", &[]).as_::<bool>()
-    }
-}
-impl HTMLTextAreaElement {
-    /// The setCustomValidity method.
-    /// [`HTMLTextAreaElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<Undefined>()
-    }
-}
-impl HTMLTextAreaElement {
     /// Getter of the `labels` attribute.
     /// [`HTMLTextAreaElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/labels)
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
-    }
-}
-impl HTMLTextAreaElement {
-    /// The select method.
-    /// [`HTMLTextAreaElement.select`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select)
-    pub fn select(&self) -> Undefined {
-        self.inner.call("select", &[]).as_::<Undefined>()
     }
 }
 impl HTMLTextAreaElement {
@@ -373,10 +333,60 @@ impl HTMLTextAreaElement {
         self.inner.set("selectionDirection", value);
     }
 }
+
+impl HTMLTextAreaElement {
+    /// The `new HTMLTextAreaElement(..)` constructor, creating a new HTMLTextAreaElement instance
+    pub fn new() -> HTMLTextAreaElement {
+        Self {
+            inner: Any::global("HTMLTextAreaElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLTextAreaElement {
+    /// The checkValidity method.
+    /// [`HTMLTextAreaElement.checkValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/checkValidity)
+    pub fn check_validity(&self) -> bool {
+        self.inner.call("checkValidity", &[]).as_::<bool>()
+    }
+}
+impl HTMLTextAreaElement {
+    /// The reportValidity method.
+    /// [`HTMLTextAreaElement.reportValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/reportValidity)
+    pub fn report_validity(&self) -> bool {
+        self.inner.call("reportValidity", &[]).as_::<bool>()
+    }
+}
+impl HTMLTextAreaElement {
+    /// The setCustomValidity method.
+    /// [`HTMLTextAreaElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setCustomValidity)
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
+        self.inner
+            .call("setCustomValidity", &[error.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLTextAreaElement {
+    /// The select method.
+    /// [`HTMLTextAreaElement.select`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select)
+    pub fn select(&self) -> Undefined {
+        self.inner.call("select", &[]).as_::<Undefined>()
+    }
+}
 impl HTMLTextAreaElement {
     /// The setRangeText method.
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
-    pub fn set_range_text0(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
+    pub fn set_range_text(&self, replacement: &JsString) -> Undefined {
+        self.inner
+            .call("setRangeText", &[replacement.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLTextAreaElement {
+    /// The setRangeText method.
+    /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
+    pub fn set_range_text1(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
         self.inner
             .call(
                 "setRangeText",
@@ -386,7 +396,7 @@ impl HTMLTextAreaElement {
     }
     /// The setRangeText method.
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
-    pub fn set_range_text1(
+    pub fn set_range_text2(
         &self,
         replacement: &JsString,
         start: u32,

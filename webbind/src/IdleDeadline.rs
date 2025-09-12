@@ -64,16 +64,16 @@ impl From<&IdleDeadline> for Any {
 jsbind::utils::impl_dyn_cast!(IdleDeadline);
 
 impl IdleDeadline {
-    /// The timeRemaining method.
-    /// [`IdleDeadline.timeRemaining`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline/timeRemaining)
-    pub fn time_remaining(&self) -> Any {
-        self.inner.call("timeRemaining", &[]).as_::<Any>()
-    }
-}
-impl IdleDeadline {
     /// Getter of the `didTimeout` attribute.
     /// [`IdleDeadline.didTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline/didTimeout)
     pub fn did_timeout(&self) -> bool {
         self.inner.get("didTimeout").as_::<bool>()
+    }
+}
+impl IdleDeadline {
+    /// The timeRemaining method.
+    /// [`IdleDeadline.timeRemaining`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline/timeRemaining)
+    pub fn time_remaining(&self) -> Any {
+        self.inner.call("timeRemaining", &[]).as_::<Any>()
     }
 }

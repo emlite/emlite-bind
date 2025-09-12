@@ -64,18 +64,6 @@ impl From<&NavigatorManagedData> for Any {
 jsbind::utils::impl_dyn_cast!(NavigatorManagedData);
 
 impl NavigatorManagedData {
-    /// The getManagedConfiguration method.
-    /// [`NavigatorManagedData.getManagedConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getManagedConfiguration)
-    pub fn get_managed_configuration(
-        &self,
-        keys: &TypedArray<JsString>,
-    ) -> Promise<Record<JsString, Object>> {
-        self.inner
-            .call("getManagedConfiguration", &[keys.into()])
-            .as_::<Promise<Record<JsString, Object>>>()
-    }
-}
-impl NavigatorManagedData {
     /// Getter of the `onmanagedconfigurationchange` attribute.
     /// [`NavigatorManagedData.onmanagedconfigurationchange`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/onmanagedconfigurationchange)
     pub fn onmanagedconfigurationchange(&self) -> Any {
@@ -86,6 +74,18 @@ impl NavigatorManagedData {
     /// [`NavigatorManagedData.onmanagedconfigurationchange`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/onmanagedconfigurationchange)
     pub fn set_onmanagedconfigurationchange(&mut self, value: &Any) {
         self.inner.set("onmanagedconfigurationchange", value);
+    }
+}
+impl NavigatorManagedData {
+    /// The getManagedConfiguration method.
+    /// [`NavigatorManagedData.getManagedConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getManagedConfiguration)
+    pub fn get_managed_configuration(
+        &self,
+        keys: &TypedArray<JsString>,
+    ) -> Promise<Record<JsString, Object>> {
+        self.inner
+            .call("getManagedConfiguration", &[keys.into()])
+            .as_::<Promise<Record<JsString, Object>>>()
     }
 }
 impl NavigatorManagedData {

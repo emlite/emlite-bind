@@ -64,14 +64,6 @@ impl From<&HTMLBRElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLBRElement);
 
 impl HTMLBRElement {
-    /// The `new HTMLBRElement(..)` constructor, creating a new HTMLBRElement instance
-    pub fn new() -> HTMLBRElement {
-        Self {
-            inner: Any::global("HTMLBRElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLBRElement {
     /// Getter of the `clear` attribute.
     /// [`HTMLBRElement.clear`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBRElement/clear)
     pub fn clear(&self) -> JsString {
@@ -82,5 +74,14 @@ impl HTMLBRElement {
     /// [`HTMLBRElement.clear`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBRElement/clear)
     pub fn set_clear(&mut self, value: &JsString) {
         self.inner.set("clear", value);
+    }
+}
+
+impl HTMLBRElement {
+    /// The `new HTMLBRElement(..)` constructor, creating a new HTMLBRElement instance
+    pub fn new() -> HTMLBRElement {
+        Self {
+            inner: Any::global("HTMLBRElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

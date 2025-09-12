@@ -64,6 +64,14 @@ impl From<&RTCDataChannelEvent> for Any {
 jsbind::utils::impl_dyn_cast!(RTCDataChannelEvent);
 
 impl RTCDataChannelEvent {
+    /// Getter of the `channel` attribute.
+    /// [`RTCDataChannelEvent.channel`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannelEvent/channel)
+    pub fn channel(&self) -> RTCDataChannel {
+        self.inner.get("channel").as_::<RTCDataChannel>()
+    }
+}
+
+impl RTCDataChannelEvent {
     /// The `new RTCDataChannelEvent(..)` constructor, creating a new RTCDataChannelEvent instance
     pub fn new(type_: &JsString, event_init_dict: &RTCDataChannelEventInit) -> RTCDataChannelEvent {
         Self {
@@ -71,12 +79,5 @@ impl RTCDataChannelEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl RTCDataChannelEvent {
-    /// Getter of the `channel` attribute.
-    /// [`RTCDataChannelEvent.channel`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannelEvent/channel)
-    pub fn channel(&self) -> RTCDataChannel {
-        self.inner.get("channel").as_::<RTCDataChannel>()
     }
 }

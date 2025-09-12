@@ -64,6 +64,21 @@ impl From<&SpeechRecognitionPhrase> for Any {
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionPhrase);
 
 impl SpeechRecognitionPhrase {
+    /// Getter of the `phrase` attribute.
+    /// [`SpeechRecognitionPhrase.phrase`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase/phrase)
+    pub fn phrase(&self) -> JsString {
+        self.inner.get("phrase").as_::<JsString>()
+    }
+}
+impl SpeechRecognitionPhrase {
+    /// Getter of the `boost` attribute.
+    /// [`SpeechRecognitionPhrase.boost`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase/boost)
+    pub fn boost(&self) -> f32 {
+        self.inner.get("boost").as_::<f32>()
+    }
+}
+
+impl SpeechRecognitionPhrase {
     /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
     pub fn new0(phrase: &JsString) -> SpeechRecognitionPhrase {
         Self {
@@ -80,19 +95,5 @@ impl SpeechRecognitionPhrase {
                 .new(&[phrase.into(), boost.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl SpeechRecognitionPhrase {
-    /// Getter of the `phrase` attribute.
-    /// [`SpeechRecognitionPhrase.phrase`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase/phrase)
-    pub fn phrase(&self) -> JsString {
-        self.inner.get("phrase").as_::<JsString>()
-    }
-}
-impl SpeechRecognitionPhrase {
-    /// Getter of the `boost` attribute.
-    /// [`SpeechRecognitionPhrase.boost`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase/boost)
-    pub fn boost(&self) -> f32 {
-        self.inner.get("boost").as_::<f32>()
     }
 }

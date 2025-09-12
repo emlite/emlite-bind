@@ -64,6 +64,14 @@ impl From<&AmbientLightSensor> for Any {
 jsbind::utils::impl_dyn_cast!(AmbientLightSensor);
 
 impl AmbientLightSensor {
+    /// Getter of the `illuminance` attribute.
+    /// [`AmbientLightSensor.illuminance`](https://developer.mozilla.org/en-US/docs/Web/API/AmbientLightSensor/illuminance)
+    pub fn illuminance(&self) -> f64 {
+        self.inner.get("illuminance").as_::<f64>()
+    }
+}
+
+impl AmbientLightSensor {
     /// The `new AmbientLightSensor(..)` constructor, creating a new AmbientLightSensor instance
     pub fn new0() -> AmbientLightSensor {
         Self {
@@ -78,12 +86,5 @@ impl AmbientLightSensor {
                 .new(&[sensor_options.into()])
                 .as_::<Sensor>(),
         }
-    }
-}
-impl AmbientLightSensor {
-    /// Getter of the `illuminance` attribute.
-    /// [`AmbientLightSensor.illuminance`](https://developer.mozilla.org/en-US/docs/Web/API/AmbientLightSensor/illuminance)
-    pub fn illuminance(&self) -> f64 {
-        self.inner.get("illuminance").as_::<f64>()
     }
 }

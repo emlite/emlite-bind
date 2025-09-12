@@ -64,16 +64,6 @@ impl From<&PasswordCredential> for Any {
 jsbind::utils::impl_dyn_cast!(PasswordCredential);
 
 impl PasswordCredential {
-    /// The `new PasswordCredential(..)` constructor, creating a new PasswordCredential instance
-    pub fn new(data: &PasswordCredentialData) -> PasswordCredential {
-        Self {
-            inner: Any::global("PasswordCredential")
-                .new(&[data.into()])
-                .as_::<Credential>(),
-        }
-    }
-}
-impl PasswordCredential {
     /// Getter of the `password` attribute.
     /// [`PasswordCredential.password`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/password)
     pub fn password(&self) -> JsString {
@@ -92,5 +82,27 @@ impl PasswordCredential {
     /// [`PasswordCredential.iconURL`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/iconURL)
     pub fn icon_url(&self) -> JsString {
         self.inner.get("iconURL").as_::<JsString>()
+    }
+}
+
+impl PasswordCredential {
+    /// The `new PasswordCredential(..)` constructor, creating a new PasswordCredential instance
+    pub fn new(form: &HTMLFormElement) -> PasswordCredential {
+        Self {
+            inner: Any::global("PasswordCredential")
+                .new(&[form.into()])
+                .as_::<Credential>(),
+        }
+    }
+}
+
+impl PasswordCredential {
+    /// The `new PasswordCredential(..)` constructor, creating a new PasswordCredential instance
+    pub fn new1(data: &PasswordCredentialData) -> PasswordCredential {
+        Self {
+            inner: Any::global("PasswordCredential")
+                .new(&[data.into()])
+                .as_::<Credential>(),
+        }
     }
 }

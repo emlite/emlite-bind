@@ -66,7 +66,16 @@ jsbind::utils::impl_dyn_cast!(LockManager);
 impl LockManager {
     /// The request method.
     /// [`LockManager.request`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request)
-    pub fn request(
+    pub fn request(&self, name: &JsString, callback: &Function) -> Promise<Any> {
+        self.inner
+            .call("request", &[name.into(), callback.into()])
+            .as_::<Promise<Any>>()
+    }
+}
+impl LockManager {
+    /// The request method.
+    /// [`LockManager.request`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request)
+    pub fn request1(
         &self,
         name: &JsString,
         options: &LockOptions,

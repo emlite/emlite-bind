@@ -64,19 +64,6 @@ impl From<&RTCPeerConnectionIceErrorEvent> for Any {
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceErrorEvent);
 
 impl RTCPeerConnectionIceErrorEvent {
-    /// The `new RTCPeerConnectionIceErrorEvent(..)` constructor, creating a new RTCPeerConnectionIceErrorEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &RTCPeerConnectionIceErrorEventInit,
-    ) -> RTCPeerConnectionIceErrorEvent {
-        Self {
-            inner: Any::global("RTCPeerConnectionIceErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl RTCPeerConnectionIceErrorEvent {
     /// Getter of the `address` attribute.
     /// [`RTCPeerConnectionIceErrorEvent.address`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/address)
     pub fn address(&self) -> JsString {
@@ -109,5 +96,19 @@ impl RTCPeerConnectionIceErrorEvent {
     /// [`RTCPeerConnectionIceErrorEvent.errorText`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorText)
     pub fn error_text(&self) -> JsString {
         self.inner.get("errorText").as_::<JsString>()
+    }
+}
+
+impl RTCPeerConnectionIceErrorEvent {
+    /// The `new RTCPeerConnectionIceErrorEvent(..)` constructor, creating a new RTCPeerConnectionIceErrorEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &RTCPeerConnectionIceErrorEventInit,
+    ) -> RTCPeerConnectionIceErrorEvent {
+        Self {
+            inner: Any::global("RTCPeerConnectionIceErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

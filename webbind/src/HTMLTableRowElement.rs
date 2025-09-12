@@ -64,16 +64,6 @@ impl From<&HTMLTableRowElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTableRowElement);
 
 impl HTMLTableRowElement {
-    /// The `new HTMLTableRowElement(..)` constructor, creating a new HTMLTableRowElement instance
-    pub fn new() -> HTMLTableRowElement {
-        Self {
-            inner: Any::global("HTMLTableRowElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTableRowElement {
     /// Getter of the `rowIndex` attribute.
     /// [`HTMLTableRowElement.rowIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/rowIndex)
     pub fn row_index(&self) -> i32 {
@@ -92,31 +82,6 @@ impl HTMLTableRowElement {
     /// [`HTMLTableRowElement.cells`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/cells)
     pub fn cells(&self) -> HTMLCollection {
         self.inner.get("cells").as_::<HTMLCollection>()
-    }
-}
-impl HTMLTableRowElement {
-    /// The insertCell method.
-    /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
-    pub fn insert_cell0(&self) -> HTMLTableCellElement {
-        self.inner
-            .call("insertCell", &[])
-            .as_::<HTMLTableCellElement>()
-    }
-    /// The insertCell method.
-    /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
-    pub fn insert_cell1(&self, index: i32) -> HTMLTableCellElement {
-        self.inner
-            .call("insertCell", &[index.into()])
-            .as_::<HTMLTableCellElement>()
-    }
-}
-impl HTMLTableRowElement {
-    /// The deleteCell method.
-    /// [`HTMLTableRowElement.deleteCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/deleteCell)
-    pub fn delete_cell(&self, index: i32) -> Undefined {
-        self.inner
-            .call("deleteCell", &[index.into()])
-            .as_::<Undefined>()
     }
 }
 impl HTMLTableRowElement {
@@ -182,5 +147,41 @@ impl HTMLTableRowElement {
     /// [`HTMLTableRowElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/bgColor)
     pub fn set_bg_color(&mut self, value: &JsString) {
         self.inner.set("bgColor", value);
+    }
+}
+
+impl HTMLTableRowElement {
+    /// The `new HTMLTableRowElement(..)` constructor, creating a new HTMLTableRowElement instance
+    pub fn new() -> HTMLTableRowElement {
+        Self {
+            inner: Any::global("HTMLTableRowElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLTableRowElement {
+    /// The insertCell method.
+    /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
+    pub fn insert_cell0(&self) -> HTMLTableCellElement {
+        self.inner
+            .call("insertCell", &[])
+            .as_::<HTMLTableCellElement>()
+    }
+    /// The insertCell method.
+    /// [`HTMLTableRowElement.insertCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell)
+    pub fn insert_cell1(&self, index: i32) -> HTMLTableCellElement {
+        self.inner
+            .call("insertCell", &[index.into()])
+            .as_::<HTMLTableCellElement>()
+    }
+}
+impl HTMLTableRowElement {
+    /// The deleteCell method.
+    /// [`HTMLTableRowElement.deleteCell`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/deleteCell)
+    pub fn delete_cell(&self, index: i32) -> Undefined {
+        self.inner
+            .call("deleteCell", &[index.into()])
+            .as_::<Undefined>()
     }
 }

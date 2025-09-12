@@ -64,16 +64,6 @@ impl From<&HTMLAnchorElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLAnchorElement);
 
 impl HTMLAnchorElement {
-    /// The `new HTMLAnchorElement(..)` constructor, creating a new HTMLAnchorElement instance
-    pub fn new() -> HTMLAnchorElement {
-        Self {
-            inner: Any::global("HTMLAnchorElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLAnchorElement {
     /// Getter of the `target` attribute.
     /// [`HTMLAnchorElement.target`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/target)
     pub fn target(&self) -> JsString {
@@ -410,5 +400,16 @@ impl HTMLAnchorElement {
     /// [`HTMLAnchorElement.hash`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/hash)
     pub fn set_hash(&mut self, value: &JsString) {
         self.inner.set("hash", value);
+    }
+}
+
+impl HTMLAnchorElement {
+    /// The `new HTMLAnchorElement(..)` constructor, creating a new HTMLAnchorElement instance
+    pub fn new() -> HTMLAnchorElement {
+        Self {
+            inner: Any::global("HTMLAnchorElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

@@ -64,6 +64,21 @@ impl From<&RTCPeerConnectionIceEvent> for Any {
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceEvent);
 
 impl RTCPeerConnectionIceEvent {
+    /// Getter of the `candidate` attribute.
+    /// [`RTCPeerConnectionIceEvent.candidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent/candidate)
+    pub fn candidate(&self) -> RTCIceCandidate {
+        self.inner.get("candidate").as_::<RTCIceCandidate>()
+    }
+}
+impl RTCPeerConnectionIceEvent {
+    /// Getter of the `url` attribute.
+    /// [`RTCPeerConnectionIceEvent.url`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent/url)
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
+    }
+}
+
+impl RTCPeerConnectionIceEvent {
     /// The `new RTCPeerConnectionIceEvent(..)` constructor, creating a new RTCPeerConnectionIceEvent instance
     pub fn new0(type_: &JsString) -> RTCPeerConnectionIceEvent {
         Self {
@@ -83,19 +98,5 @@ impl RTCPeerConnectionIceEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl RTCPeerConnectionIceEvent {
-    /// Getter of the `candidate` attribute.
-    /// [`RTCPeerConnectionIceEvent.candidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent/candidate)
-    pub fn candidate(&self) -> RTCIceCandidate {
-        self.inner.get("candidate").as_::<RTCIceCandidate>()
-    }
-}
-impl RTCPeerConnectionIceEvent {
-    /// Getter of the `url` attribute.
-    /// [`RTCPeerConnectionIceEvent.url`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent/url)
-    pub fn url(&self) -> JsString {
-        self.inner.get("url").as_::<JsString>()
     }
 }

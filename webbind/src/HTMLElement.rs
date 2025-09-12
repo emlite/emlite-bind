@@ -64,14 +64,6 @@ impl From<&HTMLElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLElement);
 
 impl HTMLElement {
-    /// The `new HTMLElement(..)` constructor, creating a new HTMLElement instance
-    pub fn new() -> HTMLElement {
-        Self {
-            inner: Any::global("HTMLElement").new(&[]).as_::<Element>(),
-        }
-    }
-}
-impl HTMLElement {
     /// Getter of the `title` attribute.
     /// [`HTMLElement.title`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/title)
     pub fn title(&self) -> JsString {
@@ -147,13 +139,6 @@ impl HTMLElement {
     /// [`HTMLElement.inert`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert)
     pub fn set_inert(&mut self, value: bool) {
         self.inner.set("inert", value);
-    }
-}
-impl HTMLElement {
-    /// The click method.
-    /// [`HTMLElement.click`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click)
-    pub fn click(&self) -> Undefined {
-        self.inner.call("click", &[]).as_::<Undefined>()
     }
 }
 impl HTMLElement {
@@ -265,50 +250,6 @@ impl HTMLElement {
     /// [`HTMLElement.outerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/outerText)
     pub fn set_outer_text(&mut self, value: &JsString) {
         self.inner.set("outerText", value);
-    }
-}
-impl HTMLElement {
-    /// The attachInternals method.
-    /// [`HTMLElement.attachInternals`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/attachInternals)
-    pub fn attach_internals(&self) -> ElementInternals {
-        self.inner
-            .call("attachInternals", &[])
-            .as_::<ElementInternals>()
-    }
-}
-impl HTMLElement {
-    /// The showPopover method.
-    /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
-    pub fn show_popover0(&self) -> Undefined {
-        self.inner.call("showPopover", &[]).as_::<Undefined>()
-    }
-    /// The showPopover method.
-    /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
-    pub fn show_popover1(&self, options: &ShowPopoverOptions) -> Undefined {
-        self.inner
-            .call("showPopover", &[options.into()])
-            .as_::<Undefined>()
-    }
-}
-impl HTMLElement {
-    /// The hidePopover method.
-    /// [`HTMLElement.hidePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidePopover)
-    pub fn hide_popover(&self) -> Undefined {
-        self.inner.call("hidePopover", &[]).as_::<Undefined>()
-    }
-}
-impl HTMLElement {
-    /// The togglePopover method.
-    /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
-    pub fn toggle_popover0(&self) -> bool {
-        self.inner.call("togglePopover", &[]).as_::<bool>()
-    }
-    /// The togglePopover method.
-    /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
-    pub fn toggle_popover1(&self, options: &Any) -> bool {
-        self.inner
-            .call("togglePopover", &[options.into()])
-            .as_::<bool>()
     }
 }
 impl HTMLElement {
@@ -456,6 +397,66 @@ impl HTMLElement {
     /// [`HTMLElement.tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex)
     pub fn set_tab_index(&mut self, value: i32) {
         self.inner.set("tabIndex", value);
+    }
+}
+
+impl HTMLElement {
+    /// The `new HTMLElement(..)` constructor, creating a new HTMLElement instance
+    pub fn new() -> HTMLElement {
+        Self {
+            inner: Any::global("HTMLElement").new(&[]).as_::<Element>(),
+        }
+    }
+}
+impl HTMLElement {
+    /// The click method.
+    /// [`HTMLElement.click`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click)
+    pub fn click(&self) -> Undefined {
+        self.inner.call("click", &[]).as_::<Undefined>()
+    }
+}
+impl HTMLElement {
+    /// The attachInternals method.
+    /// [`HTMLElement.attachInternals`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/attachInternals)
+    pub fn attach_internals(&self) -> ElementInternals {
+        self.inner
+            .call("attachInternals", &[])
+            .as_::<ElementInternals>()
+    }
+}
+impl HTMLElement {
+    /// The showPopover method.
+    /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
+    pub fn show_popover0(&self) -> Undefined {
+        self.inner.call("showPopover", &[]).as_::<Undefined>()
+    }
+    /// The showPopover method.
+    /// [`HTMLElement.showPopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/showPopover)
+    pub fn show_popover1(&self, options: &ShowPopoverOptions) -> Undefined {
+        self.inner
+            .call("showPopover", &[options.into()])
+            .as_::<Undefined>()
+    }
+}
+impl HTMLElement {
+    /// The hidePopover method.
+    /// [`HTMLElement.hidePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidePopover)
+    pub fn hide_popover(&self) -> Undefined {
+        self.inner.call("hidePopover", &[]).as_::<Undefined>()
+    }
+}
+impl HTMLElement {
+    /// The togglePopover method.
+    /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
+    pub fn toggle_popover0(&self) -> bool {
+        self.inner.call("togglePopover", &[]).as_::<bool>()
+    }
+    /// The togglePopover method.
+    /// [`HTMLElement.togglePopover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/togglePopover)
+    pub fn toggle_popover1(&self, options: &Any) -> bool {
+        self.inner
+            .call("togglePopover", &[options.into()])
+            .as_::<bool>()
     }
 }
 impl HTMLElement {

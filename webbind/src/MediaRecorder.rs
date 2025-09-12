@@ -64,25 +64,6 @@ impl From<&MediaRecorder> for Any {
 jsbind::utils::impl_dyn_cast!(MediaRecorder);
 
 impl MediaRecorder {
-    /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
-    pub fn new0(stream: &MediaStream) -> MediaRecorder {
-        Self {
-            inner: Any::global("MediaRecorder")
-                .new(&[stream.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-
-    /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
-    pub fn new1(stream: &MediaStream, options: &MediaRecorderOptions) -> MediaRecorder {
-        Self {
-            inner: Any::global("MediaRecorder")
-                .new(&[stream.into(), options.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl MediaRecorder {
     /// Getter of the `stream` attribute.
     /// [`MediaRecorder.stream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/stream)
     pub fn stream(&self) -> MediaStream {
@@ -200,6 +181,26 @@ impl MediaRecorder {
     /// [`MediaRecorder.audioBitrateMode`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/audioBitrateMode)
     pub fn audio_bitrate_mode(&self) -> BitrateMode {
         self.inner.get("audioBitrateMode").as_::<BitrateMode>()
+    }
+}
+
+impl MediaRecorder {
+    /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
+    pub fn new0(stream: &MediaStream) -> MediaRecorder {
+        Self {
+            inner: Any::global("MediaRecorder")
+                .new(&[stream.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    /// The `new MediaRecorder(..)` constructor, creating a new MediaRecorder instance
+    pub fn new1(stream: &MediaStream, options: &MediaRecorderOptions) -> MediaRecorder {
+        Self {
+            inner: Any::global("MediaRecorder")
+                .new(&[stream.into(), options.into()])
+                .as_::<EventTarget>(),
+        }
     }
 }
 impl MediaRecorder {

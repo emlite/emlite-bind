@@ -64,16 +64,6 @@ impl From<&HTMLCanvasElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLCanvasElement);
 
 impl HTMLCanvasElement {
-    /// The `new HTMLCanvasElement(..)` constructor, creating a new HTMLCanvasElement instance
-    pub fn new() -> HTMLCanvasElement {
-        Self {
-            inner: Any::global("HTMLCanvasElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLCanvasElement {
     /// Getter of the `width` attribute.
     /// [`HTMLCanvasElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/width)
     pub fn width(&self) -> u32 {
@@ -97,6 +87,17 @@ impl HTMLCanvasElement {
     /// [`HTMLCanvasElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/height)
     pub fn set_height(&mut self, value: u32) {
         self.inner.set("height", value);
+    }
+}
+
+impl HTMLCanvasElement {
+    /// The `new HTMLCanvasElement(..)` constructor, creating a new HTMLCanvasElement instance
+    pub fn new() -> HTMLCanvasElement {
+        Self {
+            inner: Any::global("HTMLCanvasElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }
 impl HTMLCanvasElement {

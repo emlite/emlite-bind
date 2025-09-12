@@ -64,6 +64,28 @@ impl From<&AnimationEvent> for Any {
 jsbind::utils::impl_dyn_cast!(AnimationEvent);
 
 impl AnimationEvent {
+    /// Getter of the `animationName` attribute.
+    /// [`AnimationEvent.animationName`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/animationName)
+    pub fn animation_name(&self) -> JsString {
+        self.inner.get("animationName").as_::<JsString>()
+    }
+}
+impl AnimationEvent {
+    /// Getter of the `elapsedTime` attribute.
+    /// [`AnimationEvent.elapsedTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/elapsedTime)
+    pub fn elapsed_time(&self) -> f64 {
+        self.inner.get("elapsedTime").as_::<f64>()
+    }
+}
+impl AnimationEvent {
+    /// Getter of the `pseudoElement` attribute.
+    /// [`AnimationEvent.pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/pseudoElement)
+    pub fn pseudo_element(&self) -> JsString {
+        self.inner.get("pseudoElement").as_::<JsString>()
+    }
+}
+
+impl AnimationEvent {
     /// The `new AnimationEvent(..)` constructor, creating a new AnimationEvent instance
     pub fn new0(type_: &JsString) -> AnimationEvent {
         Self {
@@ -83,26 +105,5 @@ impl AnimationEvent {
                 .new(&[type_.into(), animation_event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl AnimationEvent {
-    /// Getter of the `animationName` attribute.
-    /// [`AnimationEvent.animationName`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/animationName)
-    pub fn animation_name(&self) -> JsString {
-        self.inner.get("animationName").as_::<JsString>()
-    }
-}
-impl AnimationEvent {
-    /// Getter of the `elapsedTime` attribute.
-    /// [`AnimationEvent.elapsedTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/elapsedTime)
-    pub fn elapsed_time(&self) -> f64 {
-        self.inner.get("elapsedTime").as_::<f64>()
-    }
-}
-impl AnimationEvent {
-    /// Getter of the `pseudoElement` attribute.
-    /// [`AnimationEvent.pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/pseudoElement)
-    pub fn pseudo_element(&self) -> JsString {
-        self.inner.get("pseudoElement").as_::<JsString>()
     }
 }

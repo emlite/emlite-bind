@@ -64,16 +64,6 @@ impl From<&XRWebGLBinding> for Any {
 jsbind::utils::impl_dyn_cast!(XRWebGLBinding);
 
 impl XRWebGLBinding {
-    /// The `new XRWebGLBinding(..)` constructor, creating a new XRWebGLBinding instance
-    pub fn new(session: &XRSession, context: &Any) -> XRWebGLBinding {
-        Self {
-            inner: Any::global("XRWebGLBinding")
-                .new(&[session.into(), context.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl XRWebGLBinding {
     /// Getter of the `nativeProjectionScaleFactor` attribute.
     /// [`XRWebGLBinding.nativeProjectionScaleFactor`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/nativeProjectionScaleFactor)
     pub fn native_projection_scale_factor(&self) -> f64 {
@@ -85,6 +75,17 @@ impl XRWebGLBinding {
     /// [`XRWebGLBinding.usesDepthValues`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/usesDepthValues)
     pub fn uses_depth_values(&self) -> bool {
         self.inner.get("usesDepthValues").as_::<bool>()
+    }
+}
+
+impl XRWebGLBinding {
+    /// The `new XRWebGLBinding(..)` constructor, creating a new XRWebGLBinding instance
+    pub fn new(session: &XRSession, context: &Any) -> XRWebGLBinding {
+        Self {
+            inner: Any::global("XRWebGLBinding")
+                .new(&[session.into(), context.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl XRWebGLBinding {

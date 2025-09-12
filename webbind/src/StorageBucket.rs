@@ -71,6 +71,20 @@ impl StorageBucket {
     }
 }
 impl StorageBucket {
+    /// Getter of the `indexedDB` attribute.
+    /// [`StorageBucket.indexedDB`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucket/indexedDB)
+    pub fn indexed_db(&self) -> IDBFactory {
+        self.inner.get("indexedDB").as_::<IDBFactory>()
+    }
+}
+impl StorageBucket {
+    /// Getter of the `caches` attribute.
+    /// [`StorageBucket.caches`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucket/caches)
+    pub fn caches(&self) -> CacheStorage {
+        self.inner.get("caches").as_::<CacheStorage>()
+    }
+}
+impl StorageBucket {
     /// The persist method.
     /// [`StorageBucket.persist`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucket/persist)
     pub fn persist(&self) -> Promise<bool> {
@@ -107,20 +121,6 @@ impl StorageBucket {
     /// [`StorageBucket.expires`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucket/expires)
     pub fn expires(&self) -> Promise<Any> {
         self.inner.call("expires", &[]).as_::<Promise<Any>>()
-    }
-}
-impl StorageBucket {
-    /// Getter of the `indexedDB` attribute.
-    /// [`StorageBucket.indexedDB`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucket/indexedDB)
-    pub fn indexed_db(&self) -> IDBFactory {
-        self.inner.get("indexedDB").as_::<IDBFactory>()
-    }
-}
-impl StorageBucket {
-    /// Getter of the `caches` attribute.
-    /// [`StorageBucket.caches`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucket/caches)
-    pub fn caches(&self) -> CacheStorage {
-        self.inner.get("caches").as_::<CacheStorage>()
     }
 }
 impl StorageBucket {

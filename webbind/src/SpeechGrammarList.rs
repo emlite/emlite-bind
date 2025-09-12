@@ -64,18 +64,19 @@ impl From<&SpeechGrammarList> for Any {
 jsbind::utils::impl_dyn_cast!(SpeechGrammarList);
 
 impl SpeechGrammarList {
+    /// Getter of the `length` attribute.
+    /// [`SpeechGrammarList.length`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/length)
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+
+impl SpeechGrammarList {
     /// The `new SpeechGrammarList(..)` constructor, creating a new SpeechGrammarList instance
     pub fn new() -> SpeechGrammarList {
         Self {
             inner: Any::global("SpeechGrammarList").new(&[]).as_::<Any>(),
         }
-    }
-}
-impl SpeechGrammarList {
-    /// Getter of the `length` attribute.
-    /// [`SpeechGrammarList.length`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/length)
-    pub fn length(&self) -> u32 {
-        self.inner.get("length").as_::<u32>()
     }
 }
 impl SpeechGrammarList {

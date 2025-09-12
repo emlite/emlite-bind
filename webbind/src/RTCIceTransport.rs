@@ -94,6 +94,80 @@ impl RTCIceTransport {
     }
 }
 impl RTCIceTransport {
+    /// Getter of the `onstatechange` attribute.
+    /// [`RTCIceTransport.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onstatechange)
+    pub fn onstatechange(&self) -> Any {
+        self.inner.get("onstatechange").as_::<Any>()
+    }
+
+    /// Setter of the `onstatechange` attribute.
+    /// [`RTCIceTransport.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onstatechange)
+    pub fn set_onstatechange(&mut self, value: &Any) {
+        self.inner.set("onstatechange", value);
+    }
+}
+impl RTCIceTransport {
+    /// Getter of the `ongatheringstatechange` attribute.
+    /// [`RTCIceTransport.ongatheringstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/ongatheringstatechange)
+    pub fn ongatheringstatechange(&self) -> Any {
+        self.inner.get("ongatheringstatechange").as_::<Any>()
+    }
+
+    /// Setter of the `ongatheringstatechange` attribute.
+    /// [`RTCIceTransport.ongatheringstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/ongatheringstatechange)
+    pub fn set_ongatheringstatechange(&mut self, value: &Any) {
+        self.inner.set("ongatheringstatechange", value);
+    }
+}
+impl RTCIceTransport {
+    /// Getter of the `onselectedcandidatepairchange` attribute.
+    /// [`RTCIceTransport.onselectedcandidatepairchange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onselectedcandidatepairchange)
+    pub fn onselectedcandidatepairchange(&self) -> Any {
+        self.inner.get("onselectedcandidatepairchange").as_::<Any>()
+    }
+
+    /// Setter of the `onselectedcandidatepairchange` attribute.
+    /// [`RTCIceTransport.onselectedcandidatepairchange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onselectedcandidatepairchange)
+    pub fn set_onselectedcandidatepairchange(&mut self, value: &Any) {
+        self.inner.set("onselectedcandidatepairchange", value);
+    }
+}
+impl RTCIceTransport {
+    /// Getter of the `onerror` attribute.
+    /// [`RTCIceTransport.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onerror)
+    pub fn onerror(&self) -> Any {
+        self.inner.get("onerror").as_::<Any>()
+    }
+
+    /// Setter of the `onerror` attribute.
+    /// [`RTCIceTransport.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onerror)
+    pub fn set_onerror(&mut self, value: &Any) {
+        self.inner.set("onerror", value);
+    }
+}
+impl RTCIceTransport {
+    /// Getter of the `onicecandidate` attribute.
+    /// [`RTCIceTransport.onicecandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onicecandidate)
+    pub fn onicecandidate(&self) -> Any {
+        self.inner.get("onicecandidate").as_::<Any>()
+    }
+
+    /// Setter of the `onicecandidate` attribute.
+    /// [`RTCIceTransport.onicecandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onicecandidate)
+    pub fn set_onicecandidate(&mut self, value: &Any) {
+        self.inner.set("onicecandidate", value);
+    }
+}
+
+impl RTCIceTransport {
+    /// The `new RTCIceTransport(..)` constructor, creating a new RTCIceTransport instance
+    pub fn new() -> RTCIceTransport {
+        Self {
+            inner: Any::global("RTCIceTransport").new(&[]).as_::<EventTarget>(),
+        }
+    }
+}
+impl RTCIceTransport {
     /// The getLocalCandidates method.
     /// [`RTCIceTransport.getLocalCandidates`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/getLocalCandidates)
     pub fn get_local_candidates(&self) -> TypedArray<RTCIceCandidate> {
@@ -136,54 +210,6 @@ impl RTCIceTransport {
         self.inner
             .call("getRemoteParameters", &[])
             .as_::<RTCIceParameters>()
-    }
-}
-impl RTCIceTransport {
-    /// Getter of the `onstatechange` attribute.
-    /// [`RTCIceTransport.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onstatechange)
-    pub fn onstatechange(&self) -> Any {
-        self.inner.get("onstatechange").as_::<Any>()
-    }
-
-    /// Setter of the `onstatechange` attribute.
-    /// [`RTCIceTransport.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onstatechange)
-    pub fn set_onstatechange(&mut self, value: &Any) {
-        self.inner.set("onstatechange", value);
-    }
-}
-impl RTCIceTransport {
-    /// Getter of the `ongatheringstatechange` attribute.
-    /// [`RTCIceTransport.ongatheringstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/ongatheringstatechange)
-    pub fn ongatheringstatechange(&self) -> Any {
-        self.inner.get("ongatheringstatechange").as_::<Any>()
-    }
-
-    /// Setter of the `ongatheringstatechange` attribute.
-    /// [`RTCIceTransport.ongatheringstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/ongatheringstatechange)
-    pub fn set_ongatheringstatechange(&mut self, value: &Any) {
-        self.inner.set("ongatheringstatechange", value);
-    }
-}
-impl RTCIceTransport {
-    /// Getter of the `onselectedcandidatepairchange` attribute.
-    /// [`RTCIceTransport.onselectedcandidatepairchange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onselectedcandidatepairchange)
-    pub fn onselectedcandidatepairchange(&self) -> Any {
-        self.inner.get("onselectedcandidatepairchange").as_::<Any>()
-    }
-
-    /// Setter of the `onselectedcandidatepairchange` attribute.
-    /// [`RTCIceTransport.onselectedcandidatepairchange`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onselectedcandidatepairchange)
-    pub fn set_onselectedcandidatepairchange(&mut self, value: &Any) {
-        self.inner.set("onselectedcandidatepairchange", value);
-    }
-}
-
-impl RTCIceTransport {
-    /// The `new RTCIceTransport(..)` constructor, creating a new RTCIceTransport instance
-    pub fn new() -> RTCIceTransport {
-        Self {
-            inner: Any::global("RTCIceTransport").new(&[]).as_::<EventTarget>(),
-        }
     }
 }
 impl RTCIceTransport {
@@ -242,31 +268,5 @@ impl RTCIceTransport {
         self.inner
             .call("addRemoteCandidate", &[remote_candidate.into()])
             .as_::<Undefined>()
-    }
-}
-impl RTCIceTransport {
-    /// Getter of the `onerror` attribute.
-    /// [`RTCIceTransport.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onerror)
-    pub fn onerror(&self) -> Any {
-        self.inner.get("onerror").as_::<Any>()
-    }
-
-    /// Setter of the `onerror` attribute.
-    /// [`RTCIceTransport.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onerror)
-    pub fn set_onerror(&mut self, value: &Any) {
-        self.inner.set("onerror", value);
-    }
-}
-impl RTCIceTransport {
-    /// Getter of the `onicecandidate` attribute.
-    /// [`RTCIceTransport.onicecandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onicecandidate)
-    pub fn onicecandidate(&self) -> Any {
-        self.inner.get("onicecandidate").as_::<Any>()
-    }
-
-    /// Setter of the `onicecandidate` attribute.
-    /// [`RTCIceTransport.onicecandidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/onicecandidate)
-    pub fn set_onicecandidate(&mut self, value: &Any) {
-        self.inner.set("onicecandidate", value);
     }
 }

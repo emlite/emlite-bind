@@ -64,14 +64,6 @@ impl From<&ImageDecoder> for Any {
 jsbind::utils::impl_dyn_cast!(ImageDecoder);
 
 impl ImageDecoder {
-    /// The `new ImageDecoder(..)` constructor, creating a new ImageDecoder instance
-    pub fn new(init: &ImageDecoderInit) -> ImageDecoder {
-        Self {
-            inner: Any::global("ImageDecoder").new(&[init.into()]).as_::<Any>(),
-        }
-    }
-}
-impl ImageDecoder {
     /// Getter of the `type` attribute.
     /// [`ImageDecoder.type`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/type)
     pub fn type_(&self) -> JsString {
@@ -97,6 +89,15 @@ impl ImageDecoder {
     /// [`ImageDecoder.tracks`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/tracks)
     pub fn tracks(&self) -> ImageTrackList {
         self.inner.get("tracks").as_::<ImageTrackList>()
+    }
+}
+
+impl ImageDecoder {
+    /// The `new ImageDecoder(..)` constructor, creating a new ImageDecoder instance
+    pub fn new(init: &ImageDecoderInit) -> ImageDecoder {
+        Self {
+            inner: Any::global("ImageDecoder").new(&[init.into()]).as_::<Any>(),
+        }
     }
 }
 impl ImageDecoder {

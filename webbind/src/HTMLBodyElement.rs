@@ -64,14 +64,6 @@ impl From<&HTMLBodyElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLBodyElement);
 
 impl HTMLBodyElement {
-    /// The `new HTMLBodyElement(..)` constructor, creating a new HTMLBodyElement instance
-    pub fn new() -> HTMLBodyElement {
-        Self {
-            inner: Any::global("HTMLBodyElement").new(&[]).as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLBodyElement {
     /// Getter of the `onorientationchange` attribute.
     /// [`HTMLBodyElement.onorientationchange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBodyElement/onorientationchange)
     pub fn onorientationchange(&self) -> Any {
@@ -173,5 +165,14 @@ impl HTMLBodyElement {
     /// [`HTMLBodyElement.onportalactivate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBodyElement/onportalactivate)
     pub fn set_onportalactivate(&mut self, value: &Any) {
         self.inner.set("onportalactivate", value);
+    }
+}
+
+impl HTMLBodyElement {
+    /// The `new HTMLBodyElement(..)` constructor, creating a new HTMLBodyElement instance
+    pub fn new() -> HTMLBodyElement {
+        Self {
+            inner: Any::global("HTMLBodyElement").new(&[]).as_::<HTMLElement>(),
+        }
     }
 }

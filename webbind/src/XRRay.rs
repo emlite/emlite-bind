@@ -64,14 +64,6 @@ impl From<&XRRay> for Any {
 jsbind::utils::impl_dyn_cast!(XRRay);
 
 impl XRRay {
-    /// The `new XRRay(..)` constructor, creating a new XRRay instance
-    pub fn new(transform: &XRRigidTransform) -> XRRay {
-        Self {
-            inner: Any::global("XRRay").new(&[transform.into()]).as_::<Any>(),
-        }
-    }
-}
-impl XRRay {
     /// Getter of the `origin` attribute.
     /// [`XRRay.origin`](https://developer.mozilla.org/en-US/docs/Web/API/XRRay/origin)
     pub fn origin(&self) -> DOMPointReadOnly {
@@ -90,5 +82,39 @@ impl XRRay {
     /// [`XRRay.matrix`](https://developer.mozilla.org/en-US/docs/Web/API/XRRay/matrix)
     pub fn matrix(&self) -> Float32Array {
         self.inner.get("matrix").as_::<Float32Array>()
+    }
+}
+
+impl XRRay {
+    /// The `new XRRay(..)` constructor, creating a new XRRay instance
+    pub fn new0() -> XRRay {
+        Self {
+            inner: Any::global("XRRay").new(&[]).as_::<Any>(),
+        }
+    }
+
+    /// The `new XRRay(..)` constructor, creating a new XRRay instance
+    pub fn new1(origin: &DOMPointInit) -> XRRay {
+        Self {
+            inner: Any::global("XRRay").new(&[origin.into()]).as_::<Any>(),
+        }
+    }
+
+    /// The `new XRRay(..)` constructor, creating a new XRRay instance
+    pub fn new2(origin: &DOMPointInit, direction: &XRRayDirectionInit) -> XRRay {
+        Self {
+            inner: Any::global("XRRay")
+                .new(&[origin.into(), direction.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+
+impl XRRay {
+    /// The `new XRRay(..)` constructor, creating a new XRRay instance
+    pub fn new3(transform: &XRRigidTransform) -> XRRay {
+        Self {
+            inner: Any::global("XRRay").new(&[transform.into()]).as_::<Any>(),
+        }
     }
 }

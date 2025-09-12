@@ -64,6 +64,14 @@ impl From<&TextEncoder> for Any {
 jsbind::utils::impl_dyn_cast!(TextEncoder);
 
 impl TextEncoder {
+    /// Getter of the `encoding` attribute.
+    /// [`TextEncoder.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encoding)
+    pub fn encoding(&self) -> JsString {
+        self.inner.get("encoding").as_::<JsString>()
+    }
+}
+
+impl TextEncoder {
     /// The `new TextEncoder(..)` constructor, creating a new TextEncoder instance
     pub fn new() -> TextEncoder {
         Self {
@@ -96,12 +104,5 @@ impl TextEncoder {
         self.inner
             .call("encodeInto", &[source.into(), destination.into()])
             .as_::<TextEncoderEncodeIntoResult>()
-    }
-}
-impl TextEncoder {
-    /// Getter of the `encoding` attribute.
-    /// [`TextEncoder.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encoding)
-    pub fn encoding(&self) -> JsString {
-        self.inner.get("encoding").as_::<JsString>()
     }
 }

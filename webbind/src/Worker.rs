@@ -64,48 +64,6 @@ impl From<&Worker> for Any {
 jsbind::utils::impl_dyn_cast!(Worker);
 
 impl Worker {
-    /// The `new Worker(..)` constructor, creating a new Worker instance
-    pub fn new0(script_url: &Any) -> Worker {
-        Self {
-            inner: Any::global("Worker")
-                .new(&[script_url.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-
-    /// The `new Worker(..)` constructor, creating a new Worker instance
-    pub fn new1(script_url: &Any, options: &WorkerOptions) -> Worker {
-        Self {
-            inner: Any::global("Worker")
-                .new(&[script_url.into(), options.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl Worker {
-    /// The terminate method.
-    /// [`Worker.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/terminate)
-    pub fn terminate(&self) -> Undefined {
-        self.inner.call("terminate", &[]).as_::<Undefined>()
-    }
-}
-impl Worker {
-    /// The postMessage method.
-    /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
-    pub fn post_message0(&self, message: &Any) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<Undefined>()
-    }
-    /// The postMessage method.
-    /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
-    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
-        self.inner
-            .call("postMessage", &[message.into(), options.into()])
-            .as_::<Undefined>()
-    }
-}
-impl Worker {
     /// Getter of the `onerror` attribute.
     /// [`Worker.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/onerror)
     pub fn onerror(&self) -> Any {
@@ -142,5 +100,57 @@ impl Worker {
     /// [`Worker.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/onmessageerror)
     pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
+    }
+}
+
+impl Worker {
+    /// The `new Worker(..)` constructor, creating a new Worker instance
+    pub fn new0(script_url: &Any) -> Worker {
+        Self {
+            inner: Any::global("Worker")
+                .new(&[script_url.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    /// The `new Worker(..)` constructor, creating a new Worker instance
+    pub fn new1(script_url: &Any, options: &WorkerOptions) -> Worker {
+        Self {
+            inner: Any::global("Worker")
+                .new(&[script_url.into(), options.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+impl Worker {
+    /// The terminate method.
+    /// [`Worker.terminate`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/terminate)
+    pub fn terminate(&self) -> Undefined {
+        self.inner.call("terminate", &[]).as_::<Undefined>()
+    }
+}
+impl Worker {
+    /// The postMessage method.
+    /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
+    pub fn post_message(&self, message: &Any, transfer: &TypedArray<Object>) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), transfer.into()])
+            .as_::<Undefined>()
+    }
+}
+impl Worker {
+    /// The postMessage method.
+    /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
+    pub fn post_message1(&self, message: &Any) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
+    }
+    /// The postMessage method.
+    /// [`Worker.postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage)
+    pub fn post_message2(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
 }

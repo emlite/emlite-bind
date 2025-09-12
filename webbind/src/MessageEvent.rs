@@ -64,25 +64,6 @@ impl From<&MessageEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MessageEvent);
 
 impl MessageEvent {
-    /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
-    pub fn new0(type_: &JsString) -> MessageEvent {
-        Self {
-            inner: Any::global("MessageEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
-        }
-    }
-
-    /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
-    pub fn new1(type_: &JsString, event_init_dict: &MessageEventInit) -> MessageEvent {
-        Self {
-            inner: Any::global("MessageEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl MessageEvent {
     /// Getter of the `data` attribute.
     /// [`MessageEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data)
     pub fn data(&self) -> Any {
@@ -115,6 +96,26 @@ impl MessageEvent {
     /// [`MessageEvent.ports`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/ports)
     pub fn ports(&self) -> TypedArray<MessagePort> {
         self.inner.get("ports").as_::<TypedArray<MessagePort>>()
+    }
+}
+
+impl MessageEvent {
+    /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
+    pub fn new0(type_: &JsString) -> MessageEvent {
+        Self {
+            inner: Any::global("MessageEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
+    pub fn new1(type_: &JsString, event_init_dict: &MessageEventInit) -> MessageEvent {
+        Self {
+            inner: Any::global("MessageEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }
 impl MessageEvent {

@@ -64,6 +64,21 @@ impl From<&WebTransportError> for Any {
 jsbind::utils::impl_dyn_cast!(WebTransportError);
 
 impl WebTransportError {
+    /// Getter of the `source` attribute.
+    /// [`WebTransportError.source`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportError/source)
+    pub fn source(&self) -> WebTransportErrorSource {
+        self.inner.get("source").as_::<WebTransportErrorSource>()
+    }
+}
+impl WebTransportError {
+    /// Getter of the `streamErrorCode` attribute.
+    /// [`WebTransportError.streamErrorCode`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportError/streamErrorCode)
+    pub fn stream_error_code(&self) -> u32 {
+        self.inner.get("streamErrorCode").as_::<u32>()
+    }
+}
+
+impl WebTransportError {
     /// The `new WebTransportError(..)` constructor, creating a new WebTransportError instance
     pub fn new0() -> WebTransportError {
         Self {
@@ -89,19 +104,5 @@ impl WebTransportError {
                 .new(&[message.into(), options.into()])
                 .as_::<DOMException>(),
         }
-    }
-}
-impl WebTransportError {
-    /// Getter of the `source` attribute.
-    /// [`WebTransportError.source`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportError/source)
-    pub fn source(&self) -> WebTransportErrorSource {
-        self.inner.get("source").as_::<WebTransportErrorSource>()
-    }
-}
-impl WebTransportError {
-    /// Getter of the `streamErrorCode` attribute.
-    /// [`WebTransportError.streamErrorCode`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportError/streamErrorCode)
-    pub fn stream_error_code(&self) -> u32 {
-        self.inner.get("streamErrorCode").as_::<u32>()
     }
 }

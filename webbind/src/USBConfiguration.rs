@@ -64,16 +64,6 @@ impl From<&USBConfiguration> for Any {
 jsbind::utils::impl_dyn_cast!(USBConfiguration);
 
 impl USBConfiguration {
-    /// The `new USBConfiguration(..)` constructor, creating a new USBConfiguration instance
-    pub fn new(device: &USBDevice, configuration_value: u8) -> USBConfiguration {
-        Self {
-            inner: Any::global("USBConfiguration")
-                .new(&[device.into(), configuration_value.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl USBConfiguration {
     /// Getter of the `configurationValue` attribute.
     /// [`USBConfiguration.configurationValue`](https://developer.mozilla.org/en-US/docs/Web/API/USBConfiguration/configurationValue)
     pub fn configuration_value(&self) -> u8 {
@@ -94,5 +84,16 @@ impl USBConfiguration {
         self.inner
             .get("interfaces")
             .as_::<TypedArray<USBInterface>>()
+    }
+}
+
+impl USBConfiguration {
+    /// The `new USBConfiguration(..)` constructor, creating a new USBConfiguration instance
+    pub fn new(device: &USBDevice, configuration_value: u8) -> USBConfiguration {
+        Self {
+            inner: Any::global("USBConfiguration")
+                .new(&[device.into(), configuration_value.into()])
+                .as_::<Any>(),
+        }
     }
 }

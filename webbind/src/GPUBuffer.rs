@@ -85,6 +85,19 @@ impl GPUBuffer {
     }
 }
 impl GPUBuffer {
+    /// Getter of the `label` attribute.
+    /// [`GPUBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/label)
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
+    }
+
+    /// Setter of the `label` attribute.
+    /// [`GPUBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/label)
+    pub fn set_label(&mut self, value: &JsString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPUBuffer {
     /// The mapAsync method.
     /// [`GPUBuffer.mapAsync`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/mapAsync)
     pub fn map_async0(&self, mode: &Any) -> Promise<Undefined> {
@@ -140,18 +153,5 @@ impl GPUBuffer {
     /// [`GPUBuffer.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/destroy)
     pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
-    }
-}
-impl GPUBuffer {
-    /// Getter of the `label` attribute.
-    /// [`GPUBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/label)
-    pub fn label(&self) -> JsString {
-        self.inner.get("label").as_::<JsString>()
-    }
-
-    /// Setter of the `label` attribute.
-    /// [`GPUBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/label)
-    pub fn set_label(&mut self, value: &JsString) {
-        self.inner.set("label", value);
     }
 }

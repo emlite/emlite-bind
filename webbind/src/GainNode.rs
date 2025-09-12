@@ -64,6 +64,14 @@ impl From<&GainNode> for Any {
 jsbind::utils::impl_dyn_cast!(GainNode);
 
 impl GainNode {
+    /// Getter of the `gain` attribute.
+    /// [`GainNode.gain`](https://developer.mozilla.org/en-US/docs/Web/API/GainNode/gain)
+    pub fn gain(&self) -> AudioParam {
+        self.inner.get("gain").as_::<AudioParam>()
+    }
+}
+
+impl GainNode {
     /// The `new GainNode(..)` constructor, creating a new GainNode instance
     pub fn new0(context: &BaseAudioContext) -> GainNode {
         Self {
@@ -80,12 +88,5 @@ impl GainNode {
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
-    }
-}
-impl GainNode {
-    /// Getter of the `gain` attribute.
-    /// [`GainNode.gain`](https://developer.mozilla.org/en-US/docs/Web/API/GainNode/gain)
-    pub fn gain(&self) -> AudioParam {
-        self.inner.get("gain").as_::<AudioParam>()
     }
 }

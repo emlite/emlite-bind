@@ -64,6 +64,14 @@ impl From<&PageRevealEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PageRevealEvent);
 
 impl PageRevealEvent {
+    /// Getter of the `viewTransition` attribute.
+    /// [`PageRevealEvent.viewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/PageRevealEvent/viewTransition)
+    pub fn view_transition(&self) -> ViewTransition {
+        self.inner.get("viewTransition").as_::<ViewTransition>()
+    }
+}
+
+impl PageRevealEvent {
     /// The `new PageRevealEvent(..)` constructor, creating a new PageRevealEvent instance
     pub fn new0(type_: &JsString) -> PageRevealEvent {
         Self {
@@ -80,12 +88,5 @@ impl PageRevealEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl PageRevealEvent {
-    /// Getter of the `viewTransition` attribute.
-    /// [`PageRevealEvent.viewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/PageRevealEvent/viewTransition)
-    pub fn view_transition(&self) -> ViewTransition {
-        self.inner.get("viewTransition").as_::<ViewTransition>()
     }
 }

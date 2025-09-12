@@ -110,6 +110,20 @@ impl SVGAnimationElement {
     }
 }
 impl SVGAnimationElement {
+    /// Getter of the `requiredExtensions` attribute.
+    /// [`SVGAnimationElement.requiredExtensions`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/requiredExtensions)
+    pub fn required_extensions(&self) -> SVGStringList {
+        self.inner.get("requiredExtensions").as_::<SVGStringList>()
+    }
+}
+impl SVGAnimationElement {
+    /// Getter of the `systemLanguage` attribute.
+    /// [`SVGAnimationElement.systemLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/systemLanguage)
+    pub fn system_language(&self) -> SVGStringList {
+        self.inner.get("systemLanguage").as_::<SVGStringList>()
+    }
+}
+impl SVGAnimationElement {
     /// The getStartTime method.
     /// [`SVGAnimationElement.getStartTime`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/getStartTime)
     pub fn get_start_time(&self) -> f32 {
@@ -160,19 +174,5 @@ impl SVGAnimationElement {
         self.inner
             .call("endElementAt", &[offset.into()])
             .as_::<Undefined>()
-    }
-}
-impl SVGAnimationElement {
-    /// Getter of the `requiredExtensions` attribute.
-    /// [`SVGAnimationElement.requiredExtensions`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/requiredExtensions)
-    pub fn required_extensions(&self) -> SVGStringList {
-        self.inner.get("requiredExtensions").as_::<SVGStringList>()
-    }
-}
-impl SVGAnimationElement {
-    /// Getter of the `systemLanguage` attribute.
-    /// [`SVGAnimationElement.systemLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimationElement/systemLanguage)
-    pub fn system_language(&self) -> SVGStringList {
-        self.inner.get("systemLanguage").as_::<SVGStringList>()
     }
 }

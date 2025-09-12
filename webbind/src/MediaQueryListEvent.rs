@@ -64,6 +64,21 @@ impl From<&MediaQueryListEvent> for Any {
 jsbind::utils::impl_dyn_cast!(MediaQueryListEvent);
 
 impl MediaQueryListEvent {
+    /// Getter of the `media` attribute.
+    /// [`MediaQueryListEvent.media`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent/media)
+    pub fn media(&self) -> JsString {
+        self.inner.get("media").as_::<JsString>()
+    }
+}
+impl MediaQueryListEvent {
+    /// Getter of the `matches` attribute.
+    /// [`MediaQueryListEvent.matches`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent/matches)
+    pub fn matches(&self) -> bool {
+        self.inner.get("matches").as_::<bool>()
+    }
+}
+
+impl MediaQueryListEvent {
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
     pub fn new0(type_: &JsString) -> MediaQueryListEvent {
         Self {
@@ -83,19 +98,5 @@ impl MediaQueryListEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl MediaQueryListEvent {
-    /// Getter of the `media` attribute.
-    /// [`MediaQueryListEvent.media`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent/media)
-    pub fn media(&self) -> JsString {
-        self.inner.get("media").as_::<JsString>()
-    }
-}
-impl MediaQueryListEvent {
-    /// Getter of the `matches` attribute.
-    /// [`MediaQueryListEvent.matches`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent/matches)
-    pub fn matches(&self) -> bool {
-        self.inner.get("matches").as_::<bool>()
     }
 }

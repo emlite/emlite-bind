@@ -64,6 +64,100 @@ impl From<&EditContext> for Any {
 jsbind::utils::impl_dyn_cast!(EditContext);
 
 impl EditContext {
+    /// Getter of the `text` attribute.
+    /// [`EditContext.text`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/text)
+    pub fn text(&self) -> JsString {
+        self.inner.get("text").as_::<JsString>()
+    }
+}
+impl EditContext {
+    /// Getter of the `selectionStart` attribute.
+    /// [`EditContext.selectionStart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/selectionStart)
+    pub fn selection_start(&self) -> u32 {
+        self.inner.get("selectionStart").as_::<u32>()
+    }
+}
+impl EditContext {
+    /// Getter of the `selectionEnd` attribute.
+    /// [`EditContext.selectionEnd`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/selectionEnd)
+    pub fn selection_end(&self) -> u32 {
+        self.inner.get("selectionEnd").as_::<u32>()
+    }
+}
+impl EditContext {
+    /// Getter of the `characterBoundsRangeStart` attribute.
+    /// [`EditContext.characterBoundsRangeStart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/characterBoundsRangeStart)
+    pub fn character_bounds_range_start(&self) -> u32 {
+        self.inner.get("characterBoundsRangeStart").as_::<u32>()
+    }
+}
+impl EditContext {
+    /// Getter of the `ontextupdate` attribute.
+    /// [`EditContext.ontextupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextupdate)
+    pub fn ontextupdate(&self) -> Any {
+        self.inner.get("ontextupdate").as_::<Any>()
+    }
+
+    /// Setter of the `ontextupdate` attribute.
+    /// [`EditContext.ontextupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextupdate)
+    pub fn set_ontextupdate(&mut self, value: &Any) {
+        self.inner.set("ontextupdate", value);
+    }
+}
+impl EditContext {
+    /// Getter of the `ontextformatupdate` attribute.
+    /// [`EditContext.ontextformatupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextformatupdate)
+    pub fn ontextformatupdate(&self) -> Any {
+        self.inner.get("ontextformatupdate").as_::<Any>()
+    }
+
+    /// Setter of the `ontextformatupdate` attribute.
+    /// [`EditContext.ontextformatupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextformatupdate)
+    pub fn set_ontextformatupdate(&mut self, value: &Any) {
+        self.inner.set("ontextformatupdate", value);
+    }
+}
+impl EditContext {
+    /// Getter of the `oncharacterboundsupdate` attribute.
+    /// [`EditContext.oncharacterboundsupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncharacterboundsupdate)
+    pub fn oncharacterboundsupdate(&self) -> Any {
+        self.inner.get("oncharacterboundsupdate").as_::<Any>()
+    }
+
+    /// Setter of the `oncharacterboundsupdate` attribute.
+    /// [`EditContext.oncharacterboundsupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncharacterboundsupdate)
+    pub fn set_oncharacterboundsupdate(&mut self, value: &Any) {
+        self.inner.set("oncharacterboundsupdate", value);
+    }
+}
+impl EditContext {
+    /// Getter of the `oncompositionstart` attribute.
+    /// [`EditContext.oncompositionstart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionstart)
+    pub fn oncompositionstart(&self) -> Any {
+        self.inner.get("oncompositionstart").as_::<Any>()
+    }
+
+    /// Setter of the `oncompositionstart` attribute.
+    /// [`EditContext.oncompositionstart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionstart)
+    pub fn set_oncompositionstart(&mut self, value: &Any) {
+        self.inner.set("oncompositionstart", value);
+    }
+}
+impl EditContext {
+    /// Getter of the `oncompositionend` attribute.
+    /// [`EditContext.oncompositionend`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionend)
+    pub fn oncompositionend(&self) -> Any {
+        self.inner.get("oncompositionend").as_::<Any>()
+    }
+
+    /// Setter of the `oncompositionend` attribute.
+    /// [`EditContext.oncompositionend`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionend)
+    pub fn set_oncompositionend(&mut self, value: &Any) {
+        self.inner.set("oncompositionend", value);
+    }
+}
+
+impl EditContext {
     /// The `new EditContext(..)` constructor, creating a new EditContext instance
     pub fn new0() -> EditContext {
         Self {
@@ -145,104 +239,11 @@ impl EditContext {
     }
 }
 impl EditContext {
-    /// Getter of the `text` attribute.
-    /// [`EditContext.text`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/text)
-    pub fn text(&self) -> JsString {
-        self.inner.get("text").as_::<JsString>()
-    }
-}
-impl EditContext {
-    /// Getter of the `selectionStart` attribute.
-    /// [`EditContext.selectionStart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/selectionStart)
-    pub fn selection_start(&self) -> u32 {
-        self.inner.get("selectionStart").as_::<u32>()
-    }
-}
-impl EditContext {
-    /// Getter of the `selectionEnd` attribute.
-    /// [`EditContext.selectionEnd`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/selectionEnd)
-    pub fn selection_end(&self) -> u32 {
-        self.inner.get("selectionEnd").as_::<u32>()
-    }
-}
-impl EditContext {
-    /// Getter of the `characterBoundsRangeStart` attribute.
-    /// [`EditContext.characterBoundsRangeStart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/characterBoundsRangeStart)
-    pub fn character_bounds_range_start(&self) -> u32 {
-        self.inner.get("characterBoundsRangeStart").as_::<u32>()
-    }
-}
-impl EditContext {
     /// The characterBounds method.
     /// [`EditContext.characterBounds`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/characterBounds)
     pub fn character_bounds(&self) -> TypedArray<DOMRect> {
         self.inner
             .call("characterBounds", &[])
             .as_::<TypedArray<DOMRect>>()
-    }
-}
-impl EditContext {
-    /// Getter of the `ontextupdate` attribute.
-    /// [`EditContext.ontextupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextupdate)
-    pub fn ontextupdate(&self) -> Any {
-        self.inner.get("ontextupdate").as_::<Any>()
-    }
-
-    /// Setter of the `ontextupdate` attribute.
-    /// [`EditContext.ontextupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextupdate)
-    pub fn set_ontextupdate(&mut self, value: &Any) {
-        self.inner.set("ontextupdate", value);
-    }
-}
-impl EditContext {
-    /// Getter of the `ontextformatupdate` attribute.
-    /// [`EditContext.ontextformatupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextformatupdate)
-    pub fn ontextformatupdate(&self) -> Any {
-        self.inner.get("ontextformatupdate").as_::<Any>()
-    }
-
-    /// Setter of the `ontextformatupdate` attribute.
-    /// [`EditContext.ontextformatupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/ontextformatupdate)
-    pub fn set_ontextformatupdate(&mut self, value: &Any) {
-        self.inner.set("ontextformatupdate", value);
-    }
-}
-impl EditContext {
-    /// Getter of the `oncharacterboundsupdate` attribute.
-    /// [`EditContext.oncharacterboundsupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncharacterboundsupdate)
-    pub fn oncharacterboundsupdate(&self) -> Any {
-        self.inner.get("oncharacterboundsupdate").as_::<Any>()
-    }
-
-    /// Setter of the `oncharacterboundsupdate` attribute.
-    /// [`EditContext.oncharacterboundsupdate`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncharacterboundsupdate)
-    pub fn set_oncharacterboundsupdate(&mut self, value: &Any) {
-        self.inner.set("oncharacterboundsupdate", value);
-    }
-}
-impl EditContext {
-    /// Getter of the `oncompositionstart` attribute.
-    /// [`EditContext.oncompositionstart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionstart)
-    pub fn oncompositionstart(&self) -> Any {
-        self.inner.get("oncompositionstart").as_::<Any>()
-    }
-
-    /// Setter of the `oncompositionstart` attribute.
-    /// [`EditContext.oncompositionstart`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionstart)
-    pub fn set_oncompositionstart(&mut self, value: &Any) {
-        self.inner.set("oncompositionstart", value);
-    }
-}
-impl EditContext {
-    /// Getter of the `oncompositionend` attribute.
-    /// [`EditContext.oncompositionend`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionend)
-    pub fn oncompositionend(&self) -> Any {
-        self.inner.get("oncompositionend").as_::<Any>()
-    }
-
-    /// Setter of the `oncompositionend` attribute.
-    /// [`EditContext.oncompositionend`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/oncompositionend)
-    pub fn set_oncompositionend(&mut self, value: &Any) {
-        self.inner.set("oncompositionend", value);
     }
 }

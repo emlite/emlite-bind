@@ -64,27 +64,6 @@ impl From<&FontFaceSet> for Any {
 jsbind::utils::impl_dyn_cast!(FontFaceSet);
 
 impl FontFaceSet {
-    /// The add method.
-    /// [`FontFaceSet.add`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/add)
-    pub fn add(&self, font: &FontFace) -> FontFaceSet {
-        self.inner.call("add", &[font.into()]).as_::<FontFaceSet>()
-    }
-}
-impl FontFaceSet {
-    /// The delete method.
-    /// [`FontFaceSet.delete`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/delete)
-    pub fn delete(&self, font: &FontFace) -> bool {
-        self.inner.call("delete", &[font.into()]).as_::<bool>()
-    }
-}
-impl FontFaceSet {
-    /// The clear method.
-    /// [`FontFaceSet.clear`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/clear)
-    pub fn clear(&self) -> Undefined {
-        self.inner.call("clear", &[]).as_::<Undefined>()
-    }
-}
-impl FontFaceSet {
     /// Getter of the `onloading` attribute.
     /// [`FontFaceSet.onloading`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/onloading)
     pub fn onloading(&self) -> Any {
@@ -124,6 +103,41 @@ impl FontFaceSet {
     }
 }
 impl FontFaceSet {
+    /// Getter of the `ready` attribute.
+    /// [`FontFaceSet.ready`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready)
+    pub fn ready(&self) -> Promise<FontFaceSet> {
+        self.inner.get("ready").as_::<Promise<FontFaceSet>>()
+    }
+}
+impl FontFaceSet {
+    /// Getter of the `status` attribute.
+    /// [`FontFaceSet.status`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/status)
+    pub fn status(&self) -> FontFaceSetLoadStatus {
+        self.inner.get("status").as_::<FontFaceSetLoadStatus>()
+    }
+}
+impl FontFaceSet {
+    /// The add method.
+    /// [`FontFaceSet.add`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/add)
+    pub fn add(&self, font: &FontFace) -> FontFaceSet {
+        self.inner.call("add", &[font.into()]).as_::<FontFaceSet>()
+    }
+}
+impl FontFaceSet {
+    /// The delete method.
+    /// [`FontFaceSet.delete`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/delete)
+    pub fn delete(&self, font: &FontFace) -> bool {
+        self.inner.call("delete", &[font.into()]).as_::<bool>()
+    }
+}
+impl FontFaceSet {
+    /// The clear method.
+    /// [`FontFaceSet.clear`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/clear)
+    pub fn clear(&self) -> Undefined {
+        self.inner.call("clear", &[]).as_::<Undefined>()
+    }
+}
+impl FontFaceSet {
     /// The load method.
     /// [`FontFaceSet.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load)
     pub fn load0(&self, font: &JsString) -> Promise<TypedArray<FontFace>> {
@@ -151,19 +165,5 @@ impl FontFaceSet {
         self.inner
             .call("check", &[font.into(), text.into()])
             .as_::<bool>()
-    }
-}
-impl FontFaceSet {
-    /// Getter of the `ready` attribute.
-    /// [`FontFaceSet.ready`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready)
-    pub fn ready(&self) -> Promise<FontFaceSet> {
-        self.inner.get("ready").as_::<Promise<FontFaceSet>>()
-    }
-}
-impl FontFaceSet {
-    /// Getter of the `status` attribute.
-    /// [`FontFaceSet.status`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/status)
-    pub fn status(&self) -> FontFaceSetLoadStatus {
-        self.inner.get("status").as_::<FontFaceSetLoadStatus>()
     }
 }

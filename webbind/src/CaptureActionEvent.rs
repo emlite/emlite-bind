@@ -64,6 +64,14 @@ impl From<&CaptureActionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(CaptureActionEvent);
 
 impl CaptureActionEvent {
+    /// Getter of the `action` attribute.
+    /// [`CaptureActionEvent.action`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureActionEvent/action)
+    pub fn action(&self) -> CaptureAction {
+        self.inner.get("action").as_::<CaptureAction>()
+    }
+}
+
+impl CaptureActionEvent {
     /// The `new CaptureActionEvent(..)` constructor, creating a new CaptureActionEvent instance
     pub fn new0() -> CaptureActionEvent {
         Self {
@@ -78,12 +86,5 @@ impl CaptureActionEvent {
                 .new(&[init.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl CaptureActionEvent {
-    /// Getter of the `action` attribute.
-    /// [`CaptureActionEvent.action`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureActionEvent/action)
-    pub fn action(&self) -> CaptureAction {
-        self.inner.get("action").as_::<CaptureAction>()
     }
 }

@@ -64,16 +64,6 @@ impl From<&SyncEvent> for Any {
 jsbind::utils::impl_dyn_cast!(SyncEvent);
 
 impl SyncEvent {
-    /// The `new SyncEvent(..)` constructor, creating a new SyncEvent instance
-    pub fn new(type_: &JsString, init: &SyncEventInit) -> SyncEvent {
-        Self {
-            inner: Any::global("SyncEvent")
-                .new(&[type_.into(), init.into()])
-                .as_::<ExtendableEvent>(),
-        }
-    }
-}
-impl SyncEvent {
     /// Getter of the `tag` attribute.
     /// [`SyncEvent.tag`](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent/tag)
     pub fn tag(&self) -> JsString {
@@ -85,5 +75,16 @@ impl SyncEvent {
     /// [`SyncEvent.lastChance`](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent/lastChance)
     pub fn last_chance(&self) -> bool {
         self.inner.get("lastChance").as_::<bool>()
+    }
+}
+
+impl SyncEvent {
+    /// The `new SyncEvent(..)` constructor, creating a new SyncEvent instance
+    pub fn new(type_: &JsString, init: &SyncEventInit) -> SyncEvent {
+        Self {
+            inner: Any::global("SyncEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
+        }
     }
 }

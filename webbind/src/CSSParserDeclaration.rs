@@ -64,6 +64,21 @@ impl From<&CSSParserDeclaration> for Any {
 jsbind::utils::impl_dyn_cast!(CSSParserDeclaration);
 
 impl CSSParserDeclaration {
+    /// Getter of the `name` attribute.
+    /// [`CSSParserDeclaration.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserDeclaration/name)
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
+    }
+}
+impl CSSParserDeclaration {
+    /// Getter of the `body` attribute.
+    /// [`CSSParserDeclaration.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserDeclaration/body)
+    pub fn body(&self) -> TypedArray<CSSParserValue> {
+        self.inner.get("body").as_::<TypedArray<CSSParserValue>>()
+    }
+}
+
+impl CSSParserDeclaration {
     /// The `new CSSParserDeclaration(..)` constructor, creating a new CSSParserDeclaration instance
     pub fn new0(name: &JsString) -> CSSParserDeclaration {
         Self {
@@ -80,19 +95,5 @@ impl CSSParserDeclaration {
                 .new(&[name.into(), body.into()])
                 .as_::<CSSParserRule>(),
         }
-    }
-}
-impl CSSParserDeclaration {
-    /// Getter of the `name` attribute.
-    /// [`CSSParserDeclaration.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserDeclaration/name)
-    pub fn name(&self) -> JsString {
-        self.inner.get("name").as_::<JsString>()
-    }
-}
-impl CSSParserDeclaration {
-    /// Getter of the `body` attribute.
-    /// [`CSSParserDeclaration.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserDeclaration/body)
-    pub fn body(&self) -> TypedArray<CSSParserValue> {
-        self.inner.get("body").as_::<TypedArray<CSSParserValue>>()
     }
 }

@@ -64,30 +64,12 @@ impl From<&Navigation> for Any {
 jsbind::utils::impl_dyn_cast!(Navigation);
 
 impl Navigation {
-    /// The entries method.
-    /// [`Navigation.entries`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/entries)
-    pub fn entries(&self) -> TypedArray<NavigationHistoryEntry> {
-        self.inner
-            .call("entries", &[])
-            .as_::<TypedArray<NavigationHistoryEntry>>()
-    }
-}
-impl Navigation {
     /// Getter of the `currentEntry` attribute.
     /// [`Navigation.currentEntry`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/currentEntry)
     pub fn current_entry(&self) -> NavigationHistoryEntry {
         self.inner
             .get("currentEntry")
             .as_::<NavigationHistoryEntry>()
-    }
-}
-impl Navigation {
-    /// The updateCurrentEntry method.
-    /// [`Navigation.updateCurrentEntry`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/updateCurrentEntry)
-    pub fn update_current_entry(&self, options: &NavigationUpdateCurrentEntryOptions) -> Undefined {
-        self.inner
-            .call("updateCurrentEntry", &[options.into()])
-            .as_::<Undefined>()
     }
 }
 impl Navigation {
@@ -116,6 +98,76 @@ impl Navigation {
     /// [`Navigation.canGoForward`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/canGoForward)
     pub fn can_go_forward(&self) -> bool {
         self.inner.get("canGoForward").as_::<bool>()
+    }
+}
+impl Navigation {
+    /// Getter of the `onnavigate` attribute.
+    /// [`Navigation.onnavigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigate)
+    pub fn onnavigate(&self) -> Any {
+        self.inner.get("onnavigate").as_::<Any>()
+    }
+
+    /// Setter of the `onnavigate` attribute.
+    /// [`Navigation.onnavigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigate)
+    pub fn set_onnavigate(&mut self, value: &Any) {
+        self.inner.set("onnavigate", value);
+    }
+}
+impl Navigation {
+    /// Getter of the `onnavigatesuccess` attribute.
+    /// [`Navigation.onnavigatesuccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigatesuccess)
+    pub fn onnavigatesuccess(&self) -> Any {
+        self.inner.get("onnavigatesuccess").as_::<Any>()
+    }
+
+    /// Setter of the `onnavigatesuccess` attribute.
+    /// [`Navigation.onnavigatesuccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigatesuccess)
+    pub fn set_onnavigatesuccess(&mut self, value: &Any) {
+        self.inner.set("onnavigatesuccess", value);
+    }
+}
+impl Navigation {
+    /// Getter of the `onnavigateerror` attribute.
+    /// [`Navigation.onnavigateerror`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigateerror)
+    pub fn onnavigateerror(&self) -> Any {
+        self.inner.get("onnavigateerror").as_::<Any>()
+    }
+
+    /// Setter of the `onnavigateerror` attribute.
+    /// [`Navigation.onnavigateerror`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigateerror)
+    pub fn set_onnavigateerror(&mut self, value: &Any) {
+        self.inner.set("onnavigateerror", value);
+    }
+}
+impl Navigation {
+    /// Getter of the `oncurrententrychange` attribute.
+    /// [`Navigation.oncurrententrychange`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/oncurrententrychange)
+    pub fn oncurrententrychange(&self) -> Any {
+        self.inner.get("oncurrententrychange").as_::<Any>()
+    }
+
+    /// Setter of the `oncurrententrychange` attribute.
+    /// [`Navigation.oncurrententrychange`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/oncurrententrychange)
+    pub fn set_oncurrententrychange(&mut self, value: &Any) {
+        self.inner.set("oncurrententrychange", value);
+    }
+}
+impl Navigation {
+    /// The entries method.
+    /// [`Navigation.entries`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/entries)
+    pub fn entries(&self) -> TypedArray<NavigationHistoryEntry> {
+        self.inner
+            .call("entries", &[])
+            .as_::<TypedArray<NavigationHistoryEntry>>()
+    }
+}
+impl Navigation {
+    /// The updateCurrentEntry method.
+    /// [`Navigation.updateCurrentEntry`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/updateCurrentEntry)
+    pub fn update_current_entry(&self, options: &NavigationUpdateCurrentEntryOptions) -> Undefined {
+        self.inner
+            .call("updateCurrentEntry", &[options.into()])
+            .as_::<Undefined>()
     }
 }
 impl Navigation {
@@ -194,57 +246,5 @@ impl Navigation {
         self.inner
             .call("forward", &[options.into()])
             .as_::<NavigationResult>()
-    }
-}
-impl Navigation {
-    /// Getter of the `onnavigate` attribute.
-    /// [`Navigation.onnavigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigate)
-    pub fn onnavigate(&self) -> Any {
-        self.inner.get("onnavigate").as_::<Any>()
-    }
-
-    /// Setter of the `onnavigate` attribute.
-    /// [`Navigation.onnavigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigate)
-    pub fn set_onnavigate(&mut self, value: &Any) {
-        self.inner.set("onnavigate", value);
-    }
-}
-impl Navigation {
-    /// Getter of the `onnavigatesuccess` attribute.
-    /// [`Navigation.onnavigatesuccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigatesuccess)
-    pub fn onnavigatesuccess(&self) -> Any {
-        self.inner.get("onnavigatesuccess").as_::<Any>()
-    }
-
-    /// Setter of the `onnavigatesuccess` attribute.
-    /// [`Navigation.onnavigatesuccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigatesuccess)
-    pub fn set_onnavigatesuccess(&mut self, value: &Any) {
-        self.inner.set("onnavigatesuccess", value);
-    }
-}
-impl Navigation {
-    /// Getter of the `onnavigateerror` attribute.
-    /// [`Navigation.onnavigateerror`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigateerror)
-    pub fn onnavigateerror(&self) -> Any {
-        self.inner.get("onnavigateerror").as_::<Any>()
-    }
-
-    /// Setter of the `onnavigateerror` attribute.
-    /// [`Navigation.onnavigateerror`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/onnavigateerror)
-    pub fn set_onnavigateerror(&mut self, value: &Any) {
-        self.inner.set("onnavigateerror", value);
-    }
-}
-impl Navigation {
-    /// Getter of the `oncurrententrychange` attribute.
-    /// [`Navigation.oncurrententrychange`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/oncurrententrychange)
-    pub fn oncurrententrychange(&self) -> Any {
-        self.inner.get("oncurrententrychange").as_::<Any>()
-    }
-
-    /// Setter of the `oncurrententrychange` attribute.
-    /// [`Navigation.oncurrententrychange`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/oncurrententrychange)
-    pub fn set_oncurrententrychange(&mut self, value: &Any) {
-        self.inner.set("oncurrententrychange", value);
     }
 }

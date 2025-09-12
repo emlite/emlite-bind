@@ -64,28 +64,6 @@ impl From<&AudioBufferSourceNode> for Any {
 jsbind::utils::impl_dyn_cast!(AudioBufferSourceNode);
 
 impl AudioBufferSourceNode {
-    /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
-    pub fn new0(context: &BaseAudioContext) -> AudioBufferSourceNode {
-        Self {
-            inner: Any::global("AudioBufferSourceNode")
-                .new(&[context.into()])
-                .as_::<AudioScheduledSourceNode>(),
-        }
-    }
-
-    /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
-    pub fn new1(
-        context: &BaseAudioContext,
-        options: &AudioBufferSourceOptions,
-    ) -> AudioBufferSourceNode {
-        Self {
-            inner: Any::global("AudioBufferSourceNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioScheduledSourceNode>(),
-        }
-    }
-}
-impl AudioBufferSourceNode {
     /// Getter of the `buffer` attribute.
     /// [`AudioBufferSourceNode.buffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/buffer)
     pub fn buffer(&self) -> AudioBuffer {
@@ -149,6 +127,29 @@ impl AudioBufferSourceNode {
     /// [`AudioBufferSourceNode.loopEnd`](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode/loopEnd)
     pub fn set_loop_end(&mut self, value: f64) {
         self.inner.set("loopEnd", value);
+    }
+}
+
+impl AudioBufferSourceNode {
+    /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
+    pub fn new0(context: &BaseAudioContext) -> AudioBufferSourceNode {
+        Self {
+            inner: Any::global("AudioBufferSourceNode")
+                .new(&[context.into()])
+                .as_::<AudioScheduledSourceNode>(),
+        }
+    }
+
+    /// The `new AudioBufferSourceNode(..)` constructor, creating a new AudioBufferSourceNode instance
+    pub fn new1(
+        context: &BaseAudioContext,
+        options: &AudioBufferSourceOptions,
+    ) -> AudioBufferSourceNode {
+        Self {
+            inner: Any::global("AudioBufferSourceNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioScheduledSourceNode>(),
+        }
     }
 }
 impl AudioBufferSourceNode {

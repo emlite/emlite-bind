@@ -64,6 +64,21 @@ impl From<&Text> for Any {
 jsbind::utils::impl_dyn_cast!(Text);
 
 impl Text {
+    /// Getter of the `wholeText` attribute.
+    /// [`Text.wholeText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
+    pub fn whole_text(&self) -> JsString {
+        self.inner.get("wholeText").as_::<JsString>()
+    }
+}
+impl Text {
+    /// Getter of the `assignedSlot` attribute.
+    /// [`Text.assignedSlot`](https://developer.mozilla.org/en-US/docs/Web/API/Text/assignedSlot)
+    pub fn assigned_slot(&self) -> HTMLSlotElement {
+        self.inner.get("assignedSlot").as_::<HTMLSlotElement>()
+    }
+}
+
+impl Text {
     /// The `new Text(..)` constructor, creating a new Text instance
     pub fn new0() -> Text {
         Self {
@@ -85,13 +100,6 @@ impl Text {
     /// [`Text.splitText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/splitText)
     pub fn split_text(&self, offset: u32) -> Text {
         self.inner.call("splitText", &[offset.into()]).as_::<Text>()
-    }
-}
-impl Text {
-    /// Getter of the `wholeText` attribute.
-    /// [`Text.wholeText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
-    pub fn whole_text(&self) -> JsString {
-        self.inner.get("wholeText").as_::<JsString>()
     }
 }
 impl Text {
@@ -180,12 +188,5 @@ impl Text {
                 &[point.into(), from.into(), options.into()],
             )
             .as_::<DOMPoint>()
-    }
-}
-impl Text {
-    /// Getter of the `assignedSlot` attribute.
-    /// [`Text.assignedSlot`](https://developer.mozilla.org/en-US/docs/Web/API/Text/assignedSlot)
-    pub fn assigned_slot(&self) -> HTMLSlotElement {
-        self.inner.get("assignedSlot").as_::<HTMLSlotElement>()
     }
 }

@@ -64,16 +64,6 @@ impl From<&BlobEvent> for Any {
 jsbind::utils::impl_dyn_cast!(BlobEvent);
 
 impl BlobEvent {
-    /// The `new BlobEvent(..)` constructor, creating a new BlobEvent instance
-    pub fn new(type_: &JsString, event_init_dict: &BlobEventInit) -> BlobEvent {
-        Self {
-            inner: Any::global("BlobEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl BlobEvent {
     /// Getter of the `data` attribute.
     /// [`BlobEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent/data)
     pub fn data(&self) -> Blob {
@@ -85,5 +75,16 @@ impl BlobEvent {
     /// [`BlobEvent.timecode`](https://developer.mozilla.org/en-US/docs/Web/API/BlobEvent/timecode)
     pub fn timecode(&self) -> Any {
         self.inner.get("timecode").as_::<Any>()
+    }
+}
+
+impl BlobEvent {
+    /// The `new BlobEvent(..)` constructor, creating a new BlobEvent instance
+    pub fn new(type_: &JsString, event_init_dict: &BlobEventInit) -> BlobEvent {
+        Self {
+            inner: Any::global("BlobEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

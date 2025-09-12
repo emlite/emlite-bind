@@ -64,16 +64,6 @@ impl From<&HTMLProgressElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLProgressElement);
 
 impl HTMLProgressElement {
-    /// The `new HTMLProgressElement(..)` constructor, creating a new HTMLProgressElement instance
-    pub fn new() -> HTMLProgressElement {
-        Self {
-            inner: Any::global("HTMLProgressElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLProgressElement {
     /// Getter of the `value` attribute.
     /// [`HTMLProgressElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLProgressElement/value)
     pub fn value(&self) -> f64 {
@@ -111,5 +101,16 @@ impl HTMLProgressElement {
     /// [`HTMLProgressElement.labels`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLProgressElement/labels)
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
+    }
+}
+
+impl HTMLProgressElement {
+    /// The `new HTMLProgressElement(..)` constructor, creating a new HTMLProgressElement instance
+    pub fn new() -> HTMLProgressElement {
+        Self {
+            inner: Any::global("HTMLProgressElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

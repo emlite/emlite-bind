@@ -64,13 +64,6 @@ impl From<&FontData> for Any {
 jsbind::utils::impl_dyn_cast!(FontData);
 
 impl FontData {
-    /// The blob method.
-    /// [`FontData.blob`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/blob)
-    pub fn blob(&self) -> Promise<Blob> {
-        self.inner.call("blob", &[]).as_::<Promise<Blob>>()
-    }
-}
-impl FontData {
     /// Getter of the `postscriptName` attribute.
     /// [`FontData.postscriptName`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/postscriptName)
     pub fn postscript_name(&self) -> JsString {
@@ -96,5 +89,12 @@ impl FontData {
     /// [`FontData.style`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/style)
     pub fn style(&self) -> JsString {
         self.inner.get("style").as_::<JsString>()
+    }
+}
+impl FontData {
+    /// The blob method.
+    /// [`FontData.blob`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/blob)
+    pub fn blob(&self) -> Promise<Blob> {
+        self.inner.call("blob", &[]).as_::<Promise<Blob>>()
     }
 }

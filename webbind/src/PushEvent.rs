@@ -64,6 +64,14 @@ impl From<&PushEvent> for Any {
 jsbind::utils::impl_dyn_cast!(PushEvent);
 
 impl PushEvent {
+    /// Getter of the `data` attribute.
+    /// [`PushEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data)
+    pub fn data(&self) -> PushMessageData {
+        self.inner.get("data").as_::<PushMessageData>()
+    }
+}
+
+impl PushEvent {
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance
     pub fn new0(type_: &JsString) -> PushEvent {
         Self {
@@ -80,12 +88,5 @@ impl PushEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<ExtendableEvent>(),
         }
-    }
-}
-impl PushEvent {
-    /// Getter of the `data` attribute.
-    /// [`PushEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/data)
-    pub fn data(&self) -> PushMessageData {
-        self.inner.get("data").as_::<PushMessageData>()
     }
 }

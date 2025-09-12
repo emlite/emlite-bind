@@ -64,16 +64,6 @@ impl From<&ManagedMediaSource> for Any {
 jsbind::utils::impl_dyn_cast!(ManagedMediaSource);
 
 impl ManagedMediaSource {
-    /// The `new ManagedMediaSource(..)` constructor, creating a new ManagedMediaSource instance
-    pub fn new() -> ManagedMediaSource {
-        Self {
-            inner: Any::global("ManagedMediaSource")
-                .new(&[])
-                .as_::<MediaSource>(),
-        }
-    }
-}
-impl ManagedMediaSource {
     /// Getter of the `streaming` attribute.
     /// [`ManagedMediaSource.streaming`](https://developer.mozilla.org/en-US/docs/Web/API/ManagedMediaSource/streaming)
     pub fn streaming(&self) -> bool {
@@ -104,5 +94,16 @@ impl ManagedMediaSource {
     /// [`ManagedMediaSource.onendstreaming`](https://developer.mozilla.org/en-US/docs/Web/API/ManagedMediaSource/onendstreaming)
     pub fn set_onendstreaming(&mut self, value: &Any) {
         self.inner.set("onendstreaming", value);
+    }
+}
+
+impl ManagedMediaSource {
+    /// The `new ManagedMediaSource(..)` constructor, creating a new ManagedMediaSource instance
+    pub fn new() -> ManagedMediaSource {
+        Self {
+            inner: Any::global("ManagedMediaSource")
+                .new(&[])
+                .as_::<MediaSource>(),
+        }
     }
 }

@@ -64,22 +64,6 @@ impl From<&TaskSignal> for Any {
 jsbind::utils::impl_dyn_cast!(TaskSignal);
 
 impl TaskSignal {
-    /// The any method.
-    /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
-    pub fn any0(signals: &TypedArray<AbortSignal>) -> TaskSignal {
-        Any::global("TaskSignal")
-            .call("any", &[signals.into()])
-            .as_::<TaskSignal>()
-    }
-    /// The any method.
-    /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
-    pub fn any1(signals: &TypedArray<AbortSignal>, init: &TaskSignalAnyInit) -> TaskSignal {
-        Any::global("TaskSignal")
-            .call("any", &[signals.into(), init.into()])
-            .as_::<TaskSignal>()
-    }
-}
-impl TaskSignal {
     /// Getter of the `priority` attribute.
     /// [`TaskSignal.priority`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/priority)
     pub fn priority(&self) -> TaskPriority {
@@ -97,5 +81,21 @@ impl TaskSignal {
     /// [`TaskSignal.onprioritychange`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/onprioritychange)
     pub fn set_onprioritychange(&mut self, value: &Any) {
         self.inner.set("onprioritychange", value);
+    }
+}
+impl TaskSignal {
+    /// The any method.
+    /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
+    pub fn any0(signals: &TypedArray<AbortSignal>) -> TaskSignal {
+        Any::global("TaskSignal")
+            .call("any", &[signals.into()])
+            .as_::<TaskSignal>()
+    }
+    /// The any method.
+    /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
+    pub fn any1(signals: &TypedArray<AbortSignal>, init: &TaskSignalAnyInit) -> TaskSignal {
+        Any::global("TaskSignal")
+            .call("any", &[signals.into(), init.into()])
+            .as_::<TaskSignal>()
     }
 }

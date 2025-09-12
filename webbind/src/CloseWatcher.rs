@@ -64,6 +64,33 @@ impl From<&CloseWatcher> for Any {
 jsbind::utils::impl_dyn_cast!(CloseWatcher);
 
 impl CloseWatcher {
+    /// Getter of the `oncancel` attribute.
+    /// [`CloseWatcher.oncancel`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/oncancel)
+    pub fn oncancel(&self) -> Any {
+        self.inner.get("oncancel").as_::<Any>()
+    }
+
+    /// Setter of the `oncancel` attribute.
+    /// [`CloseWatcher.oncancel`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/oncancel)
+    pub fn set_oncancel(&mut self, value: &Any) {
+        self.inner.set("oncancel", value);
+    }
+}
+impl CloseWatcher {
+    /// Getter of the `onclose` attribute.
+    /// [`CloseWatcher.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/onclose)
+    pub fn onclose(&self) -> Any {
+        self.inner.get("onclose").as_::<Any>()
+    }
+
+    /// Setter of the `onclose` attribute.
+    /// [`CloseWatcher.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/onclose)
+    pub fn set_onclose(&mut self, value: &Any) {
+        self.inner.set("onclose", value);
+    }
+}
+
+impl CloseWatcher {
     /// The `new CloseWatcher(..)` constructor, creating a new CloseWatcher instance
     pub fn new0() -> CloseWatcher {
         Self {
@@ -99,31 +126,5 @@ impl CloseWatcher {
     /// [`CloseWatcher.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/destroy)
     pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
-    }
-}
-impl CloseWatcher {
-    /// Getter of the `oncancel` attribute.
-    /// [`CloseWatcher.oncancel`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/oncancel)
-    pub fn oncancel(&self) -> Any {
-        self.inner.get("oncancel").as_::<Any>()
-    }
-
-    /// Setter of the `oncancel` attribute.
-    /// [`CloseWatcher.oncancel`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/oncancel)
-    pub fn set_oncancel(&mut self, value: &Any) {
-        self.inner.set("oncancel", value);
-    }
-}
-impl CloseWatcher {
-    /// Getter of the `onclose` attribute.
-    /// [`CloseWatcher.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/onclose)
-    pub fn onclose(&self) -> Any {
-        self.inner.get("onclose").as_::<Any>()
-    }
-
-    /// Setter of the `onclose` attribute.
-    /// [`CloseWatcher.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher/onclose)
-    pub fn set_onclose(&mut self, value: &Any) {
-        self.inner.set("onclose", value);
     }
 }

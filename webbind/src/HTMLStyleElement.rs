@@ -64,16 +64,6 @@ impl From<&HTMLStyleElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLStyleElement);
 
 impl HTMLStyleElement {
-    /// The `new HTMLStyleElement(..)` constructor, creating a new HTMLStyleElement instance
-    pub fn new() -> HTMLStyleElement {
-        Self {
-            inner: Any::global("HTMLStyleElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLStyleElement {
     /// Getter of the `disabled` attribute.
     /// [`HTMLStyleElement.disabled`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement/disabled)
     pub fn disabled(&self) -> bool {
@@ -124,5 +114,16 @@ impl HTMLStyleElement {
     /// [`HTMLStyleElement.sheet`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement/sheet)
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
+    }
+}
+
+impl HTMLStyleElement {
+    /// The `new HTMLStyleElement(..)` constructor, creating a new HTMLStyleElement instance
+    pub fn new() -> HTMLStyleElement {
+        Self {
+            inner: Any::global("HTMLStyleElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

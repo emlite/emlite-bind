@@ -64,16 +64,6 @@ impl From<&HTMLImageElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLImageElement);
 
 impl HTMLImageElement {
-    /// The `new HTMLImageElement(..)` constructor, creating a new HTMLImageElement instance
-    pub fn new() -> HTMLImageElement {
-        Self {
-            inner: Any::global("HTMLImageElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLImageElement {
     /// Getter of the `alt` attribute.
     /// [`HTMLImageElement.alt`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt)
     pub fn alt(&self) -> JsString {
@@ -271,13 +261,6 @@ impl HTMLImageElement {
     }
 }
 impl HTMLImageElement {
-    /// The decode method.
-    /// [`HTMLImageElement.decode`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode)
-    pub fn decode(&self) -> Promise<Undefined> {
-        self.inner.call("decode", &[]).as_::<Promise<Undefined>>()
-    }
-}
-impl HTMLImageElement {
     /// Getter of the `x` attribute.
     /// [`HTMLImageElement.x`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/x)
     pub fn x(&self) -> i32 {
@@ -406,5 +389,23 @@ impl HTMLImageElement {
     /// [`HTMLImageElement.sharedStorageWritable`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sharedStorageWritable)
     pub fn set_shared_storage_writable(&mut self, value: bool) {
         self.inner.set("sharedStorageWritable", value);
+    }
+}
+
+impl HTMLImageElement {
+    /// The `new HTMLImageElement(..)` constructor, creating a new HTMLImageElement instance
+    pub fn new() -> HTMLImageElement {
+        Self {
+            inner: Any::global("HTMLImageElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLImageElement {
+    /// The decode method.
+    /// [`HTMLImageElement.decode`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode)
+    pub fn decode(&self) -> Promise<Undefined> {
+        self.inner.call("decode", &[]).as_::<Promise<Undefined>>()
     }
 }

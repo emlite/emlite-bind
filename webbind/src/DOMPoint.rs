@@ -64,6 +64,59 @@ impl From<&DOMPoint> for Any {
 jsbind::utils::impl_dyn_cast!(DOMPoint);
 
 impl DOMPoint {
+    /// Getter of the `x` attribute.
+    /// [`DOMPoint.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/x)
+    pub fn x(&self) -> f64 {
+        self.inner.get("x").as_::<f64>()
+    }
+
+    /// Setter of the `x` attribute.
+    /// [`DOMPoint.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/x)
+    pub fn set_x(&mut self, value: f64) {
+        self.inner.set("x", value);
+    }
+}
+impl DOMPoint {
+    /// Getter of the `y` attribute.
+    /// [`DOMPoint.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/y)
+    pub fn y(&self) -> f64 {
+        self.inner.get("y").as_::<f64>()
+    }
+
+    /// Setter of the `y` attribute.
+    /// [`DOMPoint.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/y)
+    pub fn set_y(&mut self, value: f64) {
+        self.inner.set("y", value);
+    }
+}
+impl DOMPoint {
+    /// Getter of the `z` attribute.
+    /// [`DOMPoint.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/z)
+    pub fn z(&self) -> f64 {
+        self.inner.get("z").as_::<f64>()
+    }
+
+    /// Setter of the `z` attribute.
+    /// [`DOMPoint.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/z)
+    pub fn set_z(&mut self, value: f64) {
+        self.inner.set("z", value);
+    }
+}
+impl DOMPoint {
+    /// Getter of the `w` attribute.
+    /// [`DOMPoint.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/w)
+    pub fn w(&self) -> f64 {
+        self.inner.get("w").as_::<f64>()
+    }
+
+    /// Setter of the `w` attribute.
+    /// [`DOMPoint.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/w)
+    pub fn set_w(&mut self, value: f64) {
+        self.inner.set("w", value);
+    }
+}
+
+impl DOMPoint {
     /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new0() -> DOMPoint {
         Self {
@@ -121,57 +174,5 @@ impl DOMPoint {
         Any::global("DOMPoint")
             .call("fromPoint", &[other.into()])
             .as_::<DOMPoint>()
-    }
-}
-impl DOMPoint {
-    /// Getter of the `x` attribute.
-    /// [`DOMPoint.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/x)
-    pub fn x(&self) -> f64 {
-        self.inner.get("x").as_::<f64>()
-    }
-
-    /// Setter of the `x` attribute.
-    /// [`DOMPoint.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/x)
-    pub fn set_x(&mut self, value: f64) {
-        self.inner.set("x", value);
-    }
-}
-impl DOMPoint {
-    /// Getter of the `y` attribute.
-    /// [`DOMPoint.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/y)
-    pub fn y(&self) -> f64 {
-        self.inner.get("y").as_::<f64>()
-    }
-
-    /// Setter of the `y` attribute.
-    /// [`DOMPoint.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/y)
-    pub fn set_y(&mut self, value: f64) {
-        self.inner.set("y", value);
-    }
-}
-impl DOMPoint {
-    /// Getter of the `z` attribute.
-    /// [`DOMPoint.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/z)
-    pub fn z(&self) -> f64 {
-        self.inner.get("z").as_::<f64>()
-    }
-
-    /// Setter of the `z` attribute.
-    /// [`DOMPoint.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/z)
-    pub fn set_z(&mut self, value: f64) {
-        self.inner.set("z", value);
-    }
-}
-impl DOMPoint {
-    /// Getter of the `w` attribute.
-    /// [`DOMPoint.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/w)
-    pub fn w(&self) -> f64 {
-        self.inner.get("w").as_::<f64>()
-    }
-
-    /// Setter of the `w` attribute.
-    /// [`DOMPoint.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/w)
-    pub fn set_w(&mut self, value: f64) {
-        self.inner.set("w", value);
     }
 }

@@ -64,6 +64,21 @@ impl From<&AnimationPlaybackEvent> for Any {
 jsbind::utils::impl_dyn_cast!(AnimationPlaybackEvent);
 
 impl AnimationPlaybackEvent {
+    /// Getter of the `currentTime` attribute.
+    /// [`AnimationPlaybackEvent.currentTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationPlaybackEvent/currentTime)
+    pub fn current_time(&self) -> Any {
+        self.inner.get("currentTime").as_::<Any>()
+    }
+}
+impl AnimationPlaybackEvent {
+    /// Getter of the `timelineTime` attribute.
+    /// [`AnimationPlaybackEvent.timelineTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationPlaybackEvent/timelineTime)
+    pub fn timeline_time(&self) -> Any {
+        self.inner.get("timelineTime").as_::<Any>()
+    }
+}
+
+impl AnimationPlaybackEvent {
     /// The `new AnimationPlaybackEvent(..)` constructor, creating a new AnimationPlaybackEvent instance
     pub fn new0(type_: &JsString) -> AnimationPlaybackEvent {
         Self {
@@ -83,19 +98,5 @@ impl AnimationPlaybackEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl AnimationPlaybackEvent {
-    /// Getter of the `currentTime` attribute.
-    /// [`AnimationPlaybackEvent.currentTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationPlaybackEvent/currentTime)
-    pub fn current_time(&self) -> Any {
-        self.inner.get("currentTime").as_::<Any>()
-    }
-}
-impl AnimationPlaybackEvent {
-    /// Getter of the `timelineTime` attribute.
-    /// [`AnimationPlaybackEvent.timelineTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationPlaybackEvent/timelineTime)
-    pub fn timeline_time(&self) -> Any {
-        self.inner.get("timelineTime").as_::<Any>()
     }
 }

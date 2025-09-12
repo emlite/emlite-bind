@@ -64,25 +64,6 @@ impl From<&CSSHSL> for Any {
 jsbind::utils::impl_dyn_cast!(CSSHSL);
 
 impl CSSHSL {
-    /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
-    pub fn new0(h: &Any, s: &Any, l: &Any) -> CSSHSL {
-        Self {
-            inner: Any::global("CSSHSL")
-                .new(&[h.into(), s.into(), l.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-
-    /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
-    pub fn new1(h: &Any, s: &Any, l: &Any, alpha: &Any) -> CSSHSL {
-        Self {
-            inner: Any::global("CSSHSL")
-                .new(&[h.into(), s.into(), l.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
-        }
-    }
-}
-impl CSSHSL {
     /// Getter of the `h` attribute.
     /// [`CSSHSL.h`](https://developer.mozilla.org/en-US/docs/Web/API/CSSHSL/h)
     pub fn h(&self) -> Any {
@@ -132,5 +113,25 @@ impl CSSHSL {
     /// [`CSSHSL.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/CSSHSL/alpha)
     pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
+    }
+}
+
+impl CSSHSL {
+    /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
+    pub fn new0(h: &Any, s: &Any, l: &Any) -> CSSHSL {
+        Self {
+            inner: Any::global("CSSHSL")
+                .new(&[h.into(), s.into(), l.into()])
+                .as_::<CSSColorValue>(),
+        }
+    }
+
+    /// The `new CSSHSL(..)` constructor, creating a new CSSHSL instance
+    pub fn new1(h: &Any, s: &Any, l: &Any, alpha: &Any) -> CSSHSL {
+        Self {
+            inner: Any::global("CSSHSL")
+                .new(&[h.into(), s.into(), l.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
+        }
     }
 }

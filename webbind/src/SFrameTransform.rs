@@ -64,6 +64,34 @@ impl From<&SFrameTransform> for Any {
 jsbind::utils::impl_dyn_cast!(SFrameTransform);
 
 impl SFrameTransform {
+    /// Getter of the `onerror` attribute.
+    /// [`SFrameTransform.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/onerror)
+    pub fn onerror(&self) -> Any {
+        self.inner.get("onerror").as_::<Any>()
+    }
+
+    /// Setter of the `onerror` attribute.
+    /// [`SFrameTransform.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/onerror)
+    pub fn set_onerror(&mut self, value: &Any) {
+        self.inner.set("onerror", value);
+    }
+}
+impl SFrameTransform {
+    /// Getter of the `readable` attribute.
+    /// [`SFrameTransform.readable`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/readable)
+    pub fn readable(&self) -> ReadableStream {
+        self.inner.get("readable").as_::<ReadableStream>()
+    }
+}
+impl SFrameTransform {
+    /// Getter of the `writable` attribute.
+    /// [`SFrameTransform.writable`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/writable)
+    pub fn writable(&self) -> WritableStream {
+        self.inner.get("writable").as_::<WritableStream>()
+    }
+}
+
+impl SFrameTransform {
     /// The `new SFrameTransform(..)` constructor, creating a new SFrameTransform instance
     pub fn new0() -> SFrameTransform {
         Self {
@@ -94,32 +122,5 @@ impl SFrameTransform {
         self.inner
             .call("setEncryptionKey", &[key.into(), key_id.into()])
             .as_::<Promise<Undefined>>()
-    }
-}
-impl SFrameTransform {
-    /// Getter of the `onerror` attribute.
-    /// [`SFrameTransform.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/onerror)
-    pub fn onerror(&self) -> Any {
-        self.inner.get("onerror").as_::<Any>()
-    }
-
-    /// Setter of the `onerror` attribute.
-    /// [`SFrameTransform.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/onerror)
-    pub fn set_onerror(&mut self, value: &Any) {
-        self.inner.set("onerror", value);
-    }
-}
-impl SFrameTransform {
-    /// Getter of the `readable` attribute.
-    /// [`SFrameTransform.readable`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/readable)
-    pub fn readable(&self) -> ReadableStream {
-        self.inner.get("readable").as_::<ReadableStream>()
-    }
-}
-impl SFrameTransform {
-    /// Getter of the `writable` attribute.
-    /// [`SFrameTransform.writable`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/writable)
-    pub fn writable(&self) -> WritableStream {
-        self.inner.get("writable").as_::<WritableStream>()
     }
 }

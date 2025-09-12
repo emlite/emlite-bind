@@ -64,23 +64,6 @@ impl From<&Event> for Any {
 jsbind::utils::impl_dyn_cast!(Event);
 
 impl Event {
-    /// The `new Event(..)` constructor, creating a new Event instance
-    pub fn new0(type_: &JsString) -> Event {
-        Self {
-            inner: Any::global("Event").new(&[type_.into()]).as_::<Any>(),
-        }
-    }
-
-    /// The `new Event(..)` constructor, creating a new Event instance
-    pub fn new1(type_: &JsString, event_init_dict: &EventInit) -> Event {
-        Self {
-            inner: Any::global("Event")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl Event {
     /// Getter of the `type` attribute.
     /// [`Event.type`](https://developer.mozilla.org/en-US/docs/Web/API/Event/type)
     pub fn type_(&self) -> JsString {
@@ -109,26 +92,10 @@ impl Event {
     }
 }
 impl Event {
-    /// The composedPath method.
-    /// [`Event.composedPath`](https://developer.mozilla.org/en-US/docs/Web/API/Event/composedPath)
-    pub fn composed_path(&self) -> TypedArray<EventTarget> {
-        self.inner
-            .call("composedPath", &[])
-            .as_::<TypedArray<EventTarget>>()
-    }
-}
-impl Event {
     /// Getter of the `eventPhase` attribute.
     /// [`Event.eventPhase`](https://developer.mozilla.org/en-US/docs/Web/API/Event/eventPhase)
     pub fn event_phase(&self) -> u16 {
         self.inner.get("eventPhase").as_::<u16>()
-    }
-}
-impl Event {
-    /// The stopPropagation method.
-    /// [`Event.stopPropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
-    pub fn stop_propagation(&self) -> Undefined {
-        self.inner.call("stopPropagation", &[]).as_::<Undefined>()
     }
 }
 impl Event {
@@ -142,15 +109,6 @@ impl Event {
     /// [`Event.cancelBubble`](https://developer.mozilla.org/en-US/docs/Web/API/Event/cancelBubble)
     pub fn set_cancel_bubble(&mut self, value: bool) {
         self.inner.set("cancelBubble", value);
-    }
-}
-impl Event {
-    /// The stopImmediatePropagation method.
-    /// [`Event.stopImmediatePropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation)
-    pub fn stop_immediate_propagation(&self) -> Undefined {
-        self.inner
-            .call("stopImmediatePropagation", &[])
-            .as_::<Undefined>()
     }
 }
 impl Event {
@@ -181,13 +139,6 @@ impl Event {
     }
 }
 impl Event {
-    /// The preventDefault method.
-    /// [`Event.preventDefault`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
-    pub fn prevent_default(&self) -> Undefined {
-        self.inner.call("preventDefault", &[]).as_::<Undefined>()
-    }
-}
-impl Event {
     /// Getter of the `defaultPrevented` attribute.
     /// [`Event.defaultPrevented`](https://developer.mozilla.org/en-US/docs/Web/API/Event/defaultPrevented)
     pub fn default_prevented(&self) -> bool {
@@ -213,6 +164,56 @@ impl Event {
     /// [`Event.timeStamp`](https://developer.mozilla.org/en-US/docs/Web/API/Event/timeStamp)
     pub fn time_stamp(&self) -> Any {
         self.inner.get("timeStamp").as_::<Any>()
+    }
+}
+
+impl Event {
+    /// The `new Event(..)` constructor, creating a new Event instance
+    pub fn new0(type_: &JsString) -> Event {
+        Self {
+            inner: Any::global("Event").new(&[type_.into()]).as_::<Any>(),
+        }
+    }
+
+    /// The `new Event(..)` constructor, creating a new Event instance
+    pub fn new1(type_: &JsString, event_init_dict: &EventInit) -> Event {
+        Self {
+            inner: Any::global("Event")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Any>(),
+        }
+    }
+}
+impl Event {
+    /// The composedPath method.
+    /// [`Event.composedPath`](https://developer.mozilla.org/en-US/docs/Web/API/Event/composedPath)
+    pub fn composed_path(&self) -> TypedArray<EventTarget> {
+        self.inner
+            .call("composedPath", &[])
+            .as_::<TypedArray<EventTarget>>()
+    }
+}
+impl Event {
+    /// The stopPropagation method.
+    /// [`Event.stopPropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
+    pub fn stop_propagation(&self) -> Undefined {
+        self.inner.call("stopPropagation", &[]).as_::<Undefined>()
+    }
+}
+impl Event {
+    /// The stopImmediatePropagation method.
+    /// [`Event.stopImmediatePropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation)
+    pub fn stop_immediate_propagation(&self) -> Undefined {
+        self.inner
+            .call("stopImmediatePropagation", &[])
+            .as_::<Undefined>()
+    }
+}
+impl Event {
+    /// The preventDefault method.
+    /// [`Event.preventDefault`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
+    pub fn prevent_default(&self) -> Undefined {
+        self.inner.call("preventDefault", &[]).as_::<Undefined>()
     }
 }
 impl Event {

@@ -64,16 +64,6 @@ impl From<&HTMLTrackElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLTrackElement);
 
 impl HTMLTrackElement {
-    /// The `new HTMLTrackElement(..)` constructor, creating a new HTMLTrackElement instance
-    pub fn new() -> HTMLTrackElement {
-        Self {
-            inner: Any::global("HTMLTrackElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLTrackElement {
     /// Getter of the `kind` attribute.
     /// [`HTMLTrackElement.kind`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/kind)
     pub fn kind(&self) -> JsString {
@@ -150,5 +140,16 @@ impl HTMLTrackElement {
     /// [`HTMLTrackElement.track`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/track)
     pub fn track(&self) -> TextTrack {
         self.inner.get("track").as_::<TextTrack>()
+    }
+}
+
+impl HTMLTrackElement {
+    /// The `new HTMLTrackElement(..)` constructor, creating a new HTMLTrackElement instance
+    pub fn new() -> HTMLTrackElement {
+        Self {
+            inner: Any::global("HTMLTrackElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

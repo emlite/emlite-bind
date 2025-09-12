@@ -64,17 +64,17 @@ impl From<&PluginArray> for Any {
 jsbind::utils::impl_dyn_cast!(PluginArray);
 
 impl PluginArray {
-    /// The refresh method.
-    /// [`PluginArray.refresh`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/refresh)
-    pub fn refresh(&self) -> Undefined {
-        self.inner.call("refresh", &[]).as_::<Undefined>()
-    }
-}
-impl PluginArray {
     /// Getter of the `length` attribute.
     /// [`PluginArray.length`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
+    }
+}
+impl PluginArray {
+    /// The refresh method.
+    /// [`PluginArray.refresh`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/refresh)
+    pub fn refresh(&self) -> Undefined {
+        self.inner.call("refresh", &[]).as_::<Undefined>()
     }
 }
 impl PluginArray {

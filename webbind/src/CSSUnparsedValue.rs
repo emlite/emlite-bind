@@ -64,6 +64,14 @@ impl From<&CSSUnparsedValue> for Any {
 jsbind::utils::impl_dyn_cast!(CSSUnparsedValue);
 
 impl CSSUnparsedValue {
+    /// Getter of the `length` attribute.
+    /// [`CSSUnparsedValue.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnparsedValue/length)
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+
+impl CSSUnparsedValue {
     /// The `new CSSUnparsedValue(..)` constructor, creating a new CSSUnparsedValue instance
     pub fn new(members: &TypedArray<Any>) -> CSSUnparsedValue {
         Self {
@@ -71,12 +79,5 @@ impl CSSUnparsedValue {
                 .new(&[members.into()])
                 .as_::<CSSStyleValue>(),
         }
-    }
-}
-impl CSSUnparsedValue {
-    /// Getter of the `length` attribute.
-    /// [`CSSUnparsedValue.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnparsedValue/length)
-    pub fn length(&self) -> u32 {
-        self.inner.get("length").as_::<u32>()
     }
 }

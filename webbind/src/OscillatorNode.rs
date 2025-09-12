@@ -64,25 +64,6 @@ impl From<&OscillatorNode> for Any {
 jsbind::utils::impl_dyn_cast!(OscillatorNode);
 
 impl OscillatorNode {
-    /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
-    pub fn new0(context: &BaseAudioContext) -> OscillatorNode {
-        Self {
-            inner: Any::global("OscillatorNode")
-                .new(&[context.into()])
-                .as_::<AudioScheduledSourceNode>(),
-        }
-    }
-
-    /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
-    pub fn new1(context: &BaseAudioContext, options: &OscillatorOptions) -> OscillatorNode {
-        Self {
-            inner: Any::global("OscillatorNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioScheduledSourceNode>(),
-        }
-    }
-}
-impl OscillatorNode {
     /// Getter of the `type` attribute.
     /// [`OscillatorNode.type`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type)
     pub fn type_(&self) -> OscillatorType {
@@ -107,6 +88,26 @@ impl OscillatorNode {
     /// [`OscillatorNode.detune`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune)
     pub fn detune(&self) -> AudioParam {
         self.inner.get("detune").as_::<AudioParam>()
+    }
+}
+
+impl OscillatorNode {
+    /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
+    pub fn new0(context: &BaseAudioContext) -> OscillatorNode {
+        Self {
+            inner: Any::global("OscillatorNode")
+                .new(&[context.into()])
+                .as_::<AudioScheduledSourceNode>(),
+        }
+    }
+
+    /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
+    pub fn new1(context: &BaseAudioContext, options: &OscillatorOptions) -> OscillatorNode {
+        Self {
+            inner: Any::global("OscillatorNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioScheduledSourceNode>(),
+        }
     }
 }
 impl OscillatorNode {

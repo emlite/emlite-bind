@@ -64,16 +64,6 @@ impl From<&HTMLMarqueeElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLMarqueeElement);
 
 impl HTMLMarqueeElement {
-    /// The `new HTMLMarqueeElement(..)` constructor, creating a new HTMLMarqueeElement instance
-    pub fn new() -> HTMLMarqueeElement {
-        Self {
-            inner: Any::global("HTMLMarqueeElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLMarqueeElement {
     /// Getter of the `behavior` attribute.
     /// [`HTMLMarqueeElement.behavior`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/behavior)
     pub fn behavior(&self) -> JsString {
@@ -214,6 +204,17 @@ impl HTMLMarqueeElement {
     /// [`HTMLMarqueeElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/width)
     pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
+    }
+}
+
+impl HTMLMarqueeElement {
+    /// The `new HTMLMarqueeElement(..)` constructor, creating a new HTMLMarqueeElement instance
+    pub fn new() -> HTMLMarqueeElement {
+        Self {
+            inner: Any::global("HTMLMarqueeElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }
 impl HTMLMarqueeElement {

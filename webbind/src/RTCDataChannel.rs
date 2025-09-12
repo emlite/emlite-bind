@@ -205,13 +205,6 @@ impl RTCDataChannel {
     }
 }
 impl RTCDataChannel {
-    /// The close method.
-    /// [`RTCDataChannel.close`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/close)
-    pub fn close(&self) -> Undefined {
-        self.inner.call("close", &[]).as_::<Undefined>()
-    }
-}
-impl RTCDataChannel {
     /// Getter of the `onmessage` attribute.
     /// [`RTCDataChannel.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/onmessage)
     pub fn onmessage(&self) -> Any {
@@ -238,16 +231,44 @@ impl RTCDataChannel {
     }
 }
 impl RTCDataChannel {
-    /// The send method.
-    /// [`RTCDataChannel.send`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/send)
-    pub fn send(&self, data: &Any) -> Undefined {
-        self.inner.call("send", &[data.into()]).as_::<Undefined>()
-    }
-}
-impl RTCDataChannel {
     /// Getter of the `priority` attribute.
     /// [`RTCDataChannel.priority`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/priority)
     pub fn priority(&self) -> RTCPriorityType {
         self.inner.get("priority").as_::<RTCPriorityType>()
+    }
+}
+impl RTCDataChannel {
+    /// The close method.
+    /// [`RTCDataChannel.close`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/close)
+    pub fn close(&self) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
+    }
+}
+impl RTCDataChannel {
+    /// The send method.
+    /// [`RTCDataChannel.send`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/send)
+    pub fn send(&self, data: &JsString) -> Undefined {
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+    }
+}
+impl RTCDataChannel {
+    /// The send method.
+    /// [`RTCDataChannel.send`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/send)
+    pub fn send1(&self, data: &Blob) -> Undefined {
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+    }
+}
+impl RTCDataChannel {
+    /// The send method.
+    /// [`RTCDataChannel.send`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/send)
+    pub fn send2(&self, data: &ArrayBuffer) -> Undefined {
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
+    }
+}
+impl RTCDataChannel {
+    /// The send method.
+    /// [`RTCDataChannel.send`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/send)
+    pub fn send3(&self, data: &Any) -> Undefined {
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }

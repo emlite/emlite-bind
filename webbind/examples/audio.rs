@@ -23,7 +23,7 @@ fn main() {
         &JsString::from("click"),
         &Closure::bind1(move |_p: PointerEvent| {
             println!("Playing");
-            oscillator.connect0(context.destination().unchecked_ref::<AudioParam>());
+            oscillator.connect3(context.destination().unchecked_ref::<AudioParam>());
             oscillator.start1(0.0);
             println!("All done!");
         })

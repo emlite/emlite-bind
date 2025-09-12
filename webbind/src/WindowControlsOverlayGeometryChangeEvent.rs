@@ -64,19 +64,6 @@ impl From<&WindowControlsOverlayGeometryChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(WindowControlsOverlayGeometryChangeEvent);
 
 impl WindowControlsOverlayGeometryChangeEvent {
-    /// The `new WindowControlsOverlayGeometryChangeEvent(..)` constructor, creating a new WindowControlsOverlayGeometryChangeEvent instance
-    pub fn new(
-        type_: &JsString,
-        event_init_dict: &WindowControlsOverlayGeometryChangeEventInit,
-    ) -> WindowControlsOverlayGeometryChangeEvent {
-        Self {
-            inner: Any::global("WindowControlsOverlayGeometryChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
-        }
-    }
-}
-impl WindowControlsOverlayGeometryChangeEvent {
     /// Getter of the `titlebarAreaRect` attribute.
     /// [`WindowControlsOverlayGeometryChangeEvent.titlebarAreaRect`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlayGeometryChangeEvent/titlebarAreaRect)
     pub fn titlebar_area_rect(&self) -> DOMRect {
@@ -88,5 +75,19 @@ impl WindowControlsOverlayGeometryChangeEvent {
     /// [`WindowControlsOverlayGeometryChangeEvent.visible`](https://developer.mozilla.org/en-US/docs/Web/API/WindowControlsOverlayGeometryChangeEvent/visible)
     pub fn visible(&self) -> bool {
         self.inner.get("visible").as_::<bool>()
+    }
+}
+
+impl WindowControlsOverlayGeometryChangeEvent {
+    /// The `new WindowControlsOverlayGeometryChangeEvent(..)` constructor, creating a new WindowControlsOverlayGeometryChangeEvent instance
+    pub fn new(
+        type_: &JsString,
+        event_init_dict: &WindowControlsOverlayGeometryChangeEventInit,
+    ) -> WindowControlsOverlayGeometryChangeEvent {
+        Self {
+            inner: Any::global("WindowControlsOverlayGeometryChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
     }
 }

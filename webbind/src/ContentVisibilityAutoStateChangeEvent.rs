@@ -64,6 +64,14 @@ impl From<&ContentVisibilityAutoStateChangeEvent> for Any {
 jsbind::utils::impl_dyn_cast!(ContentVisibilityAutoStateChangeEvent);
 
 impl ContentVisibilityAutoStateChangeEvent {
+    /// Getter of the `skipped` attribute.
+    /// [`ContentVisibilityAutoStateChangeEvent.skipped`](https://developer.mozilla.org/en-US/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped)
+    pub fn skipped(&self) -> bool {
+        self.inner.get("skipped").as_::<bool>()
+    }
+}
+
+impl ContentVisibilityAutoStateChangeEvent {
     /// The `new ContentVisibilityAutoStateChangeEvent(..)` constructor, creating a new ContentVisibilityAutoStateChangeEvent instance
     pub fn new0(type_: &JsString) -> ContentVisibilityAutoStateChangeEvent {
         Self {
@@ -83,12 +91,5 @@ impl ContentVisibilityAutoStateChangeEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl ContentVisibilityAutoStateChangeEvent {
-    /// Getter of the `skipped` attribute.
-    /// [`ContentVisibilityAutoStateChangeEvent.skipped`](https://developer.mozilla.org/en-US/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped)
-    pub fn skipped(&self) -> bool {
-        self.inner.get("skipped").as_::<bool>()
     }
 }

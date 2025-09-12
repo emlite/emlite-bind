@@ -64,16 +64,6 @@ impl From<&HTMLDetailsElement> for Any {
 jsbind::utils::impl_dyn_cast!(HTMLDetailsElement);
 
 impl HTMLDetailsElement {
-    /// The `new HTMLDetailsElement(..)` constructor, creating a new HTMLDetailsElement instance
-    pub fn new() -> HTMLDetailsElement {
-        Self {
-            inner: Any::global("HTMLDetailsElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
-        }
-    }
-}
-impl HTMLDetailsElement {
     /// Getter of the `name` attribute.
     /// [`HTMLDetailsElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement/name)
     pub fn name(&self) -> JsString {
@@ -97,5 +87,16 @@ impl HTMLDetailsElement {
     /// [`HTMLDetailsElement.open`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement/open)
     pub fn set_open(&mut self, value: bool) {
         self.inner.set("open", value);
+    }
+}
+
+impl HTMLDetailsElement {
+    /// The `new HTMLDetailsElement(..)` constructor, creating a new HTMLDetailsElement instance
+    pub fn new() -> HTMLDetailsElement {
+        Self {
+            inner: Any::global("HTMLDetailsElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
     }
 }

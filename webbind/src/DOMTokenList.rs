@@ -71,6 +71,19 @@ impl DOMTokenList {
     }
 }
 impl DOMTokenList {
+    /// Getter of the `value` attribute.
+    /// [`DOMTokenList.value`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/value)
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
+    }
+
+    /// Setter of the `value` attribute.
+    /// [`DOMTokenList.value`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/value)
+    pub fn set_value(&mut self, value: &JsString) {
+        self.inner.set("value", value);
+    }
+}
+impl DOMTokenList {
     /// The item method.
     /// [`DOMTokenList.item`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/item)
     pub fn item(&self, index: u32) -> JsString {
@@ -128,18 +141,5 @@ impl DOMTokenList {
     /// [`DOMTokenList.supports`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/supports)
     pub fn supports(&self, token: &JsString) -> bool {
         self.inner.call("supports", &[token.into()]).as_::<bool>()
-    }
-}
-impl DOMTokenList {
-    /// Getter of the `value` attribute.
-    /// [`DOMTokenList.value`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/value)
-    pub fn value(&self) -> JsString {
-        self.inner.get("value").as_::<JsString>()
-    }
-
-    /// Setter of the `value` attribute.
-    /// [`DOMTokenList.value`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/value)
-    pub fn set_value(&mut self, value: &JsString) {
-        self.inner.set("value", value);
     }
 }

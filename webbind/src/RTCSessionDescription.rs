@@ -64,16 +64,6 @@ impl From<&RTCSessionDescription> for Any {
 jsbind::utils::impl_dyn_cast!(RTCSessionDescription);
 
 impl RTCSessionDescription {
-    /// The `new RTCSessionDescription(..)` constructor, creating a new RTCSessionDescription instance
-    pub fn new(description_init_dict: &RTCSessionDescriptionInit) -> RTCSessionDescription {
-        Self {
-            inner: Any::global("RTCSessionDescription")
-                .new(&[description_init_dict.into()])
-                .as_::<Any>(),
-        }
-    }
-}
-impl RTCSessionDescription {
     /// Getter of the `type` attribute.
     /// [`RTCSessionDescription.type`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/type)
     pub fn type_(&self) -> RTCSdpType {
@@ -85,6 +75,17 @@ impl RTCSessionDescription {
     /// [`RTCSessionDescription.sdp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/sdp)
     pub fn sdp(&self) -> JsString {
         self.inner.get("sdp").as_::<JsString>()
+    }
+}
+
+impl RTCSessionDescription {
+    /// The `new RTCSessionDescription(..)` constructor, creating a new RTCSessionDescription instance
+    pub fn new(description_init_dict: &RTCSessionDescriptionInit) -> RTCSessionDescription {
+        Self {
+            inner: Any::global("RTCSessionDescription")
+                .new(&[description_init_dict.into()])
+                .as_::<Any>(),
+        }
     }
 }
 impl RTCSessionDescription {

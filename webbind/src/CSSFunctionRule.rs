@@ -71,18 +71,18 @@ impl CSSFunctionRule {
     }
 }
 impl CSSFunctionRule {
+    /// Getter of the `returnType` attribute.
+    /// [`CSSFunctionRule.returnType`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/returnType)
+    pub fn return_type(&self) -> JsString {
+        self.inner.get("returnType").as_::<JsString>()
+    }
+}
+impl CSSFunctionRule {
     /// The getParameters method.
     /// [`CSSFunctionRule.getParameters`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/getParameters)
     pub fn get_parameters(&self) -> TypedArray<FunctionParameter> {
         self.inner
             .call("getParameters", &[])
             .as_::<TypedArray<FunctionParameter>>()
-    }
-}
-impl CSSFunctionRule {
-    /// Getter of the `returnType` attribute.
-    /// [`CSSFunctionRule.returnType`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/returnType)
-    pub fn return_type(&self) -> JsString {
-        self.inner.get("returnType").as_::<JsString>()
     }
 }

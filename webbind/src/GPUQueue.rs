@@ -64,6 +64,19 @@ impl From<&GPUQueue> for Any {
 jsbind::utils::impl_dyn_cast!(GPUQueue);
 
 impl GPUQueue {
+    /// Getter of the `label` attribute.
+    /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
+    }
+
+    /// Setter of the `label` attribute.
+    /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
+    pub fn set_label(&mut self, value: &JsString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPUQueue {
     /// The submit method.
     /// [`GPUQueue.submit`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/submit)
     pub fn submit(&self, command_buffers: &TypedArray<GPUCommandBuffer>) -> Undefined {
@@ -175,18 +188,5 @@ impl GPUQueue {
                 &[source.into(), destination.into(), copy_size.into()],
             )
             .as_::<Undefined>()
-    }
-}
-impl GPUQueue {
-    /// Getter of the `label` attribute.
-    /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
-    pub fn label(&self) -> JsString {
-        self.inner.get("label").as_::<JsString>()
-    }
-
-    /// Setter of the `label` attribute.
-    /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
-    pub fn set_label(&mut self, value: &JsString) {
-        self.inner.set("label", value);
     }
 }

@@ -64,25 +64,6 @@ impl From<&XRWebGLLayer> for Any {
 jsbind::utils::impl_dyn_cast!(XRWebGLLayer);
 
 impl XRWebGLLayer {
-    /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
-    pub fn new0(session: &XRSession, context: &Any) -> XRWebGLLayer {
-        Self {
-            inner: Any::global("XRWebGLLayer")
-                .new(&[session.into(), context.into()])
-                .as_::<XRLayer>(),
-        }
-    }
-
-    /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
-    pub fn new1(session: &XRSession, context: &Any, layer_init: &XRWebGLLayerInit) -> XRWebGLLayer {
-        Self {
-            inner: Any::global("XRWebGLLayer")
-                .new(&[session.into(), context.into(), layer_init.into()])
-                .as_::<XRLayer>(),
-        }
-    }
-}
-impl XRWebGLLayer {
     /// Getter of the `antialias` attribute.
     /// [`XRWebGLLayer.antialias`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLLayer/antialias)
     pub fn antialias(&self) -> bool {
@@ -128,6 +109,26 @@ impl XRWebGLLayer {
     /// [`XRWebGLLayer.framebufferHeight`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLLayer/framebufferHeight)
     pub fn framebuffer_height(&self) -> u32 {
         self.inner.get("framebufferHeight").as_::<u32>()
+    }
+}
+
+impl XRWebGLLayer {
+    /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
+    pub fn new0(session: &XRSession, context: &Any) -> XRWebGLLayer {
+        Self {
+            inner: Any::global("XRWebGLLayer")
+                .new(&[session.into(), context.into()])
+                .as_::<XRLayer>(),
+        }
+    }
+
+    /// The `new XRWebGLLayer(..)` constructor, creating a new XRWebGLLayer instance
+    pub fn new1(session: &XRSession, context: &Any, layer_init: &XRWebGLLayerInit) -> XRWebGLLayer {
+        Self {
+            inner: Any::global("XRWebGLLayer")
+                .new(&[session.into(), context.into(), layer_init.into()])
+                .as_::<XRLayer>(),
+        }
     }
 }
 impl XRWebGLLayer {

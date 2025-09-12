@@ -64,16 +64,6 @@ impl From<&AudioDecoder> for Any {
 jsbind::utils::impl_dyn_cast!(AudioDecoder);
 
 impl AudioDecoder {
-    /// The `new AudioDecoder(..)` constructor, creating a new AudioDecoder instance
-    pub fn new(init: &AudioDecoderInit) -> AudioDecoder {
-        Self {
-            inner: Any::global("AudioDecoder")
-                .new(&[init.into()])
-                .as_::<EventTarget>(),
-        }
-    }
-}
-impl AudioDecoder {
     /// Getter of the `state` attribute.
     /// [`AudioDecoder.state`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/state)
     pub fn state(&self) -> CodecState {
@@ -98,6 +88,17 @@ impl AudioDecoder {
     /// [`AudioDecoder.ondequeue`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/ondequeue)
     pub fn set_ondequeue(&mut self, value: &Any) {
         self.inner.set("ondequeue", value);
+    }
+}
+
+impl AudioDecoder {
+    /// The `new AudioDecoder(..)` constructor, creating a new AudioDecoder instance
+    pub fn new(init: &AudioDecoderInit) -> AudioDecoder {
+        Self {
+            inner: Any::global("AudioDecoder")
+                .new(&[init.into()])
+                .as_::<EventTarget>(),
+        }
     }
 }
 impl AudioDecoder {

@@ -64,6 +64,14 @@ impl From<&USBConnectionEvent> for Any {
 jsbind::utils::impl_dyn_cast!(USBConnectionEvent);
 
 impl USBConnectionEvent {
+    /// Getter of the `device` attribute.
+    /// [`USBConnectionEvent.device`](https://developer.mozilla.org/en-US/docs/Web/API/USBConnectionEvent/device)
+    pub fn device(&self) -> USBDevice {
+        self.inner.get("device").as_::<USBDevice>()
+    }
+}
+
+impl USBConnectionEvent {
     /// The `new USBConnectionEvent(..)` constructor, creating a new USBConnectionEvent instance
     pub fn new(type_: &JsString, event_init_dict: &USBConnectionEventInit) -> USBConnectionEvent {
         Self {
@@ -71,12 +79,5 @@ impl USBConnectionEvent {
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
-    }
-}
-impl USBConnectionEvent {
-    /// Getter of the `device` attribute.
-    /// [`USBConnectionEvent.device`](https://developer.mozilla.org/en-US/docs/Web/API/USBConnectionEvent/device)
-    pub fn device(&self) -> USBDevice {
-        self.inner.get("device").as_::<USBDevice>()
     }
 }

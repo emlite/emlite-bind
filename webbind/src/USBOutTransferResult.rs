@@ -64,6 +64,21 @@ impl From<&USBOutTransferResult> for Any {
 jsbind::utils::impl_dyn_cast!(USBOutTransferResult);
 
 impl USBOutTransferResult {
+    /// Getter of the `bytesWritten` attribute.
+    /// [`USBOutTransferResult.bytesWritten`](https://developer.mozilla.org/en-US/docs/Web/API/USBOutTransferResult/bytesWritten)
+    pub fn bytes_written(&self) -> u32 {
+        self.inner.get("bytesWritten").as_::<u32>()
+    }
+}
+impl USBOutTransferResult {
+    /// Getter of the `status` attribute.
+    /// [`USBOutTransferResult.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBOutTransferResult/status)
+    pub fn status(&self) -> USBTransferStatus {
+        self.inner.get("status").as_::<USBTransferStatus>()
+    }
+}
+
+impl USBOutTransferResult {
     /// The `new USBOutTransferResult(..)` constructor, creating a new USBOutTransferResult instance
     pub fn new0(status: &USBTransferStatus) -> USBOutTransferResult {
         Self {
@@ -80,19 +95,5 @@ impl USBOutTransferResult {
                 .new(&[status.into(), bytes_written.into()])
                 .as_::<Any>(),
         }
-    }
-}
-impl USBOutTransferResult {
-    /// Getter of the `bytesWritten` attribute.
-    /// [`USBOutTransferResult.bytesWritten`](https://developer.mozilla.org/en-US/docs/Web/API/USBOutTransferResult/bytesWritten)
-    pub fn bytes_written(&self) -> u32 {
-        self.inner.get("bytesWritten").as_::<u32>()
-    }
-}
-impl USBOutTransferResult {
-    /// Getter of the `status` attribute.
-    /// [`USBOutTransferResult.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBOutTransferResult/status)
-    pub fn status(&self) -> USBTransferStatus {
-        self.inner.get("status").as_::<USBTransferStatus>()
     }
 }
