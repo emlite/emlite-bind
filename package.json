@@ -9,14 +9,14 @@
   },
   "scripts": {
     "cargo": "cargo build --target=wasm32-unknown-unknown --examples --release",
-    "regen": "node scripts/index.js",
+    "regen": "node scripts/index.js && rustfmt webbind/src/*.rs",
     "test:all": "npm run regen && npm run cargo",
     "serve": "npx http-server"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@webref/idl": "=3.66.1"
+    "@webref/idl": "=3.67.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

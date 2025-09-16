@@ -4710,6 +4710,47 @@ impl From<&MeteringMode> for Any {
 }
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IPAddressSpace {
+    PUBLIC,
+    LOCAL,
+    LOOPBACK,
+}
+impl FromVal for IPAddressSpace {
+    fn from_val(v: &Any) -> Self {
+        match v.as_::<Option<String>>().unwrap().as_str() {
+            "public" => Self::PUBLIC,
+            "local" => Self::LOCAL,
+            "loopback" => Self::LOOPBACK,
+            _ => unreachable!(),
+        }
+    }
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
+    }
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
+    }
+}
+impl From<IPAddressSpace> for Any {
+    fn from(s: IPAddressSpace) -> Any {
+        match s {
+            IPAddressSpace::PUBLIC => Any::from("public"),
+            IPAddressSpace::LOCAL => Any::from("local"),
+            IPAddressSpace::LOOPBACK => Any::from("loopback"),
+        }
+    }
+}
+impl From<&IPAddressSpace> for Any {
+    fn from(s: &IPAddressSpace) -> Any {
+        match *s {
+            IPAddressSpace::PUBLIC => Any::from("public"),
+            IPAddressSpace::LOCAL => Any::from("local"),
+            IPAddressSpace::LOOPBACK => Any::from("loopback"),
+        }
+    }
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum LoginStatus {
     LOGGED_IN,
     LOGGED_OUT,
@@ -6450,47 +6491,6 @@ impl From<&AttributionLogic> for Any {
     fn from(s: &AttributionLogic) -> Any {
         match *s {
             AttributionLogic::LAST_N_TOUCH => Any::from("last-n-touch"),
-        }
-    }
-}
-
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-pub enum IPAddressSpace {
-    PUBLIC,
-    PRIVATE,
-    LOCAL,
-}
-impl FromVal for IPAddressSpace {
-    fn from_val(v: &Any) -> Self {
-        match v.as_::<Option<String>>().unwrap().as_str() {
-            "public" => Self::PUBLIC,
-            "private" => Self::PRIVATE,
-            "local" => Self::LOCAL,
-            _ => unreachable!(),
-        }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        Any::from(*self).as_handle()
-    }
-}
-impl From<IPAddressSpace> for Any {
-    fn from(s: IPAddressSpace) -> Any {
-        match s {
-            IPAddressSpace::PUBLIC => Any::from("public"),
-            IPAddressSpace::PRIVATE => Any::from("private"),
-            IPAddressSpace::LOCAL => Any::from("local"),
-        }
-    }
-}
-impl From<&IPAddressSpace> for Any {
-    fn from(s: &IPAddressSpace) -> Any {
-        match *s {
-            IPAddressSpace::PUBLIC => Any::from("public"),
-            IPAddressSpace::PRIVATE => Any::from("private"),
-            IPAddressSpace::LOCAL => Any::from("local"),
         }
     }
 }
@@ -10644,6 +10644,144 @@ impl From<&VideoMatrixCoefficients> for Any {
 }
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum KeyFormat {
+    RAW_PUBLIC,
+    RAW_PRIVATE,
+    RAW_SEED,
+    RAW_SECRET,
+    RAW_,
+    SPKI,
+    PKCS8,
+    JWK,
+}
+impl FromVal for KeyFormat {
+    fn from_val(v: &Any) -> Self {
+        match v.as_::<Option<String>>().unwrap().as_str() {
+            "raw-public" => Self::RAW_PUBLIC,
+            "raw-private" => Self::RAW_PRIVATE,
+            "raw-seed" => Self::RAW_SEED,
+            "raw-secret" => Self::RAW_SECRET,
+            "raw" => Self::RAW_,
+            "spki" => Self::SPKI,
+            "pkcs8" => Self::PKCS8,
+            "jwk" => Self::JWK,
+            _ => unreachable!(),
+        }
+    }
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
+    }
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
+    }
+}
+impl From<KeyFormat> for Any {
+    fn from(s: KeyFormat) -> Any {
+        match s {
+            KeyFormat::RAW_PUBLIC => Any::from("raw-public"),
+            KeyFormat::RAW_PRIVATE => Any::from("raw-private"),
+            KeyFormat::RAW_SEED => Any::from("raw-seed"),
+            KeyFormat::RAW_SECRET => Any::from("raw-secret"),
+            KeyFormat::RAW_ => Any::from("raw"),
+            KeyFormat::SPKI => Any::from("spki"),
+            KeyFormat::PKCS8 => Any::from("pkcs8"),
+            KeyFormat::JWK => Any::from("jwk"),
+        }
+    }
+}
+impl From<&KeyFormat> for Any {
+    fn from(s: &KeyFormat) -> Any {
+        match *s {
+            KeyFormat::RAW_PUBLIC => Any::from("raw-public"),
+            KeyFormat::RAW_PRIVATE => Any::from("raw-private"),
+            KeyFormat::RAW_SEED => Any::from("raw-seed"),
+            KeyFormat::RAW_SECRET => Any::from("raw-secret"),
+            KeyFormat::RAW_ => Any::from("raw"),
+            KeyFormat::SPKI => Any::from("spki"),
+            KeyFormat::PKCS8 => Any::from("pkcs8"),
+            KeyFormat::JWK => Any::from("jwk"),
+        }
+    }
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum KeyUsage {
+    ENCRYPT,
+    DECRYPT,
+    SIGN,
+    VERIFY,
+    DERIVE_KEY,
+    DERIVE_BITS,
+    WRAP_KEY,
+    UNWRAP_KEY,
+    ENCAPSULATE_KEY,
+    ENCAPSULATE_BITS,
+    DECAPSULATE_KEY,
+    DECAPSULATE_BITS,
+}
+impl FromVal for KeyUsage {
+    fn from_val(v: &Any) -> Self {
+        match v.as_::<Option<String>>().unwrap().as_str() {
+            "encrypt" => Self::ENCRYPT,
+            "decrypt" => Self::DECRYPT,
+            "sign" => Self::SIGN,
+            "verify" => Self::VERIFY,
+            "deriveKey" => Self::DERIVE_KEY,
+            "deriveBits" => Self::DERIVE_BITS,
+            "wrapKey" => Self::WRAP_KEY,
+            "unwrapKey" => Self::UNWRAP_KEY,
+            "encapsulateKey" => Self::ENCAPSULATE_KEY,
+            "encapsulateBits" => Self::ENCAPSULATE_BITS,
+            "decapsulateKey" => Self::DECAPSULATE_KEY,
+            "decapsulateBits" => Self::DECAPSULATE_BITS,
+            _ => unreachable!(),
+        }
+    }
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
+    }
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
+    }
+}
+impl From<KeyUsage> for Any {
+    fn from(s: KeyUsage) -> Any {
+        match s {
+            KeyUsage::ENCRYPT => Any::from("encrypt"),
+            KeyUsage::DECRYPT => Any::from("decrypt"),
+            KeyUsage::SIGN => Any::from("sign"),
+            KeyUsage::VERIFY => Any::from("verify"),
+            KeyUsage::DERIVE_KEY => Any::from("deriveKey"),
+            KeyUsage::DERIVE_BITS => Any::from("deriveBits"),
+            KeyUsage::WRAP_KEY => Any::from("wrapKey"),
+            KeyUsage::UNWRAP_KEY => Any::from("unwrapKey"),
+            KeyUsage::ENCAPSULATE_KEY => Any::from("encapsulateKey"),
+            KeyUsage::ENCAPSULATE_BITS => Any::from("encapsulateBits"),
+            KeyUsage::DECAPSULATE_KEY => Any::from("decapsulateKey"),
+            KeyUsage::DECAPSULATE_BITS => Any::from("decapsulateBits"),
+        }
+    }
+}
+impl From<&KeyUsage> for Any {
+    fn from(s: &KeyUsage) -> Any {
+        match *s {
+            KeyUsage::ENCRYPT => Any::from("encrypt"),
+            KeyUsage::DECRYPT => Any::from("decrypt"),
+            KeyUsage::SIGN => Any::from("sign"),
+            KeyUsage::VERIFY => Any::from("verify"),
+            KeyUsage::DERIVE_KEY => Any::from("deriveKey"),
+            KeyUsage::DERIVE_BITS => Any::from("deriveBits"),
+            KeyUsage::WRAP_KEY => Any::from("wrapKey"),
+            KeyUsage::UNWRAP_KEY => Any::from("unwrapKey"),
+            KeyUsage::ENCAPSULATE_KEY => Any::from("encapsulateKey"),
+            KeyUsage::ENCAPSULATE_BITS => Any::from("encapsulateBits"),
+            KeyUsage::DECAPSULATE_KEY => Any::from("decapsulateKey"),
+            KeyUsage::DECAPSULATE_BITS => Any::from("decapsulateBits"),
+        }
+    }
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum KeyType {
     PUBLIC,
     PRIVATE,
@@ -10680,112 +10818,6 @@ impl From<&KeyType> for Any {
             KeyType::PUBLIC => Any::from("public"),
             KeyType::PRIVATE => Any::from("private"),
             KeyType::SECRET => Any::from("secret"),
-        }
-    }
-}
-
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-pub enum KeyUsage {
-    ENCRYPT,
-    DECRYPT,
-    SIGN,
-    VERIFY,
-    DERIVE_KEY,
-    DERIVE_BITS,
-    WRAP_KEY,
-    UNWRAP_KEY,
-}
-impl FromVal for KeyUsage {
-    fn from_val(v: &Any) -> Self {
-        match v.as_::<Option<String>>().unwrap().as_str() {
-            "encrypt" => Self::ENCRYPT,
-            "decrypt" => Self::DECRYPT,
-            "sign" => Self::SIGN,
-            "verify" => Self::VERIFY,
-            "deriveKey" => Self::DERIVE_KEY,
-            "deriveBits" => Self::DERIVE_BITS,
-            "wrapKey" => Self::WRAP_KEY,
-            "unwrapKey" => Self::UNWRAP_KEY,
-            _ => unreachable!(),
-        }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        Any::from(*self).as_handle()
-    }
-}
-impl From<KeyUsage> for Any {
-    fn from(s: KeyUsage) -> Any {
-        match s {
-            KeyUsage::ENCRYPT => Any::from("encrypt"),
-            KeyUsage::DECRYPT => Any::from("decrypt"),
-            KeyUsage::SIGN => Any::from("sign"),
-            KeyUsage::VERIFY => Any::from("verify"),
-            KeyUsage::DERIVE_KEY => Any::from("deriveKey"),
-            KeyUsage::DERIVE_BITS => Any::from("deriveBits"),
-            KeyUsage::WRAP_KEY => Any::from("wrapKey"),
-            KeyUsage::UNWRAP_KEY => Any::from("unwrapKey"),
-        }
-    }
-}
-impl From<&KeyUsage> for Any {
-    fn from(s: &KeyUsage) -> Any {
-        match *s {
-            KeyUsage::ENCRYPT => Any::from("encrypt"),
-            KeyUsage::DECRYPT => Any::from("decrypt"),
-            KeyUsage::SIGN => Any::from("sign"),
-            KeyUsage::VERIFY => Any::from("verify"),
-            KeyUsage::DERIVE_KEY => Any::from("deriveKey"),
-            KeyUsage::DERIVE_BITS => Any::from("deriveBits"),
-            KeyUsage::WRAP_KEY => Any::from("wrapKey"),
-            KeyUsage::UNWRAP_KEY => Any::from("unwrapKey"),
-        }
-    }
-}
-
-#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
-pub enum KeyFormat {
-    RAW_,
-    SPKI,
-    PKCS8,
-    JWK,
-}
-impl FromVal for KeyFormat {
-    fn from_val(v: &Any) -> Self {
-        match v.as_::<Option<String>>().unwrap().as_str() {
-            "raw" => Self::RAW_,
-            "spki" => Self::SPKI,
-            "pkcs8" => Self::PKCS8,
-            "jwk" => Self::JWK,
-            _ => unreachable!(),
-        }
-    }
-    fn take_ownership(v: AnyHandle) -> Self {
-        Self::from_val(&Any::take_ownership(v))
-    }
-    fn as_handle(&self) -> AnyHandle {
-        Any::from(*self).as_handle()
-    }
-}
-impl From<KeyFormat> for Any {
-    fn from(s: KeyFormat) -> Any {
-        match s {
-            KeyFormat::RAW_ => Any::from("raw"),
-            KeyFormat::SPKI => Any::from("spki"),
-            KeyFormat::PKCS8 => Any::from("pkcs8"),
-            KeyFormat::JWK => Any::from("jwk"),
-        }
-    }
-}
-impl From<&KeyFormat> for Any {
-    fn from(s: &KeyFormat) -> Any {
-        match *s {
-            KeyFormat::RAW_ => Any::from("raw"),
-            KeyFormat::SPKI => Any::from("spki"),
-            KeyFormat::PKCS8 => Any::from("pkcs8"),
-            KeyFormat::JWK => Any::from("jwk"),
         }
     }
 }
@@ -10890,6 +10922,7 @@ pub enum GPUFeatureName {
     SUBGROUPS,
     TEXTURE_FORMATS_TIER1,
     TEXTURE_FORMATS_TIER2,
+    PRIMITIVE_INDEX,
 }
 impl FromVal for GPUFeatureName {
     fn from_val(v: &Any) -> Self {
@@ -10914,6 +10947,7 @@ impl FromVal for GPUFeatureName {
             "subgroups" => Self::SUBGROUPS,
             "texture-formats-tier1" => Self::TEXTURE_FORMATS_TIER1,
             "texture-formats-tier2" => Self::TEXTURE_FORMATS_TIER2,
+            "primitive-index" => Self::PRIMITIVE_INDEX,
             _ => unreachable!(),
         }
     }
@@ -10951,6 +10985,7 @@ impl From<GPUFeatureName> for Any {
             GPUFeatureName::SUBGROUPS => Any::from("subgroups"),
             GPUFeatureName::TEXTURE_FORMATS_TIER1 => Any::from("texture-formats-tier1"),
             GPUFeatureName::TEXTURE_FORMATS_TIER2 => Any::from("texture-formats-tier2"),
+            GPUFeatureName::PRIMITIVE_INDEX => Any::from("primitive-index"),
         }
     }
 }
@@ -10981,6 +11016,7 @@ impl From<&GPUFeatureName> for Any {
             GPUFeatureName::SUBGROUPS => Any::from("subgroups"),
             GPUFeatureName::TEXTURE_FORMATS_TIER1 => Any::from("texture-formats-tier1"),
             GPUFeatureName::TEXTURE_FORMATS_TIER2 => Any::from("texture-formats-tier2"),
+            GPUFeatureName::PRIMITIVE_INDEX => Any::from("primitive-index"),
         }
     }
 }

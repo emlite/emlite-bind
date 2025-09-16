@@ -60,12 +60,12 @@ impl From<&IdentityAssertionResponse> for Any {
 
 impl IdentityAssertionResponse {
     /// Getter of the `token` attribute.
-    pub fn token(&self) -> JsString {
-        self.inner.get("token").as_::<JsString>()
+    pub fn token(&self) -> Any {
+        self.inner.get("token").as_::<Any>()
     }
 
     /// Setter of the `token` attribute.
-    pub fn set_token(&mut self, value: &JsString) {
+    pub fn set_token(&mut self, value: &Any) {
         self.inner.set("token", value);
     }
 }

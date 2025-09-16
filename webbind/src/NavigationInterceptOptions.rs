@@ -59,6 +59,17 @@ impl From<&NavigationInterceptOptions> for Any {
 }
 
 impl NavigationInterceptOptions {
+    /// Getter of the `precommitHandler` attribute.
+    pub fn precommit_handler(&self) -> Function {
+        self.inner.get("precommitHandler").as_::<Function>()
+    }
+
+    /// Setter of the `precommitHandler` attribute.
+    pub fn set_precommit_handler(&mut self, value: &Function) {
+        self.inner.set("precommitHandler", value);
+    }
+}
+impl NavigationInterceptOptions {
     /// Getter of the `handler` attribute.
     pub fn handler(&self) -> Function {
         self.inner.get("handler").as_::<Function>()

@@ -69,3 +69,14 @@ impl PushEventInit {
         self.inner.set("data", value);
     }
 }
+impl PushEventInit {
+    /// Getter of the `notification` attribute.
+    pub fn notification(&self) -> Notification {
+        self.inner.get("notification").as_::<Notification>()
+    }
+
+    /// Setter of the `notification` attribute.
+    pub fn set_notification(&mut self, value: &Notification) {
+        self.inner.set("notification", value);
+    }
+}

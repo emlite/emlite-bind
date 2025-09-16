@@ -70,6 +70,13 @@ impl PushEvent {
         self.inner.get("data").as_::<PushMessageData>()
     }
 }
+impl PushEvent {
+    /// Getter of the `notification` attribute.
+    /// [`PushEvent.notification`](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent/notification)
+    pub fn notification(&self) -> Notification {
+        self.inner.get("notification").as_::<Notification>()
+    }
+}
 
 impl PushEvent {
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance

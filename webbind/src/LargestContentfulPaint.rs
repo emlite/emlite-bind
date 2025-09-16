@@ -71,6 +71,13 @@ impl LargestContentfulPaint {
     }
 }
 impl LargestContentfulPaint {
+    /// Getter of the `renderTime` attribute.
+    /// [`LargestContentfulPaint.renderTime`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/renderTime)
+    pub fn render_time(&self) -> Any {
+        self.inner.get("renderTime").as_::<Any>()
+    }
+}
+impl LargestContentfulPaint {
     /// Getter of the `size` attribute.
     /// [`LargestContentfulPaint.size`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/size)
     pub fn size(&self) -> u32 {

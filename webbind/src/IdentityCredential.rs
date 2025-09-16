@@ -66,8 +66,8 @@ jsbind::utils::impl_dyn_cast!(IdentityCredential);
 impl IdentityCredential {
     /// Getter of the `token` attribute.
     /// [`IdentityCredential.token`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/token)
-    pub fn token(&self) -> JsString {
-        self.inner.get("token").as_::<JsString>()
+    pub fn token(&self) -> Any {
+        self.inner.get("token").as_::<Any>()
     }
 }
 impl IdentityCredential {

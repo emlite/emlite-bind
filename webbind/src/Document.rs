@@ -148,6 +148,15 @@ impl Document {
     }
 }
 impl Document {
+    /// Getter of the `activeViewTransition` attribute.
+    /// [`Document.activeViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/activeViewTransition)
+    pub fn active_view_transition(&self) -> ViewTransition {
+        self.inner
+            .get("activeViewTransition")
+            .as_::<ViewTransition>()
+    }
+}
+impl Document {
     /// Getter of the `scrollingElement` attribute.
     /// [`Document.scrollingElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/scrollingElement)
     pub fn scrolling_element(&self) -> Element {

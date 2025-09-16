@@ -271,3 +271,146 @@ impl SubtleCrypto {
             .as_::<Promise<CryptoKey>>()
     }
 }
+impl SubtleCrypto {
+    /// The encapsulateKey method.
+    /// [`SubtleCrypto.encapsulateKey`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encapsulateKey)
+    pub fn encapsulate_key(
+        &self,
+        encapsulation_algorithm: &Any,
+        encapsulation_key: &CryptoKey,
+        shared_key_algorithm: &Any,
+        extractable: bool,
+        key_usages: &TypedArray<KeyUsage>,
+    ) -> Promise<EncapsulatedKey> {
+        self.inner
+            .call(
+                "encapsulateKey",
+                &[
+                    encapsulation_algorithm.into(),
+                    encapsulation_key.into(),
+                    shared_key_algorithm.into(),
+                    extractable.into(),
+                    key_usages.into(),
+                ],
+            )
+            .as_::<Promise<EncapsulatedKey>>()
+    }
+}
+impl SubtleCrypto {
+    /// The encapsulateBits method.
+    /// [`SubtleCrypto.encapsulateBits`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encapsulateBits)
+    pub fn encapsulate_bits(
+        &self,
+        encapsulation_algorithm: &Any,
+        encapsulation_key: &CryptoKey,
+    ) -> Promise<EncapsulatedBits> {
+        self.inner
+            .call(
+                "encapsulateBits",
+                &[encapsulation_algorithm.into(), encapsulation_key.into()],
+            )
+            .as_::<Promise<EncapsulatedBits>>()
+    }
+}
+impl SubtleCrypto {
+    /// The decapsulateKey method.
+    /// [`SubtleCrypto.decapsulateKey`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decapsulateKey)
+    pub fn decapsulate_key(
+        &self,
+        decapsulation_algorithm: &Any,
+        decapsulation_key: &CryptoKey,
+        ciphertext: &Any,
+        shared_key_algorithm: &Any,
+        extractable: bool,
+        key_usages: &TypedArray<KeyUsage>,
+    ) -> Promise<CryptoKey> {
+        self.inner
+            .call(
+                "decapsulateKey",
+                &[
+                    decapsulation_algorithm.into(),
+                    decapsulation_key.into(),
+                    ciphertext.into(),
+                    shared_key_algorithm.into(),
+                    extractable.into(),
+                    key_usages.into(),
+                ],
+            )
+            .as_::<Promise<CryptoKey>>()
+    }
+}
+impl SubtleCrypto {
+    /// The decapsulateBits method.
+    /// [`SubtleCrypto.decapsulateBits`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decapsulateBits)
+    pub fn decapsulate_bits(
+        &self,
+        decapsulation_algorithm: &Any,
+        decapsulation_key: &CryptoKey,
+        ciphertext: &Any,
+    ) -> Promise<ArrayBuffer> {
+        self.inner
+            .call(
+                "decapsulateBits",
+                &[
+                    decapsulation_algorithm.into(),
+                    decapsulation_key.into(),
+                    ciphertext.into(),
+                ],
+            )
+            .as_::<Promise<ArrayBuffer>>()
+    }
+}
+impl SubtleCrypto {
+    /// The getPublicKey method.
+    /// [`SubtleCrypto.getPublicKey`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/getPublicKey)
+    pub fn get_public_key(
+        &self,
+        key: &CryptoKey,
+        key_usages: &TypedArray<KeyUsage>,
+    ) -> Promise<CryptoKey> {
+        self.inner
+            .call("getPublicKey", &[key.into(), key_usages.into()])
+            .as_::<Promise<CryptoKey>>()
+    }
+}
+impl SubtleCrypto {
+    /// The supports method.
+    /// [`SubtleCrypto.supports`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/supports)
+    pub fn supports(operation: &JsString, algorithm: &Any) -> bool {
+        Any::global("SubtleCrypto")
+            .call("supports", &[operation.into(), algorithm.into()])
+            .as_::<bool>()
+    }
+}
+impl SubtleCrypto {
+    /// The supports method.
+    /// [`SubtleCrypto.supports`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/supports)
+    pub fn supports_with_length(operation: &JsString, algorithm: &Any, length: u32) -> bool {
+        Any::global("SubtleCrypto")
+            .call(
+                "supports",
+                &[operation.into(), algorithm.into(), length.into()],
+            )
+            .as_::<bool>()
+    }
+}
+impl SubtleCrypto {
+    /// The supports method.
+    /// [`SubtleCrypto.supports`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/supports)
+    pub fn supports_with_operation_and_algorithm_and_additional_algorithm(
+        operation: &JsString,
+        algorithm: &Any,
+        additional_algorithm: &Any,
+    ) -> bool {
+        Any::global("SubtleCrypto")
+            .call(
+                "supports",
+                &[
+                    operation.into(),
+                    algorithm.into(),
+                    additional_algorithm.into(),
+                ],
+            )
+            .as_::<bool>()
+    }
+}

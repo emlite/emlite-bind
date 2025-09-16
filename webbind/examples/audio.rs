@@ -23,7 +23,9 @@ fn main() {
         &JsString::from("click"),
         &Closure::bind1(move |_p: PointerEvent| {
             println!("Playing");
-            oscillator.connect_with_destination_param(context.destination().unchecked_ref::<AudioParam>());
+            oscillator.connect_with_destination_param(
+                context.destination().unchecked_ref::<AudioParam>(),
+            );
             oscillator.start_with_when(0.0);
             println!("All done!");
         })

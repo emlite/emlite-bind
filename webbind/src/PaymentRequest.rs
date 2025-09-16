@@ -200,8 +200,8 @@ impl PaymentRequest {
 impl PaymentRequest {
     /// The securePaymentConfirmationAvailability method.
     /// [`PaymentRequest.securePaymentConfirmationAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/securePaymentConfirmationAvailability)
-    pub fn secure_payment_confirmation_availability()
-    -> Promise<SecurePaymentConfirmationAvailability> {
+    pub fn secure_payment_confirmation_availability(
+    ) -> Promise<SecurePaymentConfirmationAvailability> {
         Any::global("PaymentRequest")
             .call("securePaymentConfirmationAvailability", &[])
             .as_::<Promise<SecurePaymentConfirmationAvailability>>()

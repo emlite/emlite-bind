@@ -78,6 +78,13 @@ impl NavigationTransition {
     }
 }
 impl NavigationTransition {
+    /// Getter of the `committed` attribute.
+    /// [`NavigationTransition.committed`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationTransition/committed)
+    pub fn committed(&self) -> Promise<Undefined> {
+        self.inner.get("committed").as_::<Promise<Undefined>>()
+    }
+}
+impl NavigationTransition {
     /// Getter of the `finished` attribute.
     /// [`NavigationTransition.finished`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationTransition/finished)
     pub fn finished(&self) -> Promise<Undefined> {

@@ -75,7 +75,7 @@ impl IdentityProvider {
 impl IdentityProvider {
     /// The resolve method.
     /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
-    pub fn resolve(token: &JsString) -> Promise<Undefined> {
+    pub fn resolve(token: &Any) -> Promise<Undefined> {
         Any::global("IdentityProvider")
             .call("resolve", &[token.into()])
             .as_::<Promise<Undefined>>()
@@ -85,7 +85,7 @@ impl IdentityProvider {
     /// The resolve method.
     /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
     pub fn resolve_with_options(
-        token: &JsString,
+        token: &Any,
         options: &IdentityResolveOptions,
     ) -> Promise<Undefined> {
         Any::global("IdentityProvider")

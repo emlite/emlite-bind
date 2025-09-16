@@ -732,6 +732,44 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
+    /// The isNaN method.
+    /// [`MLGraphBuilder.isNaN`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/isNaN)
+    pub fn is_na_n(&self, a: &MLOperand) -> MLOperand {
+        self.inner.call("isNaN", &[a.into()]).as_::<MLOperand>()
+    }
+}
+impl MLGraphBuilder {
+    /// The isNaN method.
+    /// [`MLGraphBuilder.isNaN`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/isNaN)
+    pub fn is_na_n_with_options(&self, a: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
+        self.inner
+            .call("isNaN", &[a.into(), options.into()])
+            .as_::<MLOperand>()
+    }
+}
+impl MLGraphBuilder {
+    /// The isInfinite method.
+    /// [`MLGraphBuilder.isInfinite`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/isInfinite)
+    pub fn is_infinite(&self, a: &MLOperand) -> MLOperand {
+        self.inner
+            .call("isInfinite", &[a.into()])
+            .as_::<MLOperand>()
+    }
+}
+impl MLGraphBuilder {
+    /// The isInfinite method.
+    /// [`MLGraphBuilder.isInfinite`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/isInfinite)
+    pub fn is_infinite_with_options(
+        &self,
+        a: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
+        self.inner
+            .call("isInfinite", &[a.into(), options.into()])
+            .as_::<MLOperand>()
+    }
+}
+impl MLGraphBuilder {
     /// The abs method.
     /// [`MLGraphBuilder.abs`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/abs)
     pub fn abs(&self, input: &MLOperand) -> MLOperand {

@@ -59,17 +59,6 @@ impl From<&IdentityProviderRequestOptions> for Any {
 }
 
 impl IdentityProviderRequestOptions {
-    /// Getter of the `nonce` attribute.
-    pub fn nonce(&self) -> JsString {
-        self.inner.get("nonce").as_::<JsString>()
-    }
-
-    /// Setter of the `nonce` attribute.
-    pub fn set_nonce(&mut self, value: &JsString) {
-        self.inner.set("nonce", value);
-    }
-}
-impl IdentityProviderRequestOptions {
     /// Getter of the `loginHint` attribute.
     pub fn login_hint(&self) -> JsString {
         self.inner.get("loginHint").as_::<JsString>()
