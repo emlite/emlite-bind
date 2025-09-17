@@ -21,10 +21,13 @@ fn main() {
     style.set_property(&"border".into(), &"solid".into());
 
     button.set_text_content(&"Click me".into());
-    button.add_event_listener(&"click".into(), &EventListener::from_closure(move |e: Event| {
-        let p = e.dyn_into::<PointerEvent>().unwrap();
-        con.log(&[p.client_x().into()]);
-        Undefined::VALUE
-    }));
+    button.add_event_listener(
+        &"click".into(),
+        &EventListener::from_closure(move |e: Event| {
+            let p = e.dyn_into::<PointerEvent>().unwrap();
+            con.log(&[p.client_x().into()]);
+            Undefined::VALUE
+        }),
+    );
     body.append_child(button.dyn_ref::<Node>().unwrap());
 }

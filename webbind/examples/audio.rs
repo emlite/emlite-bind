@@ -19,14 +19,17 @@ fn main() {
         .unwrap();
 
     button.set_text_content(&"Click me".into());
-    button.add_event_listener(&JsString::from("click"), &EventListener::from_closure(move |_e: Event| {
-        println!("Playing");
-        oscillator.connect_with_destination_param(
-            context.destination().unchecked_ref::<AudioParam>(),
-        );
-        oscillator.start_with_when(0.0);
-        println!("All done!");
-        Undefined::VALUE
-    }));
+    button.add_event_listener(
+        &JsString::from("click"),
+        &EventListener::from_closure(move |_e: Event| {
+            println!("Playing");
+            oscillator.connect_with_destination_param(
+                context.destination().unchecked_ref::<AudioParam>(),
+            );
+            oscillator.start_with_when(0.0);
+            println!("All done!");
+            Undefined::VALUE
+        }),
+    );
     body.append_child(button.dyn_ref::<Node>().unwrap());
 }
