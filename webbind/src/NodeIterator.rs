@@ -94,8 +94,8 @@ impl NodeIterator {
 impl NodeIterator {
     /// Getter of the `filter` attribute.
     /// [`NodeIterator.filter`](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator/filter)
-    pub fn filter(&self) -> Function {
-        self.inner.get("filter").as_::<Function>()
+    pub fn filter(&self) -> NodeFilter {
+        self.inner.get("filter").as_::<NodeFilter>()
     }
 }
 impl NodeIterator {

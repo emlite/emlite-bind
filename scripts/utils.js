@@ -8,7 +8,7 @@ import {
   missingDictFallback,
   IGNOREDFILES,
 } from "./ignored.js";
-import { enums, typedefs, callbacks } from "./globals.js";
+import { enums, typedefs, callbacks, callbackInterfaces } from "./globals.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -129,6 +129,9 @@ export function rust(idlType) {
   if (n === "double") return "f64";
   if (n === "float") return "f32";
   if (enums.has(n)) return n;
+  // WebIDL callback interface (e.g., EventListener) is emitted as a concrete Rust type
+  if (callbackInterfaces.has(n)) return n;
+  // Plain callback typedefs continue to map to Function
   if (callbacks.has(n)) return "Function";
   if (typedefs.has(n) || n === "__union") return "Any";
 

@@ -6,10 +6,11 @@ import { dictOwner } from "../globals.js";
  * Replaces ad-hoc "not sure how to deal with these!" comments with organized approach
  */
 export class DependencyResolver {
-  constructor(interfaces, dicts, enums) {
+  constructor(interfaces, dicts, enums, callbackInterfaces) {
     this.interfaces = interfaces;
     this.dicts = dicts;
     this.enums = enums;
+    this.callbackInterfaces = callbackInterfaces;
     this.dictDepGraph = new Map();
     this.dictOrdered = [];
   }
@@ -120,6 +121,12 @@ export class DependencyResolver {
       // Handle interface references
       if (this.interfaces.has(ref)) {
         externalTypeRefs.add(ref);
+        return;
+      }
+
+      // Handle callback interface references
+      if (this.callbackInterfaces && this.callbackInterfaces.has(ref)) {
+        externalTypeRefs.add(ref);
       }
     });
 
@@ -192,6 +199,10 @@ export class DependencyResolver {
     refs.forEach((ref) => {
       // For namespaces, we mainly need external type references
       if (this.dicts.has(ref) || this.interfaces.has(ref)) {
+        externalTypeRefs.add(ref);
+        return;
+      }
+      if (this.callbackInterfaces && this.callbackInterfaces.has(ref)) {
         externalTypeRefs.add(ref);
       }
     });

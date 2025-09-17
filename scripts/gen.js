@@ -1,13 +1,10 @@
-import {
-  parseSpecs,
-  processInterfaces,
-  processNamespaces,
-} from "./parsers/spec-parser.js";
+import { parseSpecs, processInterfaces, processNamespaces } from "./parsers/spec-parser.js";
 import { DependencyResolver } from "./parsers/dependency-resolver.js";
 import { generateEnums } from "./generators/enum-generator.js";
 import { generateNamespace } from "./generators/namespace-generator.js";
 import { generateInterface } from "./generators/interface-generator.js";
 import { generateDictionary } from "./generators/dictionary-generator.js";
+import { generateCallbackInterface } from "./generators/callback-interface-generator.js";
 import { enums, dictOwner } from "./globals.js";
 // import { writeFileSync } from "fs";
 
@@ -22,7 +19,7 @@ export function generate(specAst) {
   console.log("Starting emlite-bind generation with modular architecture...");
 
   // Parse the WebIDL specifications
-  const { interfaces, mixins, includeRel, dicts, namespaces } =
+  const { interfaces, mixins, includeRel, dicts, namespaces, callbackInterfaces } =
     parseSpecs(specAst);
 
   // Process interfaces (merge partials, includes, etc.)
@@ -33,7 +30,12 @@ export function generate(specAst) {
 
   // Create dependency resolver to systematically handle type dependencies
   // This replaces the "not sure how to deal with these!" comments
-  const resolver = new DependencyResolver(processedInterfaces, dicts, enums);
+  const resolver = new DependencyResolver(
+    processedInterfaces,
+    dicts,
+    enums,
+    callbackInterfaces
+  );
   resolver.prepare();
 
   console.log(
@@ -80,6 +82,16 @@ export function generate(specAst) {
     interfaceCount++;
   }
   console.log(`Generated ${interfaceCount} interfaces`);
+
+  // Generate callback interfaces
+  console.log("Generating callback interfaces...");
+  let cbCount = 0;
+  for (const [cbName, cbDef] of callbackInterfaces) {
+    const dependencies = resolver.resolveInterfaceDependencies(cbName, cbDef.members || []);
+    generateCallbackInterface(cbName, cbDef, dependencies);
+    cbCount++;
+  }
+  console.log(`Generated ${cbCount} callback interfaces`);
 
   // Generate namespaces
   console.log("Generating namespaces...");

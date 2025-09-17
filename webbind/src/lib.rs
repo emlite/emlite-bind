@@ -36,7 +36,7 @@ pub use jsbind::prelude::is_nan;
 pub use jsbind::prelude::parse_float;
 pub use jsbind::prelude::parse_int;
 pub use jsbind::prelude::queue_microtask;
-pub use jsbind::prelude::{JsStructuredSerializeOptions, structured_clone};
+pub use jsbind::prelude::{structured_clone, JsStructuredSerializeOptions};
 
 pub fn report_error(error: &jsbind::prelude::JsError) {
     Any::global("reportError").invoke(&[error.into()]);

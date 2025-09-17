@@ -93,7 +93,7 @@ impl MediaQueryList {
 impl MediaQueryList {
     /// The addListener method.
     /// [`MediaQueryList.addListener`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/addListener)
-    pub fn add_listener(&self, callback: &Function) -> Undefined {
+    pub fn add_listener(&self, callback: &EventListener) -> Undefined {
         self.inner
             .call("addListener", &[callback.into()])
             .as_::<Undefined>()
@@ -102,7 +102,7 @@ impl MediaQueryList {
 impl MediaQueryList {
     /// The removeListener method.
     /// [`MediaQueryList.removeListener`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/removeListener)
-    pub fn remove_listener(&self, callback: &Function) -> Undefined {
+    pub fn remove_listener(&self, callback: &EventListener) -> Undefined {
         self.inner
             .call("removeListener", &[callback.into()])
             .as_::<Undefined>()

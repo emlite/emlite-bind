@@ -75,7 +75,7 @@ impl EventTarget {
 impl EventTarget {
     /// The addEventListener method.
     /// [`EventTarget.addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
-    pub fn add_event_listener(&self, type_: &JsString, callback: &Function) -> Undefined {
+    pub fn add_event_listener(&self, type_: &JsString, callback: &EventListener) -> Undefined {
         self.inner
             .call("addEventListener", &[type_.into(), callback.into()])
             .as_::<Undefined>()
@@ -87,7 +87,7 @@ impl EventTarget {
     pub fn add_event_listener_with_options(
         &self,
         type_: &JsString,
-        callback: &Function,
+        callback: &EventListener,
         options: &Any,
     ) -> Undefined {
         self.inner
@@ -101,7 +101,7 @@ impl EventTarget {
 impl EventTarget {
     /// The removeEventListener method.
     /// [`EventTarget.removeEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
-    pub fn remove_event_listener(&self, type_: &JsString, callback: &Function) -> Undefined {
+    pub fn remove_event_listener(&self, type_: &JsString, callback: &EventListener) -> Undefined {
         self.inner
             .call("removeEventListener", &[type_.into(), callback.into()])
             .as_::<Undefined>()
@@ -113,7 +113,7 @@ impl EventTarget {
     pub fn remove_event_listener_with_options(
         &self,
         type_: &JsString,
-        callback: &Function,
+        callback: &EventListener,
         options: &Any,
     ) -> Undefined {
         self.inner

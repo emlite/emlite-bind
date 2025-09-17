@@ -87,7 +87,7 @@ impl XPathEvaluator {
     pub fn create_expression_with_resolver(
         &self,
         expression: &JsString,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
     ) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into(), resolver.into()])
@@ -119,7 +119,7 @@ impl XPathEvaluator {
         &self,
         expression: &JsString,
         context_node: &Node,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
     ) -> XPathResult {
         self.inner
             .call(
@@ -136,7 +136,7 @@ impl XPathEvaluator {
         &self,
         expression: &JsString,
         context_node: &Node,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
         type_: u16,
     ) -> XPathResult {
         self.inner
@@ -159,7 +159,7 @@ impl XPathEvaluator {
         &self,
         expression: &JsString,
         context_node: &Node,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
         type_: u16,
         result: &XPathResult,
     ) -> XPathResult {

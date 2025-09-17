@@ -888,7 +888,7 @@ impl Document {
         &self,
         root: &Node,
         what_to_show: u32,
-        filter: &Function,
+        filter: &NodeFilter,
     ) -> NodeIterator {
         self.inner
             .call(
@@ -927,7 +927,7 @@ impl Document {
         &self,
         root: &Node,
         what_to_show: u32,
-        filter: &Function,
+        filter: &NodeFilter,
     ) -> TreeWalker {
         self.inner
             .call(
@@ -1483,7 +1483,7 @@ impl Document {
     pub fn create_expression_with_resolver(
         &self,
         expression: &JsString,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
     ) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into(), resolver.into()])
@@ -1515,7 +1515,7 @@ impl Document {
         &self,
         expression: &JsString,
         context_node: &Node,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
     ) -> XPathResult {
         self.inner
             .call(
@@ -1532,7 +1532,7 @@ impl Document {
         &self,
         expression: &JsString,
         context_node: &Node,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
         type_: u16,
     ) -> XPathResult {
         self.inner
@@ -1555,7 +1555,7 @@ impl Document {
         &self,
         expression: &JsString,
         context_node: &Node,
-        resolver: &Function,
+        resolver: &XPathNSResolver,
         type_: u16,
         result: &XPathResult,
     ) -> XPathResult {

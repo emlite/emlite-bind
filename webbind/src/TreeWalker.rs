@@ -80,8 +80,8 @@ impl TreeWalker {
 impl TreeWalker {
     /// Getter of the `filter` attribute.
     /// [`TreeWalker.filter`](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker/filter)
-    pub fn filter(&self) -> Function {
-        self.inner.get("filter").as_::<Function>()
+    pub fn filter(&self) -> NodeFilter {
+        self.inner.get("filter").as_::<NodeFilter>()
     }
 }
 impl TreeWalker {

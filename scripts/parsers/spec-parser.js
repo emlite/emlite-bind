@@ -1,4 +1,4 @@
-import { enums, typedefs, callbacks } from "../globals.js";
+import { enums, typedefs, callbacks, callbackInterfaces } from "../globals.js";
 
 // Expand typedefs eagerly, preserving generic wrappers and unions
 function expandTypedefs(t, seen = new Set()) {
@@ -63,6 +63,8 @@ export function parseSpecs(specAst) {
   const includeRel = [];
   const dicts = new Map();
   const namespaces = new Map();
+  // Reset/prepare callback interface registry
+  callbackInterfaces.clear();
 
   for (const ast of Object.values(specAst)) {
     for (const def of ast) {
@@ -99,8 +101,10 @@ export function parseSpecs(specAst) {
           break;
         }
         case "callback":
-        case "callback interface":
           callbacks.add(def.name);
+          break;
+        case "callback interface":
+          callbackInterfaces.set(def.name, def);
           break;
         case "typedef":
           typedefs.set(def.name, def.idlType);
@@ -120,12 +124,20 @@ export function parseSpecs(specAst) {
     }
   }
 
+  // Resolve typedefs inside callback interface member signatures, after collection
+  for (const [, def] of callbackInterfaces) {
+    if (Array.isArray(def.members)) {
+      def.members.forEach((m) => resolveTypedefsInMember(m));
+    }
+  }
+
   return {
     interfaces,
     mixins,
     includeRel,
     dicts,
     namespaces,
+    callbackInterfaces,
   };
 }
 
