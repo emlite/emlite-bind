@@ -1,6 +1,6 @@
 [package]
 name = "webbind"
-version = "0.1.38"
+version = "0.1.39"
 edition = "2024"
 description = "Rust bindings for the web api, auto-generated from WebIDL"
 documentation = "https://docs.rs/webbind"
@@ -15,4 +15,4 @@ build = "build.rs"
 convert_case = "0.8.0"
 
 [dependencies]
-jsbind = { version = "=0.1.38", path = "../jsbind" }
+jsbind = { version = "=0.1.39", path = "../jsbind" }
