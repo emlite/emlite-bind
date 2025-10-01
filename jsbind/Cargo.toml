@@ -1,6 +1,6 @@
 [package]
 name = "jsbind"
-version = "0.1.43"
+version = "0.1.44"
 edition = "2024"
 description = "Bindings for basic JS types required for webbind"
 documentation = "https://docs.rs/jsbind"
@@ -12,3 +12,7 @@ categories = ["api-bindings", "wasm"]
 
 [dependencies]
 emlite = "0.1.54"
+
+[features]
+default = ["wasip2-component"]
+wasip2-component = ["emlite/wasip2-component"]
